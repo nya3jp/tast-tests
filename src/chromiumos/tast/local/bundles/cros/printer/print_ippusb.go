@@ -10,7 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/printer/usbprinter"
+	"chromiumos/tast/local/bundles/cros/printer/usbprintertests"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -40,5 +40,5 @@ func PrintIPPUSB(ctx context.Context, s *testing.State) {
 	defer os.RemoveAll(tmpDir)
 	recordPath := filepath.Join(tmpDir, "record.pdf")
 
-	usbprinter.RunPrintTest(ctx, s, descriptors, attributes, recordPath, "", s.DataPath("print_ippusb_to_print.pdf"), s.DataPath("print_ippusb_golden.pdf"))
+	usbprintertests.RunPrintTest(ctx, s, descriptors, attributes, recordPath, "", s.DataPath("print_ippusb_to_print.pdf"), s.DataPath("print_ippusb_golden.pdf"))
 }
