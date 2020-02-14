@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "defdf40f_fae1b5f9",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-14T23:35:20Z",
+      "side": 1,
+      "message": "It\u0027s not immediately clear what the error being reported is here, since it could be one of two things. Perhaps test each separately and make a more direct message for each?",
+      "revId": "e363c284b56dbd08969ca2cfefd944dfc98a99df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
