@@ -30,7 +30,7 @@ func init() {
 		Func:     Toolkit,
 		Desc:     "Verifies the behaviour of GUI apps based on various toolkits",
 		Contacts: []string{"hollingum@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:      "gtk3_wayland",
 			ExtraData: []string{"toolkit_gtk3_demo.py"},
@@ -51,6 +51,7 @@ func init() {
 				appID:   "crostini:toolkit_gtk3_demo.py",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "gtk3_x11",
 			ExtraData: []string{"toolkit_gtk3_demo.py"},
@@ -71,6 +72,7 @@ func init() {
 				appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "qt5",
 			ExtraData: []string{"toolkit_qt5_demo.py"},
@@ -91,6 +93,7 @@ func init() {
 				appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "tkinter",
 			ExtraData: []string{"toolkit_tkinter_demo.py"},
@@ -111,6 +114,7 @@ func init() {
 				appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 			},
 			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
