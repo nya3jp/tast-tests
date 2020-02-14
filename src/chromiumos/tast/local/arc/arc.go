@@ -158,7 +158,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 
 		// Connect to ADB.
-		if err := connectADB(ctx); err != nil {
+		if err := ConnectADB(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed connecting to ADB")
 		}
 
@@ -217,7 +217,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 
 		// Connect to ADB.
-		if err := connectADB(ctx); err != nil {
+		if err := ConnectADB(ctx); err != nil {
 			return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 		}
 	}
