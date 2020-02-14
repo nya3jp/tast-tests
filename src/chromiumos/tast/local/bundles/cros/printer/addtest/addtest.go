@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/diff"
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/debugd"
-	"chromiumos/tast/local/printer"
+	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )

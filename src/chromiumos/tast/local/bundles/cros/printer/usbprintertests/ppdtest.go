@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package usbprinter
+package usbprintertests
 
 import (
 	"bufio"
@@ -13,7 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/printer"
+	"chromiumos/tast/local/printing/printer"
+	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
@@ -58,7 +59,7 @@ func RunIPPUSBPPDTest(ctx context.Context, s *testing.State, descriptors, attrib
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := LoadPrinterIDs(descriptors)
+	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
@@ -69,16 +70,16 @@ func RunIPPUSBPPDTest(ctx context.Context, s *testing.State, descriptors, attrib
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	if err := InstallModules(ctx); err != nil {
+	if err := usbprinter.InstallModules(ctx); err != nil {
 		s.Fatal("Failed to install kernel modules: ", err)
 	}
 	defer func() {
-		if err := RemoveModules(oldContext); err != nil {
+		if err := usbprinter.RemoveModules(oldContext); err != nil {
 			s.Error("Failed to remove kernel modules: ", err)
 		}
 	}()
 
-	_, name, err := StartIPPUSB(ctx, devInfo, descriptors, attributes, "" /*record*/)
+	_, name, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, "" /*record*/)
 	if err != nil {
 		s.Fatal("Failed to start IPP-over-USB printer: ", err)
 	}

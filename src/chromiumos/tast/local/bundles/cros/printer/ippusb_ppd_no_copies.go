@@ -7,7 +7,7 @@ package printer
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/printer/usbprinter"
+	"chromiumos/tast/local/bundles/cros/printer/usbprintertests"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -29,7 +29,7 @@ func init() {
 // which does not provide a value for the "copies-supported" attribute.
 func IPPUSBPPDNoCopies(ctx context.Context, s *testing.State) {
 	const descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-	usbprinter.RunIPPUSBPPDTest(ctx, s, descriptors, s.DataPath("ippusb_no_copies.json"), map[string]string{
+	usbprintertests.RunIPPUSBPPDTest(ctx, s, descriptors, s.DataPath("ippusb_no_copies.json"), map[string]string{
 		"*cupsManualCopies": "True",
 		"*cupsMaxCopies":    "1",
 	})
