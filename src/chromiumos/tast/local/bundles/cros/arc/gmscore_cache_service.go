@@ -1,0 +1,51 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"path/filepath"
+
+	"github.com/golang/protobuf/ptypes/empty"
+	"google.golang.org/grpc"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/arc/cache"
+	arcpb "chromiumos/tast/services/cros/arc"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddService(&testing.Service{
+		Register: func(srv *grpc.Server, s *testing.ServiceState) {
+			arcpb.RegisterGmsCoreCacheServiceServer(srv, &GmsCoreCacheService{s: s})
+		},
+	})
+}
+
+// GmsCoreCacheService implements tast.cros.arc.GmsCoreCacheService.
+type GmsCoreCacheService struct {
+	s *testing.ServiceState
+}
+
+// Generate generates GMS Core and GFS caches.
+func (c *GmsCoreCacheService) Generate(ctx context.Context, req *empty.Empty) (*arcpb.GmsCoreCacheResponse, error) {
+	const targetDir = "/tmp"
+
+	// Boot ARC with and without caches enabled to let GMS Core generate genuine caches.
+	testing.ContextLog(ctx, "Starting ARC, with caches disabled")
+	cr, a, err := cache.BootARCWithPackagesCacheMode(ctx, cache.SkipCopy, targetDir)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
+	}
+	defer a.Close()
+	defer cr.Close(ctx)
+
+	response := arcpb.GmsCoreCacheResponse{
+		GmsCoreCachePath: filepath.Join(targetDir, cache.GmsCoreCacheArchive),
+		GsfCachePath:     filepath.Join(targetDir, cache.GsfCache),
+	}
+	return &response, nil
+}

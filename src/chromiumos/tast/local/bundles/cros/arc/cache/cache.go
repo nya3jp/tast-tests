@@ -48,6 +48,8 @@ const (
 	PackagesCacheXML = "packages_cache.xml"
 	// GmsCoreCacheArchive defines the GMS Core cache tar file name.
 	GmsCoreCacheArchive = "gms_core_cache.tar"
+	// GsfCache defines the GSF cache database file name.
+	GsfCache = "gservices_cache.db"
 )
 
 // BootARCWithPackagesCacheMode boots ARC with caches turned on or off, depending on the mode parameter. In
@@ -87,6 +89,7 @@ func BootARCWithPackagesCacheMode(ctx context.Context, mode PackagesCacheMode, o
 		appChimera   = "app_chimera"
 		tmpTarFile   = "/sdcard/Download/temp_gms_caches.tar"
 		packagesPath = "/data/system/packages_copy.xml"
+		gsfDatabase  = "/system/etc/gservices_cache/databases/gservices.db"
 	)
 
 	chimeraPath := filepath.Join(gmsRoot, appChimera)
@@ -170,19 +173,32 @@ func BootARCWithPackagesCacheMode(ctx context.Context, mode PackagesCacheMode, o
 		return nil, nil, errors.Wrapf(err, "failed to generate %s for %s", LayoutTxt, chimeraPath)
 	}
 
-	packagesCachePath := filepath.Join(outputDir, PackagesCacheXML)
-	testing.ContextLogf(ctx, "Pulling packages cache to %q", packagesCachePath)
-	packagesCache, err := os.Create(packagesCachePath)
-	if err != nil {
-		return nil, nil, errors.Wrapf(err, "failed to create output: %q", packagesCachePath)
-	}
-	defer packagesCache.Close()
+	// pullFileFromDevice pulls src file from Android to dst usign cat.
+	pullFileFromDevice := func(src, dst string) error {
+		testing.ContextLogf(ctx, "Pulling %q to %q", src, dst)
+		dstFile, err := os.Create(dst)
+		if err != nil {
+			return errors.Wrapf(err, "failed to create output: %q", dst)
+		}
+		defer dstFile.Close()
 
-	// adb pull would fail due to permissions limitation. Use bootstrapped cat to copy it.
-	cmd := arc.BootstrapCommand(ctx, "/bin/cat", packagesPath)
-	cmd.Stdout = packagesCache
-	if err = cmd.Run(); err != nil {
-		return nil, nil, errors.Wrapf(err, "failed to pull %s from Android", packagesPath)
+		// adb pull would fail due to permissions limitation. Use bootstrapped cat to copy it.
+		cmd := arc.BootstrapCommand(ctx, "/bin/cat", src)
+		cmd.Stdout = dstFile
+		if err = cmd.Run(); err != nil {
+			return errors.Wrapf(err, "failed to pull %q from Android", src)
+		}
+		return nil
+	}
+
+	// Packages cache
+	if err := pullFileFromDevice(packagesPath, filepath.Join(outputDir, PackagesCacheXML)); err != nil {
+		return nil, nil, err
+	}
+
+	// GSF cache
+	if err := pullFileFromDevice(gsfDatabase, filepath.Join(outputDir, GsfCache)); err != nil {
+		return nil, nil, err
 	}
 
 	return cr, a, nil
