@@ -39,6 +39,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
 		dlcCacheDir     = "/var/cache/dlc"
+		badURL          = "http://???"
 	)
 
 	type expect bool
@@ -101,7 +102,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	install := func(dlcs []string, omahaURL string, e expect) {
-		s.Log("Installing DLC(s): ", dlcs)
+		s.Log("Installing DLC(s): ", dlcs, " to ", omahaURL)
 		runCmd("install", e, "sudo", "-u", "chronos", "dlcservice_util", "--install",
 			"--dlc_ids="+strings.Join(dlcs, ":"), "--omaha_url="+omahaURL)
 	}
@@ -193,33 +194,50 @@ func DLCService(ctx context.Context, s *testing.State) {
 		// Before performing any Install/Uninstall.
 		dumpInstalledDLCModules("00_initial_state")
 
+		// Install empty DLC.
+		install([]string{}, url, failure)
+		dumpInstalledDLCModules("01_install_empty")
+
+		// Install with bad Omaha URL.
+		install([]string{dlcID1}, badURL, failure)
+		dumpInstalledDLCModules("02_install_with_bad_url")
+
+		// Install with bad Omaha URL immediately after.
+		install([]string{dlcID1}, badURL, failure)
+		dumpInstalledDLCModules("03_install_with_bad_url_immediately_after")
+
 		// Install single DLC.
 		install([]string{dlcID1}, url, success)
-		dumpInstalledDLCModules("01_install_dlc")
+		dumpInstalledDLCModules("04_install_single")
+
+		// Install to bad Omaha URL for already installed.
+		install([]string{dlcID1}, badURL, success)
+		dumpInstalledDLCModules("05_install_bad_url_already_installed")
 
 		// Install already installed DLC.
 		install([]string{dlcID1}, url, success)
-		dumpInstalledDLCModules("02_install_already_installed")
+		dumpInstalledDLCModules("06_install_already_installed")
 
 		// Install duplicates of already installed DLC.
-		install([]string{dlcID1, dlcID1}, url, failure)
-		dumpInstalledDLCModules("03_install_already_installed_duplicate")
+		install([]string{dlcID1, dlcID1}, url, success)
+		dumpInstalledDLCModules("07_install_already_installed_duplicate")
 
 		// Uninstall single DLC.
 		uninstall(dlcID1, success)
-		dumpInstalledDLCModules("04_uninstall_dlc")
+		dumpInstalledDLCModules("08_uninstall_dlc")
 
 		// Uninstall already uninstalled DLC.
 		uninstall(dlcID1, success)
-		dumpInstalledDLCModules("05_uninstall_already_uninstalled_dlc")
+		dumpInstalledDLCModules("09_uninstall_already_uninstalled")
 
 		// Install duplicates of DLC atomically.
-		install([]string{dlcID1, dlcID1}, url, failure)
-		dumpInstalledDLCModules("06_atommically_install_duplicate")
+		install([]string{dlcID1, dlcID1}, url, success)
+		dumpInstalledDLCModules("10_atommically_install_duplicate")
 
 		// Install unsupported DLC.
-		install([]string{"bad-dlc"}, "http://???", failure)
-		dumpInstalledDLCModules("07_install_bad_dlc")
+		install([]string{"unsupported-dlc"}, url, failure)
+		dumpInstalledDLCModules("11_install_unsupported")
+
 	})
 
 	s.Run(ctx, "Multi DLC combination tests", func(context.Context, *testing.State) {
@@ -228,10 +246,19 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 		// Install multiple DLC(s).
 		install([]string{dlcID1, dlcID2}, url, success)
-		dumpInstalledDLCModules("08_install_multiple_dlcs")
+		dumpInstalledDLCModules("12_install_multiple")
 
 		// Install multiple DLC(s) already installed.
 		install([]string{dlcID1, dlcID2}, url, success)
-		dumpInstalledDLCModules("09_install_multiple_dlcs_already_installed")
+		dumpInstalledDLCModules("13_install_multiple_already_installed")
+
+		// Uninstall multiple installed DLC(s).
+		uninstall(dlcID1, success)
+		uninstall(dlcID2, success)
+		dumpInstalledDLCModules("14_uninstall_multiple_installed")
+
+		// Install multiple DLC(s) with bad Omaha URL.
+		install([]string{dlcID1, dlcID2}, badURL, failure)
+		dumpInstalledDLCModules("15_install_multiple_with_bad_url")
 	})
 }
