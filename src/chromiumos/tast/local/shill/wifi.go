@@ -8,11 +8,26 @@ package shill
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 )
+
+// listFiles returns a list of filenames under the given path.
+func listFiles(path string) ([]string, error) {
+	files, err := ioutil.ReadDir(path)
+	if err != nil {
+		return nil, err
+	}
+	var results []string
+	for _, f := range files {
+		results = append(results, f.Name())
+	}
+	return results, nil
+}
 
 // GetWifiInterface polls the WiFi interface name with timeout.
 // It returns "" with error if no (or more than one) WiFi interface is found.
@@ -34,9 +49,18 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		return ifaces, nil
 	}
 
+	// sysClassNet composes a string of devices under /sys/class/net.
+	sysClassNet := func() string {
+		netDevs, err := listFiles("/sys/class/net")
+		if err != nil {
+			return "/sys/class/net inaccessible: " + err.Error()
+		}
+		return fmt.Sprintf("/sys/class/net: %q", netDevs)
+	}
+
 	pw, err := m.CreateWatcher(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create a PropertiesWatcher")
+		return "", errors.Wrap(err, "shill: failed to create a PropertiesWatcher")
 	}
 	defer pw.Close(ctx)
 
@@ -44,15 +68,15 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		// If more than one WiFi interface is found, an error is raised.
 		// If there's no WiFi interface, probe again when manager's "Devices" property is changed.
 		if ifaces, err := getWifiIfaces(); err != nil {
-			return "", err
+			return "", errors.Errorf("unable to query device property from shill (%s): %q", sysClassNet(), err)
 		} else if len(ifaces) > 1 {
-			return "", errors.Errorf("more than one WiFi interface found: %q", ifaces)
+			return "", errors.Errorf("more than one WiFi interface found (%s): %q", sysClassNet(), ifaces)
 		} else if len(ifaces) == 1 {
 			return ifaces[0], nil
 		}
 
 		if _, err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
-			return "", err
+			return "", errors.Wrapf(err, "timeout waiting Devices update from shill (%s)", sysClassNet())
 		}
 	}
 }
