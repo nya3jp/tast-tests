@@ -20,15 +20,26 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// PackagesCacheMode represents a flag that determines whether packages_cache.xml
+// PackagesMode represents a flag that determines whether packages_cache.xml
 // will be copied within ARC after boot.
-type PackagesCacheMode int
+type PackagesMode int
 
 const (
-	// Copy forces to set caches and copy packages cache to the preserved destination.
-	Copy PackagesCacheMode = iota
-	// SkipCopy forces to ignore caches and copy packages cache to the preserved destination.
-	SkipCopy
+	// PackagesCopy forces to set caches and copy packages cache to the preserved destination.
+	PackagesCopy PackagesMode = iota
+	// PackagesSkipCopy forces to ignore caches and copy packages cache to the preserved destination.
+	PackagesSkipCopy
+)
+
+// GMSCoreMode represents a flag that determines whether existing GMS Core caches
+// would be used or not.
+type GMSCoreMode int
+
+const (
+	// GMSCoreEnabled requires to use existing GMS Core caches if they are available.
+	GMSCoreEnabled GMSCoreMode = iota
+	// GMSCoreDisabled requires not to use existing GMS Core caches.
+	GMSCoreDisabled
 )
 
 // pathCondition represents whether waitForAndroidPath should wait for the path
@@ -46,19 +57,30 @@ const (
 	LayoutTxt = "layout.txt"
 	// PackagesCacheXML defines the name of packages cache file name.
 	PackagesCacheXML = "packages_cache.xml"
-	// GmsCoreCacheArchive defines the GMS Core cache tar file name.
-	GmsCoreCacheArchive = "gms_core_cache.tar"
+	// GMSCoreCacheArchive defines the GMS Core cache tar file name.
+	GMSCoreCacheArchive = "gms_core_cache.tar"
+	// GSFCache defines the GSF cache database file name.
+	GSFCache = "gservices_cache.db"
 )
 
 // OpenSession starts Chrome and ARC with caches turned on or off, depending on the mode parameter.
 // On success, non-nil pointers are returned that must be closed by the calling function.
 // However, if there is an error, both pointers will be nil
-func OpenSession(ctx context.Context, mode PackagesCacheMode, extraArgs []string, outputDir string) (cr *chrome.Chrome, a *arc.ARC, retErr error) {
+func OpenSession(ctx context.Context, packagesMode PackagesMode, gmsCoreMode GMSCoreMode, extraArgs []string, outputDir string) (cr *chrome.Chrome, a *arc.ARC, retErr error) {
 	args := []string{"--arc-disable-app-sync", "--arc-disable=play-auto-install"}
-	if mode == SkipCopy {
+	switch packagesMode {
+	case PackagesSkipCopy:
 		args = append(args, "--arc-packages-cache-mode=skip-copy")
-	} else {
+	case PackagesCopy:
 		args = append(args, "--arc-packages-cache-mode=copy")
+	default:
+		return nil, nil, errors.Errorf("invalid packagesMode %d passed", packagesMode)
+	}
+	switch gmsCoreMode {
+	case GMSCoreDisabled:
+		args = append(args, "--arc-disable-gms-core-cache")
+	default:
+		return nil, nil, errors.Errorf("invalid gmsCoreMode %d passed", gmsCoreMode)
 	}
 	args = append(args, extraArgs...)
 
@@ -82,6 +104,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		appChimera   = "app_chimera"
 		tmpTarFile   = "/sdcard/Download/temp_gms_caches.tar"
 		packagesPath = "/data/system/packages_copy.xml"
+		gsfDatabase  = "/system/etc/gservices_cache/databases/gservices.db"
 	)
 
 	chimeraPath := filepath.Join(gmsRoot, appChimera)
@@ -113,7 +136,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	}
 
 	// Pull archive to the host and unpack it.
-	targetTar := filepath.Join(outputDir, GmsCoreCacheArchive)
+	targetTar := filepath.Join(outputDir, GMSCoreCacheArchive)
 	testing.ContextLogf(ctx, "Pulling GMS Core caches to %q", targetTar)
 	if err := a.PullFile(ctx, tmpTarFile, targetTar); err != nil {
 		return errors.Wrapf(err, "failed to pull %q from Android to %q", tmpTarFile, targetTar)
@@ -135,21 +158,34 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		return errors.Wrapf(err, "failed to generate %s for %s", LayoutTxt, chimeraPath)
 	}
 
-	packagesCachePath := filepath.Join(outputDir, PackagesCacheXML)
-	testing.ContextLogf(ctx, "Pulling packages cache to %q", packagesCachePath)
-	packagesCache, err := os.Create(packagesCachePath)
-	if err != nil {
-		return errors.Wrapf(err, "failed to create output: %q", packagesCachePath)
+	// Packages cache
+	if err := pullARCFile(ctx, packagesPath, filepath.Join(outputDir, PackagesCacheXML)); err != nil {
+		return err
 	}
-	defer packagesCache.Close()
+
+	// GSF cache
+	if err := pullARCFile(ctx, gsfDatabase, filepath.Join(outputDir, GSFCache)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// pullARCFile pulls src file from Android to dst using cat. src is absolute Android path.
+func pullARCFile(ctx context.Context, src, dst string) error {
+	testing.ContextLogf(ctx, "Pulling %q to %q", src, dst)
+	dstFile, err := os.Create(dst)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create output: %q", dst)
+	}
+	defer dstFile.Close()
 
 	// adb pull would fail due to permissions limitation. Use bootstrapped cat to copy it.
-	cmd := arc.BootstrapCommand(ctx, "/bin/cat", packagesPath)
-	cmd.Stdout = packagesCache
+	cmd := arc.BootstrapCommand(ctx, "/bin/cat", src)
+	cmd.Stdout = dstFile
 	if err = cmd.Run(); err != nil {
-		return errors.Wrapf(err, "failed to pull %s from Android", packagesPath)
+		return errors.Wrapf(err, "failed to pull %q from Android", src)
 	}
-
 	return nil
 }
 
