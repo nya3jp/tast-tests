@@ -1,0 +1,30 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.arc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/arc";
+
+// GmsCoreService provides GMS Core and GFS caches generation
+service GmsCoreCacheService {
+  // Generate generates GMS Core and GFS caches.
+  rpc Generate (google.protobuf.Empty) returns (GmsCoreCacheResponse) {}
+}
+
+message GmsCoreCacheResponse {
+  // Path to directory with caches.
+  string target_dir = 1;
+  // Name of packages cache.
+  string packages_cache_name = 2;
+  //Name of GMS Core caches packed to tar file.
+  string gms_core_cache_name = 3;
+  //Name of GMS Core manifest file.
+  string gms_core_manifest_name = 4;
+  // Name of GSF cache.
+  string gsf_cache_name = 5;
+}
