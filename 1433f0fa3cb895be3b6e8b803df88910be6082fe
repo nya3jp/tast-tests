@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f76a3ecc_0e1d7b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-15T17:00:29Z",
+      "side": 1,
+      "message": "videotestsrc produces at 30fps unless otherwise forced by the caps down the\nline (the \"video/x-raw...\" thing two exclamation signs further), so this is \ntwo seconds each. In principle it could be shorter (anything above 15 frames\nshould cover all codecs\u0027 number of allocated frames), but since this is for\na seek test, where we\u0027ll have a number of random jumps, I thought this \nnumber would be good to almost always getting some frames displayed before\nhaving to change resolution again.",
+      "parentUuid": "ead0056c_f78d16f3",
+      "range": {
+        "startLine": 217,
+        "startChar": 47,
+        "endLine": 217,
+        "endChar": 49
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b04536ac_bbc710d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de52a02_69b73078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-15T17:00:29Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "b04536ac_bbc710d5",
+      "range": {
+        "startLine": 232,
+        "startChar": 76,
+        "endLine": 232,
+        "endChar": 77
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "41de0bfb_5620acd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-15T17:00:29Z",
+      "side": 1,
+      "message": "7*2 \u003d 14s (Each segment 2s). Marking this as resolved since this is a \ncorollary of the comment in l.217, where we can continue the conversation.",
+      "parentUuid": "37ae4d76_4d846831",
+      "range": {
+        "startLine": 248,
+        "startChar": 14,
+        "endLine": 248,
+        "endChar": 20
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f30844de_c7f8ef32",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15642b8b_f55c6d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-15T17:00:29Z",
+      "side": 1,
+      "message": "Legacy - they were doing seeks with a resolution-switching video, and I guess\nthat\u0027s where the name come from. I\u0027m ok with renaming them (maybe in a follow\nup CL?)",
+      "parentUuid": "f30844de_c7f8ef32",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
