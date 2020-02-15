@@ -12,6 +12,8 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -32,8 +34,9 @@ func init() {
 		Attr: []string{"group:mainline", "informational"},
 		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
 		SoftwareDeps: []string{"arc", "chrome"},
-		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
-		Timeout:      10 * time.Minute,
+		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
+			"tast.cros.arc.GmsCoreCacheService"},
+		Timeout: 10 * time.Minute,
 		Vars: []string{
 			"arc.UreadaheadService.username",
 			"arc.UreadaheadService.password",
@@ -42,11 +45,11 @@ func init() {
 }
 
 // getArcVersionRemotely gets ARC build properties from the device, parses for build ID, ABI, and
-// returns these fields as a combined string.
-func getArcVersionRemotely(ctx context.Context, s *testing.State, dut *dut.DUT) (string, error) {
+// returns these fields as a combined string. It also return weither this is official build or not
+func getArcVersionRemotely(ctx context.Context, s *testing.State, dut *dut.DUT) (bool, string, error) {
 	isARCVM, err := dut.Command("cat", "/run/chrome/is_arcvm").Output(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to check ARCVM status remotely")
+		return false, "", errors.Wrap(err, "failed to check ARCVM status remotely")
 	}
 
 	var propertyFile string
@@ -58,54 +61,40 @@ func getArcVersionRemotely(ctx context.Context, s *testing.State, dut *dut.DUT) 
 
 	buildProp, err := dut.Command("cat", propertyFile).Output(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to read ARC build property file remotely")
+		return false, "", errors.Wrap(err, "failed to read ARC build property file remotely")
 	}
 	buildPropStr := string(buildProp)
 
 	mArch := regexp.MustCompile(`(\n|^)ro.product.cpu.abi=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
 	if mArch == nil {
-		return "", errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
+		return false, "", errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
 	}
 
 	// Note, this should work on official builds only. Custom built Android image contains the
 	// version in different format.
-	mVersion := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(\d+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	mVersion := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
 	if mVersion == nil {
-		return "", errors.Errorf("Valid ro.build.version.incremental is not found in %q", buildPropStr)
+		return false, "", errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
 	}
 
+	official := regexp.MustCompile(`^\d+$`).MatchString(mVersion[2])
 	result := fmt.Sprintf("%s_%s", mArch[2], mVersion[2])
-	return result, nil
-}
-
-// uploadUreadaheadPack gets ureadahead pack from the target device and uploads it to the server.
-func uploadUreadaheadPack(ctx context.Context, s *testing.State, dut *dut.DUT, version, src, dst string) error {
-	// Base path for uploaded ureadahead packs.
-	const serverUreadaheadPackRoot = "gs://chromeos-arc-images/ureadahead_packs"
-
-	packPath := filepath.Join(s.OutDir(), dst)
-	if err := dut.GetFile(ctx, src, packPath); err != nil {
-		return errors.Wrap(err, "failed to get ARC ureadahead pack from the device")
-	}
-
-	gsURL := fmt.Sprintf("%s/%s/%s", serverUreadaheadPackRoot, version, dst)
-
-	// Use gsutil command to upload the pack to the server.
-	s.Logf("Uploading ARC ureadahead pack to the server: %q", gsURL)
-	cmd := exec.Command("gsutil", "copy", packPath, gsURL)
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
-	}
-
-	s.Logf("Uploaded ARC ureadahead pack to the server: %q", gsURL)
-	return nil
+	return official, result, nil
 }
 
 // DataCollector performs ARC++ boots in various conditions, grabs required data and uploads it to
 // the binary server.
 func DataCollector(ctx context.Context, s *testing.State) {
 	const (
+		// Base path for uploaded resources.
+		runtimeArtefactsRoot = "gs://chromeos-arc-images/runtime_artefacts"
+
+		// ureadahed packs basket
+		ureadAheadPacks = "ureadahead_packs"
+
+		// GMS Core caches basket
+		gmsCoreCaches = "gms_core_caches"
+
 		// Name of the pack in case of initial boot.
 		initialPack = "initial_pack"
 
@@ -122,48 +111,153 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	v, err := getArcVersionRemotely(ctx, s, d)
-	if err != nil {
-		s.Fatal("Failed to get ARC version: ", err)
-	}
-	s.Logf("Detected version: %s", v)
-
-	service := arc.NewUreadaheadPackServiceClient(cl.Conn)
-	// First boot is needed to be initial boot with removing all user data.
-	request := arcpb.UreadaheadPackRequest{
-		InitialBoot: true,
-		Username:    s.RequiredVar("arc.UreadaheadService.username"),
-		Password:    s.RequiredVar("arc.UreadaheadService.password"),
+	getRemoteURL := func(basket, version, dst string) string {
+		return fmt.Sprintf("%s/%s/%s/%s", runtimeArtefactsRoot, basket, version, dst)
 	}
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	// uploadFileToServer gets file from the target device and uploads it to the server.
+	uploadFileToServer := func(ctx context.Context, s *testing.State, dut *dut.DUT, src, basket, version, dst string) error {
+		dstTarget := filepath.Join(s.OutDir(), dst)
+		if err := dut.GetFile(ctx, src, dstTarget); err != nil {
+			return errors.Wrapf(err, "failed to get %q from the device", src)
+		}
 
-	// Due to race condition of using ureadahead in various parts of Chrome,
-	// first generation might be incomplete. Just pass it without analyzing.
-	if _, err := service.Generate(shortCtx, &request); err != nil {
-		s.Fatal("UreadaheadPackService.Generate returned an error for warm-up pass: ", err)
+		gsURL := getRemoteURL(basket, version, dst)
+
+		// Use gsutil command to upload the file to the server.
+		s.Logf("Uploading %q to the server", gsURL)
+		if out, err := exec.Command("gsutil", "copy", dstTarget, gsURL).CombinedOutput(); err != nil {
+			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
+		}
+
+		s.Logf("Uploaded %q to the server", gsURL)
+		return nil
 	}
 
-	// Pass initial boot and capture results.
-	response, err := service.Generate(shortCtx, &request)
-	if err != nil {
-		s.Fatal("UreadaheadPackService.Generate returned an error for initial boot pass: ", err)
-	}
+	genUreadaheadPack := func() {
+		official, v, err := getArcVersionRemotely(ctx, s, d)
+		if err != nil {
+			s.Fatal("Failed to get ARC version: ", err)
+		}
+		s.Logf("Detected version: %s", v)
 
-	if err = uploadUreadaheadPack(shortCtx, s, d, v, response.PackPath, initialPack); err != nil {
-		s.Fatal("Failed to upload initial boot pack: ", err)
-	}
+		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
+		// First boot is needed to be initial boot with removing all user data.
+		request := arcpb.UreadaheadPackRequest{
+			InitialBoot: true,
+			Username:    s.RequiredVar("arc.UreadaheadService.username"),
+			Password:    s.RequiredVar("arc.UreadaheadService.password"),
+		}
 
-	// Now pass provisioned boot and capture results.
-	request.InitialBoot = false
-	response, err = service.Generate(shortCtx, &request)
-	if err != nil {
-		s.Fatal("UreadaheadPackService.Generate returned an error for second boot pass: ", err)
-	}
+		// Checks if generated packs need to be uploaded to the server.
+		needUpload := func() bool {
+			if !official {
+				s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
+				return false
+			}
 
-	if err = uploadUreadaheadPack(shortCtx, s, d, v, response.PackPath, provisionedPack); err != nil {
-		s.Fatal("Failed to upload provisioned boot pack: ", err)
+			var packs = []string{initialPack, provisionedPack}
+			for _, pack := range packs {
+				gsURL := getRemoteURL(ureadAheadPacks, v, pack)
+				if err := exec.Command("gsutil", "stat", gsURL).Run(); err != nil {
+					return true
+				}
+			}
+
+			s.Logf("Version: %s has all packs uploaded and generated ureadahead packs won't be uploaded to the server", v)
+			return false
+		}
+
+		needUploadPacks := needUpload()
+
+		// Shorten the total context by 5 seconds to allow for cleanup.
+		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
+		// Due to race condition of using ureadahead in various parts of Chrome,
+		// first generation might be incomplete. Just pass it without analyzing.
+		if _, err := service.Generate(shortCtx, &request); err != nil {
+			s.Fatal("UreadaheadPackService.Generate returned an error for warm-up pass: ", err)
+		}
+
+		// Pass initial boot and capture results.
+		response, err := service.Generate(shortCtx, &request)
+		if err != nil {
+			s.Fatal("UreadaheadPackService.Generate returned an error for initial boot pass: ", err)
+		}
+
+		if needUploadPacks {
+			if err = uploadFileToServer(shortCtx, s, d, response.PackPath, ureadAheadPacks, v, initialPack); err != nil {
+				s.Fatal("Failed to upload initial boot pack: ", err)
+			}
+		}
+
+		// Now pass provisioned boot and capture results.
+		request.InitialBoot = false
+		response, err = service.Generate(shortCtx, &request)
+		if err != nil {
+			s.Fatal("UreadaheadPackService.Generate returned an error for second boot pass: ", err)
+		}
+
+		if needUploadPacks {
+			if err = uploadFileToServer(shortCtx, s, d, response.PackPath, ureadAheadPacks, v, provisionedPack); err != nil {
+				s.Fatal("Failed to upload provisioned boot pack: ", err)
+			}
+		}
 	}
+	genUreadaheadPack()
+
+	genGmsCoreCache := func() {
+		service := arc.NewGmsCoreCacheServiceClient(cl.Conn)
+
+		// Shorten the total context by 5 seconds to allow for cleanup.
+		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
+		response, err := service.Generate(shortCtx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("GmsCoreCacheService.Generate returned an error: ", err)
+		}
+
+		packages, err := d.Command("cat", response.PackagesCachePath).Output(ctx)
+		if err != nil {
+			s.Fatal("Failed to read packages_cache.xml: ", err)
+		}
+
+		gmsCoreVersion := regexp.MustCompile(`<package name=\"com\.google\.android\.gms\".+primaryCpuAbi=\"(\S+)\".+version=\"(\d+)\".+>`).FindStringSubmatch(string(packages))
+		if gmsCoreVersion == nil {
+			s.Fatal("Failed to parse GMS Core version from packages_cache.xml")
+		}
+
+		v := fmt.Sprintf("%s_%s", gmsCoreVersion[1], gmsCoreVersion[2])
+		s.Logf("Detected GMS core version: %s", v)
+
+		gmsCoreCacheName := filepath.Base(response.GmsCoreCachePath)
+		gsfCacheName := filepath.Base(response.GsfCachePath)
+
+		// Checks if generated GMS Core caches need to be uploaded to the server.
+		needUpload := func() bool {
+			var archives = []string{gmsCoreCacheName, gsfCacheName}
+			for _, archive := range archives {
+				gsURL := getRemoteURL(gmsCoreCaches, v, archive)
+				if err := exec.Command("gsutil", "stat", gsURL).Run(); err != nil {
+					return true
+				}
+			}
+
+			s.Logf("GMS Core: %s has all resources uploaded and generated caches won't be uploaded to the server", v)
+			return false
+		}
+
+		if needUpload() {
+			if err = uploadFileToServer(shortCtx, s, d, response.GmsCoreCachePath, gmsCoreCaches, v, gmsCoreCacheName); err != nil {
+				s.Fatal("Failed to upload GMS Core caches: ", err)
+			}
+
+			if err = uploadFileToServer(shortCtx, s, d, response.GsfCachePath, gmsCoreCaches, v, gsfCacheName); err != nil {
+				s.Fatal("Failed to upload GSF cache: ", err)
+			}
+		}
+	}
+	genGmsCoreCache()
 }
