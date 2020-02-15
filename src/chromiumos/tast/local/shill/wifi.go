@@ -8,6 +8,8 @@ package shill
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -34,6 +36,19 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		return ifaces, nil
 	}
 
+	// netDevices obtains net devices under /sys/class/net
+	netDevices := func() ([]string, error) {
+		files, err := ioutil.ReadDir("/sys/class/net")
+		if err != nil {
+			return nil, err
+		}
+		var ifaces []string
+		for _, f := range files {
+			ifaces = append(ifaces, f.Name())
+		}
+		return ifaces, nil
+	}
+
 	pw, err := m.CreateWatcher(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create a PropertiesWatcher")
@@ -52,7 +67,13 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		}
 
 		if _, err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
-			return "", err
+			var sysClassNet string
+			if netDevs, err := netDevices(); err != nil {
+				sysClassNet = "/sys/class/net inaccessible: " + err.Error()
+			} else {
+				sysClassNet = fmt.Sprintf("/sys/class/net: %q", netDevs)
+			}
+			return "", errors.Wrapf(err, "shill: timeout waiting Devices update (%s)", sysClassNet)
 		}
 	}
 }
