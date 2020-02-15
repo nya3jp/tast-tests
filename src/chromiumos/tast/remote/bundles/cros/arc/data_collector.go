@@ -12,6 +12,8 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -31,8 +33,10 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
-		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
-		Timeout:      5 * time.Minute,
+		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
+			"tast.cros.arc.GmsCoreCacheService"},
+		// Usually takes up to 4 minitues.
+		Timeout: 10 * time.Minute,
 		Vars: []string{
 			"arc.UreadaheadService.username",
 			"arc.UreadaheadService.password",
@@ -77,30 +81,6 @@ func getArcVersionRemotely(ctx context.Context, s *testing.State, dut *dut.DUT) 
 	return result, nil
 }
 
-// uploadUreadaheadPack gets ureadahead pack from the target device and uploads it to the server.
-func uploadUreadaheadPack(ctx context.Context, s *testing.State, dut *dut.DUT, version, src, dst string) error {
-	// Base path for uploaded ureadahead packs.
-	const serverUreadaheadPackRoot = "gs://chromeos-arc-images/ureadahead_packs"
-
-	packPath := filepath.Join(s.OutDir(), dst)
-	if err := dut.GetFile(ctx, src, packPath); err != nil {
-		return errors.Wrap(err, "failed to get ARC ureadahead pack from the device")
-	}
-
-	gsURL := fmt.Sprintf("%s/%s/%s", serverUreadaheadPackRoot, version, dst)
-
-	// Use gsutil command to upload the pack to the server.
-	s.Logf("Uploading ARC ureadahead pack to the server: %q", gsURL)
-	cmd := exec.Command("gsutil", "copy", packPath, gsURL)
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
-	}
-
-	s.Logf("Uploaded ARC ureadahead pack to the server: %q", gsURL)
-	return nil
-}
-
 // DataCollector performs ARC++ boots in various conditions, grabs required data and uploads it to
 // the binary server.
 func DataCollector(ctx context.Context, s *testing.State) {
@@ -127,42 +107,94 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	}
 	s.Logf("Detected version: %s", v)
 
-	service := arc.NewUreadaheadPackServiceClient(cl.Conn)
-	// First boot is needed to be initial boot with removing all user data.
-	request := arcpb.UreadaheadPackRequest{
-		InitialBoot: true,
-		Username:    s.RequiredVar("arc.UreadaheadService.username"),
-		Password:    s.RequiredVar("arc.UreadaheadService.password"),
+	// uploadFileToServer gets file from the target device and uploads it to the server.
+	uploadFileToServer := func(ctx context.Context, s *testing.State, dut *dut.DUT, version, src, dst string) error {
+		// Base path for uploaded resources.
+		const runtimeArtefactsRoot = "gs://chromeos-arc-images/runtime_artefacts"
+
+		// If dst is not set, use file name from source by default.
+		if dst == "" {
+			dst = filepath.Base(src)
+		}
+
+		dstTarget := filepath.Join(s.OutDir(), dst)
+		if err := dut.GetFile(ctx, src, dstTarget); err != nil {
+			return errors.Wrapf(err, "failed to get %q from the device", src)
+		}
+
+		gsURL := fmt.Sprintf("%s/%s/%s", runtimeArtefactsRoot, version, dst)
+
+		// Use gsutil command to upload the file to the server.
+		s.Logf("Uploading %q to the server", gsURL)
+		if out, err := exec.Command("gsutil", "copy", dstTarget, gsURL).CombinedOutput(); err != nil {
+			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
+		}
+
+		s.Logf("Uploaded %q to the server", gsURL)
+		return nil
 	}
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	genUreadaheadPack := func() {
+		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
+		// First boot is needed to be initial boot with removing all user data.
+		request := arcpb.UreadaheadPackRequest{
+			InitialBoot: true,
+			Username:    s.RequiredVar("arc.UreadaheadService.username"),
+			Password:    s.RequiredVar("arc.UreadaheadService.password"),
+		}
 
-	// Due to race condition of using ureadahead in various parts of Chrome,
-	// first generation might be incomplete. Just pass it without analyzing.
-	if _, err := service.Generate(shortCtx, &request); err != nil {
-		s.Fatal("UreadaheadPackService.Generate returned an error for warm-up pass: ", err)
-	}
+		// Shorten the total context by 5 seconds to allow for cleanup.
+		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
 
-	// Pass initial boot and capture results.
-	response, err := service.Generate(shortCtx, &request)
-	if err != nil {
-		s.Fatal("UreadaheadPackService.Generate returned an error for initial boot pass: ", err)
-	}
+		// Due to race condition of using ureadahead in various parts of Chrome,
+		// first generation might be incomplete. Just pass it without analyzing.
+		if _, err := service.Generate(shortCtx, &request); err != nil {
+			s.Fatal("UreadaheadPackService.Generate returned an error for warm-up pass: ", err)
+		}
 
-	if err = uploadUreadaheadPack(shortCtx, s, d, v, response.PackPath, initialPack); err != nil {
-		s.Fatal("Failed to upload initial boot pack: ", err)
-	}
+		// Pass initial boot and capture results.
+		response, err := service.Generate(shortCtx, &request)
+		if err != nil {
+			s.Fatal("UreadaheadPackService.Generate returned an error for initial boot pass: ", err)
+		}
 
-	// Now pass provisioned boot and capture results.
-	request.InitialBoot = false
-	response, err = service.Generate(shortCtx, &request)
-	if err != nil {
-		s.Fatal("UreadaheadPackService.Generate returned an error for second boot pass: ", err)
-	}
+		if err = uploadFileToServer(shortCtx, s, d, v, response.PackPath, initialPack); err != nil {
+			s.Fatal("Failed to upload initial boot pack: ", err)
+		}
 
-	if err = uploadUreadaheadPack(shortCtx, s, d, v, response.PackPath, provisionedPack); err != nil {
-		s.Fatal("Failed to upload provisioned boot pack: ", err)
+		// Now pass provisioned boot and capture results.
+		request.InitialBoot = false
+		response, err = service.Generate(shortCtx, &request)
+		if err != nil {
+			s.Fatal("UreadaheadPackService.Generate returned an error for second boot pass: ", err)
+		}
+
+		if err = uploadFileToServer(shortCtx, s, d, v, response.PackPath, provisionedPack); err != nil {
+			s.Fatal("Failed to upload provisioned boot pack: ", err)
+		}
 	}
+	genUreadaheadPack()
+
+	genGmsCoreCache := func() {
+		service := arc.NewGmsCoreCacheServiceClient(cl.Conn)
+
+		// Shorten the total context by 5 seconds to allow for cleanup.
+		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
+		response, err := service.Generate(shortCtx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("GmsCoreCacheService.Generate returned an error: ", err)
+		}
+
+		if err = uploadFileToServer(shortCtx, s, d, v, response.GmsCoreCachePath, ""); err != nil {
+			s.Fatal("Failed to upload GMS Core caches: ", err)
+		}
+
+		if err = uploadFileToServer(shortCtx, s, d, v, response.GsfCachePath, ""); err != nil {
+			s.Fatal("Failed to upload GSF cache: ", err)
+		}
+	}
+	genGmsCoreCache()
 }
