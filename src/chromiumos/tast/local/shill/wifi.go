@@ -8,11 +8,28 @@ package shill
 
 import (
 	"context"
+	"fmt"
+	"net"
+	"sort"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 )
+
+// interfaceNames returns a list of network interface names.
+func interfaceNames() ([]string, error) {
+	ifaces, err := net.Interfaces()
+	if err != nil {
+		return nil, err
+	}
+	names := make([]string, len(ifaces))
+	for i := range ifaces {
+		names[i] = ifaces[i].Name
+	}
+	sort.Strings(names)
+	return names, nil
+}
 
 // GetWifiInterface polls the WiFi interface name with timeout.
 // It returns "" with error if no (or more than one) WiFi interface is found.
@@ -34,9 +51,18 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		return ifaces, nil
 	}
 
+	// netIfaceStr composes a string of network interfaces.
+	netIfaceStr := func() string {
+		ifaces, err := interfaceNames()
+		if err != nil {
+			return "unable to get network interfaces: " + err.Error()
+		}
+		return fmt.Sprintf("network interfaces: %q", ifaces)
+	}
+
 	pw, err := m.CreateWatcher(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create a PropertiesWatcher")
+		return "", errors.Wrap(err, "shill: failed to create a PropertiesWatcher")
 	}
 	defer pw.Close(ctx)
 
@@ -44,15 +70,15 @@ func GetWifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (s
 		// If more than one WiFi interface is found, an error is raised.
 		// If there's no WiFi interface, probe again when manager's "Devices" property is changed.
 		if ifaces, err := getWifiIfaces(); err != nil {
-			return "", err
+			return "", errors.Errorf("unable to query device property from shill (%s): %q", netIfaceStr(), err)
 		} else if len(ifaces) > 1 {
-			return "", errors.Errorf("more than one WiFi interface found: %q", ifaces)
+			return "", errors.Errorf("more than one WiFi interface found (%s): %q", netIfaceStr(), ifaces)
 		} else if len(ifaces) == 1 {
 			return ifaces[0], nil
 		}
 
 		if _, err := pw.WaitAll(ctx, ManagerPropertyDevices); err != nil {
-			return "", err
+			return "", errors.Wrapf(err, "shill: failed to wait for Devices update (%s)", netIfaceStr())
 		}
 	}
 }
