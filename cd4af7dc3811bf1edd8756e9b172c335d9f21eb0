@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68f5059f_90fecf80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifi_pci_rescan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-15T02:28:59Z",
+      "side": 1,
+      "message": "Add a comment: \"Keep the test to reproduce issue locally.\"",
+      "revId": "cd4af7dc3811bf1edd8756e9b172c335d9f21eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f186ab_f40ed11c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-15T02:28:59Z",
+      "side": 1,
+      "message": "It is out-of-the-scope of this CL.\n\nAfter restartInterface(), is it better to call GetWifiInterface() again to check if wifi is back?",
+      "revId": "cd4af7dc3811bf1edd8756e9b172c335d9f21eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
