@@ -47,7 +47,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 
 	// Boot ARC with and without caches enabled, and copy relevant files to output directory.
 	s.Log("Starting ARC, with packages cache disabled")
-	if cr, a, err := cache.OpenSession(ctx, cache.SkipCopy, extraArgs, withoutCacheDir); err != nil {
+	if cr, a, err := cache.OpenSession(ctx, cache.PackagesSkipCopy, cache.GMSCoreDisabled, extraArgs, withoutCacheDir); err != nil {
 		s.Fatal("Booting ARC failed: ", err)
 	} else {
 		err := cache.CopyCaches(ctx, a, withoutCacheDir)
@@ -59,7 +59,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting ARC, with packages cache enabled")
-	cr, a, err := cache.OpenSession(ctx, cache.Copy, extraArgs, withCacheDir)
+	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreEnabled, extraArgs, withCacheDir)
 	if err != nil {
 		s.Fatal("Booting ARC failed: ", err)
 	}
@@ -74,7 +74,7 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 	// in tar.
 	unpackGmsCoreCaches := func(outputDirs []string) error {
 		for _, outputDir := range outputDirs {
-			tarPath := filepath.Join(outputDir, cache.GmsCoreCacheArchive)
+			tarPath := filepath.Join(outputDir, cache.GMSCoreCacheArchive)
 			if err = testexec.CommandContext(
 				ctx, "tar", "-xvpf", tarPath, "-C", outputDir).Run(); err != nil {
 				return errors.Wrapf(err, "decompression %q failed", tarPath)
