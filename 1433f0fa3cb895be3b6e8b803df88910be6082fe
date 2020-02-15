@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ead0056c_f78d16f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-15T00:22:26Z",
+      "side": 1,
+      "message": "Could we do with less than 60 frames (to get more testing done faster), or is this to have a second to see the video visually?",
+      "range": {
+        "startLine": 217,
+        "startChar": 47,
+        "endLine": 217,
+        "endChar": 49
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b04536ac_bbc710d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-15T00:22:26Z",
+      "side": 1,
+      "message": "Do you need these spaces here?",
+      "range": {
+        "startLine": 232,
+        "startChar": 76,
+        "endLine": 232,
+        "endChar": 77
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ae4d76_4d846831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-15T00:22:26Z",
+      "side": 1,
+      "message": "So 7 seconds total video?",
+      "range": {
+        "startLine": 248,
+        "startChar": 14,
+        "endLine": 248,
+        "endChar": 20
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f30844de_c7f8ef32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-15T00:22:26Z",
+      "side": 1,
+      "message": "Why are the tests still called \"switch\"? Just wondering if the name is still good, or \"bars/ladder\" or something better?",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "1433f0fa3cb895be3b6e8b803df88910be6082fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
