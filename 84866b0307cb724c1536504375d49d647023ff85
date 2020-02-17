@@ -34,6 +34,24 @@
       "revId": "84866b0307cb724c1536504375d49d647023ff85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "454446d6_ade126f7",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-17T08:31:12Z",
+      "side": 1,
+      "message": "Ack, thanks.",
+      "parentUuid": "6f806c1d_76ac904d",
+      "revId": "84866b0307cb724c1536504375d49d647023ff85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

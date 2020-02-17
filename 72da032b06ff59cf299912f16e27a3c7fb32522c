@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf0327f5_2d75462d",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-17T08:31:12Z",
+      "side": 1,
+      "message": "It\u0027s not /sys/class/net now.",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "72da032b06ff59cf299912f16e27a3c7fb32522c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b79dbdd_8bff2af0",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-17T08:31:12Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure if it can only fail on timeout here. If it can fail on other reasons (e.g. dbus dead?), I think we may want to keep err message but the total message will become not very readable in that case. Checking ctx.Done() may also be possible but maybe too excessive... Not sure what the best message is.",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "72da032b06ff59cf299912f16e27a3c7fb32522c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
