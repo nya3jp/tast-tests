@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0d07635_feed556e",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-17T09:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf0327f5_2d75462d",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "72da032b06ff59cf299912f16e27a3c7fb32522c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b79dbdd_8bff2af0",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "72da032b06ff59cf299912f16e27a3c7fb32522c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "107780be_d7f36f84",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-17T09:12:54Z",
+      "side": 1,
+      "message": "Changed to: shill: failed to wait for Devices update",
+      "parentUuid": "9b79dbdd_8bff2af0",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "72da032b06ff59cf299912f16e27a3c7fb32522c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
