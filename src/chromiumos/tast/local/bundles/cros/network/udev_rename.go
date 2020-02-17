@@ -206,7 +206,7 @@ func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 	}
 
 	// Wait for event processing.
-	timeoutCtx, cancel := context.WithTimeout(ctx, time.Duration(time.Second))
+	timeoutCtx, cancel := context.WithTimeout(ctx, time.Duration(5*time.Second))
 	defer cancel()
 	if err := testexec.CommandContext(timeoutCtx, "udevadm", "settle").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "device could not settle in time after restart")
