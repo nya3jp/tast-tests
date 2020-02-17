@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab36d1d3_ae685f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "Because this is in the cache package, and it always takes the cache mode as an argument,\nI think it\u0027s ok to strip the suffix.\nhow about just \"BootARC\".",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28188d48_8619eef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "nit/optional: you can move this out from this function as a utility.",
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "095170bb_5c6354ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "nit/style/optional: I\u0027d inline the Poll invocation in if.\n\nif err :\u003d testing.Poll(ctx, func(...) error {\n ...\n}, .../* options */); err !\u003d nil {\n  ...\n}\n\nto minimize the err\u0027s scope.",
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83cf4b6f_342c0e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "Clar: Not clear enough to me... Do you mean\n\n\"app_camera is accessible via ADB in ARCVM because it is userdebug only now, but not in ARC++ container because it has both userdebug and user variations.\"\n\nor something...?",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 30
+      },
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aedaee56_fb0b7614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "could you clarify what does \"this\" mean?",
+      "range": {
+        "startLine": 137,
+        "startChar": 64,
+        "endLine": 137,
+        "endChar": 68
+      },
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707c23f1_c23aa3bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "Pls add TODO to get rid of BootstrapCommand.\ncf) b/148832630",
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d58eeee_b4e3a430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "Even if \"tar\" fails, it may create some half-baked file. Maybe this needs to run regardelss of the tar status?",
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd65752c_a13551d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 9
+      },
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71b3df3_012cba70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "style:\n\nif err :\u003d ioutil.WriteFile(...); err !\u003d nil {",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 16
+      },
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1f6712_abd67cb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "nit: s/works/work/",
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec46831_8f6b4a5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "Do you want to run this test for VM, too?\nIf so, I think you\u0027d need to make this parameterized, and pass --enable-arcvm to Chrome.",
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0fefc98_14d40cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:30:27Z",
+      "side": 1,
+      "message": "Could you use Run() if you don7t need output.\nAlso, testexec.DumpLogOnError is recommended for future debugging.",
+      "range": {
+        "startLine": 63,
+        "startChar": 51,
+        "endLine": 63,
+        "endChar": 59
+      },
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
