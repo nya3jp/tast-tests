@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aca74fa_304586a7",
+        "filename": "android/ArcPrintTest/src/org/chromium/arc/testapp/print/TestPrintDocumentAdapter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:43:28Z",
+      "side": 1,
+      "message": "e.g.: I\u0027d recommend;\n\nbool completed \u003d false;\ntry {\n  if (cancellationSignal.isCanceled()) {\n    Log.i(...);\n    callback.OnLayoutCancelled();\n    completed \u003d true;\n    return;\n  }\n\n  ...\n  callback.onLayoutFinished(...);\n  completed \u003d true;\n} finally {\n  if (!completed) {\n    callback.onLayoutFailed(...);\n  }\n}\n\nto guarantee one of callback methods is called even on runtime exception cases.\n\nDitto for below.",
+      "revId": "5e6fe1c76050143d42e9d8658a6d9c703f146d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e41d5b39_8b08a6c4",
+        "filename": "android/ArcPrintTest/src/org/chromium/arc/testapp/print/TestPrintDocumentAdapter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:43:28Z",
+      "side": 1,
+      "message": "I was thinking that the ownership of fd should be passed to writePagesToDocument?",
+      "revId": "5e6fe1c76050143d42e9d8658a6d9c703f146d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81968e38_8f19e74c",
+        "filename": "android/ArcPrintTest/src/org/chromium/arc/testapp/print/TestPrintDocumentAdapter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:43:28Z",
+      "side": 1,
+      "message": "nit: static",
+      "revId": "5e6fe1c76050143d42e9d8658a6d9c703f146d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeefa3d8_e45bc03d",
+        "filename": "android/ArcPrintTest/src/org/chromium/arc/testapp/print/TestPrintDocumentAdapter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:43:28Z",
+      "side": 1,
+      "message": "nit: static",
+      "revId": "5e6fe1c76050143d42e9d8658a6d9c703f146d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e32390a_3c371522",
+        "filename": "android/ArcPrintTest/src/org/chromium/arc/testapp/print/TestPrintDocumentAdapter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:43:28Z",
+      "side": 1,
+      "message": "Actually, FileOutputStream takes the ownership of the passed file descriptor.\nI.e., it closes in its finalizer.\n\nRecommendation:\n\ntry (FileOutputStream fos \u003d new FileOutputStream(...)) {\n  PrintedPdfDocument document \u003d ...\n  ...\n}\n\nso that in any case the fd is closed.",
+      "revId": "5e6fe1c76050143d42e9d8658a6d9c703f146d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
