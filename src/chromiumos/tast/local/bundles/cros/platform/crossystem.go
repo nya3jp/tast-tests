@@ -20,7 +20,7 @@ func init() {
 		Func: Crossystem,
 		Desc: "Checks the crossystem command's basic functionality",
 		Contacts: []string{
-			"semenzato@chromium.org",     // Autotest author
+			"mka@chromium.org",
 			"kasaiah.bogineni@intel.com", // Port author
 			"tast-users@chromium.org",
 		},

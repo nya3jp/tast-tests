@@ -19,6 +19,7 @@ func init() {
 		Desc:         "Checks the mosys command's functionality",
 		SoftwareDeps: []string{"mosys"},
 		Contacts: []string{
+			"mka@chromium.org",
 			"kasaiah.bogineni@intel.com",
 			"ningappa.tirakannavar@intel.com",
 		},
