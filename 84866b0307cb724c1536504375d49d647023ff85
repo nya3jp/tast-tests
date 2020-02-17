@@ -16,6 +16,24 @@
       "revId": "84866b0307cb724c1536504375d49d647023ff85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f806c1d_76ac904d",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-17T08:07:11Z",
+      "side": 1,
+      "message": "Use net.Interfaces() to get net interface names.\n\nNow we have code duplicate between shill/wifi.go and bundles/cros/network/udev_rename.go. As placing interfaceNames() is shill package for udev_rename to use is inappropriate and it is small/trivial enough, I would prefer having the duplicate for now.\n\nThe correct way could be: move InterfaceNames() and WiFiInterface() to bundles/cros/network/util.go as they are currently used in network tests. But I prefer not moving GetWifiInterface() in this CL.",
+      "parentUuid": "b7b7411b_f1b70d51",
+      "revId": "84866b0307cb724c1536504375d49d647023ff85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
