@@ -71,13 +71,12 @@ func checkBlackPixels(ctx context.Context, cr *chrome.Chrome, wantPixelCount int
 func PerAppDensity(ctx context.Context, s *testing.State) {
 	const (
 		setprop        = "/system/bin/setprop"
-		mainActivity   = ".MainActivity"
 		packageName    = "org.chromium.arc.testapp.perappdensitytest"
 		densitySetting = "persist.sys.enable_application_zoom"
 		// The following scale factors have been taken from TaskRecordArc.
 		increasedSF = 1.1
 		decreasedSF = 0.9
-		// Defined in vendor/google_arc/packages/developments/ArcPerAppDensityTest/res/layout/main_activity.xml.
+		// Defined in XML files in vendor/google_arc/packages/developments/ArcPerAppDensityTest/res/layout.
 		squareSidePx = 100
 	)
 
@@ -106,33 +105,11 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 	if err := a.Install(ctx, s.DataPath(perAppDensityApk)); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
-
-	act, err := arc.NewActivity(a, packageName, mainActivity)
-	if err != nil {
-		s.Fatal("Failed to create new activity")
-	}
-	defer act.Close()
-
-	testing.ContextLog(ctx, "Starting activity")
-	if err := act.Start(ctx); err != nil {
-		s.Fatal("Failed to start the  activity: ", err)
-	}
-
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {
 		s.Fatal("Failed to set tablet mode to false: ", err)
 	}
 	defer cleanup(ctx)
-
-	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
-		s.Fatal("Failed to wait for the activity to resume: ", err)
-	}
-	if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
-		s.Fatal("Failed to set window state to Maximized: ", err)
-	}
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateFullscreen); err != nil {
-		s.Fatal("Failed to wait for the activity to be Maximized: ", err)
-	}
 
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
@@ -143,34 +120,72 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 	// To obtain the size of the expected black rectangle, it's necessary to obtain the dimensions of the rectangle
 	// as drawn on the screen. After changing the density, we then need to multiply by the square of the new scale
 	// factor (in order to account for changes to both width and height).
-	displayDensity, err := act.DisplayDensity(ctx)
+	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
 	if err != nil {
-		s.Fatal("Failed to get display density: ", err)
+		s.Fatal("Failed to create new display: ", err)
 	}
-	expectedInitialPixelCount := (displayDensity * squareSidePx) * (displayDensity * squareSidePx)
-	if err := checkBlackPixels(ctx, cr, int(expectedInitialPixelCount)); err != nil {
-		s.Fatal("Failed to check initial state: ", err)
+	displayDensity, err := disp.PhysicalDensity(ctx)
+	if err != nil {
+		s.Fatal("Error obtaining physical density: ", err)
 	}
 
-	for _, test := range []densityChange{
-		{
-			"increase",
-			"ctrl+=",
-			expectedInitialPixelCount * float64(increasedSF) * float64(increasedSF),
-		},
-		{
-			"reset",
-			"ctrl+0",
-			expectedInitialPixelCount,
-		},
-		{
-			"decrease",
-			"ctrl+-",
-			expectedInitialPixelCount * float64(decreasedSF) * float64(decreasedSF),
-		},
+	expectedInitialPixelCount := (displayDensity * squareSidePx) * (displayDensity * squareSidePx)
+	for _, testActivity := range []string{
+		".ViewActivity",
+		".SurfaceViewActivity",
 	} {
-		if err := performAndConfirmDensityChange(ctx, cr, ew, a, test.name, test.keySequence, int(test.blackPixelCount)); err != nil {
-			s.Fatalf("Error with performing %s: %s", test.name, err)
-		}
+		s.Run(ctx, testActivity, func(ctx context.Context, s *testing.State) {
+			act, err := arc.NewActivity(a, packageName, testActivity)
+			if err != nil {
+				s.Fatal("Failed to create new activity: ", err)
+			}
+			defer act.Close()
+
+			if err := act.Start(ctx); err != nil {
+				s.Fatal("Failed to start the activity: ", err)
+			}
+			defer act.Stop(ctx)
+
+			if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+				s.Fatal("Failed to wait for the activity to resume: ", err)
+			}
+			if err := act.SetWindowState(ctx, arc.WindowStateFullscreen); err != nil {
+				s.Fatal("Failed to set window state to fullscreen: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateFullscreen); err != nil {
+				s.Fatal("Failed to wait for the activity to be fullscreen: ", err)
+			}
+			if err := checkBlackPixels(ctx, cr, int(expectedInitialPixelCount)); err != nil {
+				s.Fatal("Failed to check initial state: ", err)
+			}
+
+			for _, test := range []densityChange{
+				{
+					"increase",
+					"ctrl+=",
+					expectedInitialPixelCount * float64(increasedSF) * float64(increasedSF),
+				},
+				{
+					"reset",
+					"ctrl+0",
+					expectedInitialPixelCount,
+				},
+				{
+					"decrease",
+					"ctrl+-",
+					expectedInitialPixelCount * float64(decreasedSF) * float64(decreasedSF),
+				},
+			} {
+				// Return density to initial state.
+				defer func() {
+					if err := performAndConfirmDensityChange(ctx, cr, ew, a, "reset", "ctrl+0", int(expectedInitialPixelCount)); err != nil {
+						s.Fatalf("Error with performing %s: %s", test.name, err)
+					}
+				}()
+				if err := performAndConfirmDensityChange(ctx, cr, ew, a, test.name, test.keySequence, int(test.blackPixelCount)); err != nil {
+					s.Fatalf("Error with performing %s: %s", test.name, err)
+				}
+			}
+		})
 	}
 }
