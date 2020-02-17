@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "091773f3_c893ce92",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T09:47:23Z",
+      "side": 1,
+      "message": "Thanks for the prototype, I have removed port and domain to make things simpler and more reliable. Domain was always \u0027localhost\u0027 for the current tests and we can add it back if we ever need it.",
+      "parentUuid": "064ebc45_6ee2ce70",
+      "range": {
+        "startLine": 19,
+        "startChar": 53,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "1d0a48fdf89c8deb4e1024f50de43231206c9e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ec42395_f9501027",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ba4dba25_8431d5fa",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T09:47:23Z",
+      "side": 1,
+      "message": "https://golang.org/pkg/fmt/#Sprint\n\nSpace is only added for non string arguments.",
+      "parentUuid": "9ec42395_f9501027",
+      "range": {
+        "startLine": 73,
+        "startChar": 40,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "1d0a48fdf89c8deb4e1024f50de43231206c9e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04d5647b_76a476da",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "1d0a48fdf89c8deb4e1024f50de43231206c9e1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63433b2b_0f41198a",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T09:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04d5647b_76a476da",
+      "range": {
+        "startLine": 77,
+        "startChar": 11,
+        "endLine": 77,
+        "endChar": 49
+      },
+      "revId": "1d0a48fdf89c8deb4e1024f50de43231206c9e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
