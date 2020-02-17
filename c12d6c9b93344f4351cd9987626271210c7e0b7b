@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b4ee70e_befd5704",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-17T17:09:22Z",
+      "side": 1,
+      "message": "TPM",
+      "range": {
+        "startLine": 93,
+        "startChar": 42,
+        "endLine": 93,
+        "endChar": 45
+      },
+      "revId": "c12d6c9b93344f4351cd9987626271210c7e0b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec802fea_84d21d9d",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-17T17:09:22Z",
+      "side": 1,
+      "message": "Please add comment why it\u0027s OK to return here",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 12
+      },
+      "revId": "c12d6c9b93344f4351cd9987626271210c7e0b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
