@@ -50,7 +50,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	defer rec.Stop(ctx)
 
 	waitForPowerEvent := func(ctx context.Context, expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) {
-		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
 
 		for {
@@ -68,8 +68,8 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	// Shorten the total context by 20 seconds to allow for cleanup.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
 
 	{
@@ -77,50 +77,64 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		// the last external power AC event it sent to the WilcoDTC. That's why
 		// there is no guarantee which value is in the cache.
 		externalPower := pmpb.PowerSupplyProperties_AC
-		emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
+		if err := emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
-		})
+		}); err != nil {
+			s.Fatal("Failed to emit PowerSupplyPoll AC: ", err)
+		}
 
 		externalPower = pmpb.PowerSupplyProperties_DISCONNECTED
-		emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
+		if err := emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
-		})
+		}); err != nil {
+			s.Fatal("Failed to emit PowerSupplyPoll DISCONNECTED: ", err)
+		}
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_AC_REMOVE)
 
 		externalPower = pmpb.PowerSupplyProperties_USB
-		emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
+		if err := emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
-		})
+		}); err != nil {
+			s.Fatal("Failed to emit PowerSupplyPoll USB: ", err)
+		}
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_AC_INSERT)
 	}
 
 	{
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-1)
-		emitter.EmitSuspendImminent(shortCtx, &pmpb.SuspendImminent{
+		if err := emitter.EmitSuspendImminent(shortCtx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
-		})
+		}); err != nil {
+			s.Fatal("Failed to emit SuspendImminent: ", err)
+		}
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
 
-		emitter.EmitSuspendDone(shortCtx, &pmpb.SuspendDone{
+		if err := emitter.EmitSuspendDone(shortCtx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
-		})
+		}); err != nil {
+			s.Fatal("Failed to emit SuspendDone: ", err)
+		}
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_RESUME)
 	}
 
 	{
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-2)
-		emitter.EmitDarkSuspendImminent(shortCtx, &pmpb.SuspendImminent{
+		if err := emitter.EmitDarkSuspendImminent(shortCtx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
-		})
+		}); err != nil {
+			s.Fatal("Failed to emit DarkSuspendImminent: ", err)
+		}
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
 
-		emitter.EmitSuspendDone(shortCtx, &pmpb.SuspendDone{
+		if err := emitter.EmitSuspendDone(shortCtx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
-		})
+		}); err != nil {
+			s.Fatal("Failed to emit DarkSuspendDone: ", err)
+		}
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_RESUME)
 	}
 }
