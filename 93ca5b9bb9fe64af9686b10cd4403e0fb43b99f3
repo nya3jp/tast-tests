@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c135ae4_5762ff66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-17T06:34:21Z",
+      "side": 1,
+      "message": "Is it OK not to check that \"at least 1 .meta file exists\" here?\n\nBecause I have seen an error where only the .dmp file was missing while .log/.meta existed. https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1043801#c5",
+      "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f80abd90_75216d34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-17T06:34:21Z",
+      "side": 1,
+      "message": "How about using continue to reduce nesting level by 1?",
+      "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
