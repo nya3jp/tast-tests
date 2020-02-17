@@ -170,7 +170,16 @@ func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
 		return errors.Wrap(err, "could not convert policies to JSON")
 	}
 
-	if err = ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
+	if err = fdms.WritePolicyBlobRaw(pJSON); err != nil {
+		return errors.Wrap(err, "failed to write policy blob")
+	}
+
+	return nil
+}
+
+// WritePolicyBlobRaw writes the given PolicyBlob JSON string to be read by the FakeDMS.
+func (fdms *FakeDMS) WritePolicyBlobRaw(pJSON []byte) error {
+	if err := ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
 		return errors.Wrap(err, "could not write JSON to file")
 	}
 	return nil
