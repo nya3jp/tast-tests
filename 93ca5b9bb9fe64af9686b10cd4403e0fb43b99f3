@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3bc820d9_0f3bac36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:01:13Z",
+      "side": 1,
+      "message": "IIUC, this wouldn\u0027t work as commented, because fs/cl are not unset around rebooting?",
+      "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c135ae4_5762ff66",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
         "patchSetId": 5
