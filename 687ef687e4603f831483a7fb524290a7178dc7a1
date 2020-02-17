@@ -34,6 +34,24 @@
       "revId": "687ef687e4603f831483a7fb524290a7178dc7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c6423a9_74609832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-17T10:17:23Z",
+      "side": 1,
+      "message": "Hmm..., after a few more looks, I\u0027m not quite sure if Signal and Wait can have some race so maybe it\u0027ll be better to make sure all signal sent and then wait. Let me try if this can be handled better...",
+      "parentUuid": "c945d760_f717cb33",
+      "revId": "687ef687e4603f831483a7fb524290a7178dc7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
