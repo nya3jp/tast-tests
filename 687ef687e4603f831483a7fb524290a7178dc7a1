@@ -52,6 +52,24 @@
       "revId": "687ef687e4603f831483a7fb524290a7178dc7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b758c7_29e42291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-17T10:44:45Z",
+      "side": 1,
+      "message": "Refine the logic here a little bit. Please take another look. Thanks!",
+      "parentUuid": "2c6423a9_74609832",
+      "revId": "687ef687e4603f831483a7fb524290a7178dc7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
