@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "a098be0d_cee3c34f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-17T09:40:41Z",
+      "side": 1,
+      "message": "network.EthernetStaticIP: increase timeout for expecting IP address.",
+      "revId": "f22afdfe10bdfbd9cc7d97bf3f8e6140fc3abf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e50475_f9243c0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-17T09:40:41Z",
+      "side": 1,
+      "message": "How about:\nStarting from  https://crrev.com/c/1815402, instead of obtaining IP address from shill, it obtains IP address from net interface. For certain boards, the original timeout (5 seconds) is too short. Some boards even takes about 20 seconds to see the expected IP address.\n\nThis commit prolongs the timeout from 5 seconds to 30 seconds.",
+      "revId": "f22afdfe10bdfbd9cc7d97bf3f8e6140fc3abf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaafe584_cbf07b1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-17T09:40:41Z",
+      "side": 1,
+      "message": "can be omitted",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "f22afdfe10bdfbd9cc7d97bf3f8e6140fc3abf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9811124a_54c63e1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-17T09:40:41Z",
+      "side": 1,
+      "message": "Ethernet",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "f22afdfe10bdfbd9cc7d97bf3f8e6140fc3abf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0803cf09_15c9ce44",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
         "patchSetId": 1
