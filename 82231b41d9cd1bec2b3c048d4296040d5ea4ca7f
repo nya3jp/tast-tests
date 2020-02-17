@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b35a899_637fca39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "This is only used from accessibility_speech test.\nhow about putting this method on accessibility_speech.go",
+      "range": {
+        "startLine": 298,
+        "startChar": 5,
+        "endLine": 298,
+        "endChar": 14
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6089b6fd_a87b3f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "just curious, when this actually happens...?",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 13
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb03112_be7017a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 30
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29ab372_26b6df33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "not used?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9256d9b3_4186a6df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "Each of these texts is obtained as an array of string, and concatenating in checkSpeechLog.\nHow about having these texts as an array? (I mean, making expectedSpeechLogs 2d array of strings.)\nThis would reduce extra computation in checkSpeechLog.",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f0614f_0b3ff84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "Recently I changed to take a screenshot when the test failed.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2011185\nBut exiting like this skips the screenshot.\nCan you return error instead?\n\nditto below.",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 61
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c10cc6_adb64c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "IIUC, this enables all logging the logging in ChromeVox.\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/accessibility/chromevox/background/command_handler.js;l\u003d118;drc\u003d29ed42847a3f30dc050de839e995d942f0021b1d\n\nI think enabling only speech log is enough.",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 79
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc58e23a_63c445f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "how about moving this at the beginning of the next loop, and removing the same operation in checkSpeechLog.\nThis makes clear what each test step is.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "056d0cd2_bedf1e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-17T07:53:20Z",
+      "side": 1,
+      "message": "It breaks pooling even if logs are different.\nIs this intentional?\n\nI think we use pollBreak for critical errors, like when failing to get the speech log.",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
