@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6d209f56_0a8688a6",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f3e37f7_9b082512",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8781728d_0bb4bbed",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "0249bba1_0e1e9c5c",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8781728d_0bb4bbed",
+      "range": {
+        "startLine": 77,
+        "startChar": 68,
+        "endLine": 77,
+        "endChar": 195
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7b2ac88_8bd87701",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -92,6 +140,30 @@
       "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "288a7cfa_330407f0",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7b2ac88_8bd87701",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +213,54 @@
     },
     {
       "key": {
+        "uuid": "3aa13a96_d6e41bb8",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b062c007_dcfb6827",
+      "range": {
+        "startLine": 88,
+        "startChar": 75,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63d88934_6b7310f7",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7891ff45_d0e601d1",
+      "range": {
+        "startLine": 88,
+        "startChar": 43,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6827246_ed6e27ed",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "9eeb7a5f_c32e4b75",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6827246_ed6e27ed",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfc5c747_27350ae7",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -184,6 +328,30 @@
       "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135d3005_e539f25b",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc5c747_27350ae7",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "37316788_150bd357",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "I tried adding the functionality to EnsureTPMIsReset (or some new function using a parameter), but it was not easy to use in tests. EnsureOwnerIsReset does not requre initializing CmdRunnerRemote, UtilityCryptohomeBinary and HelperRemote by encapsulating all that setup.\n\nDoes powerwash not clear the stateful partition (including the tast binaries)? Has powerwash been tested with tast (I can\u0027t find anything)?\nAutotest currently uses the same method as this helper.",
+      "parentUuid": "baa63b4e_aea8bb05",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49d29f0c_aeafaf1a",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -257,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "1ec538fa_7afd7e56",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d29f0c_aeafaf1a",
+      "range": {
+        "startLine": 116,
+        "startChar": 27,
+        "endLine": 116,
+        "endChar": 81
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5442eefb_a1aeb581",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3
@@ -277,6 +493,30 @@
       "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba76027a_6c6626ec",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T11:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5442eefb_a1aeb581",
+      "range": {
+        "startLine": 141,
+        "startChar": 27,
+        "endLine": 141,
+        "endChar": 37
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
