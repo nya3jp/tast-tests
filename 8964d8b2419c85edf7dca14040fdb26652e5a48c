@@ -1,0 +1,272 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "921d2c49_85de7106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "could you use TestConn?",
+      "range": {
+        "startLine": 45,
+        "startChar": 72,
+        "endLine": 45,
+        "endChar": 76
+      },
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6616df0_e0666b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "style: You don\u0027t need paren for ui.Node, IIUC.",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a13c3b_1b9d70a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "nit: could you use const?",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f73ac87_6fe40d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "icons needs to be closed?",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a59b58_4647df8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "Could you avoid using testing.Sleep whenever possible.\nWhat condition is this waiting for? Could you replace this by testing.Poll?",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "729e17a0_cd2ca88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "Needs to be closed.",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2b0209_3d885201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "optional/style: to make this condition symmetric, I\u0027d recommend,\n\nif (d \u003d\u003d left \u0026\u0026 x0 \u003e x1) || ... {\n  arrowButton \u003d icons[1]\n} else {\n  arrowButton \u003d icons[0]\n}\n\ninstead of L77.\n\nBTW, what is expected behavior for \"\u003d\u003d\" case? Since it looks not trivial, could you clarify in the comment?",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea480236_f79c6676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "Ditto to avoid testing.Sleep.",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c92179e8_12d27e0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "go strongly prefers shorter name. How about\n\nshelfAnimationHistogramName\n\n?",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a202e4_5f7e2843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "Nice to avoid bool flags. I\u0027d recommend to introduce new types for each.\n\ntype uiMode string\n\nconst (\n  tabletMode uiMode \u003d \"TabletMode\"\n  clamshellMode uiMode \u003d \"ClamshellMode\"\n)\n\netc.",
+      "range": {
+        "startLine": 117,
+        "startChar": 45,
+        "endLine": 117,
+        "endChar": 88
+      },
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0875e8e2_43518571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "maybe:\n\ncomps :\u003d []string{baseName}\nif isInTabletMode {\n  comps \u003d append(comps, \"TabletMode\")\n} else {\n  comps \u003d append(comps, \"ClamshellMode\")\n}\n\nif isLauncherVisible {\n  comps \u003d append(comps, \"LauncherVisible\")\n} else {\n  comps \u003d append(comps, \"LauncherHidden\")\n}\n\nreturn strings.Join(comps, \".\")",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212d5cdd_ebff2e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "huge nit:\n\ncould you use imperative form for inline comment?",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c5c7050_b380b30d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "Could you make this one sentence? Also could you use got..., want... pattern?\nSuggestion:\n\ns.Fatalf(\"Unexpected number of pinned apps: got %d; want less than %d\", ...)",
+      "range": {
+        "startLine": 209,
+        "startChar": 89,
+        "endLine": 209,
+        "endChar": 99
+      },
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0143017e_96dcb43f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T16:59:56Z",
+      "side": 1,
+      "message": "Could you iterate over an slice?\n\nfor _, app :\u003d range installedApps {\n  ...\n}",
+      "revId": "8964d8b2419c85edf7dca14040fdb26652e5a48c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
