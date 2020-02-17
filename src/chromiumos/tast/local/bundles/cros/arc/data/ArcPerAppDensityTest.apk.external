@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcPerAppDensityTest_20200207.apk",
-  "size": 12769,
-  "sha256sum": "9ce6e2b0634610154fa6d986c7d37ad1c21685d19b50afbaaaed77c378379b61"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcPerAppDensityTest_20200218.apk",
+  "size": 12850,
+  "sha256sum": "8d3564772189aff06a02b6fb2e31802edfef514ddd5255206d1404708f2dea99"
 }
