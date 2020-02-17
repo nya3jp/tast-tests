@@ -24,6 +24,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/policy"
 	_ "chromiumos/tast/remote/bundles/cros/power"
 	_ "chromiumos/tast/remote/bundles/cros/usbc"
+	_ "chromiumos/tast/remote/bundles/cros/wilco"
 )
 
 func main() {
