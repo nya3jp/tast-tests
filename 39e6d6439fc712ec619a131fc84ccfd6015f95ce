@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d25ac4f1_d2550ad7",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T15:45:11Z",
+      "side": 1,
+      "message": "style: \"NewServer\" following the go\u0027s style.\n\ncf) https://golang.org/doc/effective_go.html#package-names",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "39e6d6439fc712ec619a131fc84ccfd6015f95ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb59460e_7434e1e7",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T15:45:11Z",
+      "side": 1,
+      "message": "In general, it is better to avoid circular dependecy?\nIs it possible to split the struct into two based on their responsibility?",
+      "revId": "39e6d6439fc712ec619a131fc84ccfd6015f95ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa390db0_901c9196",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T15:45:11Z",
+      "side": 1,
+      "message": "Could you comment where does \"5\" come from, and why it is enough?",
+      "revId": "39e6d6439fc712ec619a131fc84ccfd6015f95ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a339d19_9607ea51",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-17T15:45:11Z",
+      "side": 1,
+      "message": "nit: could you use const?",
+      "revId": "39e6d6439fc712ec619a131fc84ccfd6015f95ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
