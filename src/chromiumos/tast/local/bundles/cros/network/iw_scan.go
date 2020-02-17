@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/network/netiface"
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
@@ -30,7 +31,7 @@ func IWScan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
-	iface, err := shill.GetWifiInterface(ctx, manager, 5*time.Second)
+	iface, err := netiface.WifiInterface(ctx, manager, 5*time.Second)
 	if err != nil {
 		s.Fatal("Could not get a WiFi interface: ", err)
 	}
