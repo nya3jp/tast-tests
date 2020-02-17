@@ -9,14 +9,13 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net"
 	"path/filepath"
 	"reflect"
-	"sort"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/netiface"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -39,7 +38,7 @@ func restartWifiInterface(ctx context.Context) error {
 		return errors.Wrap(err, "failed creating shill manager proxy")
 	}
 
-	iface, err := shill.GetWifiInterface(ctx, manager, 5*time.Second)
+	iface, err := netiface.WifiInterface(ctx, manager, 5*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "could not find interface")
 	}
@@ -183,21 +182,8 @@ func restartUdev(ctx context.Context) error {
 // function prototype.
 type deviceRestarter func(ctx context.Context) error
 
-func interfaceNames() ([]string, error) {
-	ifaces, err := net.Interfaces()
-	if err != nil {
-		return nil, err
-	}
-	names := make([]string, len(ifaces))
-	for i := range ifaces {
-		names[i] = ifaces[i].Name
-	}
-	sort.Strings(names)
-	return names, nil
-}
-
 func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
-	iflistPre, err := interfaceNames()
+	iflistPre, err := netiface.InterfaceNames()
 	if err != nil {
 		return err
 	}
@@ -213,7 +199,7 @@ func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		iflistPost, err := interfaceNames()
+		iflistPost, err := netiface.InterfaceNames()
 		if err != nil {
 			return err
 		}

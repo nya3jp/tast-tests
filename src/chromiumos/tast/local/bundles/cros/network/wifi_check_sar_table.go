@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/netiface"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -212,7 +213,7 @@ func WifiCheckSARTable(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 	// Verify that the DUT uses Intel WiFi.
-	netIf, err := shill.GetWifiInterface(ctx, manager, time.Duration(2)*time.Second)
+	netIf, err := netiface.WifiInterface(ctx, manager, time.Duration(2)*time.Second)
 	if err != nil {
 		s.Fatal("Failed to get network interface name: ", err)
 	}

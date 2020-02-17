@@ -14,6 +14,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/netiface"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -113,7 +114,7 @@ func RemoveIfaceAndWaitForRecovery(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create shill manager")
 	}
-	iface, err := shill.GetWifiInterface(ctx, manager, 10*time.Second)
+	iface, err := netiface.WifiInterface(ctx, manager, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "could not get a WiFi interface")
 	}
@@ -171,7 +172,7 @@ func RemoveIfaceAndWaitForRecovery(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create Manager object after shill restart")
 	}
-	newIface, err := shill.GetWifiInterface(ctx, manager, 30*time.Second)
+	newIface, err := netiface.WifiInterface(ctx, manager, 30*time.Second)
 	if err != nil {
 		restartInterface(ctx)
 		return errors.Wrap(err, "device did not recover")

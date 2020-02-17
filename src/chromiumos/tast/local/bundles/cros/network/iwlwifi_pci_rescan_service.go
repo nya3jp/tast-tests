@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/iwlwifirescan"
+	"chromiumos/tast/local/bundles/cros/network/netiface"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -44,7 +45,7 @@ func (s *IwlwifiPCIRescanService) HealthCheck(ctx context.Context, _ *empty.Empt
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager")
 	}
-	_, err = shill.GetWifiInterface(ctx, manager, 5*time.Second)
+	_, err = netiface.WifiInterface(ctx, manager, 5*time.Second)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not get a WiFi interface")
 	}
