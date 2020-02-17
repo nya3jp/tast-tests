@@ -161,7 +161,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Test that static IP has been set.
 	s.Log("Finding service with set static IP")
-	if err = waitForIPOnInterface(ctx, iface, testIP1, 5*time.Second); err != nil {
+	if err = waitForIPOnInterface(ctx, iface, testIP1, 30*time.Second); err != nil {
 		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
@@ -181,7 +181,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if _, err := manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
-	if err = waitForIPOnInterface(ctx, iface, testIP1, 5*time.Second); err != nil {
+	if err = waitForIPOnInterface(ctx, iface, testIP1, 30*time.Second); err != nil {
 		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
@@ -197,7 +197,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Test that new static IP is there.
 	s.Log("Finding service with new static IP")
-	if err = waitForIPOnInterface(ctx, iface, testIP2, 5*time.Second); err != nil {
+	if err = waitForIPOnInterface(ctx, iface, testIP2, 30*time.Second); err != nil {
 		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
@@ -206,7 +206,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err = manager.PopProfile(ctx, testUserProfileName); err != nil {
 		s.Fatal("Unable to pop profile: ", err)
 	}
-	if err = waitForIPOnInterface(ctx, iface, testIP1, 5*time.Second); err != nil {
+	if err = waitForIPOnInterface(ctx, iface, testIP1, 30*time.Second); err != nil {
 		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
@@ -215,7 +215,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if _, err = manager.PushProfile(ctx, testUserProfileName); err != nil {
 		s.Fatal("Failed to push profile: ", err)
 	}
-	if err = waitForIPOnInterface(ctx, iface, testIP2, 5*time.Second); err != nil {
+	if err = waitForIPOnInterface(ctx, iface, testIP2, 30*time.Second); err != nil {
 		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 }
