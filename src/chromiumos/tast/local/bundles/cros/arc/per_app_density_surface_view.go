@@ -16,22 +16,22 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PerAppDensity,
-		Desc:         "Checks that density can be changed with Android applications",
+		Func:         PerAppDensitySurfaceView,
+		Desc:         "Checks that density can be changed with an Android application that uses SurfaceView",
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{perAppDensityApk},
+		Data:         []string{densitySurfaceViewApk},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})
 }
 
-const perAppDensityApk = "ArcPerAppDensityTest.apk"
+const densitySurfaceViewApk = "ArcPerAppDensitySurfaceViewTest.apk"
 
-func PerAppDensity(ctx context.Context, s *testing.State) {
-	const packageName = "org.chromium.arc.testapp.perappdensitytest"
-	perappdensity.RunTest(ctx, s, perappdensity.DensityApk{Name: perAppDensityApk, Package: packageName}, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn) error {
+func PerAppDensitySurfaceView(ctx context.Context, s *testing.State) {
+	const packageName = "org.chromium.arc.testapp.perappdensitysurfaceviewtest"
+	perappdensity.RunTest(ctx, s, perappdensity.DensityApk{Name: densitySurfaceViewApk, Package: packageName}, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn) error {
 		return nil
 	})
 }
