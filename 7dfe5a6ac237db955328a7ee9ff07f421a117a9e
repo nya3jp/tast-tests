@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e39a799_f046fe1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-17T16:02:35Z",
+      "side": 1,
+      "message": "Add how it can be used, why WritePolicyBlob is not enough",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8950619f_1a122c1d",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-17T16:02:35Z",
+      "side": 1,
+      "message": "JSON",
+      "range": {
+        "startLine": 179,
+        "startChar": 54,
+        "endLine": 179,
+        "endChar": 58
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650a11c4_077ee9d2",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-17T16:02:35Z",
+      "side": 1,
+      "message": "writes",
+      "range": {
+        "startLine": 179,
+        "startChar": 22,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4d3104_235e8fc7",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-17T16:02:35Z",
+      "side": 1,
+      "message": "It\u0027s hard to say whether it\u0027s really useful helper function without examples of usage.\n\nMoreover, if we decide to add it, we can reuse this function in WritePolicyBlob (same file).",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
