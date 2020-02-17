@@ -293,3 +293,24 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to run the test: ", err)
 	}
 }
+
+// SpeechLog obtains the speech log of ChromeVox.
+func SpeechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, error) {
+	// speechLog represents a log of accessibility speech.
+	type speechLog struct {
+		Text string `json:"textString_"`
+		// Other values are not used in test.
+	}
+	var logs []speechLog
+	if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.SPEECH)", &logs); err != nil {
+		return nil, err
+	}
+	var gotLogs []string
+	for _, log := range logs {
+		if log.Text != "" {
+			gotLogs = append(gotLogs, log.Text)
+		}
+		testing.ContextLog(ctx, log)
+	}
+	return gotLogs, nil
+}
