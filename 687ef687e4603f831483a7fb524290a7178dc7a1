@@ -16,6 +16,24 @@
       "revId": "687ef687e4603f831483a7fb524290a7178dc7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c945d760_f717cb33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-17T09:37:47Z",
+      "side": 1,
+      "message": "In this case, the buffer might not yet be flushed. Several possible combination:\n1. either Signal sent after cmd exited: no harm but leaving some logs.\n2. SIGKILL after SIGTERM: might not be able to flush buffer if cleanup is not yet done.\n3. SIGTERM after SIGKILL: I guess the process will just end as usual SIGKILL.\n\nIn any case, as SIGKILL is only sent after the hard deadline is already reached or after we already get the event, I guess it is OK to just SIGKILL and report error/nil.",
+      "parentUuid": "3432833c_6508ba0c",
+      "revId": "687ef687e4603f831483a7fb524290a7178dc7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
