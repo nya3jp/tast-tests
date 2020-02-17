@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b7411b_f1b70d51",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-17T07:13:02Z",
+      "side": 1,
+      "message": "Hmm..., this looks like what interfaceNames in udev_rename.go is also doing. I\u0027m not sure if:\n1. it\u0027s better to use built-in net package. (udev_rename was originally \"ls /sys/class/net\" but later modified to use net package)\n2. it\u0027s good to extract them into, like, tast/local/network.",
+      "revId": "84866b0307cb724c1536504375d49d647023ff85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
