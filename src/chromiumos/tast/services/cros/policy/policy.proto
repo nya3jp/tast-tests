@@ -1,0 +1,44 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.policy;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/policy";
+
+// Policy provides functions to perform enrollment.
+service PolicyService {
+  rpc EnrollUsingChrome(EnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
+  rpc UpdatePolicies(UpdatePoliciesRequest) returns (google.protobuf.Empty) {}
+  rpc CheckChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc StopChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartExternalDataServer(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+  rpc ServePolicyData(ServePolicyDataRequest)
+      returns (ServePolicyDataResponse) {}
+  rpc StopExternalDataServer(google.protobuf.Empty)
+      returns (google.protobuf.Empty) {}
+}
+
+message EnrollUsingChromeRequest {
+  bytes policy_json = 1;
+  string username = 2;
+}
+
+message UpdatePoliciesRequest {
+  bytes policy_json = 1;
+}
+
+message ServePolicyDataRequest {
+  bytes contents = 1;
+}
+
+message ServePolicyDataResponse {
+  string url = 1;
+  string hash = 2;
+}
