@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/hashicorp/mdns"
@@ -84,7 +85,11 @@ func waitP2PService(ctx context.Context) (*mdns.ServiceEntry, error) {
 	}
 
 	if len(srvs) > 1 {
-		return nil, errors.New("multiple services found")
+		var descs []string
+		for _, s := range srvs {
+			descs = append(descs, fmt.Sprintf("%s (%s:%d)", s.Name, s.Addr, s.Port))
+		}
+		return nil, errors.Errorf("multiple services found: %s", strings.Join(descs, ", "))
 	}
 	return srvs[0], nil
 }
