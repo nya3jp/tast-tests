@@ -107,18 +107,17 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 		return errors.Wrap(err, "failed to search for app")
 	}
 
-	// Click install button.
-	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(installButtonRegex))
-	if err := installButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return err
-	}
-	if err := installButton.Click(ctx); err != nil {
-		return err
-	}
-
 	// Wait for the app to install.
 	testing.ContextLog(ctx, "Waiting for app to install")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// If the install button is enabled, click it.
+		installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(installButtonRegex), ui.Enabled(true))
+		if err := installButton.Exists(ctx); err == nil {
+			if err := installButton.Click(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+		}
+
 		// Complete account setup if necessary.
 		if err := d.Object(ui.Text(accountSetupText)).Exists(ctx); err == nil {
 			testing.ContextLog(ctx, "Completing account setup")
@@ -151,10 +150,8 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 		}
 
 		// Installation is complete once the open button is enabled.
-		if enabled, err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(openButtonRegex)).IsEnabled(ctx); err != nil {
-			return errors.Wrap(err, "failed to check open button state")
-		} else if !enabled {
-			return errors.New("open button not enabled")
+		if err := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(openButtonRegex), ui.Enabled(true)).Exists(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for enabled open button")
 		}
 		return nil
 	}, nil); err != nil {
