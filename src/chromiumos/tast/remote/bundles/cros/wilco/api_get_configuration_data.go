@@ -1,0 +1,126 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package wilco
+
+import (
+	"context"
+	"encoding/json"
+
+	"github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/ptypes/empty"
+
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/remote/hwsec"
+	"chromiumos/tast/rpc"
+	ps "chromiumos/tast/services/cros/policy"
+	"chromiumos/tast/services/cros/wilco"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: APIGetConfigurationData,
+		Desc: "Test sending GetConfigurationData gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon daemon",
+		Contacts: []string{
+			"vsavu@chromium.org",  // Test author
+			"pmoy@chromium.org",   // wilco_dtc_supportd author
+			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
+			"chromeos-wilco@google.com",
+		},
+		Attr:         []string{"group:enrollment"},
+		SoftwareDeps: []string{"reboot", "vm_host", "wilco", "chrome"},
+		ServiceDeps:  []string{"tast.cros.wilco.WilcoService", "tast.cros.policy.PolicyService"},
+	})
+}
+
+func APIGetConfigurationData(ctx context.Context, s *testing.State) {
+	if err := hwsec.EnsureTPMIsReset(ctx, s.DUT(), true); err != nil {
+		s.Fatal("Failed to reset TPM: ", err)
+	}
+
+	defer func() {
+		if err := hwsec.EnsureTPMIsReset(ctx, s.DUT(), true); err != nil {
+			s.Fatal("Failed to reset TPM: ", err)
+		}
+	}()
+
+	configurationData := `{"test": 1}`
+
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	pc := ps.NewPolicyServiceClient(cl.Conn)
+
+	if _, err := pc.StartExternalDataServer(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to start a URLPolicyServer: ", err)
+	}
+
+	res, err := pc.ServePolicyData(ctx, &ps.ServePolicyDataRequest{
+		Contents: []byte(configurationData),
+	})
+	if err != nil {
+		s.Fatal("Failed to serve policy: ", err)
+	}
+	defer pc.StopExternalDataServer(ctx, &empty.Empty{})
+
+	pb := fakedms.NewPolicyBlob()
+	pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
+	pb.AddPolicy(&policy.DeviceWilcoDtcConfiguration{
+		Val: &policy.DeviceWilcoDtcConfigurationValue{
+			Url:  res.Url,
+			Hash: string(res.Hash),
+		},
+	})
+	pb.DeviceAffiliationIds = []string{"default"}
+	pb.UserAffiliationIds = []string{"default"}
+
+	pJSON, err := json.Marshal(pb)
+	if err != nil {
+		s.Fatal("Failed to serialize policies: ", err)
+	}
+
+	req := ps.PolicyBlob{
+		PolicyBlob: pJSON,
+	}
+
+	if _, err := pc.EnrollUsingChrome(ctx, &req); err != nil {
+		s.Fatal("Failed to enroll using chrome: ", err)
+	}
+	defer pc.StopChrome(ctx, &empty.Empty{})
+
+	wc := wilco.NewWilcoServiceClient(cl.Conn)
+
+	status, err := wc.GetStatus(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Could not get running status: ", err)
+	} else if status.WilcoDtcSupportdPid == 0 {
+		s.Fatal("Wilco DTC Supportd not running")
+	}
+
+	data, err := wc.GetConfigurationData(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to perform GetConfigurationData: ", err)
+	}
+
+	if data.JsonConfigurationData != configurationData {
+		s.Errorf("Unexpected policy value: Got %s, Want %s", data.JsonConfigurationData, configurationData)
+	}
+
+	ostatus := status
+	status, err = wc.GetStatus(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Could not get running status: ", err)
+	} else if status.WilcoDtcSupportdPid == 0 {
+		s.Fatal("Wilco DTC Supportd not running")
+	}
+
+	if !proto.Equal(ostatus, status) {
+		s.Errorf("wilco_dtc PID changed after request: Before %v, After %v", ostatus, status)
+	}
+}
