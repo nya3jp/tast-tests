@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "882f2fed_402032d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T16:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e39a799_f046fe1b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8950619f_1a122c1d",
         "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
         "patchSetId": 3
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "0ec4b3c4_d7185fc4",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T16:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8950619f_1a122c1d",
+      "range": {
+        "startLine": 179,
+        "startChar": 54,
+        "endLine": 179,
+        "endChar": 58
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2febe4b9_161445eb",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T16:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650a11c4_077ee9d2",
+      "range": {
+        "startLine": 179,
+        "startChar": 22,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b4d3104_235e8fc7",
         "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-17T16:02:35Z",
       "side": 1,
       "message": "It\u0027s hard to say whether it\u0027s really useful helper function without examples of usage.\n\nMoreover, if we decide to add it, we can reuse this function in WritePolicyBlob (same file).",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "308737aa_b4d73c1e",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-17T16:40:52Z",
+      "side": 1,
+      "message": "Usage here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2060298\n\nRemote tests send their policy blob as a JSON to not requre a protobuf representation of PolicyBlob.",
+      "parentUuid": "6b4d3104_235e8fc7",
       "range": {
         "startLine": 180,
         "startChar": 0,
