@@ -21,6 +21,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/hwsec"
 	_ "chromiumos/tast/remote/bundles/cros/meta"
 	_ "chromiumos/tast/remote/bundles/cros/network"
+	_ "chromiumos/tast/remote/bundles/cros/policy"
 	_ "chromiumos/tast/remote/bundles/cros/power"
 	_ "chromiumos/tast/remote/bundles/cros/usbc"
 )
