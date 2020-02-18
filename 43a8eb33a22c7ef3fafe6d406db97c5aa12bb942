@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35ca127e_95058bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2020-02-18T18:32:54Z",
+      "side": 1,
+      "message": "\u003e \"usign\" is a possible misspelling of \"using\" or \"unsign\".\n\nPlease fix.",
+      "parentUuid": "9973894b_da0e2d2d",
+      "range": {
+        "startLine": 176,
+        "startChar": 58,
+        "endLine": 176,
+        "endChar": 63
+      },
+      "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
