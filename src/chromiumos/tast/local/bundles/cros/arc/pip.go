@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -788,38 +789,42 @@ func getPIPWindow(ctx context.Context, tconn *chrome.Conn) (*ash.Window, error) 
 }
 
 // getShelfRect returns Chrome OS's shelf rect, in DPs.
-func getShelfRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
-	var r arc.Rect
-	err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.automation.getDesktop(function(root) {
-		    const appWindow = root.find({attributes: {className: 'ShelfWidget'}});
-		    if (!appWindow) {
-		      reject(new Error("Failed to locate ShelfWidget"));
-		    } else {
-		      resolve(appWindow.location);
-		    }
-		  })
-		})`, &r)
-	return r, err
+func getShelfRect(ctx context.Context, tconn *chrome.Conn) (*chromeui.Rect, error) {
+	root, err := chromeui.Root(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	defer root.Release(ctx)
+
+	shelfWidget, err := root.DescendantWithTimeout(ctx, chromeui.FindParams{ClassName: "ShelfWidget"}, 15*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get ShelfWidget")
+	}
+	defer shelfWidget.Release(ctx)
+	if shelfWidget.Location == nil {
+		return nil, errors.New("ShelfWidget has no location")
+	}
+	return shelfWidget.Location, nil
 }
 
 // getStatusAreaRect returns Chrome OS's Status Area rect, in DPs.
 // Returns error if Status Area is not present.
-func getStatusAreaRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
-	var r arc.Rect
-	err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.automation.getDesktop(function(root) {
-		    const appWindow = root.find({attributes: {className: 'BubbleFrameView'}});
-		    if (!appWindow) {
-		      reject(new Error("Failed to locate BubbleFrameView"));
-		    } else {
-		      resolve(appWindow.location);
-		    }
-		  })
-		})`, &r)
-	return r, err
+func getStatusAreaRect(ctx context.Context, tconn *chrome.Conn) (*chromeui.Rect, error) {
+	root, err := chromeui.Root(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	defer root.Release(ctx)
+
+	appWindow, err := root.DescendantWithTimeout(ctx, chromeui.FindParams{ClassName: "BubbleFrameView"}, 15*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get BubbleFrameView")
+	}
+	defer appWindow.Release(ctx)
+	if appWindow.Location == nil {
+		return nil, errors.New("BubbleFrameView has no location")
+	}
+	return appWindow.Location, nil
 }
 
 // showSystemStatusArea shows the System Status Area in case it is not already shown.
@@ -860,56 +865,39 @@ func hideSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 
 // pressShelfIcon press the shelf icon of PIP window.
 func pressShelfIcon(ctx context.Context, tconn *chrome.Conn) error {
-	// There can be multiple icons on the shelf, but currently there's no way to find a specific icon.
-	// So here we assume the shelf icon of the PIP window is located on the right-most position on the shelf.
-	// This is currently true given that our apk is launched last, our apk is not pinned, and there are not too many apps opened.
-	err := tconn.EvalPromise(ctx,
-		`new Promise((resolve, reject) => {
-		  chrome.automation.getDesktop(function(root) {
-		    const icons = root.findAll({ attributes: { className: 'ash/ShelfAppButton'}});
-		    if (!icons || icons.length === 0) {
-		      reject("Failed to locate icon");
-		      return;
-		    }
-		    icons[icons.length - 1].doDefault();
-		    resolve();
-		  })
-		})`, nil)
+	root, err := chromeui.Root(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to find ShelfAppButton")
+		return err
 	}
-	return nil
+	defer root.Release(ctx)
+
+	icon, err := root.DescendantWithTimeout(ctx, chromeui.FindParams{Name: "ArcPipTastTest", ClassName: "ash/ShelfAppButton"}, 15*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to get icon")
+	}
+	defer icon.Release(ctx)
+
+	return icon.LeftClick(ctx)
 }
 
 // toggleSystemStatusArea toggles Chrome OS's system status area.
 func toggleSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 	// A reliable way to toggle the status area is by injecting Alt+Shift+s. But on tablet mode
 	// it doesn't work since the keyboard is disabled.
-	// Instead, we click ("doDefault()") on the StatusAreaWidget's button. The problem is that in tablet mode
-	// there are two buttons and we cannot identify them in a reliable way. We assume that the first button
-	// in the StatusAreaWidget hierarchy is the one that toggles the status area.
-	// TODO(ricardoq): Find a reliable way to find "status tray" button.
-	err := tconn.EvalPromise(ctx,
-		`new Promise((resolve, reject) => {
-		  chrome.automation.getDesktop(function(root) {
-		    const areaWidget = root.find({ attributes: { className: 'StatusAreaWidget'}});
-		    if (!areaWidget) {
-		      reject("Failed to locate StatusAreaWidget");
-		      return;
-		    }
-		    const button = areaWidget.find({ attributes: { role: 'button'}})
-		    if (!button) {
-		      reject("Failed to locate button in StatusAreaWidget");
-		      return;
-		    }
-		    button.doDefault();
-		    resolve();
-		  })
-		})`, nil)
+	// Instead, we click on the StatusAreaWidgetDelegate.
+	root, err := chromeui.Root(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to find StatusAreaWidget")
+		return err
 	}
-	return nil
+	defer root.Release(ctx)
+
+	widget, err := root.DescendantWithTimeout(ctx, chromeui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"}, 15*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to get status area widget")
+	}
+	defer widget.Release(ctx)
+
+	return widget.LeftClick(ctx)
 }
 
 // waitForNewBoundsWithMargin waits until Chrome animation finishes completely and check the position of an edge of the PIP window.
