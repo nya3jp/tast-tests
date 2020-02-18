@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "efc4a15c_01475adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T04:31:29Z",
+      "side": 1,
+      "message": "thats a good point, I filed crbug/1053374 for further investigation. But let\u0027s leave this for now :)",
+      "parentUuid": "ce03011f_8274418e",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 13
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abb03112_be7017a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 3
@@ -379,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "6beb09ff_697595db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T04:31:29Z",
+      "side": 1,
+      "message": "hm I did `ChromeVoxPrefs....`, but received some undefined errors. but now it seems to work ... interesting.\n\nthanks!",
+      "parentUuid": "8c34f152_08857a6e",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 79
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc58e23a_63c445f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -494,6 +542,30 @@
       "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa56bd2_87099e0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T04:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf3c4cf6_735dd431",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
