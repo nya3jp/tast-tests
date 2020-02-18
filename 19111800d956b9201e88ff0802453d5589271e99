@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9982c0e_fe2f9ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-18T07:10:01Z",
+      "side": 1,
+      "message": "Add \n// TODO(crbug/1027742): Shorten the timeout after the root cause of long IP waiting time is found.",
+      "revId": "19111800d956b9201e88ff0802453d5589271e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
