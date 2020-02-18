@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b035134c_03496365",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2020-02-18T22:21:05Z",
+      "side": 1,
+      "message": "It is sometimes nice to preface with \"tast-tests: \" or \"tast/video: \". To get a feel for commit subjects run \"git log --oneline\".",
+      "revId": "61301be0267506643ba6019d7fb209d2bf6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a56c15cd_829af755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2020-02-18T22:21:05Z",
+      "side": 1,
+      "message": "Please include a commit body with information on what problem this commit addresses. Do we know if building an image with USE\u003d\"chrome_internal\" works for partners?",
+      "revId": "61301be0267506643ba6019d7fb209d2bf6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f477b278_c2d24b43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2020-02-18T22:21:05Z",
+      "side": 1,
+      "message": "Remove spaces around equal sign for BUG and TEST lines. Also populate the TEST line with this test, \"tast run ...\".",
+      "revId": "61301be0267506643ba6019d7fb209d2bf6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9dbd44f_612e3bd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2020-02-18T22:21:05Z",
+      "side": 1,
+      "message": "Cq-Depend: chromium:2057754",
+      "revId": "61301be0267506643ba6019d7fb209d2bf6997b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
