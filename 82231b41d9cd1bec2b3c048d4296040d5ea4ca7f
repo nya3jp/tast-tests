@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ce03011f_8274418e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-18T01:00:09Z",
+      "side": 1,
+      "message": "Hmm, this is totally off topic, but my question was \"do you know when and why it happens?\".\nanyway, nvm.",
+      "parentUuid": "2ad9abfb_406dade8",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 13
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abb03112_be7017a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 3
@@ -331,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "8c34f152_08857a6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-18T01:00:09Z",
+      "side": 1,
+      "message": "What command you used, and what error did you got?\n\nI think both of below work.\n- ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)\n- ConsoleTts.getInstance().setEnabled(value)",
+      "parentUuid": "0c61a518_815ed740",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 79
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc58e23a_63c445f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -422,6 +470,30 @@
       "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf3c4cf6_735dd431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-18T01:00:09Z",
+      "side": 1,
+      "message": "Hmm, we can still improve by doing:\n- put content of checkSpeechLog directly inside Poll.\n- use PollBreak for critical errors like errors from getting log.\n- Use general return when the output speech log didn\u0027t match.",
+      "parentUuid": "362b3a5b_e69a4d50",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
