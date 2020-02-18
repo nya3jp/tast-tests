@@ -22,6 +22,30 @@
       "revId": "5756b39a0ed1af0e29ec700250523d214252110c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de79e90_1c3dd93f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T05:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ac32a54_f225d902",
+      "range": {
+        "startLine": 75,
+        "startChar": 18,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "5756b39a0ed1af0e29ec700250523d214252110c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
