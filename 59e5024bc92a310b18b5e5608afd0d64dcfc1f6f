@@ -278,6 +278,29 @@
     },
     {
       "key": {
+        "uuid": "f6f99daa_9db81485",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "It is a good point that we need pkg to avoid possible conflicts of data files. But I\u0027m a bit afraid that people fail to pass the correct pkg (e.g. when we rename tests).\n\nInstead you can get pkg implicitly by caller.Get:\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/caller#Get",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf6bbb6b_19ea9a80",
         "filename": "src/chromiumos/tast/local/wpr/pre.go",
         "patchSetId": 7
@@ -324,6 +347,29 @@
     },
     {
       "key": {
+        "uuid": "854a11f3_2e6ce3b5",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "Generally a precondition depending on another precondition is... difficult. I even think it\u0027s not possible to compose preconditions.\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/t7UP4mOP8lg\n\nI instead recommend calling Chrome.ResetState. See arc/pre.go for an example of preconditions built on top of the chrome package.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 49
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c60e9c6c_25c415a9",
         "filename": "src/chromiumos/tast/local/wpr/pre.go",
         "patchSetId": 7
@@ -340,6 +386,29 @@
         "startChar": 5,
         "endLine": 192,
         "endChar": 28
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e99f62_83f0eacc",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "nit\u0026optional: Maybe we can avoid defining Params and pass mode and archive path to New directly. They\u0027re always required parameters anyway.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 11
       },
       "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -370,6 +439,75 @@
     },
     {
       "key": {
+        "uuid": "6370ea6e_058a6b44",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "nit\u0026optional: Maybe \"proc\" is enough since the struct name already contains \"WPR\".",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a16774b3_9c889534",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "nit: \"socket\" is rarely used to name a variable containing \"host:port\" string. How about \"addr\" or \"address\"?\ne.g. https://godoc.org/net#Dial",
+      "range": {
+        "startLine": 87,
+        "startChar": 46,
+        "endLine": 87,
+        "endChar": 52
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee26c9c_2628dbb1",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "Could you use DialContext to honor context deadline?\nhttps://godoc.org/net#Dialer.DialContext\n\nAlso it is likely we want to set a short timeout for connect.\n\nExample code (untested):\n\n d :\u003d \u0026net.Dialer{Timeout: time.Second}\n conn, err :\u003d d.DialContext(ctx, \"tcp\", addr)",
+      "range": {
+        "startLine": 89,
+        "startChar": 15,
+        "endLine": 89,
+        "endChar": 38
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbddb245_c626d523",
         "filename": "src/chromiumos/tast/local/wpr/wpr.go",
         "patchSetId": 7
@@ -386,6 +524,29 @@
         "startChar": 12,
         "endLine": 96,
         "endChar": 15
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291c3f98_b685a1c6",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "Cmd.DumpLog should not be called before Cmd.Wait returns.\n\nI think we should call this inside New instead. See my comments below.",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 30
       },
       "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -416,6 +577,144 @@
     },
     {
       "key": {
+        "uuid": "17e2e070_400ede26",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "Let us define these variables and their cleanup functions just before they\u0027re needed. Particularly I recommend not to define w to avoid constructing a half-initialized WPR object because it\u0027s not easy to reason about half-initialized objects.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2bf833a_9a790ced",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "We can keep them in int variables at this moment to avoid defining half-initialized w.\n\n httpPort :\u003d ports[0]\n httpsPort :\u003d ports[1]",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ac617e_c5d1b1b0",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "proc :\u003d ...\n\n\"wpr\" is used in many places in this file, let us name it differently.",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 13
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2f269a_c49a189a",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "When Start fails DumpLog does nothing useful. We can remove this.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 27
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9975d9_52f2f266",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "nit: const spkiList \u003d ...",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 9
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00c72f7_9fb08757",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "Please try to construct WPR object at the very last of this function with initializing all fields at once, e.g.\n\n return \u0026WPR{\n   HTTPPort: httpPort,\n   HTTPSPort: httpsPort,\n   ChromeOptions: ...,\n   proc: proc,\n }, nil\n\nThen we can completely avoid half-initialized WPR objects.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 25
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e721e48_d2281731",
         "filename": "src/chromiumos/tast/local/wpr/wpr.go",
         "patchSetId": 7
@@ -432,6 +731,52 @@
         "startChar": 1,
         "endLine": 166,
         "endChar": 19
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0d623a_6447103d",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "Can we merge Wait to New? It sounds not very useful to ask users to call these two functions separately, and it rather introduces an extra state to WPR object.",
+      "range": {
+        "startLine": 171,
+        "startChar": 14,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fb8836_7156845d",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "wprProc is always non-nil, so this check is not useful.\n\nIf we want to guard from duplicated Close calls, we have to set wprProc to nil at the end of this function.",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 22
       },
       "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
