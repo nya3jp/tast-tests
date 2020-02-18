@@ -12,6 +12,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"runtime"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -63,14 +65,15 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 	hasher := md5.New()
 	out := io.MultiWriter(hasher, tf)
 
-	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s", webMName, yuvName)
+	testing.ContextLogf(ctx, "Executing vpxdec %s to prepare YUV data %s by %d threads", webMName, yuvName, runtime.NumCPU())
 	// TODO(hiroh): When YV12 test case is added, try generate YV12 yuv here by passing "--yv12" instead of "--i420".
-	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "--codec=vp9", "--i420", "-o", "-")
+	cmd := testexec.CommandContext(ctx, "vpxdec", webMFile, "-t", strconv.Itoa(runtime.NumCPU()), "--frame-parallel", "--codec=vp9", "--i420", "-o", "-")
 	cmd.Stdout = out
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "vpxdec failed")
 	}
+	testing.ContextLog(ctx, "Finished: vpxdec ", webMName)
 
 	// This guarantees that the generated yuv file (i.e. input of VEA test) is the same on all platforms.
 	hash := hex.EncodeToString(hasher.Sum(nil))
