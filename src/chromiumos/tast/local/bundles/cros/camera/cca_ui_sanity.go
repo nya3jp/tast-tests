@@ -22,7 +22,7 @@ func init() {
 		Func:         CCAUISanity,
 		Desc:         "Sanity test for Chrome Camera App",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
