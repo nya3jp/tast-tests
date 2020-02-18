@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0358c48_d36d4cef",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-18T08:33:17Z",
+      "side": 1,
+      "message": "The default timeout is the limit of the context. In other words, this is willing to Polling until the total text execution time is used up. If someone wants, they could feed it a specific timeout.",
+      "parentUuid": "dd581414_cb492a1e",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "95cecb53ef165ea156025674434f205b5efd7b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f23f123_d9271dd8",
         "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "95cecb53ef165ea156025674434f205b5efd7b23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61704ae5_91f6f735",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-18T08:33:17Z",
+      "side": 1,
+      "message": "I don\u0027t think that distinction is very important. With the old version of the test, it never returned the error \"failed to check for open button state\". Also the screenshot you get on failure will show more information on the state.",
+      "parentUuid": "4f23f123_d9271dd8",
+      "revId": "95cecb53ef165ea156025674434f205b5efd7b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
