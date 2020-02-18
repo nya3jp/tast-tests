@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "f2412c76_26d2b190",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-18T21:28:13Z",
+      "side": 1,
+      "message": "It seems like we only really want to use this from GetBackend, since it functions as a test for whether or not this backend is supported. In this case, do we want to make this public? Do we even want to make it a method? Or do you foresee anywhere else it would be used?\n\nPersonally I think that APIs that split construction and then some extra initialization/checking the user must do themselves are kind of an anti-pattern[1] -- can we just pack this whole thing into\n\nfunc getAdrenoBackend() *Backend {\n  if _, err :\u003d os.Stat(adrenoFramebufferFile); err !\u003d nil {\n    return nil\n  }\n  return \u0026AdrenoBackend{}\n}\n\nThen GetBackend can call getAdrenoBackend and return that if it\u0027s not null.\n\n[1] Similar to go/totw/42",
+      "revId": "937a014d85a7f527da983261d16e44fd64d4f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11196a05_81edf925",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-18T21:28:13Z",
+      "side": 1,
+      "message": "nit: AMD?",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "937a014d85a7f527da983261d16e44fd64d4f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98e4c84a_02957195",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 2
