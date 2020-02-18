@@ -117,6 +117,30 @@
       "revId": "97502408662afe227e4033bcdf220666b54c1064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dfb53c_ddd7af46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T12:40:50Z",
+      "side": 1,
+      "message": "+1 to Jun\u0027s comments.",
+      "parentUuid": "dff27e5a_9544a81c",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
