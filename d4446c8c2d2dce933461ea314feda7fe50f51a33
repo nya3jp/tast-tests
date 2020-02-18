@@ -22,6 +22,30 @@
       "revId": "d4446c8c2d2dce933461ea314feda7fe50f51a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5252d67_c1484f72",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-18T19:50:25Z",
+      "side": 1,
+      "message": "\u003e Can you please move this before Intel? Leave a remark that on systems with both backends we want to test AMD/Adreno. You could also fail if both exists and we can resolve once we have devices.\n\n\u003e Sorry, I changed my mind. It is not clear what we will use for systems with 2 backends. Either iterate over a set of both or assert if there are two for now.\n\nHmm, I hadn\u0027t thought about that possibility. Let\u0027s make it a failure now, since IIUC \nthere\u0027re no such things out there just yet.",
+      "parentUuid": "b793e41b_9202d526",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "d4446c8c2d2dce933461ea314feda7fe50f51a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
