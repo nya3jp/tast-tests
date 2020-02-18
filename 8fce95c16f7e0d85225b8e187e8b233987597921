@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2c3cbbc_2f2b6523",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-18T21:36:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e04c89e_50be17c9",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dc7e9bf_32edbfe8",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-18T20:26:09Z",
       "side": 1,
       "message": "IIUC, ihf@ want to have one trace per test? In this case, we don\u0027t need the for loop here.",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a34930d7_5c32ba48",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-18T21:36:01Z",
+      "side": 1,
+      "message": "He doesn\u0027t say it will be true for all the tests, but for most. I think it\u0027s reasonable to have a loop if input data is an array.",
+      "parentUuid": "2dc7e9bf_32edbfe8",
       "range": {
         "startLine": 208,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "85f4ed78_90e8d3a5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-18T21:36:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42233d22_5c47a2e5",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 3
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d196984b_c1459672",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-18T20:26:09Z",
       "side": 1,
       "message": "If you delete l208, can you change this and below to \nperfValues.Set(perf.Metric{\n    Name: \"time\",\n    Unit: \"sec\", \n    ...\n})\nperfValues.Set(perf.Metric{\n    Name: \"frames\",\n    Unit: \"frame\", \n    ...\n})\nperfValues.Set(perf.Metric{\n    Name: \"fps\",\n    Unit: \"fps\", \n    ...\n})",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 20
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc4c99b_a326bc64",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-18T21:36:01Z",
+      "side": 1,
+      "message": "it\u0027s still not decided as I understand.",
+      "parentUuid": "d196984b_c1459672",
       "range": {
         "startLine": 266,
         "startChar": 2,
