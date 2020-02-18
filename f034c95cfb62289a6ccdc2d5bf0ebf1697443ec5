@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "8d6fd652_d5be2c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-18T21:40:54Z",
+      "side": 1,
+      "message": "nit: is removed",
+      "range": {
+        "startLine": 37,
+        "startChar": 46,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d052376_97b256d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-18T21:40:54Z",
+      "side": 1,
+      "message": "nit: waitForIfaceRemoval",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c557d9_ee1627a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-18T21:40:54Z",
+      "side": 1,
+      "message": "Why not use testing.Poll here?",
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f65648_81c88e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-18T21:40:54Z",
+      "side": 1,
+      "message": "nit: RemoveIfaceAndWaitForRecovery",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b824116_d4d46898",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/remote_iwlwifi_pci_rescan.go",
         "patchSetId": 4
