@@ -19,8 +19,10 @@ import (
 )
 
 const (
-	// The debugfs file with the information on allocated framebuffers.
+	// The debugfs file with the information on allocated framebuffers for Intel i915 GPUs.
 	i915FramebufferFile = "/sys/kernel/debug/dri/0/i915_gem_framebuffer"
+	// The debugfs file with the information on allocated framebuffers for AMD Adreno GPUs.
+	adrenoFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
@@ -82,6 +84,63 @@ func (g I915Backend) ReadFramebufferCount(ctx context.Context, width, height int
 		}
 	}
 	return
+}
+
+// AdrenoBackend implements Backend for the AMD Adreno case.
+type AdrenoBackend struct{}
+
+// SupportsFramebufferInfo returns true if adrenoFramebufferFile exists.
+func (g AdrenoBackend) SupportsFramebufferInfo() bool {
+	_, err := os.Stat(adrenoFramebufferFile)
+	return err == nil
+}
+
+// Round rounds up value for the Intel platforms and all codecs.
+func (g AdrenoBackend) Round(value int) int {
+	const adrenoAlignment = 16
+	// Inspired by Chromium's base/bits.h:Align() function.
+	return (value + adrenoAlignment - 1) & ^(adrenoAlignment - 1)
+}
+
+// ReadFramebufferCount tries to open the adrenoFramebufferFile and count the
+// amount of lines of dimensions width x height, which corresponds to the amount
+// of framebuffers allocated in the system.
+// See https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html
+func (g AdrenoBackend) ReadFramebufferCount(ctx context.Context, width, height int) (framebuffers int, e error) {
+	f, err := os.Open(adrenoFramebufferFile)
+	if err != nil {
+		return framebuffers, errors.Wrap(err, "failed to open dri file")
+	}
+	text, err := ioutil.ReadAll(f)
+	if err != nil {
+		return framebuffers, errors.Wrap(err, "failed to read dri file")
+	}
+	lines := strings.Split(string(text), "\n")
+	for _, line := range lines {
+		// The line we're looking for looks like "...size=1920x1080"
+		var fbWidth, fbHeight int
+		if _, err := fmt.Sscanf(line, " size=%dx%d", &fbWidth, &fbHeight); err != nil {
+			continue
+		}
+		if fbWidth == width && fbHeight == height {
+			framebuffers++
+		}
+	}
+	return
+}
+
+// GetBackend tries to get the appropriate platform graphics debug backend and
+// returns it, or returns an error.
+func GetBackend() (backend Backend, err error) {
+	backend = I915Backend{}
+	if backend.SupportsFramebufferInfo() {
+		return
+	}
+	backend = AdrenoBackend{}
+	if backend.SupportsFramebufferInfo() {
+		return
+	}
+	return nil, errors.New("could not find any Graphics backend")
 }
 
 // CompareGraphicsMemoryBeforeAfter compares the graphics memory consumption
