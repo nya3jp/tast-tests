@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b2b471_dc04d733",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-18T14:35:50Z",
+      "side": 1,
+      "message": "Seems like this is nearly identical to L54--\u003eL73. IF for whatever reason we cannot combine this with EnsureTPMIsReset, could we not atleast call EnsureTPMIsReset within this fx? Then add the rm files in this fx. Note, we would have to parameterize the reboot in EnsureTPMIsReset? \n\nI still would prefer these to be 1 func though unless the creation of there is a strong reason tests/callers of EnsureOwnerIsReset cannot pass in \"dut\"",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "780eb8edefb940af55812498d838d2e67cd2244c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
