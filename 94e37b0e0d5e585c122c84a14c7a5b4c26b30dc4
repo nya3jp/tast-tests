@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd766226_0ecf448b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-02-18T17:35:46Z",
+      "side": 1,
+      "message": "remove all these prefixes so we don\u0027t have to change them like this everytime adding a test. All these tests have unique names so we can easily rely on them.",
+      "range": {
+        "startLine": 199,
+        "startChar": 27,
+        "endLine": 199,
+        "endChar": 30
+      },
+      "revId": "94e37b0e0d5e585c122c84a14c7a5b4c26b30dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
