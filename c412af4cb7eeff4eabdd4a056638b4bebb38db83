@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "3137d738_0a85635b",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "Sorry, this is a know problem. For now please use context.Background. There\u0027s in-flight proposal to allow preconditions to have access to longer context. crrev.com/c/2050463",
+      "parentUuid": "cbcac8f3_caea7d4f",
+      "range": {
+        "startLine": 137,
+        "startChar": 36,
+        "endLine": 137,
+        "endChar": 56
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "260a1c31_5e9ad529",
         "filename": "src/chromiumos/tast/local/wpr/pre.go",
         "patchSetId": 4
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "Hypothetically there\u0027s a way to attach a logger with testing.WithTestContext with your own custom TestContext class with a logger (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#WithTestContext).\n\nBut this would be too hacky and I\u0027m afraid that tast owners wouldn\u0027t be happy with that. Let\u0027s keep this as-is and wait for the replies.  Or, maybe asking to tast-users@chroimum.org might be good.",
       "parentUuid": "260a1c31_5e9ad529",
+      "range": {
+        "startLine": 140,
+        "startChar": 22,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "c412af4cb7eeff4eabdd4a056638b4bebb38db83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587f693e_2abe1c27",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T13:36:29Z",
+      "side": 1,
+      "message": "If crrev.com/c/2050463 is accepted, the new context will give you access to logging as well. Without it I don\u0027t have any better idea than just using a context derived from context.Background.",
+      "parentUuid": "180f1bab_57ae7618",
       "range": {
         "startLine": 140,
         "startChar": 22,
