@@ -55,7 +55,7 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		state, err := metrics.HasConsent()
+		state, err := metrics.HasConsent(ctx)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
