@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "267e1f56_e1d1a25d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-18T19:32:26Z",
+      "side": 1,
+      "message": "Great catch, thanks!",
+      "parentUuid": "3bc820d9_0f3bac36",
+      "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c135ae4_5762ff66",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "be683da6_bffefe36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-18T19:32:26Z",
+      "side": 1,
+      "message": "WaitForCrashFiles will fail if there are no .meta files.",
+      "parentUuid": "5c135ae4_5762ff66",
+      "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80abd90_75216d34",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
         "patchSetId": 5
@@ -50,6 +86,24 @@
       "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7fc6481_76522108",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-02-18T19:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80abd90_75216d34",
+      "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
