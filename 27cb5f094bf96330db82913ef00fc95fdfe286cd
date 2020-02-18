@@ -22,6 +22,30 @@
       "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e294d81a_da634e84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-18T15:35:22Z",
+      "side": 1,
+      "message": "Ah sorry, that\u0027s for encoding. But still, would using all cores make the DUT feel unresponsive? The decode time improvement is good in some cases but not a game-changer, perhaps the test should use a scaled version of the same test file? I.e. use a single 640x480 input file, decode, then upscale?",
+      "parentUuid": "4ed47550_74eb7da9",
+      "range": {
+        "startLine": 70,
+        "startChar": 84,
+        "endLine": 70,
+        "endChar": 90
+      },
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
