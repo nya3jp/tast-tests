@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ac32a54_f225d902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-18T04:38:35Z",
+      "side": 1,
+      "message": "how about wrapping the err or just returning the err?",
+      "range": {
+        "startLine": 75,
+        "startChar": 18,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "5756b39a0ed1af0e29ec700250523d214252110c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
