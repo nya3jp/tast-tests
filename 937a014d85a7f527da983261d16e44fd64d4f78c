@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98e4c84a_02957195",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-18T20:17:18Z",
+      "side": 1,
+      "message": "systems",
+      "range": {
+        "startLine": 140,
+        "startChar": 26,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "937a014d85a7f527da983261d16e44fd64d4f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
