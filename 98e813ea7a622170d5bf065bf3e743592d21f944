@@ -1,0 +1,76 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0428112b_0bf24c12",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 54
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-18T06:54:35Z",
+      "side": 1,
+      "message": "\u003e \"encounted\" is a possible misspelling of \"encountered\" or \"encounter\".\n\nPlease fix.",
+      "parentUuid": "e053e5a4_6f0a400b",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 30
+      },
+      "revId": "98e813ea7a622170d5bf065bf3e743592d21f944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3242ec5a_fd9bfb01",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 54
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-18T06:54:35Z",
+      "side": 1,
+      "message": "\u003e \"reqeust\" is a possible misspelling of \"request\".\n\nPlease fix.",
+      "parentUuid": "7520612f_4a8a3726",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 144,
+        "endChar": 36
+      },
+      "revId": "98e813ea7a622170d5bf065bf3e743592d21f944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e3729af_47aa6d43",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 54
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-18T06:54:35Z",
+      "side": 1,
+      "message": "\u003e \"reqeust\" is a possible misspelling of \"request\".\n\nPlease fix.",
+      "parentUuid": "25996ace_038c7386",
+      "range": {
+        "startLine": 167,
+        "startChar": 35,
+        "endLine": 167,
+        "endChar": 42
+      },
+      "revId": "98e813ea7a622170d5bf065bf3e743592d21f944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
