@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7444093f_81b8d6fe",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-18T02:39:16Z",
+      "side": 1,
+      "message": "When I move the package there I get the following error:\n        src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go:14:2: import of chromiumos/tast/local/bundles/cros/power/setup is only allowed from chromiumos/tast/local/bundles/cros/power or its descendant\n      \n        Refer the following documents for details:\n         https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "parentUuid": "41356ac1_df83aa03",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a83bcc10_8576a542",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "adcc58d0_382a93b3",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-18T02:39:16Z",
+      "side": 1,
+      "message": "Oh yeah.\n\nSometimes I with you could do:\n\nfunc foo(a,b,c int) { ... }\nfunc bar() (int, int) { ... }\nfoo(1, bar())",
+      "parentUuid": "a83bcc10_8576a542",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "721cd27b_cc27ee5a",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 9
@@ -53,6 +95,24 @@
       "writtenOn": "2020-02-11T05:33:13Z",
       "side": 1,
       "message": "Would you mind to share some expected use cases of this?\nJust a chaining of Add won\u0027t work...?\n\nfor nesting case;\n\ns, c :\u003d setup.New()\ns.Add(func() (cleanup func(context.Context) error, err error) {\n  s, c :\u003d setup.New()\n  defer func() {\n    if err !\u003d nil {\n      cleanup()\n    }\n  }()\n  \n  s.Add(...)\n  s.Add(...)\n  ...\n  return c, s.Check(ctx)\n})\n\n  success :\u003d false\n\nis what you\u0027d like?",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae5165c_0329357f",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-18T02:39:16Z",
+      "side": 1,
+      "message": "It\u0027s for setup items that have sub steps that might fail/panic and need to be cleaned up themselves.\n\nSee the network setup items:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2028332\n\nAnd audio setup items:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2028331\n\nIs there a difference between ResultNested and your code above? I just thought it was a common pattern, so I made a helper function.\n\nYou could just pass the Setup object itself to a helper function, but this allows you to use \u0027Add\u0027 for all setup items, even compound ones.",
+      "parentUuid": "721cd27b_cc27ee5a",
       "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "fdccb0a6_ad3c4f87",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-18T02:39:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c497895_a3e8f163",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8c3f8f8_ba369dbe",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 9
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "6e55ae64_87c15f48",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-18T02:39:16Z",
+      "side": 1,
+      "message": "But the caller might make a mistake and call it more than once. Isn\u0027t it better to check?",
+      "parentUuid": "b8c3f8f8_ba369dbe",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1550928_485b1a12",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 9
@@ -104,6 +200,24 @@
       "writtenOn": "2020-02-11T05:33:13Z",
       "side": 1,
       "message": "Could you return bool, instead?",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e9f0a6_ca45cdf6",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-18T02:39:16Z",
+      "side": 1,
+      "message": "It has to be passed in from above because it\u0027s set from deferred cleanup calls.\n\nThe cleanup calls have to be deferred so that they still run in the case of a panic, but we still want to know if any of them failed, so we can fail the test.\n\nIs the comment on cleanupAndLog not clear?",
+      "parentUuid": "a1550928_485b1a12",
       "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -164,6 +278,24 @@
       "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8143192f_0668b9ac",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-18T02:39:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54ef8ab5_67c8c9e0",
+      "revId": "e04e6144e1eac6a5fcc4056eb9ef84a560f1eb52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
