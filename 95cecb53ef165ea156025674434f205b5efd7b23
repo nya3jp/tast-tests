@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd581414_cb492a1e",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-02-18T03:06:06Z",
+      "side": 1,
+      "message": "Just a small question, but what\u0027s the default timeout of Poll? I dug around a bit for it, and it seems like it\u0027s the deadline of ctx maybe? I didn\u0027t get much further than that, though. Since we\u0027re losing the defaultUITimeout time from the previous WaitForExists call, will there still be enough time to poll for clicking the install button along with everything else?",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "95cecb53ef165ea156025674434f205b5efd7b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f23f123_d9271dd8",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-02-18T03:06:06Z",
+      "side": 1,
+      "message": "This seems cleaner, but maybe less informative. With this err, it seems like we won\u0027t be able to differentiate between the exists-but-not-enabled case and other errors. Is it okay to leave out this distinction?",
+      "revId": "95cecb53ef165ea156025674434f205b5efd7b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
