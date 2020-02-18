@@ -399,6 +399,11 @@ func checkStateful() error {
 		"/mnt/stateful_partition",
 		"/mnt/stateful_partition/encrypted",
 	} {
+		if _, err := os.Stat(dir); os.IsNotExist(err) {
+			continue // some dirs may not exist (e.g. on moblab)
+		} else if err != nil {
+			return errors.Wrapf(err, "failed to stat %s", dir)
+		}
 		fp := filepath.Join(dir, ".tast.check-disk")
 		if err := ioutil.WriteFile(fp, nil, 0600); err != nil {
 			return errors.Wrapf(err, "%s is not writable", dir)
