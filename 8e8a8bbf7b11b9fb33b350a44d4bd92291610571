@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b81de72_dbe8ca51",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "It might be good to write unit tests for this package. Since it\u0027s general it should be not difficult to write unit tests.",
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8f0c46a_f40554ad",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "nil is the desired value for empty slices:\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices\n\nIn this case we can omit these fields on initialization because nil is the zero value for slices.\n\n s :\u003d \u0026Setup{}\n\n\nOptional: Alternatively we can declare that zero value of Setup is ready to use, and provide Setup.Cleanup. Then usage would be like:\n\n var sup setup.Setup\n defer func() {\n   if err :\u003d sup.Cleanup(fullCtx); err !\u003d nil {\n     s.Fatal(\"Failed to revert setup: \", err)\n   }\n }()\n\nSee:\nhttps://golang.org/doc/effective_go.html#data\nhttps://godoc.org/sync#Mutex",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dfaf1ec_9e695dc1",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "nit: mind defining \"failed\" just before s.cleanUp? It is not used until then.",
+      "range": {
+        "startLine": 54,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5eeeb92_b5484546",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "Functions accepting a pointer to a result variable is not very popular in Go. Alternatively you can use named results to accomplish the similar thing.\n\n func (s *Setup) cleanUp(ctx context.Context) (failed bool) {\n   for _, c :\u003d range s.callbacks {\n     defer func(callback CleanupCallback) {\n       if err :\u003d callback(ctx); err !\u003d nil {\n         failed \u003d true\n         testing.ContextLog(...)\n       }\n     }(c)\n   }\n   return false\n }",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 60
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c48ec1_2fefebf7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "I recommend wrapping the first error to make debugging easier without having to looking into logs. And typically the first error is the most interesting.\n\n return errors.Wrap(firstErr, \"setup for some items failed; first error follows\")",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 60
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d109da13_6b1e6cd7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this check may be vulnerable to service name typos etc. I believe in most cases we expect the service to exist, and there are only a handful of cases where we can ignore missing services. How about checking such cases as needed, rather than handling here in general?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a965bbef_4e45033a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "IIUC upstart.StopJob does nothing if the service is already stopped, so I think we don\u0027t need this check.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 2
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed1d3768_9c86c4a0",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-18T14:27:11Z",
+      "side": 1,
+      "message": "Generally we recommend logging before doing operations, rather than after finishing operations.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 53
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
