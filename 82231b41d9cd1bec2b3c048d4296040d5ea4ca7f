@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75943994_466bbbb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "good point, moved this func to a11y_speech.go",
+      "parentUuid": "7b35a899_637fca39",
+      "range": {
+        "startLine": 298,
+        "startChar": 5,
+        "endLine": 298,
+        "endChar": 14
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6089b6fd_a87b3f81",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad9abfb_406dade8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "ah seems like Javascript sometimes returns an empty strings.",
+      "parentUuid": "6089b6fd_a87b3f81",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 13
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0290614c_5c7b438d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abb03112_be7017a9",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 30
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29ab372_26b6df33",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1737d0b3_50510d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29ab372_26b6df33",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "db3e5fa2_b077a01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9256d9b3_4186a6df",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9f0614f_0b3ff84d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "1aa849ba_48d3a5a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f0614f_0b3ff84d",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 61
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64c10cc6_adb64c44",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2020-02-17T07:53:20Z",
       "side": 1,
       "message": "IIUC, this enables all logging the logging in ChromeVox.\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/accessibility/chromevox/background/command_handler.js;l\u003d118;drc\u003d29ed42847a3f30dc050de839e995d942f0021b1d\n\nI think enabling only speech log is enough.",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 79
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c61a518_815ed740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "yeah it enables all logging.\nExcept calling `ChromeVoxPrefs.` directly from here resulted in some errors, so I created a method `enableSpeechLogging` that just does this for SPEECH.\nIt\u0027s uploaded here (crrev/c/2060353)",
+      "parentUuid": "64c10cc6_adb64c44",
       "range": {
         "startLine": 75,
         "startChar": 36,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "5e496a0c_647fa359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc58e23a_63c445f8",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "056d0cd2_bedf1e7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -206,6 +398,30 @@
       "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "362b3a5b_e69a4d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T00:35:00Z",
+      "side": 1,
+      "message": "ah I see,  I wasn\u0027t sure on how to use PollBreak",
+      "parentUuid": "056d0cd2_bedf1e7e",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "82231b41d9cd1bec2b3c048d4296040d5ea4ca7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
