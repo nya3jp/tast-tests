@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 )
 
@@ -52,6 +53,7 @@ func getCPUCgroupShares(ctx context.Context) (int, error) {
 }
 
 func Cgroups(ctx context.Context, s *testing.State) {
+	const pkgName = "com.android.settings"
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -64,22 +66,14 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	// Check shares after ARC is done booting but nothing is active and poll up to 10 seconds.
-	if err := testing.Poll(ctx, func(context.Context) error {
-		share, err := getCPUCgroupShares(ctx)
-		if err != nil {
-			return err
-		}
-		if share == cpuSharesARCBackground {
-			return nil
-		}
-		return errors.Errorf("unexpected ARC CPU shares value: %d", share)
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Failed waiting for ARC background shares: ", err)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer tconn.Close()
 
 	// TODO(sonnyrao): Try to figure out how to use the app launcher to do this.
-	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+	act, err := arc.NewActivity(a, pkgName, ".Settings")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
@@ -89,12 +83,39 @@ func Cgroups(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
 
-	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
-		s.Fatal("Failed to set window state to Normal: ", err)
+	// Wait Chrome window appears for this task.
+	if err := testing.Poll(ctx, func(context.Context) error {
+		if _, err := ash.GetARCAppWindowState(ctx, tconn, pkgName); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for activity is created: ", err)
 	}
 
-	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume: ", err)
+	// setWindowState issues the event to the activity window and waits till window switches to
+	// the required state.
+	setWindowState := func(state ash.WindowStateType, eventType ash.WMEventType) error {
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, pkgName, eventType); err != nil {
+			return errors.Errorf("failed to issue event %s", eventType)
+		}
+		if err := testing.Poll(ctx, func(context.Context) error {
+			testState, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if testState == state {
+				return nil
+			}
+			return errors.Errorf("window state %s is not as required: %s", testState, state)
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return errors.Errorf("failed to wait for ARC window state: %s", state)
+		}
+		return nil
+	}
+
+	if err := setWindowState(ash.WindowStateMaximized, ash.WMEventMaximize); err != nil {
+		s.Fatal("Failed to activate the activity: ", err)
 	}
 
 	// Check shares after ARC window is up and in the foreground.
@@ -107,15 +128,10 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	if share != cpuSharesARCForeground {
 		s.Fatal("Unexpected ARC CPU shares value foreground: ", share)
 	}
-
-	// Close ARC window and ensure we go back to background shares.
-	if err := act.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
-		s.Fatal("Failed to set window state to Minimized: ", err)
+	// Minimize ARC window and ensure we go back to background shares.
+	if err := setWindowState(ash.WindowStateMinimized, ash.WMEventMinimize); err != nil {
+		s.Fatal("Failed to deactivate the activity: ", err)
 	}
-	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for activity to resume: ", err)
-	}
-
 	share, err = getCPUCgroupShares(ctx)
 	if err != nil {
 		s.Fatal("Failed to get ARC CPU shares value: ", err)
