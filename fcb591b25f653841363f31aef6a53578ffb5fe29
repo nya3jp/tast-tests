@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4315fcf0_4fb1c63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/c2e2etest/c2e2etest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-18T16:44:51Z",
+      "side": 1,
+      "message": "off topic: now Tast supports maintaining APKs in tast-tests repository. You may be interested in it.",
+      "revId": "fcb591b25f653841363f31aef6a53578ffb5fe29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367a46de_8da9c59e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/c2e2etest/c2e2etest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-18T16:44:51Z",
+      "side": 1,
+      "message": "style: we don\u0027t have \"Get\", \"Is\", \"Has\" like prefixes in most cases.\nApkNameForArch() should be fine, I think.",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "fcb591b25f653841363f31aef6a53578ffb5fe29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451b7253_fe5c53d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/c2e2etest/c2e2etest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-18T16:44:51Z",
+      "side": 1,
+      "message": "nit: we often do not use an array. Could you use slice instead?",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "fcb591b25f653841363f31aef6a53578ffb5fe29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c8782e_0ec37b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/c2e2etest/c2e2etest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-18T16:44:51Z",
+      "side": 1,
+      "message": "Nice to avoid two things in one funciton.\nHow about just splitting into two?",
+      "revId": "fcb591b25f653841363f31aef6a53578ffb5fe29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb97d2b_c8a73c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/c2e2etest/c2e2etest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-18T16:44:51Z",
+      "side": 1,
+      "message": "Could you use filepath.Join? Ditto for below.",
+      "revId": "fcb591b25f653841363f31aef6a53578ffb5fe29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "692edd85_bea1299d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/c2e2etest/c2e2etest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-18T16:44:51Z",
+      "side": 1,
+      "message": "Instead, how about just returning an error to the caller?",
+      "revId": "fcb591b25f653841363f31aef6a53578ffb5fe29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b5856f7_33d7a593",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-18T16:44:51Z",
+      "side": 1,
+      "message": "Could you run strings.Join at the end, instead?\n\nargs :\u003d append([]string(nil), commonArgs...)\nargs \u003d append(args, ba.exraArgs...)\nargs \u003d append(args, \"--gtest_filter\u003d\" + ...)\nargs \u003d append(args, \"--gtest_output\u003dxml:\" + ...)\nif ... StartWithArgs(... {\n    ...\n    \"--esa\", \"test-args\", strings.Join(args, \",\"),\n    ...",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 71
+      },
+      "revId": "fcb591b25f653841363f31aef6a53578ffb5fe29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
