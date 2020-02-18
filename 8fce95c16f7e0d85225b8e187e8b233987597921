@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e04c89e_50be17c9",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-18T20:26:09Z",
+      "side": 1,
+      "message": "I\u0027m concerned about changing the lab DUT iptables for security reason. Can you cc security folks on this?",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dc7e9bf_32edbfe8",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-18T20:26:09Z",
+      "side": 1,
+      "message": "IIUC, ihf@ want to have one trace per test? In this case, we don\u0027t need the for loop here.",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42233d22_5c47a2e5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-18T20:26:09Z",
+      "side": 1,
+      "message": "This will override existing perf results.",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 3
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d196984b_c1459672",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-18T20:26:09Z",
+      "side": 1,
+      "message": "If you delete l208, can you change this and below to \nperfValues.Set(perf.Metric{\n    Name: \"time\",\n    Unit: \"sec\", \n    ...\n})\nperfValues.Set(perf.Metric{\n    Name: \"frames\",\n    Unit: \"frame\", \n    ...\n})\nperfValues.Set(perf.Metric{\n    Name: \"fps\",\n    Unit: \"fps\", \n    ...\n})",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 267,
+        "endChar": 20
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
