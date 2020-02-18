@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "6e5d6ab3_0d6a0255",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-18T14:35:50Z",
+      "side": 1,
+      "message": "I am not sure you can powerwash without nuking the test data... But I agree with Andrey\u0027s comment with trying to make this one paramaterized fx with EnsureTPMIsReset",
+      "parentUuid": "37316788_150bd357",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "fab9a842d8639bd0608ca49d842a446fa45703d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49d29f0c_aeafaf1a",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 3

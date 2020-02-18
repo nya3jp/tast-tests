@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "2514bd0f_04e78231",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2020-02-18T14:35:50Z",
+      "side": 1,
+      "message": "It still seems much safer to wrap this in the same wait/try. Just because your single Chromebook does not have doesn\u0027t have a slow reboot, does not guarantee the hundreds in a lab won\u0027t flake out here.\n\nIf we have a call that we are intentionally wrapping in a poll due known flake with reboots, we should always wrap that call in a poll, since we do not know what will always be happening prior to this util.",
+      "parentUuid": "eb3c5199_e4afa91f",
+      "range": {
+        "startLine": 105,
+        "startChar": 25,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "7ed2d27313d931e69038ebb78728f394dc30187d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d0a0588_f0fc49c7",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
