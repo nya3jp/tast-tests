@@ -24,7 +24,7 @@ func init() {
 		Func:         SettingsBridge,
 		Desc:         "Checks that Chrome settings are persisted in ARC",
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
