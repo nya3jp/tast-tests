@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a7f1771_64bfb4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-02-18T20:16:14Z",
+      "side": 0,
+      "message": "That logic was incorrect even in terms of Android state. We should wait for paused here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 29
+      },
+      "revId": "8869fb4d1b67c700bd663e9cd35cbb85be832cc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
