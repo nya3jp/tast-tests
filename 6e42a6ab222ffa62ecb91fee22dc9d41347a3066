@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9c1669f_323bed81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T23:41:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7eba1cc_f6b0a7d7",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 63
+      },
+      "revId": "6e42a6ab222ffa62ecb91fee22dc9d41347a3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5311529_c8b89aac",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ed1cbd74_f896cc12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T23:41:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5311529_c8b89aac",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "6e42a6ab222ffa62ecb91fee22dc9d41347a3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50a2d64d_26f5a013",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "6e42a6ab222ffa62ecb91fee22dc9d41347a3066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "746d5c16_f896eaf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-18T23:41:47Z",
+      "side": 1,
+      "message": "ah displayDensity relies on act, but moved input.Keyboard",
+      "parentUuid": "50a2d64d_26f5a013",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "6e42a6ab222ffa62ecb91fee22dc9d41347a3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
