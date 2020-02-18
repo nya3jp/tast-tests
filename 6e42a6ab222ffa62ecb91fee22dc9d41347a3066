@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7eba1cc_f6b0a7d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-18T08:21:24Z",
+      "side": 1,
+      "message": "for table-driven test, tast framework provides testing.State.Run https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#State.Run\n\nCan you use this?",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 63
+      },
+      "revId": "6e42a6ab222ffa62ecb91fee22dc9d41347a3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5311529_c8b89aac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-18T08:21:24Z",
+      "side": 1,
+      "message": "I think this setup is a common setup between two activities. can you move this section before the for loop?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "6e42a6ab222ffa62ecb91fee22dc9d41347a3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a2d64d_26f5a013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-18T08:21:24Z",
+      "side": 1,
+      "message": "I think these are also common.",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 3
+      },
+      "revId": "6e42a6ab222ffa62ecb91fee22dc9d41347a3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
