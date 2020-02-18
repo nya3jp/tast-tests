@@ -31,7 +31,7 @@ func init() {
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "graphics_debugfs"},
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
 			Name:              "h264_hw",
