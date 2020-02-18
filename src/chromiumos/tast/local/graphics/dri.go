@@ -19,20 +19,18 @@ import (
 )
 
 const (
-	// The debugfs file with the information on allocated framebuffers.
+	// The debugfs file with the information on allocated framebuffers for Intel i915 GPUs.
 	i915FramebufferFile = "/sys/kernel/debug/dri/0/i915_gem_framebuffer"
+	// The debugfs file with the information on allocated framebuffers for AMD Adreno GPUs.
+	adrenoFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
 )
 
-// Backend contains the necessary methods to interact with the platform
-// debug interface: checking if it's supported and getting readings.
+// Backend contains the necessary methods to interact with the platform debug
+// interface and getting readings.
 type Backend interface {
-	// SupportsFramebufferInfo returns true if the platform supports graphics
-	// memory allocation debugging and it's available.
-	SupportsFramebufferInfo() bool
-
 	// Round implements the platform-specific graphic- or codec- rounding.
 	Round(value int) int
 
@@ -44,10 +42,11 @@ type Backend interface {
 // I915Backend implements Backend for the Intel i915 case.
 type I915Backend struct{}
 
-// SupportsFramebufferInfo returns true if i915FramebufferFile exists.
-func (g I915Backend) SupportsFramebufferInfo() bool {
-	_, err := os.Stat(i915FramebufferFile)
-	return err == nil
+func getI915Backend() *I915Backend {
+	if _, err := os.Stat(i915FramebufferFile); err != nil {
+		return nil
+	}
+	return &I915Backend{}
 }
 
 // Round rounds up value for the Intel platforms and all codecs.
@@ -82,6 +81,69 @@ func (g I915Backend) ReadFramebufferCount(ctx context.Context, width, height int
 		}
 	}
 	return
+}
+
+// AdrenoBackend implements Backend for the AMD Adreno case.
+type AdrenoBackend struct{}
+
+func getAdrenoBackend() *AdrenoBackend {
+	if _, err := os.Stat(adrenoFramebufferFile); err != nil {
+		return nil
+	}
+	return &AdrenoBackend{}
+}
+
+// Round rounds up value for the AMD platforms and all codecs.
+func (g AdrenoBackend) Round(value int) int {
+	const adrenoAlignment = 16
+	// Inspired by Chromium's base/bits.h:Align() function.
+	return (value + adrenoAlignment - 1) & ^(adrenoAlignment - 1)
+}
+
+// ReadFramebufferCount tries to open the adrenoFramebufferFile and count the
+// amount of lines of dimensions width x height, which corresponds to the amount
+// of framebuffers allocated in the system.
+// See https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html
+func (g AdrenoBackend) ReadFramebufferCount(ctx context.Context, width, height int) (framebuffers int, e error) {
+	f, err := os.Open(adrenoFramebufferFile)
+	if err != nil {
+		return framebuffers, errors.Wrap(err, "failed to open dri file")
+	}
+	text, err := ioutil.ReadAll(f)
+	if err != nil {
+		return framebuffers, errors.Wrap(err, "failed to read dri file")
+	}
+	lines := strings.Split(string(text), "\n")
+	for _, line := range lines {
+		// The line we're looking for looks like "...size=1920x1080"
+		var fbWidth, fbHeight int
+		if _, err := fmt.Sscanf(line, " size=%dx%d", &fbWidth, &fbHeight); err != nil {
+			continue
+		}
+		if fbWidth == width && fbHeight == height {
+			framebuffers++
+		}
+	}
+	return
+}
+
+// GetBackend tries to get the appropriate platform graphics debug backend and
+// returns it, or returns an error.
+func GetBackend() (Backend, error) {
+	adrenoBackend := getAdrenoBackend()
+	i915Backend := getI915Backend()
+	// In the future we might want to support systems with both GPUs; for the time
+	// being just fail.
+	if adrenoBackend != nil && i915Backend != nil {
+		return nil, errors.New("systems with both i915 and adreno backends are not supported")
+	}
+	if i915Backend != nil {
+		return i915Backend, nil
+	}
+	if adrenoBackend != nil {
+		return adrenoBackend, nil
+	}
+	return nil, errors.New("could not find any Graphics backend")
 }
 
 // CompareGraphicsMemoryBeforeAfter compares the graphics memory consumption

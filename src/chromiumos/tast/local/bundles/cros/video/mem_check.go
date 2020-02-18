@@ -70,11 +70,11 @@ func MemCheck(ctx context.Context, s *testing.State) {
 		play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, play.NormalVideo, play.VerifyHWAcceleratorUsed)
 	}
 
-	// TODO(crbug.com/1047514): support AMD.
-	i915 := graphics.I915Backend{}
-	if i915.SupportsFramebufferInfo() {
-		if err := graphics.CompareGraphicsMemoryBeforeAfter(ctx, testPlay, i915, testOpt.videoWidth, testOpt.videoHeight); err != nil {
-			s.Fatal("Test failed: ", err)
-		}
+	backend, err := graphics.GetBackend()
+	if err != nil {
+		s.Fatal("Error getting the graphics backend: ", err)
+	}
+	if err := graphics.CompareGraphicsMemoryBeforeAfter(ctx, testPlay, backend, testOpt.videoWidth, testOpt.videoHeight); err != nil {
+		s.Fatal("Test failed: ", err)
 	}
 }
