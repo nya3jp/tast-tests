@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ed47550_74eb7da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-18T15:30:25Z",
+      "side": 1,
+      "message": "Chrome only uses half the number of cores to avoid saturating the CPU and making it unresponsive, should we do the same here?\nhttps://cs.chromium.org/chromium/src/third_party/blink/renderer/modules/mediarecorder/vpx_encoder.cc?q\u003dvpx_encoder\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d35",
+      "range": {
+        "startLine": 70,
+        "startChar": 84,
+        "endLine": 70,
+        "endChar": 90
+      },
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
