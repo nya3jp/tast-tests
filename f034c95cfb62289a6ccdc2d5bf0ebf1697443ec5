@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b824116_d4d46898",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/remote_iwlwifi_pci_rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-18T19:18:53Z",
+      "side": 1,
+      "message": "nit: does this have to be a defer?  You can simply do with replacing \u0027s.Fatal\u0027 by \u0027s.Error\u0027 at line 52, and then the contents can just follow after that.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 4
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a373a1_844f12b1",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-18T19:18:53Z",
+      "side": 1,
+      "message": "nit: add a blank line?",
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
