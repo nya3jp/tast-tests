@@ -26,13 +26,12 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcMemoryAllocatorTest.apk"},
 		Params: []testing.Param{{
-			Name:              "arc",
-			Pre:               arc.Booted(),
 			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
 		}, {
-			Name:              "arcvm",
-			Pre:               arc.VMBooted(),
+			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
 		}},
 		Timeout: 10 * time.Minute,
 	})
