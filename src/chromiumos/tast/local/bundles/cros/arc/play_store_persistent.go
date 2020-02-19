@@ -25,10 +25,18 @@ func init() {
 		Desc:         "Makes sure that Play Store remains open after it is fully initialized",
 		Contacts:     []string{"khmel@chromium.org", "jhorwich@chromium.org", "arc-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_all_both", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		// 1 min for ARC is provisioned, 4 minutes max waiting for daily hygiene, and
 		// 1 min max waiting for CPU is idle. Normally test takes ~2.5-3.5 minutes to complete.
 		Timeout: 5 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_all"},
+			Val:               []string{},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               []string{"--enable-arcvm"},
+		}},
 	})
 }
 
@@ -98,8 +106,11 @@ func waitForDailyHygieneDone(ctx context.Context, a *arc.ARC) (bool, error) {
 }
 
 func PlayStorePersistent(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
-		chrome.ExtraArgs("--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"))
+	extraArgs := s.Param().([]string)
+	args := []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
+	args = append(args, extraArgs...)
+
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
