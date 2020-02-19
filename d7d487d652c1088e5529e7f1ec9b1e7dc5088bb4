@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f156a266_a7c82a6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-19T10:36:34Z",
+      "side": 0,
+      "message": "nit: looks like it\u0027s not related to CL title. Don\u0027t you think it\u0027s better to keep it?",
+      "revId": "d7d487d652c1088e5529e7f1ec9b1e7dc5088bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
