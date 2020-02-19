@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f00394d_e116f5e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/arc_print_ippusb_golden.pdf.external",
+        "patchSetId": 28
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-02-19T18:39:47Z",
+      "side": 1,
+      "message": "How sensitive is this file to changes in other libraries (virtual printer, cups, etc)?  Instead of a direct comparison, do we need to scrub out version numbers and that sort of thing from the PDF headers?",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11984fe4_45336327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-02-19T18:39:47Z",
+      "side": 1,
+      "message": "nit: document",
+      "range": {
+        "startLine": 147,
+        "startChar": 55,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70fc05f_7b8c45f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-02-19T18:39:47Z",
+      "side": 1,
+      "message": "Is there any way to get notified when this happens instead of waiting (or maybe poll for the print preview window to appear)?  If not, how confident are you that 3s is long enough for all devices?",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "263bc8a9_5c569497",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-02-19T18:39:47Z",
+      "side": 1,
+      "message": "Is this just going to the end of the list?  Is that always the \"see more\" option?",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f794f197_7416f1a2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-02-19T18:39:47Z",
+      "side": 1,
+      "message": "This seems fragile.  Is there no identifier for this control that\u0027s more likely to be stable?",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
