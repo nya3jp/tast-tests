@@ -24,18 +24,17 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome", "android_both"},
+		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name: "noarc",
 			Pre:  chrome.LoggedIn(),
 		}, {
-			Name:              "arc",
-			Pre:               arc.Booted(),
 			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
 		}, {
-			Name:              "arcvm",
-			Pre:               arc.VMBooted(),
+			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
 		}},
 		Timeout: 10 * time.Minute,
 	})
