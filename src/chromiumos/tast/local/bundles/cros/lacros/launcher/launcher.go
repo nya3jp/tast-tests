@@ -119,7 +119,7 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 
 	l := &linuxChrome{}
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
-	l.cmd.Cmd.Env = append(os.Environ(), "XDG_RUNTIME_DIR=/run/chrome", "LD_LIBRARY_PATH="+BinaryPath)
+	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch linux-chrome")
