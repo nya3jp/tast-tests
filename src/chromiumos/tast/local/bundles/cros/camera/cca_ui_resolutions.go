@@ -10,8 +10,10 @@ import (
 	"image/jpeg"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
+	"github.com/alfg/mp4"
 	"github.com/pixelbender/go-matroska/matroska"
 
 	"chromiumos/tast/errors"
@@ -143,16 +145,31 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 	})
 }
 
-// getVideoTrack get video track from video file under specified path.
-func getVideoTrack(path string) (*matroska.VideoTrack, error) {
-	doc, err := matroska.Decode(path)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to decode video file of path %v", path)
-	}
-	for _, track := range doc.Segment.Tracks {
-		for _, ent := range track.Entries {
-			if ent.Type == matroska.TrackTypeVideo {
-				return ent.Video, nil
+// getVideoResolution get the resolution from video file under specified path.
+func getVideoResolution(path string) (*cca.Resolution, error) {
+	if strings.HasSuffix(path, ".mkv") {
+		doc, err := matroska.Decode(path)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to decode video file at %v", path)
+		}
+		for _, track := range doc.Segment.Tracks {
+			for _, ent := range track.Entries {
+				if ent.Type == matroska.TrackTypeVideo {
+					return &cca.Resolution{Width: ent.Video.Width, Height: ent.Video.Height}, nil
+				}
+			}
+		}
+	} else if strings.HasSuffix(path, ".mp4") {
+		file, err := mp4.Open(path)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to open video file at %v", path)
+		}
+		defer file.Close()
+		for _, track := range file.Moov.Traks {
+			width := track.Tkhd.GetWidth()
+			height := track.Tkhd.GetHeight()
+			if width > 0 && height > 0 {
+				return &cca.Resolution{Width: int(width), Height: int(height)}, nil
 			}
 		}
 	}
@@ -191,12 +208,12 @@ func testVideoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err != nil {
 				return errors.Wrap(err, "failed to record video")
 			}
-			track, err := getVideoTrack(filepath.Join(saveDir, info.Name()))
+			vr, err := getVideoResolution(filepath.Join(saveDir, info.Name()))
 			if err != nil {
 				return err
 			}
-			if track.Width != or.Width || track.Height != or.Height {
-				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", track.Width, track.Height, r.Width, r.Height)
+			if vr.Width != or.Width || vr.Height != or.Height {
+				return errors.Wrapf(err, "incorrect captured resolution get %dx%d; want %dx%d", vr.Width, vr.Height, r.Width, r.Height)
 			}
 		}
 		return nil
