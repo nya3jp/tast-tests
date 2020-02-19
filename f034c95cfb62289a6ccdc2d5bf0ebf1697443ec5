@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "7bae17b5_fc603f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-19T09:56:47Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Comment added.",
+      "parentUuid": "594e43d7_cf38f273",
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15f65648_81c88e79",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
         "patchSetId": 4
