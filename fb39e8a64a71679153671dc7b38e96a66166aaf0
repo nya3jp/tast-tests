@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4b03738d_0236769d",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-19T10:00:25Z",
+      "side": 1,
+      "message": "If we do something more involved, then we will change all callers. Otherwise we should check error which is always nil",
+      "parentUuid": "c4a44c18_11d19210",
+      "range": {
+        "startLine": 90,
+        "startChar": 69,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "fb39e8a64a71679153671dc7b38e96a66166aaf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "250b9be7_d8fa047b",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
         "patchSetId": 14
