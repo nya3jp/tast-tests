@@ -7,6 +7,8 @@ package cryptohome
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -32,6 +34,11 @@ const (
 	// GuestUser is the name representing a guest user account.
 	// Defined in libbrillo/brillo/cryptohome.cc.
 	GuestUser = "$guest"
+
+	// MounterExe is the full executable for the out-of-process cryptohome
+	// mounter.
+	// Defined in cryptohome/BUILD.gn.
+	MounterExe = "/usr/sbin/cryptohome-namespace-mounter"
 )
 
 // hashRegexp extracts the hash from a cryptohome dir's path.
@@ -95,6 +102,62 @@ func RemoveUserDir(ctx context.Context, user string) error {
 	return nil
 }
 
+// findMounterPid finds the pid of the cryptohome-namespace-mounter process.
+func findMounterPid() (int32, error) {
+	var mounterPid int32 = -1
+	procs, err := process.Processes()
+	if err != nil {
+		return mounterPid, errors.Wrap(err, "could not list running processes")
+	}
+
+	for _, proc := range procs {
+		if exe, err := proc.Exe(); err == nil && exe == MounterExe {
+			mounterPid = proc.Pid
+		}
+	}
+
+	return mounterPid, nil
+}
+
+// findMountsForPid returns the list of mounts in |pid|'s mount namespace.
+func findMountsForPid(pid int32) ([]disk.PartitionStat, error) {
+	path := fmt.Sprintf("/proc/%d/mounts", pid)
+	bs, err := ioutil.ReadFile(path)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get list of mounts for pid %d", pid)
+	}
+	output := strings.Trim(string(bs), "\n")
+	mounts := strings.Split(output, "\n")
+
+	res := make([]disk.PartitionStat, 0, len(mounts))
+	for _, mount := range mounts {
+		var d disk.PartitionStat
+		fields := strings.Fields(mount)
+		d = disk.PartitionStat{
+			Device:     fields[0],
+			Mountpoint: fields[1],
+			Fstype:     fields[2],
+			Opts:       fields[3],
+		}
+		res = append(res, d)
+	}
+	return res, nil
+}
+
+// findGuestMounts returns the list of mounts in
+// |crypthome-namespace-mounter|'s mount namespace.
+func findGuestMounts() ([]disk.PartitionStat, error) {
+	mounterPid, err := findMounterPid()
+	if err != nil {
+		return nil, errors.Wrap(err, "could not find pid for mounter process")
+	} else if mounterPid == -1 {
+		// If the mounter process is not running, the list of mounts is
+		// empty.
+		return nil, nil
+	}
+	return findMountsForPid(mounterPid)
+}
+
 // findPartition returns a pointer to the entry in ps corresponding to path,
 // or nil if no matching entry is present.
 func findPartition(ps []disk.PartitionStat, path string) *disk.PartitionStat {
@@ -144,8 +207,13 @@ func validateGuestPartition(p *disk.PartitionStat) error {
 
 // WaitForUserMount waits for user's encrypted home directory to be mounted.
 func WaitForUserMount(ctx context.Context, user string) error {
+	findPartitions := func() ([]disk.PartitionStat, error) {
+		return disk.Partitions(true /* all */)
+	}
 	validatePartition := validatePermanentPartition
+
 	if user == GuestUser {
+		findPartitions = findGuestMounts
 		validatePartition = validateGuestPartition
 	}
 
@@ -161,7 +229,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 	const waitTimeout = 30 * time.Second
 	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, waitTimeout)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		partitions, err := disk.Partitions(true /* all */)
+		partitions, err := findPartitions()
 		if err != nil {
 			return err
 		}
@@ -258,8 +326,13 @@ func UnmountVault(ctx context.Context, user string) error {
 
 // IsMounted checks if the vault for the user is mounted.
 func IsMounted(ctx context.Context, user string) (bool, error) {
+	findPartitions := func() ([]disk.PartitionStat, error) {
+		return disk.Partitions(true /* all */)
+	}
 	validatePartition := validatePermanentPartition
+
 	if user == GuestUser {
+		findPartitions = findGuestMounts
 		validatePartition = validateGuestPartition
 	}
 
@@ -271,7 +344,7 @@ func IsMounted(ctx context.Context, user string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	partitions, err := disk.Partitions(true /* all */)
+	partitions, err := findPartitions()
 	if err != nil {
 		return false, err
 	}
