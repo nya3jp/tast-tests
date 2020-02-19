@@ -22,6 +22,30 @@
       "revId": "288101169a91b3d13c9ae57ad1344444d67892a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b42ad24_3cb26373",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-19T09:28:20Z",
+      "side": 1,
+      "message": "Used address to not shadow url.",
+      "parentUuid": "4e88d911_ad4d2f5b",
+      "range": {
+        "startLine": 90,
+        "startChar": 47,
+        "endLine": 90,
+        "endChar": 68
+      },
+      "revId": "288101169a91b3d13c9ae57ad1344444d67892a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
