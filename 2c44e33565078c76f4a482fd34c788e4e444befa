@@ -429,6 +429,24 @@
     },
     {
       "key": {
+        "uuid": "596d6520_81bc0b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-19T10:43:38Z",
+      "side": 1,
+      "message": "one test runs on a board once.\nThus, on dualmode board, it won\u0027t run twice.\nUsing Parameterized test is current recommended way.",
+      "parentUuid": "a26813b8_2550ebac",
+      "revId": "2c44e33565078c76f4a482fd34c788e4e444befa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0fefc98_14d40cdc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation.go",
         "patchSetId": 3
