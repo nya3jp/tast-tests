@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "600194dd_b16e3964",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-19T19:11:35Z",
+      "side": 1,
+      "message": "Can you mention what was incorrect for the record?",
+      "revId": "46121ac44f9fb67181c6dba4f4361b82bd0a02cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
