@@ -256,6 +256,18 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
+		{
+			name: "floating_point_accuracy",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
+				Parameters: &dtcpb.RunRoutineRequest_FloatingPointAccuracyParams{
+					FloatingPointAccuracyParams: &dtcpb.FloatingPointAccuracyRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			if err := testRoutineExecution(ctx, param.request, param.expectedStatus); err != nil {
