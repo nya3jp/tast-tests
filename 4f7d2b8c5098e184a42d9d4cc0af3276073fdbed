@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dba7cf22_4221ad9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/arc_print_ippusb_golden.pdf.external",
+        "patchSetId": 28
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-19T18:53:55Z",
+      "side": 1,
+      "message": "I\u0027m not too sure. I followed the pattern used in the other print tests, but I\u0027m assuming that if a CL broke this test, it would trigger the author to create and upload a new golden file.",
+      "parentUuid": "8f00394d_e116f5e1",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11984fe4_45336327",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 28
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "64c77bed_e3f7dec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-19T18:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11984fe4_45336327",
+      "range": {
+        "startLine": 147,
+        "startChar": 55,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c70fc05f_7b8c45f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 28
@@ -53,6 +95,24 @@
       "writtenOn": "2020-02-19T18:39:47Z",
       "side": 1,
       "message": "Is there any way to get notified when this happens instead of waiting (or maybe poll for the print preview window to appear)?  If not, how confident are you that 3s is long enough for all devices?",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af0f845_121746be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-19T18:53:55Z",
+      "side": 1,
+      "message": "Good question. The printpreview functions all wait up to 10 seconds when looking for a UI element, and I originally thought that would be sufficient. Unfortunately, print preview fails to render half the time when I don\u0027t give it enough time to initially launch, and then that prevents us from interacting with the UI further.\n\nI\u0027m pretty confident 3 seconds will be sufficient, but since we\u0027re starting this test off as informational, it\u0027ll be easy to update before promoting it to the CQ if we need to wait longer.\n\nI\u0027m also open to other solutions since this is potentially flakey.",
+      "parentUuid": "c70fc05f_7b8c45f4",
       "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "de422e39_a63704e4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-19T18:53:55Z",
+      "side": 1,
+      "message": "That\u0027s correct. It\u0027s going to the end of the list, and \"See more...\" is always the last option.\n\nThere\u0027s currently a bug in Chrome\u0027s automation library that prevents me from being able to click an item in a dropdown list, so I had to use accelerators like \"end\" to select the item I wanted.",
+      "parentUuid": "263bc8a9_5c569497",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f794f197_7416f1a2",
         "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
         "patchSetId": 28
@@ -87,6 +165,24 @@
       "writtenOn": "2020-02-19T18:39:47Z",
       "side": 1,
       "message": "This seems fragile.  Is there no identifier for this control that\u0027s more likely to be stable?",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba2937b_1179f09e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-19T18:53:55Z",
+      "side": 1,
+      "message": "Unfortunately there\u0027s not a better identifier. For most of the UI elements in print preview, the name is the text that appears in them. I could remove the Name param and try to rely on finding an element that is focused, but I\u0027m not sure if that\u0027s better or worse.",
+      "parentUuid": "f794f197_7416f1a2",
       "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
