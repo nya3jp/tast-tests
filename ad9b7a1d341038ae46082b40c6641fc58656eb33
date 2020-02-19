@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6100831c_e6d8d53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T22:57:20Z",
+      "side": 1,
+      "message": "huge nit:\nmove this to L80 so that the vm code is together.\n\nif more VM code is added in the future, consider splitting it in 2 functions:\nreboot and rebootVM, and rebootVM just calls reboot.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e219f16b_d3a5fa9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T22:57:20Z",
+      "side": 1,
+      "message": "any chance that they are assigned the same PID?\n(just asking, don\u0027t know how the linux kernel assign the PIDs)",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a76fe0_0aa9e21b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T22:57:20Z",
+      "side": 1,
+      "message": "huge nit: (here and above).\nI think the correct way to say it \"failed to determine **whether** ARCVM is enabled\"",
+      "range": {
+        "startLine": 139,
+        "startChar": 41,
+        "endLine": 139,
+        "endChar": 53
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
