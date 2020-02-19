@@ -16,6 +16,29 @@
       "revId": "941b9a7c2e886ac09b4e5ee34954129da76ecb27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2512054a_354c23f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-02-19T22:04:21Z",
+      "side": 1,
+      "message": "nit: this can be removed now since we have the percentage ratio.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 35
+      },
+      "revId": "941b9a7c2e886ac09b4e5ee34954129da76ecb27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
