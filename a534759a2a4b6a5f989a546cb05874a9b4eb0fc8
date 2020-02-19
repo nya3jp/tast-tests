@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c79f23bf_0f7fec92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-19T10:43:38Z",
+      "side": 1,
+      "message": "In this case, cr/a are not closed. (ditto for below).\n\nnil is assigned to cr and a, then functions in defer are called.\nI\u0027d recommend to name the return value differently.",
+      "revId": "a534759a2a4b6a5f989a546cb05874a9b4eb0fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
