@@ -25,10 +25,15 @@
         {
           "name": "seekBarDiscrete",
           "role": "slider"
-        },{
+        },
+	{
           "name": "ANNOUNCE",
           "role": "button"
         },
+	{
+          "name": "CLICK TO SHOW TOAST",
+          "role": "button"
+	},
         {
           "role": "genericContainer"
         }
