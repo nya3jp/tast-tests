@@ -23,6 +23,75 @@
       "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc7507a_723c0f39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-19T10:20:36Z",
+      "side": 1,
+      "message": "Because out is the output of a command, I believe that it is likely to be a multiline string. Multiline errors should be avoided. Instead, it should be logged to an output file.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 130,
+        "startChar": 85,
+        "endLine": 130,
+        "endChar": 88
+      },
+      "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8420f2b6_2aea303a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-19T10:20:36Z",
+      "side": 1,
+      "message": "This just looks really odd to me. Can it be nil?",
+      "range": {
+        "startLine": 186,
+        "startChar": 46,
+        "endLine": 186,
+        "endChar": 60
+      },
+      "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f940460_778b2701",
+        "filename": "src/chromiumos/tast/services/cros/arc/gmscore_cache_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-19T10:20:36Z",
+      "side": 1,
+      "message": "Does it make sense to load this in as a datafile?",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
