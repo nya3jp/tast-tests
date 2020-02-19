@@ -22,6 +22,30 @@
       "revId": "5b2f20b8dc690988e2f09a406e9cdd8a2c0c3d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af2625b2_b9e1a09c",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-02-19T17:13:26Z",
+      "side": 0,
+      "message": "I have never made any manual edits to this file. I infer that protoc-gen-go stopped including this comment, although I can\u0027t find any such evidence in the upstream protoc-gen-go repo.",
+      "parentUuid": "280b199f_19d2d1ab",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 2
+      },
+      "revId": "5b2f20b8dc690988e2f09a406e9cdd8a2c0c3d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
