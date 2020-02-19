@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48acae72_ac493db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-19T00:16:03Z",
+      "side": 1,
+      "message": "nit: I\u0027m fine to be the new one but I personally prefer the old one since it directly points where I should look into. Maybe you could say like \"xml files in vendor/google_arc/packages/developments/ArcPerAppDensityTest/res/layout\" ?",
+      "revId": "37a8e8376d7f9271b4949cebfad70f1d9d77fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231653b4_284a3d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-19T00:16:03Z",
+      "side": 1,
+      "message": "nit: \"Make a test structure\"?  But still, I\u0027m afraid that the comment is not quite beneficial for the reader of the code. Removing this line would be fine, or consider writing more descriptive comments for what each subtest does, how they\u0027re different.",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "37a8e8376d7f9271b4949cebfad70f1d9d77fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "575891fd_18db22a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-19T00:16:03Z",
+      "side": 1,
+      "message": "nit (not in this CL but sorry I missed in the previous review): \"Fullscreen\" ?  Maximized and fullscreen are two different states.",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 52
+      },
+      "revId": "37a8e8376d7f9271b4949cebfad70f1d9d77fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242ba8a5_5e321e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-19T00:16:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 144,
+        "startChar": 51,
+        "endLine": 144,
+        "endChar": 60
+      },
+      "revId": "37a8e8376d7f9271b4949cebfad70f1d9d77fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb20734_9f22e302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-19T00:16:03Z",
+      "side": 1,
+      "message": "I believe that the display density won\u0027t change among the subtests, it would be nicer to be computed before s.Run.\n\nThe same value can be computed through Display.PhysicalDensity (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/arc#Display.PhysicalDensity) or GetEffectiveDeviceScaleFactor (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/display#Info.GetEffectiveDeviceScaleFactor); they are independent from activity.",
+      "range": {
+        "startLine": 150,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "revId": "37a8e8376d7f9271b4949cebfad70f1d9d77fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83c1f73_0bbceedb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-19T00:16:03Z",
+      "side": 1,
+      "message": "Why is this added?  If that\u0027s for resetting at the end of each subtest, I guess you should have that as a defer; this might not be called if something goes wrong during other cases.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 6
+      },
+      "revId": "37a8e8376d7f9271b4949cebfad70f1d9d77fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
