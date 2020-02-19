@@ -40,6 +40,9 @@ func init() {
 		}, {
 			Name: "reddit",
 			Val:  "https://old.reddit.com/",
+		}, {
+			Name: "youtube",
+			Val:  "https://www.youtube.com/watch?v=uS33jC2VYNU",
 		},
 		},
 	})
