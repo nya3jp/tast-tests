@@ -36,9 +36,15 @@ func init() {
 			"arc-performance@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android_both", "chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      8 * time.Minute,
 		Vars:         []string{"arc.CachePerf.username", "arc.CachePerf.password"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 

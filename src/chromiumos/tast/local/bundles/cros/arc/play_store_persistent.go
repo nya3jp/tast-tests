@@ -26,10 +26,16 @@ func init() {
 		Desc:         "Makes sure that Play Store remains open after it is fully initialized",
 		Contacts:     []string{"khmel@chromium.org", "jhorwich@chromium.org", "arc-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_all_both", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		// 1 min for ARC is provisioned, 4 minutes max waiting for daily hygiene, and
 		// 1 min max waiting for CPU is idle. Normally test takes ~2.5-3.5 minutes to complete.
 		Timeout: 6 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_all"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
