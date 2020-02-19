@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "594e43d7_cf38f273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-19T03:29:51Z",
+      "side": 1,
+      "message": "How about adding a comment to elaborate the reason why we choose PropertyWatcher rather than polling?",
+      "parentUuid": "5cc5997f_829b54ae",
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15f65648_81c88e79",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
         "patchSetId": 4
