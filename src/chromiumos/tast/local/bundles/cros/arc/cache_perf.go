@@ -36,9 +36,17 @@ func init() {
 			"arc-performance@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android_both", "chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      8 * time.Minute,
 		Vars:         []string{"arc.CachePerf.username", "arc.CachePerf.password"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Val:               []string{},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               []string{"--enable-arcvm"},
+		}},
 	})
 }
 
@@ -91,8 +99,11 @@ func CachePerf(ctx context.Context, s *testing.State) {
 // bootARCCachePerf performs Chrome login and boots ARC. It waits for Play Store is shown and
 // reports time elapsed from enabling ARC and Play Store is finally shown.
 func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (time.Duration, error) {
-	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Strore auto-update.
-	extraArgs := []string{"--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
+	extraArgs := s.Param().([]string)
+	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
+	args := []string{"--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
+	args = append(args, extraArgs...)
+
 	switch mode {
 	case cacheNormal:
 	case cacheSkipGMSCore:
@@ -108,7 +119,7 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	password := s.RequiredVar("arc.CachePerf.password")
 
 	cr, err := chrome.New(ctx, chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
-		chrome.Auth(username, password, ""), chrome.ExtraArgs(extraArgs...))
+		chrome.Auth(username, password, ""), chrome.ExtraArgs(args...))
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to login to Chrome")
 	}
