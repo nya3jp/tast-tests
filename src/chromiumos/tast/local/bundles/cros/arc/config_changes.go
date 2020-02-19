@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
 
@@ -28,12 +29,44 @@ func init() {
 }
 
 func ConfigChanges(ctx context.Context, s *testing.State) {
-	a := s.PreValue().(arc.PreData).ARC
+	p := s.PreValue().(arc.PreData)
+	cr := p.Chrome
+	a := p.ARC
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display info: ", err)
+	}
+	if len(infos) == 0 {
+		s.Fatal("No display found")
+	}
+	var info *display.Info
+	for i := range infos {
+		if infos[i].IsInternal {
+			info = &infos[i]
+		}
+	}
+	if info == nil {
+		s.Log("No internal display found. Default to the first display")
+		info = &infos[0]
+	}
+
+	if info.Bounds.Height > info.Bounds.Width {
+		rot := 90
+		display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{Rotation: &rot})
+		// Restore the initial rotation.
+		defer display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{Rotation: &info.Rotation})
+	}
 
 	const (
 		apk = "ArcConfigChangesTest.apk"
@@ -110,4 +143,5 @@ func ConfigChanges(ctx context.Context, s *testing.State) {
 	if initCount != updatedCount {
 		s.Fatal("The activity relaunched between orientation change")
 	}
+
 }
