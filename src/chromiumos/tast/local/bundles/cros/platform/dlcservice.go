@@ -36,6 +36,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	const (
 		dlcID1          = "test1-dlc"
 		dlcID2          = "test2-dlc"
+		testPackage     = "test-package"
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
 		dlcCacheDir     = "/var/cache/dlc"
@@ -170,17 +171,14 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	defer func() {
-		// Removes the installed DLC module and unmounts all DLC images
-		// mounted under /run/imageloader.
-		if err := testexec.CommandContext(ctx, "imageloader", "--unmount_all").Run(testexec.DumpLogOnError); err != nil {
-			s.Error("Failed to unmount all: ", err)
-		}
-		d, err := ioutil.ReadDir(dlcCacheDir)
-		if err != nil {
-			s.Error("Failed to open DLC cache directory for clean up: ", err)
-		}
-		for _, f := range d {
-			if err := os.RemoveAll(filepath.Join(dlcCacheDir, f.Name())); err != nil {
+		// Removes the installed DLC module and unmounts all test DLC images mounted under /run/imageloader.
+		ids := []string{dlcID1, dlcID2}
+		for _, id := range ids {
+			path := filepath.Join("/run/imageloader", id, testPackage)
+			if err := testexec.CommandContext(ctx, "imageloader", "--unmount", "--mount_point="+path).Run(testexec.DumpLogOnError); err != nil {
+				s.Errorf("Failed to unmount DLC (%s): %v", id, err)
+			}
+			if err := os.RemoveAll(filepath.Join(dlcCacheDir, id)); err != nil {
 				s.Error("Failed to clean up: ", err)
 			}
 		}
