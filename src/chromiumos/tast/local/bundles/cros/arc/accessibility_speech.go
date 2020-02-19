@@ -44,7 +44,7 @@ func speechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, error
 	}
 	var gotLogs []string
 	for _, log := range logs {
-		// TODO (crbug/i1053374):Investigate cause of empty string.
+		// TODO (crbug/1053374):Investigate cause of empty string.
 		if log.Text != "" {
 			gotLogs = append(gotLogs, log.Text)
 		}
@@ -74,7 +74,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 				return errors.Wrap(err, "error with clearing ChromeVox log")
 			}
-			if err := ew.Accel(ctx, "Tab"); err != nil {
+			if err := ew.Accel(ctx, "Search+Right"); err != nil {
 				return errors.Wrap(err, "accel(Tab) returned error")
 			}
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
