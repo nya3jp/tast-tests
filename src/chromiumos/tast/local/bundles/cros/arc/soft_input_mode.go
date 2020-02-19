@@ -101,9 +101,18 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	portraitByDefault := info.Bounds.Height > info.Bounds.Width
+
 	runTest := func(activityName string, rotation int) {
+		s.Log("Running subtest ", activityName)
+
+		// When the device is portrait by default, rotate for additional 90 degrees.
+		actualRotation := rotation
+		if portraitByDefault {
+			actualRotation = (rotation + 90) % 360
+		}
 		display.SetDisplayProperties(ctx, tconn, info.ID,
-			display.DisplayProperties{Rotation: &rotation})
+			display.DisplayProperties{Rotation: &actualRotation})
 
 		if err := waitForRotation(rotation%180 == 0); err != nil {
 			s.Fatal("Failed to wait for rotation: ", err)
@@ -166,6 +175,9 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Could not find the field; probably hidden by the virtual keyboard?")
 		}
 	}
+
+	// Restore the initial rotation.
+	defer display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{Rotation: &info.Rotation})
 
 	runTest(".AdjustPanActivity", 0)
 	runTest(".AdjustResizeActivity", 270)
