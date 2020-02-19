@@ -62,3 +62,13 @@ func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) 
 
 	return nil
 }
+
+// Refresh takes a running Chrome API connection and refreshes policies.
+// If the policices served have changed between now and the last time policies
+// were fetched, this function will ensure that Chrome uses the changes.
+// Note that this will not work for policies which require a reboot before a
+// change is applied.
+func Refresh(ctx context.Context, tconn *chrome.Conn) error {
+	const cmd = `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)();`
+	return tconn.EvalPromise(ctx, cmd, nil)
+}
