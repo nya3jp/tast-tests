@@ -72,6 +72,52 @@
     },
     {
       "key": {
+        "uuid": "809df619_cdc7c105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-19T09:16:29Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think you need the zeros because they should be the default value.\n\nsame on L624",
+      "range": {
+        "startLine": 618,
+        "startChar": 18,
+        "endLine": 618,
+        "endChar": 28
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a1d36e_f0aa8696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-19T09:16:29Z",
+      "side": 1,
+      "message": "You should add a check to make sure that app.Location is not nil.\n\nalso, nit: I think this can be arc.Rect(*app.Location)",
+      "range": {
+        "startLine": 627,
+        "startChar": 8,
+        "endLine": 627,
+        "endChar": 94
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b91e222b_3392af9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -88,6 +134,52 @@
         "startChar": 2,
         "endLine": 704,
         "endChar": 7
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c4ca5ce_93ef6055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-19T09:16:29Z",
+      "side": 1,
+      "message": "Instead of doing all of this, we can just look for the specific shelf icon for this apk:\nicon, err :\u003d root.DescendantWithTimeout(ctx, chromeui.FindParams{Name: \"ArcPipTastTest\", ClassName: \"ash/ShelfAppButton\"}, 10*time.Second)",
+      "range": {
+        "startLine": 701,
+        "startChar": 1,
+        "endLine": 713,
+        "endChar": 0
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd76a9b_6b444ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-19T09:16:29Z",
+      "side": 1,
+      "message": "This can be greatly simplified to just clicking the status area widget:\n\n// Instead, we click on the StatusAreaWidgetDelegate.\nroot, err :\u003d chromeui.Root(ctx, tconn)\nif err !\u003d nil {\n\treturn err\n}\ndefer root.Release(ctx)\n\nwidget, err :\u003d root.DescendantWithTimeout(ctx, chromeui.FindParams{ClassName: \"ash/StatusAreaWidgetDelegate\"}, 10*time.Second)\nif err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to get status area widget\")\n}\ndefer widget.Release(ctx)\n\nreturn widget.LeftClick(ctx)",
+      "range": {
+        "startLine": 723,
+        "startChar": 1,
+        "endLine": 761,
+        "endChar": 29
       },
       "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
