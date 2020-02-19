@@ -22,6 +22,30 @@
       "revId": "e34af8a213ac9153daac328193be103bf4041f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ebca6b_0932eb61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-02-19T07:12:49Z",
+      "side": 1,
+      "message": "Yeah, that fixed it. Thanks~!",
+      "parentUuid": "37c422de_dd4aca16",
+      "range": {
+        "startLine": 122,
+        "startChar": 63,
+        "endLine": 122,
+        "endChar": 64
+      },
+      "revId": "e34af8a213ac9153daac328193be103bf4041f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
