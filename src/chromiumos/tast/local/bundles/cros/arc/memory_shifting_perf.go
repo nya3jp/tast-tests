@@ -24,16 +24,17 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "android_vm"}, // TODO(b/146081124): enable for android_both when this test stops hanging ARC++ devices
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcMemoryAllocatorTest.apk"},
 		Params: []testing.Param{{
-			Name:              "arc",
-			Pre:               arc.Booted(),
 			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
+			// TODO(b/146081124): Reenable the test when this test stops hanging ARC++ devices.
+			ExtraAttr: []string{"disabled"},
 		}, {
-			Name:              "arcvm",
-			Pre:               arc.VMBooted(),
+			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
 		}},
 		Timeout: 20 * time.Minute,
 	})
