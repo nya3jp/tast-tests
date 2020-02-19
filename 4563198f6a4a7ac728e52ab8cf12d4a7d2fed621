@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea861516_4f2d8f1a",
+        "filename": "src/chromiumos/tast/local/input/key_mappings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-19T06:56:21Z",
+      "side": 1,
+      "message": "tast-owners: only using the right arrow key here. I\u0027m not sure if it\u0027s better or not to include the other arrow key mappings (like UP, LEFT, DOWN), for consistency ?",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "4563198f6a4a7ac728e52ab8cf12d4a7d2fed621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
