@@ -114,7 +114,9 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		"--lang=en-US",                                              // Language
 		"--breakpad-dump-location=" + BinaryPath,                    // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"about:blank", // Specify first tab to load.
+		"--log-file=" + userDataDir + "/logfile", // Specify log file location for debugging.
+		"--enable-logging",                       // This flag is necessary to ensure the log file is written.
+		"about:blank",                            // Specify first tab to load.
 	}
 
 	l := &linuxChrome{}
