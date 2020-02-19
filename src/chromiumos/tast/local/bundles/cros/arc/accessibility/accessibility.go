@@ -36,7 +36,9 @@ const (
 	packageName  = "org.chromium.arc.testapp.accessibilitytest"
 	activityName = ".AccessibilityActivity"
 
-	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/background/background.html"
+	// TODO(b/149791978): Remove extOldURL after crrev.com/c/2051037 merged into ChromeOS.
+	extURL    = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
+	extOldURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/background/background.html"
 
 	// CheckBox class name.
 	CheckBox = "android.widget.CheckBox"
@@ -116,8 +118,10 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // If the extension is not ready, the connection will be closed before returning.
 // Otherwise the calling function will close the connection.
 func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
-	testing.ContextLog(ctx, "Waiting for ChromeVox background page at ", extURL)
-	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
+	testing.ContextLogf(ctx, "Waiting for ChromeVox background page at %s or %s", extURL, extOldURL)
+	extConn, err := c.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+		return t.URL == extURL || t.URL == extOldURL
+	})
 	if err != nil {
 		return nil, err
 	}
