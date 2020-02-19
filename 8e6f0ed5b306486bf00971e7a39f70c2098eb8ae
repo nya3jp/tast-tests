@@ -22,6 +22,30 @@
       "revId": "8e6f0ed5b306486bf00971e7a39f70c2098eb8ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf826e2_c8369739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T13:56:55Z",
+      "side": 1,
+      "message": "Hmm, that is a good point. But AFIAK there\u0027s no Print-style error constructor in famous error libs such as standard error package, xerrors, and pkg/errors. Tast is also following the trend...\n\nhttps://godoc.org/errors\nhttps://godoc.org/golang.org/x/xerrors\nhttps://godoc.org/github.com/pkg/errors",
+      "parentUuid": "3ea0e71c_2d458e21",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "8e6f0ed5b306486bf00971e7a39f70c2098eb8ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
