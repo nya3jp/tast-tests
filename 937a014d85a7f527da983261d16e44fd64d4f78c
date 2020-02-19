@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba9a5dcd_f28d7208",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-19T00:17:59Z",
+      "side": 1,
+      "message": "\u003e It seems like we only really want to use this from GetBackend, since it functions as a test for whether or not this backend is supported. In this case, do we want to make this public? Do we even want to make it a method? Or do you foresee anywhere else it would be used?\n\u003e \n\nAh yes, this Supports...() was there for checking it from the mem_check.go\nfile, but indeed now it\u0027s much better to create()-or-return-nil, so: removed\nthat method and followed the suggestion below.\n\n\u003e Personally I think that APIs that split construction and then some extra initialization/checking the user must do themselves are kind of an anti-pattern[1] -- can we just pack this whole thing into\n\u003e \n\u003e func getAdrenoBackend() *Backend {\n\u003e   if _, err :\u003d os.Stat(adrenoFramebufferFile); err !\u003d nil {\n\u003e     return nil\n\u003e   }\n\u003e   return \u0026AdrenoBackend{}\n\u003e }\n\u003e \n\u003e Then GetBackend can call getAdrenoBackend and return that if it\u0027s not null.\n\u003e \n\u003e [1] Similar to go/totw/42",
+      "parentUuid": "f2412c76_26d2b190",
+      "revId": "937a014d85a7f527da983261d16e44fd64d4f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11196a05_81edf925",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "f54d22ad_66934a6b",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-19T00:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11196a05_81edf925",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "937a014d85a7f527da983261d16e44fd64d4f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98e4c84a_02957195",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "937a014d85a7f527da983261d16e44fd64d4f78c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2775075_0b5e62d3",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-19T00:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98e4c84a_02957195",
+      "range": {
+        "startLine": 140,
+        "startChar": 26,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "937a014d85a7f527da983261d16e44fd64d4f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
