@@ -151,6 +151,8 @@ var namedKeyCodes = map[string]EventCode{
 	"f11": KEY_F11,
 	"f12": KEY_F12,
 
+	"right": KEY_RIGHT,
+
 	"playpause": KEY_PLAYPAUSE,
 }
 
