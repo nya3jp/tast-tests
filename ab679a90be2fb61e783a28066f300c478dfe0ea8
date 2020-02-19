@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60eb22ad_11dead31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-19T06:27:34Z",
+      "side": 1,
+      "message": "nit: mention the CL number here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 58,
+        "endLine": 39,
+        "endChar": 79
+      },
+      "revId": "ab679a90be2fb61e783a28066f300c478dfe0ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08816b83_ea1232fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-19T06:27:34Z",
+      "side": 1,
+      "message": "nit: since the bug is assigned to you, I think having the bug number is sufficient.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "ab679a90be2fb61e783a28066f300c478dfe0ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
