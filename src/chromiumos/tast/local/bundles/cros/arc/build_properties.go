@@ -128,6 +128,7 @@ var expectedFirstAPILevelMap = map[string]int{
 	"lulu":     arc.SDKN,
 	"nami":     arc.SDKN,
 	"nautilus": arc.SDKN,
+	"novato":   arc.SDKN,
 	"pyro":     arc.SDKN,
 	"reef":     arc.SDKN,
 	"reks":     arc.SDKN,
