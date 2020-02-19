@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af7189b9_05060d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:26:47Z",
+      "side": 1,
+      "message": "tmpdir should be removed later.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "486e45cc2fd82e243098f5acb387772ecbde981f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1477ad01_b394fc91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:26:47Z",
+      "side": 1,
+      "message": "Don\u0027t we need to use context.Background here? IIUC fakedms.New starts a background process.",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "486e45cc2fd82e243098f5acb387772ecbde981f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572c5189_3949e7fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:26:47Z",
+      "side": 1,
+      "message": "I think we should close fdms and keep c.fakeDMS unset on encountering errors. Otherwise gRPC clients don\u0027t know if they should call StopChrome on errors.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "486e45cc2fd82e243098f5acb387772ecbde981f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94886add_3c63f525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:26:47Z",
+      "side": 1,
+      "message": "Mind setting fakeDMS to nil to avoid accidental reuse?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "486e45cc2fd82e243098f5acb387772ecbde981f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a127b52_462f06b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:26:47Z",
+      "side": 1,
+      "message": "Same here: chrome to nil",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "486e45cc2fd82e243098f5acb387772ecbde981f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7b5d070_eb52985e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:26:47Z",
+      "side": 1,
+      "message": "Same here: c.eds to nil?",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "486e45cc2fd82e243098f5acb387772ecbde981f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
