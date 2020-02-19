@@ -16,6 +16,24 @@
       "revId": "4ded72b203f0cb1b80079d1431bde0c678a3e34a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0bb193_f0c8e1b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_script.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-02-19T02:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed606c84_31b1dc19",
+      "revId": "4ded72b203f0cb1b80079d1431bde0c678a3e34a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
