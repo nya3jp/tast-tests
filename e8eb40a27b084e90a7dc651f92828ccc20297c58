@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b67ee7_9861eebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T09:50:12Z",
+      "side": 1,
+      "message": "Could you rename this file to fixture_service.go? It\u0027s a naming convention for gRPC service impls.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Implementing-gRPC-services",
+      "revId": "e8eb40a27b084e90a7dc651f92828ccc20297c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e11831_7a5885c5",
+        "filename": "src/chromiumos/tast/local/crash/filter.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T09:50:12Z",
+      "side": 1,
+      "message": "It sounds a bit inconsistent that Enable/Disable functions are preferred ways for local tests while only SetCrashFilter is provided for remote tests. What do you think about aligning them by either:\n\n1. providing EnableCrashFiltering and DisableCrashFiltering in gRPC, or\n2. removing EnableCrashFiltering and DisableCrashFiltering here?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "e8eb40a27b084e90a7dc651f92828ccc20297c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e760e47_ddfcb454",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T09:50:12Z",
+      "side": 1,
+      "message": "Hmm, is \"none\" handled specially, or does it just mean that only crashes of programs named \"none\" are handled?",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 81
+      },
+      "revId": "e8eb40a27b084e90a7dc651f92828ccc20297c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
