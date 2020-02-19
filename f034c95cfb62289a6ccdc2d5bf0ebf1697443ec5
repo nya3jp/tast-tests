@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd004b9a_23cb4c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-19T03:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d6fd652_d5be2c5f",
+      "range": {
+        "startLine": 37,
+        "startChar": 46,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d052376_97b256d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a423ceb9_bd8456ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-19T03:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d052376_97b256d7",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c557d9_ee1627a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
         "patchSetId": 4
@@ -59,6 +107,24 @@
       "writtenOn": "2020-02-18T21:40:54Z",
       "side": 1,
       "message": "Why not use testing.Poll here?",
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc5997f_829b54ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-19T03:05:13Z",
+      "side": 1,
+      "message": "The device is expected to be removed and then recovered. If we use polling here, it is possible that the device goes down and back between two polls. With PropertyWatcher, we should be able to find a intermediate signal that the device is not in the list of device object path.",
+      "parentUuid": "d9c557d9_ee1627a0",
       "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "03761747_6afbe132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iwlwifirescan/rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-19T03:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15f65648_81c88e79",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b824116_d4d46898",
         "filename": "src/chromiumos/tast/remote/bundles/cros/network/remote_iwlwifi_pci_rescan.go",
         "patchSetId": 4
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "01ffba5f_4edc3061",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/remote_iwlwifi_pci_rescan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-19T03:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b824116_d4d46898",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 4
+      },
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43a373a1_844f12b1",
         "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
         "patchSetId": 4
@@ -125,6 +239,24 @@
       "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5898cc_6094d1ab",
+        "filename": "src/chromiumos/tast/services/cros/network/iwlwifi_pci_rescan.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-19T03:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a373a1_844f12b1",
+      "revId": "f034c95cfb62289a6ccdc2d5bf0ebf1697443ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
