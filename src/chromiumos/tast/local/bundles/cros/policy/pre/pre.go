@@ -13,8 +13,8 @@ import (
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/bundles/cros/policy/policyutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
