@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "280b199f_19d2d1ab",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-02-19T16:45:11Z",
+      "side": 0,
+      "message": "Did protoc-gen-go stop including this comment or was this previously manually constructed?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 2
+      },
+      "revId": "5b2f20b8dc690988e2f09a406e9cdd8a2c0c3d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
