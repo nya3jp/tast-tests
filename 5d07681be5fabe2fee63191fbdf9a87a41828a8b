@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9efa6de7_1125f183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T22:14:47Z",
+      "side": 1,
+      "message": "huge nit: t (lowercase)",
+      "range": {
+        "startLine": 242,
+        "startChar": 51,
+        "endLine": 242,
+        "endChar": 52
+      },
+      "revId": "5d07681be5fabe2fee63191fbdf9a87a41828a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc17e88_06385b9e",
+        "filename": "src/chromiumos/tast/local/wpr/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T22:14:47Z",
+      "side": 1,
+      "message": "huge nit:\nyou can replace the comment with:\nconst replayModeRecodeModeCaller \u003d 3\n\nthere is a Go recommendation about this, but I cannot find the link :(",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "5d07681be5fabe2fee63191fbdf9a87a41828a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
