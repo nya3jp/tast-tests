@@ -146,6 +146,18 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			shouldFail: false,
 		},
+		{
+			name: "floating_point_accuracy",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
+				Parameters: &dtcpb.RunRoutineRequest_FloatingPointAccuracyParams{
+					FloatingPointAccuracyParams: &dtcpb.FloatingPointAccuracyRoutineParameters{
+						LengthSeconds: 1,
+					},
+				},
+			},
+			shouldFail: false,
+		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
