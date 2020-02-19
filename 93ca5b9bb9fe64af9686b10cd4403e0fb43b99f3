@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c11a3c23_37910b2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-19T11:51:36Z",
+      "side": 1,
+      "message": "Thanks, now I got that WaitForCrashFiles requires ALL the files specified by regex pattern should be found.",
+      "parentUuid": "be683da6_bffefe36",
+      "revId": "93ca5b9bb9fe64af9686b10cd4403e0fb43b99f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80abd90_75216d34",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
         "patchSetId": 5
