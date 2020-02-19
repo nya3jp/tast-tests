@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b47fa8a6_8ca0adf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-19T09:07:52Z",
+      "side": 1,
+      "message": "Can we use GetInternalInfo here?\nhttps://source.corp.google.com/h/chromium/chromiumos/platform/tast-tests/+/b307379c30f8ae80e7a490c026de82bf48eead0d:src/chromiumos/tast/local/chrome/display/display.go;l\u003d113;drc\u003d60d832cfbf3001cffb14d598ae4f58e7925f84a4",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "c533012a45bab20fb1f0108447f51985d5fa58ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb21fdc_3ec5b3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-19T09:07:52Z",
+      "side": 1,
+      "message": "I\u0027ve already commented the same, but check returned error.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 110
+      },
+      "revId": "c533012a45bab20fb1f0108447f51985d5fa58ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
