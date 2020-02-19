@@ -187,6 +187,30 @@
       "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e0c591_9b4f33a2",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-19T15:17:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "308737aa_b4d73c1e",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "7dfe5a6ac237db955328a7ee9ff07f421a117a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
