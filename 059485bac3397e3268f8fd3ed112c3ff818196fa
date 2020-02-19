@@ -22,6 +22,30 @@
       "revId": "059485bac3397e3268f8fd3ed112c3ff818196fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa15583_df344973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-19T11:19:00Z",
+      "side": 1,
+      "message": "It should never happen, but better be certain and fail early. upstart.JobStatus does not check for negative values.",
+      "parentUuid": "2b53497c_da2f01e9",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "059485bac3397e3268f8fd3ed112c3ff818196fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
