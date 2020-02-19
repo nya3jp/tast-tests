@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37c422de_dd4aca16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-19T06:57:46Z",
+      "side": 1,
+      "message": "You\u0027d need add an element. LD_LIBRARY_PATH is no longer needed. So\n\nappend(os.Environ(), \"EGL_PLATFORM\u003dsurfaceless\", \"XDG_RUNTIME_DIR\u003d/run/chrome\")",
+      "range": {
+        "startLine": 122,
+        "startChar": 63,
+        "endLine": 122,
+        "endChar": 64
+      },
+      "revId": "e34af8a213ac9153daac328193be103bf4041f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
