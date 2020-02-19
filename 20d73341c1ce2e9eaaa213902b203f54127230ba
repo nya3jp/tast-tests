@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a74c1335_da7e62b9",
+        "filename": "android/ArcPrintTest/src/org/chromium/arc/testapp/print/TestPrintDocumentAdapter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-19T10:35:15Z",
+      "side": 1,
+      "message": "Is FD needs to be closed in this case, too?",
+      "revId": "20d73341c1ce2e9eaaa213902b203f54127230ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
