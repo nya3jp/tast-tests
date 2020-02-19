@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "862ea8e1_f93fe681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-02-19T00:53:20Z",
+      "side": 1,
+      "message": "Please only demote the .vivid variant if .fake is stable.",
+      "revId": "92097747e8aa4c57ad870bdf0c73117be2a83b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
