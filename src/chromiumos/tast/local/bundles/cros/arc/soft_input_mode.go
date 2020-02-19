@@ -101,9 +101,18 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	runTest := func(activityName string, rotation int) {
-		display.SetDisplayProperties(ctx, tconn, info.ID,
-			display.DisplayProperties{Rotation: &rotation})
+	portraitByDefault := info.Bounds.Height > info.Bounds.Width
+
+	runTest := func(ctx context.Context, s *testing.State, activityName string, rotation int) {
+		// When the device is portrait by default, rotate for additional 90 degrees.
+		actualRotation := rotation
+		if portraitByDefault {
+			actualRotation = (rotation + 90) % 360
+		}
+		if err := display.SetDisplayProperties(ctx, tconn, info.ID,
+			display.DisplayProperties{Rotation: &actualRotation}); err != nil {
+			s.Fatal("Failed to rotate display: ", err)
+		}
 
 		if err := waitForRotation(rotation%180 == 0); err != nil {
 			s.Fatal("Failed to wait for rotation: ", err)
@@ -167,6 +176,23 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	runTest(".AdjustPanActivity", 0)
-	runTest(".AdjustResizeActivity", 270)
+	// Restore the initial rotation.
+	defer func() {
+		if err := display.SetDisplayProperties(ctx, tconn, info.ID,
+			display.DisplayProperties{Rotation: &info.Rotation}); err != nil {
+			s.Fatal("Failed to restore the initial display rotation: ", err)
+		}
+	}()
+
+	for _, data := range []struct {
+		activityName string
+		rotation     int
+	}{
+		{".AdjustPanActivity", 0},
+		{".AdjustResizeActivity", 270},
+	} {
+		s.Run(ctx, data.activityName, func(ctx context.Context, s *testing.State) {
+			runTest(ctx, s, data.activityName, data.rotation)
+		})
+	}
 }
