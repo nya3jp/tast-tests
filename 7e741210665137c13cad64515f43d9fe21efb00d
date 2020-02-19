@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c719ce62_13a06880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-19T10:46:48Z",
+      "side": 1,
+      "message": "nit/style: I\u0027d recommend to negate the condition.\n\nif testState !\u003d state {\n  return errors.Errorf(...)\n}\nreturn nil\n\nto follow the style.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 83
+      },
+      "revId": "7e741210665137c13cad64515f43d9fe21efb00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
