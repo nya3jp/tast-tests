@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89f86e4e_221873c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-19T00:45:21Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "828160dfba0fd0e54919bc47563ea435fc1a72ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d5ef05_5ed88138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-19T00:45:21Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 13
+      },
+      "revId": "828160dfba0fd0e54919bc47563ea435fc1a72ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "134949ef_b339b260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-19T00:45:21Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 181,
+        "startChar": 11,
+        "endLine": 185,
+        "endChar": 4
+      },
+      "revId": "828160dfba0fd0e54919bc47563ea435fc1a72ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
