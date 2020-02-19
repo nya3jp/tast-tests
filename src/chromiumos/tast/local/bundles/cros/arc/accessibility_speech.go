@@ -81,7 +81,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 				return errors.Wrap(err, "error with clearing ChromeVox log")
 			}
-			if err := ew.Accel(ctx, "Tab"); err != nil {
+			if err := ew.Accel(ctx, "Search+Right"); err != nil {
 				return errors.Wrap(err, "accel(Tab) returned error")
 			}
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
