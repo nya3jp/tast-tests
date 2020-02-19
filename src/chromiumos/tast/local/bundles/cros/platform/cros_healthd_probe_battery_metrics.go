@@ -71,7 +71,7 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 	want := []string{"charge_full", "charge_full_design", "cycle_count",
 		"serial_number", "vendor(manufacturer)", "voltage_now",
 		"voltage_min_design", "manufacture_date_smart", "temperature_smart",
-		"model_name", "charge_now"}
+		"model_name", "charge_now", "current_now", "technology", "status"}
 	got := strings.Split(lines[0], ",")
 	if !reflect.DeepEqual(want, got) {
 		s.Fatalf("Incorrect headers: got %v, want %v", got, want)
@@ -89,7 +89,8 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 	}
 	for _, key := range []string{"charge_full", "charge_full_design",
 		"cycle_count", "serial_number", "vendor(manufacturer)", "voltage_now",
-		"voltage_min_design", "model_name", "charge_now"} {
+		"voltage_min_design", "model_name", "charge_now", "current_now",
+		"technology", "status"} {
 		value, ok := contentsMap[key]
 		if !ok {
 			s.Errorf("Key %q not found", key)
