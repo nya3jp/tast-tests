@@ -164,6 +164,30 @@
       "revId": "fb39e8a64a71679153671dc7b38e96a66166aaf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31766b7a_07ff8845",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:15:04Z",
+      "side": 1,
+      "message": "FYI naked return is not recommended per style:\nhttps://github.com/golang/go/wiki/CodeReviewComments#naked-returns",
+      "parentUuid": "6764afeb_36a3be60",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "revId": "fb39e8a64a71679153671dc7b38e96a66166aaf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
