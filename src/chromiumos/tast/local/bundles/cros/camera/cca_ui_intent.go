@@ -59,19 +59,21 @@ const (
 	launchOnPhotoModeAction = "android.media.action.STILL_IMAGE_CAMERA"
 	launchOnVideoModeAction = "android.media.action.VIDEO_CAMERA"
 	testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
-	testVideoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
-	defaultArcCameraPath    = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
-	testAppAPK              = "ArcCameraIntentTest.apk"
-	testAppPkg              = "org.chromium.arc.testapp.cameraintent"
-	testAppActivity         = "org.chromium.arc.testapp.cameraintent.MainActivity"
-	testAppTextFieldID      = "org.chromium.arc.testapp.cameraintent:id/text"
-	resultOK                = "-1"
-	resultCanceled          = "0"
+	// TODO(shik): Change all mkv to mp4 once the migration is done.
+	// The content of test.mkv might be mp4 during the mkv to mp4 migration period.
+	testVideoURI         = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
+	defaultArcCameraPath = "/run/arc/sdcard/write/emulated/0/DCIM/Camera"
+	testAppAPK           = "ArcCameraIntentTest.apk"
+	testAppPkg           = "org.chromium.arc.testapp.cameraintent"
+	testAppActivity      = "org.chromium.arc.testapp.cameraintent.MainActivity"
+	testAppTextFieldID   = "org.chromium.arc.testapp.cameraintent:id/text"
+	resultOK             = "-1"
+	resultCanceled       = "0"
 )
 
 var (
 	testPhotoPattern      = regexp.MustCompile(`^test\.jpg$`)
-	testVideoPattern      = regexp.MustCompile(`^test\.mkv$`)
+	testVideoPattern      = regexp.MustCompile(`^test\.(mkv|mp4)$`)
 	captureConfirmAndDone = testBehavior{
 		ShouldReview:              true,
 		ShouldConfirmAfterCapture: true,
