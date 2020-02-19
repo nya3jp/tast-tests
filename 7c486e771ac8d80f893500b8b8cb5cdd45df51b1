@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "922bc2de_ece07bc7",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:31:29Z",
+      "side": 1,
+      "message": "I\u0027m afraid wildcards won\u0027t work here because this command does not go through the shell.",
+      "range": {
+        "startLine": 81,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "7c486e771ac8d80f893500b8b8cb5cdd45df51b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d45122c_67db04fb",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-19T10:31:29Z",
+      "side": 1,
+      "message": "rm -rf should ignore non-existent files. If an error is returned, it should indicate other errors, and you might want to report them.",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 70
+      },
+      "revId": "7c486e771ac8d80f893500b8b8cb5cdd45df51b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
