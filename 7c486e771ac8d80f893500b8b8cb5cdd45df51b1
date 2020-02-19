@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14c9a317_7c0f95fe",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-19T14:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "922bc2de_ece07bc7",
+      "range": {
+        "startLine": 81,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "7c486e771ac8d80f893500b8b8cb5cdd45df51b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d45122c_67db04fb",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-19T10:31:29Z",
       "side": 1,
       "message": "rm -rf should ignore non-existent files. If an error is returned, it should indicate other errors, and you might want to report them.",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 70
+      },
+      "revId": "7c486e771ac8d80f893500b8b8cb5cdd45df51b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066ad6c6_e26dfe11",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-19T14:09:16Z",
+      "side": 1,
+      "message": "It failed because users were still mounted with \"Device or resource busy\". I have added a call to unmount all users before we start cleanup",
+      "parentUuid": "5d45122c_67db04fb",
       "range": {
         "startLine": 85,
         "startChar": 16,
