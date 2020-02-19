@@ -53,36 +53,61 @@ func speechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, error
 }
 
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
+	const (
+		announceText = "test announcement"
+		toastText    = "test toast"
+		nextKey      = "Search+Right"
+		activateKey  = "Search+Space"
+	)
+	type testCase struct {
+		key      string
+		wantLogs []string
+	}
 	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) error {
-		// Array containing expected speech logs from ChromeVox.
-		expectedSpeechLogs := [][]string{
-			{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
-			{"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle"},
-			{"seekBar", "Slider", "25", "Min 0", "Max 100"},
-			{"seekBarDiscrete", "Slider", "3", "Min 0", "Max 10"},
-			{"ANNOUNCE", "Button", "Press Search+Space to activate"},
-		}
-
 		// Enable speech logging.
 		if err := chromeVoxConn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
 			return errors.Wrap(err, "could not enable speech logging")
 		}
-
-		// Move focus to each of the UI elements, and check that ChromeVox log speaks as expected.
-		for _, wantLogs := range expectedSpeechLogs {
+		for _, testStep := range []testCase{
+			{
+				nextKey,
+				[]string{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
+			}, {
+				nextKey,
+				[]string{"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle"},
+			}, {
+				nextKey,
+				[]string{"seekBar", "Slider", "25", "Min 0", "Max 100"},
+			}, {
+				nextKey,
+				[]string{"seekBarDiscrete", "Slider", "3", "Min 0", "Max 10"},
+			}, {
+				nextKey,
+				[]string{"ANNOUNCE", "Button", "Press Search+Space to activate"},
+			}, {
+				activateKey,
+				[]string{"test announcement"},
+			}, {
+				nextKey,
+				[]string{"CLICK TO SHOW TOAST", "Button", "Press Search+Space to activate"},
+			}, {
+				activateKey,
+				[]string{"test toast"},
+			},
+		} {
 			// Ensure that ChromeVox log is cleared before proceeding.
 			if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 				return errors.Wrap(err, "error with clearing ChromeVox log")
 			}
-			if err := ew.Accel(ctx, "Search+Right"); err != nil {
-				return errors.Wrap(err, "accel(Tab) returned error")
+			if err := ew.Accel(ctx, testStep.key); err != nil {
+				return errors.Wrapf(err, "accel(%s) returned error", testStep.key)
 			}
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				gotLogs, err := speechLog(ctx, chromeVoxConn)
 				if err != nil {
 					return testing.PollBreak(err)
 				}
-				if diff := cmp.Diff(wantLogs, gotLogs); diff != "" {
+				if diff := cmp.Diff(testStep.wantLogs, gotLogs); diff != "" {
 					return errors.Errorf("speech log was not as expected, diff is %q", diff)
 				}
 				return nil
@@ -90,6 +115,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to check speech log")
 			}
 		}
+
 		return nil
 	})
 }
