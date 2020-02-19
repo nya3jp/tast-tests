@@ -111,7 +111,7 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		"--load-extension=" + strings.Join(p.Chrome.ExtDirs(), ","), // Load extensions
 		"--no-first-run",                                            // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--user-data-dir=" + userDataDir,                            // Specify a --user-data-dir, which holds on-disk state for Chrome.
-		"--long=en-US",                                              // Language
+		"--lang=en-US",                                              // Language
 		"--breakpad-dump-location=" + BinaryPath,                    // Specify location for breakpad dump files.
 		"--window-size=800,600",
 		"about:blank", // Specify first tab to load.
