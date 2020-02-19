@@ -22,7 +22,7 @@ func init() {
 		Func:         CCAUISanity,
 		Desc:         "Sanity test for Chrome Camera App",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"cca_ui.js"},
 		Params: []testing.Param{{
@@ -36,6 +36,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Pre:               chrome.LoggedIn(),
 			Val:               ccaUISanityParams{},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "fake",
 			Val: ccaUISanityParams{
