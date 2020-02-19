@@ -16,6 +16,24 @@
       "revId": "7bdda4282fbb7f01ad2ea460ebab3137c451a212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeb81553_acaca052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-19T12:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0dc777_8946afa8",
+      "revId": "7bdda4282fbb7f01ad2ea460ebab3137c451a212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
