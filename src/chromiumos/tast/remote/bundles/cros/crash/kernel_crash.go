@@ -119,7 +119,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	base := `kernel\.\d{8}\.\d{6}\.0`
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs:    []string{systemCrashDir},
-		Regexes: []string{base + `\.kcrash`, base + `\.meta`},
+		Regexes: []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`},
 	}
 	s.Log("Waiting for files to become present")
 	res, err := fs.WaitForCrashFiles(ctx, waitReq)
