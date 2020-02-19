@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46215092_18f337ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-19T04:30:37Z",
+      "side": 1,
+      "message": "We would update this to use ExtraSoftwareDeps for vm?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2057994",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "3e33ae128f3a50a9d31e412ec0e377245bbd68ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
