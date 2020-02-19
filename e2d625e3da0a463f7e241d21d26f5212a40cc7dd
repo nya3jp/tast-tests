@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ab1078e_8bc2cefa",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "We don\u0027t need to export it for now, so changed.",
+      "parentUuid": "e9bf060a_632ca4da",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29bb3b3f_0457b83c",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39bc3311_7622e166",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29bb3b3f_0457b83c",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "57a04554_932c2f2d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "921cb621_8843f304",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b925790_81a63aa4",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39a0dae_7e72296c",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b925790_81a63aa4",
+      "range": {
+        "startLine": 122,
+        "startChar": 50,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f0130b9f_b38e28b6",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c0826fb_0da02e68",
+      "range": {
+        "startLine": 123,
+        "startChar": 18,
+        "endLine": 123,
+        "endChar": 22
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd524a32_d61905ed",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5591e16_bb604373",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd524a32_d61905ed",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 31
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0b915664_0ccbbdcd",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c246294f_fc5aa2d2",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 11
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d0ff07b_4437c26e",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86e5354_7305df65",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-02-19T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d0ff07b_4437c26e",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 70
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
