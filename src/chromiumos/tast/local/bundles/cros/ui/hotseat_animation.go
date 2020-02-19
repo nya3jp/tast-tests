@@ -122,11 +122,10 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		// Wait for the animations to complete and for things to settle down.
-		if false {
 			if err := cpu.WaitUntilIdle(ctx); err != nil {
 				s.Fatal("Failed waiting for CPU to become idle: ", err)
 			}
-		}
+
 
 		cr := s.PreValue().(*chrome.Chrome)
 		c, err := cr.TestAPIConn(ctx)
@@ -150,14 +149,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		if err := ash.WaitForOverviewToFinishAnimating(ctx, tconn, ash.Hidden); err != nil {
 			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
-		/*
-					// After overview has dismissed, wait for the overview animation to complete.
-			// TODO(https://crbug.com/1052211): Create an autotest api to check whether the overview mode animation has completed.
-			const overviewAnimationWaitDuration = 2 * time.Second
-			if err := testing.Sleep(ctx, overviewAnimationWaitDuration); err != nil {
-				return errors.Wrap(err, "failed to sleep")
-			}
-		*/
+
 		if err := showOverview(ctx, tsw, stw, c); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
@@ -177,15 +169,6 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
 
-		/*
-			// After overview has been dismissed, wait for the overview animation to complete.
-			// TODO(https://crbug.com/1052211): Create an autotest api to check whether the overview mode animation has completed.
-			if err := testing.Sleep(ctx, overviewAnimationWaitDuration); err != nil {
-				return errors.Wrap(err, "failed to sleep")
-			}
-		*/
-
-		s.Log("Go to home launcher by swiping up")
 		startX := tsw.Width() / 2
 		startY := tsw.Height() - 1
 
@@ -199,6 +182,8 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		if err := stw.End(); err != nil {
 			return errors.Wrap(err, "failed to finish the swipe gesture")
 		}
+
+		s.Log("Home Launcher should be shown now.")
 
 		// After going to home launcher, wait for the animation to complete.
 		// TODO(https://crbug.com/1052215): Create an autotest api to check whether the home launcher animation has completed.
