@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4a44c18_11d19210",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-19T09:44:32Z",
+      "side": 1,
+      "message": "This might change in the future if we do something more involved.",
+      "parentUuid": "4bd3bbcf_121dfb58",
+      "range": {
+        "startLine": 90,
+        "startChar": 69,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "fb39e8a64a71679153671dc7b38e96a66166aaf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "250b9be7_d8fa047b",
         "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-19T09:38:00Z",
       "side": 1,
       "message": "Instead of `address` you still can use `url`:\n\nurl \u003d url.URL{\n    Host:   s.httpServer.Addr,\n    Path:   path,\n    Scheme: \"http\",\n}.String()\n\n\nAlso, you never use `address` in the functions.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "fb39e8a64a71679153671dc7b38e96a66166aaf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbae7754_e020b93d",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-19T09:44:32Z",
+      "side": 1,
+      "message": "url shadows the url package, not the local variable.\n\n\nUsing .String() on the literal does not work:\ncannot call pointer method on url.URL literal\ncannot take the address of url.URL literal\n\n(\u0026url.URL{\n\t\tHost:   s.httpServer.Addr,\n\t\tPath:   path,\n\t\tScheme: \"http\",\n\t}).String()\n\nis correct, but I prefer the original.",
+      "parentUuid": "250b9be7_d8fa047b",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "fb39e8a64a71679153671dc7b38e96a66166aaf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6764afeb_36a3be60",
+        "filename": "src/chromiumos/tast/local/policy/externaldata/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-19T09:44:32Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "1c898aec_31b9a365",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "revId": "fb39e8a64a71679153671dc7b38e96a66166aaf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
