@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9bf060a_632ca4da",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "nit: in case this is not exported, it should be in lowercase.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29bb3b3f_0457b83c",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "nit:\nfindMounterPID\nhttp://go/gocomments#initialisms",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921cb621_8843f304",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "nit: \nthis func could return as early as it finds the process. and if so, there should be no need to declare the mounerPid variable.\n\ne.g:\n\n// findMounterPid finds the pid of the cryptohome-namespace-mounter process.\nfunc findMounterPid() (int32, error) {\n\tprocs, err :\u003d process.Processes()\n\tif err !\u003d nil {\n\t\treturn -1, errors.Wrap(err, \"could not list running processes\")\n\t}\n\n\tfor _, proc :\u003d range procs {\n\t\tif exe, err :\u003d proc.Exe(); err \u003d\u003d nil \u0026\u0026 exe \u003d\u003d MounterExe {\n\t\t\treturn proc.Pid, nil\n\t\t}\n\t}\n        // If mounter process is not found, don\u0027t return an error.\n\treturn -1, nil\n}",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b925790_81a63aa4",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "nit, here and below: don\u0027t use \"|\" in docstrings, since godoc doesn\u0027t support them :(",
+      "range": {
+        "startLine": 122,
+        "startChar": 50,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0826fb_0da02e68",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "nit: PID\nhttp://go/gocomments#initialisms",
+      "range": {
+        "startLine": 123,
+        "startChar": 18,
+        "endLine": 123,
+        "endChar": 22
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd524a32_d61905ed",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "ditto above: remote \"|\" from doc strings.",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 31
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c246294f_fc5aa2d2",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "ditto above: PID\nhttp://go/gocomments#initialisms",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 11
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0ff07b_4437c26e",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-19T19:08:52Z",
+      "side": 1,
+      "message": "nit: it seems that this is not totally correct. an error is returned if it fails to enumerate the processes. perhaps something like: \"could not enumerate processes\" ?",
+      "range": {
+        "startLine": 152,
+        "startChar": 32,
+        "endLine": 152,
+        "endChar": 70
+      },
+      "revId": "e2d625e3da0a463f7e241d21d26f5212a40cc7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
