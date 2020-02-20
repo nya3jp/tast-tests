@@ -16,6 +16,24 @@
       "revId": "d7d487d652c1088e5529e7f1ec9b1e7dc5088bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5641eb8c_d578aa42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-20T00:42:36Z",
+      "side": 0,
+      "message": "Sure, reverted.\n\nNote that this was because the doc below suggests to log a message before doing time consuming tasks, not after that.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "parentUuid": "f156a266_a7c82a6a",
+      "revId": "d7d487d652c1088e5529e7f1ec9b1e7dc5088bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
