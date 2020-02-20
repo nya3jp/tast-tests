@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e715c8d7_08b9ba0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-20T18:13:18Z",
+      "side": 1,
+      "message": "nit: it is referred as commonCrash (with capital C) in another file. I guess it is a bit nicer to have the same style among all files.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a1cd8ad_a3da9098",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-20T18:13:18Z",
+      "side": 1,
+      "message": "nit: mixedCaps?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5562c7b6_bc172c09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-20T18:13:18Z",
+      "side": 1,
+      "message": "The same Sprintf appears on another file (user_crash.go); maybe it is nicer to have a function in common/crash package to build this pattern?",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 100
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df124779_0cc56900",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-20T18:13:18Z",
+      "side": 1,
+      "message": "nit: it would be slightly nicer to provide FileMode info as the error message; otherwise future debuggers might get confused. \"not presented at \", ..., \" or in unexpected file mode \", os.FileMode(flagInfo.Mode).\n\nOr you could split the conditions as:\n\nif err !\u003d nil {\n  s.Error(\"... not present at ...\")\n} else if fileMode :\u003d os.FileMode(flagInfo.Mode); !fileMode.IsRegular() {\n  s.Error(\"... is not a regular file: \", fileMode)\n}",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 101
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
