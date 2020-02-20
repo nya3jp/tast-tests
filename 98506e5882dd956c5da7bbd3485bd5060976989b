@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cbcf2a8_b13faf22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-20T08:48:58Z",
+      "side": 1,
+      "message": "For some weird reasons, it seemed that cr.Close() doesn\u0027t unmount the user\u0027s vault. You can manually verify by running the test and cryptohome --action\u003dis_mounted. Consider investigating or add defer UnmountAll()?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
