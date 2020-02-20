@@ -65,6 +65,24 @@ func (c *Client) ReadDir(ctx context.Context, dirname string) ([]os.FileInfo, er
 	return fis, nil
 }
 
+// Stat returns filesystem status of the file specified by name.
+func (c *Client) Stat(ctx context.Context, name string) (os.FileInfo, error) {
+	res, err := c.fs.Stat(ctx, &baserpc.StatRequest{Name: name})
+	if err != nil {
+		return nil, err
+	}
+	return fileInfo{res}, nil
+}
+
+// ReadFile reads the file specified by name and returns its contents.
+func (c *Client) ReadFile(ctx context.Context, name string) ([]byte, error) {
+	res, err := c.fs.ReadFile(ctx, &baserpc.ReadFileRequest{Name: name})
+	if err != nil {
+		return nil, err
+	}
+	return res.Content, nil
+}
+
 // fileInfo wraps baserpc.FileInfo to implement os.FileInfo interface.
 type fileInfo struct {
 	pb *baserpc.FileInfo
