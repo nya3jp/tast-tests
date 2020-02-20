@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c46e72b_ae6bc37e",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:47:52Z",
+      "side": 1,
+      "message": "Sorry I overlooked this in earlier iteration, but could you accept context.Context in this method and consider its deadline since sending SIGINT won\u0027t stop the process immediately?\n\nI think you have to do two-phase signaling. For example (untested):\n\n if err :\u003d w.proc.Signal(syscall.SIGINT); err !\u003d nil { ... }\n\n ctx, cancel :\u003d context.WithCancel(ctx)\n defer cancel() // make sure goroutine is unblocked on exit\n\n go func() {\n   \u003c-ctx.Done()\n   w.proc.Signal(syscall.SIGKILL)\n }()\n\n if err :\u003d w.proc.Wait(); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 21
+      },
+      "revId": "5fe3b5f4bb1a62ec4efe33b6aa0e4db36c114486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1553,6 +1553,30 @@
     },
     {
       "key": {
+        "uuid": "091d2e30_7573eb11",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:47:52Z",
+      "side": 1,
+      "message": "Hmm. Is it okay to start Chrome before WPR server is ready? IIUC --host-resolver-rules redirects all network traffic to WPR server, so I\u0027m afraid that network requests issued on Chrome startup may fail if WPR server is not ready.",
+      "parentUuid": "7c67b9f5_0f82b429",
+      "range": {
+        "startLine": 171,
+        "startChar": 14,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4fb8836_7156845d",
         "filename": "src/chromiumos/tast/local/wpr/wpr.go",
         "patchSetId": 7
