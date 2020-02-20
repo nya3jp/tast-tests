@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7cccb9f_8912b699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-20T22:35:41Z",
+      "side": 1,
+      "message": "Does this alert incase of degradation of the measurements?\n\nIf so, please add cros-launcher-prod-notifications@google.com.",
+      "range": {
+        "startLine": 28,
+        "startChar": 66,
+        "endLine": 28,
+        "endChar": 69
+      },
+      "revId": "1bb3a6d64a77950a66772f4cf1777cc4c47700dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b759b57e_c7fd72b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-20T22:35:41Z",
+      "side": 1,
+      "message": "I think we can use ash.WaitForLauncherState(...., ash.FullscreenAllApps)",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "1bb3a6d64a77950a66772f4cf1777cc4c47700dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
