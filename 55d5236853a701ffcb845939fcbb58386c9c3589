@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "395cfff2_9abe6b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_logout_script.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:45:48Z",
+      "side": 1,
+      "message": "Seems like we do use it in the MultiProfile test. Maybe put this as a constant in shillscript like GuestShillUserProfileDir etc?",
+      "parentUuid": "d6a1585d_b5e047cb",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 49
+      },
+      "revId": "55d5236853a701ffcb845939fcbb58386c9c3589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "315c5332_21a6197c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_logout_script.go",
         "patchSetId": 6
@@ -110,6 +134,29 @@
         "startChar": 69,
         "endLine": 85,
         "endChar": 79
+      },
+      "revId": "55d5236853a701ffcb845939fcbb58386c9c3589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "949b622b_64e53579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_logout_script.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:45:48Z",
+      "side": 1,
+      "message": "nit: remove trailing space",
+      "range": {
+        "startLine": 94,
+        "startChar": 100,
+        "endLine": 94,
+        "endChar": 101
       },
       "revId": "55d5236853a701ffcb845939fcbb58386c9c3589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
