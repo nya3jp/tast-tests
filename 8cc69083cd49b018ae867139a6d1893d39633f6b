@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8685d029_4fd79dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T10:15:10Z",
+      "side": 1,
+      "message": "We often avoid Get/Is/Has like prefix.\nHow about \"CopyCaches\" ?",
+      "revId": "8cc69083cd49b018ae867139a6d1893d39633f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbde3ef0_cc78db26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T10:15:10Z",
+      "side": 1,
+      "message": "You need to wrap by function, because defer is function scope, not {}-block scope.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "8cc69083cd49b018ae867139a6d1893d39633f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
