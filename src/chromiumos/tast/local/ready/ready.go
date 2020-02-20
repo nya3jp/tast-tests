@@ -10,6 +10,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"regexp"
@@ -50,6 +51,7 @@ func Wait(ctx context.Context, log func(string)) error {
 	}()
 
 	killOrphanAutotestd(log)
+	clearPolicies(log)
 
 	// Disable the periodic log cleanup job to make sure system logs generated during tests are preserved.
 	// We never resume the job so as to make it easier for users to inspect system logs later.
@@ -300,4 +302,47 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 		}
 		return nil
 	}, nil)
+}
+
+// ClearPoliciesLogLocation is the location of the error log for clearPolicies.
+// If the removing policies did not encounter any errors the file should not exist.
+const ClearPoliciesLogLocation = "/tmp/ready-clearPolicies.err"
+
+func clearPoliciesAppendError(log func(string), msg string) {
+	f, err := os.OpenFile("text.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log(fmt.Sprintf("Failed to open error log %q: %v", ClearPoliciesLogLocation, err))
+		return
+	}
+	defer f.Close()
+
+	if _, err := f.WriteString(msg); err != nil {
+		log(fmt.Sprintf("Failed to append to error log %q: %v", ClearPoliciesLogLocation, err))
+		return
+	}
+
+	if _, err := f.WriteString("\n"); err != nil {
+		log(fmt.Sprintf("Failed to append newline to error log %q: %v", ClearPoliciesLogLocation, err))
+		return
+	}
+}
+
+// clearPolicies removes all policies that might have been set by previously running tesets.
+// Tests that do not wirk with policies might still be affected by them, so this brings the device back to the default state.
+func clearPolicies(log func(string)) {
+	policyFiles := []string{"/var/lib/whitelist", "/home/chronos/Local State"}
+
+	// Clear error log for this function
+	if err := os.RemoveAll(ClearPoliciesLogLocation); err != nil {
+		log(fmt.Sprintf("Failed to remove error log %q: %v", ClearPoliciesLogLocation, err))
+	}
+
+	for _, path := range policyFiles {
+		if err := os.RemoveAll(path); err != nil {
+			msg := fmt.Sprintf("Failed to remove %q: %v", path, err)
+			log(msg)
+			clearPoliciesAppendError(log, msg)
+		}
+	}
+
 }
