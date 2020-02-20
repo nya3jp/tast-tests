@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c94d5226_841489e9",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:17:15Z",
+      "side": 1,
+      "message": "I think we should have on tast test per game. Now each game will have several traces. Each chipset/model will have a different trace. But then there could also be different traces per model (say levels). I think on the tast level 1 test \u003d 1 game is good. For bisector (much later), 1 value \u003d 1 trace needs to be addressed.\n\nThis is not much different say from CTS, where we say run everything in module Deqp. Or run test xyz in deqp for bisector.\n\nThe definitions of the traces could be exported from the spreadsheet to json and stored in a (maybe private) graphics repo. That means we need to push the json as well into the VM. Also wen we call replay we need to pass as arguments the chipset/board/model information to locate the right trace for the replays. (Now we can leave this as a TODO, because we are starting only with one set of traces.)",
+      "parentUuid": "a34930d7_5c32ba48",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42233d22_5c47a2e5",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 1
