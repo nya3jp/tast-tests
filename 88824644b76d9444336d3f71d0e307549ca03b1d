@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daedf0a8_78e1d43c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-20T19:35:23Z",
+      "side": 1,
+      "message": "drive-by comment: here and in the rest of the arcmedia tests.\nit seems that arcmedia.RunTest does not support ARCVM yet. probably an arg need to be passed (see file: arc/mediasession/mediasession.go )",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "88824644b76d9444336d3f71d0e307549ca03b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
