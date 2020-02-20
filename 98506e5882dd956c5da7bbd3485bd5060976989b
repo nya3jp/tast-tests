@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "29dad1cd_9be8842f",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T18:41:48Z",
+      "side": 1,
+      "message": "huge nit: In this case it might be clearer to use switch-case.\n\nAlso the last `return \"\"` is not needed because compiler knows that panic does not return.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 10
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d71378_e85c8969",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T18:41:48Z",
+      "side": 1,
+      "message": "style: getFoo is not popular naming in Go.\nhttps://golang.org/doc/effective_go.html#Getters\n\nIn this case I recommend just enrollURL (and certURL).",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5545e1_83f08946",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T18:41:48Z",
+      "side": 1,
+      "message": "huge nit: just \"/enroll\"? Same for /sign.",
+      "range": {
+        "startLine": 126,
+        "startChar": 34,
+        "endLine": 126,
+        "endChar": 48
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cbcf2a8_b13faf22",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
         "patchSetId": 55
@@ -13,6 +82,30 @@
       "writtenOn": "2020-02-20T08:48:58Z",
       "side": 1,
       "message": "For some weird reasons, it seemed that cr.Close() doesn\u0027t unmount the user\u0027s vault. You can manually verify by running the test and cryptohome --action\u003dis_mounted. Consider investigating or add defer UnmountAll()?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aaf53cd_d927bb1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T18:41:48Z",
+      "side": 1,
+      "message": "Chrome.Close just closes the devtools connection to Chrome, it does not log out from the session. Do you want to logout explicitly?",
+      "parentUuid": "8cbcf2a8_b13faf22",
       "range": {
         "startLine": 59,
         "startChar": 0,
