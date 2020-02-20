@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d290146a_1460704f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T15:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee600f90_8043f986",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4c4d91c_a61786cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 31
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a04e599c_d2a8cd26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T15:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c4d91c_a61786cd",
+      "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f781ff3c_743a00b5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 31
@@ -53,6 +95,24 @@
       "writtenOn": "2020-02-20T10:30:48Z",
       "side": 1,
       "message": "Instead, could you poll the print preview?",
+      "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9678f947_d7ae9ca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T15:03:25Z",
+      "side": 1,
+      "message": "Good question. The issue I\u0027m running into is that if I try to select the printer as soon as print preview is available, print preview fails to render the preview document half the time. Then I\u0027m unable to interact with the UI and the test fails.\n\nI\u0027ll try a few other things to see if there\u0027s a better solution than waiting 3 seconds.",
+      "parentUuid": "f781ff3c_743a00b5",
       "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "4bd9287a_f0897947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T15:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4c42e03_3cbfa5da",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 9
+      },
+      "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14b38356_417a9092",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 31
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9dae520c_f5627c29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T15:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14b38356_417a9092",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 9
+      },
+      "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da551557_fbefe96f",
         "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
         "patchSetId": 31
@@ -125,6 +233,30 @@
       "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46162a0_848c1185",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T15:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da551557_fbefe96f",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
