@@ -16,6 +16,24 @@
       "revId": "b7826b6ac8fc466919fe082edf443a5100311601",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec4e62e_d3950e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-20T15:22:01Z",
+      "side": 1,
+      "message": "\"exactly one\" in the error message meant that there was a file with 0 export.\nIt was caused by an empty file that had been left in the patchset.",
+      "parentUuid": "cbc274a5_1a5c2424",
+      "revId": "b7826b6ac8fc466919fe082edf443a5100311601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
