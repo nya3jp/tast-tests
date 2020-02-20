@@ -74,20 +74,20 @@ func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chro
 // [1] https://w3c.github.io/webrtc-pc/#statistics-model
 func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *chrome.Conn, codecType CodecType) error {
 	// See [1] and [2] for the statNames to use here. The values are browser
-	// specific, for Chrome, "External{En,De}coder" and "{V4L2,Vaapi, etc.}VideoEncodeAccelerator"
+	// specific, for Chrome, "ExternalDecoder" and "{V4L2,Vaapi, etc.}VideoEncodeAccelerator"
 	// means that WebRTC is using hardware acceleration and anything else
 	// (e.g. "libvpx", "ffmpeg", "unknown") means it is not.
+	// This would not handle a SimulcastEncoderAdapter (Simulcast case).
 	// [1] https://w3c.github.io/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation
 	// [2] https://w3c.github.io/webrtc-stats/#dom-rtcoutboundrtpstreamstats-encoderimplementation
 	statName := "encoderImplementation"
 	peerConnectionName := "localPeerConnection"
-	// TODO(hiroh): Remove ExternalEncoder once Chrome informs the name of a used HW encoder. (crrev.com/c/1959234)
-	expectedImplementations := []string{"ExternalEncoder", "EncodeAccelerator"}
+	expectedImplementation := "EncodeAccelerator"
 
 	if codecType == Decoding {
 		statName = "decoderImplementation"
 		peerConnectionName = "remotePeerConnection"
-		expectedImplementations = []string{"ExternalDecoder"}
+		expectedImplementation = "ExternalDecoder"
 	}
 
 	parseStatsJS :=
@@ -131,11 +131,9 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	}
 	s.Logf("%s: %s", statName, implementation)
 
-	for _, impl := range expectedImplementations {
-		if strings.HasSuffix(implementation, impl) {
-			return nil
-		}
+	if strings.HasSuffix(implementation, expectedImplementation) {
+		return nil
 	}
 
-	return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementations)
+	return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementation)
 }
