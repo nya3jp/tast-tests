@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "b4f045cc_e95b9806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-02-20T01:53:59Z",
+      "side": 1,
+      "message": "@hidehiko\n\nCan we just use arc.InitPID() value for checking reboot status for ARCVM as well as ARC Container?\n\nIf so, we can get rid of code for comparing CID for checking ARCVM reboot status.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e219f16b_d3a5fa9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 5
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "958e8064_fe82d74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-02-20T01:53:59Z",
+      "side": 1,
+      "message": "nit: this can be written as\n\nif _, err :\u003d process.NewProcess(pid); err \u003d\u003d nil {",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00a76fe0_0aa9e21b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 5
@@ -64,6 +110,29 @@
         "startChar": 41,
         "endLine": 139,
         "endChar": 53
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22668a49_2ea750c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-02-20T01:53:59Z",
+      "side": 1,
+      "message": "In general using \"else\" after if { return } is not preferred.\n\nif err !\u003d nil {\n  return\n}\nif !vm {\n  return\n}",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 16
       },
       "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
