@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0eb932ef_987e2041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T08:03:51Z",
+      "side": 1,
+      "message": "(for the record, as chatted offline): It should be usable.",
+      "parentUuid": "b4f045cc_e95b9806",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e219f16b_d3a5fa9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 5
