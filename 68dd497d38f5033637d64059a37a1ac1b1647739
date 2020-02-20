@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa76589_69fecc03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-20T09:03:28Z",
+      "side": 1,
+      "message": "Where is this constant coming from? Add a comment.",
+      "revId": "68dd497d38f5033637d64059a37a1ac1b1647739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc22ba65_d70183ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-20T09:03:28Z",
+      "side": 1,
+      "message": "Have you tried simply saving an empty settings struct? From what I can find in the code the default should be false.",
+      "revId": "68dd497d38f5033637d64059a37a1ac1b1647739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6a5a48_18ab40c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-20T09:03:28Z",
+      "side": 1,
+      "message": "Add a TODO to remove once crbug.com/1054004 lands.",
+      "revId": "68dd497d38f5033637d64059a37a1ac1b1647739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
