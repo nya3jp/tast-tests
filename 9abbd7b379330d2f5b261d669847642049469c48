@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "703a4ff5_8e72885d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T23:58:17Z",
+      "side": 1,
+      "message": "is it possible that udevadm monitor hangs responding to SIGTERM and we block here without being able to send the SIGKILL below?",
+      "revId": "9abbd7b379330d2f5b261d669847642049469c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
