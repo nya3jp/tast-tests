@@ -61,39 +61,58 @@ type wmCUJTestParams struct {
 	fn   wmCUJTestFunc
 }
 
+// For the moment VM and container are sharing the same list of stable and unstable tests.
+// But we should split them if VM is more (or less) stable than container.
+// Only stable tests should be placed here. The ones that are ready for CQ.
+var stableCUJTests = []wmCUJTestParams{
+	{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
+	{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
+	{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
+	{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
+	{"Lights out / Lights in N", wmLightsOutIn},
+	{"Lights out ignored", wmLightsOutIgnored},
+	{"Picture in Picture", wmPIP},
+}
+
+// New and unstable tests should be placed here. These tests should be fixed, and moved them to "stable" ASAP.
+var unstableCUJTests = []wmCUJTestParams{
+	{"Follow Root Activity N / Pre-N", wmFollowRoot},
+	{"Springboard N / Pre-N", wmSpringboard},
+	{"Freeform Resize", wmFreeformResize},
+	{"Snapping to half screen", wmSnapping},
+	{"Display resolution", wmDisplayResolution},
+	// PageZoom disabled since it is not implemented in ARC. See: http://b/149790068
+	// {"Page Zoom", wmPageZoom},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowManagerCUJ,
 		Desc:         "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
 		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipSimpleTastTest.apk"},
-		Pre:          arc.Booted(),
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
-			// Only stable tests should be placed here. The ones that are ready for CQ.
-			Val: []wmCUJTestParams{
-				{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
-				{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
-				{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
-				{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
-				{"Lights out / Lights in N", wmLightsOutIn},
-				{"Lights out ignored", wmLightsOutIgnored},
-				{"Picture in Picture", wmPIP},
-			},
+			Val:               stableCUJTests,
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
 		}, {
-			// New and flaky tests should be placed here. These tests should be fixed,
-			// and moved them to "stable" ASAP.
-			Name: "flaky",
-			Val: []wmCUJTestParams{
-				{"Follow Root Activity N / Pre-N", wmFollowRoot},
-				{"Springboard N / Pre-N", wmSpringboard},
-				{"Freeform Resize", wmFreeformResize},
-				{"Snapping to half screen", wmSnapping},
-				{"Display resolution", wmDisplayResolution},
-				{"Page Zoom", wmPageZoom},
-			},
+			Name:              "unstable",
+			Val:               unstableCUJTests,
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			Val:               stableCUJTests,
+			ExtraSoftwareDeps: []string{"android_vm_p"},
+			Pre:               arc.VMBooted(),
+		}, {
+			Name:              "vm_unstable",
+			Val:               unstableCUJTests,
+			ExtraSoftwareDeps: []string{"android_vm_p"},
+			Pre:               arc.VMBooted(),
 		}},
 	})
 }
