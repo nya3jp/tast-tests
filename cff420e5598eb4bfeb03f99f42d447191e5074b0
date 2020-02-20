@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96567282_25e593bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:48:01Z",
+      "side": 1,
+      "message": "should be\n\n \"... %s ...\", env.ShillUserProfileDir)",
+      "range": {
+        "startLine": 46,
+        "startChar": 70,
+        "endLine": 46,
+        "endChar": 94
+      },
+      "revId": "cff420e5598eb4bfeb03f99f42d447191e5074b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a62f49_0a774642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:48:01Z",
+      "side": 1,
+      "message": "nit: symlink",
+      "range": {
+        "startLine": 58,
+        "startChar": 38,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "cff420e5598eb4bfeb03f99f42d447191e5074b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e859430_01c550d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:48:01Z",
+      "side": 1,
+      "message": "nit: remove trailing space",
+      "range": {
+        "startLine": 96,
+        "startChar": 100,
+        "endLine": 96,
+        "endChar": 101
+      },
+      "revId": "cff420e5598eb4bfeb03f99f42d447191e5074b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
