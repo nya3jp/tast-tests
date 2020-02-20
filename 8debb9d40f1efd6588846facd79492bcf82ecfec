@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "0ed4c3ea_15c3556a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T23:17:46Z",
+      "side": 1,
+      "message": "nya@ will take a look at this as he suggested the approach in conjunction with the infra team. Do you have anybody else in mind? I don\u0027t see this as much different as running apks in ARC++, but maybe I am missing something? Right now there is no-non-Google code, we are running the default crostini image provided by kokoro. Which non-Google code do we need to watch out for?",
+      "parentUuid": "be0a45ed_e3872e66",
+      "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc16b94b_3ec65fdb",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
