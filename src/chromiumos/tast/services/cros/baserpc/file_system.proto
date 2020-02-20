@@ -13,6 +13,8 @@ option go_package = "chromiumos/tast/services/cros/baserpc";
 service FileSystem {
   // ReadDir returns the content of a directory.
   rpc ReadDir (ReadDirRequest) returns (ReadDirResponse) {}
+  rpc Stat (StatRequest) returns (FileInfo) {}
+  rpc ReadFile (ReadFileRequest) returns (ReadFileResponse) {}
 }
 
 message ReadDirRequest {
@@ -23,6 +25,20 @@ message ReadDirRequest {
 message ReadDirResponse {
   // List of files under the directory, sorted by filename.
   repeated FileInfo files = 1;
+}
+
+message StatRequest {
+  // File path to the file to get file information.
+  string name = 1;
+}
+
+message ReadFileRequest {
+  // File path to the file to be read.
+  string name = 1;
+}
+
+message ReadFileResponse {
+  bytes content = 1;
 }
 
 // FileInfo contains attributes of a file.

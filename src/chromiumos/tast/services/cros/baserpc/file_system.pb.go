@@ -105,6 +105,125 @@ func (m *ReadDirResponse) GetFiles() []*FileInfo {
 	return nil
 }
 
+type StatRequest struct {
+	// File path to the file to get file information.
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *StatRequest) Reset()         { *m = StatRequest{} }
+func (m *StatRequest) String() string { return proto.CompactTextString(m) }
+func (*StatRequest) ProtoMessage()    {}
+func (*StatRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f798b4e0b3d56780, []int{2}
+}
+
+func (m *StatRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StatRequest.Unmarshal(m, b)
+}
+func (m *StatRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StatRequest.Marshal(b, m, deterministic)
+}
+func (m *StatRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StatRequest.Merge(m, src)
+}
+func (m *StatRequest) XXX_Size() int {
+	return xxx_messageInfo_StatRequest.Size(m)
+}
+func (m *StatRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_StatRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StatRequest proto.InternalMessageInfo
+
+func (m *StatRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type ReadFileRequest struct {
+	// File path to the file to be read.
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ReadFileRequest) Reset()         { *m = ReadFileRequest{} }
+func (m *ReadFileRequest) String() string { return proto.CompactTextString(m) }
+func (*ReadFileRequest) ProtoMessage()    {}
+func (*ReadFileRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f798b4e0b3d56780, []int{3}
+}
+
+func (m *ReadFileRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReadFileRequest.Unmarshal(m, b)
+}
+func (m *ReadFileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReadFileRequest.Marshal(b, m, deterministic)
+}
+func (m *ReadFileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReadFileRequest.Merge(m, src)
+}
+func (m *ReadFileRequest) XXX_Size() int {
+	return xxx_messageInfo_ReadFileRequest.Size(m)
+}
+func (m *ReadFileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReadFileRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReadFileRequest proto.InternalMessageInfo
+
+func (m *ReadFileRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type ReadFileResponse struct {
+	Content              []byte   `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ReadFileResponse) Reset()         { *m = ReadFileResponse{} }
+func (m *ReadFileResponse) String() string { return proto.CompactTextString(m) }
+func (*ReadFileResponse) ProtoMessage()    {}
+func (*ReadFileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f798b4e0b3d56780, []int{4}
+}
+
+func (m *ReadFileResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReadFileResponse.Unmarshal(m, b)
+}
+func (m *ReadFileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReadFileResponse.Marshal(b, m, deterministic)
+}
+func (m *ReadFileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReadFileResponse.Merge(m, src)
+}
+func (m *ReadFileResponse) XXX_Size() int {
+	return xxx_messageInfo_ReadFileResponse.Size(m)
+}
+func (m *ReadFileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReadFileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReadFileResponse proto.InternalMessageInfo
+
+func (m *ReadFileResponse) GetContent() []byte {
+	if m != nil {
+		return m.Content
+	}
+	return nil
+}
+
 // FileInfo contains attributes of a file.
 type FileInfo struct {
 	Name                 string               `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -120,7 +239,7 @@ func (m *FileInfo) Reset()         { *m = FileInfo{} }
 func (m *FileInfo) String() string { return proto.CompactTextString(m) }
 func (*FileInfo) ProtoMessage()    {}
 func (*FileInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_f798b4e0b3d56780, []int{2}
+	return fileDescriptor_f798b4e0b3d56780, []int{5}
 }
 
 func (m *FileInfo) XXX_Unmarshal(b []byte) error {
@@ -172,32 +291,39 @@ func (m *FileInfo) GetModified() *timestamp.Timestamp {
 func init() {
 	proto.RegisterType((*ReadDirRequest)(nil), "tast.cros.baserpc.ReadDirRequest")
 	proto.RegisterType((*ReadDirResponse)(nil), "tast.cros.baserpc.ReadDirResponse")
+	proto.RegisterType((*StatRequest)(nil), "tast.cros.baserpc.StatRequest")
+	proto.RegisterType((*ReadFileRequest)(nil), "tast.cros.baserpc.ReadFileRequest")
+	proto.RegisterType((*ReadFileResponse)(nil), "tast.cros.baserpc.ReadFileResponse")
 	proto.RegisterType((*FileInfo)(nil), "tast.cros.baserpc.FileInfo")
 }
 
 func init() { proto.RegisterFile("file_system.proto", fileDescriptor_f798b4e0b3d56780) }
 
 var fileDescriptor_f798b4e0b3d56780 = []byte{
-	// 289 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x4f, 0x4b, 0xc4, 0x30,
-	0x14, 0xc4, 0xad, 0xbb, 0xea, 0x9a, 0x05, 0x75, 0x73, 0x2a, 0xf5, 0x60, 0x0d, 0x88, 0x3d, 0x25,
-	0x58, 0xc1, 0x0f, 0x20, 0x8b, 0xe0, 0x35, 0x7a, 0xf2, 0xa2, 0xfd, 0xf3, 0xba, 0x06, 0x9a, 0xa6,
-	0xe6, 0xa5, 0x82, 0x1e, 0xfc, 0xec, 0x92, 0xfe, 0x59, 0x10, 0xc5, 0xdb, 0x30, 0xfc, 0x86, 0x79,
-	0xf3, 0xc8, 0xaa, 0x52, 0x35, 0x3c, 0xe3, 0x07, 0x3a, 0xd0, 0xbc, 0xb5, 0xc6, 0x19, 0xba, 0x72,
-	0x19, 0x3a, 0x5e, 0x58, 0x83, 0x3c, 0xcf, 0x10, 0x6c, 0x5b, 0x44, 0x67, 0x1b, 0x63, 0x36, 0x35,
-	0x88, 0x1e, 0xc8, 0xbb, 0x4a, 0x38, 0xa5, 0x01, 0x5d, 0xa6, 0xdb, 0x21, 0xc3, 0x18, 0x39, 0x92,
-	0x90, 0x95, 0x6b, 0x65, 0x25, 0xbc, 0x75, 0x80, 0x8e, 0x9e, 0x90, 0x59, 0xa9, 0x6c, 0x18, 0xc4,
-	0x41, 0x72, 0x28, 0xbd, 0x64, 0x6b, 0x72, 0xbc, 0x65, 0xb0, 0x35, 0x0d, 0x02, 0xbd, 0x22, 0x7b,
-	0xbe, 0x1f, 0xc3, 0x20, 0x9e, 0x25, 0xcb, 0xf4, 0x94, 0xff, 0xaa, 0xe6, 0x77, 0xaa, 0x86, 0xfb,
-	0xa6, 0x32, 0x72, 0x20, 0xd9, 0x17, 0x59, 0x4c, 0x16, 0xa5, 0x64, 0xde, 0x64, 0x1a, 0xc6, 0x92,
-	0x5e, 0x7b, 0x0f, 0xd5, 0x27, 0x84, 0xbb, 0x71, 0x90, 0xcc, 0x65, 0xaf, 0xbd, 0xa7, 0x4d, 0x09,
-	0xe1, 0x6c, 0xf0, 0xbc, 0xa6, 0x37, 0x64, 0xa1, 0x4d, 0xa9, 0x2a, 0x05, 0x65, 0x38, 0x8f, 0x83,
-	0x64, 0x99, 0x46, 0x7c, 0x58, 0xc9, 0xa7, 0x95, 0xfc, 0x71, 0x5a, 0x29, 0xb7, 0x6c, 0xfa, 0x42,
-	0x88, 0xef, 0x7f, 0xe8, 0x3f, 0x46, 0x25, 0x39, 0x18, 0x37, 0xd1, 0xf3, 0x3f, 0x8e, 0xff, 0xf9,
-	0x93, 0x88, 0xfd, 0x87, 0x0c, 0x2f, 0x61, 0x3b, 0xb7, 0x97, 0x4f, 0x17, 0xc5, 0xab, 0x35, 0x5a,
-	0x75, 0xda, 0xa0, 0xf0, 0x09, 0x81, 0x60, 0xdf, 0x55, 0x01, 0x28, 0x7c, 0x54, 0x8c, 0xd1, 0x7c,
-	0xbf, 0x3f, 0xf4, 0xfa, 0x3b, 0x00, 0x00, 0xff, 0xff, 0xbc, 0x0e, 0x55, 0xb7, 0xc4, 0x01, 0x00,
-	0x00,
+	// 367 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xcf, 0x4e, 0xdb, 0x40,
+	0x10, 0x87, 0xe3, 0xc6, 0x6d, 0xd2, 0x49, 0xd5, 0x26, 0x7b, 0xb2, 0x5c, 0xa9, 0x75, 0xb6, 0x8a,
+	0xea, 0x03, 0x5a, 0x8b, 0x20, 0xf1, 0x00, 0x28, 0x20, 0x71, 0xdd, 0xc0, 0x85, 0x0b, 0x72, 0xec,
+	0x71, 0x58, 0x29, 0xeb, 0x35, 0xde, 0x0d, 0x12, 0x1c, 0x78, 0x74, 0x84, 0xd6, 0x7f, 0x42, 0x10,
+	0xc1, 0xb7, 0xf1, 0xe8, 0x1b, 0xff, 0x66, 0xbf, 0x81, 0x49, 0x26, 0x36, 0x78, 0xab, 0x1f, 0xb5,
+	0x41, 0xc9, 0x8a, 0x52, 0x19, 0x45, 0x26, 0x26, 0xd6, 0x86, 0x25, 0xa5, 0xd2, 0x6c, 0x15, 0x6b,
+	0x2c, 0x8b, 0xc4, 0xff, 0xbb, 0x56, 0x6a, 0xbd, 0xc1, 0xa8, 0x02, 0x56, 0xdb, 0x2c, 0x32, 0x42,
+	0xa2, 0x36, 0xb1, 0x2c, 0xea, 0x19, 0x4a, 0xe1, 0x27, 0xc7, 0x38, 0x5d, 0x88, 0x92, 0xe3, 0xfd,
+	0x16, 0xb5, 0x21, 0x63, 0xe8, 0xa7, 0xa2, 0xf4, 0x9c, 0xc0, 0x09, 0xbf, 0x73, 0x5b, 0xd2, 0x05,
+	0xfc, 0xda, 0x31, 0xba, 0x50, 0xb9, 0x46, 0x72, 0x0c, 0x5f, 0x6d, 0xbe, 0xf6, 0x9c, 0xa0, 0x1f,
+	0x8e, 0xe6, 0xbf, 0xd9, 0x87, 0x68, 0x76, 0x21, 0x36, 0x78, 0x99, 0x67, 0x8a, 0xd7, 0x24, 0x9d,
+	0xc2, 0x68, 0x69, 0x62, 0xd3, 0xc6, 0x10, 0x70, 0xf3, 0x58, 0x62, 0x93, 0x53, 0xd5, 0x74, 0x56,
+	0x07, 0xd9, 0xc9, 0x2e, 0xec, 0x08, 0xc6, 0x6f, 0x58, 0xb3, 0x90, 0x07, 0x83, 0x44, 0xe5, 0x06,
+	0x73, 0x53, 0xa1, 0x3f, 0x78, 0xfb, 0x49, 0x9f, 0x61, 0xd8, 0xae, 0x72, 0xe8, 0x6f, 0xb6, 0xa7,
+	0xc5, 0x13, 0x7a, 0x5f, 0x02, 0x27, 0x74, 0x79, 0x55, 0xdb, 0x9e, 0x54, 0x29, 0x7a, 0xfd, 0xba,
+	0x67, 0x6b, 0x72, 0x0a, 0x43, 0xa9, 0x52, 0x91, 0x09, 0x4c, 0x3d, 0x37, 0x70, 0xc2, 0xd1, 0xdc,
+	0x67, 0xb5, 0x5d, 0xd6, 0xda, 0x65, 0x57, 0xad, 0x5d, 0xbe, 0x63, 0xe7, 0x2f, 0x0e, 0x80, 0x5d,
+	0x60, 0x59, 0x9d, 0x8a, 0x70, 0x18, 0x34, 0x32, 0xc9, 0xf4, 0x80, 0xb5, 0xf7, 0xc7, 0xf0, 0x69,
+	0x17, 0x52, 0x3f, 0x9d, 0xf6, 0xc8, 0x39, 0xb8, 0x56, 0x2d, 0xf9, 0x73, 0x80, 0xde, 0x73, 0xee,
+	0x77, 0x9d, 0x89, 0xf6, 0xc8, 0x35, 0x0c, 0x5b, 0xaf, 0xe4, 0xb3, 0xe0, 0xbd, 0xdb, 0xf8, 0xff,
+	0x3a, 0x99, 0x76, 0xbb, 0xb3, 0xff, 0x37, 0xb3, 0xe4, 0xae, 0x54, 0x52, 0x6c, 0xa5, 0xd2, 0x91,
+	0x1d, 0x89, 0x34, 0x96, 0x0f, 0x22, 0x41, 0x1d, 0xd9, 0xd9, 0xa8, 0x99, 0x5d, 0x7d, 0xab, 0x3c,
+	0x9e, 0xbc, 0x06, 0x00, 0x00, 0xff, 0xff, 0xff, 0x81, 0x6a, 0x11, 0xdb, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -214,6 +340,8 @@ const _ = grpc.SupportPackageIsVersion4
 type FileSystemClient interface {
 	// ReadDir returns the content of a directory.
 	ReadDir(ctx context.Context, in *ReadDirRequest, opts ...grpc.CallOption) (*ReadDirResponse, error)
+	Stat(ctx context.Context, in *StatRequest, opts ...grpc.CallOption) (*FileInfo, error)
+	ReadFile(ctx context.Context, in *ReadFileRequest, opts ...grpc.CallOption) (*ReadFileResponse, error)
 }
 
 type fileSystemClient struct {
@@ -233,10 +361,30 @@ func (c *fileSystemClient) ReadDir(ctx context.Context, in *ReadDirRequest, opts
 	return out, nil
 }
 
+func (c *fileSystemClient) Stat(ctx context.Context, in *StatRequest, opts ...grpc.CallOption) (*FileInfo, error) {
+	out := new(FileInfo)
+	err := c.cc.Invoke(ctx, "/tast.cros.baserpc.FileSystem/Stat", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileSystemClient) ReadFile(ctx context.Context, in *ReadFileRequest, opts ...grpc.CallOption) (*ReadFileResponse, error) {
+	out := new(ReadFileResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.baserpc.FileSystem/ReadFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FileSystemServer is the server API for FileSystem service.
 type FileSystemServer interface {
 	// ReadDir returns the content of a directory.
 	ReadDir(context.Context, *ReadDirRequest) (*ReadDirResponse, error)
+	Stat(context.Context, *StatRequest) (*FileInfo, error)
+	ReadFile(context.Context, *ReadFileRequest) (*ReadFileResponse, error)
 }
 
 // UnimplementedFileSystemServer can be embedded to have forward compatible implementations.
@@ -245,6 +393,12 @@ type UnimplementedFileSystemServer struct {
 
 func (*UnimplementedFileSystemServer) ReadDir(ctx context.Context, req *ReadDirRequest) (*ReadDirResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReadDir not implemented")
+}
+func (*UnimplementedFileSystemServer) Stat(ctx context.Context, req *StatRequest) (*FileInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Stat not implemented")
+}
+func (*UnimplementedFileSystemServer) ReadFile(ctx context.Context, req *ReadFileRequest) (*ReadFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadFile not implemented")
 }
 
 func RegisterFileSystemServer(s *grpc.Server, srv FileSystemServer) {
@@ -269,6 +423,42 @@ func _FileSystem_ReadDir_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FileSystem_Stat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StatRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileSystemServer).Stat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.baserpc.FileSystem/Stat",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileSystemServer).Stat(ctx, req.(*StatRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileSystem_ReadFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReadFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileSystemServer).ReadFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.baserpc.FileSystem/ReadFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileSystemServer).ReadFile(ctx, req.(*ReadFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _FileSystem_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.baserpc.FileSystem",
 	HandlerType: (*FileSystemServer)(nil),
@@ -276,6 +466,14 @@ var _FileSystem_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReadDir",
 			Handler:    _FileSystem_ReadDir_Handler,
+		},
+		{
+			MethodName: "Stat",
+			Handler:    _FileSystem_Stat_Handler,
+		},
+		{
+			MethodName: "ReadFile",
+			Handler:    _FileSystem_ReadFile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
