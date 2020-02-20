@@ -22,6 +22,30 @@
       "revId": "4c979b639a24f732ea56111296045e70c6b5311e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba431e9_58b5a5b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/c2e2etest/c2e2etest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-02-20T01:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1567122_dfe1c05e",
+      "range": {
+        "startLine": 61,
+        "startChar": 137,
+        "endLine": 61,
+        "endChar": 158
+      },
+      "revId": "4c979b639a24f732ea56111296045e70c6b5311e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
