@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbefa0ac_d242741f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:18:15Z",
+      "side": 1,
+      "message": "it would be nice to have docstrings for the service methods",
+      "revId": "15b04c5dd1fc3ebc8140d4eed4d71a5815fb8f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa010f0_3f206b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:18:15Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "15b04c5dd1fc3ebc8140d4eed4d71a5815fb8f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b5c2ea_c688a6df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:18:15Z",
+      "side": 1,
+      "message": "fakedms calls testing.ContextLog, which won\u0027t work with the background context",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "15b04c5dd1fc3ebc8140d4eed4d71a5815fb8f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a7d4e6d_d04179f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:18:15Z",
+      "side": 1,
+      "message": "I\u0027d like to avoid hardcoding the username - this would break if the default value in PolicyBlob changed",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 53
+      },
+      "revId": "15b04c5dd1fc3ebc8140d4eed4d71a5815fb8f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c3dc14_0deb809e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:18:15Z",
+      "side": 1,
+      "message": "I think longer names for some of these functions would be clearer, like maybe CheckChromeAndFakeDMS.  As is, it sounds like a function that isn\u0027t policy-specific",
+      "range": {
+        "startLine": 100,
+        "startChar": 24,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "15b04c5dd1fc3ebc8140d4eed4d71a5815fb8f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4562a04a_2fd92a9f",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:18:15Z",
+      "side": 1,
+      "message": "I think it\u0027s confusing to call this PolicyBlob when it\u0027s actually the JSON representation of a PolicyBlob.  Looking at the code using this I occasionally forgot that it was bytes and not a struct.  PolicyJSON?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "15b04c5dd1fc3ebc8140d4eed4d71a5815fb8f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
