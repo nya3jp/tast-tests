@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d8c13e1_0131e8ec",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:32:53Z",
+      "side": 1,
+      "message": "nit: omit\n\nI guess it\u0027s not recommended:\n\n\nhttps://golang.org/doc/effective_go.html#commentary\n\n\nComments do not need extra formatting such as banners of stars. The generated output may not even be presented in a fixed-width font, so don\u0027t depend on spacing for alignment—godoc, like gofmt, takes care of that. The comments are uninterpreted plain text, so HTML and other annotations such as _this_ will reproduce verbatim and should not be used. One adjustment godoc does do is to display indented text in a fixed-width font, suitable for program snippets. The package comment for the fmt package uses this to good effect.",
+      "range": {
+        "startLine": 52,
+        "startChar": 71,
+        "endLine": 52,
+        "endChar": 72
+      },
+      "revId": "599284bb3ff1f127f4efe13a5d247ca4abac841e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31882b03_93e88a89",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:32:53Z",
+      "side": 1,
+      "message": "nit: crbug.com is more popular and you don\u0027t need to change crbug/879797 to crbug.com/879797 to navigate the bug.",
+      "range": {
+        "startLine": 99,
+        "startChar": 9,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "599284bb3ff1f127f4efe13a5d247ca4abac841e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4ed9a8_2e6d0259",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:32:53Z",
+      "side": 1,
+      "message": "nit: successful.",
+      "range": {
+        "startLine": 111,
+        "startChar": 44,
+        "endLine": 111,
+        "endChar": 54
+      },
+      "revId": "599284bb3ff1f127f4efe13a5d247ca4abac841e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933c3010_b019cace",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:32:53Z",
+      "side": 1,
+      "message": "nit: omit",
+      "range": {
+        "startLine": 123,
+        "startChar": 71,
+        "endLine": 123,
+        "endChar": 72
+      },
+      "revId": "599284bb3ff1f127f4efe13a5d247ca4abac841e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
