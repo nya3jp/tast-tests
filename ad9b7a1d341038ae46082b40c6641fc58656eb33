@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6fc02380_74a8aee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-20T08:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f47e5c8_310d26d2",
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6100831c_e6d8d53a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2350e9_906beca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-20T08:30:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6100831c_e6d8d53a",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "eb153e92_9b932329",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-20T08:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eb932ef_987e2041",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e219f16b_d3a5fa9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 5
@@ -100,6 +166,30 @@
       "writtenOn": "2020-02-19T22:57:20Z",
       "side": 1,
       "message": "any chance that they are assigned the same PID?\n(just asking, don\u0027t know how the linux kernel assign the PIDs)",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d11c573_911155a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-20T08:30:05Z",
+      "side": 1,
+      "message": "AFAIK we can practically assume PIDs before/after reboot are different, since in Linux PIDs are sequentially assigned until reaching some maximum value (specified by /proc/sys/kernel/pid_max) and wrapping around.\nSo I think it\u0027s safe to keep this PID check as in the original autotest. (Even if there should be a change in Linux PID recycling policy and this test started to fail, it would not be hard to detect the cause.)",
+      "parentUuid": "e219f16b_d3a5fa9e",
       "range": {
         "startLine": 106,
         "startChar": 1,
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "bb20737f_68a48084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-20T08:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "958e8064_fe82d74d",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00a76fe0_0aa9e21b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 5
@@ -158,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "4d1c64b5_d92c1e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-20T08:30:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00a76fe0_0aa9e21b",
+      "range": {
+        "startLine": 139,
+        "startChar": 41,
+        "endLine": 139,
+        "endChar": 53
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22668a49_2ea750c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 5
@@ -178,6 +316,30 @@
       "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9da9165_c6bfa76f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-20T08:30:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22668a49_2ea750c7",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 16
+      },
+      "revId": "ad9b7a1d341038ae46082b40c6641fc58656eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
