@@ -22,6 +22,30 @@
       "revId": "5282ba057429ad533349e21a2ac5f90c040d7442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc165f5f_995d8614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-20T01:36:56Z",
+      "side": 1,
+      "message": "Done, updated in patchset 11.",
+      "parentUuid": "0b482461_c934853e",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "5282ba057429ad533349e21a2ac5f90c040d7442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
