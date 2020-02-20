@@ -22,6 +22,30 @@
       "revId": "88824644b76d9444336d3f71d0e307549ca03b1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b96abe_7a9830e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_session_gain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-20T20:47:45Z",
+      "side": 1,
+      "message": "Thanks, fixed.",
+      "parentUuid": "daedf0a8_78e1d43c",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "88824644b76d9444336d3f71d0e307549ca03b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
