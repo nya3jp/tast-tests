@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "411fbf90_0a74f5d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_script.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:41:10Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62559bbe_0fbe4716",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
         "patchSetId": 41
