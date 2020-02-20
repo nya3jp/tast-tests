@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8120edcf_10e14923",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:51:43Z",
+      "side": 1,
+      "message": "put these comments inline with the variable - they\u0027re short enough",
+      "revId": "0fda4b2fddffb16fd9a772f244419c79b3f9100e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231a72e0_d1446abc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:51:43Z",
+      "side": 1,
+      "message": "p instead of value?  value.Val looks kindof weird",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "0fda4b2fddffb16fd9a772f244419c79b3f9100e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
