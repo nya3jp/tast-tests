@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a547b8bf_8ee9dc47",
+        "filename": "android/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-20T15:56:52Z",
+      "side": 1,
+      "message": "could you also add bhansknecht@chromium.org ?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "92aea08488fa649dc6b19dbadf398f8549212d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
