@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d6d069d_a52e3877",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T19:55:42Z",
+      "side": 1,
+      "message": "BUG\u003db:....\nTEST\u003d\u003ccommand line to run glxgears\u003e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "04cf26f9d9adbad933e13fbb92848cf01c32ecf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e60b5f_8fc54df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T19:55:42Z",
+      "side": 1,
+      "message": "graphics_perbuild for this test. We need results soon.",
+      "range": {
+        "startLine": 21,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 77
+      },
+      "revId": "04cf26f9d9adbad933e13fbb92848cf01c32ecf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8703fe5_ef2c8663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T19:55:42Z",
+      "side": 1,
+      "message": "The currently running test is tast.graphics.CrostiniTraceGlxgears.\n\nWe need to indicate parameters. While \"TraceReplay\" is long and can be shortened.\n\nWe will need a better naming scheme (accounting for parameters like crostini, buster, game name), but maybe not now.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "04cf26f9d9adbad933e13fbb92848cf01c32ecf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
