@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7211e12f_da597623",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:45:43Z",
+      "side": 1,
+      "message": "define this as a const since it doesn\u0027t change",
+      "revId": "eb95ec7a0ee7e60e416869106060cd6b2fd6ad42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073b751d_8c9921ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T07:45:43Z",
+      "side": 1,
+      "message": "It would be more readable to name status as \"preStatus\" or \"initStatus\" or something like that initially, then define \"postStatus\" or \"currentStatus\" for the second one - then you don\u0027t rename the variable and Equal() comparison is very clear at first glance",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 8
+      },
+      "revId": "eb95ec7a0ee7e60e416869106060cd6b2fd6ad42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
