@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b194f14_25bce340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-20T22:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43b3fb97_42c326c3",
+      "range": {
+        "startLine": 124,
+        "startChar": 92,
+        "endLine": 124,
+        "endChar": 98
+      },
+      "revId": "b680e818e349e26d3bccce6318024f2dc77e73f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
