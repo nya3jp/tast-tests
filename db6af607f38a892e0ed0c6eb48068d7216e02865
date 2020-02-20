@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf4affd7_28a63695",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T20:00:35Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to add WaitAndroidBoot method. It\u0027s rarely needed, and its behavior is very subtle.\n\nActually, in this patchset, New \u003d sanity checks (checkSoftwareDeps, ensureARCEnabled) + WaitAndroidBoot. What do you think about just calling arc.New after rebooting Android?",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "db6af607f38a892e0ed0c6eb48068d7216e02865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
