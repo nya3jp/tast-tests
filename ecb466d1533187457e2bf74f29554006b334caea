@@ -22,6 +22,30 @@
       "revId": "ecb466d1533187457e2bf74f29554006b334caea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721096c0_34ac759e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-02-20T18:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de304ebe_8834dcb9",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 4
+      },
+      "revId": "ecb466d1533187457e2bf74f29554006b334caea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
