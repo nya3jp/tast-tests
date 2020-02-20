@@ -83,6 +83,7 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	// This is done by checking multicast flag followed by IPv4 existence.
 	// We don't check for IPv6 as kernel always provision an EUI 64 derived like local address in the fe80::/64 prefix.
 	ipv4Multicast := false
+	ipv6Multicast := false
 	for _, ifname := range ifnames {
 		iface, err := net.InterfaceByName(ifname)
 		if err != nil {
@@ -158,6 +159,9 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	// Remove SSDP IPv6 expectations as we don't currently have the firewall rule.
 	delete(expectOut, ssdpPrefix+ssdpUserAgentOutIPv6)
 	delete(expectIn, ssdpPrefix+ssdpUserAgentInIPv6)
+	// Remove inbound IPv6 expectations as the lab doesn't have IPv6 connectivity.
+	delete(expectIn, mdnsPrefix+mdnsHostnameInIPv6)
+	delete(expectIn, mdnsPrefix+legacyMDNSHostnameInIPv6)
 
 	s.Log("Starting tcpdump")
 	g, ctx := errgroup.WithContext(ctx)
@@ -259,6 +263,7 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	// Try to send multicast packet multiple times.
 	for i := 0; i < 3; i++ {
 		// Send outbound multicast packets from ARC.
+		// Outbound IPv6 multicast should always be tested because there is a kernel provisioned address.
 		// Run IPv6 mDNS query.
 		setTexts(mdnsHostnameOutIPv6, mdnsPort)
 		if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
@@ -273,6 +278,11 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 		setTexts(ssdpUserAgentOutIPv6, ssdpPort)
 		if err := d.Object(ui.ID(ssdpButtonID)).Click(ctx); err != nil {
 			s.Error("Failed starting outbound IPv6 SSDP test: ", err)
+		}
+
+		// Skip IPv6 inboud multicast test if there is no connectivity.
+		if !ipv6Multicast {
+			continue
 		}
 
 		// Set up multicast destination addresses for IPv6 multicast.
