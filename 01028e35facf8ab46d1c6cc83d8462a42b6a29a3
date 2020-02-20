@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18405821_af0b0b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_multi_profile.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:45:02Z",
+      "side": 1,
+      "message": "nit: remove trailing space",
+      "range": {
+        "startLine": 74,
+        "startChar": 119,
+        "endLine": 74,
+        "endChar": 120
+      },
+      "revId": "01028e35facf8ab46d1c6cc83d8462a42b6a29a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc876e1_bb8c762a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_multi_profile.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:45:02Z",
+      "side": 1,
+      "message": "nit: remove trailing space",
+      "range": {
+        "startLine": 77,
+        "startChar": 119,
+        "endLine": 77,
+        "endChar": 120
+      },
+      "revId": "01028e35facf8ab46d1c6cc83d8462a42b6a29a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a44c64_4f5d71a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_multi_profile.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:45:02Z",
+      "side": 1,
+      "message": "nit: remove trailing space",
+      "range": {
+        "startLine": 90,
+        "startChar": 100,
+        "endLine": 90,
+        "endChar": 101
+      },
+      "revId": "01028e35facf8ab46d1c6cc83d8462a42b6a29a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
