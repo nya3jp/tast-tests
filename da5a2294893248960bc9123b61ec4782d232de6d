@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0efe8c3c_cbe05545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T10:18:32Z",
+      "side": 1,
+      "message": "Acronyms should be all capital in go\u0027s style.\n\ntestDLCIDs.",
+      "revId": "da5a2294893248960bc9123b61ec4782d232de6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4d8735_08a7ef0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T10:18:32Z",
+      "side": 1,
+      "message": "Ditto: testDLCID\n\nOr, I\u0027d say just \"id\". I think, under this scope, id is enough.",
+      "revId": "da5a2294893248960bc9123b61ec4782d232de6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7173d51c_69a8488b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T10:18:32Z",
+      "side": 1,
+      "message": "Could you use fmt.Sprintf() or filepath.Join()?",
+      "range": {
+        "startLine": 178,
+        "startChar": 70,
+        "endLine": 178,
+        "endChar": 129
+      },
+      "revId": "da5a2294893248960bc9123b61ec4782d232de6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69be15ec_644aa0be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T10:18:32Z",
+      "side": 1,
+      "message": "nit/style:\n\ns.Errorf(\"Failed to unmount DLC (%s): %v\", testDLCID, err)",
+      "revId": "da5a2294893248960bc9123b61ec4782d232de6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
