@@ -22,6 +22,30 @@
       "revId": "f88a701092384b383e69a1998b8538ab8e2f70bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935bf5d6_633328bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T20:03:49Z",
+      "side": 0,
+      "message": "Yes that\u0027s right.",
+      "parentUuid": "3512d9f1_a1592010",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "f88a701092384b383e69a1998b8538ab8e2f70bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
