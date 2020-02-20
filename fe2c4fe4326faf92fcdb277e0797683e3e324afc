@@ -16,6 +16,24 @@
       "revId": "fe2c4fe4326faf92fcdb277e0797683e3e324afc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f4196d6_4c626b9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-20T18:42:41Z",
+      "side": 1,
+      "message": "Good catch, thanks, done.",
+      "parentUuid": "ca648693_c7f36c68",
+      "revId": "fe2c4fe4326faf92fcdb277e0797683e3e324afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
