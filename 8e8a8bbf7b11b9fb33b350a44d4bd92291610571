@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "86bb2e93_a8ab7d08",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:07:18Z",
+      "side": 1,
+      "message": "The alternative approach is not about nil *Setup, it\u0027s about zero Setup.\n\nAs you see in the documentation of sync.Mutex (https://godoc.org/sync#Mutex), an exported struct may declare that \"its zero value is ready to use\". Then users are supposed to construct a new object by themselves (rather than calling constructors). \n\nThere are several good points about making the zero value meaningful. Please refer the following page for some details:\nhttps://dave.cheney.net/practical-go/presentations/qcon-china.html#_make_the_zero_value_useful",
+      "parentUuid": "967f6fd5_aa0fd174",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dfaf1ec_9e695dc1",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 10
@@ -272,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "89f89edb_6f3c0250",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:07:18Z",
+      "side": 1,
+      "message": "I see, that approach sounds good to me.",
+      "parentUuid": "2551d3da_c0effb52",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a965bbef_4e45033a",
         "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
         "patchSetId": 10
@@ -316,6 +364,30 @@
       "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ca0536_e151e077",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:07:18Z",
+      "side": 1,
+      "message": "Oh that\u0027s a good point! Thanks for clarification.",
+      "parentUuid": "4ff4f81c_8525f60f",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 2
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
