@@ -7,56 +7,34 @@
 </body>
 
 <script type="text/javascript">
-let can_play = false;
-let number_finished_seeks = 0;
 
-(function() {
-   const timeEle = document.getElementById('videoCurTime');
-   const durationEle = document.getElementById('videoTotalTime');
-   video.addEventListener('timeupdate', function(event) {
-     timeEle.innerHTML = video.currentTime;
-     durationEle.innerHTML = video.duration;
-   }, false);
-})();
+// This is only for user-facing convenience purposes.
+document.getElementById('video').ontimeupdate = _ => {
+  document.getElementById('videoCurTime').innerHTML = video.currentTime;
+  document.getElementById('videoTotalTime').innerHTML = video.duration;
+};
 
-(function() {
-   video.addEventListener('canplay', function(event) {
-     can_play = true;
-   }, false);
-})();
-
-function loadVideoSource(video_source_path) {
-  video.src = video_source_path;
-  return true;
-}
-
-function canplay() {
-  return can_play;
-}
-
-function play() {
-  video.play();
+async function play(videoSourcePath) {
+  let video = document.getElementById('video');
+  video.src = videoSourcePath;
+  return video.play();
 }
 
 function pause() {
   video.pause();
 }
 
-function currentTime()  {
-  return video.currentTime;
-}
-
 // Quick and dirty randomizer that returns the same sequence of numbers provided
 // the same seed is used.
 function randomizer(seed) {
   return function() {
-      const x = Math.sin(seed++) * 10000;
-      return x - Math.floor(x);
+    const x = Math.sin(seed++) * 10000;
+    return x - Math.floor(x);
   }
 };
 
 const random = randomizer(1);
-
+let number_finished_seeks = 0;
 function randomSeek() {
   return new Promise((resolve, reject) => {
     video.onseeked = (event) => {
