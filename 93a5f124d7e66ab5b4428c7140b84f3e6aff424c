@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f00d31c6_d480792d",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-20T22:59:48Z",
+      "side": 1,
+      "message": "do you really get much value out of the separated \"config\" representation? It has only 1 option, but then the only way to use it (NewServer) has many more.\n\nRelated: I wonder about the Server type: it has NewServer(), start() (non-public) and Stop() -- I\u0027m thinking it might be clearer to have Start() be public, so the caller can do the \"create\" separate from the \"start\" -- this might get more complex depending on how we want to bridging.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7114d3ff_76448839",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-20T22:59:48Z",
+      "side": 1,
+      "message": "random thought: is there any benefit to writing out this file, rather than using \"--conf-file\u003d-\" (i.e., stdin)? One fewer thing to clean up that way.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b335b5de_0798c2ab",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-20T22:59:48Z",
+      "side": 1,
+      "message": "It\u0027d be nice to kill this pattern of pkill usage. (Among the reasons: it requires us to stick an otherwise-not-really-needed identifier in the command line. See my thoughts at line 120.) Is there no way to get the PID of the process we launched instead?\n\nIf it\u0027s that hard...well, I guess we can stick with this \"temporarily\" (until the TODO at line 159 is resolved).",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 90
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9105b1ae_e3bdb297",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-20T22:59:48Z",
+      "side": 1,
+      "message": "is this sort of nil-ification pattern typical of \"destruction\" operations like this? I\u0027m genuinely curious.\n\nI see it helps with the cleanup in start().",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 13
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c429c6f_38a2097e",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-20T22:59:48Z",
+      "side": 1,
+      "message": "It\u0027s a little unclear to me who should \"own\" this piece -- this isn\u0027t really just the DHCP server IP, it\u0027s the IP of the interface, which is used for plenty others (as your Router CL shows: you wrap it in HostAPHandle too).\n\nMaybe this should just be an input config parameter, and not exposed publicly at all?\n\nAlong that line: maybe there\u0027s room to expand the \"HostAPHandle\" (next CL) to do more interface management? It\u0027s not clear that the local IP configuration + flushing really belong in the \"DHCP server\" object -- the DHCP server doesn\u0027t really care what IP address it has, as long as it has one on the right subnet.\n\n(Then, if you move the local IP mgmt out of this object...you don\u0027t need ServerIP() at all.)",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
