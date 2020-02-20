@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "c95a8c6e_57562c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T16:10:53Z",
+      "side": 1,
+      "message": "I found a way to check whether print preview is still loading and wait until it\u0027s finished loading instead of waiting 3 seconds.",
+      "parentUuid": "9af0f845_121746be",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "263bc8a9_5c569497",
         "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
         "patchSetId": 28
