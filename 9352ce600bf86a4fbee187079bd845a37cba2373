@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "b7448e25_5a4c89a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-20T15:11:19Z",
+      "side": 1,
+      "message": "I think it might be a timing issue. When print preview opens, it immediately requests a print document. Before it receives the first one, we select the printer. This causes another request to get sent for a print document. It\u0027s normally ok to have multiple pending requests, but I think there might be an issue where the very first request has to be completed before others can successfully be issued.",
+      "parentUuid": "9678f947_d7ae9ca5",
+      "revId": "9352ce600bf86a4fbee187079bd845a37cba2373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4c42e03_3cbfa5da",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 31
