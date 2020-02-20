@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "154405ef_081b0ea6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T06:20:40Z",
+      "side": 1,
+      "message": "I really do think we should move this into /tmp/graphics or /home/testuser/graphics/ so we have a chance to clean up at some point in time.",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f953e7_6db93e01",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T06:20:40Z",
+      "side": 1,
+      "message": "Maybe ReplaySettings is more descriptive?",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bce73ef_873079e0",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T06:20:40Z",
+      "side": 1,
+      "message": "Maybe TraceConfig is more descriptive?",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a959db_8f1a4ea5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T06:20:40Z",
+      "side": 1,
+      "message": "Is this the name of the game, test or trace?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5309fb71_fd749ae5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T06:20:40Z",
+      "side": 1,
+      "message": "Can this be undone? If not this means it won\u0027t be safe for other tests if we wanted to add a retrace to the CQ.",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a04a520_459a432c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T06:20:40Z",
+      "side": 1,
+      "message": "Can you use StatusOK?\nhttps://golang.org/src/net/http/status.go",
+      "range": {
+        "startLine": 134,
+        "startChar": 16,
+        "endLine": 134,
+        "endChar": 19
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
