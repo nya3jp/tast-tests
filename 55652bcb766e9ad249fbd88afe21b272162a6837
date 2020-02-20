@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "057484f0_9d475943",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-20T08:08:09Z",
+      "side": 1,
+      "message": "when calling this function, h.EnsureTPMIsReset(ctx, false) is confusing unless you already know that the surprise boolean is to signal powerwashing.  Consider moving this code to an unexported function (maybe h.ensureTPMIsResetOptions?) and then having h.EnsureTPMIsReset() call that function with false and h.EnsureTPMIsResetWithPowerwash() call that function with true.\n\nYou could also define a new type or constants such that the caller sees something like h.EnsureTPMIsReset(ctx, hwsec.PowerwashFalse) or hwsec.EnsureTPMIsReset(ctx, hwsec.PowerwashTrue), but that\u0027s a little more annoying for the user.",
+      "range": {
+        "startLine": 55,
+        "startChar": 61,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "55652bcb766e9ad249fbd88afe21b272162a6837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
