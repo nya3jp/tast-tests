@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9870ed08_533de139",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:29:00Z",
+      "side": 1,
+      "message": "Would you mind writing some unit tests?",
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab5db97_baba1416",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:29:00Z",
+      "side": 1,
+      "message": "typo: at?",
+      "range": {
+        "startLine": 12,
+        "startChar": 71,
+        "endLine": 12,
+        "endChar": 72
+      },
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af6093f5_6015111c",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:29:00Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t recommend optional interfaces because it\u0027s weak to typos, e.g.\n\n type FooSource ...\n\n func (s *FooSource) SetUp(ctx context.Context) error // this is not called due to typo (\"Setup\" vs \"SetUp\")\n\nObvious default implementations of Setup and Start should be trivial and short (just returning nil), so how about including them in TimelineDatasource interface?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad32bde_e6395b60",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-20T19:29:00Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t clearly see the benefit of TimelineBuilder. Actually TimelineBuilder and Timeline have exactly the same members... What do you think about just having a constructor for Timeline, e.g.\n\n func NewTimeline(sources ...TimelineDatasource) *Timeline {\n   tl :\u003d \u0026Timeline{\n     sources: append([]TimelineDatasource{\u0026timestampSource{...}), sources...),\n   }\n   for _, s :\u003d range tl.sources {\n     // run setup\n   }\n   return tl\n }",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
