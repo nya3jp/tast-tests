@@ -22,6 +22,30 @@
       "revId": "55652bcb766e9ad249fbd88afe21b272162a6837",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "087937ba_18226527",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-20T10:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057484f0_9d475943",
+      "range": {
+        "startLine": 55,
+        "startChar": 61,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "55652bcb766e9ad249fbd88afe21b272162a6837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
