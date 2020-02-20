@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca648693_c7f36c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-20T18:01:20Z",
+      "side": 1,
+      "message": "(I know it\u0027s not the regression of this CL, but...)\n\nI think this condition is no longer true, because of dualmode board.\n\nThe container version also runs on the dualmode board, because the board also has \"android_vm\" software dependency.\nHere\u0027s the log.\nhttp://stainless/search?view\u003dlist\u0026first_date\u003d2020-02-14\u0026last_date\u003d2020-02-20\u0026test\u003darc.MemoryShiftingPerf.arc\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nTo disable the test for container, you can add ExtraAttr: []string{\"disabled\"} in Param without name.",
+      "revId": "fe2c4fe4326faf92fcdb277e0797683e3e324afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
