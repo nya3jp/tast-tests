@@ -22,13 +22,22 @@ func init() {
 		Desc:         "Measures the CPU usage while the desktop is idle",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome", "android_both"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Val:               []string{},
+		}, {
+			Name:              "arcvm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               []string{"--enable-arcvm"},
+		}},
 	})
 }
 
 func IdlePerf(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	args := s.Param().([]string)
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
