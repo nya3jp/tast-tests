@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50f9d5c1_ccd15483",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-20T19:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "154405ef_081b0ea6",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80f953e7_6db93e01",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-20T06:20:40Z",
       "side": 1,
       "message": "Maybe ReplaySettings is more descriptive?",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c2442f_a103db2b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-20T19:30:41Z",
+      "side": 1,
+      "message": "replay process is a test. just tried to be more general and call it \"Test\"",
+      "parentUuid": "80f953e7_6db93e01",
       "range": {
         "startLine": 48,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3d5f3408_7235d007",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-20T19:30:41Z",
+      "side": 1,
+      "message": "it would be ambiguous. \"Trace\" could mean \"file type\" or anything else. TestEntry refer to a test entity",
+      "parentUuid": "0bce73ef_873079e0",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77a959db_8f1a4ea5",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-20T06:20:40Z",
       "side": 1,
       "message": "Is this the name of the game, test or trace?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bf4ad4_5672186c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-20T19:30:41Z",
+      "side": 1,
+      "message": "Name of test entry.",
+      "parentUuid": "77a959db_8f1a4ea5",
       "range": {
         "startLine": 54,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "37327656_aa31eda6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-20T19:30:41Z",
+      "side": 1,
+      "message": "Yes, this iptables record exists only during the test:\n\n\tif err :\u003d setTcpPortState(ctx, fileServerPort, true); err !\u003d nil {\n\t\tstate.Log(\"Unable to open TCP port: \", err)\n\t}\n\n\tdefer func() {\n\t\tif err :\u003d setTcpPortState(ctx, fileServerPort, false); err !\u003d nil {\n\t\t\tstate.Log(\"Unable to close TCP port: \", err)\n\t\t}\n\t}()",
+      "parentUuid": "5309fb71_fd749ae5",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a04a520_459a432c",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c921486b_08578bb1",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-20T19:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a04a520_459a432c",
+      "range": {
+        "startLine": 134,
+        "startChar": 16,
+        "endLine": 134,
+        "endChar": 19
+      },
+      "revId": "d80b797209639008d132b1c35f77bcfeca91112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
