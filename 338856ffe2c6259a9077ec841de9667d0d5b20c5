@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2df11ae8_fc3afa22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:44:32Z",
+      "side": 1,
+      "message": "Let\u0027s add comment",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "338856ffe2c6259a9077ec841de9667d0d5b20c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

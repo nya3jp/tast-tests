@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96c53636_03aa7c0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:44:32Z",
+      "side": 1,
+      "message": "What about adding case for non-affiliated user?\n\nLet\u0027s maybe add TODO+bug what you want to change in this test in the future.",
+      "revId": "1cf0d60b5e929d98dc5d1345dfbe4cabca6a6d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b88519_dff1928e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:44:32Z",
+      "side": 1,
+      "message": "nit: omit",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "1cf0d60b5e929d98dc5d1345dfbe4cabca6a6d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73be1a34_96167f83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:44:32Z",
+      "side": 1,
+      "message": "also, we can check that it\u0027s not running before setting policy",
+      "range": {
+        "startLine": 87,
+        "startChar": 21,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "1cf0d60b5e929d98dc5d1345dfbe4cabca6a6d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f4bc02_4e35e9f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-20T13:44:32Z",
+      "side": 1,
+      "message": "what about putting this into defer and provide more time for cleanup?",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "1cf0d60b5e929d98dc5d1345dfbe4cabca6a6d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
