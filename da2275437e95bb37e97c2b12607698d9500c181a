@@ -45,6 +45,29 @@
       "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d1db0e_3078c034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-02-20T01:53:28Z",
+      "side": 1,
+      "message": "super nit: I found that only this is tab. (all the other are spaces.)",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
