@@ -55,7 +55,7 @@ func MSEDataFiles() []string {
 	}
 }
 
-// pollPlaybackCurrentTime polls JavaScript "currentTime() > threshold" with optioanl PollOptions.
+// pollPlaybackCurrentTime polls JavaScript "currentTime() > threshold" with opts.
 // If it fails to poll for condition, it emits error with currentTime() value attached.
 func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, opts *testing.PollOptions) error {
 	ctx, st := timing.Start(ctx, "poll_playback_current_time")
@@ -63,7 +63,7 @@ func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold f
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var t float64
-		if err := conn.Eval(ctx, "currentTime()", &t); err != nil {
+		if err := conn.Eval(ctx, "video.currentTime", &t); err != nil {
 			return err
 		}
 		if t <= threshold {
@@ -71,25 +71,6 @@ func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold f
 		}
 		return nil
 	}, opts)
-}
-
-// loadVideo makes the video specified in videoFile ready to be played, by
-// waiting for the document to be ready, loading the video source, and waiting
-// until it is ready to play. "play()" can then be called in order to start
-// video playback.
-func loadVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
-	ctx, st := timing.Start(ctx, "load_video")
-	defer st.End()
-
-	if err := conn.Exec(ctx, fmt.Sprintf("loadVideoSource(%q)", videoFile)); err != nil {
-		return errors.Wrap(err, "failed to load a video source")
-	}
-
-	if err := conn.WaitForExpr(ctx, "canplay()"); err != nil {
-		return errors.Wrap(err, "timed out waiting for video load")
-	}
-
-	return nil
 }
 
 // loadPage opens a new tab to load the specified webpage.
@@ -119,12 +100,8 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) er
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := loadVideo(ctx, conn, videoFile); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("play(%q)", videoFile), nil); err != nil {
 		return err
-	}
-
-	if err := conn.Exec(ctx, "play()"); err != nil {
-		return errors.Wrap(err, "failed to play a video")
 	}
 
 	// Use a timeout larger than a second to give time for internals UIs to update.
@@ -201,14 +178,9 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := loadVideo(ctx, conn, videoFile); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("play(%q)", videoFile), nil); err != nil {
 		return err
 	}
-
-	if err := conn.Exec(ctx, "play()"); err != nil {
-		return errors.Wrap(err, "failed to play a video")
-	}
-
 	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
 		return err
 	}
