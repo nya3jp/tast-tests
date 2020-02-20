@@ -153,7 +153,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		// When running ARCVM, 'android-sh' runs via ADB. So, the first thing to do is set up ADB.
 		// Android should be initialized once a working connection to ADB is made.
 		testing.ContextLog(ctx, "Setting up ADB")
-		if err := setUpADB(ctx); err != nil {
+		if err := setUpADBForVM(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed setting up ADB")
 		}
 
@@ -200,7 +200,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		testing.ContextLog(ctx, "Setting up ADB auth")
 		ch = make(chan error, 1)
 		go func() {
-			ch <- setUpADBAuth(ctx)
+			ch <- setUpADBAuthForContainer(ctx)
 		}()
 	}
 

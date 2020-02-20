@@ -61,8 +61,8 @@ yee+dcuGhs9IGBOEEF7lFA==
 	testPublicKey = "QAAAAFt6z0Mt2uLGZef2mgYqun+yAzXyt/L/PeM8G6Hn3I/Kf9CzIW+IyfqmvxUpQDSJuA2EpY5UitmTvtja9Sfy+layAOARANFdY1thUHASmPTlwYQLaoKc0eILqJhzCLS8NU7IZ8Em/XA2uU9nV7dBreexpKf+RQsjsPLz9s3dedwu5nyoJxGXGutIxnoyCZQ9iy66EFz3wBdpDILE/Mdt7yl50y4qz1REDKGPtqOr1KVpE8r5aQQ/6s8kfNZS+/z+J4xJFEvw43C4s3aTtFaE3l1N4J0wvUCRQS2hl43Q7a/IC8LGw/5VPab0VT9CNK33P4mmukpSfSVyahcIukTYiY7u3Byn0Nc9qhPPbSQYNQiofN7w91BWzW46V8CgWzBCKZoKhF7YmTdAm48qmaV0rqMGaf1AtRz5QY0a47seRYCgk9lMx7BeMgIuAZDmYPsUG+mAG+IiQYfvJMIEMBowtc8IlfZv9A7bwLKcs4rRhxFdCzJ7odPgFdgUv7MEAYF+HhnQg6DYEhoqe7YkB98Pb8VbU4f/ZTNkHYtIOxMIb53saW09zop5MlQrR6E7hBeZ5FwMNOK7+yc20ulUlqq38iB6QoHx7lli8dfGpD47J1ETHw7m9uAuxMu75MD4bIxYgmj2Ud1TvmWqXtmg75+E+B1I3osGcw9a2Qxo2ypV1Nkq8b1lmgEAAQA= root@localhost"
 )
 
-// setUpADBAuth sets up public key authentication of ADB.
-func setUpADBAuth(ctx context.Context) error {
+// setUpADBAuthForContainer sets up public key authentication of ADB in ARC++ container.
+func setUpADBAuthForContainer(ctx context.Context) error {
 	// Wait for /data to be mounted.
 	// ro.data_mounted is set by arcbootcontinue command invoked by arc-setup
 	// when an ARC-enabled user session is started.
@@ -106,16 +106,18 @@ func setUpADBAuth(ctx context.Context) error {
 	return nil
 }
 
-// setUpADB sets up ADB without adding authentication method.
-func setUpADB(ctx context.Context) error {
+// setUpADBForVM sets up ADB without adding authentication method and used in ARCVM.
+func setUpADBForVM(ctx context.Context) error {
 	// Set up the ADB home directory in Chrome OS side.
 	if err := os.MkdirAll(adbHome, 0755); err != nil {
 		return err
 	}
 
-	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
 	testing.ContextLog(ctx, "Killing existing ADB server process(es)")
-	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
+	if err := killADBLocalServer(ctx); err != nil {
+		return errors.Wrap(err, "failed to kill ADB local server")
+	}
+
 	testing.ContextLog(ctx, "Starting ADB server")
 	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed starting ADB local server")
