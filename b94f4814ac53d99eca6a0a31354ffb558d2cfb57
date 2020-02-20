@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62559bbe_0fbe4716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:26:37Z",
+      "side": 1,
+      "message": "nit/YMMV: should also be fine to just use the function type directly in RunTest if that\u0027s the only place we use it, but this is up to you",
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
