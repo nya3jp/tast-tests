@@ -115,7 +115,10 @@ func setUpADB(ctx context.Context) error {
 
 	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
 	testing.ContextLog(ctx, "Killing existing ADB server process(es)")
-	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
+	if err := killADBLocalServer(ctx); err != nil {
+		return errors.Wrap(err, "failed to kill ADB local server")
+	}
+
 	testing.ContextLog(ctx, "Starting ADB server")
 	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed starting ADB local server")
