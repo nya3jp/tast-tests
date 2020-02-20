@@ -1577,6 +1577,30 @@
     },
     {
       "key": {
+        "uuid": "2338a006_76b6f734",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-20T22:02:35Z",
+      "side": 1,
+      "message": "Merged this into New.\n\nWe do skip the Gaia pages in recording and show network work there in replay mode. Even though that does not blocks tast to login, we should be on the safe side.",
+      "parentUuid": "091d2e30_7573eb11",
+      "range": {
+        "startLine": 171,
+        "startChar": 14,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "59e5024bc92a310b18b5e5608afd0d64dcfc1f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4fb8836_7156845d",
         "filename": "src/chromiumos/tast/local/wpr/wpr.go",
         "patchSetId": 7

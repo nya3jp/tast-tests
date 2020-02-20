@@ -22,6 +22,30 @@
       "revId": "5fe3b5f4bb1a62ec4efe33b6aa0e4db36c114486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c91568b0_b8f02d6c",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-02-20T22:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c46e72b_ae6bc37e",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 21
+      },
+      "revId": "5fe3b5f4bb1a62ec4efe33b6aa0e4db36c114486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
