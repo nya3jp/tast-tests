@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "458b77f6_bfbec0a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_key_during_init.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-20T08:49:04Z",
+      "side": 1,
+      "message": "I\u0027ve ran this and it took between 10 and 15 minutes, I\u0027d recommend adding a long timeout, because tast defaults to 5 minutes.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "480a55d42b0e5690b6291975c524055f1e106219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
