@@ -21,13 +21,14 @@ func init() {
 		Func:         Gamepad,
 		Desc:         "Checks gamepad support works on Android",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}},
