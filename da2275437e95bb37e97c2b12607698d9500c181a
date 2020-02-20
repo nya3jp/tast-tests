@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23ac5d34_ea9480ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-20T01:46:08Z",
+      "side": 1,
+      "message": "nit: similarly line break after the comma?",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e871664b_36802b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-20T01:46:08Z",
+      "side": 1,
+      "message": "style nit: have a line break? (i.e. \"},\n{\")",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
