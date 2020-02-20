@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "68aa0a4d_5bc7d9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/arc_print_ippusb_golden.pdf.external",
+        "patchSetId": 28
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2020-02-20T16:21:13Z",
+      "side": 1,
+      "message": "I\u0027m thinking of cases like crbug.com/1006898 and crbug.com/983390 where poppler upgrades caused tests to fail.  Luum eventually added crrev.com/c/1797288 to strip out embedded version info before diffing.  If there\u0027s any sort of similar version info embedded in your golden file, it\u0027s probably worth doing that now instead of waiting for an uprev to fail.",
+      "parentUuid": "dba7cf22_4221ad9d",
+      "revId": "4f7d2b8c5098e184a42d9d4cc0af3276073fdbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11984fe4_45336327",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 28
