@@ -29,6 +29,7 @@ type testParam struct {
 	username     string
 	password     string
 	resultSuffix string
+	chromeArgs   []string
 }
 
 func init() {
@@ -41,22 +42,44 @@ func init() {
 			"arc-performance@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android_both", "chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
 		Timeout: 20 * time.Minute,
 		Params: []testing.Param{{
-			Name: "unmanaged",
+			Name:              "unmanaged",
+			ExtraSoftwareDeps: []string{"android"},
 			Val: testParam{
 				username:     "arc.AuthPerf.unmanaged.username",
 				password:     "arc.AuthPerf.unmanaged.password",
 				resultSuffix: "",
+				chromeArgs:   []string{},
 			},
 		}, {
-			Name: "managed",
+			Name:              "unmanaged_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				username:     "arc.AuthPerf.unmanaged.username",
+				password:     "arc.AuthPerf.unmanaged.password",
+				resultSuffix: "",
+				chromeArgs:   []string{"--enable-arcvm"},
+			},
+		}, {
+			Name:              "managed",
+			ExtraSoftwareDeps: []string{"android"},
 			Val: testParam{
 				username:     "arc.AuthPerf.managed.username",
 				password:     "arc.AuthPerf.managed.password",
 				resultSuffix: "_managed",
+				chromeArgs:   []string{},
+			},
+		}, {
+			Name:              "managed_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				username:     "arc.AuthPerf.managed.username",
+				password:     "arc.AuthPerf.managed.password",
+				resultSuffix: "_managed",
+				chromeArgs:   []string{"--enable-arcvm"},
 			},
 		}},
 		Vars: []string{
@@ -94,10 +117,14 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	username := s.RequiredVar(param.username)
 	password := s.RequiredVar(param.password)
 
-	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Strore auto-update.
+	extraArgs := param.chromeArgs
+	args := []string{"--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"}
+	args = append(args, extraArgs...)
+
+	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
 	cr, err := chrome.New(ctx, chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
 		chrome.Auth(username, password, ""),
-		chrome.ExtraArgs("--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"))
+		chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
