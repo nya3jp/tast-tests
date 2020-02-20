@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12381307_21d6509d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-20T02:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ac5d34_ea9480ed",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e871664b_36802b0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "89fe658c_f74ffec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-20T02:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e871664b_36802b0c",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81d1db0e_3078c034",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb675791_02c9f07e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-02-20T02:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d1db0e_3078c034",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "da2275437e95bb37e97c2b12607698d9500c181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
