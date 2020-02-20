@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b7475e_9464b338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-02-20T23:39:07Z",
+      "side": 1,
+      "message": "nit: commit header should be what it does, not why it does it. \n\nmy suggestion:\nmark platform.DLCService informational.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "df0671f8edafaae050fc9ec404a45a3fe95ad4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
