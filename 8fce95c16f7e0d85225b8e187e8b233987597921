@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "148e6168_03cbd110",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "IIRC the directory is /usr/local/graphics/ now.",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648cbc1d_395e7359",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "//home/testuser/graphics/ so we can clean up if we need?",
+      "range": {
+        "startLine": 32,
+        "startChar": 21,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e04c89e_50be17c9",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 1
@@ -46,6 +92,213 @@
       "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03e9b3e5_99ca631d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "Delete or expand.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68162326_0144bafa",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "What is aaa.trace?",
+      "range": {
+        "startLine": 132,
+        "startChar": 62,
+        "endLine": 132,
+        "endChar": 71
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d350a810_d827d195",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "What is 200?",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 19
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c369548a_cecf42be",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "config.",
+      "range": {
+        "startLine": 157,
+        "startChar": 73,
+        "endLine": 157,
+        "endChar": 79
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5d6686_0f63e580",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768b9927_2f3d2c67",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 29
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf7bec3_57c2b80c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "Copy replay app from host into the container.\n\nNotice there will also be a json. So maybe make this a separate function?",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 32
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cac7588_7248fcff",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 38
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7d71f6_783c6bc5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 25
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -207,6 +460,29 @@
         "startChar": 2,
         "endLine": 267,
         "endChar": 20
+      },
+      "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f043d470_911da2eb",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-20T01:49:26Z",
+      "side": 1,
+      "message": "Delete empty lines?",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 0
       },
       "revId": "8fce95c16f7e0d85225b8e187e8b233987597921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
