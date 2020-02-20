@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3291593_6dcb9a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_start_loggedin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-20T21:50:10Z",
+      "side": 1,
+      "message": "nit: symlink",
+      "range": {
+        "startLine": 47,
+        "startChar": 38,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "b0a1a325531b4e2800cda3515f7b5c97b71b2df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
