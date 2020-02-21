@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8abc2f13_d40f7422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2020-02-21T10:28:54Z",
+      "side": 1,
+      "message": "Do you know of any way to get a Cr without the DUT logging out and loggin back in? Only way I know of is though Pre: chrome.LoggedIn(), but this seems to only work if another test logged in first. \nIs there a way to get a Cr with the remote debugging port without having to log out/log in in the test, and just use the current, already logged in user?\nAny help would be really appreciated!",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "3510306fdab4aff3275dfe3fb9f2ba901c132f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
