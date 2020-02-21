@@ -93,6 +93,30 @@
       "revId": "0aeff33359fa60d26a091a0409bbebad9c5830d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c71f2583_eb5b1b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-21T14:43:49Z",
+      "side": 1,
+      "message": "Doing those two things at once wouldn\u0027t worry me much, but it\u0027s true\nthat we don\u0027t have simulcast Tast tests anyway, so let\u0027s leave it like\nthis. Maybe leave a comment?\n// This would not handle a SimulcastEncoderAdapter.\nTo such extent.",
+      "parentUuid": "9d9ed821_4f84fdbb",
+      "range": {
+        "startLine": 84,
+        "startChar": 28,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "0aeff33359fa60d26a091a0409bbebad9c5830d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
