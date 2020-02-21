@@ -256,6 +256,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	}
 
 	ret := p.buildPreData(ctx, s)
+	s.Logf("VM Disk size: %v bytes", p.cont.VM.Concierge.DiskSize)
 
 	chrome.Lock()
 	vm.Lock()
