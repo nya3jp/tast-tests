@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34cabdc3_2c49370e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T02:09:34Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "fbd9a9f04dac992c71ef25e9ed786a32512947c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
