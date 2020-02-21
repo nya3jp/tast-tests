@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60fafd31_88f53a6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T12:55:53Z",
+      "side": 1,
+      "message": "Go prefers shorter name. How about just waitForPrintPreview?",
+      "revId": "9be4b76c14490899e78c4e34d421c78e2b0e0043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3bcbad_4054cf90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T12:55:53Z",
+      "side": 1,
+      "message": "I think\n\nif err :\u003d root.WaitForDecendant(ctx, params, true, 10*time.Second); err !\u003d nil {\n  ...\n}\n\nis enough?\nMy understanding is, this waits for the dialog is shown at least once, then removed, right?\n\nClar: if the \"loading preview\" text is removed very quickly, this could cause flakiness. Can we assume it would take very long time? Nice to comment it here, I think.",
+      "revId": "9be4b76c14490899e78c4e34d421c78e2b0e0043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf738871_958ed4f4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/printpreview/printpreview.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T12:55:53Z",
+      "side": 1,
+      "message": "Sorry, I had a mistake. I should have recommended to you:\n\nif err :\u003d root.WaitForDescendant(ctx, params, 10*time.Second); err !\u003d nil {\n  ...\n}\n\ninstead... Could you fix?",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 29
+      },
+      "revId": "9be4b76c14490899e78c4e34d421c78e2b0e0043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
