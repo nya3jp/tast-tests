@@ -12,6 +12,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 	"reflect"
 	"strings"
 	"time"
@@ -679,7 +680,12 @@ func ACVP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Errorf("Failed to process middle: %s", err)
 	}
-	s.Log(string(replyGroups))
+
+	outFile := strings.Split(d.inputFile, ".")[0] + "-output.json"
+	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), outFile),
+		replyGroups, 0644); err != nil {
+		s.Error("Unable to write output file: ", err)
+	}
 
 	// Verify results are correct if an expected NIST results file is provided.
 	// Expected results file may not always be present, for example when the
