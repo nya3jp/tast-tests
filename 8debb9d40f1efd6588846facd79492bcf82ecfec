@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "943a7f92_ec93ce02",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-21T00:59:07Z",
+      "side": 1,
+      "message": "In current approach I can just compare full url and let download only files from the list of artifacts.",
+      "parentUuid": "19b479fa_3474ed84",
+      "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc16b94b_3ec65fdb",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
