@@ -257,6 +257,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 	ret := p.buildPreData(ctx, s)
 
+	vmDiskSize, err := p.cont.VM.DiskSize()
+	if err != nil {
+		s.Fatal("Failed to query the disk size of the VM: ", err)
+	}
+	s.Logf("VM Disk size: %.1fGB", float64(vmDiskSize)/1024/1024/1024)
+
 	chrome.Lock()
 	vm.Lock()
 	shouldClose = false
