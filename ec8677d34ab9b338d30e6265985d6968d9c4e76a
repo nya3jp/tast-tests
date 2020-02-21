@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcb5dbc9_bb964014",
+        "filename": "src/chromiumos/tast/remote/policyutil/doc.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-21T13:40:18Z",
+      "side": 1,
+      "message": "\u003e \"devcie\" is a possible misspelling of \"device\".\n\nDone.",
+      "parentUuid": "31be37c4_5f394cce",
+      "range": {
+        "startLine": 5,
+        "startChar": 54,
+        "endLine": 5,
+        "endChar": 60
+      },
+      "revId": "ec8677d34ab9b338d30e6265985d6968d9c4e76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
