@@ -140,16 +140,9 @@ func newNode(ctx context.Context, conn *chrome.Conn, obj *chrome.JSObject) (*Nod
 		object: obj,
 		conn:   conn,
 	}
-	if err := node.object.Call(ctx, node, `function(){
-		return {
-			name: this.name,
-			classname: this.classname,
-			role: this.role,
-			state: this.state,
-			location: this.location}
-		}`); err != nil {
+	if err := node.Refresh(ctx); err != nil {
 		node.Release(ctx)
-		return nil, errors.Wrap(err, "failed to initialize node")
+		return nil, err
 	}
 	return node, nil
 }
@@ -175,6 +168,38 @@ func (n *Node) RightClick(ctx context.Context) error {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
 	return ash.MouseClick(ctx, n.conn, ash.Location{X: n.Location.Left + n.Location.Width/2, Y: n.Location.Top + n.Location.Height/2}, ash.RightButton)
+}
+
+// Property returns the value of an AutomationNode property.
+func (n *Node) Property(ctx context.Context, name string, out interface{}) error {
+	if err := n.object.Call(ctx, &out, fmt.Sprintf("function(){return this[%q]}", name)); err != nil {
+		return errors.Wrapf(err, "failed get AutomationNode[%q] property", name)
+	}
+	return nil
+}
+
+// SetProperty sets the value of an AutomatoinNode property to the JS value
+// represented by the passed value string.
+func (n *Node) SetProperty(ctx context.Context, name string, value string) error {
+	if err := n.object.Call(ctx, nil, fmt.Sprintf("function(){this[%q] = %s}", name, value)); err != nil {
+		return errors.Wrapf(err, "failed set AutomationNode[%q] property to %q", name, value)
+	}
+	return nil
+}
+
+// Refresh updates the local Node state values.
+func (n *Node) Refresh(ctx context.Context) error {
+	if err := n.object.Call(ctx, n, `function(){
+		return {
+			name: this.name,
+			classname: this.classname,
+			role: this.role,
+			state: this.state,
+			location: this.location}
+		}`); err != nil {
+		return errors.Wrap(err, "failed to get node values")
+	}
+	return nil
 }
 
 // Descendant finds the first descendant of this node matching the params and returns it.
@@ -246,6 +271,15 @@ func (n *Node) DescendantWithTimeout(ctx context.Context, params FindParams, tim
 		return nil, err
 	}
 	return n.Descendant(ctx, params)
+}
+
+// DescendantsWithTimeout finds all descendants of this node using params and returns them.
+// If the timeout is hit or the JavaScript fails to execute, an error is returned.
+func (n *Node) DescendantsWithTimeout(ctx context.Context, params FindParams, timeout time.Duration) ([]*Node, error) {
+	if err := n.WaitForDescendant(ctx, params, true, timeout); err != nil {
+		return nil, err
+	}
+	return n.Descendants(ctx, params)
 }
 
 // DescendantExists checks if a node can be found.

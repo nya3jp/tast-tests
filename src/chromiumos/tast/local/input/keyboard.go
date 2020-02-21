@@ -129,6 +129,14 @@ func (kw *KeyboardEventWriter) sendKey(ec EventCode, val int32, firstErr *error)
 	}
 }
 
+// Press presses a single keyboard key.
+func (kw *KeyboardEventWriter) Press(ctx context.Context, key EventCode) error {
+	var err error
+	kw.sendKey(key, 1, &err)
+	kw.sendKey(key, 0, &err)
+	return err
+}
+
 // Type injects key events suitable for generating the string s.
 // Only characters that can be typed using a QWERTY keyboard are supported,
 // and the current keyboard layout must be QWERTY. The left Shift key is automatically

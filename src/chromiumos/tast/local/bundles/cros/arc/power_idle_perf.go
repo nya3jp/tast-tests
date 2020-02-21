@@ -59,7 +59,16 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx))
+	cr, ok := s.PreValue().(*chrome.Chrome)
+	if !ok {
+		cr = s.PreValue().(arc.PreData).Chrome
+	}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	sup.Add(setup.PowerTest(ctx, tconn))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
