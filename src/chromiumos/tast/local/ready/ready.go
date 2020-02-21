@@ -99,8 +99,14 @@ func Wait(ctx context.Context, log func(string)) error {
 	if upstart.JobExists(ctx, "cryptohomed") {
 		if err := waitForCryptohomeService(ctx, log); err != nil {
 			log(fmt.Sprintf("Failed waiting for cryptohome D-Bus service: %v", err))
-		} else if err := ensureTPMInitialized(ctx, log); err != nil {
-			log(fmt.Sprintf("Failed ensuring that TPM is initialized: %v", err))
+		} else {
+			if hasTPM(log) {
+				if err := ensureTPMInitialized(ctx, log); err != nil {
+					log(fmt.Sprintf("Failed ensuring that TPM is initialized: %v", err))
+				}
+			} else {
+				log("TPM not available, not waiting for readiness")
+			}
 		}
 	}
 
@@ -168,6 +174,27 @@ func disableLogCleanup() error {
 		return errors.Wrap(err, "failed to disable the log cleanup job")
 	}
 	return nil
+}
+
+// hasTPM checks whether the DUT has a TPM.
+func hasTPM(log func(string)) bool {
+	const noTPMError = "Communication failure"
+
+	out, err := exec.Command("tpm_version").CombinedOutput()
+	if err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok {
+			if !strings.Contains(string(out), noTPMError) {
+				// Only log unexpected errors. Communication failure is expected on devices without TPMs.
+				log(fmt.Sprintf("tpm_version exited with code %d: %s", exitError.ExitCode(), string(out)))
+			}
+		} else {
+			log(fmt.Sprintf("failed to run tpm_version: %v", err))
+		}
+
+		return false
+	}
+
+	return true
 }
 
 // waitForCryptohomeService waits for cryptohomed's D-Bus service to become available.
