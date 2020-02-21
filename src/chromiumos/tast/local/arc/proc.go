@@ -13,20 +13,22 @@ import (
 
 // InitPID returns the PID (outside the guest) of the ARC init process.
 func InitPID() (int32, error) {
-	u := "android-root"
-	initPath := "/init"
+	var u, initPath string
 
 	if vm, err := VMEnabled(); err != nil {
 		return -1, errors.Wrap(err, "failed to determine if ARCVM is enabled")
 	} else if vm {
 		u = "crosvm"
 		initPath = "/usr/bin/crosvm"
-	}
-
-	if ver, err := SDKVersion(); err != nil {
-		return -1, errors.Wrap(err, "failed to get SDK version")
-	} else if ver >= SDKQ {
-		initPath = "/system/bin/init"
+	} else {
+		u = "android-root"
+		if ver, err := SDKVersion(); err != nil {
+			return -1, errors.Wrap(err, "failed to get SDK version")
+		} else if ver >= SDKQ {
+			initPath = "/system/bin/init"
+		} else {
+			initPath = "/init"
+		}
 	}
 
 	uid, err := sysutil.GetUID(u)
