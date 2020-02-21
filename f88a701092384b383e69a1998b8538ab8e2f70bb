@@ -46,6 +46,30 @@
       "revId": "f88a701092384b383e69a1998b8538ab8e2f70bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f3006c_0320562e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-02-21T04:10:38Z",
+      "side": 0,
+      "message": "Is it possible to keep the VM variant in informal while promoting this to CQ in general?",
+      "parentUuid": "935bf5d6_633328bd",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "f88a701092384b383e69a1998b8538ab8e2f70bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
