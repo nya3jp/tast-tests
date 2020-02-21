@@ -39,7 +39,6 @@ func DLCService(ctx context.Context, s *testing.State) {
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
 		dlcCacheDir     = "/var/cache/dlc"
-		badURL          = "http://???"
 	)
 
 	type expect bool
@@ -198,21 +197,9 @@ func DLCService(ctx context.Context, s *testing.State) {
 		install([]string{}, url, failure)
 		dumpInstalledDLCModules("install_empty")
 
-		// Install with bad Omaha URL.
-		install([]string{dlcID1}, badURL, failure)
-		dumpInstalledDLCModules("install_with_bad_url")
-
-		// Install with bad Omaha URL immediately after.
-		install([]string{dlcID1}, badURL, failure)
-		dumpInstalledDLCModules("install_with_bad_url_immediately_after")
-
 		// Install single DLC.
 		install([]string{dlcID1}, url, success)
 		dumpInstalledDLCModules("install_single")
-
-		// Install to bad Omaha URL for already installed.
-		install([]string{dlcID1}, badURL, success)
-		dumpInstalledDLCModules("install_bad_url_already_installed")
 
 		// Install already installed DLC.
 		install([]string{dlcID1}, url, success)
@@ -256,9 +243,5 @@ func DLCService(ctx context.Context, s *testing.State) {
 		uninstall(dlcID1, success)
 		uninstall(dlcID2, success)
 		dumpInstalledDLCModules("uninstall_multiple_installed")
-
-		// Install multiple DLC(s) with bad Omaha URL.
-		install([]string{dlcID1, dlcID2}, badURL, failure)
-		dumpInstalledDLCModules("install_multiple_with_bad_url")
 	})
 }
