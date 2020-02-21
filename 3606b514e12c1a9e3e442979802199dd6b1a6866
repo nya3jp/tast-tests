@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72afbb13_d2209893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-21T18:26:55Z",
+      "side": 1,
+      "message": "nit:\nyou can factor this, and it will also allow you to easily add more subtests in the future:\n\n\tfor idx, test :\u003d range []struct {\n\t\tname        string\n\t\tfn companionTestFn\n\t}{\n\t\t{\"Always on Top Window State\", testAlwaysOnTop},\n\t\t{\"Running Popup Window\", testPopupWindow},\n\t} {\n\t\ts.Log(\"Running subtest %q\", test.name)\n                if err :\u003d test.fn(ctx, a, cr, tconn, act, d); err !\u003d nil {\n                    path :\u003d filepath.Join(s.Outdir(), fmt.Sprintf(\"screenshot-companionlib-%d.png\", idx))\n                    if err :\u003d screenshotCR.CaptureChrome(ctx, cr, path); err !\u003d nil {\n\t\t\ts.Log(\"Failed to capture screenshot: \", err)\n                    }\n         \t    s.Error(\"Always on Top Window test failed: \", err)\n               }\n\t}",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "3606b514e12c1a9e3e442979802199dd6b1a6866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989e5b7f_d8228d3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-21T18:26:55Z",
+      "side": 1,
+      "message": "nit:\ninstead of adding a comment describing what \"1\" is, you could create a self-documenting const. e.g:\n\nconst roundingErrorThreshold \u003d 1",
+      "range": {
+        "startLine": 982,
+        "startChar": 1,
+        "endLine": 982,
+        "endChar": 56
+      },
+      "revId": "3606b514e12c1a9e3e442979802199dd6b1a6866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f25e96_e36bf912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-21T18:26:55Z",
+      "side": 1,
+      "message": "nit, ditto above: replace \"1\" with a a self-documenting const.",
+      "range": {
+        "startLine": 990,
+        "startChar": 1,
+        "endLine": 990,
+        "endChar": 49
+      },
+      "revId": "3606b514e12c1a9e3e442979802199dd6b1a6866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1834eea_3960bec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-21T18:26:55Z",
+      "side": 1,
+      "message": "a the same here.",
+      "range": {
+        "startLine": 996,
+        "startChar": 14,
+        "endLine": 996,
+        "endChar": 17
+      },
+      "revId": "3606b514e12c1a9e3e442979802199dd6b1a6866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e036b4d4_3c40bd30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-21T18:26:55Z",
+      "side": 1,
+      "message": "huge nit: CountDiffPixels takes two images of the same size, and returns how many pixels are different.\n\ncould you also describe what \"maxDiff\" is? is that a threshold? if so, perhaps the name of the var should be \"threshold\" ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 102
+      },
+      "revId": "3606b514e12c1a9e3e442979802199dd6b1a6866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e7ab53_154952ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-21T18:26:55Z",
+      "side": 1,
+      "message": "huge nit:\nbaseImage and countImage. I guess, for the purpose of the diff, there is no \"base\" and \"count\" images. \nwhat about \"imageA\" and \"imageB\" ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "3606b514e12c1a9e3e442979802199dd6b1a6866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917629c6_d0d778ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-21T18:26:55Z",
+      "side": 1,
+      "message": "nit:\nwhat about something like: \nerrors.Errorf(\"the images have different sizes; imageA\u003d%v,  imageB\u003d%v\", ..., ...)\n\n?",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 56
+      },
+      "revId": "3606b514e12c1a9e3e442979802199dd6b1a6866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
