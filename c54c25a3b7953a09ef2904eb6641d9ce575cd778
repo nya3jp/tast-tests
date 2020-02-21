@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fbed8fc_0cd677c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-21T04:30:32Z",
+      "side": 1,
+      "message": "I think it would be better to name this ArcDEQPAndroidCTS-9.0r9_20191126.apk as this is what you are using (and versions are important).",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb577ac_576f1867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-21T04:30:32Z",
+      "side": 1,
+      "message": "Please define a new suite say android_deqp. Please don\u0027t use graphics_nightly, I would like to keep these separate. (Otherwise we get a super long job with video, graphics and this mixing.) It is better to get your own device/run.",
+      "range": {
+        "startLine": 82,
+        "startChar": 50,
+        "endLine": 82,
+        "endChar": 66
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c668fd4_08eb9365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-21T04:30:32Z",
+      "side": 1,
+      "message": "As above just or android_vm_deqp(_nightly?)",
+      "range": {
+        "startLine": 89,
+        "startChar": 50,
+        "endLine": 89,
+        "endChar": 66
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15785071_103c5cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-21T04:30:32Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 46
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "078905ec_eabb6a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-21T04:30:32Z",
+      "side": 1,
+      "message": "I don\u0027t know if it is possible to parameterize with a CTS version, so that one can at some point run say 9.0r9 and 9.0r10 next to each other? TODO is fine.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 9
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8308eba2_ca2fb663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-02-21T04:30:32Z",
+      "side": 1,
+      "message": "Please report how many passed/did not pass. Maybe some detailed stats to triage this faster in stainless etc.\n\nAlso maybe a TODO to retry failures? This can reduce variance.",
+      "range": {
+        "startLine": 190,
+        "startChar": 11,
+        "endLine": 190,
+        "endChar": 39
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
