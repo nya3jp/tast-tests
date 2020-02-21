@@ -16,6 +16,24 @@
       "revId": "9abbd7b379330d2f5b261d669847642049469c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b891079_08b4f37f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T07:00:06Z",
+      "side": 1,
+      "message": "In this case, we depend on the deadline control in cmd to kill the process.\n\nIf we reach ctx (passed into CommandContext) deadline, the process will be kill by a go routine spawned in cmd.Start. Then the stdout pipe will be closed (and later scanDone).",
+      "parentUuid": "703a4ff5_8e72885d",
+      "revId": "9abbd7b379330d2f5b261d669847642049469c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
