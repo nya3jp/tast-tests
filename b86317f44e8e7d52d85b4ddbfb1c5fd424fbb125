@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6377e5f_7fef4b1f",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-21T23:50:37Z",
+      "side": 1,
+      "message": "Won\u0027t the error we get from WaitAll or Wait be at least this descriptive? I feel like just\n\n return err\n\nhere is fine too.",
+      "revId": "b86317f44e8e7d52d85b4ddbfb1c5fd424fbb125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
