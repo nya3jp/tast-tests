@@ -15,8 +15,8 @@ import (
 	"github.com/shirou/gopsutil/host"
 	"golang.org/x/sys/unix"
 
+	commoncrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
-	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
@@ -38,10 +38,10 @@ func init() {
 }
 
 func setCorePatternCrashTest(crashTest bool) error {
-	b, err := ioutil.ReadFile(platformCrash.CorePattern)
+	b, err := ioutil.ReadFile(commoncrash.CorePattern)
 	if err != nil {
 		return errors.Wrapf(err, "failed reading core pattern file %s",
-			platformCrash.CorePattern)
+			commoncrash.CorePattern)
 	}
 
 	// Reset any crash test flag
@@ -52,10 +52,10 @@ func setCorePatternCrashTest(crashTest bool) error {
 		corePatternExpr = corePatternExpr + " --crash_test"
 	}
 
-	if err := ioutil.WriteFile(platformCrash.CorePattern,
+	if err := ioutil.WriteFile(commoncrash.CorePattern,
 		[]byte(corePatternExpr), 0644); err != nil {
 		return errors.Wrapf(err, "failed writing core pattern file %s",
-			platformCrash.CorePattern)
+			commoncrash.CorePattern)
 	}
 	return nil
 }
@@ -78,9 +78,9 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 	defer setCorePatternCrashTest(false)
 
 	// TODO(crbug.com/1011932): Investigate if this is necessary
-	st, err := os.Stat(platformCrash.CrashReporterEnabledPath)
+	st, err := os.Stat(commoncrash.CrashReporterEnabledPath)
 	if err != nil || !st.Mode().IsRegular() {
-		s.Fatal("Crash reporter enabled file flag is not present at ", platformCrash.CrashReporterEnabledPath)
+		s.Fatal("Crash reporter enabled file flag is not present at ", commoncrash.CrashReporterEnabledPath)
 	}
 	flagTime := time.Since(st.ModTime())
 	uptimeSeconds, err := host.Uptime()
