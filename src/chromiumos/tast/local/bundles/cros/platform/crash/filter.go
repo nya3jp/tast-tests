@@ -10,12 +10,8 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
-)
-
-const (
-	// CorePattern is the full path of the core pattern file.
-	CorePattern = "/proc/sys/kernel/core_pattern"
 )
 
 // replaceArgs finds commandline arguments that match by prefix and replaces it with newarg.
@@ -48,9 +44,9 @@ func ReporterVerboseLevel(level int) error {
 	if level < 0 {
 		return errors.Errorf("verbose level must be 0 or larger, got %d", level)
 	}
-	b, err := ioutil.ReadFile(CorePattern)
+	b, err := ioutil.ReadFile(crash.CorePattern)
 	if err != nil {
-		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
+		return errors.Wrapf(err, "failed reading core pattern file %s", crash.CorePattern)
 	}
 	pattern := string(b)
 	newarg := ""
@@ -58,8 +54,8 @@ func ReporterVerboseLevel(level int) error {
 		newarg = "-v=" + strconv.Itoa(level)
 	}
 	pattern = replaceArgs(pattern, "-v=", newarg)
-	if err := ioutil.WriteFile(CorePattern, []byte(pattern), 0644); err != nil {
-		return errors.Wrapf(err, "failed writing core pattern file %s", CorePattern)
+	if err := ioutil.WriteFile(crash.CorePattern, []byte(pattern), 0644); err != nil {
+		return errors.Wrapf(err, "failed writing core pattern file %s", crash.CorePattern)
 	}
 	return nil
 }

@@ -19,6 +19,7 @@ import (
 	"syscall"
 	"time"
 
+	commoncrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
@@ -28,12 +29,6 @@ import (
 )
 
 const (
-	// CrashReporterPath is the full path of the crash reporter binary.
-	CrashReporterPath = "/sbin/crash_reporter"
-
-	// CrashReporterEnabledPath is the full path for crash handling data file.
-	CrashReporterEnabledPath = "/var/lib/crash_reporter/crash-handling-enabled"
-
 	// CrasherPath is the full path for crasher.
 	CrasherPath = "/usr/local/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 
@@ -172,7 +167,7 @@ func setUpTestCrashReporter(ctx context.Context) error {
 	if err := crash.UnsetCrashTestInProgress(); err != nil {
 		return errors.Wrap(err, "failed before initializing crash reporter")
 	}
-	if err := testexec.CommandContext(ctx, CrashReporterPath, "--init").Run(); err != nil {
+	if err := testexec.CommandContext(ctx, commoncrash.CrashReporterPath, "--init").Run(); err != nil {
 		return errors.Wrap(err, "failed to initialize crash reporter")
 	}
 	// Completely disable crash_reporter from generating crash dumps
