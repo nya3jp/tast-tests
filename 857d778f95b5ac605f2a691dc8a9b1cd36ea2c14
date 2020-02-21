@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3064a41_19ba49d7",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T09:55:02Z",
+      "side": 1,
+      "message": "In this case proc must be killed and waited.",
+      "range": {
+        "startLine": 128,
+        "startChar": 59,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "857d778f95b5ac605f2a691dc8a9b1cd36ea2c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e5c7ac_b20ce766",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T09:55:02Z",
+      "side": 1,
+      "message": "Sorry for the bug in my snippet, but this is a data race; the original goroutine writes to w.proc while this goroutine reads it.\n\nInstead you can assign w.proc to a local variable temporarily.\n\n proc :\u003d w.proc\n go func() {\n   \u003c-ctx.Done()\n   proc.Signal(syscall.SIGKILL)\n }()\n\n ...\n w.proc \u003d nil",
+      "range": {
+        "startLine": 165,
+        "startChar": 6,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "857d778f95b5ac605f2a691dc8a9b1cd36ea2c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
