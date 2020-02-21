@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ed14264_0e80a0c1",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-21T14:13:18Z",
+      "side": 1,
+      "message": "Good catch",
+      "parentUuid": "8ae8cc56_c35727cc",
+      "range": {
+        "startLine": 312,
+        "startChar": 24,
+        "endLine": 312,
+        "endChar": 32
+      },
+      "revId": "311309833effd33025c225b2f9a5a6242d6817c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42699df4_5f55c834",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "92ecebc1_5ce90f18",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-21T14:13:18Z",
+      "side": 1,
+      "message": "We have the timestamp in the standard log. The test will fail and we know where we need to look.",
+      "parentUuid": "725c6cfc_4bf98b8e",
+      "range": {
+        "startLine": 319,
+        "startChar": 14,
+        "endLine": 319,
+        "endChar": 27
+      },
+      "revId": "311309833effd33025c225b2f9a5a6242d6817c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deba4592_96957300",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-21T14:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42699df4_5f55c834",
+      "range": {
+        "startLine": 319,
+        "startChar": 28,
+        "endLine": 319,
+        "endChar": 31
+      },
+      "revId": "311309833effd33025c225b2f9a5a6242d6817c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2dae100_b7af39b4",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "311309833effd33025c225b2f9a5a6242d6817c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab177d9c_b6a13ccd",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-21T14:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2dae100_b7af39b4",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 75
+      },
+      "revId": "311309833effd33025c225b2f9a5a6242d6817c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
