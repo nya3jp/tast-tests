@@ -22,6 +22,30 @@
       "revId": "d1050420575b4e2585f7f7ff4ad51eb40819c1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d41c816_88e62fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-02-21T03:09:25Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "e42f93d7_936e1149",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 72
+      },
+      "revId": "d1050420575b4e2585f7f7ff4ad51eb40819c1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
