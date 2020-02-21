@@ -32,11 +32,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CompanionLibrary,
-		Desc:         "Test all ARC++ companion library",
-		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		Func:     CompanionLibrary,
+		Desc:     "Test all ARC++ companion library",
+		Contacts: []string{"sstan@google.com", "arc-framework+tast@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		// TODO(pwang): Remove display_backlight once crbug.com/950346 support hardware dependency.
+		SoftwareDeps: []string{"android_p", "chrome", "display_backlight"},
 		Data:         []string{"ArcCompanionLibDemo.apk", "white_wallpaper.jpg"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
