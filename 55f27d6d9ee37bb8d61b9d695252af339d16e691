@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0de79c70_c460872d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T12:37:17Z",
+      "side": 1,
+      "message": "style:\n\n var testCaseListFiles []string\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "55f27d6d9ee37bb8d61b9d695252af339d16e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc42081_952d572f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T12:37:17Z",
+      "side": 1,
+      "message": "nit: Mind using filepath.Join instead?\nhttps://godoc.org/path/filepath#Join\n\nSame for other places.",
+      "range": {
+        "startLine": 59,
+        "startChar": 48,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "55f27d6d9ee37bb8d61b9d695252af339d16e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1b88445_029aff2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T12:37:17Z",
+      "side": 1,
+      "message": "Hmm, what\u0027s the point of calling this function with zero timeout?",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 46
+      },
+      "revId": "55f27d6d9ee37bb8d61b9d695252af339d16e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c2b9429_9f7ca628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T12:37:17Z",
+      "side": 1,
+      "message": "style: var deqpTests []string",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "55f27d6d9ee37bb8d61b9d695252af339d16e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ab6420_dd6802cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T12:37:17Z",
+      "side": 1,
+      "message": "Rather than setting a string to Val (which is vulnerable to typos), we can set deqpTestsFull and deqpTestsMinimal directly to Val.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "55f27d6d9ee37bb8d61b9d695252af339d16e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff1f124_73ac8374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T12:37:17Z",
+      "side": 1,
+      "message": "huge nit:\ntotalTests :\u003d 0\ntotalFailedTests :\u003d 0",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "55f27d6d9ee37bb8d61b9d695252af339d16e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23f3d8a_9d0a3a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T12:37:17Z",
+      "side": 1,
+      "message": "You can use ioutil.ReadFile to avoid os.Open.",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "55f27d6d9ee37bb8d61b9d695252af339d16e691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
