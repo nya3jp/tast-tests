@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f23e0fe4_6923ff21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_chromeos_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-21T18:22:55Z",
+      "side": 1,
+      "message": "This was actually needed to pass \u0027fast_build.sh -T\u0027 checks. Added. I\u0027ll change this to \u0027arc\u0027 once the tast/ side CL is in.",
+      "revId": "fe0a5f1bf089d0e30530c1c7b98e24eb4abc995c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
