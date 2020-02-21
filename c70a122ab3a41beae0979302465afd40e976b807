@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "e2f8dc54_c9b31045",
+        "filename": "src/chromiumos/tast/remote/wifi/fileutils/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T11:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02e187b4_648b063a",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "c70a122ab3a41beae0979302465afd40e976b807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8a9a2a8_98367b28",
+        "filename": "src/chromiumos/tast/remote/wifi/fileutils/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T11:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5570dab_bac56d5c",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "c70a122ab3a41beae0979302465afd40e976b807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d26a60d_1b812ec6",
         "filename": "src/chromiumos/tast/remote/wifi/fileutils/utils.go",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "c70a122ab3a41beae0979302465afd40e976b807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "566f8354_fda27113",
+        "filename": "src/chromiumos/tast/remote/wifi/fileutils/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T11:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d26a60d_1b812ec6",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "c70a122ab3a41beae0979302465afd40e976b807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8319e435_895ee2de",
+        "filename": "src/chromiumos/tast/remote/wifi/fileutils/utils.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T11:12:47Z",
+      "side": 1,
+      "message": "The intended use case of this might be:\n  1. read from a pipe to wait until ready (and keep all bytes we\u0027ve read in a buffer).\n  2. pass the pipe and buffer (prefix) to this function and it will be able to keep the full log.\n\nOriginally hostapd used this but it is later modified to have a intermediate routine which will detect events in future commits.\n\nRemove it as it\u0027s not used now.",
+      "parentUuid": "508323dd_3860cdc1",
+      "range": {
+        "startLine": 58,
+        "startChar": 78,
+        "endLine": 58,
+        "endChar": 91
+      },
+      "revId": "c70a122ab3a41beae0979302465afd40e976b807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9c035ff_5d8bdb4b",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "c70a122ab3a41beae0979302465afd40e976b807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc17114_ae567af1",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T11:12:47Z",
+      "side": 1,
+      "message": "Done. But I\u0027m not totally sure if 0 is the best value for it. (suitable as a default/no-op but kind of weird when used as a option)",
+      "parentUuid": "b9c035ff_5d8bdb4b",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "c70a122ab3a41beae0979302465afd40e976b807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "948ded51_422d08b4",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T11:12:47Z",
+      "side": 1,
+      "message": "Added some basic validation.",
+      "parentUuid": "8dcee257_64a621e2",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "c70a122ab3a41beae0979302465afd40e976b807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0b021b9_5fa26b84",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
         "patchSetId": 7
@@ -183,6 +327,30 @@
       "revId": "c70a122ab3a41beae0979302465afd40e976b807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb552981_527d7971",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-21T11:12:47Z",
+      "side": 1,
+      "message": "Sorry, I mistook your comment. I thought you mean we should find a suitable default for general tests which just want a general setting. Now with error, we can leave it empty for now.",
+      "parentUuid": "c0b021b9_5fa26b84",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "c70a122ab3a41beae0979302465afd40e976b807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
