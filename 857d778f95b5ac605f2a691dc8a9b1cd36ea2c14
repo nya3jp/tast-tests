@@ -93,6 +93,30 @@
       "revId": "857d778f95b5ac605f2a691dc8a9b1cd36ea2c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98b2682c_f58c9e48",
+        "filename": "src/chromiumos/tast/local/wpr/wpr.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T16:37:03Z",
+      "side": 1,
+      "message": "No, we don\u0027t need to kill the process if Wait succeeds. Actually in that case Kill will fail because there\u0027s no matching process.\n\nThe problem is that, as far as I know, there\u0027s no way to cancel sending sigkill without race. We can notify the killer goroutine to skip sending the signal after successful Wait, but in a race condition where Wait succeeds at the almost same time as context deadline, the goroutine goes ahead with sending the signal. So this code simply gives up cancellation, assuming that PID is not reused very soon.",
+      "parentUuid": "257f94df_93f64626",
+      "range": {
+        "startLine": 165,
+        "startChar": 6,
+        "endLine": 165,
+        "endChar": 21
+      },
+      "revId": "857d778f95b5ac605f2a691dc8a9b1cd36ea2c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
