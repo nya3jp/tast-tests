@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a6b7bbb_24e2f28b",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:36:54Z",
+      "side": 1,
+      "message": "because this part becomes more complicated, could you extract it into a function?\n\nfunc initPathUser() (user, path string, err error) {\n  vm, err :\u003d VMEnabled()\n  if err !\u003d nil {\n    return ...\n  }\n  if vm {\n    return \"crosvm\", \"/usr/bin/crosvm\", nil\n  }\n\n  ver, err :\u003d SDKVersion()\n  if err !\u003d nil {\n    return ...\n  }\n  path :\u003d \"/init\"\n  if ver \u003e\u003d SDKQ {\n    path \u003d ...\n  }\n  return \"android-root\", path, nil\n}\n\nthen you can call it here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "c11004705b903cc7ab4f10634ff68428607838f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
