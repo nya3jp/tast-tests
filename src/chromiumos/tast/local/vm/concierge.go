@@ -23,9 +23,9 @@ import (
 )
 
 const (
-	conciergeJob = "vm_concierge"        // name of the upstart job for concierge
-	ciceroneJob  = "vm_cicerone"         // name of the upstart job for cicerone
-	testDiskSize = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
+	conciergeJob    = "vm_concierge"        // name of the upstart job for concierge
+	ciceroneJob     = "vm_cicerone"         // name of the upstart job for cicerone
+	defaultDiskSize = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
 
 	conciergeName      = "org.chromium.VmConcierge"
 	conciergePath      = dbus.ObjectPath("/org/chromium/VmConcierge")
@@ -38,6 +38,7 @@ const (
 type Concierge struct {
 	ownerID      string // cryptohome hash for the logged-in user
 	conciergeObj dbus.BusObject
+	diskSize     uint64 // actual disk Size in bytes
 }
 
 // GetRunningConcierge returns a concierge instance without restarting concierge service.
@@ -58,8 +59,12 @@ func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%s is not owned", conciergeName)
 	}
 
-	obj := conn.Object(conciergeName, conciergePath)
-	return &Concierge{h, obj}, nil
+	concierge := &Concierge{h, conn.Object(conciergeName, conciergePath), 0}
+	concierge.diskSize, err = concierge.listVMDisksTotalSize(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return concierge, nil
 }
 
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
@@ -86,7 +91,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%v D-Bus service unavailable", ciceroneName)
 	}
 
-	return &Concierge{h, obj}, nil
+	return &Concierge{h, obj, defaultDiskSize}, nil
 }
 
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
@@ -99,13 +104,36 @@ func StopConcierge(ctx context.Context) error {
 	return nil
 }
 
+// DiskSize returns the disk size of the concierge VM.
+func (c *Concierge) DiskSize() uint64 {
+	return c.diskSize
+}
+
+// listVMDisksTotalSize returns the total size of all the VMs through ListVmDisks protobuffer.
+func (c *Concierge) listVMDisksTotalSize(ctx context.Context) (size uint64, err error) {
+	resp := &vmpb.ListVmDisksResponse{}
+	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".ListVmDisks",
+		&vmpb.ListVmDisksRequest{
+			CryptohomeId: c.ownerID,
+			AllLocations: true,
+			VmName:       DefaultVMName,
+		}, resp); err != nil {
+		return 0, err
+	}
+
+	if resp.GetSuccess() != true {
+		return 0, errors.Errorf("could not fetch VM disks info: %v", resp.GetFailureReason())
+	}
+	return resp.GetTotalSize(), nil
+}
+
 func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err error) {
 	resp := &vmpb.CreateDiskImageResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".CreateDiskImage",
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        DefaultVMName,
-			DiskSize:        testDiskSize,
+			DiskSize:        defaultDiskSize,
 			ImageType:       vmpb.DiskImageType_DISK_IMAGE_AUTO,
 			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
 		}, resp); err != nil {
@@ -118,6 +146,10 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 		return "", errors.Errorf("could not create disk image: %v", resp.GetFailureReason())
 	}
 
+	c.diskSize, err = c.listVMDisksTotalSize(ctx)
+	if err != nil {
+		return "", err
+	}
 	return resp.GetDiskPath(), nil
 }
 
