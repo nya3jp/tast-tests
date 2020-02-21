@@ -1,0 +1,348 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ef546b5_f34a8241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "style: could you use godoc style? Document should start with the name of the thing this document is mentioning. In this case, scrollDirectionType (but pls find my comment just below, too).",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e2d661_85ea728f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "Go heavily prefers shorter name. How about just \"direction\"?",
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4e6891_d7c3ab3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "I was recommending a string to reuse it in histogram name conveniently.\nIf you use in this approach, I\u0027d recommend to use int, instead. Ditto for below.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bd1787_db7dc2d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "Go heavily perfers shorter name. How about \"scrollToEnd\"?\n(Sorry, I should have come up with this comment in the previous iteraion).",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33004aa8_8f5bcb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "style: could you use \":\u003d\" instead?\n\ninfo, err :\u003d ash.FetchScroolableShelfInfo(...)\nif err !\u003d nil {\n  return err\n}\n...",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7198a8_777f5aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11954845_cafddb60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "go heavily prefers shorter name. How about \"runShelfScroll\", since \"scroll\" implies some animation? (Sorry for overlook, too).",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17853784_e1fa2c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "huge nit; since tconn belongs to cr, could you swap the order of args?",
+      "range": {
+        "startLine": 151,
+        "startChar": 72,
+        "endLine": 151,
+        "endChar": 113
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0e714a_a4ab78f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "build error.",
+      "range": {
+        "startLine": 211,
+        "startChar": 62,
+        "endLine": 211,
+        "endChar": 64
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317b141a_bf68534c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "nit:\n\nfor _, app :\u003d range installedApps[:pinnedAppNumber] {\n  ...\n}",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 3
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14901ded_f87817d7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "pls use \":\u003d\" instead.",
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693c865f_1bc3cf1a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d testing.Poll(... {\n  ...\n}, ...); err !\u003d nil {\n  ...\n}",
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73be204_1582774f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "nit: you can hard code.",
+      "range": {
+        "startLine": 236,
+        "startChar": 79,
+        "endLine": 236,
+        "endChar": 90
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6341c4dd_45e9fb62",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d MouseClick(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 16
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd51f6cb_fc57b9f5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "style: dito",
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de73814_df93e450",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-21T17:32:14Z",
+      "side": 1,
+      "message": "go heavily prefers shorter name.\nBecause this is metrics package, maybe \"StoreHistramsMean\" is enough?\nThe caller should look like;\n\nmetrics.StoreHistgramsMean(...)\n\n(sorry, once again, I couldn\u0027t come up with suggestion in the last iteration).",
+      "range": {
+        "startLine": 400,
+        "startChar": 3,
+        "endLine": 400,
+        "endChar": 35
+      },
+      "revId": "6dd88ae307d9e583050690f57dc096d7c9f29066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
