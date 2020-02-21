@@ -25,6 +25,121 @@
     },
     {
       "key": {
+        "uuid": "0cc30607_8bfb0b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T02:21:38Z",
+      "side": 1,
+      "message": "Should it be commonCrash? same for others.\nYou may want to remove CorePattern from platformCrash.",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd684528_0765bc92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T02:21:38Z",
+      "side": 1,
+      "message": "commonCrash ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acc52fe7_0e383e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T02:21:38Z",
+      "side": 1,
+      "message": "localCrash ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332dcea4_a36d8c66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T02:21:38Z",
+      "side": 1,
+      "message": "Could you split the CL into 1. addition of this test, and 2. introduction of common/crash ?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024e256c_16b1b411",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T02:21:38Z",
+      "side": 1,
+      "message": "commonCrash ?",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a1cd8ad_a3da9098",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
         "patchSetId": 6
@@ -41,6 +156,29 @@
         "startChar": 1,
         "endLine": 19,
         "endChar": 15
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e440120_5c8edeb8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T02:21:38Z",
+      "side": 1,
+      "message": "nit:\n[]string {\n  \"...\",\n  \"...\",\n}",
+      "range": {
+        "startLine": 33,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 34
       },
       "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
