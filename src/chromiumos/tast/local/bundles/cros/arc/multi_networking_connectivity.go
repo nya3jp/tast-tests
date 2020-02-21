@@ -53,11 +53,12 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 	}
 
 	// Ensure that outbound networking works for each network interface inside ARC.
-	// For multinetwork, "lo" and "arc0" are not supposed to have outbound networking
-	// and as such skipped for the test.
-	// Interface that is not up should also be skipped.
+	// We are skipping interfaces:
+	// - that is guest-only ("arc0" and "arc1"),
+	// - without outbound networking ("lo"),
+	// - that is not up.
 	for _, ifname := range ifnames {
-		if ifname == arc.Loopback || ifname == arc.ARC0 {
+		if ifname == arc.Loopback || ifname == arc.ARC0 || ifname == arc.ARC1 {
 			continue
 		}
 
@@ -147,7 +148,7 @@ func MultiNetworkingConnectivity(ctx context.Context, s *testing.State) {
 
 	g, watchCtx := errgroup.WithContext(watchCtx)
 	for ifname, ifc := range ifaces {
-		if ifc.arcIP == "" || ifname == arc.ARC0 {
+		if ifc.arcIP == "" || ifname == arc.ARC0 || ifname == arc.ARC1 {
 			continue
 		}
 

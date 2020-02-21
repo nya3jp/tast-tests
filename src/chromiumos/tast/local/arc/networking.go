@@ -21,6 +21,10 @@ const (
 	ARCBR0 = "arcbr0"
 	// ARC0 refers to an ARC network interface named arc0.
 	ARC0 = "arc0"
+	// ARC1 refers to an ARC network interface named arc1 which is created for ARCVM.
+	// On dual-boards, ARC++ might have this interface as a result of switching ARCVM -> ARC++.
+	// ARC++ should not care about this interface.
+	ARC1 = "arc1"
 	// Loopback refers to loopback interface named lo.
 	Loopback = "lo"
 
