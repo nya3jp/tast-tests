@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3de3e352_e6fbadc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-02-21T07:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fbed8fc_0cd677c7",
+      "range": {
+        "startLine": 21,
+        "startChar": 20,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcb577ac_576f1867",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-21T04:30:32Z",
       "side": 1,
       "message": "Please define a new suite say android_deqp. Please don\u0027t use graphics_nightly, I would like to keep these separate. (Otherwise we get a super long job with video, graphics and this mixing.) It is better to get your own device/run.",
+      "range": {
+        "startLine": 82,
+        "startChar": 50,
+        "endLine": 82,
+        "endChar": 66
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "205d1eba_beffab99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-02-21T07:33:23Z",
+      "side": 1,
+      "message": "Does this mean we have to set up our own queue/group of periodic tests? Any idea who I should talk to / where should I look into setting this up?",
+      "parentUuid": "dcb577ac_576f1867",
       "range": {
         "startLine": 82,
         "startChar": 50,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2d998185_38ea2550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-02-21T07:33:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c668fd4_08eb9365",
+      "range": {
+        "startLine": 89,
+        "startChar": 50,
+        "endLine": 89,
+        "endChar": 66
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15785071_103c5cfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8f5546_4dfcd677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-02-21T07:33:23Z",
+      "side": 1,
+      "message": "Common pattern I\u0027ve seen in tests and other golang code, it\u0027s just to wait indefinitely.\nI assume time.Second is multiplied to 0 to make it more readable that we\u0027re actually \u0027waiting\u0027 on 0 seconds instead of 0 being a magic number that can be easily mistaken for something else.\n\nExample: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go?l\u003d333",
+      "parentUuid": "15785071_103c5cfa",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 46
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8de6a441_919ec819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-02-21T07:33:23Z",
+      "side": 1,
+      "message": "Interesting idea. Since the mustpass/testcase list also seems to depend on the CTS version, this might be a bit more involved than just having multiple apk versions/revisions, however I\u0027ve added a TODO line for future development.",
+      "parentUuid": "078905ec_eabb6a60",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 9
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8308eba2_ca2fb663",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f845ec9_93b148e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2020-02-21T07:33:23Z",
+      "side": 1,
+      "message": "I added some extra statistics logged, but it doesn\u0027t seem like the parse output function can go into more details on which exact test failed or not. We might have to add that at a later time but I think it\u0027s outside of the scope of this CL.\n\nFor retry failures, I\u0027m not sure how beneficial that would be. It\u0027d mean we\u0027d have to retry the entire caselist which might take too much, especially as some tests might depend on the order of the tests being run, which might make it even messier than it needs to be.\n\nI think at this point just having a full run pass or fail is enough for what we want to achieve.",
+      "parentUuid": "8308eba2_ca2fb663",
+      "range": {
+        "startLine": 190,
+        "startChar": 11,
+        "endLine": 190,
+        "endChar": 39
+      },
+      "revId": "c54c25a3b7953a09ef2904eb6641d9ce575cd778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
