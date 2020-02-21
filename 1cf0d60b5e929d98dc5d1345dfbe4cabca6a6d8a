@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "885586dd_48062a40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-21T12:17:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f37d928_2a6d3f5a",
+      "range": {
+        "startLine": 87,
+        "startChar": 21,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "1cf0d60b5e929d98dc5d1345dfbe4cabca6a6d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f4bc02_4e35e9f4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_wilco_dtc_allowed.go",
         "patchSetId": 14
