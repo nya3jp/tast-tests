@@ -15,6 +15,7 @@ import (
 	"github.com/shirou/gopsutil/host"
 	"golang.org/x/sys/unix"
 
+	commonCrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
 	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/chrome"
@@ -78,9 +79,9 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 	defer setCorePatternCrashTest(false)
 
 	// TODO(crbug.com/1011932): Investigate if this is necessary
-	st, err := os.Stat(platformCrash.CrashReporterEnabledPath)
+	st, err := os.Stat(commonCrash.CrashReporterEnabledPath)
 	if err != nil || !st.Mode().IsRegular() {
-		s.Fatal("Crash reporter enabled file flag is not present at ", platformCrash.CrashReporterEnabledPath)
+		s.Fatal("Crash reporter enabled file flag is not present at ", commonCrash.CrashReporterEnabledPath)
 	}
 	flagTime := time.Since(st.ModTime())
 	uptimeSeconds, err := host.Uptime()
