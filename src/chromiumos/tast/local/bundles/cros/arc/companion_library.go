@@ -136,7 +136,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 
 	// All of tests in this block running on MainActivity.
 	type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device) error
-	for idx, test := range []struct {
+	for _, test := range []struct {
 		name string
 		fn   testFunc
 	}{
@@ -156,7 +156,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for activity to resuyme: ", err)
 		}
 		if err := test.fn(ctx, tconn, act, d); err != nil {
-			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%d.png", s.OutDir(), idx)
+			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%s.png", s.OutDir(), strings.ReplaceAll(test.name, " ", ""))
 			if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
 				s.Log("Failed to capture screenshot: ", err)
 			}
@@ -170,13 +170,22 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx); err != nil {
 		s.Fatal("Failed to start context: ", err)
 	}
-	s.Log("Running Popup Window")
-	if err := testPopupWindow(ctx, cr, tconn, act, d); err != nil {
-		path := filepath.Join(s.OutDir(), "screenshot-companionlib-failed-test-popupwindow.png")
-		if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
-			s.Log("Failed to capture screenshot: ", err)
+	type testFunc2 func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.Conn, *arc.Activity, *ui.Device) error
+	for _, test := range []struct {
+		name string
+		fn   testFunc2
+	}{
+		{"Always on Top Window State", testAlwaysOnTop},
+		{"Popup Window", testPopupWindow},
+	} {
+		s.Log("Running ", test.name)
+		if err := test.fn(ctx, a, cr, tconn, act, d); err != nil {
+			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%s.png", s.OutDir(), strings.ReplaceAll(test.name, " ", ""))
+			if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
+				s.Log("Failed to capture screenshot: ", err)
+			}
+			s.Errorf("%s test failed: %v", test.name, err)
 		}
-		s.Error("Popup window test failed: ", err)
 	}
 	if err := act.Stop(ctx); err != nil {
 		s.Fatal("Failed to stop context: ", err)
@@ -900,8 +909,98 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 	return nil
 }
 
+// testAlwaysOnTop verifies the always on top window work as expected.
+func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	const (
+		settingPkgName         = "com.android.settings"
+		settingActName         = ".Settings"
+		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
+	)
+	// Change the window to normal state first, making sure the UI can be touched by tast test library.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		return err
+	}
+	if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for demo activity to resume")
+	}
+
+	captionHeight, err := act.CaptionHeight(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get caption height")
+	}
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get window bounds")
+	}
+
+	if err := setWindowState(ctx, d, "Always on top", false); err != nil {
+		return errors.Wrap(err, "could not set Always On Top window state")
+	}
+	defer setWindowState(ctx, d, "Normal", false)
+
+	// Waiting for the window prepared.
+	if err := d.Object(ui.ID(getWindowStateButtonID)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to touch window state button")
+	}
+
+	imageBeforeActive, err := getWindowCaptionScreenshot(ctx, cr, bounds.Top, bounds.Left, captionHeight, bounds.Width)
+	if err != nil {
+		return errors.Wrap(err, "could not get screen shot before active other window")
+	}
+
+	settingAct, err := arc.NewActivity(a, settingPkgName, settingActName)
+	if err != nil {
+		return errors.Wrap(err, "could not create Settings Activity")
+	}
+	defer settingAct.Close()
+
+	if err := settingAct.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start Settings Activity")
+	}
+	defer settingAct.Stop(ctx)
+
+	if err := settingAct.WaitForResumed(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for Settings Activity to resume")
+	}
+
+	// Make sure the setting window will have an initial maximized state.
+	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, settingPkgName, ash.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "setting window was not maximized")
+	}
+
+	imageAfterActive, err := getWindowCaptionScreenshot(ctx, cr, bounds.Top, bounds.Left, captionHeight, bounds.Width)
+	if err != nil {
+		return errors.Wrap(err, "could not get screen shot after active other window")
+	}
+
+	const roundingErrorThreshold = 1
+	diffPixelNum, err := screenshot.CountDiffPixels(imageBeforeActive, imageAfterActive, roundingErrorThreshold)
+	if err != nil {
+		return errors.Wrap(err, "error on count match pixels")
+	}
+	percent := diffPixelNum * 100 / (bounds.Width * captionHeight)
+
+	// When the window lost focus, the color of caption button image will change.
+	const lostFocusThreshold = 1
+	if percent < lostFocusThreshold {
+		return errors.New("always on top window still keep focused")
+	}
+	// In this case the window will be covered by setting window.
+	const notOnTopThreshold = 10
+	if percent > notOnTopThreshold {
+		return errors.New("always on top window not on top")
+	}
+	return nil
+}
+
 // testPopupWindow verifies that popup window's behaviors works as expected.
-func testPopupWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
 	const (
 		showPopupWindowButtonID = pkg + ":id/popup_window_button"
 		clipToTaskCheckboxID    = pkg + ":id/clip_to_task_bounds"
@@ -992,7 +1091,7 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 		setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
 		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
 	)
-	// TODO(sstan): Add testcase of "Always on top" setting
+
 	for _, test := range []struct {
 		windowStateStr string
 		windowStateExp ash.WindowStateType
