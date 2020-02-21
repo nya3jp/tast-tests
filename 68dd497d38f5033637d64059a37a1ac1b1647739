@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2058d511_6fa68b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-21T00:04:04Z",
+      "side": 1,
+      "message": "Ack, deleted this code.",
+      "parentUuid": "3fa76589_69fecc03",
+      "revId": "68dd497d38f5033637d64059a37a1ac1b1647739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc22ba65_d70183ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a9cff377_c2910b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-21T00:04:04Z",
+      "side": 1,
+      "message": "Done, or, to be precise, I\u0027ve deleted this call altogether.\n\nsession.SetUpDevice() is enough in order to reset to an empty policy blob.\n\nP.S. My initial plan was to submit a follow-up CL that would call setEphemeralPolicy() with |true|, but I realised now that it won\u0027t work this way: cryptohomed would ignore this policy set to \"true\" if the Install Attributes aren\u0027t configured to be enterprise. So I\u0027d better wait for https://crbug.com/1052826 to get the proper enrollment support, rather than add more and more device policy simulation code into this test.",
+      "parentUuid": "fc22ba65_d70183ce",
+      "revId": "68dd497d38f5033637d64059a37a1ac1b1647739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e6a5a48_18ab40c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "68dd497d38f5033637d64059a37a1ac1b1647739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dcaaf99_cc98dc3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-21T00:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e6a5a48_18ab40c7",
+      "revId": "68dd497d38f5033637d64059a37a1ac1b1647739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
