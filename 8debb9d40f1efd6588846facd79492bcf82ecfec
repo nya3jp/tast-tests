@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f1396ad1_6201474c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-21T00:03:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae1d6a3b_9d4353d1",
+      "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b213040_f1f39a1d",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-20T22:54:23Z",
       "side": 1,
       "message": "My same comments before about this not really seeming a canonical way of determine your local IP address.",
+      "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a68710e4_bff0342f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-21T00:03:39Z",
+      "side": 1,
+      "message": "We need outbound IP, the one is used for outbound connection. I wasn\u0027t able to find any other working approach. I agree - it looks bit weird. Anyway, I\u0027m going to implement it differently by initiating the connection by host to guest. In this case we won\u0027t need to make any iptables changes and magic with retrieving of outbound ip address. But it will require lot of changes and it\u0027s going to be a part of the next iteration.",
+      "parentUuid": "0b213040_f1f39a1d",
       "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "37ae2c70_25c1920d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-21T00:03:39Z",
+      "side": 1,
+      "message": "There is no direct connection to devserver. But I agree, we\u0027d better to validate url, but we need to have some schema for validation first.",
+      "parentUuid": "0ed4c3ea_15c3556a",
+      "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc16b94b_3ec65fdb",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
@@ -85,6 +139,24 @@
       "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d9bd45_d3df925b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-21T00:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc16b94b_3ec65fdb",
+      "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
