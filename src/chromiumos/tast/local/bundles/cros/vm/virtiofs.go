@@ -10,26 +10,25 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"runtime"
 	"strings"
 	"time"
 
+	"golang.org/x/sys/unix"
+
+	"chromiumos/tast/local/bundles/cros/vm/common"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
+const runPjdfstest string = "run-pjdfstest.sh"
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Virtiofs,
-		Desc:     "Tests that the crosvm virtio-fs device works correctly",
-		Contacts: []string{"chirantan@chromium.org", "crosvm-core@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Data: []string{
-			"termina_rootfs_aarch64.img",
-			"termina_rootfs_x86_64.img",
-			"virtiofs_kernel_aarch64.xz",
-			"virtiofs_kernel_x86_64.xz",
-		},
+		Func:         Virtiofs,
+		Desc:         "Tests that the crosvm virtio-fs device works correctly",
+		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{common.VirtiofsKernel(), runPjdfstest},
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"vm_host"},
 	})
@@ -43,60 +42,60 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 	}
 	defer os.RemoveAll(td)
 
-	var rootfs, vmlinux string
-	if runtime.GOARCH == "amd64" {
-		rootfs = s.DataPath("termina_rootfs_x86_64.img")
-		vmlinux = s.DataPath("virtiofs_kernel_x86_64.xz")
-	} else {
-		rootfs = s.DataPath("termina_rootfs_aarch64.img")
-		vmlinux = s.DataPath("virtiofs_kernel_aarch64.xz")
+	// The test needs the execute bit set on every component in the test directory
+	// in order for rename(2) as a non-root user to succeed.
+	if err := os.Chmod(td, 0755); err != nil {
+		s.Fatal("Failed to change permissions on temporary directory: ", err)
 	}
 
-	s.Log("Unpacking kernel")
+	vmlinux := s.DataPath(common.VirtiofsKernel())
+
 	kernel := filepath.Join(td, "kernel")
-	kernelSrc, err := os.Open(vmlinux)
-	if err != nil {
-		s.Fatal("Failed to open vmlinux: ", err)
+	if err := common.UnpackKernel(ctx, vmlinux, kernel); err != nil {
+		s.Fatal("Failed to unpack kernel: ", err)
 	}
 
-	kernelDst, err := os.Create(kernel)
-	if err != nil {
-		s.Fatal("Failed to create kernel destination file: ", err)
+	rlim := &unix.Rlimit{
+		Cur: 262144,
+		Max: 262144,
 	}
-
-	xz := testexec.CommandContext(ctx, "xz", "-d", "-c")
-	xz.Stdin = kernelSrc
-	xz.Stdout = kernelDst
-	if err := xz.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to decompress kernel: ", err)
-	}
-	kernelSrc.Close()
-	kernelDst.Close()
-
-	shared := filepath.Join(td, "shared")
-	if err := os.Mkdir(shared, 0755); err != nil {
-		s.Fatal("Failed to create shared directory: ", err)
+	if err := unix.Setrlimit(unix.RLIMIT_NOFILE, rlim); err != nil {
+		s.Fatal("Failed to increase open file limit: ", err)
 	}
 
 	logFile := filepath.Join(s.OutDir(), "serial.log")
+
+	params := []string{
+		"root=/dev/root",
+		"rootfstype=virtiofs",
+		fmt.Sprintf("init=%s", s.DataPath(runPjdfstest)),
+		"--",
+		td,
+	}
 
 	// The sandbox needs to be disabled because the test creates some device nodes, which is
 	// only possible when running as root in the initial namespace.
 	args := []string{
 		"run",
-		"-p", "root=/dev/vda init=/usr/bin/run-pjdfstest -- shared",
-		"-r", rootfs,
+		"-p", strings.Join(params, " "),
 		"-c", "1",
 		"-m", "256",
 		"-s", td,
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", logFile),
-		"--shared-dir", fmt.Sprintf("%s:shared:type=fs", shared),
+		"--shared-dir", "/:/dev/root:type=fs:cache=always",
 		"--disable-sandbox",
 		kernel,
 	}
 
 	s.Log("Running pjdfstests")
 	cmd := testexec.CommandContext(ctx, "crosvm", args...)
+	if err := cmd.LogStdout(); err != nil {
+		s.Fatal("Failed to set up stdout log: ", err)
+	}
+	if err := cmd.LogStderr(); err != nil {
+		s.Fatal("Failed to set up stderr log: ", err)
+	}
+
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
