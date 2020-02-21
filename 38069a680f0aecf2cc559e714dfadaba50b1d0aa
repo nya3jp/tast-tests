@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11881a25_0a3a9ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T11:47:47Z",
+      "side": 1,
+      "message": "This approach lgtm as well :)",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 10
+      },
+      "revId": "38069a680f0aecf2cc559e714dfadaba50b1d0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71e3853a_6e500068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T11:47:47Z",
+      "side": 1,
+      "message": "Optional: Do you want to check c.fakeDMS !\u003d nil here? (I don\u0027t think it\u0027s strictly needed but for the sake of symmetricity with other methods...)",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "38069a680f0aecf2cc559e714dfadaba50b1d0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
