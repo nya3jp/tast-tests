@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fea44a5b_fb17f062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_script.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "Don\u0027t you have to call stop here?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "411fbf90_0a74f5d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_login_script.go",
         "patchSetId": 41
@@ -36,6 +59,259 @@
       "writtenOn": "2020-02-20T21:26:37Z",
       "side": 1,
       "message": "nit/YMMV: should also be fine to just use the function type directly in RunTest if that\u0027s the only place we use it, but this is up to you",
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f72c8e_1a07019a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 169,
+        "startChar": 61,
+        "endLine": 169,
+        "endChar": 62
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2a0c20_4eddc516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "How about reporting the error to ch in this case?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 55
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe6edcd_3fc31b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "It may return nil if the directory containing the path doesn\u0027t have read permission, even if the path itself doesn\u0027t exist. Is it expected?\nHow about changing os.IsNotExist(err) to err !\u003d nil ?",
+      "range": {
+        "startLine": 330,
+        "startChar": 5,
+        "endLine": 330,
+        "endChar": 17
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9dbda7_ada86862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "How about \"%s exists unexpectedly\"",
+      "range": {
+        "startLine": 343,
+        "startChar": 22,
+        "endLine": 343,
+        "endChar": 49
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b986c3_5d4a8214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "nit: path, owner string",
+      "range": {
+        "startLine": 347,
+        "startChar": 21,
+        "endLine": 347,
+        "endChar": 46
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701c52db_b2f50b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "No need of :. Wrapf adds it.",
+      "range": {
+        "startLine": 350,
+        "startChar": 76,
+        "endLine": 350,
+        "endChar": 78
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97933e30_a24641ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 356,
+        "startChar": 93,
+        "endLine": 356,
+        "endChar": 95
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24a2cf6_3546cf8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "nit: you can combine them.\nif userName :\u003d ...; userName !\u003d .. {",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 23
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d4b342_2b1769a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "nit: path, group string",
+      "range": {
+        "startLine": 366,
+        "startChar": 20,
+        "endLine": 366,
+        "endChar": 46
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d20c09bd_2acef5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "nit: you can combine them. \nif groupName :\u003d ...; groupName !\u003d .. {",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 22
+      },
+      "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022c0d99_09a54c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T01:59:42Z",
+      "side": 1,
+      "message": "nit: fileName, contents string",
+      "range": {
+        "startLine": 415,
+        "startChar": 28,
+        "endLine": 415,
+        "endChar": 53
+      },
       "revId": "b94f4814ac53d99eca6a0a31354ffb558d2cfb57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
