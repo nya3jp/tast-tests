@@ -11,22 +11,35 @@ import (
 	"chromiumos/tast/local/sysutil"
 )
 
-// InitPID returns the PID (outside the guest) of the ARC init process.
-func InitPID() (int32, error) {
-	u := "android-root"
-	initPath := "/init"
-
-	if vm, err := VMEnabled(); err != nil {
-		return -1, errors.Wrap(err, "failed to determine if ARCVM is enabled")
-	} else if vm {
-		u = "crosvm"
-		initPath = "/usr/bin/crosvm"
+// getUserPath returns the user and the path to the entry point of ARC
+func getUserPath() (user, path string, err error) {
+	vm, err := VMEnabled()
+	if err != nil {
+		return "", "", errors.Wrap(err, "failed to determine if ARCVM is enabled")
+	}
+	if vm {
+		return "crosvm", "/usr/bin/crosvm", nil
 	}
 
-	if ver, err := SDKVersion(); err != nil {
-		return -1, errors.Wrap(err, "failed to get SDK version")
-	} else if ver >= SDKQ {
+	ver, err := SDKVersion()
+	if err != nil {
+		return "", "", errors.Wrap(err, "failed to get SDK version")
+	}
+
+	var initPath string
+	if ver >= SDKQ {
 		initPath = "/system/bin/init"
+	} else {
+		initPath = "/init"
+	}
+	return "android-root", initPath, nil
+}
+
+// InitPID returns the PID (outside the guest) of the ARC init process.
+func InitPID() (int32, error) {
+	u, initPath, err := getUserPath()
+	if err != nil {
+		return -1, err
 	}
 
 	uid, err := sysutil.GetUID(u)
