@@ -70,6 +70,30 @@
       "revId": "f88a701092384b383e69a1998b8538ab8e2f70bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07686c1_80a3eadd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T11:38:12Z",
+      "side": 0,
+      "message": "Yes, by using ExtraAttr. For example:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go?q\u003dextraattr.*informational\u0026l\u003d33\u0026dr\u003dC",
+      "parentUuid": "13f3006c_0320562e",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "f88a701092384b383e69a1998b8538ab8e2f70bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
