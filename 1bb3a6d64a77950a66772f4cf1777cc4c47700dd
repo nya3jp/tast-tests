@@ -45,6 +45,53 @@
       "revId": "1bb3a6d64a77950a66772f4cf1777cc4c47700dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9129fc54_60660142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-21T03:26:06Z",
+      "side": 1,
+      "message": "I agree with newcomer@",
+      "parentUuid": "b759b57e_c7fd72b1",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "1bb3a6d64a77950a66772f4cf1777cc4c47700dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcaf63a9_9e93d0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-21T03:26:06Z",
+      "side": 1,
+      "message": "Is it possible to remove testing.Sleep here?",
+      "range": {
+        "startLine": 262,
+        "startChar": 10,
+        "endLine": 262,
+        "endChar": 40
+      },
+      "revId": "1bb3a6d64a77950a66772f4cf1777cc4c47700dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
