@@ -10,9 +10,11 @@ import (
 	"fmt"
 	"image"
 	"image/color"
+	"image/png"
 	"math"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -140,13 +142,13 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		name string
 		fn   testFunc
 	}{
-		{"Window State", testWindowState},
-		{"Workspace Insets", testWorkspaceInsets},
-		{"Caption Button", testCaptionButton},
-		{"Device Mode", testDeviceMode},
-		{"Caption Height", testCaptionHeight},
-		{"Window Bound", testWindowBounds},
-		{"Maximize App-controlled Window", testMaximize},
+		// {"Window State", testWindowState},
+		// {"Workspace Insets", testWorkspaceInsets},
+		// {"Caption Button", testCaptionButton},
+		// {"Device Mode", testDeviceMode},
+		// {"Caption Height", testCaptionHeight},
+		// {"Window Bound", testWindowBounds},
+		// {"Maximize App-controlled Window", testMaximize},
 	} {
 		s.Log("Running ", test.name)
 		if err := act.Start(ctx); err != nil {
@@ -177,6 +179,15 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			s.Log("Failed to capture screenshot: ", err)
 		}
 		s.Error("Popup window test failed: ", err)
+	}
+
+	s.Log("Running Always on Top Window State")
+	if err := testAlwaysOnTop(ctx, a, cr, tconn, act, d); err != nil {
+		path := filepath.Join(s.OutDir(), "screenshot-companionlib-failed-test-alwaysOnTop.png")
+		if err := screenshotCR.CaptureChrome(ctx, cr, path); err != nil {
+			s.Log("Failed to capture screenshot: ", err)
+		}
+		s.Error("Always on Top Window test failed: ", err)
 	}
 	if err := act.Stop(ctx); err != nil {
 		s.Fatal("Failed to stop context: ", err)
@@ -896,6 +907,106 @@ func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 		if msg.DeviceModeMsg.DeviceMode != test.modeStatus {
 			return errors.Errorf("unexpected getDeviceMode result: got %s; want %s", msg.DeviceModeMsg.DeviceMode, test.modeStatus)
 		}
+	}
+	return nil
+}
+
+// testAlwaysOnTop verifies the always on top window work as expected.
+func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+	const (
+		settingPkgName         = "com.android.settings"
+		settingActName         = ".Settings"
+		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
+	)
+	// Change the window to normal state first, making sure the UI can be touched by tast test library.
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
+		return err
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
+		return err
+	}
+	if err := d.Object(ui.ID(getWindowStateButtonID)).WaitForExists(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to touch window state button")
+	}
+	// if err := act.WaitForResumed(ctx, 10*time.Second); err != nil {
+	// 	return errors.Wrap(err, "could not wait for demo activity to resume")
+	// }
+	captionHeight, err := act.CaptionHeight(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get caption height")
+	}
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get window bounds")
+	}
+
+	imageBeforeActive, err := getWindowCaptionScreenshot(ctx, cr, bounds.Top, bounds.Left, captionHeight, bounds.Width)
+	if err != nil {
+		return errors.Wrap(err, "could not get screen shot before active other window")
+	}
+
+	path := filepath.Join("/home/chronos/user/Downloads", "screenshot_before.png")
+	if fd, err := os.Create(path); err != nil {
+		//s.Error("Failed to create screenshot: ", err)
+	} else {
+		defer fd.Close()
+		if err := png.Encode(fd, imageBeforeActive); err != nil {
+			//s.Error("Failed to encode screenshot to png format: ", err)
+		}
+	}
+
+	if err := setWindowState(ctx, d, "Always on top", false); err != nil {
+		return errors.Wrap(err, "could not set Always On Top window state")
+	}
+
+	settingAct, err := arc.NewActivity(a, settingPkgName, settingActName)
+	if err != nil {
+		return errors.Wrap(err, "could not create Settings Activity")
+	}
+	defer settingAct.Close()
+
+	if err := settingAct.Start(ctx); err != nil {
+		return errors.Wrap(err, "could not start Settings Activity")
+	}
+	defer settingAct.Stop(ctx)
+
+	if err := settingAct.WaitForResumed(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for Settings Activity to resume")
+	}
+
+	// Make sure the setting window will have an initial maximized state.
+	if err := settingAct.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "failed to set window state of Settings Activity to maximized")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, settingPkgName, ash.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "setting window was not maximized")
+	}
+
+	imageAfterActive, err := getWindowCaptionScreenshot(ctx, cr, bounds.Top, bounds.Left, captionHeight, bounds.Width)
+	if err != nil {
+		return errors.Wrap(err, "could not get screen shot after active other window")
+	}
+
+	path = filepath.Join("/home/chronos/user/Downloads", "screenshot_after.png")
+	if fd, err := os.Create(path); err != nil {
+		//s.Error("Failed to create screenshot: ", err)
+	} else {
+		defer fd.Close()
+		if err := png.Encode(fd, imageAfterActive); err != nil {
+			//s.Error("Failed to encode screenshot to png format: ", err)
+		}
+	}
+
+	diffPixelNum, err := screenshot.CountDiffPixels(imageBeforeActive, imageAfterActive, 10)
+	if err != nil {
+		return errors.Wrap(err, "error on count match pixels")
+	}
+	percent := diffPixelNum * 100 / (bounds.Width * captionHeight)
+	// testing.ContextLog(ctx, "diff %v , percent %v", diffPixelNum, percent)
+	// There are two case will cause the test failure.
+	if percent < 1 {
+
+		return errors.New("error on always on top window behavior")
 	}
 	return nil
 }
