@@ -56,7 +56,6 @@ func Crossystem(ctx context.Context, s *testing.State) {
 		"ro_fwid":     anything,
 		"tpm_fwver":   hexNum,
 		"tpm_kernver": hexNum,
-		"wpsw_boot":   bit,
 		"wpsw_cur":    bit,
 	}
 	checkOutput := func(pattern string, out []byte) bool {
