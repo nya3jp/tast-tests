@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cc56ea3_3aaf71a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-21T22:24:32Z",
+      "side": 1,
+      "message": "might also want to factor this into a const here so it stays the same between this and L64, e.g.",
+      "range": {
+        "startLine": 57,
+        "startChar": 47,
+        "endLine": 57,
+        "endChar": 81
+      },
+      "revId": "0824400ff1af565d93d3a86229211226d680e8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
