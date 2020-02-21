@@ -23,9 +23,8 @@ import (
 )
 
 const (
-	conciergeJob = "vm_concierge"        // name of the upstart job for concierge
-	ciceroneJob  = "vm_cicerone"         // name of the upstart job for cicerone
-	testDiskSize = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
+	conciergeJob = "vm_concierge" // name of the upstart job for concierge
+	ciceroneJob  = "vm_cicerone"  // name of the upstart job for cicerone
 
 	conciergeName      = "org.chromium.VmConcierge"
 	conciergePath      = dbus.ObjectPath("/org/chromium/VmConcierge")
@@ -99,13 +98,37 @@ func StopConcierge(ctx context.Context) error {
 	return nil
 }
 
+// listVMDisksSize returns the size of the named VM through ListVmDisks.
+func (c *Concierge) listVMDisksSize(ctx context.Context, vmName string) (size uint64, err error) {
+	resp := &vmpb.ListVmDisksResponse{}
+	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".ListVmDisks",
+		&vmpb.ListVmDisksRequest{
+			CryptohomeId: c.ownerID,
+			AllLocations: true,
+			VmName:       DefaultVMName,
+		}, resp); err != nil {
+		return 0, err
+	}
+
+	if resp.GetSuccess() != true {
+		return 0, errors.Errorf("could not fetch VM disks info: %v", resp.GetFailureReason())
+	}
+
+	for _, diskInfo := range resp.GetImages() {
+		if diskInfo.GetName() == vmName {
+			return diskInfo.GetSize(), nil
+		}
+	}
+	return 0, errors.Errorf("could not find vm named %v", vmName)
+}
+
 func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err error) {
 	resp := &vmpb.CreateDiskImageResponse{}
 	if err = dbusutil.CallProtoMethod(ctx, c.conciergeObj, conciergeInterface+".CreateDiskImage",
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        DefaultVMName,
-			DiskSize:        testDiskSize,
+			DiskSize:        defaultDiskSize,
 			ImageType:       vmpb.DiskImageType_DISK_IMAGE_AUTO,
 			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
 		}, resp); err != nil {
@@ -117,7 +140,6 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 		diskStatus != vmpb.DiskImageStatus_DISK_STATUS_EXISTS {
 		return "", errors.Errorf("could not create disk image: %v", resp.GetFailureReason())
 	}
-
 	return resp.GetDiskPath(), nil
 }
 

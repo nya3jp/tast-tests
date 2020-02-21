@@ -27,6 +27,7 @@ const (
 	// DefaultContainerName is the default crostini container name.
 	DefaultContainerName = "penguin"
 
+	defaultDiskSize    = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
 	seneschalName      = "org.chromium.Seneschal"
 	seneschalPath      = dbus.ObjectPath("/org/chromium/Seneschal")
 	seneschalInterface = "org.chromium.Seneschal"
@@ -41,6 +42,7 @@ type VM struct {
 	seneschalHandle uint32 // seneschal handle for the VM
 	EnableGPU       bool   // hardware GPU support
 	DiskPath        string // the location of the stateful disk
+	diskSize        uint64 // actual disk Size in bytes
 }
 
 // NewDefaultVM gets a default VM instance.
@@ -51,6 +53,7 @@ func NewDefaultVM(c *Concierge) *VM {
 		ContextID:       -1,    // not populated until VM is started.
 		seneschalHandle: 0,     // not populated until VM is started.
 		EnableGPU:       false, // disable hardware GPU by default.
+		diskSize:        defaultDiskSize,
 	}
 }
 
@@ -107,6 +110,11 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 	return vmInstance, nil
 }
 
+// DiskSize returns the disk size of the VM.
+func (vm *VM) DiskSize() uint64 {
+	return vm.diskSize
+}
+
 func (vm *VM) vmCommand(ctx context.Context, args ...string) *testexec.Cmd {
 	args = append([]string{
 		"--vm_name=" + vm.name,
@@ -125,8 +133,13 @@ func (vm *VM) Start(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-
 	vm.DiskPath = diskPath
+
+	diskSize, err := vm.Concierge.listVMDisksSize(ctx, vm.name)
+	if err != nil {
+		return err
+	}
+	vm.diskSize = diskSize
 
 	cmd := vm.vmCommand(ctx, "grep", "CHROMEOS_RELEASE_VERSION=", "/etc/lsb-release")
 	if output, err := cmd.Output(testexec.DumpLogOnError); err != nil {
