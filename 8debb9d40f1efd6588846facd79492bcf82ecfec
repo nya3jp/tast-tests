@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "fdc75847_719d483b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-21T00:27:39Z",
+      "side": 1,
+      "message": "May be, it would be a good idea to formalize the least of allowed GC buckets and validate them in URL? Right now, we could make it even better because we have the list of artifacts here and we could just compare is requested resource listed in the list of artifacts, but our ultimate goal is to get rid of such information in tast, so, then we will need to find some other solution.",
+      "parentUuid": "37ae2c70_25c1920d",
+      "revId": "8debb9d40f1efd6588846facd79492bcf82ecfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc16b94b_3ec65fdb",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 4
