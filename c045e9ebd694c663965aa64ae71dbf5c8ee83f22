@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a255a39e_d06b3136",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T09:36:27Z",
+      "side": 1,
+      "message": "Could you update the dutfs package as well for the wrapper of new methods?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "c045e9ebd694c663965aa64ae71dbf5c8ee83f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86717dda_0e71841a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T09:36:27Z",
+      "side": 1,
+      "message": "Could you rename this to FileSystemService as well?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Implementing-gRPC-services",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "c045e9ebd694c663965aa64ae71dbf5c8ee83f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149e40f2_44081fe0",
+        "filename": "src/chromiumos/tast/services/cros/baserpc/file_system.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T09:36:27Z",
+      "side": 1,
+      "message": "string is supposed to contain utf-8 only.\n\n\u003e A string must always contain UTF-8 encoded or 7-bit ASCII text, and cannot be longer than 2^32.\nhttps://developers.google.com/protocol-buffers/docs/proto3#scalar\n\nCould you use bytes instead?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "c045e9ebd694c663965aa64ae71dbf5c8ee83f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
