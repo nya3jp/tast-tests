@@ -610,6 +610,30 @@
       "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03980fc4_65484413",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-02-21T05:07:13Z",
+      "side": 1,
+      "message": "Ack\nSorry I missed it.",
+      "parentUuid": "a6246791_04639097",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "08d0f6f159dd8e88cac2f8dc691877ebb4ca63c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
