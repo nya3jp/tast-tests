@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9839282_fb6b665d",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T10:11:44Z",
+      "side": 1,
+      "message": "Would you mind renaming this function to setUpADBAuthForContainer to make it clear that it\u0027s used only for containers?",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "d162dd32567b53ef2aea90a6b08e9bc050af8215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a25ce5_5b1ba163",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T10:11:44Z",
+      "side": 1,
+      "message": "Would you mind renaming this function to setUpADBForVM to make it clear that this function is used for VM?",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "d162dd32567b53ef2aea90a6b08e9bc050af8215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67479e6_3e61a439",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T10:11:44Z",
+      "side": 1,
+      "message": "We can remove this comment as we already have ones in killADBLocalServer.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 76
+      },
+      "revId": "d162dd32567b53ef2aea90a6b08e9bc050af8215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9e1d82_7ebf838b",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-21T10:11:44Z",
+      "side": 1,
+      "message": "JFYI these are reasons we don\u0027t use \"adb kill-server\" or \"killall\" to kill local adb servers.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 95
+      },
+      "revId": "d162dd32567b53ef2aea90a6b08e9bc050af8215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
