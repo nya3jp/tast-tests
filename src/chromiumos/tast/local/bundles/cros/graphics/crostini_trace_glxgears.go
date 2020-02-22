@@ -15,18 +15,22 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrostiniTraceGlxgears,
+		Func:         CrostiniTrace,
 		Desc:         "Replay graphics trace in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{crostini.ImageArtifact, "crostini_trace_glxgears.trace"},
 		Pre:          crostini.StartedGPUEnabled(),
-		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+		Params: []testing.Param{{
+			Name:      "glxgears",
+			Val:       map[string]string{"crostini_trace_glxgears": "glxgears"},
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"group:mainline", "informational"},
+		}},
 	})
 }
 
-func CrostiniTraceGlxgears(ctx context.Context, s *testing.State) {
+func CrostiniTrace(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	trace.RunTest(ctx, s, pre.Container, map[string]string{"crostini_trace_glxgears.trace": "glxgears"})
+	trace.RunTest(ctx, s, pre.Container, s.Param().(map[string]string))
 }
