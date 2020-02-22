@@ -62,6 +62,7 @@ func (*BootLockboxService) Read(ctx context.Context, request *security.ReadBootL
 	switch reply.GetError() {
 	// Ignore normal error and not surface to the caller for now
 	case cpb.BootLockboxErrorCode_BOOTLOCKBOX_ERROR_NOT_SET, cpb.BootLockboxErrorCode_BOOTLOCKBOX_ERROR_NVSPACE_UNINITIALIZED, cpb.BootLockboxErrorCode_BOOTLOCKBOX_ERROR_MISSING_KEY:
+
 		return &security.ReadBootLockboxResponse{Value: reply.GetData()}, nil
 	default:
 		return nil, errors.Errorf("ReadBootLockbox returns error %d", reply.GetError())

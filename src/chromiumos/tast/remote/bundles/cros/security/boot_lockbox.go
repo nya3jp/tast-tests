@@ -66,6 +66,9 @@ func testWriteReadConsistency(ctx context.Context, s *testing.State, client secu
 		s.Fatal("Failed to read from boot lockbox: ", err)
 	}
 
+	s.Logf("Key = %v, Value = %v", testKey, hex.EncodeToString(response.Value))
+	s.Log("Length of Response = ", len(response.Value))
+
 	response, err = client.Read(ctx, &security.ReadBootLockboxRequest{Key: testKey})
 	if err != nil {
 		s.Fatal("Unexpected error when read from boot lockbox: ", err)
@@ -82,6 +85,32 @@ func testWriteFailureAfterLogin(ctx context.Context, s *testing.State, client se
 		s.Error("Store should have failed but succeeded")
 	} else {
 		s.Log("Expected failure: ", err)
+	}
+}
+
+func testRestoreTestKeyValue(ctx context.Context, s *testing.State, client security.BootLockboxServiceClient) {
+
+	s.Log("Trying to restore the Test Key value to NULL")
+
+	_, err := client.Store(ctx, &security.StoreBootLockboxRequest{Key: testKey, Value: []byte("0")})
+	if err != nil {
+		s.Error("Failed to store to boot lockbox: ", err)
+	}
+
+	response, err := client.Read(ctx, &security.ReadBootLockboxRequest{Key: testKey})
+	if err != nil {
+		s.Fatal("Failed to read from boot lockbox: ", err)
+	}
+
+	s.Logf("Key = %v, Expecting Null Value here = %v", testKey, hex.EncodeToString(response.Value))
+	s.Log("Length of Response = ", len(response.Value))
+
+	response, err = client.Read(ctx, &security.ReadBootLockboxRequest{Key: testKey})
+	if err != nil {
+		s.Fatal("Unexpected error when read from boot lockbox: ", err)
+	}
+	if bytes.Compare(response.Value, []byte("0")) != 0 {
+		s.Errorf("Retrieved value is not Empty", hex.EncodeToString(response.Value))
 	}
 }
 
@@ -107,6 +136,7 @@ func BootLockbox(ctx context.Context, s *testing.State) {
 	// Start actual tests
 	client := security.NewBootLockboxServiceClient(cl.Conn)
 
+	s.Logf("Starting test - marker")
 	testReadNonExistingEntry(ctx, s, client)
 	testWriteReadConsistency(ctx, s, client)
 
@@ -114,5 +144,21 @@ func BootLockbox(ctx context.Context, s *testing.State) {
 	testWriteFailureAfterLogin(ctx, s, client)
 
 	// Reset the value to empty. Deletion is not currently supported.
-	client.Store(ctx, &security.StoreBootLockboxRequest{Key: testKey, Value: nil})
+
+	// Reboot to make boot lockbox writable
+	s.Log("Rebooting Again")
+	if err := s.DUT().Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot DUT: ", err)
+	}
+	cl, err = rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	// Start actual tests
+	client = security.NewBootLockboxServiceClient(cl.Conn)
+
+	testRestoreTestKeyValue(ctx, s, client)
+	//client.Store(ctx, &security.StoreBootLockboxRequest{Key: testKey, Value: n})
 }
