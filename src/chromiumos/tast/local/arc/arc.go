@@ -246,7 +246,6 @@ var androidDeps = []string{
 	"android_vm",
 	"android_vm_p",
 	"android_vm_r",
-	"android_both",
 	"android_all",
 	"android_p",
 	"android_r",

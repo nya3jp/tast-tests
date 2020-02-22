@@ -27,7 +27,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "noarc",
-			ExtraSoftwareDeps: []string{"android_both"}, // to prevent this from running on non-ARC boards
+			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
 			Pre:               chrome.LoggedIn(),
 		}, {
 			ExtraSoftwareDeps: []string{"android"},
