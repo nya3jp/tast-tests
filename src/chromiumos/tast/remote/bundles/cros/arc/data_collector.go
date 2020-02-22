@@ -30,7 +30,7 @@ func init() {
 			"arc-performance@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_both", "chrome"},
+		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
 		Timeout:      5 * time.Minute,
 		Vars: []string{
