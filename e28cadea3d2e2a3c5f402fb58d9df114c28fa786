@@ -22,6 +22,30 @@
       "revId": "e28cadea3d2e2a3c5f402fb58d9df114c28fa786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "889bd698_fa083d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-22T00:51:31Z",
+      "side": 1,
+      "message": "well, actually this is intended for avoid conflicting the same \"ui\" name (this imports both tast/local/ui package and tast/local/chrome/ui package, and this is naming the former as \u0027chromeui\u0027).",
+      "parentUuid": "d0e0e44a_82f4c096",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "e28cadea3d2e2a3c5f402fb58d9df114c28fa786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
