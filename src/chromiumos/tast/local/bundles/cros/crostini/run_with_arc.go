@@ -22,7 +22,7 @@ func init() {
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedARCEnabled(),
-		SoftwareDeps: []string{"chrome", "vm_host", "android_both"},
+		SoftwareDeps: []string{"chrome", "vm_host", "arc"},
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
