@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48994735_f435fb48",
+        "filename": "src/chromiumos/tast/remote/wifi/doc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-22T02:38:31Z",
+      "side": 1,
+      "message": "might this make a little more sense as \"wificell\"? It\u0027s specifically for the purpose of running test APs in a particular multi-device architecture. It\u0027s possible to have other useful tools for remote wifi tests that are not using this wificell basis, and I think this package might not be the right fit for such tools.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "cf55476dd8f289e91bb848d9761a901385b539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b05f3a_4cff8b91",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-22T02:38:31Z",
+      "side": 1,
+      "message": "does it make sense to have some unit tests? this has a pretty clear flow of \"input options\" and \"output config file\"",
+      "revId": "cf55476dd8f289e91bb848d9761a901385b539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed0029d_73af7c09",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-22T02:38:31Z",
+      "side": 1,
+      "message": "actually, does this really need to be 0? how about we make an unspecified HTCap fatal on 11n+ tests for now, and if we decide to make a default later, we can do that in the construct/validate step",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "cf55476dd8f289e91bb848d9761a901385b539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b9532d3_b0e0733c",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/doc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-22T02:38:31Z",
+      "side": 1,
+      "message": "I\u0027d probably go with \"hostapd\", since \"hostap\" is the whole project that contains both hostapd and wpa_supplicant",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "cf55476dd8f289e91bb848d9761a901385b539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ddcb67_28284284",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-22T02:38:31Z",
+      "side": 1,
+      "message": "similar to the dhcp server: is it expected to have NewServer() implicitly start the daemon? It feels like it would be cleaner to have a public Start()/Stop() pair that are called explicitly.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "cf55476dd8f289e91bb848d9761a901385b539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
