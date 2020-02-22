@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc86d670_e4ae3888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-22T01:26:29Z",
+      "side": 1,
+      "message": "Do you mind use tast parameterized test[1] feature for this test?\nTest renaming caused a lot of tracking problem in the past. I have a sample cl[2] to convert CrostiniTraceGlxgears to parameterize test.\n\nMaybe we can use graphics.TraceReplay.${trace_name} or graphics.TraceReplay.${game_name}_${trace_name}\n\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\n[2] crrev.com/c/2069063",
+      "revId": "47fe972265cbc519b68a9ec8998944b3a5107d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48248801_e0efd27e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-02-22T01:26:29Z",
+      "side": 1,
+      "message": "Can you move this line to l265 so that even if an error occured, we have something in the log?",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 65
+      },
+      "revId": "47fe972265cbc519b68a9ec8998944b3a5107d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
