@@ -100,6 +100,7 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 	traceOut, err := cmd.CombinedOutput()
 	if err != nil {
 		cmd.DumpLog(ctx)
+		testing.ContextLog(ctx, string(traceOut))
 		return nil, errors.Wrap(err, "failed to replay apitrace")
 	}
 
