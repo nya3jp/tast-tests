@@ -29,8 +29,9 @@ func init() {
 			"khmel@chromium.org", // Original author.
 			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_both", "chrome"},
+		Attr: []string{"group:mainline", "informational"},
+		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
+		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
 		Timeout:      5 * time.Minute,
 		Vars: []string{

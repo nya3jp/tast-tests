@@ -15,14 +15,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RunWithARC,
-		Desc:         "Checks that ARC(VM) runs in parallel with Crostini",
-		Contacts:     []string{"niwa@chromium.org", "arcvm-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      7 * time.Minute,
-		Data:         []string{crostini.ImageArtifact},
-		Pre:          crostini.StartedARCEnabled(),
-		SoftwareDeps: []string{"chrome", "vm_host", "android_both"},
+		Func:     RunWithARC,
+		Desc:     "Checks that ARC(VM) runs in parallel with Crostini",
+		Contacts: []string{"niwa@chromium.org", "arcvm-eng@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Timeout:  7 * time.Minute,
+		Data:     []string{crostini.ImageArtifact},
+		Pre:      crostini.StartedARCEnabled(),
+		// TODO(b/150013652): Stop using 'arc' here and use ExtraSoftwareDeps instead.
+		SoftwareDeps: []string{"chrome", "vm_host", "arc"},
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
