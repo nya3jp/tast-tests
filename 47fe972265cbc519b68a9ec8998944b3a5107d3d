@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "28adbbc9_28330ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-22T14:43:44Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right, but I just wanted to make a temporal test config which name will look bit different from others. Later, we need to consider names because, for example, the new traces file names already contain game names.",
+      "parentUuid": "fc86d670_e4ae3888",
+      "revId": "47fe972265cbc519b68a9ec8998944b3a5107d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48248801_e0efd27e",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "47fe972265cbc519b68a9ec8998944b3a5107d3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99fa7b89_98a60d00",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-22T14:43:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48248801_e0efd27e",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 65
+      },
+      "revId": "47fe972265cbc519b68a9ec8998944b3a5107d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
