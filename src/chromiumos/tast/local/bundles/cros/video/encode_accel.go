@@ -108,9 +108,9 @@ func init() {
 				InputMode:   encode.DMABuf},
 			// Although the ability to android is unrelated to this test ability,
 			// we would like to run this test on ARC++ enabled boards.
-			// TODO(hiroh): Remove "android_both" deps once Chrome VEAs and
+			// TODO(hiroh): Remove "arc" deps once Chrome VEAs and
 			// Chrome OS supports DMABUF-backed video frame on all boards.
-			ExtraSoftwareDeps: []string{"android_both", caps.HWEncodeH264},
+			ExtraSoftwareDeps: []string{"arc", caps.HWEncodeH264},
 			ExtraData:         []string{encode.Bear192P.Name},
 			ExtraAttr:         []string{"informational"},
 		}, {
@@ -191,9 +191,9 @@ func init() {
 				InputMode:   encode.DMABuf},
 			// Although the ability to android is unrelated to this test ability,
 			// we would like to run this test on ARC++ enabled boards.
-			// TODO(hiroh): Remove "android_both" deps once Chrome VEAs and
+			// TODO(hiroh): Remove "arc" deps once Chrome VEAs and
 			// Chrome OS supports DMABUF-backed video frame on all boards.
-			ExtraSoftwareDeps: []string{"android_both", caps.HWEncodeVP8},
+			ExtraSoftwareDeps: []string{"arc", caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Bear192P.Name},
 			ExtraAttr:         []string{"informational"},
 		}, {
