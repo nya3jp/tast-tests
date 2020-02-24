@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "976e33f3_8b9db51e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-24T22:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fc56e6d_b9f10b9f",
+      "range": {
+        "startLine": 1076,
+        "startChar": 28,
+        "endLine": 1076,
+        "endChar": 33
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd557b75_9b8a17ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0b935519_36c6371c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-24T22:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd557b75_9b8a17ce",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17f6623c_1a62a47d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53aca43c_d9067fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-24T22:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17f6623c_1a62a47d",
+      "range": {
+        "startLine": 109,
+        "startChar": 18,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +187,30 @@
       "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df110a15_b454b021",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-24T22:52:33Z",
+      "side": 1,
+      "message": "I think this type of constructor is idiomatic in Go, and indeed it was simply a copy of arc.NewPoint. I am not sure which is better since Point should be a very simple struct, though it would be good to be there.\n\nThe new patchset addressed Ricardo\u0027s comments on other files, so NewPoint is used everywhere, so now it is consistently used.",
+      "parentUuid": "5c64bacb_e879b088",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
