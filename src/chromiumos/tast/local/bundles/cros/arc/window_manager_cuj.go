@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/settings"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -791,7 +792,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 	// The -1 is needed to prevent injecting a touch event outside bounds.
 	right := maxBounds.Left + maxBounds.Width - 1
 	testing.ContextLog(ctx, "Resizing app to right margin = ", right)
-	to := arc.NewPoint(right, origBounds.Top+origBounds.Height/2)
+	to := coords.NewPoint(right, origBounds.Top+origBounds.Height/2)
 	if err := act.ResizeWindow(ctx, arc.BorderRight, to, 500*time.Millisecond); err != nil {
 		return err
 	}
