@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -226,13 +227,13 @@ func compareWindowState(ctx context.Context, act *arc.Activity, wanted arc.Windo
 }
 
 // getScreenSizeAndInternalWorkArea returns the screen size and the workspace in pixels of the currently selected internal display.
-func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.Conn) (width, height int, bounds arc.Rect, err error) {
+func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.Conn) (width, height int, bounds coords.Rect, err error) {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		// This could be fizz which does not have an internal screen.
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
-			return 0, 0, arc.Rect{}, errors.Wrap(err, "failed to get any display info")
+			return 0, 0, coords.Rect{}, errors.Wrap(err, "failed to get any display info")
 		}
 		for i := range infos {
 			if infos[i].IsPrimary {
@@ -241,28 +242,24 @@ func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.Conn) (
 			}
 		}
 		if dispInfo == nil {
-			return 0, 0, arc.Rect{}, errors.New("failed to get any display info")
+			return 0, 0, coords.Rect{}, errors.New("failed to get any display info")
 		}
 		testing.ContextLog(ctx, "Could not get an internal display. Trying with the primary one")
 	}
 
 	for _, mode := range dispInfo.Modes {
 		if mode.IsSelected {
-			return mode.WidthInNativePixels, mode.HeightInNativePixels, arc.Rect{
-				Left:   int(math.Round(float64(dispInfo.WorkArea.Left) * mode.DeviceScaleFactor)),
-				Top:    int(math.Round(float64(dispInfo.WorkArea.Top) * mode.DeviceScaleFactor)),
-				Width:  int(math.Round(float64(dispInfo.WorkArea.Width) * mode.DeviceScaleFactor)),
-				Height: int(math.Round(float64(dispInfo.WorkArea.Height) * mode.DeviceScaleFactor))}, nil
+			return mode.WidthInNativePixels, mode.HeightInNativePixels, coords.ConvertBoundsFromDpToPx(dispInfo.WorkArea, mode.DeviceScaleFactor), nil
 		}
 	}
-	return 0, 0, arc.Rect{}, errors.New("failed to get the selected screen mode")
+	return 0, 0, coords.Rect{}, errors.New("failed to get the selected screen mode")
 }
 
 // checkCentered is checking that a given rectangle is (roughly) in the middle of the screen.
 // We cannot do an exact job here as we might see rounding issues in X because of dp/px translations.
 // For Y we have the additional problem that the caption height is unknown to Android in NYC and PI
 // as it is not part of the window, and Android will guess a height.
-func checkCentered(bounds, workArea arc.Rect) error {
+func checkCentered(bounds, workArea coords.Rect) error {
 	const (
 		// screenCenterVerticalEpsilon is the allowable epsilon for rounding of the vertical center derivation from the screen center.
 		screenCenterVerticalEpsilon = 3
