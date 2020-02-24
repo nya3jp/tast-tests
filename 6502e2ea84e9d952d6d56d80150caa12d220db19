@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7b591a1_7c23ce2d",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-24T21:16:51Z",
+      "side": 1,
+      "message": "nit: Do you think this method is worth having? Would it be better to just create the Point struct at the locations this is used?\nI feel like it just adds inconsistency because it is not used everywhere.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
