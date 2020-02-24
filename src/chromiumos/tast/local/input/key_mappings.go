@@ -133,10 +133,12 @@ var namedKeyCodes = map[string]EventCode{
 	"space":     KEY_SPACE,
 	"tab":       KEY_TAB,
 
-	"left":  KEY_LEFT,
-	"right": KEY_RIGHT,
-	"up":    KEY_UP,
-	"down":  KEY_DOWN,
+	"left":     KEY_LEFT,
+	"right":    KEY_RIGHT,
+	"up":       KEY_UP,
+	"down":     KEY_DOWN,
+	"pageup":   KEY_PAGEUP,
+	"pagedown": KEY_PAGEDOWN,
 
 	"f1":  KEY_F1,
 	"f2":  KEY_F2,
