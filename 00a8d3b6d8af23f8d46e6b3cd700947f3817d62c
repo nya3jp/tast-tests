@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18c4179a_72e6b75e",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-24T20:30:58Z",
+      "side": 1,
+      "message": "Please don\u0027t start making the Shill library circumvent Shill. If you\u0027re trying to understand where a Shill operation went wrong, dump Shill state, not a sideband library.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "00a8d3b6d8af23f8d46e6b3cd700947f3817d62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e977fd_f01cdbb3",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-24T20:30:58Z",
+      "side": 1,
+      "message": "this is contradictory: you\u0027re claiming the interface list you\u0027re dumping is from Shill, but it\u0027s not",
+      "range": {
+        "startLine": 73,
+        "startChar": 66,
+        "endLine": 73,
+        "endChar": 96
+      },
+      "revId": "00a8d3b6d8af23f8d46e6b3cd700947f3817d62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
