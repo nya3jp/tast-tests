@@ -34,6 +34,24 @@
       "revId": "de6e2b4da030e7001551090f9253837122b080a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302a6b03_1b4e610b",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-24T21:16:36Z",
+      "side": 1,
+      "message": "This is noisy, so let\u0027s do it in another CL. The subsequent CLs have already been blocked on silly refactorings long enough.",
+      "parentUuid": "aa8c5c21_780521f6",
+      "revId": "de6e2b4da030e7001551090f9253837122b080a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
