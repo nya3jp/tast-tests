@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95d42ead_f241daca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-24T22:42:38Z",
+      "side": 1,
+      "message": "That\u0027s a tenuous line of reasoning...none of the code in this \u0027shill\u0027 library is actually \"provided by Shill\" -- it\u0027s all a Shill client. You could say similarly for any of the variations of shill-derived stuff, that make it easier to work with Shill (e.g., GetDeviceByTechnology).\n\nThe conclusion is OK I guess, but more of an \"I don\u0027t care\" than \"I agree.\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "06936d4d7617ab38c6b614987fc0c18c4b99d729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
