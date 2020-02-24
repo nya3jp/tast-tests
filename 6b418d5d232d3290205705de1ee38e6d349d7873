@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a38799ff_d95b2e8e",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-24T08:21:13Z",
+      "side": 1,
+      "message": "1) Ack\n2) Currently the HelperRemote does not have access to the full CryptohomeBinary (just TPMInitializer). That change would be more involved.\n3) Created crbug.com/1055232",
+      "parentUuid": "a4121136_b1b16777",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "6b418d5d232d3290205705de1ee38e6d349d7873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c279cac_f8b62c1e",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 18
