@@ -101,7 +101,7 @@ func windowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Size, 
 		return Size{}, errors.Wrap(err, "failed to find client view")
 	}
 	defer view.Release(ctx)
-	if view.Location == nil {
+	if view.Location.Empty() {
 		return Size{}, errors.New("client view does not have a location")
 	}
 
