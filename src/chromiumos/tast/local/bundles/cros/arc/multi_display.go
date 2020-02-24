@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -376,12 +377,12 @@ func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 		// Relayout external display and make sure the windows will not move their positions or show black background.
 		for _, relayout := range []struct {
 			name   string
-			offset arc.Point
+			offset coords.Point
 		}{
-			{"Relayout external display to the left side of internal display", arc.NewPoint(-externalDisplayInfo.Bounds.Width, 0)},
-			{"Relayout external display to the right side of internal display", arc.NewPoint(internalDisplayInfo.Bounds.Width, 0)},
-			{"Relayout external display on top of internal display", arc.NewPoint(0, -externalDisplayInfo.Bounds.Height)},
-			{"Relayout external display on bottom of internal display", arc.NewPoint(0, internalDisplayInfo.Bounds.Height)},
+			{"Relayout external display to the left side of internal display", coords.NewPoint(-externalDisplayInfo.Bounds.Width, 0)},
+			{"Relayout external display to the right side of internal display", coords.NewPoint(internalDisplayInfo.Bounds.Width, 0)},
+			{"Relayout external display on top of internal display", coords.NewPoint(0, -externalDisplayInfo.Bounds.Height)},
+			{"Relayout external display on bottom of internal display", coords.NewPoint(0, internalDisplayInfo.Bounds.Height)},
 		} {
 			if err := func() error {
 				testing.ContextLogf(ctx, "Running %q", relayout.name)
@@ -538,7 +539,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 			if err := ensureActivityReady(ctx, tconn, removeAdd.moveAct); err != nil {
 				return err
 			}
-			var restoreWinBounds ash.Rect
+			var restoreWinBounds coords.Rect
 			testing.Poll(ctx, func(ctx context.Context) error {
 				restoreWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, removeAdd.moveAct.PackageName())
 				if err != nil {
@@ -676,7 +677,7 @@ func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Test
 }
 
 // ensureWinBoundsInDisplay checks whether the window bounds are inside of display bounds.
-func ensureWinBoundsInDisplay(winBounds ash.Rect, displayBounds *display.Bounds) error {
+func ensureWinBoundsInDisplay(winBounds coords.Rect, displayBounds coords.Rect) error {
 	// Convert local window bounds to global window bounds.
 	winBounds.Left += displayBounds.Left
 	winBounds.Top += displayBounds.Top

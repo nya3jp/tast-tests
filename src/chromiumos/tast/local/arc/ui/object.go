@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/coords"
 )
 
 // Available RPC methods are listed at:
@@ -33,7 +33,7 @@ type Object struct {
 
 // rect represents a rectangle, as defined here:
 // https://developer.android.com/reference/android/graphics/Rect
-// It differs from arc.Rect in that it uses bottom & right instead of width & height.
+// It differs from coords.Rect in that it uses bottom & right instead of width & height.
 type rect struct {
 	Top    int `json:"top"`
 	Left   int `json:"left"`
@@ -169,14 +169,14 @@ func (o *Object) GetClassName(ctx context.Context) (string, error) {
 //
 // This method corresponds to UiObject.getBounds().
 // https://developer.android.com/reference/android/support/test/uiautomator/UiObject.html#getbounds
-func (o *Object) GetBounds(ctx context.Context) (arc.Rect, error) {
+func (o *Object) GetBounds(ctx context.Context) (coords.Rect, error) {
 	info, err := o.info(ctx)
 	if err != nil {
-		return arc.Rect{}, errors.Wrap(err, "GetBounds failed")
+		return coords.Rect{}, errors.Wrap(err, "GetBounds failed")
 	}
-	// Bounds contains a "graphics rect". Needs to be converted to an arc.Rect.
+	// Bounds contains a "graphics rect". Needs to be converted to an coords.Rect.
 	gr := info.Bounds
-	r := arc.Rect{Top: gr.Top, Left: gr.Left, Width: gr.Right - gr.Left, Height: gr.Bottom - gr.Top}
+	r := coords.NewRectLTRB(gr.Left, gr.Top, gr.Right, gr.Bottom)
 	return r, nil
 }
 
