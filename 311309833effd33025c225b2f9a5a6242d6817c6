@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d05ac7a4_62d6988e",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-24T15:37:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92ecebc1_5ce90f18",
+      "range": {
+        "startLine": 319,
+        "startChar": 14,
+        "endLine": 319,
+        "endChar": 27
+      },
+      "revId": "311309833effd33025c225b2f9a5a6242d6817c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2dae100_b7af39b4",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 4
