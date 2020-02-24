@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -43,11 +44,11 @@ func SetBounds(ctx context.Context, s *testing.State) {
 
 	// The bounds below are specified in
 	// pi-arc/vendor/google_arc/packages/development/ArcSetBoundsTest/src/org/chromium/arc/testapp/setbounds/BaseActivity.java
-	regularBounds := arc.Rect{Left: 100, Top: 100, Width: 800, Height: 800}
+	regularBounds := coords.NewRect(100, 100, 800, 800)
 
 	// When the activity requests smaller bounds than its min-size, ARC framework expands the bounds to the its min-size.
 	// The min-size is specified in AndroidManifest.xml.
-	smallerBounds := arc.Rect{Left: 200, Top: 200, Width: 600, Height: 500}
+	smallerBounds := coords.NewRect(200, 200, 600, 500)
 
 	// TODO(crbug.com/1002958) Replace with Ash API to enable clamshell mode once it gets fixed.
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
@@ -111,7 +112,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 				s.Fatalf("Unexpected initial bounds: got (%d, %d); want (%d, %d)", actBounds.Width, actBounds.Height, initH, initW)
 			}
 
-			clickButtonAndValidateBounds := func(buttonId string, expected arc.Rect) error {
+			clickButtonAndValidateBounds := func(buttonId string, expected coords.Rect) error {
 				// Touch the button.
 				if err := d.Object(ui.ID(buttonId)).Click(ctx); err != nil {
 					return errors.Wrapf(err, "could not click the button with id %q", buttonId)

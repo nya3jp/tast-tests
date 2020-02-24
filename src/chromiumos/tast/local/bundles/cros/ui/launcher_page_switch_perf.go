@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -70,7 +71,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	clickFunc := func(ctx context.Context, obj *chromeui.Node) error {
 		return obj.LeftClick(ctx)
 	}
-	dragFunc := func(ctx context.Context, start, end ash.Location) error {
+	dragFunc := func(ctx context.Context, start, end coords.Point) error {
 		return ash.MouseDrag(ctx, tconn, start, end, dragDuration)
 	}
 	if inTabletMode {
@@ -96,14 +97,11 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		}
 		defer stw.Close()
 		clickFunc = func(ctx context.Context, obj *chromeui.Node) error {
-			rect := ash.Rect{
-				Left: obj.Location.Left, Top: obj.Location.Top,
-				Width: obj.Location.Width, Height: obj.Location.Height}
-			x, y := tcc.ConvertLocation(rect.CenterPoint())
+			x, y := tcc.ConvertLocation(obj.Location.CenterPoint())
 			defer stw.End()
 			return stw.Move(x, y)
 		}
-		dragFunc = func(ctx context.Context, start, end ash.Location) error {
+		dragFunc = func(ctx context.Context, start, end coords.Point) error {
 			startX, startY := tcc.ConvertLocation(start)
 			endX, endY := tcc.ConvertLocation(end)
 			defer stw.End()
@@ -233,16 +231,16 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		// not at the edge), and moves the height of the apps-grid. The X position
 		// should not be the center of the width since it would fall into an app
 		// icon. For now, it just sets 2/5 width position to avoid app icons.
-		dragUpStart := ash.Location{
-			X: appsGridLocation.Left + appsGridLocation.Width*2/5,
-			Y: appsGridLocation.Top + appsGridLocation.Height - 1}
-		dragUpEnd := ash.Location{X: dragUpStart.X, Y: appsGridLocation.Top - 1}
+		dragUpStart := coords.NewPoint(
+			appsGridLocation.Left+appsGridLocation.Width*2/5,
+			appsGridLocation.Top+appsGridLocation.Height-1)
+		dragUpEnd := coords.NewPoint(dragUpStart.X, appsGridLocation.Top-1)
 
 		// drag-down gesture positions; starting at the top of the apps-grid (but
 		// not at the edge), and moves to the bottom edge of the apps-grid. Same
 		// X position as the drag-up gesture.
-		dragDownStart := ash.Location{X: dragUpStart.X, Y: appsGridLocation.Top + 1}
-		dragDownEnd := ash.Location{X: dragDownStart.X, Y: dragDownStart.Y + appsGridLocation.Height}
+		dragDownStart := coords.NewPoint(dragUpStart.X, appsGridLocation.Top+1)
+		dragDownEnd := coords.NewPoint(dragDownStart.X, dragDownStart.Y+appsGridLocation.Height)
 
 		hists, err = metrics.Run(ctx, cr, func() error {
 			// First drag-up operation.

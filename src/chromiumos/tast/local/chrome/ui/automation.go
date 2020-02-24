@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -113,15 +114,6 @@ func (params *FindParams) rawBytes() ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-// Rect represents the bounds of a Node
-// As defined in chromium/src/extensions/common/api/automation.idl
-type Rect struct {
-	Left   int `json:"left"`
-	Top    int `json:"top"`
-	Width  int `json:"width"`
-	Height int `json:"height"`
-}
-
 // Node is a reference to chrome.automation API AutomationNode.
 // Node intentionally leaves out many properties. If they become needed, add them to the Node struct and to the Update function.
 // As defined in chromium/src/extensions/common/api/automation.idl
@@ -132,7 +124,7 @@ type Node struct {
 	ClassName string             `json:"classname,omitempty"`
 	Role      RoleType           `json:"role,omitempty"`
 	State     map[StateType]bool `json:"state,omitempty"`
-	Location  *Rect              `json:"location,omitempty"`
+	Location  coords.Rect        `json:"location,omitempty"`
 }
 
 // NodeSlice is a slice of pointers to nodes. It is used for releaseing a group of nodes.
@@ -182,10 +174,10 @@ func (n *Node) LeftClick(ctx context.Context) error {
 	if err := n.Update(ctx); err != nil {
 		return errors.Wrap(err, "failed to update the node's location")
 	}
-	if n.Location == nil {
+	if n.Location.Empty() {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
-	return ash.MouseClick(ctx, n.tconn, ash.Location{X: n.Location.Left + n.Location.Width/2, Y: n.Location.Top + n.Location.Height/2}, ash.LeftButton)
+	return ash.MouseClick(ctx, n.tconn, n.Location.CenterPoint(), ash.LeftButton)
 }
 
 // RightClick shows the context menu of the node.
@@ -194,10 +186,10 @@ func (n *Node) RightClick(ctx context.Context) error {
 	if err := n.Update(ctx); err != nil {
 		return errors.Wrap(err, "failed to update the node's location")
 	}
-	if n.Location == nil {
+	if n.Location.Empty() {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
-	return ash.MouseClick(ctx, n.tconn, ash.Location{X: n.Location.Left + n.Location.Width/2, Y: n.Location.Top + n.Location.Height/2}, ash.RightButton)
+	return ash.MouseClick(ctx, n.tconn, n.Location.CenterPoint(), ash.RightButton)
 }
 
 // Descendant finds the first descendant of this node matching the params and returns it.

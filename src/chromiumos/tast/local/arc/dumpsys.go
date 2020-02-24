@@ -16,6 +16,7 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +31,7 @@ type TaskInfo struct {
 	// StackSize represents how many activities are in the stack.
 	StackSize int
 	// Bounds represents the task bounds in pixels. Caption is not taken into account.
-	Bounds Rect
+	Bounds coords.Rect
 	// ActivityInfos is the activities in the task
 	ActivityInfos []ActivityInfo
 
@@ -363,11 +364,7 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 					ti.ActivityInfos = append(ti.ActivityInfos, ActivityInfo{s[0], s[1]})
 				}
 				b := t.GetBounds()
-				ti.Bounds = Rect{
-					Left:   int(b.GetLeft()),
-					Top:    int(b.GetTop()),
-					Width:  int(b.GetRight() - b.GetLeft()),
-					Height: int(b.GetBottom() - b.GetTop())}
+				ti.Bounds = coords.NewRectLTRB(int(b.GetLeft()), int(b.GetTop()), int(b.GetRight()), int(b.GetBottom()))
 				// Any value different than 0 (RESIZE_MODE_UNRESIZEABLE) means it is resizable. Defined in ActivityInfo.java. See:
 				// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/content/pm/ActivityInfo.java
 				ti.resizable = t.GetResizeMode() != 0
@@ -412,15 +409,15 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 
 // parseBounds returns a Rect by parsing a slice of 4 strings.
 // Each string represents the left, top, right and bottom values, in that order.
-func parseBounds(s []string) (bounds Rect, err error) {
+func parseBounds(s []string) (bounds coords.Rect, err error) {
 	if len(s) != 4 {
-		return Rect{}, errors.Errorf("expecting a slice of length 4, got %d", len(s))
+		return coords.Rect{}, errors.Errorf("expecting a slice of length 4, got %d", len(s))
 	}
 	var right, bottom int
 	for i, dst := range []*int{&bounds.Left, &bounds.Top, &right, &bottom} {
 		*dst, err = strconv.Atoi(s[i])
 		if err != nil {
-			return Rect{}, errors.Wrapf(err, "could not parse %q", s[i])
+			return coords.Rect{}, errors.Wrapf(err, "could not parse %q", s[i])
 		}
 	}
 	bounds.Width = right - bounds.Left
