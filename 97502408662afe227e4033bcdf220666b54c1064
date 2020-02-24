@@ -141,6 +141,30 @@
       "revId": "97502408662afe227e4033bcdf220666b54c1064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0bf12ee_3e3af533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-24T22:45:05Z",
+      "side": 1,
+      "message": "Done.\n\nI think we\u0027ve seen some network APIs grow in ways where the New...() call does some basic initialization, and the real \"start doing things\" phase is in a Start() or similar. Is that \"non-idiomatic\", and it would be better to just do the New...() and {Delete,Stop,whatever}() pairing you\u0027ve suggested? Or is that a case-by-case thing?\n\nAnyway, I went with NewPair()+Delete() here, since I don\u0027t see a good reason to separate \"construct\" from \"do it\" in this case.",
+      "parentUuid": "71dfb53c_ddd7af46",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
