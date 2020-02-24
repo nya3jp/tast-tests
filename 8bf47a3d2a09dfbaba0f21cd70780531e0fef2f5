@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e7e0ebc_0235188d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-24T22:36:21Z",
+      "side": 1,
+      "message": "This is the global test time out. The default global test timeout is 2 minutes. If you look at Stainless, this test consistently fails on a number of boards and is flaky on others. Almost all(maybe all) of the failures are due to hitting the 2 minute timeout.\n\nthese are all of the deadline failures:\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2020-02-07\u0026last_date\u003d2020-03-07\u0026test\u003d%5Etast%5C.arc%5C.PlayStore%24%7C%5Etast%5C.arc%5C.PlayStore.vm%24\u0026reason\u003ddeadline+exceeded\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "0758ab63_187d3fb4",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "8bf47a3d2a09dfbaba0f21cd70780531e0fef2f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c36400cc_b4c354b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
         "patchSetId": 1
