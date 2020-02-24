@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59190b7c_820f5a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ready_error_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:15:55Z",
+      "side": 1,
+      "message": "nit: Mind removing this field?",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75eab8d_a0a88b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ready_error_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:15:55Z",
+      "side": 1,
+      "message": "nit\u0026optional: I\u0027d unnest this check to reduce nesting.\n\n if os.IsNotExist(err) {\n   return\n }\n if err !\u003d nil {\n   s.Fatal(...)\n }",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7eab33e_20f47f0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ready_error_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:15:55Z",
+      "side": 1,
+      "message": "Please include err in the error message.",
+      "range": {
+        "startLine": 37,
+        "startChar": 36,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd9a49a_69f0e482",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:15:55Z",
+      "side": 1,
+      "message": "nit\u0026optional: It might be a bit easier to return error from this function and avoid passing log to this function.",
+      "range": {
+        "startLine": 311,
+        "startChar": 5,
+        "endLine": 311,
+        "endChar": 29
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0744906e_ca41af59",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:15:55Z",
+      "side": 1,
+      "message": "No action required: JFYI, /home/chronos is cleared by chrome.New as well.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?q\u003dchrome/chrome.go+chronos\u0026g\u003d0\u0026l\u003d706",
+      "range": {
+        "startLine": 329,
+        "startChar": 18,
+        "endLine": 329,
+        "endChar": 29
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
