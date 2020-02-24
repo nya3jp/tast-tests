@@ -140,6 +140,30 @@
       "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d59e5c0_8ac26212",
+        "filename": "src/chromiumos/tast/services/cros/arc/gmscore_cache_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-24T21:27:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac207e2a_3ea2da2c",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
