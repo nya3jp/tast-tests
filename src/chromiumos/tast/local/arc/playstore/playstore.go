@@ -114,7 +114,7 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 		installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(installButtonRegex), ui.Enabled(true))
 		if err := installButton.Exists(ctx); err == nil {
 			if err := installButton.Click(ctx); err != nil {
-				return testing.PollBreak(err)
+				return err
 			}
 		}
 
