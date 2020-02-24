@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf0d9bb5_469e1b3b",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-24T20:45:59Z",
+      "side": 1,
+      "message": "nit: Typo in \"work\".",
+      "range": {
+        "startLine": 326,
+        "startChar": 21,
+        "endLine": 326,
+        "endChar": 25
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
