@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2948e1d_8348fc8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:06:31Z",
+      "side": 1,
+      "message": "I\u0027m afraid 5 mins is not enough. On slowest devices, arc.Boot takes ~100s to finish.\nhttps://tastboard.corp.google.com/test/arc.Boot\n\nThat said, what do you think about rebooting Android only once, not 3 times? Median time of running all critical Android tests today is ~8 mins, so I wonder if it\u0027s cost effective to attempt many trials in this test.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "77eedbc5fb9c1ed3ea6bf9ace3368e6b5d0fd071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5cbf6a_9c1cff70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:06:31Z",
+      "side": 1,
+      "message": "If we decide to reboot Android only once, I think it makes sense to inline this function to the main function.",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "77eedbc5fb9c1ed3ea6bf9ace3368e6b5d0fd071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909d36a2_e29928bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-24T10:06:31Z",
+      "side": 1,
+      "message": "JFYI, no action required: please note that it is very unlikely that we fail this check because we already waited for oldPID to exit earlier.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "77eedbc5fb9c1ed3ea6bf9ace3368e6b5d0fd071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
