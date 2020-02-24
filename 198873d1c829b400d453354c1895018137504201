@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c531baf0_c0bc07b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ready_error_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-24T11:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59190b7c_820f5a3a",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d75eab8d_a0a88b0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/ready_error_log.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "198873d1c829b400d453354c1895018137504201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9598d95_6cee5e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ready_error_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-24T11:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75eab8d_a0a88b0b",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bba8bbd3_0d454959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ready_error_log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-24T11:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7eab33e_20f47f0c",
+      "range": {
+        "startLine": 37,
+        "startChar": 36,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfd9a49a_69f0e482",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9697bb0b_21c4e2e8",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-24T11:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd9a49a_69f0e482",
+      "range": {
+        "startLine": 311,
+        "startChar": 5,
+        "endLine": 311,
+        "endChar": 29
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0744906e_ca41af59",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 5
@@ -114,6 +210,30 @@
       "revId": "198873d1c829b400d453354c1895018137504201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cf9fe4_4dd910e0",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-24T11:09:02Z",
+      "side": 1,
+      "message": "/home/chronos is the currently logged in user. If a test depends on that, it should perform login as preparation, which changes /home/chronos.",
+      "parentUuid": "0744906e_ca41af59",
+      "range": {
+        "startLine": 329,
+        "startChar": 18,
+        "endLine": 329,
+        "endChar": 29
+      },
+      "revId": "198873d1c829b400d453354c1895018137504201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
