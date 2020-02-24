@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41269392_b39d2c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-24T18:13:29Z",
+      "side": 1,
+      "message": "style: could you use switch for simplicity?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "6244866679448f5683ba50d97eecc046f04ef338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "121a9756_74c3e21f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-24T18:13:29Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "6244866679448f5683ba50d97eecc046f04ef338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d201c4_9651f260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-24T18:13:29Z",
+      "side": 1,
+      "message": "nit/style: since mode comes first, could you swap the order of args?\n\n(Sorry, I didn\u0027t notice this in the last iteration)\n\nDitto for below for consistency.",
+      "range": {
+        "startLine": 155,
+        "startChar": 33,
+        "endLine": 155,
+        "endChar": 65
+      },
+      "revId": "6244866679448f5683ba50d97eecc046f04ef338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ab37068_4aa6854d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-24T18:13:29Z",
+      "side": 1,
+      "message": "nit: %v",
+      "range": {
+        "startLine": 260,
+        "startChar": 87,
+        "endLine": 260,
+        "endChar": 89
+      },
+      "revId": "6244866679448f5683ba50d97eecc046f04ef338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71655be_06b1599d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-24T18:13:29Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think you need explicit String(). You may be interested in %v, too.",
+      "range": {
+        "startLine": 260,
+        "startChar": 118,
+        "endLine": 260,
+        "endChar": 127
+      },
+      "revId": "6244866679448f5683ba50d97eecc046f04ef338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
