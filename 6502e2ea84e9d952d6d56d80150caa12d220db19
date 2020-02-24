@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "4fc56e6d_b9f10b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-24T22:28:11Z",
+      "side": 1,
+      "message": "nit: \nreplace it with coords.NewPoint() ?",
+      "range": {
+        "startLine": 1076,
+        "startChar": 28,
+        "endLine": 1076,
+        "endChar": 33
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd557b75_9b8a17ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-24T22:28:11Z",
+      "side": 1,
+      "message": "nit: ditto here and below",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f6623c_1a62a47d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-24T22:28:11Z",
+      "side": 1,
+      "message": "nit: and here too (and below)",
+      "range": {
+        "startLine": 109,
+        "startChar": 18,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7b591a1_7c23ce2d",
         "filename": "src/chromiumos/tast/local/coords/coords.go",
         "patchSetId": 1
@@ -13,6 +82,30 @@
       "writtenOn": "2020-02-24T21:16:51Z",
       "side": 1,
       "message": "nit: Do you think this method is worth having? Would it be better to just create the Point struct at the locations this is used?\nI feel like it just adds inconsistency because it is not used everywhere.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "6502e2ea84e9d952d6d56d80150caa12d220db19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c64bacb_e879b088",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-24T22:28:11Z",
+      "side": 1,
+      "message": "some context, from a discussion that I had with derat@ about ~1 year ago:\n\nThe \"problem\" with a naked Point is that you have to explicitly specify \"x\" and \"y\" when calling it from another package. e.g:\n\np :\u003d coords.Point{X: 0, Y:12}\n\nand by calling NewPoint you don\u0027t have that problem.\n\np :\u003d coords.NewPoint(0,12)\n\nso he suggested that we could have a \"NewPoint\".",
+      "parentUuid": "f7b591a1_7c23ce2d",
       "range": {
         "startLine": 20,
         "startChar": 0,
