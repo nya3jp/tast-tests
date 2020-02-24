@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "700cf0d7_ddca369d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-24T16:25:51Z",
+      "side": 1,
+      "message": "Thank you Shuhei, actually, I use repo upload, but with --no-verify flag because I had some issues with precheck tools. Of course, I\u0027m going to fix all the stylistic issues. We would like hear your opinion regarding the architectural aspect of this CL. Thank you!",
+      "parentUuid": "b6af754c_523539d7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "47fe972265cbc519b68a9ec8998944b3a5107d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc86d670_e4ae3888",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
         "patchSetId": 7
