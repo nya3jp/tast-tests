@@ -23,22 +23,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func closePrinterNotification(ctx context.Context, root *ui.Node) error {
+func waitForNotificationHidden(ctx context.Context, root *ui.Node) error {
 	params := ui.FindParams{
-		Name: "Notification close",
-		Role: ui.RoleTypeButton,
+		Name: "USB printer connected",
+		Role: ui.RoleTypeStaticText,
 	}
-	closeButton, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find notification close button")
-	}
-	defer closeButton.Release(ctx)
-	if err := closeButton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click notification close button")
-	}
-	// Wait for notification to close.
 	if err := root.WaitForDescendant(ctx, params, false, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed to wait for notification to close")
+		return errors.Wrap(err, "failed to wait for notification to be hidden")
 	}
 	return nil
 }
@@ -164,11 +155,6 @@ func Print(ctx context.Context, s *testing.State) {
 	}
 	defer root.Release(ctx)
 
-	// Close printer notification since it blocks the print button.
-	if err := closePrinterNotification(ctx, root); err != nil {
-		s.Fatal("Failed to close printer notification: ", err)
-	}
-
 	// Wait for print preview to load before selecting a printer.
 	s.Log("Waiting for print preview to load")
 	if err := waitForPrintPreview(ctx, root); err != nil {
@@ -192,6 +178,12 @@ func Print(ctx context.Context, s *testing.State) {
 	// Set custom page selection.
 	if err = printpreview.SetPages(ctx, root, "2-5,10-15,36,49-50"); err != nil {
 		s.Fatal("Failed to select pages: ", err)
+	}
+
+	// Wait for the printer notification to be hidden since it blocks the print
+	// button.
+	if err := waitForNotificationHidden(ctx, root); err != nil {
+		s.Fatal("Failed to close printer notification: ", err)
 	}
 
 	// Click the print button to start the print job.
