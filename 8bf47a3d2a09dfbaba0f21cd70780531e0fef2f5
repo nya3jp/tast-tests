@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0758ab63_187d3fb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-02-24T22:29:35Z",
+      "side": 1,
+      "message": "Why do we need to specify a 5 minute timeout for this one? I noticed a lot of tests don\u0027t have this field, so just wondering why we need it here. I didn\u0027t look too closely, but it seems like the JS below has some timeouts built in already, too.",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "8bf47a3d2a09dfbaba0f21cd70780531e0fef2f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c36400cc_b4c354b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
         "patchSetId": 1
