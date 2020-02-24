@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c36400cc_b4c354b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-24T22:00:55Z",
+      "side": 1,
+      "message": "All the changed lines from the internal version are here",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 114
+      },
+      "revId": "8bf47a3d2a09dfbaba0f21cd70780531e0fef2f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
