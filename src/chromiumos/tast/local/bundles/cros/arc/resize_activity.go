@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -134,12 +135,12 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// Make it as small as possible before the resizing, since maximum screen real-estate is needed for the test.
 	// And then place it on the left-top corner.
 	// Resizing from TopLeft corner, since BottomRight corner might trigger the shelf, even if it is hidden.
-	if err := act.ResizeWindow(ctx, arc.BorderTopLeft, arc.NewPoint(bounds.Left+bounds.Width, bounds.Top+bounds.Height), 300*time.Millisecond); err != nil {
+	if err := act.ResizeWindow(ctx, arc.BorderTopLeft, coords.NewPoint(bounds.Left+bounds.Width, bounds.Top+bounds.Height), 300*time.Millisecond); err != nil {
 		s.Fatal("Failed to resize window: ", err)
 	}
 
 	// Moving the window slowly (in one second) to prevent triggering any kind of gesture like "snap to border", or "maximize".
-	if err := act.MoveWindow(ctx, arc.NewPoint(0, 0), time.Second); err != nil {
+	if err := act.MoveWindow(ctx, coords.NewPoint(0, 0), time.Second); err != nil {
 		s.Fatal("Failed to move window: ", err)
 	}
 
@@ -148,7 +149,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	}
 
 	// Make sure the window is located at the top-left corner.
-	if err := ensureWindowPosition(ctx, act, arc.NewPoint(0, 0)); err != nil {
+	if err := ensureWindowPosition(ctx, act, coords.NewPoint(0, 0)); err != nil {
 		s.Fatal("Failed to move window to top left corner: ", err)
 	}
 
@@ -170,12 +171,12 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	for _, entry := range []struct {
 		desc     string
 		border   arc.BorderType // resize origin (from which border)
-		dst      arc.Point
+		dst      coords.Point
 		duration time.Duration
 	}{
-		{"right", arc.BorderRight, arc.NewPoint(dispSize.W-marginForTouch, restoreBounds.Top+restoreBounds.Height/2), 100 * time.Millisecond},
-		{"bottom", arc.BorderBottom, arc.NewPoint(restoreBounds.Left+restoreBounds.Width/2, dispSize.H-marginForTouch), 300 * time.Millisecond},
-		{"bottom-right", arc.BorderBottomRight, arc.NewPoint(dispSize.W-marginForTouch, dispSize.H-marginForTouch), 100 * time.Millisecond},
+		{"right", arc.BorderRight, coords.NewPoint(dispSize.W-marginForTouch, restoreBounds.Top+restoreBounds.Height/2), 100 * time.Millisecond},
+		{"bottom", arc.BorderBottom, coords.NewPoint(restoreBounds.Left+restoreBounds.Width/2, dispSize.H-marginForTouch), 300 * time.Millisecond},
+		{"bottom-right", arc.BorderBottomRight, coords.NewPoint(dispSize.W-marginForTouch, dispSize.H-marginForTouch), 100 * time.Millisecond},
 	} {
 		s.Logf("Resizing window from %s border to %+v", entry.desc, entry.dst)
 		if err := act.ResizeWindow(ctx, entry.border, entry.dst, entry.duration); err != nil {
@@ -221,7 +222,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		}
 
 		// Restore the activity bounds.
-		if err := act.ResizeWindow(ctx, entry.border, arc.NewPoint(restoreBounds.Left, restoreBounds.Top), 500*time.Millisecond); err != nil {
+		if err := act.ResizeWindow(ctx, entry.border, coords.NewPoint(restoreBounds.Left, restoreBounds.Top), 500*time.Millisecond); err != nil {
 			s.Fatal("Failed to resize activity: ", err)
 		}
 
@@ -234,12 +235,12 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 // Helper functions.
 
 // ensureWindowPosition makes sure the window is in the requested position.
-func ensureWindowPosition(ctx context.Context, act *arc.Activity, topLeft arc.Point) error {
+func ensureWindowPosition(ctx context.Context, act *arc.Activity, topLeft coords.Point) error {
 	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		return err
 	}
-	curTopLeft := arc.NewPoint(bounds.Left, bounds.Top)
+	curTopLeft := coords.NewPoint(bounds.Left, bounds.Top)
 	if !reflect.DeepEqual(curTopLeft, topLeft) {
 		return errors.Errorf("unexpected window position: got %+v; want %+v", curTopLeft, topLeft)
 	}
