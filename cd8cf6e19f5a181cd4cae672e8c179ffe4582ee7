@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1bf1a4b_11c0e30c",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-25T23:02:23Z",
+      "side": 1,
+      "message": "nit: if genericBackend is preferred, maybe you can return it before calling getI915Backend?\n\ni.e.\n\nif genericBackend :\u003d getGenericBackend(); genericBackend !\u003d nil {\n  return genericBackend, nil\n}\nif i915Backend :\u003d getI195Backend(); i915Backend !\u003d nil {\n  return i915Backend, nil\n}\nreturn nil, errors.New(\"...\")",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "cd8cf6e19f5a181cd4cae672e8c179ffe4582ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
