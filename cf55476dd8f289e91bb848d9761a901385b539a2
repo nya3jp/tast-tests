@@ -222,6 +222,30 @@
       "revId": "cf55476dd8f289e91bb848d9761a901385b539a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4897cf3c_1a4dde57",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-25T03:09:52Z",
+      "side": 1,
+      "message": "move start to public. as New does not have error, there\u0027s no much overhead on caller side.",
+      "parentUuid": "8d7ed86a_13fbd36b",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "cf55476dd8f289e91bb848d9761a901385b539a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
