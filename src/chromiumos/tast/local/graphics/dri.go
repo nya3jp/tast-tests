@@ -21,8 +21,9 @@ import (
 const (
 	// The debugfs file with the information on allocated framebuffers for Intel i915 GPUs.
 	i915FramebufferFile = "/sys/kernel/debug/dri/0/i915_gem_framebuffer"
-	// The debugfs file with the information on allocated framebuffers for AMD Adreno GPUs.
-	adrenoFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
+	// The debugfs file with the information on allocated framebuffers for generic
+	// implementations, e.g. AMD and modern Intel GPUs.
+	genericFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
@@ -42,7 +43,7 @@ type Backend interface {
 // I915Backend implements Backend for the Intel i915 case.
 type I915Backend struct{}
 
-func getI915Backend() *I915Backend {
+func i915Backend() *I915Backend {
 	if _, err := os.Stat(i915FramebufferFile); err != nil {
 		return nil
 	}
@@ -83,29 +84,29 @@ func (g I915Backend) ReadFramebufferCount(ctx context.Context, width, height int
 	return
 }
 
-// AdrenoBackend implements Backend for the AMD Adreno case.
-type AdrenoBackend struct{}
+// GenericBackend implements Backend for the Generic case (Intel and AMD).
+type GenericBackend struct{}
 
-func getAdrenoBackend() *AdrenoBackend {
-	if _, err := os.Stat(adrenoFramebufferFile); err != nil {
+func genericBackend() *GenericBackend {
+	if _, err := os.Stat(genericFramebufferFile); err != nil {
 		return nil
 	}
-	return &AdrenoBackend{}
+	return &GenericBackend{}
 }
 
-// Round rounds up value for the AMD platforms and all codecs.
-func (g AdrenoBackend) Round(value int) int {
-	const adrenoAlignment = 16
+// Round rounds up value for the Generic Debugfs platforms and all codecs.
+func (g GenericBackend) Round(value int) int {
+	const genericAlignment = 16
 	// Inspired by Chromium's base/bits.h:Align() function.
-	return (value + adrenoAlignment - 1) & ^(adrenoAlignment - 1)
+	return (value + genericAlignment - 1) & ^(genericAlignment - 1)
 }
 
-// ReadFramebufferCount tries to open the adrenoFramebufferFile and count the
+// ReadFramebufferCount tries to open the genericFramebufferFile and count the
 // amount of lines of dimensions width x height, which corresponds to the amount
 // of framebuffers allocated in the system.
 // See https://dri.freedesktop.org/docs/drm/gpu/amdgpu.html
-func (g AdrenoBackend) ReadFramebufferCount(ctx context.Context, width, height int) (framebuffers int, e error) {
-	f, err := os.Open(adrenoFramebufferFile)
+func (g GenericBackend) ReadFramebufferCount(ctx context.Context, width, height int) (framebuffers int, e error) {
+	f, err := os.Open(genericFramebufferFile)
 	if err != nil {
 		return framebuffers, errors.Wrap(err, "failed to open dri file")
 	}
@@ -130,18 +131,13 @@ func (g AdrenoBackend) ReadFramebufferCount(ctx context.Context, width, height i
 // GetBackend tries to get the appropriate platform graphics debug backend and
 // returns it, or returns an error.
 func GetBackend() (Backend, error) {
-	adrenoBackend := getAdrenoBackend()
-	i915Backend := getI915Backend()
-	// In the future we might want to support systems with both GPUs; for the time
-	// being just fail.
-	if adrenoBackend != nil && i915Backend != nil {
-		return nil, errors.New("systems with both i915 and adreno backends are not supported")
+	// TODO(mcasas): In the future we might want to support systems with several GPUs.
+	// Prefer the genericBackend.
+	if be := genericBackend(); be != nil {
+		return be, nil
 	}
-	if i915Backend != nil {
-		return i915Backend, nil
-	}
-	if adrenoBackend != nil {
-		return adrenoBackend, nil
+	if be := i915Backend(); be != nil {
+		return be, nil
 	}
 	return nil, errors.New("could not find any Graphics backend")
 }
