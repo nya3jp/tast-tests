@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "803edea8_7221565f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-25T00:03:53Z",
+      "side": 1,
+      "message": "Thanks, I should have checked that.\n\nAlthough rebooting only once sounds good to me, I\u0027d like to solicit an opinion from dhaddock@, the author of the original autotest test.",
+      "parentUuid": "d2948e1d_8348fc8c",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "77eedbc5fb9c1ed3ea6bf9ace3368e6b5d0fd071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab5cbf6a_9c1cff70",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/reboot.go",
         "patchSetId": 9
