@@ -512,6 +512,19 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
 		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
 	}
+
+	tconn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get test API connection")
+	}
+
+	if err := tconn.EvalPromise(ctx, `
+new Promise((resolve, reject) => {
+	chrome.inputMethodPrivate.hideInputView(resolve);
+})
+`, nil); err != nil {
+		return errors.Wrap(err, "failed to hide virtual keyboard")
+	}
 	return nil
 }
 

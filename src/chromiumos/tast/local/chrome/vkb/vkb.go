@@ -22,6 +22,15 @@ new Promise((resolve, reject) => {
 `, nil)
 }
 
+// HideVirtualKeyboard forces the virtual keyboard to close.
+func HideVirtualKeyboard(ctx context.Context, tconn *chrome.Conn) error {
+	return tconn.EvalPromise(ctx, `
+new Promise((resolve, reject) => {
+	chrome.inputMethodPrivate.hideInputView(resolve);
+})
+`, nil)
+}
+
 // SetCurrentInputMethod sets the current input method used by the virtual
 // keyboard.
 func SetCurrentInputMethod(ctx context.Context, tconn *chrome.Conn, inputMethod string) error {
