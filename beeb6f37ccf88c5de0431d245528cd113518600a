@@ -22,6 +22,30 @@
       "revId": "beeb6f37ccf88c5de0431d245528cd113518600a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59fc31e6_fbfba2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-02-25T14:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b796cc5e_e3da09ba",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "beeb6f37ccf88c5de0431d245528cd113518600a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
