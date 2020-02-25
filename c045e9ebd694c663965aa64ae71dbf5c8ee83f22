@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddc73e5f_9993b0b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-25T01:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a255a39e_d06b3136",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "c045e9ebd694c663965aa64ae71dbf5c8ee83f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86717dda_0e71841a",
         "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f7c3a915_1a017311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-25T01:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86717dda_0e71841a",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "c045e9ebd694c663965aa64ae71dbf5c8ee83f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "149e40f2_44081fe0",
         "filename": "src/chromiumos/tast/services/cros/baserpc/file_system.proto",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "c045e9ebd694c663965aa64ae71dbf5c8ee83f22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af8a9e4_3bc15d8e",
+        "filename": "src/chromiumos/tast/services/cros/baserpc/file_system.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-25T01:54:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "149e40f2_44081fe0",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "c045e9ebd694c663965aa64ae71dbf5c8ee83f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
