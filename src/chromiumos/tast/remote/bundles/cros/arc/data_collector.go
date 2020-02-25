@@ -33,7 +33,7 @@ func init() {
 		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
 		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
-		Timeout:      5 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Vars: []string{
 			"arc.UreadaheadService.username",
 			"arc.UreadaheadService.password",
