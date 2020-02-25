@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18662573_855b865e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-25T15:11:33Z",
+      "side": 1,
+      "message": "The naming looks confusing, because this waits for \"notification is hidden\".\n\nMaybe waitForNotificationHidden?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "34c7e70f7db5f0ce64bbaa9c50c962d75d956896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e672a02_b3da83b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-25T15:11:33Z",
+      "side": 1,
+      "message": "If this is for waiting for the \"Print\" button, how about just extends the timeout to 20 seconds in printpreview.Print()?",
+      "revId": "34c7e70f7db5f0ce64bbaa9c50c962d75d956896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
