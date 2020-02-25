@@ -329,6 +329,30 @@
       "revId": "85e232c2fc028a7d0dc9ca65c6af198021477cff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2568c4a_4a66b719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cert_provision_no_database.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-25T03:12:27Z",
+      "side": 1,
+      "message": "No worries, better safe than sorry :P",
+      "parentUuid": "ea3c5527_a34a5cc1",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "85e232c2fc028a7d0dc9ca65c6af198021477cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
