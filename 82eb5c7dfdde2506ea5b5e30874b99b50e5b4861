@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3631158_7626e05b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-25T14:58:03Z",
+      "side": 1,
+      "message": "YOu don\u0027t need map.\n\nswitch mode {\n  case clamshellMode:\n    return \"ClamshellMode\"\n  case tabletMode:\n    return \"TabletMode\"\n  default:\n   ...\n}\n\nditto for below.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "82eb5c7dfdde2506ea5b5e30874b99b50e5b4861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09644796_98a6b13a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-25T14:58:03Z",
+      "side": 1,
+      "message": "nit: ditto?",
+      "range": {
+        "startLine": 167,
+        "startChar": 105,
+        "endLine": 167,
+        "endChar": 149
+      },
+      "revId": "82eb5c7dfdde2506ea5b5e30874b99b50e5b4861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56677086_bb2fd876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-25T14:58:03Z",
+      "side": 1,
+      "message": "nit: ditto",
+      "range": {
+        "startLine": 266,
+        "startChar": 92,
+        "endLine": 266,
+        "endChar": 132
+      },
+      "revId": "82eb5c7dfdde2506ea5b5e30874b99b50e5b4861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
