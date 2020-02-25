@@ -92,6 +92,54 @@
       "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6bafc6_6e6fbd86",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-25T13:31:06Z",
+      "side": 1,
+      "message": "Device should not be enrolled at the start of tast tests. The device policy tests that require enrolment clean up after themselves. Clearing enrolment also requires a reboot currently to clear the TPM.\n\nReboots can currently not be done as part of ready.go and it would be a very unexpected event for developers using the tast command.",
+      "parentUuid": "0a2babc0_f4ce4546",
+      "range": {
+        "startLine": 330,
+        "startChar": 25,
+        "endLine": 330,
+        "endChar": 74
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f45f7cc_66ad0a99",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-02-25T13:31:06Z",
+      "side": 1,
+      "message": "Tests that work with Chrome will restart the appropriate services anyway as they should not depend on their current state (as currently documented). This will refresh policies and log in using a new user and should clear up any stale state on the system left by other tast tests or by autotest.\n\nready.go only runs once when the tast command is executed so it is not the right place to do general cleanup between tests.",
+      "parentUuid": "01fd350a_a3af9a47",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 73
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
