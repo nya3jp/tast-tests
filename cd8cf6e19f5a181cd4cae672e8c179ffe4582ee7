@@ -22,6 +22,30 @@
       "revId": "cd8cf6e19f5a181cd4cae672e8c179ffe4582ee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12291438_159876fb",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-25T23:08:13Z",
+      "side": 1,
+      "message": "style/recommendation: +1\n\nOr, to be more go-ish style,\n- no \"get\" prefix\n- using shorter name for local var.\n\nif be :\u003d genericBackend(); be !\u003d nil {\n  return be, nil\n}\nif be :\u003d i195Backend(); be !\u003d nil {\n  return be, nil\n}\nreturn nil, errors.New(...)",
+      "parentUuid": "a1bf1a4b_11c0e30c",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "cd8cf6e19f5a181cd4cae672e8c179ffe4582ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
