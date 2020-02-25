@@ -15,6 +15,8 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/dbusutil"
@@ -36,6 +38,7 @@ const (
 	anomalyEventServicePath              = dbus.ObjectPath("/org/chromium/AnomalyEventService")
 	anomalyEventServiceInterface         = "org.chromium.AnomalyEventServiceInterface"
 	anomalyGuestFileCorruptionSignalName = "GuestFileCorruption"
+	fsCorruptionHistogram                = "Crostini.FilesystemCorruption"
 )
 
 func init() {
@@ -132,6 +135,17 @@ func waitForSignal(ctx context.Context, signalWatcher *dbusutil.SignalWatcher) (
 	}
 }
 
+func checkHistogram(ctx context.Context, cr *chrome.Chrome, baseline int64) (int64, error) {
+	hist, err := metrics.GetHistogram(ctx, cr, fsCorruptionHistogram)
+	if err != nil {
+		return 0, err
+	}
+	if hist.Sum <= baseline {
+		return hist.Sum, errors.Errorf("expected total of more then %v histogram values, got %v", baseline, hist.Sum)
+	}
+	return hist.Sum, nil
+}
+
 // testOverwriteAtOffsets overwrites the VM disk that stores
 // |container| at the locations in |offsets| with uuidReplacement. It
 // then restarts the VM and container and checks that the filesystem
@@ -186,8 +200,9 @@ func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.
 // FsCorruption sets up the VM and then introduces corruption into its disk to check that this is detected correctly.
 func FsCorruption(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(crostini.PreData)
+	cr := data.Chrome
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(data.Chrome)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest()
@@ -229,10 +244,23 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	cmd = testexec.CommandContext(ctx, "mv", "--force", backupPath, data.Container.VM.DiskPath)
 	defer cmd.Run(testexec.DumpLogOnError)
 
+	histogramCount, err := checkHistogram(ctx, cr, -1)
+	if err != nil {
+		s.Fatal("Failed to get baseline for histogram: ", err)
+	}
+
 	if err := testOverwriteAtOffsets(ctx, bigOffsets, data.Container, backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for big file: ", err)
 	}
+	histogramCount, err = checkHistogram(ctx, cr, histogramCount)
+	if err != nil {
+		s.Fatal("Failed to check histogram: ", err)
+	}
+
 	if err := testOverwriteAtOffsets(ctx, smallOffsets, data.Container, backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for small file: ", err)
+	}
+	if _, err := checkHistogram(ctx, cr, histogramCount); err != nil {
+		s.Fatal("Failed to check histogram: ", err)
 	}
 }
