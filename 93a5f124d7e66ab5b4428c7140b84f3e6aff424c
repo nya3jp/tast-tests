@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ffb057ba_61412bae",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-25T03:06:55Z",
+      "side": 1,
+      "message": "Config is removed now. the IP range is passed directly into constructor.\nAlso, I change start to be public which does not increase much complexity on the caller side (as New does not have error). It can slightly reduce the long input.\n\nI\u0027m wondering if iface can also be moved to Start...",
+      "parentUuid": "f00d31c6_d480792d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7114d3ff_76448839",
         "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
         "patchSetId": 7
@@ -210,6 +234,30 @@
       "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a925cfa1_1cf63802",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-25T03:06:55Z",
+      "side": 1,
+      "message": "After moving the interface configuration to HostAPHandle. This object now only focus on running dnsmasq daemon.",
+      "parentUuid": "cfb04282_2e13897e",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
