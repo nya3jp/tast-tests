@@ -140,6 +140,54 @@
       "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af0fbac4_72fd94c4",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-25T18:49:46Z",
+      "side": 1,
+      "message": "Ack, although I\u0027m not quite understanding our overall approach then - I though the main point of this CL is to avoid the need in cleaning up the device policy related state in the tests startup?",
+      "parentUuid": "4f45f7cc_66ad0a99",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 73
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "169a1686_3def40a3",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-25T18:49:46Z",
+      "side": 1,
+      "message": "\u003e Device should not be enrolled at the start of tast tests.\n\u003e The device policy tests that require enrolment clean up after themselves.\n\u003e Clearing enrolment also requires a reboot currently to clear the TPM.\n\nBut if we could rely on that, then this CL wouldn\u0027t be needed, or am I missing something? In b/148005583, we observed the cases where the device policy was set when the test starts, how do you know if it cannot be that the device is enrolled at that point?",
+      "parentUuid": "8a6bafc6_6e6fbd86",
+      "range": {
+        "startLine": 330,
+        "startChar": 25,
+        "endLine": 330,
+        "endChar": 74
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
