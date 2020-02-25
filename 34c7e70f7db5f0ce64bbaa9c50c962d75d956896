@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37c8e3b3_36af9855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-25T15:50:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18662573_855b865e",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "34c7e70f7db5f0ce64bbaa9c50c962d75d956896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e672a02_b3da83b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2020-02-25T15:11:33Z",
       "side": 1,
       "message": "If this is for waiting for the \"Print\" button, how about just extends the timeout to 20 seconds in printpreview.Print()?",
+      "revId": "34c7e70f7db5f0ce64bbaa9c50c962d75d956896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7e3096_8432d02a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-25T15:50:30Z",
+      "side": 1,
+      "message": "The problem is that the Print button is present, but it\u0027s mostly blocked by the printer notification. So I successfully find the Print button, but when I try to click it, the notification is clicked instead and the test fails.",
+      "parentUuid": "0e672a02_b3da83b2",
       "revId": "34c7e70f7db5f0ce64bbaa9c50c962d75d956896",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
