@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "715ea2b8_c5f5d29c",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-25T03:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29dad1cd_9be8842f",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 10
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07d71378_e85c8969",
         "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
         "patchSetId": 55
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "774c9809_9eb96f22",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-25T03:12:06Z",
+      "side": 1,
+      "message": "Got it. \nAnd maybe getCAServerURL is not good either. Changing it.",
+      "parentUuid": "07d71378_e85c8969",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab5545e1_83f08946",
         "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
         "patchSetId": 55
@@ -68,6 +116,30 @@
       "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8e6328_b65fdf05",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-25T03:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab5545e1_83f08946",
+      "range": {
+        "startLine": 126,
+        "startChar": 34,
+        "endLine": 126,
+        "endChar": 48
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +187,30 @@
       "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad069736_16c36b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-02-25T03:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aaf53cd_d927bb1f",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "98506e5882dd956c5da7bbd3485bd5060976989b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
