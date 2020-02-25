@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c7453a7_11f721ee",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-25T15:02:35Z",
+      "side": 1,
+      "message": "style: Could you follow the indent guideline?\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nDitto for below.",
+      "revId": "09a47a2999b383003e3ce27c080dfdb078cd52b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
