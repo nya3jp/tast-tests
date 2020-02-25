@@ -68,6 +68,30 @@
       "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01fd350a_a3af9a47",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-25T11:05:35Z",
+      "side": 1,
+      "message": "The problem is that this code is running on the device, so we cannot reboot. If we wanna reboot, I guess it should be part of autotest or tast device provisioning.\n\nAnyway, I guess it\u0027s not a problem to reboot some daemons. But it may be a problem in the future if other daemons will depend on these files.",
+      "parentUuid": "89174404_7da2d2e6",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 73
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
