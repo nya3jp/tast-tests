@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c0afed4_95924d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_version.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-25T19:29:21Z",
+      "side": 1,
+      "message": "android*_both no longer works and is being deprecated/removed.\n\nCould you instead use ExtraSoftwareDeps? https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2057990/4/src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go is an example.",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "431644826e430350d0ae7c465dc427739a181c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
