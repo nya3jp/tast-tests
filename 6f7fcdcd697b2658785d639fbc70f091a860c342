@@ -22,6 +22,52 @@
       "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2babc0_f4ce4546",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-25T01:40:06Z",
+      "side": 1,
+      "message": "Another file to consider for deletion might be the Install Attributes file (/home/.shadow/install_attributes.pb + /run/lockbox/install_attributes.pb). For instance, this file is used in a few places to detect whether the device is enrolled, or whether it\u0027s in some other special \"mode\".",
+      "range": {
+        "startLine": 330,
+        "startChar": 25,
+        "endLine": 330,
+        "endChar": 74
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89174404_7da2d2e6",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2020-02-25T01:40:06Z",
+      "side": 1,
+      "message": "Actually, it has to be taken into account that the deletion of these files doesn\u0027t flush in-memory state. At least session_manager and Chrome definitely do a caching of policies:\n* http://cs/chromeos_public/src/platform2/login_manager/device_policy_service.h?l\u003d202\u0026rcl\u003d720d60ac0e23db22052cac867f4084308487b4de\n* https://cs.chromium.org/chromium/src/chrome/browser/chromeos/settings/device_settings_service.h?l\u003d265\u0026rcl\u003d4bc2c880d365e020c81e063e86ec5b1920bdcc82\n\nNot every test touches this in-memory state, but if we\u0027re trying to build a generic solution we might want to address this problem as well. A reboot would be an ideal \"resetter\", but it\u0027s probably too expensive (or maybe not, if we only do this when we see some policy set?..). Another approach would be to focus on the session_manager+Chrome case and to make sure that the \"ui\" job is restarted after cleaning the policies.",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 73
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
