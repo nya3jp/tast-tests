@@ -117,6 +117,30 @@
       "revId": "0aeff33359fa60d26a091a0409bbebad9c5830d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "953581d3_8ff173d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-02-25T03:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c71f2583_eb5b1b82",
+      "range": {
+        "startLine": 84,
+        "startChar": 28,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "0aeff33359fa60d26a091a0409bbebad9c5830d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
