@@ -32,7 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
-		Timeout:      5 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Vars: []string{
 			"arc.UreadaheadService.username",
 			"arc.UreadaheadService.password",
