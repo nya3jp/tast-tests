@@ -40,13 +40,13 @@ type arcApp struct {
 }
 
 // SetPlayStoreEnabled is a wrapper for chrome.autotestPrivate.setPlayStoreEnabled.
-func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) error {
+func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setPlayStoreEnabled)(%t)`, enabled)
 	return tconn.EvalPromise(ctx, expr, nil)
 }
 
 // Perform steps through opt-in flow and wait for it to complete.
-func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
+func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 	SetPlayStoreEnabled(ctx, tconn, true)
 
 	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
@@ -81,7 +81,7 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
 }
 
 // WaitForPlayStoreReady waits for Play Store app to be ready.
-func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.Conn) error {
+func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var app arcApp
 		expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getArcApp)('%s')`, apps.PlayStore.ID)
@@ -99,6 +99,6 @@ func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.Conn) error {
 }
 
 // WaitForPlayStoreShown waits for Play Store window to be shown.
-func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.Conn) error {
+func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.TestConn) error {
 	return ash.WaitForApp(ctx, tconn, apps.PlayStore.ID)
 }
