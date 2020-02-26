@@ -64,7 +64,7 @@ func getURLs(ctx context.Context, c *chrome.Conn, expr string, numPages int) ([]
 	return urls, nil
 }
 
-func waitUntilAllTabsLoaded(ctx context.Context, c *chrome.Conn, timeout time.Duration) error {
+func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
 	query := map[string]interface{}{
 		"status":        "loading",
 		"currentWindow": true,
@@ -76,7 +76,7 @@ func waitUntilAllTabsLoaded(ctx context.Context, c *chrome.Conn, timeout time.Du
 	expr := fmt.Sprintf(`tast.promisify(chrome.tabs.query)(%s)`, string(queryData))
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var tabs []map[string]interface{}
-		if err := c.EvalPromise(ctx, expr, &tabs); err != nil {
+		if err := tconn.EvalPromise(ctx, expr, &tabs); err != nil {
 			return testing.PollBreak(err)
 		}
 		if len(tabs) == 0 {
