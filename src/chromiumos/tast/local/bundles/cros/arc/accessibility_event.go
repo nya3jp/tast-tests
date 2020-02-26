@@ -128,6 +128,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.ToggleButton,
 					Checked:   "false",
+					Name:      "OFF",
 					Tooltip:   "button tooltip",
 				},
 				eventLog{"focus", "OFF", appName},
@@ -136,6 +137,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.ToggleButton,
 					Checked:   "true",
+					Name:      "ON",
 					Tooltip:   "button tooltip",
 				},
 				eventLog{"checkedStateChanged", "ON", appName},
@@ -146,6 +148,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.CheckBox,
 					Checked:   "false",
+					Name:      "CheckBox",
 					Tooltip:   "checkbox tooltip",
 				},
 				eventLog{"focus", "CheckBox", appName},
@@ -154,6 +157,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				accessibility.AutomationNode{
 					ClassName: accessibility.CheckBox,
 					Checked:   "true",
+					Name:      "CheckBox",
 					Tooltip:   "checkbox tooltip",
 				},
 				eventLog{"checkedStateChanged", "CheckBox", appName},
@@ -163,6 +167,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				"Tab",
 				accessibility.AutomationNode{
 					ClassName:     accessibility.SeekBar,
+					Name:          "seekBar",
 					ValueForRange: seekBarInitialValue,
 				},
 				eventLog{"focus", "seekBar", appName},
@@ -170,6 +175,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				"=",
 				accessibility.AutomationNode{
 					ClassName:     accessibility.SeekBar,
+					Name:          "seekBar",
 					ValueForRange: seekBarInitialValue + 1,
 				},
 				eventLog{"valueChanged", "seekBar", appName},
@@ -179,6 +185,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				"Tab",
 				accessibility.AutomationNode{
 					ClassName:     accessibility.SeekBar,
+					Name:          "seekBarDiscrete",
 					ValueForRange: seekBarDiscreteInitialValue,
 				},
 				eventLog{"focus", "seekBarDiscrete", appName},
@@ -186,6 +193,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				"-",
 				accessibility.AutomationNode{
 					ClassName:     accessibility.SeekBar,
+					Name:          "seekBarDiscrete",
 					ValueForRange: seekBarDiscreteInitialValue - 1,
 				},
 				eventLog{"valueChanged", "seekBarDiscrete", appName},
