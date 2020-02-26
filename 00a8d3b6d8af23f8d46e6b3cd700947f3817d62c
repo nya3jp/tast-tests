@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a73d0e65_c52e11e4",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-26T02:14:55Z",
+      "side": 1,
+      "message": "The motivation of this CL: when GetWifiInterface() fails, I want to see the device list under /sys/class/net in the log to tell that if the wifi device is really missing or is there\u0027s something wrong in in GetWifiInterface().",
+      "parentUuid": "18c4179a_72e6b75e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "00a8d3b6d8af23f8d46e6b3cd700947f3817d62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6e977fd_f01cdbb3",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-24T20:30:58Z",
       "side": 1,
       "message": "this is contradictory: you\u0027re claiming the interface list you\u0027re dumping is from Shill, but it\u0027s not",
+      "range": {
+        "startLine": 73,
+        "startChar": 66,
+        "endLine": 73,
+        "endChar": 96
+      },
+      "revId": "00a8d3b6d8af23f8d46e6b3cd700947f3817d62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8e7bc1_644f1352",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-26T02:14:55Z",
+      "side": 1,
+      "message": "netIfaceStr() prefix shall be \"devices in /sys/class/net: \"",
+      "parentUuid": "b6e977fd_f01cdbb3",
       "range": {
         "startLine": 73,
         "startChar": 66,
