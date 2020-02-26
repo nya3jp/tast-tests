@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"regexp"
 	"time"
 
@@ -91,33 +90,29 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	}
 
 	copyInChrome := func(format, data string) error {
-		return tconn.Exec(ctx, fmt.Sprintf(`
-                  (function() {
-                    document.addEventListener('copy', (event) => {
-                      event.clipboardData.setData(%q, %q);
-                      event.preventDefault();
-                    }, {once: true});
-                    if (!document.execCommand('copy')) {
-                      throw new Error('Failed to execute copy');
-                    }
-                  })()
-                `, format, data))
+		return tconn.Call(ctx, nil, `(format, data) => {
+                  document.addEventListener('copy', (event) => {
+                    event.clipboardData.setData(format, data);
+                    event.preventDefault();
+                  }, {once: true});
+                  if (!document.execCommand('copy')) {
+                    throw new Error('Failed to execute copy');
+                  }
+                }`, format, data)
 	}
 
 	pasteInChrome := func(format string) (string, error) {
 		var result string
-		if err := tconn.Eval(ctx, fmt.Sprintf(`
-                  (function() {
+		if err := tconn.Call(ctx, &result, `(format) => {
                     let result;
                     document.addEventListener('paste', (event) => {
-                      result = event.clipboardData.getData(%q);
+                      result = event.clipboardData.getData(format);
                     }, {once: true});
                     if (!document.execCommand('paste')) {
                       throw new Error('Failed to execute paste');
                     }
                     return result;
-                  })()
-                `, format), &result); err != nil {
+                }`, format); err != nil {
 			return "", err
 		}
 		return result, nil
@@ -219,25 +214,23 @@ func Clipboard(ctx context.Context, s *testing.State) {
 
 		// Copy image in Chrome. This creates a temporary dom to be copied,
 		// and destroys it after the copy operation.
-		if err := tconn.Exec(ctx, fmt.Sprintf(`
-                  (function() {
-                    const img = document.createElement('img');
-                    img.src = 'data:image/png;base64,' + %q;
-                    const container = document.createElement('div');
-                    container.appendChild(img);
-                    document.body.appendChild(container);
-                    try {
-                      const range = document.createRange();
-                      range.selectNodeContents(container);
-                      const selection = window.getSelection();
-                      selection.removeAllRanges();
-                      selection.addRange(range);
-                      return document.execCommand('copy');
-                    } finally {
-                      document.body.removeChild(container);
-                    }
-                  })()
-                `, encodedImage)); err != nil {
+		if err := tconn.Call(ctx, nil, `(encodedImage) => {
+                  const img = document.createElement('img');
+                  img.src = 'data:image/png;base64,' + encodedImage;
+                  const container = document.createElement('div');
+                  container.appendChild(img);
+                  document.body.appendChild(container);
+                  try {
+                    const range = document.createRange();
+                    range.selectNodeContents(container);
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    return document.execCommand('copy');
+                  } finally {
+                    document.body.removeChild(container);
+                  }
+                }`, encodedImage); err != nil {
 			s.Fatal("Failed to copy image in Chrome: ", err)
 		}
 

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/testing"
 )
 
 // Conn represents a connection to a web content view, e.g. a tab.
@@ -135,6 +136,28 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 		newOb.conn = c
 	}
 	return nil
+}
+
+// Call applies fn as a JavaScript function to given args on this connection.
+// Result will be stored to out if given.
+func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...interface{}) (retErr error) {
+	// Either objectId or executionContextId should be specified to invoke Runtime.callFunctionOn.
+	// Thus, take the "this" first, then call the method on the object.
+	// cf) https://chromedevtools.github.io/devtools-protocol/tot/Runtime#method-callFunctionOn
+	var this JSObject
+	if err := c.Eval(ctx, "this", &this); err != nil {
+		return err
+	}
+	defer func() {
+		if err := this.Release(ctx); err != nil {
+			if retErr == nil {
+				retErr = err
+			} else {
+				testing.ContextLog(ctx, "Failed to release 'this': ", err)
+			}
+		}
+	}()
+	return this.Call(ctx, out, fn, args...)
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
