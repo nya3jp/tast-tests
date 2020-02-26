@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e8e4030_7fab89e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-26T22:43:50Z",
+      "side": 1,
+      "message": "nit: \"at least\"",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc33634_53ac1aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-26T22:43:50Z",
+      "side": 1,
+      "message": "It is hard to follow the logic here; do we really have to wait for all window animations to be finished?  I guess simply ash.WaitForOverviewToFinishAnimating is fine, and then check if no windows are animating.\n\ni.e.\n\nif err :\u003d ash.WaitForOverviewToFinishAnimating(...); err !\u003d nil { ... }\n// Sanity check of no animating windows.\nif w, err :\u003d ash.FindWindow(ctx, tconn, func(w *Window) bool { return w.IsAnimating }); err \u003d\u003d nil {\n  return errors.Errorf(\"window %s (%d) is still animating\", w.Name, w.ID)\n}",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf9db33_41645bd9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-26T22:43:50Z",
+      "side": 1,
+      "message": "nit: somehow we use \u0027tconn\u0027 with lower-c all the time, so it would be better to follow that style here.",
+      "range": {
+        "startLine": 328,
+        "startChar": 59,
+        "endLine": 328,
+        "endChar": 64
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
