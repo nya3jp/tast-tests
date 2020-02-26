@@ -8,9 +8,9 @@
         let player = new shaka.Player(video);
         window.player = player;
 
-        player.addEventListener('error', e => { return reject(e.detail); });
-        video.addEventListener('error', e => { return reject(e.detail); });
-        video.addEventListener('ended', () => { resolve();});
+        player.onerror = e => { return reject(e.error.ToString()); };
+        video.onerror = e => { return reject(e.error.ToString()); };
+        video.onended = () => { resolve();};
 
         player.load(mpdPath)
           .then(() => {
