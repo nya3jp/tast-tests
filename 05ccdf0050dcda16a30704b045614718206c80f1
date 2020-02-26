@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f917d3b_3116e592",
+        "filename": "src/chromiumos/tast/remote/wifi/doc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-26T09:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483c9701_28b8d4da",
+      "revId": "05ccdf0050dcda16a30704b045614718206c80f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e487d259_154dd4f3",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "05ccdf0050dcda16a30704b045614718206c80f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ae16f4_43cff555",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-26T09:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e487d259_154dd4f3",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "05ccdf0050dcda16a30704b045614718206c80f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2f24455c_5ac55520",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-26T09:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da6981d_5570db98",
+      "range": {
+        "startLine": 134,
+        "startChar": 56,
+        "endLine": 134,
+        "endChar": 78
+      },
+      "revId": "05ccdf0050dcda16a30704b045614718206c80f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e64c1f3c_01257e65",
         "filename": "src/chromiumos/tast/remote/wifi/router.go",
         "patchSetId": 6
@@ -85,6 +151,30 @@
       "revId": "05ccdf0050dcda16a30704b045614718206c80f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74320106_4967dd0d",
+        "filename": "src/chromiumos/tast/remote/wifi/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-26T09:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64c1f3c_01257e65",
+      "range": {
+        "startLine": 135,
+        "startChar": 28,
+        "endLine": 135,
+        "endChar": 29
+      },
+      "revId": "05ccdf0050dcda16a30704b045614718206c80f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
