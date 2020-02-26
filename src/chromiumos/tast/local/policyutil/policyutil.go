@@ -82,7 +82,7 @@ func ResetChrome(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) 
 // were fetched, this function will ensure that Chrome uses the changes.
 // Note that this will not work for policies which require a reboot before a
 // change is applied.
-func Refresh(ctx context.Context, tconn *chrome.Conn) error {
+func Refresh(ctx context.Context, tconn *chrome.TestConn) error {
 	const cmd = `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)();`
 	return tconn.EvalPromise(ctx, cmd, nil)
 }

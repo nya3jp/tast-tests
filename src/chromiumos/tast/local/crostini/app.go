@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func exitIfShown(ctx context.Context, tconn *chrome.Conn, appID string) error {
+func exitIfShown(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	if visible, err := ash.AppShown(ctx, tconn, appID); err != nil {
 		return err
 	} else if !visible {
@@ -52,7 +52,7 @@ func findNewShelfItem(before []*ash.ShelfItem, after []*ash.ShelfItem) (string, 
 //  - A callback which can be executed to close the application. Users of this
 //    function should immediately defer the callback if one is returned.
 //  - An error, which indicates something went wrong, or nil otherwise.
-func LaunchGUIApp(ctx context.Context, tconn *chrome.Conn, cmd *testexec.Cmd) (string, func(), error) {
+func LaunchGUIApp(ctx context.Context, tconn *chrome.TestConn, cmd *testexec.Cmd) (string, func(), error) {
 	beforeItems, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {
 		return "", func() {}, err
