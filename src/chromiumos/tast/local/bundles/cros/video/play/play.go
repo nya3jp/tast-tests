@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
@@ -55,24 +54,6 @@ func MSEDataFiles() []string {
 	}
 }
 
-// pollPlaybackCurrentTime polls JavaScript "currentTime() > threshold" with opts.
-// If it fails to poll for condition, it emits error with currentTime() value attached.
-func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, opts *testing.PollOptions) error {
-	ctx, st := timing.Start(ctx, "poll_playback_current_time")
-	defer st.End()
-
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		var t float64
-		if err := conn.Eval(ctx, "video.currentTime", &t); err != nil {
-			return err
-		}
-		if t <= threshold {
-			return errors.Errorf("currentTime (%f) is below threshold (%f)", t, threshold)
-		}
-		return nil
-	}, opts)
-}
-
 // loadPage opens a new tab to load the specified webpage.
 // Note that if err != nil, conn is nil.
 func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
@@ -102,15 +83,6 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) er
 
 	if err := conn.EvalPromise(ctx, fmt.Sprintf("play(%q)", videoFile), nil); err != nil {
 		return err
-	}
-
-	// Use a timeout larger than a second to give time for internals UIs to update.
-	if err := pollPlaybackCurrentTime(ctx, conn, 1.5, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrap(err, "timed out waiting for playback")
-	}
-
-	if err := conn.Exec(ctx, "pause()"); err != nil {
-		return errors.Wrap(err, "failed to pause")
 	}
 
 	return nil
