@@ -6,12 +6,15 @@
 package fileutil
 
 import (
+	"bytes"
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -35,6 +38,23 @@ func WriteToHost(ctx context.Context, hst *ssh.Conn, path string, data []byte) e
 	pathMap := map[string]string{tmpfile.Name(): path}
 	if _, err := linuxssh.PutFiles(ctx, hst, pathMap, linuxssh.DereferenceSymlinks); err != nil {
 		return errors.Wrap(err, "unable to upload file to host")
+	}
+	return nil
+}
+
+// WriteToHostDirect writes content directly to a remote path of given host without trying
+// to unlink the old file. WriteToHost() does not work when operating on sysfs because it
+// uses linuxssh.PutFiles() and the method will uncompress the compressed content, which
+// invokes a unlink to the target file, and it is illegal on procfs/sysfs.
+func WriteToHostDirect(ctx context.Context, host *ssh.Conn, path string, content []byte) error {
+	cmd := host.Command("sh", "-c", fmt.Sprintf("cat > %s", shutil.Escape(path)))
+
+	var stderrBuf bytes.Buffer
+	cmd.Stderr = &stderrBuf
+	cmd.Stdin = bytes.NewReader(content)
+
+	if err := cmd.Run(ctx); err != nil {
+		return errors.Wrapf(err, "command failed with stderr %q", string(stderrBuf.Bytes()))
 	}
 	return nil
 }
