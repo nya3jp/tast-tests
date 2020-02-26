@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "d74b2207_02295682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-26T22:40:59Z",
+      "side": 1,
+      "message": "Passing testexec.DumpLogOnError should make it log the command in the logs that were dumped. You can probably just s.Fatal(err) here, or use a simpler message.",
+      "revId": "9b4481362cb275aa7c3ee58deed8884c8a0ac793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c4af16_2310f667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-26T22:40:59Z",
+      "side": 1,
+      "message": "factor this out since you use it below as well?",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "9b4481362cb275aa7c3ee58deed8884c8a0ac793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63b9c90_990206ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-26T22:40:59Z",
+      "side": 1,
+      "message": "are these guaranteed to be in \"want\" order? If not we should sort them and also define \"want\" in sorted order, or we might spuriously fail on L56.",
+      "revId": "9b4481362cb275aa7c3ee58deed8884c8a0ac793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6603e877_5fe02ffd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
         "patchSetId": 1
