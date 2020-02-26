@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c7fd5fc_ebe48870",
+        "filename": "src/chromiumos/tast/local/power/ectool/battery_perf_metrics.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:25:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0be5bb61_f768d04f",
+      "range": {
+        "startLine": 63,
+        "startChar": 45,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "744c4f8f02f78e98db66ddedc33ebb418910bd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc3ad29f_c812eb03",
         "filename": "src/chromiumos/tast/local/power/ectool/battery_perf_metrics.go",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-20T19:33:18Z",
       "side": 1,
       "message": "Optional: You may want to assert that BatteryMetrics satisfies perf.TimelineDatasource to be friendly to readers.\n\nvar _ perf.TimelineDatasource \u003d \u0026BatteryMetrics{}",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 1
+      },
+      "revId": "744c4f8f02f78e98db66ddedc33ebb418910bd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "874dac19_89783f37",
+        "filename": "src/chromiumos/tast/local/power/ectool/battery_perf_metrics.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:25:59Z",
+      "side": 1,
+      "message": "Would changing the return type of NewBatteryMetrics to perf.TimelineDatasource work as well? It makes a compile time error if it doesn\u0027t conform to the interface.",
+      "parentUuid": "cc3ad29f_c812eb03",
       "range": {
         "startLine": 133,
         "startChar": 0,
