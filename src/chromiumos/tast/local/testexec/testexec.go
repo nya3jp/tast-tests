@@ -31,8 +31,10 @@
 package testexec
 
 import (
+	"bufio"
 	"bytes"
 	"context"
+	"io"
 	"os/exec"
 	"syscall"
 
@@ -188,6 +190,46 @@ func (c *Cmd) Start() error {
 		}
 	}()
 
+	return nil
+}
+
+// logPipe writes each line from `pipe` to the test's logs.
+func (c *Cmd) logPipe(pipe io.ReadCloser) {
+	defer pipe.Close()
+
+	scanner := bufio.NewScanner(pipe)
+	for scanner.Scan() {
+		testing.ContextLog(c.ctx, scanner.Text())
+	}
+}
+
+// LogStdout writes the stdout of the process to the test's logs.
+func (c *Cmd) LogStdout() error {
+	if c.Stdout != nil {
+		return errStdoutSet
+	}
+
+	stdout, err := c.StdoutPipe()
+	if err != nil {
+		return errors.Wrap(err, "failed to get stdout pipe")
+	}
+
+	go c.logPipe(stdout)
+	return nil
+}
+
+// LogStderr writes the stderr of the process to the test's logs.
+func (c *Cmd) LogStderr() error {
+	if c.Stderr != nil {
+		return errStderrSet
+	}
+
+	stderr, err := c.StderrPipe()
+	if err != nil {
+		return errors.Wrap(err, "failed to get stderr pipe")
+	}
+
+	go c.logPipe(stderr)
 	return nil
 }
 
