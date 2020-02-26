@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ca26594d_7ea68e5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-26T23:03:03Z",
+      "side": 1,
+      "message": "Ah, got it. I also tried the operation by myself to make sure the visual effect.\nThen the current code makes sense. Adding more comments would be much appreciated.",
+      "parentUuid": "9c2687ac_12b18308",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cf9db33_41645bd9",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 5
