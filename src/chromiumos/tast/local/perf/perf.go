@@ -32,6 +32,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -214,6 +215,26 @@ type histogram struct {
 	Unit         string        `json:"unit"`
 	Diagnostics  diagnosticMap `json:"diagnostics"`
 	SampleValues []float64     `json:"sampleValues"`
+	Running      [7]float64    `json:"running"`
+	AllBins      [][]int       `json:"allBins"`
+}
+
+func (h *histogram) updateRunning() {
+	sorted := h.SampleValues
+	sort.Float64s(sorted)
+	min := sorted[0]
+	max := sorted[len(sorted)-1]
+	sum := 0.0
+	for _, v := range sorted {
+		sum += v
+	}
+	mean := sum / float64(len(sorted))
+	variance := 0.0
+	for _, v := range sorted {
+		d := v - mean
+		variance += d * d
+	}
+	h.Running = [7]float64{float64(len(sorted)), max, math.Log(mean), mean, min, sum, variance}
 }
 
 // toCrosbolt returns perf values formatted as json for crosbolt.
@@ -278,13 +299,17 @@ func (p *Values) toChromeperf(ctx context.Context) ([]byte, error) {
 		if ok {
 			// TODO(stevenjb): Handle Variances and resolve mismatched units.
 			h.SampleValues = append(h.SampleValues, vs...)
+			h.updateRunning()
 		} else {
-			hgrams[s.Name] = histogram{
+			h = histogram{
 				Name:         s.Name,
 				Unit:         s.histogramUnit(),
 				Diagnostics:  diagnosticMap{Benchmarks: diag.GUID},
 				SampleValues: vs,
+				AllBins:      [][]int{{1}},
 			}
+			h.updateRunning()
+			hgrams[s.Name] = h
 		}
 	}
 
