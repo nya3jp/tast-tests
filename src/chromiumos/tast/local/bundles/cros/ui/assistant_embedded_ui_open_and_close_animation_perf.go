@@ -34,7 +34,7 @@ func init() {
 
 // openAndCloseEmbeddedUI opens/closes the Launcher-embedded Assistant UI via hotkey.
 // The only possible state change of Launcher it can trigger is between peeking and closed.
-func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.Conn) error {
+func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 	// Closed->Peeking.
 	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to open the embedded UI")

@@ -258,7 +258,7 @@ func verifyFileNotInContainer(ctx context.Context, s *testing.State, ownerID str
 	}
 }
 
-func testBackupRestore(ctx context.Context, s *testing.State, tconn *chrome.Conn, ownerID string) {
+func testBackupRestore(ctx context.Context, s *testing.State, tconn *chrome.TestConn, ownerID string) {
 	const (
 		testFileName    = "backup.txt"
 		testFileContent = "backup"

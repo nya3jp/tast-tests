@@ -47,7 +47,7 @@ func AssistantSimpleQueries(ctx context.Context, s *testing.State) {
 	testAssistantSimpleMathQuery(ctx, s, tconn)
 }
 
-func testAssistantSimpleMathQuery(ctx context.Context, s *testing.State, tconn *chrome.Conn) {
+func testAssistantSimpleMathQuery(ctx context.Context, s *testing.State, tconn *chrome.TestConn) {
 	s.Log("Sending math query to the Assistant")
 	queryStatus, err := assistant.SendTextQuery(ctx, tconn, "13 + 52 =")
 	if err != nil {

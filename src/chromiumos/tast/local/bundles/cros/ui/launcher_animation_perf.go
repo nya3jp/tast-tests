@@ -43,7 +43,7 @@ const (
 	animationTypeHalf
 )
 
-func runLauncherAnimation(ctx context.Context, tconn *chrome.Conn, kb *input.KeyboardEventWriter, at launcherAnimationType) error {
+func runLauncherAnimation(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, at launcherAnimationType) error {
 	trigger := ash.AccelSearch
 	firstState := ash.Peeking
 	if at == animationTypeFullscreenAllApps {
