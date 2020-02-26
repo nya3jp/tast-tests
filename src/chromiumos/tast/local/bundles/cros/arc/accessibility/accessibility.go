@@ -241,7 +241,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		s.Fatal("Timed out waiting for touch mode: ", err)
 	}
 
