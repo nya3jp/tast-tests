@@ -117,14 +117,18 @@ func (params *FindParams) rawBytes() ([]byte, error) {
 // Node is a reference to chrome.automation API AutomationNode.
 // Node intentionally leaves out many properties. If they become needed, add them to the Node struct and to the Update function.
 // As defined in chromium/src/extensions/common/api/automation.idl
+// Exported fields are sorted in alphabetical order.
 type Node struct {
-	object    *chrome.JSObject
-	tconn     *chrome.TestConn
-	Name      string             `json:"name,omitempty"`
-	ClassName string             `json:"classname,omitempty"`
-	Role      RoleType           `json:"role,omitempty"`
-	State     map[StateType]bool `json:"state,omitempty"`
-	Location  coords.Rect        `json:"location,omitempty"`
+	object        *chrome.JSObject
+	tconn         *chrome.TestConn
+	Checked       string             `json:"checked,omitempty"`
+	ClassName     string             `json:"className,omitempty"`
+	Location      coords.Rect        `json:"location,omitempty"`
+	Name          string             `json:"name,omitempty"`
+	Role          RoleType           `json:"role,omitempty"`
+	State         map[StateType]bool `json:"state,omitempty"`
+	Tooltip       string             `json:"tooltip,omitempty"`
+	ValueForRange int                `json:"valueForRange,omitempty"`
 }
 
 // NodeSlice is a slice of pointers to nodes. It is used for releaseing a group of nodes.
@@ -137,9 +141,9 @@ func (nodes NodeSlice) Release(ctx context.Context) {
 	}
 }
 
-// newNode creates a new node struct and initializes its fields.
-// newNode takes ownership of obj and will release it if the node fails to initialize.
-func newNode(ctx context.Context, tconn *chrome.TestConn, obj *chrome.JSObject) (*Node, error) {
+// NewNode creates a new node struct and initializes its fields.
+// NewNode takes ownership of obj and will release it if the node fails to initialize.
+func NewNode(ctx context.Context, tconn *chrome.TestConn, obj *chrome.JSObject) (*Node, error) {
 	node := &Node{
 		object: obj,
 		tconn:  tconn,
@@ -155,12 +159,16 @@ func newNode(ctx context.Context, tconn *chrome.TestConn, obj *chrome.JSObject) 
 func (n *Node) Update(ctx context.Context) error {
 	return n.object.Call(ctx, n, `function(){
 		return {
+			checked: this.checked,
+			className: this.className,
+			location: this.location,
 			name: this.name,
-			classname: this.classname,
 			role: this.role,
 			state: this.state,
-			location: this.location}
-		}`)
+			tooltip: this.tooltip,
+			valueForRange: this.valueForRange,
+		}
+	}`)
 }
 
 // Release frees the reference to Javascript for this node.
@@ -203,7 +211,7 @@ func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error)
 	if err := n.object.Call(ctx, obj, fmt.Sprintf("function(){return this.find(%s)}", paramsBytes)); err != nil {
 		return nil, err
 	}
-	return newNode(ctx, n.tconn, obj)
+	return NewNode(ctx, n.tconn, obj)
 }
 
 // Descendants finds all descendant of this node matching the params and returns them.
@@ -231,7 +239,7 @@ func (n *Node) Descendants(ctx context.Context, params FindParams) (NodeSlice, e
 			nodes.Release(ctx)
 			return nil, err
 		}
-		node, err := newNode(ctx, n.tconn, obj)
+		node, err := NewNode(ctx, n.tconn, obj)
 		if err != nil {
 			nodes.Release(ctx)
 			return nil, err
@@ -305,7 +313,7 @@ func Root(ctx context.Context, tconn *chrome.TestConn) (*Node, error) {
 	if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)()", obj); err != nil {
 		return nil, err
 	}
-	return newNode(ctx, tconn, obj)
+	return NewNode(ctx, tconn, obj)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.
