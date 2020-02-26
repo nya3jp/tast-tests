@@ -70,27 +70,33 @@ const (
 type AutomationNode struct {
 	ClassName     string
 	Checked       string
+	Name          string
 	Tooltip       string
 	ValueForRange int
 }
 
 // FocusedNode returns the currently focused node of ChromeVox.
-// chrome.automation.AutomationNode properties are defined using getters
-// see: https://cs.chromium.org/chromium/src/extensions/renderer/resources/automation/automation_node.js?q=automationNode&sq=package:chromium&dr=CSs&l=1218
-// meaning that resolve(node) cannot be applied here.
 func FocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*AutomationNode, error) {
+	// chrome.automation.AutomationNode properties are defined using getters
+	// see: https://cs.chromium.org/chromium/src/extensions/renderer/resources/automation/automation_node.js?q=automationNode&sq=package:chromium&dr=CSs&l=1218
+	// meaning that we should call the getters for each property in JS.
 	var automationNode AutomationNode
-	const script = `new Promise((resolve, reject) => {
-				chrome.automation.getFocus((node) => {
-					resolve({
-						Checked: node.checked,
-						ClassName: node.className,
-						Tooltip: node.tooltip,
-						ValueForRange: node.valueForRange
-					});
-				});
-			})`
-	if err := chromeVoxConn.EvalPromise(ctx, script, &automationNode); err != nil {
+	const script = `
+		(() => {
+			const node = ChromeVoxState.instance.currentRange.start.node;
+			if (!node) {
+				return {};
+			} else {
+				return {
+					Checked: node.checked,
+					ClassName: node.className,
+					Name: node.name,
+					Tooltip: node.tooltip,
+					ValueForRange: node.valueForRange
+				};
+			}
+		})()`
+	if err := chromeVoxConn.Eval(ctx, script, &automationNode); err != nil {
 		return nil, err
 	}
 	return &automationNode, nil
@@ -197,23 +203,6 @@ func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *A
 	return nil
 }
 
-// WaitForChromeVoxStopSpeaking polls until ChromeVox TTS has stoped speaking.
-func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Conn) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var isSpeaking bool
-		if err := chromeVoxConn.Eval(ctx, "ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
-			return testing.PollBreak(err)
-		}
-		if isSpeaking {
-			return errors.New("ChromeVox is speaking")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "timed out waiting for ChromeVox to finish speaking")
-	}
-	return nil
-}
-
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready.
 func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *input.KeyboardEventWriter) error) {
@@ -278,8 +267,11 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	if err := WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		s.Fatal("Failed to wait for ChromeVox finish speaking: ", err)
+	if err := WaitForFocusedNode(ctx, chromeVoxConn, &AutomationNode{
+		ClassName: TextView,
+		Name:      "Accessibility Test App",
+	}); err != nil {
+		s.Fatal("Failed to wait for initial ChromeVox focus: ", err)
 	}
 
 	ew, err := input.Keyboard(ctx)
