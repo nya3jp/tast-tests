@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "911de23d_f8fd7503",
+        "filename": "src/chromiumos/tast/local/power/powercap/rapl_perf_metrics.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:27:02Z",
+      "side": 1,
+      "message": "I\u0027ve just moved it into power. I\u0027ve also moved all logig into rapl.go, and this file only contains what we need to make it a perf.TimelineDataprovider",
+      "parentUuid": "ce4afbf0_1180b1c5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 57
+      },
+      "revId": "a57254b51035f1158444dd8a826c1fd8cbce7b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6720e30b_7c43a953",
         "filename": "src/chromiumos/tast/local/power/powercap/rapl_perf_metrics.go",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "a57254b51035f1158444dd8a826c1fd8cbce7b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed18d426_a72174d1",
+        "filename": "src/chromiumos/tast/local/power/powercap/rapl_perf_metrics.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:27:02Z",
+      "side": 1,
+      "message": "RAPLMetrics needs to conform to the interfaces defined in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2028333/13/src/chromiumos/tast/local/perf/timeline.go#25\n In order to get called. This way a test doesn\u0027t need to call Setup/Start/Snapshot individually for every set of metrics it is collecting.\n\nI guess I should update the return type of NewRAPLMetrics above to make this more clear.",
+      "parentUuid": "6720e30b_7c43a953",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "a57254b51035f1158444dd8a826c1fd8cbce7b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
