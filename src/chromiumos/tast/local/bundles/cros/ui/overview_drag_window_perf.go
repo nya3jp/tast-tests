@@ -30,7 +30,7 @@ const (
 )
 
 type dragFunc func(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error
+	stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error
 
 type dragTest struct {
 	dt dragType // Type of the drag to run.
@@ -73,7 +73,7 @@ func init() {
 }
 
 func normalDrag(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
 	x := input.TouchCoord(tsw.Width() / 3)
 	y := input.TouchCoord(tsw.Height() / 3)
 
@@ -111,7 +111,7 @@ func normalDrag(ctx context.Context, tsw *input.TouchscreenEventWriter,
 
 // leftOrTop returns the coordinates of left or top position based on screen
 // orientation and the given coordinates.
-func leftOrTop(ctx context.Context, tconn *chrome.Conn, x, y input.TouchCoord) (input.TouchCoord, input.TouchCoord, error) {
+func leftOrTop(ctx context.Context, tconn *chrome.TestConn, x, y input.TouchCoord) (input.TouchCoord, input.TouchCoord, error) {
 	orientation, err := display.GetOrientation(ctx, tconn)
 	if err != nil {
 		return x, y, errors.Wrap(err, "failed to get screen orientation")
@@ -132,7 +132,7 @@ func leftOrTop(ctx context.Context, tconn *chrome.Conn, x, y input.TouchCoord) (
 }
 
 func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
 	x := input.TouchCoord(tsw.Width() / 3)
 	y := input.TouchCoord(tsw.Height() / 3)
 
@@ -174,7 +174,7 @@ func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 }
 
 func clearSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
 	// Checks whether there is a snapped window.
 	snapped, err := ash.SnappedWindows(ctx, tconn)
 	if err != nil {
@@ -228,7 +228,7 @@ func clearSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 }
 
 func dragToClose(ctx context.Context, tsw *input.TouchscreenEventWriter,
-	stw *input.SingleTouchEventWriter, tconn *chrome.Conn) error {
+	stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
 	// Get existing windows before closing.
 	oldWindows, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
