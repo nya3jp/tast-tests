@@ -107,7 +107,7 @@ func (m *mismatch) Dump() string {
 // This function does NOT ensure that other policies are not set on the DUT.
 // Only policies passed in are considered, preventing test failures due
 // to unrelated default policies.
-func Verify(ctx context.Context, tconn *chrome.Conn, ps []policy.Policy) error {
+func Verify(ctx context.Context, tconn *chrome.TestConn, ps []policy.Policy) error {
 	var ms []*mismatch
 	addM := func(a *DUTPolicy, e policy.Policy, problem string) {
 		ms = append(ms, &mismatch{Act: a, Exp: e, Err: errors.New(problem)})
@@ -224,7 +224,7 @@ func Verify(ctx context.Context, tconn *chrome.Conn, ps []policy.Policy) error {
 // getAllEnterprisePolicies function.
 // For example data, see the Export to JSON button on chrome://policy.
 // Note that a DUTPolicy contains a json.RawMessage value, not an unmarshalled value.
-func PoliciesFromDUT(ctx context.Context, tconn *chrome.Conn) (*DUTPolicies, error) {
+func PoliciesFromDUT(ctx context.Context, tconn *chrome.TestConn) (*DUTPolicies, error) {
 	const cmd = "tast.promisify(chrome.autotestPrivate.getAllEnterprisePolicies)()"
 	var dps DUTPolicies
 	if err := tconn.EvalPromise(ctx, cmd, &dps); err != nil {

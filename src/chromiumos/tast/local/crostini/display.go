@@ -72,7 +72,7 @@ func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expect
 
 // PollWindowSize returns the the width and the height of the window in pixels
 // with polling to wait for asynchronous rendering on the DUT.
-func PollWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Size, err error) {
+func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz Size, err error) {
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
@@ -83,7 +83,7 @@ func PollWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Si
 }
 
 // getWindowSize returns the the width and the height of the window in pixels.
-func getWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Size, err error) {
+func getWindowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz Size, err error) {
 	expr := fmt.Sprintf(
 		`new Promise((resolve, reject) => {
 			chrome.automation.getDesktop(root => {
@@ -103,7 +103,7 @@ func getWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz Siz
 }
 
 // PrimaryDisplayScaleFactor returns the primary display's scale factor.
-func PrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.Conn) (factor float64, err error) {
+func PrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.TestConn) (factor float64, err error) {
 	err = tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getPrimaryDisplayScaleFactor)()`, &factor)
 	return factor, err
 }
@@ -112,7 +112,7 @@ func PrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.Conn) (factor 
 // PollWindowSize() at low and high density. It returns an error if
 // something is wrong with the sizes (not just if the high-density
 // window is bigger).
-func VerifyWindowDensities(ctx context.Context, tconn *chrome.Conn, sizeHighDensity, sizeLowDensity Size) error {
+func VerifyWindowDensities(ctx context.Context, tconn *chrome.TestConn, sizeHighDensity, sizeLowDensity Size) error {
 	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
 		return errors.Errorf("app high density size %v greater than low density size %v", sizeHighDensity, sizeLowDensity)
 	}
@@ -142,7 +142,7 @@ func VerifyWindowDensities(ctx context.Context, tconn *chrome.Conn, sizeHighDens
 // application window until some event has occurred. If |condition|
 // returns an error then the call will be considered a failure and the
 // error will be propagated.
-func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container, keyboard *input.KeyboardEventWriter, timeout time.Duration, condition func(context.Context) error, closeWindow bool, windowName string, cmdline []string) (string, error) {
+func RunWindowedApp(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, keyboard *input.KeyboardEventWriter, timeout time.Duration, condition func(context.Context) error, closeWindow bool, windowName string, cmdline []string) (string, error) {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
@@ -189,7 +189,7 @@ func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container,
 
 // CloseAllWindows closes all currently open windows by iterating over
 // the shelf icons and calling autotestPrivate.closeApp on each one.
-func CloseAllWindows(ctx context.Context, tconn *chrome.Conn) error {
+func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
 	expr := `
 new Promise((resolve, reject) => {
 	chrome.autotestPrivate.getShelfItems(items => {

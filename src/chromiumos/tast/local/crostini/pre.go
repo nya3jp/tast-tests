@@ -31,7 +31,7 @@ const ImageArtifact string = "crostini_guest_images.tar"
 //	}
 type PreData struct {
 	Chrome      *chrome.Chrome
-	TestAPIConn *chrome.Conn
+	TestAPIConn *chrome.TestConn
 	Container   *vm.Container
 	Keyboard    *input.KeyboardEventWriter
 }
@@ -135,7 +135,7 @@ type preImpl struct {
 	gpuEnabled   bool                 // Flag for whether the crostini VM should be booted with GPU support.
 	useInstaller bool                 // Flag for whether to run the Crostini installer in chrome (useful for setting up e.g. CrostiniManager).
 	cr           *chrome.Chrome
-	tconn        *chrome.Conn
+	tconn        *chrome.TestConn
 	cont         *vm.Container
 	keyboard     *input.KeyboardEventWriter
 }
