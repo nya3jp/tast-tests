@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50f38b73_d60aa9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-26T18:34:32Z",
+      "side": 1,
+      "message": "I think ideally it would be much nicer to integrate this definition with chrome/ui.Node struct. You don\u0027t have to do that in this CL, but can you add a TODO comment here?",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 69
+      },
+      "revId": "56697b05b55207fbbdc78b808479e443e4d03747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c6ef514_ac4d9689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-26T18:34:32Z",
+      "side": 1,
+      "message": "looks like this FocusedNode function is only used within this function. Please make this unexposed.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "56697b05b55207fbbdc78b808479e443e4d03747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
