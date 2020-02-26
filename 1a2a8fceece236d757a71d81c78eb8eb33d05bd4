@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f569142_06eafaff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-26T20:34:39Z",
+      "side": 1,
+      "message": "Add unit tests for the test.",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2953449b_a11f970c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-26T20:34:39Z",
+      "side": 1,
+      "message": "Why \\D: \\D is the opposite of \\d. We need to catch alphanumerical numbers.",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee257e09_6eaa9f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-26T20:34:39Z",
+      "side": 1,
+      "message": "I don\u0027t understand this code. All eMMC report DEVICE_LIFE_TIME_EST_TYP_A/B, so they will match the string. We need to collect param and be sure it is less than 0xb.",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a99eac_081164b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-02-26T20:34:39Z",
+      "side": 1,
+      "message": "move it in the var section, pass it as argument. It will be easier to locate if changes are needed.",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
