@@ -70,7 +70,7 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 
 // Connect sets up the D-Bus connection to the service specified by name,
 // path by using SystemBus.
-// This waits for the service to become available.
+// This waits for the service to become available but does not validate path existence.
 func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("dbusutil.Connect %s:%s", name, path))
 	defer st.End()
