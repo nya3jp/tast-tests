@@ -92,6 +92,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"netfilter-queue", "nfqueue", "nfqueue", restrictCaps | seccomp},
 		{"anomaly_detector", "root", "syslog", 0},
 		{"attestationd", "attestation", "attestation", restrictCaps | noNewPrivs | seccomp},
+		{"pca_agentd", "attestation", "attestation", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
 		{"periodic_scheduler", "root", "root", 0},
 		{"metrics_client", "root", "root", 0},
 		{"esif_ufd", "root", "root", 0},
