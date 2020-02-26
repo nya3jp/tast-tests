@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/security/userfiles"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -21,7 +22,8 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		// TODO(crbug.com/1056294): Make test critical again.
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
@@ -30,7 +32,8 @@ func UserFilesGuest(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Login failed: ", err)
 	}
-	defer cr.Close(ctx)
+	// chrome.Chrome.Close() will not log the user out.
+	defer upstart.RestartJob(ctx, "ui")
 
 	userfiles.Check(ctx, s, cr.User())
 }
