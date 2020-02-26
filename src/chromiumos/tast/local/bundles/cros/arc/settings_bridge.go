@@ -62,7 +62,7 @@ func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) err
 
 // testAccessibilitySync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
-func testAccessibilitySync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) (retErr error) {
+func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) (retErr error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -146,7 +146,7 @@ func getAndroidProxy(ctx context.Context, a *arc.ARC, proxyString string) (strin
 }
 
 // setChromeProxyFixedServers runs the command to set Chrome proxy settings using a fixed server.
-func setChromeProxyFixedServers(ctx context.Context, conn *chrome.Conn, host, port, bypassList string) error {
+func setChromeProxyFixedServers(ctx context.Context, tconn *chrome.TestConn, host, port, bypassList string) error {
 	script := fmt.Sprintf(
 		`new Promise((resolve) => {
 			chrome.proxy.settings.set({
@@ -163,11 +163,11 @@ func setChromeProxyFixedServers(ctx context.Context, conn *chrome.Conn, host, po
 				scope: 'regular'
 			}, () => {resolve()});
 		})`, host, port, bypassList)
-	return conn.EvalPromise(ctx, script, nil)
+	return tconn.EvalPromise(ctx, script, nil)
 }
 
 // setChromeProxyPac runs the command to set Chrome proxy settings using a specified pac script.
-func setChromeProxyPac(ctx context.Context, conn *chrome.Conn, pacScript string) error {
+func setChromeProxyPac(ctx context.Context, tconn *chrome.TestConn, pacScript string) error {
 	script := fmt.Sprintf(
 		`new Promise((resolve) => {
 			chrome.proxy.settings.set({
@@ -180,11 +180,11 @@ func setChromeProxyPac(ctx context.Context, conn *chrome.Conn, pacScript string)
 				scope: 'regular'
 			}, () => {resolve()});
 		})`, pacScript)
-	return conn.EvalPromise(ctx, script, nil)
+	return tconn.EvalPromise(ctx, script, nil)
 }
 
 // setChromeProxyMode runs the command to set proxy mode in Chrome.
-func setChromeProxyMode(ctx context.Context, conn *chrome.Conn, mode string) error {
+func setChromeProxyMode(ctx context.Context, tconn *chrome.TestConn, mode string) error {
 	script := fmt.Sprintf(
 		`new Promise((resolve) => {
 			chrome.proxy.settings.set({
@@ -194,26 +194,26 @@ func setChromeProxyMode(ctx context.Context, conn *chrome.Conn, mode string) err
 				scope: 'regular'
 			}, () => {resolve()});
 		})`, mode)
-	return conn.EvalPromise(ctx, script, nil)
+	return tconn.EvalPromise(ctx, script, nil)
 }
 
 // setChromeProxy sets the Chrome proxy, as specified by p.mode.
-func setChromeProxy(ctx context.Context, conn *chrome.Conn, p proxySettingsTestCase) error {
+func setChromeProxy(ctx context.Context, tconn *chrome.TestConn, p proxySettingsTestCase) error {
 	switch p.mode {
 	case fixedServers:
-		if err := setChromeProxyFixedServers(ctx, conn, p.host, p.port, p.bypassList); err != nil {
+		if err := setChromeProxyFixedServers(ctx, tconn, p.host, p.port, p.bypassList); err != nil {
 			return err
 		}
 	case pacScript:
-		if err := setChromeProxyPac(ctx, conn, p.pacURL); err != nil {
+		if err := setChromeProxyPac(ctx, tconn, p.pacURL); err != nil {
 			return err
 		}
 	case autoDetect:
-		if err := setChromeProxyMode(ctx, conn, string(autoDetect)); err != nil {
+		if err := setChromeProxyMode(ctx, tconn, string(autoDetect)); err != nil {
 			return err
 		}
 	case direct:
-		if err := setChromeProxyMode(ctx, conn, string(direct)); err != nil {
+		if err := setChromeProxyMode(ctx, tconn, string(direct)); err != nil {
 			return err
 		}
 	default:
@@ -226,7 +226,7 @@ func setChromeProxy(ctx context.Context, conn *chrome.Conn, p proxySettingsTestC
 
 // testProxySync runs the test to ensure that proxy settings are
 // synchronized between Chrome and Android.
-func testProxySync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
+func testProxySync(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
 	for _, tc := range []proxySettingsTestCase{
 		{mode: direct},
 		{mode: fixedServers,
@@ -288,7 +288,7 @@ func checkProxySettings(ctx context.Context, a *arc.ARC, p proxySettingsTestCase
 // runProxyTest performs necessary tasks to ensure that proxy settings are
 // synchronized between Chrome and Android.
 // Proxy settings in Chrome are set, then the proxy settings in Android are checked to see if they match.
-func runProxyTest(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, p proxySettingsTestCase) error {
+func runProxyTest(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, p proxySettingsTestCase) error {
 	if err := setChromeProxy(ctx, tconn, p); err != nil {
 		return errors.Wrap(err, "setting chrome proxy failed")
 	}

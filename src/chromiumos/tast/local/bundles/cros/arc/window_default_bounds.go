@@ -81,7 +81,7 @@ func WindowDefaultBounds(ctx context.Context, s *testing.State) {
 // wmSystemDefaultHandling verifies that applications which use the metadata flag
 // <meta-data android:name="WindowManagerPreference:FreeformWindowSize" android:value="system-default" />
 // will restore to 80% of the screen size.
-func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
+func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
 	const (
 		// Apk to test (we use the default WM test app for SDK 24 (N).
 		wmPkg = "org.chromium.arc.testapp.windowmanager24"
@@ -93,7 +93,7 @@ func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.Conn, a *arc.ARC
 	)
 
 	// wmSizeTestFunc represents a function that tests if the window has a certain size.
-	type wmSizeTestFunc func(context.Context, *chrome.Conn, *arc.Activity) error
+	type wmSizeTestFunc func(context.Context, *chrome.TestConn, *arc.Activity) error
 
 	for _, test := range []struct {
 		name                string
@@ -149,7 +149,7 @@ func wmSystemDefaultHandling(ctx context.Context, tconn *chrome.Conn, a *arc.ARC
 }
 
 // checkPhoneSizeRestored checks that the window is in restored size portrait sized phone size.
-func checkPhoneSizeRestored(ctx context.Context, tconn *chrome.Conn, act *arc.Activity) error {
+func checkPhoneSizeRestored(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity) error {
 	if err := compareWindowState(ctx, act, arc.WindowStateNormal); err != nil {
 		return err
 	}
@@ -177,7 +177,7 @@ func checkPhoneSizeRestored(ctx context.Context, tconn *chrome.Conn, act *arc.Ac
 }
 
 // check80PercentRestored checks that the window has 80% of the screen size in the restored state.
-func check80PercentRestored(ctx context.Context, tconn *chrome.Conn, act *arc.Activity) error {
+func check80PercentRestored(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity) error {
 	if err := compareWindowState(ctx, act, arc.WindowStateNormal); err != nil {
 		return err
 	}
@@ -226,7 +226,7 @@ func compareWindowState(ctx context.Context, act *arc.Activity, wanted arc.Windo
 }
 
 // getScreenSizeAndInternalWorkArea returns the screen size and the workspace in pixels of the currently selected internal display.
-func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.Conn) (width, height int, bounds arc.Rect, err error) {
+func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.TestConn) (width, height int, bounds arc.Rect, err error) {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		// This could be fizz which does not have an internal screen.

@@ -29,7 +29,7 @@ func init() {
 }
 
 // deskContainsWindow returns true if a window whose name is windowName was found as a child of the desk container whose name is deskContainerName.
-func deskContainsWindow(ctx context.Context, tconn *chrome.Conn, deskContainerName, windowName string) (bool, error) {
+func deskContainsWindow(ctx context.Context, tconn *chrome.TestConn, deskContainerName, windowName string) (bool, error) {
 	// Get UI root.
 	root, err := ui.Root(ctx, tconn)
 	if err != nil {
