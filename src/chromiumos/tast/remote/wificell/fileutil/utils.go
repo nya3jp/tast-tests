@@ -7,12 +7,14 @@ package fileutil
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/host"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -37,6 +39,16 @@ func WriteToHost(ctx context.Context, hst *host.SSH, path string, data []byte) e
 		return errors.Wrap(err, "unable to upload file to host")
 	}
 	return nil
+}
+
+// WriteToHostSysfs writes content to a remote path in procfs/sysfs of given host with
+// "echo -n $content > $path". WriteToHost() does not work because it uses SSH.PutFiles()
+// and the method will uncompress the compressed content, which invokes a unlink to the
+// target file, and it is illegal on procfs/sysfs.
+func WriteToHostSysfs(ctx context.Context, hst *host.SSH, path string, content string) error {
+	cmdStr := fmt.Sprintf("echo -n %s > %s", shutil.Escape(content), shutil.Escape(path))
+	cmd := hst.Command("sh", "-c", cmdStr)
+	return cmd.Run(ctx)
 }
 
 // PrepareOutDirFile prepares the base directory of the path under OutDir and opens the file.
