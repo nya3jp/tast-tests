@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab934a90_ee255be3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-26T16:45:09Z",
+      "side": 1,
+      "message": "Avoid using named return unless it brings benefit.",
+      "range": {
+        "startLine": 200,
+        "startChar": 73,
+        "endLine": 200,
+        "endChar": 104
+      },
+      "revId": "90011f7e121be3fe1eab88cbcdc7ce7bc1188d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
