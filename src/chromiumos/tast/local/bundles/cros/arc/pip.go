@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -238,7 +237,7 @@ func testPIPMove(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pipAct *ar
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	origBounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	origBounds := ash.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Initial PIP bounds: %+v", origBounds)
 
 	deltaX := dispMode.WidthInNativePixels / (totalMovements + 1)
@@ -246,7 +245,7 @@ func testPIPMove(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pipAct *ar
 		newBounds := origBounds
 		newBounds.Left -= deltaX * (i + 1)
 		testing.ContextLogf(ctx, "Moving PIP window to %d,%d", newBounds.Left, newBounds.Top)
-		if err := pipAct.MoveWindow(ctx, coords.NewPoint(newBounds.Left, newBounds.Top), movementDuration); err != nil {
+		if err := pipAct.MoveWindow(ctx, arc.NewPoint(newBounds.Left, newBounds.Top), movementDuration); err != nil {
 			return errors.Wrap(err, "could not move PIP window")
 		}
 
@@ -274,12 +273,12 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pipAct *
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	bounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds := ash.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Bounds before resize: %+v", bounds)
 
 	testing.ContextLog(ctx, "Resizing window to x=0, y=0")
 	// Resizing PIP to x=0, y=0, but it should stop once it reaches its max size.
-	if err := pipAct.ResizeWindow(ctx, arc.BorderTopLeft, coords.NewPoint(0, 0), time.Second); err != nil {
+	if err := pipAct.ResizeWindow(ctx, arc.BorderTopLeft, arc.NewPoint(0, 0), time.Second); err != nil {
 		return errors.Wrap(err, "could not resize PIP window")
 	}
 
@@ -348,7 +347,7 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, act *arc.
 		if err != nil {
 			return errors.Wrap(err, "could not get PIP window bounds")
 		}
-		bounds := coords.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
+		bounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 		pipCenterX := float64(bounds.Left + bounds.Width/2)
 		pipCenterY := float64(bounds.Top + bounds.Height/2)
@@ -421,7 +420,7 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, a *arc.AR
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	bounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds := ash.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 	testing.ContextLog(ctx, "Hiding system status area")
 	if err := hideSystemStatusArea(ctx, tconn); err != nil {
@@ -492,7 +491,7 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, a *arc
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window")
 	}
-	origBounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	origBounds := ash.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 	collisionWindowWorkAreaInsetsPX := int(math.Round(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: collisionWindowWorkAreaInsetsPX = ", collisionWindowWorkAreaInsetsPX)
@@ -522,7 +521,7 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, a *arc
 		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorNeverAutoHide)
 	}
 	newX := dispMode.WidthInNativePixels / 2
-	if err := pipAct.MoveWindow(ctx, coords.NewPoint(newX, origBounds.Top), 2*time.Second); err != nil {
+	if err := pipAct.MoveWindow(ctx, arc.NewPoint(newX, origBounds.Top), 2*time.Second); err != nil {
 		return errors.Wrapf(err, "failed to move PIP window to (%d, %d)", newX, origBounds.Top)
 	}
 
@@ -564,7 +563,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, a *arc.ARC
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	origBounds := coords.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
+	origBounds := ash.ConvertBoundsFromDpToPx(info.BoundsInRoot, dispMode.DeviceScaleFactor)
 	testing.ContextLogf(ctx, "Initial bounds: %+v", origBounds)
 
 	tabletEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -742,7 +741,7 @@ func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.Conn, act *arc.Act
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
 	}
-	bounds := coords.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+	bounds := ash.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 
 	pixelX := float64(bounds.Left + bounds.Width/2)
 	pixelY := float64(bounds.Top + bounds.Height/2)
@@ -789,8 +788,8 @@ func getPIPWindow(ctx context.Context, tconn *chrome.Conn) (*ash.Window, error) 
 }
 
 // getShelfRect returns Chrome OS's shelf rect, in DPs.
-func getShelfRect(ctx context.Context, tconn *chrome.Conn) (coords.Rect, error) {
-	var r coords.Rect
+func getShelfRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
+	var r arc.Rect
 	err := tconn.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {
 		  chrome.automation.getDesktop(function(root) {
@@ -807,8 +806,8 @@ func getShelfRect(ctx context.Context, tconn *chrome.Conn) (coords.Rect, error) 
 
 // getStatusAreaRect returns Chrome OS's Status Area rect, in DPs.
 // Returns error if Status Area is not present.
-func getStatusAreaRect(ctx context.Context, tconn *chrome.Conn) (coords.Rect, error) {
-	var r coords.Rect
+func getStatusAreaRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
+	var r arc.Rect
 	err := tconn.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {
 		  chrome.automation.getDesktop(function(root) {

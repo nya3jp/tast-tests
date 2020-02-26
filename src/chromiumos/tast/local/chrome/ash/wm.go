@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -116,6 +115,20 @@ func (c *CaptionButtonStatus) String() string {
 	return ret
 }
 
+// Rect represents the bounds of a window
+// TODO(takise): We may be able to consolidate this with the one in display.go
+type Rect struct {
+	Left   int `json:"left"`
+	Top    int `json:"top"`
+	Width  int `json:"width"`
+	Height int `json:"height"`
+}
+
+// CenterPoint returns the location of the center of the rectangle.
+func (r Rect) CenterPoint() Location {
+	return Location{X: r.Left + r.Width/2, Y: r.Top + r.Height/2}
+}
+
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
 type windowStateChange struct {
 	EventType      WMEventType `json:"eventType"`
@@ -139,8 +152,8 @@ const (
 // OverviewInfo holds overview info of a window.
 // https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
 type OverviewInfo struct {
-	Bounds    coords.Rect `json:"bounds"`
-	IsDragged bool        `json:"isDragged"`
+	Bounds    Rect `json:"bounds"`
+	IsDragged bool `json:"isDragged"`
 }
 
 // FrameMode represents the frame mode of the window.
@@ -161,8 +174,8 @@ type Window struct {
 	Name         string          `json:"name"`
 	WindowType   WindowType      `json:"windowType"`
 	State        WindowStateType `json:"stateType"`
-	BoundsInRoot coords.Rect     `json:"boundsInRoot"`
-	TargetBounds coords.Rect     `json:"targetBounds"`
+	BoundsInRoot Rect            `json:"boundsInRoot"`
+	TargetBounds Rect            `json:"targetBounds"`
 	DisplayID    string          `json:"displayId"`
 
 	Title            string `json:"title"`
@@ -221,6 +234,15 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (*
 	return FindWindow(ctx, c, func(window *Window) bool {
 		return window.ARCPackageName == pkgName
 	})
+}
+
+// ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
+func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
+	return Rect{
+		int(math.Round(float64(bounds.Left) * dsf)),
+		int(math.Round(float64(bounds.Top) * dsf)),
+		int(math.Round(float64(bounds.Width) * dsf)),
+		int(math.Round(float64(bounds.Height) * dsf))}
 }
 
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
@@ -418,7 +440,7 @@ func FindFirstWindowInOverview(ctx context.Context, c *chrome.Conn) (*Window, er
 		return nil, errors.New("no windows exist")
 	}
 	var result *Window
-	resultBounds := coords.Rect{Left: math.MaxInt32, Top: math.MaxInt32, Width: math.MaxInt32, Height: math.MaxInt32}
+	resultBounds := Rect{Left: math.MaxInt32, Top: math.MaxInt32, Width: math.MaxInt32, Height: math.MaxInt32}
 	for _, w := range ws {
 		if w.OverviewInfo == nil {
 			continue
@@ -446,7 +468,7 @@ type TouchCoordConverter struct {
 }
 
 // ConvertLocation converts a location to TouchCoord.
-func (tcc *TouchCoordConverter) ConvertLocation(l coords.Point) (x, y input.TouchCoord) {
+func (tcc *TouchCoordConverter) ConvertLocation(l Location) (x, y input.TouchCoord) {
 	return input.TouchCoord(tcc.ScaleX * float64(l.X)), input.TouchCoord(tcc.ScaleY * float64(l.Y))
 }
 

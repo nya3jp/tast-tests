@@ -16,7 +16,6 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +30,7 @@ type TaskInfo struct {
 	// StackSize represents how many activities are in the stack.
 	StackSize int
 	// Bounds represents the task bounds in pixels. Caption is not taken into account.
-	Bounds coords.Rect
+	Bounds Rect
 	// ActivityInfos is the activities in the task
 	ActivityInfos []ActivityInfo
 
@@ -364,7 +363,7 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 					ti.ActivityInfos = append(ti.ActivityInfos, ActivityInfo{s[0], s[1]})
 				}
 				b := t.GetBounds()
-				ti.Bounds = coords.Rect{
+				ti.Bounds = Rect{
 					Left:   int(b.GetLeft()),
 					Top:    int(b.GetTop()),
 					Width:  int(b.GetRight() - b.GetLeft()),
@@ -413,15 +412,15 @@ func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo,
 
 // parseBounds returns a Rect by parsing a slice of 4 strings.
 // Each string represents the left, top, right and bottom values, in that order.
-func parseBounds(s []string) (bounds coords.Rect, err error) {
+func parseBounds(s []string) (bounds Rect, err error) {
 	if len(s) != 4 {
-		return coords.Rect{}, errors.Errorf("expecting a slice of length 4, got %d", len(s))
+		return Rect{}, errors.Errorf("expecting a slice of length 4, got %d", len(s))
 	}
 	var right, bottom int
 	for i, dst := range []*int{&bounds.Left, &bounds.Top, &right, &bottom} {
 		*dst, err = strconv.Atoi(s[i])
 		if err != nil {
-			return coords.Rect{}, errors.Wrapf(err, "could not parse %q", s[i])
+			return Rect{}, errors.Wrapf(err, "could not parse %q", s[i])
 		}
 	}
 	bounds.Width = right - bounds.Left

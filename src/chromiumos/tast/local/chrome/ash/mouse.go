@@ -12,8 +12,14 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/coords"
 )
+
+// Location points a location in the UI and in DIP. The origin of a location
+// should be noted in the comments of individual functions or methods.
+type Location struct {
+	X int `json:"x"`
+	Y int `json:"y"`
+}
 
 // MouseButton specifies a button on mouse.
 type MouseButton string
@@ -28,7 +34,7 @@ const (
 
 // MouseClick causes a click event. The location is relative to the top-left of
 // the display.
-func MouseClick(ctx context.Context, c *chrome.Conn, location coords.Point, button MouseButton) error {
+func MouseClick(ctx context.Context, c *chrome.Conn, location Location, button MouseButton) error {
 	if err := MouseMove(ctx, c, location, 0); err != nil {
 		return errors.Wrap(err, "failed to move to the target location")
 	}
@@ -53,7 +59,7 @@ func MouseRelease(ctx context.Context, c *chrome.Conn, button MouseButton) error
 // move across multiple displays. When duration is 0, it moves instantly to the
 // specified location. Otherwise, the cursor should move linearly during the
 // period. Returns after the move event is handled by Ash.
-func MouseMove(ctx context.Context, c *chrome.Conn, location coords.Point, duration time.Duration) error {
+func MouseMove(ctx context.Context, c *chrome.Conn, location Location, duration time.Duration) error {
 	locationData, err := json.Marshal(location)
 	if err != nil {
 		return err
@@ -66,7 +72,7 @@ func MouseMove(ctx context.Context, c *chrome.Conn, location coords.Point, durat
 // to end. The duration is the time between the movements from the start to the
 // end (i.e. the duration of the drag), and the movement to the start happens
 // instantly.
-func MouseDrag(ctx context.Context, c *chrome.Conn, start, end coords.Point, duration time.Duration) error {
+func MouseDrag(ctx context.Context, c *chrome.Conn, start, end Location, duration time.Duration) error {
 	if err := MouseMove(ctx, c, start, 0); err != nil {
 		return errors.Wrap(err, "failed to move to the start location")
 	}

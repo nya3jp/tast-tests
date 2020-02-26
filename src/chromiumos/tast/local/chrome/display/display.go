@@ -15,8 +15,16 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/coords"
 )
+
+// Bounds holds onscreen bounds.
+// See https://developer.chrome.com/apps/system.display#type-Bounds.
+type Bounds struct {
+	Left   int `json:"left"`
+	Top    int `json:"top"`
+	Width  int `json:"width"`
+	Height int `json:"height"`
+}
 
 // Insets holds onscreen insets.
 // See https://developer.chrome.com/apps/system.display#type-Insets.
@@ -54,9 +62,9 @@ type Info struct {
 	DPIX                        float64        `json:"dpiX"`
 	DPIY                        float64        `json:"dpiY"`
 	Rotation                    int            `json:"rotation"`
-	Bounds                      coords.Rect    `json:"bounds"`
+	Bounds                      *Bounds        `json:"bounds"`
 	Overscan                    *Insets        `json:"overscan"`
-	WorkArea                    coords.Rect    `json:"workArea"`
+	WorkArea                    *Bounds        `json:"workArea"`
 	Modes                       []*DisplayMode `json:"modes"`
 	HasTouchSupport             bool           `json:"hasTouchSupport"`
 	AvailableDisplayZoomFactors []float64      `json:"availableDisplayZoomFactors"`

@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -111,6 +110,36 @@ const (
 	delayToPreventGesture = 150 * time.Millisecond
 )
 
+// Point represents an point.
+type Point struct {
+	// X and Y are the point coordinates.
+	X, Y int
+}
+
+// NewPoint returns a new Point.
+func NewPoint(x, y int) Point {
+	return Point{x, y}
+}
+
+// String returns the string representation of Point.
+func (p *Point) String() string {
+	return fmt.Sprintf("(%d, %d)", p.X, p.Y)
+}
+
+// Rect represents a rectangle, as defined here:
+// https://developers.chrome.com/extensions/automation#type-Rect
+type Rect struct {
+	Left   int `json:"left"`
+	Top    int `json:"top"`
+	Width  int `json:"width"`
+	Height int `json:"height"`
+}
+
+// String returns the string representation of Rect.
+func (r *Rect) String() string {
+	return fmt.Sprintf("(%d, %d) - (%d x %d)", r.Left, r.Top, r.Width, r.Height)
+}
+
 // NewActivity returns a new Activity instance.
 // The caller is responsible for closing a.
 // Returned Activity instance must be closed when the test is finished.
@@ -177,10 +206,10 @@ func (ac *Activity) Stop(ctx context.Context) error {
 // The caption bounds, in case it is present, is included as part of the window bounds.
 // This is the same size as the one reported by Chrome/Aura.
 // See: SurfaceBounds
-func (ac *Activity) WindowBounds(ctx context.Context) (coords.Rect, error) {
+func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
-		return coords.Rect{}, errors.Wrap(err, "failed to get task info")
+		return Rect{}, errors.Wrap(err, "failed to get task info")
 	}
 
 	// Fullscreen and maximized windows already include the caption height. PiP windows don't have caption.
@@ -195,7 +224,7 @@ func (ac *Activity) WindowBounds(ctx context.Context) (coords.Rect, error) {
 	// But the rest must have the caption height added to their bounds.
 	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
-		return coords.Rect{}, errors.Wrap(err, "failed to get caption height")
+		return Rect{}, errors.Wrap(err, "failed to get caption height")
 	}
 	t.Bounds.Top -= captionHeight
 	t.Bounds.Height += captionHeight
@@ -208,10 +237,10 @@ func (ac *Activity) WindowBounds(ctx context.Context) (coords.Rect, error) {
 // include the caption.
 // And does not include the shelf size if the activity is fullscreen/maximized and the shelf is in "always show" mode.
 // See: WindowBounds
-func (ac *Activity) SurfaceBounds(ctx context.Context) (coords.Rect, error) {
+func (ac *Activity) SurfaceBounds(ctx context.Context) (Rect, error) {
 	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
-		return coords.Rect{}, errors.Wrap(err, "failed to get task info")
+		return Rect{}, errors.Wrap(err, "failed to get task info")
 	}
 	return t.Bounds, nil
 }
@@ -231,7 +260,7 @@ func (ac *Activity) Close() {
 // MoveWindow only works with WindowStateNormal and WindowStatePIP windows. Will fail otherwise.
 // MoveWindow performs the movement by injecting Touch events in the kernel.
 // If the device does not have a touchscreen, it will fail.
-func (ac *Activity) MoveWindow(ctx context.Context, to coords.Point, t time.Duration) error {
+func (ac *Activity) MoveWindow(ctx context.Context, to Point, t time.Duration) error {
 	task, err := ac.getTaskInfo(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get task info")
@@ -246,7 +275,7 @@ func (ac *Activity) MoveWindow(ctx context.Context, to coords.Point, t time.Dura
 		return errors.Wrap(err, "could not get activity bounds")
 	}
 
-	var from coords.Point
+	var from Point
 	captionHeight, err := ac.disp.CaptionHeight(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get caption height")
@@ -275,7 +304,7 @@ func (ac *Activity) MoveWindow(ctx context.Context, to coords.Point, t time.Dura
 // For PiP windows, they must have the PiP Menu Activity displayed. Will fail otherwise.
 // ResizeWindow performs the resizing by injecting Touch events in the kernel.
 // If the device does not have a touchscreen, it will fail.
-func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coords.Point, t time.Duration) error {
+func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Point, t time.Duration) error {
 	task, err := ac.getTaskInfo(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not get task info")
@@ -290,7 +319,10 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 	if err != nil {
 		return errors.Wrap(err, "could not get activity bounds")
 	}
-	src := bounds.CenterPoint()
+	src := Point{
+		bounds.Left + bounds.Width/2,
+		bounds.Top + bounds.Height/2,
+	}
 
 	borderOffset := borderOffsetForNormal
 	if task.windowState == WindowStatePIP {
@@ -421,7 +453,7 @@ func (ac *Activity) Resizable(ctx context.Context) (bool, error) {
 // swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
 // t represents the duration of the swipe.
 // The last touch event will be held in its position for a few ms to prevent triggering "minimize" or similar gestures.
-func (ac *Activity) swipe(ctx context.Context, from, to coords.Point, t time.Duration) error {
+func (ac *Activity) swipe(ctx context.Context, from, to Point, t time.Duration) error {
 	if err := ac.initTouchscreenLazily(ctx); err != nil {
 		return errors.Wrap(err, "could not initialize touchscreen device")
 	}
