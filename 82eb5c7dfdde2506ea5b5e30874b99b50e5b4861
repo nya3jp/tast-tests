@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c249831_332c077b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-26T00:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3631158_7626e05b",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "82eb5c7dfdde2506ea5b5e30874b99b50e5b4861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09644796_98a6b13a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
         "patchSetId": 21
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-25T14:58:03Z",
       "side": 1,
       "message": "nit: ditto?",
+      "range": {
+        "startLine": 167,
+        "startChar": 105,
+        "endLine": 167,
+        "endChar": 149
+      },
+      "revId": "82eb5c7dfdde2506ea5b5e30874b99b50e5b4861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f9c106_362175e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-26T00:34:22Z",
+      "side": 1,
+      "message": "Sorry that I missed it. Done",
+      "parentUuid": "09644796_98a6b13a",
       "range": {
         "startLine": 167,
         "startChar": 105,
@@ -68,6 +116,30 @@
       "revId": "82eb5c7dfdde2506ea5b5e30874b99b50e5b4861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3ec4e5_99f2fa07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-02-26T00:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56677086_bb2fd876",
+      "range": {
+        "startLine": 266,
+        "startChar": 92,
+        "endLine": 266,
+        "endChar": 132
+      },
+      "revId": "82eb5c7dfdde2506ea5b5e30874b99b50e5b4861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
