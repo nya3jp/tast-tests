@@ -70,6 +70,7 @@ const (
 type AutomationNode struct {
 	ClassName     string
 	Checked       string
+	Name          string
 	Tooltip       string
 	ValueForRange int
 }
@@ -85,6 +86,7 @@ func FocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*AutomationNo
 					resolve({
 						Checked: node.checked,
 						ClassName: node.className,
+						Name: node.name,
 						Tooltip: node.tooltip,
 						ValueForRange: node.valueForRange
 					});
@@ -197,23 +199,6 @@ func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *A
 	return nil
 }
 
-// WaitForChromeVoxStopSpeaking polls until ChromeVox TTS has stoped speaking.
-func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Conn) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var isSpeaking bool
-		if err := chromeVoxConn.Eval(ctx, "ChromeVox.tts.isSpeaking()", &isSpeaking); err != nil {
-			return testing.PollBreak(err)
-		}
-		if isSpeaking {
-			return errors.New("ChromeVox is speaking")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "timed out waiting for ChromeVox to finish speaking")
-	}
-	return nil
-}
-
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready.
 func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *input.KeyboardEventWriter) error) {
@@ -278,7 +263,10 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	if err := WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+	if err := WaitForFocusedNode(ctx, chromeVoxConn, &AutomationNode{
+		ClassName: TextView,
+		Name:      "Accessibility Test App",
+	}); err != nil {
 		s.Fatal("Failed to wait for ChromeVox finish speaking: ", err)
 	}
 
