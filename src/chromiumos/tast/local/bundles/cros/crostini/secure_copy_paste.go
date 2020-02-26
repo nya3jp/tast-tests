@@ -232,7 +232,7 @@ func init() {
 // repeatedly sets/checks the clipboard data to ensure that the requested value
 // is on there. We need this because the applications under test are fighting
 // for clipboard control.
-func forceClipboard(ctx context.Context, tconn *chrome.Conn, data string) error {
+func forceClipboard(ctx context.Context, tconn *chrome.TestConn, data string) error {
 	setClipboardPromise := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setClipboardTextData)(%q)`, data)
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := tconn.EvalPromise(ctx, setClipboardPromise, nil); err != nil {

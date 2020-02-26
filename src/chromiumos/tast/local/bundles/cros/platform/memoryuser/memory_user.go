@@ -34,7 +34,7 @@ type TestEnv struct {
 	wpr   *wpr.WPR
 	cr    *chrome.Chrome
 	arc   *arc.ARC
-	tconn *chrome.Conn
+	tconn *chrome.TestConn
 	vm    bool
 }
 

@@ -111,7 +111,7 @@ type tab struct {
 	conn *chrome.Conn
 
 	// tconn is a connection to the Tast test extension.
-	tconn *chrome.Conn
+	tconn *chrome.TestConn
 }
 
 // newTab opens a new tab which loads the url, and return a tab instance.
@@ -285,7 +285,7 @@ func (t *tab) pin(ctx context.Context) error {
 }
 
 // getValidTabIDs returns a list of non-discarded tab IDs.
-func getValidTabIDs(ctx context.Context, tconn *chrome.Conn) ([]int, error) {
+func getValidTabIDs(ctx context.Context, tconn *chrome.TestConn) ([]int, error) {
 	var out []int
 	if err := tconn.EvalPromise(ctx, `(async () => {
 	  let tabs = await tast.promisify(chrome.tabs.query)({discarded: false});
