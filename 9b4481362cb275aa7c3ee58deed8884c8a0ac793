@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6603e877_5fe02ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-26T20:52:27Z",
+      "side": 1,
+      "message": "Maybe change this to \"s.Errorf(\"Failed to convert %q to integer: %v\", metrics[i], err)\" so that the error message doesn\u0027t make it seem like we tried to convert the string \"total_memory_kib\" to an integer.\n\nCould you also add \"s.Log(\"Checking value for \", want[i])\" to the beginning of the for loop so that we still have info about what metric we encountered errors for if/when we fail?",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "9b4481362cb275aa7c3ee58deed8884c8a0ac793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c6e885_41841d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-02-26T20:52:27Z",
+      "side": 1,
+      "message": "It might be helpful for debugging if we log val after strconv.Atoi() succeeds.",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "9b4481362cb275aa7c3ee58deed8884c8a0ac793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
