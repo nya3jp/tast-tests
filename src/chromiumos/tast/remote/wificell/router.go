@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/host"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
+	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/testing"
 )
@@ -112,6 +113,60 @@ func (r *Router) setupWifiPhys(ctx context.Context) error {
 	return nil
 }
 
+// rngConfigure configures the random generator to our liking.
+// Some routers (particularly, Gale) seem to have bad Random Number
+// Generators, such that hostapd can't always generate keys fast enough.
+// The on-board TPM seems to serve as a better generator, so we try to
+// switch to that if available.
+//
+// Symptoms of a slow RNG: hostapd complains with:
+//
+//   WPA: Not enough entropy in random pool to proceed - reject first
+//   4-way handshake
+//
+// Ref:
+// https://chromium.googlesource.com/chromiumos/third_party/hostap/+/7ea51f728bb7/src/ap/wpa_auth.c#1854
+//
+// Linux devices may have RNG parameters at
+// /sys/class/misc/hw_random/rng_{available,current}. See:
+//
+//   https://www.kernel.org/doc/Documentation/hw_random.txt
+func (r *Router) rngConfigure(ctx context.Context) error {
+	const rngAvailPath = "/sys/class/misc/hw_random/rng_available"
+	const rngCurrentPath = "/sys/class/misc/hw_random/rng_current"
+
+	out, err := r.host.Command("cat", rngAvailPath).Output(ctx)
+	if err != nil {
+		return nil
+	}
+	const wantRng = "tpm-rng"
+	supported := false
+	for _, rng := range strings.Split(strings.TrimSpace(string(out)), " ") {
+		if wantRng == rng {
+			supported = true
+			break
+		}
+	}
+	if !supported {
+		return nil
+	}
+
+	out, err = r.host.Command("cat", rngCurrentPath).Output(ctx)
+	if err != nil {
+		return err
+	}
+	current := strings.TrimSpace(string(out))
+	if current == wantRng {
+		return nil
+	}
+
+	testing.ContextLogf(ctx, "Switching RNGs: %s -> %s", current, wantRng)
+	if err := fileutil.WriteToHostSys(ctx, r.host, rngCurrentPath, wantRng); err != nil {
+		return err
+	}
+	return nil
+}
+
 // initialize prepares initial test AP state (e.g., initializing wiphy/wdev).
 func (r *Router) initialize(ctx context.Context) error {
 	board, err := hostBoard(ctx, r.host)
@@ -145,7 +200,10 @@ func (r *Router) initialize(ctx context.Context) error {
 	// Stop upstart job wpasupplicant if available. (ignore the error as it might be stopped already)
 	r.host.Command("stop", "wpasupplicant").Run(ctx)
 
-	// TODO(crbug.com/774808): configure hw_random.
+	// Configure hw_random, see function doc for more details.
+	if err := r.rngConfigure(ctx); err != nil {
+		return errors.Wrap(err, "failed to configure hw_random")
+	}
 
 	return nil
 }

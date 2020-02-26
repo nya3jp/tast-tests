@@ -7,12 +7,14 @@ package fileutil
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/host"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -36,6 +38,16 @@ func WriteToHost(ctx context.Context, hst *host.SSH, path string, data []byte) e
 		return errors.Wrap(err, "unable to upload file to host")
 	}
 	return nil
+}
+
+// WriteToHostSys writes content to a remote path in procfs/sysfs of given host with
+// "echo -n $content > $path". host.SSH.PutFiles does not work well in this use case.
+// PutFiles will compress files and untar on remote, but untar tries to unlink
+// existing files and fails on procfs/sysfs.
+func WriteToHostSys(ctx context.Context, hst *host.SSH, path string, content string) error {
+	cmdStr := fmt.Sprintf("echo -n %s > %s", shutil.Escape(content), shutil.Escape(path))
+	cmd := hst.Command("sh", "-c", cmdStr)
+	return cmd.Run(ctx)
 }
 
 // PrepareOutDirFile prepares the base directory of the path under OutDir and opens the file.
