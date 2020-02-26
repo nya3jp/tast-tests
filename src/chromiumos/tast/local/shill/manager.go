@@ -177,10 +177,8 @@ func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
 	devs := make([]*Device, 0, len(paths))
 	for _, path := range paths {
 		d, err := NewDevice(ctx, path)
-		// It is forgivable as a device may go down anytime.
 		if err != nil {
-			testing.ContextLogf(ctx, "Error getting a device %q: %v", path, err)
-			continue
+			return nil, err
 		}
 		devs = append(devs, d)
 	}
@@ -289,10 +287,12 @@ func (m *Manager) DeviceByName(ctx context.Context, iface string) (*Device, erro
 
 	for _, dev := range devs {
 		p, err := dev.GetProperties(ctx)
-		// It is forgivable as a device may go down anytime.
 		if err != nil {
-			testing.ContextLogf(ctx, "Error getting properties of the device %q: %v", dev, err)
-			continue
+			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
+				// This error is forgivable as a device may go down anytime.
+				continue
+			}
+			return nil, err
 		}
 		if devIface, err := p.GetString(DevicePropertyInterface); err != nil {
 			testing.ContextLogf(ctx, "Error getting the device interface %q: %v", dev, err)
