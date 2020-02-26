@@ -14,7 +14,7 @@ import (
 
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
 // the maximum number of desks have been reached.
-func CreateNewDesk(ctx context.Context, tconn *chrome.Conn) error {
+func CreateNewDesk(ctx context.Context, tconn *chrome.TestConn) error {
 	expr := `tast.promisify(chrome.autotestPrivate.createNewDesk)()`
 	success := false
 	if err := tconn.EvalPromise(ctx, expr, &success); err != nil {
@@ -29,7 +29,7 @@ func CreateNewDesk(ctx context.Context, tconn *chrome.Conn) error {
 // ActivateDeskAtIndex requests Ash to activate the Virtual Desk at the given index.
 // It waits for the desk-switch animation to complete. This call will fail if index is
 // invalid, or its the index of the already active desk.
-func ActivateDeskAtIndex(ctx context.Context, tconn *chrome.Conn, index int) error {
+func ActivateDeskAtIndex(ctx context.Context, tconn *chrome.TestConn, index int) error {
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.activateDeskAtIndex)(%v)`, index)
 	success := false
 	if err := tconn.EvalPromise(ctx, expr, &success); err != nil {
@@ -44,7 +44,7 @@ func ActivateDeskAtIndex(ctx context.Context, tconn *chrome.Conn, index int) err
 // RemoveActiveDesk requests Ash to remove the currently active desk and waits for the
 // desk-removal animation to complete. This call will fail if the currently active desk
 // is the last available desk which cannot be removed.
-func RemoveActiveDesk(ctx context.Context, tconn *chrome.Conn) error {
+func RemoveActiveDesk(ctx context.Context, tconn *chrome.TestConn) error {
 	expr := `tast.promisify(chrome.autotestPrivate.removeActiveDesk)()`
 	success := false
 	if err := tconn.EvalPromise(ctx, expr, &success); err != nil {

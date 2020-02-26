@@ -14,7 +14,7 @@ import (
 )
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
-func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.Conn) error {
+func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.inputMethodPrivate.showInputView(resolve);
@@ -24,7 +24,7 @@ new Promise((resolve, reject) => {
 
 // SetCurrentInputMethod sets the current input method used by the virtual
 // keyboard.
-func SetCurrentInputMethod(ctx context.Context, tconn *chrome.Conn, inputMethod string) error {
+func SetCurrentInputMethod(ctx context.Context, tconn *chrome.TestConn, inputMethod string) error {
 	return tconn.EvalPromise(ctx, fmt.Sprintf(`
 new Promise((resolve, reject) => {
 	chrome.autotestPrivate.setWhitelistedPref(
@@ -44,7 +44,7 @@ new Promise((resolve, reject) => {
 
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
 // there is a visible DOM element with an accessibility role of "keyboard".
-func IsShown(ctx context.Context, tconn *chrome.Conn) (shown bool, err error) {
+func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error) {
 	if err := tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
@@ -61,7 +61,7 @@ new Promise((resolve, reject) => {
 
 // WaitUntilShown waits for the virtual keyboard to appear. It waits until there
 // there is a visible DOM element with accessibility role of "keyboard".
-func WaitUntilShown(ctx context.Context, tconn *chrome.Conn) error {
+func WaitUntilShown(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
@@ -84,7 +84,7 @@ new Promise((resolve, reject) => {
 }
 
 // WaitUntilButtonsRender waits for the virtual keyboard to render some buttons.
-func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.Conn) error {
+func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, `
 new Promise((resolve, reject) => {
 	chrome.automation.getDesktop(root => {
