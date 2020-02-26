@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/testing"
 )
 
 // Conn represents a connection to a web content view, e.g. a tab.
@@ -135,6 +136,68 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 		newOb.conn = c
 	}
 	return nil
+}
+
+// Call applies fn to given args on this connection, then stores its result to out if given.
+// fn must be a JavaScript expression which is evaluated to a (possibly async) function
+// under the current execution context. If the function is async, or the function
+// returns a Promise instance, it will be awaited until settled.
+// args must be either JSON serializable value, or *chrome.JSObject which is tied to
+// the current conn.
+// out must be either a pointer to the JSON deserialize typed data, *chrome.JSObject, or nil
+// (if output should be ignored). If *chrome.JSObject is passed, the caller has the
+// responsibility to call its Release() after its use.
+//
+// Examples:
+//
+//   // 1)  Calling a function. ret will be set to 30.
+//   var ret int
+//   if err := c.Call(ctx, &ret, "function(a, b) { return a + b; }", 10, 20); err != nil {
+//      ...
+//
+//   // 2) Calling async function. ret will be set whether the given app is shown.
+//   tconn, err := cr.TestAPIConn()
+//   ...
+//   var ret bool
+//   if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.isAppShown)", appID); err != nil {
+//     ...
+//
+//   // 3) Serialize structure. Move the moust to (100, 200) immediately.
+//   loc := struct {
+//     X double `json:"x"`
+//     Y double `json:"y"`
+//   } {
+//     X: 100,
+//     Y: 200,
+//   }
+//   if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.mouseMove)", &loc, 0 /* ms */); err != nil {
+//     ...
+//
+//   // 4) Deserialize structure. Output can be JSON deserialized value.
+//   var ret struct {
+//     Provisioned bool `json:"provisioned"`
+//     TOSNeeded bool `json:"tosNeeded"`
+//   }
+//   if err := tconn.Call(ctx, &ret, "tast.promisify(chrome.autotestPrivate.getArcState)"); err != nil {
+//     ...
+func (c *Conn) Call(ctx context.Context, out interface{}, fn string, args ...interface{}) (retErr error) {
+	// Either objectId or executionContextId should be specified to invoke Runtime.callFunctionOn.
+	// Thus, take the "this" first, then call the method on the object.
+	// cf) https://chromedevtools.github.io/devtools-protocol/tot/Runtime#method-callFunctionOn
+	var this JSObject
+	if err := c.Eval(ctx, "this", &this); err != nil {
+		return err
+	}
+	defer func() {
+		if err := this.Release(ctx); err != nil {
+			if retErr == nil {
+				retErr = err
+			} else {
+				testing.ContextLog(ctx, "Failed to release 'this': ", err)
+			}
+		}
+	}()
+	return this.Call(ctx, out, fn, args...)
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
