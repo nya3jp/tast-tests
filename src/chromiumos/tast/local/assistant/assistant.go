@@ -37,18 +37,18 @@ type QueryStatus struct {
 }
 
 // Enable brings up Google Assistant service and returns any errors.
-func Enable(ctx context.Context, tconn *chrome.Conn) error {
+func Enable(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)(true, 10 * 1000 /* timeout_ms */)`, nil)
 }
 
 // EnableAndWaitForReady brings up Google Assistant service, waits for
 // NEW_READY signal and returns any errors.
-func EnableAndWaitForReady(ctx context.Context, tconn *chrome.Conn) error {
+func EnableAndWaitForReady(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.enableAssistantAndWaitForReady)()`, nil)
 }
 
 // SendTextQuery sends text query to Assistant and returns the query status.
-func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (QueryStatus, error) {
+func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (QueryStatus, error) {
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)(%q, 10 * 1000 /* timeout_ms */)`, query)
 	var status QueryStatus
 	err := tconn.EvalPromise(ctx, expr, &status)
@@ -58,7 +58,7 @@ func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (Query
 // WaitForServiceReady checks the Assistant service readiness after enabled by waiting
 // for a simple query interaction being completed successfully. Before b/129896357 gets
 // resolved, it should be used to verify the service status before the real test starts.
-func WaitForServiceReady(ctx context.Context, tconn *chrome.Conn) error {
+func WaitForServiceReady(ctx context.Context, tconn *chrome.TestConn) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := SendTextQuery(ctx, tconn, "1+1=")
 		return err
@@ -66,7 +66,7 @@ func WaitForServiceReady(ctx context.Context, tconn *chrome.Conn) error {
 }
 
 // SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.
-func SetHotwordEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) error {
+func SetHotwordEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
 	const prefName string = "settings.voice_interaction.hotword.enabled"
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.setWhitelistedPref)('%s', %t)`, prefName, enabled)
@@ -74,7 +74,7 @@ func SetHotwordEnabled(ctx context.Context, tconn *chrome.Conn, enabled bool) er
 }
 
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
-func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.Conn) error {
+func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	const accelerator = "{keyCode: 'assistant', shift: false, control: false, alt: false, search: false, pressed: true}"
 	expr := fmt.Sprintf(
 		`(async () => {
