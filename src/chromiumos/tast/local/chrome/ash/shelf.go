@@ -33,7 +33,7 @@ const (
 
 // SetShelfBehavior sets the shelf visibility behavior.
 // displayID is the display that contains the shelf.
-func SetShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string, b ShelfBehavior) error {
+func SetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID string, b ShelfBehavior) error {
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
 		  chrome.autotestPrivate.setShelfAutoHideBehavior(%q, %q, function() {
@@ -44,12 +44,12 @@ func SetShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string, b S
 		    }
 		  });
 		})`, displayID, b)
-	return c.EvalPromise(ctx, expr, nil)
+	return tconn.EvalPromise(ctx, expr, nil)
 }
 
 // GetShelfBehavior returns the shelf visibility behavior.
 // displayID is the display that contains the shelf.
-func GetShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string) (ShelfBehavior, error) {
+func GetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID string) (ShelfBehavior, error) {
 	var b ShelfBehavior
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
@@ -61,7 +61,7 @@ func GetShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string) (Sh
 		    }
 		  });
 		})`, displayID)
-	if err := c.EvalPromise(ctx, expr, &b); err != nil {
+	if err := tconn.EvalPromise(ctx, expr, &b); err != nil {
 		return ShelfBehaviorInvalid, err
 	}
 	switch b {
@@ -87,7 +87,7 @@ const (
 
 // SetShelfAlignment sets the shelf alignment.
 // displayID is the display that contains the shelf.
-func SetShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string, a ShelfAlignment) error {
+func SetShelfAlignment(ctx context.Context, tconn *chrome.TestConn, displayID string, a ShelfAlignment) error {
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
 		  chrome.autotestPrivate.setShelfAlignment(%q, %q, function() {
@@ -98,12 +98,12 @@ func SetShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string, a 
 		    }
 		  });
 		})`, displayID, a)
-	return c.EvalPromise(ctx, expr, nil)
+	return tconn.EvalPromise(ctx, expr, nil)
 }
 
 // GetShelfAlignment returns the shelf alignment.
 // displayID is the display that contains the shelf.
-func GetShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string) (ShelfAlignment, error) {
+func GetShelfAlignment(ctx context.Context, tconn *chrome.TestConn, displayID string) (ShelfAlignment, error) {
 	var a ShelfAlignment
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
@@ -115,7 +115,7 @@ func GetShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string) (S
 		    }
 		  });
 		})`, displayID)
-	if err := c.EvalPromise(ctx, expr, &a); err != nil {
+	if err := tconn.EvalPromise(ctx, expr, &a); err != nil {
 		return ShelfAlignmentInvalid, err
 	}
 	switch a {
@@ -139,20 +139,20 @@ type ShelfItem struct {
 }
 
 // ShelfItems returns the list of apps in the shelf.
-func ShelfItems(ctx context.Context, c *chrome.Conn) ([]*ShelfItem, error) {
+func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, error) {
 	var s []*ShelfItem
 	shelfQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getShelfItems)()")
-	if err := c.EvalPromise(ctx, shelfQuery, &s); err != nil {
+	if err := tconn.EvalPromise(ctx, shelfQuery, &s); err != nil {
 		return nil, errors.Wrap(err, "failed to call getShelfItems")
 	}
 	return s, nil
 }
 
 // AppShown checks if an app specified by appID is shown in the shelf.
-func AppShown(ctx context.Context, c *chrome.Conn, appID string) (bool, error) {
+func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, error) {
 	var appShown bool
 	shownQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.isAppShown)(%q)", appID)
-	if err := c.EvalPromise(ctx, shownQuery, &appShown); err != nil {
+	if err := tconn.EvalPromise(ctx, shownQuery, &appShown); err != nil {
 		errors.Errorf("Running autotestPrivate.isAppShown failed for %v", appID)
 		return false, err
 	}
@@ -160,9 +160,9 @@ func AppShown(ctx context.Context, c *chrome.Conn, appID string) (bool, error) {
 }
 
 // WaitForApp waits for the app specifed by appID to appear in the shelf.
-func WaitForApp(ctx context.Context, c *chrome.Conn, appID string) error {
+func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if visible, err := AppShown(ctx, c, appID); err != nil {
+		if visible, err := AppShown(ctx, tconn, appID); err != nil {
 			return testing.PollBreak(err)
 		} else if !visible {
 			return errors.New("app is not shown yet")

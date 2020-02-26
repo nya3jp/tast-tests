@@ -200,7 +200,7 @@ type Window struct {
 
 // SetWindowState requests changing the state of the window to the requested
 // event type and returns the updated state.
-func SetWindowState(ctx context.Context, c *chrome.Conn, id int, et WMEventType) (WindowStateType, error) {
+func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
 	change, err := json.Marshal(&windowStateChange{EventType: et})
 	if err != nil {
 		return WindowStateNormal, err
@@ -208,30 +208,30 @@ func SetWindowState(ctx context.Context, c *chrome.Conn, id int, et WMEventType)
 
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setAppWindowState)(%d, %s)`, id, string(change))
 	var state WindowStateType
-	if err = c.EvalPromise(ctx, expr, &state); err != nil {
+	if err = tconn.EvalPromise(ctx, expr, &state); err != nil {
 		return WindowStateNormal, err
 	}
 	return state, nil
 }
 
 // CloseWindow requests to close this window.
-func (w *Window) CloseWindow(ctx context.Context, c *chrome.Conn) error {
-	return c.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.closeAppWindow)(%d)`, w.ID), nil)
+func (w *Window) CloseWindow(ctx context.Context, tconn *chrome.TestConn) error {
+	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.closeAppWindow)(%d)`, w.ID), nil)
 }
 
 // SetARCAppWindowState sends WM event to ARC app window to change its window state, and returns the expected new state type.
-func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, et WMEventType) (WindowStateType, error) {
-	window, err := GetARCAppWindowInfo(ctx, c, pkgName)
+func SetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string, et WMEventType) (WindowStateType, error) {
+	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return WindowStateNormal, err
 	}
-	return SetWindowState(ctx, c, window.ID, et)
+	return SetWindowState(ctx, tconn, window.ID, et)
 }
 
 // GetARCAppWindowInfo queries into Ash and returns the ARC window info.
 // Currently, this returns information on the top window of a specified app.
-func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (*Window, error) {
-	return FindWindow(ctx, c, func(window *Window) bool {
+func GetARCAppWindowInfo(ctx context.Context, tconn *chrome.TestConn, pkgName string) (*Window, error) {
+	return FindWindow(ctx, tconn, func(window *Window) bool {
 		return window.ARCPackageName == pkgName
 	})
 }
@@ -246,8 +246,8 @@ func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
 }
 
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
-func GetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string) (WindowStateType, error) {
-	window, err := GetARCAppWindowInfo(ctx, c, pkgName)
+func GetARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string) (WindowStateType, error) {
+	window, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return WindowStateNormal, err
 	}
@@ -256,9 +256,9 @@ func GetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string) (
 
 // WaitForARCAppWindowState waits for a window state to appear on the Chrome side. If you expect an Activity's window state
 // to change, this method will guarantee that the state change has fully occurred and propagated to the Chrome side.
-func WaitForARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, state WindowStateType) error {
+func WaitForARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string, state WindowStateType) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		actual, err := GetARCAppWindowState(ctx, c, pkgName)
+		actual, err := GetARCAppWindowState(ctx, tconn, pkgName)
 		if err != nil {
 			// The window may not yet be known to the Chrome side, so don't stop polling here.
 			return errors.Wrap(err, "failed to get Ash window state")
@@ -272,23 +272,23 @@ func WaitForARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName strin
 
 // WaitForVisible waits for a window to be visible on the Chrome side. Visibility is defined to be the corresponding
 // Aura window's visibility.
-func WaitForVisible(ctx context.Context, c *chrome.Conn, pkgName string) error {
-	return WaitForCondition(ctx, c, func(window *Window) bool {
+func WaitForVisible(ctx context.Context, tconn *chrome.TestConn, pkgName string) error {
+	return WaitForCondition(ctx, tconn, func(window *Window) bool {
 		return window.ARCPackageName == pkgName && window.IsVisible
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // WaitWindowFinishAnimating waits for a window with a given ID to finish animating on the Chrome side.
-func WaitWindowFinishAnimating(ctx context.Context, c *chrome.Conn, windowID int) error {
-	return WaitForCondition(ctx, c, func(window *Window) bool {
+func WaitWindowFinishAnimating(ctx context.Context, tconn *chrome.TestConn, windowID int) error {
+	return WaitForCondition(ctx, tconn, func(window *Window) bool {
 		return window.ID == windowID && !window.IsAnimating
 	}, &testing.PollOptions{Timeout: 2 * time.Second})
 }
 
 // WaitForCondition waits for a window to satisfy the given predicate.
-func WaitForCondition(ctx context.Context, c *chrome.Conn, predicate func(window *Window) bool, pollOptions *testing.PollOptions) error {
+func WaitForCondition(ctx context.Context, tconn *chrome.TestConn, predicate func(window *Window) bool, pollOptions *testing.PollOptions) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		ws, err := GetAllWindows(ctx, c)
+		ws, err := GetAllWindows(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get the window list"))
 		}
@@ -302,7 +302,7 @@ func WaitForCondition(ctx context.Context, c *chrome.Conn, predicate func(window
 }
 
 // SwapWindowsInSplitView swaps the positions of snapped windows in split view.
-func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
+func SwapWindowsInSplitView(ctx context.Context, tconn *chrome.TestConn) error {
 	expr := `new Promise(function(resolve, reject) {
 		  chrome.autotestPrivate.swapWindowsInSplitView(function() {
 		    if (chrome.runtime.lastError) {
@@ -312,11 +312,11 @@ func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 		    }
 		  });
 		})`
-	return c.EvalPromise(ctx, expr, nil)
+	return tconn.EvalPromise(ctx, expr, nil)
 }
 
 // InternalDisplayMode returns the display mode that is currently selected in the internal display.
-func InternalDisplayMode(ctx context.Context, tconn *chrome.Conn) (*display.DisplayMode, error) {
+func InternalDisplayMode(ctx context.Context, tconn *chrome.TestConn) (*display.DisplayMode, error) {
 	dispInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get internal display info")
@@ -331,9 +331,9 @@ func InternalDisplayMode(ctx context.Context, tconn *chrome.Conn) (*display.Disp
 
 // GetAllWindows queries Chrome to list all of the app windows currently in the
 // system.
-func GetAllWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
+func GetAllWindows(ctx context.Context, tconn *chrome.TestConn) ([]*Window, error) {
 	var windows []*Window
-	if err := c.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getAppWindowList)()`, &windows); err != nil {
+	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.getAppWindowList)()`, &windows); err != nil {
 		return nil, err
 	}
 	return windows, nil
@@ -341,8 +341,8 @@ func GetAllWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
 
 // GetWindow is a utility function to return the info of the window for the
 // given ID.
-func GetWindow(ctx context.Context, c *chrome.Conn, windowID int) (*Window, error) {
-	ws, err := GetAllWindows(ctx, c)
+func GetWindow(ctx context.Context, tconn *chrome.TestConn, windowID int) (*Window, error) {
+	ws, err := GetAllWindows(ctx, tconn)
 	if err != nil {
 		return nil, err
 	}
@@ -356,8 +356,8 @@ func GetWindow(ctx context.Context, c *chrome.Conn, windowID int) (*Window, erro
 
 // FindWindow returns the Chrome window with which the given predicate returns true.
 // If there are multiple, this returns the first found window.
-func FindWindow(ctx context.Context, c *chrome.Conn, predicate func(*Window) bool) (*Window, error) {
-	windows, err := GetAllWindows(ctx, c)
+func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool) (*Window, error) {
+	windows, err := GetAllWindows(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get all windows")
 	}
@@ -399,8 +399,8 @@ func CreateWindows(ctx context.Context, cr *chrome.Chrome, url string, n int) (c
 
 // DraggedWindowInOverview returns the window that is currently being dragged
 // under overview mode. It is an error if no window is being dragged.
-func DraggedWindowInOverview(ctx context.Context, c *chrome.Conn) (*Window, error) {
-	windows, err := GetAllWindows(ctx, c)
+func DraggedWindowInOverview(ctx context.Context, tconn *chrome.TestConn) (*Window, error) {
+	windows, err := GetAllWindows(ctx, tconn)
 	if err != nil {
 		return nil, err
 	}
@@ -414,8 +414,8 @@ func DraggedWindowInOverview(ctx context.Context, c *chrome.Conn) (*Window, erro
 }
 
 // SnappedWindows returns the snapped windows if any.
-func SnappedWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
-	windows, err := GetAllWindows(ctx, c)
+func SnappedWindows(ctx context.Context, tconn *chrome.TestConn) ([]*Window, error) {
+	windows, err := GetAllWindows(ctx, tconn)
 	if err != nil {
 		return nil, err
 	}
@@ -431,8 +431,8 @@ func SnappedWindows(ctx context.Context, c *chrome.Conn) ([]*Window, error) {
 
 // FindFirstWindowInOverview returns the window which positioned the first item
 // of the overview (i.e. appears at the top-left in the overview mode).
-func FindFirstWindowInOverview(ctx context.Context, c *chrome.Conn) (*Window, error) {
-	ws, err := GetAllWindows(ctx, c)
+func FindFirstWindowInOverview(ctx context.Context, tconn *chrome.TestConn) (*Window, error) {
+	ws, err := GetAllWindows(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the window list")
 	}
@@ -474,8 +474,8 @@ func (tcc *TouchCoordConverter) ConvertLocation(l Location) (x, y input.TouchCoo
 
 // NewTouchCoordConverter creates a new TouchCoordConverter for the internal
 // display with the given TouchscreenEventWriter.
-func NewTouchCoordConverter(ctx context.Context, c *chrome.Conn, tsew *input.TouchscreenEventWriter) (*TouchCoordConverter, error) {
-	info, err := display.GetInternalInfo(ctx, c)
+func NewTouchCoordConverter(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter) (*TouchCoordConverter, error) {
+	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "no internal display found")
 	}

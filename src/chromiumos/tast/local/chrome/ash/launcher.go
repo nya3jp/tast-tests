@@ -38,7 +38,7 @@ const (
 )
 
 // WaitForLauncherState waits until the launcher state becomes |state|.
-func WaitForLauncherState(ctx context.Context, tconn *chrome.Conn, state LauncherState) error {
+func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state LauncherState) error {
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.waitForLauncherState)('%s')`, state)
 	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
@@ -48,7 +48,7 @@ func WaitForLauncherState(ctx context.Context, tconn *chrome.Conn, state Launche
 }
 
 // TriggerLauncherStateChange will cause the launcher state change via accelerator.
-func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.Conn, accel Accelerator) error {
+func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.TestConn, accel Accelerator) error {
 	expr := fmt.Sprintf(
 		`(async () => {
                    var acceleratorKey=%s;

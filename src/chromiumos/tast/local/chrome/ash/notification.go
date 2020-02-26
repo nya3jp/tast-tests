@@ -24,7 +24,7 @@ type Notification struct {
 
 // VisibleNotifications returns an array of visible notifications in Chrome.
 // tconn must be the connection returned by chrome.TestAPIConn().
-func VisibleNotifications(ctx context.Context, tconn *chrome.Conn) ([]*Notification, error) {
+func VisibleNotifications(ctx context.Context, tconn *chrome.TestConn) ([]*Notification, error) {
 	var ret []*Notification
 	if err := tconn.EvalPromise(ctx,
 		`new Promise((resolve, reject) => {

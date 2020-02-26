@@ -127,7 +127,7 @@ type Rect struct {
 // As defined in chromium/src/extensions/common/api/automation.idl
 type Node struct {
 	object    *chrome.JSObject
-	conn      *chrome.Conn
+	tconn     *chrome.TestConn
 	Name      string             `json:"name,omitempty"`
 	ClassName string             `json:"classname,omitempty"`
 	Role      RoleType           `json:"role,omitempty"`
@@ -147,10 +147,10 @@ func (nodes NodeSlice) Release(ctx context.Context) {
 
 // newNode creates a new node struct and initializes its fields.
 // newNode takes ownership of obj and will release it if the node fails to initialize.
-func newNode(ctx context.Context, conn *chrome.Conn, obj *chrome.JSObject) (*Node, error) {
+func newNode(ctx context.Context, tconn *chrome.TestConn, obj *chrome.JSObject) (*Node, error) {
 	node := &Node{
 		object: obj,
-		conn:   conn,
+		tconn:  tconn,
 	}
 	if err := node.Update(ctx); err != nil {
 		node.Release(ctx)
@@ -185,7 +185,7 @@ func (n *Node) LeftClick(ctx context.Context) error {
 	if n.Location == nil {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
-	return ash.MouseClick(ctx, n.conn, ash.Location{X: n.Location.Left + n.Location.Width/2, Y: n.Location.Top + n.Location.Height/2}, ash.LeftButton)
+	return ash.MouseClick(ctx, n.tconn, ash.Location{X: n.Location.Left + n.Location.Width/2, Y: n.Location.Top + n.Location.Height/2}, ash.LeftButton)
 }
 
 // RightClick shows the context menu of the node.
@@ -197,7 +197,7 @@ func (n *Node) RightClick(ctx context.Context) error {
 	if n.Location == nil {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
-	return ash.MouseClick(ctx, n.conn, ash.Location{X: n.Location.Left + n.Location.Width/2, Y: n.Location.Top + n.Location.Height/2}, ash.RightButton)
+	return ash.MouseClick(ctx, n.tconn, ash.Location{X: n.Location.Left + n.Location.Width/2, Y: n.Location.Top + n.Location.Height/2}, ash.RightButton)
 }
 
 // Descendant finds the first descendant of this node matching the params and returns it.
@@ -211,7 +211,7 @@ func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error)
 	if err := n.object.Call(ctx, obj, fmt.Sprintf("function(){return this.find(%s)}", paramsBytes)); err != nil {
 		return nil, err
 	}
-	return newNode(ctx, n.conn, obj)
+	return newNode(ctx, n.tconn, obj)
 }
 
 // Descendants finds all descendant of this node matching the params and returns them.
@@ -239,7 +239,7 @@ func (n *Node) Descendants(ctx context.Context, params FindParams) (NodeSlice, e
 			nodes.Release(ctx)
 			return nil, err
 		}
-		node, err := newNode(ctx, n.conn, obj)
+		node, err := newNode(ctx, n.tconn, obj)
 		if err != nil {
 			nodes.Release(ctx)
 			return nil, err
@@ -308,25 +308,25 @@ func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}
 
 // Root returns the chrome.automation root as a Node.
 // If the JavaScript fails to execute, an error is returned.
-func Root(ctx context.Context, conn *chrome.Conn) (*Node, error) {
+func Root(ctx context.Context, tconn *chrome.TestConn) (*Node, error) {
 	obj := &chrome.JSObject{}
-	if err := conn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)()", obj); err != nil {
+	if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)()", obj); err != nil {
 		return nil, err
 	}
-	return newNode(ctx, conn, obj)
+	return newNode(ctx, tconn, obj)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.
 // If the JavaScript fails to execute, an error is returned.
-func RootDebugInfo(ctx context.Context, conn *chrome.Conn) (string, error) {
+func RootDebugInfo(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	var out string
-	err := conn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)().then(root => root+'');", &out)
+	err := tconn.EvalPromise(ctx, "tast.promisify(chrome.automation.getDesktop)().then(root => root+'');", &out)
 	return out, err
 }
 
 // LogRootDebugInfo logs the chrome.automation root debug info to a file.
-func LogRootDebugInfo(ctx context.Context, conn *chrome.Conn, filename string) error {
-	debugInfo, err := RootDebugInfo(ctx, conn)
+func LogRootDebugInfo(ctx context.Context, tconn *chrome.TestConn, filename string) error {
+	debugInfo, err := RootDebugInfo(ctx, tconn)
 	if err != nil {
 		return err
 	}
