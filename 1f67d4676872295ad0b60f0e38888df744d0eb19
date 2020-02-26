@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9c2687ac_12b18308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-02-26T22:59:20Z",
+      "side": 1,
+      "message": "Oh, let me try to explain, and then I will add comments in the code if you agree.\n\nWhen the user drags up from the bottom of the screen to show overview, the window animates from fullscreen to a smaller size, then follows the finger upwards. Right as the drag begins, the Overview animation has already completed.\n\nThe only remaining animation when releasing the upwards drag to go to overview is to animate all windows to their final positions in overview. \n\nSo we drag, then wait for window animations to stop, and then call WaitForOverviewToFinishAnimating to verify that overview is actually showing.",
+      "parentUuid": "adc33634_53ac1aad",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cf9db33_41645bd9",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 5
