@@ -169,7 +169,7 @@ type Resolution struct {
 
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
-type AppLauncher func(tconn *chrome.Conn) error
+type AppLauncher func(tconn *chrome.TestConn) error
 
 func isMatchCCAPrefix(t *chrome.Target) bool {
 	return strings.HasPrefix(t.URL, ccaURLPrefix)
@@ -279,7 +279,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 // New launches a CCA instance by launchApp event and initialize it. The
 // returned App instance must be closed when the test is finished.
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir string) (*App, error) {
-	return Init(ctx, cr, scriptPaths, outDir, func(tconn *chrome.Conn) error {
+	return Init(ctx, cr, scriptPaths, outDir, func(tconn *chrome.TestConn) error {
 		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ID)
 		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
 			return err
