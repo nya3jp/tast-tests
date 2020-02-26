@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a3ac86e_b1cfae46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_eid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-02-26T03:26:30Z",
+      "side": 1,
+      "message": "Utility",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "20016f9d7373bf1c0161d9f578a1564a53084b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e39ed26_cecc85bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_eid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-02-26T03:26:30Z",
+      "side": 1,
+      "message": "is 32 bytes?",
+      "range": {
+        "startLine": 46,
+        "startChar": 32,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "20016f9d7373bf1c0161d9f578a1564a53084b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
