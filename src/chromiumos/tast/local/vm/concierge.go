@@ -23,9 +23,9 @@ import (
 )
 
 const (
-	conciergeJob = "vm_concierge"         // name of the upstart job for concierge
-	ciceroneJob  = "vm_cicerone"          // name of the upstart job for cicerone
-	testDiskSize = 4 * 1024 * 1024 * 1024 // 4 GiB default disk size
+	conciergeJob = "vm_concierge"        // name of the upstart job for concierge
+	ciceroneJob  = "vm_cicerone"         // name of the upstart job for cicerone
+	testDiskSize = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
 
 	conciergeName      = "org.chromium.VmConcierge"
 	conciergePath      = dbus.ObjectPath("/org/chromium/VmConcierge")
