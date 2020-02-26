@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ed20bf5f_5c2a1854",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:25:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9870ed08_533de139",
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ab5db97_baba1416",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 14
@@ -39,6 +57,30 @@
       "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e87fb83_f9ad97cd",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:25:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ab5db97_baba1416",
+      "range": {
+        "startLine": 12,
+        "startChar": 71,
+        "endLine": 12,
+        "endChar": 72
+      },
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "107a2210_e159a4c1",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:25:42Z",
+      "side": 1,
+      "message": "Sure, it\u0027s only a bit of extra boilerplate in framework code, and doesn\u0027t make test code any more complicated.",
+      "parentUuid": "af6093f5_6015111c",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad32bde_e6395b60",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 14
@@ -85,6 +151,30 @@
       "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2c6dec_4115f013",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-02-26T07:25:42Z",
+      "side": 1,
+      "message": "It\u0027s to make it easier to add collections of metrics, without needed something like:\nappend(append(append(metrics, fooMetrics()...), barMetrics()..., bizMetrics()...)\n\nBut that feels like it might be a premature optimization.",
+      "parentUuid": "9ad32bde_e6395b60",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "61a381bbc8201ab780e53ea141b5798419f32bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
