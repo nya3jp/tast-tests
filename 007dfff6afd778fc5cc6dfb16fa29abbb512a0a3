@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15c62f01_cab1309f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "maybe it\u0027s better to use \"ecdsa-keygen-test.json\" as name?",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e34a16d7_94b5e069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "nit: HMAC",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 8
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80f01de_c7fb1079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "nit: SHA",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 7
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e905ab_73e0b185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "I guess it\u0027s better to create a separate type for this operation",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 14
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cbdddcc_b57cf353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Are you going to support other curve types? If so, adding switch can be useful",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4320b8af_78c04670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "It does not make sense to allocate 32 bytes if you don\u0027t use them. We can avoid this variable at all.",
+      "range": {
+        "startLine": 285,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 16
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43169f0a_d3f5b1f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Here you don\u0027t copy data to existing slice, you create new slice and assign it to digestSlice.",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 12
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94484cf_7c7e68c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Too many parameters, what about using \"Option\" pattern as done for Chrome:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d117?q\u003d%22type%20Option%20func(c%20*Chrome)%22\n\n\nin your case Option should return error",
+      "range": {
+        "startLine": 297,
+        "startChar": 14,
+        "endLine": 297,
+        "endChar": 52
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9aca755_9fea0fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Please add documentation what is b and n",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 45
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529159cd_1e6a67f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Don\u0027t you wanna check whether it\u0027s really 1?",
+      "range": {
+        "startLine": 513,
+        "startChar": 5,
+        "endLine": 513,
+        "endChar": 44
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7d2cd0_7521d5ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "nit: 1.",
+      "range": {
+        "startLine": 513,
+        "startChar": 43,
+        "endLine": 513,
+        "endChar": 44
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bedfc973_48a4114d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "is it really type of operation or number of operations?",
+      "range": {
+        "startLine": 535,
+        "startChar": 20,
+        "endLine": 535,
+        "endChar": 37
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07042f0_d6b03f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Can we introduce new type for `type of operation`? It\u0027s unclear what 0, 1, 2, 3 mean.",
+      "range": {
+        "startLine": 536,
+        "startChar": 40,
+        "endLine": 536,
+        "endChar": 45
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c2af07_0aa8b279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Looks like it can be part of ecdsa type.",
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be3a9d69_bbcc7d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-02-26T12:07:33Z",
+      "side": 1,
+      "message": "Can you put all header related operations together? including variable declaration",
+      "range": {
+        "startLine": 862,
+        "startChar": 0,
+        "endLine": 862,
+        "endChar": 30
+      },
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
