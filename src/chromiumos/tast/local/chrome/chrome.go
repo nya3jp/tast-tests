@@ -938,9 +938,9 @@ func (c *Chrome) enterpriseEnrollTargets(ctx context.Context, userDomain string)
 	return enterpriseTargets, nil
 }
 
-// waitForOOBEConnection waits for that the OOBE page is shown, then returns
+// WaitForOOBEConnection waits for that the OOBE page is shown, then returns
 // a connection to the page. The caller must close the returned connection.
-func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
+func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
 	ctx, st := timing.Start(ctx, "wait_for_oobe")
 	defer st.End()
@@ -1072,7 +1072,7 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context, conn *Conn) error {
 // logIn logs in to a freshly-restarted Chrome instance.
 // It waits for the login process to complete before returning.
 func (c *Chrome) logIn(ctx context.Context) error {
-	conn, err := c.waitForOOBEConnection(ctx)
+	conn, err := c.WaitForOOBEConnection(ctx)
 	if err != nil {
 		return err
 	}
@@ -1308,7 +1308,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, gaiaConn *Conn) 
 // logInAsGuest logs in to a freshly-restarted Chrome instance as a guest user.
 // It waits for the login process to complete before returning.
 func (c *Chrome) logInAsGuest(ctx context.Context) error {
-	oobeConn, err := c.waitForOOBEConnection(ctx)
+	oobeConn, err := c.WaitForOOBEConnection(ctx)
 	if err != nil {
 		return err
 	}
