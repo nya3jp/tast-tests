@@ -235,7 +235,7 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 
 // bootARC performs one ARC boot iteration, opt-out and opt-in again.
 // It calculates the time when the Play Store appears and set of ARC auth times.
-func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.Conn) (measuredValues, error) {
+func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) (measuredValues, error) {
 	var v measuredValues
 
 	// Opt out.

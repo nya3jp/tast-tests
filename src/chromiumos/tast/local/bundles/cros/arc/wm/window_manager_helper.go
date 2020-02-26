@@ -28,7 +28,7 @@ const (
 )
 
 // CheckMaximizeResizeable checks that the window is both maximized and resizeable.
-func CheckMaximizeResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func CheckMaximizeResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
@@ -37,7 +37,7 @@ func CheckMaximizeResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.A
 }
 
 // CheckMaximizeNonResizeable checks that the window is both maximized and not resizeable.
-func CheckMaximizeNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func CheckMaximizeNonResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
@@ -46,7 +46,7 @@ func CheckMaximizeNonResizeable(ctx context.Context, tconn *chrome.Conn, act *ar
 }
 
 // CheckRestoreResizeable checks that the window is both in restore mode and is resizeable.
-func CheckRestoreResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func CheckRestoreResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
 		return err
 	}
@@ -55,7 +55,7 @@ func CheckRestoreResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Ac
 }
 
 // CheckPillarboxResizeable checks that the window is both in pillar-box mode and is resizeable.
-func CheckPillarboxResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func CheckPillarboxResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
@@ -64,7 +64,7 @@ func CheckPillarboxResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.
 }
 
 // CheckPillarboxNonResizeable checks that the window is both in pillar-box mode and is not resizeable.
-func CheckPillarboxNonResizeable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func CheckPillarboxNonResizeable(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := CheckPillarbox(ctx, tconn, act, d); err != nil {
 		return err
 	}
@@ -73,7 +73,7 @@ func CheckPillarboxNonResizeable(ctx context.Context, tconn *chrome.Conn, act *a
 }
 
 // CheckPillarbox checks that the window is in pillar-box mode.
-func CheckPillarbox(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateMaximized); err != nil {
 		return err
 	}
@@ -92,7 +92,7 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, 
 
 // CompareCaption compares the activity caption buttons with the wanted one.
 // Returns nil only if they are equal.
-func CompareCaption(ctx context.Context, tconn *chrome.Conn, pkgName string, wantedCaption ash.CaptionButtonStatus) error {
+func CompareCaption(ctx context.Context, tconn *chrome.TestConn, pkgName string, wantedCaption ash.CaptionButtonStatus) error {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return err
@@ -110,7 +110,7 @@ func CompareCaption(ctx context.Context, tconn *chrome.Conn, pkgName string, wan
 }
 
 // ToggleFullscreen toggles fullscreen by injecting the Zoom Toggle keycode.
-func ToggleFullscreen(ctx context.Context, tconn *chrome.Conn) error {
+func ToggleFullscreen(ctx context.Context, tconn *chrome.TestConn) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return err
@@ -293,7 +293,7 @@ func UIWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d 
 // at the Ash and Android sides. Additionally, it waits until the "Refresh" button exists.
 // act must be a "org.chromium.arc.testapp.windowmanager" activity, otherwise the "Refresh" button check
 // will fail.
-func WaitUntilActivityIsReady(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func WaitUntilActivityIsReady(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
 		return err
 	}
@@ -311,7 +311,7 @@ func WaitUntilActivityIsReady(ctx context.Context, tconn *chrome.Conn, act *arc.
 }
 
 // WaitUntilFrameMatchesCondition waits until the package's window has a frame that matches the given condition.
-func WaitUntilFrameMatchesCondition(ctx context.Context, tconn *chrome.Conn, pkgName string, visible bool, mode ash.FrameMode) error {
+func WaitUntilFrameMatchesCondition(ctx context.Context, tconn *chrome.TestConn, pkgName string, visible bool, mode ash.FrameMode) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 		if err != nil {
@@ -331,7 +331,7 @@ func WaitUntilFrameMatchesCondition(ctx context.Context, tconn *chrome.Conn, pkg
 }
 
 // ChangeDisplayZoomFactor changes the ChromeOS display zoom factor.
-func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.Conn, dispID string, zoomFactor float64) error {
+func ChangeDisplayZoomFactor(ctx context.Context, tconn *chrome.TestConn, dispID string, zoomFactor float64) error {
 	p := display.DisplayProperties{DisplayZoomFactor: &zoomFactor}
 	if err := display.SetDisplayProperties(ctx, tconn, dispID, p); err != nil {
 		return errors.Wrap(err, "failed to set zoom factor")

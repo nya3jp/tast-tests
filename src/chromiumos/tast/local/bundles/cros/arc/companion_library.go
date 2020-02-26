@@ -136,7 +136,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	}
 
 	// All of tests in this block running on MainActivity.
-	type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device) error
+	type testFunc func(context.Context, *chrome.TestConn, *arc.Activity, *ui.Device) error
 	for _, test := range []struct {
 		name string
 		fn   testFunc
@@ -237,7 +237,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 }
 
 // testWindowShadow verifies that the enable / disable window shadow function from ChromeOS companion library is correct.
-func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		toggleButtonID         = pkg + ":id/toggle_shadow"
 		shadowStatusTextViewID = pkg + ":id/toggle_shadow_status_text_view"
@@ -346,7 +346,7 @@ func testWindowShadow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn
 }
 
 // testCaptionHeight verifies that the caption height length getting from ChromeOS companion library is correct.
-func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testCaptionHeight(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getCaptionHeightButtonID = pkg + ":id/get_caption_height"
 
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
@@ -400,7 +400,7 @@ func testCaptionHeight(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 // testResizeWindow verifies that the resize function in ChromeOS companion library works as expected.
 // ARC companion library demo provide a activity for resize test, there are four draggable hit-boxes in four sides.
 // The test maximizing the window by drag from four side inner hit-boxes. The events will be handled by Companion Library, not Chrome.
-func testResizeWindow(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testResizeWindow(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	dispMode, err := ash.InternalDisplayMode(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
@@ -488,7 +488,7 @@ func testResizeWindow(ctx context.Context, tconn *chrome.Conn, act *arc.Activity
 }
 
 // testWorkspaceInsets verifies that the workspace insets info from ChromeOS companion library is correct.
-func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testWorkspaceInsets(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getWorkspaceInsetsButtonID = pkg + ":id/get_workspace_insets"
 
 	parseRectString := func(rectShortString string, mode *display.DisplayMode) (ash.Rect, error) {
@@ -650,7 +650,7 @@ func testWorkspaceInsets(ctx context.Context, tconn *chrome.Conn, act *arc.Activ
 }
 
 // testCaptionButton verifies that hidden caption button API works as expected.
-func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testCaptionButton(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
 		checkCaptionButtonMinimizeBox           = pkg + ":id/caption_button_minimize"
@@ -798,7 +798,7 @@ func testCaptionButton(ctx context.Context, tconn *chrome.Conn, act *arc.Activit
 }
 
 // testDeviceMode verifies that the device mode info from ChromeOS companion library is correct.
-func testDeviceMode(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testDeviceMode(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getDeviceModeButtonID = pkg + ":id/get_device_mode_button"
 
 	if err := setWindowStateSync(ctx, act, arc.WindowStateNormal); err != nil {
@@ -1001,7 +1001,7 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 }
 
 // testPopupWindow verifies that popup window's behaviors works as expected.
-func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		showPopupWindowButtonID = pkg + ":id/popup_window_button"
 		clipToTaskCheckboxID    = pkg + ":id/clip_to_task_bounds"
@@ -1087,7 +1087,7 @@ func testPopupWindow(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 }
 
 // testWindowState verifies that change window state by ChromeOS companion library works as expected.
-func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testWindowState(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		setWindowStateButtonID = pkg + ":id/set_task_window_state_button"
 		getWindowStateButtonID = pkg + ":id/get_task_window_state_button"
@@ -1122,7 +1122,7 @@ func testWindowState(ctx context.Context, tconn *chrome.Conn, act *arc.Activity,
 }
 
 // testMaximize verifies that the app-controlled window cannot be maximized by double click caption after the maximize button has been hidden.
-func testMaximize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testMaximize(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		setCaptionButtonID                      = pkg + ":id/set_caption_buttons_visibility"
 		checkCaptionButtonMaximizeAndRestoreBox = pkg + ":id/caption_button_maximize_and_restore"
@@ -1215,7 +1215,7 @@ func testMaximize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d 
 }
 
 // testWindowBounds verifies that the window bounds related API works as expected in ChromeOS Companion Lib.
-func testWindowBounds(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testWindowBounds(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const getWindowBoundsButtonID = pkg + ":id/get_window_bounds_button"
 
 	physicalDisplayDensity, err := act.DisplayDensity(ctx)
@@ -1490,7 +1490,7 @@ func getLastJSONMessage(ctx context.Context, d *ui.Device) (*companionLibMessage
 }
 
 // setWallpaper setting given URL as ChromeOS wallpaper.
-func setWallpaper(ctx context.Context, tconn *chrome.Conn, wallpaperURL string) error {
+func setWallpaper(ctx context.Context, tconn *chrome.TestConn, wallpaperURL string) error {
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.wallpaper.setWallpaper)({
 			url: '%s',

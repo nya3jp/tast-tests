@@ -47,13 +47,13 @@ const (
 )
 
 // wmTestStateFunc represents a function that tests if the window is in a certain state.
-type wmTestStateFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device) error
+type wmTestStateFunc func(context.Context, *chrome.TestConn, *arc.Activity, *ui.Device) error
 
 // uiClickFunc represents a function that "clicks" on a certain widget using UI Automator.
 type uiClickFunc func(context.Context, *arc.Activity, *ui.Device) error
 
 // wmCUJTestFunc represents the "test" function.
-type wmCUJTestFunc func(context.Context, *chrome.Conn, *arc.ARC, *ui.Device) error
+type wmCUJTestFunc func(context.Context, *chrome.TestConn, *arc.ARC, *ui.Device) error
 
 // wmCUJTestParams represents the name of test, and the function to call.
 type wmCUJTestParams struct {
@@ -177,7 +177,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 // wmDefaultLaunchClamshell24 launches in clamshell mode six SDK-N activities with different orientations
 // and resize conditions. And it verifies that their default launch state is the expected one, as defined in:
 // go/arc-wm-p "Clamshell: default launch behavior - Android NYC or above" (slide #6).
-func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name        string
 		act         string
@@ -225,7 +225,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 // wmDefaultLaunchClamshell23 launches in clamshell mode three SDK-pre-N activities with different orientations.
 // And it verifies that their default launch state is the expected one, as defined in:
 // go/arc-wm-p "Clamshell: default launch behavior - Android MNC and below" (slide #7).
-func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name        string
 		act         string
@@ -266,7 +266,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 
 // wmMaximizeRestoreClamshell24 verifies that switching to maximize state from restore state, and vice-versa, works as defined in:
 // go/arc-wm-p "Clamshell: maximize/restore" (slides #8 - #10).
-func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name         string
 		act          string
@@ -322,7 +322,7 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *ar
 
 // wmMaximizeRestoreClamshell23 verifies that switching to maximize state from restore state, and vice-versa, works as defined in:
 // go/arc-wm-p "Clamshell: maximize/restore" (slides #11 - #13).
-func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name           string
 		act            string
@@ -389,7 +389,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 
 // wmFollowRoot verifies that child activities follow the root activity state as defined in:
 // go/arc-wm-p "Clamshell: new activities follow root activity" (slides #15 - #17).
-func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmFollowRoot(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name    string
 		pkgName string
@@ -481,7 +481,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 
 // wmSpringboard verifies that child activities do not honor the root activity state as defined in:
 // go/arc-wm-p "Clamshell: Springboard activities" (slide #18).
-func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmSpringboard(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name    string
 		pkgName string
@@ -574,7 +574,7 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 
 // wmLightsOutIn verifies that the activity can go from maximized to fullscreen mode, an vice-versa as defined in go/arc-wm-p:
 // "Clamshell: lights out or fullscreen" (slide #19) and "Clamshell: exit lights out or fullscreen" (slide #20).
-func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmLightsOutIn(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// Slides #19 and #20 describe this scenario with "Landscape" activities. But using "unspecified" since
 	// a tablet in portrait mode (like Dru) + keyboard means that we have a clamshell device in portrait mode.
 	act, err := arc.NewActivity(a, wmPkg24, wmResizeableUnspecifiedActivity)
@@ -648,7 +648,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 
 // wmLightsOutIgnored verifies that an N activity cannot go from restored to fullscreen mode as defined in:
 // go/arc-wm-p "Clamshell: lights out and fullscreen ignored" (slides #22-#23)
-func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmLightsOutIgnored(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	for _, test := range []struct {
 		name     string
 		pkg      string
@@ -706,7 +706,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 
 // wmPIP verifies that the activity enters into Picture In Picture mode when occluded as defined in:
 // go/arc-wm-p "Clamshell: Picture in Picture" (slide #24)
-func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	// 1) Launch a PIP-ready activity in non-PIP mode.
 	testing.ContextLog(ctx, "Launching PIP activity")
 	const pkgName = "org.chromium.arc.testapp.pictureinpicture"
@@ -752,7 +752,7 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 
 // wmFreeformResize verifies that a window can be resized as defined in:
 // go/arc-wm-p "Clamshell: freeform resize" (slide #26)
-func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
 	if err != nil {
 		return err
@@ -811,7 +811,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui
 
 // wmSnapping verifies that a window can be snapped as defined in:
 // go/arc-wm-p "Clamshell: Snapping to half screen" (slide #27).
-func wmSnapping(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return err
@@ -869,7 +869,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Devic
 
 // wmDisplayResolution verifies that the Android resolution gets updated as defined in:
 // go/arc-wm-p "Clamshell: display resolution change" (slides #28-#29).
-func wmDisplayResolution(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmDisplayResolution(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
 	if err != nil {
 		return err
@@ -969,7 +969,7 @@ func wmDisplayResolution(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d 
 
 // wmPageZoom verifies that the Android zoom level gets updated as defined in:
 // go/arc-wm-p "Clamshell: Page/content zoom" (slides #30-#31).
-func wmPageZoom(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmPageZoom(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device) error {
 	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
 	if err != nil {
 		return err
