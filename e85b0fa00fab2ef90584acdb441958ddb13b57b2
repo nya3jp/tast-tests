@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b7730af_4cf87d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "Because you\u0027re rebooting Chrome, could you avoid using LoggedIn?\nThe precondition is for the tests which need LoggedIn chrome, *and keep it logged in*.",
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9776587_5b0b081d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "Could you avid using testing.State just for logging? You can instead use testing.ContextLog()",
+      "range": {
+        "startLine": 28,
+        "startChar": 53,
+        "endLine": 28,
+        "endChar": 69
+      },
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e8dddb1_e965469e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "ADB (in go, acronyms should be all CAPITAL)",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d287a5_9b415a7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "nit: could you use TestConn?",
+      "range": {
+        "startLine": 28,
+        "startChar": 85,
+        "endLine": 28,
+        "endChar": 89
+      },
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e239e3a7_6dae1b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "nit/style: You can simply return",
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c09dd3_beeb476c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "I\u0027d recommend to use tast.promisify.\n\ntast.promisify(chrome.autotestPrivate.setWhitelistedPref)(\u0027EnableAdbSideLoadingRequested\u0027, true)",
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a527bc77_12ce00a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "in go, we often avoid prefixes like \"get\", \"is\", \"has\".\n\nYou can just name it \"adbSideloading\"\n\nClar: is this \"ADB\" sideloading? or \"ARC\" sideloading? Could you define the terminology and use it consistently?",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de359bc5_4c822dac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "Could you use errors.Errorf() instead?\n\nerrors.Errorf(\"unexpected bootlockbox: got %s\", enabled)",
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "065b2df1_fb6333ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "nit/style/recommendation: You can use switch to simplify the syntax.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec428c5c_46b5aab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/enable_adb_sideloading2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-26T00:00:46Z",
+      "side": 1,
+      "message": "Do you need \"reboot DUT\"? or, just log-out then log-in works?\n\nIf the former, you need to write remote test. If latter, you can recreate Chrome instance.\n\nfunc() {\n  cr, err :\u003d chrome.New(ctx, ...)\n  if err !\u003d nil {\n    s.Fatal(...)\n  }\n  defer cr.Close(...)\n  tconn, err :\u003d cr.TestAPIConn(ctx)\n  if err !\u003d nil {\n    s.Fatal(...)\n  }\n  if err :\u003d initADBSideLoading(ctx, tconn); err !\u003d nil {\n    s.Fatal(...)\n  }\n}()\n\n// Log out.\nif err :\u003d upstart.RestartJob(ctx, \"ui\"); err !\u003d nil {\n  s.Fatal(...)\n}\n\n// Re-login\ncr, err :\u003d chrome.New(ctx, ...)\nif err !\u003d nil {\n  s.Fatal(...)\n}\ndefer cr.Close(...)\n\ntconn, err :\u003d cr.TestAPIConn(ctx)\nif err !\u003d nil {\n  s.Fatal(...)\n}\nif err :\u003d tconn.EvalPromise(ctx, \"...(\u0027textButton\u0027).click()\", nil); err !\u003d nil {\n  s.Fatal(...)\n}",
+      "revId": "e85b0fa00fab2ef90584acdb441958ddb13b57b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
