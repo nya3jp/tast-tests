@@ -1,27 +1,26 @@
 <html>
 <body>
-  <video id='video' name='media' width=50% loop muted>
+  <video id='video' name='media' controls autoplay muted>
   </video>
-  <br>
-  Current time (seconds): <span id='videoCurTime'>0</span> / <span id='videoTotalTime'>0</span>
 </body>
 
 <script type="text/javascript">
 
-// This is only for user-facing convenience purposes.
-document.getElementById('video').ontimeupdate = _ => {
-  document.getElementById('videoCurTime').innerHTML = video.currentTime;
-  document.getElementById('videoTotalTime').innerHTML = video.duration;
-};
+function play(videoSourcePath) {
+  return new Promise((resolve, reject) => {
+    let video = document.getElementById('video');
 
-async function play(videoSourcePath) {
-  let video = document.getElementById('video');
-  video.src = videoSourcePath;
-  return video.play();
-}
+    video.onerror = e => { return reject(e.error.ToString()); };
+    video.onended = () => { resolve();};
 
-function pause() {
-  video.pause();
+    video.src = videoSourcePath;
+    video.play()
+      .then(() => {
+        console.log('Loaded url: ', videoSourcePath);
+      }).catch((e) => {
+        return reject(e.error.ToString());
+      });
+  })
 }
 
 // Quick and dirty randomizer that returns the same sequence of numbers provided
