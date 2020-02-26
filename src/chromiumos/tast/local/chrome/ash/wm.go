@@ -479,9 +479,6 @@ func NewTouchCoordConverter(ctx context.Context, tconn *chrome.TestConn, tsew *i
 	if err != nil {
 		return nil, errors.Wrap(err, "no internal display found")
 	}
-	if !info.HasTouchSupport {
-		return nil, errors.Wrap(err, "the internal display has no touch supports")
-	}
 
 	return &TouchCoordConverter{
 		ScaleX: float64(tsew.Width()) / float64(info.Bounds.Width),
