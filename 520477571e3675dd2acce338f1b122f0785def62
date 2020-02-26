@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27a1bdbf_0ae3bc70",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-26T15:17:06Z",
+      "side": 1,
+      "message": "though it is better to use --conf-file\u003d- so that it can write conf to stdin without file i/o. However, we need the conf filename as the command\u0027s signature so that pkill works. Switch to write conf file to stdin once we don\u0027t need pkill to kill the process.",
+      "range": {
+        "startLine": 104,
+        "startChar": 29,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "520477571e3675dd2acce338f1b122f0785def62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
