@@ -26,13 +26,13 @@ var rootFindParams ui.FindParams = ui.FindParams{
 
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
-	tconn *chrome.Conn
+	tconn *chrome.TestConn
 	Root  *ui.Node
 }
 
 // Launch launches the Files App and returns it.
 // An error is returned if the app fails to launch.
-func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
+func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Launch the Files App.
 	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
 		return nil, err

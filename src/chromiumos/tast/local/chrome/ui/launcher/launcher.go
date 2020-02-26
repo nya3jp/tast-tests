@@ -16,7 +16,7 @@ import (
 )
 
 // SearchAndLaunch searches a query in the launcher and executes it.
-func SearchAndLaunch(ctx context.Context, tconn *chrome.Conn, query string) error {
+func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) error {
 	const defaultTimeout = 15 * time.Second
 	root, err := ui.Root(ctx, tconn)
 	if err != nil {

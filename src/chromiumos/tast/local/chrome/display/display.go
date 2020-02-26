@@ -95,9 +95,9 @@ func (info *Info) GetEffectiveDeviceScaleFactor() (float64, error) {
 
 // GetInfo calls chrome.system.display.getInfo to get information about connected displays.
 // See https://developer.chrome.com/apps/system_display#method-getInfo.
-func GetInfo(ctx context.Context, c *chrome.Conn) ([]Info, error) {
+func GetInfo(ctx context.Context, tconn *chrome.TestConn) ([]Info, error) {
 	var infos []Info
-	if err := c.EvalPromise(ctx, `tast.promisify(chrome.system.display.getInfo)()`, &infos); err != nil {
+	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.system.display.getInfo)()`, &infos); err != nil {
 		return nil, errors.Wrap(err, "failed to get display info")
 	}
 	if len(infos) == 0 {
@@ -110,8 +110,8 @@ func GetInfo(ctx context.Context, c *chrome.Conn) ([]Info, error) {
 
 // GetInternalInfo returns information about the internal display.
 // An error is returned if no internal display is present.
-func GetInternalInfo(ctx context.Context, c *chrome.Conn) (*Info, error) {
-	infos, err := GetInfo(ctx, c)
+func GetInternalInfo(ctx context.Context, tconn *chrome.TestConn) (*Info, error) {
+	infos, err := GetInfo(ctx, tconn)
 	if err != nil {
 		return nil, err
 	}
@@ -141,7 +141,7 @@ type DisplayProperties struct { // NOLINT
 // See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
 // Some properties, like rotation, will be performed in an async way. For rotation in particular,
 // you should call display.WaitForDisplayRotation() to know when the rotation animation finishes.
-func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp DisplayProperties) error {
+func SetDisplayProperties(ctx context.Context, tconn *chrome.TestConn, id string, dp DisplayProperties) error {
 	b, err := json.Marshal(&dp)
 	if err != nil {
 		return err
@@ -155,7 +155,7 @@ func SetDisplayProperties(ctx context.Context, c *chrome.Conn, id string, dp Dis
 		})`, id, string(b))
 
 	msg := ""
-	if err = c.EvalPromise(ctx, expr, &msg); err != nil {
+	if err = tconn.EvalPromise(ctx, expr, &msg); err != nil {
 		return err
 	} else if msg != "" {
 		return errors.New(msg)
@@ -180,7 +180,7 @@ const (
 
 // SetDisplayRotationSync rotates the display to a certain angle and waits until the rotation animation finished.
 // c must be a connection with both system.display and autotestPrivate permissions.
-func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, rot RotationAngle) error {
+func SetDisplayRotationSync(ctx context.Context, tconn *chrome.TestConn, dispID string, rot RotationAngle) error {
 	var rotInt int
 	switch rot {
 	case Rotate0:
@@ -196,7 +196,7 @@ func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, 
 	}
 
 	p := DisplayProperties{Rotation: &rotInt}
-	if err := SetDisplayProperties(ctx, c, dispID, p); err != nil {
+	if err := SetDisplayProperties(ctx, tconn, dispID, p); err != nil {
 		return errors.Wrapf(err, "failed to set rotation to %d", rotInt)
 	}
 
@@ -205,7 +205,7 @@ func SetDisplayRotationSync(ctx context.Context, c *chrome.Conn, dispID string, 
 		    if (!success)
 		      throw new Error("failed to wait for display rotation");
 		})`, dispID, rot)
-	return c.EvalPromise(ctx, expr, nil)
+	return tconn.EvalPromise(ctx, expr, nil)
 }
 
 // OrientationType represents a display orientation.
@@ -230,11 +230,11 @@ type Orientation struct {
 }
 
 // GetOrientation returns the Orientation of the display.
-func GetOrientation(ctx context.Context, c *chrome.Conn) (*Orientation, error) {
+func GetOrientation(ctx context.Context, tconn *chrome.TestConn) (*Orientation, error) {
 	result := &Orientation{}
 	// Using a JS expression to evaluate screen.orientation to a JSON object
 	// because JSON.stringify does not work for it and returns {}.
-	if err := c.Eval(ctx, `s=screen.orientation;o={"angle":s.angle,"type":s.type}`, result); err != nil {
+	if err := tconn.Eval(ctx, `s=screen.orientation;o={"angle":s.angle,"type":s.type}`, result); err != nil {
 		return nil, err
 	}
 	return result, nil
@@ -254,8 +254,8 @@ func IsFakeDisplayID(id string) bool {
 
 // PhysicalDisplayConnected checks the display info and returns true if at least
 // one physical display is connected.
-func PhysicalDisplayConnected(ctx context.Context, c *chrome.Conn) (bool, error) {
-	infos, err := GetInfo(ctx, c)
+func PhysicalDisplayConnected(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	infos, err := GetInfo(ctx, tconn)
 	if err != nil {
 		return false, err
 	}

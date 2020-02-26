@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package settings implements a library used for communication with Chrome settings.
-// A chrome.Conn with the "settingsPrivate" permission is needed, like the one returned by TestAPIConn().
+// A chrome.TestConn returned by TestAPIConn() with the "settingsPrivate" permission is needed.
 package settings
 
 import (
@@ -16,9 +16,9 @@ import (
 // DefaultZoom returns the default page zoom factor. Possible values are currently between
 // 0.25 and 5. For a full list, see zoom::kPresetZoomFactors in:
 // https://cs.chromium.org/chromium/src/components/zoom/page_zoom_constants.cc
-func DefaultZoom(ctx context.Context, c *chrome.Conn) (float64, error) {
+func DefaultZoom(ctx context.Context, tconn *chrome.TestConn) (float64, error) {
 	var zoom float64
-	if err := c.EvalPromise(ctx,
+	if err := tconn.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {
 		  chrome.settingsPrivate.getDefaultZoom(function(zoom) {
 		    if (chrome.runtime.lastError) {
@@ -36,7 +36,7 @@ func DefaultZoom(ctx context.Context, c *chrome.Conn) (float64, error) {
 // SetDefaultZoom sets the page zoom factor. Must be less than 0.001 different than a value
 // in zoom::kPresetZoomFactors. See:
 // https://cs.chromium.org/chromium/src/components/zoom/page_zoom_constants.cc
-func SetDefaultZoom(ctx context.Context, c *chrome.Conn, zoom float64) error {
+func SetDefaultZoom(ctx context.Context, tconn *chrome.TestConn, zoom float64) error {
 	expr := fmt.Sprintf(
 		`new Promise(function(resolve, reject) {
 		  chrome.settingsPrivate.setDefaultZoom(%f, function(success) {
@@ -51,5 +51,5 @@ func SetDefaultZoom(ctx context.Context, c *chrome.Conn, zoom float64) error {
 		    resolve();
 		  })
 		})`, zoom)
-	return c.EvalPromise(ctx, expr, nil)
+	return tconn.EvalPromise(ctx, expr, nil)
 }

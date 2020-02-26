@@ -14,7 +14,7 @@ import (
 
 // SetOverviewModeAndWait requests Ash to set the overview mode state and waits
 // for its animation to complete.
-func SetOverviewModeAndWait(ctx context.Context, tconn *chrome.Conn, inOverview bool) error {
+func SetOverviewModeAndWait(ctx context.Context, tconn *chrome.TestConn, inOverview bool) error {
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setOverviewModeState)(%v)`, inOverview)
 	finished := false
 	if err := tconn.EvalPromise(ctx, expr, &finished); err != nil {
