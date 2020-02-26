@@ -28,7 +28,7 @@ func init() {
 }
 
 // waitForVKVisibility waits until the virtual keyboard is shown or hidden.
-func waitForVKVisibility(ctx context.Context, tconn *chrome.Conn, shown bool) error {
+func waitForVKVisibility(ctx context.Context, tconn *chrome.TestConn, shown bool) error {
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 	return tconn.EvalPromise(ctx, fmt.Sprintf(`

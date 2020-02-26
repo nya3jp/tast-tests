@@ -39,7 +39,7 @@ func init() {
 	})
 }
 
-func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.Conn, pkg string) (string, error) {
+func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.TestConn, pkg string) (string, error) {
 	var lst []struct {
 		ID string `json:"id"`
 	}
@@ -59,7 +59,7 @@ func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.Conn, pkg str
 	return "", errors.Errorf("%s not found in the list", pkg)
 }
 
-func isKeyboardShown(ctx context.Context, tconn *chrome.Conn) (bool, error) {
+func isKeyboardShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	var shown bool
 	if err := tconn.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {

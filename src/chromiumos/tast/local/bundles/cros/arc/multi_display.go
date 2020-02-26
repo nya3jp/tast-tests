@@ -561,7 +561,7 @@ func removeAddDisplay(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error 
 // Helper functions.
 
 // ensureWindowOnDisplay checks whether a window is on a certain display.
-func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.Conn, pkgName, dispID string) error {
+func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.TestConn, pkgName, dispID string) error {
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return err
@@ -595,7 +595,7 @@ func startActivityOnDisplay(ctx context.Context, a *arc.ARC, pkgName, actName, d
 }
 
 // ensureSetWindowState checks whether the window is in requested window state. If not, make sure to set window state to the requested window state.
-func ensureSetWindowState(ctx context.Context, tconn *chrome.Conn, pkgName string, expectedState ash.WindowStateType) error {
+func ensureSetWindowState(ctx context.Context, tconn *chrome.TestConn, pkgName string, expectedState ash.WindowStateType) error {
 	if state, err := ash.GetARCAppWindowState(ctx, tconn, pkgName); err != nil {
 		return err
 	} else if state == expectedState {
@@ -622,7 +622,7 @@ func ensureSetWindowState(ctx context.Context, tconn *chrome.Conn, pkgName strin
 }
 
 // ensureWindowStable checks whether the window moves its position.
-func ensureWindowStable(ctx context.Context, tconn *chrome.Conn, pkgName string, expectedWindowInfo *ash.Window) error {
+func ensureWindowStable(ctx context.Context, tconn *chrome.TestConn, pkgName string, expectedWindowInfo *ash.Window) error {
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get window info for window: %q", pkgName)
@@ -634,7 +634,7 @@ func ensureWindowStable(ctx context.Context, tconn *chrome.Conn, pkgName string,
 }
 
 // ensureNoBlackBkg checks whether there is black background.
-func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
+func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
 		return err
@@ -690,7 +690,7 @@ func ensureWinBoundsInDisplay(winBounds ash.Rect, displayBounds *display.Bounds)
 }
 
 // waitForStopAnimating waits until Ash window stops animation.
-func waitForStopAnimating(ctx context.Context, tconn *chrome.Conn, pkgName string, timeout time.Duration) error {
+func waitForStopAnimating(ctx context.Context, tconn *chrome.TestConn, pkgName string, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 		if err != nil {
@@ -704,7 +704,7 @@ func waitForStopAnimating(ctx context.Context, tconn *chrome.Conn, pkgName strin
 }
 
 // waitForDisplay waits until a display on or off.
-func waitForDisplay(ctx context.Context, tconn *chrome.Conn, dispID string, isOn bool, timeout time.Duration) error {
+func waitForDisplay(ctx context.Context, tconn *chrome.TestConn, dispID string, isOn bool, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		infos, err := display.GetInfo(ctx, tconn)
 		if err != nil {
@@ -733,7 +733,7 @@ func waitForDisplay(ctx context.Context, tconn *chrome.Conn, dispID string, isOn
 }
 
 // ensureActivityReady waits until given activity is ready.
-func ensureActivityReady(ctx context.Context, tconn *chrome.Conn, act *arc.Activity) error {
+func ensureActivityReady(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity) error {
 	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
 		return err
 	}

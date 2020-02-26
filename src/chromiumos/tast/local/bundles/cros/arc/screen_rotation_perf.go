@@ -153,7 +153,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 // grabPerfSamples runs the performance test and returns the samples.
 // The performance test consists of measuring how expensive, GFX-wise, is to rotate the device.
 // The information is taken from "dumpsys gfxinfo".
-func grabPerfSamples(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device, pkgName, dispID string) (samples map[perf.Metric][]float64, err error) {
+func grabPerfSamples(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, pkgName, dispID string) (samples map[perf.Metric][]float64, err error) {
 	samples = make(map[perf.Metric][]float64)
 	const samplesPerRotation = 10
 	for i := 0; i < samplesPerRotation; i++ {
@@ -296,7 +296,7 @@ func waitUntilNoNewFramesAvailable(ctx context.Context, a *arc.ARC, pkgName stri
 }
 
 // rotateDisplaySync rotates to display to a given angle. Waits until the rotation is complete in the Android side.
-func rotateDisplaySync(ctx context.Context, tconn *chrome.Conn, d *ui.Device, dispID string, rot display.RotationAngle) error {
+func rotateDisplaySync(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, dispID string, rot display.RotationAngle) error {
 	// Android rotations as defined in Surface.java
 	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/view/Surface.java
 	rots := map[int]display.RotationAngle{
