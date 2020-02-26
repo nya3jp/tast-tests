@@ -22,6 +22,30 @@
       "revId": "5d90ba66790726fbae1ef860fe90035bacab9954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24409618_0ea6f393",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-26T19:33:12Z",
+      "side": 1,
+      "message": "apparently another CL caused the regression. revert in progress: https://crrev.com/c/2075370",
+      "parentUuid": "ddc647a5_dbdd3b21",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "5d90ba66790726fbae1ef860fe90035bacab9954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
