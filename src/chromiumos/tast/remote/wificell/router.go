@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/host"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
+	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/testing"
 )
@@ -112,6 +113,64 @@ func (r *Router) setupWifiPhys(ctx context.Context) error {
 	return nil
 }
 
+// configureRNG configures the system's random number generator (RNG)
+// to tpm-rng if available.
+// Some router, e.g. Gale, uses an inferior RNG as system default RNG,
+// which makes hostpad unable to generate high quality keys fast enough.
+// Trusted platform module (TPM), if available, should contain a better
+// RNG, named tpm-rng. This function tries to switch the system's current
+// RNG to tpm-rng if available.
+//
+// Symptoms of a slow RNG: hostapd complains with:
+//
+//   WPA: Not enough entropy in random pool to proceed - reject first
+//   4-way handshake
+//
+// Ref:
+// https://chromium.googlesource.com/chromiumos/third_party/hostap/+/7ea51f728bb7/src/ap/wpa_auth.c#1854
+//
+// Linux devices may have RNG parameters at
+// /sys/class/misc/hw_random/rng_{available,current}. See:
+//   https://www.kernel.org/doc/Documentation/hw_random.txt
+func (r *Router) configureRNG(ctx context.Context) error {
+	const rngAvailPath = "/sys/class/misc/hw_random/rng_available"
+	const rngCurrentPath = "/sys/class/misc/hw_random/rng_current"
+
+	out, err := r.host.Command("cat", rngAvailPath).Output(ctx)
+	if err != nil {
+		// The system might not surpport hw_random, skip the configuration.
+		return nil
+	}
+
+	const wantRng = "tpm-rng"
+
+	out, err = r.host.Command("cat", rngCurrentPath).Output(ctx)
+	if err != nil {
+		return err
+	}
+	current := strings.TrimSpace(string(out))
+	if current == wantRng {
+		return nil
+	}
+
+	supported := false
+	for _, rng := range strings.Split(strings.TrimSpace(string(out)), " ") {
+		if wantRng == rng {
+			supported = true
+			break
+		}
+	}
+	if !supported {
+		return nil
+	}
+
+	testing.ContextLogf(ctx, "Switching RNGs: %s -> %s", current, wantRng)
+	if err := fileutil.WriteToHostSysfs(ctx, r.host, rngCurrentPath, wantRng); err != nil {
+		return err
+	}
+	return nil
+}
+
 // initialize prepares initial test AP state (e.g., initializing wiphy/wdev).
 func (r *Router) initialize(ctx context.Context) error {
 	board, err := hostBoard(ctx, r.host)
@@ -145,7 +204,10 @@ func (r *Router) initialize(ctx context.Context) error {
 	// Stop upstart job wpasupplicant if available. (ignore the error as it might be stopped already)
 	r.host.Command("stop", "wpasupplicant").Run(ctx)
 
-	// TODO(crbug.com/774808): configure hw_random.
+	// Configure hw_random, see function doc for more details.
+	if err := r.configureRNG(ctx); err != nil {
+		return errors.Wrap(err, "failed to configure hw_random")
+	}
 
 	return nil
 }
