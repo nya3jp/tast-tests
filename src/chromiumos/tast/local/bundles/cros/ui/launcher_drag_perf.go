@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/ui"
@@ -53,8 +52,8 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	var primaryBounds coords.Rect
-	var primaryWorkArea coords.Rect
+	var primaryBounds *display.Bounds
+	var primaryWorkArea *display.Bounds
 	infos, err := display.GetInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain the display info: ", err)
@@ -66,7 +65,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			break
 		}
 	}
-	if primaryBounds.Empty() {
+	if primaryBounds == nil {
 		s.Fatal("No primary display is found")
 	}
 
@@ -78,8 +77,8 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	//   shelf, which equals to the average of workarea height and display height)
 	// - Y of top: 10px from the top of the screen; this is just like almost top
 	//   of the screen.
-	bottom := coords.NewPoint(primaryBounds.Left+primaryBounds.Width/4, primaryBounds.Top+(primaryBounds.Height+primaryWorkArea.Height)/2)
-	top := coords.NewPoint(bottom.X, primaryBounds.Top+10)
+	bottom := ash.Location{X: primaryBounds.Left + primaryBounds.Width/4, Y: primaryBounds.Top + (primaryBounds.Height+primaryWorkArea.Height)/2}
+	top := ash.Location{X: bottom.X, Y: primaryBounds.Top + 10}
 
 	pv := perf.NewValues()
 	currentWindows := 0

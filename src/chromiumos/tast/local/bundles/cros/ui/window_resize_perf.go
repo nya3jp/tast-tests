@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/ui"
@@ -106,7 +105,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		}
 		bounds := w0.BoundsInRoot
 
-		start := coords.NewPoint(bounds.Left+bounds.Width, bounds.Top+bounds.Height/2)
+		start := ash.Location{X: bounds.Left + bounds.Width, Y: bounds.Top + bounds.Height/2}
 		if len(ws) > 1 {
 			// For multiple windows; hover on the boundary, wait for the resize-handle
 			// to appear, and move onto the resize handle.
@@ -124,7 +123,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to move the mouse: ", err)
 			}
 		}
-		end := coords.NewPoint(start.X-bounds.Width/4, start.Y)
+		end := ash.Location{X: start.X - bounds.Width/4, Y: start.Y}
 		hists, err := metrics.Run(ctx, cr, func() error {
 			if err := ash.MouseDrag(ctx, tconn, start, end, time.Second*2); err != nil {
 				return errors.Wrap(err, "failed to drag")
