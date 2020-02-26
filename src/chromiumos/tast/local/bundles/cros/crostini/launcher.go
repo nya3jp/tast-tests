@@ -300,7 +300,7 @@ func Launcher(ctx context.Context, s *testing.State) {
 }
 
 // launchAppAndMeasureWindowSize is a helper function that sets the app "scaled" property, launches the app and returns its window size.
-func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn *chrome.Conn,
+func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	ew *input.KeyboardEventWriter, ownerID, appID string, windowName string, scaled bool) (crostini.Size, error) {
 	s.Log("Setting application property 'scaled' to ", scaled)
 	if err := setAppScaled(ctx, tconn, appID, scaled); err != nil {
@@ -374,6 +374,6 @@ func waitForIcon(ctx context.Context, ownerID, appID string, expectation iconExp
 }
 
 // setAppScaled sets the specified application to be scaled or not via an autotest API call.
-func setAppScaled(ctx context.Context, tconn *chrome.Conn, appID string, scaled bool) error {
+func setAppScaled(ctx context.Context, tconn *chrome.TestConn, appID string, scaled bool) error {
 	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setCrostiniAppScaled)('%v', %v)`, appID, scaled), nil)
 }

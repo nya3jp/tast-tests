@@ -43,7 +43,7 @@ func init() {
 
 // ensureAppInstalled ensures the companion extension for the Chrome Remote
 // Desktop website https://remotedesktop.google.com is installed.
-func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
+func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 	const appCWSURL = "https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai?hl=en"
 
 	cws, err := cr.NewConn(ctx, appCWSURL)
@@ -117,7 +117,7 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Co
 	return nil
 }
 
-func launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) (*chrome.Conn, error) {
+func launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*chrome.Conn, error) {
 	conn, err := cr.NewConn(ctx, "https://remotedesktop.google.com/support?hl=en")
 	if err != nil {
 		return nil, err
@@ -155,7 +155,7 @@ func getAccessCode(ctx context.Context, crd *chrome.Conn) (string, error) {
 	return code, nil
 }
 
-func waitConnection(ctx context.Context, tconn *chrome.Conn) error {
+func waitConnection(ctx context.Context, tconn *chrome.TestConn) error {
 	// Get UI root.
 	root, err := ui.Root(ctx, tconn)
 	if err != nil {

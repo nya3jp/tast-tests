@@ -54,7 +54,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to idle")
 	}
 
-	app, err := Init(ctx, cr, scripts, options.OutputDir, func(tconn *chrome.Conn) error {
+	app, err := Init(ctx, cr, scripts, options.OutputDir, func(tconn *chrome.TestConn) error {
 		if err := setupPerfListener(ctx, tconn, options.IsColdStart); err != nil {
 			return err
 		}
@@ -190,7 +190,7 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 }
 
 // setupPerfListener setups the connection to CCA and add a perf event listener.
-func setupPerfListener(ctx context.Context, tconn *chrome.Conn, isColdStart bool) error {
+func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, isColdStart bool) error {
 	var launchEventName string
 	if isColdStart {
 		launchEventName = "launching-from-launch-app-cold"

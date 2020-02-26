@@ -28,8 +28,8 @@ const DataArtifact string = "lacros_binary.tar"
 //		...
 //	}
 type PreData struct {
-	Chrome      *chrome.Chrome // The CrOS-chrome instance.
-	TestAPIConn *chrome.Conn   // The CrOS-chrome connection.
+	Chrome      *chrome.Chrome   // The CrOS-chrome instance.
+	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
 }
 
 // StartedByData uses a pre-built image downloaded from cloud storage as a
@@ -55,12 +55,12 @@ var startedByDataPre = &preImpl{
 
 // Implementation of lacros's precondition.
 type preImpl struct {
-	name     string         // Name of this precondition (for logging/uniqueing purposes).
-	timeout  time.Duration  // Timeout for completing the precondition.
-	mode     setupMode      // Where (download/build artifact) the container image comes from.
-	cr       *chrome.Chrome // Connection to CrOS-chrome.
-	tconn    *chrome.Conn   // Test-connection for CrOS-chrome.
-	prepared bool           // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	name     string           // Name of this precondition (for logging/uniqueing purposes).
+	timeout  time.Duration    // Timeout for completing the precondition.
+	mode     setupMode        // Where (download/build artifact) the container image comes from.
+	cr       *chrome.Chrome   // Connection to CrOS-chrome.
+	tconn    *chrome.TestConn // Test-connection for CrOS-chrome.
+	prepared bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
 }
 
 // Interface methods for a testing.Precondition.
