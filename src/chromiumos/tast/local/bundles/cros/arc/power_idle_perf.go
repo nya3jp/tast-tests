@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/ectool"
 	"chromiumos/tast/local/power/powercap"
 	"chromiumos/tast/local/power/setup"
@@ -67,6 +68,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		ctx,
 		ectool.NewBatteryMetrics(2.0),
 		powercap.NewRAPLMetrics(),
+		power.NewCpuidleMetrics(),
 	)
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
