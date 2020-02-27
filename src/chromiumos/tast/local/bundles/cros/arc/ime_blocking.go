@@ -18,10 +18,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ImeBlocking,
+		Func:         IMEBlocking,
 		Desc:         "Checks if IME blocking works on ARC",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcImeBlockingTest.apk"},
 		Pre:          arc.Booted(),
@@ -29,7 +29,7 @@ func init() {
 	})
 }
 
-func ImeBlocking(ctx context.Context, s *testing.State) {
+func IMEBlocking(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
