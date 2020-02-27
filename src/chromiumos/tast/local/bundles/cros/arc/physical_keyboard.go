@@ -21,7 +21,6 @@ func init() {
 		Desc:         "Checks physical keyboard works on Android",
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcKeyboardTest.apk"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android"},
@@ -56,7 +55,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
