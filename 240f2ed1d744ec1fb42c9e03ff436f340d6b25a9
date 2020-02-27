@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e00224c_e0112b6b",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-27T05:43:26Z",
+      "side": 1,
+      "message": "drop this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 9,
+        "endChar": 80
+      },
+      "revId": "240f2ed1d744ec1fb42c9e03ff436f340d6b25a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
