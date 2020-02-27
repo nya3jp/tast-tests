@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17fa40c2_8028e1d3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T09:29:02Z",
+      "side": 1,
+      "message": "Could you handle error?\n\n`tast.promisify(chrome.inputMethodPrivate.hideInputView)()`\n\nwill do it, I think.",
+      "revId": "b881a98a48498228007e7543ecd3401838c0b67d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
