@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
-		Pre:          pre.ChromeVideo(),
+		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
