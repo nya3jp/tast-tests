@@ -23,7 +23,6 @@ func init() {
 			"cwd@chromium.org",
 			"arcvm-eng@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcMemoryAllocatorTest.apk"},
 		Params: []testing.Param{{
@@ -33,6 +32,7 @@ func init() {
 			ExtraAttr: []string{"disabled"},
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}},
