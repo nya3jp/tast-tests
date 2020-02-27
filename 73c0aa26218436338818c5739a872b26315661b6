@@ -536,6 +536,24 @@
     },
     {
       "key": {
+        "uuid": "5ce953ba_7685fa60",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "20 is an anecdotally chosen number. Comments added. Method now fails if it doesn\u0027t break.",
+      "parentUuid": "71537967_4d026aaf",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f782864d_80e25e6a",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -706,6 +724,24 @@
     },
     {
       "key": {
+        "uuid": "54deedbf_9ac10b9d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "As previously discussed through GVC, if evidence can be provided that shows openssl produces more debug information than golang\u0027s crypto module, then we can proceed with the openssl implementation.\n\nPlease see:\nhttps://golang.org/src/crypto/rsa/pss.go\nIn emsaPSSVerify() and verifyPSS(), only ErrVerification is returned with no details on what went wrong. Whereas for openssl:\nhttps://github.com/openssl/openssl/blob/master/crypto/rsa/rsa_pss.c\nIn RSA_verify_PKCS1_PSS_mgf1(), there are RSAerr(...) calls with different parameters before all error returns to report error if we are debugging.",
+      "parentUuid": "004cbbed_ae9ee934",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56e1c695_eeea8b1b",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -829,6 +865,24 @@
     },
     {
       "key": {
+        "uuid": "639bf3fd_4466f330",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "Comments added.",
+      "parentUuid": "51f8047b_fbf139f6",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdd1acf9_865c787d",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 29
@@ -897,6 +951,30 @@
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b430c1_774fab1e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a00990f3_e90117cf",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 0
+      },
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1029,6 +1107,24 @@
       "side": 1,
       "message": "In precise, \"KeyInfo\" is not a \"Key\", it is the information about the \"Key\".\nSigner has responsibility to sign with the key.\n\nHere, the signer looks \"p *Util\".\nThus, a signer should have a \"Sign\" method with taking the KeyInfo, if we follow your KeyInfo design.\n\nIn go\u0027s crypto API, indeed PrivateKey has Sign API, but it is for implementing \"Signer\", which does not sound match with your case.",
       "parentUuid": "5c854f69_37f7cc65",
+      "revId": "73c0aa26218436338818c5739a872b26315661b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ea1305_8ddc7bd6",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "As per discussed previously in GVC, do you have any updates after discussion with Katherine? Thank you.",
+      "parentUuid": "314f58bc_7cc77970",
       "revId": "73c0aa26218436338818c5739a872b26315661b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

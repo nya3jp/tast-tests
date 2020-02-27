@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7e0dba21_0d23c1b8",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "It is added in doc.go.",
+      "parentUuid": "b7119fae_65eb11f9",
+      "revId": "8aa1da3205a4284cba18b752b572db53c831e5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e262f5cf_b0fea23e",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 31
@@ -30,6 +48,24 @@
       "writtenOn": "2020-01-21T02:39:34Z",
       "side": 1,
       "message": "Scratchpad API is still here. Pls move to somewhere else, too.",
+      "revId": "8aa1da3205a4284cba18b752b572db53c831e5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4dd085_128d469f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "Here are some of the possible locations for these scratchpad code:\n1. local/bundles/cros/hwsec/util and remote/bundels/cros/hwsec/util: The problem is that we\u0027ll have 2 copies of the same code if both remote and local tests uses them.\n2. common/pkcs11: As you commented these scratchpad is independent from pkcs11.\n3. common/hwsec: They are sort of independent from hwsec as well.\n4. In individual tests: We\u0027ll have many copies of the same code littered throughout tests that requires scratchpad.\n\nCould you advise me on an appropriate location?\n\nThank you.",
+      "parentUuid": "e262f5cf_b0fea23e",
       "revId": "8aa1da3205a4284cba18b752b572db53c831e5b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3282f958_a83e8e92",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "As per discussion above.",
+      "parentUuid": "3c9e6806_bd8917f7",
+      "revId": "8aa1da3205a4284cba18b752b572db53c831e5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f82fcf3_ab300076",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 31
@@ -64,6 +118,30 @@
       "writtenOn": "2020-01-21T02:39:34Z",
       "side": 1,
       "message": "Could you always avoid introducing unrelated fields/methods to struct/packages etc.?\nScratchpad is just for testing, and independent from pkcs11, right?\nAssuming so, please remove this.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "8aa1da3205a4284cba18b752b572db53c831e5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118e246c_b563999e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T21:31:47Z",
+      "side": 1,
+      "message": "As per discussion above.",
+      "parentUuid": "7f82fcf3_ab300076",
       "range": {
         "startLine": 73,
         "startChar": 0,
