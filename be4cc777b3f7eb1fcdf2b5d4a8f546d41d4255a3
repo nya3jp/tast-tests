@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce9beee8_d3a89167",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:57:18Z",
+      "side": 1,
+      "message": "Named result parameters are used in order to document the return values. iirc naked returns are required for named result parameters.\n\nPlease let me know if I should avoid named result parameters here or if there\u0027s a way to use named result parameters but not use naked returns. Thank you.",
+      "parentUuid": "f3b1e119_1723c67e",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 7
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c52b574_4061bb37",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 30
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-21T08:39:36Z",
       "side": 1,
       "message": "nit: In usual convention in Go, if a function returns (T, error), the T value is unspecified if non-nil error is returned. Therefore could you reverse the order here, i.e.\n\n out, err :\u003d ...\n if err !\u003d nil {\n   ...\n }\n cmdOutput \u003d string(out)",
+      "range": {
+        "startLine": 410,
+        "startChar": 2,
+        "endLine": 410,
+        "endChar": 25
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6ed0af_2852b37c",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:57:18Z",
+      "side": 1,
+      "message": "The reason why this is done this way is because I want to leave the error message in the returned error. i.e. cmdOutput is used in errors.Wrapf().\n\nThe CryptohomeBinary.* series have result parameters that are similar to Cmd.Output() in https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/local/testexec/testexec.go\nWhereby the resulting command output is still valid/defined (nil or the command output) even when an error is returned. For instance, a process may terminate with a non-zero error code, and we\u0027ll still get its stdout/stderr output.",
+      "parentUuid": "8c52b574_4061bb37",
       "range": {
         "startLine": 410,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c9f5d8dd_f0dc380b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:57:18Z",
+      "side": 1,
+      "message": "As explained above.",
+      "parentUuid": "942542de_8f1524e2",
+      "range": {
+        "startLine": 417,
+        "startChar": 2,
+        "endLine": 418,
+        "endChar": 17
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a35e4af_224e3f80",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 30
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-21T08:39:36Z",
       "side": 1,
       "message": "How long will this string be? If it\u0027s too long it might be unsuitable to include in error.",
+      "range": {
+        "startLine": 424,
+        "startChar": 66,
+        "endLine": 424,
+        "endChar": 75
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c101f9d6_3812304f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:57:18Z",
+      "side": 1,
+      "message": "Usually it\u0027s one line, please see:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/4ebd8fac7c94aca1d0d372106720ef7cdb5dfef3/cryptohome/cryptohome.cc#1929",
+      "parentUuid": "7a35e4af_224e3f80",
       "range": {
         "startLine": 424,
         "startChar": 66,
