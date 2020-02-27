@@ -75,6 +75,25 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "could not enable speech logging")
 		}
 
+		// Application header which read by ChromeVox.
+		// See b/150342403 for details.
+		appHeader := []string{"Accessibility Test App", "Accessibility Test App", "Accessibility Test App", "Application"}
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			gotLogs, err := speechLog(ctx, chromeVoxConn)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+				return errors.Wrap(err, "error with clearing ChromeVox log")
+			}
+			if diff := cmp.Diff(appHeader, gotLogs); diff != "" {
+				return errors.Errorf("speech log was not as expected, diff is %q", diff)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			s.Fatal("Failed to check speech log: ", err)
+		}
+
 		// Move focus to each of the UI elements, and check that ChromeVox log speaks as expected.
 		for _, wantLogs := range expectedSpeechLogs {
 			// Ensure that ChromeVox log is cleared before proceeding.
