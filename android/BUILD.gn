@@ -5,8 +5,12 @@
 group("all") {
   deps = [
     "ArcCameraFpsTest:ArcCameraFpsTest",
+    "ArcConfigChangesTest:ArcConfigChangesTest",
     "ArcGamepadTest:ArcGamepadTest",
+    "ArcImeBlockingTest:ArcImeBlockingTest",
+    "ArcInputMethodTest:ArcInputMethodTest",
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcPrintTest:ArcPrintTest",
+    "ArcSoftInputModeTest:ArcSoftInputModeTest",
   ]
 }

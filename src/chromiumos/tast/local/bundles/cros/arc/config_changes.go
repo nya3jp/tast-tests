@@ -22,7 +22,6 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcConfigChangesTest.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      3 * time.Minute,
 	})
@@ -81,7 +80,7 @@ func ConfigChanges(ctx context.Context, s *testing.State) {
 	)
 
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
