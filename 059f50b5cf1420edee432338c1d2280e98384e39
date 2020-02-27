@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d17595b3_e4986b7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "Code duplicate: it runs os.Stat(path) twice. We can remove the if-block.",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 2
+      },
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b0a811_9619a5f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "failed asserting that %v is a directory\n\nAnd we can remove the errors.Wrap on all its calling side. Let\u0027s reduce the unnecessary error wraps.",
+      "range": {
+        "startLine": 322,
+        "startChar": 28,
+        "endLine": 322,
+        "endChar": 79
+      },
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae78cb73_2370feb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "failed asserting that %v is a directory, thought it exists",
+      "range": {
+        "startLine": 325,
+        "startChar": 24,
+        "endLine": 325,
+        "endChar": 58
+      },
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "180df648_a3cc27de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "How about having a \nerrPrefix :\u003d func() string {\n  return fmt.Sprintf(\"failed asserting that %s is the owner of path %s\", owner, path)\n}\n\nAnd here we can:\n\nreturn errors.Wrapf(err, errPrefix())",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5fb668_b2a863fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "return errors.Wrapf(err, \"%s: failed getting user struct\", errPrefix())",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd888b5_6409923b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "return errors.Wrapf(err, \"%s: got %s\", errPrefix(), userName)",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd8d091c_15f7f394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91298eb_500d317c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "Same here.\n\nreturn errors.Wrapf(err, errPrefix())",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7494927a_10812a1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "Same here.\n\nreturn errors.Wrapf(err, errPrefix())",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b66e00d_a0075778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "return errors.Wrapf(err, errPrefix())",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cad4a0e_8d9b3b14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:43:17Z",
+      "side": 1,
+      "message": "return errors.Wrapf(err, \"%s: unexpected file mode: got %v\", errPrefix(), fileInfoStat.Mode())",
+      "revId": "059f50b5cf1420edee432338c1d2280e98384e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
