@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fc70d500_ba561df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/run_with_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T15:34:14Z",
+      "side": 1,
+      "message": "Great to know there\u0027s on-going work. As you\u0027re here, could you add TODO referencing the bug?",
+      "parentUuid": "1349f1cd_d561f116",
+      "revId": "7181bc158e2f92cb3a01b8acce9c2892b8aede78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6113b375_a0a10870",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "same, we have https://b.corp.google.com/issues/150012956",
       "parentUuid": "6113b375_a0a10870",
+      "revId": "7181bc158e2f92cb3a01b8acce9c2892b8aede78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea79e3c_27afcefc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T15:34:14Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "8e1d1291_be6c9301",
       "revId": "7181bc158e2f92cb3a01b8acce9c2892b8aede78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
