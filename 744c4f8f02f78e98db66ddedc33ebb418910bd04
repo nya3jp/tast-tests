@@ -93,6 +93,30 @@
       "revId": "744c4f8f02f78e98db66ddedc33ebb418910bd04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da1a590_d2b22227",
+        "filename": "src/chromiumos/tast/local/power/ectool/battery_perf_metrics.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-27T06:09:48Z",
+      "side": 1,
+      "message": "Technically it works, but returning an interface is not recommended:\nhttps://github.com/golang/go/wiki/CodeReviewComments#interfaces",
+      "parentUuid": "874dac19_89783f37",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 1
+      },
+      "revId": "744c4f8f02f78e98db66ddedc33ebb418910bd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
