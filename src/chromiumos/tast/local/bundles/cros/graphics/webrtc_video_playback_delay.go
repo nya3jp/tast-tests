@@ -70,18 +70,23 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	// to get more consistent results, but then we wouldn't be measuring on the
 	// same conditions as a user might encounter.
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
 	const presentationsHistogramName = "Media.VideoFrameSubmitter"
-	initPresentationHistogram, err := metrics.GetHistogram(ctx, cr, presentationsHistogramName)
+	initPresentationHistogram, err := metrics.GetHistogram(ctx, tconn, presentationsHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
 	const decodeHistogramName = "Media.MojoVideoDecoder.Decode"
-	initDecodeHistogram, err := metrics.GetHistogram(ctx, cr, decodeHistogramName)
+	initDecodeHistogram, err := metrics.GetHistogram(ctx, tconn, decodeHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
 	const platformDecodeHistogramName = "Media.PlatformVideoDecoding.Decode"
-	initPlatformDecodeHistogramName, err := metrics.GetHistogram(ctx, cr, platformDecodeHistogramName)
+	initPlatformDecodeHistogramName, err := metrics.GetHistogram(ctx, tconn, platformDecodeHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
@@ -145,13 +150,13 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	}
 
 	perfValues := perf.NewValues()
-	if err := updatePerfMetricFromHistogram(ctx, cr, presentationsHistogramName, initPresentationHistogram, perfValues, "tast_graphics_webrtc_video_playback_delay"); err != nil {
+	if err := updatePerfMetricFromHistogram(ctx, tconn, presentationsHistogramName, initPresentationHistogram, perfValues, "tast_graphics_webrtc_video_playback_delay"); err != nil {
 		s.Fatal("Failed to calculate Presentation perf metric: ", err)
 	}
-	if err := updatePerfMetricFromHistogram(ctx, cr, decodeHistogramName, initDecodeHistogram, perfValues, "tast_graphics_webrtc_video_decode_delay"); err != nil {
+	if err := updatePerfMetricFromHistogram(ctx, tconn, decodeHistogramName, initDecodeHistogram, perfValues, "tast_graphics_webrtc_video_decode_delay"); err != nil {
 		s.Fatal("Failed to calculate Decode perf metric: ", err)
 	}
-	if err := updatePerfMetricFromHistogram(ctx, cr, platformDecodeHistogramName, initPlatformDecodeHistogramName, perfValues, "tast_graphics_webrtc_platform_video_decode_delay"); err != nil {
+	if err := updatePerfMetricFromHistogram(ctx, tconn, platformDecodeHistogramName, initPlatformDecodeHistogramName, perfValues, "tast_graphics_webrtc_platform_video_decode_delay"); err != nil {
 		s.Fatal("Failed to calculate Platform Decode perf metric: ", err)
 	}
 
@@ -160,8 +165,8 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	}
 }
 
-func updatePerfMetricFromHistogram(ctx context.Context, cr *chrome.Chrome, histogramName string, initHistogram *metrics.Histogram, perfValues *perf.Values, metricName string) error {
-	laterHistogram, err := metrics.GetHistogram(ctx, cr, histogramName)
+func updatePerfMetricFromHistogram(ctx context.Context, tconn *chrome.TestConn, histogramName string, initHistogram *metrics.Histogram, perfValues *perf.Values, metricName string) error {
+	laterHistogram, err := metrics.GetHistogram(ctx, tconn, histogramName)
 	if err != nil {
 		return errors.Wrap(err, "failed to get later histogram: ")
 	}

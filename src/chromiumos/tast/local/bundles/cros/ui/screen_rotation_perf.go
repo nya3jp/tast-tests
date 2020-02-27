@@ -70,7 +70,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to enter into the overview mode: ", err)
 		}
 
-		histograms, err := metrics.Run(ctx, cr, func() error {
+		histograms, err := metrics.Run(ctx, tconn, func() error {
 			for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
 				if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rotation); err != nil {
 					return errors.Wrap(err, "failed to rotate display")

@@ -144,21 +144,16 @@ type HistogramBucket struct {
 // GetHistogram returns the current state of a Chrome histogram (e.g. "Tabs.TabCountActiveWindow").
 // If no samples have been reported for the histogram since Chrome was started, the zero value for
 // Histogram is returned.
-func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogram, error) {
-	conn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, err
-	}
-
+func GetHistogram(ctx context.Context, tconn *chrome.TestConn, name string) (*Histogram, error) {
 	h := Histogram{Name: name}
 	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getHistogram)(%q)`, name)
-	if err := conn.EvalPromise(ctx, expr, &h); err != nil {
+	if err := tconn.EvalPromise(ctx, expr, &h); err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf("Histogram %s not found", name)) {
 			return &Histogram{Name: name}, nil
 		}
 		return nil, err
 	}
-	if err = h.validate(); err != nil {
+	if err := h.validate(); err != nil {
 		return nil, errors.Wrapf(err, "bad histogram %v", h)
 	}
 	return &h, nil
@@ -166,11 +161,11 @@ func GetHistogram(ctx context.Context, cr *chrome.Chrome, name string) (*Histogr
 
 // WaitForHistogram is a convenience function that calls GetHistogram until the requested histogram is available,
 // ctx's deadline is reached, or timeout (if positive) has elapsed.
-func WaitForHistogram(ctx context.Context, cr *chrome.Chrome, name string, timeout time.Duration) (*Histogram, error) {
+func WaitForHistogram(ctx context.Context, tconn *chrome.TestConn, name string, timeout time.Duration) (*Histogram, error) {
 	var h *Histogram
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		h, err = GetHistogram(ctx, cr, name)
+		h, err = GetHistogram(ctx, tconn, name)
 		if err != nil {
 			return err
 		}
@@ -185,12 +180,12 @@ func WaitForHistogram(ctx context.Context, cr *chrome.Chrome, name string, timeo
 // WaitForHistogramUpdate is a convenience function that calls GetHistogram until the requested histogram contains
 // at least one sample not present in old, an earlier snapshot of the same histogram.
 // A histogram containing the new samples is returned; see Histogram.Diff for details.
-func WaitForHistogramUpdate(ctx context.Context, cr *chrome.Chrome, name string,
+func WaitForHistogramUpdate(ctx context.Context, tconn *chrome.TestConn, name string,
 	old *Histogram, timeout time.Duration) (*Histogram, error) {
 	var h *Histogram
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		if h, err = GetHistogram(ctx, cr, name); err != nil {
+		if h, err = GetHistogram(ctx, tconn, name); err != nil {
 			return err
 		}
 		if reflect.DeepEqual(h, old) {
@@ -206,10 +201,10 @@ func WaitForHistogramUpdate(ctx context.Context, cr *chrome.Chrome, name string,
 }
 
 // GetHistograms is a convenience function to get multiple histograms.
-func GetHistograms(ctx context.Context, cr *chrome.Chrome, histogramNames []string) ([]*Histogram, error) {
+func GetHistograms(ctx context.Context, tconn *chrome.TestConn, histogramNames []string) ([]*Histogram, error) {
 	var result []*Histogram
 	for _, name := range histogramNames {
-		histogram, err := GetHistogram(ctx, cr, name)
+		histogram, err := GetHistogram(ctx, tconn, name)
 		if err != nil {
 			return nil, err
 		}
@@ -254,8 +249,8 @@ func (r *Recorder) names() []string {
 }
 
 // StartRecorder captures a snapshot to calculate histograms diffs later.
-func StartRecorder(ctx context.Context, cr *chrome.Chrome, names ...string) (*Recorder, error) {
-	s, err := GetHistograms(ctx, cr, names)
+func StartRecorder(ctx context.Context, tconn *chrome.TestConn, names ...string) (*Recorder, error) {
+	s, err := GetHistograms(ctx, tconn, names)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get snapshot")
 	}
@@ -264,10 +259,10 @@ func StartRecorder(ctx context.Context, cr *chrome.Chrome, names ...string) (*Re
 }
 
 // Histogram returns the histogram diffs since the recorder is started.
-func (r *Recorder) Histogram(ctx context.Context, cr *chrome.Chrome) ([]*Histogram, error) {
+func (r *Recorder) Histogram(ctx context.Context, tconn *chrome.TestConn) ([]*Histogram, error) {
 	names := r.names()
 
-	s, err := GetHistograms(ctx, cr, names)
+	s, err := GetHistograms(ctx, tconn, names)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get snapshot")
 	}
@@ -284,7 +279,7 @@ const (
 )
 
 // wait implements the wait logic for WaitAny and WaitAll.
-func (r *Recorder) wait(ctx context.Context, cr *chrome.Chrome, mode waitMode, timeout time.Duration) ([]*Histogram, error) {
+func (r *Recorder) wait(ctx context.Context, tconn *chrome.TestConn, mode waitMode, timeout time.Duration) ([]*Histogram, error) {
 	names := r.names()
 	if len(names) == 0 {
 		return nil, errors.New("no histograms to wait")
@@ -292,7 +287,7 @@ func (r *Recorder) wait(ctx context.Context, cr *chrome.Chrome, mode waitMode, t
 
 	var diffs []*Histogram
 	err := testing.Poll(ctx, func(ctx context.Context) error {
-		s, err := GetHistograms(ctx, cr, names)
+		s, err := GetHistograms(ctx, tconn, names)
 		if err != nil {
 			return err
 		}
@@ -331,20 +326,20 @@ func (r *Recorder) wait(ctx context.Context, cr *chrome.Chrome, mode waitMode, t
 
 // WaitAny waits for update from any of histograms being recorded and returns
 // the diffs since the recorder is started.
-func (r *Recorder) WaitAny(ctx context.Context, cr *chrome.Chrome, timeout time.Duration) ([]*Histogram, error) {
-	return r.wait(ctx, cr, waitAny, timeout)
+func (r *Recorder) WaitAny(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) ([]*Histogram, error) {
+	return r.wait(ctx, tconn, waitAny, timeout)
 }
 
 // WaitAll waits for update from all of histograms being recorded and returns
 // the diffs since the recorder is started.
-func (r *Recorder) WaitAll(ctx context.Context, cr *chrome.Chrome, timeout time.Duration) ([]*Histogram, error) {
-	return r.wait(ctx, cr, waitAll, timeout)
+func (r *Recorder) WaitAll(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) ([]*Histogram, error) {
+	return r.wait(ctx, tconn, waitAll, timeout)
 }
 
 // Run is a helper to calculate histogram diffs before and after running a given
 // function.
-func Run(ctx context.Context, cr *chrome.Chrome, f func() error, names ...string) ([]*Histogram, error) {
-	r, err := StartRecorder(ctx, cr, names...)
+func Run(ctx context.Context, tconn *chrome.TestConn, f func() error, names ...string) ([]*Histogram, error) {
+	r, err := StartRecorder(ctx, tconn, names...)
 	if err != nil {
 		return nil, err
 	}
@@ -353,7 +348,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, f func() error, names ...string
 		return nil, err
 	}
 
-	return r.Histogram(ctx, cr)
+	return r.Histogram(ctx, tconn)
 }
 
 // ClearHistogramTransferFile clears the histogramTransferFile. The

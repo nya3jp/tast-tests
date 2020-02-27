@@ -101,8 +101,13 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open tabs: ", err)
 	}
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
 	histogramNames := []string{"Browser.Responsiveness.JankyIntervalsPerThirtySeconds", "Arc.LowMemoryKiller.FirstKillLatency"}
-	startHistograms, err := metrics.GetHistograms(ctx, cr, histogramNames)
+	startHistograms, err := metrics.GetHistograms(ctx, tconn, histogramNames)
 	if err != nil {
 		s.Fatal("Failed to get histograms: ", err)
 	}
@@ -112,7 +117,7 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to switch tabs: ", err)
 	}
 
-	endHistograms, err := metrics.GetHistograms(ctx, cr, histogramNames)
+	endHistograms, err := metrics.GetHistograms(ctx, tconn, histogramNames)
 	if err != nil {
 		s.Fatal("Failed to get histograms: ", err)
 	}

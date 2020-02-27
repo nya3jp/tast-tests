@@ -24,7 +24,7 @@ import (
 // negative result, we relax the condition from successful count == 1 to >= 1,
 // regardless it may introuce some false positive result.
 // TODO(crbug.com/985068#c5): follow up the improvement plan.
-func WasHWAccelUsed(ctx context.Context, cr *chrome.Chrome, initHistogram *metrics.Histogram, histogramName string, successValue int64) (bool, error) {
+func WasHWAccelUsed(ctx context.Context, tconn *chrome.TestConn, initHistogram *metrics.Histogram, histogramName string, successValue int64) (bool, error) {
 	// There are three valid cases.
 	// 1. No histogram is updated. This is the case if HW Acceleration is disabled due to Chrome flag, ex. --disable-accelerated-video-decode.
 	// 2. Histogram is updated with 15. This is the case if Chrome tries to initailize HW Acceleration but it fails because the codec is not supported on DUT.
@@ -32,7 +32,7 @@ func WasHWAccelUsed(ctx context.Context, cr *chrome.Chrome, initHistogram *metri
 
 	// err is not nil here if HW Acceleration is disabled and then Chrome doesn't try HW Acceleration initialization at all.
 	// For the case 1, we pass a short time context to WaitForHistogramUpdate to avoid the whole test context (ctx) from reaching deadline.
-	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 15*time.Second)
+	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, tconn, histogramName, initHistogram, 15*time.Second)
 	if err != nil {
 		// This is the first case; no histogram is updated.
 		return false, nil
