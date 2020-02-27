@@ -69,6 +69,10 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			{"seekBarDiscrete", "Slider", "3", "Min 0", "Max 10"},
 			{"ANNOUNCE", "Button", "Press Search+Space to activate"},
 		}
+		// Application header which is some times read by ChromeVox.
+		// TODO (b/150342403): Ensure that this is consistently read by ChromeVox.
+		appHeader := []string{"Accessibility Test App", "Accessibility Test App", "Accessibility Test App", "Application"}
+		seenHeader := false
 
 		// Enable speech logging.
 		if err := chromeVoxConn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
@@ -89,7 +93,14 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return testing.PollBreak(err)
 				}
-				if diff := cmp.Diff(wantLogs, gotLogs); diff != "" {
+				if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+					return errors.Wrap(err, "error with clearing ChromeVox log")
+				}
+				if diff := cmp.Diff(gotLogs, appHeader); diff == "" && !seenHeader {
+					seenHeader = true
+				} else if diff := cmp.Diff(wantLogs, gotLogs); diff != "" {
+					testing.ContextLogf(ctx, "wantLogs %q", wantLogs)
+					testing.ContextLogf(ctx, "gotLogs %q", gotLogs)
 					return errors.Errorf("speech log was not as expected, diff is %q", diff)
 				}
 				return nil
