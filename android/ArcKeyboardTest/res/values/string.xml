@@ -15,4 +15,5 @@
 -->
 <resources>
     <string name="default_text">hello</string>
+    <string name="focus_switch_button">Focus switch</string>
 </resources>

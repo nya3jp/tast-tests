@@ -8,9 +8,18 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-    <EditText android:id="@+id/text"
+    <EditText android:id="@+id/text1"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:inputType="text"
               android:text="@string/default_text" />
+    <EditText android:id="@+id/text2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:inputType="text"
+              android:text="@string/default_text" />
+    <Button android:id="@+id/focus_switch_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/focus_switch_button" />
 </LinearLayout>
