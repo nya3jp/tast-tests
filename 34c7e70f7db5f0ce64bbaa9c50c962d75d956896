@@ -81,6 +81,24 @@
       "revId": "34c7e70f7db5f0ce64bbaa9c50c962d75d956896",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac8d998_bc9acd67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T08:02:15Z",
+      "side": 1,
+      "message": "Could you clarify \"blocked\" in details? Do you mean, \"the button is overlapped with the notification?\" or \"the button is disabled/invisible (in terms of HTML context) until notification is hidden\"?\n\nIf the former, this makes sense. If the latter, I think it is necessary to wait for the button becomes enabled/visible, instead of relying on notification hidden.\nCould you update the comment accordingly, and if the latter, could you update the code, as well?",
+      "parentUuid": "8b7e3096_8432d02a",
+      "revId": "34c7e70f7db5f0ce64bbaa9c50c962d75d956896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
