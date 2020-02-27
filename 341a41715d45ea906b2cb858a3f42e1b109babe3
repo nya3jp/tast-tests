@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6e03fc78_14892f3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b5ac0e4_6043373a",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 214,
+        "endChar": 79
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01754296_433ce1b5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 6
@@ -92,6 +116,30 @@
       "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2674a5d_c0e9d330",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01754296_433ce1b5",
+      "range": {
+        "startLine": 220,
+        "startChar": 25,
+        "endLine": 220,
+        "endChar": 78
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b0692187_ca87b758",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31618469_73b5573d",
+      "range": {
+        "startLine": 316,
+        "startChar": 11,
+        "endLine": 316,
+        "endChar": 34
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "621d7060_8b3fb28f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 6
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "41cbc787_7e229670",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "621d7060_8b3fb28f",
+      "range": {
+        "startLine": 317,
+        "startChar": 21,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f478262_ada40d75",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
         "patchSetId": 6
@@ -161,6 +257,30 @@
       "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f80478df_c5e85712",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/install_attributes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:18:04Z",
+      "side": 1,
+      "message": "Added status check.",
+      "parentUuid": "1f478262_ada40d75",
+      "range": {
+        "startLine": 326,
+        "startChar": 34,
+        "endLine": 326,
+        "endChar": 54
+      },
+      "revId": "341a41715d45ea906b2cb858a3f42e1b109babe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
