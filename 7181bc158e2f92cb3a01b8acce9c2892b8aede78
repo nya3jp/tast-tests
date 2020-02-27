@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1349f1cd_d561f116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/run_with_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-27T14:58:34Z",
+      "side": 1,
+      "message": "That is true, and we have https://b.corp.google.com/issues/150013652 which niwa@ is working on.  This CL is to deprecate android_both so that we won\u0027t have new tests with the software dep, and I\u0027d like to address the issue you mentioned separately.",
+      "parentUuid": "576d98f8_95916e1d",
+      "revId": "7181bc158e2f92cb3a01b8acce9c2892b8aede78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6113b375_a0a10870",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-02-27T09:10:24Z",
       "side": 1,
       "message": "Do we need VM variation here, too?\nFYI: khmel@.",
+      "revId": "7181bc158e2f92cb3a01b8acce9c2892b8aede78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1d1291_be6c9301",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-02-27T14:58:34Z",
+      "side": 1,
+      "message": "same, we have https://b.corp.google.com/issues/150012956",
+      "parentUuid": "6113b375_a0a10870",
       "revId": "7181bc158e2f92cb3a01b8acce9c2892b8aede78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
