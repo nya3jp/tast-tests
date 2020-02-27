@@ -47,13 +47,11 @@ func init() {
 		}, {
 			Name:              "vp9_dec",
 			Val:               rtcTest{codec: peerconnection.Decoding, profile: "VP9"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
-			Name:      "vp9_enc",
-			Val:       rtcTest{codec: peerconnection.Encoding, profile: "VP9"},
-			ExtraAttr: []string{"informational"},
+			Name: "vp9_enc",
+			Val:  rtcTest{codec: peerconnection.Encoding, profile: "VP9"},
 			// TODO(crbug.com/811912): Remove "vaapi" and pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder()
 			// once the feature is enabled by default on VA-API devices.
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
@@ -61,13 +59,11 @@ func init() {
 		}, {
 			Name:              "h264_enc",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "H264"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoWithFakeWebcamAndH264AMDEncoder(),
 		}, {
 			Name:              "h264_dec",
 			Val:               rtcTest{codec: peerconnection.Decoding, profile: "H264"},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
