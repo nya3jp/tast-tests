@@ -1,0 +1,290 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b27a8c59_17baacbb",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutils/utils.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "nit: package name is singular form. Could you rename to fileutil?",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03398654_edbd7bd7",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutils/utils.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "Considering crbug.com/1019537, could you rename to WriteToDUT?\nI also expect this utility will be provided by oka@\u0027s work. Could you add TODO to replace it when it gets ready?",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afad282a_0bf814b8",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutils/utils.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "This is used in two cases, and I don\u0027t think we need. Could you find my comment below?",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc62df5_ea6a6bf2",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "nit: fmt.Fprintf(builder, \"%s\u003d%s\\n\", k, v)",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28df01c_8e6a49fa",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "nit: KillAll",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4518e5_2752df86",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "Do you need to have NewServer and Start separately?\n\nDoes it work for you to have \"StartServer\" method? If it works for you, I recommend \"Close()\" instead of \"Stop\", AFAIK, it is more common in go.",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70cb7ed5_fde787fe",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "Could you follow the godoc style?\n\ncf) https://golang.org/doc/effective_go.html#commentary\n\u003d\u003d quote \u003d\u003d\nDoc comments work best as complete sentences, which allow a wide variety of automated presentations. The first sentence should be a one-sentence summary that starts with the name being declared.\n\u003d\u003d quote end \u003d\u003d\n\nLooks like first part is not a complete sentence, Ditto for below.",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da77e2a4_231c7eef",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "Recommendation; How about introducing a writer? Something like;\n\nstruct readyWriter {\n  var buf []byte\n  ch chan error\n  done bool\n}\n\nfunc newReadyWriter() (*readyWriter) {\n  return \u0026readyWriter{ ch: make(chan error, 1) }\n}\n\nfunc (w *readyWriter) Write(p []byte) (int, error) {  // implements io.Writer\n  if w.done {\n    return len(p), nil\n  }\n\n  w.buf \u003d append(w.buf, p...)\n  if bytes.Contain(.../* error */...) {\n    w.ch \u003c- errors.New(...)\n    close(w.ch)\n    w.buf \u003d nil\n    w.done \u003d true\n  }\n  if bytes.Contain(.../* success */...) {\n    w.ch \u003c- nil\n    close(w.ch)\n    w.buf \u003d nil\n    w.done \u003d true\n  }\n  return len(p), nil\n}\n\nfunc (w *readyWriter) wait(ctx context.Context) error {\n  select {\n    case err :\u003d \u003c- w.ch\n      return err\n    case \u003c- ctx.Done():\n      return ctx.Err()\n  }  \n}\n\n\nThen in caller, you can use the writer with io.MuitlWriter.\n\nf, err :\u003d os.Open(...)  // for dump.\n...\nw :\u003d newReadyWriter()\ncmd.Stdout \u003d io.MultiWriter(w, f)\n...\n\nif err :\u003d w.wait(ctx); err !\u003d nil {\n  ...\n}",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad82134_925dae3b",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "You can use bytes.Contains, to avoid copy at L110.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3fbe88d_a60c9045",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "style/nit:\n\nif err :\u003d fileutil.WriteToDUT(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 16
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e840a1f6_7b5a7601",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "You can just open ap.stderrFile() and set it to cmd.Stderr, instead.",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37aefac7_d3396e72",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "err may be nil here. Could you return err2 in the case?",
+      "range": {
+        "startLine": 198,
+        "startChar": 21,
+        "endLine": 198,
+        "endChar": 24
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85b67c31_540c15d6",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/utils.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "nit/style: return f, nil",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 11
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631507cf_6fa2f9ce",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/utils.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T17:42:36Z",
+      "side": 1,
+      "message": "and instead, directly\n\nreturn 0, errors.Errorf(...)",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
