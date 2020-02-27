@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "c2014f56_6dcba652",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea0af11_069e6aec",
+      "range": {
+        "startLine": 31,
+        "startChar": 128,
+        "endLine": 31,
+        "endChar": 197
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b091c5e_94c6e073",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa0a256_effdcf9c",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b4b90e2_9604fdc6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
         "patchSetId": 10
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "0f96ae05_00093bfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4b90e2_9604fdc6",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cbc43be_3fd66ea4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
         "patchSetId": 10
@@ -73,6 +133,24 @@
       "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbbf7fce_a3c7e30a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cbc43be_3fd66ea4",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "28b3839a_d296cf13",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89123177_abf7ad7f",
+      "range": {
+        "startLine": 59,
+        "startChar": 30,
+        "endLine": 59,
+        "endChar": 32
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ad8f09b_d1841cf5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
         "patchSetId": 10
@@ -119,6 +221,30 @@
       "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27301de_569f74d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ad8f09b_d1841cf5",
+      "range": {
+        "startLine": 66,
+        "startChar": 56,
+        "endLine": 66,
+        "endChar": 75
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "3cbd6dbd_74fab6a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0db2bc_8884dd73",
+      "range": {
+        "startLine": 72,
+        "startChar": 18,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f06065d3_312d1e08",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
         "patchSetId": 10
@@ -165,6 +315,30 @@
       "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9e7689_baa295b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f06065d3_312d1e08",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "a4f1c319_b1dd80da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1d0a0d0_b1fb435f",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14048cc0_9841babc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
         "patchSetId": 10
@@ -211,6 +409,30 @@
       "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c074daf_ab19daac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "It\u0027s an API in cryptohomed. Updated the comment to reflect that.",
+      "parentUuid": "14048cc0_9841babc",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "c26106d9_98934fdc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752a43a0_5a39c803",
+      "range": {
+        "startLine": 89,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae0739c0_b5e202fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
         "patchSetId": 10
@@ -257,6 +503,30 @@
       "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "814492e2_745b43ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae0739c0_b5e202fd",
+      "range": {
+        "startLine": 91,
+        "startChar": 52,
+        "endLine": 91,
+        "endChar": 61
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "8e6c3875_afcd45d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "822cca4a_683646c8",
+      "range": {
+        "startLine": 97,
+        "startChar": 61,
+        "endLine": 97,
+        "endChar": 66
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0e878c6_d959f3d4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
         "patchSetId": 10
@@ -297,6 +591,24 @@
       "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650b581e_84149def",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Done, and I\u0027ve omitted a bit more comments throughout this file.",
+      "parentUuid": "e0e878c6_d959f3d4",
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -320,6 +632,30 @@
       "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6212f35_ef9b853e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:15:52Z",
+      "side": 1,
+      "message": "Comment removed.",
+      "parentUuid": "35b501bf_55340246",
+      "range": {
+        "startLine": 141,
+        "startChar": 10,
+        "endLine": 141,
+        "endChar": 16
+      },
+      "revId": "01e33f39cfa8d956bd3f4f5485371deeef68c074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
