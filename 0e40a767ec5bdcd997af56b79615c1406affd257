@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71f54723_4a184550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/firmware_management_parameters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:19:45Z",
+      "side": 1,
+      "message": "Done, but can you check crrev.com/c/2035571 and see if my usage of custom error is correct? Thank you.",
+      "parentUuid": "5fa929b3_e010b716",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "0e40a767ec5bdcd997af56b79615c1406affd257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb491464_950c5a2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/firmware_management_parameters.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "0e40a767ec5bdcd997af56b79615c1406affd257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ace4d8d9_9a7003ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/firmware_management_parameters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-02-27T19:19:45Z",
+      "side": 1,
+      "message": "errorCode is already included in err.",
+      "parentUuid": "fb491464_950c5a2b",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 118
+      },
+      "revId": "0e40a767ec5bdcd997af56b79615c1406affd257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
