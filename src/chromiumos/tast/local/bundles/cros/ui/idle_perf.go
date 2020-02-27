@@ -63,13 +63,18 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait: ", err)
 	}
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
 	// Recorder with no additional config; it records and reports memory usage and
 	// CPU percents of browser/GPU processes.
 	recorder, err := cuj.NewRecorder(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
-	if err := recorder.Run(ctx, cr, func() error {
+	if err := recorder.Run(ctx, tconn, func() error {
 		s.Log("Just wait for 20 seconds to check the load of idle status")
 		return testing.Sleep(ctx, 20*time.Second)
 	}); err != nil {
