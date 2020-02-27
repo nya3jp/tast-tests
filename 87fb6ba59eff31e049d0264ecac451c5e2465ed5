@@ -22,6 +22,30 @@
       "revId": "87fb6ba59eff31e049d0264ecac451c5e2465ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db946728_e3a6c225",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-02-27T07:52:29Z",
+      "side": 1,
+      "message": "Add description for the two parameter in docstring. I kind of prefer having the IP allocation logics together in HostAPHandle, so keep it as ipStart and ipEnd for now.",
+      "parentUuid": "896e4c06_5c54cc48",
+      "range": {
+        "startLine": 45,
+        "startChar": 60,
+        "endLine": 45,
+        "endChar": 81
+      },
+      "revId": "87fb6ba59eff31e049d0264ecac451c5e2465ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
