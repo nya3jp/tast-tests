@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dbcb8b4_1813b194",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-27T22:19:32Z",
+      "side": 1,
+      "message": "expects",
+      "range": {
+        "startLine": 32,
+        "startChar": 73,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "b8223257c1e9f81566a91af63998c46b3d33599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bdb872a_1efaefb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-27T22:19:32Z",
+      "side": 1,
+      "message": "not clear what exactly you\u0027re checking for unless you\u0027re already familiar with what this function does.  What about something like \"\u003cdescription of what this function checks for\u003e should work immediately after password change\"",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 27
+      },
+      "revId": "b8223257c1e9f81566a91af63998c46b3d33599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd471180_40f0de66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-27T22:19:32Z",
+      "side": 1,
+      "message": "combine this comment and the one below it, something like \"Unmount, then CheckKeyEx should show \u003cbehavior\u003e.\"",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 19
+      },
+      "revId": "b8223257c1e9f81566a91af63998c46b3d33599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "794e0c1d_0f6f46be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-27T22:19:32Z",
+      "side": 1,
+      "message": "similar to above, combine these two comments",
+      "revId": "b8223257c1e9f81566a91af63998c46b3d33599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a641a0bf_03c6c551",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-27T22:19:32Z",
+      "side": 1,
+      "message": "consider combining some comments here too - e.g. \"Remove the vault then verify that it\u0027s not mountable and that nothing is mounted.\"",
+      "revId": "b8223257c1e9f81566a91af63998c46b3d33599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93344735_c0141051",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-27T22:19:32Z",
+      "side": 1,
+      "message": "how about combining these three sections under one comment: \"Take ownership, confirming the vault state before and afterwards.\"",
+      "revId": "b8223257c1e9f81566a91af63998c46b3d33599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c69a836d_a852b8e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-02-27T22:19:32Z",
+      "side": 1,
+      "message": "and then combining these two into \"Reboot then confirm vault status\"",
+      "revId": "b8223257c1e9f81566a91af63998c46b3d33599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
