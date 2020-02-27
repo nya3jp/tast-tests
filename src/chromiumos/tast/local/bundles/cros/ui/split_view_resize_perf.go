@@ -193,7 +193,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait: ", err)
 			}
 
-			hists, err := metrics.Run(ctx, cr, func() (err error) {
+			hists, err := metrics.Run(ctx, tconn, func() (err error) {
 				// The actual test scenario: first swipe to left so that the window
 				// shrinks slightly, and then swipe to the right-edge of the screen,
 				// so the left-side window should be maximized again.
