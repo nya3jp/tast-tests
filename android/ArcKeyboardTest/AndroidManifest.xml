@@ -13,5 +13,6 @@
                  android:allowBackup="false">
         <activity android:name=".MainActivity" android:exported="true"></activity>
         <activity android:name=".NullEditTextActivity" android:exported="true"></activity>
+        <activity android:name=".FocusChangeTestActivity" android:exported="true"></activity>
     </application>
 </manifest>

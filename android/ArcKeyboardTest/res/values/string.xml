@@ -6,4 +6,7 @@
 -->
 <resources>
     <string name="default_text">hello</string>
+    <string name="focus_switch_button">Focus switch</string>
+    <string name="hide_and_focus_switch_button">Hide and focus switch</string>
+    <string name="hide_button">Hide keyboard</string>
 </resources>
