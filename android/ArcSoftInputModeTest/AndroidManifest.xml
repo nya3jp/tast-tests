@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.chromium.arc.testapp.softinputmode">
+    <application
+        android:allowBackup="false"
+        android:label="ARC SoftInputMode Test">
+        <activity
+            android:name=".AdjustPanActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true" />
+        <activity
+            android:name=".AdjustResizeActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true" />
+    </application>
+</manifest>

@@ -4,6 +4,10 @@
 
 group("all") {
   deps = [
-    "ArcGamepadTest:ArcGamepadTest"
+    "ArcConfigChangesTest:ArcConfigChangesTest",
+    "ArcGamepadTest:ArcGamepadTest",
+    "ArcImeBlockingTest:ArcImeBlockingTest",
+    "ArcInputMethodTest:ArcInputMethodTest",
+    "ArcSoftInputModeTest:ArcSoftInputModeTest",
   ]
 }
