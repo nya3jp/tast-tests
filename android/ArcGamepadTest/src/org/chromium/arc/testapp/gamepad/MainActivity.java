@@ -4,7 +4,6 @@
  * found in the LICENSE file.
  */
 
-
 package org.chromium.arc.testapp.gamepad;
 
 import org.json.JSONArray;
