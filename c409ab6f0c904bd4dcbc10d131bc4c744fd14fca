@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7703fef4_be05d443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/veth/veth.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-27T05:52:08Z",
+      "side": 1,
+      "message": "nit: I\u0027d construct v at the very bottom of this constructor function, e.g.\n\n return \u0026Pair{...}, nil\n\nIt\u0027s to avoid half-initialized Pair object. Here I say v is a half-initialized object because we don\u0027t need to call v.Delete even if we abandon it within this function e.g. due to errors.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "c409ab6f0c904bd4dcbc10d131bc4c744fd14fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
