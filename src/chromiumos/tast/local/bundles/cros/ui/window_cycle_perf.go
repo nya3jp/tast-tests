@@ -67,7 +67,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed waiting for CPU to become idle: ", err)
 		}
 
-		hists, err := metrics.Run(ctx, cr, func() error {
+		hists, err := metrics.Run(ctx, tconn, func() error {
 			// first long press alt + tab to bring up the window cycle view
 			if err := keyboard.AccelPress(ctx, "Alt"); err != nil {
 				return errors.Wrap(err, "failed to press alt")

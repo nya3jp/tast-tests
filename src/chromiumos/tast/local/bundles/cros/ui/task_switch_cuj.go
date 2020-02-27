@@ -288,7 +288,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			return errors.New("too many permission dialogs")
 		}},
 	} {
-		if err = recorder.Run(ctx, cr, func() error {
+		if err = recorder.Run(ctx, tconn, func() error {
 			if err := kw.Accel(ctx, "search"); err != nil {
 				return errors.Wrap(err, "failed to type the search key")
 			}
@@ -361,7 +361,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 
 	s.Log("Switching the focused window through the overview mode")
 	for i := 0; i < numWindows; i++ {
-		if err := recorder.Run(ctx, cr, func() error {
+		if err := recorder.Run(ctx, tconn, func() error {
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 				return errors.Wrap(err, "failed to enter into the overview mode")
 			}
@@ -396,7 +396,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 
 	s.Log("Switching the focused window through alt-tab")
 	for i := 0; i < numWindows; i++ {
-		if err := recorder.Run(ctx, cr, func() error {
+		if err := recorder.Run(ctx, tconn, func() error {
 			// Press alt -> hit tabs for the number of windows to choose the last used
 			// window -> release alt.
 			if err := kw.AccelPress(ctx, "Alt"); err != nil {

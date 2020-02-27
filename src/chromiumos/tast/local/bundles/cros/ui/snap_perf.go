@@ -52,7 +52,7 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.Run(ctx, cr, func() error {
+	histograms, err := metrics.Run(ctx, tconn, func() error {
 		windows, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to obtain the window list: ", err)
