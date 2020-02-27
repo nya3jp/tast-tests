@@ -114,7 +114,6 @@ func GLBench(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		must(reportTemperatureCritical(ctx, pv, "temperature_critical"))
 		must(reportTemperature(ctx, pv, "temperature_1_start"))
 
 		cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
@@ -346,20 +345,6 @@ func noChecksumTest(name string) bool {
 		}
 	}
 	return false
-}
-
-func reportTemperatureCritical(ctx context.Context, pv *perf.Values, name string) error {
-	temp, err := sysutil.TemperatureCritical(ctx)
-	if err != nil {
-		temp = 1000.0
-		testing.ContextLog(ctx, "Can't read critical temperature: ", err)
-	}
-	pv.Set(perf.Metric{
-		Name:      name,
-		Unit:      "Celsius",
-		Direction: perf.SmallerIsBetter,
-	}, temp)
-	return nil
 }
 
 func reportTemperature(ctx context.Context, pv *perf.Values, name string) error {
