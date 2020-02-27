@@ -7,16 +7,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-    <TextView
+    <EditText
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:id="@+id/device_status" />
-    <TextView
-          android:layout_width="match_parent"
+          android:inputType="text"
+          android:id="@+id/text" />
+    <Button
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:id="@+id/key_events" />
-    <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/motion_event" />
+          android:text="Open a dialog"
+          android:id="@+id/button" />
 </LinearLayout>
