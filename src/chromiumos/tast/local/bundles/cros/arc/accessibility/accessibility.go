@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
@@ -63,44 +64,14 @@ const (
 	FocusHighlight         = "focusHighlight"
 )
 
-// AutomationNode represents an accessibility struct, which contains properties from chrome.automation.Automation.
-// This is defined at:
-// https://developer.chrome.com/extensions/automation#type-AutomationNode
-// Only the properties which are used in tast tests are defined here.
-// TODO(crbug/1056397): Integrate this definition into chrome/ui.Node.
-type AutomationNode struct {
-	ClassName     string
-	Checked       string
-	Name          string
-	Tooltip       string
-	ValueForRange int
-}
-
 // focusedNode returns the currently focused node of ChromeVox.
-func focusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*AutomationNode, error) {
-	// chrome.automation.AutomationNode properties are defined using getters
-	// see: https://cs.chromium.org/chromium/src/extensions/renderer/resources/automation/automation_node.js?q=automationNode&sq=package:chromium&dr=CSs&l=1218
-	// meaning that we should call the getters for each property in JS.
-	var automationNode AutomationNode
-	const script = `
-		(() => {
-			const node = ChromeVoxState.instance.currentRange.start.node;
-			if (!node) {
-				return {};
-			} else {
-				return {
-					Checked: node.checked,
-					ClassName: node.className,
-					Name: node.name,
-					Tooltip: node.tooltip,
-					ValueForRange: node.valueForRange
-				};
-			}
-		})()`
-	if err := chromeVoxConn.Eval(ctx, script, &automationNode); err != nil {
+// The returned node should be release by the caller.
+func focusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*ui.Node, error) {
+	obj := &chrome.JSObject{}
+	if err := chromeVoxConn.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
 		return nil, err
 	}
-	return &automationNode, nil
+	return ui.NewNode(ctx, chromeVoxConn, obj)
 }
 
 // IsEnabledAndroid checks if accessibility is enabled in Android.
@@ -188,13 +159,16 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 
 // WaitForFocusedNode polls until the properties of the focused node matches node.
 // Returns an error after 30 seconds.
-func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *AutomationNode) error {
+func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *ui.Node) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focusedNode, err := focusedNode(ctx, chromeVoxConn)
+		focused, err := focusedNode(ctx, chromeVoxConn)
 		if err != nil {
 			return testing.PollBreak(err)
-		} else if !cmp.Equal(focusedNode, node, cmpopts.EquateEmpty()) {
+		}
+		defer focused.Release(ctx)
+
+		if !cmp.Equal(focused, node, cmpopts.IgnoreUnexported(*node), cmpopts.IgnoreFields(*node, "Location", "State")) {
 			return errors.Errorf("focused node is incorrect: got %q, want %q", focusedNode, node)
 		}
 		return nil
@@ -268,9 +242,10 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	if err := WaitForFocusedNode(ctx, chromeVoxConn, &AutomationNode{
+	if err := WaitForFocusedNode(ctx, chromeVoxConn, &ui.Node{
 		ClassName: TextView,
 		Name:      "Accessibility Test App",
+		Role:      ui.RoleTypeStaticText,
 	}); err != nil {
 		s.Fatal("Failed to wait for initial ChromeVox focus: ", err)
 	}

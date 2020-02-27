@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/accessibility"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -27,9 +28,9 @@ type eventLog struct {
 }
 
 type testStep struct {
-	Key   string                       // key events to invoke the event.
-	Node  accessibility.AutomationNode // expected focused node after the event.
-	Event eventLog                     // expected event log.
+	Key   string   // key events to invoke the event.
+	Node  ui.Node  // expected focused node after the event.
+	Event eventLog // expected event log.
 }
 
 func init() {
@@ -125,19 +126,21 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			// Move focus to ToggleButton and toggle it.
 			{
 				"Tab",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName: accessibility.ToggleButton,
 					Checked:   "false",
 					Name:      "OFF",
+					Role:      ui.RoleTypeToggleButton,
 					Tooltip:   "button tooltip",
 				},
 				eventLog{"focus", "OFF", appName},
 			}, {
 				"Search+Space",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName: accessibility.ToggleButton,
 					Checked:   "true",
 					Name:      "ON",
+					Role:      ui.RoleTypeToggleButton,
 					Tooltip:   "button tooltip",
 				},
 				eventLog{"checkedStateChanged", "ON", appName},
@@ -145,19 +148,21 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			// Move focus to CheckBox and check it.
 			{
 				"Tab",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName: accessibility.CheckBox,
 					Checked:   "false",
 					Name:      "CheckBox",
+					Role:      ui.RoleTypeCheckBox,
 					Tooltip:   "checkbox tooltip",
 				},
 				eventLog{"focus", "CheckBox", appName},
 			}, {
 				"Search+Space",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName: accessibility.CheckBox,
 					Checked:   "true",
 					Name:      "CheckBox",
+					Role:      ui.RoleTypeCheckBox,
 					Tooltip:   "checkbox tooltip",
 				},
 				eventLog{"checkedStateChanged", "CheckBox", appName},
@@ -165,17 +170,19 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			// Move focus to SeekBar and increment it.
 			{
 				"Tab",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName:     accessibility.SeekBar,
 					Name:          "seekBar",
+					Role:          ui.RoleTypeSlider,
 					ValueForRange: seekBarInitialValue,
 				},
 				eventLog{"focus", "seekBar", appName},
 			}, {
 				"=",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName:     accessibility.SeekBar,
 					Name:          "seekBar",
+					Role:          ui.RoleTypeSlider,
 					ValueForRange: seekBarInitialValue + 1,
 				},
 				eventLog{"valueChanged", "seekBar", appName},
@@ -183,17 +190,19 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			// Move focus to SeekbarDiscrete and decrement it.
 			{
 				"Tab",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName:     accessibility.SeekBar,
 					Name:          "seekBarDiscrete",
+					Role:          ui.RoleTypeSlider,
 					ValueForRange: seekBarDiscreteInitialValue,
 				},
 				eventLog{"focus", "seekBarDiscrete", appName},
 			}, {
 				"-",
-				accessibility.AutomationNode{
+				ui.Node{
 					ClassName:     accessibility.SeekBar,
 					Name:          "seekBarDiscrete",
+					Role:          ui.RoleTypeSlider,
 					ValueForRange: seekBarDiscreteInitialValue - 1,
 				},
 				eventLog{"valueChanged", "seekBarDiscrete", appName},
