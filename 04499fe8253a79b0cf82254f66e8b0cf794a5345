@@ -122,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "79fce12c_b53869c4",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-27T21:47:14Z",
+      "side": 1,
+      "message": "\u003e Do you need to have NewServer and Start separately?\n\nHehe, we had this same conversation, and I suggested the separation, but I wasn\u0027t really sure what was better style.\n\nregarding \"need to\" --\u003e I think this depends on how the callers might want to use. In some cases, it\u0027s nice to wire up the configuration parameters before actually running any daemons, especially when the daemon ordering is important, or when we want the maximum flexibility for rearranging. (e.g., today, I think we start hostapd before we start the dhcp server, but could imagine it\u0027s actually nice to do these in the other order -- we don\u0027t want any client starting to associate with the AP but end up seeing no one listening for DHCP requests.)\n\nAnyway, I don\u0027t think we had strong reasons one way or the other, so any style considerations (I\u0027m personally still learning typical Golang patterns) are welcome suggestions.",
+      "parentUuid": "cc4518e5_2752df86",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70cb7ed5_fde787fe",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 14
