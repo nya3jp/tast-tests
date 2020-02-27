@@ -21,7 +21,6 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcKeyboardTest.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android"},
 			Pre:               arc.BootedInTabletMode(),
@@ -59,7 +58,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	s.Log("Starting app")
 
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
