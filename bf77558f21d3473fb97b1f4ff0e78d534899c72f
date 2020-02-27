@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a3be0d1_5677923b",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-02-27T01:42:58Z",
+      "side": 1,
+      "message": "Is 2 minutes enough on older/slower devices, too? I\u0027m not sure what factors affect how long opt-in takes, but maybe it would be good to confirm?",
+      "revId": "bf77558f21d3473fb97b1f4ff0e78d534899c72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
