@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a18ed887_5b53b091",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-27T18:59:06Z",
+      "side": 1,
+      "message": "nit, optional (sorry, I missed it in the original CL):\nfrom the previous discussion, do we also see a NewSize and NewRect?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "5f42d75ce8333fb6e7f28c1b8dd8ca58c4567f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
