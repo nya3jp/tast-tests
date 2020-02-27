@@ -192,7 +192,7 @@ func TabSwitchCUJ(ctx context.Context, s *testing.State) {
 			currentTab := len(conns) - 1
 			const tabSwitchTimeout = 20 * time.Second
 
-			if err = recorder.Run(ctx, cr, func() error {
+			if err = recorder.Run(ctx, tconn, func() error {
 				for i := 0; i < (numPages+1)*3+1; i++ {
 					if err = kw.Accel(ctx, "Ctrl+Tab"); err != nil {
 						return errors.Wrap(err, "failed to hit ctrl-tab")

@@ -124,7 +124,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			}
 		}
 		end := ash.Location{X: start.X - bounds.Width/4, Y: start.Y}
-		hists, err := metrics.Run(ctx, cr, func() error {
+		hists, err := metrics.Run(ctx, tconn, func() error {
 			if err := ash.MouseDrag(ctx, tconn, start, end, time.Second*2); err != nil {
 				return errors.Wrap(err, "failed to drag")
 			}

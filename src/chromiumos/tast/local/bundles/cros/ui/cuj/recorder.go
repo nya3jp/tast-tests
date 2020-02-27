@@ -160,10 +160,10 @@ func (r *Recorder) Stop() error {
 
 // Run conducts the test scenario f, and collects the related metrics for the
 // test scenario, and updates the internal data.
-func (r *Recorder) Run(ctx context.Context, cr *chrome.Chrome, f func() error) error {
+func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() error) error {
 	r.loadRecorder.StartRecording()
 	defer r.loadRecorder.StopRecording()
-	hists, err := metrics.Run(ctx, cr, f, r.names...)
+	hists, err := metrics.Run(ctx, tconn, f, r.names...)
 	if err != nil {
 		return err
 	}
