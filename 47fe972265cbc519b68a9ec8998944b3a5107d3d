@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1aafa6f9_74505b31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-02-27T15:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "700cf0d7_ddca369d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "47fe972265cbc519b68a9ec8998944b3a5107d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc86d670_e4ae3888",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
         "patchSetId": 7
