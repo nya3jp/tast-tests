@@ -28,7 +28,6 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcInputMethodTest.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.BootedInTabletMode(),
@@ -108,7 +107,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	defer dev.Close()
 
 	s.Log("Installing IME service")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing IME: ", err)
 	}
 
