@@ -16,6 +16,24 @@
       "revId": "bf77558f21d3473fb97b1f4ff0e78d534899c72f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2eb49fc_d43beb44",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-27T18:41:07Z",
+      "side": 1,
+      "message": "I tested on a number of slow device and the slowest were taking about a minute 30. I am gonna submit this and increase again in the future if the issue persists again on some duts.",
+      "parentUuid": "7a3be0d1_5677923b",
+      "revId": "bf77558f21d3473fb97b1f4ff0e78d534899c72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
