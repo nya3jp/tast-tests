@@ -133,8 +133,32 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBin
 	if err := checkMountState(ctx, utility, true); err != nil {
 		return errors.Wrap(err, "vault not mounted after mounting with added key")
 	}
-	if result, _ := utility.CheckVault(ctx, util.FirstUsername, util.FirstPin, util.PinLabel); !result {
-		return errors.New("failed to CheckKeyEx() with the correct (secondary) username and password")
+
+	// CheckKeyEx should work correctly with both the new and old key.
+	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PasswordLabel, util.FirstPassword, util.IncorrectPassword); err != nil {
+		return errors.Wrap(err, "old key malfunctions while mounted with added key")
+	}
+	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PinLabel, util.FirstPin, util.IncorrectPassword); err != nil {
+		return errors.Wrap(err, "new key malfunctions while mounted with added key")
+	}
+	// Now unmount it.
+	if err := unmountTestVault(ctx, utility); err != nil {
+		return errors.Wrap(err, "failed to unmount")
+	}
+
+	// The old key should still work as expected.
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false); err != nil {
+		return errors.Wrap(err, "failed to mount vault with the old key after adding pin")
+	}
+	if err := checkMountState(ctx, utility, true); err != nil {
+		return errors.Wrap(err, "vault not mounted after mounting with old key after adding pin")
+	}
+	// CheckKeyEx should work correctly with both the new and old key.
+	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PasswordLabel, util.FirstPassword, util.IncorrectPassword); err != nil {
+		return errors.Wrap(err, "old key malfunctions while mounted with old key")
+	}
+	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.PinLabel, util.FirstPin, util.IncorrectPassword); err != nil {
+		return errors.Wrap(err, "new key malfunctions while mounted with old key")
 	}
 	if err := unmountTestVault(ctx, utility); err != nil {
 		return errors.Wrap(err, "failed to unmount")
