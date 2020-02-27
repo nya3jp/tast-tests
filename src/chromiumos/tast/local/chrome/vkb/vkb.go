@@ -18,11 +18,12 @@ import (
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
 func ShowVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-	chrome.inputMethodPrivate.showInputView(resolve);
-})
-`, nil)
+	return tconn.EvalPromise(ctx, `tast.promisify(chrome.inputMethodPrivate.showInputView)()`, nil)
+}
+
+// HideVirtualKeyboard forces the virtual keyboard to be hidden.
+func HideVirtualKeyboard(ctx context.Context, tconn *chrome.TestConn) error {
+	return tconn.EvalPromise(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil)
 }
 
 // SetCurrentInputMethod sets the current input method used by the virtual
@@ -61,20 +62,35 @@ func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error
 	return root.DescendantExists(ctx, params)
 }
 
-// WaitUntilShown waits for the virtual keyboard to appear. It waits until there
-// there is a visible DOM element with accessibility role of "keyboard".
-func WaitUntilShown(ctx context.Context, tconn *chrome.TestConn) error {
+func waitUntil(ctx context.Context, tconn *chrome.TestConn, expected bool) error {
+	expectedState := "shown"
+	if !expected {
+		expectedState = "hidden"
+	}
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if shown, err := IsShown(ctx, tconn); err != nil {
 			return testing.PollBreak(err)
-		} else if !shown {
-			return errors.New("waiting for virtual keyboard to be shown")
+		} else if shown != expected {
+			return errors.Errorf("waiting for virtual keyboard to be %q", expectedState)
 		}
 		return nil
 	}, nil); err != nil {
-		return errors.Wrap(err, "failed to wait for virtual keyboad to be shown")
+		return errors.Wrapf(err, "failed to wait for virtual keyboard to be %q", expectedState)
 	}
 	return nil
+}
+
+// WaitUntilShown waits for the virtual keyboard to appear. It waits until there
+// is a visible DOM element with accessibility role of "keyboard".
+func WaitUntilShown(ctx context.Context, tconn *chrome.TestConn) error {
+	return waitUntil(ctx, tconn, true)
+}
+
+// WaitUntilHidden waits for the virtual keyboard to hide. It waits until there
+// is no visible DOM element with accessibility role of "keyboard".
+func WaitUntilHidden(ctx context.Context, tconn *chrome.TestConn) error {
+	return waitUntil(ctx, tconn, false)
 }
 
 // WaitUntilButtonsRender waits for the virtual keyboard to render some buttons.
