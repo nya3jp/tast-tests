@@ -22,6 +22,30 @@
       "revId": "06936d4d7617ab38c6b614987fc0c18c4b99d729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f08e594a_d5098da9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-02-27T05:48:21Z",
+      "side": 1,
+      "message": "Let\u0027s keep it as is. Abandoning the CL.",
+      "parentUuid": "95d42ead_f241daca",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "06936d4d7617ab38c6b614987fc0c18c4b99d729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
