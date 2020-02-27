@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "896e4c06_5c54cc48",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-27T06:00:05Z",
+      "side": 1,
+      "message": "I think you need to document these?\n\nIt also seems like it would still be nice to only pass in one value, but that still leaves the question of who\u0027s really splitting the subnet up into the lease-able range vs. our local management (either the caller, or us).\n\nI guess I\u0027m fine either way.",
+      "range": {
+        "startLine": 45,
+        "startChar": 60,
+        "endLine": 45,
+        "endChar": 81
+      },
+      "revId": "87fb6ba59eff31e049d0264ecac451c5e2465ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

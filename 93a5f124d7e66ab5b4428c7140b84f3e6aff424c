@@ -258,6 +258,30 @@
       "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c5775d6_825e0557",
+        "filename": "src/chromiumos/tast/remote/wifi/dhcp/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-27T06:00:05Z",
+      "side": 1,
+      "message": "Yeah, that was my intention (to focus on dnsmasq) -- that makes this packages about the DHCP server, and not about any of the rest of the interface configuration.",
+      "parentUuid": "a925cfa1_1cf63802",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "93a5f124d7e66ab5b4428c7140b84f3e6aff424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
