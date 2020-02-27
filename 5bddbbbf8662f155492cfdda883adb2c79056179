@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be65684c_664f4db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-02-27T17:37:28Z",
+      "side": 1,
+      "message": "It might be worth it to document somewhere how to best obtain these locators for OOBE if you have a nice way of doing it, since they may need to be updated if the OOBE UI changes in the future.",
+      "range": {
+        "startLine": 40,
+        "startChar": 31,
+        "endLine": 40,
+        "endChar": 116
+      },
+      "revId": "5bddbbbf8662f155492cfdda883adb2c79056179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
