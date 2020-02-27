@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/vkb"
@@ -30,6 +31,21 @@ func init() {
 			Pre:               arc.VMBootedInTabletMode(),
 		}},
 	})
+}
+
+func focusChangeTest(ctx context.Context, s *testing.State) {
+	const (
+		pkg          = "org.chromium.arc.testapp.keyboard"
+		activityName = ".FocusChangeTestActivity"
+	)
+	a := s.PreValue().(arc.PreData).ARC
+
+	act, err := arc.NewActivity(a, pkg, activityName)
+	if err != nil {
+		errors.Wrapf(err, "failed to create a new activity %q", activityName)
+	}
+
+	act.Start(ctx)
 }
 
 func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
@@ -125,4 +141,6 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
+
+	focusChangeTest(ctx, s)
 }
