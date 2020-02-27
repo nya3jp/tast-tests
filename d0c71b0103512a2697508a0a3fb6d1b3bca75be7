@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f553a7aa_ddd300b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-27T17:39:00Z",
+      "side": 1,
+      "message": "nit: the correct way to check the default orientation is by looking at the camera position.\nAlthough not sure whether we have an API for that. (perhaps dumpsys has that info ?)\n\nAdding a TODO here would be good.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 60
+      },
+      "revId": "d0c71b0103512a2697508a0a3fb6d1b3bca75be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d3ee778_c29e75d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-27T17:39:00Z",
+      "side": 1,
+      "message": "huge nit:\n\"Failed to rotate display to %d: %q\", actualRotation, err",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 45
+      },
+      "revId": "d0c71b0103512a2697508a0a3fb6d1b3bca75be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
