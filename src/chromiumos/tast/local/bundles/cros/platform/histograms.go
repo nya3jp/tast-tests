@@ -65,9 +65,14 @@ func Histograms(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome login: ", err)
 	}
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
 	report(sample1)
 	s.Logf("Waiting for %v histogram", name)
-	h1, err := metrics.WaitForHistogram(ctx, cr, name, timeout)
+	h1, err := metrics.WaitForHistogram(ctx, tconn, name, timeout)
 	if err != nil {
 		s.Fatal("Failed to get histogram: ", err)
 	}
@@ -76,7 +81,7 @@ func Histograms(ctx context.Context, s *testing.State) {
 
 	report(sample2)
 	s.Logf("Waiting for %v histogram update", name)
-	h2, err := metrics.WaitForHistogramUpdate(ctx, cr, name, h1, timeout)
+	h2, err := metrics.WaitForHistogramUpdate(ctx, tconn, name, h1, timeout)
 	if err != nil {
 		s.Fatal("Failed to get histogram update: ", err)
 	}

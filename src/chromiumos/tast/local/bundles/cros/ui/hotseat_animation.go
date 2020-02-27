@@ -97,7 +97,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	histograms, err := metrics.Run(ctx, cr, func() error {
+	histograms, err := metrics.Run(ctx, tconn, func() error {
 		// Open a window to hide the launcher and animate the hotseat to Hidden.
 		const numWindows = 1
 		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)

@@ -129,7 +129,13 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	if err = crash.RestartAnomalyDetector(ctx); err != nil {
 		s.Fatal("Could not restart anomaly detector: ", err)
 	}
-	oldHistogram, err := metrics.GetHistogram(ctx, cr, crashReporterHistogramName)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	oldHistogram, err := metrics.GetHistogram(ctx, tconn, crashReporterHistogramName)
 	if err != nil {
 		s.Fatal("Could not get initial value of histogram: ", err)
 	}
@@ -144,7 +150,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	// Platform.CrOSEvent can be updated by other events in the system and we
 	// don't want to stop waiting because of those updates.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		newHistogram, err := metrics.GetHistogram(ctx, cr, crashReporterHistogramName)
+		newHistogram, err := metrics.GetHistogram(ctx, tconn, crashReporterHistogramName)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get new value of histogram"))
 		}

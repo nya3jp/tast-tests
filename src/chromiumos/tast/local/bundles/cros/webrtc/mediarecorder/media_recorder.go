@@ -159,7 +159,12 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
-	initHistogram, err := metrics.GetHistogram(ctx, cr, constants.MediaRecorderVEAUsed)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return 0, 0, false, err
+	}
+
+	initHistogram, err := metrics.GetHistogram(ctx, tconn, constants.MediaRecorderVEAUsed)
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to get initial histogram")
 	}
@@ -193,7 +198,7 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 		return 0, 0, false, errors.Wrap(err, "failed to stop recording")
 	}
 
-	hwUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess))
+	hwUsed, err := histogram.WasHWAccelUsed(ctx, tconn, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess))
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to get histogram")
 	}
@@ -317,7 +322,12 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.St
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	initHistogram, err := metrics.GetHistogram(ctx, cr, constants.MediaRecorderVEAUsed)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	initHistogram, err := metrics.GetHistogram(ctx, tconn, constants.MediaRecorderVEAUsed)
 	if err != nil {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
@@ -338,7 +348,7 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.St
 		s.Fatalf("Failed to evaluate %v: %v", startRecordJS, err)
 	}
 
-	if hwUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess)); err != nil {
+	if hwUsed, err := histogram.WasHWAccelUsed(ctx, tconn, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess)); err != nil {
 		s.Fatal("Failed to verify histogram: ", err)
 	} else if !hwUsed {
 		s.Error("HW accel was not used")

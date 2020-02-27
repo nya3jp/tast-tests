@@ -135,8 +135,8 @@ func waitForSignal(ctx context.Context, signalWatcher *dbusutil.SignalWatcher) (
 	}
 }
 
-func checkHistogram(ctx context.Context, cr *chrome.Chrome, baseline int64) (int64, error) {
-	hist, err := metrics.GetHistogram(ctx, cr, fsCorruptionHistogram)
+func checkHistogram(ctx context.Context, tconn *chrome.TestConn, baseline int64) (int64, error) {
+	hist, err := metrics.GetHistogram(ctx, tconn, fsCorruptionHistogram)
 	if err != nil {
 		return 0, err
 	}
@@ -244,7 +244,12 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	cmd = testexec.CommandContext(ctx, "mv", "--force", backupPath, data.Container.VM.DiskPath)
 	defer cmd.Run(testexec.DumpLogOnError)
 
-	histogramCount, err := checkHistogram(ctx, cr, -1)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	histogramCount, err := checkHistogram(ctx, tconn, -1)
 	if err != nil {
 		s.Fatal("Failed to get baseline for histogram: ", err)
 	}
@@ -252,7 +257,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	if err := testOverwriteAtOffsets(ctx, bigOffsets, data.Container, backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for big file: ", err)
 	}
-	histogramCount, err = checkHistogram(ctx, cr, histogramCount)
+	histogramCount, err = checkHistogram(ctx, tconn, histogramCount)
 	if err != nil {
 		s.Fatal("Failed to check histogram: ", err)
 	}
@@ -260,7 +265,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	if err := testOverwriteAtOffsets(ctx, smallOffsets, data.Container, backupPath, s.OutDir()); err != nil {
 		s.Fatal("Didn't get an error signal for small file: ", err)
 	}
-	if _, err := checkHistogram(ctx, cr, histogramCount); err != nil {
+	if _, err := checkHistogram(ctx, tconn, histogramCount); err != nil {
 		s.Fatal("Failed to check histogram: ", err)
 	}
 }
