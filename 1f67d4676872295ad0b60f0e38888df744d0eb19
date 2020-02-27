@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "56ae090c_d3674ab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T04:52:27Z",
+      "side": 1,
+      "message": "Could you use chrome.TestConn, instead of chrome.Conn?\n(Currently it is synonym, but will be different type).",
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e8e4030_7fab89e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 5
@@ -96,6 +113,29 @@
     },
     {
       "key": {
+        "uuid": "22d7dcc7_6330c5a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T04:52:27Z",
+      "side": 1,
+      "message": "You don\u0027t need? You can just use tconn, instead.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 3
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cf9db33_41645bd9",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 5
@@ -112,6 +152,75 @@
         "startChar": 59,
         "endLine": 328,
         "endChar": 64
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "314e170e_c9f4cf23",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T04:52:27Z",
+      "side": 1,
+      "message": "nit/recommendation: will just \"state\" work for you?",
+      "range": {
+        "startLine": 328,
+        "startChar": 79,
+        "endLine": 328,
+        "endChar": 92
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc20f19_b727b8b3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T04:52:27Z",
+      "side": 1,
+      "message": "Maybe: WaitForOverviewState to prefer shorter name?",
+      "range": {
+        "startLine": 328,
+        "startChar": 5,
+        "endLine": 328,
+        "endChar": 37
+      },
+      "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b39a583_c83d6008",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T04:52:27Z",
+      "side": 1,
+      "message": "ditto: TestConn",
+      "range": {
+        "startLine": 328,
+        "startChar": 73,
+        "endLine": 328,
+        "endChar": 77
       },
       "revId": "1f67d4676872295ad0b60f0e38888df744d0eb19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
