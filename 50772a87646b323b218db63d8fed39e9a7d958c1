@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b680cf8b_144ba581",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-27T09:24:36Z",
+      "side": 1,
+      "message": "Could you run fast_build.sh -T?\n\n(chroot)~/src/trunk/script% ../../platform/tast/fast_build.sh -T",
+      "revId": "50772a87646b323b218db63d8fed39e9a7d958c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
