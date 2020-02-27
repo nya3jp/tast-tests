@@ -23,7 +23,6 @@ func init() {
 		Contacts:     []string{"yhanada@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
-		Data:         []string{"ArcKeyboardTest.apk"},
 		Pre:          arc.Booted(),
 	})
 }
@@ -56,7 +55,7 @@ func IMESwitchShortcut(ctx context.Context, s *testing.State) {
 
 	s.Log("Starting app")
 
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 

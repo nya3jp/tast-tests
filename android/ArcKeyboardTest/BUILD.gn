@@ -2,10 +2,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-group("all") {
-  deps = [
-    "ArcGamepadTest:ArcGamepadTest",
-    "ArcKeyboardTest:ArcKeyboardTest",
-    "ArcPrintTest:ArcPrintTest",
-  ]
+android_apk("ArcKeyboardTest") {
+  manifest = "AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res"]
+  target_sdk_version = "29"
 }
