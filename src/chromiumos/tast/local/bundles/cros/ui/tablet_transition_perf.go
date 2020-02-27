@@ -65,7 +65,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
-	histograms, err := metrics.Run(ctx, cr, func() error {
+	histograms, err := metrics.Run(ctx, tconn, func() error {
 		const numRuns = 10
 		for i := 0; i < numRuns; i++ {
 			if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {

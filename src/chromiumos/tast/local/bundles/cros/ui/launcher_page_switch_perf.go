@@ -192,7 +192,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// First: scroll by click. Clicking the second one, clicking the first one to
 	// go back, clicking the last one to long-jump, clicking the first one again
 	// to long-jump back to the original page.
-	hists, err := metrics.Run(ctx, cr, func() error {
+	hists, err := metrics.Run(ctx, tconn, func() error {
 		for step, idx := range []int{1, 0, len(pageButtons) - 1, 0} {
 			if err := clickFunc(ctx, pageButtons[idx]); err != nil {
 				return errors.Wrapf(err, "failed to click %d-th button (at step %d)", idx, step)
@@ -244,7 +244,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		dragDownStart := ash.Location{X: dragUpStart.X, Y: appsGridLocation.Top + 1}
 		dragDownEnd := ash.Location{X: dragDownStart.X, Y: dragDownStart.Y + appsGridLocation.Height}
 
-		hists, err = metrics.Run(ctx, cr, func() error {
+		hists, err = metrics.Run(ctx, tconn, func() error {
 			// First drag-up operation.
 			if err := dragFunc(ctx, dragUpStart, dragUpEnd); err != nil {
 				return errors.Wrap(err, "failed to drag from the bottom to the top")

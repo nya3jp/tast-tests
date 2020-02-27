@@ -82,7 +82,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
-	histograms, err := metrics.Run(ctx, cr, func() error {
+	histograms, err := metrics.Run(ctx, tconn, func() error {
 		// Scroll from the top right of the screen to the top left.
 		if err := stw.Swipe(ctx, tsew.Width()-10, 10, 10, 10, 500*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to execute a swipe gesture")

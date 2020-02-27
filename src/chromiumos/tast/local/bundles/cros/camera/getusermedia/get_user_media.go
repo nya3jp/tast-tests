@@ -51,7 +51,12 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, get
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
-	initHistogram, err := metrics.GetHistogram(ctx, cr, histogramName)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	initHistogram, err := metrics.GetHistogram(ctx, tconn, histogramName)
 	if err != nil {
 		return errors.Wrap(err, "failed to get initial histogram")
 	}
@@ -79,7 +84,7 @@ func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, get
 		return errors.Wrap(err, "getUserMedia() establishment failed")
 	}
 
-	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 15*time.Second)
+	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, tconn, histogramName, initHistogram, 15*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed getting histogram diff")
 	}

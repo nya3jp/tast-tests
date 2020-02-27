@@ -123,7 +123,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 				suffix = "MinimizedTabletMode"
 			}
 
-			histograms, err := metrics.Run(ctx, cr, func() error {
+			histograms, err := metrics.Run(ctx, tconn, func() error {
 				if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 					return errors.Wrap(err, "failed to enter into the overview mode")
 				}

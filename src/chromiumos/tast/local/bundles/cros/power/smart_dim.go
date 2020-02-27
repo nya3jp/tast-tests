@@ -56,9 +56,14 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
 	call()
 	s.Logf("Waiting for %v histogram", histogramName)
-	h1, err := metrics.WaitForHistogram(ctx, cr, histogramName, timeout)
+	h1, err := metrics.WaitForHistogram(ctx, tconn, histogramName, timeout)
 	if err != nil {
 		s.Fatal("Failed to get histogram: ", err)
 	}
@@ -66,7 +71,7 @@ func SmartDim(ctx context.Context, s *testing.State) {
 
 	call()
 	s.Logf("Waiting for %v histogram update", histogramName)
-	h2, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, h1, timeout)
+	h2, err := metrics.WaitForHistogramUpdate(ctx, tconn, histogramName, h1, timeout)
 	if err != nil {
 		s.Fatal("Failed to get histogram update: ", err)
 	}
