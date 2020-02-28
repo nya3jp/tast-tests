@@ -12,6 +12,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -169,4 +171,107 @@ func WaitForApp(ctx context.Context, c *chrome.Conn, appID string) error {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
+// HotseatStateType corresponds to the "HotseatState" defined in autotest_private.idl.
+type HotseatStateType string
+
+const (
+	// Hidden means that hotseat is shown off screen.
+	Hidden HotseatStateType = "Hidden"
+	// ShownClamShell means that hotseat is shown within the shelf in clamshell mode.
+	ShownClamShell HotseatStateType = "ShownClamShell"
+	// ShownHomeLauncher means that hotseat is shown in the tablet mode home launcher's shelf.
+	ShownHomeLauncher HotseatStateType = "ShownHomeLauncher"
+	// Extended means that hotseat is shown above the shelf.
+	Extended HotseatStateType = "Extended"
+)
+
+// HotseatSwipeDescriptor corresponds to the "HotseatSwipeDescriptor" defined in autotest_private.idl.
+type HotseatSwipeDescriptor struct {
+	SwipeStartLocation Location `json:"swipeStartLocation"`
+	SwipeEndLocation   Location `json:"swipeEndLocation"`
+}
+
+// HotseatInfo corresonds to the "HotseatInfo" defined in autotest_private.idl.
+type HotseatInfo struct {
+	SwipeUp      HotseatSwipeDescriptor `json:"swipeUp"`
+	HotseatState HotseatStateType       `json:"state"`
+	IsAnimating  bool                   `json:"isAnimating"`
+}
+
+// FetchHotseatInfo does
+func FetchHotseatInfo(ctx context.Context, c *chrome.Conn) (*HotseatInfo, error) {
+	var s *HotseatInfo
+	fetchQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getHotseatInfo)()")
+	if err := c.EvalPromise(ctx, fetchQuery, &s); err != nil {
+		errors.Wrap(err, "Running autotestPrivate.getHotseatInfo failed")
+		return nil, err
+	}
+
+	return s, nil
+}
+
+// SwipeUpHotseatAndWaitForCompletion swipes the hotseat up, changing the hotseat state from hidden to extended. The function does not end until the hotseat animation completes.
+func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, c *chrome.Conn) error {
+	info, err := FetchHotseatInfo(ctx, c)
+	if err != nil {
+		return errors.Wrap(err, "failed to fetch hotseat info")
+	}
+
+	if info.HotseatState != Hidden {
+		return errors.Errorf("The hotseat state is unexpected: expected hotseat state is hidden; actual hotseat state is %v", info.HotseatState)
+	}
+
+	// Obtain the suitable touch screen writer.
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch screen event writer")
+	}
+	orientation, err := display.GetOrientation(ctx, c)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the orientation info")
+	}
+	tsw.SetRotation(-orientation.Angle)
+
+	// Obtain the coordinate converter from the touch screen writer.
+	tcc, err := NewTouchCoordConverter(ctx, c, tsw)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch coord converter")
+	}
+
+	// Convert the gesture locations from screen coordinates to touch screen coordinates.
+	startX, startY := tcc.ConvertLocation(info.SwipeUp.SwipeStartLocation)
+	endX, endY := tcc.ConvertLocation(info.SwipeUp.SwipeEndLocation)
+
+	// Instead of dragging the hotseat to the final place directly, leave some space to apply hotseat animation.
+	endY = (startY + endY) / 2
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to get single touch writer")
+	}
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed swipe up the hotseat")
+	}
+
+	stw.End()
+
+	// Wait for the hotseat animation to finish.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := FetchHotseatInfo(ctx, c)
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch hotseat info")
+		}
+
+		if info.IsAnimating || info.HotseatState != Extended {
+			return errors.Wrapf(err, "expected hotseat state: Extended; expected hotseat animating state: false; actual hotseat state: %v; actual animating state: %t", info.HotseatState, info.IsAnimating)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for hotseat to reach the expected: ")
+	}
+
+	return nil
 }
