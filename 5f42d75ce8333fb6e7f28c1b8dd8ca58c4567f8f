@@ -22,6 +22,30 @@
       "revId": "5f42d75ce8333fb6e7f28c1b8dd8ca58c4567f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de17215_2d6fa81c",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T00:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18ed887_5b53b091",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "5f42d75ce8333fb6e7f28c1b8dd8ca58c4567f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
