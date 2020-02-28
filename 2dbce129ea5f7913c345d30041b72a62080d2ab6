@@ -22,6 +22,30 @@
       "revId": "2dbce129ea5f7913c345d30041b72a62080d2ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f01383c_72cb333c",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-28T08:44:33Z",
+      "side": 1,
+      "message": "We can force this condition by defining each precondition name in the form like\n    name: constPrefix + \"booted\"\nbut it looks ugly and I guess adding a field specifying whether ARCVM should be enabled to the preImpl struct might be a better idea.",
+      "parentUuid": "c30342fe_028ecbca",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 69
+      },
+      "revId": "2dbce129ea5f7913c345d30041b72a62080d2ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
