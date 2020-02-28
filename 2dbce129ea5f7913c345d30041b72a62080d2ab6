@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c30342fe_028ecbca",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-02-28T08:03:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether it is a sound idea to put this kind of assumptions on precondition names.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 69
+      },
+      "revId": "2dbce129ea5f7913c345d30041b72a62080d2ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
