@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "471b6376_573bf4b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-02-28T04:57:05Z",
+      "side": 1,
+      "message": "nit: How about describing why it should be 1?\n(maybe already covered by line 129?)",
+      "revId": "cc94208309536a043b8e107adc8d9de8e91b5189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
