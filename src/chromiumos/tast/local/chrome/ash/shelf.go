@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -152,12 +153,12 @@ type ScrollableShelfState struct {
 
 // ScrollableShelfInfo corresponds to the "ScrollableShelfInfo" defined in autotest_private.idl
 type ScrollableShelfInfo struct {
-	MainAxisOffset       float32 `json:"mainAxisOffset"`
-	PageOffset           float32 `json:"pageOffset"`
-	TargetMainAxisOffset float32 `json:"targetMainAxisOffset"`
-	LeftArrowBounds      Rect    `json:"leftArrowBounds"`
-	RightArrowBounds     Rect    `json:"rightArrowBounds"`
-	IsAnimating          bool    `json:"isAnimating"`
+	MainAxisOffset       float32     `json:"mainAxisOffset"`
+	PageOffset           float32     `json:"pageOffset"`
+	TargetMainAxisOffset float32     `json:"targetMainAxisOffset"`
+	LeftArrowBounds      coords.Rect `json:"leftArrowBounds"`
+	RightArrowBounds     coords.Rect `json:"rightArrowBounds"`
+	IsAnimating          bool        `json:"isAnimating"`
 }
 
 // AppType defines the types of available apps.
@@ -234,7 +235,7 @@ func FetchScrollableShelfInfoForState(ctx context.Context, c *chrome.TestConn, s
 }
 
 // ScrollShelfAndWaitUntilFinish triggers the scroll animation by mouse click then waits the animation to finish.
-func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, buttonBounds Rect, targetOffset float32) error {
+func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, buttonBounds coords.Rect, targetOffset float32) error {
 	// Before pressing the arrow button, wait scrollable shelf to be idle.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ScrollableShelfState{})
@@ -250,7 +251,7 @@ func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, 
 	}
 
 	// Press the arrow button.
-	if err := MouseClick(ctx, tconn, Location{X: buttonBounds.Left + buttonBounds.Width/2, Y: buttonBounds.Top + buttonBounds.Height/2}, LeftButton); err != nil {
+	if err := MouseClick(ctx, tconn, buttonBounds.CenterPoint(), LeftButton); err != nil {
 		return errors.Wrap(err, "failed to trigger the scroll animation by clicking at the arrow button")
 	}
 
