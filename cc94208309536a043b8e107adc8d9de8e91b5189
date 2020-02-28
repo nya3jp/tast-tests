@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ee6357c8_bde8e4b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T07:10:25Z",
+      "side": 1,
+      "message": "style: Please avoid naked returns (named results are perfectly fine).\nhttps://github.com/golang/go/wiki/CodeReviewComments#naked-returns",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "cc94208309536a043b8e107adc8d9de8e91b5189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "471b6376_573bf4b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset.go",
         "patchSetId": 5
