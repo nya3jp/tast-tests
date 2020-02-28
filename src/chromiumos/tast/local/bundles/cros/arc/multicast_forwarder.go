@@ -81,7 +81,7 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 		mdnsPrefix = "(QM)? "
 	)
 
-	ifnames, err := physicalInterfaces(ctx)
+	allIfnames, err := physicalInterfaces(ctx)
 	if err != nil {
 		s.Fatal("Failed to get physical interfaces: ", err)
 	}
@@ -89,9 +89,9 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	// Check the physical interfaces for multicast support.
 	// This is done by checking multicast flag followed by IPv4 existence.
 	// We don't check for IPv6 as kernel always provision an EUI 64 derived like local address in the fe80::/64 prefix.
-	ipv4Multicast := false
+	var ifnames []string
 	ipv6Multicast := false
-	for _, ifname := range ifnames {
+	for _, ifname := range allIfnames {
 		iface, err := net.InterfaceByName(ifname)
 		if err != nil {
 			s.Fatal("Failed to get interface by name: ", err)
@@ -112,10 +112,15 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to parse interface CIDR: ", err)
 			}
 			if ip.To4() != nil {
-				ipv4Multicast = true
+				ifnames = append(ifnames, ifname)
 				break
 			}
 		}
+	}
+
+	// No valid multicast interface to test.
+	if len(ifnames) == 0 {
+		return
 	}
 
 	// Start ARC multicast sender app.
@@ -146,16 +151,15 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	expectOut := make(map[string]string)
 	expectIn := make(map[string]string)
 
-	// Adds expectations for tcpdump.
-	if ipv4Multicast {
-		expectOut[mdnsPrefix+mdnsHostnameOut] = "IPv4 mDNS"
-		expectOut[mdnsPrefix+legacyMDNSHostnameOut] = "IPv4 legacy mDNS"
-		expectOut[ssdpPrefix+ssdpUserAgentOut] = "IPv4 SSDP"
-		expectIn[mdnsPrefix+mdnsHostnameIn] = "IPv4 mDNS"
-		expectIn[mdnsPrefix+legacyMDNSHostnameIn] = "IPv4 legacy mDNS"
-		expectIn[ssdpPrefix+ssdpUserAgentIn] = "IPv4 SSDP"
-	}
-	// Always expect IPv6 multicast forwarding.
+	// Adds IPv4 multicast expectations for tcpdump.
+	expectOut[mdnsPrefix+mdnsHostnameOut] = "IPv4 mDNS"
+	expectOut[mdnsPrefix+legacyMDNSHostnameOut] = "IPv4 legacy mDNS"
+	expectOut[ssdpPrefix+ssdpUserAgentOut] = "IPv4 SSDP"
+	expectIn[mdnsPrefix+mdnsHostnameIn] = "IPv4 mDNS"
+	expectIn[mdnsPrefix+legacyMDNSHostnameIn] = "IPv4 legacy mDNS"
+	expectIn[ssdpPrefix+ssdpUserAgentIn] = "IPv4 SSDP"
+
+	// Adds IPv6 multicast expectations for tcpdump.
 	expectOut[mdnsPrefix+mdnsHostnameOutIPv6] = "IPv6 mDNS"
 	expectOut[mdnsPrefix+legacyMDNSHostnameOutIPv6] = "IPv6 legacy mDNS"
 	expectOut[ssdpPrefix+ssdpUserAgentOutIPv6] = "IPv6 SSDP"
@@ -166,6 +170,7 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	// Remove SSDP IPv6 expectations as we don't currently have the firewall rule.
 	delete(expectOut, ssdpPrefix+ssdpUserAgentOutIPv6)
 	delete(expectIn, ssdpPrefix+ssdpUserAgentInIPv6)
+
 	// Remove inbound IPv6 expectations as the lab doesn't have IPv6 connectivity.
 	delete(expectIn, mdnsPrefix+mdnsHostnameInIPv6)
 	delete(expectIn, mdnsPrefix+legacyMDNSHostnameInIPv6)
@@ -220,48 +225,45 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if ipv4Multicast {
-		s.Log("Sending IPv4 multicast packets")
-		toggleIPv6(false)
-		// Try to send multicast packet multiple times.
-		for i := 0; i < 3; i++ {
-			// Send outbound multicast packets from ARC.
+	s.Log("Sending IPv4 multicast packets")
+	toggleIPv6(false)
+	// Try to send multicast packet multiple times.
+	for i := 0; i < 3; i++ {
+		// Send outbound multicast packets from ARC.
+		// Run mDNS query.
+		setTexts(mdnsHostnameOut, mdnsPort)
+		if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
+			s.Error("Failed starting outbound mDNS test: ", err)
+		}
+		// Run legacy mDNS query.
+		setTexts(legacyMDNSHostnameOut, legacyMDNSPort)
+		if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
+			s.Error("Failed starting outbound legacy mDNS test: ", err)
+		}
+		// Run SSDP query
+		setTexts(ssdpUserAgentOut, ssdpPort)
+		if err := d.Object(ui.ID(ssdpButtonID)).Click(ctx); err != nil {
+			s.Error("Failed starting outbound SSDP test: ", err)
+		}
+
+		// Set up multicast destination addresses for IPv4 multicast.
+		mdnsDst := &net.UDPAddr{IP: net.IPv4(224, 0, 0, 251), Port: 5353}
+		ssdpDst := &net.UDPAddr{IP: net.IPv4(239, 255, 255, 250), Port: 1900}
+
+		// Send inbound multicast packets by sending multicast packet that loops back.
+		for _, ifname := range ifnames {
 			// Run mDNS query.
-			setTexts(mdnsHostnameOut, mdnsPort)
-			if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
-				s.Error("Failed starting outbound mDNS test: ", err)
+			if err := sendMDNS(mdnsHostnameIn, mdnsPort, ifname, mdnsDst); err != nil {
+				s.Error("Failed starting inbound mDNS test: ", err)
 			}
 			// Run legacy mDNS query.
-			setTexts(legacyMDNSHostnameOut, legacyMDNSPort)
-			if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
-				s.Error("Failed starting outbound legacy mDNS test: ", err)
+			if err := sendMDNS(legacyMDNSHostnameIn, legacyMDNSPort, ifname, mdnsDst); err != nil {
+				s.Error("Failed starting inbound legacy mDNS test: ", err)
 			}
 			// Run SSDP query
-			setTexts(ssdpUserAgentOut, ssdpPort)
-			if err := d.Object(ui.ID(ssdpButtonID)).Click(ctx); err != nil {
-				s.Error("Failed starting outbound SSDP test: ", err)
+			if err := sendSSDP(ssdpUserAgentIn, ssdpPort, ifname, ssdpDst); err != nil {
+				s.Error("Failed starting inbound SSDP test: ", err)
 			}
-
-			// Set up multicast destination addresses for IPv4 multicast.
-			mdnsDst := &net.UDPAddr{IP: net.IPv4(224, 0, 0, 251), Port: 5353}
-			ssdpDst := &net.UDPAddr{IP: net.IPv4(239, 255, 255, 250), Port: 1900}
-
-			// Send inbound multicast packets by sending multicast packet that loops back.
-			for _, ifname := range ifnames {
-				// Run mDNS query.
-				if err := sendMDNS(mdnsHostnameIn, mdnsPort, ifname, mdnsDst); err != nil {
-					s.Error("Failed starting inbound mDNS test: ", err)
-				}
-				// Run legacy mDNS query.
-				if err := sendMDNS(legacyMDNSHostnameIn, legacyMDNSPort, ifname, mdnsDst); err != nil {
-					s.Error("Failed starting inbound legacy mDNS test: ", err)
-				}
-				// Run SSDP query
-				if err := sendSSDP(ssdpUserAgentIn, ssdpPort, ifname, ssdpDst); err != nil {
-					s.Error("Failed starting inbound SSDP test: ", err)
-				}
-			}
-
 		}
 	}
 
@@ -437,14 +439,17 @@ func streamCmd(ctx context.Context, cmd *testexec.Cmd, m map[string]string) erro
 	}()
 
 	// Copy expectation set for checking.
-	expect := m
+	expect := make(map[string]string)
+	for k, v := range m {
+		expect[k] = v
+	}
 
 	// Watch and wait until command have the expected outputs.
 	sc := bufio.NewScanner(stdout)
 	for {
 		if err := ctx.Err(); err != nil {
 			var e []string
-			for _, v := range m {
+			for _, v := range expect {
 				e = append(e, v)
 			}
 			return errors.Wrap(err, "failed to get "+strings.Join(e, ", "))
