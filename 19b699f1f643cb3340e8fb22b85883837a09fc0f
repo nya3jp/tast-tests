@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2515b9b6_3371fd05",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-28T00:45:38Z",
+      "side": 1,
+      "message": "nit: if go fmt doesn\u0027t have an opinion about spaces around the + in \"str\" + \"str\", at least keep it consistent within files (i.e. this, L54 vs. L39, L42, L49, L56)",
+      "revId": "19b699f1f643cb3340e8fb22b85883837a09fc0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966bd04e_11df4e01",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-28T00:45:38Z",
+      "side": 1,
+      "message": "Instead of logging the output and returning an error, should we return the msg as part of the error in TpmManagerBinary? Then the msg/binaryMsg tango above wouldn\u0027t be necessary.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "19b699f1f643cb3340e8fb22b85883837a09fc0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e73de2_b6a9967f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-28T00:45:38Z",
+      "side": 1,
+      "message": "ditto re: how msg is handled when the Binary gives back an error",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "19b699f1f643cb3340e8fb22b85883837a09fc0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
