@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac08f06b_c2fe9c28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T07:02:13Z",
+      "side": 1,
+      "message": "Is this real creds? If so please use secret variables feature instead.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Secret-variables",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "66059348885206c4f78ee061b23117d34fecb38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
