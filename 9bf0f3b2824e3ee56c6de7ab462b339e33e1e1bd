@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8eb16af_62ba81e6",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-28T22:09:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bf9d43c_7bb255d1",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "9bf0f3b2824e3ee56c6de7ab462b339e33e1e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f94e0de_ba7e29bb",
         "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "9bf0f3b2824e3ee56c6de7ab462b339e33e1e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f07dbc_0ea0bc80",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-28T22:09:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f94e0de_ba7e29bb",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "9bf0f3b2824e3ee56c6de7ab462b339e33e1e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9de2f267_acbfbad8",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-28T22:09:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82658da1_bf901fe7",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "9bf0f3b2824e3ee56c6de7ab462b339e33e1e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "474b2941_9345279d",
         "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "9bf0f3b2824e3ee56c6de7ab462b339e33e1e1bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e1348b0_b8714307",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-02-28T22:09:46Z",
+      "side": 1,
+      "message": "Thanks for the tip. Changed some other locations as well.",
+      "parentUuid": "474b2941_9345279d",
+      "range": {
+        "startLine": 48,
+        "startChar": 66,
+        "endLine": 48,
+        "endChar": 100
+      },
+      "revId": "9bf0f3b2824e3ee56c6de7ab462b339e33e1e1bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
