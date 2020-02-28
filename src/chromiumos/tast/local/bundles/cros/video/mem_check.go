@@ -38,7 +38,7 @@ func init() {
 			Val:               memCheckParams{fileName: "720_h264.mp4", videoWidth: 1280, videoHeight: 720},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
-			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoWithGuestLogin(),
 			Timeout:           10 * time.Minute,
 		}, {
@@ -46,7 +46,7 @@ func init() {
 			Val:               memCheckParams{fileName: "720_vp8.webm", videoWidth: 1280, videoHeight: 720},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp8.webm"},
-			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP8},
 			Pre:               pre.ChromeVideoWithGuestLogin(),
 			Timeout:           10 * time.Minute,
 		}, {
@@ -54,7 +54,7 @@ func init() {
 			Val:               memCheckParams{fileName: "720_vp9.webm", videoWidth: 1280, videoHeight: 720},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp9.webm"},
-			ExtraSoftwareDeps: []string{"amd64", caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP9},
 			Pre:               pre.ChromeVideoWithGuestLogin(),
 			Timeout:           10 * time.Minute,
 		}},
