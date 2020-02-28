@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e07cc1e_4183a2fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-28T01:16:59Z",
+      "side": 1,
+      "message": "perhaps I\u0027m missing something, but:\ncleanupCtx \u003d has a 15 min context\nctx \u003d has a 14 min context\n\nshouldn\u0027t cleanupCtx have a 1 min context?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edaf04d0_3dd7be67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-28T01:16:59Z",
+      "side": 1,
+      "message": "nit: remove \u00271*\u0027",
+      "range": {
+        "startLine": 50,
+        "startChar": 31,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb27073a_e7e9c464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-28T01:16:59Z",
+      "side": 1,
+      "message": "what are you trying to achieve with the \"warm-up\" ?\nif you want to wait for cpu cooldown we have an API for that: power.WaitUntilCPUCoolDown()\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/power/cpucooldown.go;l\u003d34?q\u003dWaitUntilCPUCoolDown\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)\n\nusually you shouldn\u0027t call \u0027testing.Sleep\u0027 unless there is a very good reason for it. \"sleeps\" usually introduce flakyness, or they \"waste\" precious lab-time if they are not needed.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39925221_dd6ab2e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-28T01:16:59Z",
+      "side": 1,
+      "message": "huge nit:\nconst (\n  iterationCount \u003d 10\n  iterationDuration \u003d 10 * time.Second\n)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a32ce52_07c26994",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-28T01:16:59Z",
+      "side": 1,
+      "message": "nit: \nadd more info, a verb that indicates what should be done to the night lights. e.g.:\nDisable night light.",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a1b9df5_cdd5c70f",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-28T01:16:59Z",
+      "side": 1,
+      "message": "nit:\neither TODO(ldap) or TODO(crbug/number)",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 9
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
