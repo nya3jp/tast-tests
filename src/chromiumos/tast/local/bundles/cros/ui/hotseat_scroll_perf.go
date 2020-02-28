@@ -93,7 +93,7 @@ func scrollToEnd(ctx context.Context, tconn *chrome.TestConn, d direction) error
 
 	for {
 		// Calculate the suitable scroll offset to go to a new shelf page.
-		info, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ScrollableShelfState{})
+		info, err := ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{})
 		if err != nil {
 			return err
 		}
@@ -105,7 +105,7 @@ func scrollToEnd(ctx context.Context, tconn *chrome.TestConn, d direction) error
 		}
 
 		// Calculate the target scroll offset based on |pageOffset|.
-		if info, err = ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ScrollableShelfState{ScrollDistance: pageOffset}); err != nil {
+		if info, err = ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{ScrollDistance: pageOffset}); err != nil {
 			return err
 		}
 
