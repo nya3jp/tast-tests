@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -109,7 +110,7 @@ func scrollToEnd(ctx context.Context, tconn *chrome.TestConn, d direction) error
 		}
 
 		// Choose the arrow button to be clicked based on the scroll direction.
-		var arrowBounds ash.Rect
+		var arrowBounds coords.Rect
 		if d == scrollToLeft {
 			arrowBounds = info.LeftArrowBounds
 		} else {
@@ -193,7 +194,7 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		}
 	}
 
-	histograms, err := metrics.Run(ctx, cr, func() error {
+	histograms, err := metrics.Run(ctx, tconn, func() error {
 		if err := runShelfScroll(ctx, tconn); err != nil {
 			return errors.Wrap(err, "fail to run scroll animation")
 		}
