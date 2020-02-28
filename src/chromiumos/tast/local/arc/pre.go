@@ -254,6 +254,25 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 	}()
 
+	// Check whether ARCVM status is consistent with the precondition name.
+	// We assume here that the preconditions specifying ARC Container have names starting from "arc_",
+	// whereas those specifying ARCVM have names starting from "arcvm_".
+	vm, err := VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
+	if vm {
+		const vmPrefix = "arcvm_"
+		if !strings.HasPrefix(p.name, vmPrefix) {
+			s.Fatalf("Running in ARCVM mode, but the precondition name %q does not start from %q", p.name, vmPrefix)
+		}
+	} else {
+		const containerPrefix = "arc_"
+		if !strings.HasPrefix(p.name, containerPrefix) {
+			s.Fatalf("Running in ARC Container mode, but the precondition name %q does not start from %q", p.name, containerPrefix)
+		}
+	}
+
 	// Opt-in if performing a GAIA login.
 	if p.gaia != nil {
 		func() {
