@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe9cbe2b_30bce7c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "huge nit: entries :\u003d ...",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c2adaac_71432bf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "nit: Explicit type here is not needed because it\u0027s inferred from the slice type above.\n\n entries :\u003d []trace.TestEntryConfig{\n   {\n     ...\n   },\n }",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c64bb23_36d9c504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "Please avoid error.Error() because we lose stack traces. Instead:\n\n s.Fatal(\"Trace play test failed: \", err)",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316667d0_24771ec1",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: GSURL\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946c7c38_22ba01c9",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "huge nit: 80 is for HTTP in TCP and looks a bit odd. How about using 53 for DNS?\n\nAlso could you add a brief comment that why we chose 8.8.8.8? IIUC it\u0027s an arbitrarily chosen as an external server on the Internet.",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d646566_5064010b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "huge nit: const iptablesApp \u003d ...",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4912c20_e8799ee1",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: Let\u0027s handle exceptional cases first to reduce nesting.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n exitCode, ok :\u003d testexec.ExitCode(err)\n if !ok {\n   return err\n }\n ...",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e79ff4_b00e0c7b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "Including context.Context in structs is strongly discouraged:\n\n\u003e Do not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it. The Context should be the first parameter, typically named ctx:\nhttps://godoc.org/context\n\nFortunately http.Server provides an official way to provide context.Context to request handlers.\n\n func startFileServer(ctx context.Context, ...) *http.Server {\n   ...\n   server :\u003d \u0026http.Server{\n     ...\n     BaseContext: func(net.Listener) context.Context {\n       return ctx\n     },\n   }\n   ...\n }\n\n func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {\n   ctx :\u003d req.Context()\n   ...\n }",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 29
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03d33c4_590a46a3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: validateGSURL\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3652dfe_c7245fe8",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: Could you rename this to s? Usually receiver names are quite short in Go.\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-names",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 12
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3aee5f8_20a140df",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: if !validateGSURL(...) { ... }",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 53
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33c6012_d093d9e7",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "Can we pass []*TestEntryConfig instead?\n\nA slice of non-pointer structs is a bit tricky to use in Go. For example, when iterating through a slice with range-for, whole elements are copied, which is not memory-wise efficient.\n\n for _, e :\u003d range entries {\n   e.StorageFile.MD5Sum \u003d \"abc\"  // e is a copy, so it does not affect original items in entries\n }",
+      "range": {
+        "startLine": 207,
+        "startChar": 119,
+        "endLine": 207,
+        "endChar": 144
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d4eadd_b3816bc6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "Can you add a comment why we use an external address rather than a fixed address?\n\nOptional: Actually I\u0027m a bit afraid that this might be a source of flake, e.g. if an external IP address changes during the test due to DHCP refresh this test will fail. It would be great if we could you a fixed IP address, e.g. the host-side virtual network adapter of VM.",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2fce63_d81881b8",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "When replaying a trace fails, it is not obvious which trace failed from the error message. I recommend including the entry name here:\n\n return errors.Wrapf(err, \"replaying %s failed\", entry.Name)",
+      "range": {
+        "startLine": 253,
+        "startChar": 3,
+        "endLine": 253,
+        "endChar": 43
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04dfcd79_67b5fb0f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "Just to check: I assume a Tast test calls RunTraceReplayTest at most once, am I right?\n\nIf that\u0027s not the case, calling perf.Values.Save here might be a problematic because it overrides results-chart.json generated in previous calls of RunTraceReplayTest, so I recommend taking *perf.Values as an argument of this function and calling perf.Values.Save in the caller.",
+      "range": {
+        "startLine": 257,
+        "startChar": 22,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb86f8c6_d1d96f67",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: averageFPS",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 11
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b375ddf2_994082a5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "Could you handle the possible error?",
+      "range": {
+        "startLine": 278,
+        "startChar": 13,
+        "endLine": 278,
+        "endChar": 14
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f1b3a4_0a513499",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "I discourage parsing the result of CombinedOutput because stdout/stderr are mixed there and parsing it is inherently flaky.\n\nIf we\u0027re sure that the output is written to stdout, I recommend calling .Output() instead.",
+      "range": {
+        "startLine": 289,
+        "startChar": 26,
+        "endLine": 289,
+        "endChar": 38
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e86055f_fd92d47d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: \"unable to parse: %q\"\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 290,
+        "startChar": 28,
+        "endLine": 290,
+        "endChar": 34
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4d2786_611050ec",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:25:25Z",
+      "side": 1,
+      "message": "style: \"replay finished ...\"\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nSame for other error constructions starting with capital letters.",
+      "range": {
+        "startLine": 294,
+        "startChar": 24,
+        "endLine": 294,
+        "endChar": 30
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
