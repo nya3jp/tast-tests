@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b051ea0_0ee0a900",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-02-28T14:33:31Z",
+      "side": 1,
+      "message": "optional/style: go does not have limit of chars in a line. You can skip adding line break here.",
+      "revId": "267ea544bdfc84407fb62dc2fadcfdb283df4ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
