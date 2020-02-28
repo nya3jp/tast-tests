@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "78c40193_62164d56",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/secconf/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-02-28T18:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d8ef61c_53decb91",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 78
+      },
+      "revId": "61c0dc3b277d86f9063c85ae01448467a9b549d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9e587bd_6249de78",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/secconf/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-02-28T18:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806d5ff8_ec184816",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "61c0dc3b277d86f9063c85ae01448467a9b549d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87dd807f_cdfea96c",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/secconf/utils.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "61c0dc3b277d86f9063c85ae01448467a9b549d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f87a6eb_254b3b37",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/secconf/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-02-28T18:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87dd807f_cdfea96c",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "61c0dc3b277d86f9063c85ae01448467a9b549d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2f5b6907_f2889069",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/secconf/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-02-28T18:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdcf263_9b718eff",
+      "range": {
+        "startLine": 30,
+        "startChar": 31,
+        "endLine": 30,
+        "endChar": 86
+      },
+      "revId": "61c0dc3b277d86f9063c85ae01448467a9b549d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b636130_bd171d84",
         "filename": "src/chromiumos/tast/remote/wifi/hostap/secconf/utils.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "61c0dc3b277d86f9063c85ae01448467a9b549d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c10b932_e9f527c7",
+        "filename": "src/chromiumos/tast/remote/wifi/hostap/secconf/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-02-28T18:23:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b636130_bd171d84",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "61c0dc3b277d86f9063c85ae01448467a9b549d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
