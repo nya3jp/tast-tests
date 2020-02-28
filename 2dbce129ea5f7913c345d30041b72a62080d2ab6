@@ -46,6 +46,30 @@
       "revId": "2dbce129ea5f7913c345d30041b72a62080d2ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a3318b_6ab588a9",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-02-28T17:12:25Z",
+      "side": 1,
+      "message": "yes, I think adding a new field in preImpl that mentions whether or not it is in a VM is more clear.",
+      "parentUuid": "2f01383c_72cb333c",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 69
+      },
+      "revId": "2dbce129ea5f7913c345d30041b72a62080d2ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
