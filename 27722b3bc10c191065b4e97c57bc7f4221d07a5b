@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc660aa1_9ab91538",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-28T00:07:26Z",
+      "side": 1,
+      "message": "is there a TODO for \"support packet capture\" somewhere? Otherwise, it can be hard to diagnose what\u0027s going on for certain failures.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "27722b3bc10c191065b4e97c57bc7f4221d07a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
