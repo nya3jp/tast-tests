@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "450eed99_30c3eb4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/mount_combinations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-28T17:23:55Z",
+      "side": 1,
+      "message": "one thing you might want to consider, since it seems like you use these in a few places, is to factor this out into a function that you can defer by passing in the username (and I guess ctx and s as well)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "57c6d12f29a443239f93e65e4f35e0ad91881d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
