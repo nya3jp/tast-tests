@@ -12,6 +12,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -169,4 +171,90 @@ func WaitForApp(ctx context.Context, c *chrome.Conn, appID string) error {
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
+// HotseatStateType is
+type HotseatStateType string
+
+const (
+	hidden            HotseatStateType = "Hidden"
+	shownClamShell    HotseatStateType = "ShownClamShell"
+	shownHomeLauncher HotseatStateType = "ShownHomeLauncher"
+	extended          HotseatStateType = "Extended"
+)
+
+// HotseatInfo corresonds to the "HotseatInfo" defined in autotest_private.idl,
+type HotseatInfo struct {
+	PointWithinHiddenHotseat   Location         `json:"pointWithinHiddenHotseat"`
+	PointWithinExtendedHotseat Location         `json:"pointWithinExtendedHotseat"`
+	HotseatState               HotseatStateType `json:"state"`
+	IsAnimating                bool             `json:"isAnimating"`
+}
+
+// FetchHotseatInfo does
+func FetchHotseatInfo(ctx context.Context, c *chrome.Conn) (*HotseatInfo, error) {
+	var s *HotseatInfo
+	fetchQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getHotseatInfo)()")
+	if err := c.EvalPromise(ctx, fetchQuery, &s); err != nil {
+		errors.Wrap(err, "Running autotestPrivate.getHotseatInfo failed")
+		return nil, err
+	}
+
+	return s, nil
+}
+
+// SwipeUpHotseatAndWaitForCompletion does
+func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, c *chrome.Conn) error {
+	info, err := FetchHotseatInfo(ctx, c)
+	if err != nil {
+		return errors.Wrap(err, "failed to fetch hotseat info")
+	}
+
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch screen event writer")
+	}
+
+	orientation, err := display.GetOrientation(ctx, c)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the orientation info")
+	}
+	tsw.SetRotation(-orientation.Angle)
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to get single touch writer")
+	}
+
+	tcc, err := NewTouchCoordConverter(ctx, c, tsw)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch coord converter")
+	}
+
+	startX, startY := tcc.ConvertLocation(info.PointWithinHiddenHotseat)
+	endX, endY := tcc.ConvertLocation(info.PointWithinExtendedHotseat)
+	endY = (startY + endY) / 2
+
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed swipe up the hotseat")
+	}
+
+	stw.End()
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := FetchHotseatInfo(ctx, c)
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch hotseat info")
+		}
+
+		if info.IsAnimating || info.HotseatState != extended {
+			return errors.Wrapf(err, "expected hotseat state: Extended; expected hotseat animating state: false; actual hotseat state: %v; actual animating state: %t", info.HotseatState, info.IsAnimating)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for hotseat to reach the expected: ")
+	}
+
+	return nil
 }
