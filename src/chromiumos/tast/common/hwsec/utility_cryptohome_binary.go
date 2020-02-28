@@ -445,7 +445,7 @@ func (u *UtilityCryptohomeBinary) ChangeVaultLabel(ctx context.Context, username
 	output := strings.TrimSuffix(string(binaryOutput), "\n")
 	if output != updateKeyExSuccessMessage {
 		testing.ContextLogf(ctx, "Incorrect UpdateKeyEx message; got %q, want %q", output, updateKeyExSuccessMessage)
-		return errors.Errorf("incorrect message from UpdateKeyEx; got %q, want %q", updateKeyExSuccessMessage)
+		return errors.Errorf("incorrect message from UpdateKeyEx; got %q, want %q", output, updateKeyExSuccessMessage)
 	}
 
 	return nil
