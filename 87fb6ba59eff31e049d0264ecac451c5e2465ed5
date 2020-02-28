@@ -46,6 +46,30 @@
       "revId": "87fb6ba59eff31e049d0264ecac451c5e2465ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bec25de_00b107fa",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-28T00:36:10Z",
+      "side": 1,
+      "message": "That\u0027s fine with me.",
+      "parentUuid": "db946728_e3a6c225",
+      "range": {
+        "startLine": 45,
+        "startChar": 60,
+        "endLine": 45,
+        "endChar": 81
+      },
+      "revId": "87fb6ba59eff31e049d0264ecac451c5e2465ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
