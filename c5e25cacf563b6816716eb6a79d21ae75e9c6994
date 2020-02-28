@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "303622eb_55b3c6ae",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T06:53:56Z",
+      "side": 1,
+      "message": "Thanks for good examples!\n\nThat said, while examples are great to have, they do not replace necessity of explanation of fn. In the current documentation it\u0027s not clear what kind of values are permitted as fn.\n\nAlso we should make it clear that the result is a promise it is awaited.\n\nHow about something like this:\n\n Call calls a JavaScript function fn with arguments args, and stores the evaluation result to out if it is not nil.\n \n fn can be any JavaScript expression evaluated to a function (e.g. \"setTimeout\", \"(a) \u003d\u003e a + 2\", \"tast.promisify(chrome.autotestPrivate.mouseMove)\").\n args and out (if not nil) must be of JSON serializable/deserializable types or *chrome.JSObject.\n If the evaluation result is a promise, it is awaited and its resulting value is returned as the evaluation result.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 12
+      },
+      "revId": "c5e25cacf563b6816716eb6a79d21ae75e9c6994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
