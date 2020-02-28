@@ -13,7 +13,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -146,19 +148,52 @@ type ShelfItem struct {
 	HasNotification bool   `json:"hasNotification"`
 }
 
-// ScrollableShelfState corresponds to the "ScrollableShelfState" defined in autotest_private.idl
-type ScrollableShelfState struct {
+// ShelfState corresponds to the "ShelfState" defined in autotest_private.idl
+type ShelfState struct {
 	ScrollDistance float32 `json:"scrollDistance"`
 }
 
-// ScrollableShelfInfo corresponds to the "ScrollableShelfInfo" defined in autotest_private.idl
-type ScrollableShelfInfo struct {
+// ScrollableShelfInfoClass corresponds to the "ScrollableShelfInfo" defined in autotest_private.idl
+type ScrollableShelfInfoClass struct {
 	MainAxisOffset       float32     `json:"mainAxisOffset"`
 	PageOffset           float32     `json:"pageOffset"`
 	TargetMainAxisOffset float32     `json:"targetMainAxisOffset"`
 	LeftArrowBounds      coords.Rect `json:"leftArrowBounds"`
 	RightArrowBounds     coords.Rect `json:"rightArrowBounds"`
 	IsAnimating          bool        `json:"isAnimating"`
+}
+
+// HotseatStateType corresponds to the "HotseatState" defined in autotest_private.idl.
+type HotseatStateType string
+
+const (
+	// ShelfHidden means that hotseat is shown off screen.
+	ShelfHidden HotseatStateType = "Hidden"
+	// ShelfShownClamShell means that hotseat is shown within the shelf in clamshell mode.
+	ShelfShownClamShell HotseatStateType = "ShownClamShell"
+	// ShelfShownHomeLauncher means that hotseat is shown in the tablet mode home launcher's shelf.
+	ShelfShownHomeLauncher HotseatStateType = "ShownHomeLauncher"
+	// ShelfExtended means that hotseat is shown above the shelf.
+	ShelfExtended HotseatStateType = "Extended"
+)
+
+// HotseatSwipeDescriptor corresponds to the "HotseatSwipeDescriptor" defined in autotest_private.idl.
+type HotseatSwipeDescriptor struct {
+	SwipeStartLocation coords.Point `json:"swipeStartLocation"`
+	SwipeEndLocation   coords.Point `json:"swipeEndLocation"`
+}
+
+// HotseatUIInfo corresponds to the "HotseatUIInfo" defined in autotest_private.idl.
+type HotseatUIInfo struct {
+	SwipeUp      HotseatSwipeDescriptor `json:"swipeUp"`
+	HotseatState HotseatStateType       `json:"state"`
+	IsAnimating  bool                   `json:"isAnimating"`
+}
+
+// ShelfInfo corresponds to the "ShelfInfo" defined in autotest_private.idl.
+type ShelfInfo struct {
+	HotseatInfo         HotseatUIInfo            `json:"hotseatInfo"`
+	ScrollableShelfInfo ScrollableShelfInfoClass `json:"scrollableShelfInfo"`
 }
 
 // AppType defines the types of available apps.
@@ -219,26 +254,45 @@ func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, erro
 	return s, nil
 }
 
-// FetchScrollableShelfInfoForState returns the scrollable shelf's ui related information for the given state.
-func FetchScrollableShelfInfoForState(ctx context.Context, c *chrome.TestConn, state *ScrollableShelfState) (*ScrollableShelfInfo, error) {
+func fetchShelfInfoForState(ctx context.Context, c *chrome.TestConn, state *ShelfState) (*ShelfInfo, error) {
 	stateSerialized, err := json.Marshal(state)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed marshaling state")
 	}
 
-	var s *ScrollableShelfInfo
-	ScrollableShelfQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getScrollableShelfInfoForState)(%s)", string(stateSerialized))
-	if err := c.EvalPromise(ctx, ScrollableShelfQuery, &s); err != nil {
+	var s *ShelfInfo
+	ShelfQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getShelfUIInfoForState)(%s)", string(stateSerialized))
+	if err := c.EvalPromise(ctx, ShelfQuery, &s); err != nil {
 		return nil, errors.Wrap(err, "failed to call getScrollableShelfInfoForState")
 	}
 	return s, nil
+}
+
+// FetchScrollableShelfInfoForState returns the scrollable shelf's ui related information for the given state.
+func FetchScrollableShelfInfoForState(ctx context.Context, c *chrome.TestConn, state *ShelfState) (*ScrollableShelfInfoClass, error) {
+	shelfInfo, err := fetchShelfInfoForState(ctx, c, state)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to fetch scrollable shelf info")
+	}
+
+	return &(shelfInfo.ScrollableShelfInfo), nil
+}
+
+// FetchHotseatInfo returns the hotseat's ui related information.
+func FetchHotseatInfo(ctx context.Context, c *chrome.TestConn) (*HotseatUIInfo, error) {
+	shelfInfo, err := fetchShelfInfoForState(ctx, c, &ShelfState{})
+	if err != nil {
+
+		return nil, errors.Wrap(err, "failed to fetch hotseat info")
+	}
+	return &(shelfInfo.HotseatInfo), nil
 }
 
 // ScrollShelfAndWaitUntilFinish triggers the scroll animation by mouse click then waits the animation to finish.
 func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, buttonBounds coords.Rect, targetOffset float32) error {
 	// Before pressing the arrow button, wait scrollable shelf to be idle.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ScrollableShelfState{})
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
 		if err != nil {
 			return errors.Wrap(err, "failed to fetch scrollable shelf's information when waiting for scroll animation")
 		}
@@ -257,7 +311,7 @@ func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, 
 
 	// Wait the scroll animation to finish.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ScrollableShelfState{})
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
 		if err != nil {
 			return errors.Wrap(err, "failed to fetch scrollable shelf's information when waiting for scroll animation")
 		}
@@ -293,4 +347,66 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
+// SwipeUpHotseatAndWaitForCompletion swipes the hotseat up, changing the hotseat state from hidden to extended. The function does not end until the hotseat animation completes.
+func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tc *chrome.TestConn) error {
+	info, err := FetchHotseatInfo(ctx, tc)
+	if err != nil {
+		return errors.Wrap(err, "failed to fetch hotseat info")
+	}
+
+	if info.HotseatState != ShelfHidden || info.IsAnimating {
+		return errors.Errorf("The hotseat state is unexpected: expected hotseat state is hidden; actual hotseat state is %v", info.HotseatState)
+	}
+
+	// Obtain the suitable touch screen writer.
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch screen event writer")
+	}
+	orientation, err := display.GetOrientation(ctx, tc)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the orientation info")
+	}
+	tsw.SetRotation(-orientation.Angle)
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "failed to get single touch writer")
+	}
+
+	// Obtain the coordinate converter from the touch screen writer.
+	tcc, err := NewTouchCoordConverter(ctx, tc, tsw)
+	if err != nil {
+		return errors.Wrap(err, "failed to create touch coord converter")
+	}
+
+	// Convert the gesture locations from screen coordinates to touch screen coordinates.
+	startX, startY := tcc.ConvertLocation(info.SwipeUp.SwipeStartLocation)
+	endX, endY := tcc.ConvertLocation(info.SwipeUp.SwipeEndLocation)
+
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed swipe up the hotseat")
+	}
+
+	stw.End()
+
+	// Wait for the hotseat animation to finish.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := FetchHotseatInfo(ctx, tc)
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch hotseat info")
+		}
+
+		if info.IsAnimating || info.HotseatState != ShelfExtended {
+			return errors.Wrapf(err, "expected hotseat state: ShelfExtended; expected hotseat animating state: false; actual hotseat state: %v; actual animating state: %t", info.HotseatState, info.IsAnimating)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for hotseat to reach the expected: ")
+	}
+
+	return nil
 }
