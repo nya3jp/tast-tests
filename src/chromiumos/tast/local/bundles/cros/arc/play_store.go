@@ -37,7 +37,7 @@ func init() {
 
 func PlayStore(ctx context.Context, s *testing.State) {
 	const (
-		pkgName = "com.google.android.calendar"
+		pkgName = "com.google.android.apps.photos"
 	)
 
 	username := s.RequiredVar("arc.PlayStore.username")
