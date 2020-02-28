@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0768fb5_c788ca1d",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "can this be a part of dbusutil package?\n\nAlso I like the name starting with a verb; getDbusProperty (or getProperty) sounds better to me personally.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3c343aa_88265a15",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "same suggestion: might be in dbusutil?  name woulld be setProperty or setDbusProperty?",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4c570f_07c18082",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "The value parameter -- I think it\u0027s nicer to be just interface{} and creating a variant (dbus.MakeVariant) within this method.",
+      "range": {
+        "startLine": 29,
+        "startChar": 82,
+        "endLine": 29,
+        "endChar": 100
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d489da6_ad14d355",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "I couldn\u0027t find the definition of cleanupcallback. Maybe in another CL?",
+      "range": {
+        "startLine": 39,
+        "startChar": 44,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d588f305_41aa33c2",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "conn.Close() should be called? Otherwise the connection will never be closed. Same on other early returns.",
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0bc7497_f404e1e6",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "nit: \"Bluetooth\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63db4e29_734b13a0",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "personally, I like to return a function which does nothing (i.e. return func(ctx context.Context) error { return nil }, nil) instead of nil. It\u0027s easier to use -- will return a function when there are no errors.",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5b9f39_46a402e5",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T21:41:29Z",
+      "side": 1,
+      "message": "If dbusPropertySet fails here, \"conn\" is not closed. I think it should be closed regardless, am I missing something?",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
