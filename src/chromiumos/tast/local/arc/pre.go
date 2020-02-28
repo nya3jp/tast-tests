@@ -62,9 +62,9 @@ func VMBooted() testing.Precondition { return vmBootedPre }
 
 // vmBootedPre is returned by VMBooted.
 var vmBootedPre = &preImpl{
-	name:      "arcvm_booted",
-	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
-	extraArgs: []string{"--enable-arcvm"},
+	name:     "arcvm_booted",
+	timeout:  resetTimeout + chrome.LoginTimeout + BootTimeout,
+	useARCVM: true,
 }
 
 // BootedInTabletMode returns a precondition similar to Booted(). The only difference from Booted() is
@@ -86,7 +86,8 @@ func VMBootedInTabletMode() testing.Precondition { return vmBootedInTabletModePr
 var vmBootedInTabletModePre = &preImpl{
 	name:      "arcvm_booted_in_tablet_mode",
 	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
-	extraArgs: []string{"--enable-arcvm", "--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
+	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard"},
+	useARCVM:  true,
 }
 
 // BootedWithVideoLogging returns a precondition similar to Booted(), but with additional Chrome video logging enabled.
@@ -131,7 +132,8 @@ var vmBootedAppCompatPre = &preImpl{
 		userVar: "arcappcompat.username",
 		passVar: "arcappcompat.password",
 	},
-	extraArgs: []string{"--enable-arcvm", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+	extraArgs: []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+	useARCVM:  true,
 }
 
 // BootedInTabletModeAppCompat returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
@@ -161,7 +163,8 @@ var vmBootedInTabletModeAppCompatPre = &preImpl{
 		userVar: "arcappcompat.username",
 		passVar: "arcappcompat.password",
 	},
-	extraArgs: []string{"--enable-arcvm", "--force-tablet-mode=touch_view", "--enable-virtual-keyboard", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+	useARCVM:  true,
 }
 
 // gaiaVars holds the secret variables for username and password for a GAIA login.
@@ -180,6 +183,9 @@ type preImpl struct {
 
 	cr  *chrome.Chrome
 	arc *ARC
+	// useARCVM is a flag to specify whether Android should run in ARC Container or ARCVM.
+	// When this flag is set, "--enable-arcvm" is added to extraArgs.
+	useARCVM bool
 
 	origInitPID       int32               // initial PID (outside container) of ARC init process
 	origInstalledPkgs map[string]struct{} // initially-installed packages
@@ -241,18 +247,36 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
+		var chromeExtraArgs chrome.Option
+		if p.useARCVM {
+			chromeExtraArgs = chrome.ExtraArgs(append(p.extraArgs, "--enable-arcvm")...)
+		} else {
+			chromeExtraArgs = chrome.ExtraArgs(p.extraArgs...)
+		}
 		var err error
 		if p.gaia != nil {
 			username := s.RequiredVar(p.gaia.userVar)
 			password := s.RequiredVar(p.gaia.passVar)
-			p.cr, err = chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(), chrome.ExtraArgs(p.extraArgs...))
+			p.cr, err = chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(), chromeExtraArgs)
 		} else {
-			p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(p.extraArgs...))
+			p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chromeExtraArgs)
 		}
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
 	}()
+
+	// Check whether ARCVM status is consistent with the flag useARCVM.
+	vm, err := VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
+	if vm && !p.useARCVM {
+		s.Fatal("ARCVM is enabled, but the precondition specifies to use ARC Container")
+	}
+	if !vm && p.useARCVM {
+		s.Fatal("ARCVM is not enabled, but the precondition specifies to use ARCVM")
+	}
 
 	// Opt-in if performing a GAIA login.
 	if p.gaia != nil {
