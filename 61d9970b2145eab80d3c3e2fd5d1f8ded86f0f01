@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30cba22b_b929b339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T00:13:52Z",
+      "side": 1,
+      "message": "Could this cleanup be a defer?  Like, after line 133?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "61d9970b2145eab80d3c3e2fd5d1f8ded86f0f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
