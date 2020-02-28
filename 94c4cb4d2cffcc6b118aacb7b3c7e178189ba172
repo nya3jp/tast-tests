@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "286932af_f31ecf51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 38
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-28T19:27:29Z",
+      "side": 1,
+      "message": "nit: v1.5",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "94c4cb4d2cffcc6b118aacb7b3c7e178189ba172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "469b9def_b2933a72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 38
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-02-28T19:27:29Z",
+      "side": 1,
+      "message": "nit: 1V15",
+      "range": {
+        "startLine": 13,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "94c4cb4d2cffcc6b118aacb7b3c7e178189ba172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
