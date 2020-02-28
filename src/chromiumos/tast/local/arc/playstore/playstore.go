@@ -12,99 +12,33 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
-
-const (
-	defaultUITimeout = 20 * time.Second
-	// The install button has different text depending on playstore version.
-	installButtonRegex = "Install|INSTALL"
-)
-
-// SearchForApp uses the Play Store search bar to select an application.
-// After searching, it will open the apps page.
-// Play Store should be open to the homepage before running this function.
-func SearchForApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
-	const (
-		searchBarID       = "com.android.vending:id/search_bar"
-		searchContainerID = "com.android.vending:id/play_search_container"
-		searchBarInputID  = "com.android.vending:id/search_bar_text_input"
-		searchBoxInputID  = "com.android.vending:id/search_box_text_input"
-		playCardID        = "com.android.vending:id/play_card"
-	)
-
-	// There are 2 versions of the playstore ui.
-	// One version has a search bar and the other has a search container.
-	// This selects the correct playstore flow.
-	searchBar := d.Object(ui.ID(searchBarID))
-	searchContainer := d.Object(ui.ID(searchContainerID))
-	var searchInput *ui.Object
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := searchBar.Exists(ctx); err == nil {
-			if err := searchBar.Click(ctx); err != nil {
-				return testing.PollBreak(err)
-			}
-			searchInput = d.Object(ui.ID(searchBarInputID))
-			return nil
-		}
-
-		if err := searchContainer.Exists(ctx); err == nil {
-			if err := searchContainer.Click(ctx); err != nil {
-				return testing.PollBreak(err)
-			}
-			searchInput = d.Object(ui.ID(searchBoxInputID))
-			return nil
-		}
-		return errors.New("search bar not found")
-	}, &testing.PollOptions{Timeout: defaultUITimeout}); err != nil {
-		return err
-	}
-
-	// Input search query.
-	if err := searchInput.WaitForExists(ctx, defaultUITimeout); err != nil {
-		return err
-	}
-	if err := searchInput.Click(ctx); err != nil {
-		return err
-	}
-	if err := searchInput.SetText(ctx, pkgName); err != nil {
-		return err
-	}
-	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
-		return err
-	}
-
-	// Some versions of the Play Store automatically select the app when you search for it.
-	// If the install button is not present, click the playcard to select the app.
-	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches(installButtonRegex))
-	if err := installButton.WaitForExists(ctx, defaultUITimeout); err != nil {
-		testing.ContextLog(ctx, "Install button not found, selecting playcard to complete search")
-		playCard := d.Object(ui.ID(playCardID))
-		if err := playCard.WaitForExists(ctx, defaultUITimeout); err != nil {
-			return err
-		}
-		return playCard.Click(ctx)
-	}
-	return nil
-}
 
 // InstallApp uses the Play Store to install an application.
 // It will wait for the app to finish installing before returning.
 // Play Store should be open to the homepage before running this function.
 func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) error {
 	const (
+		defaultUITimeout = 20 * time.Second
+
 		accountSetupText   = "Complete account setup"
 		continueButtonText = "CONTINUE"
 		skipButtonText     = "SKIP"
 		permissionsText    = "needs access to"
 		acceptButtonID     = "com.android.vending:id/continue_button"
-		// The open button has different text depending on playstore version.
-		openButtonRegex = "Open|OPEN"
+		// The install and open buttons have different text depending on playstore version.
+		installButtonRegex = "Install|INSTALL"
+		openButtonRegex    = "Open|OPEN"
 	)
 
-	testing.ContextLog(ctx, "Searching for app")
-	if err := SearchForApp(ctx, a, d, pkgName); err != nil {
-		return errors.Wrap(err, "failed to search for app")
+	testing.ContextLog(ctx, "Opening Play Store with Intent")
+	if err := a.WaitIntentHelper(ctx); err != nil {
+		errors.Wrap(err, "failed to wait for ArcIntentHelper")
+	}
+	if err := a.SendIntentCommand(ctx, "android.intent.action.VIEW", "market://details?id="+pkgName).Run(testexec.DumpLogOnError); err != nil {
+		errors.Wrap(err, "failed to send intent to open the Play Store")
 	}
 
 	// Wait for the app to install.
