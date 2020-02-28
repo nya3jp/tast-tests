@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96cba02f_208f3444",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T00:10:13Z",
+      "side": 1,
+      "message": "I\u0027m wondering what is the purpose of returning the raw output of the underlying command invocation.\nThe tests using these functions (crrev.com/c/2035572) simply ignore msg all the time, and my guess is this is helpful for debugging/development of tests and for logging. And actually logging is done within this function.\n\nI love simple interfaces. Unless particular use cases are found, I\u0027d recommend to remove it.\n\nSame on other methods in this file.",
+      "range": {
+        "startLine": 584,
+        "startChar": 101,
+        "endLine": 584,
+        "endChar": 111
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18dee1c1_cc11a4b4",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T00:10:13Z",
+      "side": 1,
+      "message": "make(map[string]string, 3) would be slightly better.",
+      "range": {
+        "startLine": 594,
+        "startChar": 10,
+        "endLine": 594,
+        "endChar": 34
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d08cda_0cddc06b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T00:10:13Z",
+      "side": 1,
+      "message": "for _, line :\u003d range strings.Split(msg, \"\\n\") { ...",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 27
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5420e249_d3600634",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T00:10:13Z",
+      "side": 1,
+      "message": "This is potentially overwriting previous values if a single prefix matches with multiple lines. I believe that\u0027s not going to happen at all, though would be better to check that and return an error if such case occurs.",
+      "range": {
+        "startLine": 598,
+        "startChar": 3,
+        "endLine": 600,
+        "endChar": 4
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1efc5a7b_e198f569",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-02-28T00:10:13Z",
+      "side": 1,
+      "message": "I guess you shouldn\u0027t use naked return in this case. Better to be\nreturn \"\", \"\", \"\", \u0026FWMPError{E: ..., ErrorCode: ...}\n\ncf. https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\n\u003e Naked returns are okay if the function is a handful of lines. Once it\u0027s a medium sized function, be explicit with your return values.\n\nSame on other returns in this function.",
+      "range": {
+        "startLine": 608,
+        "startChar": 3,
+        "endLine": 609,
+        "endChar": 9
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
