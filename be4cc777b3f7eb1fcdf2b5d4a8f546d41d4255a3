@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "458308f3_10fc78ed",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T07:00:36Z",
+      "side": 1,
+      "message": "Named results are perfectly fine, but naked returns are not. From the referenced guide:\n\n\u003e Naked returns are okay if the function is a handful of lines. Once it\u0027s a medium sized function, be explicit with your return values. Corollary: it\u0027s not worth it to name result parameters just because it enables you to use naked returns. Clarity of docs is always more important than saving a line or two in your function.\n\nFor example,\n\n returnedErr \u003d errors.Errorf(\"missing parameters in token status output, got: %v\", params)\n return\n\nshould be\n\n return \"\", \"\", 0, errors.Errorf(\"missing parameters in token status output, got: %v\", params)\n\ninstead.",
+      "parentUuid": "ce9beee8_d3a89167",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 7
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c52b574_4061bb37",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 30
@@ -89,6 +113,53 @@
         "startChar": 2,
         "endLine": 410,
         "endChar": 25
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2268bca0_49ad6653",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T07:00:36Z",
+      "side": 1,
+      "message": "I see, you\u0027re right. Thanks for the explanation.",
+      "parentUuid": "6e6ed0af_2852b37c",
+      "range": {
+        "startLine": 410,
+        "startChar": 2,
+        "endLine": 410,
+        "endChar": 25
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1758e0ad_c99dc5d0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-02-28T07:00:36Z",
+      "side": 1,
+      "message": "huge nit: mind removing the trailing space?",
+      "range": {
+        "startLine": 412,
+        "startChar": 67,
+        "endLine": 412,
+        "endChar": 68
       },
       "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
