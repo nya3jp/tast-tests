@@ -189,6 +189,30 @@
       "revId": "97502408662afe227e4033bcdf220666b54c1064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea39f0e1_1d42da98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualethernet/veth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-02-29T02:35:12Z",
+      "side": 1,
+      "message": "Ack, this is fairly reasonable.\n\nI guess the problem is with cases where it helps code flow to separate those states -- you see that with testexec.Cmd especially: probably because it\u0027s not so obvious which \"next step\" a caller will want (run + output? async start? etc.). In other cases, there may be complex relations between the \"start\" of various actions, and it can be easier to construct them first, and decide the \"start\" order later.\n\nBut in absence of those sorts of reasons, that advice seems applicable, and guides to the 2-state case. Thanks.",
+      "parentUuid": "0c208f62_0e477bca",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "97502408662afe227e4033bcdf220666b54c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
