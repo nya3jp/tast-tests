@@ -174,9 +174,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		dst      coords.Point
 		duration time.Duration
 	}{
-		{"right", arc.BorderRight, coords.NewPoint(dispSize.W-marginForTouch, restoreBounds.Top+restoreBounds.Height/2), 100 * time.Millisecond},
-		{"bottom", arc.BorderBottom, coords.NewPoint(restoreBounds.Left+restoreBounds.Width/2, dispSize.H-marginForTouch), 300 * time.Millisecond},
-		{"bottom-right", arc.BorderBottomRight, coords.NewPoint(dispSize.W-marginForTouch, dispSize.H-marginForTouch), 100 * time.Millisecond},
+		{"right", arc.BorderRight, coords.NewPoint(dispSize.Width-marginForTouch, restoreBounds.Top+restoreBounds.Height/2), 100 * time.Millisecond},
+		{"bottom", arc.BorderBottom, coords.NewPoint(restoreBounds.Left+restoreBounds.Width/2, dispSize.Height-marginForTouch), 300 * time.Millisecond},
+		{"bottom-right", arc.BorderBottomRight, coords.NewPoint(dispSize.Width-marginForTouch, dispSize.Height-marginForTouch), 100 * time.Millisecond},
 	} {
 		s.Logf("Resizing window from %s border to %+v", entry.desc, entry.dst)
 		if err := act.ResizeWindow(ctx, entry.border, entry.dst, entry.duration); err != nil {

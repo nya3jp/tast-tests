@@ -14,6 +14,7 @@ import (
 	"unsafe"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -274,6 +275,27 @@ func (tsw *TouchscreenEventWriter) SetRotation(rotation int) error {
 	}
 	tsw.rotation = rotation
 	return nil
+}
+
+// TouchCoordConverter manages the conversion between locations in DIP and
+// the TouchCoord of the touchscreen.
+type TouchCoordConverter struct {
+	ScaleX float64
+	ScaleY float64
+}
+
+// NewTouchCoordConverter creates a new TouchCoordConverter instance for the
+// given size.
+func (tsw *TouchscreenEventWriter) NewTouchCoordConverter(size coords.Size) *TouchCoordConverter {
+	return &TouchCoordConverter{
+		ScaleX: float64(tsw.Width()) / float64(size.Width),
+		ScaleY: float64(tsw.Height()) / float64(size.Height),
+	}
+}
+
+// ConvertLocation converts a location to TouchCoord.
+func (tcc *TouchCoordConverter) ConvertLocation(l coords.Point) (x, y TouchCoord) {
+	return TouchCoord(tcc.ScaleX * float64(l.X)), TouchCoord(tcc.ScaleY * float64(l.Y))
 }
 
 // TouchEventWriter supports injecting touch events into a touchscreen device.
