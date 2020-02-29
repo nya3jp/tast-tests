@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package assistant
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AssistantSimpleQueries,
+		Func:         SimpleQueries,
 		Desc:         "Tests Assistant basic functionality with simple queries",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -26,7 +26,7 @@ func init() {
 	})
 }
 
-func AssistantSimpleQueries(ctx context.Context, s *testing.State) {
+func SimpleQueries(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
