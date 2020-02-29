@@ -72,6 +72,11 @@ func (r Rect) Empty() bool {
 	return r == Rect{}
 }
 
+// Size returns the size of the rect.
+func (r Rect) Size() Size {
+	return Size{Width: r.Width, Height: r.Height}
+}
+
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
 func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
 	return Rect{

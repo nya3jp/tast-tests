@@ -127,7 +127,7 @@ func BlackFlash(ctx context.Context, s *testing.State) {
 			return err
 		}
 		// Note if Chrome caption is enabled, the size of a maximized activity can be larger than the display size by the height of the caption.
-		if bounds.Width < dispSize.W || bounds.Height < dispSize.H {
+		if bounds.Width < dispSize.Width || bounds.Height < dispSize.Height {
 			return errors.New("activity is smaller than display yet")
 		}
 

@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -301,26 +302,26 @@ func Launcher(ctx context.Context, s *testing.State) {
 
 // launchAppAndMeasureWindowSize is a helper function that sets the app "scaled" property, launches the app and returns its window size.
 func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
-	ew *input.KeyboardEventWriter, ownerID, appID string, windowName string, scaled bool) (crostini.Size, error) {
+	ew *input.KeyboardEventWriter, ownerID, appID string, windowName string, scaled bool) (coords.Size, error) {
 	s.Log("Setting application property 'scaled' to ", scaled)
 	if err := setAppScaled(ctx, tconn, appID, scaled); err != nil {
-		return crostini.Size{}, err
+		return coords.Size{}, err
 	}
 
 	if err := apps.Launch(ctx, tconn, appID); err != nil {
-		return crostini.Size{}, err
+		return coords.Size{}, err
 	}
 
 	sz, err := crostini.PollWindowSize(ctx, tconn, windowName)
 	if err != nil {
-		return crostini.Size{}, err
+		return coords.Size{}, err
 	}
 	s.Log("Window size is ", sz)
 
 	if visible, err := ash.AppShown(ctx, tconn, appID); err != nil {
-		return crostini.Size{}, err
+		return coords.Size{}, err
 	} else if !visible {
-		return crostini.Size{}, errors.New("App was not visible in shelf after opening")
+		return coords.Size{}, errors.New("App was not visible in shelf after opening")
 	}
 
 	// Close the application with a keypress.
@@ -337,7 +338,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return crostini.Size{}, err
+		return coords.Size{}, err
 	}
 	return sz, nil
 }

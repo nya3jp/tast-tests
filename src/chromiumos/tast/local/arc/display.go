@@ -10,6 +10,7 @@ import (
 	"strconv"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -17,14 +18,6 @@ const (
 	// DefaultDisplayID represents the display ID for the internal display.
 	DefaultDisplayID = 0
 )
-
-// Size composes (width, height).
-type Size struct {
-	// W is a width in pixels.
-	W int
-	// H is a height in pixels.
-	H int
-}
 
 // Display holds resources related to an ARC display.
 // For the moment only the default display (internal display) is supported.
@@ -107,11 +100,11 @@ func (d *Display) PhysicalDensity(ctx context.Context) (density float64, err err
 
 // Size returns the display size. Takes into account possible orientation changes.
 // For example, if the display is rotated, instead of returning {W, H}, it will return {H, W}.
-func (d *Display) Size(ctx context.Context) (s Size, err error) {
+func (d *Display) Size(ctx context.Context) (s coords.Size, err error) {
 	cmd := d.a.Command(ctx, "dumpsys", "window", "displays")
 	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		return Size{}, errors.Wrap(err, "failed to execute 'dumpsys window displays'")
+		return coords.Size{}, errors.Wrap(err, "failed to execute 'dumpsys window displays'")
 	}
 
 	// Looking for:
@@ -122,28 +115,28 @@ func (d *Display) Size(ctx context.Context) (s Size, err error) {
 		`\s*init=([0-9]+)x([0-9]+)`) // Gather 'init=' bounds.
 	groups := re.FindStringSubmatch(string(output))
 	if len(groups) != 3 {
-		return Size{}, errors.New("failed to parse dumpsys output")
+		return coords.Size{}, errors.New("failed to parse dumpsys output")
 	}
 
 	width, err := strconv.Atoi(groups[1])
 	if err != nil {
-		return Size{}, errors.Wrap(err, "could not parse bounds")
+		return coords.Size{}, errors.Wrap(err, "could not parse bounds")
 	}
 	height, err := strconv.Atoi(groups[2])
 	if err != nil {
-		return Size{}, errors.Wrap(err, "could not parse bounds")
+		return coords.Size{}, errors.Wrap(err, "could not parse bounds")
 	}
 
-	return Size{width, height}, nil
+	return coords.NewSize(width, height), nil
 }
 
 // stableSize returns the display size. It is not affected by display rotations.
 // It always returns the coordinates in this order: {W, H}.
-func (d *Display) stableSize(ctx context.Context) (s Size, err error) {
+func (d *Display) stableSize(ctx context.Context) (s coords.Size, err error) {
 	cmd := d.a.Command(ctx, "dumpsys", "display")
 	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		return Size{}, errors.Wrap(err, "failed to execute 'dumpsys display'")
+		return coords.Size{}, errors.Wrap(err, "failed to execute 'dumpsys display'")
 	}
 
 	// Looking for:
@@ -157,17 +150,17 @@ func (d *Display) stableSize(ctx context.Context) (s Size, err error) {
 		`\s+mStableDisplaySize=\w*\((\d*),\s*(\d*)\)`) // Gather 'mStableDisplaySize=' bounds.
 	groups := re.FindStringSubmatch(string(output))
 	if len(groups) != 3 {
-		return Size{}, errors.New("failed to parse dumpsys output")
+		return coords.Size{}, errors.New("failed to parse dumpsys output")
 	}
 
 	width, err := strconv.Atoi(groups[1])
 	if err != nil {
-		return Size{}, errors.Wrap(err, "could not parse bounds")
+		return coords.Size{}, errors.Wrap(err, "could not parse bounds")
 	}
 	height, err := strconv.Atoi(groups[2])
 	if err != nil {
-		return Size{}, errors.Wrap(err, "could not parse bounds")
+		return coords.Size{}, errors.Wrap(err, "could not parse bounds")
 	}
 
-	return Size{width, height}, nil
+	return coords.NewSize(width, height), nil
 }
