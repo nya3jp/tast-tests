@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -436,30 +435,4 @@ func FindFirstWindowInOverview(ctx context.Context, tconn *chrome.TestConn) (*Wi
 		return nil, errors.New("no windows are in overview mode")
 	}
 	return result, nil
-}
-
-// TouchCoordConverter manages the conversion between locations in DIP and
-// the TouchCoord of the touchscreen.
-type TouchCoordConverter struct {
-	ScaleX float64
-	ScaleY float64
-}
-
-// ConvertLocation converts a location to TouchCoord.
-func (tcc *TouchCoordConverter) ConvertLocation(l coords.Point) (x, y input.TouchCoord) {
-	return input.TouchCoord(tcc.ScaleX * float64(l.X)), input.TouchCoord(tcc.ScaleY * float64(l.Y))
-}
-
-// NewTouchCoordConverter creates a new TouchCoordConverter for the internal
-// display with the given TouchscreenEventWriter.
-func NewTouchCoordConverter(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter) (*TouchCoordConverter, error) {
-	info, err := display.GetInternalInfo(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "no internal display found")
-	}
-
-	return &TouchCoordConverter{
-		ScaleX: float64(tsew.Width()) / float64(info.Bounds.Width),
-		ScaleY: float64(tsew.Height()) / float64(info.Bounds.Height),
-	}, nil
 }

@@ -316,8 +316,8 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to coor
 	if err != nil {
 		return errors.Wrap(err, "could not get display size")
 	}
-	src.X = int(math.Max(0, math.Min(float64(ds.W-1), float64(src.X))))
-	src.Y = int(math.Max(0, math.Min(float64(ds.H-1), float64(src.Y))))
+	src.X = int(math.Max(0, math.Min(float64(ds.Width-1), float64(src.X))))
+	src.Y = int(math.Max(0, math.Min(float64(ds.Height-1), float64(src.Y))))
 
 	return ac.swipe(ctx, src, to, t)
 }
@@ -441,17 +441,11 @@ func (ac *Activity) swipe(ctx context.Context, from, to coords.Point, t time.Dur
 		return errors.Wrap(err, "could not get stable bounds for display")
 	}
 
-	// Get pixel-to-tuxel factor (tuxel == touching element).
-	// Touchscreen might have different resolution than the displayscreen.
-	pixelToTuxelScaleX := float64(ac.tew.Width()) / float64(dispSize.W)
-	pixelToTuxelScaleY := float64(ac.tew.Height()) / float64(dispSize.H)
+	tcc := coords.NewTouchCoordConverter(dispSize, ac.tew)
 
-	if err := stw.Swipe(ctx,
-		input.TouchCoord(float64(from.X)*pixelToTuxelScaleX),
-		input.TouchCoord(float64(from.Y)*pixelToTuxelScaleY),
-		input.TouchCoord(float64(to.X)*pixelToTuxelScaleX),
-		input.TouchCoord(float64(to.Y)*pixelToTuxelScaleY),
-		t); err != nil {
+	fromX, fromY := tcc.ConvertLocation(from)
+	toX, toY := tcc.ConvertLocation(to)
+	if err := stw.Swipe(ctx, fromX, fromY, toX, toY, t); err != nil {
 		return errors.Wrap(err, "failed to start the swipe gesture")
 	}
 

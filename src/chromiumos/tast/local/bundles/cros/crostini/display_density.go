@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -82,7 +83,7 @@ func DisplayDensity(ctx context.Context, s *testing.State) {
 		highDensity
 	)
 
-	demoWindowSize := func(densityConfiguration density) (crostini.Size, error) {
+	demoWindowSize := func(densityConfiguration density) (coords.Size, error) {
 		windowName := conf.Name
 		var subCommandArgs []string
 		if densityConfiguration == lowDensity {
@@ -95,15 +96,15 @@ func DisplayDensity(ctx context.Context, s *testing.State) {
 		cmd := cont.Command(ctx, "sh", "-c", strings.Join(subCommandArgs, " "))
 		s.Logf("Running %q", shutil.EscapeSlice(cmd.Args))
 		if err := cmd.Start(); err != nil {
-			return crostini.Size{}, err
+			return coords.Size{}, err
 		}
 		defer cmd.Wait(testexec.DumpLogOnError)
 		defer cmd.Kill()
 
-		var sz crostini.Size
+		var sz coords.Size
 		var err error
 		if sz, err = crostini.PollWindowSize(ctx, tconn, windowName); err != nil {
-			return crostini.Size{}, err
+			return coords.Size{}, err
 		}
 		s.Logf("Window %q size is %v", windowName, sz)
 

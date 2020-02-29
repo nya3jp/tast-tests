@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 )
 
 // Insets holds onscreen insets.
@@ -255,4 +256,15 @@ func PhysicalDisplayConnected(ctx context.Context, tconn *chrome.TestConn) (bool
 		return true, nil
 	}
 	return !IsFakeDisplayID(infos[0].ID), nil
+}
+
+// NewTouchCoordConverter creates a new TouchCoordConverter for the internal
+// display with the given TouchscreenEventWriter.
+func NewTouchCoordConverter(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter) (*coords.TouchCoordConverter, error) {
+	info, err := GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "no internal display found")
+	}
+
+	return coords.NewTouchCoordConverter(info.Bounds.Size(), tsew), nil
 }

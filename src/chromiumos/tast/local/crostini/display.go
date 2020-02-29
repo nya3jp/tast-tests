@@ -18,19 +18,13 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
-
-// The Size object records sizes of various display-related objects (e.g. the
-// screen resolution, a window's size).
-type Size struct {
-	W int `json:"width"`
-	H int `json:"height"`
-}
 
 // MatchScreenshotDominantColor takes a screenshot and attempts to verify if it
 // mostly (>= 1/2) contains the expected color. Will retry for up to 10 seconds
@@ -72,7 +66,7 @@ func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expect
 
 // PollWindowSize returns the the width and the height of the window in pixels
 // with polling to wait for asynchronous rendering on the DUT.
-func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz Size, err error) {
+func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz coords.Size, err error) {
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
@@ -83,29 +77,29 @@ func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string) (s
 }
 
 // windowSize returns the the width and the height of the window in pixels.
-func windowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz Size, err error) {
+func windowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz coords.Size, err error) {
 	root, err := ui.Root(ctx, tconn)
 	if err != nil {
-		return Size{}, err
+		return coords.Size{}, err
 	}
 	defer root.Release(ctx)
 
 	appWindow, err := root.Descendant(ctx, ui.FindParams{Name: name})
 	if err != nil {
-		return Size{}, errors.Wrap(err, "failed to locate the app window")
+		return coords.Size{}, errors.Wrap(err, "failed to locate the app window")
 	}
 	defer appWindow.Release(ctx)
 
 	view, err := root.Descendant(ctx, ui.FindParams{ClassName: "ClientView"})
 	if err != nil {
-		return Size{}, errors.Wrap(err, "failed to find client view")
+		return coords.Size{}, errors.Wrap(err, "failed to find client view")
 	}
 	defer view.Release(ctx)
 	if view.Location.Empty() {
-		return Size{}, errors.New("client view does not have a location")
+		return coords.Size{}, errors.New("client view does not have a location")
 	}
 
-	return Size{W: view.Location.Width, H: view.Location.Height}, nil
+	return view.Location.Size(), nil
 }
 
 // PrimaryDisplayScaleFactor returns the primary display's scale factor.
@@ -118,8 +112,8 @@ func PrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.TestConn) (fac
 // PollWindowSize() at low and high density. It returns an error if
 // something is wrong with the sizes (not just if the high-density
 // window is bigger).
-func VerifyWindowDensities(ctx context.Context, tconn *chrome.TestConn, sizeHighDensity, sizeLowDensity Size) error {
-	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
+func VerifyWindowDensities(ctx context.Context, tconn *chrome.TestConn, sizeHighDensity, sizeLowDensity coords.Size) error {
+	if sizeHighDensity.Width > sizeLowDensity.Width || sizeHighDensity.Height > sizeLowDensity.Height {
 		return errors.Errorf("app high density size %v greater than low density size %v", sizeHighDensity, sizeLowDensity)
 	}
 
@@ -133,7 +127,7 @@ func VerifyWindowDensities(ctx context.Context, tconn *chrome.TestConn, sizeHigh
 		return errors.Wrap(err, "failed getting primary display scale factor")
 	}
 
-	if factor != 1.0 && !tabletMode && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
+	if factor != 1.0 && !tabletMode && (sizeHighDensity.Width == sizeLowDensity.Width || sizeHighDensity.Height == sizeLowDensity.Height) {
 		return errors.Errorf("app has high density and low density windows with the same size of %v while the scale factor is %v and tablet mode is %v", sizeHighDensity, factor, tabletMode)
 	}
 	return nil

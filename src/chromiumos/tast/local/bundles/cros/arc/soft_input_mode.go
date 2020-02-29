@@ -81,7 +81,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 				// It may return error while transition, keep retrying.
 				return err
 			}
-			if s.W > s.H == expectLandscape {
+			if s.Width > s.Height == expectLandscape {
 				return nil
 			}
 
