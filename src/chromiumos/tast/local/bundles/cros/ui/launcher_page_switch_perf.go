@@ -87,7 +87,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		}
 		tew.SetRotation(-orientation.Angle)
 
-		tcc, err := ash.NewTouchCoordConverter(ctx, tconn, tew)
+		tcc, err := display.NewTouchCoordConverter(ctx, tconn, tew)
 		if err != nil {
 			s.Fatal("Failed to create touch coord converter: ", err)
 		}

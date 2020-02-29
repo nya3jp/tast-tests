@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -55,9 +56,6 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open touchscreen device: ", err)
 	}
 	defer tsw.Close()
-
-	touchWidth := float64(tsw.Width())
-	touchHeight := float64(tsw.Height())
 
 	stw, err := tsw.NewSingleTouchWriter()
 	if err != nil {
@@ -112,8 +110,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get arc size: ", err)
 	}
 
-	arcPixelToTouchFactorW := touchWidth / float64(arcDisplaySize.W)
-	arcPixelToTouchFactorH := touchHeight / float64(arcDisplaySize.H)
+	tcc := coords.NewTouchCoordConverter(arcDisplaySize, tsw)
 
 	// Repeat twice to validate b/80441010.
 	for _, op := range []struct {
@@ -135,14 +132,15 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		// Touch lower edge of the restore/maximize button to validate that any surface does not cover the caption button.
 		// TODO(crbug.com/1005010) : Do not hard code the calculation of caption position below.
 		// Instead, we should get Chrome constants in real time.
-		buttonCoordX := float64(activityBounds.Left+activityBounds.Width-arcCaptionHeight/2-arcCaptionHeight) * arcPixelToTouchFactorW
-		buttonCoordY := float64(activityBounds.Top+arcCaptionHeight-arcCaptionHeight/10) * arcPixelToTouchFactorH
+		buttonCoordX, buttonCoordY := tcc.ConvertLocation(coords.NewPoint(
+			activityBounds.Left+activityBounds.Width-arcCaptionHeight/2-arcCaptionHeight,
+			activityBounds.Top+arcCaptionHeight-arcCaptionHeight/10))
 
-		stw.Move(input.TouchCoord(buttonCoordX), input.TouchCoord(buttonCoordY))
+		stw.Move(buttonCoordX, buttonCoordY)
 		stw.End()
 
 		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
-			s.Fatalf("Pressing %q did not work: tried to touch (%f, %f): %v", op, buttonCoordX, buttonCoordY, err)
+			s.Fatalf("Pressing %q did not work: tried to touch (%d, %d): %v", op, buttonCoordX, buttonCoordY, err)
 		}
 	}
 }
