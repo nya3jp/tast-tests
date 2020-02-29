@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package assistant
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AssistantStartup,
+		Func:         Startup,
 		Desc:         "Starts Google Assistant service and checks the running status",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
@@ -23,7 +23,7 @@ func init() {
 	})
 }
 
-func AssistantStartup(ctx context.Context, s *testing.State) {
+func Startup(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
