@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e0079fb_bf280ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe9cbe2b_30bce7c7",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c2adaac_71432bf8",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3fb9fd_3611f4b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2adaac_71432bf8",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "591bdf4e_579539c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c64bb23_36d9c504",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "316667d0_24771ec1",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64c41e9_516e2baa",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "316667d0_24771ec1",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e0443cc6_26860118",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "I just need any known external resource to determine which ip address is corresponds to outbound connections.",
+      "parentUuid": "946c7c38_22ba01c9",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d646566_5064010b",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -137,6 +257,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b393e2_f7d5942c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d646566_5064010b",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f4c986df_6cb3fc24",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4912c20_e8799ee1",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9e79ff4_b00e0c7b",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -183,6 +351,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a7e5602_6486b02d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9e79ff4_b00e0c7b",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 29
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "3a0fa2ab_0d42472c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03d33c4_590a46a3",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3652dfe_c7245fe8",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -229,6 +445,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1cb718_dde2449a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3652dfe_c7245fe8",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 12
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "6bb8d95f_9962f79a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3aee5f8_20a140df",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 53
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f33c6012_d093d9e7",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -275,6 +539,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03ed04d_820e640f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33c6012_d093d9e7",
+      "range": {
+        "startLine": 207,
+        "startChar": 119,
+        "endLine": 207,
+        "endChar": 144
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "c7158ac7_c6e3dd87",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "There is a problem with it because guest unable to access host via virtual network for the security reasons and the only way to access host from guest is to use the address of adapter for outbound connection. The other way is to instantiate connection from host to guest and use this socket for communication. We want to use this approach for now to make it work and postpone the second solution to the next iteration bucket along with local caching and other features.",
+      "parentUuid": "f8d4eadd_b3816bc6",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd2fce63_d81881b8",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -321,6 +633,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4366e1a_b7166f11",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd2fce63_d81881b8",
+      "range": {
+        "startLine": 253,
+        "startChar": 3,
+        "endLine": 253,
+        "endChar": 43
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "15d8e41b_4dc5064d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Yes, you\u0027re correct, Tast calls RunTraceReplayTest(...) only once.",
+      "parentUuid": "04dfcd79_67b5fb0f",
+      "range": {
+        "startLine": 257,
+        "startChar": 22,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb86f8c6_d1d96f67",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -367,6 +727,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d05a1bd_5bcda078",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb86f8c6_d1d96f67",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 11
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "9ff4ded8_2beb0f74",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b375ddf2_994082a5",
+      "range": {
+        "startLine": 278,
+        "startChar": 13,
+        "endLine": 278,
+        "endChar": 14
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60f1b3a4_0a513499",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -413,6 +821,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b202aea2_1fe665b0",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "app doesn\u0027t output anything to stderr if exit code is 0, but I agree it is a bit flaky",
+      "parentUuid": "60f1b3a4_0a513499",
+      "range": {
+        "startLine": 289,
+        "startChar": 26,
+        "endLine": 289,
+        "endChar": 38
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "11d2aa02_5c0fba96",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e86055f_fd92d47d",
+      "range": {
+        "startLine": 290,
+        "startChar": 28,
+        "endLine": 290,
+        "endChar": 34
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a4d2786_611050ec",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 9
@@ -459,6 +915,30 @@
       "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a245910a_1024efac",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-02T18:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a4d2786_611050ec",
+      "range": {
+        "startLine": 294,
+        "startChar": 24,
+        "endLine": 294,
+        "endChar": 30
+      },
+      "revId": "d7e3e7d79c47670f4dfb72317bc3a03ac99c63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
