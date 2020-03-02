@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f30a1e11_e13d2fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee6357c8_bde8e4b0",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "cc94208309536a043b8e107adc8d9de8e91b5189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "471b6376_573bf4b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset.go",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2020-02-28T04:57:05Z",
       "side": 1,
       "message": "nit: How about describing why it should be 1?\n(maybe already covered by line 129?)",
+      "revId": "cc94208309536a043b8e107adc8d9de8e91b5189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f438469_03376add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/dictionary_attack_lockout_reset.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "471b6376_573bf4b0",
       "revId": "cc94208309536a043b8e107adc8d9de8e91b5189",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
