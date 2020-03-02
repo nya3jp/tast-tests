@@ -70,6 +70,30 @@
       "revId": "2dbce129ea5f7913c345d30041b72a62080d2ab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19271353_f1969a4e",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-02T02:26:04Z",
+      "side": 1,
+      "message": "Thanks! I have added a new flag to the preImpl struct.",
+      "parentUuid": "66a3318b_6ab588a9",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 69
+      },
+      "revId": "2dbce129ea5f7913c345d30041b72a62080d2ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
