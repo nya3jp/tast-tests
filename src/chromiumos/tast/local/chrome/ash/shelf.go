@@ -75,7 +75,7 @@ func GetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID str
 }
 
 // PinApp pins the shelf icon for the app specified by |appID|.
-func PinApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
+func PinApp(ctx context.Context, tconn *chrome.Conn, appID string) error {
 	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.pinShelfIcon)(%q)", appID)
 	return tconn.EvalPromise(ctx, query, nil)
 }
@@ -200,10 +200,10 @@ type ChromeApp struct {
 }
 
 // ChromeApps returns all of the installed apps.
-func ChromeApps(ctx context.Context, tconn *chrome.TestConn) ([]*ChromeApp, error) {
+func ChromeApps(ctx context.Context, c *chrome.Conn) ([]*ChromeApp, error) {
 	var s []*ChromeApp
 	chromeQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getAllInstalledApps)()")
-	if err := tconn.EvalPromise(ctx, chromeQuery, &s); err != nil {
+	if err := c.EvalPromise(ctx, chromeQuery, &s); err != nil {
 		return nil, errors.Wrap(err, "failed to call getAllInstalledApps")
 	}
 	return s, nil
