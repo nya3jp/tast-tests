@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6dcef881_78a626ff",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T13:43:39Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "458308f3_10fc78ed",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 7
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c52b574_4061bb37",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 30
@@ -164,6 +188,30 @@
       "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3784192f_40e39ae8",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T13:43:39Z",
+      "side": 1,
+      "message": "Nice catch. Done.",
+      "parentUuid": "1758e0ad_c99dc5d0",
+      "range": {
+        "startLine": 412,
+        "startChar": 67,
+        "endLine": 412,
+        "endChar": 68
+      },
+      "revId": "be4cc777b3f7eb1fcdf2b5d4a8f546d41d4255a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
