@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "687c83ab_655387cc",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-02T04:14:00Z",
+      "side": 1,
+      "message": "IMO;\n\nIn general, less state is better. If we just start the server then return the *Server, caller do not need to worry about the state \"there is an instance, but not yet started\".\nIf there\u0027s necessary to customize Server instance before starting, I think NewServer is also an choice. Though, on the other hand, there\u0027s another choice to pass the customization via arguments.\n\nI think this is not very strict, and depends on language features (e.g., it\u0027d be different recommendation for C++ / Java / Python etc.). If there\u0027s no reasons, I\u0027d still suggest to StartServer in this specific case at least, but I\u0027m open for other opinions.",
+      "parentUuid": "79fce12c_b53869c4",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70cb7ed5_fde787fe",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 14
