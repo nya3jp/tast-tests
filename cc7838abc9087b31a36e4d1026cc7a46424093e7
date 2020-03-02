@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "85857871_d625a827",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-02T14:34:47Z",
+      "side": 1,
+      "message": "Ack. now it is landed.",
+      "parentUuid": "d9a7d984_4b661511",
+      "revId": "cc7838abc9087b31a36e4d1026cc7a46424093e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e09ad055_20e267b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/hwdeps.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "cc7838abc9087b31a36e4d1026cc7a46424093e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d9049a_6decf6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/hwdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-02T14:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e09ad055_20e267b8",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 36
+      },
+      "revId": "cc7838abc9087b31a36e4d1026cc7a46424093e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
