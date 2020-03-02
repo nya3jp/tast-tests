@@ -117,13 +117,22 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create PKCS#11 Utility: ", err)
 	}
 
+	// Remove all keys/certs before the test as well.
+	if err := pkcs11Util.CleanupScratchpad(ctx); err != nil {
+		s.Fatal("Failed to clean scratchpad before the start of test: ", err)
+	}
+	for _, objID := range []string{"999999", "888888", "777777"} {
+		if err := pkcs11Util.ClearObjectsOfAllType(ctx, 0, objID); err != nil {
+			s.Fatal("Failed to clear object store before the start of test: ", err)
+		}
+	}
+
 	// Prepare the scratchpad.
 	if _, _, err := pkcs11Util.PrepareScratchpadAndTestFiles(ctx, "/tmp/ChapsAttributePolicyTest"); err != nil {
 		s.Fatal("Failed to initialize the scratchpad space: ", err)
 	}
 	// Remove all keys/certs, if any at the end. i.e. Cleanup after ourselves.
 	defer pkcs11Util.CleanupScratchpad(ctx)
-	// Note: Also, this test expects a clean keystore, in the sense that there should be no object with the same ID as those used by this test.
 
 	// Create the software-generated, then imported key.
 	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, utility, "", "testkey1", "999999", false, true)
