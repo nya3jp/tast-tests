@@ -16,6 +16,24 @@
       "revId": "d97431a8a392103fe3f60ef8c44d38dd94b778a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489a7d47_e3a48beb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-02T23:27:17Z",
+      "side": 1,
+      "message": "I used to put it inline before. In this CL I would like to factor this out to emphasize the importance of polling interval in the test for every UI operation.",
+      "parentUuid": "81657c42_addc634e",
+      "revId": "d97431a8a392103fe3f60ef8c44d38dd94b778a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
