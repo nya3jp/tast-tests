@@ -66,12 +66,12 @@ const (
 
 // focusedNode returns the currently focused node of ChromeVox.
 // The returned node should be release by the caller.
-func focusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*ui.Node, error) {
+func focusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn) (*ui.Node, error) {
 	obj := &chrome.JSObject{}
 	if err := chromeVoxConn.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
 		return nil, err
 	}
-	return ui.NewNode(ctx, chromeVoxConn, obj)
+	return ui.NewNode(ctx, tconn, obj)
 }
 
 // IsEnabledAndroid checks if accessibility is enabled in Android.
@@ -159,10 +159,10 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 
 // WaitForFocusedNode polls until the properties of the focused node matches node.
 // Returns an error after 30 seconds.
-func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *ui.Node) error {
+func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, node *ui.Node) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := focusedNode(ctx, chromeVoxConn)
+		focused, err := focusedNode(ctx, chromeVoxConn, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -180,7 +180,7 @@ func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *u
 
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready.
-func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *input.KeyboardEventWriter) error) {
+func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *chrome.TestConn, *input.KeyboardEventWriter) error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -242,7 +242,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	if err := WaitForFocusedNode(ctx, chromeVoxConn, &ui.Node{
+	if err := WaitForFocusedNode(ctx, chromeVoxConn, tconn, &ui.Node{
 		ClassName: TextView,
 		Name:      "Accessibility Test App",
 		Role:      ui.RoleTypeStaticText,
@@ -256,7 +256,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 	}
 	defer ew.Close()
 
-	if err := f(ctx, a, chromeVoxConn, ew); err != nil {
+	if err := f(ctx, a, chromeVoxConn, tconn, ew); err != nil {
 		// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
 		path := filepath.Join(s.OutDir(), "screenshot-with-chromevox.png")
 		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
