@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "515f540e_4a7e8af3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-03-02T02:37:18Z",
+      "side": 1,
+      "message": "This is because I believe no wifi AP is in range in the lab.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "c960bd062fea8dcf41478f0898b44aa7725e563e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0a57df_57bd9188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-03-02T02:37:18Z",
+      "side": 1,
+      "message": "What about simply filtering out from ifnames any iface for which this condition fails ? This would allow people running the test locally to test on both eth and wifi.\n\nFor instance:\n\nallInterfaces, err :\u003d physicalInterfaces(ctx)\n...\nifnames :\u003d []string{}\nfor _, ifname :\u003d range alInterfaces {\n  ...\n  if ip.To4() \u003d\u003d nil {\n    continue\n  }\n  ifnames \u003d append(ifnames, ifname)\n}",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "c960bd062fea8dcf41478f0898b44aa7725e563e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
