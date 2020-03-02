@@ -115,7 +115,7 @@ func dumpTree(tree *simpleAutomationNode, filepath string) error {
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) error {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
 		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
 		diffFilePath := filepath.Join(s.OutDir(), diffFile)
 

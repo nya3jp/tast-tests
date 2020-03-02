@@ -71,7 +71,7 @@ func verifyLog(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLog even
 	return nil
 }
 
-func runTestStep(ctx context.Context, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter, test testStep, isFirstStep bool) error {
+func runTestStep(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test testStep, isFirstStep bool) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
 	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox log")
@@ -83,7 +83,7 @@ func runTestStep(ctx context.Context, chromeVoxConn *chrome.Conn, ew *input.Keyb
 	}
 
 	// Wait for the focused element to match the expected.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, &test.Node); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, tconn, &test.Node); err != nil {
 		return errors.Wrapf(err, "timed out polling for focused element, waiting for: %v", test.Node)
 	}
 
@@ -105,7 +105,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		seekBarDiscreteInitialValue = 3
 	)
 
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) error {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
 		// Set up event stream logging for accessibility events.
 		if err := chromeVoxConn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {
@@ -208,7 +208,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				eventLog{"valueChanged", "seekBarDiscrete", appName},
 			},
 		} {
-			if err := runTestStep(ctx, chromeVoxConn, ew, test, i == 0); err != nil {
+			if err := runTestStep(ctx, chromeVoxConn, tconn, ew, test, i == 0); err != nil {
 				return errors.Wrapf(err, "failed to run a test step %v", test)
 			}
 		}

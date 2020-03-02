@@ -60,7 +60,7 @@ func speechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, error
 }
 
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) error {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
 		// Array containing expected speech logs from ChromeVox.
 		expectedSpeechLogs := [][]string{
 			{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
