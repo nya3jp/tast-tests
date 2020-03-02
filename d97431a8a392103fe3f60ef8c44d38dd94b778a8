@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81657c42_addc634e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-02T19:12:55Z",
+      "side": 1,
+      "message": "I think it\u0027s fine not to factor this out since there\u0027s no reason the two uses need to have exactly the same value.",
+      "revId": "d97431a8a392103fe3f60ef8c44d38dd94b778a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
