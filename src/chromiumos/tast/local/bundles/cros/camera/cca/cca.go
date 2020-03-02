@@ -123,34 +123,28 @@ var (
 
 	// SettingsBackButton is back button for closing master setting menu.
 	SettingsBackButton = UIComponent{"settings back button", []string{
-		"#settings .menu-header button", "#view-settings .menu-header button"}}
+		"#view-settings .menu-header button"}}
 	// GridSettingBackButton is back button for closing grid setting menu.
 	GridSettingBackButton = UIComponent{"grid setting back button", []string{
-		"#gridsettings .menu-header button", "#view-grid-settings .menu-header button"}}
+		"#view-grid-settings .menu-header button"}}
 	// TimerSettingBackButton is back button for closing timer setting menu.
 	TimerSettingBackButton = UIComponent{"timer setting back button", []string{
-		"#timersettings .menu-header button", "#view-timer-settings .menu-header button"}}
+		"#view-timer-settings .menu-header button"}}
 	// ResolutionSettingBackButton is back button for closing resolution setting menu.
 	ResolutionSettingBackButton = UIComponent{"resolution setting back button", []string{
-		"#resolutionsettings .menu-header button",
 		"#view-resolution-settings .menu-header button"}}
 	// PhotoResolutionSettingBackButton is back button for closing photo resolution setting menu.
 	PhotoResolutionSettingBackButton = UIComponent{"photo resolution setting back button",
-		[]string{
-			"#photoresolutionsettings .menu-header button",
-			"#view-photo-resolution-settings .menu-header button"}}
+		[]string{"#view-photo-resolution-settings .menu-header button"}}
 	// VideoResolutionSettingBackButton is back button for closing video resolution setting menu.
 	VideoResolutionSettingBackButton = UIComponent{"video resolution setting back button",
-		[]string{
-			"#videoresolutionsettings .menu-header button",
-			"#view-video-resolution-settings .menu-header button"}}
-
+		[]string{"#view-video-resolution-settings .menu-header button"}}
 	// PhotoResolutionOption is option for each available photo capture resolution.
 	PhotoResolutionOption = UIComponent{"photo resolution option", []string{
-		"#photoresolutionsettings input", "#view-photo-resolution-settings input"}}
+		"#view-photo-resolution-settings input"}}
 	// VideoResolutionOption is option for each available video capture resolution.
 	VideoResolutionOption = UIComponent{"video resolution option", []string{
-		"#videoresolutionsettings input", "#view-video-resolution-settings input"}}
+		"#view-video-resolution-settings input"}}
 )
 
 // App represents a CCA (Chrome Camera App) instance.
