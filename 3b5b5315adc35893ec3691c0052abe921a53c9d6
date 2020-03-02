@@ -16,6 +16,24 @@
       "revId": "3b5b5315adc35893ec3691c0052abe921a53c9d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0724f1a8_31ea0ea7",
+        "filename": "src/chromiumos/tast/remote/wificell/dhcp/server.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T04:58:50Z",
+      "side": 1,
+      "message": "This function is also used for cleanup if Start() fails so it is possible that we fail after writing the config file and before assigning d.cmd, e.g. if we fail at cmd.StdoutPipe() for some reason.\nI guess it might be clearer if we remove d.cmd \u003d\u003d nil as it is not really an error? (the only case for this branching is cleaning up in Start, so \"d.cmd \u003d\u003d nil\" maybe expected not error)",
+      "parentUuid": "8e4ecec5_c82da705",
+      "revId": "3b5b5315adc35893ec3691c0052abe921a53c9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
