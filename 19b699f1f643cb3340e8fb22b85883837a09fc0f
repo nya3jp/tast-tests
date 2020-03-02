@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "32fc45c5_3596f644",
+        "filename": "src/chromiumos/tast/common/hwsec/tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-02T18:39:33Z",
+      "side": 1,
+      "message": "...huh. Well, I guess that\u0027s that then.",
+      "parentUuid": "53f513ac_a7edf88c",
+      "revId": "19b699f1f643cb3340e8fb22b85883837a09fc0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "966bd04e_11df4e01",
         "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
         "patchSetId": 4
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "I\u0027ve added the message to the error. msg vs binaryMsg is needed because their types are different.",
       "parentUuid": "966bd04e_11df4e01",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "19b699f1f643cb3340e8fb22b85883837a09fc0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63305397_ca84b502",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-02T18:39:33Z",
+      "side": 1,
+      "message": "Ah, well I was thinking that we could pack the error into the error message in the TpmManagerBinary method and then return (nil, err) in the UtilityTpmManagerBinary wrapper. But if you are returning msg from there intentionally because you might need to parse the error output at a higher level then I guess that doesn\u0027t work.",
+      "parentUuid": "6509121d_161d2820",
       "range": {
         "startLine": 52,
         "startChar": 0,
