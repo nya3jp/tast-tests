@@ -76,6 +76,15 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
+	// Cleanup the newly created vault.
+	defer func() {
+		if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
+			s.Fatal("Failed to remove user vault: ", err)
+		}
+		if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
+			s.Error("Failed to cleanup after the test: ", err)
+		}
+	}()
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
