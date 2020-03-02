@@ -31,7 +31,6 @@ func init() {
 
 func DefaultProfileServices(ctx context.Context, s *testing.State) {
 	const (
-		defaultProfile = "/var/cache/shill/default.profile"
 		// ssid is a fake service name chosen unlikely to match any SSID present over-the-air.
 		ssid = "org.chromium.DfltPrflSrvcsTest"
 	)
@@ -59,7 +58,7 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 		// before the default profile is created by the previous test's
 		// (re)starting of Shill. It's a confusing race condition, so
 		// fix it by making sure that the default profile exsits here.
-		if err := os.Remove(defaultProfile); err != nil && !os.IsNotExist(err) {
+		if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
 			s.Fatal("Failed removing default profile: ", err)
 		}
 	}()

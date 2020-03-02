@@ -62,7 +62,6 @@ func waitForIPOnInterface(ctx context.Context, iface, expected string, timeout t
 
 func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	const (
-		defaultProfilePath     = "/var/cache/shill/default.profile"
 		testDefaultProfileName = "ethTestProfile"
 		testUserProfileName    = "ethTestProfile2"
 		testIP1                = "10.9.8.2"
@@ -94,7 +93,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		// before the default profile is created by the previous test's
 		// (re)starting of Shill. It's a confusing race condition, so
 		// fix it by making sure that the default profile exsits here.
-		if err := os.Remove(defaultProfilePath); err != nil && !os.IsNotExist(err) {
+		if err := os.Remove(shill.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
 			s.Fatal("Failed removing default profile: ", err)
 		}
 	}()
@@ -116,7 +115,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		manager.RemoveProfile(ctx, testDefaultProfileName)
 
 		upstart.StopJob(ctx, "shill")
-		os.Remove(defaultProfilePath)
+		os.Remove(shill.DefaultProfilePath)
 		upstart.RestartJob(ctx, "shill")
 	}()
 

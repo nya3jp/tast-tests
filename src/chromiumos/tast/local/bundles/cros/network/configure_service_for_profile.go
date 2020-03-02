@@ -9,8 +9,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/godbus/dbus"
-
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -30,8 +28,8 @@ func init() {
 
 func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	const (
-		filePath   = "/var/cache/shill/default.profile"
-		objectPath = dbus.ObjectPath("/profile/default")
+		filePath   = shill.DefaultProfilePath
+		objectPath = shill.DefaultProfileObjectPath
 	)
 
 	// We lose connectivity along the way here, and if that races with the

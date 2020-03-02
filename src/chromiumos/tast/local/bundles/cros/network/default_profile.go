@@ -12,8 +12,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godbus/dbus"
-
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -34,11 +32,6 @@ func init() {
 }
 
 func DefaultProfile(ctx context.Context, s *testing.State) {
-	const (
-		filePath   = "/var/cache/shill/default.profile"
-		objectPath = dbus.ObjectPath("/profile/default")
-	)
-
 	expectedSettings := []string{
 		"CheckPortalList=ethernet,wifi,cellular",
 		"IgnoredDNSSearchPaths=gateway.2wire.net",
@@ -56,7 +49,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	if err := upstart.StopJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
-	os.Remove(filePath)
+	os.Remove(shill.DefaultProfilePath)
 	if err := upstart.RestartJob(ctx, "shill"); err != nil {
 		s.Fatal("Failed starting shill: ", err)
 	}
@@ -72,7 +65,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		isDefaultProfileReady := func() bool {
-			if _, err := os.Stat(filePath); err != nil {
+			if _, err := os.Stat(shill.DefaultProfilePath); err != nil {
 				return false
 			}
 
@@ -82,7 +75,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 			}
 
 			for _, p := range paths {
-				if p == objectPath {
+				if p == shill.DefaultProfileObjectPath {
 					return true
 				}
 			}
@@ -97,7 +90,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	}()
 
 	// Read the default profile and check expected settings.
-	b, err := ioutil.ReadFile(filePath)
+	b, err := ioutil.ReadFile(shill.DefaultProfilePath)
 	if err != nil {
 		s.Fatal("Failed reading the default profile: ", err)
 	}
