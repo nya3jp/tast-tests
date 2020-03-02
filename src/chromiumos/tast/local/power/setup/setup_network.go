@@ -62,7 +62,7 @@ func DisableNetworkInterface(ctx context.Context, iface string) (CleanupCallback
 // DisableNetworkInterfaces disables all network interfaces whose names match a
 // regexp.
 func DisableNetworkInterfaces(ctx context.Context, pattern *regexp.Regexp) (CleanupCallback, error) {
-	return Nested(ctx, func(s *Setup) error {
+	return Nested(ctx, "disable network interface", func(s *Setup) error {
 		upInterfaces, err := listUpNetworkInterfaces(ctx)
 		if err != nil {
 			return err

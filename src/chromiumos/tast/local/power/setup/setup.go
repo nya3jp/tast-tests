@@ -17,19 +17,27 @@ type CleanupCallback func(context.Context) error
 
 // Nested is used by setup items that have multiple stages that need separate
 // cleanup callbacks.
-func Nested(ctx context.Context, nestedSetup func(s *Setup) error) (CleanupCallback, error) {
-	s, callback := New()
+func Nested(ctx context.Context, name string, nestedSetup func(s *Setup) error) (CleanupCallback, error) {
+	s, nestedCallback := New()
+	callback := func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Cleaning up %q", name)
+		if err := nestedCallback(ctx); err != nil {
+			return errors.Wrapf(err, "nested cleanup %q failed", name)
+		}
+		return nil
+	}
 	succeeded := false
 	defer func() {
 		if !succeeded {
 			callback(ctx)
 		}
 	}()
+	testing.ContextLogf(ctx, "Setting up %q", name)
 	if err := nestedSetup(s); err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "nested setup %q failed", name)
 	}
 	if err := s.Check(ctx); err != nil {
-		return nil, errors.Wrap(err, "setup for nested items failed")
+		return nil, errors.Wrapf(err, "nested setup %q failed", name)
 	}
 	succeeded = true
 	return callback, nil
@@ -103,7 +111,7 @@ func (s *Setup) Check(ctx context.Context) error {
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
 func PowerTest(ctx context.Context) (CleanupCallback, error) {
-	return Nested(ctx, func(s *Setup) error {
+	return Nested(ctx, "power test", func(s *Setup) error {
 		s.Add(DisableService(ctx, "powerd"))
 		s.Add(DisableService(ctx, "update-engine"))
 		s.Add(DisableServiceIfExists(ctx, "vnc"))
