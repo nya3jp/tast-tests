@@ -22,6 +22,30 @@
       "revId": "8ef438a8254f9f5065dcf91905f116ee59be9110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c20ff46_24a3830f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T13:44:08Z",
+      "side": 1,
+      "message": "For generic RSA PSS cases, name and toolMParam will differ because the hash algorithm is specified outside of the PKCS#11 Mechanism code.",
+      "parentUuid": "f2e6662d_29f014e1",
+      "range": {
+        "startLine": 258,
+        "startChar": 3,
+        "endLine": 258,
+        "endChar": 13
+      },
+      "revId": "8ef438a8254f9f5065dcf91905f116ee59be9110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
