@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -52,10 +54,13 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 	}
 	tf.wifiClient = network.NewWifiClient(tf.rpc.Conn)
 
-	// TODO(crbug.com/1034875): For now, we assume that we start with a clean DUT.
-	// We may need a gRPC for initializing clean state on DUT. e.g. init_test_network_state
-	// or WiFiClient.__init__ in Autotest.
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
+	if _, err := tf.wifiClient.InitDUT(ctx, &empty.Empty{}); err != nil {
+		return nil, errors.Wrap(err, "failed to InitDUT")
+	}
+	if _, err := tf.wifiClient.InitTestState(ctx, &empty.Empty{}); err != nil {
+		return nil, errors.Wrap(err, "failed to InitTestState")
+	}
 
 	if routerTarget == "" {
 		tf.routerHost, err = dut.DefaultWifiRouterHost(ctx)
@@ -93,6 +98,11 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	if tf.routerHost != nil {
 		if err := tf.routerHost.Close(ctx); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to close router ssh: %s", err.Error())
+		}
+	}
+	if tf.wifiClient != nil {
+		if _, err := tf.wifiClient.TearDown(ctx, &empty.Empty{}); err != nil {
+			retErr = errors.Wrapf(err, "failed to tear down test state: %s", err.Error())
 		}
 	}
 	if tf.rpc != nil {
