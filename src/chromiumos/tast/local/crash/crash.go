@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
@@ -77,7 +78,15 @@ const (
 	CompressedLogExt = ".log.gz"
 	// DevCoredumpExt is an extension for device coredump files.
 	DevCoredumpExt = ".devcore"
+
+	// ChromeVerboseConsentFlags provides the flags to enable verbose logging about consent.
+	ChromeVerboseConsentFlags = "--vmodule=stats_reporting_controller=1,autotest_private_api=1"
 )
+
+// ChromePreWithVerboseConsent returns a precondition that will start chrome with the ChromeVerboseConsentFlags.
+func ChromePreWithVerboseConsent() testing.Precondition {
+	return chrome.NewPrecondition("verbose_logged_in", chrome.ExtraArgs(ChromeVerboseConsentFlags))
+}
 
 // DefaultDirs returns all standard directories to which crashes are written.
 func DefaultDirs() []string {

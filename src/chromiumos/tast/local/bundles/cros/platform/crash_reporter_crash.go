@@ -32,7 +32,7 @@ func init() {
 			"cros-monitoring-forensics@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          crash.ChromePreWithVerboseConsent(),
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }

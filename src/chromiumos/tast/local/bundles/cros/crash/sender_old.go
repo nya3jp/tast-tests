@@ -29,7 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          crash.ChromePreWithVerboseConsent(),
 	})
 }
 

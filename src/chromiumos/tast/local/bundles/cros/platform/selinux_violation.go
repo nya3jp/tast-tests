@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "metrics_consent", "selinux"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          crash.ChromePreWithVerboseConsent(),
 	})
 }
 
