@@ -61,7 +61,13 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx))
+	cr := s.PreValue().(arc.PreData).Chrome
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	sup.Add(setup.PowerTest(ctx, tconn))
 
 	// Install GCA APK.
 	a := s.PreValue().(arc.PreData).ARC
