@@ -69,7 +69,7 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx))
+	sup.Add(setup.PowerTest(ctx, tconn))
 
 	// Install GCA APK.
 	a := s.PreValue().(arc.PreData).ARC
