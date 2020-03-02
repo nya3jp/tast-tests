@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,6 +32,8 @@ func init() {
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
+		// TODO(crbug.com/1025091#c16): remove the blacklist once elm/hana upreved kernel to 4.19 or above.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("Elm"), hwdep.SkipOnPlatform("Hana")),
 	})
 }
 
