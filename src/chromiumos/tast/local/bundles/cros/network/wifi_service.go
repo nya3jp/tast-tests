@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"reflect"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -14,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
@@ -26,9 +28,96 @@ func init() {
 	})
 }
 
+// wifiTestProfileName is the profile we create and use for WiFi tests.
+const wifiTestProfileName = "test"
+
 // WifiService implements tast.cros.network.Wifi gRPC service.
 type WifiService struct {
 	s *testing.ServiceState
+}
+
+// InitDUT properly initializes the DUT for WiFi tests.
+func (s *WifiService) InitDUT(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	// Stop UI to avoid interference from UI (e.g. request scan).
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		return nil, errors.Wrap(err, "failed to stop ui")
+	}
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	// Turn on the WiFi device.
+	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get a WiFi device")
+	}
+	dev, err := m.DeviceByName(ctx, iface)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find the device for interface %s", iface)
+	}
+	if err := dev.Enable(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to enable WiFi device")
+	}
+	if err := s.reinitTestState(ctx, m); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+// reinitTestState prepare the environment for WiFi testcase.
+func (s *WifiService) reinitTestState(ctx context.Context, m *shill.Manager) error {
+	// Clean old profiles.
+	if err := s.cleanProfiles(ctx, m); err != nil {
+		return errors.Wrap(err, "cleanProfiles failed")
+	}
+	if err := s.removeWifiEntries(ctx, m); err != nil {
+		return errors.Wrap(err, "removeWifiEntries failed")
+	}
+	// Try to create the test profile.
+	if _, err := m.CreateProfile(ctx, wifiTestProfileName); err != nil {
+		return errors.Wrap(err, "failed to create the test profile")
+	}
+	// Push the test profile.
+	if _, err := m.PushProfile(ctx, wifiTestProfileName); err != nil {
+		return errors.Wrap(err, "failed to push the test profile")
+	}
+	return nil
+}
+
+// ReinitTestState cleans and sets up the environment for a single WiFi testcase.
+func (s *WifiService) ReinitTestState(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+	if err := s.reinitTestState(ctx, m); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+// TearDown reverts the settings made by InitDUT and InitTestState.
+func (s *WifiService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+
+	var retErr error
+	if err := s.cleanProfiles(ctx, m); err != nil {
+		retErr = errors.Wrapf(retErr, "cleanProfiles failed: %s", err)
+	}
+	if err := s.removeWifiEntries(ctx, m); err != nil {
+		retErr = errors.Wrapf(retErr, "removeWifiEntries failed: %s", err)
+	}
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+		testing.ContextLog(ctx, "Failed to start ui: ", err)
+	}
+	if retErr != nil {
+		return nil, retErr
+	}
+	return &empty.Empty{}, nil
 }
 
 // Connect connects to a WiFi service with specific config.
@@ -136,33 +225,89 @@ func (s *WifiService) Disconnect(ctx context.Context, config *network.Service) (
 func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SSID) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create a manager object")
+		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
-	profiles, err := m.Profiles(ctx)
-	for _, profile := range profiles {
+	filter := map[string]interface{}{
+		shill.ProfileEntryPropertyName: ssid.Ssid,
+		shill.ProfileEntryPropertyType: shill.TypeWifi,
+	}
+	if err := s.removeMatchedEntries(ctx, m, filter); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+// cleanProfiles pops and removes all active profiles until default profile and
+// then removes the WiFi test profile if still exists.
+func (s *WifiService) cleanProfiles(ctx context.Context, m *shill.Manager) error {
+	for {
+		profile, err := m.ActiveProfile(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get active profile")
+		}
 		props, err := profile.GetProperties(ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to get properties from profile object")
+			return errors.Wrap(err, "failed to get properties from profile object")
+		}
+		name, err := props.GetString(shill.ProfilePropertyName)
+		if name == shill.DefaultProfileName {
+			break
+		}
+		if err != nil {
+			return errors.Wrap(err, "failed to get profile name")
+		}
+		if err := m.PopProfile(ctx, name); err != nil {
+			return errors.Wrap(err, "failed to pop profile")
+		}
+		if err := m.RemoveProfile(ctx, name); err != nil {
+			return errors.Wrap(err, "failed to delete profile")
+		}
+	}
+	// Try to remove the test profile.
+	m.RemoveProfile(ctx, wifiTestProfileName)
+	return nil
+}
+
+// removeWifiEntries removes all the entries with type=wifi in all profiles.
+func (s *WifiService) removeWifiEntries(ctx context.Context, m *shill.Manager) error {
+	filter := map[string]interface{}{
+		shill.ProfileEntryPropertyType: shill.TypeWifi,
+	}
+	return s.removeMatchedEntries(ctx, m, filter)
+}
+
+// removeMatchedEntries traverses all profiles and removes all entries matching the properties in propFilter.
+func (s *WifiService) removeMatchedEntries(ctx context.Context, m *shill.Manager, propFilter map[string]interface{}) error {
+	profiles, err := m.Profiles(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get profiles")
+	}
+	for _, p := range profiles {
+		props, err := p.GetProperties(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get properties from profile object")
 		}
 		entryIDs, err := props.GetStrings(shill.ProfilePropertyEntries)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to get property %s from profile object", shill.ProfilePropertyEntries)
+			return errors.Wrapf(err, "failed to get entryIDs from profile %s", p.String())
 		}
+	entryLoop:
 		for _, entryID := range entryIDs {
-			entry, err := profile.GetEntry(ctx, entryID)
+			entry, err := p.GetEntry(ctx, entryID)
 			if err != nil {
-				return nil, errors.Wrapf(err, "failed to get entry %s", entryID)
+				return errors.Wrapf(err, "failed to get entry %s", entryID)
 			}
-			if entry[shill.ProfileEntryPropertyName] != ssid.Ssid {
-				continue
+			for k, expect := range propFilter {
+				v, ok := entry[k]
+				if !ok || !reflect.DeepEqual(expect, v) {
+					// not matched, try new entry.
+					continue entryLoop
+				}
 			}
-			if entry[shill.ProfileEntryPropertyType] != shill.TypeWifi {
-				continue
-			}
-			if err := profile.DeleteEntry(ctx, entryID); err != nil {
-				return nil, errors.Wrapf(err, "failed to delete entry %s", entryID)
+			if err := p.DeleteEntry(ctx, entryID); err != nil {
+				return errors.Wrapf(err, "failed to delete entry %s", entryID)
 			}
 		}
 	}
-	return &empty.Empty{}, nil
+	return nil
 }
