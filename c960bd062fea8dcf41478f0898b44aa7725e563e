@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23a9bbe1_bc1fdd10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-03-02T03:32:34Z",
+      "side": 1,
+      "message": "Ahh, that\u0027s why. Thanks for the info!",
+      "parentUuid": "515f540e_4a7e8af3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "c960bd062fea8dcf41478f0898b44aa7725e563e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e0a57df_57bd9188",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "c960bd062fea8dcf41478f0898b44aa7725e563e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37716018_514868e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-03-02T03:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0a57df_57bd9188",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "c960bd062fea8dcf41478f0898b44aa7725e563e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
