@@ -80,7 +80,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, true); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
-	if err := checkTPMWrappedUserKeyset(ctx, utility, testUser); err != nil {
+	if err := utility.CheckTPMWrappedUserKeyset(ctx, testUser); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
 	if err := writeUserTestContent(ctx, testUser, testFileName, testFileContent); err != nil {
@@ -102,7 +102,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, false); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
 	}
-	if err := checkTPMWrappedUserKeyset(ctx, utility, testUser); err != nil {
+	if err := utility.CheckTPMWrappedUserKeyset(ctx, testUser); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
 
@@ -131,7 +131,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := utility.MountVault(ctx, testUser, testPassword, testLabel, true); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
-	if err := checkTPMWrappedUserKeyset(ctx, utility, testUser); err != nil {
+	if err := utility.CheckTPMWrappedUserKeyset(ctx, testUser); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
 
@@ -197,16 +197,4 @@ func getUserTestFilePath(ctx context.Context, user string, fileName string) (str
 	}
 
 	return filepath.Join(userPath, fileName), nil
-}
-
-// checkTPMWrappedUserKeyset checks if the given user's keyset is backed by TPM.
-// Returns an error if the keyset is not TPM-backed or if there's anything wrong.
-func checkTPMWrappedUserKeyset(ctx context.Context, util *hwsec.UtilityCryptohomeBinary, user string) error {
-	if keysetTPMBacked, err := util.IsTPMWrappedKeySet(ctx, user); err != nil {
-		return errors.Wrap(err, "failed to check user keyset")
-	} else if !keysetTPMBacked {
-		return errors.New("user keyset is not TPM-backed")
-	}
-
-	return nil
 }
