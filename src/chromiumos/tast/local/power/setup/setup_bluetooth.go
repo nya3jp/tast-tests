@@ -24,7 +24,7 @@ func DisableBluetooth(ctx context.Context) (CleanupCallback, error) {
 			return errors.Wrap(err, "failed to create DBUS connection to Bluetooth adapter")
 		}
 		s.Add(DBusCloseConnection(conn))
-		s.Add(DBusProperty(obj, property, false))
+		s.Add(DBusProperty(ctx, obj, property, false))
 		return nil
 	})
 }
