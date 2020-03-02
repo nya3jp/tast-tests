@@ -116,6 +116,8 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		"--window-size=800,600",
 		"--log-file=" + userDataDir + "/logfile", // Specify log file location for debugging.
 		"--enable-logging",                       // This flag is necessary to ensure the log file is written.
+		"--enable-gpu-rasterization",             // Enable GPU rasterization. This is necessary to enable OOP rasterization.
+		"--enable-oop-rasterization",             // Enable OOP rasterization.
 		"about:blank",                            // Specify first tab to load.
 	}
 
