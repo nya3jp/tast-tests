@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b34ec76_037e1adf",
+        "filename": "src/chromiumos/tast/remote/wificell/hostap_handle.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b03d2b_e3968c35",
+      "range": {
+        "startLine": 20,
+        "startChar": 55,
+        "endLine": 20,
+        "endChar": 61
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd1ea7fb_866d3694",
         "filename": "src/chromiumos/tast/remote/wificell/hostap_handle.go",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec57c7ca_39a9637a",
+        "filename": "src/chromiumos/tast/remote/wificell/hostap_handle.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd1ea7fb_866d3694",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "42b3aad4_3bae4d8f",
+        "filename": "src/chromiumos/tast/remote/wificell/hostap_handle.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a0ba1c5_4350af1b",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06d581e2_eea431c4",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 12
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-28T00:05:38Z",
       "side": 1,
       "message": "I\u0027m not sure if it ends up being important in practice, but the \"busy\" part is really the phy, not just the iface. It\u0027s possible this distinction will become relevant once we start supporting pcap, since we currently allow (when you don\u0027t have a separate ${HOST}-pcap AP) reusing the \"router\" as a \"pcap\" (where phyX gets both a managed0 AP and a monitor0 for capture).\n\nI guess we can refactor that later if needed.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f5070de_51ab87d7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:01:16Z",
+      "side": 1,
+      "message": "Thanks for reminding. I just started tracing the pcap related code more precisely. I\u0027ll handle this when adding monitor type interface.",
+      "parentUuid": "06d581e2_eea431c4",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "152e49ed_ff35ada8",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:01:16Z",
+      "side": 1,
+      "message": "Oh, I missed this one. As I didn\u0027t see any usage after min_spatial_streams was introduced, I thought this was no longer relevant. However, I forgot MIN_SPATIAL_STREAMS still worked as a filter in later code.\n\nBTW, I would like to ask if min_spatial_streams is still useful, like, in manual performance tests or somewhere?",
+      "parentUuid": "af3da1d9_de9c6189",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29243a60_47956b31",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 12
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a712a2cd_676f73f4",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29243a60_47956b31",
+      "range": {
+        "startLine": 188,
+        "startChar": 24,
+        "endLine": 188,
+        "endChar": 55
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0d66c42_12e5c52d",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 12
@@ -160,6 +304,30 @@
       "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58797eb3_08aac7ab",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d66c42_12e5c52d",
+      "range": {
+        "startLine": 200,
+        "startChar": 22,
+        "endLine": 200,
+        "endChar": 28
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
