@@ -156,11 +156,6 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
 		return err
 	}
-
-	if err := conn.Exec(ctx, "pause()"); err != nil {
-		return errors.Wrap(err, "failed to pause")
-	}
-
 	return nil
 }
 
