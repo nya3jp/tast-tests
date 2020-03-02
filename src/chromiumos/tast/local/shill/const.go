@@ -13,3 +13,5 @@ const (
 	TypeVPN      = "vpn"
 	TypePPPoE    = "pppoe"
 )
+
+const defaultStorageDir = "/var/cache/shill/"
