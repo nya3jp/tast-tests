@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "414df9dc_f8fcbc3e",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-02T02:12:12Z",
+      "side": 1,
+      "message": "clar: is this space intentional?",
+      "range": {
+        "startLine": 19,
+        "startChar": 56,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "89aeae81701e9559b706b9f2d58eecfd984b26dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6903f874_dd70566d",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_audio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-02T02:12:12Z",
+      "side": 1,
+      "message": "should it be 32, if it\u0027s later casted as uint?",
+      "range": {
+        "startLine": 39,
+        "startChar": 56,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "89aeae81701e9559b706b9f2d58eecfd984b26dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
