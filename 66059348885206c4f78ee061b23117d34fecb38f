@@ -22,6 +22,30 @@
       "revId": "66059348885206c4f78ee061b23117d34fecb38f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74254f1_3d4aabaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:26:41Z",
+      "side": 1,
+      "message": "No, it\u0027s not. It\u0027s @example.com so it\u0027s 100% local.",
+      "parentUuid": "ac08f06b_c2fe9c28",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "66059348885206c4f78ee061b23117d34fecb38f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
