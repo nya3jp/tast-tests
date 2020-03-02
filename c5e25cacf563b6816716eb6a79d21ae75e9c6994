@@ -46,6 +46,30 @@
       "revId": "c5e25cacf563b6816716eb6a79d21ae75e9c6994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a304af6_64e2cc9e",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-02T04:29:38Z",
+      "side": 1,
+      "message": "Definition of fn is missing, i.e. \"fn can be any JavaScript expression evaluated to a function\". I don\u0027t think \"Call applies fn as a JavaScript function\" defines fn. In the current documentation what users can do is just to look through examples to see what kind of values are allowed for fn, and I don\u0027t think it\u0027s good idea.",
+      "parentUuid": "d398d051_4b9115cf",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 12
+      },
+      "revId": "c5e25cacf563b6816716eb6a79d21ae75e9c6994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
