@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7300124_6ab436db",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-02T19:20:11Z",
+      "side": 1,
+      "message": "drive-by nit: why defer?\nShouldn\u0027t it be simply reverse-traversal of the s.callbacks if the order is the point?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 7
+      },
+      "revId": "f5b891935e3e58a58aabd68da83fefe10df73994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
