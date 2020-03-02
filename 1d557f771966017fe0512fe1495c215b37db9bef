@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "63297209_0638d32b",
+        "filename": "android/ArcKeyboardTest/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-02T17:54:17Z",
+      "side": 1,
+      "message": "Oops! Thanks for pointing it out! pre-submit hooks check the copyright header of .java files, but didn\u0027t say anything about .xml files. We may want to file a bug for it?",
+      "parentUuid": "10b78f80_50cddf98",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "1d557f771966017fe0512fe1495c215b37db9bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c88e7ad8_5743c01b",
         "filename": "android/ArcKeyboardTest/res/layout/main_activity.xml",
         "patchSetId": 1
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0359ac34_c31f798e",
+        "filename": "android/ArcKeyboardTest/res/layout/main_activity.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-02T17:54:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88e7ad8_5743c01b",
+      "revId": "1d557f771966017fe0512fe1495c215b37db9bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a22fed4_bef00b14",
         "filename": "android/ArcKeyboardTest/res/values/string.xml",
         "patchSetId": 1
@@ -80,6 +122,24 @@
       "revId": "1d557f771966017fe0512fe1495c215b37db9bef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bcbd732_7f2b892b",
+        "filename": "android/ArcKeyboardTest/res/values/string.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-02T17:54:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a22fed4_bef00b14",
+      "revId": "1d557f771966017fe0512fe1495c215b37db9bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
