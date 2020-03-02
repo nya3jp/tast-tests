@@ -7,6 +7,7 @@ package example
 import (
 	"context"
 	"strconv"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -14,6 +15,10 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
+
+// Do not poll things too fast to prevent triggering weird UI behaviors. The
+// share button will not work if we keep clicking it.
+var rdpPollOpts = &testing.PollOptions{Interval: time.Second}
 
 // rdpVars represents the configurable parameters for the remote desktop session.
 type rdpVars struct {
@@ -60,6 +65,9 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 	}
 	defer root.Release(ctx)
 
+	// Click the add button at most once to prevent triggering
+	// weird UI behaviors in Chrome Web Store.
+	addClicked := false
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Check if Remote Desktop is installed.
 		params := ui.FindParams{
@@ -72,23 +80,26 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 			return nil
 		}
 
-		// If Remote Desktop is not installed, install it now.
-		// Click on the add button, if it exists.
-		params = ui.FindParams{
-			Name: "Add to Chrome",
-			Role: ui.RoleTypeButton,
-		}
-		if addButtonExists, err := root.DescendantExists(ctx, params); err != nil {
-			return testing.PollBreak(err)
-		} else if addButtonExists {
-			addButton, err := root.Descendant(ctx, params)
-			if err != nil {
-				return testing.PollBreak(err)
+		if !addClicked {
+			// If Remote Desktop is not installed, install it now.
+			// Click on the add button, if it exists.
+			params = ui.FindParams{
+				Name: "Add to Chrome",
+				Role: ui.RoleTypeButton,
 			}
-			defer addButton.Release(ctx)
-
-			if err := addButton.LeftClick(ctx); err != nil {
+			if addButtonExists, err := root.DescendantExists(ctx, params); err != nil {
 				return testing.PollBreak(err)
+			} else if addButtonExists {
+				addButton, err := root.Descendant(ctx, params)
+				if err != nil {
+					return testing.PollBreak(err)
+				}
+				defer addButton.Release(ctx)
+
+				if err := addButton.LeftClick(ctx); err != nil {
+					return testing.PollBreak(err)
+				}
+				addClicked = true
 			}
 		}
 
@@ -111,7 +122,7 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 			}
 		}
 		return errors.New("Remote Desktop still installing")
-	}, nil); err != nil {
+	}, rdpPollOpts); err != nil {
 		return errors.Wrap(err, "failed to install Remote Desktop")
 	}
 	return nil
@@ -196,7 +207,7 @@ func waitConnection(ctx context.Context, tconn *chrome.TestConn) error {
 			}
 		}
 		return errors.New("still enabling sharing")
-	}, nil); err != nil {
+	}, rdpPollOpts); err != nil {
 		return errors.Wrap(err, "failed to enable sharing")
 	}
 	return nil
