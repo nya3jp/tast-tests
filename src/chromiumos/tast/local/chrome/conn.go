@@ -80,6 +80,8 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 // If out is a *chrome.JSObject, a reference to the result is returned.
 // The *chrome.JSObject should get released or the memory it references will not be freed.
 // An error is returned if an exception is generated.
+//
+// DEPRECATED: please use Eval(ctx, expr, nil) instead.
 func (c *Conn) Exec(ctx context.Context, expr string) error {
 	return c.doEval(ctx, expr, false, nil)
 }
@@ -91,8 +93,23 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 //
 //	sum := 0
 //	err := conn.Eval(ctx, "3 + 4", &sum)
+//
+// If the expression is evaluated into a Promise instance, it will be awaited until
+// it is settled, and the resolved value is stored in out if given.
+//
+//	data := make(map[string]interface{})
+//	err := conn.EvalPromise(ctx,
+//		`new Promise(function(resolve, reject) {
+//			runAsync(function(data) {
+//				if (data != null) {
+//					resolve(data);
+//				} else {
+//					reject("it failed");
+//				}
+//			});
+//		})`, &data)
 func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
-	return c.doEval(ctx, expr, false, out)
+	return c.doEval(ctx, expr, true, out)
 }
 
 // EvalPromise evaluates the JavaScript expression expr (which must return a Promise),
@@ -113,6 +130,8 @@ func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
 //				}
 //			});
 //		})`, &data)
+//
+// DEPRECATED: please use Eval, instead.
 func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) error {
 	return c.doEval(ctx, expr, true, out)
 }
