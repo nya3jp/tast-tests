@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c3380bbc_1f274656",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-02T19:19:33Z",
+      "side": 1,
+      "message": "I am not saying you should switch to dbus.Object.GetProperty by the way; I think this would be a common utility so you might want to have it in our own dbusutil package so that you can share the same thing with other packages. And so suggesting to rename since starting a verb would be the common pattern.\n\nI was guessing you created this because dbus.Object does not support the context, and it is great to have that in your way. I just filed https://github.com/godbus/dbus/issues/195 for the reminder.",
+      "parentUuid": "58bbe3ca_9b9795a4",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3c343aa_88265a15",
         "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
         "patchSetId": 5

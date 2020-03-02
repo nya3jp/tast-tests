@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dba7ea05_618a971a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_dbus.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-02T19:19:33Z",
+      "side": 1,
+      "message": "I think you can skip this underscore in this case (func(context.Context) { ... } will do).",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "38007f6a763b1252747a4e51d055f940183f4e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
