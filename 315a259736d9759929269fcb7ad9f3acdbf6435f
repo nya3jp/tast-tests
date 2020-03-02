@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8dea27a6_f2150116",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96cba02f_208f3444",
+      "range": {
+        "startLine": 584,
+        "startChar": 101,
+        "endLine": 584,
+        "endChar": 111
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18dee1c1_cc11a4b4",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36ec37c_db4200a0",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18dee1c1_cc11a4b4",
+      "range": {
+        "startLine": 594,
+        "startChar": 10,
+        "endLine": 594,
+        "endChar": 34
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4fca3922_a2371c39",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43d08cda_0cddc06b",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 27
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5420e249_d3600634",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d79528b3_280e88fb",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5420e249_d3600634",
+      "range": {
+        "startLine": 598,
+        "startChar": 3,
+        "endLine": 600,
+        "endChar": 4
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1efc5a7b_e198f569",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 8
@@ -114,6 +210,30 @@
       "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "457fcf4e_497ee1ac",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:19:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1efc5a7b_e198f569",
+      "range": {
+        "startLine": 608,
+        "startChar": 3,
+        "endLine": 609,
+        "endChar": 9
+      },
+      "revId": "315a259736d9759929269fcb7ad9f3acdbf6435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
