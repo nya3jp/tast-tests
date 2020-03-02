@@ -16,6 +16,9 @@ const (
 	dbusProfileInterface = "org.chromium.flimflam.Profile"
 )
 
+// DefaultProfileName is the name of default profile.
+const DefaultProfileName = "default"
+
 // Profile property names.
 const (
 	ProfilePropertyCheckPortalList           = "CheckPortalList"

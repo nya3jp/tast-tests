@@ -53,3 +53,19 @@ func (d *Device) SetUsbEthernetMacAddressSource(ctx context.Context, source stri
 	}
 	return nil
 }
+
+// Enable sets the device to enabled.
+func (d *Device) Enable(ctx context.Context) error {
+	if err := d.dbusObject.Call(ctx, "Enable").Err; err != nil {
+		return errors.Wrapf(err, "failed to enable device %s", d.String())
+	}
+	return nil
+}
+
+// Disable sets the device to disabled.
+func (d *Device) Disable(ctx context.Context) error {
+	if err := d.dbusObject.Call(ctx, "Disable").Err; err != nil {
+		return errors.Wrapf(err, "failed to disable device %s", d.String())
+	}
+	return nil
+}
