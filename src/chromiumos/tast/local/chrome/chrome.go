@@ -828,10 +828,10 @@ func ExtensionBackgroundPageURL(extID string) string {
 }
 
 // TestConn is a connection to the Tast test extension's background page.
-// Currently, this is just an alias of Conn for transition,
-// but will be different type to prevent wrong use on compile time.
 // cf) crbug.com/1043590
-type TestConn = Conn
+type TestConn struct {
+	*Conn
+}
 
 // TestAPIConn returns a shared connection to the test API extension's
 // background page (which can be used to access various APIs). The connection is
@@ -840,7 +840,7 @@ type TestConn = Conn
 // connection; it will be closed automatically by Close.
 func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
 	if c.testExtConn != nil {
-		return c.testExtConn, nil
+		return &TestConn{c.testExtConn}, nil
 	}
 
 	bgURL := ExtensionBackgroundPageURL(c.testExtID)
@@ -861,7 +861,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
 	}
 
 	testing.ContextLog(ctx, "Test API extension is ready")
-	return c.testExtConn, nil
+	return &TestConn{c.testExtConn}, nil
 }
 
 // Responded performs basic checks to verify that Chrome has not crashed.
