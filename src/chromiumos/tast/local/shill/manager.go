@@ -27,6 +27,7 @@ const (
 	ManagerPropertyProfiles            = "Profiles"
 	ManagerPropertyServices            = "Services"
 	ManagerPropertyServiceCompleteList = "ServiceCompleteList"
+	ManagerPropertyActiveProfile       = "ActiveProfile"
 )
 
 // Manager wraps a Manager D-Bus object in shill.
@@ -161,6 +162,19 @@ func (m *Manager) Profiles(ctx context.Context) ([]*Profile, error) {
 		}
 	}
 	return profiles, nil
+}
+
+// ActiveProfile returns the active profile.
+func (m *Manager) ActiveProfile(ctx context.Context) (*Profile, error) {
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	path, err := props.GetObjectPath(ManagerPropertyActiveProfile)
+	if err != nil {
+		return nil, err
+	}
+	return NewProfile(ctx, path)
 }
 
 // Devices returns a list of devices.
