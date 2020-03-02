@@ -33,7 +33,7 @@ func init() {
 		Contacts:     []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          crash.ChromePreWithVerboseConsent(),
 	})
 }
 
