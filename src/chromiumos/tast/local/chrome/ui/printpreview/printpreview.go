@@ -154,15 +154,17 @@ func SetPages(ctx context.Context, root *ui.Node, pages string) error {
 	if err := kb.Accel(ctx, "enter"); err != nil {
 		return errors.Wrap(err, "failed to type enter")
 	}
-	// Wait for the custom pages text field to appear and become focused (this
-	// happens automatically).
 	params = ui.FindParams{
-		Name:  "e.g. 1-5, 8, 11-13",
-		Role:  ui.RoleTypeTextField,
-		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
+		Name: "e.g. 1-5, 8, 11-13",
+		Role: ui.RoleTypeTextField,
 	}
-	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	pagesField, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	if err != nil {
 		return errors.Wrap(err, "failed to find custom pages text field")
+	}
+	defer pagesField.Release(ctx)
+	if err := pagesField.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click custom pages text field")
 	}
 	if err := kb.Type(ctx, pages); err != nil {
 		return errors.Wrap(err, "failed to type pages")
