@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "1b5b2ad7_9dedfd6c",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T06:59:22Z",
+      "side": 1,
+      "message": "Ah, I see.\n\nI\u0027m not sure which is better, having Setup.Cleanup is more explicit, but having New return a callback makes it more clear that it MUST be called.",
+      "parentUuid": "86bb2e93_a8ab7d08",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "8e8a8bbf7b11b9fb33b350a44d4bd92291610571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dfaf1ec_9e695dc1",
         "filename": "src/chromiumos/tast/local/power/setup/setup.go",
         "patchSetId": 10
