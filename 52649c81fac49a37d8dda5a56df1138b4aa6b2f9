@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58bbe3ca_9b9795a4",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:39:39Z",
+      "side": 1,
+      "message": "It\u0027s actually in github.com/godbus/dbus/object.go, which I will switch to.\n\nOne thing to note is that BusObject.PropertyGet doesn\u0027t take a context and just uses context.Background(), which might be an issue?",
+      "parentUuid": "a0768fb5_c788ca1d",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3c343aa_88265a15",
         "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
         "patchSetId": 5
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "18da5728_e8b75b91",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:39:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b4c570f_07c18082",
+      "range": {
+        "startLine": 29,
+        "startChar": 82,
+        "endLine": 29,
+        "endChar": 100
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7732174_373e52a1",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:39:39Z",
+      "side": 1,
+      "message": "It\u0027s also in github.com/godbus/dbus/object.go, but it\u0027s not in my local copy.\n\nIt was added in this commit: https://github.com/godbus/dbus/commit/6985d94ca06887d09055ce7c7d8471a76d897de3 13 months ago.\n\nDo you know how I can update the dependencies?",
+      "parentUuid": "f3c343aa_88265a15",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d489da6_ad14d355",
         "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b81356d7_03ca7314",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:39:39Z",
+      "side": 1,
+      "message": "It\u0027s at the bottom of the stack, I made a helper that makes sure cleanup callbacks get run even if there are panics. It also aggregates error checking so 75% of your setup code isn\u0027t error checking.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2028328/11",
+      "parentUuid": "8d489da6_ad14d355",
+      "range": {
+        "startLine": 39,
+        "startChar": 44,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "e773ede3_af7a8d31",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:39:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0bc7497_f404e1e6",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63db4e29_734b13a0",
         "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
         "patchSetId": 5
@@ -154,6 +274,30 @@
       "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c2a141_aa1a99ab",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:39:39Z",
+      "side": 1,
+      "message": "It\u0027s meant to be used with a power.Setup.Add, which does the nil check for you.",
+      "parentUuid": "63db4e29_734b13a0",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "52649c81fac49a37d8dda5a56df1138b4aa6b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
