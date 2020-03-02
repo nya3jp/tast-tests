@@ -477,6 +477,18 @@ func (u *UtilityCryptohomeBinary) IsTPMWrappedKeySet(ctx context.Context, userna
 	return strings.Contains(string(out), cryptohomeWrappedKeysetString), nil
 }
 
+// CheckTPMWrappedUserKeyset checks if the given user's keyset is backed by TPM.
+// Returns an error if the keyset is not TPM-backed or if there's anything wrong.
+func (u *UtilityCryptohomeBinary) CheckTPMWrappedUserKeyset(ctx context.Context, user string) error {
+	if keysetTPMBacked, err := u.IsTPMWrappedKeySet(ctx, user); err != nil {
+		return errors.Wrap(err, "failed to check user keyset")
+	} else if !keysetTPMBacked {
+		return errors.New("user keyset is not TPM-backed")
+	}
+
+	return nil
+}
+
 // GetEnrollmentID gets the enrollment ID.
 func (u *UtilityCryptohomeBinary) GetEnrollmentID(ctx context.Context) (string, error) {
 	out, err := u.binary.GetEnrollmentID(ctx)
