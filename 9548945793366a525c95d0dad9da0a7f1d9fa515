@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "a4315d5e_cf24194b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-02T18:59:40Z",
+      "side": 1,
+      "message": "Actually, since the prefixes are the same across each of these, we should move them into parseDAInfo and just pass in a bool for whether or not we want to check the status, I think.",
+      "parentUuid": "3aa8f53e_c3c32e40",
+      "revId": "9548945793366a525c95d0dad9da0a7f1d9fa515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d71393f_64d82f8e",
         "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
         "patchSetId": 4

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51a3ed82_1f1d2f47",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-02T18:59:40Z",
+      "side": 1,
+      "message": "maybe \"counter is not a valid integer: %q\" to make it clear that the %q is not an expectation that was not met, also for the messages below.",
+      "range": {
+        "startLine": 149,
+        "startChar": 39,
+        "endLine": 149,
+        "endChar": 84
+      },
+      "revId": "c1c809e6967938e6119246508a2e2304ebf502c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
