@@ -7,12 +7,14 @@ package crash
 import (
 	"context"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	commoncrash "chromiumos/tast/common/crash"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
 	crashservice "chromiumos/tast/services/cros/crash"
@@ -34,6 +36,23 @@ func init() {
 			"tast.cros.baserpc.FileSystem",
 		},
 	})
+}
+
+func uptime(ctx context.Context, fileSystem baserpc.FileSystemClient) (float64, error) {
+	b, err := fileSystem.ReadFile(ctx, &baserpc.ReadFileRequest{Name: "/proc/uptime"})
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to read uptime file")
+	}
+	line := string(b.Content)
+	data := strings.Split(line, " ")
+	if len(data) != 2 {
+		return 0, errors.Errorf("unexpected format of uptime file: %s", line)
+	}
+	uptime, err := strconv.ParseFloat(data[0], 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "unexpected content in uptime file: %s", data[0])
+	}
+	return uptime, nil
 }
 
 // ReporterStartup tests crash reporter is set up correctly after reboot.
@@ -86,15 +105,19 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	} else if !os.FileMode(flagInfo.Mode).IsRegular() {
 		s.Error("Crash reporter enabled file flag is not a regular file: ", commoncrash.CrashReporterEnabledPath)
 	}
-
-	uptimeInfo, err := fileSystem.Stat(ctx, &baserpc.StatRequest{Name: "/proc/uptime"})
-	if err != nil {
-		s.Fatal("Failed to read uptime file: ", err)
-	}
-
 	flagTime := time.Unix(flagInfo.Modified.Seconds, int64(flagInfo.Modified.Nanos))
-	bootTime := time.Unix(uptimeInfo.Modified.Seconds, int64(uptimeInfo.Modified.Nanos))
-	if flagTime.Before(bootTime) {
-		s.Error("User space crash handling was not started during last boot")
+
+	ut, err := uptime(ctx, fileSystem)
+	if err != nil {
+		s.Fatal("Failed to get uptime: ", err)
+	}
+	s.Log(ut)
+	bootTime := time.Now().Add(time.Second * time.Duration(ut))
+
+	// Allow 1 minute difference because crash_reporter may be initialized
+	// before uptimed in the system startup sequence.
+	if flagTime.Before(bootTime.Add(-time.Minute)) {
+		s.Errorf("User space crash handling was not started during last boot: crash_reporter started at %s, system was booted at %s",
+			flagTime.Format(time.RFC3339), bootTime.Format(time.RFC3339))
 	}
 }
