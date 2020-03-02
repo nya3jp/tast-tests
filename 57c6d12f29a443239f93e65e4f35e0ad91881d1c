@@ -22,6 +22,30 @@
       "revId": "57c6d12f29a443239f93e65e4f35e0ad91881d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe83e51_54cada4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/mount_combinations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-02T18:30:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "450eed99_30c3eb4b",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "57c6d12f29a443239f93e65e4f35e0ad91881d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
