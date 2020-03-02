@@ -172,7 +172,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx); err != nil {
 		s.Fatal("Failed to start context: ", err)
 	}
-	type testFunc2 func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.Conn, *arc.Activity, *ui.Device) error
+	type testFunc2 func(context.Context, *arc.ARC, *chrome.Chrome, *chrome.TestConn, *arc.Activity, *ui.Device) error
 	for _, test := range []struct {
 		name string
 		fn   testFunc2
@@ -902,7 +902,7 @@ func testDeviceMode(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 }
 
 // testAlwaysOnTop verifies the always on top window work as expected.
-func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *chrome.Conn, act *arc.Activity, d *ui.Device) error {
+func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
 	const (
 		settingPkgName         = "com.android.settings"
 		settingActName         = ".Settings"

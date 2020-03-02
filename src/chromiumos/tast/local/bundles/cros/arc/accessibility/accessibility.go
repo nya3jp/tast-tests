@@ -138,12 +138,12 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 }
 
 // SetFeatureEnabled sets the specified accessibility feature enabled/disabled using the provided connection to the extension.
-func SetFeatureEnabled(ctx context.Context, conn *chrome.Conn, feature Feature, enable bool) error {
+func SetFeatureEnabled(ctx context.Context, tconn *chrome.TestConn, feature Feature, enable bool) error {
 	script := fmt.Sprintf(
 		`new Promise((resolve, reject) => {
 			chrome.accessibilityFeatures.%s.set({value: %t}, resolve);
 		})`, feature, enable)
-	if err := conn.EvalPromise(ctx, script, nil); err != nil {
+	if err := tconn.EvalPromise(ctx, script, nil); err != nil {
 		return errors.Wrapf(err, "failed to toggle %v to %t", feature, enable)
 	}
 	return nil
@@ -230,14 +230,14 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 	a := d.ARC
 	cr := d.Chrome
 
-	conn, err := cr.TestAPIConn(ctx)
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
 	// It takes some time for ArcServiceManager to be ready.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := conn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)(true)", nil); err != nil {
+		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)(true)", nil); err != nil {
 			return err
 		}
 		return nil
@@ -245,11 +245,11 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Timed out waiting for touch mode: ", err)
 	}
 
-	if err := SetFeatureEnabled(ctx, conn, SpokenFeedback, true); err != nil {
+	if err := SetFeatureEnabled(ctx, tconn, SpokenFeedback, true); err != nil {
 		s.Fatal("Failed to enable spoken feedback: ", err)
 	}
 	defer func() {
-		if err := SetFeatureEnabled(fullCtx, conn, SpokenFeedback, false); err != nil {
+		if err := SetFeatureEnabled(fullCtx, tconn, SpokenFeedback, false); err != nil {
 			s.Fatal("Failed to disable spoken feedback: ", err)
 		}
 	}()
