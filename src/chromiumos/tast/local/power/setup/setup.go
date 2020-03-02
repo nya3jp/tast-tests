@@ -9,6 +9,7 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -110,7 +111,7 @@ func (s *Setup) Check(ctx context.Context) error {
 
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
-func PowerTest(ctx context.Context) (CleanupCallback, error) {
+func PowerTest(ctx context.Context, c *chrome.Conn) (CleanupCallback, error) {
 	return Nested(ctx, "power test", func(s *Setup) error {
 		s.Add(DisableService(ctx, "powerd"))
 		s.Add(DisableService(ctx, "update-engine"))
@@ -122,8 +123,8 @@ func PowerTest(ctx context.Context) (CleanupCallback, error) {
 		s.Add(DisableWiFiInterfaces(ctx))
 		s.Add(SetBatteryDischarge(ctx, 2.0))
 		s.Add(DisableBluetooth(ctx))
+		s.Add(TurnOffNightLight(ctx, c))
 
-		// TODO(b:150572487): Disable Night Light for power tests
 		// TODO(b:150571709): Close all ChromeOS windows for power tests
 
 		return nil
