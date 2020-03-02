@@ -37,7 +37,7 @@ func (c *FixtureService) SetUp(ctx context.Context, req *empty.Empty) (*empty.Em
 		return nil, errors.New("already set up")
 	}
 
-	cr, err := chrome.New(ctx)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(crash.ChromeVerboseConsentFlags))
 	if err != nil {
 		return nil, err
 	}

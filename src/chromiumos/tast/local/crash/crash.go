@@ -77,6 +77,9 @@ const (
 	CompressedLogExt = ".log.gz"
 	// DevCoredumpExt is an extension for device coredump files.
 	DevCoredumpExt = ".devcore"
+
+	// ChromeVerboseConsentFlags provides the flags to enable verbose logging about consent.
+	ChromeVerboseConsentFlags = "--vmodule=stats_reporting_controller=1,autotest_private_api=1"
 )
 
 // DefaultDirs returns all standard directories to which crashes are written.
