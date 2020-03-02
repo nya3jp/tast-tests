@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f338ba7a_5f969f9c",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-02T19:23:13Z",
+      "side": 1,
+      "message": "this context-log is independent from the core part of this CL, I think. You should just put them into the other CL.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 91
+      },
+      "revId": "c8de9071f1236680acd03f3d09a367be207294c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
