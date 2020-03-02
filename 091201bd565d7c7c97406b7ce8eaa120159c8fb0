@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0af0a9f5_95944f2c",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-02T18:20:13Z",
+      "side": 1,
+      "message": "This is my personal preference, but I am guessing it would be nicer to pass the name to the Setup instance and having the ContextLog within its cleanup function and nestedSetup function. Any thoughts?",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "091201bd565d7c7c97406b7ce8eaa120159c8fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
