@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,6 +32,7 @@ func init() {
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("elm"), hwdep.SkipOnModel("hana")),
 	})
 }
 
