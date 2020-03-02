@@ -117,6 +117,30 @@
       "revId": "744c4f8f02f78e98db66ddedc33ebb418910bd04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ecf34b_d523ef7c",
+        "filename": "src/chromiumos/tast/local/power/ectool/battery_perf_metrics.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:00:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0da1a590_d2b22227",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 1
+      },
+      "revId": "744c4f8f02f78e98db66ddedc33ebb418910bd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
