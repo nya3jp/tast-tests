@@ -70,6 +70,30 @@
       "revId": "c5e25cacf563b6816716eb6a79d21ae75e9c6994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9fb174f_e18e6eaa",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-02T17:02:41Z",
+      "side": 1,
+      "message": "Hmm... Your point is still not very clear to me...\nAnyways, let me give it a try to rephrase. Hope it works for you better. PTAL.",
+      "parentUuid": "8a304af6_64e2cc9e",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 12
+      },
+      "revId": "c5e25cacf563b6816716eb6a79d21ae75e9c6994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
