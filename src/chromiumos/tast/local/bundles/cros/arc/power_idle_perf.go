@@ -51,7 +51,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, _ = ctxutil.Shorten(ctx, time.Minute)
 
-	sup, cleanup := setup.New()
+	sup, cleanup := setup.New("power idle perf")
 	defer func() {
 		if err := cleanup(cleanupCtx); err != nil {
 			s.Fatal("Cleanup failed: ", err)

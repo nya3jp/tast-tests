@@ -187,7 +187,7 @@ func TestNestedSetup(t *testing.T) {
 				}
 			}()
 			s.Add(items[0].setup())
-			s.Add(Nested(ctx, func(s *Setup) error {
+			s.Add(Nested(ctx, "test", func(s *Setup) error {
 				s.Add(items[1].setup())
 				s.Add(tc.testItem())
 				if tc.nestedError != nil {
