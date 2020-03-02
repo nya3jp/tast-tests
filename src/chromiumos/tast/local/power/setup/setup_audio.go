@@ -119,7 +119,7 @@ func setupAudioVolume(ctx context.Context, volume uint, prev *audioSettings) (Cl
 
 // MuteAudio sets volume to zero, recording, gain to zero, and mutes audio.
 func MuteAudio(ctx context.Context) (CleanupCallback, error) {
-	return Nested(ctx, func(s *Setup) error {
+	return Nested(ctx, "mute audio", func(s *Setup) error {
 		prev, err := readAudioSettings(ctx)
 		if err != nil {
 			return err
