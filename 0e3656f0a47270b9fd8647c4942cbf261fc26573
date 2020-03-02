@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75eee844_f8992063",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-02T19:36:39Z",
+      "side": 1,
+      "message": "nit: msg :\u003d string(binaryMsg)\nhttps://play.golang.org/p/b1EZO0JwNhH",
+      "range": {
+        "startLine": 586,
+        "startChar": 1,
+        "endLine": 589,
+        "endChar": 2
+      },
+      "revId": "0e3656f0a47270b9fd8647c4942cbf261fc26573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
