@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b93e34df_337cfd90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-02T23:54:12Z",
+      "side": 1,
+      "message": "This makes me a bit nervous: the test seems to consist of multiple phases, and each phase calls MountVault and then Unmount/Remove should be done as the cleanup. I guess it comes to an unexpected state if the test fails at a preparation of the next state (like hwseclocal.RestartTPMDaemons() of Phase 2 below), because Unmount is already done and the next MountVault isn\u0027t called yet.\n\nConsidering that, I would like to propose as follows:\n* turn each phase as a different function: (i.e. func() { s.Log(\"Phase 1...\") ... }())\n* or use of s.Run (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#State.Run)\n* in each of phase, have this defer, to make sure the cleanup is done at the end of each phase",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
