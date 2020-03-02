@@ -58,7 +58,7 @@ func LaunchTerminal(ctx context.Context, s *testing.State) {
 	cr := pre.Chrome
 	cont := pre.Container
 
-	const terminalURLPrefix = "chrome-extension://nkoccljplnhpfnfiajclkommnmllphnl/html/crosh.html?command=vmshell"
+	const terminalURLContains = "://terminal/html/terminal.html?command=vmshell"
 
 	checkLaunch := func(urlSuffix string, command ...string) {
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
@@ -72,9 +72,9 @@ func LaunchTerminal(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		s.Logf("Waiting for renderer with URL prefix %q and suffix %q", terminalURLPrefix, urlSuffix)
+		s.Logf("Waiting for renderer with URL containing %q and suffix %q", terminalURLContains, urlSuffix)
 		conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
-			return strings.HasPrefix(t.URL, terminalURLPrefix) &&
+			return strings.Contains(t.URL, terminalURLContains) &&
 				strings.HasSuffix(t.URL, urlSuffix)
 		})
 		if err != nil {
