@@ -22,6 +22,30 @@
       "revId": "c5e25cacf563b6816716eb6a79d21ae75e9c6994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d398d051_4b9115cf",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-02T02:44:50Z",
+      "side": 1,
+      "message": "\u003e That said, while examples are great to have, they do not replace necessity of explanation of fn. In the current documentation it\u0027s not clear what kind of values are permitted as fn.\n\nCould you clarify what is unclear for you? To me, your suggestion looks like just a list of additional examples, so I\u0027m struggling with finding unclear point for you.\n\n\u003e Also we should make it clear that the result is a promise it is awaited.\n\nGood point! I will.",
+      "parentUuid": "303622eb_55b3c6ae",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 12
+      },
+      "revId": "c5e25cacf563b6816716eb6a79d21ae75e9c6994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
