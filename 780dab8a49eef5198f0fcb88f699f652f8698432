@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "90851675_57a238bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:40:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "edaf04d0_3dd7be67",
+      "range": {
+        "startLine": 50,
+        "startChar": 31,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4eb1c401_1d427caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:40:02Z",
+      "side": 1,
+      "message": "The context needs to be created now (so we can defer before any panics can happen), but we don\u0027t know when the test will be done, so I thought it would be good enough to just make cleanup have to end within the overall deadline. If the test ends early, then cleanup gets a lot of time, but it will get at least 1 minute.",
+      "parentUuid": "1e07cc1e_4183a2fd",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb27073a_e7e9c464",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
         "patchSetId": 19
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "444a9c7e_9ad98707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:40:02Z",
+      "side": 1,
+      "message": "I wanted to wait for CPU utilization to settle. Temperature seems like a good proxy for that, so I\u0027ll switch to that for now, and if we still see noise in the metrics, maybe then I\u0027d write something similar but for CPU use instead of temperature.",
+      "parentUuid": "cb27073a_e7e9c464",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39925221_dd6ab2e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
         "patchSetId": 19
@@ -91,6 +163,30 @@
       "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1838f4b7_c5bd5c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:40:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39925221_dd6ab2e2",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 43
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +233,54 @@
       "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70330d2_b0eaf2a8",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:40:02Z",
+      "side": 1,
+      "message": "b: numbers OK?",
+      "parentUuid": "0a1b9df5_cdd5c70f",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 9
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7c43e8_08ad1510",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-02T07:40:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a32ce52_07c26994",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "780dab8a49eef5198f0fcb88f699f652f8698432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
