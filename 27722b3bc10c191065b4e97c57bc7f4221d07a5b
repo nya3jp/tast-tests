@@ -22,6 +22,30 @@
       "revId": "27722b3bc10c191065b4e97c57bc7f4221d07a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95476f9c_2f12db62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-02T08:03:29Z",
+      "side": 1,
+      "message": "It is only added in commit messages. Let me explicitly add a TODO for it in test_fixture.",
+      "parentUuid": "fc660aa1_9ab91538",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "27722b3bc10c191065b4e97c57bc7f4221d07a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
