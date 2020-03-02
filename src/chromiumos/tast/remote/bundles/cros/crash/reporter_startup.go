@@ -95,6 +95,7 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	flagTime := time.Unix(flagInfo.Modified.Seconds, int64(flagInfo.Modified.Nanos))
 	bootTime := time.Unix(uptimeInfo.Modified.Seconds, int64(uptimeInfo.Modified.Nanos))
 	if flagTime.Before(bootTime) {
-		s.Error("User space crash handling was not started during last boot")
+		s.Errorf("User space crash handling was not started during last boot: crash_reporter started at %s, system was booted at %s",
+			flagTime.Format(time.RFC3339), bootTime.Format(time.RFC3339))
 	}
 }
