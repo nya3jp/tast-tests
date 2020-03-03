@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b076d1c7_2fb50376",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_dbus.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-03T20:55:33Z",
+      "side": 1,
+      "message": "nit: this should be \u0027ctx\u0027 and pass to the function call below",
+      "range": {
+        "startLine": 34,
+        "startChar": 13,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "7be8681847e1c31810ee42c59c85caffc5da8e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
