@@ -22,6 +22,30 @@
       "revId": "08d26c6bdcf8ac3d26aaef363afc702bf05d87a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c0a150c_aa8eb039",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-03T00:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c559e61_238af977",
+      "range": {
+        "startLine": 53,
+        "startChar": 66,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "08d26c6bdcf8ac3d26aaef363afc702bf05d87a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
