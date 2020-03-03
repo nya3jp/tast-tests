@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "3302ff50_630548f9",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-03T10:24:25Z",
+      "side": 1,
+      "message": "After some trial on the PHY management, I found that the current structure is not very suitable for later extension so I think I\u0027ll port the logic from Autotest in this cl. Sorry that I should have done this earlier. Please take another look.",
+      "parentUuid": "2f5070de_51ab87d7",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af3da1d9_de9c6189",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 12
