@@ -94,6 +94,30 @@
       "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f3a5cc_9a63f419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-03T21:26:23Z",
+      "side": 1,
+      "message": "It is a hard decision for choosing debuggability of leaving-the-state vs independence of tests / cleaning up properly to interfere other test cases. But the linked document also mentioned as follows:\n\n\u003e Note that tests should still undo atypical configuration that leaves the system in a non-fully-functional state, though. For example, if a test needs to temporarily stop a service, it should restart it before exiting.\n\nThis could be applied to this case, but I can\u0027t say. Please discuss among y\u0027all for whether this cleanup should be done or not. I\u0027ll respect your decision.\n\nMy comment above was rather for coding style. In other words, I\u0027m still wondering if this code works as intended with the assumption that this cleanup should be added:\n* if utility.Unmount in defer (line 81) fails, it will not remove the vault (utility.RemoveVault in line 84 will never be called). Is this intentional? Is it okay? That is my biggest question.\n* secondary, when the test fails after the filesystem is unmounted (e.g. failures around line 100, hwseclocal.RestartTPMDeamons()), the filesystem should be already unmounted (at line 94) yet this defer function runs, thus utility.Unmount will be invoked again. If that causes an error, my question will become much more realistic than hypothetical.\n* one way to deal with this is to check if it really needs to invoke utility.Unmount in defer function. That is reasonable to me.\n* or, another approach is my previous suggestion: ensuring cleanup at the end of each phase.\n* or, if utility.Unmount needs to be called but utility.RemoveVault doesn\u0027t have to be called, it makes sense to me to have utility.Unmount only in the defer function.",
+      "parentUuid": "3ce514d2_4e731899",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
