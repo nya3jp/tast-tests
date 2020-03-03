@@ -58,6 +58,11 @@ func (c *TpmManagerBinary) WriteSpace(ctx context.Context, index, file, password
 	return c.call(ctx, args...)
 }
 
+// GetDAInfo calls "tpm_manager_client get_da_info".
+func (c *TpmManagerBinary) GetDAInfo(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "get_da_info")
+}
+
 // ResetDALock calls "tpm_manager_client reset_da_lock".
 func (c *TpmManagerBinary) ResetDALock(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "reset_da_lock")
