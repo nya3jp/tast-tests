@@ -16,6 +16,24 @@
       "revId": "2069f29e00efe0ab8346b57218c320bc03b1703d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82cf5b5d_aeda3742",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_keyboard_backlight.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-03T07:45:01Z",
+      "side": 1,
+      "message": "Yes, that is much less silly looking.",
+      "parentUuid": "65f89c97_bed5e008",
+      "revId": "2069f29e00efe0ab8346b57218c320bc03b1703d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
