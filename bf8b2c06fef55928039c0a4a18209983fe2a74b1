@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a0da504_818c51e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T05:47:37Z",
+      "side": 1,
+      "message": "How about:\nWhen CreateProfile(), it also creates a symlink for chronos@ (shillscript.ShillUserProfileChronosDir). When the symlink presents, it means there is an active network profile. Because shill shouldn\u0027t load multiple network profiles, shill skips login script if the symlink exists. We have to remove the symlink to mimic a wait-for-login scenario.",
+      "revId": "bf8b2c06fef55928039c0a4a18209983fe2a74b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41037324_fea0b744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_init_scripts_login_profile_exists.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T05:47:37Z",
+      "side": 1,
+      "message": "\u003e \"shoudn\u0027t\" is a possible misspelling of \"shouldn\u0027t\".\n\nPlease fix.",
+      "parentUuid": "01396c60_b928d411",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "bf8b2c06fef55928039c0a4a18209983fe2a74b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
