@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "f161cd25_06b0de85",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-03T02:22:11Z",
+      "side": 1,
+      "message": "\u003e BTW, I would like to ask if min_spatial_streams is still useful, like, in manual performance tests or somewhere?\n\nI\u0027m not aware of anywhere we want to check that property. I believe it\u0027s only useful for helping determine the appropriate wiphy to exclude on certain boards (in this case, whirlwind). I don\u0027t believe we expect to have any asymmetry in wiphys otherwise, so this \"MIN_\" wouldn\u0027t really be helpful today.",
+      "parentUuid": "152e49ed_ff35ada8",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "f957b6597cac9fdea1afd2d9dbb1f5b4b15037b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29243a60_47956b31",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 12
