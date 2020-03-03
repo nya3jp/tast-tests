@@ -13,9 +13,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/go-cmp/cmp"
-	"github.com/google/go-cmp/cmp/cmpopts"
-
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -157,9 +154,9 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 	return chromeVoxConn, nil
 }
 
-// WaitForFocusedNode polls until the properties of the focused node matches node.
+// WaitForFocusedNode polls until the properties of the focused node matches the given params.
 // Returns an error after 30 seconds.
-func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, node *ui.Node) error {
+func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		focused, err := focusedNode(ctx, chromeVoxConn, tconn)
@@ -168,8 +165,10 @@ func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *
 		}
 		defer focused.Release(ctx)
 
-		if !cmp.Equal(focused, node, cmpopts.IgnoreUnexported(*node), cmpopts.IgnoreFields(*node, "Location", "State")) {
-			return errors.Errorf("focused node is incorrect: got %v, want %v", focused, node)
+		if match, err := focused.Matches(ctx, *params); err != nil {
+			return testing.PollBreak(err)
+		} else if !match {
+			return errors.Errorf("focused node is incorrect: got %v, want %v", focused, params)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
@@ -242,7 +241,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	if err := WaitForFocusedNode(ctx, chromeVoxConn, tconn, &ui.Node{
+	if err := WaitForFocusedNode(ctx, chromeVoxConn, tconn, &ui.FindParams{
 		ClassName: TextView,
 		Name:      "Accessibility Test App",
 		Role:      ui.RoleTypeStaticText,

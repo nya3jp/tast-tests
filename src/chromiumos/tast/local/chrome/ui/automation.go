@@ -119,16 +119,13 @@ func (params *FindParams) rawBytes() ([]byte, error) {
 // As defined in chromium/src/extensions/common/api/automation.idl
 // Exported fields are sorted in alphabetical order.
 type Node struct {
-	object        *chrome.JSObject
-	tconn         *chrome.TestConn
-	Checked       string             `json:"checked,omitempty"`
-	ClassName     string             `json:"className,omitempty"`
-	Location      coords.Rect        `json:"location,omitempty"`
-	Name          string             `json:"name,omitempty"`
-	Role          RoleType           `json:"role,omitempty"`
-	State         map[StateType]bool `json:"state,omitempty"`
-	Tooltip       string             `json:"tooltip,omitempty"`
-	ValueForRange int                `json:"valueForRange,omitempty"`
+	object    *chrome.JSObject
+	tconn     *chrome.TestConn
+	ClassName string             `json:"className,omitempty"`
+	Location  coords.Rect        `json:"location,omitempty"`
+	Name      string             `json:"name,omitempty"`
+	Role      RoleType           `json:"role,omitempty"`
+	State     map[StateType]bool `json:"state,omitempty"`
 }
 
 // NodeSlice is a slice of pointers to nodes. It is used for releaseing a group of nodes.
@@ -292,6 +289,19 @@ func (n *Node) WaitForDescendant(ctx context.Context, params FindParams, exists 
 		return errors.Wrap(err, "failed to wait for the node")
 	}
 	return nil
+}
+
+// Matches returns whether this node matches the given params.
+func (n *Node) Matches(ctx context.Context, params FindParams) (bool, error) {
+	paramsBytes, err := params.rawBytes()
+	if err != nil {
+		return false, err
+	}
+	var match bool
+	if err := n.object.Call(ctx, &match, fmt.Sprintf("function(){return this.matches(%s)}", paramsBytes)); err != nil {
+		return false, err
+	}
+	return match, nil
 }
 
 // Attribute gets the specified attribute of this node.
