@@ -81,6 +81,12 @@ func (c *CryptohomeBinary) TPMStatus(ctx context.Context) (string, error) {
 	return string(out), err
 }
 
+// TPMMoreStatus calls "cryptohome --action=tpm_more_status".
+func (c *CryptohomeBinary) TPMMoreStatus(ctx context.Context) (string, error) {
+	out, err := c.call(ctx, "--action=tpm_more_status")
+	return string(out), err
+}
+
 // TPMAttestationStatus calls "cryptohome --action=tpm_attestation_status".
 func (c *CryptohomeBinary) TPMAttestationStatus(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=tpm_attestation_status")
