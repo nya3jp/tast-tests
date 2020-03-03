@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65f89c97_bed5e008",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_keyboard_backlight.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T05:30:12Z",
+      "side": 1,
+      "message": "nit: how about using fmt.Sprintf(...)",
+      "revId": "2069f29e00efe0ab8346b57218c320bc03b1703d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
