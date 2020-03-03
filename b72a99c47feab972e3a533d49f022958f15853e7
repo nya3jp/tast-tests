@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82541a72_ced5c465",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-03T16:54:44Z",
+      "side": 1,
+      "message": "Next time, please upload the original CL as patch set #1 as is, and then upload the revised one as patch set #2 for review. This would make it far easier for reviewers to see what\u0027s changed.",
+      "revId": "b72a99c47feab972e3a533d49f022958f15853e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07674ff7_6b5f118b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-03T16:54:44Z",
+      "side": 1,
+      "message": "nit: \u0027reason for revert\u0027 is usually used only in revert CLs. Since this is for reland, can you just mention what\u0027s changed compared to the original one (maybe at line 16)?",
+      "revId": "b72a99c47feab972e3a533d49f022958f15853e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
