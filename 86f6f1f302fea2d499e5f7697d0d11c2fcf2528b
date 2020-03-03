@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cda58c09_8468208c",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-03T08:44:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "101445f9_037f21b6",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "86f6f1f302fea2d499e5f7697d0d11c2fcf2528b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614c2cb9_5af8f5fd",
         "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
         "patchSetId": 20
@@ -39,6 +63,24 @@
       "revId": "86f6f1f302fea2d499e5f7697d0d11c2fcf2528b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44685eed_56a31243",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-03T08:44:24Z",
+      "side": 1,
+      "message": "Yes, I thought I put a comment, adding one now.\n\nIt would be really bad to leave the device in forced discharge mode, since it will just drain until it shuts down.\n\nSo instead of putting the setting back, we make sure it\u0027s always charging at the end of a test.",
+      "parentUuid": "614c2cb9_5af8f5fd",
+      "revId": "86f6f1f302fea2d499e5f7697d0d11c2fcf2528b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
