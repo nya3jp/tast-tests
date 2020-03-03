@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -498,6 +499,28 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 	}
 }
 
+// reportHistograms sets the histogram averages to perfValues
+func reportHistograms(ctx context.Context, perfValues *perf.Values, histograms []*metrics.Histogram) error {
+	if len(histograms) != 1 {
+		return errors.New("unexpected histogram count")
+	}
+
+	jankMean, err := histograms[0].Mean()
+	if err != nil {
+		return errors.Wrap(err, "failed to get mean for tast_janky_count")
+	}
+	jankyMetric := perf.Metric{
+		Name:      "tast_janky_count",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(jankyMetric, jankMean)
+	testing.ContextLog(ctx, "Average janky count in 30s: ", jankMean)
+	testing.ContextLog(ctx, "Janky histogram: ", histograms[0].String)
+
+	return nil
+}
+
 // runPhase1 runs the first phase of the test, creating a memory pressure situation by loading multiple tabs
 // into Chrome until the first tab discard occurs. Various measurements are taken as the pressure increases.
 func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) (
@@ -765,6 +788,11 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 		s.Logf("Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
 	}
 
+	startHistogram, err := metrics.GetHistogram(ctx, tconn, "Browser.Responsiveness.JankyIntervalsPerThirtySeconds")
+	if err != nil {
+		s.Fatal("Failed to get histogram: ", err)
+	}
+
 	// -----------------
 	// Phase 1: Open several pinned tabs, and then continue to open more tabs until a tab is discarded.
 	// -----------------
@@ -788,7 +816,23 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 	// -----------------
 	runPhase3(ctx, s, pinnedTabs, tabSwitchRepeatCount, fullMeter, perfValues)
 
+	endHistogram, err := metrics.GetHistogram(ctx, tconn, "Browser.Responsiveness.JankyIntervalsPerThirtySeconds")
+	if err != nil {
+		s.Fatal("Failed to get histogram: ", err)
+	}
+
+	histograms, err := metrics.DiffHistograms([]*metrics.Histogram{startHistogram}, []*metrics.Histogram{endHistogram})
+	if err != nil {
+		s.Fatal("Failed to diff histograms: ", err)
+	}
+
+	err = reportHistograms(ctx, perfValues, histograms)
+	if err != nil {
+		s.Fatal("Failed to report histograms: ", err)
+	}
+
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
 	}
+
 }
