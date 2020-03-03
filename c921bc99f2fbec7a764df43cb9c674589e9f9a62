@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86d3553c_65a771ac",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T05:27:48Z",
+      "side": 1,
+      "message": "The \"Nested\" API covers all use cases to me.\n\nIIUC, the example use case of SetUp is;\n\nsetup, cleanup :\u003d New()\ndefer cleanup(ctx)\nsetup.Add(...)\nsetup.Add(...)\nsetup.Add(...)\nif err :\u003d setup.Check(ctx); err !\u003d nil {\n  s.Fatal(...)\n}\n\nIf also can be written as;\n\ncleanup, err :\u003d Nested(ctx, func(setup *Setup) error {\n  setup.Add(...)\n  setup.Add(...)\n  setup.Add(...)\n  setup.Add(...)\n})\nif err !\u003d nil {\n  s.Fatal(...)\n}\ndefer cleanup(ctx)\n\nCould you clarify a bit more clearer when to use Nested and when to use New?",
+      "revId": "c921bc99f2fbec7a764df43cb9c674589e9f9a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b38e070a_dbc7f2d5",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T05:27:48Z",
+      "side": 1,
+      "message": "How about adding TODO to migrate into crbug.com/1049020?",
+      "revId": "c921bc99f2fbec7a764df43cb9c674589e9f9a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
