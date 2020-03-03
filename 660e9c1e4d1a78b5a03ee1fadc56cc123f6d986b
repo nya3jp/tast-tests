@@ -22,6 +22,30 @@
       "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21bf14a_136cd18b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-03T01:08:19Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "b93e34df_337cfd90",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
