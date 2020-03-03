@@ -31,15 +31,17 @@ func init() {
 			Val:               chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Breakpad},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
-			Name: "browser_crashpad",
-			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Crashpad},
+			Name:              "browser_crashpad",
+			Val:               chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Crashpad},
+			ExtraSoftwareDeps: []string{"crashpad"},
 		}, {
 			Name:              "gpu_process_breakpad",
 			Val:               chromeCrashLoggedInParams{ptype: chromecrash.GPUProcess, handler: chromecrash.Breakpad},
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
-			Name: "gpu_process_crashpad",
-			Val:  chromeCrashLoggedInParams{ptype: chromecrash.GPUProcess, handler: chromecrash.Crashpad},
+			Name:              "gpu_process_crashpad",
+			Val:               chromeCrashLoggedInParams{ptype: chromecrash.GPUProcess, handler: chromecrash.Crashpad},
+			ExtraSoftwareDeps: []string{"crashpad"},
 		}, {
 			Name: "broker_breakpad",
 			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Broker, handler: chromecrash.Breakpad},
@@ -49,7 +51,7 @@ func init() {
 			Name: "broker_crashpad",
 			Val:  chromeCrashLoggedInParams{ptype: chromecrash.Broker, handler: chromecrash.Crashpad},
 			// If the gpu process is not sandboxed, it will not create a broker.
-			ExtraSoftwareDeps: []string{"gpu_sandboxing"},
+			ExtraSoftwareDeps: []string{"crashpad", "gpu_sandboxing"},
 		}},
 	})
 }
