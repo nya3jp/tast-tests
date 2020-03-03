@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5539f7dd_5e0e369b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-03T23:53:15Z",
+      "side": 1,
+      "message": "retrieve",
+      "range": {
+        "startLine": 215,
+        "startChar": 37,
+        "endLine": 215,
+        "endChar": 45
+      },
+      "revId": "8cb791707b3495e1112d931af5b2d6a07bf8a2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dffc611c_ff04c73c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-03T23:53:15Z",
+      "side": 1,
+      "message": "Can you make this AverageFPS for consistency?",
+      "range": {
+        "startLine": 271,
+        "startChar": 34,
+        "endLine": 271,
+        "endChar": 44
+      },
+      "revId": "8cb791707b3495e1112d931af5b2d6a07bf8a2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
