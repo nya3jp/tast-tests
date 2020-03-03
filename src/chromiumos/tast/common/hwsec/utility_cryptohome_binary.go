@@ -17,6 +17,7 @@ import (
 )
 
 const (
+	getTPMStatusSuccessMessage             = "GetTpmStatus success."
 	tpmIsReadyString                       = "TPM Ready: true"
 	tpmIsNotReadyString                    = "TPM Ready: false"
 	tpmIsAttestationPreparedString         = "Attestation Prepared: true"
@@ -73,6 +74,21 @@ func (u *UtilityCryptohomeBinary) GetStatusJSON(ctx context.Context) (map[string
 		return nil, errors.Wrap(err, "Failed to parse JSON from GetStatusString(): '"+s+"'; ")
 	}
 	return obj, nil
+}
+
+// GetDAInfo retrieves the dictionary attack related information. The returnedError is nil iff the operation is successful, and in that case
+func (u *UtilityCryptohomeBinary) GetDAInfo(ctx context.Context) (info *DAInfo, returnedError error) {
+	msg, err := u.binary.TPMMoreStatus(ctx)
+	if err != nil {
+		return &DAInfo{}, errors.Wrapf(err, "calling TPMMoreStatus failed with message %q", msg)
+	}
+	if !strings.Contains(msg, getTPMStatusSuccessMessage) {
+		return &DAInfo{}, errors.Wrapf(err, "calling TPMMoreStatus failed with unexpected output %q", msg)
+		return
+	}
+
+	// Now try to parse everything.
+	return parseDAInfo(ctx, false, msg)
 }
 
 // IsTPMReady checks if TPM is ready.
