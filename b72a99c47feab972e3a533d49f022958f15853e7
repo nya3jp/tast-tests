@@ -68,6 +68,24 @@
       "revId": "b72a99c47feab972e3a533d49f022958f15853e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "915a74e6_045f6123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-03T18:43:40Z",
+      "side": 1,
+      "message": "Can you include the information in the commit message?",
+      "parentUuid": "d423f6eb_80abdb55",
+      "revId": "b72a99c47feab972e3a533d49f022958f15853e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
