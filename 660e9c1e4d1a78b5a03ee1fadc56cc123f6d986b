@@ -70,6 +70,30 @@
       "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ce514d2_4e731899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-03T19:55:59Z",
+      "side": 1,
+      "message": "The reason why I added the cleanup is because this test will leave the user vault on the filesystem after running, and that can disrupt other tests.",
+      "parentUuid": "233adb07_90712498",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
