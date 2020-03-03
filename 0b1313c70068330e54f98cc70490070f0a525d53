@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c2b1a5b_e991a6aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-03T01:08:18Z",
+      "side": 1,
+      "message": "that does explain the problem, but I\u0027m not sure that\u0027s a great TODO target. TODO should usually point at the bug where the future work is tracked, I think?",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "0b1313c70068330e54f98cc70490070f0a525d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
