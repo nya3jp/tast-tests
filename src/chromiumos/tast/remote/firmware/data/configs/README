@@ -1,0 +1,32 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+# Overview
+
+This directory contains platform-specific configs used for firmware testing.
+
+DEFAULTS.json contains default values, and documentation, for all configurable
+properties.
+
+Properties are overridden based on the DUT's board, and sometimes model.
+Each board has a JSON file in this directory, '${BOARD}.json'.
+
+Some config files inherit properties from a parent file, i.e. a reference board.
+
+Some boards also have a "models" property, allowing specific models to override
+certain values.
+
+The precedence goes from general to specific: DEFAULTS < parent < board < model.
+
+# Updating the configs
+
+Currently, these config files are duplicated between Autotest and Tast.
+This is a temporary measure.
+For more information, please see go/cros-fw-testing-configs.
+
+When updating configs in one location, *please also update the other location.*
+This will prevent the two repositories from falling out-of-sync.
+
+Autotest configs: $AUTOTEST/server/cros/faft/configs/
+Tast configs: $TAST_TESTS/src/chromiumos/tast/remote/firmware/data/configs/
