@@ -180,7 +180,16 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	},
 		"Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat",
 		"Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat",
-		"Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat")
+		"Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat",
+		"Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToHiddenHotseat",
+		"Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToShownHotseat",
+		"Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToExtendedHotseat",
+		"Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToHiddenHotseat",
+		"Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToShownHotseat",
+		"Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToExtendedHotseat",
+		"Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToHiddenHotseat",
+		"Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToShownHotseat",
+		"Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToExtendedHotseat")
 	if err != nil {
 		s.Fatal("Failed to swipe or get histogram: ", err)
 	}
