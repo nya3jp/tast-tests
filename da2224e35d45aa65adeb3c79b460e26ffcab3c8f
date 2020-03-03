@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77625aa7_90443fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-03T09:05:49Z",
+      "side": 1,
+      "message": "This parameter is also passed to the shell script that runs as pid 1 inside the VM so we would need to turn it back into a string, which is why I had these start off as strings.\n\nIf there is a typo then the run-blogbench.sh script will reject the parameter.",
+      "parentUuid": "22ba07d0_a4001bbf",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "da2224e35d45aa65adeb3c79b460e26ffcab3c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb13ced4_972b1453",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "da2224e35d45aa65adeb3c79b460e26ffcab3c8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dace7313_f7930544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-03T09:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb13ced4_972b1453",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "da2224e35d45aa65adeb3c79b460e26ffcab3c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "aae3ec9a_5b0ea848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-03T09:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1203135_27c70b89",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "da2224e35d45aa65adeb3c79b460e26ffcab3c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11b1c616_61808ae0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
         "patchSetId": 1
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "65d3cfd7_5e5f62d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-03T09:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b1c616_61808ae0",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "da2224e35d45aa65adeb3c79b460e26ffcab3c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62fa2d20_1531f51e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
         "patchSetId": 1
@@ -137,6 +233,30 @@
       "revId": "da2224e35d45aa65adeb3c79b460e26ffcab3c8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae5f722f_4e93277a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-03T09:05:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62fa2d20_1531f51e",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "da2224e35d45aa65adeb3c79b460e26ffcab3c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
