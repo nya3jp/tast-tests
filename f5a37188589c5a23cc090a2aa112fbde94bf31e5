@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b48dabce_abce07d0",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T07:32:49Z",
+      "side": 1,
+      "message": "\"the daemon\" can be omitted: ... and identifies if it is ready or failed.",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec61684_9e389b65",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T07:32:49Z",
+      "side": 1,
+      "message": "Is readyWriter used within the package only? If so, do we need to make Write() and Close() public? If not, we shall public newReadyWriter() as well.",
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831853a6_7bcdb6e9",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T07:32:49Z",
+      "side": 1,
+      "message": "\"function\" can be omitted.\n\nHow about:\nWrite writes p to the buffer for readyWriter to detect hostapd\u0027s ready/error event.\nIt implements io.Writer interface.",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78cef9fd_8ee92754",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T07:32:49Z",
+      "side": 1,
+      "message": "Same. How about describing what it does first; then which interface it implements?",
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ce2d2e_a36309f1",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T07:32:49Z",
+      "side": 1,
+      "message": "emtis",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c7856e_b0aef08c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T07:32:49Z",
+      "side": 1,
+      "message": "In golang, a function comment should start with function name as a subject, not a verb. See:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/lsbrelease/lsbrelease.go?g\u003d0\u0026l\u003d78\n\"Parse parses a key-value text ...\"\n\nSorry that I didn\u0027t point it out before. This should be:\n\n// wait waits until hostapd is ready or has an error.",
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64c2dfd_a2120238",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T07:32:49Z",
+      "side": 1,
+      "message": "spawns a hostapd daemon",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
