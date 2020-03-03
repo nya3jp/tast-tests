@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1b4038b_a1e8819b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to do this. The precondition will give you the device in a state with or without tablet mode. You shouldn\u0027t need to set tablet mode.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b89bc3_ad5e6630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "please run these via subtests:\n\ns.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {\n\ttest.fn(ctx, s, tconn, a, d, appPkgName, appActivity)\n})\n\nThen if you call s.Fatal in the test function, it should just kill the subtest and take a screenshot.",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2a7c051_68802dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "if you are returning an error, you shouldn\u0027t use s.Fatal()\nYou should either return every error, or return nothing and use s.Fatal().\nIn this case, I would probably return nothing.\n\nSame for the functions in utils.go",
+      "range": {
+        "startLine": 196,
+        "startChar": 147,
+        "endLine": 196,
+        "endChar": 152
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424fc0bc_68f4cda2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "must(GotItButton.Click(ctx))?",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 24
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193bbd15_811fbf1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "must here as well?",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 32
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e687f634_18024677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "Generally generic names like util are frowned upon in tast. If you can, try to give a more specific name.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d156de17_e2d61334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "If this is for a generic package, you shouldn\u0027t specify gmail in the errors",
+      "range": {
+        "startLine": 88,
+        "startChar": 24,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25018ee5_07070ba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "I am not sure why you are mixing testing.ContextLog and s.Log.\nIf you are passing around s, you should use s.Log. testing.ContextLog is for when you don\u0027t have s.\n\nThis goes for the entire file.",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 45
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72f3a07_6bb93b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "Are none of these failures? Are you sure they should be s.Log?",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f31c08_4e6c343e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T22:10:10Z",
+      "side": 1,
+      "message": "This isn\u0027t needed",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
