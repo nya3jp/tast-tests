@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "fa09b30e_e6263973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-03T23:11:07Z",
+      "side": 1,
+      "message": "Actually, I am slightly wrong about this. Screenshots are not taken when subtests fail. You should still switch to using subtests, but you should still add code to take screenshots if you want them.",
+      "parentUuid": "74b89bc3_ad5e6630",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2a7c051_68802dfc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 1
