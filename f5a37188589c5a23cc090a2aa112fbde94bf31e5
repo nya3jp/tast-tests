@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f36e7a55_92144d0f",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-03T07:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b48dabce_abce07d0",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ec61684_9e389b65",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
         "patchSetId": 15
@@ -36,6 +60,24 @@
       "writtenOn": "2020-03-03T07:32:49Z",
       "side": 1,
       "message": "Is readyWriter used within the package only? If so, do we need to make Write() and Close() public? If not, we shall public newReadyWriter() as well.",
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d30b5b52_4323a547",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-03T07:52:55Z",
+      "side": 1,
+      "message": "This object is not only for hostapd so it is private. However, it needs to interact with built-in package (with io.Writer interface), so it needs to have Write being public. For Close, I think it can be private now, but I guess it\u0027s good to also implement io.Closer interface.",
+      "parentUuid": "3ec61684_9e389b65",
       "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "86f2c03c_09a91461",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-03T07:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "831853a6_7bcdb6e9",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78cef9fd_8ee92754",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
         "patchSetId": 15
@@ -79,6 +145,24 @@
       "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d257091_85bcf7b2",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-03T07:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78cef9fd_8ee92754",
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "46d90de0_ccac50ea",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-03T07:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ce2d2e_a36309f1",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07c7856e_b0aef08c",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
         "patchSetId": 15
@@ -119,6 +227,24 @@
       "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d374575_523266e8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-03T07:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c7856e_b0aef08c",
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
