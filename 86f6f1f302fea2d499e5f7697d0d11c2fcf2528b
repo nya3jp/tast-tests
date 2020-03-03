@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "101445f9_037f21b6",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T05:35:17Z",
+      "side": 1,
+      "message": "optional: how about unify them?\n\ntype chargecontrolState string\n\nconst (\n  ccDischarge chargecontrolState \u003d \"discharge\"\n  ccNormal chargecontrolState \u003d \"normal\n)\n\nfunc setChargecontrol(ctx context.Context, s chargecontrolState) error {\n  if ... \u003d testexec.CommandContext(ctx, \"ectool\", \"chargecontrol\", s).Run(...); ...\n  ...\n}",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "86f6f1f302fea2d499e5f7697d0d11c2fcf2528b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614c2cb9_5af8f5fd",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T05:35:17Z",
+      "side": 1,
+      "message": "Clar: even in the case, after the testing, chargecontrol should be reset to normal?",
+      "revId": "86f6f1f302fea2d499e5f7697d0d11c2fcf2528b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
