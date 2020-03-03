@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c72576c_c19f9819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T01:52:28Z",
+      "side": 1,
+      "message": "group owner",
+      "range": {
+        "startLine": 368,
+        "startChar": 54,
+        "endLine": 368,
+        "endChar": 59
+      },
+      "revId": "4aae83884a5ecf32e4b3708f4d595097943820aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a1b23b_9ac2d511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T01:52:28Z",
+      "side": 1,
+      "message": "group",
+      "range": {
+        "startLine": 378,
+        "startChar": 47,
+        "endLine": 378,
+        "endChar": 51
+      },
+      "revId": "4aae83884a5ecf32e4b3708f4d595097943820aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
