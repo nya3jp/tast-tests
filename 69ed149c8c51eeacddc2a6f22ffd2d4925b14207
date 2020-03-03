@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bb6bfba_bb52655f",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-03T06:07:09Z",
+      "side": 1,
+      "message": "you can use iota here https://github.com/golang/go/wiki/Iota",
+      "range": {
+        "startLine": 59,
+        "startChar": 27,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "69ed149c8c51eeacddc2a6f22ffd2d4925b14207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "564ec7f4_64a17fc3",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-03T06:07:09Z",
+      "side": 1,
+      "message": "could you define type for this?",
+      "range": {
+        "startLine": 86,
+        "startChar": 73,
+        "endLine": 86,
+        "endChar": 77
+      },
+      "revId": "69ed149c8c51eeacddc2a6f22ffd2d4925b14207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
