@@ -25,9 +25,10 @@ func init() {
 			Val:               chromecrash.Breakpad,
 			ExtraSoftwareDeps: []string{"breakpad"},
 		}, {
-			Name:      "crashpad",
-			Val:       chromecrash.Crashpad,
-			ExtraAttr: []string{"informational"},
+			Name:              "crashpad",
+			Val:               chromecrash.Crashpad,
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"crashpad"},
 		}},
 	})
 }
