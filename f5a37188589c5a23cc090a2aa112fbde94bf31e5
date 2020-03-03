@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "687ab540_b1a2ff1c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-03T08:52:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d30b5b52_4323a547",
+      "revId": "f5a37188589c5a23cc090a2aa112fbde94bf31e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "831853a6_7bcdb6e9",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/ready_writer.go",
         "patchSetId": 15
