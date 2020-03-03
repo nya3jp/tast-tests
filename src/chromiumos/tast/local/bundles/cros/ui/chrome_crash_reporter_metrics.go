@@ -81,7 +81,8 @@ func init() {
 				expectMissing: false,
 			},
 		}, {
-			Name: "success_crashpad",
+			Name:              "success_crashpad",
+			ExtraSoftwareDeps: []string{"crashpad"},
 			Val: chromeCrashReporterMetricsParams{
 				handler:       chromecrash.Crashpad,
 				chromeOptions: []chrome.Option{chrome.CrashNormalMode(), chrome.KeepState()},
