@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b81497e_4f7e29d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-03-03T23:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f569142_06eafaff",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2953449b_a11f970c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87b29c3_fdfee404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-03-03T23:36:46Z",
+      "side": 1,
+      "message": "added a comment",
+      "parentUuid": "2953449b_a11f970c",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b54ae0dc_48988e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-03-03T23:36:46Z",
+      "side": 1,
+      "message": "comment added above for emmcFailing regex",
+      "parentUuid": "ee257e09_6eaa9f18",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9a99eac_081164b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064b1c47_58089923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage/storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2020-03-03T23:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a99eac_081164b2",
+      "revId": "1a2a8fceece236d757a71d81c78eb8eb33d05bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
