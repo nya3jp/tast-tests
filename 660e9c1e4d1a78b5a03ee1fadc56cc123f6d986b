@@ -46,6 +46,30 @@
       "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "233adb07_90712498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/recreate_user_vault.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-03-03T01:25:23Z",
+      "side": 1,
+      "message": "I thought about wrapping those phases into functions when creating the test, but per Tast guidance, such cleanup is discouraged since even w/o the cleanup, the test won\u0027t drive the system into a non-functional state anyways:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown\n\nOther tests that need to mount the same user vault should try to unmount it first as an initialization, like what this test does, since we cannot safely guarantee user home to be at a desired state.\n\nFor those reasons above, I decided not to wrap them in separated functions.\n\nJohn, is there any reason you want to do the cleanup?",
+      "parentUuid": "b21bf14a_136cd18b",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "660e9c1e4d1a78b5a03ee1fadc56cc123f6d986b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
