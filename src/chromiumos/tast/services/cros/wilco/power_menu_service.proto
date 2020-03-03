@@ -1,0 +1,30 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.wilco;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/wilco";
+
+// PowerMenuService provides the ability to check if the power menu is present
+service PowerMenuService {
+  // New logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // IsPowerMenuPresent returns a bool indicating the presence of the power menu
+  rpc IsPowerMenuPresent (google.protobuf.Empty) returns (IsPowerMenuPresentResponse) {}
+}
+
+message IsPowerMenuPresentResponse {
+  bool is_menu_present = 1;
+}
+
+
