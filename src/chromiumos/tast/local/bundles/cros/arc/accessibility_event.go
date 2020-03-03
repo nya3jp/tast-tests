@@ -28,9 +28,9 @@ type eventLog struct {
 }
 
 type testStep struct {
-	Key   string   // key events to invoke the event.
-	Node  ui.Node  // expected focused node after the event.
-	Event eventLog // expected event log.
+	Key    string        // key events to invoke the event.
+	Params ui.FindParams // expected params of focused node after the event.
+	Event  eventLog      // expected event log.
 }
 
 func init() {
@@ -83,8 +83,8 @@ func runTestStep(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.
 	}
 
 	// Wait for the focused element to match the expected.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, tconn, &test.Node); err != nil {
-		return errors.Wrapf(err, "timed out polling for focused element, waiting for: %v", test.Node)
+	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, tconn, &test.Params); err != nil {
+		return err
 	}
 
 	// Initial action sometimes invokes additional events (like focusing the entire application).
@@ -126,84 +126,100 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			// Move focus to ToggleButton and toggle it.
 			{
 				"Tab",
-				ui.Node{
+				ui.FindParams{
 					ClassName: accessibility.ToggleButton,
-					Checked:   "false",
 					Name:      "OFF",
 					Role:      ui.RoleTypeToggleButton,
-					Tooltip:   "button tooltip",
+					Attributes: map[string]interface{}{
+						"checked": "false",
+						"tooltip": "button tooltip",
+					},
 				},
 				eventLog{"focus", "OFF", appName},
 			}, {
 				"Search+Space",
-				ui.Node{
+				ui.FindParams{
 					ClassName: accessibility.ToggleButton,
-					Checked:   "true",
 					Name:      "ON",
 					Role:      ui.RoleTypeToggleButton,
-					Tooltip:   "button tooltip",
+					Attributes: map[string]interface{}{
+						"checked": "true",
+						"tooltip": "button tooltip",
+					},
 				},
 				eventLog{"checkedStateChanged", "ON", appName},
 			},
 			// Move focus to CheckBox and check it.
 			{
 				"Tab",
-				ui.Node{
+				ui.FindParams{
 					ClassName: accessibility.CheckBox,
-					Checked:   "false",
 					Name:      "CheckBox",
 					Role:      ui.RoleTypeCheckBox,
-					Tooltip:   "checkbox tooltip",
+					Attributes: map[string]interface{}{
+						"checked": "false",
+						"tooltip": "checkbox tooltip",
+					},
 				},
 				eventLog{"focus", "CheckBox", appName},
 			}, {
 				"Search+Space",
-				ui.Node{
+				ui.FindParams{
 					ClassName: accessibility.CheckBox,
-					Checked:   "true",
 					Name:      "CheckBox",
 					Role:      ui.RoleTypeCheckBox,
-					Tooltip:   "checkbox tooltip",
+					Attributes: map[string]interface{}{
+						"checked": "true",
+						"tooltip": "checkbox tooltip",
+					},
 				},
 				eventLog{"checkedStateChanged", "CheckBox", appName},
 			},
 			// Move focus to SeekBar and increment it.
 			{
 				"Tab",
-				ui.Node{
-					ClassName:     accessibility.SeekBar,
-					Name:          "seekBar",
-					Role:          ui.RoleTypeSlider,
-					ValueForRange: seekBarInitialValue,
+				ui.FindParams{
+					ClassName: accessibility.SeekBar,
+					Name:      "seekBar",
+					Role:      ui.RoleTypeSlider,
+					Attributes: map[string]interface{}{
+						"valueForRange": seekBarInitialValue,
+					},
 				},
 				eventLog{"focus", "seekBar", appName},
 			}, {
 				"=",
-				ui.Node{
-					ClassName:     accessibility.SeekBar,
-					Name:          "seekBar",
-					Role:          ui.RoleTypeSlider,
-					ValueForRange: seekBarInitialValue + 1,
+				ui.FindParams{
+					ClassName: accessibility.SeekBar,
+					Name:      "seekBar",
+					Role:      ui.RoleTypeSlider,
+					Attributes: map[string]interface{}{
+						"valueForRange": seekBarInitialValue + 1,
+					},
 				},
 				eventLog{"valueChanged", "seekBar", appName},
 			},
 			// Move focus to SeekbarDiscrete and decrement it.
 			{
 				"Tab",
-				ui.Node{
-					ClassName:     accessibility.SeekBar,
-					Name:          "seekBarDiscrete",
-					Role:          ui.RoleTypeSlider,
-					ValueForRange: seekBarDiscreteInitialValue,
+				ui.FindParams{
+					ClassName: accessibility.SeekBar,
+					Name:      "seekBarDiscrete",
+					Role:      ui.RoleTypeSlider,
+					Attributes: map[string]interface{}{
+						"valueForRange": seekBarDiscreteInitialValue,
+					},
 				},
 				eventLog{"focus", "seekBarDiscrete", appName},
 			}, {
 				"-",
-				ui.Node{
-					ClassName:     accessibility.SeekBar,
-					Name:          "seekBarDiscrete",
-					Role:          ui.RoleTypeSlider,
-					ValueForRange: seekBarDiscreteInitialValue - 1,
+				ui.FindParams{
+					ClassName: accessibility.SeekBar,
+					Name:      "seekBarDiscrete",
+					Role:      ui.RoleTypeSlider,
+					Attributes: map[string]interface{}{
+						"valueForRange": seekBarDiscreteInitialValue - 1,
+					},
 				},
 				eventLog{"valueChanged", "seekBarDiscrete", appName},
 			},
