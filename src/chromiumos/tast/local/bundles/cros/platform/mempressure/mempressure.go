@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -318,13 +319,55 @@ func recordAndResetStats(s *testing.State, meter *kernelmeter.Meter, values *per
 		Unit:      "faults_per_second",
 		Direction: perf.SmallerIsBetter,
 	}
+	totalSwapInCountMetric := perf.Metric{
+		Name:      "tast_total_swap_in_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	averageSwapInRateMetric := perf.Metric{
+		Name:      "tast_average_swap_in_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	maxSwapInRateMetric := perf.Metric{
+		Name:      "tast_max_swap_in_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	totalSwapOutCountMetric := perf.Metric{
+		Name:      "tast_total_swap_out_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	averageSwapOutRateMetric := perf.Metric{
+		Name:      "tast_average_swap_out_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	maxSwapOutRateMetric := perf.Metric{
+		Name:      "tast_max_swap_out_rate_" + label,
+		Unit:      "swaps_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
 	values.Set(totalPageFaultCountMetric, float64(stats.PageFault.Count))
 	values.Set(averagePageFaultRateMetric, stats.PageFault.AverageRate)
 	values.Set(maxPageFaultRateMetric, stats.PageFault.MaxRate)
+	values.Set(totalSwapInCountMetric, float64(stats.SwapIn.Count))
+	values.Set(averageSwapInRateMetric, stats.SwapIn.AverageRate)
+	values.Set(maxSwapInRateMetric, stats.SwapIn.MaxRate)
+	values.Set(totalSwapOutCountMetric, float64(stats.SwapOut.Count))
+	values.Set(averageSwapOutRateMetric, stats.SwapOut.AverageRate)
+	values.Set(maxSwapOutRateMetric, stats.SwapOut.MaxRate)
 	s.Logf("Metrics: %s: total page fault count %v", label, stats.PageFault.Count)
 	s.Logf("Metrics: %s: oom count %v", label, stats.OOM.Count)
 	s.Logf("Metrics: %s: average page fault rate %v pf/second", label, stats.PageFault.AverageRate)
 	s.Logf("Metrics: %s: max page fault rate %v pf/second", label, stats.PageFault.MaxRate)
+	s.Logf("Metrics: %s: total swap-in count %v", label, stats.SwapIn.Count)
+	s.Logf("Metrics: %s: average swap-in rate %v swaps/second", label, stats.SwapIn.AverageRate)
+	s.Logf("Metrics: %s: max swap-in rate %v swaps/second", label, stats.SwapIn.MaxRate)
+	s.Logf("Metrics: %s: total swap-out count %v", label, stats.SwapOut.Count)
+	s.Logf("Metrics: %s: average swap-out rate %v swaps/second", label, stats.SwapOut.AverageRate)
+	s.Logf("Metrics: %s: max swap-out rate %v swaps/second", label, stats.SwapOut.MaxRate)
 
 	logPSIStats(s, label)
 }
@@ -477,6 +520,63 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 	if m, err := kernelmeter.MemInfo(); err == nil {
 		testing.ContextLogf(ctx, "Metrics: free %v MiB, anon %v MiB, file %v MiB", m.Free, m.Anon, m.File)
 	}
+}
+
+// reportHistograms sets the histogram averages to perfValues
+func reportHistograms(ctx context.Context, perfValues *perf.Values, histograms []*metrics.Histogram) error {
+	if len(histograms) != 4 {
+		return errors.New("unexpected histogram count")
+	}
+	testing.ContextLog(ctx, "Histograms: ", histograms)
+	jankPerThirtySecMean, err := histograms[0].Mean()
+	if err != nil {
+		return errors.Wrap(err, "failed to get mean for tast_janky_intervals_per_thirty_sec_mean")
+	}
+	jankyPerThirtySecMetric := perf.Metric{
+		Name:      "tast_janky_intervals_per_thirty_sec_2_mean",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(jankyPerThirtySecMetric, jankPerThirtySecMean)
+	testing.ContextLog(ctx, "Average janky intervals in 30s (ver 2): ", jankPerThirtySecMean)
+
+	jankIntPerMinuteMean, err := histograms[1].Mean()
+	if err == nil {
+		//return errors.Wrap(err, "failed to get mean for tast_janky_intervals_per_minute_mean")
+		jankyIntPerMinuteMetric := perf.Metric{
+			Name:      "tast_janky_intervals_per_minute_mean",
+			Unit:      "count",
+			Direction: perf.SmallerIsBetter,
+		}
+		perfValues.Set(jankyIntPerMinuteMetric, jankIntPerMinuteMean)
+		testing.ContextLog(ctx, "Average janky intervals in minute: ", jankIntPerMinuteMean)
+	}
+
+	janksPerMinuteMean, err := histograms[2].Mean()
+	if err == nil {
+		//return errors.Wrap(err, "failed to get mean for tast_janky_total_per_minute_mean")
+		jankyPerMinuteMetric := perf.Metric{
+			Name:      "tast_janky_total_per_minute_mean",
+			Unit:      "count",
+			Direction: perf.SmallerIsBetter,
+		}
+		perfValues.Set(jankyPerMinuteMetric, janksPerMinuteMean)
+		testing.ContextLog(ctx, "Average janky count in minute: ", janksPerMinuteMean)
+	}
+
+	jankPerThirtySecMean1, err := histograms[3].Mean()
+	if err != nil {
+		return errors.Wrap(err, "failed to get mean for tast_janky_intervals_per_thirty_sec_mean")
+	}
+	jankyPerThirtySecMetric1 := perf.Metric{
+		Name:      "tast_janky_intervals_per_thirty_sec_1_mean",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(jankyPerThirtySecMetric1, jankPerThirtySecMean1)
+	testing.ContextLog(ctx, "Average janky intervals in 30s: ", jankPerThirtySecMean1)
+
+	return nil
 }
 
 // runPhase1 runs the first phase of the test, creating a memory pressure situation by loading multiple tabs
@@ -727,6 +827,9 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 	fullMeter := kernelmeter.New(ctx)
 	defer fullMeter.Close(ctx)
 
+	testMeter := kernelmeter.New(ctx)
+	defer testMeter.Close(ctx)
+
 	perfValues := perf.NewValues()
 
 	// Log various system measurements, to help understand the memory
@@ -744,6 +847,12 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 		s.Fatal("Cannot get screen dimensions: ", err)
 	} else {
 		s.Logf("Display: screen %vx%v", info.Bounds.Width, info.Bounds.Height)
+	}
+
+	histogramNames := []string{"Browser.Responsiveness.JankyIntervalsPerThirtySeconds2", "Browser.Responsiveness.IOJankyIntervalsPerMinute", "Browser.Responsiveness.IOJanksTotalPerMinute", "Browser.Responsiveness.JankyIntervalsPerThirtySeconds"}
+	startHistograms, err := metrics.GetHistograms(ctx, tconn, histogramNames)
+	if err != nil {
+		s.Fatal("Failed to get histograms: ", err)
 	}
 
 	// -----------------
@@ -769,7 +878,26 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParamet
 	// -----------------
 	runPhase3(ctx, s, pinnedTabs, tabSwitchRepeatCount, fullMeter, perfValues)
 
+	endHistograms, err := metrics.GetHistograms(ctx, tconn, histogramNames)
+	if err != nil {
+		s.Fatal("Failed to get histogram: ", err)
+	}
+	testing.ContextLog(ctx, "End histograms: ", endHistograms)
+
+	histograms, err := metrics.DiffHistograms(startHistograms, endHistograms)
+	if err != nil {
+		s.Fatal("Failed to diff histograms: ", err)
+	}
+
+	err = reportHistograms(ctx, perfValues, histograms)
+	if err != nil {
+		s.Fatal("Failed to report histograms: ", err)
+	}
+
+	recordAndResetStats(s, testMeter, perfValues, "full_test")
+
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
 	}
+
 }
