@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc586fa8_3b8af3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-03T01:05:46Z",
+      "side": 1,
+      "message": "hmm not sure if this is the right place for these stuff; I am interested in tast team\u0027s input.",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
