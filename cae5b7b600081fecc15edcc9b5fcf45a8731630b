@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2db060d_62828f77",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T19:05:04Z",
+      "side": 1,
+      "message": "stdoutPipe needs to be closed after the read completion.",
+      "revId": "cae5b7b600081fecc15edcc9b5fcf45a8731630b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611ad166_60346072",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T19:05:04Z",
+      "side": 1,
+      "message": "Oops, I overlooked that this is not executed. You have to call Run().",
+      "revId": "cae5b7b600081fecc15edcc9b5fcf45a8731630b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b472e65a_b13a1e70",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T19:05:04Z",
+      "side": 1,
+      "message": "It is necessary to wait for the goroutine (at L118) completion. Otherwise, the data will be written after closing.",
+      "revId": "cae5b7b600081fecc15edcc9b5fcf45a8731630b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
