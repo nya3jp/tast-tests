@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e869d16a_4d29db56",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T06:17:14Z",
+      "side": 1,
+      "message": "Preferring smaller scope, how about just moving this to the LockToSingleUserMountUntilReboot method?\nMaybe rename it to\n\nconst successMessage \u003d \"Login disabled.\"",
+      "revId": "f560728cf808148170c451b12cb3320972562091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2db62ab_ae5800c4",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-03T06:17:14Z",
+      "side": 1,
+      "message": "Clar: doesn\u0027t cryptohome executable return error (i.e. non zero status code) even if failed? Could you comment the details?",
+      "revId": "f560728cf808148170c451b12cb3320972562091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
