@@ -86,6 +86,24 @@
       "revId": "b72a99c47feab972e3a533d49f022958f15853e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca9080a_0a1168bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/check_android_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-03T18:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915a74e6_045f6123",
+      "revId": "b72a99c47feab972e3a533d49f022958f15853e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
