@@ -16,6 +16,40 @@
       "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432edb76_cc68533b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-03T01:11:29Z",
+      "side": 1,
+      "message": "I don\u0027t think a random password can increase clarity in testing...Continued in the next comment.",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa22d87_fa48bbe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-03T01:11:29Z",
+      "side": 1,
+      "message": "And this looks like a fake password to me. Is it possible to make it clear considering we might print any of these constants one day?",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
