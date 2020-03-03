@@ -57,6 +57,10 @@ func SelectPrinter(ctx context.Context, root *ui.Node, printerName string) error
 	if err := destList.LeftClick(ctx); err != nil {
 		return errors.Wrap(err, "failed to click destination list")
 	}
+	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
+	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for destination list to expand")
+	}
 
 	// Select "See more..." to get the complete list of printers.
 	kb, err := input.Keyboard(ctx)
@@ -103,6 +107,10 @@ func SetLayout(ctx context.Context, root *ui.Node, layout Layout) error {
 	if err := layoutList.LeftClick(ctx); err != nil {
 		return errors.Wrap(err, "failed to click layout list")
 	}
+	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
+	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for layout list to expand")
+	}
 
 	// Select the desired layout.
 	kb, err := input.Keyboard(ctx)
@@ -140,6 +148,10 @@ func SetPages(ctx context.Context, root *ui.Node, pages string) error {
 	defer pagesList.Release(ctx)
 	if err := pagesList.LeftClick(ctx); err != nil {
 		return errors.Wrap(err, "failed to click pages list")
+	}
+	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
+	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for pages list to expand")
 	}
 
 	// Select "Custom" and set the desired page range.
