@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4cd0737b_d8154d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/keyset_tied_to_tpm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-03T19:55:49Z",
+      "side": 1,
+      "message": "It uses soft clear, which I believe is tpm2-only at the moment.",
+      "parentUuid": "a5eb06d9_ff6ed702",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "e4d9eb30365d1b0418667355e1a1ad841a52e8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f052be8_ce0198d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/keyset_tied_to_tpm.go",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "e4d9eb30365d1b0418667355e1a1ad841a52e8c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3be84c3_e8cae4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/keyset_tied_to_tpm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-03T19:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f052be8_ce0198d9",
+      "revId": "e4d9eb30365d1b0418667355e1a1ad841a52e8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
