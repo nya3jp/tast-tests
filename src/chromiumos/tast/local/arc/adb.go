@@ -22,7 +22,8 @@ import (
 )
 
 const (
-	adbAddr = "127.0.0.1:5550"
+	// adb-proxy creates an emulator by listening on localhost:5555.
+	emulatorName = "emulator-5554"
 
 	adbHome               = "/tmp/adb_home"
 	testPrivateKeyPath    = "/tmp/adb_home/test_key"
@@ -132,12 +133,9 @@ func connectADB(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "connect_adb")
 	defer st.End()
 
-	connected := regexp.MustCompile(regexp.QuoteMeta(adbAddr) + `\s+device`)
+	connected := regexp.MustCompile(regexp.QuoteMeta(emulatorName) + `\s+device`)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := adbCommand(ctx, "connect", adbAddr).Run(); err != nil {
-			return err
-		}
 		// Check adb devices, because it's possible for a disconnected device
 		// to still be hanging around in the proxy, which will be removed.
 		out, err := adbCommand(ctx, "devices").Output()
