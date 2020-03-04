@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9209d2a2_443f5acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T09:06:16Z",
+      "side": 1,
+      "message": "No action required: \"arc.PowerIdlePerf.noarc\" sounds a bit odd :( but I understand this is an easy way...",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "8f2e90cf00ad0c01465ebc83342c304a7c1c1801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2d2ee7_20babed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T09:06:16Z",
+      "side": 1,
+      "message": "Calling cancel is strictly necessary to release resources associated to the context.\n\nSee this write-up for what happened on production server when they failed to cancel contexts...\nhttps://developer.squareup.com/blog/always-be-closing/",
+      "range": {
+        "startLine": 52,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 7
+      },
+      "revId": "8f2e90cf00ad0c01465ebc83342c304a7c1c1801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
