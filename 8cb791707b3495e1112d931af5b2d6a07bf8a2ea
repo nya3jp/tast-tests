@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "781037ae_afabc2e3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:54:51Z",
+      "side": 1,
+      "message": "nit: If err \u003d\u003d nil, testexec.ExitCode returns (0, true), so we don\u0027t need to handle this case.\n\n if !ok {\n   return err\n }\n\nc.f. unittest https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec_test.go?g\u003d0\u0026l\u003d143",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "8cb791707b3495e1112d931af5b2d6a07bf8a2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5539f7dd_5e0e369b",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 10
