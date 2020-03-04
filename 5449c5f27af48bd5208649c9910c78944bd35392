@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "49c4a7c8_349b6406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:46:38Z",
+      "side": 1,
+      "message": "I don\u0027t have enough context to determine if this is a right place... As long as we share these constants actually among multiple tests this looks okay.",
+      "parentUuid": "bc586fa8_3b8af3f7",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "432edb76_cc68533b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-03T01:11:29Z",
       "side": 1,
       "message": "I don\u0027t think a random password can increase clarity in testing...Continued in the next comment.",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69cdd00_e5ff9a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:46:38Z",
+      "side": 1,
+      "message": "+1, if these constants can be arbitrary, I prefer them to be simple strings like \"fakeuser\" / \"fakepass\" not to scare readers. :)",
+      "parentUuid": "432edb76_cc68533b",
       "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
