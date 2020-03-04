@@ -16,6 +16,24 @@
       "revId": "581e56170e65f6f16e77e89b3c9df9369a840517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937bd44e_aff45c92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-04T11:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e0dc71f_6cbe7845",
+      "revId": "581e56170e65f6f16e77e89b3c9df9369a840517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
