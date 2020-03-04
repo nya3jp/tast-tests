@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	adbAddr = "127.0.0.1:5550"
+	adbAddr = "127.0.0.1:5555"
 
 	adbHome               = "/tmp/adb_home"
 	testPrivateKeyPath    = "/tmp/adb_home/test_key"
@@ -103,28 +103,37 @@ func setUpADBAuth(ctx context.Context) error {
 	return nil
 }
 
+// checkADBConnected checks if ADB is currently connected to a device.
+func checkADBConnected(ctx context.Context) error {
+	out, err := adbCommand(ctx, "get-state").Output()
+	if err != nil {
+		return errors.New("failed to get device state")
+	}
+	if string(out) != "device\n" {
+		return errors.New("device is not connected")
+	}
+	return nil
+}
+
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "connect_adb")
 	defer st.End()
 
-	connected := regexp.MustCompile(regexp.QuoteMeta(adbAddr) + `\s+device`)
+	// ADBD thinks that there is an Android emulator running because it notices adb-proxy listens on localhost:5555.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return checkADBConnected(ctx)
+	}, &testing.PollOptions{Interval: 1 * time.Second}); err == nil {
+		return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
+	}
 
+	// https://developer.android.com/studio/command-line/adb#notlisted shows that on certain conditions emulator may not be listed. For safety, fallback to manually connecting to adb-proxy address.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := adbCommand(ctx, "connect", adbAddr).Run(); err != nil {
 			return err
 		}
-		// Check adb devices, because it's possible for a disconnected device
-		// to still be hanging around in the proxy, which will be removed.
-		out, err := adbCommand(ctx, "devices").Output()
-		if err != nil {
-			return errors.New("failed to get devices")
-		}
-		if !connected.Match(out) {
-			return errors.New("device is not connected")
-		}
-		return nil
+		return checkADBConnected(ctx)
 	}, &testing.PollOptions{Interval: 1 * time.Second}); err != nil {
 		return err
 	}
