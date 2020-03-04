@@ -26,8 +26,9 @@ const (
 	DefaultVMName = "termina"
 	// DefaultContainerName is the default crostini container name.
 	DefaultContainerName = "penguin"
+	// DefaultDiskSize is the default disk size for VM. 2.5 GB by default.
+	DefaultDiskSize = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
 
-	defaultDiskSize    = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
 	seneschalName      = "org.chromium.Seneschal"
 	seneschalPath      = dbus.ObjectPath("/org/chromium/Seneschal")
 	seneschalInterface = "org.chromium.Seneschal"
@@ -43,27 +44,29 @@ type VM struct {
 	EnableGPU       bool   // hardware GPU support
 	DiskPath        string // the location of the stateful disk
 	diskSize        uint64 // actual disk size in bytes
+	targetDiskSize  uint64 // targetted disk size during creation time
 }
 
-// NewDefaultVM gets a default VM instance.
-func NewDefaultVM(c *Concierge) *VM {
+// NewDefaultVM gets a default VM instance. enableGPU enabled the hardware gpu support for the VM. diskSize set the targeted disk size of the VM.
+func NewDefaultVM(c *Concierge, enableGPU bool, diskSize uint64) *VM {
 	return &VM{
 		Concierge:       c,
 		name:            DefaultVMName,
-		ContextID:       -1,    // not populated until VM is started.
-		seneschalHandle: 0,     // not populated until VM is started.
-		EnableGPU:       false, // disable hardware GPU by default.
-		diskSize:        0,     // not populated until VM is started.
+		ContextID:       -1,        // not populated until VM is started.
+		seneschalHandle: 0,         // not populated until VM is started.
+		EnableGPU:       enableGPU, // enable the gpu if set.
+		diskSize:        0,         // not populated until VM is started.
+		targetDiskSize:  diskSize,
 	}
 }
 
-// CreateDefaultVM prepares a VM with default settings either the live or
-// staging container versions. The directory dir may be used to store
-// logs on failure. If the container type is Tarball, then artifactPath
-// must be specified with the path to the tarball containing the termina VM.
-// Otherwise, artifactPath is ignored. If enableGPU is set, VM will try to use
-// hardware gpu if possible.
-func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool) (*VM, error) {
+// CreateDefaultVM prepares a VM either the live or staging container versions.
+// The VM setting is based on the given parameters, enableGPU and diskSize.
+// The directory dir may be used to store logs on failure. If the container type
+// is Tarball, then artifactPath must be specified with the path to the tarball
+// containing the termina VM. Otherwise, artifactPath is ignored. If enableGPU
+// is set, VM will try to use hardware gpu if possible.
+func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool, diskSize uint64) (*VM, error) {
 	userPath, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get user Downloads dir")
@@ -91,8 +94,7 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 		return nil, err
 	}
 
-	vmInstance := NewDefaultVM(concierge)
-	vmInstance.EnableGPU = enableGPU
+	vmInstance := NewDefaultVM(concierge, enableGPU, diskSize)
 	if err := vmInstance.Start(ctx); err != nil {
 		if stopErr := StopConcierge(ctx); stopErr != nil {
 			testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
