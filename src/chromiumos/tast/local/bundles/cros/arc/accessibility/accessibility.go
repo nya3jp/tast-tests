@@ -34,9 +34,7 @@ const (
 	packageName  = "org.chromium.arc.testapp.accessibilitytest"
 	activityName = ".AccessibilityActivity"
 
-	// TODO(b/149791978): Remove extOldURL after crrev.com/c/2051037 merged into ChromeOS.
-	extURL    = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
-	extOldURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/background/background.html"
+	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
 
 	// CheckBox class name.
 	CheckBox = "android.widget.CheckBox"
@@ -63,9 +61,9 @@ const (
 
 // focusedNode returns the currently focused node of ChromeVox.
 // The returned node should be release by the caller.
-func focusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn) (*ui.Node, error) {
+func focusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn) (*ui.Node, error) {
 	obj := &chrome.JSObject{}
-	if err := chromeVoxConn.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
+	if err := cvconn.Eval(ctx, "ChromeVoxState.instance.currentRange.start.node", obj); err != nil {
 		return nil, err
 	}
 	return ui.NewNode(ctx, tconn, obj)
@@ -93,10 +91,8 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // If the extension is not ready, the connection will be closed before returning.
 // Otherwise the calling function will close the connection.
 func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
-	testing.ContextLogf(ctx, "Waiting for ChromeVox background page at %s or %s", extURL, extOldURL)
-	extConn, err := c.NewConnForTarget(ctx, func(t *chrome.Target) bool {
-		return t.URL == extURL || t.URL == extOldURL
-	})
+	testing.ContextLogf(ctx, "Waiting for ChromeVox background page at %s", extURL)
+	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +104,6 @@ func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 		return nil, errors.Wrap(err, "ChromeVox unavailable")
 	}
 
-	testing.ContextLog(ctx, "Extension is ready")
 	return extConn, nil
 }
 
@@ -140,26 +135,25 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
 	}
 
-	chromeVoxConn, err := chromeVoxExtConn(ctx, cr)
+	cvconn, err := chromeVoxExtConn(ctx, cr)
 	if err != nil {
 		return nil, errors.Wrap(err, "creating connection to ChromeVox extension failed: ")
 	}
 
 	// Poll until ChromeVox connection finishes loading.
-	if err := chromeVoxConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+	if err := cvconn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
 		return nil, errors.Wrap(err, "timed out waiting for ChromeVox connection to be ready")
 	}
 
-	testing.ContextLog(ctx, "ChromeVox is ready")
-	return chromeVoxConn, nil
+	return cvconn, nil
 }
 
 // WaitForFocusedNode polls until the properties of the focused node matches the given params.
 // Returns an error after 30 seconds.
-func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams) error {
+func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := focusedNode(ctx, chromeVoxConn, tconn)
+		focused, err := focusedNode(ctx, cvconn, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -217,12 +211,13 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		}
 	}()
 
-	chromeVoxConn, err := waitForSpokenFeedbackReady(ctx, cr, a)
+	cvconn, err := waitForSpokenFeedbackReady(ctx, cr, a)
 	if err != nil {
 		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
 	}
-	defer chromeVoxConn.Close()
+	defer cvconn.Close()
 
+	testing.ContextLog(ctx, "Waiting for test app to be ready")
 	if err := a.Install(ctx, s.DataPath(ApkName)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
@@ -241,7 +236,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to wait for activity to resume: ", err)
 	}
 
-	if err := WaitForFocusedNode(ctx, chromeVoxConn, tconn, &ui.FindParams{
+	if err := WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
 		ClassName: TextView,
 		Name:      "Accessibility Test App",
 		Role:      ui.RoleTypeStaticText,
@@ -255,7 +250,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 	}
 	defer ew.Close()
 
-	if err := f(ctx, a, chromeVoxConn, tconn, ew); err != nil {
+	if err := f(ctx, a, cvconn, tconn, ew); err != nil {
 		// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
 		path := filepath.Join(s.OutDir(), "screenshot-with-chromevox.png")
 		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
