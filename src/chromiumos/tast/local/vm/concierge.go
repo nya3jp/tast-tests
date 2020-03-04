@@ -92,7 +92,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%v D-Bus service unavailable", ciceroneName)
 	}
 
-	return &Concierge{h, obj, 0}, nil
+	return &Concierge{h, obj, DefaultDiskSize}, nil
 }
 
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
@@ -134,7 +134,7 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        DefaultVMName,
-			DiskSize:        DefaultDiskSize,
+			DiskSize:        c.diskSize,
 			ImageType:       vmpb.DiskImageType_DISK_IMAGE_AUTO,
 			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
 		}, resp); err != nil {
@@ -146,7 +146,6 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 		diskStatus != vmpb.DiskImageStatus_DISK_STATUS_EXISTS {
 		return "", errors.Errorf("could not create disk image: %v", resp.GetFailureReason())
 	}
-	c.diskSize = DefaultDiskSize
 	return resp.GetDiskPath(), nil
 }
 

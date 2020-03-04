@@ -218,7 +218,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Logf("Creating %q container (from download)", vm.ArchitectureAlias(p.arch))
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.StagingImageServer, Arch: p.arch}, "", p.gpuEnabled); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.StagingImageServer, Arch: p.arch}, "", p.gpuEnabled, vm.DefaultDiskSize); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
 	case artifact:
@@ -228,7 +228,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Log("Creating default container (from artifact)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.Tarball, Arch: p.arch}, artifactPath, p.gpuEnabled); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.Tarball, Arch: p.arch}, artifactPath, p.gpuEnabled, vm.DefaultDiskSize); err != nil {
 			s.Fatal("Failed to set up default container (from artifact): ", err)
 		}
 	default:
