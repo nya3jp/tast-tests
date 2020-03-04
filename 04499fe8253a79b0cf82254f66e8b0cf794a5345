@@ -266,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "eb438a2a_3dec853c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-04T01:54:59Z",
+      "side": 1,
+      "message": "modify it to StartServer. We may change it back when we really need more configuration between New and Start.",
+      "parentUuid": "687c83ab_655387cc",
+      "revId": "04499fe8253a79b0cf82254f66e8b0cf794a5345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70cb7ed5_fde787fe",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
         "patchSetId": 14
