@@ -39,14 +39,14 @@ func init() {
 }
 
 // speechLog obtains the speech log of ChromeVox.
-func speechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, error) {
+func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
 	// speechLog represents a log of accessibility speech.
 	type speechLog struct {
 		Text string `json:"textString_"`
 		// Other values are not used in test.
 	}
 	var logs []speechLog
-	if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.SPEECH)", &logs); err != nil {
+	if err := cvconn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.SPEECH)", &logs); err != nil {
 		return nil, err
 	}
 	var gotLogs []string
@@ -60,13 +60,17 @@ func speechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, error
 }
 
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+		const (
+			nextKey     = "Search+Right"
+			activateKey = "Search+Space"
+		)
+
 		// Enable speech logging.
-		if err := chromeVoxConn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
+		if err := cvconn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
 			return errors.Wrap(err, "could not enable speech logging")
 		}
-		nextKey := "Search+Right"
-		activateKey := "Search+Space"
+
 		for _, testStep := range []struct {
 			key      string
 			wantLogs []string
@@ -98,14 +102,14 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			},
 		} {
 			// Ensure that ChromeVox log is cleared before proceeding.
-			if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+			if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 				return errors.Wrap(err, "error with clearing ChromeVox log")
 			}
 			if err := ew.Accel(ctx, testStep.key); err != nil {
 				return errors.Wrapf(err, "accel(%s) returned error", testStep.key)
 			}
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				gotLogs, err := speechLog(ctx, chromeVoxConn)
+				gotLogs, err := speechLog(ctx, cvconn)
 				if err != nil {
 					return testing.PollBreak(err)
 				}

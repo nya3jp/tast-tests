@@ -73,7 +73,7 @@ func getExpectedTree(filepath string) (*simpleAutomationNode, error) {
 }
 
 // getDesktopTree returns the accessibility tree of the whole desktop.
-func getDesktopTree(ctx context.Context, chromeVoxConn *chrome.Conn) (*simpleAutomationNode, error) {
+func getDesktopTree(ctx context.Context, cvconn *chrome.Conn) (*simpleAutomationNode, error) {
 	var root simpleAutomationNode
 	const script = `
 		new Promise((resolve, reject) => {
@@ -83,7 +83,7 @@ func getDesktopTree(ctx context.Context, chromeVoxConn *chrome.Conn) (*simpleAut
 				resolve(logTree[0].logTree_.rootNode);
 			});
 		})`
-	err := chromeVoxConn.EvalPromise(ctx, script, &root)
+	err := cvconn.EvalPromise(ctx, script, &root)
 	return &root, err
 }
 
@@ -115,7 +115,7 @@ func dumpTree(tree *simpleAutomationNode, filepath string) error {
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
 		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
 		diffFilePath := filepath.Join(s.OutDir(), diffFile)
 
@@ -126,7 +126,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		}
 
 		// Extract accessibility tree.
-		root, err := getDesktopTree(ctx, chromeVoxConn)
+		root, err := getDesktopTree(ctx, cvconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
 		}
