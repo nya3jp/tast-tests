@@ -484,6 +484,21 @@ func (u *UtilityCryptohomeBinary) RemoveVault(ctx context.Context, username stri
 	return true, nil
 }
 
+// UnmountAndRemoveVault attempts to unmount all vaults and remove the vault for |username|.
+// This is a simple helper, and it's created because this is a commonly used combination.
+func (u *UtilityCryptohomeBinary) UnmountAndRemoveVault(ctx context.Context, username string) error {
+	// Note: Vault must be unmounted to be removed.
+	if err := u.UnmountAll(ctx); err != nil {
+		return errors.Wrap(err, "failed to unmount all")
+	}
+
+	if _, err := u.RemoveVault(ctx, username); err != nil {
+		return errors.Wrap(err, "failed to remove vault")
+	}
+
+	return nil
+}
+
 // LockToSingleUserMountUntilReboot will block users other than the specified from logging in if the call succeeds, and in that case, nil is returned.
 func (u *UtilityCryptohomeBinary) LockToSingleUserMountUntilReboot(ctx context.Context, username string) error {
 	const successMessage = "Login disabled."
