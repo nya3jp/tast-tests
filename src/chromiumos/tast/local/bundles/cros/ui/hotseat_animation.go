@@ -20,6 +20,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type overflowShelfTest struct {
+	enabled bool // Whether overflow shelf should be tested.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HotseatAnimation,
@@ -27,8 +31,19 @@ func init() {
 		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "cros-shelf-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          ash.LoggedInWith100DummyApps(),
 		Timeout:      8 * time.Minute,
+		Params: []testing.Param{{
+			Name: "non_overflow_shelf",
+			Val: overflowShelfTest{
+				enabled: false,
+			},
+		}, {
+			Name: "overflow_shelf",
+			Val: overflowShelfTest{
+				enabled: true,
+			},
+		}},
 	})
 }
 
@@ -109,6 +124,19 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create single touch writer: ", err)
 	}
 	defer stw.Close()
+
+	// At login, we should only have Chrome in the Shelf.
+	if shelfItems, err := ash.ShelfItems(ctx, tconn); err != nil {
+		s.Fatal("Failed to get shelf items: ", err)
+	} else if len(shelfItems) != 1 {
+		s.Fatalf("Unexpected num of apps in the shelf: got %d; want 1", len(shelfItems))
+	}
+
+	if s.Param().(overflowShelfTest).enabled {
+		if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
+			s.Fatal(err, "Failed to enter overflow shelf")
+		}
+	}
 
 	histograms, err := metrics.Run(ctx, tconn, func() error {
 		// Open a window to hide the launcher and animate the hotseat to Hidden.
