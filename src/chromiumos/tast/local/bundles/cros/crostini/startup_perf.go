@@ -100,7 +100,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		vmShutdown      time.Duration
 	}
 
-	vmInstance := vm.NewDefaultVM(concierge)
+	vmInstance := vm.NewDefaultVM(concierge, false, vm.DefaultDiskSize)
 	var cont *vm.Container
 
 	measure := func() *measurements {
