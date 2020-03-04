@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3359af68_2d8755ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-04T23:38:46Z",
+      "side": 1,
+      "message": "I think that if the sign in button doesn\u0027t exist, the test should fail. So this should be done the same as the open button:\nmust(signInButton.WaitForExists(ctx, defaultUITimeout))\nmust(signInButton.Click(ctx))\n\nsame for the continue button.",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8a8e1c3_fff75465",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
         "patchSetId": 1
