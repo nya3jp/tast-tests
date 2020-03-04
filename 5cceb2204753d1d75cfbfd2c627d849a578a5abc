@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4f8fbd_7455aace",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-04T10:20:38Z",
+      "side": 1,
+      "message": "Since the driver does not support this flag and could lead to failure, how about just remove [GF] relative code?",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 29
+      },
+      "revId": "5cceb2204753d1d75cfbfd2c627d849a578a5abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
