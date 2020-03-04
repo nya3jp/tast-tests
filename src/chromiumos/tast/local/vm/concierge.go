@@ -23,9 +23,10 @@ import (
 )
 
 const (
-	conciergeJob    = "vm_concierge"        // name of the upstart job for concierge
-	ciceroneJob     = "vm_cicerone"         // name of the upstart job for cicerone
-	defaultDiskSize = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
+	conciergeJob = "vm_concierge" // name of the upstart job for concierge
+	ciceroneJob  = "vm_cicerone"  // name of the upstart job for cicerone
+	// DefaultDiskSize is the default disk size for vm disk allocated by concierge. 2.5 GB by default.
+	DefaultDiskSize = 5 * 512 * 1024 * 1024
 
 	conciergeName      = "org.chromium.VmConcierge"
 	conciergePath      = dbus.ObjectPath("/org/chromium/VmConcierge")
@@ -91,7 +92,7 @@ func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
 		return nil, errors.Wrapf(err, "%v D-Bus service unavailable", ciceroneName)
 	}
 
-	return &Concierge{h, obj, defaultDiskSize}, nil
+	return &Concierge{h, obj, DefaultDiskSize}, nil
 }
 
 // StopConcierge stops the vm_concierge service, which stops all running VMs.
@@ -133,7 +134,7 @@ func (c *Concierge) createDiskImage(ctx context.Context) (diskPath string, err e
 		&vmpb.CreateDiskImageRequest{
 			CryptohomeId:    c.ownerID,
 			DiskPath:        DefaultVMName,
-			DiskSize:        defaultDiskSize,
+			DiskSize:        c.diskSize,
 			ImageType:       vmpb.DiskImageType_DISK_IMAGE_AUTO,
 			StorageLocation: vmpb.StorageLocation_STORAGE_CRYPTOHOME_ROOT,
 		}, resp); err != nil {
