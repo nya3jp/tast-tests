@@ -39,6 +39,30 @@
       "revId": "5a89322dbfa8dab127d800252070086fdebd1b21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bca36dd_94ead6e8",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-04T08:29:05Z",
+      "side": 1,
+      "message": "https://play.golang.org/p/hyP-o9XGliV\nThe current solution keeps the command in one place and readable.",
+      "parentUuid": "1a9fce5d_20e9fe3f",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "5a89322dbfa8dab127d800252070086fdebd1b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
