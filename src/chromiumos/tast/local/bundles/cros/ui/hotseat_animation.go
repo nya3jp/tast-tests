@@ -20,6 +20,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type scrollableShelfTest struct {
+	enableScrollableShelf bool // Whether scrollable shelf should be tested.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HotseatAnimation,
@@ -29,6 +33,17 @@ func init() {
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      8 * time.Minute,
+		Params: []testing.Param{{
+			name: "non_scrollable_shelf",
+			Val: scrollableShelfType{
+				enableScrollableShelf: false,
+			},
+		}, {
+			name: "scrollable_shelf",
+			Val: ScrollableShelfType{
+				enableScrollableShelf: true,
+			},
+		}},
 	})
 }
 
@@ -109,6 +124,31 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create single touch writer: ", err)
 	}
 	defer stw.Close()
+
+	// At login, we should only have Chrome in the Shelf.
+	if shelfItems, err := ash.ShelfItems(ctx, tconn); err != nil {
+		s.Fatal("Failed to get shelf items: ", err)
+	} else if len(shelfItems) != 1 {
+		s.Fatalf("Unexpected num of apps in the shelf: got %d; want 1", len(shelfItems))
+	}
+
+	scrollableShelf := s.Param().(scrollableShelfTest)
+	if scrollableShelf.enableScrollableShelf {
+		const pinnedAppNumber = 30
+
+		// Pin additional apps to Shelf.
+		installedApps, err := ash.ChromeApps(ctx, tconn)
+
+		if len(installedApps) < pinnedAppNumber {
+			s.Fatalf("Unexpected number of pinned apps: got %d; want less than %d which is the number of installed apps", pinnedAppNumber, len(installedApps))
+		}
+
+		for _, app := range installedApps[:pinnedAppNumber] {
+			if err := ash.PinApp(ctx, tconn, app.AppID); err != nil {
+				s.Fatalf("Failed to launch %s: %v", app.AppID, err)
+			}
+		}
+	}
 
 	histograms, err := metrics.Run(ctx, tconn, func() error {
 		// Open a window to hide the launcher and animate the hotseat to Hidden.
