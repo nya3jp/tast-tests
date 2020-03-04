@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -28,6 +29,27 @@ const (
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
 )
+
+// SupportsHardwareOverlays returns true if the platform supports hardware
+// overlays for video and Chrome uses them; for the purpose of Tast, this means
+// either we are on an AMD platform or the modetest lists NV12 as supported.
+// TODO(crbug.com/1057870): remove this method entirely when we can have more
+// fine-grained software dependencies based on the chipset.
+func SupportsHardwareOverlays(ctx context.Context) bool {
+	unameOutput, err := testexec.CommandContext(ctx, "uname", "-i").Output()
+	if err != nil {
+		return false
+	}
+	if strings.Contains(strings.ToUpper(string(unameOutput)), "AMD") {
+		return true
+	}
+
+	output, err := testexec.CommandContext(ctx, "modetest", "-p").Output()
+	if err != nil {
+		return false
+	}
+	return strings.Contains(string(output), "NV12")
+}
 
 // Backend contains the necessary methods to interact with the platform debug
 // interface and getting readings.

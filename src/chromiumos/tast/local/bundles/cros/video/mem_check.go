@@ -64,6 +64,14 @@ func init() {
 // MemCheck plays a given fileName in Chrome and verifies there are no graphics
 // memory leaks by comparing its usage before, during and after.
 func MemCheck(ctx context.Context, s *testing.State) {
+
+	// TODO(crbug.com/1057870): remove this method entirely when we can have a more
+	// fine-grained video_overlays software dependency based on the chipset.
+	if !graphics.SupportsHardwareOverlays(ctx) {
+		testing.ContextLog(ctx, "Platform does not support video hardware overlays, skipping test")
+		return
+	}
+
 	testOpt := s.Param().(memCheckParams)
 
 	testPlay := func() {
