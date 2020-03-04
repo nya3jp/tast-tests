@@ -22,6 +22,30 @@
       "revId": "0695155ac16b7c16872a542286ccb0c786b4ad95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d6bfca_579f696a",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-04T22:27:59Z",
+      "side": 1,
+      "message": "I code this as we normally just have 1 VM per concierge in tast. Let me change it to be a property of the VM.",
+      "parentUuid": "def50c2e_5e265137",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "0695155ac16b7c16872a542286ccb0c786b4ad95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
