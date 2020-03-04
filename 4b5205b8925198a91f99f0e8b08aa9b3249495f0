@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "db34a8ee_b946fa38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/firmware_management_parameters.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:12:25Z",
+      "side": 1,
+      "message": "Oh I see, then it is a part of verification, rather than a part of scenario which should be verified.\n\nThen, I\u0027d recommend either;\n\n1) name them clearFWMPAndCheck() setFWMPAndCheck(), or\n2) inline each. E.g.;\n\nif err :\u003d clearFWMP(...); err !\u003d nil {\n  ...\n}\nif err :\u003d checkFWMPCleared(); err !\u003d nil {\n  ...\n}\n...\n\nin the test body.\n\nSorry for my misleading comments due to my misunderstanding.",
+      "parentUuid": "379baf78_a983a388",
+      "revId": "4b5205b8925198a91f99f0e8b08aa9b3249495f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d3d1344_2aaf0f1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/firmware_management_parameters.go",
         "patchSetId": 9
