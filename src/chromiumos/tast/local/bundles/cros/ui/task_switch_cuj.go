@@ -45,6 +45,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		playStorePackageName = "com.android.vending"
 		gmailPackageName     = "com.google.android.gm"
 		calendarPackageName  = "com.google.android.calendar"
+		youtubePackageName   = "com.google.android.youtube"
 		timeout              = 10 * time.Second
 	)
 
@@ -70,10 +71,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to open the keyboard: ", err)
-	}
-	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
-	if err != nil {
-		s.Fatal("Failed to obtain the top-row layout: ", err)
 	}
 
 	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
@@ -109,7 +106,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to list the installed packages: ", err)
 	}
-	for _, pkgName := range []string{gmailPackageName, calendarPackageName} {
+	for _, pkgName := range []string{gmailPackageName, calendarPackageName, youtubePackageName} {
 		if _, ok := pkgs[pkgName]; ok {
 			s.Logf("%s is already installed", pkgName)
 			continue
@@ -117,16 +114,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Installing ", pkgName)
 		if err = playstore.InstallApp(ctx, a, d, pkgName); err != nil {
 			s.Fatalf("Failed to install %s: %v", pkgName, err)
-		}
-		// Go back until the search bar appears.
-		searchIcon := d.Object(ui.ID(searchIconID))
-		for {
-			if err = kw.Accel(ctx, topRow.BrowserBack); err != nil {
-				s.Fatal("Failed to press back: ", err)
-			}
-			if err := searchIcon.WaitForExists(ctx, timeout); err == nil {
-				break
-			}
 		}
 	}
 
@@ -287,6 +274,18 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			}
 			return errors.New("too many permission dialogs")
 		}},
+		{"youtube", youtubePackageName, func() error {
+			// It may show the advertizement of Youtube-TV. Skipping.
+			noThanksButton := d.Object(ui.TextMatches("NO THANKS"))
+			if err := noThanksButton.WaitForExists(ctx, timeout); err != nil {
+				// Button not found; nothing needs to be done.
+				return nil
+			}
+			if err := noThanksButton.Click(ctx); err != nil {
+				return errors.Wrap(err, "failed to click the NO THANKS button")
+			}
+			return nil
+		}},
 	} {
 		if err = recorder.Run(ctx, tconn, func() error {
 			if err := kw.Accel(ctx, "search"); err != nil {
@@ -322,12 +321,10 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Here adds browser windows:
 	// 1. webGL aquarium -- adding considerable load on graphics.
 	// 2. chromium issue tracker -- considerable amount of elements.
-	// 3. youtube.com -- substitute of the youtube app.
 	browserWindows := map[int]bool{}
 	for _, url := range []string{
 		"https://webglsamples.org/aquarium/aquarium.html",
 		"https://bugs.chromium.org/p/chromium/issues/list",
-		"https://youtube.com",
 	} {
 		conn, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
 		if err != nil {
