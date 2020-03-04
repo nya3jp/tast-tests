@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "793c3243_29b33d9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-04T04:50:32Z",
+      "side": 1,
+      "message": "s",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "3cf0b03098941ada33c45d80c716cbc30f680f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b74078_0b3f1357",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-04T04:50:32Z",
+      "side": 1,
+      "message": "VaultsAre?",
+      "range": {
+        "startLine": 110,
+        "startChar": 14,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "3cf0b03098941ada33c45d80c716cbc30f680f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b13215_337af229",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-04T04:50:32Z",
+      "side": 1,
+      "message": "work",
+      "range": {
+        "startLine": 195,
+        "startChar": 40,
+        "endLine": 195,
+        "endChar": 45
+      },
+      "revId": "3cf0b03098941ada33c45d80c716cbc30f680f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
