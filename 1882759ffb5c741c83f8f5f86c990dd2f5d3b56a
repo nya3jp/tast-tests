@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adb36b6b_7f2b50e8",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-03-04T21:48:33Z",
+      "side": 1,
+      "message": "Is there a reason you aren\u0027t passing this as a parameter to \nNewConcierge?",
+      "range": {
+        "startLine": 84,
+        "startChar": 11,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "1882759ffb5c741c83f8f5f86c990dd2f5d3b56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
