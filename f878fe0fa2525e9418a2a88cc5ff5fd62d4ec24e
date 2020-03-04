@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4762a392_f6587783",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-04T21:37:17Z",
+      "side": 1,
+      "message": "actual disk size in bytes",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "f878fe0fa2525e9418a2a88cc5ff5fd62d4ec24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec3ddf06_20080b58",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-04T21:37:17Z",
+      "side": 1,
+      "message": "disk size of the concierge VM.",
+      "range": {
+        "startLine": 108,
+        "startChar": 24,
+        "endLine": 108,
+        "endChar": 48
+      },
+      "revId": "f878fe0fa2525e9418a2a88cc5ff5fd62d4ec24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb0aec5e_7cc8ce71",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-04T21:37:17Z",
+      "side": 1,
+      "message": "Would \"listVmDisksTotalSize\" be a more consist name with regards of the methods used?",
+      "range": {
+        "startLine": 114,
+        "startChar": 20,
+        "endLine": 114,
+        "endChar": 39
+      },
+      "revId": "f878fe0fa2525e9418a2a88cc5ff5fd62d4ec24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
