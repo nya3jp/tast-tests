@@ -22,6 +22,29 @@
       "revId": "396244c195132b89edb1fa63813bacc1363a1c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0ed163_fca587cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-03-04T03:18:01Z",
+      "side": 1,
+      "message": "and modulize some common parts out to bundles/cros/arc/audio.\nCheck bundles/cros/arc/memory",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "396244c195132b89edb1fa63813bacc1363a1c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
