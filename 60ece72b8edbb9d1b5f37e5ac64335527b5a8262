@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "331939a0_d18dac32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_vpd_field.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T15:16:32Z",
+      "side": 1,
+      "message": "nit: unused now?",
+      "revId": "60ece72b8edbb9d1b5f37e5ac64335527b5a8262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
