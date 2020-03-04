@@ -126,6 +126,30 @@
     },
     {
       "key": {
+        "uuid": "ec27e612_d63acff5",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-04T11:18:50Z",
+      "side": 1,
+      "message": "Yes, the reason why I return them is because I want to retain the ability to process the command output from a higher level. While there\u0027s no test in this stack that require this capability (because we only use NVRAM here as utility to test other things), it is possible that we\u0027ll require this in other tests to come, such as those that test NVRAM specifically, whereby we want to test for specific ways that a command should fail.",
+      "parentUuid": "63305397_ca84b502",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "19b699f1f643cb3340e8fb22b85883837a09fc0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86e73de2_b6a9967f",
         "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
         "patchSetId": 4
