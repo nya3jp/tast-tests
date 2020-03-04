@@ -45,6 +45,30 @@
       "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628c1245_cc689144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-03-04T23:43:25Z",
+      "side": 1,
+      "message": "No, this does not happen on my DUT. By default it selects test account. Instead, test fails when i write code to select the test account. I will include that piece of code too and see if it works for you.",
+      "parentUuid": "e8a8e1c3_fff75465",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
