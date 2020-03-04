@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a8ea2751_0b577809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-04T11:16:52Z",
+      "side": 1,
+      "message": "Yes, these are constants used by multiple tests. Previously I\u0027ve tried to place it in common/hwsec/vault_constants.go, but was advised by tast reviewers to place it here.",
+      "parentUuid": "49c4a7c8_349b6406",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "432edb76_cc68533b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
         "patchSetId": 5
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "cccf971f_16a17f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-04T11:16:52Z",
+      "side": 1,
+      "message": "Constants changed.",
+      "parentUuid": "e69cdd00_e5ff9a24",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7fa22d87_fa48bbe2",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
         "patchSetId": 5
@@ -86,6 +122,24 @@
       "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4002cc51_89941364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-04T11:16:52Z",
+      "side": 1,
+      "message": "Constants changed.",
+      "parentUuid": "7fa22d87_fa48bbe2",
+      "revId": "5449c5f27af48bd5208649c9910c78944bd35392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
