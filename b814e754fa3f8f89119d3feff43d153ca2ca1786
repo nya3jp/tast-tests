@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b7422258_06c5f119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-04T19:02:36Z",
+      "side": 1,
+      "message": "nit: I agree that in the long term it might have scaling issues, but all 4 of those preconditions already exist, so might as well use them.",
+      "parentUuid": "9fc0fe0c_a9348678",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 49
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b2cbf7d_abfe4307",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -187,6 +211,30 @@
       "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c33d98c9_5af04205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-04T19:02:36Z",
+      "side": 1,
+      "message": "The null check comment is outdated because Location was recently changed from a *ui.Rect to a coords.Rect. On that note:\n\nnit: location is now a coords.Rect and can be returned directly.",
+      "parentUuid": "fb5163b8_f25400dd",
+      "range": {
+        "startLine": 627,
+        "startChar": 8,
+        "endLine": 627,
+        "endChar": 94
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
