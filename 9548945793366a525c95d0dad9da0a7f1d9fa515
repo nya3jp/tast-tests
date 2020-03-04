@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "5c6aa91c_1d6f2a5b",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-04T11:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4315d5e_cf24194b",
+      "revId": "9548945793366a525c95d0dad9da0a7f1d9fa515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d71393f_64d82f8e",
         "filename": "src/chromiumos/tast/common/hwsec/utility_tpm_manager_binary.go",
         "patchSetId": 4
