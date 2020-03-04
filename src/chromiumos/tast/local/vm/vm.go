@@ -26,8 +26,9 @@ const (
 	DefaultVMName = "termina"
 	// DefaultContainerName is the default crostini container name.
 	DefaultContainerName = "penguin"
+	// DefaultDiskSize is the default disk size for VM. 2.5 GB by default.
+	DefaultDiskSize = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
 
-	defaultDiskSize    = 5 * 512 * 1024 * 1024 // 2.5 GiB default disk size
 	seneschalName      = "org.chromium.Seneschal"
 	seneschalPath      = dbus.ObjectPath("/org/chromium/Seneschal")
 	seneschalInterface = "org.chromium.Seneschal"
@@ -46,14 +47,14 @@ type VM struct {
 }
 
 // NewDefaultVM gets a default VM instance.
-func NewDefaultVM(c *Concierge) *VM {
+func NewDefaultVM(c *Concierge, enableGPU bool, diskSize uint64) *VM {
 	return &VM{
 		Concierge:       c,
 		name:            DefaultVMName,
-		ContextID:       -1,    // not populated until VM is started.
-		seneschalHandle: 0,     // not populated until VM is started.
-		EnableGPU:       false, // disable hardware GPU by default.
-		diskSize:        defaultDiskSize,
+		ContextID:       -1,        // not populated until VM is started.
+		seneschalHandle: 0,         // not populated until VM is started.
+		EnableGPU:       enableGPU, // disable hardware GPU by default.
+		diskSize:        diskSize,
 	}
 }
 
@@ -63,7 +64,7 @@ func NewDefaultVM(c *Concierge) *VM {
 // must be specified with the path to the tarball containing the termina VM.
 // Otherwise, artifactPath is ignored. If enableGPU is set, VM will try to use
 // hardware gpu if possible.
-func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool) (*VM, error) {
+func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool, diskSize uint64) (*VM, error) {
 	userPath, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get user Downloads dir")
@@ -91,8 +92,7 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 		return nil, err
 	}
 
-	vmInstance := NewDefaultVM(concierge)
-	vmInstance.EnableGPU = enableGPU
+	vmInstance := NewDefaultVM(concierge, enableGPU, diskSize)
 	if err := vmInstance.Start(ctx); err != nil {
 		if stopErr := StopConcierge(ctx); stopErr != nil {
 			testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)
