@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "def50c2e_5e265137",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-03-04T21:47:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a property of the VM rather than Concierge?  The same concierge instance is technically used to manage multiple VMs that could have different disk sizes.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "0695155ac16b7c16872a542286ccb0c786b4ad95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
