@@ -35,7 +35,7 @@ func SenderNoConsent(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTestReportingError(s)
 
 	// Revoke the consent.
 	if err := crash.SetConsent(ctx, cr, false); err != nil {
