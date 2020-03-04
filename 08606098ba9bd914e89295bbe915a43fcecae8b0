@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4c89d450_42237145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-04T10:48:14Z",
+      "side": 1,
+      "message": "Added the boilerplate to the other places.",
+      "parentUuid": "11187f59_e6a99e23",
+      "revId": "08606098ba9bd914e89295bbe915a43fcecae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9a9fc3c_fc4cef92",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 3
