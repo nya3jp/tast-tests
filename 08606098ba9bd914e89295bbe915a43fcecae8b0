@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ec17c13_0af7f49a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-04T06:06:51Z",
+      "side": 1,
+      "message": "There are 25 use cases calliing TearDownCrashTest for defer, including this one.\nI\u0027m not sure if it\u0027s common practice to do something in defer. Should we make the same change to those?",
+      "revId": "08606098ba9bd914e89295bbe915a43fcecae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
