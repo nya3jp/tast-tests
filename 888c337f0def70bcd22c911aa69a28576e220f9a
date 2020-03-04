@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba4af095_411a5ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T15:01:59Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\nCould you about in-band error?\nInstead, could you declare two variables.\n\nfound :\u003d false\nvar distance int64\n\nand check the condition at L187 and L190?",
+      "revId": "888c337f0def70bcd22c911aa69a28576e220f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
