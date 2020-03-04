@@ -22,6 +22,30 @@
       "revId": "c99aa3ed024ce79282aebf632b10cef054144df3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7797906f_6bcfa42f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-pjdfstest.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-04T10:47:29Z",
+      "side": 1,
+      "message": "No, because the \"**/*\" relies on shell glob expansion.  If we quoted it then the shell wouldn\u0027t do any globbing.",
+      "parentUuid": "05ed529e_78be8fee",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "c99aa3ed024ce79282aebf632b10cef054144df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
