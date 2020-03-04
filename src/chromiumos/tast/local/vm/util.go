@@ -319,8 +319,8 @@ func findIPv4(ips string) (string, error) {
 // must be specified with the path to the tarball containing the termina VM
 // and container. Otherwise, artifactPath is ignored. If enableGPU is set, it will
 // pass it to VM to force gpu enabled.
-func CreateDefaultVMContainer(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool) (*Container, error) {
-	vmInstance, err := CreateDefaultVM(ctx, dir, user, t, artifactPath, enableGPU)
+func CreateDefaultVMContainer(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool, diskSize uint64) (*Container, error) {
+	vmInstance, err := CreateDefaultVM(ctx, dir, user, t, artifactPath, enableGPU, diskSize)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create default VM instance")
 	}
