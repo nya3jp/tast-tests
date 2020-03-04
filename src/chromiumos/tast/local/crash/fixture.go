@@ -329,6 +329,14 @@ func TearDownCrashTest() error {
 	return firstErr
 }
 
+// TearDownCrashTestReportingError undoes the work of SetUpCrashTest and
+// reports error if it fails.
+func TearDownCrashTestReportingError(s *testing.State) {
+	if err := TearDownCrashTest(); err != nil {
+		s.Error("Failed to tear down crash test: ", err)
+	}
+}
+
 // tearDownParams is a collection of parameters to tearDownCrashTest.
 type tearDownParams struct {
 	inProgDir         string
