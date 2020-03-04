@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7b8aec0_982f8536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:36:44Z",
+      "side": 1,
+      "message": "In the current signature we can\u0027t statically catch misuses where callers of newECDSA passes non-op option as the first argument. To enforce the parameter order, I recommend changing the type of the first argument to a different type than option.\n\nActually I think we just need an enum type for op, rather than func-style options. I would write code like this:\n\n type opType int\n\n const (\n   tpmSigGen opType \u003d iota\n   tpmSigVer\n   ...\n )\n\n func newOp(s string) (opType, error) {\n   switch s {\n     case \"sigGen\": return tpmSigGen, nil\n     case \"sigVer\": return tpmSigVer, nil\n     ...\n     return nil, errors.Errorf(\"unknown op type %q\", s)\n   }\n }\n\n func (o opType) hex() string {\n   switch o {\n     case tpmSigGen: return \"06\"\n     case tpmSigVer: return \"05\"\n     ...\n     default: panic(fmt.Sprintf(\"Unknown op type %v\", o))\n   }\n }\n\n func newECDSA(op opType, opts ...option) (*ecdsa, error)",
+      "range": {
+        "startLine": 331,
+        "startChar": 14,
+        "endLine": 331,
+        "endChar": 39
+      },
+      "revId": "60c3c0fb57271e28f22fe8ffb82ea0c00520dbae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
