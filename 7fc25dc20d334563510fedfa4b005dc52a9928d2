@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "702ce60a_ee824354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_attribute_policy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:19:33Z",
+      "side": 1,
+      "message": "I believe we don\u0027t want to continue in this case because err.Error() below will panic due to nil receiver.\n\n s.Errorf(...)\n return",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "7fc25dc20d334563510fedfa4b005dc52a9928d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ba6b34_8de655f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_attribute_policy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:19:33Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "7fc25dc20d334563510fedfa4b005dc52a9928d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
