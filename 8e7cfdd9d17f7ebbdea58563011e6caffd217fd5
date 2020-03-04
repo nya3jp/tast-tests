@@ -1,0 +1,342 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21357cfb_e7a82b51",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "So, recommendation.\n\ncreate one level deeper package.\n\ntast/common/pkcs11/pkcs11test\n\nAnd move test utilities (specifically PrepareScratchpadAndTestFiles, CleanupTestFiles and SignAndVerify) to there.\n\nI think you can just simplify the names, like;\n\npkcs11test.SetUp(ctx context.Context, r hwsec.CmdRunner)\n\netc.\n\nIn CreateRSASoftwareKey, you can take dir path, instead of holding it in \"Util\" struct.",
+      "range": {
+        "startLine": 17,
+        "startChar": 19,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb474a11_317bdaff",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "What is unusual case? I\u0027m wondering if you may be able to create it in the method, instead of injecting if unnecessary.",
+      "range": {
+        "startLine": 57,
+        "startChar": 120,
+        "endLine": 57,
+        "endChar": 180
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4f2eba_272c6a2b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "Because this is a subset of the interface to communicate with cryptohome, you can just name it cryptohome.",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea67a465_400ecebf",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "This looks signer of pkcs11, doesn\u0027t it...?\n\nIt\u0027s worth what abstraction do you want to make by introducing this struct. Could you clarify?",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9361705_433b2ea3",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "nit: you can inline\n\nreturn \u0026Util{...}, nil",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd404711_d77acfa6",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "style: username, keyname, objID string",
+      "range": {
+        "startLine": 154,
+        "startChar": 86,
+        "endLine": 154,
+        "endChar": 131
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f743a3dc_5885f9c0",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "no need.",
+      "range": {
+        "startLine": 154,
+        "startChar": 57,
+        "endLine": 154,
+        "endChar": 85
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f68d8bb_686721b9",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "Could you comment why this uses openssl, and cannot use go\u0027s ssl library here?",
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ecbfa7a_f3348ed4",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "The agreement with Katherine is to make this a method of Util. Ditto for below.",
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d473d40_4beff902",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "Please remove from this CL, since unused.",
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4019e4df_64968c29",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "Please do not use panic.\n\nI think you can just define the variables, instead.\n\nvar SHA1RSAPKCS \u003d MechanismInfo {\n  ...\n}\n\nvar SHA256RSAPKCS \u003d MechanismInfo {\n  ...\n}",
+      "range": {
+        "startLine": 250,
+        "startChar": 78,
+        "endLine": 250,
+        "endChar": 103
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a36d6856_7d53f414",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "nit/style: input, output string",
+      "range": {
+        "startLine": 274,
+        "startChar": 55,
+        "endLine": 274,
+        "endChar": 82
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e006887d_1904931d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "style:\n\nargs :\u003d []string{fmt.Sprintf(\"--slot\u003d%d\", key.slot\"), \"--id\u003d\"+key.objID, \"--sign\", \"-m\", mechanism.toolMParam, \"-i\", input, \"-o\", output}\n\nOr, even you can inline it in RunPkcs11Tools args.",
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8476ca3_74e40b99",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "nit/style: input, signaturePath string",
+      "range": {
+        "startLine": 286,
+        "startChar": 68,
+        "endLine": 286,
+        "endChar": 102
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e50f11a0_d2a47e7e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "OpenSSL looks just the implementation details, which should be encapsulated. You can name Verify instead, I think.",
+      "range": {
+        "startLine": 286,
+        "startChar": 20,
+        "endLine": 286,
+        "endChar": 37
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3488bf6f_e863fd71",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-04T17:06:46Z",
+      "side": 1,
+      "message": "ditto for style.",
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
