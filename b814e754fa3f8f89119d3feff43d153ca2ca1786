@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9fc0fe0c_a9348678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-03-04T05:14:50Z",
+      "side": 1,
+      "message": "If we do this with precondition, we need to manually write 2 (vm or container) * 2 (tablet or not) settins, which doesn\u0027t seem to scale, so I prefer using a for-loop here.",
+      "parentUuid": "cec8669c_f4ae6fd2",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 49
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b2cbf7d_abfe4307",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "676119ae_89383326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-03-04T05:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "809df619_cdc7c105",
+      "range": {
+        "startLine": 618,
+        "startChar": 18,
+        "endLine": 618,
+        "endChar": 28
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a1d36e_f0aa8696",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -115,6 +163,30 @@
       "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb5163b8_f25400dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-03-04T05:14:50Z",
+      "side": 1,
+      "message": "- Location is not a pointer, so no need to do null check I guess.\n- No explicit conversion between Rect and Location.",
+      "parentUuid": "93a1d36e_f0aa8696",
+      "range": {
+        "startLine": 627,
+        "startChar": 8,
+        "endLine": 627,
+        "endChar": 94
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9b756c1e_8f56bc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-03-04T05:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91e222b_3392af9e",
+      "range": {
+        "startLine": 704,
+        "startChar": 2,
+        "endLine": 704,
+        "endChar": 7
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c4ca5ce_93ef6055",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -164,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0a7bee86_4af6c701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-03-04T05:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4ca5ce_93ef6055",
+      "range": {
+        "startLine": 701,
+        "startChar": 1,
+        "endLine": 713,
+        "endChar": 0
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcd76a9b_6b444ca1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 4
@@ -184,6 +304,30 @@
       "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df286074_6609ec86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2020-03-04T05:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcd76a9b_6b444ca1",
+      "range": {
+        "startLine": 723,
+        "startChar": 1,
+        "endLine": 761,
+        "endChar": 29
+      },
+      "revId": "b814e754fa3f8f89119d3feff43d153ca2ca1786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
