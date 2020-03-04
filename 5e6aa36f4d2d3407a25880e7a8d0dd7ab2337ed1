@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ea6d910_ac6157df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:41:07Z",
+      "side": 1,
+      "message": "huge nit: This is not needed; os.RemoveAll(td) should take care of it.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "5e6aa36f4d2d3407a25880e7a8d0dd7ab2337ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa5cea7_6bfbc139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/blogbench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-04T08:41:07Z",
+      "side": 1,
+      "message": "output should be closed.\n\n defer output.Close()",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "5e6aa36f4d2d3407a25880e7a8d0dd7ab2337ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
