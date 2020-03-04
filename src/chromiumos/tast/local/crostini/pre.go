@@ -55,8 +55,11 @@ func StartedByDownloadBuster() testing.Precondition { return startedByDownloadBu
 func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
 
 // StartedGPUEnabledBuster is similar to StartedGPUEnabled, but will
-// use buster container instead.
+// started by downloading an image running debian buster.
 func StartedGPUEnabledBuster() testing.Precondition { return startedGPUEnabledBusterPre }
+
+// StartedTraceVM will try to setup a debian buster VM with GPU enabled and a large disk.
+func StartedTraceVM() testing.Precondition { return startedTraceVMPre }
 
 // StartedARCEnabled is similar to StartedByArtifact, but will start Chrome
 // with ARCEnabled() option.
@@ -78,22 +81,25 @@ const (
 )
 
 var startedByArtifactPre = &preImpl{
-	name:    "crostini_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	mode:    artifact,
+	name:     "crostini_started_by_artifact",
+	timeout:  chrome.LoginTimeout + 7*time.Minute,
+	mode:     artifact,
+	diskSize: vm.DefaultDiskSize,
 }
 
 var startedByDownloadPre = &preImpl{
-	name:    "crostini_started_by_download_stretch",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
+	name:     "crostini_started_by_download_stretch",
+	timeout:  chrome.LoginTimeout + 10*time.Minute,
+	mode:     download,
+	diskSize: vm.DefaultDiskSize,
 }
 
 var startedByDownloadBusterPre = &preImpl{
-	name:    "crostini_started_by_download_buster",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	mode:    download,
-	arch:    vm.DebianBuster,
+	name:     "crostini_started_by_download_buster",
+	timeout:  chrome.LoginTimeout + 10*time.Minute,
+	mode:     download,
+	arch:     vm.DebianBuster,
+	diskSize: vm.DefaultDiskSize,
 }
 
 var startedGPUEnabledPre = &preImpl{
@@ -101,6 +107,7 @@ var startedGPUEnabledPre = &preImpl{
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
 	gpuEnabled: true,
+	diskSize:   vm.DefaultDiskSize,
 }
 
 var startedGPUEnabledBusterPre = &preImpl{
@@ -109,6 +116,16 @@ var startedGPUEnabledBusterPre = &preImpl{
 	arch:       vm.DebianBuster,
 	mode:       download,
 	gpuEnabled: true,
+	diskSize:   vm.DefaultDiskSize,
+}
+
+var startedTraceVMPre = &preImpl{
+	name:       "crostini_started_trace_vm",
+	timeout:    chrome.LoginTimeout + 10*time.Minute,
+	arch:       vm.DebianBuster,
+	mode:       download,
+	gpuEnabled: true,
+	diskSize:   8 * 1024 * 1024 * 1024,
 }
 
 var startedARCEnabledPre = &preImpl{
@@ -116,6 +133,7 @@ var startedARCEnabledPre = &preImpl{
 	timeout:    chrome.LoginTimeout + 10*time.Minute,
 	mode:       artifact,
 	arcEnabled: true,
+	diskSize:   vm.DefaultDiskSize,
 }
 
 var startedByInstallerPre = &preImpl{
@@ -123,6 +141,7 @@ var startedByInstallerPre = &preImpl{
 	timeout:      chrome.LoginTimeout + 7*time.Minute,
 	mode:         artifact,
 	useInstaller: true,
+	diskSize:     vm.DefaultDiskSize,
 }
 
 // Implementation of crostini's precondition.
@@ -134,6 +153,7 @@ type preImpl struct {
 	arcEnabled   bool                 // Flag for whether Arc++ should be available (as well as crostini).
 	gpuEnabled   bool                 // Flag for whether the crostini VM should be booted with GPU support.
 	useInstaller bool                 // Flag for whether to run the Crostini installer in chrome (useful for setting up e.g. CrostiniManager).
+	diskSize     uint64               // The size of the VM image.
 	cr           *chrome.Chrome
 	tconn        *chrome.TestConn
 	cont         *vm.Container
@@ -218,7 +238,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Logf("Creating %q container (from download)", vm.ArchitectureAlias(p.arch))
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.StagingImageServer, Arch: p.arch}, "", p.gpuEnabled, vm.DefaultDiskSize); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.StagingImageServer, Arch: p.arch}, "", p.gpuEnabled, p.diskSize); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
 	case artifact:
@@ -228,7 +248,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Log("Creating default container (from artifact)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.Tarball, Arch: p.arch}, artifactPath, p.gpuEnabled, vm.DefaultDiskSize); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.Tarball, Arch: p.arch}, artifactPath, p.gpuEnabled, p.diskSize); err != nil {
 			s.Fatal("Failed to set up default container (from artifact): ", err)
 		}
 	default:
