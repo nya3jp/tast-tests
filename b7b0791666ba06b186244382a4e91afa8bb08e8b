@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a285ca61_f11e227e",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-04T18:26:49Z",
+      "side": 1,
+      "message": "One more change:\nThis method is called before every test if reusing the precondition fails. So it could append \"--enable-arcvm\" an extra time for every test using the precondition. Instead of modifying p.extraArgs every time, use a local variable.",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 3
+      },
+      "revId": "b7b0791666ba06b186244382a4e91afa8bb08e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
