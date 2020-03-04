@@ -599,6 +599,9 @@ func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 	}
 	resetRateLimiting()
 	testFunc(ctx, cr, s)
+	if err := crash.CleanCrashSpoolDirs(ctx); err != nil {
+		return errors.Wrap(err, "failed to cleanup crash spool directories")
+	}
 	return nil
 }
 

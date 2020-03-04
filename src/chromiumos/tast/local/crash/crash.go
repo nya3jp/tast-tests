@@ -240,3 +240,28 @@ func RemoveAllFiles(ctx context.Context, files map[string][]string) error {
 	}
 	return firstErr
 }
+
+// CleanCrashSpoolDirs removes all crash files in the crash spool directories.
+// This is used for deleting artificial crash reports that is produced
+// intentionally but not consumed during a test.
+// It is assumed all crash files are related to the current test because
+// SetUpCrashTest stashes all existing files before a test run.
+func CleanCrashSpoolDirs(ctx context.Context) error {
+	crashes, err := GetCrashes(
+		SystemCrashDir,
+		LocalCrashDir,
+		UserCrashDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to get crash file list")
+	}
+	var firstErr error
+	for _, f := range crashes {
+		if err := os.Remove(f); err != nil {
+			if firstErr == nil {
+				firstErr = err
+			}
+			testing.ContextLogf(ctx, "Couldn't clean up %s: %v", f, err)
+		}
+	}
+	return firstErr
+}
