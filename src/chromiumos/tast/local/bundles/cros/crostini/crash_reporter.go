@@ -79,7 +79,11 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(pre.Chrome)); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer func() {
+		if err := crash.TearDownCrashTest(); err != nil {
+			s.Error("Failed to tear down crash test: ", err)
+		}
+	}()
 
 	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 	if err != nil {

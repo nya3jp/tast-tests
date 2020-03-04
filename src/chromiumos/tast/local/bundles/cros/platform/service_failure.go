@@ -78,7 +78,11 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer func() {
+		if err := crash.TearDownCrashTest(); err != nil {
+			s.Error("Failed to tear down crash test: ", err)
+		}
+	}()
 
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
 	defer crash.RestartAnomalyDetector(ctx)

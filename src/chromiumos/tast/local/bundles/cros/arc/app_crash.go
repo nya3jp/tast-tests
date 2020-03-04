@@ -112,7 +112,11 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer func() {
+		if err := crash.TearDownCrashTest(); err != nil {
+			s.Error("Failed to tear down crash test: ", err)
+		}
+	}()
 
 	// TODO(kansho): Use 'am crash' instead of the crashing app after all
 	// Android N devices are gone.

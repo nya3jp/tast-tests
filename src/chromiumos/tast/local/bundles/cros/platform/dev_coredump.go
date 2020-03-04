@@ -46,7 +46,11 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr), crash.DevImage()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer func() {
+		if err := crash.TearDownCrashTest(); err != nil {
+			s.Error("Failed to tear down crash test: ", err)
+		}
+	}()
 
 	// Memorize existing crash files to distinguish new files from them.
 	existingFiles, err := crash.GetCrashes(crashDir)

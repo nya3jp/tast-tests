@@ -76,7 +76,11 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	}(); err != nil {
 		s.Fatal("Setting up crash test failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer func() {
+		if err := crash.TearDownCrashTest(); err != nil {
+			s.Error("Failed to tear down crash test: ", err)
+		}
+	}()
 
 	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(extraArgs...))
 	if err != nil {
