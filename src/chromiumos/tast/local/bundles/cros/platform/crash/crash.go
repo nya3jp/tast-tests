@@ -569,6 +569,31 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 	return nil
 }
 
+// cleanCrashSpoolDirs removes all crash files in the crash spool directories.
+// This is used for deleting artificial crash reports that is produced
+// intentionally but not consumed during a test.
+// It is assumed all crash files are related to the current test because
+// crash.SetUpCrashTest stashes all existing files before a test run.
+func cleanCrashSpoolDirs(ctx context.Context) error {
+	crashes, err := crash.GetCrashes(
+		crash.SystemCrashDir,
+		crash.LocalCrashDir,
+		crash.UserCrashDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to get crash file list")
+	}
+	var firstErr error
+	for _, f := range crashes {
+		if err := os.Remove(f); err != nil {
+			if firstErr == nil {
+				firstErr = err
+			}
+			testing.ContextLogf(ctx, "Couldn't clean up %s: %v", f, err)
+		}
+	}
+	return firstErr
+}
+
 func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), initialize bool) error {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
@@ -599,6 +624,9 @@ func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 	}
 	resetRateLimiting()
 	testFunc(ctx, cr, s)
+	if err := cleanCrashSpoolDirs(ctx); err != nil {
+		return errors.Wrap(err, "failed to cleanup crash spool directories")
+	}
 	return nil
 }
 
