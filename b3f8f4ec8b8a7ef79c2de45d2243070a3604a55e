@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48b4148f_b054a3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-04T23:47:18Z",
+      "side": 1,
+      "message": "are you going to do any of the timing metrics that we had in here for Autotest? Or a TODO somewhere?",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cade6e1_4083d8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-04T23:47:18Z",
+      "side": 1,
+      "message": "can we have a stringer for \u0027config\u0027? That way this will (semi)automatically print nice things when we expand the properties it uses",
+      "range": {
+        "startLine": 35,
+        "startChar": 57,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045c6caf_5becabc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-04T23:47:18Z",
+      "side": 1,
+      "message": "this used to be 0.2 seconds. why the change?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453ee080_f5bab2ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-04T23:47:18Z",
+      "side": 1,
+      "message": "huh, I don\u0027t know why we never used this before in Autotest\n\n+ Alex, since he touched this (esp: generating propertychanged events) semi-recently",
+      "range": {
+        "startLine": 89,
+        "startChar": 39,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a333de16_37ba5e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-04T23:47:18Z",
+      "side": 1,
+      "message": "Wait for",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 30
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
