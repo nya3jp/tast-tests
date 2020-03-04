@@ -326,7 +326,7 @@ func TearDownCrashTest() error {
 	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil && firstErr == nil {
 		firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
 	}
-	return nil
+	return firstErr
 }
 
 // tearDownParams is a collection of parameters to tearDownCrashTest.
