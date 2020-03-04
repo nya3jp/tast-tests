@@ -29,10 +29,20 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
+		Params: []testing.Param{{
+			Name:      "required_vpd",
+			Val:       true,
+			ExtraAttr: []string{"informational"},
+		}, {
+			Name: "optional_vpd",
+			Val:  false,
+		}},
 	})
 }
 
 func APIGetVPDField(ctx context.Context, s *testing.State) {
+	requiredVPD := s.Param().(bool)
+
 	getVPDField := func(vpd_field string) (string, error) {
 		for _, dir := range []string{"ro/", "rw/"} {
 			content, err := ioutil.ReadFile(filepath.Join("/sys/firmware/vpd/", dir, vpd_field))
@@ -46,7 +56,10 @@ func APIGetVPDField(ctx context.Context, s *testing.State) {
 	// Try to read VPD field that is required for all boards.
 	// If it fails, then something is broken with VPD and/or related VPD driver.
 	if _, err := getVPDField("serial_number"); err != nil {
-		s.Fatal("Unable to read serial number VPD field: ", err)
+		if requiredVPD {
+			s.Fatal("Unable to read serial number VPD field: ", err)
+		}
+		s.Log("Unable to read serial number VPD field: ", err)
 	}
 
 	for _, tc := range []struct {
