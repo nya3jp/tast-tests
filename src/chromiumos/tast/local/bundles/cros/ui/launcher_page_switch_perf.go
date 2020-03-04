@@ -220,12 +220,19 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// from the bottom for scrolling to the next page, and the drag-down from the
 	// top for scrolling to the previous page. In order to prevent overscrolling
 	// on the first page which might cause unexpected effects (like closing of the
-	// launcher itself), this scenario conducts next-page scrolling twice so that
-	// the scrolling to the previous page won't arrive to the first page.
-	// Currently, the drag operations are not conducted unless there's a physical
-	// display because the metrics rely on the presentation callback from the
-	// display.
+	// launcher itself), and because the first page might be in a special
+	// arrangement of the default apps with blank area at the bottom which
+	// prevents the drag-up gesture, switches to the second page before starting
+	// this scenario. Currently, the drag operations are not conducted unless
+	// there's a physical display because the metrics rely on the presentation
+	// callback from the display.
 	if connected {
+		if err := clickFunc(ctx, pageButtons[1]); err != nil {
+			s.Fatal("Failed to switch to the second page: ", err)
+		}
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			s.Fatal("Failed to wait for the page switch: ", err)
+		}
 		appsGridLocation := appsGridView.Location
 		// drag-up gesture positions; starting at the bottom of the apps-grid (but
 		// not at the edge), and moves the height of the apps-grid. The X position
@@ -244,13 +251,6 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 
 		hists, err = metrics.Run(ctx, tconn, func() error {
 			// First drag-up operation.
-			if err := dragFunc(ctx, dragUpStart, dragUpEnd); err != nil {
-				return errors.Wrap(err, "failed to drag from the bottom to the top")
-			}
-			if err := testing.Sleep(ctx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to wait")
-			}
-			// Second drag-up operation.
 			if err := dragFunc(ctx, dragUpStart, dragUpEnd); err != nil {
 				return errors.Wrap(err, "failed to drag from the bottom to the top")
 			}
