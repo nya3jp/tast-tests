@@ -55,9 +55,9 @@ func init() {
 
 // verifyLog gets the current ChromeVox log and checks that it matches with expected log.
 // Note that as the initial a11y focus is unstable, checkOnlyLatest=true can be used to check only the latest log.
-func verifyLog(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLog eventLog, checkOnlyLatest bool) error {
+func verifyLog(ctx context.Context, cvConn *chrome.Conn, expectedLog eventLog, checkOnlyLatest bool) error {
 	var logs []eventLog
-	if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
+	if err := cvConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
 		return errors.Wrap(err, "failed to get event logs")
 	}
 
@@ -71,9 +71,9 @@ func verifyLog(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLog even
 	return nil
 }
 
-func runTestStep(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test testStep, isFirstStep bool) error {
+func runTestStep(ctx context.Context, cvConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test testStep, isFirstStep bool) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+	if err := cvConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox log")
 	}
 
@@ -83,14 +83,14 @@ func runTestStep(ctx context.Context, chromeVoxConn *chrome.Conn, tconn *chrome.
 	}
 
 	// Wait for the focused element to match the expected.
-	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, tconn, &test.Params); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, cvConn, tconn, &test.Params); err != nil {
 		return err
 	}
 
 	// Initial action sometimes invokes additional events (like focusing the entire application).
 	// Latest logs should only be checked on the first iteration. (b/123397142#comment19)
 	// TODO(b/142093176) Find the root cause.
-	if err := verifyLog(ctx, chromeVoxConn, test.Event, isFirstStep); err != nil {
+	if err := verifyLog(ctx, cvConn, test.Event, isFirstStep); err != nil {
 		return errors.Wrap(err, "failed to verify the log")
 	}
 
@@ -105,9 +105,9 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		seekBarDiscreteInitialValue = 3
 	)
 
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, chromeVoxConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvConn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
 		// Set up event stream logging for accessibility events.
-		if err := chromeVoxConn.EvalPromise(ctx, `
+		if err := cvConn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {
 				chrome.automation.getDesktop((desktop) => {
 					EventStreamLogger.instance = new EventStreamLogger(desktop);
@@ -224,7 +224,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				eventLog{"valueChanged", "seekBarDiscrete", appName},
 			},
 		} {
-			if err := runTestStep(ctx, chromeVoxConn, tconn, ew, test, i == 0); err != nil {
+			if err := runTestStep(ctx, cvConn, tconn, ew, test, i == 0); err != nil {
 				return errors.Wrapf(err, "failed to run a test step %v", test)
 			}
 		}
