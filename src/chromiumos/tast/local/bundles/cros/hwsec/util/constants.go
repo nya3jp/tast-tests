@@ -8,6 +8,10 @@ package util
 const (
 	FirstUsername = "fakeuser1@example.com"
 	FirstPassword = "FakePasswordForFakeUser1"
+
+	SecondUsername = "fakeuser2@example.com"
+	SecondPassword = "FakePasswordForFakeUser2"
+
 	PasswordLabel = "PasswordLabel"
 
 	TestFileName    = "TESTFILE"
