@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f01ecc7_4ddcdd0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-04T17:57:49Z",
+      "side": 1,
+      "message": "nit: Is this a uint or an int?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "592671af6a2dda6ca9f9d872cfb15b483ab789ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d1413ad_d758bbbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-04T17:57:49Z",
+      "side": 1,
+      "message": "I feel like this being an int64 doesn\u0027t make sense. You can only allocate with an int. If someone tried to call this with a value larger than an int, it would not do as expected.",
+      "range": {
+        "startLine": 77,
+        "startChar": 37,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "592671af6a2dda6ca9f9d872cfb15b483ab789ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88374f2a_413051c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-04T17:57:49Z",
+      "side": 1,
+      "message": "I believe that this could cause an out of bound access on buffer due to the int64 to int conversion above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "592671af6a2dda6ca9f9d872cfb15b483ab789ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
