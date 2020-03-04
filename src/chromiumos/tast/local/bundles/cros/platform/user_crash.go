@@ -338,6 +338,10 @@ func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State
 	if err := checkFilterCrasher(ctx, true); err != nil {
 		s.Error("testCrashFiltering failed for no-filter: ", err)
 	}
+
+	if err := localcrash.CleanCrashSpoolDirs(ctx); err != nil {
+		s.Error("testCrashFiltering failed to cleanup: ", err)
+	}
 }
 
 // checkCollectionFailure is a helper function for testing with crash log collection failures.
