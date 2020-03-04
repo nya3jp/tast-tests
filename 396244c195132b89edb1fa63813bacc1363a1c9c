@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08cbbfbe_7c6d1756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2020-03-04T03:07:42Z",
+      "side": 1,
+      "message": "You might need a rebase for this.\n\nAnd have aec_vm for ARCVM and aec for ARC++\nAnd add web-rtc sw deps to each of them",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 5
+      },
+      "revId": "396244c195132b89edb1fa63813bacc1363a1c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
