@@ -194,9 +194,12 @@ func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *
 			s.Error("Unexpected core file found: ", n)
 		}
 	}
-
 	if dmpFiles != 1 {
 		s.Errorf("Got %d dmp files, want 1", dmpFiles)
+	}
+
+	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
 
@@ -238,6 +241,9 @@ func testChronosCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State
 	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
 		s.Error("testChronosCrasher failed: ", err)
 	}
+	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+		s.Error("Failed to clean crash spool dirs: ", err)
+	}
 }
 
 // testChronosCrasherNoConsent tests that no files are stored without consent, with user "chronos".
@@ -259,6 +265,9 @@ func testRootCrasher(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	opts.Username = "root"
 	if err := crash.CheckCrashingProcess(ctx, cr, opts); err != nil {
 		s.Error("testRootCrasher failed: ", err)
+	}
+	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
 
@@ -319,6 +328,9 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 		return errors.Wrapf(err, "timeout waiting for log flushed: want %q", successLog)
 	}
 
+	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+		return errors.Wrap(err, "failed to clean crash spool dirs")
+	}
 	return nil
 }
 
@@ -417,6 +429,9 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 	// const collectionErrorSignature = "crash_reporter-user-collection"
 	// crash.CheckGeneratedReportSending(result.Meta, result.Log, result.Basename, "log", collectionErrorSignature)
 
+	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+		return errors.Wrap(err, "failed to clean crash files")
+	}
 	return nil
 }
 
@@ -434,10 +449,11 @@ func testInternalDirectoryFailure(ctx context.Context, cr *chrome.Chrome, s *tes
 }
 
 func testCrashLogsCreation(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
+	const CrashLogTest = "crash_log_test"
 	// Copy and rename crasher to trigger crash_reporter_logs.conf rule.
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
-	opts.CrasherPath = filepath.Join(filepath.Dir(crash.CrasherPath), "crash_log_test")
+	opts.CrasherPath = filepath.Join(filepath.Dir(crash.CrasherPath), CrashLogTest)
 	result, err := crash.RunCrasherProcessAndAnalyze(ctx, cr, opts)
 	if err != nil {
 		s.Fatal("Failed to run crasher: ", err)
@@ -461,6 +477,10 @@ func testCrashLogsCreation(ctx context.Context, cr *chrome.Chrome, s *testing.St
 	}
 	if !strings.Contains(string(b), "log="+filepath.Base(result.Log)) {
 		s.Error("Meta file does not reference log")
+	}
+
+	if err := crash.CleanCrashSpoolDirs(ctx, CrashLogTest); err != nil {
+		s.Error("Failed to clean crash spool dirs: ", err)
 	}
 }
 
@@ -489,6 +509,9 @@ func testCrashLogInfiniteRecursion(ctx context.Context, cr *chrome.Chrome, s *te
 	}
 	if !result.CrashReporterCaught {
 		s.Error("Logs do not contain crash_reporter message")
+	}
+	if err := crash.CleanCrashSpoolDirs(ctx, filepath.Base(RecursionTestPath)); err != nil {
+		s.Error("Failed to clean crash files: ", err)
 	}
 }
 
@@ -567,6 +590,9 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 		if crashDirSize != len(files) {
 			s.Errorf("Expected no new files (now %d, were %d)", len(files), crashDirSize)
 		}
+	}
+	if err := crash.CleanCrashSpoolDirs(ctx, crash.CrasherPath); err != nil {
+		s.Error("Failed to clean crash files: ", err)
 	}
 }
 

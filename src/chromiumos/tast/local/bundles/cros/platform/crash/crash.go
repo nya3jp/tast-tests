@@ -311,6 +311,12 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 	return &result, nil
 }
 
+func crashFilePrefix(crasherPath string) string {
+	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
+	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
+	return nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(crasherPath), "_")
+}
+
 // RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
 func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts CrasherOptions) (*CrasherResult, error) {
 	result, err := RunCrasherProcess(ctx, cr, opts)
@@ -345,9 +351,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 		return nil, errors.Wrapf(err, "failed to read crash directory %s", crashDir)
 	}
 
-	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
-	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
-	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(opts.CrasherPath), "_")
+	basename := crashFilePrefix(opts.CrasherPath)
 
 	// A dict tracking files for each crash report.
 	crashReportFiles := make(map[string]string)
@@ -609,4 +613,29 @@ func RunCrashTests(ctx context.Context, cr *chrome.Chrome, s *testing.State, tes
 			s.Error("Test case failed: ", err)
 		}
 	}
+}
+
+// CleanCrashSpoolDirs removes all crash files in the crash spool directories,
+// produced artificially but not consumed during a test.
+func CleanCrashSpoolDirs(ctx context.Context, crasherPath string) error {
+	crashes, err := crash.GetCrashes(
+		crash.SystemCrashDir,
+		crash.LocalCrashDir,
+		crash.UserCrashDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to get crash file list")
+	}
+	var firstErr error
+	for _, f := range crashes {
+		if strings.SplitN(filepath.Base(f), ".", 2)[0] != crashFilePrefix(crasherPath) {
+			continue
+		}
+		if err := os.Remove(f); err != nil {
+			if firstErr == nil {
+				firstErr = err
+			}
+			testing.ContextLogf(ctx, "Couldn't clean up %s: %v", f, err)
+		}
+	}
+	return firstErr
 }
