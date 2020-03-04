@@ -43,12 +43,6 @@ func APIGetVPDField(ctx context.Context, s *testing.State) {
 		return "", errors.New("vpd field does not exist")
 	}
 
-	// Try to read VPD field that is required for all boards.
-	// If it fails, then something is broken with VPD and/or related VPD driver.
-	if _, err := getVPDField("serial_number"); err != nil {
-		s.Fatal("Unable to read serial number VPD field: ", err)
-	}
-
 	for _, tc := range []struct {
 		// grpcVpdField is sent as the request type to GetVpdField.
 		grpcVpdField dtcpb.GetVpdFieldRequest_VpdField
