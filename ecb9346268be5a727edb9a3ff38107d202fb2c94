@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "59db83bb_a11db288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "c1b4038b_a1e8819b",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74b89bc3_ad5e6630",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "abc5ade5_0b9ad82b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "ok. I will change it.",
+      "parentUuid": "fa09b30e_e6263973",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2a7c051_68802dfc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36dc7271_4a47b4e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2a7c051_68802dfc",
+      "range": {
+        "startLine": 196,
+        "startChar": 147,
+        "endLine": 196,
+        "endChar": 152
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "43359d68_5ee98129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "424fc0bc_68f4cda2",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 24
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "193bbd15_811fbf1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 1
@@ -138,6 +234,30 @@
       "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ee3609_3188de45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "193bbd15_811fbf1c",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 32
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "561c4d31_d5429b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e687f634_18024677",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d156de17_e2d61334",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
         "patchSetId": 1
@@ -184,6 +328,30 @@
       "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39023e20_b16d38d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d156de17_e2d61334",
+      "range": {
+        "startLine": 88,
+        "startChar": 24,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "b69e87b6_f7ffde46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25018ee5_07070ba6",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 45
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b72f3a07_6bb93b0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
         "patchSetId": 1
@@ -233,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "7620a1a5_3512621d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/utils/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "yes. It need to be s.Log",
+      "parentUuid": "b72f3a07_6bb93b0a",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02f31c08_4e6c343e",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
@@ -253,6 +469,30 @@
       "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018873b8_a4c05a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-04T00:13:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02f31c08_4e6c343e",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "ecb9346268be5a727edb9a3ff38107d202fb2c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
