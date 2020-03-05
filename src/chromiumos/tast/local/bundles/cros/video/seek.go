@@ -165,5 +165,7 @@ func init() {
 // Seek plays a file with Chrome and checks that it can safely be seeked into.
 func Seek(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(seekTest)
-	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.filename, testOpt.numSeeks)
+	if err := play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.filename, testOpt.numSeeks); err != nil {
+		s.Fatal("play failed: ", err)
+	}
 }
