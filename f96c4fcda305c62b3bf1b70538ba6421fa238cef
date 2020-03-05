@@ -22,6 +22,53 @@
       "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61393729_1a4f343b",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-05T16:55:03Z",
+      "side": 1,
+      "message": "Can we use vold.post_fs_data_done instead (for both container and VM)? It\u0027s Android standard.",
+      "parentUuid": "a16282c2_463c8125",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 40
+      },
+      "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e222138_6e390750",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-05T16:55:03Z",
+      "side": 1,
+      "message": "This is no longer true. It\u0027s vsh-backed now. Do we still need this special if vm block in the first place?",
+      "range": {
+        "startLine": 153,
+        "startChar": 25,
+        "endLine": 153,
+        "endChar": 50
+      },
+      "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
