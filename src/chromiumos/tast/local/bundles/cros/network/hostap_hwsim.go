@@ -26,7 +26,7 @@ func init() {
 			"briannorris@chromium.org",
 			"chromeos-kernel-wifi@google.com",
 		},
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline"},
 
 		SoftwareDeps: []string{"hostap_hwsim"},
 		// For running manually, with specific 'run-all.sh' arguments (e.g., specific tests or
