@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/printpreview"
 	"chromiumos/tast/local/printing/document"
@@ -23,18 +24,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func waitForNotificationHidden(ctx context.Context, root *ui.Node) error {
+func waitForNotificationHidden(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
 		Name: "USB printer connected",
 		Role: ui.RoleTypeStaticText,
 	}
-	if err := root.WaitForDescendant(ctx, params, false, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, false, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for notification to be hidden")
 	}
 	return nil
 }
 
-func waitForPrintPreview(ctx context.Context, root *ui.Node) error {
+func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
 		Name: "Loading preview",
 	}
@@ -42,11 +43,11 @@ func waitForPrintPreview(ctx context.Context, root *ui.Node) error {
 	// launched and is loading. There should be a sufficient amount of time
 	// between the text appearing and being removed, but the test may fail here
 	// if the text is removed too quickly.
-	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find loading text")
 	}
 	// Wait for the loading text to be removed to indicate print preview is loaded.
-	if err := root.WaitForDescendant(ctx, params, false, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, false, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for loading text to be removed")
 	}
 	return nil
@@ -148,47 +149,40 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start MainActivity: ", err)
 	}
 
-	// Get UI root.
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get UI root: ", err)
-	}
-	defer root.Release(ctx)
-
 	// Wait for print preview to load before selecting a printer.
 	s.Log("Waiting for print preview to load")
-	if err := waitForPrintPreview(ctx, root); err != nil {
+	if err := waitForPrintPreview(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for print preview to load: ", err)
 	}
 
 	// Select printer.
 	s.Log("Selecting printer")
 	const printerName = "DavieV Virtual USB Printer (USB) DavieV Virtual USB Printer (USB)"
-	if err := printpreview.SelectPrinter(ctx, root, printerName); err != nil {
+	if err := printpreview.SelectPrinter(ctx, tconn, printerName); err != nil {
 		s.Fatal("Failed to select printer: ", err)
 	}
 
 	s.Log("Changing print settings")
 
 	// Set layout to landscape.
-	if err = printpreview.SetLayout(ctx, root, printpreview.Landscape); err != nil {
+	if err = printpreview.SetLayout(ctx, tconn, printpreview.Landscape); err != nil {
 		s.Fatal("Failed to set layout: ", err)
 	}
 
 	// Set custom page selection.
-	if err = printpreview.SetPages(ctx, root, "2-5,10-15,36,49-50"); err != nil {
+	if err = printpreview.SetPages(ctx, tconn, "2-5,10-15,36,49-50"); err != nil {
 		s.Fatal("Failed to select pages: ", err)
 	}
 
 	// Wait for the printer notification to be hidden since it overlaps the
 	// print button and prevents the button from being clicked.
-	if err := waitForNotificationHidden(ctx, root); err != nil {
+	if err := waitForNotificationHidden(ctx, tconn); err != nil {
 		s.Fatal("Failed to close printer notification: ", err)
 	}
 
 	// Click the print button to start the print job.
 	s.Log("Clicking print button")
-	if err = printpreview.Print(ctx, root); err != nil {
+	if err = printpreview.Print(ctx, tconn); err != nil {
 		s.Fatal("Failed to print: ", err)
 	}
 

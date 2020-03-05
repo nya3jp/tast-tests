@@ -37,17 +37,11 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get UI automation root: ", err)
-	}
-	defer root.Release(ctx)
-
 	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
 	params := ui.FindParams{
 		ClassName: "ash/StatusAreaWidgetDelegate",
 	}
-	statusArea, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	statusArea, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		s.Fatal("Failed to find the status area (time, battery, etc.): ", err)
 	}
@@ -62,7 +56,7 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 		Name:      "Settings",
 		ClassName: "TopShortcutButton",
 	}
-	settingsBtn, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	settingsBtn, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		s.Fatal("Failed to find Ubertray Settings button: ", err)
 	}
@@ -82,7 +76,7 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 		Role: ui.RoleTypeHeading,
 		Name: "Settings",
 	}
-	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
 		s.Fatal("Waiting for Settings app heading failed: ", err)
 	}
 }

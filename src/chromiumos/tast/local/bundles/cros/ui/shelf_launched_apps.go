@@ -79,19 +79,13 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the list of apps in the shelf via UI.
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get UI automation root: ", err)
-	}
-	defer root.Release(ctx)
-
 	defer func() {
 		if s.HasError() {
 			ui.LogRootDebugInfo(ctx, tconn, filepath.Join(s.OutDir(), "ui_tree.txt"))
 		}
 	}()
 
-	icons, err := root.Descendants(ctx, ui.FindParams{Role: ui.RoleTypeButton})
+	icons, err := ui.FindAll(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton})
 	if err != nil {
 		s.Fatal("Failed to get all buttons: ", err)
 	}

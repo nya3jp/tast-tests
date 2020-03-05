@@ -614,14 +614,8 @@ func getPIPWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, err
 // getSystemUIRect returns the rect whose window corresponds to className on the Chrome window hierarchy.
 // As it's possible that it takes some time for the window to show up and get synced to API, we try a few times until we get a valid bounds.
 func getSystemUIRect(ctx context.Context, tconn *chrome.TestConn, className string, timeout time.Duration) (coords.Rect, error) {
-	// Get UI root.
-	root, err := chromeui.Root(ctx, tconn)
-	if err != nil {
-		return coords.Rect{}, err
-	}
-	defer root.Release(ctx)
 	// Find the node with className.
-	window, err := root.DescendantWithTimeout(ctx, chromeui.FindParams{ClassName: className}, timeout)
+	window, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: className}, timeout)
 	if err != nil {
 		return coords.Rect{}, err
 	}
@@ -678,17 +672,12 @@ func hideSystemStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
 
 // pressShelfIcon press the shelf icon of PIP window.
 func pressShelfIcon(ctx context.Context, tconn *chrome.TestConn) error {
-	root, err := chromeui.Root(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer root.Release(ctx)
-
 	var icon *chromeui.Node
+	var err error
 	// Make sure that at least one shelf icon exists.
 	// Depending the test order, the status area might not be ready at this point.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		icon, err = root.DescendantWithTimeout(ctx, chromeui.FindParams{Name: "ArcPipTastTest", ClassName: "ash/ShelfAppButton"}, 15*time.Second)
+		icon, err = chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: "ArcPipTastTest", ClassName: "ash/ShelfAppButton"}, 15*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "no shelf icon has been created yet")
 		}
@@ -706,12 +695,7 @@ func toggleSystemStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
 	// A reliable way to toggle the status area is by injecting Alt+Shift+s. But on tablet mode
 	// it doesn't work since the keyboard is disabled.
 	// Instead, we click on the StatusAreaWidgetDelegate.
-	root, err := chromeui.Root(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer root.Release(ctx)
-	widget, err := root.DescendantWithTimeout(ctx, chromeui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"}, 10*time.Second)
+	widget, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: "ash/StatusAreaWidgetDelegate"}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to get status area widget")
 	}
