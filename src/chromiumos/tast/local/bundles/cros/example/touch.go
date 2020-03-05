@@ -13,17 +13,24 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Touch,
-		Desc:     "Demonstrates injecting touch events",
-		Contacts: []string{"ricardoq@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
-		// Adding 'tablet_mode' since it guarantees touch support.
-		SoftwareDeps: []string{"chrome", "tablet_mode"},
+		Func:         Touch,
+		Desc:         "Demonstrates injecting touch events",
+		Contacts:     []string{"ricardoq@chromium.org", "tast-users@chromium.org"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			// Adding 'tablet_mode' since it guarantees touch support.
+			ExtraSoftwareDeps: []string{"tablet_mode"},
+		}, {
+			Name:              "hwdep",
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
+		}},
 	})
 }
 
