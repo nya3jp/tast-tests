@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "869b713a_8ff449a9",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T17:06:06Z",
+      "side": 1,
+      "message": "nit: perhaps something like: RAPLMetrics represents the power...?",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6e17e4_6b90a508",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T17:06:06Z",
+      "side": 1,
+      "message": "what\u0027s this for? can you remove it? \nif this is needed in perf.TimelineDatasource, I\u0027d place it there.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
