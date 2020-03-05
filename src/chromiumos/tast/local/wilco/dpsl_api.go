@@ -110,11 +110,11 @@ func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
 		return nil, errors.Wrap(err, "unable to run diagnostics_dpsl_test_listener")
 	}
 
-	readyCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	readyCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
 	if err := waitVMGRPCServerReady(readyCtx, wilcoVMUIMessageReceiverDTCPort); err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "diagnostics_dpsl_test_listener did not become ready")
 	}
 
 	// rec.msgs has a buffer size of 2 to prevent blocking on sending a single

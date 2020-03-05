@@ -5,8 +5,9 @@
 package wilco
 
 import (
+	"context"
+
 	"github.com/golang/protobuf/ptypes/empty"
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
@@ -26,7 +27,9 @@ func init() {
 
 // WilcoService implements tast.cros.wilco.WilcoService.
 type WilcoService struct { // NOLINT
-	s *testing.ServiceState
+	s                 *testing.ServiceState
+	receiver          *wilco.DPSLMessageReceiver
+	receiverCtxCancel func()
 }
 
 func (c *WilcoService) GetStatus(ctx context.Context, req *empty.Empty) (*wpb.GetStatusResponse, error) {
@@ -54,6 +57,22 @@ func (c *WilcoService) GetStatus(ctx context.Context, req *empty.Empty) (*wpb.Ge
 	}, nil
 }
 
+func (c *WilcoService) RestartVM(ctx context.Context, req *wpb.RestartVMRequest) (*empty.Empty, error) {
+	if err := wilco.StopVM(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to stop VM")
+	}
+
+	config := wilco.DefaultVMConfig()
+	config.StartProcesses = req.StartProcesses
+	config.TestDBusConfig = req.TestDbusConfig
+
+	if err := wilco.StartVM(ctx, config); err != nil {
+		return nil, errors.Wrap(err, "failed to stop VM")
+	}
+
+	return &empty.Empty{}, nil
+}
+
 func (c *WilcoService) GetConfigurationData(ctx context.Context, req *empty.Empty) (*wpb.GetConfigurationDataResponse, error) {
 	if status, err := c.GetStatus(ctx, &empty.Empty{}); err != nil {
 		return nil, errors.Wrap(err, "failed to get status")
@@ -73,4 +92,48 @@ func (c *WilcoService) GetConfigurationData(ctx context.Context, req *empty.Empt
 	return &wpb.GetConfigurationDataResponse{
 		JsonConfigurationData: response.JsonConfigurationData,
 	}, nil
+}
+
+func (c *WilcoService) StartDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.receiver != nil {
+		return nil, errors.New("DPSL listener already running")
+	}
+
+	ctx, cancel := context.WithCancel(context.Background()) // NOLINT
+	rec, err := wilco.NewDPSLMessageReceiver(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create dpsl message listener")
+	}
+
+	c.receiver = rec
+	c.receiverCtxCancel = cancel
+
+	return &empty.Empty{}, nil
+}
+
+func (c *WilcoService) StopDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.receiver == nil {
+		return nil, errors.New("DPSL listener not running")
+	}
+
+	c.receiver.Stop(ctx)
+	c.receiver = nil
+	c.receiverCtxCancel()
+
+	return &empty.Empty{}, nil
+}
+
+func (c *WilcoService) WaitForHandleConfigurationDataChanged(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.receiver == nil {
+		return nil, errors.New("DPSL listener not running")
+	}
+
+	msg := dtcpb.HandleConfigurationDataChangedRequest{}
+
+	testing.ContextLog(ctx, "Waiting for wilco event")
+	if err := c.receiver.WaitForMessage(ctx, &msg); err != nil {
+		return nil, errors.Wrap(err, "unable to receive HandleConfigurationDataChanged event")
+	}
+
+	return &empty.Empty{}, nil
 }
