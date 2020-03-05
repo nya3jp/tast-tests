@@ -132,6 +132,10 @@ func (v *kernelVersion) isOrLater(major, minor int) bool {
 	return v.major > major || v.major == major && v.minor >= minor
 }
 
+func (v *kernelVersion) isOrLess(major, minor int) bool {
+	return v.major < major || v.major == major && v.minor <= minor
+}
+
 // kernelConfigCheck contains configs to check.
 type kernelConfigCheck struct {
 	// exclusive contains regexes. The kernel config keys matching a regex should be listed in one of the following fields except missing. The keys are compared with removing the CONFIG_ prefix.
@@ -329,7 +333,9 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	if isX86Family {
 		// Kernel: make sure port 0xED is the one used for I/O delay.
 		builtin = append(builtin, "IO_DELAY_0XED")
-		same = append(same, [2]string{"IO_DELAY_TYPE_0XED", "DEFAULT_IO_DELAY_TYPE"})
+		if ver.isOrLess(4, 19) {
+			same = append(same, [2]string{"IO_DELAY_TYPE_0XED", "DEFAULT_IO_DELAY_TYPE"})
+		}
 
 		// Security; make sure NX page table bits are usable.
 		if arch == "x86_64" {
