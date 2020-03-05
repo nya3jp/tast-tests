@@ -38,15 +38,8 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 		return nil, err
 	}
 
-	// Get UI root.
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return nil, err
-	}
-	defer root.Release(ctx)
-
 	// Get Files App root node.
-	app, err := root.DescendantWithTimeout(ctx, rootFindParams, time.Minute)
+	app, err := ui.FindWithTimeout(ctx, tconn, rootFindParams, time.Minute)
 	if err != nil {
 		return nil, err
 	}
@@ -62,15 +55,8 @@ func (f *FilesApp) Close(ctx context.Context) error {
 		return err
 	}
 
-	// Get UI root.
-	root, err := ui.Root(ctx, f.tconn)
-	if err != nil {
-		return err
-	}
-	defer root.Release(ctx)
-
 	// Wait for window to close.
-	return root.WaitForDescendant(ctx, rootFindParams, false, time.Minute)
+	return ui.WaitFor(ctx, f.tconn, rootFindParams, false, time.Minute)
 }
 
 // OpenDownloads opens the Downloads folder in the Files App.
