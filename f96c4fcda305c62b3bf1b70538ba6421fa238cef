@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a16282c2_463c8125",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-03-05T09:15:18Z",
+      "side": 1,
+      "message": "yusukes@\n\nI\u0027m using ro.data_ready here because ro.data_mounted is not set in ARCVM.\nLet me know if you have any thoughts on this.",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 40
+      },
+      "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
