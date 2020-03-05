@@ -15,6 +15,7 @@ import (
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/devtool"
 	"github.com/mafredri/cdp/protocol/target"
+	"github.com/mafredri/cdp/protocol/tracing"
 	"github.com/mafredri/cdp/rpcc"
 	"github.com/mafredri/cdp/session"
 
@@ -232,4 +233,79 @@ func (s *Session) FindTargets(ctx context.Context, tm TargetMatcher) ([]*target.
 		}
 	}
 	return matches, nil
+}
+
+// StartTracing TODO
+func (s *Session) StartTracing(ctx context.Context) error {
+	dc := tracing.NewClient(s.wsConn)
+	args := tracing.NewStartArgs()
+	rc := "recordUntilFull"
+	tr := true
+	cfg := tracing.TraceConfig{
+		RecordMode:         &rc,
+		EnableSystrace:     &tr,
+		IncludedCategories: []string{"gpu"},
+		ExcludedCategories: []string{},
+	}
+	args.SetTraceConfig(cfg)
+	testing.ContextLog(ctx, "Starting tracing")
+	err := dc.Start(ctx, args)
+
+	// time.Sleep(5 * time.Second)
+
+	testing.ContextLog(ctx, "Ending tracing")
+	err = dc.End(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to end tracing")
+	}
+
+	if err != nil {
+		return errors.Wrap(err, "failed to start tracing")
+	}
+
+	buc, err := dc.BufferUsage(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create BufferUsageClient")
+	}
+
+	dcc, err := dc.DataCollected(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create DataCollected")
+	}
+
+	cc, err := dc.TracingComplete(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create CompleteClient")
+	}
+
+	done := false
+	for !done {
+		bucc := buc.Ready()
+		dccc := dcc.Ready()
+		ccc := cc.Ready()
+
+		select {
+		case <-bucc:
+			testing.ContextLog(ctx, "Received buffer usage")
+			r, err := buc.Recv()
+			if err != nil {
+				return errors.Wrap(err, "failed to receive BufferUsageReply")
+			}
+			testing.ContextLog(ctx, "Buffer usage: ", *r.PercentFull, *r.EventCount)
+		case <-dccc:
+			testing.ContextLog(ctx, "Received data collected")
+			r, err := dcc.Recv()
+			if err != nil {
+				return errors.Wrap(err, "failed to receive DataCollectedReply")
+			}
+			for _, v := range r.Value {
+				testing.ContextLog(ctx, "DATA: ", string(v))
+			}
+		case <-ccc:
+			testing.ContextLog(ctx, "Received complete")
+			done = true
+		}
+	}
+
+	return nil
 }
