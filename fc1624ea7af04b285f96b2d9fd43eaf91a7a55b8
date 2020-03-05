@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab6aa92_0921b80a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T18:58:37Z",
+      "side": 1,
+      "message": "huge nit:\nwe don\u0027t use the imperative form... so it should be \"Checks that...\"\nand I\u0027d remove the \"we\"... can you phrase differently so that \"we\" is not used?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb0f7051_022d5064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T18:58:37Z",
+      "side": 1,
+      "message": "could you add a comment that says what the output looks like? it will make the code easier to follow.\ne.g:\n// Expected output when backlight is present:\n// XXXX\n// YYYY\n// ZZZZ\n\nQ (don\u0027t know the answer, couldn\u0027t run \"telem\" on my DUT): would it be possible to use a regexp to parse the output?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 104
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa397b8a_0013fc13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T18:58:37Z",
+      "side": 1,
+      "message": "nit: how big is the output?\nif it is only a few bytes (e.g: less than 100 bytes), I \u0027d just print the info using s.Log()",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf94f88_80e9c1f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T18:58:37Z",
+      "side": 1,
+      "message": "should this be fatal?\nif this fails, the probably the \"brightness\" test will fail as well.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
