@@ -486,3 +486,18 @@ func (c *CryptohomeBinary) Pkcs11UserTokenInfo(ctx context.Context, username str
 	out, err := c.call(ctx, "--action=pkcs11_get_user_token_info", "--user="+username)
 	return out, err
 }
+
+// GetFirmwareManagementParameters calls "cryptohome --action=get_firmware_management_parameters".
+func (c *CryptohomeBinary) GetFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "--action=get_firmware_management_parameters")
+}
+
+// SetFirmwareManagementParameters calls "cryptohome --action=set_firmware_management_parameters".
+func (c *CryptohomeBinary) SetFirmwareManagementParameters(ctx context.Context, flags, hash string) ([]byte, error) {
+	return c.call(ctx, "--action=set_firmware_management_parameters", "--flags="+flags, "--developer_key_hash="+hash)
+}
+
+// RemoveFirmwareManagementParameters calls "cryptohome --action=remove_firmware_management_parameters".
+func (c *CryptohomeBinary) RemoveFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "--action=remove_firmware_management_parameters")
+}
