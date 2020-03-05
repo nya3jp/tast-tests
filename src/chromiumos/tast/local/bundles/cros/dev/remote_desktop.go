@@ -58,13 +58,6 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 	defer cws.Close()
 	defer cws.CloseTarget(ctx)
 
-	// Get UI root.
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get UI automation root")
-	}
-	defer root.Release(ctx)
-
 	// Click the add button at most once to prevent triggering
 	// weird UI behaviors in Chrome Web Store.
 	addClicked := false
@@ -74,7 +67,7 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 			Name: "Remove from Chrome",
 			Role: ui.RoleTypeButton,
 		}
-		if installed, err := root.DescendantExists(ctx, params); err != nil {
+		if installed, err := ui.Exists(ctx, tconn, params); err != nil {
 			return testing.PollBreak(err)
 		} else if installed {
 			return nil
@@ -87,10 +80,10 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 				Name: "Add to Chrome",
 				Role: ui.RoleTypeButton,
 			}
-			if addButtonExists, err := root.DescendantExists(ctx, params); err != nil {
+			if addButtonExists, err := ui.Exists(ctx, tconn, params); err != nil {
 				return testing.PollBreak(err)
 			} else if addButtonExists {
-				addButton, err := root.Descendant(ctx, params)
+				addButton, err := ui.Find(ctx, tconn, params)
 				if err != nil {
 					return testing.PollBreak(err)
 				}
@@ -108,10 +101,10 @@ func ensureAppInstalled(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 			Name: "Add extension",
 			Role: ui.RoleTypeButton,
 		}
-		if confirmButtonExists, err := root.DescendantExists(ctx, params); err != nil {
+		if confirmButtonExists, err := ui.Exists(ctx, tconn, params); err != nil {
 			return testing.PollBreak(err)
 		} else if confirmButtonExists {
-			confirmButton, err := root.Descendant(ctx, params)
+			confirmButton, err := ui.Find(ctx, tconn, params)
 			if err != nil {
 				return testing.PollBreak(err)
 			}
@@ -167,13 +160,6 @@ func getAccessCode(ctx context.Context, crd *chrome.Conn) (string, error) {
 }
 
 func waitConnection(ctx context.Context, tconn *chrome.TestConn) error {
-	// Get UI root.
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get UI automation root")
-	}
-	defer root.Release(ctx)
-
 	// The share button might not be clickable at first, so we keep retrying
 	// until we see "Stop Sharing".
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -182,7 +168,7 @@ func waitConnection(ctx context.Context, tconn *chrome.TestConn) error {
 			Name: "Stop Sharing",
 			Role: ui.RoleTypeButton,
 		}
-		if sharing, err := root.DescendantExists(ctx, params); err != nil {
+		if sharing, err := ui.Exists(ctx, tconn, params); err != nil {
 			return testing.PollBreak(err)
 		} else if sharing {
 			return nil
@@ -193,10 +179,10 @@ func waitConnection(ctx context.Context, tconn *chrome.TestConn) error {
 			Name: "Share",
 			Role: ui.RoleTypeButton,
 		}
-		if shareButtonExists, err := root.DescendantExists(ctx, params); err != nil {
+		if shareButtonExists, err := ui.Exists(ctx, tconn, params); err != nil {
 			return testing.PollBreak(err)
 		} else if shareButtonExists {
-			shareButton, err := root.Descendant(ctx, params)
+			shareButton, err := ui.Find(ctx, tconn, params)
 			if err != nil {
 				return testing.PollBreak(err)
 			}

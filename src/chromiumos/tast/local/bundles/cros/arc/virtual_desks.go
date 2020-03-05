@@ -30,15 +30,8 @@ func init() {
 
 // deskContainsWindow returns true if a window whose name is windowName was found as a child of the desk container whose name is deskContainerName.
 func deskContainsWindow(ctx context.Context, tconn *chrome.TestConn, deskContainerName, windowName string) (bool, error) {
-	// Get UI root.
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return false, err
-	}
-	defer root.Release(ctx)
-
 	// Find the given desk container first.
-	deskContainer, err := root.Descendant(ctx, ui.FindParams{ClassName: deskContainerName})
+	deskContainer, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: deskContainerName})
 	if err != nil {
 		return false, errors.Wrapf(err, "failed to locate the given desk container: %s", deskContainerName)
 	}
