@@ -45,7 +45,7 @@ func init() {
 			},
 			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Timeout:           5 * time.Minute,
+			Timeout:           20 * time.Minute,
 		}, {
 			Name: "stress",
 			Val: bootConfig{
