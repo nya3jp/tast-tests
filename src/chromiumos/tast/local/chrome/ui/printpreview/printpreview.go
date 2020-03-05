@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 )
@@ -26,12 +27,12 @@ const (
 )
 
 // Print clicks the print button in Chrome print preview.
-func Print(ctx context.Context, root *ui.Node) error {
+func Print(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
 		Name: "Print",
 		Role: ui.RoleTypeButton,
 	}
-	printButton, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	printButton, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find print button")
 	}
@@ -44,12 +45,12 @@ func Print(ctx context.Context, root *ui.Node) error {
 
 // SelectPrinter interacts with Chrome print preview to select the printer with
 // the given printerName.
-func SelectPrinter(ctx context.Context, root *ui.Node, printerName string) error {
+func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName string) error {
 	// Find and expand the destination list.
 	params := ui.FindParams{
 		Role: ui.RoleTypePopUpButton,
 	}
-	destList, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	destList, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find destination list")
 	}
@@ -58,7 +59,7 @@ func SelectPrinter(ctx context.Context, root *ui.Node, printerName string) error
 		return errors.Wrap(err, "failed to click destination list")
 	}
 	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for destination list to expand")
 	}
 
@@ -80,7 +81,7 @@ func SelectPrinter(ctx context.Context, root *ui.Node, printerName string) error
 		Name: printerName,
 		Role: ui.RoleTypeCell,
 	}
-	printer, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	printer, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find printer")
 	}
@@ -93,13 +94,13 @@ func SelectPrinter(ctx context.Context, root *ui.Node, printerName string) error
 
 // SetLayout interacts with Chrome print preview to change the layout setting to
 // the provided layout.
-func SetLayout(ctx context.Context, root *ui.Node, layout Layout) error {
+func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error {
 	// Find and expand the layout list.
 	params := ui.FindParams{
 		Name: "Layout",
 		Role: ui.RoleTypePopUpButton,
 	}
-	layoutList, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	layoutList, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find layout list")
 	}
@@ -108,7 +109,7 @@ func SetLayout(ctx context.Context, root *ui.Node, layout Layout) error {
 		return errors.Wrap(err, "failed to click layout list")
 	}
 	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for layout list to expand")
 	}
 
@@ -135,13 +136,13 @@ func SetLayout(ctx context.Context, root *ui.Node, layout Layout) error {
 }
 
 // SetPages interacts with Chrome print preview to set the selected pages.
-func SetPages(ctx context.Context, root *ui.Node, pages string) error {
+func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 	// Find and expand the pages list.
 	params := ui.FindParams{
 		Name: "Pages",
 		Role: ui.RoleTypePopUpButton,
 	}
-	pagesList, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	pagesList, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find pages list")
 	}
@@ -150,7 +151,7 @@ func SetPages(ctx context.Context, root *ui.Node, pages string) error {
 		return errors.Wrap(err, "failed to click pages list")
 	}
 	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for pages list to expand")
 	}
 
@@ -173,7 +174,7 @@ func SetPages(ctx context.Context, root *ui.Node, pages string) error {
 		Role:  ui.RoleTypeTextField,
 		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
 	}
-	if err := root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find custom pages text field")
 	}
 	if err := kb.Type(ctx, pages); err != nil {

@@ -84,19 +84,13 @@ func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string) (s
 
 // windowSize returns the the width and the height of the window in pixels.
 func windowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz Size, err error) {
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return Size{}, err
-	}
-	defer root.Release(ctx)
-
-	appWindow, err := root.Descendant(ctx, ui.FindParams{Name: name})
+	appWindow, err := ui.Find(ctx, tconn, ui.FindParams{Name: name})
 	if err != nil {
 		return Size{}, errors.Wrap(err, "failed to locate the app window")
 	}
 	defer appWindow.Release(ctx)
 
-	view, err := root.Descendant(ctx, ui.FindParams{ClassName: "ClientView"})
+	view, err := ui.Find(ctx, tconn, ui.FindParams{ClassName: "ClientView"})
 	if err != nil {
 		return Size{}, errors.Wrap(err, "failed to find client view")
 	}
