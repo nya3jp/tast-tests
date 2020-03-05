@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "922cda89_3d3e3db9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-03-05T00:59:04Z",
+      "side": 1,
+      "message": "\u003e \"prameter\" is a possible misspelling of \"parameter\".\n\nfixed",
+      "parentUuid": "e1538dc5_bcf77bfd",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "950454c19f914d33ecd16b64496f83fb1ed9c1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
