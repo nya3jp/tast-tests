@@ -26,7 +26,8 @@ func init() {
 
 // WilcoService implements tast.cros.wilco.WilcoService.
 type WilcoService struct { // NOLINT
-	s *testing.ServiceState
+	s        *testing.ServiceState
+	receiver *wilco.DPSLMessageReceiver
 }
 
 func (c *WilcoService) GetStatus(ctx context.Context, req *empty.Empty) (*wpb.GetStatusResponse, error) {
@@ -73,4 +74,45 @@ func (c *WilcoService) GetConfigurationData(ctx context.Context, req *empty.Empt
 	return &wpb.GetConfigurationDataResponse{
 		JsonConfigurationData: response.JsonConfigurationData,
 	}, nil
+}
+
+func (c *WilcoService) StartDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.receiver != nil {
+		return nil, errors.New("DPSL listener already running")
+	}
+
+	rec, err := wilco.NewDPSLMessageReceiver(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create dpsl message listener")
+	}
+
+	c.receiver = rec
+
+	return &empty.Empty{}, nil
+}
+
+func (c *WilcoService) StopDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.receiver == nil {
+		return nil, errors.New("DPSL listener not running")
+	}
+
+	c.receiver.Stop(ctx)
+	c.receiver = nil
+
+	return &empty.Empty{}, nil
+}
+
+func (c *WilcoService) WaitForHandleConfigurationDataChanged(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.receiver == nil {
+		return nil, errors.New("DPSL listener not running")
+	}
+
+	msg := dtcpb.HandleConfigurationDataChangedRequest{}
+
+	testing.ContextLog(ctx, "Waiting for wilco event")
+	if err := c.receiver.WaitForMessage(ctx, &msg); err != nil {
+		return nil, errors.Wrap(err, "unable to receive HandleConfigurationDataChanged event")
+	}
+
+	return &empty.Empty{}, nil
 }

@@ -19,7 +19,14 @@ service WilcoService {
 
   // GetConfigurationData performs the grpc request from inside the VM
   rpc GetConfigurationData(google.protobuf.Empty)
-      returns (GetConfigurationDataResponse) {}
+    returns (GetConfigurationDataResponse) {}
+
+  rpc StartDPSLListener(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
+  rpc StopDPSLListener(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
+  rpc WaitForHandleConfigurationDataChanged(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
 }
 
 message GetStatusResponse {
