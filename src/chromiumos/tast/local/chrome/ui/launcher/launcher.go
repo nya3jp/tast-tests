@@ -18,18 +18,13 @@ import (
 // SearchAndLaunch searches a query in the launcher and executes it.
 func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) error {
 	const defaultTimeout = 15 * time.Second
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer root.Release(ctx)
 
 	// Open the launcher.
 	params := ui.FindParams{
 		Name: "Launcher",
 		Role: ui.RoleTypeButton,
 	}
-	launcherButton, err := root.DescendantWithTimeout(ctx, params, defaultTimeout)
+	launcherButton, err := ui.FindWithTimeout(ctx, tconn, params, defaultTimeout)
 	if err != nil {
 		return errors.Wrap(err, "failed to find launcher button")
 	}
@@ -39,7 +34,7 @@ func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) 
 	}
 
 	// Click the search box.
-	searchBox, err := root.DescendantWithTimeout(ctx, ui.FindParams{ClassName: "SearchBoxView"}, defaultTimeout)
+	searchBox, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchBoxView"}, defaultTimeout)
 	if err != nil {
 		return errors.Wrap(err, "failed to wait for launcher searchbox")
 	}

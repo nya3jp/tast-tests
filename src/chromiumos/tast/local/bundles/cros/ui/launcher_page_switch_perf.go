@@ -161,15 +161,11 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Find the apps grid view bounds.
-	root, err := chromeui.Root(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to obtain the root: ", err)
-	}
-	appsGridView, err := root.DescendantWithTimeout(ctx, chromeui.FindParams{ClassName: "AppsGridView"}, time.Second)
+	appsGridView, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: "AppsGridView"}, time.Second)
 	if err != nil {
 		s.Fatal("Failed to find the apps-grid: ", err)
 	}
-	pageSwitcher, err := root.Descendant(ctx, chromeui.FindParams{ClassName: "PageSwitcher"})
+	pageSwitcher, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "PageSwitcher"})
 	if err != nil {
 		s.Fatal("Failed to find the page switcher of the app-list: ", err)
 	}

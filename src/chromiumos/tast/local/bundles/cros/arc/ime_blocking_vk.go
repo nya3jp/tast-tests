@@ -29,18 +29,12 @@ func init() {
 
 // waitForVKVisibility waits until the virtual keyboard is shown or hidden.
 func waitForVKVisibility(ctx context.Context, tconn *chrome.TestConn, shown bool) error {
-	root, err := chromeui.Root(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer root.Release(ctx)
-
 	// Wait for the correct visibility.
 	params := chromeui.FindParams{
 		Role:  chromeui.RoleTypeKeyboard,
 		State: map[chromeui.StateType]bool{chromeui.StateTypeInvisible: !shown},
 	}
-	return root.WaitForDescendant(ctx, params, true, 30*time.Second)
+	return chromeui.WaitFor(ctx, tconn, params, true, 30*time.Second)
 }
 
 func IMEBlockingVK(ctx context.Context, s *testing.State) {
