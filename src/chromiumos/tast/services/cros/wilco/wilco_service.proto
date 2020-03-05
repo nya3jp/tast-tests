@@ -17,14 +17,29 @@ service WilcoService {
   rpc GetStatus(google.protobuf.Empty)
     returns (GetStatusResponse) {}
 
+  rpc RestartVM(RestartVMRequest)
+    returns (google.protobuf.Empty) {}
+
   // GetConfigurationData performs the grpc request from inside the VM
   rpc GetConfigurationData(google.protobuf.Empty)
-      returns (GetConfigurationDataResponse) {}
+    returns (GetConfigurationDataResponse) {}
+
+  rpc StartDPSLListener(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
+  rpc StopDPSLListener(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
+  rpc WaitForHandleConfigurationDataChanged(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
 }
 
 message GetStatusResponse {
   uint64 wilco_dtc_supportd_pid = 1; // 0 means not running
   uint64 wilco_dtc_pid = 2; // 0 means not running
+}
+
+message RestartVMRequest {
+  bool start_processes = 1;
+  bool test_dbus_config = 2;
 }
 
 message GetConfigurationDataResponse {
