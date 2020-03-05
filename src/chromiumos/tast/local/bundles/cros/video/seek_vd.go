@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"net/http"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
@@ -40,5 +41,7 @@ func init() {
 // seeked into while using a media::VideoDecoder (see go/vd-migration).
 func SeekVD(ctx context.Context, s *testing.State) {
 	const numSeeks = 25
-	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), s.Param().(string), numSeeks)
+	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), s.PreValue().(*chrome.Chrome), s.Param().(string), numSeeks); err != nil {
+		s.Fatal("TestSeek failed: ", err)
+	}
 }

@@ -66,8 +66,8 @@ func init() {
 func MemCheck(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(memCheckParams)
 
-	testPlay := func() {
-		play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, play.NormalVideo, play.VerifyHWAcceleratorUsed)
+	testPlay := func() error {
+		return play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, play.NormalVideo, play.VerifyHWAcceleratorUsed)
 	}
 
 	backend, err := graphics.GetBackend()
