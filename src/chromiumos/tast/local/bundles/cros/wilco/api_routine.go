@@ -210,6 +210,30 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
+		{
+			name: "nvme_wear_level",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeWearLevelParams{
+					NvmeWearLevelParams: &dtcpb.NvmeWearLevelRoutineParameters{
+						WearLevelThreshold: 50,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "nvme_wear_level_failed",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeWearLevelParams{
+					NvmeWearLevelParams: &dtcpb.NvmeWearLevelRoutineParameters{
+						WearLevelThreshold: 2,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
