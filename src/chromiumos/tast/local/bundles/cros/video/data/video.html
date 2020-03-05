@@ -10,7 +10,6 @@ function play(videoSourcePath) {
   return new Promise((resolve, reject) => {
     let video = document.getElementById('video');
 
-    video.onerror = e => { return reject(e.error.ToString()); };
     video.onended = () => { resolve();};
 
     video.src = videoSourcePath;
@@ -18,7 +17,7 @@ function play(videoSourcePath) {
       .then(() => {
         console.log('Loaded url: ', videoSourcePath);
       }).catch((e) => {
-        return reject(e.error.ToString());
+        return reject(e.message);
       });
   })
 }
