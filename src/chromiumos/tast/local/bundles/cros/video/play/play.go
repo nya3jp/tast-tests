@@ -164,15 +164,15 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 // of MPD file.
 // If mode is VerifyHWAcceleratorUsed, this function also checks if hardware accelerator was used.
 func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	filename string, videotype VideoType, mode VerifyHWAcceleratorMode) {
+	filename string, videotype VideoType, mode VerifyHWAcceleratorMode) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
+		return err
 	}
 	defer vl.Close()
 
 	if err := audio.Mute(ctx); err != nil {
-		s.Fatal("Failed to mute device: ", err)
+		return err
 	}
 	defer audio.Unmute(ctx)
 
@@ -180,7 +180,7 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	if mode != NoVerifyHWAcceleratorUsed {
 		chromeMediaInternalsConn, err = decode.OpenChromeMediaInternalsPageAndInjectJS(ctx, cr, s.DataPath("chrome_media_internals_utils.js"))
 		if err != nil {
-			s.Fatal("Failed to open chrome://media-internals: ", err)
+			return errors.Wrap(err, "failed to open chrome://media-internals")
 		}
 		defer chromeMediaInternalsConn.Close()
 		defer chromeMediaInternalsConn.CloseTarget(ctx)
@@ -200,42 +200,43 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		playErr = playMSEVideo(ctx, cr, filename, url)
 	}
 	if playErr != nil {
-		s.Fatalf("Failed to play %v (%v): %v", filename, url, playErr)
+		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, url, playErr)
 	}
 
 	if mode == NoVerifyHWAcceleratorUsed {
 		// Early return ig no verification is needed.
-		return
+		return nil
 	}
 
 	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, server.URL)
 	if err != nil {
-		s.Fatal("Failed to parse chrome:media-internals: ", err)
+		return errors.Wrap(err, "failed to parse chrome:media-internals")
 	}
 	s.Log("usesPlatformVideoDecoder? ", usesPlatformVideoDecoder)
 
 	if mode == VerifyHWAcceleratorUsed && !usesPlatformVideoDecoder {
-		s.Fatal("Video Decode Accelerator was not used when it was expected to")
+		return errors.New("Video Decode Accelerator was not used when it was expected to")
 	}
 	if mode == VerifyNoHWAcceleratorUsed && usesPlatformVideoDecoder {
-		s.Fatal("Software decoding was not used when it was expected to")
+		return errors.New("Software decoding was not used when it was expected to")
 	}
+	return nil
 }
 
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it numSeeks times.
-func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string, numSeeks int) {
+func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string, numSeeks int) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
+		return err
 	}
 	defer vl.Close()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	// Play and seek the video
 	if err := playSeekVideo(ctx, cr, filename, server.URL, numSeeks); err != nil {
-		s.Fatalf("Failed to play %v: %v", filename, err)
+		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, server.URL, err)
 	}
+	return nil
 }

@@ -26,7 +26,7 @@ const (
 	genericFramebufferFile = "/sys/kernel/debug/dri/0/framebuffer"
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
-	coolDownTimeAfterLogin = 30 * time.Second
+	coolDownTimeAfterLogin = 1 * time.Second
 )
 
 // Backend contains the necessary methods to interact with the platform debug
@@ -145,7 +145,7 @@ func GetBackend() (Backend, error) {
 // CompareGraphicsMemoryBeforeAfter compares the graphics memory consumption
 // before and after running the payload function, using the backend. The amount
 // of graphics buffer during payload execution must also be non-zero.
-func CompareGraphicsMemoryBeforeAfter(ctx context.Context, payload func(), backend Backend, width, height int) (err error) {
+func CompareGraphicsMemoryBeforeAfter(ctx context.Context, payload func() error, backend Backend, width, height int) (err error) {
 	var before, during, after int
 	roundedWidth := backend.Round(width)
 	roundedHeight := backend.Round(height)
@@ -160,12 +160,9 @@ func CompareGraphicsMemoryBeforeAfter(ctx context.Context, payload func(), backe
 	}
 
 	testing.ContextLog(ctx, "Running the payload() and measuring the number of graphics objects during its execution")
-	c := make(chan bool)
-	go func(c chan bool) {
-		// TODO(crbug.com/1047514): change payload signature to return an error, and
-		// handle it here.
-		payload()
-		c <- true
+	c := make(chan error)
+	go func(c chan error) {
+		c <- payload()
 	}(c)
 	// Note: We don't wait for the ReadFramebufferCount() to finish, just keep
 	// measuring until we get a non-zero value in during, for further comparison
@@ -183,7 +180,10 @@ func CompareGraphicsMemoryBeforeAfter(ctx context.Context, payload func(), backe
 			return nil
 		}, &testing.PollOptions{Timeout: pollTimeout, Interval: pollInterval})
 	}()
-	<-c
+	err = <-c
+	if err != nil {
+		return err
+	}
 
 	if after, err = readStableObjectCount(ctx, backend, roundedWidth, roundedHeight); err != nil {
 		return errors.Wrap(err, "failed to get the framebuffer object count")
