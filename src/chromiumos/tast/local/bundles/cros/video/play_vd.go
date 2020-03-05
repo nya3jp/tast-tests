@@ -93,5 +93,7 @@ func init() {
 // verifies if playback uses hardware acceleration.
 func PlayVD(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playParamsVD)
-	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, testOpt.verifyMode)
+	if err := play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, testOpt.verifyMode); err != nil {
+		s.Fatal("TestPlay failed: ", err)
+	}
 }
