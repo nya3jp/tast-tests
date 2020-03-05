@@ -1,0 +1,7 @@
+[global]
+name=fio-mmap
+rw=read
+ioengine=mmap
+
+[seqread-mmap]
+filename=fio-file1

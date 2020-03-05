@@ -1,0 +1,6 @@
+[global]
+name=fio-mmap
+filename=fio-file1
+rw=read
+
+[seqread-psync]

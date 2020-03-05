@@ -1,0 +1,16 @@
+[global]
+name=fio-mmap
+rw=randread
+group_reporting=1
+
+[randread-psync-multi]
+filename=fio-file1
+
+[randread-psync-multi]
+filename=fio-file2
+
+[randread-psync-multi]
+filename=fio-file3
+
+[randread-psync-multi]
+filename=fio-file4

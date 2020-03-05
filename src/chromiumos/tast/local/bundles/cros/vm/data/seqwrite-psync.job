@@ -1,0 +1,7 @@
+[global]
+name=fio-mmap
+filename=fio-file1
+rw=write
+fsync=32768
+
+[seqwrite-psync]
