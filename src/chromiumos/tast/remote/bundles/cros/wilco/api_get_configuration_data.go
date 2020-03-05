@@ -40,7 +40,8 @@ func init() {
 }
 
 func APIGetConfigurationData(ctx context.Context, s *testing.State) {
-	const configurationData = `{"test": 1}`
+	const configData = `{"test": 1}`
+	const newConfigData = `{"test": 2}`
 
 	if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
@@ -66,34 +67,38 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 	if _, err := pc.StartExternalDataServer(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to start a URLPolicyServer: ", err)
 	}
-
-	res, err := pc.ServePolicyData(ctx, &ps.ServePolicyDataRequest{
-		Contents: []byte(configurationData),
-	})
-	if err != nil {
-		s.Fatal("Failed to serve policy: ", err)
-	}
 	defer pc.StopExternalDataServer(ctx, &empty.Empty{})
 
-	pb := fakedms.NewPolicyBlob()
-	pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
-	pb.AddPolicy(&policy.DeviceWilcoDtcConfiguration{
-		Val: &policy.DeviceWilcoDtcConfigurationValue{
-			Url:  res.Url,
-			Hash: string(res.Hash),
-		},
-	})
-	// wilco_dtc and wilco_dtc_supportd only run for affiliated users
-	pb.DeviceAffiliationIds = []string{"default"}
-	pb.UserAffiliationIds = []string{"default"}
+	createPolicyBlob := func(configData string) []byte {
+		res, err := pc.ServePolicyData(ctx, &ps.ServePolicyDataRequest{
+			Contents: []byte(configData),
+		})
+		if err != nil {
+			s.Fatal("Failed to serve policy: ", err)
+		}
 
-	pJSON, err := json.Marshal(pb)
-	if err != nil {
-		s.Fatal("Failed to serialize policies: ", err)
+		pb := fakedms.NewPolicyBlob()
+		pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
+		pb.AddPolicy(&policy.DeviceWilcoDtcConfiguration{
+			Val: &policy.DeviceWilcoDtcConfigurationValue{
+				Url:  res.Url,
+				Hash: string(res.Hash),
+			},
+		})
+		// wilco_dtc and wilco_dtc_supportd only run for affiliated users
+		pb.DeviceAffiliationIds = []string{"default"}
+		pb.UserAffiliationIds = []string{"default"}
+
+		pJSON, err := json.Marshal(pb)
+		if err != nil {
+			s.Fatal("Failed to serialize policies: ", err)
+		}
+
+		return pJSON
 	}
 
 	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
-		PolicyJson: pJSON,
+		PolicyJson: createPolicyBlob(configData),
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
@@ -108,13 +113,10 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 		s.Fatal("Wilco DTC Supportd not running")
 	}
 
-	data, err := wc.GetConfigurationData(ctx, &empty.Empty{})
-	if err != nil {
+	if data, err := wc.GetConfigurationData(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to perform GetConfigurationData: ", err)
-	}
-
-	if data.JsonConfigurationData != configurationData {
-		s.Errorf("Unexpected policy value: got %s, want %s", data.JsonConfigurationData, configurationData)
+	} else if data.JsonConfigurationData != configData {
+		s.Errorf("Unexpected policy value: got %s, want %s", data.JsonConfigurationData, configData)
 	}
 
 	postStatus, err := wc.GetStatus(ctx, &empty.Empty{})
@@ -126,5 +128,39 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 
 	if !proto.Equal(preStatus, postStatus) {
 		s.Errorf("wilco_dtc PID changed after request: before %v, after %v", preStatus, postStatus)
+	}
+
+	if _, err = wc.RestartVM(ctx, &wilco.RestartVMRequest{
+		StartProcesses: false,
+		TestDbusConfig: false,
+	}); err != nil {
+		s.Fatal("Failed to restart the VM without processes: ", err)
+	}
+
+	if _, err := wc.StartDPSLListener(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to create listener: ", err)
+
+	}
+	defer wc.StopDPSLListener(ctx, &empty.Empty{})
+
+	s.Log("Updating policies")
+	if _, err := pc.UpdatePolicies(ctx, &ps.UpdatePoliciesRequest{
+		PolicyJson: createPolicyBlob(newConfigData),
+	}); err != nil {
+		s.Fatal("Failed to update policy: ", err)
+	}
+
+	s.Log("Waiting for HandleConfigurationDataChanged")
+	eventCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+
+	if _, err := wc.WaitForHandleConfigurationDataChanged(eventCtx, &empty.Empty{}); err != nil {
+		s.Error("Did not recieve HandleConfigurationDataChanged event: ", err)
+	}
+
+	if data, err := wc.GetConfigurationData(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to perform GetConfigurationData: ", err)
+	} else if data.JsonConfigurationData != newConfigData {
+		s.Errorf("Unexpected policy value: got %s, want %s", data.JsonConfigurationData, newConfigData)
 	}
 }
