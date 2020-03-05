@@ -249,6 +249,30 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
+		{
+			name: "nvme_wear_level",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeWearLevelParams{
+					NvmeWearLevelParams: &dtcpb.NvmeWearLevelRoutineParameters{
+						WearLevelThreshold: 50,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "nvme_wear_level_failed",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeWearLevelParams{
+					NvmeWearLevelParams: &dtcpb.NvmeWearLevelRoutineParameters{
+						WearLevelThreshold: 2,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			if err := executeRoutine(ctx, param.request, param.expectedStatus); err != nil {

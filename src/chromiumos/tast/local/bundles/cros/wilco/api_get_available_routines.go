@@ -57,6 +57,7 @@ func APIGetAvailableRoutines(ctx context.Context, s *testing.State) {
 		dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
 		dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
 		dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
+		dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
 	} {
 		if !contains(response.Routines, val) {
 			s.Fatalf("Routine %s missing", val.String())
