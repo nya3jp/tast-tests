@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70aadec3_477ddb5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_attribute_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T17:30:46Z",
+      "side": 1,
+      "message": "huge nit: assuming objID is not reported in \"clearObjectsOfAllType\", then include it in the error msg. e.g:\n\"... to clear object store %q before the start of test: %v\", objID, err..",
+      "range": {
+        "startLine": 126,
+        "startChar": 40,
+        "endLine": 126,
+        "endChar": 42
+      },
+      "revId": "9ab1583a103b8a74c596554d3f8eb560ffea7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19657a00_231f7f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T17:30:46Z",
+      "side": 1,
+      "message": "huge nit: ditto above",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 74
+      },
+      "revId": "9ab1583a103b8a74c596554d3f8eb560ffea7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0a14eb_1df35e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T17:30:46Z",
+      "side": 1,
+      "message": "huge nit: ditto above. include \"objID\" in error message",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 40
+      },
+      "revId": "9ab1583a103b8a74c596554d3f8eb560ffea7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
