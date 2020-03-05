@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b31eb2f8_eaa76f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "ece22a53_772a56a5",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2fcbaa7_ce599da6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa700f71_7b89fbc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2fcbaa7_ce599da6",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 4
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "621358a2_abf8c501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "8178fab8_61b8aaf5",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 28
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4b6cc1c_2801a980",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd078411_370f83dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4b6cc1c_2801a980",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 10
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a8d7747b_6ca7f7ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Yes, Got it button and Take me to gmail button may not be there always.",
+      "parentUuid": "711705c0_b09ff129",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f51ddf0_02e3a847",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2020-03-05T00:27:40Z",
       "side": 1,
       "message": "I don\u0027t think I like reuse either. Maybe testcases or subtests?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663b56ea_5f29a967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok. As testcases or subtests will be more specific to testcases. I would like to use this package for adding common functionalities also. Could I use testsutil instead?",
+      "parentUuid": "7f51ddf0_02e3a847",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -160,6 +304,30 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf75d89f_99ffea94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "94aff396_825728cf",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,54 @@
     },
     {
       "key": {
+        "uuid": "26202991_c62c3fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "bb05908f_1d079e24",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbd80d8_6f1efd17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a05f500_117ae830",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1dc1936_e7ecfaa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
         "patchSetId": 3
@@ -229,6 +445,30 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8abcf8b7_df9ec79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "isNApp check is needed because for N-apps, restart is not required on resizing the app whereas restart is required for pre-N apps. \nIt\u0027s not an error if it is not an N-app.",
+      "parentUuid": "c1dc1936_e7ecfaa0",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "e66d64d8_af5824bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcde2e19_5ca17154",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9428f228_6b19c69a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
         "patchSetId": 3
@@ -275,6 +539,30 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc2258d_35039488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "9428f228_6b19c69a",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "af5e9d86_b22e8f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok. I will change it.",
+      "parentUuid": "a0b4886e_c9fa449a",
+      "range": {
+        "startLine": 163,
+        "startChar": 5,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e11d3f8_6852e34b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
         "patchSetId": 3
@@ -321,6 +633,30 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "959a3394_c019a506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e11d3f8_6852e34b",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 13
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "9b07057d_b5dd35d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26bf4aa3_b4f84fa2",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 7
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "241243ee_5228f2e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
         "patchSetId": 3
@@ -367,6 +727,30 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b0a2fd3_719c82c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "241243ee_5228f2e0",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 18
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "7cb9dd73_0f76c910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "c1bff1fc_da90048f",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e271827_e8aecdf1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
         "patchSetId": 3
@@ -416,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "2f5bf244_fe5a206e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "If crash or ANR happens, it will prompt a crash dialog box with text messages like \"Can\u0027t download app\", \"has stopped\", \"keeps stopping\", \"isn\u0027t responding\",\"Can\u0027t download app\" . If any of the above crash messages exist, it will be handled by clicking on \"Open app again\" button, \"close button\", \"ok button\" in the \"Crash or ANR dialog box\".\nHere else case is not good case.",
+      "parentUuid": "9e271827_e8aecdf1",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff63363e_f86b9d44",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 3
@@ -430,6 +862,24 @@
       "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0480c99_511802a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-05T22:04:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff63363e_f86b9d44",
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
