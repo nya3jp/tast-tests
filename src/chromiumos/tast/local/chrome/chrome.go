@@ -48,7 +48,8 @@ const (
 	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
 	uiRestartTimeout = 90 * time.Second
 
-	blankURL = "about:blank"
+	// BlankURL is the URL corresponding to the about:blank page.
+	BlankURL = "about:blank"
 )
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
@@ -742,8 +743,8 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 	if err != nil {
 		return nil, err
 	}
-	if url != "" && url != blankURL {
-		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", blankURL)); err != nil {
+	if url != "" && url != BlankURL {
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", BlankURL)); err != nil {
 			return nil, errors.Wrap(err, "failed to wait for navigation")
 		}
 	}
@@ -756,27 +757,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return newConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
-}
-
-// Target contains information about an available debugging target to which a connection can be established.
-type Target struct {
-	// URL contains the URL of the resource currently loaded by the target.
-	URL string
-	// The type of the target. It's obtained from target.Info.Type.
-	Type string
-}
-
-func newTarget(t *target.Info) *Target {
-	return &Target{URL: t.URL, Type: t.Type}
-}
-
-// TargetMatcher is a caller-provided function that matches targets with specific characteristics.
-type TargetMatcher func(t *Target) bool
-
-// MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
-func MatchTargetURL(url string) TargetMatcher {
-	return func(t *Target) bool { return t.URL == url }
+	return NewConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
@@ -787,37 +768,10 @@ func MatchTargetURL(url string) TargetMatcher {
 //	f := func(t *Target) bool { return t.URL == "http://example.net/" }
 //	conn, err := cr.NewConnForTarget(ctx, f)
 func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
-	var errNoMatch = errors.New("no targets matched")
-
-	var all, matched []*target.Info
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		all, err = c.devsess.FindTargets(ctx, nil)
-		if err != nil {
-			return c.chromeErr(err)
-		}
-		matched = []*target.Info{}
-		for _, t := range all {
-			if tm(newTarget(t)) {
-				matched = append(matched, t)
-			}
-		}
-		if len(matched) == 0 {
-			return errNoMatch
-		}
-		return nil
-	}, loginPollOpts); err != nil && err != errNoMatch {
-		return nil, err
+	t, err := FindTarget(ctx, c.devsess, tm)
+	if err != nil {
+		return nil, c.chromeErr(err)
 	}
-
-	if len(matched) != 1 {
-		testing.ContextLogf(ctx, "%d targets matched while unique match was expected. Existing targets:", len(matched))
-		for _, t := range all {
-			testing.ContextLogf(ctx, "  %+v", newTarget(t))
-		}
-		return nil, errors.Errorf("%d targets found", len(matched))
-	}
-	t := matched[0]
 	return c.newConnInternal(ctx, t.TargetID, t.URL)
 }
 
@@ -849,7 +803,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
 	if c.testExtConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
 		return nil, err
 	}
-	c.testExtConn.locked = true
+	c.testExtConn.Lock()
 
 	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
 	if err := c.testExtConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
