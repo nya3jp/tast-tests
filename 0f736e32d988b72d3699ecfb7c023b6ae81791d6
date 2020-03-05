@@ -117,6 +117,30 @@
       "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b213b619_953c9e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-03-05T22:18:39Z",
+      "side": 1,
+      "message": "I have added another way to log into the app in Patchset 5. Please check if that runs on your DUT.",
+      "parentUuid": "1c743122_fd4ae980",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
