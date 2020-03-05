@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8188148e_0eaf8a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/concepts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T18:44:22Z",
+      "side": 1,
+      "message": "I think you accidentally added an extra test to this commit.",
+      "revId": "4f88dbf158f187306ef9b4c6a54d5c2910b93f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
