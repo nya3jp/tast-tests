@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99c3235d_f8b69b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-05T18:47:37Z",
+      "side": 1,
+      "message": "nit: rather than getting prevalue, I guess it\u0027s nicer to pass them as parameters to this function.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d0e3a7_9448a4c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-05T18:47:37Z",
+      "side": 1,
+      "message": "nit: maybe you can write as pkg + \":id/focus_switch_button\". same below constants.",
+      "range": {
+        "startLine": 128,
+        "startChar": 15,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0626b17c_b7e1bf87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-05T18:47:37Z",
+      "side": 1,
+      "message": "Remove this line: tconn shouldn\u0027t be closed (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#Chrome.TestAPIConn).\n\nNote that eventually this is going to be a compile error.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d535f622_31474144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-05T18:47:37Z",
+      "side": 1,
+      "message": "I\u0027m inclined to use s.Run for this type of testing; they look independent, and it looks (to me) that even editingTest fails, it is worth trying focusChangeText. (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#State.Run)\n\nWith combining with my comments above, it would look like:\ns.Run(ctx, \"editing\", func(ctx context.Context, s *testing.State) bool {\n  editingTest(ctx, tconn, a, cr, d, s)\n  return !s.HasError()\n})\ns.Run(ctx, \"focusChange\", func(ctx context.Context, s *testing.State) bool {\n  focusChangeTest(ctx, tconn, a, d, s)\n  return !s.HasError()\n})\n\n(or use for-loop).",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 34
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed7571f_3b1f59d8",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-05T18:47:37Z",
+      "side": 1,
+      "message": "\"tast.promisify(chrome.inputMethodPrivate.hideInputView)()\" will do",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
