@@ -40,7 +40,8 @@ func init() {
 }
 
 func APIGetConfigurationData(ctx context.Context, s *testing.State) {
-	const configurationData = `{"test": 1}`
+	const configurationData1 = `{"test": 1}`
+	const configurationData2 = `{"testb": 2}`
 
 	if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
@@ -66,14 +67,14 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 	if _, err := pc.StartExternalDataServer(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to start a URLPolicyServer: ", err)
 	}
+	defer pc.StopExternalDataServer(ctx, &empty.Empty{})
 
 	res, err := pc.ServePolicyData(ctx, &ps.ServePolicyDataRequest{
-		Contents: []byte(configurationData),
+		Contents: []byte(configurationData1),
 	})
 	if err != nil {
 		s.Fatal("Failed to serve policy: ", err)
 	}
-	defer pc.StopExternalDataServer(ctx, &empty.Empty{})
 
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
@@ -113,8 +114,47 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to perform GetConfigurationData: ", err)
 	}
 
-	if data.JsonConfigurationData != configurationData {
-		s.Errorf("Unexpected policy value: got %s, want %s", data.JsonConfigurationData, configurationData)
+	if data.JsonConfigurationData != configurationData1 {
+		s.Errorf("Unexpected policy value: got %s, want %s", data.JsonConfigurationData, configurationData1)
+	}
+
+	res, err = pc.ServePolicyData(ctx, &ps.ServePolicyDataRequest{
+		Contents: []byte(configurationData2),
+	})
+	if err != nil {
+		s.Fatal("Failed to serve policy: ", err)
+	}
+
+	pb = fakedms.NewPolicyBlob()
+	pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
+	pb.AddPolicy(&policy.DeviceWilcoDtcConfiguration{
+		Val: &policy.DeviceWilcoDtcConfigurationValue{
+			Url:  res.Url,
+			Hash: string(res.Hash),
+		},
+	})
+	// wilco_dtc and wilco_dtc_supportd only run for affiliated users
+	pb.DeviceAffiliationIds = []string{"default"}
+	pb.UserAffiliationIds = []string{"default"}
+
+	pJSON, err = json.Marshal(pb)
+	if err != nil {
+		s.Fatal("Failed to serialize policies: ", err)
+	}
+
+	if _, err := pc.UpdatePolicies(ctx, &ps.UpdatePoliciesRequest{
+		PolicyJson: pJSON,
+	}); err != nil {
+		s.Fatal("Failed to update policy: ", err)
+	}
+
+	data, err = wc.GetConfigurationData(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to perform GetConfigurationData: ", err)
+	}
+
+	if data.JsonConfigurationData != configurationData2 {
+		s.Errorf("Unexpected policy value: got %s, want %s", data.JsonConfigurationData, configurationData2)
 	}
 
 	postStatus, err := wc.GetStatus(ctx, &empty.Empty{})
