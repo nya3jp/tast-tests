@@ -149,23 +149,8 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	testing.ContextLog(ctx, "Waiting for Android boot")
 
-	if vm {
-		// When running ARCVM, 'android-sh' runs via ADB. So, the first thing to do is set up ADB.
-		// Android should be initialized once a working connection to ADB is made.
-		testing.ContextLog(ctx, "Setting up ADB")
-		if err := setUpADBForVM(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed setting up ADB")
-		}
-
-		// Connect to ADB.
-		if err := connectADB(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed connecting to ADB")
-		}
-
-	} else {
-		if err := WaitAndroidInit(ctx); err != nil {
-			return nil, errors.Wrap(err, "Android failed to boot in very early stage")
-		}
+	if err := WaitAndroidInit(ctx); err != nil {
+		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
 	}
 
 	// At this point we can start logcat.
@@ -350,12 +335,11 @@ func WaitAndroidInit(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
-	// service.adb.tcp.port is an arbitrary property set by Android init very
-	// early in boot process. Wait for it to ensure Android init process started.
-	// Note that existence of this property has nothing to do with the status of
-	// Android adb daemon.
-	const prop = "service.adb.tcp.port"
-	if err := waitProp(ctx, prop, "5555", reportTiming); err != nil {
+	// Wait for an arbitrary property set by Android init very
+	// early in "on boot". Wait for it to ensure Android init
+	// process started.
+	const prop = "net.tcp.default_init_rwnd"
+	if err := waitProp(ctx, prop, "60", reportTiming); err != nil {
 		return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
 	}
 	return nil
