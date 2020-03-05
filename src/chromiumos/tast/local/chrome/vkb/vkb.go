@@ -48,17 +48,11 @@ new Promise((resolve, reject) => {
 // IsShown checks if the virtual keyboard is currently shown. It checks whether
 // there is a visible DOM element with an accessibility role of "keyboard".
 func IsShown(ctx context.Context, tconn *chrome.TestConn) (shown bool, err error) {
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return false, err
-	}
-	defer root.Release(ctx)
-
 	params := ui.FindParams{
 		Role:  ui.RoleTypeKeyboard,
 		State: map[ui.StateType]bool{ui.StateTypeInvisible: false},
 	}
-	return root.DescendantExists(ctx, params)
+	return ui.Exists(ctx, tconn, params)
 }
 
 // WaitUntilShown waits for the virtual keyboard to appear. It waits until there
@@ -79,14 +73,8 @@ func WaitUntilShown(ctx context.Context, tconn *chrome.TestConn) error {
 
 // WaitUntilButtonsRender waits for the virtual keyboard to render some buttons.
 func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.TestConn) error {
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return err
-	}
-	defer root.Release(ctx)
-
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		keyboard, err := root.Descendant(ctx, ui.FindParams{Role: ui.RoleTypeKeyboard})
+		keyboard, err := ui.Find(ctx, tconn, ui.FindParams{Role: ui.RoleTypeKeyboard})
 		if err != nil {
 			return errors.Wrap(err, "virtual keyboard does not exist yet")
 		}
