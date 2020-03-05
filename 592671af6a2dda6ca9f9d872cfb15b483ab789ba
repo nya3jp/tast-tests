@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "113b69a8_36fd79ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-05T03:22:05Z",
+      "side": 1,
+      "message": "firstInt ? uint means unsigned int.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "592671af6a2dda6ca9f9d872cfb15b483ab789ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d1413ad_d758bbbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
         "patchSetId": 1
