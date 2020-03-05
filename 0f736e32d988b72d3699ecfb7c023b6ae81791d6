@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd0f039e_09b56a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1357295
+      },
+      "writtenOn": "2020-03-05T00:29:26Z",
+      "side": 1,
+      "message": "The sign in button does exists and is correctly clicked. On the next screen, \"Choose an account\" dialog appears but since we are signing in the app via google, it automatically logs in(without the need to choose the test account).",
+      "parentUuid": "3359af68_2d8755ef",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8a8e1c3_fff75465",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
         "patchSetId": 1
