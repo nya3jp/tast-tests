@@ -111,7 +111,8 @@ type contextUnmatchError struct {
 func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp, log bool) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
-		return errors.Wrap(err, "failed to get file context")
+		// Don't wrap error so callers can use os.IsNotExist, etc to check file access error.
+		return err
 	}
 	if !expected.MatchString(actual) {
 		return &contextUnmatchError{E: errors.Errorf("got %q; want %q", actual, expected)}
