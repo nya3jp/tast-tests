@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "defc3de7_73714560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-05T17:10:28Z",
+      "side": 1,
+      "message": "Is there a way to wait for page switching by testing.Poll, instead?\ntesting.Sleep is often a source of flakiness. This looks not the regression so I don\u0027t think it is a hard blocker of this change, but as you\u0027re making the change here, I think it should be worth considered. WDYT?",
+      "revId": "18a07096c32288041f2d057f547b7e33e1d567b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
