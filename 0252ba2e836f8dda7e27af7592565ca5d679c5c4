@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67a07cee_0a885a39",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-05T05:12:01Z",
+      "side": 1,
+      "message": "No need to use chrome.Option here; a mere string slice would suffice.",
+      "revId": "0252ba2e836f8dda7e27af7592565ca5d679c5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
