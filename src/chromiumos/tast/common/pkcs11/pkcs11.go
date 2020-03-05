@@ -397,3 +397,127 @@ func (p *Chaps) Verify(ctx context.Context, key *KeyInfo, input, signaturePath s
 	// Note that it is possible to verify with pkcs11-tools as well, but it'll need version 0.20 or above, which is currently unavailable.
 	return nil
 }
+
+// Error is a custom error type for storing error that occurs in PKCS#11 APIs with specific CKR_* error code.
+type Error struct {
+	*errors.E
+
+	// PKCS11RetCode contains the return code from PKCS#11 method calls, and it should be of the form CKR_*
+	PKCS11RetCode string
+
+	// CmdMessage holds the stdout and stderr of the command execution, that is, the command that actually invoked the PKCS#11 calls.
+	CmdMessage string
+}
+
+// GetObjectAttribute retrieves the object of objType type and the id specified in key, and returns its attribute specified by name. The returned values are (value, err), err is nil iff the operation is successful, and in that case value holds the hex encoded attribute value. err could be an error that contains only a single CKR_* code if that is the case.
+func (p *Chaps) GetObjectAttribute(ctx context.Context, key *KeyInfo, objType, name string) (value string, err error) {
+	// Execute the command and convert its output.
+	binaryMsg, err := p.runner.Run(ctx, "p11_replay", "--get_attribute", "--slot="+strconv.Itoa(key.slot), "--id="+key.objID, "--attribute="+name, "--type="+objType)
+	var msg string
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+	// Note, since we need to distinguish the reason for failure, we'll return the error found in the error message first (CKR_*). If no error code in message is found, then we'll return the err from calling Run().
+
+	const (
+		dataPrefix  = "Attribute Data in hex: "
+		errorPrefix = "Unable to access the attribute, error: "
+	)
+
+	var results []string
+	var errorMsgs []string
+
+	// Try to parse the result.
+	for _, s := range strings.Split(msg, "\n") {
+		// Try to check for data.
+		if strings.HasPrefix(s, dataPrefix) {
+			results = append(results, strings.TrimPrefix(s, dataPrefix))
+		}
+
+		// Try to check for error message.
+		if strings.HasPrefix(s, errorPrefix) {
+			errorMsgs = append(errorMsgs, strings.TrimPrefix(s, errorPrefix))
+		}
+	}
+
+	if len(results) > 1 {
+		// Extra data.
+		return "", &Error{E: errors.Errorf("extra data in parsing get object attribute output %q", results), CmdMessage: msg}
+	}
+
+	if len(errorMsgs) > 1 {
+		// Extra data.
+		return "", &Error{E: errors.Errorf("extra error message in parsing get object attribute output %q", errorMsgs), CmdMessage: msg}
+	}
+
+	// If error message is found, then we'll return that.
+	if len(errorMsgs) != 0 {
+		if len(results) != 0 {
+			// Shouldn't happen.
+			return "", &Error{E: errors.Wrapf(err, "both error message and data is found in get object attribute output; error message %q; data %q", errorMsgs[0], results[0]), CmdMessage: msg}
+		}
+		// Usually errorMsg is one of the CKR_* codes.
+		return "", &Error{E: errors.Wrapf(err, "called to C_GetAttributeValue failed with pkcs11 return code %q", errorMsgs[0]), PKCS11RetCode: errorMsgs[0], CmdMessage: msg}
+	}
+	// If no error message is found, but Run() failed, return that error.
+	if err != nil {
+		return "", &Error{E: errors.Wrap(err, "failed to get attribute with p11_replay: "), CmdMessage: msg}
+	}
+
+	if len(results) == 0 {
+		return "", &Error{E: errors.New("attributes value not found in output message"), CmdMessage: msg}
+	}
+
+	return results[0], nil
+}
+
+// SetObjectAttribute retrieves the object of objType type and the id specified in key, and sets its attribute specified by name with the value value. The returned value is err, whereby err is nil iff the operation is successful.
+func (p *Chaps) SetObjectAttribute(ctx context.Context, key *KeyInfo, objType, name, value string) (err error) {
+	// Execute the command and convert its output.
+	binaryMsg, err := p.runner.Run(ctx, "p11_replay", "--set_attribute", "--slot="+strconv.Itoa(key.slot), "--id="+key.objID, "--attribute="+name, "--data="+value, "--type="+objType)
+	var msg string
+	if binaryMsg != nil {
+		msg = string(binaryMsg)
+	}
+	// Note, since we need to distinguish the reason for failure, we'll return the error found in the error message first (CKR_*). If no error code in message is found, then we'll return the err from calling Run().
+
+	const (
+		successMsg  = "Set attribute OK."
+		errorPrefix = "Failed to set attribute, error: "
+	)
+
+	var errorMsgs []string
+
+	// Try to parse the result for error code.
+	for _, s := range strings.Split(msg, "\n") {
+		if strings.HasPrefix(s, errorPrefix) {
+			errorMsgs = append(errorMsgs, strings.TrimPrefix(s, errorPrefix))
+		}
+	}
+
+	if len(errorMsgs) > 1 {
+		// Extra data.
+		return &Error{E: errors.Errorf("extra error message in parsing set object attribute output %q", errorMsgs), CmdMessage: msg}
+	}
+
+	successful := strings.Contains(msg, successMsg)
+
+	if len(errorMsgs) != 0 {
+		if successful {
+			// Shouldn't happen.
+			return &Error{E: errors.Wrapf(err, "both error message and success message is found in set object attribute output; error message %q", errorMsgs[0]), CmdMessage: msg}
+		}
+		// Usually errorMsg is one of the CKR_* codes.
+		return &Error{E: errors.Wrapf(err, "called to C_SetAttributeValue failed with pkcs11 return code %q", errorMsgs[0]), PKCS11RetCode: errorMsgs[0], CmdMessage: msg}
+	}
+	// If no error message is found, but Run() failed, return that error.
+	if err != nil {
+		return &Error{E: errors.Wrap(err, "failed to get attribute with p11_replay"), CmdMessage: msg}
+	}
+
+	// If there's no error, but the output message is still incorrect.
+	if !successful {
+		return &Error{E: errors.New("failed to set attribute with p11_replay, incorrect response"), CmdMessage: msg}
+	}
+	return nil
+}
