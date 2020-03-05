@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac468e0_f44c35ed",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-05T03:06:46Z",
+      "side": 1,
+      "message": "What is necessary looks somewhat same for ContextID, seneschalHandle, which is available only after VM started.\n\nHow about make them consistent?\n\nIn this method, i think it is necessary to check if VM is started, and return error if not, instead of returning the default disk size.\n\nWDYT?",
+      "revId": "14a5905f789f31a74d772135e2170ed927f3339b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
