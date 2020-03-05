@@ -1,0 +1,17 @@
+; Copyright 2018 The Chromium OS Authors. All rights reserved.
+; Use of this source code is governed by a BSD-style license that can be
+; found in the LICENSE file.
+
+[fio_stress_rw]
+numjobs=8
+group_reporting=1
+time_based
+
+readwrite=randrw
+rwmixwrite=70
+randrepeat=0
+norandommap
+
+ioengine=libaio
+iodepth=32
+direct=1
