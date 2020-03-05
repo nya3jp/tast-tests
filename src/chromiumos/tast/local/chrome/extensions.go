@@ -63,10 +63,10 @@ func ComputeExtensionID(dir string) (string, error) {
 	return string(id), nil
 }
 
-// writeTestExtension writes an empty extension with access to different Chrome
+// WriteTestExtension writes an empty extension with access to different Chrome
 // APIs, needed for performing various tasks without interacting with the UI
 // (e.g. enabling the ARC Play Store). The extension's ID is returned.
-func writeTestExtension(dir string) (id string, err error) {
+func WriteTestExtension(dir string) (id string, err error) {
 	if err = os.MkdirAll(dir, 0755); err != nil {
 		return "", err
 	}

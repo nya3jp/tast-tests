@@ -28,9 +28,9 @@ type Conn struct {
 	chromeErr func(error) error // wraps Chrome.chromeErr
 }
 
-// newConn starts a new session using sm for communicating with the supplied target.
+// NewConn starts a new session using sm for communicating with the supplied target.
 // pageURL is only used when logging JavaScript console messages via lm.
-func newConn(ctx context.Context, s *cdputil.Session, id target.ID,
+func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
 	lm *jslog.Master, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
 	co, err := s.NewConn(ctx, id)
 	if err != nil {
@@ -186,6 +186,11 @@ func (c *Conn) StartProfiling(ctx context.Context) error {
 // StopProfiling disables the profiling of current connection and returns the profiling result.
 func (c *Conn) StopProfiling(ctx context.Context) (*profiler.TakePreciseCoverageReply, error) {
 	return c.co.StopProfiling(ctx)
+}
+
+// Lock locks Conn, making it so it cannot be closed.
+func (c *Conn) Lock() {
+	c.locked = true
 }
 
 // Conns simply wraps a list of Conn and provides a method to Close all of them.
