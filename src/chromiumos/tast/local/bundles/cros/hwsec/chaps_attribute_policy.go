@@ -120,6 +120,16 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 
 	const scratchpadPath = "/tmp/ChapsAttributePolicyTest"
 
+	// Remove all keys/certs before the test as well.
+	if err := pkcs11test.CleanupScratchpad(ctx, r, scratchpadPath); err != nil {
+		s.Fatal("Failed to clean scratchpad before the start of test: ", err)
+	}
+	for _, objID := range []string{"999999", "888888", "777777"} {
+		if err := pkcs11Util.ClearObjectsOfAllType(ctx, 0, objID); err != nil {
+			s.Fatal("Failed to clear object store before the start of test: ", err)
+		}
+	}
+
 	// Prepare the scratchpad.
 	if _, _, err := pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath); err != nil {
 		s.Fatal("Failed to initialize the scratchpad space: ", err)
