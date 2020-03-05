@@ -46,6 +46,16 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 
 	const scratchpadPath = "/tmp/ChapsPKCS1V15Test"
 
+	// Remove all keys/certs before the test as well.
+	if err := pkcs11test.CleanupScratchpad(ctx, r, scratchpadPath); err != nil {
+		s.Fatal("Failed to clean scratchpad before the start of test: ", err)
+	}
+	for _, objID := range []string{"aaaaaa", "bbbbbb", "cccccc"} {
+		if err := pkcs11Util.ClearObjectsOfAllType(ctx, 0, objID); err != nil {
+			s.Fatal("Failed to clear object store before the start of test: ", err)
+		}
+	}
+
 	// Prepare the scratchpad.
 	f1, f2, err := pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath)
 	if err != nil {
