@@ -98,7 +98,7 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 					break
 				}
 			}
-			if err := checkFileContext(ctx, path, contextRegexp, false); err != nil {
+			if err := checkFileContext(ctx, path, contextRegexp, false /* log */, true /* pass if not found */); err != nil {
 				s.Errorf("Failed file context check for %v: %v", path, err)
 			}
 			break

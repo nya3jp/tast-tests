@@ -108,9 +108,12 @@ type contextUnmatchError struct {
 
 // checkFileContext takes a path and a expected, and return an error
 // if the context mismatch or unable to check context.
-func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp, log bool) error {
+func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp, log bool, passIfNotFound bool) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
+		if passIfNotFound && os.IsNotExist(err) {
+			return nil
+		}
 		return errors.Wrap(err, "failed to get file context")
 	}
 	if !expected.MatchString(actual) {
@@ -166,7 +169,7 @@ func CheckContext(ctx context.Context, s *testing.State, req *CheckContextReq) {
 	skipFile, skipSubdir := req.Filter(req.Path, fi)
 
 	if skipFile == Check {
-		if err := checkFileContext(ctx, req.Path, req.Expected, req.Log); err != nil {
+		if err := checkFileContext(ctx, req.Path, req.Expected, req.Log, false); err != nil {
 			if _, ok := err.(*contextUnmatchError); ok || !req.IgnoreErrors {
 				s.Errorf("Failed file context check for %v: %v", req.Path, err)
 			}
