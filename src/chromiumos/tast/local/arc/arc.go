@@ -149,24 +149,8 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	testing.ContextLog(ctx, "Waiting for Android boot")
 
-	if vm {
-		// When running ARCVM, 'android-sh' runs via ADB. So, the first thing to do is set up ADB.
-		// Android should be initialized once a working connection to ADB is made.
-		testing.ContextLog(ctx, "Setting up ADB")
-		if err := setUpADBForVM(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed setting up ADB")
-		}
-
-		// Connect to ADB.
-		if err := connectADB(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed connecting to ADB")
-		}
-		testing.ContextLog(ctx, "connected to ADB")
-
-	} else {
-		if err := WaitAndroidInit(ctx); err != nil {
-			return nil, errors.Wrap(err, "Android failed to boot in very early stage")
-		}
+	if err := WaitAndroidInit(ctx); err != nil {
+		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
 	}
 
 	// At this point we can start logcat.
