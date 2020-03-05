@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0bcbb370_de7601b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-05T01:30:32Z",
+      "side": 1,
+      "message": "TODO added.",
+      "parentUuid": "48b4148f_b054a3ea",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cade6e1_4083d8b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 15
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "630f61aa_285911c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-05T01:30:32Z",
+      "side": 1,
+      "message": "Thanks for reminding. protobuf generated that for us already. (in key:value format)",
+      "parentUuid": "1cade6e1_4083d8b7",
+      "range": {
+        "startLine": 35,
+        "startChar": 57,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "045c6caf_5becabc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 15
@@ -68,6 +116,30 @@
       "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ae1054_f5b2057a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-05T01:30:32Z",
+      "side": 1,
+      "message": "Change it back to 0.2s as WiFi::Scan in shill seems to handle the spammy case (early return on busy or connecting)",
+      "parentUuid": "045c6caf_5becabc1",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +210,30 @@
       "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd4df74_814a840a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-05T01:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a333de16_37ba5e3c",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 30
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
