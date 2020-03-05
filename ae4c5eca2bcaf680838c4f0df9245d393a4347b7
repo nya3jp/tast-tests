@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc172f63_dbdaad1e",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-05T19:30:33Z",
+      "side": 1,
+      "message": "IIRC, can you put this function to pre.go?",
+      "range": {
+        "startLine": 87,
+        "startChar": 35,
+        "endLine": 87,
+        "endChar": 55
+      },
+      "revId": "ae4c5eca2bcaf680838c4f0df9245d393a4347b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
