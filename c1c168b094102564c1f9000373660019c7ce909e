@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c877529_5411ceb1",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T19:20:09Z",
+      "side": 1,
+      "message": "nit:\nhaving two NewTouchCoordConverter function in two different places looks confusing, since it is not clear what is the different between them, specially since this one calls the other one.\n\nA possible solution would be to rename this to:\nNewTouchCoordConverterForDisplay(....) and you pass a display here.... \nIf so, what about moving this function to coords as well?",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 147
+      },
+      "revId": "c1c168b094102564c1f9000373660019c7ce909e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "690dc1bb_d4afa941",
+        "filename": "src/chromiumos/tast/local/coords/touch_coords_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-05T19:20:09Z",
+      "side": 1,
+      "message": "nit: it we only need the touchScreenEventWriter\u0027size , then we should pass the size instead of  a pointer to tsew.",
+      "range": {
+        "startLine": 18,
+        "startChar": 39,
+        "endLine": 18,
+        "endChar": 73
+      },
+      "revId": "c1c168b094102564c1f9000373660019c7ce909e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
