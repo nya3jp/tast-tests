@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8e3cc93_571098c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-05T23:49:52Z",
+      "side": 1,
+      "message": "VideoLogger already has some error descriptions returned.",
+      "parentUuid": "5ff858f6_ee130c0e",
+      "range": {
+        "startLine": 170,
+        "startChar": 9,
+        "endLine": 170,
+        "endChar": 12
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98bd02e7_fdf63a3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b489622_c81ea63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-05T23:49:52Z",
+      "side": 1,
+      "message": "Same here. I didn\u0027t want to spend time on these 2 because\nthey\u0027re nearly useless and is better to remove them altogether,\nbut then I\u0027ll need several CLs.",
+      "parentUuid": "98bd02e7_fdf63a3f",
+      "range": {
+        "startLine": 175,
+        "startChar": 9,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "972ce36f_b87067ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-05T23:49:52Z",
+      "side": 1,
+      "message": "Done. Note that the previous l.218 refers to \"Video Decode Accelerator\",\nbut let me know if you want that lowercased.",
+      "parentUuid": "3524d5e4_3fc75c15",
+      "range": {
+        "startLine": 221,
+        "startChar": 21,
+        "endLine": 221,
+        "endChar": 22
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fa8b971_ccfbbeb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-03-05T23:20:42Z",
       "side": 1,
       "message": "As you removed the s.Fatal, can you remove testing.State here as well[1]? Maybe pass an *Server instance to the function.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 228,
+        "startChar": 35,
+        "endLine": 228,
+        "endChar": 51
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38304146_d27ff2c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-05T23:49:52Z",
+      "side": 1,
+      "message": "Hmm question: I\u0027d also have then the defer server.Close() in the caller function?",
+      "parentUuid": "0fa8b971_ccfbbeb8",
       "range": {
         "startLine": 228,
         "startChar": 35,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4705d3be_7b4d8816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-05T23:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaac8cd5_9f77f9eb",
+      "range": {
+        "startLine": 169,
+        "startChar": 11,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47b9f2d8_4c9f40f2",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25bfc46_a6a650bf",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-05T23:49:52Z",
+      "side": 1,
+      "message": "Ugh! No, reverting.",
+      "parentUuid": "47b9f2d8_4c9f40f2",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
