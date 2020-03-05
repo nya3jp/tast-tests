@@ -48,7 +48,8 @@ const (
 	// waiting for "cryptohome --action=pkcs11_terminate" to finish: https://crbug.com/860519
 	uiRestartTimeout = 90 * time.Second
 
-	blankURL = "about:blank"
+	// BlankURL is the URL corresponding to the about:blank page.
+	BlankURL = "about:blank"
 )
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
@@ -762,8 +763,8 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 	if err != nil {
 		return nil, err
 	}
-	if url != "" && url != blankURL {
-		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", blankURL)); err != nil {
+	if url != "" && url != BlankURL {
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", BlankURL)); err != nil {
 			return nil, errors.Wrap(err, "failed to wait for navigation")
 		}
 	}
@@ -776,7 +777,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return newConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
+	return NewConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
 }
 
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
