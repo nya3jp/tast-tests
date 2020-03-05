@@ -50,18 +50,12 @@ func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
 		s.Fatal("Virtual keyboard is shown, but expected it to be hidden")
 	}
 
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get UI automation root: ", err)
-	}
-	defer root.Release(ctx)
-
 	// Click on the omnibox.
 	params := ui.FindParams{
 		Role:       ui.RoleTypeTextField,
 		Attributes: map[string]interface{}{"inputType": "url"},
 	}
-	omnibox, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	omnibox, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
 	if err != nil {
 		s.Fatal("Failed to wait for the omnibox: ", err)
 	}

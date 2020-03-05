@@ -255,7 +255,7 @@ func (n *Node) DescendantWithTimeout(ctx context.Context, params FindParams, tim
 	return n.Descendant(ctx, params)
 }
 
-// DescendantExists checks if a node can be found.
+// DescendantExists checks if a descendant of this node can be found.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) DescendantExists(ctx context.Context, params FindParams) (bool, error) {
 	paramsBytes, err := params.rawBytes()
@@ -324,6 +324,63 @@ func Root(ctx context.Context, tconn *chrome.TestConn) (*Node, error) {
 		return nil, err
 	}
 	return NewNode(ctx, tconn, obj)
+}
+
+// Find finds the first descendant of the root node matching the params and returns it.
+// If the JavaScript fails to execute, an error is returned.
+func Find(ctx context.Context, tconn *chrome.TestConn, params FindParams) (*Node, error) {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	defer root.Release(ctx)
+	return root.Descendant(ctx, params)
+}
+
+// FindAll finds all descendant of the root node matching the params and returns them.
+// If the JavaScript fails to execute, an error is returned.
+func FindAll(ctx context.Context, tconn *chrome.TestConn, params FindParams) (NodeSlice, error) {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	defer root.Release(ctx)
+	return root.Descendants(ctx, params)
+}
+
+// FindWithTimeout finds a descendant of the root node using params and returns it.
+// If the JavaScript fails to execute, an error is returned.
+func FindWithTimeout(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) (*Node, error) {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	defer root.Release(ctx)
+	return root.DescendantWithTimeout(ctx, params, timeout)
+}
+
+// Exists checks if a descendant of the root node can be found.
+// If the JavaScript fails to execute, an error is returned.
+func Exists(ctx context.Context, tconn *chrome.TestConn, params FindParams) (bool, error) {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return true, err
+	}
+	defer root.Release(ctx)
+	return root.DescendantExists(ctx, params)
+}
+
+// WaitFor checks for a node repeatly until the timeout.
+// If "exists" is true, it will wait for the node to exist.
+// Otherwise, it will wait for the node to no longer exist.
+// If the JavaScript fails to execute, an error is returned.
+func WaitFor(ctx context.Context, tconn *chrome.TestConn, params FindParams, exist bool, timeout time.Duration) error {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer root.Release(ctx)
+	return root.WaitForDescendant(ctx, params, exist, timeout)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.

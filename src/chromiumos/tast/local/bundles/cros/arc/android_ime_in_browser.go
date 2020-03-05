@@ -61,14 +61,8 @@ func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.TestConn, pkg
 }
 
 func isKeyboardShown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	root, err := chromeui.Root(ctx, tconn)
-	if err != nil {
-		return false, err
-	}
-	defer root.Release(ctx)
-
 	// Check if keyboard is shown by checking if it has children.
-	keyboard, err := root.Descendant(ctx, chromeui.FindParams{ClassName: "ArcVirtualKeyboardContainer"})
+	keyboard, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "ArcVirtualKeyboardContainer"})
 	if err != nil {
 		return false, err
 	}
