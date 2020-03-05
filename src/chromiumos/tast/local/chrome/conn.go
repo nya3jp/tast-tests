@@ -29,9 +29,9 @@ type Conn struct {
 	chromeErr func(error) error // wraps Chrome.chromeErr
 }
 
-// newConn starts a new session using sm for communicating with the supplied target.
+// NewConn starts a new session using sm for communicating with the supplied target.
 // pageURL is only used when logging JavaScript console messages via lm.
-func newConn(ctx context.Context, s *cdputil.Session, id target.ID,
+func NewConn(ctx context.Context, s *cdputil.Session, id target.ID,
 	lm *jslog.Master, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
 	co, err := s.NewConn(ctx, id)
 	if err != nil {
