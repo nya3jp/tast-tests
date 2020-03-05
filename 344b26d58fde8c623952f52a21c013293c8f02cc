@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ece22a53_772a56a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "These definitions should probably be moved to the subpackage because they will be shared between tests.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2fcbaa7_ce599da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "can we change this to:\ndefer func(){\n    if s.HasError() {\n        path :\u003d fmt.Sprintf(\"%s/screenshot-arcappcompat-failed-test-%d.png\", s.OutDir(), idx)\n        if err :\u003d screenshot.CaptureChrome(ctx, cr, path); err !\u003d nil {\n            s.Log(\"Failed to capture screenshot: \", err)\n        }\n    }\n}()\ntest.fn(ctx, s, tconn, a, d, appPkgName, appActivity)\n\nsince test.fn is not returning an error anymore. This will ensure the screenshot runs even if s.Fatal is called.",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 4
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8178fab8_61b8aaf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "nit: textVeiwClassName maybe?",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 28
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b6cc1c_2801a980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "int: lowercase o",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 10
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "711705c0_b09ff129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "Can this be:\nmust(GotItButton.WaitForExists(ctx, defaultUITimeout))\nmust(GotItButton.Click(ctx))\n\nor is it expected the the got it button won\u0027t exist in some cases?\n\nsame for the takeMeToGmailButton below.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f51ddf0_02e3a847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "I don\u0027t think I like reuse either. Maybe testcases or subtests?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94aff396_825728cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "nit: Set the window to fullscreen",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb05908f_1d079e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "nit: Failed to set the window to fullscreen",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a05f500_117ae830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "This should probably be s.Error",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1dc1936_e7ecfaa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "Why is the N app check necessary? Won\u0027t all apps that use this be N apps?\n\nAlso, is it an error if it is not an N app? I noticed that you don\u0027t restart if it isn\u0027t an N app. Will this cause issues?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcde2e19_5ca17154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "nit: Failed to minimize the window",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9428f228_6b19c69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "nit: delete is",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 15
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b4886e_c9fa449a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "Probably name this function isNApp(..). That more accurately describes the function.",
+      "range": {
+        "startLine": 163,
+        "startChar": 5,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e11d3f8_6852e34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "This is not need. bool default to false.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 13
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bf4aa3_b4f84fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "I don\u0027t think you want the defer here if you want the app to close right away. Probably want something like:\nif err :\u003d act.Stop(ctx); err !\u003d nil {\n    s.Fatal(\"Failed to close the app: \", err)\n}",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 7
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241243ee_5228f2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "Can you just use act and call:\nif err :\u003d act.Start(ctx); err !\u003d nil{\n...\n}",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 18
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bff1fc_da90048f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "I notice that you repeat this code a lot. Might want to make a helper function to log the current package.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e271827_e8aecdf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/reuse/reuse.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "I am a little confused looking at this. I feel like they shouldn\u0027t necessarily be in the same if chain.\n\nCan you explain this logic? Also, is the good case the else case?",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 2
+      },
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff63363e_f86b9d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-05T00:27:40Z",
+      "side": 1,
+      "message": "It looks like you are still modifying this file by accident. Can you add back the \\\\ so that you are no longer modifying the file",
+      "revId": "344b26d58fde8c623952f52a21c013293c8f02cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
