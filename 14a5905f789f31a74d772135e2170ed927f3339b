@@ -16,6 +16,24 @@
       "revId": "14a5905f789f31a74d772135e2170ed927f3339b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c71091_7eca65eb",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-05T19:13:08Z",
+      "side": 1,
+      "message": "It returns the targeted VM size even before the VM starts which is also making sense to me.\nLet me rephrase the comment.",
+      "parentUuid": "5ac468e0_f44c35ed",
+      "revId": "14a5905f789f31a74d772135e2170ed927f3339b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
