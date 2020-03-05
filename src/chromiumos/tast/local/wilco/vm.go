@@ -93,6 +93,14 @@ func StartVM(ctx context.Context, config *VMConfig) error {
 		}
 	}
 
+	// Make sure VM is ready to run commands over vsh.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		cmd := vm.CreateVSHCommand(ctx, WilcoVMCID, "true")
+		return cmd.Run(testexec.DumpLogOnError)
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out waiting for VM to be ready")
+	}
+
 	return nil
 }
 
