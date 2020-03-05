@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "70b61181_00959b1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-03-05T00:45:53Z",
+      "side": 1,
+      "message": "That property\u0027s pretty new. Most of the uses in autotest could be moved over pretty easily, but WifiProxy.connect_to_wifi_network is a bit of a wart because it still needs to check Service state for \u0027configuration\u0027, since it logs both \u0027Associating...\u0027 and \u0027Configuring...\u0027. \n\nMaybe we could just change that behavior and get rid of ShillProxy.SERVICE_CONNECTED_STATES entirely.\n\nIn any case, this usage looks good to me :)",
+      "parentUuid": "453ee080_f5bab2ef",
+      "range": {
+        "startLine": 89,
+        "startChar": 39,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "b3f8f4ec8b8a7ef79c2de45d2243070a3604a55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a333de16_37ba5e3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 15
