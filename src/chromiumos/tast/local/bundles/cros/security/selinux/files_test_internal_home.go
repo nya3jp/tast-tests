@@ -18,6 +18,7 @@ import (
 // security.SELinuxFilesNonARC tests.
 func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 	const skipTest = "^.*"
+	const mediaRwFileContextPatterh = `^u:object_r:(media_rw_data_file|cros_downloads_file):s0`
 	testCases := []struct {
 		// path regexp; encapsulated in '^' and '$'.
 		path string
@@ -30,10 +31,10 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 		{`/home`, `cros_home`},
 		// TODO(crbug.com/955116): test file created by other tests but not gets cleaned-up correctly.
 		{`/home/\.test_file_to_be_deleted`, skipTest},
-		{`/home/chronos/user/(Downloads|MyFiles)(/.*)?`, `(media_rw_data_file|cros_downloads_file)`},
+		{`/home/chronos/user/(Downloads|MyFiles)(/.*)?`, mediaRwFileContextPatterh},
 		// Not logged in users doesn't have real data bind-mounted (cros_home_chronos).
 		{`/home/chronos/user(/.*)?`, `(cros_home_shadow_uid_user|cros_home_chronos)`},
-		{`/home/chronos/u-[0-9a-f]*/(Downloads|MyFiles)(/.*)?`, `(media_rw_data_file|cros_downloads_file)`},
+		{`/home/chronos/u-[0-9a-f]*/(Downloads|MyFiles)(/.*)?`, mediaRwFileContextPatterh},
 		// Not logged in users doesn't have real data bind-mounted (cros_home_chronos).
 		{`/home/chronos/u-.*`, `(cros_home_shadow_uid_user|cros_home_chronos)`},
 		{`/home/chronos/crash(/.*)?`, `cros_home_chronos_crash`},
@@ -54,7 +55,7 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 		// Not logged in users doesn't have real data bind-mounted (cros_home_root).
 		{`/home/root/.*`, `(cros_home_shadow_uid_root|cros_home_root)`},
 		{`/home/user`, `cros_home_user`},
-		{`/home/user/[0-9a-f]*/(Downloads|MyFiles)(/.*)?`, `(media_rw_data_file|cros_downloads_file)`},
+		{`/home/user/[0-9a-f]*/(Downloads|MyFiles)(/.*)?`, mediaRwFileContextPatterh},
 		// Not logged in users doesn't have real data bind-mounted (cros_home_user).
 		{`/home/user/.*`, `(cros_home_shadow_uid_user|cros_home_user)`},
 		{`/home/\.shadow(|/(salt|salt\.sum|install_attributes\.pb.*|\.can_attempt_ownership))`, `cros_home_shadow`},
@@ -70,7 +71,7 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 		{`/home/\.shadow/[0-9a-f]*/mount/root/shill_logs(/.*)?`, `cros_home_shadow_uid_root_shill_logs`},
 		{`/home/\.shadow/[0-9a-f]*/mount/root/usb_bouncer(/.*)?`, `cros_home_shadow_uid_root_usb_bouncer`},
 		{`/home/\.shadow/[0-9a-f]*/mount/root(/.*)?`, `cros_home_shadow_uid_root`},
-		{`/home/\.shadow/[0-9a-f]*/mount/user/(Downloads|MyFiles)(/.*)?`, `(media_rw_data_file|cros_downloads_file)`},
+		{`/home/\.shadow/[0-9a-f]*/mount/user/(Downloads|MyFiles)(/.*)?`, mediaRwFileContextPatterh},
 		{`/home/\.shadow/[0-9a-f]*/mount/user(/.*)?`, `cros_home_shadow_uid_user`},
 		// Not logged in users are not decrypted. Skip it.
 		{`/home/\.shadow/[0-9a-f]*/mount/.*`, skipTest},
