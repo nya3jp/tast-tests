@@ -7,16 +7,20 @@ package launcher
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
 	"syscall"
 
+	"github.com/mafredri/cdp/protocol/target"
 	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -27,8 +31,11 @@ const BinaryPath = LacrosTestPath + "/lacros_binary"
 // linuxChrome contains all state associated with a linux-chrome instance
 // that has been launched. Must call Close() to release resources.
 type linuxChrome struct {
-	Devsess *cdputil.Session // Debugging session for linux-chrome
-	cmd     *testexec.Cmd    // The command context used to start linux-chrome.
+	Devsess     *cdputil.Session // Debugging session for linux-chrome
+	cmd         *testexec.Cmd    // The command context used to start linux-chrome.
+	logMaster   *jslog.Master    // collects JS console output
+	testExtID   string           // ID for test extension exposing APIs
+	testExtConn *chrome.Conn     // connection to test extension exposing APIs
 }
 
 // Close kills a launched instance of linux-chrome.
@@ -102,12 +109,13 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
+	l := &linuxChrome{testExtID: p.Chrome.TestExtID()}
 	args := []string{
 		"--ozone-platform=wayland",                                  // Use wayland to connect to exo wayland server.
 		"--no-sandbox",                                              // Disable sandbox for now
 		"--remote-debugging-port=0",                                 // Let Chrome choose its own debugging port.
 		"--enable-experimental-extension-apis",                      // Allow Chrome to use the Chrome Automation API.
-		"--whitelisted-extension-id=" + p.Chrome.TestExtID(),        // Whitelists the test extension to access all Chrome APIs.
+		"--whitelisted-extension-id=" + l.testExtID,                 // Whitelists the test extension to access all Chrome APIs.
 		"--load-extension=" + strings.Join(p.Chrome.ExtDirs(), ","), // Load extensions
 		"--no-first-run",                                            // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--user-data-dir=" + userDataDir,                            // Specify a --user-data-dir, which holds on-disk state for Chrome.
@@ -118,10 +126,9 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		"--enable-logging",                       // This flag is necessary to ensure the log file is written.
 		"--enable-gpu-rasterization",             // Enable GPU rasterization. This is necessary to enable OOP rasterization.
 		"--enable-oop-rasterization",             // Enable OOP rasterization.
-		"about:blank",                            // Specify first tab to load.
+		chrome.BlankURL,                          // Specify first tab to load.
 	}
 
-	l := &linuxChrome{}
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
@@ -135,5 +142,61 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
 
+	l.logMaster = jslog.NewMaster()
+
 	return l, nil
+}
+
+// NewConnForTarget iterates through all available targets and returns a connection to the
+// first one that is matched by tm.
+func (l *linuxChrome) NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error) {
+	t, err := chrome.FindTarget(ctx, l.Devsess, tm)
+	if err != nil {
+		return nil, err
+	}
+
+	return l.newConnInternal(ctx, t.TargetID, t.URL)
+}
+
+func (l *linuxChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
+	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logMaster, url, func(err error) error { return err })
+	if err != nil {
+		return nil, err
+	}
+
+	if url != "" && url != chrome.BlankURL {
+		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", chrome.BlankURL)); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for navigation")
+		}
+	}
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for loading")
+	}
+	return conn, nil
+}
+
+func (l *linuxChrome) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
+	if l.testExtConn != nil {
+		return &chrome.TestConn{l.testExtConn}, nil
+	}
+
+	bgURL := chrome.ExtensionBackgroundPageURL(l.testExtID)
+	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
+	var err error
+	if l.testExtConn, err = l.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL)); err != nil {
+		return nil, err
+	}
+	l.testExtConn.Lock()
+
+	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
+	if err := l.testExtConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return nil, errors.Wrap(err, "test API extension is unavailable")
+	}
+
+	if err := l.testExtConn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
+		return nil, errors.Wrap(err, "failed to initialize test API events")
+	}
+
+	testing.ContextLog(ctx, "Test API extension is ready")
+	return &chrome.TestConn{l.testExtConn}, nil
 }
