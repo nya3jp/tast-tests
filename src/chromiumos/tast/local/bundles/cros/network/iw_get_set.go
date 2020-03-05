@@ -16,7 +16,7 @@ func init() {
 		Func:     IWGetSet,
 		Desc:     "Test IW getter and setter functions",
 		Contacts: []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
