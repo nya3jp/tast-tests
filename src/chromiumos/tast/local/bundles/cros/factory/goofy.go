@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -75,6 +76,17 @@ func setupFactory(ctx context.Context, s *testing.State) {
 }
 
 func cleanup(ctx context.Context, s *testing.State) {
+	s.Log("Start to backup factory logs under /var/log")
+
+	logFiles := [3]string{"factory-init.log", "factory-session.log", "factory.log"}
+	for _, logFile := range logFiles {
+		src := filepath.Join("/var/log", logFile)
+		dst := filepath.Join(s.OutDir(), logFile)
+		if err := fsutil.CopyFile(src, dst); err != nil {
+			s.Errorf("Failed to backup %s: %v", logFile, err)
+		}
+	}
+
 	s.Log("Start to cleanup DUT")
 
 	if err := stopGoofy(ctx); err != nil {
