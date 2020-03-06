@@ -905,18 +905,29 @@ func (a *App) Click(ctx context.Context, ui UIComponent) error {
 
 // ClickWithIndex clicks nth ui.
 func (a *App) ClickWithIndex(ctx context.Context, ui UIComponent, index int) error {
-	wrapError := func(err error) error {
-		return errors.Wrapf(err, "failed to click on %v(th) %v", index, ui.Name)
-	}
 	selector, err := a.resolveUISelector(ctx, ui)
 	if err != nil {
-		return wrapError(err)
+		return err
 	}
 	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].click()", selector, index)
 	if err := a.conn.Eval(ctx, code, nil); err != nil {
-		return wrapError(err)
+		return errors.Wrapf(err, "failed to click on %v(th) %v", index, ui.Name)
 	}
 	return nil
+}
+
+// IsCheckedWithIndex gets checked state of nth ui.
+func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int) (bool, error) {
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return false, err
+	}
+	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].checked", selector, index)
+	var checked bool
+	if err := a.conn.Eval(ctx, code, &checked); err != nil {
+		return false, errors.Wrapf(err, "failed to get checked state on %v(th) %v", index, ui.Name)
+	}
+	return checked, nil
 }
 
 // ClickWithSelector clicks an element with given selector.
@@ -993,3 +1004,53 @@ func (a *App) CheckMojoConnection(ctx context.Context) error {
 	code := fmt.Sprintf("Tast.checkMojoConnection(%v)", upstart.JobExists(ctx, "cros-camera"))
 	return a.conn.EvalPromise(ctx, code, nil)
 }
+<<<<<<< HEAD   (7327d2 tast-tests: Check histogram counts in crostini.FsCorruption)
+=======
+
+// OutputCodeCoverage stops the profiling and output the code coverage information to the output
+// directory.
+func (a *App) OutputCodeCoverage(ctx context.Context) error {
+	reply, err := a.conn.StopProfiling(ctx)
+	if err != nil {
+		return err
+	}
+
+	coverageData, err := json.Marshal(reply)
+	if err != nil {
+		return err
+	}
+
+	coverageDirPath := filepath.Join(a.outDir, fmt.Sprintf("coverage"))
+	if _, err := os.Stat(coverageDirPath); os.IsNotExist(err) {
+		if err := os.MkdirAll(coverageDirPath, 0755); err != nil {
+			return err
+		}
+	} else if err != nil {
+		return err
+	}
+
+	for idx := 0; ; idx++ {
+		coverageFilePath := filepath.Join(coverageDirPath, fmt.Sprintf("coverage-%d.json", idx))
+		if _, err := os.Stat(coverageFilePath); os.IsNotExist(err) {
+			if err := ioutil.WriteFile(coverageFilePath, coverageData, 0644); err != nil {
+				return err
+			}
+			break
+		} else if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// TriggerConfiguration triggers configuration by calling trigger() and waits for camera configuration finishing.
+func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) error {
+	if err := a.conn.Exec(ctx, "CCAConfigurationReady = Tast.waitNextConfiguration()"); err != nil {
+		return err
+	}
+	if err := trigger(); err != nil {
+		return err
+	}
+	return a.conn.EvalPromise(ctx, "CCAConfigurationReady", nil)
+}
+>>>>>>> CHANGE (2f5027 camera: Wait for CAMERA_CONFIGURING change when switching re)
