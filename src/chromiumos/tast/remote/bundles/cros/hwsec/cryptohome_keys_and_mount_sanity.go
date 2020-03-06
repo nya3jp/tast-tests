@@ -24,7 +24,7 @@ func init() {
 			"zuan@chromium.org", // Test author
 			"cros-hwsec@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:hwsec_destructive"},
 		SoftwareDeps: []string{"tpm"},
 	})
 }
