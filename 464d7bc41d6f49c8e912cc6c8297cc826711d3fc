@@ -46,6 +46,30 @@
       "revId": "464d7bc41d6f49c8e912cc6c8297cc826711d3fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01344cd7_e8006b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hostap_hwsim.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-06T07:58:54Z",
+      "side": 1,
+      "message": "My fault. Fixed.",
+      "parentUuid": "78fe18d3_6e8d281d",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "464d7bc41d6f49c8e912cc6c8297cc826711d3fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
