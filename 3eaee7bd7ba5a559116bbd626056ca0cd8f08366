@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb824b4a_6d011746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-06T01:47:56Z",
+      "side": 1,
+      "message": "The point of crash.TearDownCrashTest not cleaning up newly generated crash dumps is that we don\u0027t want to miss real unexpected crashes happened during crash tests (e.g. chrome crashes). So could you delete expected crash dumps only, e.g. by filtering file names?",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 69
+      },
+      "revId": "3eaee7bd7ba5a559116bbd626056ca0cd8f08366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
