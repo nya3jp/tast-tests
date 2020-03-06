@@ -117,7 +117,7 @@ func preTestRun(ctx context.Context, s *testing.State) func(ctx context.Context,
 
 // Main is an entry point function for bundles.
 func Main() {
-	os.Exit(bundle.Local(os.Args[1:], os.Stdin, os.Stdout, os.Stderr, bundle.LocalDelegate{
+	os.Exit(bundle.LocalDefault(bundle.LocalDelegate{
 		Ready:      ready.Wait,
 		PreTestRun: preTestRun,
 	}))

@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package meta contains local Tast tests that are executed by remote "meta" tests to exercise Tast itself.
+// Package meta contains local Tast tests that exercise Tast itself.
 //
+// Some tests are disabled but executed by remote "meta" tests to exercise
+// the tast command execution.
 // Remote meta tests are at https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/master/src/chromiumos/tast/remote/bundles/cros/meta/.
 package meta
