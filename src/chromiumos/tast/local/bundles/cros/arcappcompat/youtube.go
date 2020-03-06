@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         YouTube,
+		Func:         Youtube,
 		Desc:         "Functional test for YouTube that installs the app also verifies it is logged in and that the main page is open",
 		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
@@ -45,11 +45,11 @@ func init() {
 	})
 }
 
-// YouTube test uses library for opting into the playstore and installing app.
+// Youtube test uses library for opting into the playstore and installing app.
 // Launch the app from playstore.
 // Verify app is logged in.
 // Verify app reached main activity page of the app.
-func YouTube(ctx context.Context, s *testing.State) {
+func Youtube(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName = "com.google.android.youtube"
 
