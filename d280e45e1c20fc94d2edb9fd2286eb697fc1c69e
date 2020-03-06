@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "421a89b0_c578d6ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-06T18:38:40Z",
+      "side": 1,
+      "message": "Yes, if you pass the *Server inside, it is the caller\u0027s responsibility to call server.Close().",
+      "parentUuid": "38304146_d27ff2c0",
+      "range": {
+        "startLine": 228,
+        "startChar": 35,
+        "endLine": 228,
+        "endChar": 51
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aaac8cd5_9f77f9eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
         "patchSetId": 1
