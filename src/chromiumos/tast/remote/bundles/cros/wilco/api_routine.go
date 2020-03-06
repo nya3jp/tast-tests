@@ -294,6 +294,30 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			// well as the wear level value always larger or equal to zero.
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
+		// Success is not tested because the NVMe short self-test routine takes too
+		// much time.
+		{
+			name: "nvme_short_self_test_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_SHORT_SELF_TEST,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeShortSelfTestParams{
+					NvmeShortSelfTestParams: &dtcpb.NvmeShortSelfTestRoutineParameters{},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
+		// Success is not tested because the NVMe long self-test routine takes too
+		// much time.
+		{
+			name: "nvme_long_self_test_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeLongSelfTestParams{
+					NvmeLongSelfTestParams: &dtcpb.NvmeLongSelfTestRoutineParameters{},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			if err := testRoutineExecution(ctx, param.request, param.expectedStatus); err != nil {
