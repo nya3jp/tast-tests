@@ -207,6 +207,18 @@ type Entry struct {
 	PID int
 	// Content is the CONTENT part of the message.
 	Content string
+
+	// Line is the raw syslog line. It always ends with a newline character.
+	Line string
+}
+
+// ParseError is returned when a log line failed to parse.
+type ParseError struct {
+	*errors.E
+
+	// Line is a raw log line which failed to parse. It always ends with a
+	// newline character.
+	Line string
 }
 
 // NewReader starts a new Reader that reports syslog messages
@@ -235,8 +247,9 @@ func (r *Reader) Close() error {
 	return r.lineReader.close()
 }
 
-// Read returns the next log message. If the next message is not available yet,
-// io.EOF is returned.
+// Read returns the next log message.
+// If the next message is not available yet, io.EOF is returned. If the next
+// line is read successfully but it failed to parse, *ParseError is returned.
 func (r *Reader) Read() (*Entry, error) {
 	for {
 		line, err := r.lineReader.read()
@@ -246,7 +259,10 @@ func (r *Reader) Read() (*Entry, error) {
 
 		e, err := parseSyslogLine(line)
 		if err != nil {
-			return nil, err
+			return nil, &ParseError{
+				E:    errors.Wrap(err, "failed to parse syslog line"),
+				Line: line,
+			}
 		}
 
 		ok := true
@@ -321,6 +337,7 @@ func parseSyslogLine(line string) (*Entry, error) {
 		Program:   program,
 		PID:       pid,
 		Content:   ms[4],
+		Line:      line,
 	}, nil
 }
 

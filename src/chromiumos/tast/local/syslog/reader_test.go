@@ -37,6 +37,7 @@ var (
 		Program:   "foo",
 		PID:       1234,
 		Content:   "hello",
+		Line:      fakeLine1,
 	}
 	fakeEntry2 = &Entry{
 		Timestamp: time.Date(2019, 12, 10, 11, 17, 29, 123456000, jst),
@@ -45,6 +46,7 @@ var (
 		Program:   "bar",
 		PID:       2345,
 		Content:   "crashy",
+		Line:      fakeLine2,
 	}
 	fakeEntry3 = &Entry{
 		Timestamp: time.Date(2019, 12, 10, 11, 17, 30, 123456000, jst),
@@ -53,6 +55,7 @@ var (
 		Program:   "foo",
 		PID:       1234,
 		Content:   "world",
+		Line:      fakeLine3,
 	}
 	chromeFakeEntry1 = &ChromeEntry{
 		Severity: "VERBOSE1",
@@ -123,6 +126,7 @@ func TestReaderRead(t *testing.T) {
 				Tag:       "kernel",
 				Program:   "kernel",
 				Content:   "oops",
+				Line:      "2019-12-10T11:17:28.123456+09:00 INFO kernel: oops\n",
 			}},
 		},
 		{
@@ -134,6 +138,7 @@ func TestReaderRead(t *testing.T) {
 				Tag:       "foo:bar",
 				Program:   "foo:bar",
 				Content:   "hi",
+				Line:      "2019-12-10T11:17:28.123456+09:00 INFO foo:bar: hi\n",
 			}},
 		},
 		// Option tests:
@@ -185,6 +190,35 @@ func TestReaderRead(t *testing.T) {
 				t.Errorf("Result unmatched (-got +want):\n%s", diff)
 			}
 		})
+	}
+}
+
+func TestReaderParseFailure(t *testing.T) {
+	tf, err := ioutil.TempFile("", "")
+	if err != nil {
+		t.Fatal("TempFile failed: ", err)
+	}
+	defer tf.Close()
+
+	r, err := NewReader(SourcePath(tf.Name()))
+	if err != nil {
+		t.Fatal("NewReader failed: ", err)
+	}
+	defer r.Close()
+
+	const line = "abc\n"
+	tf.WriteString(line)
+
+	_, err = r.Read()
+	if err == nil {
+		t.Fatal("Read unexpectedly suceeded for a broken line")
+	}
+	perr, ok := err.(*ParseError)
+	if !ok {
+		t.Fatalf("Read returned an error of type %T; want *ParseError", err)
+	}
+	if perr.Line != line {
+		t.Errorf("ParseError.Line = %q; want %q", perr.Line, line)
 	}
 }
 
@@ -318,6 +352,7 @@ func TestReaderWait(t *testing.T) {
 				Program:   "foo",
 				PID:       1234,
 				Content:   "world",
+				Line:      "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n",
 			},
 			wantNext: &Entry{
 				Timestamp: time.Date(2019, 12, 10, 11, 17, 32, 123456000, jst),
@@ -326,6 +361,7 @@ func TestReaderWait(t *testing.T) {
 				Program:   "foo",
 				PID:       1234,
 				Content:   "end",
+				Line:      "2019-12-10T11:17:32.123456+09:00 INFO foo[1234]: end\n",
 			},
 		},
 	} {
