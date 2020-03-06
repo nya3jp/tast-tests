@@ -27,7 +27,7 @@ const (
 	// BootTimeout is the maximum amount of time that ARC is expected to take to boot.
 	// Tests that call New should declare a timeout that's at least this long.
 	// TODO(b/148463728): Shorten when softlockup issue is resolved SMP is enabled.
-	BootTimeout = 15 * time.Minute
+	BootTimeout = 25 * time.Minute
 
 	// Time Android init process takes to start. It should be smaller than BootTimeout.
 	// TODO(b/148463728): Shorten when softlockup issue is resolved SMP is enabled.
