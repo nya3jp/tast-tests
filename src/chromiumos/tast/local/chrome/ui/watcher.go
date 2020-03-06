@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const msgNoEvents = "no events occured"
+
 // Event represents a chrome.automation AutomationEvent.
 // See https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl#492
 type Event struct {
@@ -65,7 +67,7 @@ func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration)
 			return testing.PollBreak(err)
 		}
 		if len(events) == 0 {
-			return errors.New("event hasn't occur yet")
+			return errors.New(msgNoEvents)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
@@ -80,4 +82,39 @@ func (ew *EventWatcher) Release(ctx context.Context) error {
 		testing.ContextLog(ctx, "Failed to remove the event listener: ", err)
 	}
 	return ew.object.Release(ctx)
+}
+
+// WaitForLocationChangeCompleted waits for any location-change events on the
+// entire desktop to be propagated to the automation API. Because automation API
+// is asynchronous and eventually consistent with the desktop bounds, sometimes
+// the automation API may report the intermediate bounds for an already
+// completed animation. This function waits for such changes to be propagated
+// fully to the automation API.
+func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn) error {
+	const (
+		entireTimeout = 10 * time.Second
+		timeout       = 2 * time.Second
+	)
+
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to access root")
+	}
+	defer root.Release(ctx)
+	ew, err := NewWatcher(ctx, root, EventTypeLocationChanged)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a root watcher")
+	}
+	defer ew.Release(ctx)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		es, err := ew.WaitForEvent(ctx, timeout)
+		if err != nil {
+			// Finish when no events have occurred.
+			if cause := errors.Unwrap(err); cause != nil && cause.Error() == msgNoEvents {
+				return nil
+			}
+			return testing.PollBreak(err)
+		}
+		return errors.Errorf("still %d events occured", len(es))
+	}, &testing.PollOptions{Timeout: entireTimeout})
 }
