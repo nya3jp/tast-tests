@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "269a6759_c52dc980",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-06T09:09:59Z",
+      "side": 1,
+      "message": "* Ack\n* The current CL does not restart daemons, it only removes the files. Chrome caches policies, but tests that use it already do not to depend on the state of Chrome.",
+      "parentUuid": "a1acc388_73944d49",
+      "range": {
+        "startLine": 327,
+        "startChar": 5,
+        "endLine": 327,
+        "endChar": 18
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a2babc0_f4ce4546",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 7
