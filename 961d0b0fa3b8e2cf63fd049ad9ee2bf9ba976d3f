@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "a2c5e77d_4151e0a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:44:12Z",
+      "side": 1,
+      "message": "Use errors.Wrap(err, \"error reading boot id\") or similar.",
+      "range": {
+        "startLine": 42,
+        "startChar": 14,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3092295_4bda4907",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:44:12Z",
+      "side": 1,
+      "message": "You also need to check that this is a drallion360 device and I don\u0027t think we want to error out if it not, just return. \n\nhidehiko@ might have some suggestions on how that should be done.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "081f9972_7e97ea0b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -41,6 +87,29 @@
         "startChar": 4,
         "endLine": 73,
         "endChar": 7
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eeb051e_2ee2eb70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:44:12Z",
+      "side": 1,
+      "message": "You should be able to only have a single regex by adding parens around the \\d+ and calling FindStringSubmatch. This will return an empty list if there is no match and if there is a match then the first element is the entire string and elements 1 and 2 will be the numbers you\u0027re looking for.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 33
       },
       "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -82,6 +151,70 @@
       "writtenOn": "2020-03-06T18:11:56Z",
       "side": 1,
       "message": "I can adjust the length of the power key press here to be closer to the 1.5s boundary here and in subsequent power key presses.\n\nI have noticed failures while testing when using power key presses closer to the 1.5s boundary, and I\u0027m not sure what tolerance we want to set for this test\u0027s purposes.",
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe76ebb_3a111783",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:44:12Z",
+      "side": 1,
+      "message": "I think that .5 seconds sounds good. It is long enough to verify that button was pressed but not so long that it will be flaky.",
+      "parentUuid": "9441c248_176c97ce",
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6ce28f_089e28d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:44:12Z",
+      "side": 1,
+      "message": "Error pressing the power button:",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1803d849_d1cfb22b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:44:12Z",
+      "side": 1,
+      "message": "We also need a check to make sure that pressing the power button for \u003c1.5 seconds does trigger the power menu in laptop mode.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 2
+      },
       "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
