@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67af5320_d294934d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-06T23:33:49Z",
+      "side": 1,
+      "message": "huge nit: use ARC instead of ARC++ in Tast code",
+      "range": {
+        "startLine": 36,
+        "startChar": 55,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "f5086c502d7a3f2fd793c090e4c94d204546b3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ac4fc4_60ef2859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-06T23:33:49Z",
+      "side": 1,
+      "message": "nit: i\u0027d split this in two. and have a different error message for each condition",
+      "range": {
+        "startLine": 155,
+        "startChar": 43,
+        "endLine": 156,
+        "endChar": 73
+      },
+      "revId": "f5086c502d7a3f2fd793c090e4c94d204546b3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9bf3afc_42fe91f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-06T23:33:49Z",
+      "side": 1,
+      "message": "ditto above. create an error message for each condition",
+      "range": {
+        "startLine": 184,
+        "startChar": 43,
+        "endLine": 184,
+        "endChar": 63
+      },
+      "revId": "f5086c502d7a3f2fd793c090e4c94d204546b3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b30464_6f3eb602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-06T23:33:49Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 196,
+        "startChar": 43,
+        "endLine": 196,
+        "endChar": 62
+      },
+      "revId": "f5086c502d7a3f2fd793c090e4c94d204546b3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7af081cc_763b2cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-06T23:33:49Z",
+      "side": 1,
+      "message": "nit: you can move this const to right after it is being used (to L243) and when you declare just one const you can omit the (). eg:\n\nconst apk \u003d \"Arc...\"",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "f5086c502d7a3f2fd793c090e4c94d204546b3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196a10e6_24ffec9e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-06T23:33:49Z",
+      "side": 1,
+      "message": "nit: add comment for this func",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "f5086c502d7a3f2fd793c090e4c94d204546b3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
