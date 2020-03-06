@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e81ffb9_ab159743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-06T05:20:33Z",
+      "side": 1,
+      "message": "This can be exact match because prog is already splitted by the dot.",
+      "revId": "14b3f56bf91796b7709316d36770c3b56e2c7e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
