@@ -141,6 +141,30 @@
       "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e048eb3_95fb2c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-06T23:12:55Z",
+      "side": 1,
+      "message": "Just to add this response to the CL. I mentioned this in a separate chat.\n\nI think that we should use google sign in and login. Since we can see or skip different scenes or screens depending on the dut and test run, we may need to do some form of polling. We can wait for any of the possible screens until we reach the main screen.\n\n\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n    if sign in, ...\n\n    if pick acount, ...\n \n    if on home screen, return nil to exit polling\n\n    else, return error about not being on home screen yet\n}, nil); err !\u003d nil{\n    s.Error(...)\n}",
+      "parentUuid": "b213b619_953c9e18",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "0f736e32d988b72d3699ecfb7c023b6ae81791d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
