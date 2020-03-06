@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "a6c15da3_c7489f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:09:41Z",
+      "side": 1,
+      "message": "nit: Extra line",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081f9972_7e97ea0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:09:41Z",
+      "side": 1,
+      "message": "Check the error value.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e13ebeee_ad68f389",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:09:41Z",
+      "side": 1,
+      "message": "nit: servo",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9441c248_176c97ce",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -13,6 +82,52 @@
       "writtenOn": "2020-03-06T18:11:56Z",
       "side": 1,
       "message": "I can adjust the length of the power key press here to be closer to the 1.5s boundary here and in subsequent power key presses.\n\nI have noticed failures while testing when using power key presses closer to the 1.5s boundary, and I\u0027m not sure what tolerance we want to set for this test\u0027s purposes.",
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6958027_0d523e4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:09:41Z",
+      "side": 1,
+      "message": "Should be in a defer so that CloseChrome is always called after NewChrome",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a32402_e69a5756",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-06T21:09:41Z",
+      "side": 1,
+      "message": "Maybe move this to a defer after you read the initial values so that they are restored even if the test fails",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 54
+      },
       "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
