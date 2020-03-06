@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adebfa9c_83445e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "nit: GMS (acronyms should be all capital). Ditto for below.",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ce9e21_6dfde7c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "style: could you use switch?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f20aad_6edc0be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "Could you clarify in the doc and check \"src\" is the abspath in Android?",
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62aaa338_6bb3c3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "\"Device\" sounds confusing, because even this code runs on the testing device.\nSuggestion: pullARCFile.",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 23
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440a338d_b95bd464",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "nit: unused?",
+      "range": {
+        "startLine": 49,
+        "startChar": 48,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c50d42_4114db88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "clar: bucket...?",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cfd6c1f_1f67fb07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "go prefers avoiding prefixes like \"get\", \"is\", \"has\". You can just name this \"remoteURL\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 4
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eac999d_df1dc5be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "Could you avoid passing testing.State, if possible?\n\nIn this case;\n- s.Logf can be replaced by testing.ContextLogf.\n- OutDir and dst can be concat at caller.",
+      "range": {
+        "startLine": 119,
+        "startChar": 49,
+        "endLine": 119,
+        "endChar": 65
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbddb446_1cc6a647",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "Just \"upload\" should enough in this context? Go heavily prefers shorter name.",
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19df37af_f36d68fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "style: packas :\u003d []string{...}",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba6c124_4c27f074",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "nit: you can call the func here, directly.",
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871043aa_8c42f08d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:02:57Z",
+      "side": 1,
+      "message": "Looks like no clean up in the code... Could you clarify what is this for...?",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "2f3f7c8e697e7aff81447eb41596b9f4e3909fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
