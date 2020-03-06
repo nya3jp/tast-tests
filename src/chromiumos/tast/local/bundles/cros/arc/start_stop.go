@@ -39,10 +39,10 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android"},
+			Timeout:           4 * time.Minute,
 			Val: testArgs{
 				subtests: []startstop.Subtest{
 					&startstop.TestMidis{},
@@ -53,6 +53,9 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/148463728): Shorten when softlockup
+			// issue is resolved and SMP is enabled.
+			Timeout: 20 * time.Minute,
 			Val: testArgs{
 				subtests: []startstop.Subtest{
 					&startstop.TestMidis{},
