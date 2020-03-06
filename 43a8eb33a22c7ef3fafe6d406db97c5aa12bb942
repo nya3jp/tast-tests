@@ -67,6 +67,24 @@
     },
     {
       "key": {
+        "uuid": "b55dba19_d15f7f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-06T17:12:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4aa9705_352b9a77",
+      "revId": "43a8eb33a22c7ef3fafe6d406db97c5aa12bb942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfc7507a_723c0f39",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 1
