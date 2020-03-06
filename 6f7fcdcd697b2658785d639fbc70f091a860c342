@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a1acc388_73944d49",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-06T08:43:56Z",
+      "side": 1,
+      "message": "Please let me check my understanding:\n\n- When Tast tests start in the lab, the device might be already enrolled. In this case ready.go can do nothing because it requires a reboot to unenroll the device. This scenario is out of scope of this CL.\n- When Tast tests start in the lab, the device might be non-enrolled but have some policies in /var/lib/whitelist/*. In this case we can remove those files and restart various daemons (e.g. session_manager, chrome) to clear those policies. This scenario is addressed by this CL.\n\nAm I right?",
+      "range": {
+        "startLine": 327,
+        "startChar": 5,
+        "endLine": 327,
+        "endChar": 18
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a2babc0_f4ce4546",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 7
