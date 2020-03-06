@@ -69,6 +69,8 @@ func Webserver(ctx context.Context, s *testing.State) {
 		{net.IPv4zero, 999},            // Privileged ports will be accessible via penguin.linux.test but not localhost.
 		{net.IPv4zero, 8000},           // Common dev webserver port.
 		{net.IPv4zero, 12345},          // Uncommon dev webserver port.
+		{net.IPv6unspecified, 8001},    // IPv6 all interfaces.
+		{net.IPv6loopback, 8002},       // IPv6 loopback.
 	}
 
 	// Assemble the list of URLs to check. For localhost tunneling, check both
@@ -84,15 +86,23 @@ func Webserver(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if sockaddr.Addr.IsUnspecified() {
+		// penguin.linux.test only works for IPv4 sockets listening on all interfaces.
+		if sockaddr.Addr.IsUnspecified() && sockaddr.Addr.To4() != nil {
 			checkURLs[fmt.Sprintf("http://penguin.linux.test:%d", sockaddr.Port)] = true
 		}
 	}
 
 	testing.ContextLog(ctx, "Waiting for webservers to start up")
 	for _, sockaddr := range sockaddrs {
-		cmd = cont.Command(ctx, "sudo", "busybox", "httpd", "-f",
-			"-p", fmt.Sprintf("%s:%d", sockaddr.Addr.String(), sockaddr.Port))
+		sockaddrStr := ""
+		// IPv6 literals need to be surrounded in square brackets so the port can be clearly determined.
+		if sockaddr.Addr.To4() != nil {
+			sockaddrStr = fmt.Sprintf("%s:%d", sockaddr.Addr.String(), sockaddr.Port)
+		} else {
+			sockaddrStr = fmt.Sprintf("[%s]:%d", sockaddr.Addr.String(), sockaddr.Port)
+		}
+
+		cmd = cont.Command(ctx, "sudo", "busybox", "httpd", "-f", "-p", sockaddrStr)
 		if err := cmd.Start(); err != nil {
 			s.Fatalf("Failed to start webserver on %v:%d: %v", sockaddr.Addr, sockaddr.Port, err)
 		}
