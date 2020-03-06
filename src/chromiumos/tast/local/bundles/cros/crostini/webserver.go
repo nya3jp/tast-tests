@@ -61,14 +61,13 @@ func Webserver(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	sockaddrs := []struct {
-		Addr net.IP
-		Port uint16
-	}{
-		{net.IPv4(127, 0, 0, 1), 6789}, // An unprivileged port listening on localhost should be tunneled.
-		{net.IPv4zero, 999},            // Privileged ports will be accessible via penguin.linux.test but not localhost.
-		{net.IPv4zero, 8000},           // Common dev webserver port.
-		{net.IPv4zero, 12345},          // Uncommon dev webserver port.
+	sockaddrs := []net.TCPAddr{
+		{IP: net.IPv4(127, 0, 0, 1), Port: 6789}, // An unprivileged port listening on localhost should be tunneled.
+		{IP: net.IPv4zero, Port: 999},            // Privileged ports will be accessible via penguin.linux.test but not localhost.
+		{IP: net.IPv4zero, Port: 8000},           // Common dev webserver port.
+		{IP: net.IPv4zero, Port: 12345},          // Uncommon dev webserver port.
+		{IP: net.IPv6unspecified, Port: 8001},    // IPv6 all interfaces.
+		{IP: net.IPv6loopback, Port: 8002},       // IPv6 loopback.
 	}
 
 	// Assemble the list of URLs to check. For localhost tunneling, check both
@@ -76,7 +75,7 @@ func Webserver(ctx context.Context, s *testing.State) {
 	// check penguin.linux.test.
 	checkURLs := make(map[string]bool)
 	for _, sockaddr := range sockaddrs {
-		if sockaddr.Addr.IsLoopback() || sockaddr.Addr.IsUnspecified() {
+		if sockaddr.IP.IsLoopback() || sockaddr.IP.IsUnspecified() {
 			// Localhost tunneling only works on unprivileged ports.
 			if sockaddr.Port > 1023 {
 				checkURLs[fmt.Sprintf("http://127.0.0.1:%d", sockaddr.Port)] = true
@@ -84,17 +83,17 @@ func Webserver(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		if sockaddr.Addr.IsUnspecified() {
+		// penguin.linux.test only works for IPv4 sockets listening on all interfaces.
+		if sockaddr.IP.IsUnspecified() && sockaddr.IP.To4() != nil {
 			checkURLs[fmt.Sprintf("http://penguin.linux.test:%d", sockaddr.Port)] = true
 		}
 	}
 
 	testing.ContextLog(ctx, "Waiting for webservers to start up")
 	for _, sockaddr := range sockaddrs {
-		cmd = cont.Command(ctx, "sudo", "busybox", "httpd", "-f",
-			"-p", fmt.Sprintf("%s:%d", sockaddr.Addr.String(), sockaddr.Port))
+		cmd = cont.Command(ctx, "sudo", "busybox", "httpd", "-f", "-p", sockaddr.String())
 		if err := cmd.Start(); err != nil {
-			s.Fatalf("Failed to start webserver on %v:%d: %v", sockaddr.Addr, sockaddr.Port, err)
+			s.Fatalf("Failed to start webserver on %v:%d: %v", sockaddr.IP, sockaddr.Port, err)
 		}
 		defer cmd.Wait()
 		defer cmd.Kill()
