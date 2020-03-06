@@ -22,6 +22,30 @@
       "revId": "5d8af1736c2656e833bc979f9e2d3daf8d0c24ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ffbfbef_d9568c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-06T21:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a35f60a_a9ab9bf8",
+      "range": {
+        "startLine": 218,
+        "startChar": 21,
+        "endLine": 218,
+        "endChar": 22
+      },
+      "revId": "5d8af1736c2656e833bc979f9e2d3daf8d0c24ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
