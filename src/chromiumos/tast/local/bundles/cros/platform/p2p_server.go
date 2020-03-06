@@ -56,11 +56,20 @@ func queryP2PServices(ctx context.Context, timeout time.Duration) ([]*mdns.Servi
 		err = mdns.Query(params)
 	}()
 
+	// nameSuffix is the name suffix of expected mDNS services.
+	nameSuffix := fmt.Sprintf(".%s.local.", p2p.ServiceType)
+
 	var srvs []*mdns.ServiceEntry
 	for srv := range ch {
-		if srv.Addr.String() == p2p.IsolatedNSIP {
-			srvs = append(srvs, srv)
+		// While we query the cros_p2p service, it is possible that peers
+		// advertise unrelated services, so we have to filter out them.
+		if !strings.HasSuffix(srv.Name, nameSuffix) {
+			continue
 		}
+		if srv.Addr.String() != p2p.IsolatedNSIP {
+			continue
+		}
+		srvs = append(srvs, srv)
 	}
 	return srvs, err
 }
