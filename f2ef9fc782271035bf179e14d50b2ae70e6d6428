@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be0c59f_cd4d94df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:21:51Z",
+      "side": 1,
+      "message": "Looks nil access, IIUC.\n\nL264\u0027s sr is not new var definition, but update of named return value sr.\nIt is valid, because \"err\" is new variable there.\n\nThis is triggered if err is returned, i.e., in this function L276. At the line, \"nil\" is returned as its first return value, so \"sr\" is overwrite to nil before this defer func is called.",
+      "revId": "f2ef9fc782271035bf179e14d50b2ae70e6d6428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
