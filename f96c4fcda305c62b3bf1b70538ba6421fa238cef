@@ -69,6 +69,30 @@
       "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef57394b_0a766a9b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-03-06T01:53:13Z",
+      "side": 1,
+      "message": "I have a CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2089273",
+      "parentUuid": "4e222138_6e390750",
+      "range": {
+        "startLine": 153,
+        "startChar": 25,
+        "endLine": 153,
+        "endChar": 50
+      },
+      "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
