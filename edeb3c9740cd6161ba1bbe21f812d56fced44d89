@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb895f69_117f22ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/concepts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:08:10Z",
+      "side": 1,
+      "message": "Following go\u0027s style, could you remove must?\nhttps://golang.org/doc/faq#testing_framework",
+      "revId": "edeb3c9740cd6161ba1bbe21f812d56fced44d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
