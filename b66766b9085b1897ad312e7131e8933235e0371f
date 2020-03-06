@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21f8feb6_ea14b549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T08:09:04Z",
+      "side": 1,
+      "message": "Same here for TODO?",
+      "revId": "b66766b9085b1897ad312e7131e8933235e0371f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
