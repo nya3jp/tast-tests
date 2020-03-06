@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -71,15 +72,32 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Points for dragging to open/close the launchers.
-	// - X position: about 1/4 of the screen to point to the background of
-	//   the shelf (the center would fall into the chrome icon; there are other
-	//   buttons on the left/right edge).
+	// - X of bottom: should be the background of the shelf (not on app
+	//   icons). If there's only one icon, X position is slightly right of the icon. If there
+	//   are multiple icons, pick up the middle point between the first and the
+	//   second icon.
+	// - X of top: about 1/4 of the screen to avoid the scroll indicator at the
+	//   center of the screen.
 	// - Y of bottom: in the middle of shelf (bottom of workarea + half of the
 	//   shelf, which equals to the average of workarea height and display height)
 	// - Y of top: 10px from the top of the screen; this is just like almost top
 	//   of the screen.
-	bottom := coords.NewPoint(primaryBounds.Left+primaryBounds.Width/4, primaryBounds.Top+(primaryBounds.Height+primaryWorkArea.Height)/2)
-	top := coords.NewPoint(bottom.X, primaryBounds.Top+10)
+	appIcons, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "ash/ShelfAPpButton"})
+	if err != nil {
+		s.Fatal("Failed to find the app icons: ", err)
+	}
+	if len(appIcons) == 0 {
+		// At least there must be one icon for Chrome itself.
+		s.Fatal("No app icons are in the shelf")
+	}
+	var xPosition int
+	if len(appIcons) == 1 {
+		xPosition = appIcons[0].Location.Left + appIcons[0].Location.Width + 1
+	} else {
+		xPosition = ((appIcons[0].Location.Left + appIcons[0].Location.Width) + appIcons[1].Location.Left) / 2
+	}
+	bottom := coords.NewPoint(xPosition, primaryBounds.Top+(primaryBounds.Height+primaryWorkArea.Height)/2)
+	top := coords.NewPoint(primaryBounds.Left+primaryBounds.Width/4, primaryBounds.Top+10)
 
 	pv := perf.NewValues()
 	currentWindows := 0
