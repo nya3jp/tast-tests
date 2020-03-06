@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9441c248_176c97ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-06T18:11:56Z",
+      "side": 1,
+      "message": "I can adjust the length of the power key press here to be closer to the 1.5s boundary here and in subsequent power key presses.\n\nI have noticed failures while testing when using power key presses closer to the 1.5s boundary, and I\u0027m not sure what tolerance we want to set for this test\u0027s purposes.",
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
