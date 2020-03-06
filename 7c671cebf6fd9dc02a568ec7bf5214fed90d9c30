@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f20c2426_999e589c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-06T03:12:15Z",
+      "side": 1,
+      "message": "Instead of adding a boolean flag, how about making this function return err without wrapping when os.IsNotExist is true, and caller checks os.IsNotExist() ?",
+      "revId": "7c671cebf6fd9dc02a568ec7bf5214fed90d9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
