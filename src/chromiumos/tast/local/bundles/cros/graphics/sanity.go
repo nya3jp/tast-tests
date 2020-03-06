@@ -30,7 +30,7 @@ func init() {
 			"vsuley@chromium.org",
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		// TODO(pwang): Remove display_backlight once crbug.com/950346 support hardware dependency.
 		SoftwareDeps: []string{"no_qemu", "chrome", "display_backlight"},
 		Data:         []string{"screenshot1_reference.png", "screenshot2_reference.png"},
