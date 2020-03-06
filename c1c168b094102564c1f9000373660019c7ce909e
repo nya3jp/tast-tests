@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00a87564_a28724e9",
+        "filename": "src/chromiumos/tast/local/chrome/display/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-06T00:54:48Z",
+      "side": 1,
+      "message": "Through the change of another file, I\u0027ve decided to remove this function.",
+      "parentUuid": "8c877529_5411ceb1",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 147
+      },
+      "revId": "c1c168b094102564c1f9000373660019c7ce909e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "690dc1bb_d4afa941",
         "filename": "src/chromiumos/tast/local/coords/touch_coords_converter.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-05T19:20:09Z",
       "side": 1,
       "message": "nit: it we only need the touchScreenEventWriter\u0027size , then we should pass the size instead of  a pointer to tsew.",
+      "range": {
+        "startLine": 18,
+        "startChar": 39,
+        "endLine": 18,
+        "endChar": 73
+      },
+      "revId": "c1c168b094102564c1f9000373660019c7ce909e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e8d22ab_d3d88874",
+        "filename": "src/chromiumos/tast/local/coords/touch_coords_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-06T00:54:48Z",
+      "side": 1,
+      "message": "tsew can\u0027t create a Size because of cycle dependency -- this package already depends on input, input can\u0027t import coords.\n\nHmm, wait, but sounds like coords package might not be the best location for this struct. I moved this to input package, and change this to a method of TouchscreenEventWriter.",
+      "parentUuid": "690dc1bb_d4afa941",
       "range": {
         "startLine": 18,
         "startChar": 39,
