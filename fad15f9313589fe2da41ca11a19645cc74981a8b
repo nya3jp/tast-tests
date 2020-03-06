@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e9deb55_daa11e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-fio.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2020-03-06T20:45:35Z",
+      "side": 1,
+      "message": "Nit: running",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "fad15f9313589fe2da41ca11a19645cc74981a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d47888_9b74d790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2020-03-06T20:45:35Z",
+      "side": 1,
+      "message": "Nit: copy-paste from blogbench test?",
+      "range": {
+        "startLine": 238,
+        "startChar": 54,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "fad15f9313589fe2da41ca11a19645cc74981a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
