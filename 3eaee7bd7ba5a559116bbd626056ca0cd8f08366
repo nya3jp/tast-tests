@@ -22,6 +22,30 @@
       "revId": "3eaee7bd7ba5a559116bbd626056ca0cd8f08366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8637d548_34e894d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-06T05:18:28Z",
+      "side": 1,
+      "message": "Changed to remove only the test-related crasher files, and made each test to do it explicitly.\nI once tried to make it always clean all known files (See Patchset 6), but since each test holds the crasher binary\u0027s name, I think it\u0027s better to ask each test explicitly remove the files only when it knows those files are left.\n(in the tests that calls crash.RunCrashAndAnalyze, crash_sender consumes those files, thus no need to clean by test.)",
+      "parentUuid": "eb824b4a_6d011746",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 69
+      },
+      "revId": "3eaee7bd7ba5a559116bbd626056ca0cd8f08366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
