@@ -374,5 +374,37 @@ window.Tast = class {
     document.body.dispatchEvent(new KeyboardEvent(
         'keydown', {ctrlKey: true, shiftKey: true, key: 'E'}));
   }
+
+  /**
+   * Sets observer of the configuration process.
+   * @return {!Promise} Promise resolved/rejected after configuration finished.
+   */
+  static waitNextConfiguration() {
+    const CAMERA_CONFIGURING = state.State.CAMERA_CONFIGURING;
+    if (state.get(CAMERA_CONFIGURING)) {
+      throw new Error('Already in configuring state');
+    }
+
+    let resolve = null;
+    let reject = null;
+    let activated = false;
+    return new Promise((resolve, reject) => {
+      const pulseObserver = (value) => {
+        if (activated === value) {
+          state.removeObserver(CAMERA_CONFIGURING, pulseObserver);
+          reject(new Error(
+              `State ${CAMERA_CONFIGURING} assertion failed,` +
+              `expecting ${!activated} got ${value}`));
+        }
+        if (value) {
+          activated = true;
+        } else {
+          state.removeObserver(CAMERA_CONFIGURING, pulseObserver);
+          resolve();
+        }
+      };
+      state.addObserver(CAMERA_CONFIGURING, pulseObserver);
+    });
+  }
 };
 })();
