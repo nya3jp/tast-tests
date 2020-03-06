@@ -22,6 +22,30 @@
       "revId": "c70d744036d7835042e3a406a87e24974d6c1ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a20abe4b_1cfea638",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-06T02:36:40Z",
+      "side": 1,
+      "message": "I don\u0027t think we have specific issue for this fix, and this was made to have the bug number same as crrev.com/c/1966652.\nAs an alternative option, should we make this BUG\u003dnone?",
+      "parentUuid": "1faf3361_d14bc493",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "c70d744036d7835042e3a406a87e24974d6c1ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
