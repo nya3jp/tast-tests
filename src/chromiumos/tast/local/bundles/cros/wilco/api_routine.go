@@ -37,8 +37,11 @@ func init() {
 func APIRoutine(ctx context.Context, s *testing.State) {
 	// executeRoutine sends the request in rrRequest, executing the routine, and
 	// checks the result against shouldFail.
+	// Routines would be cancelled and checked if status is expected while
+	// shouldCancel is specified.
 	executeRoutine := func(ctx context.Context,
-		rrRequest dtcpb.RunRoutineRequest, shouldFail bool) error {
+		rrRequest dtcpb.RunRoutineRequest,
+		expectedStatus dtcpb.DiagnosticRoutineStatus) error {
 
 		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
 		defer cancel()
@@ -52,6 +55,13 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		uuid := rrResponse.Uuid
 		response := dtcpb.GetRoutineUpdateResponse{}
 
+		if expectedStatus == dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
+			err = routines.CancelRoutine(ctx, uuid)
+			if err != nil {
+				return errors.Wrap(err, "routine not cancelled")
+			}
+		}
+
 		err = routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second)
 		if err != nil {
 			return errors.Wrap(err, "routine not finished")
@@ -63,14 +73,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Routine status message: ", response.StatusMessage)
-		if shouldFail {
-			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
-				return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_FAILED", response.Status)
-			}
-		} else {
-			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED {
-				return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_PASSED", response.Status)
-			}
+		if response.Status != expectedStatus {
+			return errors.Errorf("invalid status; got %s, want %s", response.Status, expectedStatus)
 		}
 
 		err = routines.RemoveRoutine(ctx, uuid)
@@ -82,9 +86,9 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name       string
-		request    dtcpb.RunRoutineRequest
-		shouldFail bool
+		name           string
+		request        dtcpb.RunRoutineRequest
+		expectedStatus dtcpb.DiagnosticRoutineStatus
 	}{
 		{
 			name: "urandom",
@@ -96,7 +100,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "battery",
@@ -109,7 +113,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "battery_fail",
@@ -124,7 +128,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// HighMah is 100 (all devices should have a battery larger than
 			// this).
-			shouldFail: true,
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
 		{
 			name: "battery_sysfs",
@@ -137,7 +141,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "smartctl",
@@ -147,7 +151,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					SmartctlCheckParams: &dtcpb.SmartctlCheckRoutineParameters{},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "nvme_wear_level",
@@ -159,7 +163,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "nvme_wear_level_failed",
@@ -171,14 +175,34 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: true,
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
+		{
+			name: "nvme_short_self_test",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_SHORT_SELF_TEST,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeShortSelfTestParams{
+					NvmeShortSelfTestParams: &dtcpb.NvmeShortSelfTestRoutineParameters{},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
+		{
+			name: "nvme_long_self_test",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeLongSelfTestParams{
+					NvmeLongSelfTestParams: &dtcpb.NvmeLongSelfTestRoutineParameters{},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
 
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := executeRoutine(ctx, param.request, param.shouldFail); err != nil {
+			if err := executeRoutine(ctx, param.request, param.expectedStatus); err != nil {
 				s.Error("Routine test failed: ", err)
 			}
 		})
