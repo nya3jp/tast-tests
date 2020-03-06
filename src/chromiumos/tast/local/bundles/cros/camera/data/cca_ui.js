@@ -375,4 +375,81 @@ window.Tast = class {
         'keydown', {ctrlKey: true, shiftKey: true, key: 'E'}));
   }
 };
+
+/**
+ * Helps to observe the camera configuration process i.e. state change from
+ * camera not configuring to configuring and configuring to not configuring.
+ */
+window.Tast.ConfigureObserver = (() => {
+  /**
+   * Increasing count for observer id.
+   * @type {number}
+   */
+  let idCount = 0;
+
+  /**
+   * Maps from observer id to promise resolved/rejected after configuration.
+   * @type {!Map<number, !Promise}>}
+   */
+  let promiseMap = new Map();
+
+  return class {
+    /**
+     * Sets observer of the configuration process before it starts.
+     * @return {number} The observer id to be passed to tast test. After
+     *     configuration triggering, tast test can use this id to looked up the
+     *     observation result.
+     */
+    static setObserver() {
+      const CONFIGURING = state.State.CAMERA_CONFIGURING;
+      if (state.get(CONFIGURING)) {
+        throw new Error('Already in configuring state');
+      }
+
+      let resolve = null;
+      let reject = null;
+      let promise = new Promise((...args) => ([resolve, reject] = args));
+      let activated = false;
+      const pulseObserver = (value) => {
+        if (activated === value) {
+          reject(new Error(
+              `State ${CONFIGURING} assertion failed,` +
+              `expecting ${!activated} got ${value}`));
+        }
+        if (value) {
+          activated = true;
+        } else {
+          resolve();
+        }
+      };
+      state.addObserver(CONFIGURING, pulseObserver);
+      const wrapCleanup = (r) => (...args) => {
+        state.removeObserver(CONFIGURING, pulseObserver);
+        r(...args);
+      };
+      resolve = wrapCleanup(resolve);
+      reject = wrapCleanup(reject);
+      const id = ++idCount;
+      promiseMap.set(id, promise);
+      return id;
+    }
+
+    /**
+     * Waits for observer reporting finish of configuration process.
+     * @param {number} observerId The id of observer set before configuration
+     *     process triggers.
+     * @return {!Promise} Promise resolved when configuration finishes.
+     */
+    static waitUntilFinish(observerId) {
+      const promise = promiseMap.get(observerId);
+      if (promise === undefined) {
+        throw new Error(
+            `Failed to wait for unknown observer of id ${observerId}`);
+      }
+      promiseMap.delete(observerId);
+      return promise;
+    }
+  };
+})();
+
 })();
