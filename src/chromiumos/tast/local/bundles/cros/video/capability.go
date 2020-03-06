@@ -26,27 +26,39 @@ func init() {
 	})
 }
 
-// avtestLabelToCapability is map from label detected by avtest_label_detect to capability computed by autocaps package.
+// capability defines a single entry in the avtestLabelToCapability map.
+type capability struct {
+	name     string // The name of the capability
+	optional bool   // Whether the capability is optional
+}
+
+// avtestLabelToCapability is a map from labels detected by avtest_label_detect to capabilities
+// computed by the autocaps package. Capabilities marked as optional can be ommited, even if they
+// are detected by avtest_label_detect. This is e.g. necessary for devices that support 4K decoding,
+// but have this capability disabled because they fail to meet performance requirements.
 // See /src/third_party/chromiumos-overlay/chromeos-base/autotest-capability-default/files/managed-capabilities.yaml
 // for the meaning of each label.
-var avtestLabelToCapability = map[string]string{
-	"hw_video_acc_h264":        caps.HWDecodeH264,
-	"hw_video_acc_vp8":         caps.HWDecodeVP8,
-	"hw_video_acc_vp9":         caps.HWDecodeVP9,
-	"hw_video_acc_vp9_2":       caps.HWDecodeVP9_2,
-	"hw_jpeg_acc_dec":          caps.HWDecodeJPEG,
-	"hw_video_acc_enc_h264":    caps.HWEncodeH264,
-	"hw_video_acc_enc_vp8":     caps.HWEncodeVP8,
-	"hw_video_acc_enc_vp9":     caps.HWEncodeVP9,
-	"hw_video_acc_enc_h264_4k": caps.HWEncodeH264_4K,
-	"hw_video_acc_enc_vp8_4k":  caps.HWEncodeVP8_4K,
-	"hw_video_acc_enc_vp9_4k":  caps.HWEncodeVP9_4K,
-	"hw_jpeg_acc_enc":          caps.HWEncodeJPEG,
-	"builtin_usb_camera":       caps.BuiltinUSBCamera,
-	"builtin_mipi_camera":      caps.BuiltinMIPICamera,
-	"vivid_camera":             caps.VividCamera,
-	"builtin_camera":           caps.BuiltinCamera,
-	"builtin_or_vivid_camera":  caps.BuiltinOrVividCamera,
+var avtestLabelToCapability = map[string]capability{
+	"hw_video_acc_h264":        capability{caps.HWDecodeH264, false},
+	"hw_video_acc_vp8":         capability{caps.HWDecodeVP8, false},
+	"hw_video_acc_vp9":         capability{caps.HWDecodeVP9, false},
+	"hw_video_acc_vp9_2":       capability{caps.HWDecodeVP9_2, false},
+	"hw_video_acc_h264_4k":     capability{caps.HWDecodeH264_4K, true},
+	"hw_video_acc_vp8_4k":      capability{caps.HWDecodeVP8_4K, true},
+	"hw_video_acc_vp9_4k":      capability{caps.HWDecodeVP9_4K, true},
+	"hw_jpeg_acc_dec":          capability{caps.HWDecodeJPEG, false},
+	"hw_video_acc_enc_h264":    capability{caps.HWEncodeH264, false},
+	"hw_video_acc_enc_vp8":     capability{caps.HWEncodeVP8, false},
+	"hw_video_acc_enc_vp9":     capability{caps.HWEncodeVP9, false},
+	"hw_video_acc_enc_h264_4k": capability{caps.HWEncodeH264_4K, false},
+	"hw_video_acc_enc_vp8_4k":  capability{caps.HWEncodeVP8_4K, false},
+	"hw_video_acc_enc_vp9_4k":  capability{caps.HWEncodeVP9_4K, false},
+	"hw_jpeg_acc_enc":          capability{caps.HWEncodeJPEG, false},
+	"builtin_usb_camera":       capability{caps.BuiltinUSBCamera, false},
+	"builtin_mipi_camera":      capability{caps.BuiltinMIPICamera, false},
+	"vivid_camera":             capability{caps.VividCamera, false},
+	"builtin_camera":           capability{caps.BuiltinCamera, false},
+	"builtin_or_vivid_camera":  capability{caps.BuiltinOrVividCamera, false},
 }
 
 // Capability compares the results between autocaps package and avtest_label_detect.
@@ -54,9 +66,9 @@ var avtestLabelToCapability = map[string]string{
 // failure, respectively. For the capability marked "disable", we don't check
 // them, because the capability is not disabled in driver level, but disabled in
 // Chrome level by default, which an user can enable it by chrome://flags.
-//  avldetect\autocaps | Yes  | No   | Disable |
-//        detect       | OK   | Fail | OK      |
-//        not detect   | Fail | OK   | OK      |
+//  avldetect\autocaps | Yes  | No                   | Disable |
+//        detect       | OK   | Fail unless optional | OK      |
+//        not detect   | Fail | OK                   | OK      |
 func Capability(ctx context.Context, s *testing.State) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -84,15 +96,15 @@ func Capability(ctx context.Context, s *testing.State) {
 	for _, m := range detectedLabelRegexp.FindAllStringSubmatch(string(avOut), -1) {
 		label := strings.TrimSpace(m[1])
 		if c, found := avtestLabelToCapability[label]; found {
-			detectedCaps[stripPrefix(c)] = struct{}{}
+			detectedCaps[stripPrefix(c.name)] = struct{}{}
 		}
 	}
 	testing.ContextLog(ctx, "avtest_label_detect result: ", detectedCaps)
 
 	for _, c := range avtestLabelToCapability {
-		c = stripPrefix(c)
-		_, wasDetected := detectedCaps[c]
-		state, ok := staticCaps[c]
+		c.name = stripPrefix(c.name)
+		_, wasDetected := detectedCaps[c.name]
+		state, ok := staticCaps[c.name]
 		if !ok {
 			s.Errorf("Static capabilities don't include %q", c)
 			continue
@@ -100,8 +112,8 @@ func Capability(ctx context.Context, s *testing.State) {
 
 		switch state {
 		case autocaps.Yes:
-			if !wasDetected {
-				s.Errorf("%q statically set but not detected", c)
+			if !wasDetected && !c.optional {
+				s.Errorf("%q statically set but not detected and not optional", c)
 			}
 		case autocaps.No:
 			if wasDetected {
