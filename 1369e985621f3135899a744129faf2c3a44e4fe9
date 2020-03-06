@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5ff2b98_38a1358e",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:15:10Z",
+      "side": 1,
+      "message": "nit/style:\n\nif !resp.GetSuccess() {\n  ...\n}",
+      "revId": "1369e985621f3135899a744129faf2c3a44e4fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba824c3_00c6bba3",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-06T16:15:10Z",
+      "side": 1,
+      "message": "Looks like conflicting with L45\u0027s definition.\n\nAlso, changing the meaning of the variable in the middle sounds like not a good approach.\nHow about introduce two variables/methods, one for actual disk size, and the other for targeted disk size?",
+      "range": {
+        "startLine": 113,
+        "startChar": 47,
+        "endLine": 113,
+        "endChar": 112
+      },
+      "revId": "1369e985621f3135899a744129faf2c3a44e4fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
