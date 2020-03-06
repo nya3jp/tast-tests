@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c60e603_b770ae04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-03-06T19:01:39Z",
+      "side": 1,
+      "message": "nit: IMHO, the CL description is useful.",
+      "revId": "31cbf5fef0cb5222578368da1ff81e5b0e8fc5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d295a10a_21ed77a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_smoke.go",
         "patchSetId": 8
