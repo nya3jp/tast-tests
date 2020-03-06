@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e22da102_c93b5995",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-06T09:28:31Z",
+      "side": 1,
+      "message": "OK, thanks for confirming.\n\nThe current code LGTM, but let us clarify some points in comments:\n\n- It is natural assumption for local tests that the device is not enrolled and no device policy is set.\n- It is possible that device is already enrolled, but to unenroll the device we need a reboot, so we can do nothing here.\n- It is possible that device policies are already set, so we attempt to clear them here.\n- Device policies might be cached by daemons even if we delete policy files. Ideally we should reboot the device, but it is not possible. We do nothing for now because Chrome and session_manager should reload the policy when they\u0027re restarted when a Chrome related test runs.",
+      "parentUuid": "269a6759_c52dc980",
+      "range": {
+        "startLine": 327,
+        "startChar": 5,
+        "endLine": 327,
+        "endChar": 18
+      },
+      "revId": "6f7fcdcd697b2658785d639fbc70f091a860c342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a2babc0_f4ce4546",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 7
