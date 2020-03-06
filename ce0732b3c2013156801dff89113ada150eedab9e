@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8874eab7_ac3dd437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-06T07:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c3235d_f8b69b67",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d0e3a7_9448a4c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "690450dc_937ca515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-06T07:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d0e3a7_9448a4c4",
+      "range": {
+        "startLine": 128,
+        "startChar": 15,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "53c76586_43bc17b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-06T07:17:02Z",
+      "side": 1,
+      "message": "Thank you for pointing it out! Done.",
+      "parentUuid": "0626b17c_b7e1bf87",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d535f622_31474144",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ccefc4fe_40403571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-06T07:17:02Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "d535f622_31474144",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 34
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ed7571f_3b1f59d8",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa84bc0_7558febb",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-06T07:17:02Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0ed7571f_3b1f59d8",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "ce0732b3c2013156801dff89113ada150eedab9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
