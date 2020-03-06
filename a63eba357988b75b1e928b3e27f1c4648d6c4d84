@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c86c67ad_b449827e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-06T04:03:23Z",
+      "side": 1,
+      "message": "minor nit: +s",
+      "range": {
+        "startLine": 340,
+        "startChar": 21,
+        "endLine": 340,
+        "endChar": 31
+      },
+      "revId": "a63eba357988b75b1e928b3e27f1c4648d6c4d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261c902c_e0dfc6b6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-06T04:03:23Z",
+      "side": 1,
+      "message": "Should this be false instead? DescendentExists() returns false in the error cases, so it seems like it would be more consistent to do so here as well. The descendant hasn\u0027t been found either, so true is a bit confusing.",
+      "range": {
+        "startLine": 367,
+        "startChar": 9,
+        "endLine": 367,
+        "endChar": 13
+      },
+      "revId": "a63eba357988b75b1e928b3e27f1c4648d6c4d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432ae494_d2913788",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-06T04:03:23Z",
+      "side": 1,
+      "message": "\"exist\" to match arg name",
+      "range": {
+        "startLine": 374,
+        "startChar": 7,
+        "endLine": 374,
+        "endChar": 13
+      },
+      "revId": "a63eba357988b75b1e928b3e27f1c4648d6c4d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
