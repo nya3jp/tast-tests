@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,6 +27,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "metrics_consent", "pstore", "reboot", "watchdog"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
+		// TODO(https://crbug.com/1045821): Remove this once samus issue is resolved.
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("samus")),
 	})
 }
 
