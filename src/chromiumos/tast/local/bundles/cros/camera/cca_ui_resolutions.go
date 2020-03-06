@@ -270,11 +270,17 @@ func switchResolution(ctx context.Context, app *cca.App, rt resolutionType, faci
 		optionUI = cca.VideoResolutionOption
 	}
 
-	if err := app.ClickWithIndex(ctx, optionUI, index); err != nil {
-		return errors.Wrap(err, "failed to click on resolution item")
-	}
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		return errors.Wrap(err, "preview is inactive after switching resolution")
+	if toggled, err := app.IsToggledWithIndex(ctx, optionUI, index); err != nil {
+		return err
+	} else if !toggled {
+		if err := app.WaitForConfiguration(ctx, func() error {
+			if err := app.ClickWithIndex(ctx, optionUI, index); err != nil {
+				return errors.Wrap(err, "failed to click on resolution item")
+			}
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "camera configuration failed after switching resolution")
+		}
 	}
 	return nil
 }
