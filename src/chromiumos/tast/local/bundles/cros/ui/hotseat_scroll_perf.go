@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
@@ -224,6 +225,8 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	defer ui.WaitForLocationChangeCompleted(ctx, tconn)
 
 	// At login, we should have just Chrome in the Shelf.
 	if shelfItems, err := ash.ShelfItems(ctx, tconn); err != nil {

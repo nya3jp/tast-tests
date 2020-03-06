@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const msgNoEvents = "no events occured"
+
 // Event represents a chrome.automation AutomationEvent.
 // See https://chromium.googlesource.com/chromium/src/+/refs/heads/master/extensions/common/api/automation.idl#492
 type Event struct {
@@ -52,20 +54,30 @@ func NewWatcher(ctx context.Context, n *Node, eventType EventType) (*EventWatche
 	return ew, nil
 }
 
+// events returns the list of events in the watcher, and clears it.
+func (ew *EventWatcher) events(ctx context.Context) ([]Event, error) {
+	var events []Event
+	if err := ew.object.Call(ctx, &events, `function() {
+		let events = this.events;
+		this.events = [];
+		return events;
+	}`); err != nil {
+		return nil, err
+	}
+	return events, nil
+}
+
 // WaitForEvent waits for at least one event to occur on the event watcher and
 // returns the list of the events.
 func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration) ([]Event, error) {
 	var events []Event
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := ew.object.Call(ctx, &events, `function() {
-			let events = this.events;
-			this.events = [];
-			return events;
-		}`); err != nil {
-			return testing.PollBreak(err)
+		var errInPoll error
+		if events, errInPoll = ew.events(ctx); errInPoll != nil {
+			return testing.PollBreak(errInPoll)
 		}
 		if len(events) == 0 {
-			return errors.New("event hasn't occur yet")
+			return errors.New(msgNoEvents)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
@@ -74,10 +86,58 @@ func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration)
 	return events, nil
 }
 
+// WaitForNoEvents waits the duration and returns nil if no events have
+// occurred in the wait.
+func (ew *EventWatcher) WaitForNoEvents(ctx context.Context, duration time.Duration) error {
+	// First, clears the list of events beforehand.
+	if _, err := ew.events(ctx); err != nil {
+		return errors.Wrap(err, "failed to clear the event list")
+	}
+	// wait, and check the events in the wait.
+	if err := testing.Sleep(ctx, duration); err != nil {
+		return errors.Wrap(err, "failed to wait")
+	}
+	events, err := ew.events(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to access to the event list")
+	}
+	if len(events) > 0 {
+		return errors.Errorf("there are %d events", len(events))
+	}
+	return nil
+}
+
 // Release frees the resources and the reference to Javascript for this watcher.
 func (ew *EventWatcher) Release(ctx context.Context) error {
 	if err := ew.object.Call(ctx, nil, `function () { this.release(); }`); err != nil {
 		testing.ContextLog(ctx, "Failed to remove the event listener: ", err)
 	}
 	return ew.object.Release(ctx)
+}
+
+// WaitForLocationChangeCompleted waits for any location-change events on the
+// entire desktop to be propagated to the automation API. Because automation API
+// is asynchronous and eventually consistent with the desktop bounds, sometimes
+// the automation API may report the intermediate bounds for an already
+// completed animation. This function waits for such changes to be propagated
+// fully to the automation API.
+func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn) error {
+	const (
+		entireTimeout = 10 * time.Second
+		timeout       = 2 * time.Second
+	)
+
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to access root")
+	}
+	defer root.Release(ctx)
+	ew, err := NewWatcher(ctx, root, EventTypeLocationChanged)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a root watcher")
+	}
+	defer ew.Release(ctx)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		return ew.WaitForNoEvents(ctx, timeout)
+	}, &testing.PollOptions{Timeout: entireTimeout})
 }

@@ -58,6 +58,8 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check physical display existence: ", err)
 	}
 
+	defer chromeui.WaitForLocationChangeCompleted(ctx, tconn)
+
 	inTabletMode := s.Param().(bool)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, inTabletMode)
