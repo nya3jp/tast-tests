@@ -7,8 +7,10 @@
 package minicontainer
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -18,9 +20,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/cpuset"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
-	"chromiumos/tast/logs"
 	"chromiumos/tast/testing"
 )
 
@@ -116,26 +118,35 @@ func testCoreServices(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testAndroidLogs(ctx context.Context, s *testing.State, cursor string) {
+func testAndroidLogs(ctx context.Context, s *testing.State, sr *syslog.Reader) {
 	s.Log("Running testAndroidLogs")
 
-	// Obtain arc-kmsg-logger logs for the latest Mini container. cursor
-	// represents at the beginning of the latest Mini container boot timing.
-	out, err := testexec.CommandContext(ctx, "journalctl", "-t", "arc-kmsg-logger", "--after-cursor="+cursor).Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Error("Failed to take arc-kmsg-logger log: ", err)
-		return
+	// Obtain arc-kmsg-logger logs for the latest Mini container.
+	var logs bytes.Buffer
+	for {
+		e, err := sr.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			s.Error("Failed to read syslog: ", err)
+			return
+		}
+		if e.Program != "arc-kmsg-logger" {
+			continue
+		}
+		logs.WriteString(e.Line)
 	}
 
 	// The log size is about 8KB after starting the mini container.
 	// If the size is less than 2KB, something must be broken.
 	const minLogSize = 2048
-	if len(out) < minLogSize {
+	if size := logs.Len(); size < minLogSize {
 		// Dump arc-kmsg-logger log to output directory for debugging on failure.
-		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "arc-kmsg-logger.log"), out, 0644); err != nil {
+		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "arc-kmsg-logger.log"), logs.Bytes(), 0644); err != nil {
 			s.Error("Failed to write arc-kmsg-logger.log: ", err)
 		}
-		s.Errorf("log size is too small: got %d; want >= %d", len(out), minLogSize)
+		s.Errorf("log size is too small: got %d; want >= %d", size, minLogSize)
 	}
 }
 
@@ -242,32 +253,38 @@ func testCPUSet(ctx context.Context, s *testing.State) {
 	}
 }
 
-// setUp restarts "ui" job to make sure login screen, where ARC Mini container
-// runs. During "ui" job stops, take the journald's cursor, which is the marker
-// of the latest Mini container logging.
-// It returns the cursor, or error when failed.
-func setUp(ctx context.Context) (string, error) {
+// setUp restarts the ui job to make sure that the login screen is shown and
+// ARC Mini container is started. While the ui job is stopped, /var/log/messages
+// is opened to remember the log position, which is returned as syslog.Reader.
+// It can be later used to read syslog after restarting the ui job.
+func setUp(ctx context.Context) (_ *syslog.Reader, retErr error) {
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		return "", err
+		return nil, err
 	}
-	cursor, err := logs.GetJournaldCursor(ctx)
+	sr, err := syslog.NewReader()
 	if err != nil {
 		// Note: leave "ui" job stopped. A following test should handle
 		// such a situation properly, if necessary.
-		return "", err
+		return nil, err
 	}
+	defer func() {
+		if retErr != nil {
+			sr.Close()
+		}
+	}()
 	if err := upstart.StartJob(ctx, "ui"); err != nil {
-		return "", err
+		return nil, err
 	}
-	return cursor, nil
+	return sr, nil
 }
 
 // RunTest exercises conditions the ARC mini container needs to satisfy.
 func RunTest(ctx context.Context, s *testing.State) {
-	cursor, err := setUp(ctx)
+	sr, err := setUp(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up test: ", err)
 	}
+	defer sr.Close()
 
 	testZygote(ctx, s)
 	// Note: testZygote will wait for the mini container boot, or fail
@@ -277,7 +294,7 @@ func RunTest(ctx context.Context, s *testing.State) {
 	// In case of boot failure, the following subtests won't run
 	// intentionally.
 	testCoreServices(ctx, s)
-	testAndroidLogs(ctx, s, cursor)
+	testAndroidLogs(ctx, s, sr)
 	testSELinuxLabels(ctx, s)
 	testCgroupDirectory(ctx, s)
 	testBootOATSymlinks(ctx, s)
