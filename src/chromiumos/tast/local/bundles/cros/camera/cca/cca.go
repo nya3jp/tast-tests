@@ -905,18 +905,29 @@ func (a *App) Click(ctx context.Context, ui UIComponent) error {
 
 // ClickWithIndex clicks nth ui.
 func (a *App) ClickWithIndex(ctx context.Context, ui UIComponent, index int) error {
-	wrapError := func(err error) error {
-		return errors.Wrapf(err, "failed to click on %v(th) %v", index, ui.Name)
-	}
 	selector, err := a.resolveUISelector(ctx, ui)
 	if err != nil {
-		return wrapError(err)
+		return err
 	}
 	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].click()", selector, index)
 	if err := a.conn.Eval(ctx, code, nil); err != nil {
-		return wrapError(err)
+		return errors.Wrapf(err, "failed to click on %v(th) %v", index, ui.Name)
 	}
 	return nil
+}
+
+// IsCheckedWithIndex gets checked state of nth ui.
+func (a *App) IsCheckedWithIndex(ctx context.Context, ui UIComponent, index int) (bool, error) {
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return false, err
+	}
+	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].checked", selector, index)
+	var checked bool
+	if err := a.conn.Eval(ctx, code, &checked); err != nil {
+		return false, errors.Wrapf(err, "failed to get checked state on %v(th) %v", index, ui.Name)
+	}
+	return checked, nil
 }
 
 // ClickWithSelector clicks an element with given selector.
@@ -992,4 +1003,15 @@ func (a *App) RunThroughCameras(ctx context.Context, f func(Facing) error) error
 func (a *App) CheckMojoConnection(ctx context.Context) error {
 	code := fmt.Sprintf("Tast.checkMojoConnection(%v)", upstart.JobExists(ctx, "cros-camera"))
 	return a.conn.EvalPromise(ctx, code, nil)
+}
+
+// TriggerConfiguration triggers configuration by calling trigger() and waits for camera configuration finishing.
+func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) error {
+	if err := a.conn.Exec(ctx, "CCAConfigurationReady = Tast.waitNextConfiguration()"); err != nil {
+		return err
+	}
+	if err := trigger(); err != nil {
+		return err
+	}
+	return a.conn.EvalPromise(ctx, "CCAConfigurationReady", nil)
 }
