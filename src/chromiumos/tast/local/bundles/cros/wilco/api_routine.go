@@ -234,6 +234,26 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
+		{
+			name: "nvme_short_self_test",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_SHORT_SELF_TEST,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeShortSelfTestParams{
+					NvmeShortSelfTestParams: &dtcpb.NvmeShortSelfTestRoutineParameters{},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
+		{
+			name: "nvme_long_self_test",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
+				Parameters: &dtcpb.RunRoutineRequest_NvmeLongSelfTestParams{
+					NvmeLongSelfTestParams: &dtcpb.NvmeLongSelfTestRoutineParameters{},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
