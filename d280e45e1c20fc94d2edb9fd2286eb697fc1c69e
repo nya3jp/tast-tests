@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "6d7f1eb5_edcc384f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-06T21:22:15Z",
+      "side": 1,
+      "message": "Done...partially; I\u0027m passing an http.Handler so that callers don\u0027t need\nto do the `defer server.Close()` part. Let me know if you feel strongly\nabout the change as you described, can do in that case.",
+      "parentUuid": "421a89b0_c578d6ea",
+      "range": {
+        "startLine": 228,
+        "startChar": 35,
+        "endLine": 228,
+        "endChar": 51
+      },
+      "revId": "d280e45e1c20fc94d2edb9fd2286eb697fc1c69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaac8cd5_9f77f9eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/seek.go",
         "patchSetId": 1
