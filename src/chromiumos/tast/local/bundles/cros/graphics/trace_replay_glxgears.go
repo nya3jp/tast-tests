@@ -19,7 +19,6 @@ func init() {
 		Desc:         "Replay glxgears trace file in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com", "tutankhamen@google.com", "ddmail@google.com", "ihf@google.com"},
 		Attr:         []string{"group:graphics", "graphics_trace", "graphics_perbuild"},
-		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedGPUEnabledBuster(),
 		Timeout:      15 * time.Minute,
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
