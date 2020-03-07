@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6196ce2_b79ba75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-07T00:27:41Z",
+      "side": 1,
+      "message": "instead of defining must in multiple functions, want to define it at the top of the file as it\u0027s own function?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "1831f940720d2f09d9a989330751fb5ec821f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "334a4a41_c3b24e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-07T00:27:41Z",
+      "side": 1,
+      "message": "Just noticed this, it looks like you are returning the reverse of what you want:\nSDK \u003e\u003d 24 -\u003e is an N app\nSDK \u003c  24 -\u003e is a Pre-N app\n\nYou are returning the opposite.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 2
+      },
+      "revId": "1831f940720d2f09d9a989330751fb5ec821f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ba4b40_306d9905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-07T00:27:41Z",
+      "side": 1,
+      "message": "Some of these should be s.Fatal when the message exists. Also, I don\u0027t think it is necessary to log when they don\u0027t exist.",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 2
+      },
+      "revId": "1831f940720d2f09d9a989330751fb5ec821f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7c7a35_0cd6b20c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-07T00:27:41Z",
+      "side": 1,
+      "message": "Also, you should look into using testing.Poll to query all of these at once instead of one after another.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 2
+      },
+      "revId": "1831f940720d2f09d9a989330751fb5ec821f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
