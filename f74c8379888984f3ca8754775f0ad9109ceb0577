@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcfd66db_db1a7cea",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-07T01:09:42Z",
+      "side": 1,
+      "message": "nit: I believe that this works only in the tablet mode... Please note that as a comment if so. That would be helpful for future developers when they come across this function.",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 119
+      },
+      "revId": "f74c8379888984f3ca8754775f0ad9109ceb0577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
