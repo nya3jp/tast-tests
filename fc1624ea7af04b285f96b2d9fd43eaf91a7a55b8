@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d827260e_ac93bfa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-03-07T00:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab6aa92_0921b80a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb0f7051_022d5064",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-05T18:58:37Z",
       "side": 1,
       "message": "could you add a comment that says what the output looks like? it will make the code easier to follow.\ne.g:\n// Expected output when backlight is present:\n// XXXX\n// YYYY\n// ZZZZ\n\nQ (don\u0027t know the answer, couldn\u0027t run \"telem\" on my DUT): would it be possible to use a regexp to parse the output?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 104
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8582bf30_54a245be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-03-07T00:12:52Z",
+      "side": 1,
+      "message": "I added the comment describing the output. We could probably parse with a regexp, but I don\u0027t know how much that buys us - since we don\u0027t know the expected number of lines beforehand, we\u0027d need one regex for the header keys and then we\u0027d need to loop through each of the other lines of output and hit them with a second regex. Without the regex, we get a more descriptive message saying exactly which metric failed, but there\u0027s definitely more code involved. Any preferences?",
+      "parentUuid": "eb0f7051_022d5064",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "31149292_2e954b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-03-07T00:12:52Z",
+      "side": 1,
+      "message": "It\u0027s going to be right around 100 bytes if there are two backlights on the device, then +-~30 bytes per backlight added or subtracted. We do have several existing tast tests for cros_healthd that log to a file like this, so I stayed consistent with them.",
+      "parentUuid": "aa397b8a_0013fc13",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbf94f88_80e9c1f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2020-03-05T18:58:37Z",
       "side": 1,
       "message": "should this be fatal?\nif this fails, the probably the \"brightness\" test will fail as well.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c0ff69_a25ce1ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-03-07T00:12:52Z",
+      "side": 1,
+      "message": "Are you thinking this would only fail when the backlight driver is acting up, and in that case the value reported for brightness would also be wrong? I guess my thought is that in that case we don\u0027t lose much by letting the test continue to run, and it would at least provide reassurance that our assumption about the driver was correct.",
+      "parentUuid": "bbf94f88_80e9c1f6",
       "range": {
         "startLine": 95,
         "startChar": 5,
