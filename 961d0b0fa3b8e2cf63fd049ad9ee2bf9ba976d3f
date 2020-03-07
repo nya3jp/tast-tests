@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e750af89_8b3246e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c15da3_c7489f9a",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c5e77d_4151e0a8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3eb71e4d_0bc4b2e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c5e77d_4151e0a8",
+      "range": {
+        "startLine": 42,
+        "startChar": 14,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3092295_4bda4907",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-06T21:44:12Z",
       "side": 1,
       "message": "You also need to check that this is a drallion360 device and I don\u0027t think we want to error out if it not, just return. \n\nhidehiko@ might have some suggestions on how that should be done.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa803bf3_2fd6bf83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "My reasoning was that checking for drallion here in addition to the \"tablet_mode\" software dependency would be enough to limit this test to only drallion360 devices.\n\nIf these assumptions are wrong please let me know!",
+      "parentUuid": "b3092295_4bda4907",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "94b38821_04ef58cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "081f9972_7e97ea0b",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eeb051e_2ee2eb70",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b54ab015_68ea4af4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Cool tip! didn\u0027t know about that function.",
+      "parentUuid": "3eeb051e_2ee2eb70",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e13ebeee_ad68f389",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64796321_730d3bfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13ebeee_ad68f389",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -198,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "f0ee69fa_63f3d6ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6ce28f_089e28d1",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1803d849_d1cfb22b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -209,6 +377,30 @@
       "writtenOn": "2020-03-06T21:44:12Z",
       "side": 1,
       "message": "We also need a check to make sure that pressing the power button for \u003c1.5 seconds does trigger the power menu in laptop mode.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ee1621_fa010078",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Would you prefer me to add this check in this test or a separate one specifically for testing laptop mode power menu behavior?",
+      "parentUuid": "1803d849_d1cfb22b",
       "range": {
         "startLine": 106,
         "startChar": 2,
@@ -244,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "dc4d7c4a_d766ade3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6958027_0d523e4a",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58a32402_e69a5756",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -264,6 +480,30 @@
       "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6704dffa_055cbb00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-07T00:16:26Z",
+      "side": 1,
+      "message": "Done, thanks for the feedback!",
+      "parentUuid": "58a32402_e69a5756",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 54
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
