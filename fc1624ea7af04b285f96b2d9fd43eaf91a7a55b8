@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "6bd030da_5a1bac65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-07T01:47:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "31149292_2e954b1a",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "fc1624ea7af04b285f96b2d9fd43eaf91a7a55b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbf94f88_80e9c1f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_backlight_info.go",
         "patchSetId": 3
