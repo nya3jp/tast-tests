@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b56d412a_683f177f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-03-08T22:47:18Z",
+      "side": 1,
+      "message": "Why? I guess because we only forward ipv4 localhost traffic?",
+      "revId": "64d5b91f1e7cba7733d5484cdcd15e5d238cac75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
