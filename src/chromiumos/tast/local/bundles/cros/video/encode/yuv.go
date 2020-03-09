@@ -15,6 +15,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -40,7 +41,7 @@ var md5OfYUV = map[string]string{
 // The input WebM files are vp9 codec. They are generated from raw YUV data by libvpx like "vpxenc foo.yuv -o foo.webm --codec=vp9 -w <width> -h <height> --lossless=1"
 // Please use "--lossless=1" option. Lossless compression is required to ensure we are testing streams at the same quality as original raw streams,
 // to test encoder capabilities (performance, bitrate convergence, etc.) correctly and with sufficient complexity/PSNR.
-func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size videotype.Size) (string, error) {
+func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size coords.Size) (string, error) {
 	const webMSuffix = ".vp9.webm"
 	if !strings.HasSuffix(webMFile, webMSuffix) {
 		return "", errors.Errorf("source video %v must be VP9 WebM", webMFile)
@@ -121,9 +122,9 @@ func publicTempFile(prefix string) (*os.File, error) {
 }
 
 // convertI420ToNV12 converts i420 YUV to NV12 YUV.
-func convertI420ToNV12(w io.Writer, r io.Reader, size videotype.Size) error {
-	yLen := size.W * size.H
-	uvLen := size.W * size.H / 2
+func convertI420ToNV12(w io.Writer, r io.Reader, size coords.Size) error {
+	yLen := size.Width * size.Height
+	uvLen := size.Width * size.Height / 2
 	uvBuf := make([]byte, uvLen)
 	for {
 		// Write Y Plane as-is.

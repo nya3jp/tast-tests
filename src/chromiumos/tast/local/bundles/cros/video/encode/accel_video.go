@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/c2e2etest"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
@@ -47,7 +48,7 @@ type StreamParams struct {
 	// Name is the name of input raw data file.
 	Name string
 	// Size is the width and height of YUV image in the input raw data.
-	Size videotype.Size
+	Size coords.Size
 	// Bitrate is the requested bitrate in bits per second. VideoEncodeAccelerator is forced to output
 	// encoded video in expected range around the bitrate.
 	Bitrate int
@@ -375,7 +376,7 @@ func CreateStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 		params.SubseqFrameRate = defaultFrameRate
 	}
 	streamDataArgs := fmt.Sprintf("--test_stream_data=%s:%d:%d:%d:%s:%d:%d:%d:%d:%d",
-		dataPath, params.Size.W, params.Size.H, int(profile), outFile,
+		dataPath, params.Size.Width, params.Size.Height, int(profile), outFile,
 		params.Bitrate, params.FrameRate, params.SubseqBitrate,
 		params.SubseqFrameRate, int(pixelFormat))
 	if params.Level != 0 {
