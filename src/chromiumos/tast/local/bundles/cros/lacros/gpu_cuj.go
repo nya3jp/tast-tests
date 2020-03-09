@@ -7,6 +7,7 @@ package lacros
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
@@ -16,7 +17,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -69,6 +72,44 @@ func closeAboutBlankForLacros(ctx context.Context, ds *cdputil.Session) error {
 	return nil
 }
 
+func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, testType string) error {
+	histograms, err := metrics.Run(ctx, tconn, func() error {
+		testing.Sleep(ctx, 20.0*time.Second)
+		return nil
+	}, "Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Universal",
+		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.AllSequences",
+		"Graphics.Smoothness.PercentDroppedFrames.MainThread.Universal",
+		"Graphics.Smoothness.PercentDroppedFrames.MainThread.AllSequences",
+		"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.Universal",
+		"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.AllSequences",
+		"Graphics.Smoothness.PercentDroppedFrames.AllSequences",
+		"Compositing.Display.DrawToSwapUs",
+	)
+
+	if err != nil {
+		return errors.Wrap(err, "failed to get histograms")
+	}
+
+	for _, h := range histograms {
+		testing.ContextLog(ctx, "Histogram: ", h)
+
+		if h.TotalCount() != 0 {
+			mean, err := h.Mean()
+			if err != nil {
+				return errors.Wrapf(err, "failed to get mean for histogram: %s", h.Name)
+			}
+			testing.ContextLog(ctx, "Mean: ", mean)
+
+			pv.Set(perf.Metric{
+				Name:      fmt.Sprintf("%s.%s", h.Name, testType),
+				Unit:      "",
+				Direction: perf.SmallerIsBetter,
+			}, mean)
+		}
+	}
+	return nil
+}
+
 func GpuCUJ(ctx context.Context, s *testing.State) {
 	ctconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
 	if err != nil {
@@ -81,6 +122,11 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch linux-chrome: ", err)
 	}
 	defer l.Close(ctx)
+
+	ltconn, err := l.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
 
 	// Wait for quiescent state.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
@@ -103,5 +149,16 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	err = maximizeFirstWindow(ctx, ctconn)
 	if err != nil {
 		s.Fatal("Failed to maximize linux-chrome: ", err)
+	}
+
+	pv := perf.NewValues()
+
+	err = runHistogram(ctx, ltconn, pv, "lacros")
+	if err != nil {
+		s.Fatal("Failed to get histograms: ", err)
+	}
+
+	if err = pv.Save(s.OutDir()); err != nil {
+		s.Error("Cannot save perf data: ", err)
 	}
 }
