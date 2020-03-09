@@ -158,6 +158,24 @@ func (l *linuxChrome) NewConnForTarget(ctx context.Context, tm cdputil.TargetMat
 	return l.newConnInternal(ctx, t.TargetID, t.URL)
 }
 
+// NewConn creates a new Chrome renderer and returns a connection to it.
+// If url is empty, an empty page (about:blank) is opened. Otherwise, the page
+// from the specified URL is opened. You can assume that the page loading has
+// been finished when this function returns.
+func (l *linuxChrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error) {
+	if url == "" {
+		testing.ContextLog(ctx, "Creating new blank page")
+	} else {
+		testing.ContextLog(ctx, "Creating new page with URL ", url)
+	}
+	targetID, err := l.Devsess.CreateTarget(ctx, url, opts...)
+	if err != nil {
+		return nil, err
+	}
+
+	return l.newConnInternal(ctx, targetID, url)
+}
+
 func (l *linuxChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
 	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logMaster, url, func(err error) error { return err })
 	if err != nil {
