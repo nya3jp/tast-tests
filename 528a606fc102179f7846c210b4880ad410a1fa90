@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a155995a_134dcb49",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-09T07:47:25Z",
+      "side": 1,
+      "message": "nit: Is this correct because it\u0027s used to rotate 90 or 270 degrees? It seems to be flipped.",
+      "range": {
+        "startLine": 338,
+        "startChar": 43,
+        "endLine": 338,
+        "endChar": 92
+      },
+      "revId": "528a606fc102179f7846c210b4880ad410a1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "188d21db_0fb77ec1",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-09T07:47:25Z",
+      "side": 1,
+      "message": "optional: I\u0027d want them to be named constants if they will be used in the tests.",
+      "range": {
+        "startLine": 358,
+        "startChar": 47,
+        "endLine": 358,
+        "endChar": 55
+      },
+      "revId": "528a606fc102179f7846c210b4880ad410a1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129d5b23_b5ab131d",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-09T07:47:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 359,
+        "startChar": 41,
+        "endLine": 359,
+        "endChar": 43
+      },
+      "revId": "528a606fc102179f7846c210b4880ad410a1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
