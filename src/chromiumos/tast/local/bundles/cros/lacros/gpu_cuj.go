@@ -30,15 +30,24 @@ func init() {
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"disabled"},
-		Pre:          launcher.StartedByData(),
 		Timeout:      60 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
+			Name: "aquarium_composited",
+			Val:  "https://webglsamples.org/aquarium/aquarium.html",
+			Pre:  launcher.StartedByDataForceComposition(),
+		}, {
 			Name: "aquarium",
 			Val:  "https://webglsamples.org/aquarium/aquarium.html",
+			Pre:  launcher.StartedByData(),
+		}, {
+			Name: "poster_composited",
+			Val:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+			Pre:  launcher.StartedByDataForceComposition(),
 		}, {
 			Name: "poster",
 			Val:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+			Pre:  launcher.StartedByData(),
 		}},
 	})
 }
