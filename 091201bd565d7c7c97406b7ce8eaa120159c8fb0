@@ -22,6 +22,30 @@
       "revId": "091201bd565d7c7c97406b7ce8eaa120159c8fb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12fe5a55_41878731",
+        "filename": "src/chromiumos/tast/local/power/setup/setup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-09T02:22:14Z",
+      "side": 1,
+      "message": "I was on the fence, but decided to do it this way just so the outermost setup wouldn\u0027t have a useless name.\n\nAfter using it in practice, I think your approach will reduce the log spew, since the current approach causes `setup failed: nested setup \"blah\" failed: ` for every level of nesting.\n\nI\u0027ll switch it over.",
+      "parentUuid": "0af0a9f5_95944f2c",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "091201bd565d7c7c97406b7ce8eaa120159c8fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
