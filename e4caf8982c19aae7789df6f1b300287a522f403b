@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac8274a1_93046fb1",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T11:16:48Z",
+      "side": 1,
+      "message": "I think mux is common to stand for Mutex. systemBusMux?",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "e4caf8982c19aae7789df6f1b300287a522f403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "005dadb4_8cfcaaa8",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T11:16:48Z",
+      "side": 1,
+      "message": "nit:\nreturn []dbus.ConnOption {\n  dbus.WithSignal...\n}\n\nwould be simpler.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "e4caf8982c19aae7789df6f1b300287a522f403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ab0faff_08e2bda2",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T11:16:48Z",
+      "side": 1,
+      "message": "Could you contribute to tast-lint, to forbid call of dbus.SystemBus() ?\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/cmd/tast-lint/check/forbidden_calls.go\nYou can do it in another CL.\nMaybe you want to do the same for SystemBusPrivate (add an wrapper in dbusutil and forbid native call)?",
+      "range": {
+        "startLine": 92,
+        "startChar": 42,
+        "endLine": 92,
+        "endChar": 83
+      },
+      "revId": "e4caf8982c19aae7789df6f1b300287a522f403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
