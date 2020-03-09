@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cfa7dd6_ced53459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/stdio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T07:30:10Z",
+      "side": 1,
+      "message": "I wonder if this test conforms with the description of meta package:\n// Package meta contains remote Tast tests that exercise Tast itself.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/meta/doc.go?l\u003d5\n\nLooking at this test I first wondered if we don\u0027t have to add an entry here, https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go?l\u003d43\nbut I guess it\u0027s meaningless (or not?).\n\nHow about moving this to example package? Its doc.go says\n// Package example contains remote Tast tests that demonstrate key features of Tast.\nI think not being able to use Stdio could be considered as a \"feature\" of Tast.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "31bb49b849a48b15b1a0f2b29bb12f70ae43b47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
