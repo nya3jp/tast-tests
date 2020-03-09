@@ -150,6 +150,19 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
+		{
+			name: "prime_search",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_PRIME_SEARCH,
+				Parameters: &dtcpb.RunRoutineRequest_PrimeSearchParams{
+					PrimeSearchParams: &dtcpb.PrimeSearchRoutineParameters{
+						LengthSeconds: 1,
+						MaxNum:        1000,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
