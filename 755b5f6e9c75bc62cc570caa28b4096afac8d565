@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61f66ea8_835c2d34",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-09T21:33:14Z",
+      "side": 1,
+      "message": "nit: console.",
+      "range": {
+        "startLine": 93,
+        "startChar": 58,
+        "endLine": 93,
+        "endChar": 65
+      },
+      "revId": "755b5f6e9c75bc62cc570caa28b4096afac8d565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1322b0c_7212c5b3",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-09T21:33:14Z",
+      "side": 1,
+      "message": "It\u0027s a bit confusing name: 1) from function name you return Console, 2) from function description you return some filename for device\u0027s console.\n\nUnfortunately, I cannot suggest better name, because I don\u0027t know what does UART PTY mean.",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "755b5f6e9c75bc62cc570caa28b4096afac8d565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
