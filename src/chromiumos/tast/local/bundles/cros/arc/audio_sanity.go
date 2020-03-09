@@ -47,7 +47,7 @@ func init() {
 				Val: testParameters{
 					Class: "org.chromium.arc.testapp.arcaudiotestapp.TestOutputActivity",
 				},
-				ExtraSoftwareDeps: []string{"android_vm_p"},
+				ExtraSoftwareDeps: []string{"android_vm"},
 				Pre:               arc.VMBooted(),
 			},
 			{
@@ -65,7 +65,7 @@ func init() {
 					Permission: "android.permission.RECORD_AUDIO",
 					Class:      "org.chromium.arc.testapp.arcaudiotestapp.TestInputActivity",
 				},
-				ExtraSoftwareDeps: []string{"android_vm_p"},
+				ExtraSoftwareDeps: []string{"android_vm"},
 				Pre:               arc.VMBooted(),
 			},
 		},
