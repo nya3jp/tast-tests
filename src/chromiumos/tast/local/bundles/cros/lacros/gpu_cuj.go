@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/lacros/launcher"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
@@ -37,6 +38,21 @@ func init() {
 	})
 }
 
+func findFirstWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
+	return ash.FindWindow(ctx, ctconn, func(w *ash.Window) bool {
+		return true
+	})
+}
+
+func maximizeFirstWindow(ctx context.Context, ctconn *chrome.TestConn) error {
+	w, err := findFirstWindow(ctx, ctconn)
+	if err != nil {
+		return err
+	}
+	_, err = ash.SetWindowState(ctx, ctconn, w.ID, ash.WMEventMaximize)
+	return err
+}
+
 func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
 	targetFilter := func(t *cdputil.Target) bool {
 		return t.URL == chrome.BlankURL
@@ -52,6 +68,11 @@ func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
 }
 
 func GpuCUJ(ctx context.Context, s *testing.State) {
+	ctconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
 	// Launch linux-chrome with about:blank loaded first - we don't want to include startup cost.
 	l, err := launcher.LaunchLinuxChrome(ctx, s.PreValue().(launcher.PreData))
 	if err != nil {
@@ -71,7 +92,12 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 
 	// Close the initial "about:blank" tab present at startup.
-	if err = closeAboutBlank(ctx, l.Devsess); err != nil {
+	if err := closeAboutBlank(ctx, l.Devsess); err != nil {
 		s.Fatal("Failed to close about:blank tab: ", err)
+	}
+
+	// Maximize linux-chrome window.
+	if err := maximizeFirstWindow(ctx, ctconn); err != nil {
+		s.Fatal("Failed to maximize linux-chrome: ", err)
 	}
 }
