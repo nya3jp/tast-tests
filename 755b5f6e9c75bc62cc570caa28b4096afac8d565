@@ -45,6 +45,30 @@
       "revId": "755b5f6e9c75bc62cc570caa28b4096afac8d565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0f0f31_8aaf51df",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2020-03-09T21:44:50Z",
+      "side": 1,
+      "message": "UART means serial port\nPTY means pseudo terminal (so, a unix device that looks like a terminal device, such as /dev/tty*, but is hooked up to something else)\n\nservod exposes the serial consoles of the DUT through such ptys, listening to the actual devices itself (e.g. /dev/ttyUSB0), then passing it along to to ptys for further consumption.\n\nMaybe GetSerial()? There\u0027s usually something console-ish running on these serial ports, but not necessarily.",
+      "parentUuid": "d1322b0c_7212c5b3",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "755b5f6e9c75bc62cc570caa28b4096afac8d565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
