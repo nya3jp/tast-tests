@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d67486d_3cba923c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/power_menu_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-09T22:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e148c170_28ef110d",
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d204346_0fcaa362",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2020-03-09T18:22:08Z",
       "side": 1,
       "message": "Are you interested in HWDeps?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bde2c311_609db870",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-09T22:45:13Z",
+      "side": 1,
+      "message": "Yes, Ideally this test would only be ran on drallion360 devices. I thought HWDeps for tast were not implemented yet though?",
+      "parentUuid": "0d204346_0fcaa362",
       "range": {
         "startLine": 48,
         "startChar": 1,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "03cbaf2c_e40a1830",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-09T22:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdc50849_6c284c81",
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ead8ebb_b0c8389e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2020-03-09T18:22:08Z",
       "side": 1,
       "message": "style: Could you merge into one line?\n\nif _, err :\u003d ...; err !\u003d nil {\n  ...\n}\n\nDitto for below.",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22264214_387c27b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-09T22:45:13Z",
+      "side": 1,
+      "message": "I made these updates but they caused the CL to fail the presubmit hooks with a \"File not formatted with gofmt\" error. Do you want me to upload the changes and bypass the repohooks?",
+      "parentUuid": "1ead8ebb_b0c8389e",
       "range": {
         "startLine": 101,
         "startChar": 2,
