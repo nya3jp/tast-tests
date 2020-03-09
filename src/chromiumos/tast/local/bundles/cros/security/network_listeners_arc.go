@@ -36,8 +36,8 @@ func init() {
 func NetworkListenersARC(ctx context.Context, s *testing.State) {
 	ls := netlisten.Common(s.PreValue().(arc.PreData).Chrome)
 	ls["127.0.0.1:5037"] = "/usr/bin/adb"
-	// patchpaneld runs an ADB proxy server on port 5550.
-	ls["127.0.0.1:5550"] = "/usr/bin/patchpaneld"
+	// patchpaneld runs an ADB proxy server on port 5555 whenever ARC is running. The proxy end listens only when ADB sideloading or ADB debugging on dev mode is enabled.
+	ls["*:5555"] = "/usr/bin/patchpaneld"
 	// sslh is installed on ARC-capable systems to multiplex port 22 traffic between sshd and patchpaneld (for adb).
 	ls["*:22"] = "/usr/sbin/sslh-fork"
 	ls["*:2222"] = "/usr/sbin/sshd"
