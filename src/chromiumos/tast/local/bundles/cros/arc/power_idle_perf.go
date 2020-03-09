@@ -75,9 +75,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	p := perf.NewValues()
 	metrics, err := perf.NewTimeline(
 		ctx,
-		power.NewBatteryMetrics(2.0),
-		power.NewRAPLMetrics(),
-		power.NewCpuidleMetrics(),
+		power.TestMetrics()...,
 	)
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
