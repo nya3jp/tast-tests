@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "89e67f05_a35e3f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-09T04:20:54Z",
+      "side": 1,
+      "message": "Yes, I should do the conversion when adding up the total size, but this should remain an int.",
+      "parentUuid": "2d1413ad_d758bbbc",
+      "range": {
+        "startLine": 77,
+        "startChar": 37,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "592671af6a2dda6ca9f9d872cfb15b483ab789ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88374f2a_413051c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
         "patchSetId": 1
@@ -114,6 +138,30 @@
       "revId": "592671af6a2dda6ca9f9d872cfb15b483ab789ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f80528_d8019b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-09T04:20:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88374f2a_413051c4",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "592671af6a2dda6ca9f9d872cfb15b483ab789ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
