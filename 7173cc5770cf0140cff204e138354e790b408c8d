@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef179e76_9e12e1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1323043
+      },
+      "writtenOn": "2020-03-09T02:24:22Z",
+      "side": 1,
+      "message": "should be space",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "7173cc5770cf0140cff204e138354e790b408c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cd528d8_cb5a8f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1323043
+      },
+      "writtenOn": "2020-03-09T02:24:22Z",
+      "side": 1,
+      "message": "Maybe it is more like \u0027unable to cancel routine\u0027",
+      "range": {
+        "startLine": 62,
+        "startChar": 29,
+        "endLine": 62,
+        "endChar": 50
+      },
+      "revId": "7173cc5770cf0140cff204e138354e790b408c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd66c85_c1533bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1323043
+      },
+      "writtenOn": "2020-03-09T02:24:22Z",
+      "side": 1,
+      "message": "some routines may need more than 2 seconds to cancel? Not sure if we need to wait longer if it is a cancellation.",
+      "range": {
+        "startLine": 66,
+        "startChar": 111,
+        "endLine": 66,
+        "endChar": 124
+      },
+      "revId": "7173cc5770cf0140cff204e138354e790b408c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
