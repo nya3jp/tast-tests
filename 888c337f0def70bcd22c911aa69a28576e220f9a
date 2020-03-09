@@ -16,6 +16,24 @@
       "revId": "888c337f0def70bcd22c911aa69a28576e220f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d70b63_861b76a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-09T04:21:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba4af095_411a5ef3",
+      "revId": "888c337f0def70bcd22c911aa69a28576e220f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
