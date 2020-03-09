@@ -16,13 +16,11 @@ import (
 
 // crasTestClientRE parses the output of cras_test_client.
 var crasTestClientRE = regexp.MustCompile(`^System Volume \(0-100\): (\d+) (\(Muted\))?
-Capture Gain \(-?\d+\.\d+ - -?\d+\.\d+\): (-?\d+\.\d+)dB 
-`)
+Capture Muted : (Not muted|Muted)`)
 
 type audioSettings struct {
-	volume uint
-	gain   float64
-	muted  bool
+	volume              uint
+	muted, captureMuted bool
 }
 
 // readAudioSettings reads the volume, recorder gain in decibels, and system
@@ -41,34 +39,28 @@ func readAudioSettings(ctx context.Context) (*audioSettings, error) {
 		return nil, errors.Wrapf(err, "unable to parse volume from %q", match[1])
 	}
 	muted := match[2] != nil
-	gain, err := strconv.ParseFloat(string(match[3]), 64)
-	if err != nil {
-		return nil, errors.Wrapf(err, "unable to parse gain from %q", match[3])
-	}
+	captureMuted := string(match[3]) == "Muted"
 	return &audioSettings{
-		volume: uint(volume),
-		gain:   gain,
-		muted:  muted,
+		volume:       uint(volume),
+		muted:        muted,
+		captureMuted: captureMuted,
 	}, nil
 }
 
-func setAudioGain(ctx context.Context, gain float64) error {
-	// The --capture_gain argument takes a value in millibel
-	const milliInDeci = 100
-	gainArg := strconv.FormatInt(int64(gain*milliInDeci), 10)
-	if err := testexec.CommandContext(ctx, "cras_test_client", "--capture_gain", gainArg).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "unable set capture gain")
-	}
-	return nil
-}
+type crasMuteArg string
 
-func setAudioMuted(ctx context.Context, muted bool) error {
+const (
+	crasMute        crasMuteArg = "--mute"
+	crasMuteCapture crasMuteArg = "--capture_mute"
+)
+
+func setAudioMuted(ctx context.Context, arg crasMuteArg, muted bool) error {
 	mutedArg := "0"
 	if muted {
 		mutedArg = "1"
 	}
-	if err := testexec.CommandContext(ctx, "cras_test_client", "--mute", mutedArg).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "unable set audio mute")
+	if err := testexec.CommandContext(ctx, "cras_test_client", string(arg), mutedArg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to run cras_test_client %s %s", arg, mutedArg)
 	}
 	return nil
 }
@@ -76,44 +68,32 @@ func setAudioMuted(ctx context.Context, muted bool) error {
 func setAudioVolume(ctx context.Context, volume uint) error {
 	volumeArg := strconv.FormatUint(uint64(volume), 10)
 	if err := testexec.CommandContext(ctx, "cras_test_client", "--volume", volumeArg).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "unable set audio volume")
+		return errors.Wrapf(err, "failed to run cras_test_client --volume %s", volumeArg)
 	}
 	return nil
 }
 
-func setupAudioGain(ctx context.Context, gain float64, prev *audioSettings) (CleanupCallback, error) {
-	testing.ContextLogf(ctx, "Setting audio gain to %f from %f", gain, prev.gain)
-	if err := setAudioGain(ctx, gain); err != nil {
+func setupAudioMuted(ctx context.Context, arg crasMuteArg, muted, prev bool) (CleanupCallback, error) {
+	testing.ContextLogf(ctx, "Setting %s to %t from %t", arg, muted, prev)
+	if err := setAudioMuted(ctx, arg, muted); err != nil {
 		return nil, err
 	}
 
 	return func(ctx context.Context) error {
-		testing.ContextLogf(ctx, "Resetting audio gain to %f", prev.gain)
-		return setAudioGain(ctx, prev.gain)
+		testing.ContextLogf(ctx, "Resetting %s to %t", arg, prev)
+		return setAudioMuted(ctx, arg, prev)
 	}, nil
 }
 
-func setupAudioMuted(ctx context.Context, muted bool, prev *audioSettings) (CleanupCallback, error) {
-	testing.ContextLogf(ctx, "Setting muted to %t from %t", muted, prev.muted)
-	if err := setAudioMuted(ctx, muted); err != nil {
-		return nil, err
-	}
-
-	return func(ctx context.Context) error {
-		testing.ContextLogf(ctx, "Resetting muted to %t", prev.muted)
-		return setAudioMuted(ctx, prev.muted)
-	}, nil
-}
-
-func setupAudioVolume(ctx context.Context, volume uint, prev *audioSettings) (CleanupCallback, error) {
-	testing.ContextLogf(ctx, "Setting volume to %d from %d", volume, prev.volume)
+func setupAudioVolume(ctx context.Context, volume, prev uint) (CleanupCallback, error) {
+	testing.ContextLogf(ctx, "Setting volume to %d from %d", volume, prev)
 	if err := setAudioVolume(ctx, volume); err != nil {
 		return nil, err
 	}
 
 	return func(ctx context.Context) error {
-		testing.ContextLogf(ctx, "Resetting volume to %d", prev.volume)
-		return setAudioVolume(ctx, prev.volume)
+		testing.ContextLogf(ctx, "Resetting volume to %d", prev)
+		return setAudioVolume(ctx, prev)
 	}, nil
 }
 
@@ -124,9 +104,9 @@ func MuteAudio(ctx context.Context) (CleanupCallback, error) {
 		if err != nil {
 			return err
 		}
-		s.Add(setupAudioGain(ctx, 0.0, prev))
-		s.Add(setupAudioMuted(ctx, true, prev))
-		s.Add(setupAudioVolume(ctx, 0, prev))
+		s.Add(setupAudioMuted(ctx, crasMute, true, prev.muted))
+		s.Add(setupAudioMuted(ctx, crasMuteCapture, true, prev.captureMuted))
+		s.Add(setupAudioVolume(ctx, 0, prev.volume))
 		return nil
 	})
 }
