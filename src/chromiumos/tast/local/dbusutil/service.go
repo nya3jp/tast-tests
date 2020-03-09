@@ -10,12 +10,18 @@ import (
 	"os"
 	"runtime"
 	"strconv"
+	"sync"
 	"syscall"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/timing"
+)
+
+var (
+	systemBus    *dbus.Conn
+	systemBusMux sync.Mutex
 )
 
 // ServiceOwned returns whether the service in request is already owned.
@@ -68,6 +74,43 @@ func WaitForService(ctx context.Context, conn *dbus.Conn, svc string) error {
 	}
 }
 
+// busOptions returns the common bus options that should be used for all
+// DBus connections.
+func busOptions() []dbus.ConnOption {
+	// Enforce sequential processing of all signals. This means applications
+	// listening for signals will receive them on in the order that they are
+	// received on the dbus connection, rather than in an arbitrary order
+	// (as is dbus's default, for arcane reasons). This is necessary in order
+	// to sensibly implement things like state change listeners, where one expects
+	// the most recently received signal to represent the most recent state.
+	return []dbus.ConnOption{
+		dbus.WithSignalHandler(dbus.NewSequentialSignalHandler()),
+	}
+}
+
+// SystemBus returns a shared connection to the system bus, connecting to it if
+// it is not already connected. It should be used in preference to dbus.SystemBus().
+func SystemBus() (conn *dbus.Conn, err error) {
+	systemBusMux.Lock()
+	defer systemBusMux.Unlock()
+	if systemBus != nil {
+		return systemBus, nil
+	}
+	conn, err = dbus.ConnectSystemBus(busOptions()...)
+	if conn != nil {
+		systemBus = conn
+	}
+	return
+}
+
+// SystemBusPrivate returns a new private connection to the system bus.
+// It should be used in preference to dbus.SystemBusPrivate().
+func SystemBusPrivate(opts ...dbus.ConnOption) (*dbus.Conn, error) {
+	// Append user-passed options after our default options, so that
+	// they can overide our defaults.
+	return dbus.SystemBusPrivate(append(busOptions(), opts...)...)
+}
+
 // Connect sets up the D-Bus connection to the service specified by name,
 // path by using SystemBus.
 // This waits for the service to become available.
@@ -75,7 +118,7 @@ func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn
 	ctx, st := timing.Start(ctx, fmt.Sprintf("dbusutil.Connect %s:%s", name, path))
 	defer st.End()
 
-	conn, err := dbus.SystemBus()
+	conn, err := SystemBus()
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
 	}
@@ -99,7 +142,7 @@ func SystemBusPrivateWithAuth(ctx context.Context, uid uint32) (*dbus.Conn, erro
 	}
 	defer syscall.Setreuid(-1, origEUID)
 
-	conn, err := dbus.SystemBusPrivate()
+	conn, err := dbus.SystemBusPrivate(busOptions()...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to system bus")
 	}
