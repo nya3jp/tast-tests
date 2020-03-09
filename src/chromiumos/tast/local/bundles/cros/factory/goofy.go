@@ -115,7 +115,7 @@ func installFactoryToolKit(ctx context.Context, imagePath string) (version strin
 
 	// Install factory toolkit.
 	toolkitPath := filepath.Join(tempDir, "toolkit/install_factory_toolkit.run")
-	if err := testexec.CommandContext(ctx, toolkitPath, "--", "--yes").Run(testexec.DumpLogOnError); err != nil {
+	if err := testexec.CommandContext(ctx, toolkitPath, "--", "--yes", "--no-enable").Run(testexec.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to install factory toolkit")
 	}
 
