@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -454,4 +455,74 @@ func FindFirstWindowInOverview(ctx context.Context, tconn *chrome.TestConn) (*Wi
 		return nil, errors.New("no windows are in overview mode")
 	}
 	return result, nil
+}
+
+// DragToShowOverview shows overview by dragging up, pausing for the gesture to be recognized, then ending the gesture.
+// Note that this action only works in tablet mode.
+func DragToShowOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
+	windows, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all windows")
+	}
+	if len(windows) == 0 {
+		return errors.Wrap(err, "there must be at least one window to go to overview")
+	}
+
+	startX := tsw.Width() / 2
+	startY := tsw.Height() - 1
+
+	endX := startX
+	endY := tsw.Height() / 2
+
+	testing.ContextLog(ctx, "Dragging from the bottom slowly to open overview")
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, 500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe")
+	}
+	// Wait with the swipe paused so the overview mode gesture is recognized. Use 1 second because this is roughly the amount of time it takes for the 'swipe up and hold' overview gesture to trigger.
+	const pauseDuration = time.Second
+	if err := testing.Sleep(ctx, pauseDuration); err != nil {
+		return errors.Wrap(err, "failed to sleep while waiting for overview to trigger")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to finish the swipe gesture")
+	}
+
+	// When the drag up ends overview is already fully shown. The only thing that remains is to wait for the windows to finish animating to their final point in the overview grid.
+	for _, window := range windows {
+		if err := WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			return errors.Wrap(err, "failed to wait for the dragged window to animate")
+		}
+	}
+
+	// Now that all windows are done animating, ensure overview is still shown.
+	if err := WaitForOverviewState(ctx, tconn, Shown); err != nil {
+		return errors.Wrap(err, "failed to wait for animation to finish")
+	}
+	return nil
+}
+
+// TouchCoordConverter manages the conversion between locations in DIP and
+// the TouchCoord of the touchscreen.
+type TouchCoordConverter struct {
+	ScaleX float64
+	ScaleY float64
+}
+
+// ConvertLocation converts a location to TouchCoord.
+func (tcc *TouchCoordConverter) ConvertLocation(l coords.Point) (x, y input.TouchCoord) {
+	return input.TouchCoord(tcc.ScaleX * float64(l.X)), input.TouchCoord(tcc.ScaleY * float64(l.Y))
+}
+
+// NewTouchCoordConverter creates a new TouchCoordConverter for the internal
+// display with the given TouchscreenEventWriter.
+func NewTouchCoordConverter(ctx context.Context, tconn *chrome.TestConn, tsew *input.TouchscreenEventWriter) (*TouchCoordConverter, error) {
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "no internal display found")
+	}
+
+	return &TouchCoordConverter{
+		ScaleX: float64(tsew.Width()) / float64(info.Bounds.Width),
+		ScaleY: float64(tsew.Height()) / float64(info.Bounds.Height),
+	}, nil
 }
