@@ -107,50 +107,91 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 	return nil
 }
 
-func GpuCUJ(ctx context.Context, s *testing.State) {
-	ctconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
+func runTestLacros(ctx context.Context, pd launcher.PreData, pv *perf.Values, url string) error {
+	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+		return errors.Wrap(err, "failed to connect to test API")
 	}
 
 	// Launch linux-chrome with about:blank loaded first - we don't want to include startup cost.
-	l, err := launcher.LaunchLinuxChrome(ctx, s.PreValue().(launcher.PreData))
+	l, err := launcher.LaunchLinuxChrome(ctx, pd)
 	if err != nil {
-		s.Fatal("Failed to launch linux-chrome: ", err)
+		return errors.Wrap(err, "failed to launch linux-chrome")
 	}
 	defer l.Close(ctx)
 
 	ltconn, err := l.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+		return errors.Wrap(err, "failed to connect to test API")
 	}
 
 	// Wait for quiescent state.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
+		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	conn, err := l.NewConn(ctx, s.Param().(string))
+	conn, err := l.NewConn(ctx, url)
 	if err != nil {
-		s.Fatal("Failed to open new tab: ", err)
+		return errors.Wrap(err, "failed to open new tab")
 	}
 	defer conn.Close()
 
 	// Close the initial "about:blank" tab present at startup.
 	if err = closeAboutBlank(ctx, l.Devsess); err != nil {
-		s.Fatal("Failed to close about:blank tab: ", err)
+		return errors.Wrap(err, "failed to close about:blank tab")
 	}
 
 	// Maximize linux-chrome window.
 	if err = maximizeFirstWindow(ctx, ctconn); err != nil {
-		s.Fatal("Failed to maximize linux-chrome: ", err)
+		return errors.Wrap(err, "failed to maximize linux-chrome")
 	}
 
-	pv := perf.NewValues()
+	if err = runHistogram(ctx, ltconn, pv, "lacros"); err != nil {
+		return err
+	}
 
-	err = runHistogram(ctx, ltconn, pv, "lacros")
+	return nil
+}
+
+func runTestChromeOS(ctx context.Context, pd launcher.PreData, pv *perf.Values, url string) error {
+	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to get histograms: ", err)
+		return errors.Wrap(err, "failed to connect to test API")
+	}
+
+	// Wait for quiescent state.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		return errors.Wrap(err, "failed waiting for CPU to become idle")
+	}
+
+	conn, err := pd.Chrome.NewConn(ctx, url)
+	if err != nil {
+		return errors.Wrap(err, "failed to open new tab")
+	}
+	defer conn.Close()
+
+	// Maximize chrome window.
+	if err = maximizeFirstWindow(ctx, ctconn); err != nil {
+		return errors.Wrap(err, "failed to maximize chrome")
+	}
+
+	if err = runHistogram(ctx, ctconn, pv, "cros"); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GpuCUJ(ctx context.Context, s *testing.State) {
+	pv := perf.NewValues()
+	err := runTestLacros(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string))
+	if err != nil {
+		s.Fatal("Failed to run test: ", err)
+	}
+
+	err = runTestChromeOS(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string))
+	if err != nil {
+		s.Fatal("Failed to run test: ", err)
 	}
 
 	if err = pv.Save(s.OutDir()); err != nil {
