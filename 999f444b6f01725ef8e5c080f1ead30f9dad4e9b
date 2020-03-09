@@ -16,6 +16,24 @@
       "revId": "999f444b6f01725ef8e5c080f1ead30f9dad4e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b7ed09c_b0ba708c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-09T21:40:18Z",
+      "side": 1,
+      "message": "aah, right. Done.",
+      "parentUuid": "1a9dc692_fe88e1ff",
+      "revId": "999f444b6f01725ef8e5c080f1ead30f9dad4e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
