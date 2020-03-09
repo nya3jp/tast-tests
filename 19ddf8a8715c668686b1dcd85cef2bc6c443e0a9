@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47d7c6f9_1e5b586d",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-03-09T14:39:38Z",
+      "side": 1,
+      "message": "This may not be clear for people not familiar with adb internals.\n\nI suggest, \"adb client thinks that there is an Android emulator running because it notices adb-proxy listens on localhost:5555\".",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 65
+      },
+      "revId": "19ddf8a8715c668686b1dcd85cef2bc6c443e0a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
