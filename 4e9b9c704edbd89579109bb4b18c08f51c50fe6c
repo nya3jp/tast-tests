@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "65cd8990_9539e0d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-03-09T07:52:20Z",
+      "side": 1,
+      "message": "The function name does not indicate it will trigger the configuration first. How about changing the name to something like TriggerAndWaitForConfiguration() or TriggerConfigurationSynced()?",
+      "range": {
+        "startLine": 1069,
+        "startChar": 14,
+        "endLine": 1069,
+        "endChar": 34
+      },
+      "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6c388e_3221f342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-03-09T07:52:20Z",
+      "side": 1,
+      "message": "Do we really need to pass the observer id to Go? Since all the things happen in this method, can we use a local promise and await it after calling trigger() so that we can simplify the logic in ConfigureObserver?",
+      "range": {
+        "startLine": 1070,
+        "startChar": 5,
+        "endLine": 1070,
+        "endChar": 15
+      },
+      "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "172f7722_57c4c325",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
         "patchSetId": 2
@@ -49,6 +95,24 @@
       "side": 1,
       "message": "The purpose of the id-map-to-observer design is that the whole observation process involves steps:\n1. Set observer in Tast by running JS and JS will result in an observe instance after excution.\n2. Trigger configuration in Tast e.g. call click something in tast\n3. Tast need to access the instance of JS observer in (1) to await the result and do clean up.\n\nOwing to the reason that we cannot pass JS observer instance from javascript to golang, we need to maintain an number ID mapping to the instance for step (1) and (3).",
       "parentUuid": "f180c606_6ceee15b",
+      "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c89e57_b686fa0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-03-09T07:52:20Z",
+      "side": 1,
+      "message": "Please see the above comments I just left. If we don\u0027t really need id-map for waiting the configuration, I prefer removing this class and use local promise and use StateObserver directly so that we could keep it simple. WDYT?",
+      "parentUuid": "331e9641_dca6204d",
       "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
