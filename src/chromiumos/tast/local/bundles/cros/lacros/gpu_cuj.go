@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -41,6 +42,53 @@ func init() {
 			Val:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
 		}},
 	})
+}
+
+// disableNotifications disabled notifications. This is because toast
+// notifications can affect whether linux-chrome is shown in a hardware overlays.
+func disableNotifications(ctx context.Context, tconn *chrome.TestConn) error {
+	root, err := ui.Root(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get UI automation root")
+	}
+	defer root.Release(ctx)
+
+	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
+	params := ui.FindParams{
+		ClassName: "ash/StatusAreaWidgetDelegate",
+	}
+	statusArea, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the status area (time, battery, etc.)")
+	}
+	defer statusArea.Release(ctx)
+
+	if err := statusArea.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click status area")
+	}
+
+	// Find and click the Notifications button in the Ubertray via UI.
+	params = ui.FindParams{
+		Name:      "Toggle Do not disturb. Do not disturb is off.",
+		ClassName: "FeaturePodIconButton",
+	}
+	nbtn, err := root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find notification button")
+	}
+	defer nbtn.Release(ctx)
+
+	if err := nbtn.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click notification button")
+	}
+
+	// Close StatusArea.
+	if err := statusArea.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click status area")
+	}
+	defer statusArea.Release(ctx)
+
+	return nil
 }
 
 func findFirstWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
@@ -189,8 +237,17 @@ func runTestChromeOS(ctx context.Context, pd launcher.PreData, pv *perf.Values, 
 }
 
 func GpuCUJ(ctx context.Context, s *testing.State) {
+	tconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	if err = disableNotifications(ctx, tconn); err != nil {
+		s.Fatal("Failed to disable notifications: ", err)
+	}
+
 	pv := perf.NewValues()
-	err := runTestLacros(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string))
+	err = runTestLacros(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string))
 	if err != nil {
 		s.Fatal("Failed to run test: ", err)
 	}
