@@ -24,6 +24,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type gpuCUJParams struct {
+	url              string
+	forceComposition bool
+}
+
+func (g gpuCUJParams) ForceComposition() bool { return g.forceComposition }
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GpuCUJ,
@@ -35,11 +42,29 @@ func init() {
 		Timeout:      60 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
+			Name: "aquarium_composited",
+			Val: gpuCUJParams{
+				url:              "https://webglsamples.org/aquarium/aquarium.html",
+				forceComposition: true,
+			},
+		}, {
 			Name: "aquarium",
-			Val:  "https://webglsamples.org/aquarium/aquarium.html",
+			Val: gpuCUJParams{
+				url:              "https://webglsamples.org/aquarium/aquarium.html",
+				forceComposition: false,
+			},
+		}, {
+			Name: "poster_composited",
+			Val: gpuCUJParams{
+				url:              "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+				forceComposition: true,
+			},
 		}, {
 			Name: "poster",
-			Val:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+			Val: gpuCUJParams{
+				url:              "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+				forceComposition: false,
+			},
 		}},
 	})
 }
