@@ -6,7 +6,6 @@ package ui
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -22,17 +21,16 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HotseatDrag,
-		Desc:         "Measures the presentation time of dragging the hotseat in tablet mode",
-		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "cros-shelf-prod-notifications@google.com"},
+		Func:         DragWindowFromShelfPerf,
+		Desc:         "Measures the presentation time of dragging a window from the shelf in tablet mode",
+		Contacts:     []string{"tbarzic@chromium.org", "xdai@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		Pre:          chrome.LoggedIn(),
 	})
 }
 
-func HotseatDrag(ctx context.Context, s *testing.State) {
-	// Ain't wanna merge dis son.
+func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -68,48 +66,33 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	const numWindows = 1
+	const numWindows = 8
 	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
 	if err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
-	if err := conns.Close(); err != nil {
-		s.Error("Failed to close the connection to a browser window")
-	}
+	defer conns.Close()
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
 	histograms, err := metrics.Run(ctx, tconn, func() error {
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil || len(ws) == 0 {
-			s.Fatal("Failed to obtain the window list: ", err)
+		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
+			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
-
-		startX := tsw.Width() / 2
-		startY := tsw.Height() - 1
-
-		endX := tsw.Width() / 2
-		// Scroll 1/4th of the screen to guarantee the hotseat is dragged the full
-		// amount.
-		endY := tsw.Height() * 3 / 4
-
-		if err := stw.Swipe(ctx, startX, startY, endX, endY, time.Second); err != nil {
-			return errors.Wrap(err, "failed to execute a swipe gesture")
-		}
-
-		if err := stw.End(); err != nil {
-			return errors.Wrap(err, "failed to finish the swipe gesture")
-		}
-		testing.Sleep(ctx, time.Second*2)
 
 		return nil
 	},
-		"Ash.HotseatTransition.Drag.PresentationTime",
-		"Ash.HotseatTransition.Drag.PresentationTime.MaxLatency")
+		"Ash.DragWindowFromShelf.PresentationTime",
+		"Ash.DragWindowFromShelf.PresentationTime.MaxLatency")
 	if err != nil {
 		s.Fatal("Failed to swipe or get histogram: ", err)
+	}
+
+	// Return the device back to non-overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
 	pv := perf.NewValues()
