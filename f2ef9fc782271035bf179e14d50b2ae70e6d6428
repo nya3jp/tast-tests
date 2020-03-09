@@ -16,6 +16,24 @@
       "revId": "f2ef9fc782271035bf179e14d50b2ae70e6d6428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f99cacf_ad33baac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-09T02:39:32Z",
+      "side": 1,
+      "message": "That is a great catch.\n\nI renamed the named result to _.",
+      "parentUuid": "0be0c59f_cd4d94df",
+      "revId": "f2ef9fc782271035bf179e14d50b2ae70e6d6428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
