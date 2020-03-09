@@ -116,6 +116,24 @@
       "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2da7eee_d2ee3fe3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-09T22:59:13Z",
+      "side": 1,
+      "message": "Yeah, I created coords.go but I keep TouchCoords unchanged, and that\u0027s intended since they\u0027re in a different scale (I\u0027ve also introduced TouchCoordsConverter for converting UI Size and TouchCoords: see crrev.com/c/2081353).\n\nSince this behavior purely relies on the TouchCoords, I don\u0027t think it\u0027s necessary to use coords structs. It might be worthwhile to pass width and height instead of tsw itself, if the original intent is that.",
+      "parentUuid": "0c64450f_7f8f1169",
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
