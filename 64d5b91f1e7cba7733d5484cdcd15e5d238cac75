@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9622c8cb_26e46ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T08:41:23Z",
+      "side": 1,
+      "message": "How about using net.TCPAddr here?\nThen you don\u0027t have to construct string representation of the TCP address by yourself in L97.\nSee https://play.golang.org/p/XGgwH6BHTrO",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "64d5b91f1e7cba7733d5484cdcd15e5d238cac75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b56d412a_683f177f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
         "patchSetId": 2
