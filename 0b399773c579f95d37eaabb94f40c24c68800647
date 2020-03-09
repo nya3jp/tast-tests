@@ -22,6 +22,30 @@
       "revId": "0b399773c579f95d37eaabb94f40c24c68800647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddceb425_7faaf57c",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_battery.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-09T02:52:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64935ad1_34b03c5c",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "0b399773c579f95d37eaabb94f40c24c68800647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
