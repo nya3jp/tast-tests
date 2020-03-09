@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "54e3976d_7341c9fe",
+        "filename": "src/chromiumos/tast/local/dbusutil/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T11:23:45Z",
+      "side": 1,
+      "message": "Here it says both, but L54 says either. Is it WAI?",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "e4caf8982c19aae7789df6f1b300287a522f403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac8274a1_93046fb1",
         "filename": "src/chromiumos/tast/local/dbusutil/service.go",
         "patchSetId": 2
