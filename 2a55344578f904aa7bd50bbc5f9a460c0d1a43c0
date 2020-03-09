@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "416ad19d_317471ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T07:39:32Z",
+      "side": 1,
+      "message": "This part looks boilerplate. If so, could you extract to a utility and share with other tests?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "2a55344578f904aa7bd50bbc5f9a460c0d1a43c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57718467_014485bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T07:39:32Z",
+      "side": 1,
+      "message": "Following the go\u0027s FAQ, I think it is better to get rid of must, by just inlining\n\nif err :\u003d ...; err !\u003d nil {\n  ...\n}\n\nthough it may look noisy than other languages.\n\nhttps://golang.org/doc/faq#exceptions",
+      "revId": "2a55344578f904aa7bd50bbc5f9a460c0d1a43c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
