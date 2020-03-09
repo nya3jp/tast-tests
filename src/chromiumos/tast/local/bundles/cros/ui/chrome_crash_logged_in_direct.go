@@ -19,7 +19,9 @@ func init() {
 		Desc:         "Checks that Chrome writes crash dumps while logged in; old version that does not invoke crash_reporter",
 		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com", "cros-monitoring-forensics@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		// Flaking heavily on chromeos-kevin-chrome and chromeos-kevin-rel;
+		// see https://crbug.com/1059649
+		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "breakpad",
 			Val:               chromecrash.Breakpad,
