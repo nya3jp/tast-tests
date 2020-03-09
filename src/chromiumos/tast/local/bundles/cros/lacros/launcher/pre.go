@@ -67,6 +67,11 @@ type preImpl struct {
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
+// PreParams is an interface for affecting ChromeOS-Chrome start-up from individual test params.
+type PreParams interface {
+	ForceComposition() bool
+}
+
 // prepareLinuxChromeBinary ensures that linux-chrome binary is available on
 // disk and ready to launch. Does not launch the binary.
 func (p *preImpl) prepareLinuxChromeBinary(ctx context.Context, s *testing.State) error {
@@ -123,8 +128,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 	}()
 
+	fc := chrome.ExtraArgs()
+	if p, ok := s.Param().(PreParams); ok && p.ForceComposition() {
+		fc = chrome.ExtraArgs("--enable-hardware-overlays=\"\"")
+	}
+
 	var err error
-	if p.cr, err = chrome.New(ctx); err != nil {
+	if p.cr, err = chrome.New(ctx, fc); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
