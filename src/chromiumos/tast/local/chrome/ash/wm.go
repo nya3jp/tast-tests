@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -454,4 +455,48 @@ func FindFirstWindowInOverview(ctx context.Context, tconn *chrome.TestConn) (*Wi
 		return nil, errors.New("no windows are in overview mode")
 	}
 	return result, nil
+}
+
+// DragToShowOverview shows overview by dragging up, pausing for the gesture to be recognized, then ending the gesture.
+// Note that this action only works in tablet mode.
+func DragToShowOverview(ctx context.Context, width, height input.TouchCoord, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
+	windows, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all windows")
+	}
+	if len(windows) == 0 {
+		return errors.Wrap(err, "there must be at least one window to go to overview")
+	}
+
+	startX := width / 2
+	startY := height - 1
+
+	endX := startX
+	endY := height / 2
+
+	testing.ContextLog(ctx, "Dragging from the bottom slowly to open overview")
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, 500*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe")
+	}
+	// Wait with the swipe paused so the overview mode gesture is recognized. Use 1 second because this is roughly the amount of time it takes for the 'swipe up and hold' overview gesture to trigger.
+	const pauseDuration = time.Second
+	if err := testing.Sleep(ctx, pauseDuration); err != nil {
+		return errors.Wrap(err, "failed to sleep while waiting for overview to trigger")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to finish the swipe gesture")
+	}
+
+	// When the drag up ends overview is already fully shown. The only thing that remains is to wait for the windows to finish animating to their final point in the overview grid.
+	for _, window := range windows {
+		if err := WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			return errors.Wrap(err, "failed to wait for the dragged window to animate")
+		}
+	}
+
+	// Now that all windows are done animating, ensure overview is still shown.
+	if err := WaitForOverviewState(ctx, tconn, Shown); err != nil {
+		return errors.Wrap(err, "failed to wait for animation to finish")
+	}
+	return nil
 }
