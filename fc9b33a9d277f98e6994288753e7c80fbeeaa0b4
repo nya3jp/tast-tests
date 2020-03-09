@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9039ee0e_c6ab7967",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-03-09T04:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e2e482_0d482f77",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "fc9b33a9d277f98e6994288753e7c80fbeeaa0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e60694fc_c555e8ef",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-09T03:28:44Z",
       "side": 1,
       "message": "BootTimeout is referenced by several places outside of this package\nhttps://cs.corp.google.com/search/?q\u003dpackage:chromeos+file:tast-tests+arc.BootTimeout\n\nIn particular, registration_test checks that ARC tests have enough timeouts by comparing them to arc.BootTimeout. So I guess unit tests will fail with this change.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "fc9b33a9d277f98e6994288753e7c80fbeeaa0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b00634e_fd4adb13",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-03-09T04:48:37Z",
+      "side": 1,
+      "message": "Okay, seems like this is the list of failures.\n\n--- FAIL: TestTimeout (0.00s)\n    testcheck.go:48: arc.AuthPerf.unmanaged: timeout is too short (20m0s \u003c 21m30s)\n    testcheck.go:48: arc.AuthPerf.unmanaged_vm: timeout is too short (20m0s \u003c 21m30s)\n    testcheck.go:48: arc.AuthPerf.managed: timeout is too short (20m0s \u003c 21m30s)\n    testcheck.go:48: arc.AuthPerf.managed_vm: timeout is too short (20m0s \u003c 21m30s)\n    testcheck.go:48: arc.Boot: timeout is too short (5m0s \u003c 21m30s)\n    testcheck.go:48: arc.Boot.vm: timeout is too short (20m0s \u003c 21m30s)\n    testcheck.go:48: arc.BuildProperties: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.CachePerf: timeout is too short (8m0s \u003c 21m30s)\n    testcheck.go:48: arc.CachePerf.vm: timeout is too short (8m0s \u003c 21m30s)\n    testcheck.go:48: arc.CacheValidation: timeout is too short (8m0s \u003c 21m30s)\n    testcheck.go:48: arc.CacheValidation.vm: timeout is too short (8m0s \u003c 21m30s)\n    testcheck.go:48: arc.Cgroups: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.LowMemoryKiller: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MediaSessionGain: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MediaSessionGain.vm: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MediaSessionGainTransient: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MediaSessionGainTransient.vm: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MediaSessionGainTransientDuck: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MediaSessionGainTransientDuck.vm: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MemoryChromeOSPerf.noarc: timeout is too short (10m0s \u003c 21m30s)\n    testcheck.go:48: arc.MiniContainer: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MiniContainerState: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MountOBB: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.MultiNetworking: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.NetworkdStability: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.PlayStore: timeout is too short (10m0s \u003c 21m30s)\n    testcheck.go:48: arc.PlayStore.vm: timeout is too short (10m0s \u003c 21m30s)\n    testcheck.go:48: arc.PlayStorePersistent: timeout is too short (5m0s \u003c 21m30s)\n    testcheck.go:48: arc.PlayStorePersistent.vm: timeout is too short (5m0s \u003c 21m30s)\n    testcheck.go:48: arc.Reboot: timeout is too short (10m0s \u003c 21m30s)\n    testcheck.go:48: arc.Reboot.vm: timeout is too short (10m0s \u003c 21m30s)\n    testcheck.go:48: arc.SetBounds: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.SmartSelectionChrome: timeout is too short (5m0s \u003c 21m30s)\n    testcheck.go:48: arc.StartStop: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.StartStop.vm: timeout is too short (20m0s \u003c 21m30s)\n    testcheck.go:48: arc.SurfaceInsets: timeout is too short (4m0s \u003c 21m30s)\n    testcheck.go:48: arc.VirtualDesks: timeout is too short (4m0s \u003c 21m30s)",
+      "parentUuid": "e60694fc_c555e8ef",
       "range": {
         "startLine": 30,
         "startChar": 1,
