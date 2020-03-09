@@ -27,7 +27,7 @@ func init() {
 			"android",
 			"chrome",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Pre:  arc.Booted(),
 	})
 }
