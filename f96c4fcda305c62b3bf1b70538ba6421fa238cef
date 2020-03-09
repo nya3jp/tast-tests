@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ce71ab33_4c51546f",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-03-09T03:04:48Z",
+      "side": 1,
+      "message": "vold.post_fs_data_done works for both Container and VM. Thanks!\nAlso changed noReportTiming to reportTiming, since the comment below (This runs in the background, so don\u0027t report timing information) is no longer true.",
+      "parentUuid": "61393729_1a4f343b",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 40
+      },
+      "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e222138_6e390750",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42584b67_08bb7ce9",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-03-09T03:04:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef57394b_0a766a9b",
+      "range": {
+        "startLine": 153,
+        "startChar": 25,
+        "endLine": 153,
+        "endChar": 50
+      },
+      "revId": "f96c4fcda305c62b3bf1b70538ba6421fa238cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
