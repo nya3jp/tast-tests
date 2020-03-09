@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea7f42a8_b09a2e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1323043
+      },
+      "writtenOn": "2020-03-09T06:39:17Z",
+      "side": 1,
+      "message": "Extend the timeout to 5 seconds",
+      "range": {
+        "startLine": 62,
+        "startChar": 111,
+        "endLine": 62,
+        "endChar": 124
+      },
+      "revId": "783c3c512d70397a1e3ac09565346f65ef596800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
