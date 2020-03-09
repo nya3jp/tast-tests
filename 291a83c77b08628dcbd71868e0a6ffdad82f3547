@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73896e91_53b25bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1370277
+      },
+      "writtenOn": "2020-03-09T03:29:38Z",
+      "side": 1,
+      "message": "Maybe just like what you replied on my CL, \u0027unable to cancel routine\u0027",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "291a83c77b08628dcbd71868e0a6ffdad82f3547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
