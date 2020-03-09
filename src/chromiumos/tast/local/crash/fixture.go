@@ -35,7 +35,7 @@ const (
 // SetConsent enables or disables metrics consent, based on the value of |consent|.
 // Pre: cr must point to a logged-in chrome session.
 func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
-	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
 	if err := ensureSoftwareDeps(ctx); err != nil {
@@ -61,6 +61,13 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		}
 		if state != consent {
 			return errors.Errorf("consent state mismatch: got %t, want %t", state, consent)
+		}
+		// Also wait for device policy to be present
+		if _, err := os.Stat("/var/lib/whitelist/policy.1"); err != nil {
+			if os.IsNotExist(err) {
+				return err
+			}
+			return testing.PollBreak(err)
 		}
 		return nil
 	}, nil); err != nil {
