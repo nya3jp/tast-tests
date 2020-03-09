@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75a6ce53_dafff281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-09T17:32:18Z",
+      "side": 1,
+      "message": "This is how it looks on ToT [1], is this change intended?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/mem_check.go;l\u003d41?q\u003dvideo%2Fmem_check.go",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "dbee39cff22f834e719355799e1eee188cce8041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
