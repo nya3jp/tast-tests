@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9cb595b_89b51509",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-03-09T00:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e8261b1_633eb787",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "7b0b81b1ca03b5b92d117a831371c7770a61848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b031e36_57e52f30",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "7b0b81b1ca03b5b92d117a831371c7770a61848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c67461_e43ef17b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-03-09T00:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b031e36_57e52f30",
+      "revId": "7b0b81b1ca03b5b92d117a831371c7770a61848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +127,54 @@
       "revId": "7b0b81b1ca03b5b92d117a831371c7770a61848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4059ad8d_c19a5445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-03-09T00:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f183a12f_d2d2081a",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "7b0b81b1ca03b5b92d117a831371c7770a61848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3fa84e9_b2e2fe0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-03-09T00:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad848a8_491cd87d",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "7b0b81b1ca03b5b92d117a831371c7770a61848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
