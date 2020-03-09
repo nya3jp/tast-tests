@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d9d5739_47145ee0",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T08:01:53Z",
+      "side": 1,
+      "message": "Eval",
+      "range": {
+        "startLine": 101,
+        "startChar": 15,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "c3f41d7e629f439eb1511f5170f02a40aad4c4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
