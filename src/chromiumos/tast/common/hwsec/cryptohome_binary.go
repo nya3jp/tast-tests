@@ -512,3 +512,8 @@ func (c *CryptohomeBinary) SetFirmwareManagementParameters(ctx context.Context, 
 func (c *CryptohomeBinary) RemoveFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=remove_firmware_management_parameters")
 }
+
+// GetAccountDiskUsage calls "cryptohome --action=get_account_disk_usage".
+func (c *CryptohomeBinary) GetAccountDiskUsage(ctx context.Context, username string) ([]byte, error) {
+	return c.call(ctx, "--action=get_account_disk_usage", "--user="+username)
+}
