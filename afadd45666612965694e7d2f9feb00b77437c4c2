@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b425f3f_9e37fa00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T19:17:35Z",
+      "side": 1,
+      "message": "Could you call close in defer stmt?",
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d8e361_1561b9a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T19:17:35Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f6c414_d28bad13",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T19:17:35Z",
+      "side": 1,
+      "message": "tsw is needed only for the size.\nHow about using\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/ad9a52ea5d51b1d9bd9199c3dac85f39c57c18a4/src/chromiumos/tast/local/coords/coords.go#31\n\nto minimize the dependency?",
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
