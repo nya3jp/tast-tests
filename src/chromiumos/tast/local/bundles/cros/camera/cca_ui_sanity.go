@@ -42,6 +42,7 @@ func init() {
 			Val: ccaUISanityParams{
 				useFakeDeviceInChrome: true,
 			},
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
