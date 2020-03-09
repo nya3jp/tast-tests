@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c3b97c87_620d0370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-03-09T22:14:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b425f3f_9e37fa00",
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3d8e361_1561b9a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "a50d3796_0c014ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_window_from_shelf_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-03-09T22:14:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d8e361_1561b9a1",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2f6c414_d28bad13",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2020-03-09T19:17:35Z",
       "side": 1,
       "message": "tsw is needed only for the size.\nHow about using\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/ad9a52ea5d51b1d9bd9199c3dac85f39c57c18a4/src/chromiumos/tast/local/coords/coords.go#31\n\nto minimize the dependency?",
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c64450f_7f8f1169",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-03-09T22:14:16Z",
+      "side": 1,
+      "message": "tsw Height Width is in TouchCoord (int32) while coord.size is int. It won\u0027t let me do implicit casts even from int32 to TouchCoord. To do this I think we have to get rid of TouchCoord struct and create some Point32 and Size32 structs. Is something like that what you had in mind? Thank you in advance for pointers.",
+      "parentUuid": "a2f6c414_d28bad13",
       "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
