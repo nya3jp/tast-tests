@@ -30,8 +30,8 @@ func init() {
 func NetworkListenersARC(ctx context.Context, s *testing.State) {
 	ls := netlisten.Common(s.PreValue().(arc.PreData).Chrome)
 	ls["127.0.0.1:5037"] = "/usr/bin/adb"
-	// arc-networkd runs an ADB proxy server on port 5550.
-	ls["127.0.0.1:5550"] = "/usr/bin/arc-networkd"
+	// arc-networkd runs an ADB proxy server on port 5555.
+	ls["*:5555"] = "/usr/bin/arc-networkd"
 	// sslh is installed on ARC-capable systems to multiplex port 22 traffic between sshd and arc-networkd (for adb).
 	ls["*:22"] = "/usr/sbin/sslh-fork"
 	ls["*:2222"] = "/usr/sbin/sshd"
