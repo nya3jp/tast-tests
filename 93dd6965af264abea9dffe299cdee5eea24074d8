@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5790ae4d_72610485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-09T08:26:00Z",
+      "side": 1,
+      "message": "Could you add comment here? Don\u0027t wrap error so that caller can use os.IsNotExist",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "93dd6965af264abea9dffe299cdee5eea24074d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
