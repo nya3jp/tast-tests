@@ -695,6 +695,24 @@
     },
     {
       "key": {
+        "uuid": "73ded823_6b5c0349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-09T22:17:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4df657f4_72c5aa6b",
+      "revId": "007dfff6afd778fc5cc6dfb16fa29abbb512a0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be3a9d69_bbcc7d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 6
