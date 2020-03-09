@@ -107,12 +107,12 @@ func init() {
 		}, {
 			Name:              "vm",
 			Val:               stableCUJTests,
-			ExtraSoftwareDeps: []string{"android_vm_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}, {
 			Name:              "vm_unstable",
 			Val:               unstableCUJTests,
-			ExtraSoftwareDeps: []string{"android_vm_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}},
 	})

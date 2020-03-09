@@ -77,7 +77,7 @@ func init() {
 				1,     // Num test iterations.
 				clamshellWindowStateTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}, {
 			Name: "clamshell_stress",
@@ -95,7 +95,7 @@ func init() {
 				25,    // Num test iterations.
 				clamshellWindowStateTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}, {
 			Name: "tablet",
@@ -113,7 +113,7 @@ func init() {
 				1,    // Num test iterations.
 				tabletWindowStateTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}, {
 			Name: "tablet_stress",
@@ -131,7 +131,7 @@ func init() {
 				25,   // Num test iterations.
 				tabletWindowStateTests,
 			},
-			ExtraSoftwareDeps: []string{"android_vm_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}},
 	})

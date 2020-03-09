@@ -35,7 +35,7 @@ func init() {
 			Val:               []string{},
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm_p"},
+			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               []string{"--enable-arcvm"},
 		}},
 	})
