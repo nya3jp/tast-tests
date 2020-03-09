@@ -80,7 +80,7 @@ func NewSignalWatcher(ctx context.Context, conn *dbus.Conn, specs ...MatchSpec) 
 // a shared connection to the system bus.
 func NewSignalWatcherForSystemBus(ctx context.Context, spec ...MatchSpec) (*SignalWatcher, error) {
 	// SystemBus returns a shared connection. It should not be closed.
-	conn, err := dbus.SystemBus()
+	conn, err := SystemBus()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to system bus")
 	}
