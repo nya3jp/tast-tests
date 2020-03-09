@@ -814,3 +814,24 @@ func (u *UtilityCryptohomeBinary) RestoreFWMP(ctx context.Context, fwmp *Firmwar
 
 	return nil
 }
+
+// GetAccountDiskUsage returns the disk space (in bytes) used by the username.
+func (u *UtilityCryptohomeBinary) GetAccountDiskUsage(ctx context.Context, username string) (diskUsage int64, returnedError error) {
+	binaryMsg, err := u.binary.GetAccountDiskUsage(ctx, username)
+	msg := string(binaryMsg)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failure to call GetAccountDiskUsage, got %q", msg)
+		return -1, errors.Wrap(err, "failed to call GetAccountDiskUsage")
+	}
+
+	var result int64
+	for _, s := range strings.Split(strings.TrimSpace(msg), "\n") {
+		if n, err := fmt.Sscanf(s, "Account Disk Usage in bytes: %d", &result); err == nil && n == 1 {
+			// We've found the output that we need.
+			return result, nil
+		}
+	}
+
+	testing.ContextLogf(ctx, "Unexpected GetAccountDiskUsage output, got %q", msg)
+	return -1, errors.New("failed to parse GetAccountDiskUsage output")
+}
