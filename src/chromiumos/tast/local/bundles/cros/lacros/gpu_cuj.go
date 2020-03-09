@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/ui"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -39,6 +41,43 @@ func init() {
 			Val:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
 		}},
 	})
+}
+
+func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string) error {
+	// Find and click the StatusArea via UI. Clicking it opens the Ubertray.
+	params := ui.FindParams{
+		ClassName: "ash/StatusAreaWidgetDelegate",
+	}
+	statusArea, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the status area (time, battery, etc.)")
+	}
+	defer statusArea.Release(ctx)
+
+	if err := statusArea.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click status area")
+	}
+
+	// Find and click button in the Ubertray via UI.
+	params = ui.FindParams{
+		Name:      name,
+		ClassName: "FeaturePodIconButton",
+	}
+	nbtn, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find button")
+	}
+	defer nbtn.Release(ctx)
+
+	if err := nbtn.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click button")
+	}
+
+	// Close StatusArea.
+	if err := statusArea.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to click status area")
+	}
+	return nil
 }
 
 func findFirstWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
@@ -183,8 +222,22 @@ func runTestChromeOS(ctx context.Context, pd launcher.PreData, pv *perf.Values, 
 }
 
 func GpuCUJ(ctx context.Context, s *testing.State) {
+	tconn, err := s.PreValue().(launcher.PreData).Chrome.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is off."); err != nil {
+		s.Fatal("Failed to disable notifications: ", err)
+	}
+	defer func() {
+		if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is on."); err != nil {
+			s.Fatal("Failed to re-enable notifications: ", err)
+		}
+	}()
+
 	pv := perf.NewValues()
-	err := runTestLacros(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string))
+	err = runTestLacros(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string))
 	if err != nil {
 		s.Fatal("Failed to run test: ", err)
 	}
