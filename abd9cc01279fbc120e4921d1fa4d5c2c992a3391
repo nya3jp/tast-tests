@@ -22,6 +22,30 @@
       "revId": "abd9cc01279fbc120e4921d1fa4d5c2c992a3391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e302140_10bba673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory_shifting_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-09T02:15:56Z",
+      "side": 1,
+      "message": "Yes it is still needed. Currently empty Attr is equivalent to []string{\"group:mainline\"}. I\u0027m working on removing this implicit group:mainline behavior.",
+      "parentUuid": "8033f790_ff9e448b",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "abd9cc01279fbc120e4921d1fa4d5c2c992a3391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
