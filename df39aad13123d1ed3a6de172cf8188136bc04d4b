@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e449184_85aaaf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-09T16:24:58Z",
+      "side": 1,
+      "message": "I missed this from a previous CL, but why are these functions in a gRPC service in tast?",
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708d390f_07b59b11",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-09T16:24:58Z",
+      "side": 1,
+      "message": "Should this timeout reflect the provided context\u0027s timeout?",
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5a2c34_6a07526a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-09T16:24:58Z",
+      "side": 1,
+      "message": "nit: better variable names might be configurationData and newConfigurationData. That way the purpose of each variable is more obvious.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9444bb8_6e65664d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-09T16:24:58Z",
+      "side": 1,
+      "message": "Is these any chance this function would be used outside of this file? If so would it make sense to move it somewhere more general?",
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
