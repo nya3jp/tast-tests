@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "56c241fc_868aae2c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T18:16:27Z",
+      "side": 1,
+      "message": "Sorry, my question may not be clear enough.\nWhy do you need to make it injectable? If there\u0027s not necessary, just instantiating the utilityToCryptohome in the method looks simpler.",
+      "parentUuid": "cc0da7a1_4184dae8",
+      "range": {
+        "startLine": 57,
+        "startChar": 120,
+        "endLine": 57,
+        "endChar": 180
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a4f2eba_272c6a2b",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 33
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "chapsPath (needed for all pkcs11-tool invocation), runner (needed for all invocations) and utility (needed for all operation that needs to convert username to slot) are 3 commonly used elements in this file. This struct is created to avoid cluttering the method arguments/parameters.\n\nPlease advise if it is more preferable to leave this struct intact (and avoid cluttering the method parameters), or remove it.",
       "parentUuid": "ea67a465_400ecebf",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d49abe3_b80f8609",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T18:16:27Z",
+      "side": 1,
+      "message": "My recommendation is to design APIs you need in details.\n\nLet\u0027s consider from the external APIs you\u0027d like to provide from this module. In this CL they are;\n- Create a Key\n- Delete a Key\n- Sign by using the created key.\n- Verify by using the created key.\n\nThe second step is; what are needed for each API.\nThe third step is, if there\u0027s common parts, you can extract it into method, struct, interface etc. On the extraction, I\u0027d also recommend to consider \"what it is\", and reflect it in the name of the extracted part.\n\"Util\" sounds like \"a convenient tool\" here. Does it what you designed?\nIn other words, \"what\" should create/delete a key, \"what\" should sign/verify by using the keys?",
+      "parentUuid": "6993348f_beca2ed4",
       "range": {
         "startLine": 64,
         "startChar": 5,
@@ -366,6 +414,24 @@
     },
     {
       "key": {
+        "uuid": "e0c77212_2db0faec",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T18:16:27Z",
+      "side": 1,
+      "message": "To be clear my request: \"could you add comment in this code why you need to use openssl instead of go\u0027s SSL implementation explicitly\"?",
+      "parentUuid": "d102b4aa_1f3a1b77",
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ecbfa7a_f3348ed4",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 33
@@ -471,6 +537,30 @@
       "side": 1,
       "message": "The decision to use a method stems from a discussion with Katherine and Andrey Pronin in crrev.com/1943872/28, please see line L282/L283.\n\nAndrey Pronin opposes the use of names such as \"SHA1RSAPKCSPSS\" because \"13 uppercase letters + 1 digit in a row is hardly readable.\" Therefore, I tried CamelCase but Katherine decides that it\u0027s not Go style compliant, so we went with \"a single function which takes in the name\".\n\nRegarding the use of \"panic\", I had discussion with Katherine, and it was agreed that it\u0027s acceptable because the parameter to NewMechanism() is hard coded, so it\u0027s not possible to have new stuff after the test is committed.\n\nAs summary, we\u0027ve the following approaches:\n1. \"var SHA1RSAPKCS\": This was my original choice, but it carries the drawback of not being \"redable\", and the variables could be accidentally modified by users of this class. Additionally, global variable is created.\n2. \"func SHA1RSAPKCS!: This fixes the global variable problem and variable being modified by user problem. However, it is still not readable.\n3. \"func NewMechanism\": The current form, but the drawback is that we\u0027ll either have to panic() if the mechanism is not found, or we\u0027ll need additional error handling.\n\nPlease advise, thank you.",
       "parentUuid": "4019e4df_64968c29",
+      "range": {
+        "startLine": 250,
+        "startChar": 78,
+        "endLine": 250,
+        "endChar": 103
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e238cbdd_061e621e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-09T18:16:27Z",
+      "side": 1,
+      "message": "I agree on the opinion about the readability comparing to other languages.\nIt happens if acronyms continue, and this is the case, and AFAIK, it is unavoidable.\n\n1. It looks a common go style, and a way to go to me.\n2. Go does not worry about modify-ability. Actually, stdlib does not.\n3. panic() looks not good to me. Also, the error checking is moved from compile time to runtime, that also not a good. Earlier error handling is better.\n\nPls feel free to loop in other reviewers, if you think it is needed.",
+      "parentUuid": "22a5d22c_dc78abce",
       "range": {
         "startLine": 250,
         "startChar": 78,
