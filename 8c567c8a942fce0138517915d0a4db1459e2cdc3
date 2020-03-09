@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e7f666b_5fdb39fe",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-09T00:45:53Z",
+      "side": 1,
+      "message": "Maybe \u0027records\u0027",
+      "parentUuid": "869b713a_8ff449a9",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb6e17e4_6b90a508",
         "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4edb2023_5b88004a",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-09T00:45:53Z",
+      "side": 1,
+      "message": "It\u0027s to assert that RAPLMetrics is a perf.TimelineDatasource.\n\nNya recommended I do the assert this way (instead of returning the interface type from NewRAPLMetrics): https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2028334/14/src/chromiumos/tast/local/power/ectool/battery_perf_metrics.go#133\n\nBecause of this guidance to return concrete types from constructors: https://github.com/golang/go/wiki/CodeReviewComments#interfaces",
+      "parentUuid": "eb6e17e4_6b90a508",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
