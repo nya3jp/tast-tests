@@ -16,6 +16,24 @@
       "revId": "012aeddbd6b7b3218c9d06801a3a0a1412fe3de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab5a1bd_5ce930f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-09T17:13:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e3c9f2_3b11cded",
+      "revId": "012aeddbd6b7b3218c9d06801a3a0a1412fe3de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
