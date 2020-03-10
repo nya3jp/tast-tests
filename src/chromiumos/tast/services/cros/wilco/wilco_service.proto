@@ -29,8 +29,8 @@ service WilcoService {
 
   rpc ExecuteRoutine(ExecuteRoutineRequest)
     returns (ExecuteRoutineResponse) {}
-  rpc TestRoutineCancellation(google.protobuf.Empty)
-    returns (google.protobuf.Empty) {}
+  rpc TestRoutineCancellation(ExecuteRoutineRequest)
+    returns (ExecuteRoutineResponse) {}
 
   rpc StartDPSLListener(google.protobuf.Empty)
     returns (google.protobuf.Empty) {}
@@ -65,6 +65,7 @@ enum DiagnosticRoutineStatus {
   ROUTINE_STATUS_PASSED = 0;
   ROUTINE_STATUS_FAILED = 1;
   ROUTINE_STATUS_ERROR = 2;
+  ROUTINE_STATUS_CANCELLED = 3;
 }
 
 message ExecuteRoutineResponse {

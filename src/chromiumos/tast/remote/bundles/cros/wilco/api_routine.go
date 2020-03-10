@@ -83,9 +83,15 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
 	// executeRoutine sends the request in rrRequest, executing the routine, and
-	// checks the result against shouldFail.
+	// checks the result against expectedStatus. Some routines would not get back
+	// to service right away, so shortening test time by cancelling them and check
+	// if it is in cancelled status respectively.
 	executeRoutine := func(ctx context.Context,
-		rrRequest dtcpb.RunRoutineRequest, shouldFail bool) error {
+		rrRequest dtcpb.RunRoutineRequest,
+		expectedStatus wilco.DiagnosticRoutineStatus) error {
+
+		var resp *wilco.ExecuteRoutineResponse
+		var err error
 
 		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
@@ -95,26 +101,30 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to marshall")
 		}
 
-		resp, err := wc.ExecuteRoutine(ctx, &wilco.ExecuteRoutineRequest{
-			Request: data,
-		})
+		if expectedStatus == wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
+			resp, err = wc.TestRoutineCancellation(ctx, &wilco.ExecuteRoutineRequest{
+				Request: data,
+			})
+		} else {
+			resp, err = wc.ExecuteRoutine(ctx, &wilco.ExecuteRoutineRequest{
+				Request: data,
+			})
+		}
 		if err != nil {
 			return errors.Wrap(err, "failed to execute routine")
 		}
 
-		if shouldFail && resp.Status != wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
-			return errors.Errorf("invalid result: expected FAILED, got %s", resp.Status)
-		} else if !shouldFail && resp.Status != wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED {
-			return errors.Errorf("invalid result: expected PASSED, got %s", resp.Status)
+		if resp.Status != expectedStatus {
+			return errors.Errorf("invalid result: expected %s, got %s", expectedStatus, resp.Status)
 		}
 
 		return nil
 	}
 
 	for _, param := range []struct {
-		name       string
-		request    dtcpb.RunRoutineRequest
-		shouldFail bool
+		name           string
+		request        dtcpb.RunRoutineRequest
+		expectedStatus wilco.DiagnosticRoutineStatus
 	}{
 		{
 			name: "urandom",
@@ -126,7 +136,19 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "urandom_cancel",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
+				Parameters: &dtcpb.RunRoutineRequest_UrandomParams{
+					UrandomParams: &dtcpb.UrandomRoutineParameters{
+						LengthSeconds: 5,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
 		{
 			name: "battery",
@@ -139,7 +161,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "battery_fail",
@@ -154,7 +176,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// HighMah is 100 (all devices should have a battery larger than
 			// this).
-			shouldFail: true,
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
 		},
 		{
 			name: "battery_sysfs",
@@ -167,7 +189,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
 			name: "smartctl",
@@ -177,19 +199,13 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					SmartctlCheckParams: &dtcpb.SmartctlCheckRoutineParameters{},
 				},
 			},
-			shouldFail: false,
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := executeRoutine(ctx, param.request, param.shouldFail); err != nil {
+			if err := executeRoutine(ctx, param.request, param.expectedStatus); err != nil {
 				s.Error("Routine test failed: ", err)
 			}
 		})
 	}
-
-	s.Run(ctx, "cancellation", func(ctx context.Context, s *testing.State) {
-		if _, err := wc.TestRoutineCancellation(ctx, &empty.Empty{}); err != nil {
-			s.Error("Routine cancellation test failed: ", err)
-		}
-	})
 }
