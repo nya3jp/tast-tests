@@ -21,7 +21,6 @@ func init() {
 }
 
 func IWGetSet(ctx context.Context, s *testing.State) {
-	const iface = "wlan0"
 	iwr := iw.NewRunner()
 	res, err := iwr.GetRegulatoryDomain(ctx)
 	if err != nil {
