@@ -71,6 +71,78 @@
     },
     {
       "key": {
+        "uuid": "ca0f420e_ae612aa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a278f7_b475c0af",
+      "range": {
+        "startLine": 196,
+        "startChar": 15,
+        "endLine": 196,
+        "endChar": 16
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5262d145_73cb0d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3586e0e8_5c0a557b",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 11
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4e489a2_1a4775c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7714e00a_7896b67c",
+      "range": {
+        "startLine": 196,
+        "startChar": 34,
+        "endLine": 196,
+        "endChar": 36
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4f4feba_2448be89",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc349d78_7932df7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "which find resolves vendor. Also there is more usage here and around of vendor\nAdded comment.",
+      "parentUuid": "c4f4feba_2448be89",
+      "range": {
+        "startLine": 198,
+        "startChar": 9,
+        "endLine": 198,
+        "endChar": 24
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "64391185_64f53b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6b4ab9b_4141b8f4",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e38fbd4_7d3e29c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f49c90_6ac336ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e38fbd4_7d3e29c9",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8b29e66d_81ba187a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff66400_3c265381",
+      "range": {
+        "startLine": 45,
+        "startChar": 82,
+        "endLine": 45,
+        "endChar": 91
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79427a1c_420278c8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 6
@@ -174,6 +342,30 @@
       "writtenOn": "2020-03-10T09:44:21Z",
       "side": 1,
       "message": "Mainline tests are functional tests, so they should not upload artifacts.\n\nCould you create a separate test group for this test, just as crosbolt did for metrics?\n\nIf you still want to run non-uploading part of this test for sanity checks, you can introduce parameterized variants of this test: one for generate-only (group:mainline) and the other for generate \u0026 upload (group:somenewgroup).",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2307fde_8a708586",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "FYI: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2055607\nThere is ongoing discussion how to better integrate.",
+      "parentUuid": "79427a1c_420278c8",
       "range": {
         "startLine": 36,
         "startChar": 9,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7eb8a716_0ed019de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "No, version specifies build id which is unique per arch. For this test, no need separation per board/model.",
+      "parentUuid": "6532e2b5_89dc1a42",
+      "range": {
+        "startLine": 117,
+        "startChar": 18,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da4eced0_42db3c21",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
         "patchSetId": 6
@@ -220,6 +436,30 @@
       "writtenOn": "2020-03-10T09:44:21Z",
       "side": 1,
       "message": "This is a very racy lock; it is possible that multiple test runs upload artifacts concurrently. I rather think that we should schedule tests in a way causing no races and returning errors in this test if there is any conflict (e.g. using no-clobber option on uploading files).",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 113
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e459b14_7f10457b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:42:40Z",
+      "side": 1,
+      "message": "It will be scheduled in separate scheduler, one per ARCH, presumably in Android PFQ.\nIt was a feature request https://b.corp.google.com/issues/149937354 that you reassigned back to me to specify context of execution and upload only if we have specific execution context, let say PFQ. That was discussed with Hidehiko as well.\nAt this moment that is not a problem at all once this is informational. When integrated (let say to PFQ) it will have more restriction.",
+      "parentUuid": "da4eced0_42db3c21",
       "range": {
         "startLine": 174,
         "startChar": 3,
