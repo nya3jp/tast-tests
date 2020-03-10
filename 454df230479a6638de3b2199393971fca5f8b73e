@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83072ab1_3e2d8d13",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-03-10T23:43:07Z",
+      "side": 1,
+      "message": "This is 16min, which seems a little long since the videos are 10min?",
+      "range": {
+        "startLine": 219,
+        "startChar": 22,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "454df230479a6638de3b2199393971fca5f8b73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2dc018_5cac12de",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-03-10T23:43:07Z",
+      "side": 1,
+      "message": "threshold",
+      "range": {
+        "startLine": 225,
+        "startChar": 68,
+        "endLine": 225,
+        "endChar": 76
+      },
+      "revId": "454df230479a6638de3b2199393971fca5f8b73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ce7c25_35d298b6",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-03-10T23:43:07Z",
+      "side": 1,
+      "message": "Might be missing something --- where would this be surfaced?",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 20
+      },
+      "revId": "454df230479a6638de3b2199393971fca5f8b73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
