@@ -22,6 +22,30 @@
       "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd5c682_034cfd2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-10T09:16:44Z",
+      "side": 1,
+      "message": "There are 15\n\tFailed to get current connected monitors: failed to fetch reasonable connector size: {\u0027\\x00\u0027 \u0027\\x00\u0027}\n\nThese were test issues and fixed.\n\nSo 14 out of 2432 remain.\n\nThen 3\n\"\tFailed to log into Chrome: OOBE not dismissed: cdp.Target: GetTargets: websocket: close 1006 (abnormal closure): unexpected EOF\"\n\nThese are product failures/Chrome login.\n\nInfra failure 1\n\"\tGot global error: runner.go:162: Bundle /usr/local/libexec/tast/bundles/local/cros failed: caught signal 15 (terminated) (status 8), Test did not finish\"\n\nSo we are at 10/2432.\n\nMost of those are product issues on ARM drivers. None a test issue.",
+      "parentUuid": "3e065f59_1a74ffce",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
