@@ -110,7 +110,7 @@ func TestSetup(t *testing.T) {
 		item1 := newTestSetupCleanup()
 
 		func() {
-			s, c := New()
+			s, c := New("test")
 			defer func() {
 				if v := recover(); v != tc.expectedPanic {
 					panic(v)
@@ -175,7 +175,7 @@ func TestNestedSetup(t *testing.T) {
 		}
 
 		func() {
-			s, c := New()
+			s, c := New("test")
 			defer func() {
 				if v := recover(); v != tc.expectedPanic {
 					panic(v)
@@ -187,7 +187,7 @@ func TestNestedSetup(t *testing.T) {
 				}
 			}()
 			s.Add(items[0].setup())
-			s.Add(Nested(ctx, func(s *Setup) error {
+			s.Add(Nested(ctx, "test", func(s *Setup) error {
 				s.Add(items[1].setup())
 				s.Add(tc.testItem())
 				if tc.nestedError != nil {
@@ -226,7 +226,7 @@ func TestMultipleCleanup(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	s, c := New()
+	s, c := New("test")
 	s.Add(emptySetup())
 	if err := s.Check(ctx); err != nil {
 		t.Error("Setup failed")
