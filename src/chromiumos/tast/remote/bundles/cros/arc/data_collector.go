@@ -35,8 +35,8 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
 		Timeout:      10 * time.Minute,
 		Vars: []string{
-			"arc.UreadaheadService.username",
-			"arc.UreadaheadService.password",
+			"arc.DataCollector.username",
+			"arc.DataCollector.password",
 		},
 	})
 }
@@ -132,8 +132,8 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	// First boot is needed to be initial boot with removing all user data.
 	request := arcpb.UreadaheadPackRequest{
 		InitialBoot: true,
-		Username:    s.RequiredVar("arc.UreadaheadService.username"),
-		Password:    s.RequiredVar("arc.UreadaheadService.password"),
+		Username:    s.RequiredVar("arc.DataCollector.username"),
+		Password:    s.RequiredVar("arc.DataCollector.password"),
 	}
 
 	// Shorten the total context by 5 seconds to allow for cleanup.
