@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4afd2a96_d9027c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-10T14:49:38Z",
+      "side": 1,
+      "message": "Ack\n\nCannot insist on it.",
+      "parentUuid": "5f2ecba0_88170429",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 7
+      },
+      "revId": "82a7258f978c462ca04133122c2a936a48a253e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28cd8fc2_1d5d8b96",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
         "patchSetId": 10
