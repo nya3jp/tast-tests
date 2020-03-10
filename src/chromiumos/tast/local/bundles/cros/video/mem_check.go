@@ -18,9 +18,8 @@ import (
 )
 
 type memCheckParams struct {
-	fileName    string
-	videoWidth  int
-	videoHeight int
+	fileName string
+	sizes    []graphics.Size
 }
 
 func init() {
@@ -35,7 +34,7 @@ func init() {
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
 			Name:              "h264_hw",
-			Val:               memCheckParams{fileName: "720_h264.mp4", videoWidth: 1280, videoHeight: 720},
+			Val:               memCheckParams{fileName: "720_h264.mp4", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
@@ -43,7 +42,7 @@ func init() {
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp8_hw",
-			Val:               memCheckParams{fileName: "720_vp8.webm", videoWidth: 1280, videoHeight: 720},
+			Val:               memCheckParams{fileName: "720_vp8.webm", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp8.webm"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP8},
@@ -51,7 +50,7 @@ func init() {
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp9_hw",
-			Val:               memCheckParams{fileName: "720_vp9.webm", videoWidth: 1280, videoHeight: 720},
+			Val:               memCheckParams{fileName: "720_vp9.webm", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp9.webm"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP9},
@@ -74,7 +73,7 @@ func MemCheck(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Error getting the graphics backend: ", err)
 	}
-	if err := graphics.CompareGraphicsMemoryBeforeAfter(ctx, testPlay, backend, testOpt.videoWidth, testOpt.videoHeight); err != nil {
+	if err := graphics.VerifyGraphicsMemory(ctx, testPlay, backend, testOpt.sizes); err != nil {
 		s.Fatal("Test failed: ", err)
 	}
 }
