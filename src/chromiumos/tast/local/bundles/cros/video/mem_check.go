@@ -18,8 +18,9 @@ import (
 )
 
 type memCheckParams struct {
-	fileName string
-	sizes    []graphics.Size
+	fileName   string
+	sizes[]    graphics.Size
+	videoType  play.VideoType
 }
 
 func init() {
@@ -34,7 +35,7 @@ func init() {
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
 			Name:              "h264_hw",
-			Val:               memCheckParams{fileName: "720_h264.mp4", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}},
+			Val:               memCheckParams{fileName: "720_h264.mp4", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_h264.mp4"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
@@ -42,7 +43,7 @@ func init() {
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp8_hw",
-			Val:               memCheckParams{fileName: "720_vp8.webm", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}},
+			Val:               memCheckParams{fileName: "720_vp8.webm", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp8.webm"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP8},
@@ -50,10 +51,18 @@ func init() {
 			Timeout:           10 * time.Minute,
 		}, {
 			Name:              "vp9_hw",
-			Val:               memCheckParams{fileName: "720_vp9.webm", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}},
+			Val:               memCheckParams{fileName: "720_vp9.webm", sizes: []graphics.Size{graphics.Size{Width: 1280, Height: 720}}, videoType: play.NormalVideo},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720_vp9.webm"},
 			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideoWithGuestLogin(),
+			Timeout:           10 * time.Minute,
+		}, {
+			Name:              "h264_hw_switch",
+			Val:               memCheckParams{fileName: "cars_dash_mp4.mpd", sizes: []graphics.Size{graphics.Size{Width: 256, Height: 144}, graphics.Size{Width: 426, Height: 240}}, videoType: play.MSEVideo},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         append(play.MSEDataFiles(), "cars_dash_mp4.mpd", "cars_144_h264.mp4", "cars_240_h264.mp4"),
+			ExtraSoftwareDeps: []string{"amd64", "video_overlays", caps.HWDecodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 			Pre:               pre.ChromeVideoWithGuestLogin(),
 			Timeout:           10 * time.Minute,
 		}},
@@ -66,7 +75,7 @@ func MemCheck(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(memCheckParams)
 
 	testPlay := func() error {
-		return play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, play.NormalVideo, play.VerifyHWAcceleratorUsed)
+		return play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.videoType, play.VerifyHWAcceleratorUsed)
 	}
 
 	backend, err := graphics.GetBackend()
