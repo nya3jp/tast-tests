@@ -134,6 +134,24 @@
       "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c01807_14bca930",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2020-03-10T16:44:38Z",
+      "side": 1,
+      "message": "Thanks! Went with mukai-san\u0027s suggestion to pass width and height in input.TouchCoords.",
+      "parentUuid": "f2da7eee_d2ee3fe3",
+      "revId": "afadd45666612965694e7d2f9feb00b77437c4c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
