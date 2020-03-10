@@ -573,7 +573,8 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 	return nil
 }
 
-func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), initialize bool) error {
+// RunCrashTest runs a crash test case after setting up crash reporter.
+func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), initialize bool) error {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
@@ -608,15 +609,6 @@ func runCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 	resetRateLimiting()
 	testFunc(ctx, cr, s)
 	return nil
-}
-
-// RunCrashTests runs crash test cases after setting up crash reporter.
-func RunCrashTests(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFuncList []func(context.Context, *chrome.Chrome, *testing.State), initialize bool) {
-	for _, f := range testFuncList {
-		if err := runCrashTest(ctx, cr, s, f, initialize); err != nil {
-			s.Error("Test case failed: ", err)
-		}
-	}
 }
 
 // CleanCrashSpoolDirs removes all crash files in the crash spool directories,
