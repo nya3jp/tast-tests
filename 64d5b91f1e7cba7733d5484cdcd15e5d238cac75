@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4cbc5579_1d72b6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2020-03-10T05:34:25Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s definitely cleaner!\n\nDone.",
+      "parentUuid": "9622c8cb_26e46ae5",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "64d5b91f1e7cba7733d5484cdcd15e5d238cac75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b56d412a_683f177f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "64d5b91f1e7cba7733d5484cdcd15e5d238cac75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c15e75e_b7dc1107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2020-03-10T05:34:25Z",
+      "side": 1,
+      "message": "penguin.linux.test only resolves to an IPv4 address so that\u0027s all that works with that. We could potentially plumb up the IPv6 address as well, but not sure how useful that would be.",
+      "parentUuid": "b56d412a_683f177f",
+      "revId": "64d5b91f1e7cba7733d5484cdcd15e5d238cac75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
