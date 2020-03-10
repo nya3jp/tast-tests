@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "02521f4b_2eec1466",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T19:16:37Z",
+      "side": 1,
+      "message": "There\u0027s a attestationAsyncMode flag in utilityToCryptohome that is used to set the portion of cryptohome APIs to use.",
+      "parentUuid": "56c241fc_868aae2c",
+      "range": {
+        "startLine": 57,
+        "startChar": 120,
+        "endLine": 57,
+        "endChar": 180
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a4f2eba_272c6a2b",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 33
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "My recommendation is to design APIs you need in details.\n\nLet\u0027s consider from the external APIs you\u0027d like to provide from this module. In this CL they are;\n- Create a Key\n- Delete a Key\n- Sign by using the created key.\n- Verify by using the created key.\n\nThe second step is; what are needed for each API.\nThe third step is, if there\u0027s common parts, you can extract it into method, struct, interface etc. On the extraction, I\u0027d also recommend to consider \"what it is\", and reflect it in the name of the extracted part.\n\"Util\" sounds like \"a convenient tool\" here. Does it what you designed?\nIn other words, \"what\" should create/delete a key, \"what\" should sign/verify by using the keys?",
       "parentUuid": "6993348f_beca2ed4",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a179f6_c219134e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T19:16:37Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t quite understand this comment. I guess we\u0027ll discuss during GVC. Thank you.",
+      "parentUuid": "6d49abe3_b80f8609",
       "range": {
         "startLine": 64,
         "startChar": 5,
@@ -432,6 +480,24 @@
     },
     {
       "key": {
+        "uuid": "9437e98c_b36470a2",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T19:16:37Z",
+      "side": 1,
+      "message": "Comments added to code. Sorry for misunderstanding your comment.",
+      "parentUuid": "e0c77212_2db0faec",
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ecbfa7a_f3348ed4",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 33
@@ -561,6 +627,30 @@
       "side": 1,
       "message": "I agree on the opinion about the readability comparing to other languages.\nIt happens if acronyms continue, and this is the case, and AFAIK, it is unavoidable.\n\n1. It looks a common go style, and a way to go to me.\n2. Go does not worry about modify-ability. Actually, stdlib does not.\n3. panic() looks not good to me. Also, the error checking is moved from compile time to runtime, that also not a good. Earlier error handling is better.\n\nPls feel free to loop in other reviewers, if you think it is needed.",
       "parentUuid": "22a5d22c_dc78abce",
+      "range": {
+        "startLine": 250,
+        "startChar": 78,
+        "endLine": 250,
+        "endChar": 103
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269b5235_8d5a7735",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T19:16:37Z",
+      "side": 1,
+      "message": "I\u0027ve pinged apronin@ for his opinions. I\u0027ll update this code if it is agreed that option 1 is acceptable.",
+      "parentUuid": "e238cbdd_061e621e",
       "range": {
         "startLine": 250,
         "startChar": 78,
