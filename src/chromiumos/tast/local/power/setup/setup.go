@@ -17,19 +17,20 @@ type CleanupCallback func(context.Context) error
 
 // Nested is used by setup items that have multiple stages that need separate
 // cleanup callbacks.
-func Nested(ctx context.Context, nestedSetup func(s *Setup) error) (CleanupCallback, error) {
-	s, callback := New()
+func Nested(ctx context.Context, name string, nestedSetup func(s *Setup) error) (CleanupCallback, error) {
+	s, callback := New(name)
 	succeeded := false
 	defer func() {
 		if !succeeded {
 			callback(ctx)
 		}
 	}()
+	testing.ContextLogf(ctx, "Setting up %q", name)
 	if err := nestedSetup(s); err != nil {
 		return nil, err
 	}
 	if err := s.Check(ctx); err != nil {
-		return nil, errors.Wrap(err, "setup for nested items failed")
+		return nil, err
 	}
 	succeeded = true
 	return callback, nil
@@ -38,6 +39,7 @@ func Nested(ctx context.Context, nestedSetup func(s *Setup) error) (CleanupCallb
 // Setup accumulates the results of setup items so that their results can be
 // checked, errors logged, and cleaned up.
 type Setup struct {
+	name      string
 	callbacks []CleanupCallback
 	errs      []error
 }
@@ -45,17 +47,21 @@ type Setup struct {
 // New creates a Setup object to collect the results of setup items, and a
 // cleanup function that should be immediately deferred to make sure cleanup
 // callbacks are called.
-func New() (*Setup, CleanupCallback) {
-	s := &Setup{}
+func New(name string) (*Setup, CleanupCallback) {
+	s := &Setup{
+		name:      name,
+		callbacks: nil,
+		errs:      nil,
+	}
 	cleanedUp := false
 	return s, func(ctx context.Context) error {
 		if cleanedUp {
-			return errors.New("cleanup has already been called")
+			return errors.Errorf("cleanup %q has already been called", name)
 		}
 		cleanedUp = true
 
 		if count, err := s.cleanUp(ctx); err != nil {
-			return errors.Wrapf(err, "cleanup for %d items failed", count)
+			return errors.Wrapf(err, "cleanup %q had %d items fail, first failure", name, count)
 		}
 		return nil
 	}
@@ -72,7 +78,7 @@ func (s *Setup) cleanUp(ctx context.Context) (errorCount int, firstError error) 
 				if firstError == nil {
 					firstError = err
 				}
-				testing.ContextLog(ctx, "Cleanup failed: ", err)
+				testing.ContextLogf(ctx, "Cleanup %q failed: %s", s.name, err)
 			}
 		}(c)
 	}
@@ -93,10 +99,10 @@ func (s *Setup) Add(callback CleanupCallback, err error) {
 // and a summary of failures is returned.
 func (s *Setup) Check(ctx context.Context) error {
 	for _, err := range s.errs {
-		testing.ContextLog(ctx, "Setup failed: ", err)
+		testing.ContextLogf(ctx, "Setup %q failed: %s", s.name, err)
 	}
 	if len(s.errs) > 0 {
-		return errors.Wrapf(s.errs[0], "setup for %d items failed", len(s.errs))
+		return errors.Wrapf(s.errs[0], "setup %q had %d items fail, first failure", s.name, len(s.errs))
 	}
 	return nil
 }
