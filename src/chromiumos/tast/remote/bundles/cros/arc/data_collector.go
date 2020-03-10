@@ -35,8 +35,8 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.arc.UreadaheadPackService"},
 		Timeout:      10 * time.Minute,
 		Vars: []string{
-			"arc.UreadaheadService.username",
-			"arc.UreadaheadService.password",
+			"arc.DataCollector.username",
+			"arc.DataCollector.password",
 		},
 	})
 }
