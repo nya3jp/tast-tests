@@ -22,6 +22,29 @@
       "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eab2ae7_2ad7c716",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-03-10T23:41:45Z",
+      "side": 1,
+      "message": "Intentional whitespace?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
