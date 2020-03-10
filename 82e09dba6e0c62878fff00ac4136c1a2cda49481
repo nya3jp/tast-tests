@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cea341c7_c2198e6a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-10T22:59:39Z",
+      "side": 1,
+      "message": "nit: instead of sprintf, you should pass the values in as function parameters. Just pass them as args to call.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82fc9ca7_ab623dab",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-10T22:59:39Z",
+      "side": 1,
+      "message": "Just want to check, could this cause race conditions with the event watcher callback? If we grab the list, then a new item is added, and then it is cleared, loosing an event.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
