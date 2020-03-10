@@ -94,6 +94,30 @@
       "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1666b946_493a2635",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-10T19:07:36Z",
+      "side": 1,
+      "message": "Signal 15 SIGTERM means that somebody else killed our process. This is not a test problem.\n\nAs for ARM vs. x86, that is a blunt sword as we have multiple ARM vendors. What in principle we need to be able to specify is a driver. Which in practice means specifying chipset and kernel version. Once crbug.com/1057870 is implemented we will use the feature to avoid instable new chipsets/kernels (or drivers).\n\nFinally the failures surfaced by the tast test are now precisely the same as its autotest sibling which is currently running in the CQ. Can we now promote the test in Tast as was agreed before? \n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dsuite\u0026col\u003dtest\u0026first_date\u003d2020-03-04\u0026last_date\u003d2020-03-10\u0026test\u003dgraphics_Sanity\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "7361901e_adfa6cfd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
