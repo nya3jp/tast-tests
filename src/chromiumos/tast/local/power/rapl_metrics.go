@@ -40,6 +40,10 @@ func (r *RAPLMetrics) Setup(_ context.Context) error {
 // Start collects initial energy numbers which we can use to compute the average
 // power consumption between now and the first Snapshot.
 func (r *RAPLMetrics) Start(_ context.Context) error {
+	if r.snapshot == nil {
+		// RAPL is not supported.
+		return nil
+	}
 	if _, err := r.snapshot.DiffWithCurrentRAPLAndReset(); err != nil {
 		return errors.Wrap(err, "failed to collect initial RAPL metrics")
 	}
@@ -49,6 +53,10 @@ func (r *RAPLMetrics) Start(_ context.Context) error {
 // Snapshot computes the energy consumption between this and the previous
 // snapshot, and reports them as metrics.
 func (r *RAPLMetrics) Snapshot(_ context.Context, perfValues *perf.Values) error {
+	if r.snapshot == nil {
+		// RAPL is not supported.
+		return nil
+	}
 	energy, err := r.snapshot.DiffWithCurrentRAPLAndReset()
 	if err != nil {
 		return errors.Wrap(err, "failed to create collect RAPL metrics")
