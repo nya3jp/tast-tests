@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "083a38ac_1c2c7d28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T08:56:12Z",
+      "side": 1,
+      "message": "I think they should return an error like os.ErrNotExist to distinguish ignorable errors and other real errors.\n\nIt is not a blocker of this CL, but I recommend leaving a TODO for this.",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 136
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1702bc6a_3c7c6dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T08:56:12Z",
+      "side": 1,
+      "message": "style: In this case it is simpler to avoid inlining the assignment:\n\n usageBefore, err :\u003d ...\n if err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9919313e_4c8be0e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T08:56:12Z",
+      "side": 1,
+      "message": "of\u003d%s",
+      "range": {
+        "startLine": 83,
+        "startChar": 126,
+        "endLine": 83,
+        "endChar": 133
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac0e3e3_1eab1a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T08:56:12Z",
+      "side": 1,
+      "message": "shutil.Escape(testFilePath)",
+      "range": {
+        "startLine": 83,
+        "startChar": 167,
+        "endLine": 83,
+        "endChar": 179
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f004d0_0d7ec7dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T08:56:12Z",
+      "side": 1,
+      "message": "style: same as usageBefore",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 15
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2dbc170_147db481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T08:56:12Z",
+      "side": 1,
+      "message": "nit\u0026optional: In Go numeric literals are untyped so .0 suffix is not actually needed.",
+      "range": {
+        "startLine": 102,
+        "startChar": 48,
+        "endLine": 102,
+        "endChar": 50
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
