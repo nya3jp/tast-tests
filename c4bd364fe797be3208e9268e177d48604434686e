@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7dd0286_d0774fea",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-10T17:33:32Z",
+      "side": 1,
+      "message": "hmm, I guess this struct/methods happen to be here as a result of rebasing. Can you remove them all? It was moved to input package by crrev.com/c/2081353",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 0
+      },
+      "revId": "c4bd364fe797be3208e9268e177d48604434686e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
