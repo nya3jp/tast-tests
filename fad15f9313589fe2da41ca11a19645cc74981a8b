@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32cbed35_38e2a096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-fio.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-10T07:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9deb55_daa11e08",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "fad15f9313589fe2da41ca11a19645cc74981a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32d47888_9b74d790",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/fio.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "fad15f9313589fe2da41ca11a19645cc74981a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9bf5fa3_dba19b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-10T07:25:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d47888_9b74d790",
+      "range": {
+        "startLine": 238,
+        "startChar": 54,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "fad15f9313589fe2da41ca11a19645cc74981a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
