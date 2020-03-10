@@ -5,6 +5,7 @@
 package setup
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"strconv"
@@ -14,6 +15,16 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+func noKeyboardBrightness(ctx context.Context) bool {
+	cmd := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", "--get_brightness")
+	var stderr bytes.Buffer
+	cmd.Stderr = &stderr
+	if err := cmd.Run(); err != nil && strings.HasPrefix(stderr.String(), "No backlight in") {
+		return true
+	}
+	return false
+}
 
 func keyboardBrightness(ctx context.Context) (uint, error) {
 	output, err := testexec.CommandContext(ctx, "backlight_tool", "--keyboard", "--get_brightness").Output(testexec.DumpLogOnError)
@@ -35,8 +46,11 @@ func setKeyboardBrightness(ctx context.Context, brightness uint) error {
 	return nil
 }
 
-// SetKeyboardBrightness sets the keyboard brightness.
+// SetKeyboardBrightness sets the keyboard brightness if there is a backlight.
 func SetKeyboardBrightness(ctx context.Context, brightness uint) (CleanupCallback, error) {
+	if noKeyboardBrightness(ctx) {
+		return nil, nil
+	}
 	prevBrightness, err := keyboardBrightness(ctx)
 	if err != nil {
 		return nil, err

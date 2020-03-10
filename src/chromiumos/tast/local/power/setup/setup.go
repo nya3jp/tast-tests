@@ -114,7 +114,7 @@ func PowerTest(ctx context.Context) (CleanupCallback, error) {
 		s.Add(DisableService(ctx, "powerd"))
 		s.Add(DisableService(ctx, "update-engine"))
 		s.Add(DisableServiceIfExists(ctx, "vnc"))
-		s.Add(DisableService(ctx, "dptf"))
+		s.Add(DisableServiceIfExists(ctx, "dptf"))
 		s.Add(SetBacklightLux(ctx, 150))
 		s.Add(SetKeyboardBrightness(ctx, 24))
 		s.Add(MuteAudio(ctx))
