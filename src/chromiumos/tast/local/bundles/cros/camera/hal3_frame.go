@@ -22,9 +22,9 @@ func init() {
 		SoftwareDeps: []string{"android", "arc_camera3", caps.BuiltinCamera},
 		// Default timeout (i.e. 2 minutes) is not enough for some devices to
 		// exercise all resolutions on all cameras. Currently the device that
-		// needs longest timeout is Nocturne, which supports many resolutions
-		// up to 3264x2448.
-		Timeout: 10 * time.Minute,
+		// needs longest timeout is Krane, which supports many resolutions
+		// up to 3264x2448 as well private/YUV reprocessing.
+		Timeout: 15 * time.Minute,
 	})
 }
 
