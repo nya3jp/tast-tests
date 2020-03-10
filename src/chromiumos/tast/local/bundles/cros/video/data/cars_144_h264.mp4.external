@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/cars_144_h264_20200311.mp4",
+  "size": 5867057,
+  "sha256sum": "4e6313dc1d4e9ae71a1971eec1a56fd5453026f7c14b0dc90841b49d97782d7d"
+}

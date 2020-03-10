@@ -27,6 +27,8 @@ const (
 	// Immediately after login there's a lot of graphics activity; wait for a
 	// minute until it subsides. TODO(crbug.com/1047840): Remove when not needed.
 	coolDownTimeAfterLogin = 30 * time.Second
+	// Amount of graphics objects for a given resolution considered bad, regardless of codec.
+	maxGraphicsObjects = 25
 )
 
 // Size represents a Width x Height pair, for example for a video resolution.
@@ -197,6 +199,47 @@ func compareGraphicsMemoryBeforeAfter(ctx context.Context, payload func() error,
 	return nil
 }
 
+// monitorGraphicsMemoryDuring verifies that the graphics memory consumption
+// while running the payload function, using the backend, does not spiral out
+// of control, by comparing it to the appropriate threshold.
+func monitorGraphicsMemoryDuring(ctx context.Context, payload func() error, backend Backend, roundedSizes []Size, threshold int) (err error) {
+	testing.ContextLog(ctx, "Running the payload() and measuring the number of graphics objects during its execution")
+	c := make(chan error)
+	go func(c chan error) {
+		c <- payload()
+	}(c)
+
+	const pollInterval = 1 * time.Second
+	ticker := time.NewTicker(pollInterval)
+	for {
+		select {
+		case <-ctx.Done():
+			ticker.Stop()
+			return nil
+		case pErr := <-c:
+			ticker.Stop()
+			return pErr
+		case <-ticker.C:
+			for _, roundedSize := range roundedSizes {
+				count, _ := backend.ReadFramebufferCount(ctx, roundedSize.Width, roundedSize.Height)
+				if count > threshold {
+
+					// TODO(mcasas): find a way to kill payload() at this point.
+					ticker.Stop()
+					err := errors.Errorf("too many objects of size %d x %d, got: %d, threshold: %d", roundedSize.Width, roundedSize.Height, count, threshold)
+
+					select {
+					case <-c:
+						return err
+					case <-ctx.Done():
+						return err
+					}
+				}
+			}
+		}
+	}
+}
+
 // VerifyGraphicsMemory uses the backend to detect memory leaks during or after
 // the execution of payload.
 func VerifyGraphicsMemory(ctx context.Context, payload func() error, backend Backend, sizes []Size) (err error) {
@@ -213,7 +256,7 @@ func VerifyGraphicsMemory(ctx context.Context, payload func() error, backend Bac
 	if len(sizes) == 1 {
 		return compareGraphicsMemoryBeforeAfter(ctx, payload, backend, roundedSizes[0].Width, roundedSizes[0].Height)
 	}
-	return errors.New("VerifyGraphicsMemory() with several sizes not implemented yet")
+	return monitorGraphicsMemoryDuring(ctx, payload, backend, roundedSizes, maxGraphicsObjects)
 }
 
 // readStableObjectCount waits until a given graphics object count obtained with
