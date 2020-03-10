@@ -128,6 +128,7 @@ func (c *WilcoService) TestGetAvailableRoutines(ctx context.Context, req *empty.
 		dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
 		dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
 		dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
+		dtcpb.DiagnosticRoutine_ROUTINE_PRIME_SEARCH,
 	} {
 		if !contains(response.Routines, val) {
 			return nil, errors.Errorf("routine %s missing", val.String())
