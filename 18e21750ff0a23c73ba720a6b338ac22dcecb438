@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf89d03c_82ab97f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-10T06:04:50Z",
+      "side": 1,
+      "message": "Oops, I forgot that there is no file-local function in golang (Am I right? I\u0027m not sure).\nI renamed to them.",
+      "parentUuid": "435efadb_39489663",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "18e21750ff0a23c73ba720a6b338ac22dcecb438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f4b2d73_c11112af",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-10T02:53:56Z",
       "side": 1,
       "message": "nit: Maybe\n\n    defer vkb.HideVirtualKeyboard(ctx, tconn)\n\nat the top of the function to close VK even if the test fails in the middle",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "18e21750ff0a23c73ba720a6b338ac22dcecb438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b6c657_5fbaa5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-10T06:04:50Z",
+      "side": 1,
+      "message": "Done. However, I\u0027m wondering whether I should check the return value of HideVirtualKeyboard or not.",
+      "parentUuid": "2f4b2d73_c11112af",
       "range": {
         "startLine": 115,
         "startChar": 15,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "adc6e42a_17e93c4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-10T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee61a36_46d655f4",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "18e21750ff0a23c73ba720a6b338ac22dcecb438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b634bced_3c7a9c73",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "91488251_cb2b3043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-10T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b634bced_3c7a9c73",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "18e21750ff0a23c73ba720a6b338ac22dcecb438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "474670f1_2164ffa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 9
@@ -114,6 +210,30 @@
       "revId": "18e21750ff0a23c73ba720a6b338ac22dcecb438",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3873bddb_e653f94f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-10T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474670f1_2164ffa0",
+      "range": {
+        "startLine": 241,
+        "startChar": 15,
+        "endLine": 241,
+        "endChar": 23
+      },
+      "revId": "18e21750ff0a23c73ba720a6b338ac22dcecb438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
