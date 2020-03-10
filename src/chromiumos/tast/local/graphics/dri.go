@@ -29,6 +29,12 @@ const (
 	coolDownTimeAfterLogin = 30 * time.Second
 )
 
+// Size represents a Width x Height pair, for example for a video resolution.
+type Size struct {
+	Width  int
+	Height int
+}
+
 // Backend contains the necessary methods to interact with the platform debug
 // interface and getting readings.
 type Backend interface {
@@ -142,18 +148,11 @@ func GetBackend() (Backend, error) {
 	return nil, errors.New("could not find any Graphics backend")
 }
 
-// CompareGraphicsMemoryBeforeAfter compares the graphics memory consumption
+// compareGraphicsMemoryBeforeAfter compares the graphics memory consumption
 // before and after running the payload function, using the backend. The amount
 // of graphics buffer during payload execution must also be non-zero.
-func CompareGraphicsMemoryBeforeAfter(ctx context.Context, payload func() error, backend Backend, width, height int) (err error) {
+func compareGraphicsMemoryBeforeAfter(ctx context.Context, payload func() error, backend Backend, roundedWidth, roundedHeight int) (err error) {
 	var before, during, after int
-	roundedWidth := backend.Round(width)
-	roundedHeight := backend.Round(height)
-
-	testing.ContextLogf(ctx, "Cooling down %v after log in", coolDownTimeAfterLogin)
-	if err := testing.Sleep(ctx, coolDownTimeAfterLogin); err != nil {
-		return errors.Wrap(err, "error while cooling down after log in")
-	}
 
 	if before, err = readStableObjectCount(ctx, backend, roundedWidth, roundedHeight); err != nil {
 		return errors.Wrap(err, "failed to get the framebuffer object count")
@@ -196,6 +195,25 @@ func CompareGraphicsMemoryBeforeAfter(ctx context.Context, payload func() error,
 	}
 	testing.ContextLogf(ctx, "Graphics objects of size %d x %d before=%d, during=%d, after=%d", roundedWidth, roundedHeight, before, during, after)
 	return nil
+}
+
+// VerifyGraphicsMemory uses the backend to detect memory leaks during or after
+// the execution of payload.
+func VerifyGraphicsMemory(ctx context.Context, payload func() error, backend Backend, sizes []Size) (err error) {
+	testing.ContextLogf(ctx, "Cooling down %v after log in", coolDownTimeAfterLogin)
+	if err := testing.Sleep(ctx, coolDownTimeAfterLogin); err != nil {
+		return errors.Wrap(err, "error while cooling down after log in")
+	}
+
+	var roundedSizes []Size
+	for _, size := range sizes {
+		roundedSizes = append(roundedSizes, Size{Width: backend.Round(size.Width), Height: backend.Round(size.Height)})
+	}
+
+	if len(sizes) == 1 {
+		return compareGraphicsMemoryBeforeAfter(ctx, payload, backend, roundedSizes[0].Width, roundedSizes[0].Height)
+	}
+	return errors.New("VerifyGraphicsMemory() with several sizes not implemented yet")
 }
 
 // readStableObjectCount waits until a given graphics object count obtained with
