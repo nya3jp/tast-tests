@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84a378f6_8a0c758e",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-10T00:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a155995a_134dcb49",
+      "range": {
+        "startLine": 338,
+        "startChar": 43,
+        "endLine": 338,
+        "endChar": 92
+      },
+      "revId": "528a606fc102179f7846c210b4880ad410a1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "188d21db_0fb77ec1",
         "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f8a4f516_b2c00923",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-10T00:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188d21db_0fb77ec1",
+      "range": {
+        "startLine": 358,
+        "startChar": 47,
+        "endLine": 358,
+        "endChar": 55
+      },
+      "revId": "528a606fc102179f7846c210b4880ad410a1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129d5b23_b5ab131d",
         "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "528a606fc102179f7846c210b4880ad410a1fa90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a156944f_17e43f3d",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-10T00:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129d5b23_b5ab131d",
+      "range": {
+        "startLine": 359,
+        "startChar": 41,
+        "endLine": 359,
+        "endChar": 43
+      },
+      "revId": "528a606fc102179f7846c210b4880ad410a1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
