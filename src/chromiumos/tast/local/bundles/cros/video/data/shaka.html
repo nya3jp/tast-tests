@@ -2,7 +2,7 @@
 <html>
   <script src="third_party/shaka-player/shaka-player.compiled.debug.js"></script>
   <script>
-    function play_shaka(mpdPath) {
+    function play_shaka(mpdPath, trackChangeIntervalMs = 3000) {
       return new Promise((resolve, reject) => {
         let video = document.getElementById('video');
         let player = new shaka.Player(video);
@@ -12,13 +12,37 @@
         video.onerror = e => { return reject(e.error.ToString()); };
         video.onended = () => { resolve();};
 
+        // Disable Automatic BitRate adaptation; track changes only if forced.
+        player.configure({abr: { enabled : false}});
+
         player.load(mpdPath)
           .then(() => {
             console.log('Loaded url: ', mpdPath);
+
+            // Start changing the tracks cyclically if there's more than 1.
+            if (player.getVariantTracks().length > 1) {
+              let tracks = player.getVariantTracks()
+              player.selectVariantTrack(tracks[0], /*clearBuffer=*/ true)
+
+              setTimeout(() => { change_track(0, trackChangeIntervalMs); },
+                  trackChangeIntervalMs);
+            }
           }).catch((e) => {
             return reject(e.toString());
           });
       });
+    }
+
+    function change_track(currentTrack, trackChangeIntervalMs) {
+      let player = window.player;
+      let tracks = player.getVariantTracks();
+      const numTracks = tracks.length;
+
+      currentTrack = (currentTrack + 1) % numTracks;
+      player.selectVariantTrack(tracks[currentTrack], /*clearBuffer=*/ true)
+
+      setTimeout(() => { change_track(currentTrack, trackChangeIntervalMs); },
+          trackChangeIntervalMs);
     }
   </script>
 
