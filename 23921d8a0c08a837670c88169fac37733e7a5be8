@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff93d944_d076cdbe",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-03-10T11:38:47Z",
+      "side": 0,
+      "message": "this still runs in the background for container, and for VM, with my later CL it will still run in the background.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 68
+      },
+      "revId": "23921d8a0c08a837670c88169fac37733e7a5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
