@@ -22,6 +22,30 @@
       "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776ccfa4_87d31235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-03-10T04:08:00Z",
+      "side": 1,
+      "message": "We actually would like it to listen on all interfaces (or at least physical interfaces).\n\nCurrently any connections not handled by the host will be retried to ARC (go/arc++inbound). This means if a user connects to \u003cDUT:5555\u003e, it essentially reaches ARC\u0027s ADB. Now that we support non-TCP ADB connections, we\u0027d like to route connection to \u003cDUT:5555\u003e to adb-proxy too, by listening on the host.",
+      "parentUuid": "2b1ed679_c09dd53a",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
