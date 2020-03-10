@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f8cf4e0_2bd79070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-03-10T05:45:34Z",
+      "side": 1,
+      "message": "Renamed to |TriggerConfiguration|.",
+      "parentUuid": "65cd8990_9539e0d1",
+      "range": {
+        "startLine": 1069,
+        "startChar": 14,
+        "endLine": 1069,
+        "endChar": 34
+      },
+      "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b6c388e_3221f342",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84617f20_1eb0c553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-03-10T05:45:34Z",
+      "side": 1,
+      "message": "As the offline discussion, just inline the variable for catching returned promise is still not a good pattern. Need some refactor to better scoping these variables. Will reused the pattern  wtlee@ suggested just for now.",
+      "parentUuid": "484a2fa9_76b964a7",
+      "range": {
+        "startLine": 1070,
+        "startChar": 5,
+        "endLine": 1070,
+        "endChar": 15
+      },
+      "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -200,6 +248,24 @@
       "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf07620_697148ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-03-10T05:45:34Z",
+      "side": 1,
+      "message": "After simplified code with local promise, only one function left. Don\u0027t need the namespace for it.",
+      "parentUuid": "6135f3d4_f61b7863",
+      "revId": "4e9b9c704edbd89579109bb4b18c08f51c50fe6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
