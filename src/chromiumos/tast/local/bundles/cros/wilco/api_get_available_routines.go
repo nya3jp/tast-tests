@@ -51,6 +51,8 @@ func APIGetAvailableRoutines(ctx context.Context, s *testing.State) {
 		dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
 		dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
 		dtcpb.DiagnosticRoutine_ROUTINE_SMARTCTL_CHECK,
+		dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+		dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
 	} {
 		if !contains(response.Routines, val) {
 			s.Fatalf("Routine %s missing", val.String())

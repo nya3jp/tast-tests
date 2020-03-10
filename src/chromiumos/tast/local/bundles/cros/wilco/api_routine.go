@@ -150,6 +150,32 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
+		{
+			name: "disk_read_linear",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "disk_read_random",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskRandomReadParams{
+					DiskRandomReadParams: &dtcpb.DiskRandomReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
 		// run in the same test.
