@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1a1005e_d3f108ac",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-10T09:04:39Z",
+      "side": 1,
+      "message": "What about method for Enabling Bluetooth?\n\nFor wilco project we also need such functionality: enable/disable. What about moving such functionality to some common place?",
+      "revId": "cae14c1619b526063af7e8a2be44f0f011573d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
