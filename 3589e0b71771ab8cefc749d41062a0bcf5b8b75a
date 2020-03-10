@@ -46,6 +46,30 @@
       "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7361901e_adfa6cfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T10:11:44Z",
+      "side": 1,
+      "message": "Thanks for explanation!\n\n\n\u003e (3) Failed to log into Chrome: OOBE not dismissed: cdp.Target: GetTargets: websocket: close 1006 (abnormal closure): unexpected EOF\n\nI agree we can ignore these failures because it\u0027s rare and it\u0027s happening on other tests as well:\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2020-02-26\u0026last_date\u003d2020-03-10\u0026master_builder_name\u003d%5Emaster-release%24\u0026branch\u003d%5Emaster%24\u0026test\u003d%5Etast%5C.\u0026reason\u003dOOBE+not+dismissed%3A+cdp.Target%3A+GetTargets%3A+websocket%3A+close+1006+%5C%28abnormal+closure%5C%29%3A+unexpected+EOF\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\n\n\u003e (1) Got global error: runner.go:162: Bundle /usr/local/libexec/tast/bundles/local/cros failed: caught signal 15 (terminated) (status 8), Test did not finish\n\nThis is not an infra issue, but it means that the test binary crashed during execution. It is possible that the test crashed due to a nil dereference, for example. But I think it is okay to ignore this failure because it is pretty much rare.\n\n\n\u003e (10) Failed to run windowmanagertest\n\nI don\u0027t think we can ignore these failures.\n\nEven if a failure is due to a bug in the product (not in the test), we can\u0027t ignore them on considering test promotion. Flakiness in CQ affects developers and must be avoided. The same argument applies in a reversed way as well: even if an innocent product CL is rejected by a badly written test in CQ, it doesn\u0027t justify chumping the CL, right?\n\nIf we\u0027re sure that the issue happens only on ARM devices, how about parameterizing this test into two parameters, x86 and arm, and promoting x86 only?",
+      "parentUuid": "8bd5c682_034cfd2b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
