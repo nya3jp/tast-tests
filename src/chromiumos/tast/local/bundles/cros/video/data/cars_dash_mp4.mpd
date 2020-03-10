@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<MPD mediaPresentationDuration="PT7M10.030S" minBufferTime="PT10.68S" profiles="urn:mpeg:dash:profile:isoff-live:2011" type="static" xmlns="urn:mpeg:dash:schema:mpd:2011">
+  <!-- Created with Bento4 mp4-dash.py, VERSION=1.8.0-629 -->
+  <Period>
+    <!-- Video -->
+    <AdaptationSet maxHeight="240" maxWidth="426" mimeType="video/mp4" segmentAlignment="true" startWithSAP="1">
+      <Representation bandwidth="109143" codecs="avc1.42C00C" frameRate="15000/1001" height="144" id="video-avc1-1" scanType="progressive" width="256">
+        <SegmentList duration="10677" timescale="1000">
+          <Initialization range="28-670" sourceURL="cars_144_h264.mp4"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1195-146864"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="146865-292384"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="292385-438078"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="438079-583732"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="583733-729230"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="729231-874901"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="874902-1020457"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1020458-1166001"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1166002-1311742"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1311743-1457457"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1457458-1603111"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1603112-1748815"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1748816-1894489"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="1894490-2040140"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="2040141-2185759"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="2185760-2331328"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="2331329-2476870"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="2476871-2622553"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="2622554-2768186"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="2768187-2913878"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="2913879-3059597"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="3059598-3205251"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="3205252-3350866"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="3350867-3496547"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="3496548-3642180"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="3642181-3787926"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="3787927-3933667"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="3933668-4079131"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="4079132-4224789"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="4224790-4370478"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="4370479-4516048"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="4516049-4661675"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="4661676-4807365"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="4807366-4953135"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="4953136-5098768"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="5098769-5244341"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="5244342-5390039"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="5390040-5535711"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="5535712-5681361"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="5681362-5826955"/>
+          <SegmentURL media="cars_144_h264.mp4" mediaRange="5826956-5867056"/>
+        </SegmentList>
+      </Representation>
+      <Representation bandwidth="243991" codecs="avc1.4D4015" frameRate="30000/1001" height="240" id="video-avc1-2" scanType="progressive" width="426">
+        <SegmentList duration="10677" timescale="1000">
+          <Initialization range="28-672" sourceURL="cars_240_h264.mp4"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="1197-326843"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="326844-652518"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="652519-978315"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="978316-1303977"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="1303978-1630299"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="1630300-1956115"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="1956116-2282866"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="2282867-2608419"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="2608420-2934890"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="2934891-3260555"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="3260556-3586341"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="3586342-3912537"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="3912538-4238533"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="4238534-4564132"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="4564133-4889874"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="4889875-5216392"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="5216393-5542283"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="5542284-5868129"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="5868130-6194413"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="6194414-6520934"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="6520935-6846768"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="6846769-7173403"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="7173404-7500341"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="7500342-7826220"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="7826221-8152139"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="8152140-8477933"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="8477934-8803762"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="8803763-9129607"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="9129608-9455201"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="9455202-9781256"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="9781257-10106959"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="10106960-10432659"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="10432660-10758582"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="10758583-11084182"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="11084183-11411011"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="11411012-11737092"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="11737093-12063352"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="12063353-12389349"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="12389350-12715578"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="12715579-13041222"/>
+          <SegmentURL media="cars_240_h264.mp4" mediaRange="13041223-13130419"/>
+        </SegmentList>
+      </Representation>
+    </AdaptationSet>
+  </Period>
+</MPD>
