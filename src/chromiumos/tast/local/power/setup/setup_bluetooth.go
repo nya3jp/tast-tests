@@ -13,7 +13,7 @@ import (
 
 // DisableBluetooth disables the bluetooth adapter on the DUT.
 func DisableBluetooth(ctx context.Context) (CleanupCallback, error) {
-	return Nested(ctx, func(s *Setup) error {
+	return Nested(ctx, "disable Bluetooth", func(s *Setup) error {
 		const (
 			name     = "org.bluez"
 			path     = "/org/bluez/hci0"
