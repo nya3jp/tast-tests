@@ -121,6 +121,7 @@ func (params *FindParams) rawBytes() ([]byte, error) {
 type Node struct {
 	object    *chrome.JSObject
 	tconn     *chrome.TestConn
+	watchers  []*EventWatcher
 	ClassName string             `json:"className,omitempty"`
 	Location  coords.Rect        `json:"location,omitempty"`
 	Name      string             `json:"name,omitempty"`
@@ -170,6 +171,9 @@ func (n *Node) Update(ctx context.Context) error {
 
 // Release frees the reference to Javascript for this node.
 func (n *Node) Release(ctx context.Context) {
+	for _, w := range n.watchers {
+		w.release(ctx)
+	}
 	n.object.Release(ctx)
 }
 
