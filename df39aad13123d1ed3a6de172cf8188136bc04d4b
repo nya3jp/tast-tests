@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1f95f2e5_b1f5dd72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-10T08:20:09Z",
+      "side": 1,
+      "message": "To run code on the device from a remote tests, a gRPC service is required to communicate. Since setting the device policy test requires a reboot we are limited to using remote tests.",
+      "parentUuid": "4e449184_85aaaf56",
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "708d390f_07b59b11",
         "filename": "src/chromiumos/tast/local/wilco/vm.go",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bbc01a8_c7b6bf70",
+        "filename": "src/chromiumos/tast/local/wilco/vm.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-10T08:20:09Z",
+      "side": 1,
+      "message": "testing.Poll already stops when the context expires.",
+      "parentUuid": "708d390f_07b59b11",
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "17610cc3_a2026066",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-10T08:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a5a2c34_6a07526a",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9444bb8_6e65664d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_configuration_data.go",
         "patchSetId": 9
@@ -73,6 +133,24 @@
       "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956beca3_0a221ce6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_configuration_data.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-10T08:20:09Z",
+      "side": 1,
+      "message": "This is very specific to this test. Other tests will not require serving data over HTTP.",
+      "parentUuid": "f9444bb8_6e65664d",
+      "revId": "df39aad13123d1ed3a6de172cf8188136bc04d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
