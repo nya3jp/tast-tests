@@ -6,8 +6,11 @@ package wilco
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/bundles/cros/wilco/routines"
 	"chromiumos/tast/testing"
@@ -81,6 +84,18 @@ func APIRoutineCancellation(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	// disk read test routine will create a test file
+	// ensure it is deleted after cancellation
+	diskReadHouseKeepingCheck := func() error {
+		testFile := filepath.Join("/var/tmp", "fio-test-file")
+		_, err := os.Stat(testFile)
+		if os.IsNotExist(err) {
+			return nil
+		}
+
+		return errors.Errorf("test file %s still existed", testFile)
+	}
+
 	for _, param := range []struct {
 		name                string
 		request             dtcpb.RunRoutineRequest
@@ -97,6 +112,19 @@ func APIRoutineCancellation(ctx context.Context, s *testing.State) {
 				},
 			},
 			sanityCheckFunction: nil,
+		},
+		{
+			name: "disk_read_linear",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 5,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			sanityCheckFunction: diskReadHouseKeepingCheck,
 		},
 	} {
 		// Here we time how long the execution of each routine takes as they are
