@@ -32,48 +32,80 @@ func init() {
 }
 
 func APIRoutineCancellation(ctx context.Context, s *testing.State) {
-	ctx, cancel := context.WithTimeout(ctx, 4*time.Second)
-	defer cancel()
+	type fn func() error
 
-	rrRequest := dtcpb.RunRoutineRequest{
-		Routine: dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
-		Parameters: &dtcpb.RunRoutineRequest_UrandomParams{
-			UrandomParams: &dtcpb.UrandomRoutineParameters{
-				LengthSeconds: 5,
+	executeRoutine := func(ctx context.Context,
+		rrRequest dtcpb.RunRoutineRequest,
+		postRoutineSanityCheck fn) error {
+		ctx, cancel := context.WithTimeout(ctx, 4*time.Second)
+		defer cancel()
+
+		rrResponse := dtcpb.RunRoutineResponse{}
+		if err := routines.CallRunRoutine(ctx, rrRequest, &rrResponse); err != nil {
+			s.Fatal("Unable to call routine: ", err)
+		}
+
+		uuid := rrResponse.Uuid
+		response := dtcpb.GetRoutineUpdateResponse{}
+
+		if err := routines.CancelRoutine(ctx, uuid); err != nil {
+			s.Fatal("Unable to cancel routine: ", err)
+		}
+
+		// Because cancellation is slow, we time how long it takes to change from
+		// STATUS_CANCELLING.
+		ctx, st := timing.Start(ctx, "cancel")
+		err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING, 4*time.Second)
+		st.End()
+		if err != nil {
+			s.Fatal("Routine not finished: ", err)
+		}
+
+		if err := routines.GetRoutineStatus(ctx, uuid, true, &response); err != nil {
+			s.Fatal("Unable to get routine status: ", err)
+		}
+
+		if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
+			s.Errorf("Invalid status; got %s, want ROUTINE_STATUS_CANCELLED: ", response.Status)
+		}
+
+		if err := routines.RemoveRoutine(ctx, uuid); err != nil {
+			s.Error("Unable to remove routine: ", err)
+		}
+		if postRoutineSanityCheck != nil {
+			if err := postRoutineSanityCheck(); err != nil {
+				s.Error("post routine sanity check failed: ", err)
+			}
+		}
+
+		return nil
+	}
+
+	for _, param := range []struct {
+		name                string
+		request             dtcpb.RunRoutineRequest
+		sanityCheckFunction fn
+	}{
+		{
+			name: "urandom",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
+				Parameters: &dtcpb.RunRoutineRequest_UrandomParams{
+					UrandomParams: &dtcpb.UrandomRoutineParameters{
+						LengthSeconds: 5,
+					},
+				},
 			},
+			sanityCheckFunction: nil,
 		},
-	}
-	rrResponse := dtcpb.RunRoutineResponse{}
-	if err := routines.CallRunRoutine(ctx, rrRequest, &rrResponse); err != nil {
-		s.Fatal("Unable to call routine: ", err)
-	}
+	} {
+		// Here we time how long the execution of each routine takes as they are
+		// run in the same test.
 
-	uuid := rrResponse.Uuid
-	response := dtcpb.GetRoutineUpdateResponse{}
-
-	if err := routines.CancelRoutine(ctx, uuid); err != nil {
-		s.Fatal("Unable to cancel routine: ", err)
+		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			if err := executeRoutine(ctx, param.request, param.sanityCheckFunction); err != nil {
+				s.Error("Routine test failed: ", err)
+			}
+		})
 	}
-
-	// Because cancellation is slow, we time how long it takes to change from
-	// STATUS_CANCELLING.
-	ctx, st := timing.Start(ctx, "cancel")
-	err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING, 4*time.Second)
-	st.End()
-	if err != nil {
-		s.Fatal("Routine not finished: ", err)
-	}
-
-	if err := routines.GetRoutineStatus(ctx, uuid, true, &response); err != nil {
-		s.Fatal("Unable to get routine status: ", err)
-	}
-
-	if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
-		s.Errorf("Invalid status; got %s, want ROUTINE_STATUS_CANCELLED: ", response.Status)
-	}
-
-	if err := routines.RemoveRoutine(ctx, uuid); err != nil {
-		s.Error("Unable to remove routine: ", err)
-	}
-
 }
