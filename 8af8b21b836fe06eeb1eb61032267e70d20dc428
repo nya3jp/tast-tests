@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce8e3245_cb739207",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T17:56:54Z",
+      "side": 1,
+      "message": "UnmountAll() and RemoveVault() both calls cryptohomed through cryptohome commandline interface, and distinguishing ignorable errors will need more changes on the daemon\u0027s side, which could add to the maintenance burden.\n\nThus, I\u0027ve changed them to s.Log() if it fails instead. Please let me know if this is acceptable. Thank you.",
+      "parentUuid": "083a38ac_1c2c7d28",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 136
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1702bc6a_3c7c6dc8",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aaaaaf2_4186a1a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T17:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1702bc6a_3c7c6dc8",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "27b20d9a_2701a582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T17:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9919313e_4c8be0e4",
+      "range": {
+        "startLine": 83,
+        "startChar": 126,
+        "endLine": 83,
+        "endChar": 133
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "269545cc_268ddb33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T17:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac0e3e3_1eab1a14",
+      "range": {
+        "startLine": 83,
+        "startChar": 167,
+        "endLine": 83,
+        "endChar": 179
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3f004d0_0d7ec7dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
         "patchSetId": 1
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "025af8cb_6184a1d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T17:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f004d0_0d7ec7dd",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 15
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2dbc170_147db481",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbde2dd7_8af41135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-10T17:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2dbc170_147db481",
+      "range": {
+        "startLine": 102,
+        "startChar": 48,
+        "endLine": 102,
+        "endChar": 50
+      },
+      "revId": "8af8b21b836fe06eeb1eb61032267e70d20dc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
