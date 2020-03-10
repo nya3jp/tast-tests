@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e87abb46_4175bb8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-10T18:08:03Z",
+      "side": 1,
+      "message": "just curious, where is the fix for this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "0a4e201bce3fa2965cb9895fcf4c94387d3822af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
