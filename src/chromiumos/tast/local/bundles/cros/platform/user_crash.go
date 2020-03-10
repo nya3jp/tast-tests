@@ -46,6 +46,49 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		Params: []testing.Param{{
+			Name: "reporter_startup",
+			Val:  testReporterStartup,
+		}, {
+			Name: "core_file_removed_in_production",
+			Val:  testCoreFileRemovedInProduction,
+		}, {
+			Name: "reporter_shutdown",
+			Val:  testReporterShutdown,
+		}, {
+			Name: "no_crash",
+			Val:  testNoCrash,
+		}, {
+			Name: "chronos_crasher",
+			Val:  testChronosCrasher,
+		}, {
+			Name: "chronos_crasher_no_consent",
+			Val:  testChronosCrasherNoConsent,
+		}, {
+			Name: "root_crasher",
+			Val:  testRootCrasher,
+		}, {
+			Name: "root_crasher_no_consent",
+			Val:  testRootCrasherNoConsent,
+		}, {
+			Name: "crash_filtering",
+			Val:  testCrashFiltering,
+		}, {
+			Name: "max_enqueued_crash",
+			Val:  testMaxEnqueuedCrash,
+		}, {
+			Name: "core2md_failure",
+			Val:  testCore2mdFailure,
+		}, {
+			Name: "internal_directory_failure",
+			Val:  testInternalDirectoryFailure,
+		}, {
+			Name: "crash_logs_creation",
+			Val:  testCrashLogsCreation,
+		}, {
+			Name: "crash_log_infinite_recursion",
+			Val:  testCrashLogInfiniteRecursion,
+		}},
 	})
 }
 
@@ -607,21 +650,8 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	// Run all tests.
-	crash.RunCrashTests(ctx, cr, s, []func(context.Context, *chrome.Chrome, *testing.State){
-		testReporterStartup,
-		testCoreFileRemovedInProduction,
-		testReporterShutdown,
-		testNoCrash,
-		testChronosCrasher,
-		testChronosCrasherNoConsent,
-		testRootCrasher,
-		testRootCrasherNoConsent,
-		testCrashFiltering,
-		testMaxEnqueuedCrash,
-		testCore2mdFailure,
-		testInternalDirectoryFailure,
-		testCrashLogsCreation,
-		testCrashLogInfiniteRecursion,
-	}, true)
+	f := s.Param().(func(context.Context, *chrome.Chrome, *testing.State))
+	if err = crash.RunCrashTest(ctx, cr, s, f, true); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }
