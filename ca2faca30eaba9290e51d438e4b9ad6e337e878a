@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "a33a0b6c_355c589f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-10T16:44:39Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "f6ee5c40_8ee1e2e6",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdc50849_6c284c81",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 4
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "I guess is is caused by something else.\nWhat happens if 1) you change only this line to\n\nif _, err :\u003d powerMenuService.NewChrome(ctx, \u0026empty.Empty{}); err !\u003d nil {\n  s.Fatal(\"Failed to create new chrome instance: \", err)\n}\n\nthen run gofmt?",
       "parentUuid": "22264214_387c27b6",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0045be_27de5aaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-10T16:44:39Z",
+      "side": 1,
+      "message": "If I change update that line and then run gofmt, gofmt splits the line back into two lines, reverting it back to the original structure.",
+      "parentUuid": "e671e7f8_6a840198",
       "range": {
         "startLine": 101,
         "startChar": 2,
