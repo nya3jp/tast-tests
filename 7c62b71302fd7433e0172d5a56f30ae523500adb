@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7714e00a_7896b67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "$0 must be always double-quoted, i.e. \"$0\".",
+      "range": {
+        "startLine": 196,
+        "startChar": 34,
+        "endLine": 196,
+        "endChar": 36
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a278f7_b475c0af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "nit: You can use backtick-quoted literals to avoid escaping things.",
+      "range": {
+        "startLine": 196,
+        "startChar": 15,
+        "endLine": 196,
+        "endChar": 16
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3586e0e8_5c0a557b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "huge nit: const perFileCmd \u003d ...",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 11
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f4feba_2448be89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "There\u0027s also /system/bin/find. Do you want to use vendor one? If so we need a comment.",
+      "range": {
+        "startLine": 198,
+        "startChar": 9,
+        "endLine": 198,
+        "endChar": 24
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6b4ab9b_4141b8f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "If err !\u003d nil, targetDir must be an empty string, so we should not call os.RemoveAll.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e38fbd4_7d3e29c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "Calling os.RemoveAll(targetDir) in all error cases is error-prone. Instead you can defer here and refer a named result to see if we have to keep the dir.\n\n func (c *GmsCoreCacheService) Generate(ctx context.Context, req *empty.Empty) (_ *arcpb.GmsCoreCacheResponse, retErr error) {\n   ...\n   targetDir, err :\u003d ioutil.TempDir(...)\n   if err !\u003d nil {\n     return err\n   }\n   defer func() {\n     if retErr !\u003d nil {\n       os.RemoveAll(targetDir)\n     }\n   }()\n   ...\n }",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff66400_3c265381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "huge nit: nil\n\nnil is a valid empty slice of any type, and it is in most cases preferred to avoid unnecessary memory allocation.\n\nc.f. https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 45,
+        "startChar": 82,
+        "endLine": 45,
+        "endChar": 91
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79427a1c_420278c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "Mainline tests are functional tests, so they should not upload artifacts.\n\nCould you create a separate test group for this test, just as crosbolt did for metrics?\n\nIf you still want to run non-uploading part of this test for sanity checks, you can introduce parameterized variants of this test: one for generate-only (group:mainline) and the other for generate \u0026 upload (group:somenewgroup).",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6532e2b5_89dc1a42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "Does this URL contain board name / model name?",
+      "range": {
+        "startLine": 117,
+        "startChar": 18,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4eced0_42db3c21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-10T09:44:21Z",
+      "side": 1,
+      "message": "This is a very racy lock; it is possible that multiple test runs upload artifacts concurrently. I rather think that we should schedule tests in a way causing no races and returning errors in this test if there is any conflict (e.g. using no-clobber option on uploading files).",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 113
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
