@@ -28,21 +28,24 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 type DiagnosticRoutineStatus int32
 
 const (
-	DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED DiagnosticRoutineStatus = 0
-	DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED DiagnosticRoutineStatus = 1
-	DiagnosticRoutineStatus_ROUTINE_STATUS_ERROR  DiagnosticRoutineStatus = 2
+	DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED    DiagnosticRoutineStatus = 0
+	DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED    DiagnosticRoutineStatus = 1
+	DiagnosticRoutineStatus_ROUTINE_STATUS_ERROR     DiagnosticRoutineStatus = 2
+	DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED DiagnosticRoutineStatus = 3
 )
 
 var DiagnosticRoutineStatus_name = map[int32]string{
 	0: "ROUTINE_STATUS_PASSED",
 	1: "ROUTINE_STATUS_FAILED",
 	2: "ROUTINE_STATUS_ERROR",
+	3: "ROUTINE_STATUS_CANCELLED",
 }
 
 var DiagnosticRoutineStatus_value = map[string]int32{
-	"ROUTINE_STATUS_PASSED": 0,
-	"ROUTINE_STATUS_FAILED": 1,
-	"ROUTINE_STATUS_ERROR":  2,
+	"ROUTINE_STATUS_PASSED":    0,
+	"ROUTINE_STATUS_FAILED":    1,
+	"ROUTINE_STATUS_ERROR":     2,
+	"ROUTINE_STATUS_CANCELLED": 3,
 }
 
 func (x DiagnosticRoutineStatus) String() string {
@@ -332,6 +335,7 @@ type WilcoServiceClient interface {
 	// GetConfigurationData performs the grpc request from inside the VM
 	GetConfigurationData(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetConfigurationDataResponse, error)
 	ExecuteRoutine(ctx context.Context, in *ExecuteRoutineRequest, opts ...grpc.CallOption) (*ExecuteRoutineResponse, error)
+	ExecuteRoutineAndCancel(ctx context.Context, in *ExecuteRoutineRequest, opts ...grpc.CallOption) (*ExecuteRoutineResponse, error)
 	StartDPSLListener(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	StopDPSLListener(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	WaitForHandleConfigurationDataChanged(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -381,6 +385,15 @@ func (c *wilcoServiceClient) ExecuteRoutine(ctx context.Context, in *ExecuteRout
 	return out, nil
 }
 
+func (c *wilcoServiceClient) ExecuteRoutineAndCancel(ctx context.Context, in *ExecuteRoutineRequest, opts ...grpc.CallOption) (*ExecuteRoutineResponse, error) {
+	out := new(ExecuteRoutineResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.wilco.WilcoService/ExecuteRoutineAndCancel", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *wilcoServiceClient) StartDPSLListener(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/tast.cros.wilco.WilcoService/StartDPSLListener", in, out, opts...)
@@ -416,6 +429,7 @@ type WilcoServiceServer interface {
 	// GetConfigurationData performs the grpc request from inside the VM
 	GetConfigurationData(context.Context, *empty.Empty) (*GetConfigurationDataResponse, error)
 	ExecuteRoutine(context.Context, *ExecuteRoutineRequest) (*ExecuteRoutineResponse, error)
+	ExecuteRoutineAndCancel(context.Context, *ExecuteRoutineRequest) (*ExecuteRoutineResponse, error)
 	StartDPSLListener(context.Context, *empty.Empty) (*empty.Empty, error)
 	StopDPSLListener(context.Context, *empty.Empty) (*empty.Empty, error)
 	WaitForHandleConfigurationDataChanged(context.Context, *empty.Empty) (*empty.Empty, error)
@@ -435,6 +449,9 @@ func (*UnimplementedWilcoServiceServer) GetConfigurationData(ctx context.Context
 	return nil, status.Errorf(codes.Unimplemented, "method GetConfigurationData not implemented")
 }
 func (*UnimplementedWilcoServiceServer) ExecuteRoutine(ctx context.Context, req *ExecuteRoutineRequest) (*ExecuteRoutineResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExecuteRoutine not implemented")
+}
+func (*UnimplementedWilcoServiceServer) ExecuteRoutineAndCancel(ctx context.Context, req *ExecuteRoutineRequest) (*ExecuteRoutineResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteRoutine not implemented")
 }
 func (*UnimplementedWilcoServiceServer) StartDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
@@ -523,6 +540,24 @@ func _WilcoService_ExecuteRoutine_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WilcoService_ExecuteRoutineAndCancel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExecuteRoutineRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WilcoServiceServer).ExecuteRoutineAndCancel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.wilco.WilcoService/ExecuteRoutineAndCancel",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WilcoServiceServer).ExecuteRoutineAndCancel(ctx, req.(*ExecuteRoutineRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _WilcoService_StartDPSLListener_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(empty.Empty)
 	if err := dec(in); err != nil {
@@ -596,6 +631,10 @@ var _WilcoService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ExecuteRoutine",
 			Handler:    _WilcoService_ExecuteRoutine_Handler,
+		},
+		{
+			MethodName: "ExecuteRoutineAndCancel",
+			Handler:    _WilcoService_ExecuteRoutineAndCancel_Handler,
 		},
 		{
 			MethodName: "StartDPSLListener",
