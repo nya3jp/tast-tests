@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "564e8e04_65f51438",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-10T19:26:48Z",
+      "side": 1,
+      "message": "Will you cc me on this email?",
+      "parentUuid": "a33a0b6c_355c589f",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdc50849_6c284c81",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 4

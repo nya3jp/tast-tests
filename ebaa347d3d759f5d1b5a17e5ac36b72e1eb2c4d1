@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1addb53d_df156a8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-10T19:26:48Z",
+      "side": 1,
+      "message": "nit: Square brackets are not needed here",
+      "range": {
+        "startLine": 66,
+        "startChar": 46,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "ebaa347d3d759f5d1b5a17e5ac36b72e1eb2c4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d726b8d_6732036c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-10T19:26:48Z",
+      "side": 1,
+      "message": "Maybe just\n\ninitLidAngle :\u003d re.FindStringSubmatch(string(out))\nif len(initLidAngle) \u003d\u003d 0 {...\n\nso that you don\u0027t have to test the string twice.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "ebaa347d3d759f5d1b5a17e5ac36b72e1eb2c4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
