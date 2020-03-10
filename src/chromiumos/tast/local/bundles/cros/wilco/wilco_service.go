@@ -186,15 +186,12 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 	}, nil
 }
 
-func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	rrRequest := dtcpb.RunRoutineRequest{
-		Routine: dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
-		Parameters: &dtcpb.RunRoutineRequest_UrandomParams{
-			UrandomParams: &dtcpb.UrandomRoutineParameters{
-				LengthSeconds: 5,
-			},
-		},
+func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *wpb.ExecuteRoutineRequest) (*empty.Empty, error) {
+	rrRequest := dtcpb.RunRoutineRequest{}
+	if err := proto.Unmarshal(req.Request, &rrRequest); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshall request")
 	}
+
 	rrResponse := dtcpb.RunRoutineResponse{}
 	if err := routines.CallRunRoutine(ctx, rrRequest, &rrResponse); err != nil {
 		return nil, errors.Wrap(err, "unable to call routine")
