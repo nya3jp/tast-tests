@@ -16,6 +16,24 @@
       "revId": "217873ddfa1402997271ab38bfe5d198a81232d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca358ff3_f735b33e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-03-10T14:47:10Z",
+      "side": 1,
+      "message": "I think current plan is to run those hwsec destructive tests in bvt-perbuild, just like existing TPM-related autotest server tests. (https://crbug.com/1046586#c8, https://crbug.com/1046586#c9)\n\nI am not sure after soft-clear TPM 1.2 is available, how many tast tests will still need to crossystem-clear the tpm. Maybe now you and John have a better idea about the answer than I do. If one day we want some hwsec destructive tests running in CQ, i.e., they reboot the DUT but they are stable and quick, then we can split the control file into 2 and call one of them sth. like control.hwsec-destructive-information.\n\nnya@, cylai@, what do you guys think?",
+      "parentUuid": "5d89337e_97273345",
+      "revId": "217873ddfa1402997271ab38bfe5d198a81232d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
