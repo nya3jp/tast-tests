@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "364814dc_6cc632ec",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-10T15:49:12Z",
+      "side": 1,
+      "message": "thanks. \u0027records\u0027 SGTM",
+      "parentUuid": "7e7f666b_5fdb39fe",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb6e17e4_6b90a508",
         "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
         "patchSetId": 22
@@ -93,6 +117,30 @@
       "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df81c1f4_592796ad",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-10T15:49:12Z",
+      "side": 1,
+      "message": "ok. SG.\nperhaps adding a comment then saying that, that you are asserting it.",
+      "parentUuid": "4edb2023_5b88004a",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
