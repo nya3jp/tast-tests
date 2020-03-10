@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "982638b5_7ff982b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-10T07:42:14Z",
+      "side": 1,
+      "message": "Checked?",
+      "range": {
+        "startLine": 944,
+        "startChar": 16,
+        "endLine": 944,
+        "endChar": 23
+      },
+      "revId": "39018dc9216e2580aaa184733989c3c12becadc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47c55a9a_0bfaec87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-10T07:42:14Z",
+      "side": 1,
+      "message": "How about waitNextConfiguration or nextConfiguration or nextConfigurationPromise?",
+      "range": {
+        "startLine": 382,
+        "startChar": 9,
+        "endLine": 382,
+        "endChar": 33
+      },
+      "revId": "39018dc9216e2580aaa184733989c3c12becadc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5041a104_82acb55c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-10T07:42:14Z",
+      "side": 1,
+      "message": "nit: CAMERA_CONFIGURING\n\nref: go/js-style#naming-local-aliases",
+      "range": {
+        "startLine": 383,
+        "startChar": 10,
+        "endLine": 383,
+        "endChar": 21
+      },
+      "revId": "39018dc9216e2580aaa184733989c3c12becadc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2053f6_f4be04bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-10T07:42:14Z",
+      "side": 1,
+      "message": "nit: Simply do |return new Promise(...)| and inline pulseObserver logic into it.",
+      "revId": "39018dc9216e2580aaa184733989c3c12becadc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74da8b04_fbcc7ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-10T07:42:14Z",
+      "side": 1,
+      "message": "nit: inlining this into L394 and L401, and remove L405~L410.",
+      "revId": "39018dc9216e2580aaa184733989c3c12becadc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
