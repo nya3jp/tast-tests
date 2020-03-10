@@ -469,6 +469,30 @@
       "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebca9d36_b07e389c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-10T16:54:41Z",
+      "side": 1,
+      "message": "More information:\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2020-03-04\u0026last_date\u003d2020-03-10\u0026test\u003d%5Etast%5C.arc%5C.DataCollector%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\nThere is no one error due to this potential race.\nTo highlight again, once it is proper integrated (which is separate task), we won\u0027t have race possibility.",
+      "parentUuid": "7e459b14_7f10457b",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 113
+      },
+      "revId": "7c62b71302fd7433e0172d5a56f30ae523500adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
