@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a63a697_276a0f40",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-10T18:30:24Z",
+      "side": 1,
+      "message": "huge nit: Debian Buster",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 58,
+        "endChar": 56
+      },
+      "revId": "c70bcf8acf96e98904c64940bd3ab4a1d896a672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f072799_889bce03",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-10T18:30:24Z",
+      "side": 1,
+      "message": "huge nit: \u0027be started\u0027 ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 10
+      },
+      "revId": "c70bcf8acf96e98904c64940bd3ab4a1d896a672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b456e503_5adceb9e",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-10T18:30:24Z",
+      "side": 1,
+      "message": "nit: specify unit. e.g: \"The size of the VM image in bytes\"",
+      "range": {
+        "startLine": 156,
+        "startChar": 38,
+        "endLine": 156,
+        "endChar": 63
+      },
+      "revId": "c70bcf8acf96e98904c64940bd3ab4a1d896a672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
