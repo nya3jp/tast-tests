@@ -187,6 +187,30 @@
       "revId": "e4caf8982c19aae7789df6f1b300287a522f403b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a9cb31d_581deb5f",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-10T11:33:30Z",
+      "side": 1,
+      "message": "SG!",
+      "parentUuid": "ce6e882f_e455a721",
+      "range": {
+        "startLine": 92,
+        "startChar": 42,
+        "endLine": 92,
+        "endChar": 83
+      },
+      "revId": "e4caf8982c19aae7789df6f1b300287a522f403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
