@@ -394,6 +394,47 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 				return errors.Errorf("test file %s still exist", testFile)
 			},
 		},
+		{
+			name: "prime_search",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_PRIME_SEARCH,
+				Parameters: &dtcpb.RunRoutineRequest_PrimeSearchParams{
+					PrimeSearchParams: &dtcpb.PrimeSearchRoutineParameters{
+						LengthSeconds: 1,
+						MaxNum:        1000,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "prime_search_fail",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_PRIME_SEARCH,
+				Parameters: &dtcpb.RunRoutineRequest_PrimeSearchParams{
+					PrimeSearchParams: &dtcpb.PrimeSearchRoutineParameters{
+						LengthSeconds: 0,
+						MaxNum:        1000,
+					},
+				},
+			},
+			// The length of seconds is zero (the length of seconds for the test
+			// should larger than zero).
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+		},
+		{
+			name: "prime_search_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_PRIME_SEARCH,
+				Parameters: &dtcpb.RunRoutineRequest_PrimeSearchParams{
+					PrimeSearchParams: &dtcpb.PrimeSearchRoutineParameters{
+						LengthSeconds: 5,
+						MaxNum:        1000,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			if err := testRoutineExecution(ctx, param.request, param.expectedStatus, param.sanityCheckFunction); err != nil {
