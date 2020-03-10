@@ -112,7 +112,7 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 	uuid := rrResponse.Uuid
 	response := dtcpb.GetRoutineUpdateResponse{}
 
-	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second); err != nil {
+	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 5*time.Second); err != nil {
 		return nil, errors.Wrap(err, "routine not finished")
 	}
 
@@ -129,6 +129,50 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 	default:
 		testing.ContextLogf(ctx, "Unexpected routine status %s", response.Status)
 		status = wpb.DiagnosticRoutineStatus_ROUTINE_STATUS_ERROR
+	}
+
+	if err := routines.RemoveRoutine(ctx, uuid); err != nil {
+		return nil, errors.Wrap(err, "unable to remove routine")
+	}
+
+	return &wpb.ExecuteRoutineResponse{
+		Status: status,
+	}, nil
+}
+
+func (c *WilcoService) ExecuteRoutineAndCancel(ctx context.Context, req *wpb.ExecuteRoutineRequest) (*wpb.ExecuteRoutineResponse, error) {
+	rrRequest := dtcpb.RunRoutineRequest{}
+	if err := proto.Unmarshal(req.Request, &rrRequest); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshall request")
+	}
+
+	rrResponse := dtcpb.RunRoutineResponse{}
+
+	if err := routines.CallRunRoutine(ctx, rrRequest, &rrResponse); err != nil {
+		return nil, errors.Wrap(err, "unable to run routine")
+	}
+
+	uuid := rrResponse.Uuid
+	response := dtcpb.GetRoutineUpdateResponse{}
+
+	if err := routines.CancelRoutine(ctx, uuid); err != nil {
+		return nil, errors.Wrap(err, "unable to cancel routine")
+	}
+
+	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING, 5*time.Second); err != nil {
+		return nil, errors.Wrap(err, "routine not finished")
+	}
+
+	if err := routines.GetRoutineStatus(ctx, uuid, true, &response); err != nil {
+		return nil, errors.Wrap(err, "unable to get routine status")
+	}
+
+	var status wpb.DiagnosticRoutineStatus
+	if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
+		testing.ContextLogf(ctx, "Unexpected routine status %s", response.Status)
+		status = wpb.DiagnosticRoutineStatus_ROUTINE_STATUS_ERROR
+	} else {
+		status = wpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED
 	}
 
 	if err := routines.RemoveRoutine(ctx, uuid); err != nil {
