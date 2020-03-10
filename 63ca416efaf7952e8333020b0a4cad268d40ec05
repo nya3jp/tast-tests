@@ -1,0 +1,472 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "384df66f_b6dcb4bf",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Why not reuse iw.NetDev?",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2bab313_79ebef49",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "// Router is used to control an wireless router and stores state of the router.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fac072b_b8338364",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Is it used?",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f802a7_6ac6efe9",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "// NewRouter returns a new Router object.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e466786e_5483c179",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "removes all WiFi interfaces",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 42
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d7396b_8cf251e2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "A question: since r.host is not changed after NewRouter, is it a good idea to create an iwr in NewRouter and store it as r.iwr ?",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "548c62ab_9f802c98",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "// setupWifiPhys fills r.phys and enables their antennas.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7424678e_34e343b7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "The const name \"minSpatialStream\" misleads here. It is only used for whirlwind board to skip the auxiliary radio. How about removing the const and write an inner function:\n\n// isWhirlwindAuxPhy returns true if p is Whirlwind\u0027s 1x1 auxiliary radio.\nisWhirlwindAuxPhy \u003d func (p *iw.Phy) bool {\n  return r.board \u003d\u003d \"whirlwind\" \u0026\u0026 (p.RxAntenna \u003c 2 || p.TxAntenna \u003c 2)\n}\n\nSo that here is more readable:\n\nfor _, p :\u003d range wiphys {\n  if isWhirlwindAuxPhy(p) {\n    continue;\n  }\n  ...\n}",
+      "range": {
+        "startLine": 97,
+        "startChar": 46,
+        "endLine": 97,
+        "endChar": 62
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc77a5d_1a1218a8",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Self-explanatory; could be omitted.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51aa8853_a15ee5fa",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Set up",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022e2777_4d8404dd",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Self-explanatory; could be omitted.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd07fd9e_95e8781e",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Self-explanatory; could be omitted.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d63ce522_49dc679a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "// Prefer free phy. If both are free, prefer p2.\nreturn r.busyPhy[p1.Name] \u003d\u003d 0 \u0026\u0026 r.busyPhy[p2.Name] \u003e 0",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8375b3d_53f4d0a9",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "phy",
+      "range": {
+        "startLine": 205,
+        "startChar": 51,
+        "endLine": 205,
+        "endChar": 60
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21489768_d6afad85",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "To be consistent, name it \"channel\" here or rename \"channel\" in selectPhy() to \"ch\".",
+      "range": {
+        "startLine": 211,
+        "startChar": 54,
+        "endLine": 211,
+        "endChar": 56
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac858644_dedf2a63",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "First check if there\u0027s an available interface on target phy.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 40
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a49d5d27_e2c57b43",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "// No available interface on phy, create one.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41b747d7_043dd415",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "How about \n// getUniqueHandle returns a unique string used for naming services on this router.\n(or getNewHandle)\n\nIf it is only called in StartHostapd(), consider inline.",
+      "range": {
+        "startLine": 237,
+        "startChar": 17,
+        "endLine": 237,
+        "endChar": 28
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac82bab_e326c45b",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "// getUniqueIfaceName returns a unique interface name with type t.\n(or getNewIfaceName)\n\nIf it is only used in createWifiIface, consider inline this.",
+      "range": {
+        "startLine": 303,
+        "startChar": 17,
+        "endLine": 303,
+        "endChar": 29
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d5c17f_8a6010d5",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Shall we have cmd.CombinedOutput() so that we can also get stderr result.\n\n(Maybe in a separate CL)",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c4dc624_7391f5f1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "We may need to deal with the multi-line case.",
+      "range": {
+        "startLine": 315,
+        "startChar": 87,
+        "endLine": 315,
+        "endChar": 98
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ba10a7_0c413a8d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "r.busyPhy[nd.phyName]++",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d54c908_cdf80bae",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "r.busyPhy[nd.phyName]--",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51645fb1_a1fc18d2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-10T10:30:13Z",
+      "side": 1,
+      "message": "Is 255 a valid subnet index?",
+      "range": {
+        "startLine": 348,
+        "startChar": 24,
+        "endLine": 348,
+        "endChar": 27
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
