@@ -64,7 +64,8 @@ yee+dcuGhs9IGBOEEF7lFA==
 // setUpADBAuth sets up public key authentication of ADB.
 func setUpADBAuth(ctx context.Context) error {
 	// Wait for /data to be ready.
-	if err := waitProp(ctx, "vold.post_fs_data_done", "1", reportTiming); err != nil {
+	// This runs in the background, so don't report timing information.
+	if err := waitProp(ctx, "vold.post_fs_data_done", "1", noReportTiming); err != nil {
 		return errors.Wrap(err, "failed to wait for /data to be ready")
 	}
 
