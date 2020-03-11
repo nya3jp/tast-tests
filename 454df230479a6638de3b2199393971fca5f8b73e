@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7b62a85_f06b0908",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-11T15:56:49Z",
+      "side": 1,
+      "message": "Oops yes. the videos themselves are 7:10, but the whole test has\na ten minute timeout, so let\u0027s make it 10?",
+      "parentUuid": "83072ab1_3e2d8d13",
+      "range": {
+        "startLine": 219,
+        "startChar": 22,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "454df230479a6638de3b2199393971fca5f8b73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2dc018_5cac12de",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "82696ba1_80badc15",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-11T15:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2dc018_5cac12de",
+      "range": {
+        "startLine": 225,
+        "startChar": 68,
+        "endLine": 225,
+        "endChar": 76
+      },
+      "revId": "454df230479a6638de3b2199393971fca5f8b73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73ce7c25_35d298b6",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-10T23:43:07Z",
       "side": 1,
       "message": "Might be missing something --- where would this be surfaced?",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 20
+      },
+      "revId": "454df230479a6638de3b2199393971fca5f8b73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000e0d2b_39a98c94",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-11T15:56:49Z",
+      "side": 1,
+      "message": "Nowhere - testing.Poll() continues polling until either nil or PollBreak are\nreturned [1]. This statement basically means: continue polling, although I\nagree is strange, ideas? (Note that Poll needs a return statement...).\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/util.go;l\u003d42?q\u003dtesting.poll%20go",
+      "parentUuid": "73ce7c25_35d298b6",
       "range": {
         "startLine": 229,
         "startChar": 3,
