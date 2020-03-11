@@ -7,6 +7,8 @@ package wilco
 import (
 	"context"
 	"encoding/json"
+	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -104,6 +106,13 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			})
 			if err != nil {
 				return errors.Wrap(err, "failed to cancel routine")
+			}
+			if rrRequest.Routine == dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ {
+				testFile := filepath.Join("/var/cache/diagnostics_disk_read_routine_data", "fio-test-file")
+				_, err := os.Stat(testFile)
+				if os.IsExist(err) {
+					return errors.Errorf("test file %s still existed", testFile)
+				}
 			}
 			return nil
 		}
@@ -326,6 +335,45 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
 				Parameters: &dtcpb.RunRoutineRequest_NvmeLongSelfTestParams{
 					NvmeLongSelfTestParams: &dtcpb.NvmeLongSelfTestRoutineParameters{},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
+		{
+			name: "disk_read_linear",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "disk_read_random",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskRandomReadParams{
+					DiskRandomReadParams: &dtcpb.DiskRandomReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "disk_read_linear_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 5,
+						FileSizeMb:    1,
+					},
 				},
 			},
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
