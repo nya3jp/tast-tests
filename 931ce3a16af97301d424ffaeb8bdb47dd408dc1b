@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cf83c795_2de2b360",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-11T10:22:15Z",
+      "side": 1,
+      "message": "Agree, another CL should depend on this CL.\n\nAt least on ChromeOS side it should work if you refer to other repo.\n\nWill you break CQ if chromium CL will land first?",
+      "parentUuid": "706c7836_8f77257d",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "931ce3a16af97301d424ffaeb8bdb47dd408dc1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e55e28ff_848a1beb",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
         "patchSetId": 1
