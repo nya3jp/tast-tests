@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a254d0d_23541b05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T17:44:56Z",
+      "side": 1,
+      "message": "Good find. It\u0027s not really clear from the docs anywhere, but that does seem to be true. Is this something we need to document in our New{Device,Profile,Service}() APIs? Or is it possible to put this into a unit test somehow? It feels like we\u0027ve had a lot of churn in the Tast shill library, partly because of some ill-defined stuff like this.",
+      "range": {
+        "startLine": 10,
+        "startChar": 64,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "0fc67f6654c5a7223e2ac7e5b84d14fd2e0d024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
