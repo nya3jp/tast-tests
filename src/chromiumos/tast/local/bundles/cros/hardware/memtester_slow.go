@@ -23,10 +23,7 @@ func init() {
 			"puthik@chromium.org", // Original Autotest author
 			"cros-partner-avl@google.com",
 		},
-		Attr: []string{
-			"disabled", // this test can be very slow
-			"informational",
-		},
+		// This test is disabled because it can be very slow.
 	})
 }
 

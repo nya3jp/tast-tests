@@ -19,7 +19,6 @@ func init() {
 		Func:         TabSwitchCUJRecorder,
 		Desc:         "Run tab-switching CUJ test in chromewpr recording mode",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Vars:         []string{"mute"},
