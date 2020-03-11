@@ -13,12 +13,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     IwlwifiPCIRescan,
-		Desc:     "Verifies that the WiFi interface will recover if removed when the device has iwlwifi_rescan",
-		Contacts: []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		// For now, we prefer the remote version. Disable and keep the test to reproduce issue locally.
-		Attr:         []string{"group:mainline", "disabled"},
+		Func:         IwlwifiPCIRescan,
+		Desc:         "Verifies that the WiFi interface will recover if removed when the device has iwlwifi_rescan",
+		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		SoftwareDeps: []string{"iwlwifi_rescan"},
+		// For now, we prefer the remote version. Disable and keep the test to reproduce issue locally.
 	})
 }
 

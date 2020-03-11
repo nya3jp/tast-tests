@@ -29,7 +29,6 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ACVP,
-		Attr: []string{"informational", "disabled"},
 		Contacts: []string{
 			"gurleengrewal@chromium.org", // Test author
 			"sukhomlinov@chromium.org",   // CR50 certification lead

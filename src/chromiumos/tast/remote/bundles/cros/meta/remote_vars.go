@@ -17,9 +17,8 @@ func init() {
 		Func:     RemoteVars,
 		Desc:     "Helper test that inspects a runtime variable",
 		Contacts: []string{"tast-owners@google.com"},
+		Vars:     []string{"meta.RemoteVars.var"},
 		// This test is called by remote tests in the meta package.
-		Attr: []string{"disabled"},
-		Vars: []string{"meta.RemoteVars.var"},
 	})
 }
 

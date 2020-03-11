@@ -38,7 +38,6 @@ func init() {
 			Name: "vp9_2",
 			Val:  "test-25fps.vp9_2",
 			// TODO(crbug.com/911754): reenable this test once HDR VP9.2 is implemented.
-			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			ExtraData:         []string{"test-25fps.vp9_2", "test-25fps.vp9_2.json"},
 		}, {
@@ -60,14 +59,12 @@ func init() {
 			Name: "vp8_odd_dimensions",
 			Val:  "test-25fps-321x241.vp8",
 			// TODO(b/138915749): Enable once decoding odd dimension videos is fixed.
-			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"test-25fps-321x241.vp8", "test-25fps-321x241.vp8.json"},
 		}, {
 			Name: "vp9_odd_dimensions",
 			Val:  "test-25fps-321x241.vp9",
 			// TODO(b/138915749): Enable once decoding odd dimension videos is fixed.
-			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps-321x241.vp9", "test-25fps-321x241.vp9.json"},
 		}, {

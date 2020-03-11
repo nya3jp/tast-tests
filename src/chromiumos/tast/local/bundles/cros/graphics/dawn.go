@@ -28,7 +28,6 @@ func init() {
 			Val:  "dawn_end2end_tests",
 		}},
 		// TODO(crbug.com/1031054): Re-enable once binaries are built again.
-		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }

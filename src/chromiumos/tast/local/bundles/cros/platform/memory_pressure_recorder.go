@@ -19,7 +19,6 @@ func init() {
 		Func:         MemoryPressureRecorder,
 		Desc:         "Record a WPR archive for platform.MemoryPressure",
 		Contacts:     []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
-		Attr:         []string{"disabled", "informational"},
 		Timeout:      60 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Pre:          wpr.RecordMode("/tmp/archive.wprgo"),
