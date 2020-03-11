@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7e9b866_76cb242e",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T09:24:32Z",
+      "side": 1,
+      "message": "As you know, accessing testing.State in support libraries should be avoided because testing.State is a giant struct containing everything.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nPlease avoid an officially unrecommended way. At very least please speak up in crbug.com/1049020 before attempting something.",
+      "range": {
+        "startLine": 345,
+        "startChar": 40,
+        "endLine": 345,
+        "endChar": 53
+      },
+      "revId": "fe1464d17a1ffde3e705fbe10939bead8c04bed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
