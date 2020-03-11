@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
 
-function play(videoSourcePath) {
+function playUntilEnd(videoSourcePath) {
   return new Promise((resolve, reject) => {
     let video = document.getElementById('video');
 
@@ -20,6 +20,13 @@ function play(videoSourcePath) {
         return reject(e.message);
       });
   })
+}
+
+async function play(videoSourcePath) {
+  let video = document.getElementById('video');
+  video.loop = true;
+  video.src = videoSourcePath;
+  await video.play();
 }
 
 // Quick and dirty randomizer that returns the same sequence of numbers provided
