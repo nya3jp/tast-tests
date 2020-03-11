@@ -33,9 +33,8 @@ func init() {
 			ExtraAttr: []string{"group:mainline", "informational"},
 			Val:       enforcing,
 		}, {
-			Name:      "generate_seccomp",
-			ExtraAttr: []string{"disabled"},
-			Val:       permissive,
+			Name: "generate_seccomp",
+			Val:  permissive,
 		}},
 	})
 }

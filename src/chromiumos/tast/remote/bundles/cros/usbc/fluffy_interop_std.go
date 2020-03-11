@@ -29,7 +29,7 @@ func init() {
 		Contacts: []string{"aaboagye@chromium.org"},
 		Data:     []string{"fluffy_interop_std_config.json"},
 		Vars:     []string{"usbc.MaxPwrReqMW", "ServodPort", "ServodHost"},
-		Attr:     []string{"disabled"}, // This test requires a specific setup and due to the availability of fluffy, is a manual test.
+		// This test requires a specific setup and due to the availability of fluffy, is a manual test.
 	})
 }
 

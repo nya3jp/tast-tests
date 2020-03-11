@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Lacros GPU performance CUJ tests",
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"disabled"},
 		Timeout:      60 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
