@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net"
 	"path/filepath"
 	"reflect"
 	"sort"
@@ -208,21 +207,37 @@ func restartUdev(ctx context.Context) error {
 // function prototype.
 type deviceRestarter func(ctx context.Context) error
 
-func interfaceNames() ([]string, error) {
-	ifaces, err := net.Interfaces()
+// shillIfaceNames obtains a list of interface names from shill.
+func shillIfaceNames(ctx context.Context) ([]string, error) {
+	m, err := shill.NewManager(ctx)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to create shill manager")
 	}
-	names := make([]string, len(ifaces))
-	for i := range ifaces {
-		names[i] = ifaces[i].Name
+	devs, err := m.Devices(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to obtain interface names from shill")
+	}
+	var names []string
+	for _, dev := range devs {
+		p, err := dev.GetProperties(ctx)
+		// It is forgivable as a device may go down anytime.
+		if err != nil {
+			testing.ContextLogf(ctx, "Error getting properties of the device %q: %v", dev, err)
+			continue
+		}
+		iface, err := p.GetString(shill.DevicePropertyInterface)
+		if err != nil {
+			testing.ContextLogf(ctx, "Error getting the device interface %q: %v", dev, err)
+			continue
+		}
+		names = append(names, iface)
 	}
 	sort.Strings(names)
 	return names, nil
 }
 
 func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
-	iflistPre, err := interfaceNames()
+	iflistPre, err := shillIfaceNames(ctx)
 	if err != nil {
 		return err
 	}
@@ -238,7 +253,7 @@ func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		iflistPost, err := interfaceNames()
+		iflistPost, err := shillIfaceNames(ctx)
 		if err != nil {
 			return err
 		}
