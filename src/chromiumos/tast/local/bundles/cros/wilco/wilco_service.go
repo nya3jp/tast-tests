@@ -6,11 +6,14 @@ package wilco
 
 import (
 	"context"
+	"time"
 
+	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/wilco/routines"
 	"chromiumos/tast/local/wilco"
 	wpb "chromiumos/tast/services/cros/wilco"
 	"chromiumos/tast/testing"
@@ -91,6 +94,49 @@ func (c *WilcoService) GetConfigurationData(ctx context.Context, req *empty.Empt
 
 	return &wpb.GetConfigurationDataResponse{
 		JsonConfigurationData: response.JsonConfigurationData,
+	}, nil
+}
+
+func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRoutineRequest) (*wpb.ExecuteRoutineResponse, error) {
+	rrRequest := dtcpb.RunRoutineRequest{}
+	if err := proto.Unmarshal(req.Request, &rrRequest); err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshall request")
+	}
+
+	rrResponse := dtcpb.RunRoutineResponse{}
+
+	if err := routines.CallRunRoutine(ctx, rrRequest, &rrResponse); err != nil {
+		return nil, errors.Wrap(err, "unable to run routine")
+	}
+
+	uuid := rrResponse.Uuid
+	response := dtcpb.GetRoutineUpdateResponse{}
+
+	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second); err != nil {
+		return nil, errors.Wrap(err, "routine not finished")
+	}
+
+	if err := routines.GetRoutineStatus(ctx, uuid, true, &response); err != nil {
+		return nil, errors.Wrap(err, "unable to get routine status")
+	}
+
+	var status wpb.DiagnosticRoutineStatus
+	switch response.Status {
+	case dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED:
+		status = wpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED
+	case dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED:
+		status = wpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED
+	default:
+		testing.ContextLogf(ctx, "Unexpected routine status %s", response.Status)
+		status = wpb.DiagnosticRoutineStatus_ROUTINE_STATUS_ERROR
+	}
+
+	if err := routines.RemoveRoutine(ctx, uuid); err != nil {
+		return nil, errors.Wrap(err, "unable to remove routine")
+	}
+
+	return &wpb.ExecuteRoutineResponse{
+		Status: status,
 	}, nil
 }
 

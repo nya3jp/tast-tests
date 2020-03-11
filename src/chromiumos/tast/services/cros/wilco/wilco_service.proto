@@ -24,6 +24,9 @@ service WilcoService {
   rpc GetConfigurationData(google.protobuf.Empty)
     returns (GetConfigurationDataResponse) {}
 
+  rpc ExecuteRoutine(ExecuteRoutineRequest)
+    returns (ExecuteRoutineResponse) {}
+
   rpc StartDPSLListener(google.protobuf.Empty)
     returns (google.protobuf.Empty) {}
   rpc StopDPSLListener(google.protobuf.Empty)
@@ -44,4 +47,19 @@ message RestartVMRequest {
 
 message GetConfigurationDataResponse {
   string json_configuration_data = 1;
+}
+
+message ExecuteRoutineRequest {
+  // TODO(vsavu): replace with RunRoutineRequest from wilco_dtc_supportd.proto
+  bytes request = 1;
+}
+
+enum DiagnosticRoutineStatus {
+  ROUTINE_STATUS_PASSED = 0;
+  ROUTINE_STATUS_FAILED = 1;
+  ROUTINE_STATUS_ERROR = 2;
+}
+
+message ExecuteRoutineResponse {
+  DiagnosticRoutineStatus status = 1;
 }
