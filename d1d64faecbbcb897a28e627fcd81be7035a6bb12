@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4d59f99_ae90d438",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-11T22:58:13Z",
+      "side": 1,
+      "message": "Please run the ui.ChromeCrashNotLoggedIn* as well, since that might have differences in ownership. And the crash.SenderNoConsent / platform.UserCrash.chronos_crasher_no_consent tests to test the false case.",
+      "range": {
+        "startLine": 14,
+        "startChar": 51,
+        "endLine": 14,
+        "endChar": 73
+      },
+      "revId": "d1d64faecbbcb897a28e627fcd81be7035a6bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0962b3_e9dba617",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-11T22:58:13Z",
+      "side": 1,
+      "message": "Just checking -- there\u0027s no way we can still be pre-ownership-cleared at this point, right?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "d1d64faecbbcb897a28e627fcd81be7035a6bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
