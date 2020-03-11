@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "4e00837d_7c4ed4b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T09:45:02Z",
+      "side": 1,
+      "message": "I failed to answer Po-Hsien\u0027s question...\n\n\u003e What\u0027s the expected pass rate for a tast test to be considered in a CQ?\n\nTast\u0027s critical promotion criteria is documented at go/tast-add-test.\n\n\u003e Generally, a test is stable if it passes consistently for at least 20 builds on all models. But this is not an absolute rule. For example, if a test failed for an unexplained reason (e.g. kernel crash not observed in other tests), you might want to investigate in advance. On the other hand, if a test failed for a few runs for an unrelated and fixed issue, you might be able to ignore those failures on assessing stability. Use your best judgement to expand test coverage while keeping CQ stable.",
+      "parentUuid": "a71e2793_b7676b6e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "487f098d_0b048dac",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
