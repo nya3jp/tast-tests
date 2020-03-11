@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,11 +6,20 @@ package wilco
 
 import (
 	"context"
+	"encoding/json"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/ptypes/empty"
+
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/wilco/pre"
-	"chromiumos/tast/local/bundles/cros/wilco/routines"
+	"chromiumos/tast/remote/policyutil"
+	"chromiumos/tast/rpc"
+	ps "chromiumos/tast/services/cros/policy"
+	"chromiumos/tast/services/cros/wilco"
 	"chromiumos/tast/testing"
 	dtcpb "chromiumos/wilco_dtc"
 )
@@ -25,57 +34,78 @@ func init() {
 			"lamzin@chromium.org", // wilco_dtc_supportd maintainer
 			"chromeos-wilco@google.com",
 		},
-		// Disabled due to migration routines to cros_healthd. To be able to run
-		// routines device policy DeviceWilcoDtcAllowed must be turned on.
-		// TODO(b/149087547): rewrite and enable back.
-		Attr:         []string{"group:mainline", "disabled"},
-		SoftwareDeps: []string{"vm_host", "wilco"},
-		Pre:          pre.WilcoDtcSupportdAPI,
+		Attr:         []string{"group:enrollment"},
+		SoftwareDeps: []string{"reboot", "vm_host", "wilco", "chrome"},
+		ServiceDeps:  []string{"tast.cros.wilco.WilcoService", "tast.cros.policy.PolicyService"},
+		Timeout:      10 * time.Minute,
 	})
 }
 
 func APIRoutine(ctx context.Context, s *testing.State) {
+	defer func(ctx context.Context) {
+		if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+			s.Error("Failed to reset TPM: ", err)
+		}
+	}(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
+	defer cancel()
+
+	if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
+		s.Fatal("Failed to reset TPM: ", err)
+	}
+
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	wc := wilco.NewWilcoServiceClient(cl.Conn)
+	pc := ps.NewPolicyServiceClient(cl.Conn)
+
+	pb := fakedms.NewPolicyBlob()
+	pb.AddPolicy(&policy.DeviceWilcoDtcAllowed{Val: true})
+	// wilco_dtc and wilco_dtc_supportd only run for affiliated users
+	pb.DeviceAffiliationIds = []string{"default"}
+	pb.UserAffiliationIds = []string{"default"}
+
+	pJSON, err := json.Marshal(pb)
+	if err != nil {
+		s.Fatal("Failed to serialize policies: ", err)
+	}
+
+	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+		PolicyJson: pJSON,
+	}); err != nil {
+		s.Fatal("Failed to enroll using chrome: ", err)
+	}
+	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
+
 	// executeRoutine sends the request in rrRequest, executing the routine, and
 	// checks the result against shouldFail.
 	executeRoutine := func(ctx context.Context,
 		rrRequest dtcpb.RunRoutineRequest, shouldFail bool) error {
 
-		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
 
-		rrResponse := dtcpb.RunRoutineResponse{}
-		err := routines.CallRunRoutine(ctx, rrRequest, &rrResponse)
+		data, err := proto.Marshal(&rrRequest)
 		if err != nil {
-			return errors.Wrap(err, "unable to run routine: ")
+			return errors.Wrap(err, "failed to marshall")
 		}
 
-		uuid := rrResponse.Uuid
-		response := dtcpb.GetRoutineUpdateResponse{}
-
-		err = routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second)
+		resp, err := wc.ExecuteRoutine(ctx, &wilco.ExecuteRoutineRequest{
+			Request: data,
+		})
 		if err != nil {
-			return errors.Wrap(err, "routine not finished")
+			return errors.Wrap(err, "failed to execute routine")
 		}
 
-		err = routines.GetRoutineStatus(ctx, uuid, true, &response)
-		if err != nil {
-			return errors.Wrap(err, "unable to get routine status: ")
-		}
-
-		s.Log("Routine status message: ", response.StatusMessage)
-		if shouldFail {
-			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
-				return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_FAILED", response.Status)
-			}
-		} else {
-			if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED {
-				return errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_PASSED", response.Status)
-			}
-		}
-
-		err = routines.RemoveRoutine(ctx, uuid)
-		if err != nil {
-			return errors.Wrap(err, "unable to remove routine: ")
+		if shouldFail && resp.Status != wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED {
+			return errors.Errorf("invalid result: expected FAILED, got %s", resp.Status)
+		} else if !shouldFail && resp.Status != wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED {
+			return errors.Errorf("invalid result: expected PASSED, got %s", resp.Status)
 		}
 
 		return nil
