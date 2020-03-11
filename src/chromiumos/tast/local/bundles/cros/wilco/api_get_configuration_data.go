@@ -37,8 +37,6 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to get configuration data: ", err)
 	}
 
-	// TODO(vsavu)(crbug.com/978643) Test actual values when device policies are supported.
-
 	// Error conditions defined by the proto definition.
 	if response.JsonConfigurationData != "" {
 		s.Fatalf("Unexpected GetConfigurationDataResponse; got %s, want an empty response", response.String())
