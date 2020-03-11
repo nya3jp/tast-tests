@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/wilco"
 	wpb "chromiumos/tast/services/cros/wilco"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 	dtcpb "chromiumos/wilco_dtc"
 )
 
@@ -138,6 +139,51 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 	return &wpb.ExecuteRoutineResponse{
 		Status: status,
 	}, nil
+}
+
+func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	rrRequest := dtcpb.RunRoutineRequest{
+		Routine: dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
+		Parameters: &dtcpb.RunRoutineRequest_UrandomParams{
+			UrandomParams: &dtcpb.UrandomRoutineParameters{
+				LengthSeconds: 5,
+			},
+		},
+	}
+	rrResponse := dtcpb.RunRoutineResponse{}
+	if err := routines.CallRunRoutine(ctx, rrRequest, &rrResponse); err != nil {
+		return nil, errors.Wrap(err, "unable to call routine")
+	}
+
+	uuid := rrResponse.Uuid
+	response := dtcpb.GetRoutineUpdateResponse{}
+
+	if err := routines.CancelRoutine(ctx, uuid); err != nil {
+		return nil, errors.Wrap(err, "unable to cancel routine")
+	}
+
+	// Because cancellation is slow, we time how long it takes to change from
+	// STATUS_CANCELLING.
+	ctx, st := timing.Start(ctx, "cancel")
+	err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLING, 4*time.Second)
+	st.End()
+	if err != nil {
+		return nil, errors.Wrap(err, "routine not finished")
+	}
+
+	if err := routines.GetRoutineStatus(ctx, uuid, true, &response); err != nil {
+		return nil, errors.Wrap(err, "unable to get routine status")
+	}
+
+	if response.Status != dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
+		return nil, errors.Errorf("invalid status; got %s, want ROUTINE_STATUS_CANCELLED", response.Status)
+	}
+
+	if err := routines.RemoveRoutine(ctx, uuid); err != nil {
+		return nil, errors.Wrap(err, "unable to remove routine")
+	}
+
+	return &empty.Empty{}, nil
 }
 
 func (c *WilcoService) StartDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
