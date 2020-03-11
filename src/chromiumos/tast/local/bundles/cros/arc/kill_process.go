@@ -6,9 +6,8 @@ package arc
 
 import (
 	"context"
+	"regexp"
 	"time"
-
-	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -67,7 +66,7 @@ func KillProcess(ctx context.Context, s *testing.State) {
 	}
 
 	// Sanity check: the process must exist after creating the activity.
-	if exist, err := processExist(ctx, packageName); err != nil {
+	if exist, err := processExist(ctx, a, packageName); err != nil {
 		s.Fatal("Failed to verify whether process exist: ", err)
 	} else if !exist {
 		s.Fatalf("Process %s does not exist after activity was created", packageName)
@@ -81,7 +80,7 @@ func KillProcess(ctx context.Context, s *testing.State) {
 	s.Log("Verifying Settings process has been killed")
 	// After closing the activity, the process should have been killed.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		exist, err := processExist(ctx, packageName)
+		exist, err := processExist(ctx, a, packageName)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -95,21 +94,19 @@ func KillProcess(ctx context.Context, s *testing.State) {
 }
 
 // processExist returns whether the kernel process procName exist.
-func processExist(ctx context.Context, procName string) (bool, error) {
-	procs, err := process.Processes()
+func processExist(ctx context.Context, a *arc.ARC, procName string) (bool, error) {
+	// Cannot query the host processes since this test runs both on Container and VM.
+	// Querying Android processes intead.
+	out, err := a.Command(ctx, "ps", "-A").Output()
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get processes")
 	}
-	for _, p := range procs {
-		name, err := p.Name()
-		if err != nil {
-			// Don't treat as an error when p.Name() fails.
-			// It might be possible that by the time p.Name() is called, the process no longer exists, making p.Name() fail.
-			continue
-		}
-		if name == procName {
-			return true, nil
-		}
+
+	// Package name is also the process name.
+	matched, err := regexp.MatchString(procName, string(out))
+	if err != nil {
+		return false, errors.Wrap(err, "failed to parse output")
 	}
-	return false, nil
+
+	return matched, nil
 }
