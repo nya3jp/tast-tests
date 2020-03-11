@@ -18,7 +18,6 @@ func init() {
 		Desc:         "Verifies that the TPM ownership can be cleared",
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"reboot", "tpm"},
-		Attr:         []string{"group:mainline", "disabled"},
 	})
 }
 

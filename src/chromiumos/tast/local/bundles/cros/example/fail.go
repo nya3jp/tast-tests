@@ -15,7 +15,6 @@ func init() {
 		Func:     Fail,
 		Desc:     "Always fails",
 		Contacts: []string{"tast-owners@google.com"},
-		Attr:     []string{"disabled"},
 	})
 }
 

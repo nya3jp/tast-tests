@@ -15,7 +15,6 @@ func init() {
 		Func:     Run,
 		Desc:     "Subtest example, always fails",
 		Contacts: []string{"vsavu@google.com", "tast-owners@google.com"},
-		Attr:     []string{"disabled"},
 	})
 }
 
