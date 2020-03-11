@@ -42,6 +42,25 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		return err
 	}
 
+	// First, ensure that device ownership has been taken, for two reasons:
+	// 1. Due to https://crbug.com/1042951#c16, if we set consent while
+	//    ownership is in the UNKNOWN state, we'll never actually set it
+	//    (it will stay pending forever).
+	// 2. Even if setting consent to pending works (we set it when we're in
+	//    state NONE), there is a brief time after ownership is taken where
+	//    consent is reset to false. See https://crbug.com/1041062#c23
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat("/var/lib/whitelist/owner.key"); err != nil {
+			if os.IsNotExist(err) {
+				return err
+			}
+			return testing.PollBreak(err)
+		}
+		return nil
+	}, nil); err != nil {
+		return err
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "creating test API connection failed")
@@ -54,18 +73,8 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 		return errors.Wrap(err, "running autotestPrivate.setMetricsEnabled failed")
 	}
 
+	// Wait for consent to be set before we return.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// First, we ensure that device ownership has been taken.
-		// (if we did not, we'd have a brief window after ownership was taken where
-		// consent is reset to false. See https://crbug.com/1041062#c23)
-		if _, err := os.Stat("/var/lib/whitelist/owner.key"); err != nil {
-			if os.IsNotExist(err) {
-				return err
-			}
-			return testing.PollBreak(err)
-		}
-
-		// Then, we _also_ check that consent is set.
 		state, err := metrics.HasConsent(ctx)
 		if err != nil {
 			return testing.PollBreak(err)
@@ -77,6 +86,7 @@ func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	}, nil); err != nil {
 		return err
 	}
+
 	// Make sure that the updated status is polled by crash_reporter.
 	// crash_reporter holds a cache of the consent status until the integer value of time() changes since last time.
 	// https://chromium.googlesource.com/chromiumos/platform2/+/3fe852bfa/metrics/metrics_library.cc#154
