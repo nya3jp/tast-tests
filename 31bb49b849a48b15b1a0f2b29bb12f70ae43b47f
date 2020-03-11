@@ -46,6 +46,30 @@
       "revId": "31bb49b849a48b15b1a0f2b29bb12f70ae43b47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b3a5cb_02b9f920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/stdio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T04:25:33Z",
+      "side": 1,
+      "message": "Thanks for pointing it out, I think that is a good point.\n\nThe meta category is for tests of Tast itself, as explained in src/chromiumos/tast/remote/bundles/cros/meta/doc.go:\n\n // Package meta contains remote Tast tests that exercise Tast itself.\n\nI think having local tests to exercise Tast itself makes sense, and the documentation in src/chromiumos/tast/local/bundles/cros/meta/doc.go is too specific. Let me update the document instead.",
+      "parentUuid": "72d7ab7e_87a76ea0",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "31bb49b849a48b15b1a0f2b29bb12f70ae43b47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
