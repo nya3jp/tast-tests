@@ -19,7 +19,7 @@ func init() {
 		Func:         CCAUIExpert,
 		Desc:         "Opens CCA and verifies the expert options",
 		Contacts:     []string{"shik@google.com", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "arc_camera3", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),

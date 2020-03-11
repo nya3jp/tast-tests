@@ -22,6 +22,7 @@ func init() {
 		Func:     RunTests,
 		Desc:     "Verifies that Tast can run tests",
 		Contacts: []string{"tast-owners@google.com"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 

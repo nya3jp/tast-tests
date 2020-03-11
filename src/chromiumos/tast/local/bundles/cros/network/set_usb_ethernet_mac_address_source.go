@@ -25,7 +25,7 @@ func init() {
 			"lamzin@google.com",
 			"cros-networking@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wilco"},
 	})
 }
