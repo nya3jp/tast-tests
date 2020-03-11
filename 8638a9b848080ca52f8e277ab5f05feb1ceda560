@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dac37809_6b747423",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-11T07:00:34Z",
+      "side": 1,
+      "message": "it\u0027s a bit inconsistent with the layout in this file.",
+      "revId": "8638a9b848080ca52f8e277ab5f05feb1ceda560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
