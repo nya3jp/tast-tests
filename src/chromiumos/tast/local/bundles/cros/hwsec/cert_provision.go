@@ -23,7 +23,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CertProvision,
 		Desc:         "Verifies cert provision by closed loop testing",
-		Attr:         []string{"group:mainline", "disabled"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"tpm"},
 	})

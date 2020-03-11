@@ -17,12 +17,11 @@ func init() {
 		Func:     LocalFiles,
 		Desc:     "Helper test that uses data and output files",
 		Contacts: []string{"tast-owners@google.com"},
-		// This test is executed by remote tests in the meta package.
-		Attr: []string{"disabled"},
 		Data: []string{
 			"local_files_internal.txt",
 			"local_files_external.txt",
 		},
+		// This test is executed by remote tests in the meta package.
 	})
 }
 

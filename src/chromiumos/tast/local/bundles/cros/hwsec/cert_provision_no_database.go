@@ -24,7 +24,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CertProvisionNoDatabase,
 		Desc:         "Verifies cert provision is still working without attestation database",
-		Attr:         []string{"group:mainline", "disabled"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"tpm"},
 	})
