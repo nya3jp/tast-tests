@@ -70,6 +70,24 @@
       "revId": "217873ddfa1402997271ab38bfe5d198a81232d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbceeda_66fa90b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-11T14:42:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d3f051a_a9426e91",
+      "revId": "217873ddfa1402997271ab38bfe5d198a81232d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
