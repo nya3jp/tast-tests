@@ -94,6 +94,30 @@
       "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6b7c18_7d6de344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-03-11T02:02:49Z",
+      "side": 1,
+      "message": "This is listening at all times.",
+      "parentUuid": "8e8e5893_1eaad2a3",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
