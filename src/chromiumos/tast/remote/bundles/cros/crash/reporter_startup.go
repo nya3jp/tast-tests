@@ -111,12 +111,9 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get uptime: ", err)
 	}
-	s.Log(ut)
-	bootTime := time.Now().Add(time.Second * time.Duration(ut))
+	bootTime := time.Now().Add(time.Second * time.Duration(-ut))
 
-	// Allow 1 minute difference because crash_reporter may be initialized
-	// before uptimed in the system startup sequence.
-	if flagTime.Before(bootTime.Add(-time.Minute)) {
+	if flagTime.Before(bootTime) {
 		s.Errorf("User space crash handling was not started during last boot: crash_reporter started at %s, system was booted at %s",
 			flagTime.Format(time.RFC3339), bootTime.Format(time.RFC3339))
 	}
