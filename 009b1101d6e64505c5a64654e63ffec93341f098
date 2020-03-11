@@ -114,6 +114,30 @@
       "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b46e5708_8ecce1f0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T03:19:39Z",
+      "side": 1,
+      "message": "Yeah, I would expect that the test framework takes care of the DUT (either directly sync time, assume NTP works or etc.).\nBut as for the router..., I\u0027m not totally sure if it\u0027s safer to ensure this by ourselves as I guess the framework does not quite know the existence of the companion devices. (like, the SSH object can be created all by ourselves when router hostname is given.)",
+      "parentUuid": "cd0a63bb_41fc0f63",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 68
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
