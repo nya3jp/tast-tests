@@ -29,7 +29,7 @@ func init() {
 		Func:         MulticastForwarder,
 		Desc:         "Checks if multicast forwarder works on ARC++",
 		Contacts:     []string{"jasongustaman@chromium.org", "cros-networking@google.com", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcMulticastForwarderTest.apk"},
 		Params: []testing.Param{{

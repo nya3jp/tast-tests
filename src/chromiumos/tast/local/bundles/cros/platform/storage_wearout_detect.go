@@ -19,7 +19,7 @@ func init() {
 			"puthik@chromium.org",       // Autotest author
 			"brooke.mylander@intel.com", // Migrated Autotest to Tast
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"storage_wearout_detect"},
 	})
 }
