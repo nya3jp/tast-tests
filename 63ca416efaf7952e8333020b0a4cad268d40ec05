@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b61f4708_b79863a3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "Seems reasonable to me.",
+      "parentUuid": "384df66f_b6dcb4bf",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6c55b4e_22887b0e",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-10T11:10:51Z",
       "side": 1,
       "message": "In iw.NetDev[1], it stores PhyNum. Here it stores phy string. Maybe we shall pick which one we want to use now. In some old iw(8) man page, object referring to a wireless hardware device have two syntax: 1) \"phy \u003cphy name\u003e\"; 2) \"phy#\u003cphy index\u003e\". The later one, though it not shown in current iw --help; however, it is still able to use.\n\nBrian, which one do you recommend to represent a phy in iw.NetDev: phy string or phy index?\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/network/iw/runner.go?l\u003d51",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c5f9b4_7d7ed300",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "\u003e 1) \"phy \u003cphy name\u003e\"; 2) \"phy#\u003cphy index\u003e\".\n\nFrankly, I didn\u0027t even know option (2) existed until [*]\n\nIf the \u0027--help\u0027 output is the only blocker (and otherwise it all works fine), the phy index seems slightly more future proof.\n\nAnyway, if we use iw.NetDev, then this is more or less decided for us, no?\n\n\u003e The later one, though it not shown in current iw --help; however, it is still able to use.\n\nMaybe you could fix the --help output upstream?\n\n[*] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1949967",
+      "parentUuid": "a6c55b4e_22887b0e",
       "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +135,24 @@
       "writtenOn": "2020-03-10T10:30:13Z",
       "side": 1,
       "message": "// NewRouter returns a new Router object.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c486fe6_2c357be1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "@Dean: your sentence is fine, but I appreciate the extra info that Yen-lin currently provides. Sometimes it\u0027s not clear whether a New...() function does more than setting up local data structures. In this, case it does a lot more: initialization over SSH.",
+      "parentUuid": "54f802a7_6ac6efe9",
       "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -185,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "37d83f1a_71112918",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "Dean\u0027s suggestion LGTM",
+      "parentUuid": "7424678e_34e343b7",
+      "range": {
+        "startLine": 97,
+        "startChar": 46,
+        "endLine": 97,
+        "endChar": 62
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edc77a5d_1a1218a8",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
@@ -253,6 +331,29 @@
       "writtenOn": "2020-03-10T10:30:13Z",
       "side": 1,
       "message": "Self-explanatory; could be omitted.",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "667231e8_4fd760eb",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "Should we be cleaning up the hostapd+dhcp instances too, if they haven\u0027t already been stopped?\n\nAnd if they *have* already been stopped, then I don\u0027t think you\u0027d need to call this. You should already have \"released\" the interfaces, and we don\u0027t actually have to delete them.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 50
+      },
       "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -378,6 +479,121 @@
         "startChar": 17,
         "endLine": 237,
         "endChar": 28
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00abaae7_73944107",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "release in opposite order of teardown -- so freeing the idx should come last",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 22
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22c4720a_62125c46",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "This kinda feels wrong -- it\u0027s stopping hostapd and the DHCP server.\n\nSince we moved to naming the handle after the \"Interface\", maybe this function should be similarly named?",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 39
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000e1409_67f5c5f6",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "same as in StartHostapd() -- you have these in the wrong order. All 3 need reversed.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 19
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf012c34_ee551e47",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "I don\u0027t think we want this to be a generally-available function -- it\u0027s only useful as part of removeWifiIfaces(), and *that* is really only useful at startup, to clear out initial state.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 75
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9c41ae_0c1933a5",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T01:18:15Z",
+      "side": 1,
+      "message": "IIUC, these aren\u0027t really needed -- you\u0027re duplicating parts of StopHostapd(), which you already assume the caller will be calling (or else, you probably should call them in Close(); see below).",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 29
       },
       "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
