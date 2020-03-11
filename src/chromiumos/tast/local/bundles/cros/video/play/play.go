@@ -81,7 +81,7 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) er
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("play(%q)", videoFile), nil); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("playUntilEnd(%q)", videoFile), nil); err != nil {
 		return err
 	}
 
