@@ -70,6 +70,30 @@
       "revId": "637426c0f861f4b530fb8ec08642918e88bbeac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be685f8e_d28a5ab5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-11T19:07:15Z",
+      "side": 1,
+      "message": "arc.DataCollector.UreadaheadService_username SG",
+      "parentUuid": "e6c1e875_375bb2bb",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "637426c0f861f4b530fb8ec08642918e88bbeac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
