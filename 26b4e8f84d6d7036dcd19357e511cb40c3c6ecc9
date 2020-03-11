@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "622dfd57_a0eaaa04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-11T17:21:55Z",
+      "side": 0,
+      "message": "Should this file be effectively the same as the one in the remote folder? If so, do you think it\u0027s possible to use `git mv` and reupload the CL so git knows the file was moved instead of deleted and re-added? It would also make this easier to review.",
+      "revId": "26b4e8f84d6d7036dcd19357e511cb40c3c6ecc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
