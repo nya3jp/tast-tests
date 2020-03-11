@@ -118,6 +118,53 @@
       "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a71e2793_b7676b6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T09:43:22Z",
+      "side": 1,
+      "message": "\u003e Signal 15 SIGTERM means that somebody else killed our process. This is not a test problem.\n\nThat is a good point that 15 is SIGTERM. Hmm, then I agree it is less likely that it is a test problem...\n\n\n\u003e As for ARM vs. x86, that is a blunt sword as we have multiple ARM vendors. What in principle we need to be able to specify is a driver. Which in practice means specifying chipset and kernel version. Once crbug.com/1057870 is implemented we will use the feature to avoid instable new chipsets/kernels (or drivers).\n\u003e \n\u003e Finally the failures surfaced by the tast test are now precisely the same as its autotest sibling which is currently running in the CQ. Can we now promote the test in Tast as was agreed before? \n\u003e \n\u003e https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dsuite\u0026col\u003dtest\u0026first_date\u003d2020-03-04\u0026last_date\u003d2020-03-10\u0026test\u003dgraphics_Sanity\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nOK, I agree it is a fair argument that the new test is as flaky as an existing Autotest. Please just make sure to remove the Autotest from CQ so that CQ won\u0027t be twice flaky.\n\n\nThanks for your detailed explanation!",
+      "parentUuid": "1666b946_493a2635",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "487f098d_0b048dac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T09:43:22Z",
+      "side": 1,
+      "message": "Could you update the CL description to reflect the discussion? I think the most important point is that we already run Autotest version of this test and replacing it with Tast version won\u0027t make it more flaky.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "3589e0b71771ab8cefc749d41062a0bcf5b8b75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
