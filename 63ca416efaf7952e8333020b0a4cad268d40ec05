@@ -602,6 +602,30 @@
     },
     {
       "key": {
+        "uuid": "e9021603_f7c57a3f",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T02:16:12Z",
+      "side": 1,
+      "message": "Eh, it doesn\u0027t really cost anything. See also my other comments, where I think we\u0027re at least doing it in the wrong place. *If* you want to clean them up, it\u0027d be in StopHostapd() (not Close()), since that\u0027s the inverse of StartHostapd() where they were created.\n\nNote that Autotest doesn\u0027t currently clean them up at the end; only at initialization.",
+      "parentUuid": "1b5683df_339df18a",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 75
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad9c41ae_0c1933a5",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
