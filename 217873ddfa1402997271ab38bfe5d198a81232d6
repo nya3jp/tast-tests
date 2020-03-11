@@ -52,6 +52,24 @@
       "revId": "217873ddfa1402997271ab38bfe5d198a81232d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3f051a_a9426e91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/clear_ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-03-11T09:15:21Z",
+      "side": 1,
+      "message": "Wait, Leo, did I misinterpret your question? group:hwsec_destructive will be attached to bvt-perbuild in a new control file I am going to create in the next CL, and then the destructive group will run in the release builders but not CQ. Is that what you\u0027re asking?\n\nAlso, like I said in the previous comment, if one day we want some of the tests to run in CQ, then we create another control file and split the tests.",
+      "parentUuid": "ca358ff3_f735b33e",
+      "revId": "217873ddfa1402997271ab38bfe5d198a81232d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
