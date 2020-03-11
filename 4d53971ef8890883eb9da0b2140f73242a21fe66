@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97c1fa95_cf68f8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d180bc2_bd9bf5bb",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "4d53971ef8890883eb9da0b2140f73242a21fe66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f34de5cb_e4873310",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 16
@@ -68,6 +92,54 @@
       "revId": "4d53971ef8890883eb9da0b2140f73242a21fe66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8879215c_d5875d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92f898d2_00b0721d",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "4d53971ef8890883eb9da0b2140f73242a21fe66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f2312bf_cd6f083d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f34de5cb_e4873310",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "4d53971ef8890883eb9da0b2140f73242a21fe66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
