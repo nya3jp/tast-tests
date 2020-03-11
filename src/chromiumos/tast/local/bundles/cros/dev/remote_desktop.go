@@ -35,7 +35,7 @@ func init() {
 		Func:         RemoteDesktop,
 		Desc:         "Connect to Chrome Remote Desktop for working remotely",
 		Contacts:     []string{"shik@chromium.org", "tast-users@chromium.org"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			// For running manually.
