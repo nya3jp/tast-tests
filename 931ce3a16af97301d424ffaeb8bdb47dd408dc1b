@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "706c7836_8f77257d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-03-11T09:52:27Z",
+      "side": 1,
+      "message": "Actually I think it\u0027s crrev.com/c/2097782 should depend on this CL. This CL will adapting both type changes before and after crrev/c/2097782 and make tests pass for both before and after cases.\nBTW the crrec/c/2097782 is CL in chrome, I\u0027m wondering if the CQ-DEPEND setting on such tast test will also reference the chrome PFQ and bundled the tast CL with the correct chrome version?",
+      "parentUuid": "267e7120_0071d859",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "931ce3a16af97301d424ffaeb8bdb47dd408dc1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e55e28ff_848a1beb",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "931ce3a16af97301d424ffaeb8bdb47dd408dc1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01411573_ff94377e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-03-11T09:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55e28ff_848a1beb",
+      "range": {
+        "startLine": 265,
+        "startChar": 14,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "931ce3a16af97301d424ffaeb8bdb47dd408dc1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
