@@ -166,6 +166,30 @@
       "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff7a00eb_8ee1c3c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2020-03-11T03:56:55Z",
+      "side": 1,
+      "message": "\u003e. This is listening at all times.\n\nNot really, only when ARC is enabled.\n\n\u003e  listening at all times or only when sideloading is enabled?\n\nIt is not enough to scope it to just sideloading enabled, because we still have to support people enabling adbd and connecting over :5555. I think this requires dev mode atm. Sideloading will allow them to stay in safe mode and have adbd running, but that does not help with external remote adb clients. We could manage to tell from the ARC side if adbd is running and then use that trigger the listening on *:5555.\n\n\n\u003e What are other options here?\n\nWe can also decide not to add any additional listening on :5555 on all images and take on the regression in adb connection stability caused by my reverts of the netd hacks in m82. In practice anybody with an adb connection going directly to adb will see the connection drop when:\n - a VPN network connect or disconnect\n - the default network changes inside Android (typically another higher priority network connected).\n\nWhat are no regressions are losing the network when there is one only, or losing the network  which the adb client \n\nUltimately it is more important to unfork Android netd, and with adb sideloading we have a migration story for people affected. So extending the listening on *:5555 when sideloading is enabled looks like a good compromise.",
+      "parentUuid": "9475f35e_b46507ee",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
