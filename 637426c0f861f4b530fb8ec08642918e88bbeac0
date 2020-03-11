@@ -46,6 +46,30 @@
       "revId": "637426c0f861f4b530fb8ec08642918e88bbeac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c1e875_375bb2bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-11T04:49:26Z",
+      "side": 1,
+      "message": "There\u0027s naming convention go/tast-writing#runtime-variables\n- Variable name should have the form of foo.Bar.something or foo.something, where something matches [A-Za-z][A-Za-z0-9_]*\n- Only the test foo.Bar can access foo.Bar.something\n\nI\u0027m about to introduce runtime check for this.\nHow about renaming this to arc.DataCollector.UreadaheadService_* ?\ne.g. arc.DataCollector.UreadaheadService_username",
+      "parentUuid": "f9988841_39edd05b",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "637426c0f861f4b530fb8ec08642918e88bbeac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
