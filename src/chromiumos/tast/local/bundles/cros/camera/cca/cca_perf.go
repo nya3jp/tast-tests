@@ -24,6 +24,9 @@ const stabilizationDuration time.Duration = 5 * time.Second
 type perfEvent struct {
 	Event    string  `json:"event"`
 	Duration float64 `json:"duration"`
+	Extras   struct {
+		Facing string `json:"facing"`
+	} `json:"extras"`
 }
 
 // MeasurementOptions contains the information for performance measurement.
@@ -54,8 +57,9 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		return errors.Wrap(err, "failed to idle")
 	}
 
+	var perfEvents chrome.JSObject
 	app, err := Init(ctx, cr, scripts, options.OutputDir, func(tconn *chrome.TestConn) error {
-		if err := setupPerfListener(ctx, tconn, options.IsColdStart); err != nil {
+		if err := setupPerfListener(ctx, tconn, &perfEvents, options.IsColdStart); err != nil {
 			return err
 		}
 
@@ -77,7 +81,7 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 		}
 	}
 
-	if err := app.CollectPerfEvents(ctx, options.PerfValues); err != nil {
+	if err := app.CollectPerfEvents(ctx, &perfEvents, options.PerfValues); err != nil {
 		return errors.Wrap(err, "failed to collect perf events")
 	}
 
@@ -190,7 +194,7 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 }
 
 // setupPerfListener setups the connection to CCA and add a perf event listener.
-func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, isColdStart bool) error {
+func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, perfEvents *chrome.JSObject, isColdStart bool) error {
 	var launchEventName string
 	if isColdStart {
 		launchEventName = "launching-from-launch-app-cold"
@@ -198,41 +202,45 @@ func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, isColdStart 
 		launchEventName = "launching-from-launch-app-warm"
 	}
 
-	addPerfListener := fmt.Sprintf(`
-		// Declared variables if not declared to avoid redeclaration error.
-		var perfEvents = [];
-		var port = chrome.runtime.connect(%q, {name: 'SET_PERF_CONNECTION'});
-		port.onMessage.addListener((message) => {
-		  perfEvents.push(message);
-		});
-		port.postMessage({name: %q});
-	`, ID, launchEventName)
-	if err := tconn.Exec(ctx, addPerfListener); err != nil {
+	if err := tconn.Call(ctx, perfEvents, `
+		(id, launchEventName) => {
+		  let perfEvents = [];
+		  const port = chrome.runtime.connect(id, {name: 'SET_PERF_CONNECTION'});
+		  port.onMessage.addListener((message) => {
+		    perfEvents.push(message);
+		  });
+		  port.postMessage({name: launchEventName});
+		  return perfEvents;
+		}`, ID, launchEventName); err != nil {
 		return err
 	}
 	return nil
 }
 
 // CollectPerfEvents collects all perf events from launch until now and saves them into given place.
-func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values) error {
-	tconn, err := a.cr.TestAPIConn(ctx)
-	if err != nil {
+func (a *App) CollectPerfEvents(ctx context.Context, perfEvents *chrome.JSObject, perfValues *perf.Values) error {
+	var events []perfEvent
+	if err := perfEvents.Call(ctx, &events, "function() { return this; }"); err != nil {
 		return err
 	}
 
-	var events []perfEvent
-	if err := tconn.Eval(ctx, "perfEvents", &events); err != nil {
-		return err
+	informativeEventName := func(event perfEvent) string {
+		extras := event.Extras
+		if len(extras.Facing) > 0 {
+			return fmt.Sprintf(`%s-facing-%s`, event.Event, extras.Facing)
+		}
+		return event.Event
 	}
 
 	countMap := make(map[string]int)
 	for _, event := range events {
-		countMap[event.Event]++
+		countMap[informativeEventName(event)]++
 	}
 
 	resultMap := make(map[string]float64)
 	for _, event := range events {
-		resultMap[event.Event] += event.Duration / float64(countMap[event.Event])
+		eventName := informativeEventName(event)
+		resultMap[eventName] += event.Duration / float64(countMap[eventName])
 	}
 
 	for name, value := range resultMap {
