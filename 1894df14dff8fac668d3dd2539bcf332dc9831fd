@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "f9ca5787_07003273",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-11T19:17:59Z",
+      "side": 1,
+      "message": "+1 to InstallAPK, since \"app\" is used for a variety of things",
+      "parentUuid": "03f41701_ff976c67",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "1894df14dff8fac668d3dd2539bcf332dc9831fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52c3101a_506c6ccc",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 19

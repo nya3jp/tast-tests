@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee2b5b17_c99e3edb",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-11T19:17:59Z",
+      "side": 1,
+      "message": "please add a note about the return value and how/when you expect it to be used here",
+      "revId": "21fce2f595b7169bcf57c8f4e9d7815f0e2b03d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db989d7_3552e926",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-11T19:17:59Z",
+      "side": 1,
+      "message": "ditto here on return value description",
+      "revId": "21fce2f595b7169bcf57c8f4e9d7815f0e2b03d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
