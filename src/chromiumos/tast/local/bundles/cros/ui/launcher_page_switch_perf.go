@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -66,49 +67,16 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	// The functions to conduct the user operations. Mouse is used for the
-	// clamshell mode.
-	clickFunc := func(ctx context.Context, obj *chromeui.Node) error {
-		return obj.LeftClick(ctx)
-	}
-	dragFunc := func(ctx context.Context, start, end coords.Point) error {
-		return ash.MouseDrag(ctx, tconn, start, end, dragDuration)
-	}
+	var pc pointer.Controller
 	if inTabletMode {
-		// In tablet mode, operations are done through the touch screen.
-		tew, err := input.Touchscreen(ctx)
-		if err != nil {
-			s.Fatal("Failed to get access to the touch screen: ", err)
+		var err error
+		if pc, err = pointer.NewTouchController(ctx, tconn); err != nil {
+			s.Fatal("Failed to create a touch controller")
 		}
-		defer tew.Close()
-		orientation, err := display.GetOrientation(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to obtain the orientation info: ", err)
-		}
-		tew.SetRotation(-orientation.Angle)
-
-		info, err := display.GetInternalInfo(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to get the internal display info: ", err)
-		}
-		tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
-		stw, err := tew.NewSingleTouchWriter()
-		if err != nil {
-			s.Fatal("Failed to create touch coord converter: ", err)
-		}
-		defer stw.Close()
-		clickFunc = func(ctx context.Context, obj *chromeui.Node) error {
-			x, y := tcc.ConvertLocation(obj.Location.CenterPoint())
-			defer stw.End()
-			return stw.Move(x, y)
-		}
-		dragFunc = func(ctx context.Context, start, end coords.Point) error {
-			startX, startY := tcc.ConvertLocation(start)
-			endX, endY := tcc.ConvertLocation(end)
-			defer stw.End()
-			return stw.Swipe(ctx, startX, startY, endX, endY, dragDuration)
-		}
+	} else {
+		pc = pointer.NewMouseController(tconn)
 	}
+	defer pc.Close()
 
 	if conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, 2); err != nil {
 		s.Fatal("Failed to create windows: ", err)
@@ -195,7 +163,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to create an event watcher")
 		}
 		defer ew.Release(ctx)
-		if err := clickFunc(ctx, pageButton); err != nil {
+		if err := pointer.Click(ctx, pc, pageButton.Location.CenterPoint()); err != nil {
 			return errors.Wrap(err, "failed to click the page button")
 		}
 		if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
@@ -271,7 +239,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 			}
 			defer ew.Release(ctx)
 			// First drag-up operation.
-			if err := dragFunc(ctx, dragUpStart, dragUpEnd); err != nil {
+			if err := pointer.Drag(ctx, pc, dragUpStart, dragUpEnd, dragDuration); err != nil {
 				return errors.Wrap(err, "failed to drag from the bottom to the top")
 			}
 			if _, err := ew.WaitForEvent(ctx, pageSwitchTimeout); err != nil {
@@ -281,7 +249,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 				s.Log("Failed to wait for the page switch; maybe the dragging does not cause the page scroll")
 			}
 			// drag-down operation.
-			if err := dragFunc(ctx, dragDownStart, dragDownEnd); err != nil {
+			if err := pointer.Drag(ctx, pc, dragDownStart, dragDownEnd, dragDuration); err != nil {
 				return errors.Wrap(err, "failed to drag from the top to the bottom")
 			}
 			return nil
