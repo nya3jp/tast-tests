@@ -160,6 +160,7 @@ type ScrollableShelfInfoClass struct {
 	LeftArrowBounds      coords.Rect `json:"leftArrowBounds"`
 	RightArrowBounds     coords.Rect `json:"rightArrowBounds"`
 	IsAnimating          bool        `json:"isAnimating"`
+	IsOverflow           bool        `json:"isOverflow"`
 }
 
 // HotseatStateType corresponds to the "HotseatState" defined in autotest_private.idl.
@@ -421,6 +422,46 @@ func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tc *chrome.TestConn
 	// Hotseat should be extended after gesture swipe.
 	if err := WaitForHotseatAnimatingToIdealState(ctx, tc, ShelfExtended); err != nil {
 		return errors.Wrap(err, errorMsg)
+	}
+
+	return nil
+}
+
+// EnterShelfOverflow pins enough shelf icons to enter overflow mode.
+func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
+	const errorMsg = "fail to enter shelf overflow"
+
+	// Number of pinned apps in each round of loop.
+	const batchNumber = 10
+
+	// Total amount of pinned apps.
+	sum := 0
+
+	installedApps, err := ChromeApps(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	for {
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
+		if err != nil {
+			return errors.Wrap(err, errorMsg)
+		}
+
+		if info.IsOverflow {
+			break
+		}
+
+		sum += batchNumber
+		if sum > len(installedApps) {
+			return errors.Errorf("%s: got %d apps, want at least %d apps", errorMsg, len(installedApps), sum)
+		}
+
+		for _, app := range installedApps[sum-batchNumber : sum] {
+			if err := PinApp(ctx, tconn, app.AppID); err != nil {
+				return errors.Wrap(err, errorMsg)
+			}
+		}
 	}
 
 	return nil
