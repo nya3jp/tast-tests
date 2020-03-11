@@ -9,10 +9,8 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net"
 	"path/filepath"
 	"reflect"
-	"sort"
 	"strings"
 	"syscall"
 	"time"
@@ -208,21 +206,13 @@ func restartUdev(ctx context.Context) error {
 // function prototype.
 type deviceRestarter func(ctx context.Context) error
 
-func interfaceNames() ([]string, error) {
-	ifaces, err := net.Interfaces()
-	if err != nil {
-		return nil, err
-	}
-	names := make([]string, len(ifaces))
-	for i := range ifaces {
-		names[i] = ifaces[i].Name
-	}
-	sort.Strings(names)
-	return names, nil
-}
-
 func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
-	iflistPre, err := interfaceNames()
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create shill manager")
+	}
+	// iflistPre, err := shillIfaceNames(ctx)
+	iflistPre, err := m.DeviceNames(ctx)
 	if err != nil {
 		return err
 	}
@@ -238,7 +228,8 @@ func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		iflistPost, err := interfaceNames()
+		// iflistPost, err := shillIfaceNames(ctx)
+		iflistPost, err := m.DeviceNames(ctx)
 		if err != nil {
 			return err
 		}
