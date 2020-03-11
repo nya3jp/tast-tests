@@ -7,6 +7,7 @@ package wilco
 import (
 	"context"
 	"encoding/json"
+	"os"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -86,13 +87,16 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		s.Error("Get available routines test failed: ", err)
 	}
 
+	type sanityCheckFn func() error
+
 	// testRoutineExecution sends the request in rrRequest, executing the routine,
 	// and checks the result against expectedStatus. Some routines would not get
 	// back to service right away, so shortening test time by cancelling them and
 	// check if they are in cancelled status respectively.
 	testRoutineExecution := func(ctx context.Context,
 		rrRequest dtcpb.RunRoutineRequest,
-		expectedStatus wilco.DiagnosticRoutineStatus) error {
+		expectedStatus wilco.DiagnosticRoutineStatus,
+		postRoutineSanityCheck sanityCheckFn) error {
 
 		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
@@ -108,6 +112,12 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			})
 			if err != nil {
 				return errors.Wrap(err, "failed to cancel routine")
+			}
+
+			if postRoutineSanityCheck != nil {
+				if err := postRoutineSanityCheck(); err != nil {
+					return errors.Wrap(err, "post routine sanity check failed")
+				}
 			}
 			return nil
 		}
@@ -127,9 +137,10 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	}
 
 	for _, param := range []struct {
-		name           string
-		request        dtcpb.RunRoutineRequest
-		expectedStatus wilco.DiagnosticRoutineStatus
+		name                string
+		request             dtcpb.RunRoutineRequest
+		expectedStatus      wilco.DiagnosticRoutineStatus
+		sanityCheckFunction sanityCheckFn
 	}{
 		{
 			name: "urandom",
@@ -334,9 +345,58 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
+		{
+			name: "disk_read_linear",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "disk_read_random",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskRandomReadParams{
+					DiskRandomReadParams: &dtcpb.DiskRandomReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+		},
+		{
+			name: "disk_read_linear_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 5,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			// disk read test routine will create a test file
+			// ensure it is deleted after cancellation
+			sanityCheckFunction: func() error {
+				const testFile = "/var/cache/diagnostics_disk_read_routine_data/fio-test-file"
+				if _, err := os.Stat(testFile); os.IsNotExist(err) {
+					return nil
+				}
+
+				return errors.Errorf("test file %s still exist", testFile)
+			},
+		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := testRoutineExecution(ctx, param.request, param.expectedStatus); err != nil {
+			if err := testRoutineExecution(ctx, param.request, param.expectedStatus, param.sanityCheckFunction); err != nil {
 				s.Error("Routine test failed: ", err)
 			}
 		})

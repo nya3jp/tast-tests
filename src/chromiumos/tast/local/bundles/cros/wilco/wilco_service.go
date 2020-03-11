@@ -181,7 +181,7 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 	uuid := rrResponse.Uuid
 	response := dtcpb.GetRoutineUpdateResponse{}
 
-	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second); err != nil {
+	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 15*time.Second); err != nil {
 		return nil, errors.Wrap(err, "routine not finished")
 	}
 
