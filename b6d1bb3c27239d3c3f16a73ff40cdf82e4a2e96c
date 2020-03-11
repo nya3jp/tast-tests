@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f91b266_c970ab94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-11T03:04:30Z",
+      "side": 0,
+      "message": "FYI: This line was introduced by:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2081553/5/src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go#115",
+      "revId": "b6d1bb3c27239d3c3f16a73ff40cdf82e4a2e96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
