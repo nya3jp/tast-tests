@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a83fa4_3ef5c041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T10:10:19Z",
+      "side": 1,
+      "message": "That is a trickiness of android-sh. When using android-sh, /vendor/bin is preferred, but using adb shell, /system/bin is preferred.\n\n localhost ~ # android-sh -c \u0027which find\u0027\n /vendor/bin/find\n localhost ~ # adb shell \u0027which find\u0027\n /system/bin/find\n\nThis is because android-sh sets up inconsistent $PATH. And this is why an absolute path is mandatory for BootstrapCommand.\n\nI think you want to use /system/bin instead.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "dc955a22ebfe3920c4854addabc64d26b6d66383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
