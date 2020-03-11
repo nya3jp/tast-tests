@@ -16,6 +16,24 @@
       "revId": "675e561f4e4b9ee218c9d3bed70358b0b92acf70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7624d705_db9485e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-03-11T07:27:47Z",
+      "side": 1,
+      "message": "Hmm, I thought we cannot call Go function on JS side. Is there any example about calling golang function from JavaScript side?",
+      "parentUuid": "2e193e53_6a8a7f2a",
+      "revId": "675e561f4e4b9ee218c9d3bed70358b0b92acf70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
