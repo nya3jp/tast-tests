@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86a02c6d_d8712964",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T01:56:44Z",
+      "side": 1,
+      "message": "Cq-Depend: chromium:2055644\n\nis needed.",
+      "revId": "112ba4a0a7f22753df7775803767e385610c60c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717728d2_f17f7239",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T01:56:44Z",
+      "side": 1,
+      "message": "As I commented in another CL, I recommend group:arc-data-collector.",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "112ba4a0a7f22753df7775803767e385610c60c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
