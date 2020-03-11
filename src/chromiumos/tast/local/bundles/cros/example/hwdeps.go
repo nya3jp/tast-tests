@@ -13,11 +13,16 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HWDeps,
-		Desc:         "Sanity check and demonstration of hardware deps feature",
-		Contacts:     []string{"tast-owners@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		HardwareDeps: hwdep.D(hwdep.Model("eve")),
+		Func:     HWDeps,
+		Desc:     "Sanity check and demonstration of hardware deps feature",
+		Contacts: []string{"tast-owners@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
+		}, {
+			Name:              "fingerprint",
+			ExtraHardwareDeps: hwdep.D(hwdep.Fingerprint()),
+		}},
 	})
 }
 
