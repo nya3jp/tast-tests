@@ -81,7 +81,7 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) er
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("play(%q)", videoFile), nil); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("playUntilEnd(%q)", videoFile), nil); err != nil {
 		return err
 	}
 
@@ -150,7 +150,7 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("play(%q)", videoFile), nil); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("playRepeatedly(%q)", videoFile), nil); err != nil {
 		return err
 	}
 	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
