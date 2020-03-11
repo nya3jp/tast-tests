@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e929832_53205de9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-11T18:56:54Z",
+      "side": 1,
+      "message": "There\u0027s on-going work.\nCould you add back \"disabled\" temporarily?\nOr, could you depend this CL on crrev.com/c/2097622?",
+      "revId": "c6d1fcdbd5e0feaf45a9ffd1d2f7b64058693d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
