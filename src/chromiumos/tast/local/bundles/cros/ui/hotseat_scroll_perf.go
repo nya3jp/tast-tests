@@ -194,6 +194,11 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		}
 	}
 
+	// Hotseat in different states may have different bounds. So enter shelf overflow mode after tablet/clamshell switch and gesture swipe.
+	if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
+		return nil, err
+	}
+
 	histograms, err := metrics.Run(ctx, tconn, func() error {
 		if err := runShelfScroll(ctx, tconn); err != nil {
 			return errors.Wrap(err, "fail to run scroll animation")
@@ -220,21 +225,6 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get shelf items: ", err)
 	} else if len(shelfItems) != 1 {
 		s.Fatalf("Unexpected num of apps in the shelf: got %d; want 1", len(shelfItems))
-	}
-
-	const pinnedAppNumber = 30
-
-	// Pin additional apps to Shelf.
-	installedApps, err := ash.ChromeApps(ctx, tconn)
-
-	if len(installedApps) < pinnedAppNumber {
-		s.Fatalf("Unexpected number of pinned apps: got %d; want less than %d which is the number of installed apps", pinnedAppNumber, len(installedApps))
-	}
-
-	for _, app := range installedApps[:pinnedAppNumber] {
-		if err := ash.PinApp(ctx, tconn, app.AppID); err != nil {
-			s.Fatalf("Failed to launch %s: %v", app.AppID, err)
-		}
 	}
 
 	pv := perf.NewValues()
