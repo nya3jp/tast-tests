@@ -22,8 +22,13 @@ import (
 const stabilizationDuration time.Duration = 5 * time.Second
 
 type perfEvent struct {
-	Event    string  `json:"event"`
-	Duration float64 `json:"duration"`
+	Event    string     `json:"event"`
+	Duration float64    `json:"duration"`
+	Extras   perfExtras `json:"extras"`
+}
+
+type perfExtras struct {
+	Facing string `json:"facing"`
 }
 
 // MeasurementOptions contains the information for performance measurement.
@@ -203,7 +208,7 @@ func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, isColdStart 
 		var perfEvents = [];
 		var port = chrome.runtime.connect(%q, {name: 'SET_PERF_CONNECTION'});
 		port.onMessage.addListener((message) => {
-		  perfEvents.push(message);
+			perfEvents.push(message);
 		});
 		port.postMessage({name: %q});
 	`, ID, launchEventName)
@@ -225,14 +230,23 @@ func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values) er
 		return err
 	}
 
+	getInformativeEventName := func(event perfEvent) string {
+		extras := event.Extras
+		if extras != (perfExtras{}) && len(extras.Facing) > 0 {
+			return fmt.Sprintf(`%s-facing-%s`, event.Event, extras.Facing)
+		}
+		return event.Event
+	}
+
 	countMap := make(map[string]int)
 	for _, event := range events {
-		countMap[event.Event]++
+		countMap[getInformativeEventName(event)]++
 	}
 
 	resultMap := make(map[string]float64)
 	for _, event := range events {
-		resultMap[event.Event] += event.Duration / float64(countMap[event.Event])
+		eventName := getInformativeEventName(event)
+		resultMap[eventName] += event.Duration / float64(countMap[eventName])
 	}
 
 	for name, value := range resultMap {
