@@ -16,6 +16,24 @@
       "revId": "732afb7ea28b55cc8199c524771967a47be1dc9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec62f2f8_3fd4d208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-11T02:13:19Z",
+      "side": 1,
+      "message": "Sorry for late reply. I missed this CL after I\u0027m back from vacation.\nDone.",
+      "parentUuid": "2dceac31_cfc86690",
+      "revId": "732afb7ea28b55cc8199c524771967a47be1dc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
