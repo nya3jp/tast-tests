@@ -118,6 +118,30 @@
       "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "476e2158_e587af21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-03-11T02:05:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s great to have this firewall hole open to external traffic by default on all devices on base images.\n\nWhat are other options here?",
+      "parentUuid": "3e6b7c18_7d6de344",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
