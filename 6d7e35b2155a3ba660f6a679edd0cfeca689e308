@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6da56fdc_0660ea93",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-11T04:54:37Z",
+      "side": 1,
+      "message": "note:\n\nplatform/tast-tests/src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go\nwill still call this function directly and handles error by itself, because it doesn\u0027t have a testing.State object there.",
+      "revId": "6d7e35b2155a3ba660f6a679edd0cfeca689e308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
