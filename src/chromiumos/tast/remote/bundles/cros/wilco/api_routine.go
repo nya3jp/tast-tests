@@ -189,4 +189,10 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
+
+	s.Run(ctx, "cancellation", func(ctx context.Context, s *testing.State) {
+		if _, err := wc.TestRoutineCancellation(ctx, &empty.Empty{}); err != nil {
+			s.Error("Routine cancellation test failed: ", err)
+		}
+	})
 }
