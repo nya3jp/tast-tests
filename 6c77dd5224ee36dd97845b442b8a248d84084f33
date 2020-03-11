@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7b47788_d06faa81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-11T15:56:08Z",
+      "side": 1,
+      "message": "Oops yeah, thanks, done.",
+      "parentUuid": "1ac2aa07_52d1b32b",
+      "range": {
+        "startLine": 37,
+        "startChar": 86,
+        "endLine": 37,
+        "endChar": 99
+      },
+      "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c54bba7_0821f97f",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40fe86de_b72c02f4",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-11T15:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c54bba7_0821f97f",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 2
+      },
+      "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fa1fab24_7dc55430",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-11T15:56:08Z",
+      "side": 1,
+      "message": "Entirely not, removed.",
+      "parentUuid": "1eab2ae7_2ad7c716",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc41ef18_a71112c5",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94386087_6c4569dc",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-11T15:56:08Z",
+      "side": 1,
+      "message": "Ah thanks! I could do it but I don\u0027t think it\u0027s worth because the next l.224\nis replaced in the next-next CL with a method call.",
+      "parentUuid": "fc41ef18_a71112c5",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 2
+      },
+      "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
