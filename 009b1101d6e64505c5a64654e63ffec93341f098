@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "365d5a9f_cfca5809",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17947ff_7a633aaf",
+      "range": {
+        "startLine": 80,
+        "startChar": 29,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc81b55c_11362582",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b821e77c_4e216d50",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc81b55c_11362582",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 8
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "76baf4fc_aa3e27c5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c5c2700_af10be56",
+      "range": {
+        "startLine": 108,
+        "startChar": 50,
+        "endLine": 108,
+        "endChar": 54
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cbf989c_c7c52539",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f464951c_44f9663d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cbf989c_c7c52539",
+      "range": {
+        "startLine": 166,
+        "startChar": 21,
+        "endLine": 166,
+        "endChar": 25
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "b97f0c41_39b9d6bc",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc7dba9a_966dce38",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 68
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3df1e7c_94354cd7",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 10
@@ -236,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "7c963102_36ea65b2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:55Z",
+      "side": 1,
+      "message": "The function is removed, so resolved.",
+      "parentUuid": "69a17686_bbb8eab9",
+      "range": {
+        "startLine": 197,
+        "startChar": 35,
+        "endLine": 197,
+        "endChar": 49
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28c90486_a16f8dac",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 10
@@ -256,6 +400,30 @@
       "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c8a100_abe56c2c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-11T09:52:55Z",
+      "side": 1,
+      "message": "The function is removed, so resolved.",
+      "parentUuid": "28c90486_a16f8dac",
+      "range": {
+        "startLine": 204,
+        "startChar": 22,
+        "endLine": 204,
+        "endChar": 26
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
