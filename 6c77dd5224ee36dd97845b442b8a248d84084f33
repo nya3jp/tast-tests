@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1ac2aa07_52d1b32b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-11T02:35:51Z",
+      "side": 1,
+      "message": "You don\u0027t need to specific this.\n[]graphics.Size{{Width:1280, Height: 720}}",
+      "range": {
+        "startLine": 37,
+        "startChar": 86,
+        "endLine": 37,
+        "endChar": 99
+      },
+      "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c54bba7_0821f97f",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 1
@@ -41,6 +64,29 @@
         "startChar": 0,
         "endLine": 210,
         "endChar": 0
+      },
+      "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc41ef18_a71112c5",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-11T02:35:51Z",
+      "side": 1,
+      "message": "Can you return the error first?\nif len(sizes) !\u003d 1 {\n    return errors.New(\"...\")\n}\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 2
       },
       "revId": "6c77dd5224ee36dd97845b442b8a248d84084f33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
