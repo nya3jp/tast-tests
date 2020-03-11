@@ -22,6 +22,30 @@
       "revId": "66622c681a784a6ca2aa5172d7ca6b666592fb80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa605ec_9feebcef",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-11T20:41:55Z",
+      "side": 1,
+      "message": "I pre-installed 100. I hope that it should be enough",
+      "parentUuid": "52d97f93_e70d9ca1",
+      "range": {
+        "startLine": 325,
+        "startChar": 15,
+        "endLine": 325,
+        "endChar": 28
+      },
+      "revId": "66622c681a784a6ca2aa5172d7ca6b666592fb80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
