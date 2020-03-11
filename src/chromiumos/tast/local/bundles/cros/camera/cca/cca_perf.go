@@ -203,7 +203,14 @@ func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, isColdStart 
 		var perfEvents = [];
 		var port = chrome.runtime.connect(%q, {name: 'SET_PERF_CONNECTION'});
 		port.onMessage.addListener((message) => {
-		  perfEvents.push(message);
+			const {event, duration, extras} = message;
+			if (extras.facing) {
+				perfEvents.push({
+					event: `+"`${event}-facing-${extras.facing}`"+`,
+					duration,
+				});
+			}
+			perfEvents.push({event, duration});
 		});
 		port.postMessage({name: %q});
 	`, ID, launchEventName)
