@@ -26,7 +26,6 @@ func init() {
 		// Disabled due to migration routines to cros_healthd. To be able to run
 		// routines device policy DeviceWilcoDtcAllowed must be turned on.
 		// TODO(b/149087547): rewrite and enable back.
-		Attr:         []string{"group:mainline", "disabled"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 		Pre:          pre.WilcoDtcSupportdAPI,
 	})

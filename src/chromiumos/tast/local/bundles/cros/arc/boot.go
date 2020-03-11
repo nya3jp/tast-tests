@@ -68,7 +68,6 @@ func init() {
 			Val: bootConfig{
 				numTrials: 1000000,
 			},
-			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{"android_all"},
 			Timeout:           365 * 24 * time.Hour,
 		}, {
@@ -77,7 +76,6 @@ func init() {
 				numTrials:  1000000,
 				chromeArgs: []string{"--enable-arcvm"},
 			},
-			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           365 * 24 * time.Hour,
 		}},

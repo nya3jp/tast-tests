@@ -26,7 +26,6 @@ func init() {
 			"briannorris@chromium.org",
 			"chromeos-kernel-wifi@google.com",
 		},
-		Attr: []string{"informational"},
 
 		SoftwareDeps: []string{"hostap_hwsim"},
 		// For running manually, with specific 'run-all.sh' arguments (e.g., specific tests or
@@ -43,7 +42,7 @@ func init() {
 				},
 				// Only target the 'sanity' list for mainline, as anything more can take a
 				// long time.
-				ExtraAttr: []string{"group:mainline"},
+				ExtraAttr: []string{"group:mainline", "informational"},
 			},
 			{
 				Name: "full",
@@ -90,7 +89,7 @@ func init() {
 				// are probably only most useful as less-frequent, non-Commit-Queue-blocking
 				// usage -- for example, for testing wholesale wpa_supplicant upgrades.
 				// Consider running this nightly in the future.
-				ExtraAttr: []string{"disabled"},
+
 				// Tests can take a while: 13 minutes for the ~20 modules I first benchmarked.
 				// Give some headroom beyond that.
 				Timeout: 45 * time.Minute,

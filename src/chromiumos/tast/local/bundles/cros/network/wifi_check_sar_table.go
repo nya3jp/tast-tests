@@ -27,10 +27,9 @@ func init() {
 			"kglund@google.com",               // Author
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
-		// Attr "disabled" because this test should only be run manually,
-		// not with the CQ or any test suite.
-		Attr:         []string{"informational", "disabled"},
 		SoftwareDeps: []string{"wifi"},
+		// Disabled because this test should only be run manually,
+		// not with the CQ or any test suite.
 	})
 }
 

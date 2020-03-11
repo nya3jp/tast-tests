@@ -277,7 +277,6 @@ func init() {
 			ExtraData:         []string{encode.Crowd361P.Name},
 			// Disabled because the Intel encoder driver always aligns visible size by 16.
 			// TODO(b/139846661): Enable once the Intel encoder driver issue is fixed.
-			ExtraAttr: []string{"disabled"},
 		}},
 	})
 }

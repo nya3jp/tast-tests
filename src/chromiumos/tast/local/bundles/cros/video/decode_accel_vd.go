@@ -38,7 +38,6 @@ func init() {
 			Name: "vp9_2",
 			Val:  "test-25fps.vp9_2",
 			// TODO(crbug.com/911754): reenable this test once HDR VP9.2 is implemented.
-			ExtraAttr:         []string{"disabled"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_2},
 			ExtraData:         []string{"test-25fps.vp9_2", "test-25fps.vp9_2.json"},
 		}, {
