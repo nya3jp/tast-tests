@@ -142,6 +142,30 @@
       "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9475f35e_b46507ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-03-11T02:20:59Z",
+      "side": 1,
+      "message": "We discussed:\n- Routing *:5555 to localhost:5550. This needs additional \u0027route_localnet\u0027 on all physical interfaces. Also essentially opens *:5555 just with different way.\n\n(I did not test) We might be able to only start this whenever ARC ADB is enabled. Wdyt?\nI don\u0027t have any other options as of now. Let me try to brainstorm too.\n\nOne quick note is that, at the moment, even if there is no *:5555 listening, we can connect to \u003cDUT:5555\u003e whenever ADB is enabled because of go/arc++inbound.",
+      "parentUuid": "476e2158_e587af21",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "29e14129fcf810f27e88c12b843716f525f5e27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
