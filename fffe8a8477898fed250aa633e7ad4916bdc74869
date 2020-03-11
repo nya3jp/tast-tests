@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65f07dfe_9b232ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T09:54:16Z",
+      "side": 1,
+      "message": "nit\u0026optional: If you don\u0027t have strong reasons, it is more common to use a slice instead of an array for constants.\n\n var networkTypes \u003d []string{...}",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "fffe8a8477898fed250aa633e7ad4916bdc74869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dac54a0_02088c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_network.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-11T09:54:16Z",
+      "side": 1,
+      "message": "style: var unprobedNetworks []string\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices\n\nIt is better because we can avoid memory allocation when there is no element.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "fffe8a8477898fed250aa633e7ad4916bdc74869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
