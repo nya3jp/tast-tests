@@ -124,6 +124,47 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc9a8c35_a9acda82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T18:39:10Z",
+      "side": 1,
+      "message": "\u003e But, then could you write the expectation on \"!wlan.SupportMUMIMO()\" case, too? What the value of SupportMUMIMO should be? \"false\"?\n\nSure? We don\u0027t really care as much about what happens if we didn\u0027t require the MU-MIMO feature, but if that matches the Tast requirements better, I don\u0027t have a problem verifying it. It *would* be unexpected to see these older non-MU-MIMO chips somehow claim support for the feature.",
+      "parentUuid": "fc653435_fb80c9da",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990c66ec_63a21e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T18:39:10Z",
+      "side": 1,
+      "message": "shouldn\u0027t SupportMUMIMO be a function of DevInfo, instead of passing dev as a parameter?",
+      "range": {
+        "startLine": 186,
+        "startChar": 19,
+        "endLine": 186,
+        "endChar": 31
+      },
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
