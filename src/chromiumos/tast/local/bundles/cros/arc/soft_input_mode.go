@@ -101,6 +101,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	// TODO(tetsui): Use camera position for getting the default orientation.
 	portraitByDefault := info.Bounds.Height > info.Bounds.Width
 
 	runTest := func(ctx context.Context, s *testing.State, activityName string, rotation int) {
@@ -111,7 +112,7 @@ func SoftInputMode(ctx context.Context, s *testing.State) {
 		}
 		if err := display.SetDisplayProperties(ctx, tconn, info.ID,
 			display.DisplayProperties{Rotation: &actualRotation}); err != nil {
-			s.Fatal("Failed to rotate display: ", err)
+			s.Fatalf("Failed to rotate display to %d: %q", actualRotation, err)
 		}
 
 		if err := waitForRotation(rotation%180 == 0); err != nil {
