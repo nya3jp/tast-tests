@@ -24,6 +24,9 @@ const stabilizationDuration time.Duration = 5 * time.Second
 type perfEvent struct {
 	Event    string  `json:"event"`
 	Duration float64 `json:"duration"`
+	Extras   struct {
+		Facing string `json:"facing"`
+	} `json:"extras"`
 }
 
 // MeasurementOptions contains the information for performance measurement.
@@ -198,16 +201,15 @@ func setupPerfListener(ctx context.Context, tconn *chrome.TestConn, isColdStart 
 		launchEventName = "launching-from-launch-app-warm"
 	}
 
-	addPerfListener := fmt.Sprintf(`
-		// Declared variables if not declared to avoid redeclaration error.
-		var perfEvents = [];
-		var port = chrome.runtime.connect(%q, {name: 'SET_PERF_CONNECTION'});
-		port.onMessage.addListener((message) => {
-		  perfEvents.push(message);
-		});
-		port.postMessage({name: %q});
-	`, ID, launchEventName)
-	if err := tconn.Exec(ctx, addPerfListener); err != nil {
+	if err := tconn.Call(ctx, nil, `
+		(id, launchEventName) => {
+			perfEvents = [];
+			const port = chrome.runtime.connect(id, {name: 'SET_PERF_CONNECTION'});
+			port.onMessage.addListener((message) => {
+				perfEvents.push(message);
+			});
+			port.postMessage({name: launchEventName});
+		}`, ID, launchEventName); err != nil {
 		return err
 	}
 	return nil
@@ -225,14 +227,23 @@ func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values) er
 		return err
 	}
 
+	informativeEventName := func(event perfEvent) string {
+		extras := event.Extras
+		if len(extras.Facing) > 0 {
+			return fmt.Sprintf(`%s-facing-%s`, event.Event, extras.Facing)
+		}
+		return event.Event
+	}
+
 	countMap := make(map[string]int)
 	for _, event := range events {
-		countMap[event.Event]++
+		countMap[informativeEventName(event)]++
 	}
 
 	resultMap := make(map[string]float64)
 	for _, event := range events {
-		resultMap[event.Event] += event.Duration / float64(countMap[event.Event])
+		eventName := informativeEventName(event)
+		resultMap[eventName] += event.Duration / float64(countMap[eventName])
 	}
 
 	for name, value := range resultMap {
