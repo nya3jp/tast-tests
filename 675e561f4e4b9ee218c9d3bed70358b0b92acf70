@@ -52,6 +52,24 @@
       "revId": "675e561f4e4b9ee218c9d3bed70358b0b92acf70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba3813a_f57e7d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-03-11T10:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a8934f_501b24e5",
+      "revId": "675e561f4e4b9ee218c9d3bed70358b0b92acf70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
