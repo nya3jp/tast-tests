@@ -91,6 +91,29 @@
       "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd0a63bb_41fc0f63",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T02:37:30Z",
+      "side": 1,
+      "message": "I see that Autotest does this (didn\u0027t even realize that), but *why*? This seems a little silly -- if it\u0027s necessary, it should be done in all remote tests, no?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 68
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
