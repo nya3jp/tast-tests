@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -35,6 +36,14 @@ func init() {
 			"mute",
 			"ui.TaskSwitchCUJ.username",
 			"ui.TaskSwitchCUJ.password",
+		},
+		Params: []testing.Param{
+			{Val: false},
+			{
+				Name:              "tablet_mode",
+				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Val:               true,
+			},
 		},
 	})
 }
@@ -74,10 +83,12 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kw.Close()
 
-	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	tabletMode := s.Param().(bool)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode status: ", err)
+		s.Fatal("Failed to ensure the tablet mode state: ", err)
 	}
+	defer cleanup(ctx)
 
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
@@ -132,11 +143,18 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Set up the cuj.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
-	configs := []cuj.MetricConfig{{
-		HistogramName: "Ash.WindowCycleView.AnimationSmoothness.Container",
-		Unit:          "percent",
-		Category:      cuj.CategorySmoothness,
-	}}
+	configs := []cuj.MetricConfig{
+		{
+			HistogramName: "Ash.WindowCycleView.AnimationSmoothness.Container",
+			Unit:          "percent",
+			Category:      cuj.CategorySmoothness,
+		},
+		{
+			HistogramName: "Ash.DragWindowFromShelf.PresentationTime",
+			Unit:          "ms",
+			Category:      cuj.CategoryLatency,
+		},
+	}
 	for _, state := range []string{"Peeking", "Close", "Half"} {
 		configs = append(configs, cuj.MetricConfig{
 			HistogramName: "Apps.StateTransition.AnimationSmoothness." + state + ".ClamshellMode",
@@ -356,37 +374,86 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err = cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
+	var pc pointer.Controller
+	var setOverviewModeAndWait func(ctx context.Context) error
+	if tabletMode {
+		tc, err := pointer.NewTouchController(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch controller")
+		}
+		pc = tc
+		setOverviewModeAndWait = func(ctx context.Context) error {
+			stw := tc.EventWriter()
+			defer stw.Close()
+			tsew := tc.Touchscreen()
+			return ash.DragToShowOverview(ctx, tsew.Width(), tsew.Height(), stw, tconn)
+		}
+	} else {
+		pc = pointer.NewMouseController(tconn)
+		topRow, err := input.KeyboardTopRowLayout(ctx, kw)
+		if err != nil {
+			s.Fatal("Failed to obtain the top-row layout: ", err)
+		}
+		setOverviewModeAndWait = func(ctx context.Context) error {
+			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
+				return errors.Wrap(err, "failed to hit overview key")
+			}
+			return ash.WaitForOverviewState(ctx, tconn, ash.Shown)
+		}
+	}
+	defer pc.Close()
 
 	s.Log("Switching the focused window through the overview mode")
 	for i := 0; i < numWindows; i++ {
 		if err := recorder.Run(ctx, tconn, func() error {
-			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			if err := setOverviewModeAndWait(ctx); err != nil {
 				return errors.Wrap(err, "failed to enter into the overview mode")
 			}
-			// Uses the arrow key to select the next focused window.
-			// Assumption: the order of the window in the overview mode is LRU, so
-			// pressing the right-arrow for the number of windows means to select
-			// the last-active window.
-			// Note that there is 'new desks' button in the clamshell mode which takes
-			// the keyboard focus. Thus the number of right keys needs to be increased
-			// by one.
-			// TODO(mukai): find the way to check if the target window gets the
-			// focus or not.
-			hitCount := numWindows
-			if !tabletMode {
-				hitCount++
+			done := false
+			defer func() {
+				// In case of errornerous operations; finish the overview mode.
+				if !done {
+					if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+						s.Error("Failed to finish the overview mode: ", err)
+					}
+				}
+			}()
+			ws, err := ash.GetAllWindows(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the overview windows")
 			}
-			for j := 0; j < hitCount; j++ {
-				if err := kw.Accel(ctx, "Right"); err != nil {
-					return errors.Wrap(err, "failed to type the right key")
+			// Find the bottom-right overview item; which is the bottom of the LRU
+			// list of the windows.
+			var targetWindow *ash.Window
+			for _, w := range ws {
+				if w.OverviewInfo == nil {
+					continue
+				}
+				if targetWindow == nil {
+					targetWindow = w
+				} else {
+					overviewBounds := w.OverviewInfo.Bounds
+					targetBounds := targetWindow.OverviewInfo.Bounds
+					// Assumes the window is arranged in the grid and pick up the bottom
+					// right one.
+					if overviewBounds.Top > targetBounds.Top || (overviewBounds.Top == targetBounds.Top && overviewBounds.Left > targetBounds.Left) {
+						targetWindow = w
+					}
 				}
 			}
-			if err := kw.Accel(ctx, "Enter"); err != nil {
-				return errors.Wrap(err, "failed to type the enter key")
+			if targetWindow == nil {
+				return errors.New("no windows are in overview mode")
 			}
-			return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-				return w.OverviewInfo == nil && w.IsActive
-			}, &testing.PollOptions{Timeout: timeout})
+			if err := pointer.Click(ctx, pc, targetWindow.OverviewInfo.Bounds.CenterPoint()); err != nil {
+				return errors.Wrap(err, "failed to click")
+			}
+			if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+				return w.ID == targetWindow.ID && w.OverviewInfo == nil && w.IsActive
+			}, &testing.PollOptions{Timeout: timeout}); err != nil {
+				return errors.Wrap(err, "failed to wait")
+			}
+			done = true
+			return nil
 		}); err != nil {
 			s.Fatal("Failed to run overview task switching: ", err)
 		}
