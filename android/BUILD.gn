@@ -8,6 +8,7 @@ group("all") {
     "ArcConfigChangesTest:ArcConfigChangesTest",
     "ArcGamepadTest:ArcGamepadTest",
     "ArcImeBlockingTest:ArcImeBlockingTest",
+    "ArcInputCompatMTest:ArcInputCompatMTest",
     "ArcInputMethodTest:ArcInputMethodTest",
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcPrintTest:ArcPrintTest",
