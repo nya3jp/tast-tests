@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "31e903b6_7a22309f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-11T02:00:18Z",
+      "side": 1,
+      "message": "Unused outside of this package. Do you plan to use this in the later CL sometime soon?\nIf not, could you keep it private until it is necessary?",
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82fc9ca7_ab623dab",
         "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
         "patchSetId": 1
@@ -42,6 +59,64 @@
         "endLine": 63,
         "endChar": 19
       },
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4ba901_c56c301a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-11T02:00:18Z",
+      "side": 1,
+      "message": "JS should be single threaded, so I don\u0027t think it happens.",
+      "parentUuid": "82fc9ca7_ab623dab",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4249991d_ff15c40b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-11T02:00:18Z",
+      "side": 1,
+      "message": "nit: Unused.",
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa099b9e_a7098d2b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-11T02:00:18Z",
+      "side": 1,
+      "message": "I think this should be public, and calling it should be the responsibility of the caller of NewWatcher() (or some function which has the ownership of the watcher).\n\nCould you also remove the watcher from node?",
       "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
