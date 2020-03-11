@@ -159,6 +159,7 @@ type ScrollableShelfInfo struct {
 	LeftArrowBounds      coords.Rect `json:"leftArrowBounds"`
 	RightArrowBounds     coords.Rect `json:"rightArrowBounds"`
 	IsAnimating          bool        `json:"isAnimating"`
+	IsOverflow           bool        `json:"isOverflow"`
 }
 
 // AppType defines the types of available apps.
@@ -293,4 +294,44 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
+// EnterShelfOverflow pins enough shelf icons to enter overflow mode.
+func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
+	const errorMsg = "Fail to enter shelf overflow"
+
+	// Number of pinned apps in each round of loop.
+	const batchNumber = 10
+
+	// Total amount of pinned apps.
+	sum := 0
+
+	installedApps, err := ChromeApps(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	for {
+		sum = sum + batchNumber
+		if sum > len(installedApps) {
+			return errors.Errorf("Require at least %d apps but have %d apps: %s", sum, len(installedApps), errorMsg)
+		}
+
+		for _, app := range installedApps[sum-batchNumber : sum] {
+			if err := PinApp(ctx, tconn, app.AppID); err != nil {
+				return errors.Wrap(err, errorMsg)
+			}
+		}
+
+		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ScrollableShelfState{})
+		if err != nil {
+			return errors.Wrap(err, errorMsg)
+		}
+
+		if info.IsOverflow {
+			break
+		}
+	}
+
+	return nil
 }

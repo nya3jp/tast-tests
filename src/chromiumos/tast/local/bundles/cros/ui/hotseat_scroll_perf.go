@@ -222,19 +222,8 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected num of apps in the shelf: got %d; want 1", len(shelfItems))
 	}
 
-	const pinnedAppNumber = 30
-
-	// Pin additional apps to Shelf.
-	installedApps, err := ash.ChromeApps(ctx, tconn)
-
-	if len(installedApps) < pinnedAppNumber {
-		s.Fatalf("Unexpected number of pinned apps: got %d; want less than %d which is the number of installed apps", pinnedAppNumber, len(installedApps))
-	}
-
-	for _, app := range installedApps[:pinnedAppNumber] {
-		if err := ash.PinApp(ctx, tconn, app.AppID); err != nil {
-			s.Fatalf("Failed to launch %s: %v", app.AppID, err)
-		}
+	if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
+		s.Fatal("Failed to test hotseat scroll because of no overflow: ", err)
 	}
 
 	pv := perf.NewValues()
