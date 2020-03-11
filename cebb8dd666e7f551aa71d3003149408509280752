@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289f1646_7c54d544",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-11T18:15:23Z",
+      "side": 1,
+      "message": "My recent CL (crrev.com/c/2081353) affects this part; this needs to be rewritten as:\n\ndisplayInfo, err :\u003d display.GetInternalInfo(ctx, tc)\nif err !\u003d nil {\n  return errors.Wrap(err, errorMsg)\n}\ntcc :\u003d tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())\n\nSorry for the inconvenience. Thanks!",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 2
+      },
+      "revId": "cebb8dd666e7f551aa71d3003149408509280752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
