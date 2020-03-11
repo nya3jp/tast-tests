@@ -7,6 +7,8 @@ package wilco
 import (
 	"context"
 	"encoding/json"
+	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -82,13 +84,16 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	}
 	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
+	type fn func() error
+
 	// testRoutineExecution sends the request in rrRequest, executing the routine,
 	// and checks the result against expectedStatus. Some routines would not get
 	// back to service right away, so shortening test time by cancelling them and
 	// check if they are in cancelled status respectively.
 	testRoutineExecution := func(ctx context.Context,
 		rrRequest dtcpb.RunRoutineRequest,
-		expectedStatus wilco.DiagnosticRoutineStatus) error {
+		expectedStatus wilco.DiagnosticRoutineStatus,
+		postRoutineSanityCheck fn) error {
 
 		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
@@ -104,6 +109,12 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			})
 			if err != nil {
 				return errors.Wrap(err, "failed to cancel routine")
+			}
+
+			if postRoutineSanityCheck != nil {
+				if err := postRoutineSanityCheck(); err != nil {
+					return errors.Errorf("post routine sanity check failed: %s", err)
+				}
 			}
 			return nil
 		}
@@ -122,10 +133,23 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	// disk read test routine will create a test file
+	// ensure it is deleted after cancellation
+	diskReadHouseKeepingCheck := func() error {
+		testFile := filepath.Join("/var/cache/diagnostics_disk_read_routine_data", "fio-test-file")
+		_, err := os.Stat(testFile)
+		if os.IsNotExist(err) {
+			return nil
+		}
+
+		return errors.Errorf("test file %s still existed", testFile)
+	}
+
 	for _, param := range []struct {
-		name           string
-		request        dtcpb.RunRoutineRequest
-		expectedStatus wilco.DiagnosticRoutineStatus
+		name                string
+		request             dtcpb.RunRoutineRequest
+		expectedStatus      wilco.DiagnosticRoutineStatus
+		sanityCheckFunction fn
 	}{
 		{
 			name: "urandom",
@@ -137,7 +161,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "urandom_cancel",
@@ -149,7 +174,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "battery",
@@ -162,7 +188,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "battery_fail",
@@ -177,7 +204,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// HighMah is 100 (all devices should have a battery larger than
 			// this).
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "battery_sysfs",
@@ -190,7 +218,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "smartctl",
@@ -200,7 +229,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					SmartctlCheckParams: &dtcpb.SmartctlCheckRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
 		},
 		// Success is not tested because the CPU cache routine takes too much time.
 		{
@@ -215,7 +245,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// The length of seconds is zero (the length of seconds for the test
 			// should larger than zero).
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "cpu_cache_cancelled",
@@ -227,7 +258,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			sanityCheckFunction: nil,
 		},
 		// Success is not tested because the CPU stress routine takes too much time.
 		{
@@ -242,7 +274,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// The length of seconds is zero (the length of seconds for the test
 			// should larger than zero).
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "cpu_stress_cancelled",
@@ -254,7 +287,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "floating_point_accuracy",
@@ -266,7 +300,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "floating_point_accuracy_cancelled",
@@ -278,7 +313,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "nvme_wear_level",
@@ -290,7 +326,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
 		},
 		{
 			name: "nvme_wear_level_failed",
@@ -304,7 +341,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			},
 			// The result will fail due to the threshold of the wear level is zero as
 			// well as the wear level value always larger or equal to zero.
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_FAILED,
+			sanityCheckFunction: nil,
 		},
 		// Success is not tested because the NVMe short self-test routine takes too
 		// much time.
@@ -316,7 +354,8 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					NvmeShortSelfTestParams: &dtcpb.NvmeShortSelfTestRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			sanityCheckFunction: nil,
 		},
 		// Success is not tested because the NVMe long self-test routine takes too
 		// much time.
@@ -328,11 +367,54 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 					NvmeLongSelfTestParams: &dtcpb.NvmeLongSelfTestRoutineParameters{},
 				},
 			},
-			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			sanityCheckFunction: nil,
+		},
+		{
+			name: "disk_read_linear",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
+		},
+		{
+			name: "disk_read_random",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskRandomReadParams{
+					DiskRandomReadParams: &dtcpb.DiskRandomReadRoutineParameters{
+						LengthSeconds: 1,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
+			sanityCheckFunction: nil,
+		},
+		{
+			name: "disk_read_linear_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
+					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
+						LengthSeconds: 5,
+						FileSizeMb:    1,
+					},
+				},
+			},
+			expectedStatus:      wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+			sanityCheckFunction: diskReadHouseKeepingCheck,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			if err := testRoutineExecution(ctx, param.request, param.expectedStatus); err != nil {
+			if err := testRoutineExecution(ctx, param.request, param.expectedStatus, param.sanityCheckFunction); err != nil {
 				s.Error("Routine test failed: ", err)
 			}
 		})

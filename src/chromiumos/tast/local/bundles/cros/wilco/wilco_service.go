@@ -126,6 +126,8 @@ func (c *WilcoService) TestGetAvailableRoutines(ctx context.Context, req *empty.
 		dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
 		dtcpb.DiagnosticRoutine_ROUTINE_NVME_SHORT_SELF_TEST,
 		dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
+		dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
+		dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
 	} {
 		if !contains(response.Routines, val) {
 			return nil, errors.Errorf("routine %s missing", val.String())
@@ -194,7 +196,7 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 	uuid := rrResponse.Uuid
 	response := dtcpb.GetRoutineUpdateResponse{}
 
-	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 2*time.Second); err != nil {
+	if err := routines.WaitUntilRoutineChangesState(ctx, uuid, dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING, 15*time.Second); err != nil {
 		return nil, errors.Wrap(err, "routine not finished")
 	}
 
