@@ -138,6 +138,76 @@
       "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb2d9cb_9a0372a8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T04:55:50Z",
+      "side": 1,
+      "message": "\u003e assume NTP works or etc\n\nBy the way, it\u0027s \u0027tlsdate\u0027 [1] on Chrome OS, not NTP.\n\n\u003e But as for the router..., I\u0027m not totally sure if it\u0027s safer to ensure this by ourselves\n\nAh, I didn\u0027t notice it was happening on both the router and the DUT.\n\nIn general, I\u0027d like to remove things that are unnecessary. I don\u0027t believe this is currently necessary, and I\u0027d probably encourage getting things fixed properly even if it was currently necessary.\n\nIn line with that general rule: I\u0027m pretty sure this is not necessary on the DUT. Maybe it\u0027s OK to leave on the Router, even though I don\u0027t think it\u0027s necessary there either; those can have more issues with being in \"stale\" states (e.g., old OS images). Note: our routers also run tlsdate.\n\nBTW, I think this all came from:\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d221278#c9\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d222447\n\nBasically, tlsdate was broken.\n\nAlso, if we\u0027re going to do this, you might want to stick a comment about \"why?\"\n\n[1] https://chromium.googlesource.com/chromiumos/third_party/tlsdate/+/refs/heads/master/README",
+      "parentUuid": "b46e5708_8ecce1f0",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 68
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3df1e7c_94354cd7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T04:55:50Z",
+      "side": 1,
+      "message": "you don\u0027t actually have to do this division yourself, do you? I think you can just use .Unix() and .Nanosecond() separately on the same .Now() object.\n\n(Makes me wonder whether the sub-seconds are actually worth anything here...)",
+      "range": {
+        "startLine": 197,
+        "startChar": 35,
+        "endLine": 197,
+        "endChar": 49
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c90486_a16f8dac",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-11T04:55:50Z",
+      "side": 1,
+      "message": "\u0027date\u0027?\n\nMaybe we should just drop the \"Busybox\" attempt. We\u0027re using Chrome OS now, not OpenWRT.",
+      "range": {
+        "startLine": 204,
+        "startChar": 22,
+        "endLine": 204,
+        "endChar": 26
+      },
+      "revId": "009b1101d6e64505c5a64654e63ffec93341f098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
