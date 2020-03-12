@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: APIGetVPDField,
-		Desc: "Test sending GetVpdField gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon daemon",
+		Desc: "Test sending GetVpdField gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
 			"pmoy@chromium.org",   // wilco_dtc_supportd author

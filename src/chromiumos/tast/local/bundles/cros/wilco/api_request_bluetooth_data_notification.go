@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: APIRequestBluetoothDataNotification,
-		Desc: "Test sending RequestBluetoothDataNotification gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon daemon and expect a response",
+		Desc: "Test sending RequestBluetoothDataNotification gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon and expect a response",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
 			"pmoy@chromium.org",   // wilco_dtc_supportd author

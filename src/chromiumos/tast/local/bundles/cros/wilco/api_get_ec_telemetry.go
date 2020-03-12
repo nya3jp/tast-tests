@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: APIGetEcTelemetry,
-		Desc: "Test sending GetEcTelemetry gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon daemon",
+		Desc: "Test sending GetEcTelemetry gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
 			"pmoy@chromium.org",   // wilco_dtc_supportd author
