@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "600bb0d5_f642b8e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T03:12:32Z",
+      "side": 1,
+      "message": "nit/style/optional: for consistency, I\u0027d use async function here, too.\n\nreturn new Promise(async (resolve, reject) \u003d\u003e {\n  let video \u003d ...;\n  video.onended \u003d resolve;\n  video.src \u003d ...;\n  try {\n    await video.play();\n  } catch (e) {\n    reject(new Error(e.message));\n    return;\n  }\n  console.log(...);\n});",
+      "revId": "9d3a36216f3ced3e0e50916ede1a9c22c1d5bb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a304336d_8a04893a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T03:12:32Z",
+      "side": 1,
+      "message": "I\u0027d recommend to name this \"playRepeatedly\"",
+      "revId": "9d3a36216f3ced3e0e50916ede1a9c22c1d5bb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876c1f86_e0a3bad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T03:12:32Z",
+      "side": 1,
+      "message": "nit/style: you can now use\n\nconn.Call(ctx, nil, \"playUntilEnd\", videoFile)",
+      "revId": "9d3a36216f3ced3e0e50916ede1a9c22c1d5bb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
