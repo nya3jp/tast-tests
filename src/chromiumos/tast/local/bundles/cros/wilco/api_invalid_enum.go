@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: APIInvalidEnum,
-		Desc: "Test sending invalid gRPC requests with enums out of range from Wilco DTC VM to the Wilco DTC Support Daemon daemon",
+		Desc: "Test sending invalid gRPC requests with enums out of range from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
 			"pmoy@chromium.org",   // wilco_dtc_supportd author
