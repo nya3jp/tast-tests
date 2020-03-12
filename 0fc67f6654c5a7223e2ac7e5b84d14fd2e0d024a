@@ -22,6 +22,30 @@
       "revId": "0fc67f6654c5a7223e2ac7e5b84d14fd2e0d024a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e4d963_8daac836",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-12T00:54:35Z",
+      "side": 1,
+      "message": "Hmm... For doc, I\u0027m thinking adding these to PropertyHolder and dbusutil.Connect but it is kind of hard to find the indirect documents from caller for NewDevice. On the other hand, adding to every New method also seems too much duplicate. WDYT?\n\nFor unit test, as we don\u0027t have dbus in chroot, we\u0027ll need to add it as local test. But I guess it might be a good start of adding a few test in a new \"shill\" package as unit tests of shill library, e.g. the one in TEST\u003d below. I guess I can add this in another cl.",
+      "parentUuid": "0a254d0d_23541b05",
+      "range": {
+        "startLine": 10,
+        "startChar": 64,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "0fc67f6654c5a7223e2ac7e5b84d14fd2e0d024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
