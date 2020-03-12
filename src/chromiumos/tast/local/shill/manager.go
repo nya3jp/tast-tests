@@ -7,6 +7,7 @@ package shill
 import (
 	"context"
 	"reflect"
+	"sort"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -247,61 +248,90 @@ func (m *Manager) DisableTechnology(ctx context.Context, technology Technology) 
 	return m.dbusObject.Call(ctx, "DisableTechnology", string(technology)).Err
 }
 
-// DevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
-func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
-	var matches []*Device
-	var props []*Properties
-
+// TraverseDevices traverses all managed devices and calls the callback for each device.
+// Noted that it skips a device if it fails to get device's property because of DBusErrorUnknownObject error
+// as the device may go away anytime between device list generation and properties extraction.
+func (m *Manager) TraverseDevices(ctx context.Context, cb func(ctx context.Context, d *Device, p *Properties) error) error {
 	devs, err := m.Devices(ctx)
 	if err != nil {
-		return nil, nil, err
+		return err
 	}
 
-	for _, dev := range devs {
-		p, err := dev.GetProperties(ctx)
+	for _, d := range devs {
+		p, err := d.GetProperties(ctx)
 		if err != nil {
 			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
 				// This error is forgivable as a device may go down anytime.
 				continue
 			}
-			return nil, nil, err
+			return err
 		}
+		if err := cb(ctx, d, p); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// DevicesByTechnology returns list of Devices and their Properties snapshots of the specified technology.
+func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology) ([]*Device, []*Properties, error) {
+	var matches []*Device
+	var props []*Properties
+
+	matcher := func(ctx context.Context, d *Device, p *Properties) error {
 		if devType, err := p.GetString(DevicePropertyType); err != nil {
-			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", dev, err)
-			continue
-		} else if devType != string(technology) {
-			continue
+			testing.ContextLogf(ctx, "Error getting the type of the device %q: %v", d, err)
+		} else if devType == string(technology) {
+			matches = append(matches, d)
+			props = append(props, p)
 		}
-		matches = append(matches, dev)
-		props = append(props, p)
+		return nil
+	}
+	if err := m.TraverseDevices(ctx, matcher); err != nil {
+		return nil, nil, err
 	}
 	return matches, props, nil
 }
 
 // DeviceByName returns the Device matching the given interface name.
 func (m *Manager) DeviceByName(ctx context.Context, iface string) (*Device, error) {
-	devs, err := m.Devices(ctx)
-	if err != nil {
+	var ret *Device
+	matcher := func(ctx context.Context, d *Device, p *Properties) error {
+		devIface, err := p.GetString(DevicePropertyInterface)
+		if err != nil {
+			return err
+		}
+		if devIface == iface {
+			ret = d
+		}
+		return nil
+	}
+	if err := m.TraverseDevices(ctx, matcher); err != nil {
 		return nil, err
 	}
+	if ret == nil {
+		return nil, errors.New("unable to find matching device")
 
-	for _, dev := range devs {
-		p, err := dev.GetProperties(ctx)
-		if err != nil {
-			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
-				// This error is forgivable as a device may go down anytime.
-				continue
-			}
-			return nil, err
-		}
-		if devIface, err := p.GetString(DevicePropertyInterface); err != nil {
-			testing.ContextLogf(ctx, "Error getting the device interface %q: %v", dev, err)
-			continue
-		} else if devIface == iface {
-			return dev, nil
-		}
 	}
-	return nil, errors.New("unable to find matching device")
+	return ret, nil
+}
+
+// DeviceNames returns the list of Devices' names.
+func (m *Manager) DeviceNames(ctx context.Context) ([]string, error) {
+	var ret []string
+	nameGetter := func(ctx context.Context, d *Device, p *Properties) error {
+		name, err := p.GetString(DevicePropertyInterface)
+		if err != nil {
+			return err
+		}
+		ret = append(ret, name)
+		return nil
+	}
+	if err := m.TraverseDevices(ctx, nameGetter); err != nil {
+		return nil, err
+	}
+	sort.Strings(ret)
+	return ret, nil
 }
 
 // WaitForDeviceByName returns the Device matching the given interface name.
