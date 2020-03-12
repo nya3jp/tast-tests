@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46cec971_8146cb3b",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-12T19:26:13Z",
+      "side": 1,
+      "message": "I don\u0027t like this channel usage - e.g. if the function reads \u003c- the output from payload() and then returns that value, a subsequent error send from the polling go routine will block forever and cause a memory leak.\n\nThe cleanest way to approach this depends on the specific behavior you want.  Do you want to wait until payload() finishes and then kill both routines?  Do you want to leave the polling function running until it exits but only surface the errors found while payload() was running?  Depending on your answer, you can look into sync.WaitGroup, a buffered channel, or multiple channels + select block.",
+      "revId": "16836ea19b6e8f99a81088063f59074f709b6499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
