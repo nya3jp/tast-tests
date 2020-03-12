@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e03ea767_35569f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T23:37:38Z",
+      "side": 1,
+      "message": "I think we want a timeout on this, no?",
+      "range": {
+        "startLine": 116,
+        "startChar": 21,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "920e1e99ad0ea6dba2f43903bbb5adecf5e1b141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034c30da_27a40523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T23:37:38Z",
+      "side": 1,
+      "message": "I know this matches the existing Autotest implementation, but shouldn\u0027t we be checking the Type entry too, to make sure it\u0027s a \u0027wifi\u0027 service? Otherwise, if we have a service for some other technology sharing the same name, we may delete it.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 58
+      },
+      "revId": "920e1e99ad0ea6dba2f43903bbb5adecf5e1b141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49f5d7c_37a73150",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T23:37:38Z",
+      "side": 1,
+      "message": "A nice reminder of the review lag on this...",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "920e1e99ad0ea6dba2f43903bbb5adecf5e1b141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
