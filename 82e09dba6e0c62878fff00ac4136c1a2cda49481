@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65cfc2f7_36c7164e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-12T01:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea341c7_c2198e6a",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31e903b6_7a22309f",
         "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e67e984_2b3e430f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-12T01:03:45Z",
+      "side": 1,
+      "message": "Hm, then removed and merged into WaitForEvent() method. I thought it might be useful but didn\u0027t think of any use cases actually. Having it within WaitFor turns out simplifying the code.",
+      "parentUuid": "31e903b6_7a22309f",
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "24a23a7d_13104070",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-12T01:03:45Z",
+      "side": 1,
+      "message": "I thought same thing as hidehiko\u0027s. JS should be single-threaded so this code and the callback shouldn\u0027t occur at the same time.",
+      "parentUuid": "cc4ba901_c56c301a",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4249991d_ff15c40b",
         "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
         "patchSetId": 1
@@ -106,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "6c0a563f_869648e0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-12T01:03:45Z",
+      "side": 1,
+      "message": "This is used in line-77 below actually. It is very tricky but it seems \"err\" in line 76 isn\u0027t visible to the function within testing.Poll; cf. https://play.golang.org/p/nsOI0hqfjCW\n\nBut anyways, this is removed. I changed the code a bit as the result of merging Events() method to here, which simplifies the situation as the side effect.",
+      "parentUuid": "4249991d_ff15c40b",
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa099b9e_a7098d2b",
         "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
         "patchSetId": 1
@@ -120,6 +204,24 @@
       "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5ee81e_aa227aca",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-12T01:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa099b9e_a7098d2b",
+      "revId": "82e09dba6e0c62878fff00ac4136c1a2cda49481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
