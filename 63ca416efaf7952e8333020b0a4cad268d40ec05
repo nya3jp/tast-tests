@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "c949a81f_42b12a9d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T01:11:40Z",
+      "side": 1,
+      "message": "\u003e With \"iw list\", it only has phy names listed.\n\nFixed that for you :)\nhttps://lkml.kernel.org/linux-wireless/20200312010515.21095-1-briannorris@chromium.org/T/#u\n\nBut yes, good point.\n\n\u003e It can be obtained from /sys/class/ieee80211/\u003cphy name\u003e/index but I think we want to avoid sysfs operations?\n\nHmm, that is a little unfortunate. I didn\u0027t have a strong opinion in the first place, so maybe just stick with name for now? I\u0027ll look at the latest.",
+      "parentUuid": "a129f8b9_4460946f",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2bab313_79ebef49",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
@@ -959,6 +977,30 @@
     },
     {
       "key": {
+        "uuid": "77981aca_3481f2cf",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T01:11:40Z",
+      "side": 1,
+      "message": "Ah, I misread, this one is fine.",
+      "parentUuid": "0687398b_186d55e6",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 22
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22c4720a_62125c46",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
@@ -1462,6 +1504,30 @@
       "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1519d97b_ae566a8c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T01:11:40Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027s valid too. Hopefully this never becomes relevant :)",
+      "parentUuid": "fe348389_bbbffac2",
+      "range": {
+        "startLine": 348,
+        "startChar": 24,
+        "endLine": 348,
+        "endChar": 27
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
