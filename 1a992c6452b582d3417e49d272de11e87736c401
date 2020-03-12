@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c03dab4_0133e9da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-12T01:02:55Z",
+      "side": 1,
+      "message": "It fixes the scarlet bug, reverting back to the 18/25 seeks correctly\ndone (but from my local runs there seems to be a legit, different, bug\nthere). Speculative from the rikku perspective.",
+      "parentUuid": "a8aa6657_65967efe",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "1a992c6452b582d3417e49d272de11e87736c401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb41c71c_71bc91b2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -46,6 +70,30 @@
       "revId": "1a992c6452b582d3417e49d272de11e87736c401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a66d07c1_8e69d723",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-12T01:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb41c71c_71bc91b2",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "1a992c6452b582d3417e49d272de11e87736c401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
