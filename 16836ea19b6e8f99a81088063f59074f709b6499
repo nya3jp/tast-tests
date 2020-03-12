@@ -16,6 +16,24 @@
       "revId": "16836ea19b6e8f99a81088063f59074f709b6499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38c8923_9fbccdf7",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-12T20:29:42Z",
+      "side": 1,
+      "message": "(based on our chat, the desired behavior is that the function will return an error if either payload() or the polling functions have errors, and then once payload() is finished the test should finish too)\n\nMy suggestion is to keep the channel you have, but don\u0027t use the polling function at all - you\u0027re not really waiting for something to be true.  You can use a ticker here instead.  E.g.:\n\nticker \u003d time.NewTicker(\u003cpolling interval here\u003e)\nfor {\n\tselect {\n\tcase \u003c-ctx.Done():\n\t\t\u003ctest has timed out - stop the ticker then return\u003e\n\tcase pErr :\u003d \u003c-c:\n\t\t\u003cstop the ticker then return whatever message you got\u003e\n\tcase \u003c-ticker.C: \u003cif you decide to add a way to kill payload() early, you could call that below instead of waiting on the second select block\u003e\n\t\t\u003ccheck for count here\u003e\n\t\tif \u003cerror found\u003e {\n\t\t\t\u003cstop the ticker\u003e\n\t\t\tselect { // Wait for payload() to finish or for test to time out.\n\t\t\tcase pErr :\u003d \u003c-c:\n\t\t\t\t\u003ccheck the value of pErr, potentially combining that error and the one above\u003e\n\t\t\tcase \u003c-ctx.Done():\n\t\t\t\treturn \u003cthe above error\u003e\n\t\t\t}\n\t\t}\n\t}\n}\nAlternately you could create a second channel or add a buffer to your existing channel - but I think the above is cleaner.",
+      "parentUuid": "46cec971_8146cb3b",
+      "revId": "16836ea19b6e8f99a81088063f59074f709b6499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
