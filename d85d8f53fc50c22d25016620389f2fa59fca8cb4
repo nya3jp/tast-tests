@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b2f34ae_f69e8853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:26:00Z",
+      "side": 1,
+      "message": "This won\u0027t work, because the pre instance is shared.\nYou can experiment it by running \"tast run ${IP} lacros.*\"\n\nYou\u0027d need to create two variation of Pre, and set it via Params.",
+      "revId": "d85d8f53fc50c22d25016620389f2fa59fca8cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
