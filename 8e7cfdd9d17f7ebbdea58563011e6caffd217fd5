@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "6880c286_b090e13d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-12T08:11:58Z",
+      "side": 1,
+      "message": "Conclusion from GVC:\n- Import hwsec and create utilityCryptohomeBinary here.\n-- or --\n- Use a pointer to utilityCryptohomeBinary if injection is required/desired.",
+      "parentUuid": "02521f4b_2eec1466",
+      "range": {
+        "startLine": 57,
+        "startChar": 120,
+        "endLine": 57,
+        "endChar": 180
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a4f2eba_272c6a2b",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 33
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Sorry I don\u0027t quite understand this comment. I guess we\u0027ll discuss during GVC. Thank you.",
       "parentUuid": "6d49abe3_b80f8609",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c0c000_9303afc8",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-12T08:11:58Z",
+      "side": 1,
+      "message": "Conclusion from GVC:\n- We\u0027ll name this struct Chaps.\n- We\u0027ll document the Verify() on the plan to add verification of signed data by chaps through pkcs11-tools once that\u0027s available.\n- Create/Delete/Sign/Verify will be methods of this struct.",
+      "parentUuid": "94a179f6_c219134e",
       "range": {
         "startLine": 64,
         "startChar": 5,
