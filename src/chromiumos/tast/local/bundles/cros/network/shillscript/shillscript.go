@@ -19,6 +19,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -131,7 +132,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 	var calledMethods []string
 	stop := func() ([]string, error) {
 		// Send a dummy dbus signal to stop the Eavesdrop.
-		connect, err := dbus.SystemBus()
+		connect, err := dbusutil.SystemBus()
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to connect to system bus")
 		}
@@ -144,7 +145,7 @@ func DbusEventMonitor(ctx context.Context) (func() ([]string, error), error) {
 		return calledMethods, nil
 	}
 
-	conn, err := dbus.SystemBusPrivate()
+	conn, err := dbusutil.SystemBusPrivate()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to system bus")
 	}

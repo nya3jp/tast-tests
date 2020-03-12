@@ -16,7 +16,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godbus/dbus"
 	"github.com/shirou/gopsutil/disk"
 	"github.com/shirou/gopsutil/process"
 
@@ -390,7 +389,7 @@ func CheckService(ctx context.Context) error {
 		return err
 	}
 
-	bus, err := dbus.SystemBus()
+	bus, err := dbusutil.SystemBus()
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to D-Bus system bus")
 	}

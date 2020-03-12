@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 
 	metrics_event "chromiumos/system_api/metrics_event_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -45,7 +45,7 @@ func readAsInt(filename string) (int, error) {
 // parameter must be formatted as "interface.member",
 // e.g., "org.freedesktop.DBus.NameLost".
 func emitDBusSignal(name string, eventType metrics_event.Event_Type) error {
-	conn, err := dbus.SystemBus()
+	conn, err := dbusutil.SystemBus()
 	if err != nil {
 		return err
 	}

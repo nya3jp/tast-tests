@@ -50,7 +50,7 @@ func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
 
 	// Try to get a connection to a running concierge instance. If it's not available,
 	// returns with an error immediately.
-	conn, err := dbus.SystemBus()
+	conn, err := dbusutil.SystemBus()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to system bus")
 	}

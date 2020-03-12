@@ -19,6 +19,7 @@ import (
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
@@ -197,7 +198,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to generate SubjectPublicKeyInfo: ", err)
 	}
 
-	dbusConn, err := dbus.SystemBus()
+	dbusConn, err := dbusutil.SystemBus()
 	if err != nil {
 		s.Fatal("Failed to connect to system D-Bus bus: ", err)
 	}
