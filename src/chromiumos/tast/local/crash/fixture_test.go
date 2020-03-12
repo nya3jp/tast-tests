@@ -113,12 +113,11 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		// We don't use gopsutil to get the process name here because it somehow
 		// caches the process name until it exits.
 		b, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/comm", cmd.Process.Pid))
-		if os.IsNotExist(err) {
-			// In a race condition comm might not exist yet.
-			continue
-		}
 		if err != nil {
-			t.Fatalf("Failed to get name of fake crash_sender process: %v", err)
+			// In a race condition comm might not exist yet.
+			// We do not check os.IsNotExist here because reading /proc files
+			// might return random error code other than ENOENT (crbug.com/1042000#c9).
+			continue
 		}
 		name := strings.TrimRight(string(b), "\n")
 		if name == procName {
