@@ -26,7 +26,7 @@ func init() {
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{"tast.cros.network.Wifi"},
-		Vars:        []string{"router"},
+		Vars:        []string{"router", "pcap"},
 		Params: []testing.Param{
 			{
 				// Verifies that DUT can connect to an open 802.11a network on channels 48, 64.
@@ -132,8 +132,16 @@ func init() {
 }
 
 func SimpleConnect(ctx context.Context, s *testing.State) {
-	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(ctx, s.DUT(), s.RPCHint(), router)
+	ops := []wificell.TFOption{
+		wificell.TFCapture(true),
+	}
+	if router, _ := s.Var("router"); router != "" {
+		ops = append(ops, wificell.TFRouter(router))
+	}
+	if pcap, _ := s.Var("pcap"); pcap != "" {
+		ops = append(ops, wificell.TFPcap(pcap))
+	}
+	tf, err := wificell.NewTestFixture(ctx, s.DUT(), s.RPCHint(), ops...)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
