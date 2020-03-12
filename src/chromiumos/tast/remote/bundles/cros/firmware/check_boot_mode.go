@@ -9,6 +9,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
@@ -66,6 +67,10 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Error during Platform: ", err)
 	}
 	s.Logf("Platform name: %s", r.Platform)
+
+	// Exercise the creation of the config struct, which will be needed for mode-switching reboots.
+	c := firmware.NewConfig()
+	s.Logf("Config: %+v", c)
 
 	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
 	// switch into each mode, and check whether we are in the expected state.
