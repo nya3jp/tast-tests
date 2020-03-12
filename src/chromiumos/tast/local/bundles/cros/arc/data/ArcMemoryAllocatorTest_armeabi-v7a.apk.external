@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcMemoryAllocatorTest_armeabi-v7a_20200313.apk",
+  "size": 623085,
+  "sha256sum": "3a2ef06614fefcb98ec86525320bfdc3b557c6eeed1824e214cfb55a8a1aa582"
+}
