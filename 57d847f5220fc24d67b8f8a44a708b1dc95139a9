@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54b61d11_247c0189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T02:22:06Z",
+      "side": 0,
+      "message": "Ditto.",
+      "revId": "57d847f5220fc24d67b8f8a44a708b1dc95139a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a044431c_99b75180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T02:22:06Z",
+      "side": 0,
+      "message": "Ditto. Specifically, this would become critical now.",
+      "revId": "57d847f5220fc24d67b8f8a44a708b1dc95139a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

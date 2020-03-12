@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ead1c1d_08c19ee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T02:22:06Z",
+      "side": 1,
+      "message": "I think you need to distribute this to most of each ExtraAttr to keep the behavior.",
+      "revId": "64facb83f62c9ba37c3cf53a8648e1ab5e2704c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
