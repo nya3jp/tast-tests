@@ -4,6 +4,8 @@
 
 package shill
 
+import "chromiumos/tast/errors"
+
 // Type values defined in dbus-constants.h
 // The values are used both for Service type and Technology type.
 const (
@@ -13,3 +15,8 @@ const (
 	TypeVPN      = "vpn"
 	TypePPPoE    = "pppoe"
 )
+
+// ErrInvalidPath is returned when the dbus method call failed due to
+// invalid object path. This usually means the device/service/... is
+// removed.
+var ErrInvalidPath = errors.New("invalid object path")
