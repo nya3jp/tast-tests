@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bce5d6f6_9e96ad72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:25:13Z",
+      "side": 1,
+      "message": "This is independent from LaCrOS. You can drop the \"ForLaCrOS\" suffix.",
+      "revId": "cb74b495f8e39bdd5f339df95182897bc57b9408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc187259_72e7b2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:25:13Z",
+      "side": 1,
+      "message": "style\n\nif err :\u003d closeAboutBlank(...); err !\u003d nil {\n  ...\n}",
+      "revId": "cb74b495f8e39bdd5f339df95182897bc57b9408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
