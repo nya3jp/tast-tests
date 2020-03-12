@@ -85,7 +85,7 @@ func FilesAppSmoke(ctx context.Context, s *testing.State) {
 		Name: "New folder",
 		Role: ui.RoleTypeStaticText,
 	}
-	if err := files.Root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := files.Root.WaitTilDescendantExists(ctx, params, 10*time.Second); err != nil {
 		s.Fatal("Waiting for More menu to open failed: ", err)
 	}
 }

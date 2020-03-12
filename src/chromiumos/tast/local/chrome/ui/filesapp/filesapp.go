@@ -56,7 +56,7 @@ func (f *FilesApp) Close(ctx context.Context) error {
 	}
 
 	// Wait for window to close.
-	return ui.WaitFor(ctx, f.tconn, rootFindParams, false, time.Minute)
+	return ui.WaitTilGone(ctx, f.tconn, rootFindParams, time.Minute)
 }
 
 // OpenDownloads opens the Downloads folder in the Files App.
@@ -81,7 +81,7 @@ func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 		Name: "Files - Downloads",
 		Role: ui.RoleTypeRootWebArea,
 	}
-	return f.Root.WaitForDescendant(ctx, params, true, 15*time.Second)
+	return f.Root.WaitTilDescendantExists(ctx, params, 15*time.Second)
 }
 
 // file returns a ui.Node that references the specified file.

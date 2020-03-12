@@ -249,7 +249,7 @@ func (n *Node) Descendants(ctx context.Context, params FindParams) (NodeSlice, e
 // DescendantWithTimeout finds a descendant of this node using params and returns it.
 // If the timeout is hit or the JavaScript fails to execute, an error is returned.
 func (n *Node) DescendantWithTimeout(ctx context.Context, params FindParams, timeout time.Duration) (*Node, error) {
-	if err := n.WaitForDescendant(ctx, params, true, timeout); err != nil {
+	if err := n.WaitTilDescendantExists(ctx, params, timeout); err != nil {
 		return nil, err
 	}
 	return n.Descendant(ctx, params)
@@ -269,26 +269,34 @@ func (n *Node) DescendantExists(ctx context.Context, params FindParams) (bool, e
 	return exists, nil
 }
 
-// WaitForDescendant checks for a node repeatedly until the timeout.
-// If "exists" is true, it will wait for the descendent to exist.
-// Otherwise, it will wait for the descendent to no longer exist.
+// WaitTilDescendantExists checks if a descendant node exists repeatedly until the timeout.
 // If the timeout is hit or the JavaScript fails to execute, an error is returned.
-func (n *Node) WaitForDescendant(ctx context.Context, params FindParams, exists bool, timeout time.Duration) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		actual, err := n.DescendantExists(ctx, params)
+func (n *Node) WaitTilDescendantExists(ctx context.Context, params FindParams, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		exists, err := n.DescendantExists(ctx, params)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
-		if exists && !actual {
+		if !exists {
 			return errors.New("node does not exist")
-		} else if !exists && actual {
-			return errors.New("node still exist")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for the node")
-	}
-	return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// WaitTilDescendantGone checks if a descendant node doesn't exist repeatedly until the timeout.
+// If the timeout is hit or the JavaScript fails to execute, an error is returned.
+func (n *Node) WaitTilDescendantGone(ctx context.Context, params FindParams, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		exists, err := n.DescendantExists(ctx, params)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if exists {
+			return errors.New("node still exists")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
 }
 
 // Matches returns whether this node matches the given params.
@@ -370,17 +378,26 @@ func Exists(ctx context.Context, tconn *chrome.TestConn, params FindParams) (boo
 	return root.DescendantExists(ctx, params)
 }
 
-// WaitFor checks for a node repeatedly until the timeout.
-// If "exists" is true, it will wait for the node to exist.
-// Otherwise, it will wait for the node to no longer exist.
+// WaitTilExists checks if a node exists repeatedly until the timeout.
 // If the JavaScript fails to execute, an error is returned.
-func WaitFor(ctx context.Context, tconn *chrome.TestConn, params FindParams, exists bool, timeout time.Duration) error {
+func WaitTilExists(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) error {
 	root, err := Root(ctx, tconn)
 	if err != nil {
 		return err
 	}
 	defer root.Release(ctx)
-	return root.WaitForDescendant(ctx, params, exists, timeout)
+	return root.WaitTilDescendantExists(ctx, params, timeout)
+}
+
+// WaitTilGone checks if a node doesn't exist repeatedly until the timeout.
+// If the JavaScript fails to execute, an error is returned.
+func WaitTilGone(ctx context.Context, tconn *chrome.TestConn, params FindParams, timeout time.Duration) error {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer root.Release(ctx)
+	return root.WaitTilDescendantGone(ctx, params, timeout)
 }
 
 // RootDebugInfo returns the chrome.automation root as a string.
