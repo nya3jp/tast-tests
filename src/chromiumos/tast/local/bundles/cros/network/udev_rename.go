@@ -15,6 +15,7 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
@@ -36,12 +37,12 @@ func init() {
 }
 
 func restartWifiInterface(ctx context.Context) error {
-	manager, err := shill.NewManager(ctx)
+	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed creating shill manager proxy")
 	}
 
-	iface, err := shill.WifiInterface(ctx, manager, 5*time.Second)
+	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "could not find interface")
 	}
@@ -93,17 +94,55 @@ func restartWifiInterface(ctx context.Context) error {
 		testing.ContextLog(ctx, "Devices associated with brcmfmac driver: ", devPaths)
 	}
 
+	pw, err := m.CreateWatcher(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a PropertiesWatcher")
+	}
+	defer pw.Close(ctx)
+
 	for _, devPath := range devPaths {
-		testing.ContextLogf(ctx, "Rebind device %s to driver %s", devPath, driverRealPath)
+		testing.ContextLogf(ctx, "Unbind device %s to driver %s", devPath, driverRealPath)
 		devName := filepath.Base(devPath)
 		if err := ioutil.WriteFile(filepath.Join(driverRealPath, "unbind"), []byte(devName), 0200); err != nil {
 			return errors.Wrapf(err, "could not unbind %s driver", iface)
 		}
+	}
+
+	// expectNumWifi expects to see #num WiFi interfaces.
+	// It raise an error if it fails to see #num WiFi interfaces within specific timeout duration.
+	expectNumWifi := func(ctx context.Context, pw *shill.PropertiesWatcher, num int, timeout time.Duration) error {
+		ctx, cancel := ctxutil.OptionalTimeout(ctx, timeout)
+		defer cancel()
+		for {
+			ifaces, err := shill.WifiInterfaces(ctx, m)
+			testing.ContextLogf(ctx, "wifi %q", ifaces)
+			if err != nil {
+				return errors.Wrap(err, "failed to get WiFi interfaces")
+			}
+			if len(ifaces) == num {
+				return nil
+			}
+			if _, err := pw.WaitAll(ctx, shill.ManagerPropertyDevices); err != nil {
+				return err
+			}
+		}
+	}
+
+	// Expect WiFi interfaces are all gone.
+	if err := expectNumWifi(ctx, pw, 0, 5*time.Second); err != nil {
+		return err
+	}
+
+	for _, devPath := range devPaths {
+		testing.ContextLogf(ctx, "Rebind device %s to driver %s", devPath, driverRealPath)
+		devName := filepath.Base(devPath)
 		if err := ioutil.WriteFile(filepath.Join(driverRealPath, "bind"), []byte(devName), 0200); err != nil {
 			return errors.Wrapf(err, "could not bind %s driver", iface)
 		}
 	}
-	return nil
+
+	// Expect to see exactly one WiFi interface after rebind.
+	return expectNumWifi(ctx, pw, 1, 5*time.Second)
 }
 
 // udevEventMonitor waits until any udev event is emitted or error when timeout reached.
