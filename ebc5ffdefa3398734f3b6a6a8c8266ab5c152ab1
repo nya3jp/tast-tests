@@ -22,6 +22,30 @@
       "revId": "ebc5ffdefa3398734f3b6a6a8c8266ab5c152ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034e9e9c_50504145",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-12T07:03:09Z",
+      "side": 1,
+      "message": "Nice suggestion! I\u0027ll use them.",
+      "parentUuid": "8a4f0d61_1e73d268",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 30
+      },
+      "revId": "ebc5ffdefa3398734f3b6a6a8c8266ab5c152ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

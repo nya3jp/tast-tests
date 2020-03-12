@@ -732,6 +732,30 @@
     },
     {
       "key": {
+        "uuid": "bf2e7b08_2b3436d1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-12T07:03:09Z",
+      "side": 1,
+      "message": "Doc added on StartInterface/StopInterface, so I think this thread is resolved. :)",
+      "parentUuid": "82f8e4cd_a8087c05",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 50
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d63ce522_49dc679a",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
