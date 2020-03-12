@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "346f48b6_81c16c5e",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-12T01:37:58Z",
+      "side": 1,
+      "message": "\u003e Fixed that for you :)\n\nThanks!\n\nIf we\u0027ll have PhyID in iw.Phy later and sysfs don\u0027t bother too much, I guess the current one might be easier to adapt? (I guess we only need to change phys back to slice and update some codes in New and selectPhy) I\u0027m also OK with both.",
+      "parentUuid": "c949a81f_42b12a9d",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2bab313_79ebef49",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
