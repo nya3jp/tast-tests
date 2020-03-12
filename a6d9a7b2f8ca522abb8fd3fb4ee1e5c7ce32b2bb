@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f19c77_f2547825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:25:54Z",
+      "side": 1,
+      "message": "Is this permanent? Or will be gone on sometime, like on rebooting?\nCurrently, it is \"disabled\", so that\u0027s fine, but if we enable this on CI, we have to consider about the interfere with other tests, so nice to be documented.",
+      "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41ec2b5d_c49b2d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:25:54Z",
+      "side": 1,
+      "message": "Already done at L64.",
+      "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a1ef5d_48cff5ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:25:54Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 245,
+        "startChar": 8,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
