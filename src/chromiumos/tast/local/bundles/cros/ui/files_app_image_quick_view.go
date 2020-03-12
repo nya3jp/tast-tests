@@ -78,7 +78,7 @@ func FilesAppImageQuickView(ctx context.Context, s *testing.State) {
 		Name: "Open",
 		Role: ui.RoleTypeButton,
 	}
-	if err := files.Root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := files.Root.WaitUntilDescendantExists(ctx, params, 10*time.Second); err != nil {
 		s.Fatal("Waiting for Open button failed: ", err)
 	}
 
@@ -90,7 +90,7 @@ func FilesAppImageQuickView(ctx context.Context, s *testing.State) {
 		Name: previewImageDimensions,
 		Role: ui.RoleTypeStaticText,
 	}
-	if err := files.Root.WaitForDescendant(ctx, params, true, 10*time.Second); err != nil {
+	if err := files.Root.WaitUntilDescendantExists(ctx, params, 10*time.Second); err != nil {
 		s.Fatal("Waiting for image preview information failed: ", err)
 	}
 }

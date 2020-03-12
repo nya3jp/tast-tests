@@ -76,7 +76,7 @@ func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
 		Role: ui.RoleTypeHeading,
 		Name: "Settings",
 	}
-	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 		s.Fatal("Waiting for Settings app heading failed: ", err)
 	}
 }
