@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5a24dd5_392463b2",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-12T07:04:05Z",
+      "side": 1,
+      "message": "I have a question: why not just skip a gone device after paths is gathered?",
+      "revId": "6eaeffe9b8219b3a6bf2f9a031410d0e4973c882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
