@@ -9,6 +9,7 @@ package memory
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -72,14 +73,41 @@ func (a *AndroidAllocator) jsonBroadcast(ctx context.Context, v interface{}, act
 	return nil
 }
 
+const apkFmt = "ArcMemoryAllocatorTest_%s.apk"
+
+var supportedArchs = map[string]bool{
+	"x86_64":      true,
+	"armeabi-v7a": true,
+}
+
+// AndroidData is the list of data dependencies tests need to add to their
+// testing.Test.Data in order to use AndroidAllocator.
+func AndroidData() []string {
+	var data []string
+	for arch := range supportedArchs {
+		data = append(data, fmt.Sprintf(apkFmt, arch))
+	}
+	return data
+}
+
 // prepareAllocator installs and launches the ArcMemoryAllocatorTest app.
 // Returns a function to uninstall the app.
 func (a *AndroidAllocator) prepareAllocator(ctx context.Context, dataPathGetter func(string) string) (func(), error) {
 	const (
 		activity = "org.chromium.arc.testapp.memoryallocator/.MainActivity"
-		apk      = "ArcMemoryAllocatorTest.apk"
 		pkg      = "org.chromium.arc.testapp.memoryallocator"
 	)
+
+	out, err := a.a.Command(ctx, "getprop", "ro.product.cpu.abi").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read android cpu abi")
+	}
+	arch := strings.TrimSpace(string(out))
+	if _, ok := supportedArchs[arch]; !ok {
+		return nil, errors.Errorf("unsupported Android abi %q", arch)
+	}
+	apk := fmt.Sprintf(apkFmt, arch)
+
 	if err := a.a.Install(ctx, dataPathGetter(apk)); err != nil {
 		return nil, errors.Wrap(err, "failed to install ArcMemoryAllocatorTest app")
 	}

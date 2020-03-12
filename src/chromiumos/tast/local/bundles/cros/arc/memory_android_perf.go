@@ -24,7 +24,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcMemoryAllocatorTest.apk"},
+		Data:         memory.AndroidData(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android"},
 			Pre:               arc.Booted(),
