@@ -198,10 +198,13 @@ func (h *PropertyHolder) CreateWatcher(ctx context.Context) (*PropertiesWatcher,
 }
 
 // GetProperties calls dbus GetProperties method on the interface and returns the result.
-// The dbus call may fail with dbusutil.DBusErrorUnknownObject if the ObjectPath is not valid.
-// Callers can check it with dbusutil.IsDBusError if it's expected.
+// ErrInvalidPath is returned if the object path is no longer valid.
 func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error) {
-	return NewProperties(ctx, h.dbusObject)
+	p, err := NewProperties(ctx, h.dbusObject)
+	if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
+		return nil, ErrInvalidPath
+	}
+	return p, err
 }
 
 // String return the string of underlying dbusObject.

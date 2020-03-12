@@ -14,7 +14,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
@@ -55,11 +54,10 @@ func waitForIfaceRemoval(ctx context.Context, pw *shill.PropertiesWatcher, iface
 				return err
 			}
 			devProps, err := dev.GetProperties(ctx)
+			if err == shill.ErrInvalidPath {
+				continue
+			}
 			if err != nil {
-				if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
-					// This error is forgivable as a device may go down anytime.
-					continue
-				}
 				return err
 			}
 			devIface, err := devProps.GetString(shill.DevicePropertyInterface)
