@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2a84af5_40964358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T03:19:30Z",
+      "side": 1,
+      "message": "nit/style:\n\npageButtons, err :\u003d ...\nif err !\u003d nil {\n  s.Fatal(...);\n}\ndefer pageButtons.Release(ctx)\nif len(pageButtons) \u003c 3) {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 31
+      },
+      "revId": "e3afcba1bfe21afd87eb8ac630348dc7f476fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
