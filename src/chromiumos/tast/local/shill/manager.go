@@ -13,7 +13,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 )
 
@@ -82,11 +81,10 @@ ForServicePaths:
 			return "", err
 		}
 		serviceProps, err := service.GetProperties(ctx)
+		if err != ErrInvalidPath {
+			continue
+		}
 		if err != nil {
-			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
-				// This error is forgivable as a service may disappear anytime.
-				continue
-			}
 			return "", err
 		}
 
@@ -259,11 +257,10 @@ func (m *Manager) DevicesByTechnology(ctx context.Context, technology Technology
 
 	for _, dev := range devs {
 		p, err := dev.GetProperties(ctx)
+		if err == ErrInvalidPath {
+			continue
+		}
 		if err != nil {
-			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
-				// This error is forgivable as a device may go down anytime.
-				continue
-			}
 			return nil, nil, err
 		}
 		if devType, err := p.GetString(DevicePropertyType); err != nil {
@@ -287,11 +284,10 @@ func (m *Manager) DeviceByName(ctx context.Context, iface string) (*Device, erro
 
 	for _, dev := range devs {
 		p, err := dev.GetProperties(ctx)
+		if err == ErrInvalidPath {
+			continue
+		}
 		if err != nil {
-			if dbusutil.IsDBusError(err, dbusutil.DBusErrorUnknownObject) {
-				// This error is forgivable as a device may go down anytime.
-				continue
-			}
 			return nil, err
 		}
 		if devIface, err := p.GetString(DevicePropertyInterface); err != nil {
