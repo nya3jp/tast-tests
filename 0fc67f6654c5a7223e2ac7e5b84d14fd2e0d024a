@@ -46,6 +46,30 @@
       "revId": "0fc67f6654c5a7223e2ac7e5b84d14fd2e0d024a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f3d579_1af8994d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T01:17:58Z",
+      "side": 1,
+      "message": "\u003e Hmm... For doc, I\u0027m thinking adding these to PropertyHolder and dbusutil.Connect but it is kind of hard to find the indirect documents from caller for NewDevice. On the other hand, adding to every New method also seems too much duplicate. WDYT?\n\nI\u0027m not sure. For Shill D-Bus methods (in Shill, not Tast) we document the sorts of error codes that can be returned. I don\u0027t know if that\u0027s a convention in Tast/Go.\n\n\u003e For unit test, as we don\u0027t have dbus in chroot,\n\nIs it possible to do any mocking for this? We\u0027d have the documented behavior for dbusutil, and then mock it out for any Shill tests?\n\nAnyway, maybe I\u0027m overthinking, and documentation is all we need.\n\n\u003e we\u0027ll need to add it as local test. But I guess it might be a good start of adding a few test in a new \"shill\" package as unit tests of shill library, e.g. the one in TEST\u003d below. I guess I can add this in another cl.\n\nDefinitely not required for this CL; it was mostly food for thought.",
+      "parentUuid": "37e4d963_8daac836",
+      "range": {
+        "startLine": 10,
+        "startChar": 64,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "0fc67f6654c5a7223e2ac7e5b84d14fd2e0d024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
