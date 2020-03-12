@@ -29,7 +29,7 @@ func waitForNotificationHidden(ctx context.Context, tconn *chrome.TestConn) erro
 		Name: "USB printer connected",
 		Role: ui.RoleTypeStaticText,
 	}
-	if err := ui.WaitFor(ctx, tconn, params, false, 10*time.Second); err != nil {
+	if err := ui.WaitUntilGone(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for notification to be hidden")
 	}
 	return nil
@@ -43,11 +43,11 @@ func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	// launched and is loading. There should be a sufficient amount of time
 	// between the text appearing and being removed, but the test may fail here
 	// if the text is removed too quickly.
-	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find loading text")
 	}
 	// Wait for the loading text to be removed to indicate print preview is loaded.
-	if err := ui.WaitFor(ctx, tconn, params, false, 10*time.Second); err != nil {
+	if err := ui.WaitUntilGone(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for loading text to be removed")
 	}
 	return nil

@@ -59,7 +59,7 @@ func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName stri
 		return errors.Wrap(err, "failed to click destination list")
 	}
 	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for destination list to expand")
 	}
 
@@ -109,7 +109,7 @@ func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error
 		return errors.Wrap(err, "failed to click layout list")
 	}
 	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for layout list to expand")
 	}
 
@@ -151,7 +151,7 @@ func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 		return errors.Wrap(err, "failed to click pages list")
 	}
 	params.State = map[ui.StateType]bool{ui.StateTypeExpanded: true}
-	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for pages list to expand")
 	}
 
@@ -174,7 +174,7 @@ func SetPages(ctx context.Context, tconn *chrome.TestConn, pages string) error {
 		Role:  ui.RoleTypeTextField,
 		State: map[ui.StateType]bool{ui.StateTypeFocused: true},
 	}
-	if err := ui.WaitFor(ctx, tconn, params, true, 10*time.Second); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find custom pages text field")
 	}
 	if err := kb.Type(ctx, pages); err != nil {

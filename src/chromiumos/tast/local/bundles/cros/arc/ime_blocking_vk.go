@@ -33,7 +33,7 @@ func waitForVKVisibility(ctx context.Context, tconn *chrome.TestConn, shown bool
 		Role:  chromeui.RoleTypeKeyboard,
 		State: map[chromeui.StateType]bool{chromeui.StateTypeInvisible: !shown},
 	}
-	return chromeui.WaitFor(ctx, tconn, params, true, 30*time.Second)
+	return chromeui.WaitUntilExists(ctx, tconn, params, 30*time.Second)
 }
 
 func IMEBlockingVK(ctx context.Context, s *testing.State) {
