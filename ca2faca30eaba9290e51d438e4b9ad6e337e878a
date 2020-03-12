@@ -156,6 +156,30 @@
     },
     {
       "key": {
+        "uuid": "5463dbba_783d1d92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:39:04Z",
+      "side": 1,
+      "message": "\u003e Will you cc me on this email?\n\nDone.\n\n\nSo, based on the thread, the data is just missing. You should be able to use HWDeps to run only for drallion360 with HWDeps..",
+      "parentUuid": "564e8e04_65f51438",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdc50849_6c284c81",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 4
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "If I change update that line and then run gofmt, gofmt splits the line back into two lines, reverting it back to the original structure.",
       "parentUuid": "e671e7f8_6a840198",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996b502a_b803e791",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:39:04Z",
+      "side": 1,
+      "message": "Interesting. I did it locally, and gofmt did not complain at all. How did you run gofmt?",
+      "parentUuid": "6c0045be_27de5aaf",
       "range": {
         "startLine": 101,
         "startChar": 2,
