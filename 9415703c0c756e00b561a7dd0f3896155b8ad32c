@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09f92be7_f03146df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-12T05:12:31Z",
+      "side": 1,
+      "message": "maybe filter this with IsDBusError?\n\nSide discussion: Seeing this filtering spreading, I\u0027m not sure if it worths to introduce functions like `Manager.TraverseDevices(context.Context, func(context.Context, *Device, *Properties))` to handle the case.",
+      "revId": "9415703c0c756e00b561a7dd0f3896155b8ad32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
