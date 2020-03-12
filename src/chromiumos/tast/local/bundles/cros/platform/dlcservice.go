@@ -14,8 +14,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/godbus/dbus"
-
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -74,7 +72,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for update-engine to be ready.
-	if bus, err := dbus.SystemBus(); err != nil {
+	if bus, err := dbusutil.SystemBus(); err != nil {
 		s.Fatal("Failed to connect to the message bus: ", err)
 	} else if err := dbusutil.WaitForService(ctx, bus, "org.chromium.UpdateEngine"); err != nil {
 		s.Fatal("Failed to wait for D-Bus service: ", err)
