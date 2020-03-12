@@ -94,6 +94,30 @@
       "revId": "0fc67f6654c5a7223e2ac7e5b84d14fd2e0d024a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d859f0a_5e1ba222",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-12T07:06:58Z",
+      "side": 1,
+      "message": "I support the idea of adding a Tast local test to validate shill Tast library.",
+      "parentUuid": "e3edd025_3f3f2242",
+      "range": {
+        "startLine": 10,
+        "startChar": 64,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "0fc67f6654c5a7223e2ac7e5b84d14fd2e0d024a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
