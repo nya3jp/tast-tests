@@ -19,7 +19,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/godbus/dbus"
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
@@ -207,7 +206,7 @@ func waitForCryptohomeService(ctx context.Context, log func(string)) error {
 		minUptime  = 10 * time.Second
 	)
 
-	bus, err := dbus.SystemBus()
+	bus, err := dbusutil.SystemBus()
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to system bus")
 	}

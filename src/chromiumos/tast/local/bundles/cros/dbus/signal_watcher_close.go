@@ -24,7 +24,7 @@ func init() {
 }
 
 func setupPrivateSystemBus() (*dbus.Conn, error) {
-	conn, err := dbus.SystemBusPrivate()
+	conn, err := dbusutil.SystemBusPrivate()
 	if err != nil {
 		return nil, err
 	}
