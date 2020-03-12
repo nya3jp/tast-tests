@@ -34,6 +34,24 @@
       "revId": "16836ea19b6e8f99a81088063f59074f709b6499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e785c949_4c1a17bb",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-12T23:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d38c8923_9fbccdf7",
+      "revId": "16836ea19b6e8f99a81088063f59074f709b6499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
