@@ -147,7 +147,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "accessibility tree did not match; failed to write diff to the file")
 			}
 			if err := dumpTree(appRoot, outFilePath); err != nil {
-				return errors.Wrap(err, "Accessibility tree did not match; failed to dump the actual tree")
+				return errors.Wrap(err, "accessibility tree did not match; failed to dump the actual tree")
 			}
 			return errors.Errorf("accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
 		}
