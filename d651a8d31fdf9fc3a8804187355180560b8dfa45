@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc7610eb_71a059c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "Since this is needed in every test, want to move it to a helper function.\nMaybe SetupApp(ctx, cr, a, pkgName)\nIt can return tconn, d, and an error.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6927e00f_df67f620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "This and the LaunchHelper method won\u0027t be needed anymore with launching in each subtest.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 33
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba4d978_9c6f88e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "to launch the app in every sub test:\n\nact, err :\u003d arc.NewActivity(a, appPkgName, appActivity)\nif err !\u003d nil{\n    s.Fatal(...)\n}\ndefer act.Close()\n\nif err :\u003d act.Start(ctx); err !\u003d nil{\n    s.Fatal(...)\n}\ndefer act.Stop(ctx)\n\ntest.Fn(test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 56
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb52c20_16035cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "Sorry to make you change this again, I was talking to one of the Tast owners, and he has advised that we remove must or equivalent methods because it is against golang standard guidelines.\n\nInstead, we should just add if err !\u003d nil {...} to the locations where it is called.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733e5309_3ed3d546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "nit: remove this logging since you log in the isNApp function anyway.\nditto for L87, L128, L147",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 27
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8195ad4d_c6f1d8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "Fatal",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 7
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d566256d_3c59fb2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "We can change this a bit more and it will only wait for shortUITimeout seconds total. Also, changing the error to fatal and removing handleCrashOrANRDialog as we discussed:\n\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\tif err :\u003d alertTitleNotResponding.Exists(ctx); err \u003d\u003d nil {\n\t\treturn testing.PollBreak(errors.Wrap(err, \"NotResponding does exist\"))\n\t}\n\tif err :\u003d alertTitleHasStopped.Exists(ctx); err \u003d\u003d nil {\n\t\treturn testing.PollBreak(errors.Wrap(err, \"HasStopped does exist\"))\n\t}\n\tif err :\u003d alertTitleKeepsStopping.Exists(ctx); err \u003d\u003d nil {\n\t\treturn testing.PollBreak(errors.Wrap(err, \"KeepsStopping does exist\"))\n\t}\n\tif err :\u003d alertTitleOpenAppAgain.Exists(ctx); err \u003d\u003d nil {\n\t\treturn testing.PollBreak(errors.Wrap(err, \"OpenAppAgain does exist\"))\n\t}\n\tif err :\u003d alertTitleCanNotDownload.Exists(ctx); err \u003d\u003d nil {\n\t\treturn testing.PollBreak(errors.Wrap(err, \"CanNotDownload does exist\"))\n\t}\n\treturn errors.New(\"waiting for crash\")\n}, \u0026testing.PollOptions{Timeout: shortUITimeout}); err !\u003d nil \u0026\u0026 !strings.Contains(err.Error(), \"waiting for crash\") {\n\ts.Fatal(\"The application crashed: \", err)\n}",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 2
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e00c035_20d53fa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-12T20:17:35Z",
+      "side": 1,
+      "message": "delete this, instead we can restart the app for each subtest.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 0
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
