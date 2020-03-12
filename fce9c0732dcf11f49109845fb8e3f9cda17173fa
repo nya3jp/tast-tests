@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a2d4f07_b71eb6cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:25:31Z",
+      "side": 1,
+      "message": "nit/style: We often do not add empty line between a stmt possibly returning err, and \"if err\" check.",
+      "revId": "fce9c0732dcf11f49109845fb8e3f9cda17173fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
