@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc54acc7_35d5c3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-12T01:25:22Z",
+      "side": 1,
+      "message": "I think specifying the URL looks more stable.\n\nstyle:\n\nif err :\u003d ...; err !\u003d nil {\n  ...\n}",
+      "revId": "eae38ab927819edbe886803f0b6a9d8f93db03c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
