@@ -9,10 +9,10 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -175,15 +175,18 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 	}
 
 	if isInTabletMode && !isLauncherVisible {
-		// Hide launcher by launching an app.
-		app := apps.Chrome
-		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-			return nil, errors.Wrapf(err, "failed to launch %s", app.Name)
+		// Hide launcher by launching the file app.
+		files, err := filesapp.Launch(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to hide the home launcher by activating an app")
 		}
-		if err := ash.WaitForApp(ctx, tconn, app.ID); err != nil {
-			return nil, errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
+		defer files.Root.Release(ctx)
+
+		// Swipe up the hotseat.
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn); err != nil {
+			return nil, errors.Wrap(err, "failed to test the in-app shelf")
 		}
-	} else if !isInTabletMode && isLauncherVisible {
+	} else if isLauncherVisible {
 		// Show launcher fullscreen.
 		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelShiftSearch); err != nil {
 			return nil, errors.Wrap(err, "failed to switch to fullscreen")
@@ -240,6 +243,10 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		{
 			launcherVisibility: launcherIsVisible,
 			mode:               inClamshellMode,
+		},
+		{
+			launcherVisibility: launcherIsHidden,
+			mode:               inTabletMode,
 		},
 		{
 			launcherVisibility: launcherIsVisible,
