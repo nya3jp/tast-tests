@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3899510a_4e949454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-12T09:35:55Z",
+      "side": 1,
+      "message": "note as reminder: per discussion, we may need to wait for shill removing the unbinded interface here.",
+      "revId": "26aba5234fb3409d32d7c5741cbdc28996353bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
