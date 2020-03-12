@@ -62,8 +62,8 @@ func GetExtraArgs(handler CrashHandler) []string {
 	switch handler {
 	case Breakpad:
 		return []string{vModuleFlag, "--no-enable-crashpad"}
-	case Crashpad:
-		return []string{vModuleFlag, "--enable-crashpad"}
+	//case Crashpad:
+	//	return []string{vModuleFlag, "--enable-crashpad"}
 	default:
 		panic(fmt.Sprintf("unknown CrashHandler %d", handler))
 	}
