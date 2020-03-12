@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a251bbb_91303a25",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-12T08:44:16Z",
+      "side": 1,
+      "message": "Hmm if I understand what Shuhei taught me correctly, I would propose to rename it to |UserTokenGetter|. I personally think this confusing naming of one of reasons why we had so many comments going in this CL.\n\nSee other comments for more contexts.",
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982c57b7_dbfe3a89",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-12T08:44:16Z",
+      "side": 1,
+      "message": "(Cont.) Looks like in the current this is not even used. So,\n1. I think just removing it is sensible to just remove this. With renamed interface I think is better above, I have no problem with the readability for now.\n2. If we want to keep this and remove the function argument, I am also okay with it too.\n3. Despite of 2., I would vote for 1., since we only call |GetTokenForUser| in one place.\n\nThough, I am not golang expert so I would hope to get some challenges from Abe san, still.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
