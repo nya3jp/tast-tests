@@ -34,6 +34,24 @@
       "revId": "9415703c0c756e00b561a7dd0f3896155b8ad32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8227f437_1bf5bbaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-12T10:50:41Z",
+      "side": 1,
+      "message": "So let\u0027s keep skipping err if it is IsDBusError.",
+      "parentUuid": "8cc86970_3be004fa",
+      "revId": "9415703c0c756e00b561a7dd0f3896155b8ad32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
