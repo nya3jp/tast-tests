@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa930106_0c306672",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-12T21:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1addb53d_df156a8c",
+      "range": {
+        "startLine": 66,
+        "startChar": 46,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "ebaa347d3d759f5d1b5a17e5ac36b72e1eb2c4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d726b8d_6732036c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "ebaa347d3d759f5d1b5a17e5ac36b72e1eb2c4d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb5aef7_6ba19379",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-12T21:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d726b8d_6732036c",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "ebaa347d3d759f5d1b5a17e5ac36b72e1eb2c4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -180,6 +180,30 @@
     },
     {
       "key": {
+        "uuid": "62bed7f3_2c1d4789",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-12T21:01:10Z",
+      "side": 1,
+      "message": "Great, I will look into adding that today. Thanks for the help!",
+      "parentUuid": "5463dbba_783d1d92",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdc50849_6c284c81",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 4
@@ -322,6 +346,30 @@
       "side": 1,
       "message": "Interesting. I did it locally, and gofmt did not complain at all. How did you run gofmt?",
       "parentUuid": "6c0045be_27de5aaf",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2d60d7_1711d76a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-12T21:01:10Z",
+      "side": 1,
+      "message": "Is it possible we have different versions of gofmt? I run gofmt [path/to/file], inside the chroot. I also have a vscode plugin that automatically runs gofmt when I save.",
+      "parentUuid": "996b502a_b803e791",
       "range": {
         "startLine": 101,
         "startChar": 2,
