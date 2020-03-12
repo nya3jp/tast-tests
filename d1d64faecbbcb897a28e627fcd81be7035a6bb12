@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90aa57aa_fea65ea8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-12T01:02:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d59f99_ae90d438",
+      "range": {
+        "startLine": 14,
+        "startChar": 51,
+        "endLine": 14,
+        "endChar": 73
+      },
+      "revId": "d1d64faecbbcb897a28e627fcd81be7035a6bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb0962b3_e9dba617",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "d1d64faecbbcb897a28e627fcd81be7035a6bb12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d928442b_f56cd0ad",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-12T01:02:09Z",
+      "side": 1,
+      "message": "No, I don\u0027t believe so -- chrome.New should synchronously clear that, it just gets asynchronously re-set",
+      "parentUuid": "cb0962b3_e9dba617",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 68
+      },
+      "revId": "d1d64faecbbcb897a28e627fcd81be7035a6bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
