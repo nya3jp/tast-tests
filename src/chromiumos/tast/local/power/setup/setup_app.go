@@ -9,8 +9,22 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+// GrantPermission grants an Android permission to an app.
+func GrantPermission(ctx context.Context, a *arc.ARC, pkg string, permission string) (CleanupCallback, error) {
+	testing.ContextLogf(ctx, "Granting permission %q to Android app %q", permission, pkg)
+	if err := a.Command(ctx, "pm", "grant", pkg, permission).Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrapf(err, "failed to grant permission %q to %q", permission, pkg)
+	}
+
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Removing permission %q from Android app %q", permission, pkg)
+		return a.Command(ctx, "pm", "revoke", pkg, permission).Run(testexec.DumpLogOnError)
+	}, nil
+}
 
 // InstallApp installs an Android APK.
 func InstallApp(ctx context.Context, a *arc.ARC, apkDataPath string, pkg string) (CleanupCallback, error) {
