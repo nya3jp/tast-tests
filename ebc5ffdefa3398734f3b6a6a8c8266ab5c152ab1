@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a4f0d61_1e73d268",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T02:09:03Z",
+      "side": 1,
+      "message": "OK, so we\u0027ve resolved that it does make sense to remove these in Close(), but do you really want to re-enumerate all ifaces? Don\u0027t we already have the enumeration in availIfaces (and maybe busyIfaces, but that should be empty)?",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 30
+      },
+      "revId": "ebc5ffdefa3398734f3b6a6a8c8266ab5c152ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

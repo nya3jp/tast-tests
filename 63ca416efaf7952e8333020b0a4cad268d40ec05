@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "b736e00b_b26e359c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T02:09:03Z",
+      "side": 1,
+      "message": "I\u0027d say use your judgment based on how it turns out in the code. Or see if Dean has an opinion. I\u0027ll just note that the difference between name and index has never been relevant to wificell testing so far, AFAIK, so it\u0027s not worth too many acrobatics right now, I think.",
+      "parentUuid": "346f48b6_81c16c5e",
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2bab313_79ebef49",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 18
@@ -678,6 +696,30 @@
       "side": 1,
       "message": "For cleaning up daemons, I assume the callers are responsible for closing the handles as with defer in golang, we usually expect something symmetric like \"d.Start(); defer d.Close()\". Given this, I personally think it might be excessive to check again here now, but I\u0027m also OK with having it for more complex behavior. (e.g. having multiple handles and stop some in the middle of the test)\n\nFor the interface removal: I think site_linux_system does remove the interface that it creates (not inherited) in close()? (I guess it wants to remove on close because it reuses interfaces.)\n\nI\u0027m not yet sure how much time it takes to always remove/create a new interface. If not too much more, maybe we can just always create a new one in selectInterface and remove it in StopHostapd for simplicity.",
       "parentUuid": "667231e8_4fd760eb",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 50
+      },
+      "revId": "63ca416efaf7952e8333020b0a4cad268d40ec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82f8e4cd_a8087c05",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-12T02:09:03Z",
+      "side": 1,
+      "message": "\u003e For cleaning up daemons, I assume the callers are responsible for closing the handles as with defer in golang, [...]\n\nYes, I think that\u0027s probably fine. I guess my real point was just in the \"if they have already been stopped\" paragraph.\n\n\u003e For the interface removal: I think site_linux_system does remove the interface that it creates (not inherited) in close()? (I guess it wants to remove on close because it reuses interfaces.)\n\nHmm, I guess it does. Notably, it does not delete its monitor-mode (pcap) interfaces. That might be what confused me.\n\n\u003e I\u0027m not yet sure how much time it takes to always remove/create a new interface. If not too much more, maybe we can just always create a new one in selectInterface and remove it in StopHostapd for simplicity.\n\nIt\u0027s actually slow, it seems. Not horribly slow, but not amazing:\n\nbash-4.3# time bash -c \u0027for i in $(seq 1 100); do iw phy phy1 interface add $i type managed; done\u0027\n\nreal\t0m5.525s\nuser\t0m0.240s\nsys\t0m0.890s\nbash-4.3# time bash -c \u0027for i in $(seq 1 100); do iw dev $i del; done\u0027\n\nreal\t0m13.367s\nuser\t0m0.000s\nsys\t0m1.120s\nbash-4.3# time bash -c \u0027for i in $(seq 1 100); do true; done\u0027\n\nreal\t0m0.028s\nuser\t0m0.010s\nsys\t0m0.000s\n\n(Also, recall that each of these is an SSH command. Not sure if Tast has well-optimized SSH, but with Autotest, each SSH command could be somewhat expensive.)\n\nI guess deleting on Close() is still reasonable; and it makes more sense than deleting in StopInterface(), I think. If we\u0027re really wanting to optimize this, I guess we can go back and try to save Routers across tests via Precondition.\n\nBy the way, do you think it\u0027s worth documenting any of this somewhere -- particularly, the intended netdev create/reuse/cleanup behavior? Maybe just a few code comments at the relevant points?",
+      "parentUuid": "3e2f8f11_6251914a",
       "range": {
         "startLine": 155,
         "startChar": 0,
