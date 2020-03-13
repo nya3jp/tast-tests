@@ -34,7 +34,6 @@ type Router struct {
 	busyPhy     map[int]int           // map from phy idx to busy interface count.
 	availIfaces map[string]*iw.NetDev // map from interface name to iw.NetDev.
 	busyIfaces  map[string]*iw.NetDev // map from interface name to iw.NetDev.
-	handleID    int
 	ifaceID     int
 	iwr         *iw.Runner
 }
@@ -292,18 +291,11 @@ func (r *Router) selectInterface(ctx context.Context, channel int, t iw.IfType) 
 	return selected, nil
 }
 
-// getUniqueServiceName returns an unique ID string for services on this router. Useful for giving names to daemons/services.
-func (r *Router) getUniqueServiceName() string {
-	id := strconv.Itoa(r.handleID)
-	r.handleID++
-	return id
-}
-
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
-// phy and re-use or create interface on the phy. The handle object for the service is returned.
-func (r *Router) StartAPIface(ctx context.Context, conf *hostapd.Config) (*APIface, error) {
+// phy and re-use or create interface on the phy. Name is used on the path to store logs, config files
+// or related resources. The handle object for the service is returned.
+func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
 	// Reserve required resources.
-	name := r.getUniqueServiceName()
 	iface, err := r.selectInterface(ctx, conf.Channel, iw.IfTypeManaged)
 	if err != nil {
 		return nil, err
