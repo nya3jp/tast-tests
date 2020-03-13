@@ -50,7 +50,8 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
 	cleanupCtx := ctx
-	ctx, _ = ctxutil.Shorten(ctx, time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
 
 	sup, cleanup := setup.New("power idle perf")
 	defer func() {
