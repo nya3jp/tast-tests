@@ -36,6 +36,8 @@ type IfType string
 
 // IfType enums. (Only defines the values useful for us. For complete
 // list of possible values, please refer to iftype_name in iw.)
+// NOTE: When adding new types, please also update the busy type logic
+// in remote/wificell/router.go
 const (
 	IfTypeManaged IfType = "managed"
 	IfTypeMonitor IfType = "monitor"
