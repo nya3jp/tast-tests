@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "abd63eb3_1052321a",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-13T09:38:21Z",
+      "side": 1,
+      "message": "I wanted to make it clear that the numbers are not arbitrary and are from somewhere else.\n\nI was able to find the enum where these are defined, and put a comment explaining.",
+      "parentUuid": "0bb6bfba_bb52655f",
+      "range": {
+        "startLine": 59,
+        "startChar": 27,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "69ed149c8c51eeacddc2a6f22ffd2d4925b14207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "564ec7f4_64a17fc3",
         "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
         "patchSetId": 2
