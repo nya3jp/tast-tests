@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -102,12 +103,21 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Triggered a crash in the VM")
 
-	if _, err := crash.WaitForCrashFiles(ctx, []string{daemonStorePath}, oldFiles, []string{`.*\.meta`, `.*\.dmp`}); err != nil {
+	files, err := crash.WaitForCrashFiles(ctx, []string{daemonStorePath}, oldFiles, []string{`vm_crash.*\.meta`, `vm_crash.*\.dmp`, `vm_crash.*\.proclog`})
+	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
 
-	// TODO(crbug.com/703926): Check that the values in the
-	// metadata file make sense. In paticular, check that the guest
-	// OS release (e.g. "buster") is available and that the board is
-	// set to "tatl" or "tael".
+	s.Log("Checking for expected metadata values")
+
+	metaFilePath := daemonStorePath + "/" + files[`vm_crash.*\.meta`][0]
+	cmd = testexec.CommandContext(ctx, "grep", "-E", "^board=(tatl|tael)$", metaFilePath)
+	if err = cmd.Run(); err != nil {
+		s.Fatal("Did not find expected line 'board=(tatl|tael)' in metadata file: ", err)
+	}
+
+	cmd = testexec.CommandContext(ctx, "grep", "-E", "^upload_var_vm_os_release=.*(stretch|buster)", metaFilePath)
+	if err = cmd.Run(); err != nil {
+		s.Fatal("Did not find expected line 'upload_var_vm_os_release=.*(stretch|buster)' in metadata file: ", err)
+	}
 }
