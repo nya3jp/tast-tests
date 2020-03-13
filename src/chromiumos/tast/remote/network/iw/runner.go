@@ -7,9 +7,11 @@ package iw
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/remote/network/commander"
+	"chromiumos/tast/testing"
 )
 
 // remoteCmdRunner implements iw.CmdRunner interface.
@@ -20,11 +22,18 @@ type remoteCmdRunner struct {
 var _ iw.CmdRunner = (*remoteCmdRunner)(nil)
 
 func (r *remoteCmdRunner) Run(ctx context.Context, cmd string, args ...string) error {
-	return r.host.Command(cmd, args...).Run(ctx)
+	_, err := r.Output(ctx, cmd, args...)
+	return err
 }
 
 func (r *remoteCmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
-	return r.host.Command(cmd, args...).Output(ctx)
+	out, err := r.host.Command(cmd, args...).Output(ctx)
+	// NB: the 'local' variant uses DumpLogOnError, which is not provided by Commander.
+	if err != nil {
+		testing.ContextLogf(ctx, "command: %s %s", cmd, strings.Join(args, " "))
+		testing.ContextLog(ctx, "output: ", string(out))
+	}
+	return out, err
 }
 
 // Runner is an alias for common iw Runner but only for remote execution.
