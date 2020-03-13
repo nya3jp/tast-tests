@@ -107,14 +107,20 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	}
 	flagTime := time.Unix(flagInfo.Modified.Seconds, int64(flagInfo.Modified.Nanos))
 
+	current := time.Now()
 	ut, err := uptime(ctx, fileSystem)
 	if err != nil {
 		s.Fatal("Failed to get uptime: ", err)
 	}
-	bootTime := time.Now().Add(time.Second * time.Duration(-ut))
+	// This bootTime can be slightly older than actual. It can theoretically
+	// result in a false negative (overlook wrong condition) with very limited
+	// timing. However it would be OK practically because boot would take more
+	// than a second. Additionally, if bootTime were newer than actual, it may
+	// falsely fail when flagTime is right after the actual boot time.
+	bootTime := current.Add(time.Duration(-ut * float64(time.Second)))
 
 	if flagTime.Before(bootTime) {
 		s.Errorf("User space crash handling was not started during last boot: crash_reporter started at %s, system was booted at %s",
-			flagTime.Format(time.RFC3339), bootTime.Format(time.RFC3339))
+			flagTime.Format(time.RFC3339Nano), bootTime.Format(time.RFC3339Nano))
 	}
 }
