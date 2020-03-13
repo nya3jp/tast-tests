@@ -16,8 +16,22 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/lacros/launcher"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
+
+type testMode int
+
+const (
+	openURLMode testMode = iota
+	openTabMode
+)
+
+type testParams struct {
+	mode    testMode
+	url     string
+	numTabs int
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -33,16 +47,19 @@ func init() {
 		Timeout: 60 * time.Minute,
 		Params: []testing.Param{{
 			Name: "blank",
-			Val:  "about:blank",
+			Val:  testParams{mode: openURLMode, url: "about:blank"},
 		}, {
 			Name: "docs",
-			Val:  "https://docs.google.com/document/d/1_WmgE1F5WUrhwkPqJis3dWyOiUmQKvpXp5cd4w86TvA/edit",
+			Val:  testParams{mode: openURLMode, url: "https://docs.google.com/document/d/1_WmgE1F5WUrhwkPqJis3dWyOiUmQKvpXp5cd4w86TvA/edit"},
 		}, {
 			Name: "reddit",
-			Val:  "https://old.reddit.com/",
+			Val:  testParams{mode: openURLMode, url: "https://old.reddit.com/"},
 		}, {
 			Name: "youtube",
-			Val:  "https://www.youtube.com/watch?v=uS33jC2VYNU",
+			Val:  testParams{mode: openURLMode, url: "https://www.youtube.com/watch?v=uS33jC2VYNU"},
+		}, {
+			Name: "twentytabs",
+			Val:  testParams{mode: openTabMode, numTabs: 20},
 		},
 		},
 	})
@@ -143,7 +160,8 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 // which may choose to spawn/kill utility or renderer processes for its own
 // purposes. My running the same code 10 times, outliers become obvious.
 func Memory(ctx context.Context, s *testing.State) {
-	url := s.Param().(string)
+	params := s.Param().(testParams)
+	url := params.url
 	for i := 0; i < 10; i++ {
 		// Measure memory before launching linux-chrome.
 		pmf1, pss1 := measureBothChrome(ctx, s)
@@ -155,23 +173,13 @@ func Memory(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to launch linux-chrome: ", err)
 		}
 
-		// Open a new tab and navigate to |url|.
-		newTab, err := l.Devsess.CreateTarget(ctx, url)
-		if err != nil {
-			s.Fatal("Failed to open new tab: ", err)
-		}
-
-		// Close the initial "about:blank" tab present at startup.
-		targetFilter := func(t *target.Info) bool {
-			return t.URL == "about:blank"
-		}
-		targets, err := l.Devsess.FindTargets(ctx, targetFilter)
-		if err != nil {
-			s.Fatal("Failed to query for about:blank pages: ", err)
-		}
-		for _, info := range targets {
-			if target := info.TargetID; target != newTab {
-				l.Devsess.CloseTarget(ctx, target)
+		if params.mode == openTabMode {
+			if err = openTabsLinux(ctx, l, params.numTabs); err != nil {
+				s.Fatal("Failed to oepn linux-chrome tabs: ", err)
+			}
+		} else {
+			if err = navigateSingleTabToURLLinux(ctx, url, l); err != nil {
+				s.Fatal("Failed to open a linux tab: ", err)
 			}
 		}
 
@@ -185,12 +193,23 @@ func Memory(ctx context.Context, s *testing.State) {
 		// Measure memory before launching chromeos-chrome.
 		pmf3, pss3 := measureBothChrome(ctx, s)
 
-		// Open a new tab to |url|.
-		conn, err := s.PreValue().(launcher.PreData).Chrome.NewConn(ctx, url)
-		if err != nil {
-			s.Fatal("Failed to open chromeos-chrome tab: ", err)
+		var conns []*chrome.Conn
+		if params.mode == openTabMode {
+			conns, err = openTabsChromeOS(ctx, s.PreValue().(launcher.PreData).Chrome, params.numTabs)
+			if err != nil {
+				s.Fatal("Failed to open chromeos-chrome tabs: ", err)
+			}
+		} else {
+			// Open a new tab to |url|.
+			conn, err := s.PreValue().(launcher.PreData).Chrome.NewConn(ctx, url)
+			if err != nil {
+				s.Fatal("Failed to open chromeos-chrome tab: ", err)
+			}
+			conns = append(conns, conn)
 		}
-		defer conn.Close()
+		for _, conn := range conns {
+			defer conn.Close()
+		}
 
 		// Set the window to 800x600 in size.
 		err = s.PreValue().(launcher.PreData).TestAPIConn.EvalPromise(ctx,
@@ -209,6 +228,66 @@ func Memory(ctx context.Context, s *testing.State) {
 		testing.ContextLogf(ctx, "chromeos-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf4-pmf3)/1024/1024, (pss4-pss3)/1024/1024)
 
 		// Close chromeos-chrome
-		conn.CloseTarget(ctx)
+		for _, conn := range conns {
+			conn.CloseTarget(ctx)
+		}
 	}
+}
+
+// navigateSingleTabToURLLinux assumes that there's a freshly launched instance
+// of linux-chrome, with a single tab open to about:blank. This function
+// creates a new tab, navigates it to the url, and closes the original tab.
+func navigateSingleTabToURLLinux(ctx context.Context, url string, l *launcher.LinuxChrome) error {
+	// Open a new tab and navigate to |url|.
+	newTab, err := l.Devsess.CreateTarget(ctx, url)
+	if err != nil {
+		return errors.Wrap(err, "failed to open new tab")
+	}
+
+	// Close the initial "about:blank" tab present at startup.
+	targetFilter := func(t *target.Info) bool {
+		return t.URL == "about:blank"
+	}
+	targets, err := l.Devsess.FindTargets(ctx, targetFilter)
+	if err != nil {
+		return errors.Wrap(err, "failed to query for about:blank pages")
+	}
+	for _, info := range targets {
+		if target := info.TargetID; target != newTab {
+			l.Devsess.CloseTarget(ctx, target)
+		}
+	}
+	return nil
+}
+
+// openTabsLinux assumes that linux-chrome has been freshly launched,
+// with a single tab opened to about:blank.
+func openTabsLinux(ctx context.Context, l *launcher.LinuxChrome, numTabs int) error {
+	for i := 0; i < numTabs-1; i++ {
+		// Open a new tab and navigate to about blank
+		if _, err := l.Devsess.CreateTarget(ctx, "about:blank"); err != nil {
+			return err
+		}
+
+		// Wait one second to quiesce.
+		testing.Sleep(ctx, time.Second)
+	}
+	return nil
+}
+
+// openTabsChromeOS assumes that chromeos-chrome is running, but that
+// there is no open window.
+func openTabsChromeOS(ctx context.Context, c *chrome.Chrome, numTabs int) ([]*chrome.Conn, error) {
+	var conns []*chrome.Conn
+	for i := 0; i < numTabs; i++ {
+		conn, err := c.NewConn(ctx, "about:blank")
+		if err != nil {
+			for _, conn := range conns {
+				conn.Close()
+			}
+			return nil, err
+		}
+		conns = append(conns, conn)
+	}
+	return conns, nil
 }
