@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3e35a29f_62588d18",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-13T08:43:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "364814dc_6cc632ec",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb6e17e4_6b90a508",
         "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
         "patchSetId": 22
@@ -141,6 +165,30 @@
       "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78783406_61b03bb4",
+        "filename": "src/chromiumos/tast/local/power/rapl_metrics.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-13T08:43:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df81c1f4_592796ad",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "8c567c8a942fce0138517915d0a4db1459e2cdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
