@@ -244,3 +244,74 @@ func TestParseFrequencyFlags(t *testing.T) {
 		t.Errorf("unexpected result in parseFrequencyFlags: got %v, want %v", ret, expected)
 	}
 }
+
+func TestParseInterfaces(t *testing.T) {
+	for _, param := range []struct {
+		content  string
+		expected []*NetDev
+	}{
+		{
+			content: `phy#1
+	Interface managed0
+		ifindex 142
+		wdev 0x100000080
+		addr 00:11:22:33:44:55
+		type managed
+	Interface monitor0
+		ifindex 141
+		wdev 0x10000007f
+		addr 00:11:22:33:44:55
+		type monitor
+phy#0
+	Interface managed2
+		ifindex 139
+		wdev 0x9
+		addr 00:11:22:33:44:55
+		type managed
+`,
+			expected: []*NetDev{
+				&NetDev{
+					PhyNum: 1,
+					IfName: "managed0",
+					IfType: "managed",
+				},
+				&NetDev{
+					PhyNum: 1,
+					IfName: "monitor0",
+					IfType: "monitor",
+				},
+				&NetDev{
+					PhyNum: 0,
+					IfName: "managed2",
+					IfType: "managed",
+				},
+			},
+		},
+		{
+			content: `phy#0
+	Interface wlan0
+		ifindex 8
+		wdev 0x100000001
+		addr 50:00:00:00:00:01
+		type managed
+		channel 52 (5260 MHz), width: 40 MHz, center1: 5270 MHz
+		txpower 23.00 dBm
+`,
+			expected: []*NetDev{
+				&NetDev{
+					PhyNum: 0,
+					IfName: "wlan0",
+					IfType: "managed",
+				},
+			},
+		},
+	} {
+		devs, err := parseInterfaces(param.content)
+		if err != nil {
+			t.Fatal("parseInterfaces failed: ", err)
+		}
+		if !reflect.DeepEqual(devs, param.expected) {
+			t.Errorf("unexpected result in parseInterfaces: got %v, want %v", devs, param.expected)
+		}
+	}
+}
