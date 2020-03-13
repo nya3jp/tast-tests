@@ -274,3 +274,19 @@ func (c *WilcoService) WaitForHandleConfigurationDataChanged(ctx context.Context
 
 	return &empty.Empty{}, nil
 }
+
+func (c *WilcoService) WaitForHandleMessageFromUi(ctx context.Context, req *empty.Empty) (*wpb.WaitForHandleMessageFromUiResponse, error) { // NOLINT
+	if c.receiver == nil {
+		return nil, errors.New("DPSL listener not running")
+	}
+
+	msg := dtcpb.HandleMessageFromUiRequest{}
+
+	if err := c.receiver.WaitForMessage(ctx, &msg); err != nil {
+		return nil, errors.Wrap(err, "unable to receive HandleConfigurationDataChanged event")
+	}
+
+	return &wpb.WaitForHandleMessageFromUiResponse{
+		JsonMessage: msg.JsonMessage,
+	}, nil
+}
