@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2171ac_61a94419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-13T22:39:38Z",
+      "side": 1,
+      "message": "I would vote to make this an enum; not wild about using string compares",
+      "range": {
+        "startLine": 40,
+        "startChar": 23,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "bbadb908ccaace7917be100eb378a1369efe18a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
