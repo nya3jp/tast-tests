@@ -165,13 +165,20 @@ func WithMockConsent() Option {
 
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
-// test should "defer TearDownCrashTest()" after calling this. If developer image
+// test should "defer TearDownCrashTest(ctx)" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
 func SetUpCrashTest(ctx context.Context, opts ...Option) error {
+	daemonStorePath, err := GetDaemonStoreCrashDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store crash directory")
+	}
+
 	p := setUpParams{
 		inProgDir:         crashTestInProgressDir,
 		sysCrashDir:       SystemCrashDir,
 		sysCrashStash:     systemCrashStash,
+		daemonStoreDir:    daemonStorePath,
+		daemonStoreStash:  daemonStorePath + ".real",
 		chronosCrashDir:   LocalCrashDir,
 		chronosCrashStash: localCrashStash,
 		userCrashDir:      UserCrashDir,
@@ -191,7 +198,7 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	}
 
 	// This file usually doesn't exist; don't error out if it doesn't. "Not existing"
-	// is the normal state, so we don't undo this in TearDownCrashTest().
+	// is the normal state, so we don't undo this in TearDownCrashTest(ctx).
 	if err := os.Remove(collectChromeCrashFile); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove "+collectChromeCrashFile)
 	}
@@ -203,7 +210,7 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 // generate crashes from failing due to full crash directories. This function does
 // not indicate to the DUT that a crash test is in progress, allowing the test to
 // complete with standard developer image behavior. The test should
-// "defer TearDownCrashTest()" after calling this
+// "defer TearDownCrashTest(ctx)" after calling this
 func SetUpDevImageCrashTest(ctx context.Context) error {
 	return SetUpCrashTest(ctx, DevImage())
 }
@@ -213,6 +220,8 @@ type setUpParams struct {
 	inProgDir         string
 	sysCrashDir       string
 	sysCrashStash     string
+	daemonStoreDir    string
+	daemonStoreStash  string
 	chronosCrashDir   string
 	chronosCrashStash string
 	userCrashDir      string
@@ -255,6 +264,8 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 				inProgDir:         p.inProgDir,
 				sysCrashDir:       p.sysCrashDir,
 				sysCrashStash:     p.sysCrashStash,
+				daemonStoreDir:    p.daemonStoreDir,
+				daemonStoreStash:  p.daemonStoreStash,
 				chronosCrashDir:   p.chronosCrashDir,
 				chronosCrashStash: p.chronosCrashStash,
 				userCrashDir:      p.userCrashDir,
@@ -309,6 +320,9 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	if err := moveAllCrashesTo(p.sysCrashDir, p.sysCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
+	if err := moveAllCrashesTo(p.daemonStoreDir, p.daemonStoreStash); err != nil && !os.IsNotExist(err) {
+		return err
+	}
 	if err := moveAllCrashesTo(p.chronosCrashDir, p.chronosCrashStash); err != nil && !os.IsNotExist(err) {
 		return err
 	}
@@ -347,12 +361,19 @@ func cleanUpStashDir(stashDir, realDir string) error {
 }
 
 // TearDownCrashTest undoes the work of SetUpCrashTest.
-func TearDownCrashTest() error {
+func TearDownCrashTest(ctx context.Context) error {
+	daemonStorePath, err := GetDaemonStoreCrashDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store crash directory")
+	}
+
 	var firstErr error
 	p := tearDownParams{
 		inProgDir:         crashTestInProgressDir,
 		sysCrashDir:       SystemCrashDir,
 		sysCrashStash:     systemCrashStash,
+		daemonStoreDir:    daemonStorePath,
+		daemonStoreStash:  daemonStorePath + ".real",
 		chronosCrashDir:   LocalCrashDir,
 		chronosCrashStash: localCrashStash,
 		userCrashDir:      UserCrashDir,
@@ -377,6 +398,8 @@ type tearDownParams struct {
 	inProgDir         string
 	sysCrashDir       string
 	sysCrashStash     string
+	daemonStoreDir    string
+	daemonStoreStash  string
 	chronosCrashDir   string
 	chronosCrashStash string
 	userCrashDir      string
@@ -400,6 +423,9 @@ func tearDownCrashTest(p *tearDownParams) error {
 	}
 
 	if err := cleanUpStashDir(p.sysCrashStash, p.sysCrashDir); err != nil && firstErr == nil {
+		firstErr = err
+	}
+	if err := cleanUpStashDir(p.daemonStoreStash, p.daemonStoreDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
 	if err := cleanUpStashDir(p.chronosCrashStash, p.chronosCrashDir); err != nil && firstErr == nil {
