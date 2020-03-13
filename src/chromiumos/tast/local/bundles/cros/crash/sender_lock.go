@@ -35,7 +35,7 @@ func SenderLock(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(s.PreValue().(*chrome.Chrome))); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(ctx)
 
 	const basename = "some_program.1.2.3"
 	if _, err := crash.AddFakeMinidumpCrash(ctx, basename); err != nil {

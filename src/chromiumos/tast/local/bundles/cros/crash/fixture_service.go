@@ -88,7 +88,7 @@ func (c *FixtureService) RemoveAllFiles(ctx context.Context, req *crash_service.
 
 func (c *FixtureService) TearDown(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	var firstErr error
-	if err := crash.TearDownCrashTest(); err != nil {
+	if err := crash.TearDownCrashTest(ctx); err != nil {
 		firstErr = err
 	}
 	if c.cr != nil {
