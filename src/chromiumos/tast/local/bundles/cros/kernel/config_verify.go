@@ -199,6 +199,30 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// MAC is for external drive formatted on Macintosh.
 		"MAC_PARTITION",
 		"MSDOS_PARTITION",
+
+		// Kernel hardening.
+		// Settings that are commented out need to be enabled in the kernel first.
+		// TODO(crbug.com/1061514): Start enabling these.
+		"HARDENED_USERCOPY",
+
+		// "FORTIFY_SOURCE",
+
+		// "VMAP_STACK",
+
+		// "SLAB_FREELIST_RANDOM",
+		// "SLAB_FREELIST_HARDENED",
+
+		// "RANDOMIZE_BASE",
+
+		// CONFIG_UNMAP_KERNEL_AT_EL0=y (aarch64)
+
+		// CONFIG_ARM64_SW_TTBR0_PAN=y (aarch64)
+
+		// CONFIG_INIT_STACK_ALL=y (since v5.2, with Clang)
+
+		// CONFIG_SHUFFLE_PAGE_ALLOCATOR=y (since v5.2)
+
+		// CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y (since v5.3)
 	}
 	module := []string{
 		// Sanity checks; should be present in builds as modules.
@@ -230,7 +254,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// NaCl; allow mprotect+PROT_EXEC on noexec mapped files.
 		"MMAP_NOEXEC_TAINT": "0",
 	}
-	same := [][2]string{}
+	var same [][2]string
 	optional := []string{
 		// OVERLAY_FS is needed in moblab images, and allowed to exist in general. https://crbug.com/990741#c9
 		"OVERLAY_FS",
@@ -337,6 +361,10 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		} else {
 			builtin = append(builtin, "X86_PAE")
 		}
+
+		// Kernel hardening.
+		builtin = append(builtin, "PAGE_TABLE_ISOLATION")
+		// builtin = append(builtin, "RANDOMIZE_MEMORY")
 	}
 
 	return &kernelConfigCheck{
