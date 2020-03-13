@@ -24,7 +24,7 @@ func SupportdPID(ctx context.Context) (pid int, err error) {
 
 // StartSupportd starts the upstart process wilco_dtc_supportd.
 func StartSupportd(ctx context.Context) error {
-	if err := upstart.RestartJob(ctx, wilcoSupportdJob); err != nil {
+	if err := upstart.RestartJob(ctx, wilcoSupportdJob, "VLOG_PARAMS=--v=3"); err != nil {
 		return errors.Wrapf(err, "unable to start the %s service", wilcoSupportdJob)
 	}
 	return nil
