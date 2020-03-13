@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 var htTable = map[string]string{
@@ -339,7 +340,8 @@ func (r *Runner) GetRegulatoryDomain(ctx context.Context) (string, error) {
 // SetRegulatoryDomain sets the regulatory domain code.
 // country is ISO/IEC 3166-1 alpha2 code for the country.
 func (r *Runner) SetRegulatoryDomain(ctx context.Context, country string) error {
-	if err := r.cmd.Run(ctx, "iw", "reg", "set", country); err != nil {
+	if out, err := r.cmd.Output(ctx, "iw", "reg", "set", country); err != nil {
+		testing.ContextLog(ctx, "iw output: ", string(out))
 		return errors.Wrapf(err, "failed to set regulatory domain %s", country)
 	}
 	return nil
@@ -352,7 +354,8 @@ func (r *Runner) SetTxPower(ctx context.Context, iface string, mode string, powe
 	if mode != "fixed" && mode != "limit" {
 		return errors.Errorf("unexpected mode = %q", mode)
 	}
-	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "txpower", mode, strconv.Itoa(power)); err != nil {
+	if out, err := r.cmd.Output(ctx, "iw", "dev", iface, "set", "txpower", mode, strconv.Itoa(power)); err != nil {
+		testing.ContextLog(ctx, "iw output: ", string(out))
 		return errors.Wrap(err, "failed to set txpower")
 	}
 	return nil
@@ -360,7 +363,8 @@ func (r *Runner) SetTxPower(ctx context.Context, iface string, mode string, powe
 
 // SetTxPowerAuto sets the wireless interface's transmit power to auto mode.
 func (r *Runner) SetTxPowerAuto(ctx context.Context, iface string) error {
-	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "txpower", "auto"); err != nil {
+	if out, err := r.cmd.Output(ctx, "iw", "dev", iface, "set", "txpower", "auto"); err != nil {
+		testing.ContextLog(ctx, "iw output: ", string(out))
 		return errors.Wrap(err, "failed to set txpower")
 	}
 	return nil
@@ -369,7 +373,8 @@ func (r *Runner) SetTxPowerAuto(ctx context.Context, iface string) error {
 // SetFreq sets the wireless interface's LO center freq.
 // Interface should be in monitor mode before scanning.
 func (r *Runner) SetFreq(ctx context.Context, iface string, freq int) error {
-	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "freq", strconv.Itoa(freq)); err != nil {
+	if out, err := r.cmd.Output(ctx, "iw", "dev", iface, "set", "freq", strconv.Itoa(freq)); err != nil {
+		testing.ContextLog(ctx, "iw output: ", string(out))
 		return errors.Wrap(err, "failed to set freq")
 	}
 	return nil
@@ -377,8 +382,8 @@ func (r *Runner) SetFreq(ctx context.Context, iface string, freq int) error {
 
 // SetAntennaBitmap sets the antenna bitmap.
 func (r *Runner) SetAntennaBitmap(ctx context.Context, phy string, txBitmap int, rxBitmap int) error {
-	if err := r.cmd.Run(ctx, "iw", "phy", phy, "set", "antenna", strconv.Itoa(txBitmap),
-		strconv.Itoa(rxBitmap)); err != nil {
+	if out, err := r.cmd.Output(ctx, "iw", "phy", phy, "set", "antenna", strconv.Itoa(txBitmap), strconv.Itoa(rxBitmap)); err != nil {
+		testing.ContextLog(ctx, "iw output: ", string(out))
 		return errors.Wrap(err, "failed to set Antenna bitmap")
 	}
 	return nil
