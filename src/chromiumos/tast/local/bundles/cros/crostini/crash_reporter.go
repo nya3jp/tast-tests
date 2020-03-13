@@ -6,7 +6,9 @@ package crostini
 
 import (
 	"context"
+	"io/ioutil"
 	"os/exec"
+	"regexp"
 	"syscall"
 	"time"
 
@@ -97,13 +99,21 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Triggered a crash in the VM")
 
-	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths, []string{}, []string{`.*\.meta`, `.*\.dmp`})
+	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths, []string{}, []string{`vm_crash.*\.meta`, `vm_crash.*\.dmp`, `vm_crash.*\.proclog`})
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
 
-	// TODO(crbug.com/703926): Check that the values in the
-	// metadata file make sense. In paticular, check that the guest
-	// OS release (e.g. "buster") is available and that the board is
-	// set to "tatl" or "tael".
+	s.Log("Checking for expected metadata values")
+
+	metaData, err := ioutil.ReadFile(files[`vm_crash.*\.meta`][0])
+	if err != nil {
+		s.Fatal("Failed to read metadata file: ", err)
+	}
+	if re, _ := regexp.Compile("board=(tatl|tael)"); !re.Match(metaData) {
+		s.Fatal("Did not find expected line 'board=(tatl|tael)' in metadata file")
+	}
+	if re, _ := regexp.Compile("upload_var_vm_os_release=.*(stretch|buster)"); !re.Match(metaData) {
+		s.Fatal("Did not find expected line 'upload_var_vm_os_release=.*(stretch|buster)' in metadata file")
+	}
 }
