@@ -7,6 +7,7 @@ package wificell
 import (
 	"context"
 	"math/rand"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/dut"
@@ -27,6 +28,8 @@ type TestFixture struct {
 	routerHost *ssh.Conn
 	router     *Router
 	wifiClient network.WifiClient
+
+	apID       int
 	curService *network.Service
 	curAP      *APIface
 }
@@ -100,13 +103,22 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	return retErr
 }
 
+// getUniqueAPName returns an unique ID string for each AP as their name, so that related
+// logs/pcap can be identified easily.
+func (tf *TestFixture) getUniqueAPName() string {
+	id := strconv.Itoa(tf.apID)
+	tf.apID++
+	return id
+}
+
 // ConfigureAP configures the router to provide a WiFi service with the options specified.
 func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (*APIface, error) {
+	name := tf.getUniqueAPName()
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
 		return nil, err
 	}
-	return tf.router.StartAPIface(ctx, config)
+	return tf.router.StartAPIface(ctx, name, config)
 }
 
 // DeconfigAP stops the WiFi service on router.
