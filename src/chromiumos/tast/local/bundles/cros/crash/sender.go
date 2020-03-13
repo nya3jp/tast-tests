@@ -28,14 +28,30 @@ func init() {
 			"cros-monitoring-forensics@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:              "real_consent",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			Pre:               crash.ChromePreWithVerboseConsent(),
+			Val:               "real_consent",
+		}, {
+			Name: "mock_consent",
+			Val:  "mock_consent",
+		}},
 	})
 }
 
 func Sender(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(s.PreValue().(*chrome.Chrome))); err != nil {
+	var cr *chrome.Chrome
+	var opt crash.Option
+	useConsent := s.Param().(string)
+	if useConsent == "real_consent" {
+		cr = s.PreValue().(*chrome.Chrome)
+		opt = crash.WithConsent(cr)
+	} else {
+		opt = crash.WithMockConsent()
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
