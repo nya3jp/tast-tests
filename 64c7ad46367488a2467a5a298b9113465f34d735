@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af0c2ec_d0e1958a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-13T03:55:03Z",
+      "side": 1,
+      "message": "Is there a better way to check that a specific error has been returned?",
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
