@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e900bd6_5e92483e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-13T05:52:36Z",
+      "side": 1,
+      "message": "Inherit SERVICE_DISCONNECT_TIMEOUT\u003d5 seconds from Autotest.",
+      "parentUuid": "e03ea767_35569f34",
+      "range": {
+        "startLine": 116,
+        "startChar": 21,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "920e1e99ad0ea6dba2f43903bbb5adecf5e1b141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "034c30da_27a40523",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 18
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "10213844_9680cd65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-13T05:52:36Z",
+      "side": 1,
+      "message": "Add type filter (and as it\u0027s WifiService, I think the function name is still ok).",
+      "parentUuid": "034c30da_27a40523",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 58
+      },
+      "revId": "920e1e99ad0ea6dba2f43903bbb5adecf5e1b141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49f5d7c_37a73150",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 18
@@ -68,6 +116,30 @@
       "revId": "920e1e99ad0ea6dba2f43903bbb5adecf5e1b141",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860ae332_31fcd1c4",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-13T05:52:36Z",
+      "side": 1,
+      "message": "Oops, it\u0027s not a .go file so tast-lint didn\u0027t catch that. Thanks.",
+      "parentUuid": "d49f5d7c_37a73150",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "920e1e99ad0ea6dba2f43903bbb5adecf5e1b141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
