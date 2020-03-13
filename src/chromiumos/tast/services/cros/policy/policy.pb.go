@@ -26,11 +26,12 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type EnrollUsingChromeRequest struct {
-	PolicyJson           []byte   `protobuf:"bytes,1,opt,name=policy_json,json=policyJson,proto3" json:"policy_json,omitempty"`
-	Username             string   `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	PolicyJson           []byte       `protobuf:"bytes,1,opt,name=policy_json,json=policyJson,proto3" json:"policy_json,omitempty"`
+	Username             string       `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	Extensions           []*Extension `protobuf:"bytes,3,rep,name=extensions,proto3" json:"extensions,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
 func (m *EnrollUsingChromeRequest) Reset()         { *m = EnrollUsingChromeRequest{} }
@@ -70,6 +71,13 @@ func (m *EnrollUsingChromeRequest) GetUsername() string {
 		return m.Username
 	}
 	return ""
+}
+
+func (m *EnrollUsingChromeRequest) GetExtensions() []*Extension {
+	if m != nil {
+		return m.Extensions
+	}
+	return nil
 }
 
 type UpdatePoliciesRequest struct {
@@ -197,42 +205,236 @@ func (m *ServePolicyDataResponse) GetHash() string {
 	return ""
 }
 
+type EvalInExtensionRequest struct {
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Expression           string   `protobuf:"bytes,2,opt,name=expression,proto3" json:"expression,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *EvalInExtensionRequest) Reset()         { *m = EvalInExtensionRequest{} }
+func (m *EvalInExtensionRequest) String() string { return proto.CompactTextString(m) }
+func (*EvalInExtensionRequest) ProtoMessage()    {}
+func (*EvalInExtensionRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ac3b897852294d6a, []int{4}
+}
+
+func (m *EvalInExtensionRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EvalInExtensionRequest.Unmarshal(m, b)
+}
+func (m *EvalInExtensionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EvalInExtensionRequest.Marshal(b, m, deterministic)
+}
+func (m *EvalInExtensionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EvalInExtensionRequest.Merge(m, src)
+}
+func (m *EvalInExtensionRequest) XXX_Size() int {
+	return xxx_messageInfo_EvalInExtensionRequest.Size(m)
+}
+func (m *EvalInExtensionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_EvalInExtensionRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EvalInExtensionRequest proto.InternalMessageInfo
+
+func (m *EvalInExtensionRequest) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *EvalInExtensionRequest) GetExpression() string {
+	if m != nil {
+		return m.Expression
+	}
+	return ""
+}
+
+type EvalInExtensionResponse struct {
+	Result               []byte   `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *EvalInExtensionResponse) Reset()         { *m = EvalInExtensionResponse{} }
+func (m *EvalInExtensionResponse) String() string { return proto.CompactTextString(m) }
+func (*EvalInExtensionResponse) ProtoMessage()    {}
+func (*EvalInExtensionResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ac3b897852294d6a, []int{5}
+}
+
+func (m *EvalInExtensionResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_EvalInExtensionResponse.Unmarshal(m, b)
+}
+func (m *EvalInExtensionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_EvalInExtensionResponse.Marshal(b, m, deterministic)
+}
+func (m *EvalInExtensionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EvalInExtensionResponse.Merge(m, src)
+}
+func (m *EvalInExtensionResponse) XXX_Size() int {
+	return xxx_messageInfo_EvalInExtensionResponse.Size(m)
+}
+func (m *EvalInExtensionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_EvalInExtensionResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_EvalInExtensionResponse proto.InternalMessageInfo
+
+func (m *EvalInExtensionResponse) GetResult() []byte {
+	if m != nil {
+		return m.Result
+	}
+	return nil
+}
+
+type ExtensionFile struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Contents             []byte   `protobuf:"bytes,2,opt,name=contents,proto3" json:"contents,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ExtensionFile) Reset()         { *m = ExtensionFile{} }
+func (m *ExtensionFile) String() string { return proto.CompactTextString(m) }
+func (*ExtensionFile) ProtoMessage()    {}
+func (*ExtensionFile) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ac3b897852294d6a, []int{6}
+}
+
+func (m *ExtensionFile) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExtensionFile.Unmarshal(m, b)
+}
+func (m *ExtensionFile) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExtensionFile.Marshal(b, m, deterministic)
+}
+func (m *ExtensionFile) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExtensionFile.Merge(m, src)
+}
+func (m *ExtensionFile) XXX_Size() int {
+	return xxx_messageInfo_ExtensionFile.Size(m)
+}
+func (m *ExtensionFile) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExtensionFile.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ExtensionFile proto.InternalMessageInfo
+
+func (m *ExtensionFile) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ExtensionFile) GetContents() []byte {
+	if m != nil {
+		return m.Contents
+	}
+	return nil
+}
+
+type Extension struct {
+	Id                   string           `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Files                []*ExtensionFile `protobuf:"bytes,2,rep,name=files,proto3" json:"files,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *Extension) Reset()         { *m = Extension{} }
+func (m *Extension) String() string { return proto.CompactTextString(m) }
+func (*Extension) ProtoMessage()    {}
+func (*Extension) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ac3b897852294d6a, []int{7}
+}
+
+func (m *Extension) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Extension.Unmarshal(m, b)
+}
+func (m *Extension) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Extension.Marshal(b, m, deterministic)
+}
+func (m *Extension) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Extension.Merge(m, src)
+}
+func (m *Extension) XXX_Size() int {
+	return xxx_messageInfo_Extension.Size(m)
+}
+func (m *Extension) XXX_DiscardUnknown() {
+	xxx_messageInfo_Extension.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Extension proto.InternalMessageInfo
+
+func (m *Extension) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *Extension) GetFiles() []*ExtensionFile {
+	if m != nil {
+		return m.Files
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*EnrollUsingChromeRequest)(nil), "tast.cros.policy.EnrollUsingChromeRequest")
 	proto.RegisterType((*UpdatePoliciesRequest)(nil), "tast.cros.policy.UpdatePoliciesRequest")
 	proto.RegisterType((*ServePolicyDataRequest)(nil), "tast.cros.policy.ServePolicyDataRequest")
 	proto.RegisterType((*ServePolicyDataResponse)(nil), "tast.cros.policy.ServePolicyDataResponse")
+	proto.RegisterType((*EvalInExtensionRequest)(nil), "tast.cros.policy.EvalInExtensionRequest")
+	proto.RegisterType((*EvalInExtensionResponse)(nil), "tast.cros.policy.EvalInExtensionResponse")
+	proto.RegisterType((*ExtensionFile)(nil), "tast.cros.policy.ExtensionFile")
+	proto.RegisterType((*Extension)(nil), "tast.cros.policy.Extension")
 }
 
 func init() { proto.RegisterFile("policy.proto", fileDescriptor_ac3b897852294d6a) }
 
 var fileDescriptor_ac3b897852294d6a = []byte{
-	// 396 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x92, 0x5f, 0x6b, 0x1a, 0x41,
-	0x14, 0xc5, 0xb5, 0x95, 0xa2, 0xb7, 0xb6, 0xb5, 0x43, 0xfd, 0xc3, 0xf6, 0xa1, 0xb2, 0x94, 0xd6,
-	0xf6, 0x61, 0x16, 0xda, 0x3e, 0xf4, 0x2d, 0x24, 0x6a, 0x48, 0x0c, 0x81, 0xb0, 0x8b, 0x84, 0xe4,
-	0x25, 0x8c, 0xeb, 0xc4, 0xdd, 0xb8, 0x3b, 0xb3, 0x99, 0x99, 0x0d, 0xf1, 0x93, 0xe6, 0xeb, 0x84,
-	0xd9, 0x51, 0x21, 0xae, 0x8a, 0x04, 0xdf, 0xe6, 0xcf, 0x3d, 0x87, 0xc3, 0xef, 0x1e, 0xa8, 0x26,
-	0x3c, 0x0a, 0xfd, 0x19, 0x4e, 0x04, 0x57, 0x1c, 0xd5, 0x14, 0x91, 0x0a, 0xfb, 0x82, 0x4b, 0x6c,
-	0xde, 0xad, 0xaf, 0x13, 0xce, 0x27, 0x11, 0x75, 0xb2, 0xff, 0x51, 0x7a, 0xeb, 0xd0, 0x38, 0x51,
-	0xf3, 0x71, 0xfb, 0x12, 0x5a, 0x7d, 0x26, 0x78, 0x14, 0x0d, 0x65, 0xc8, 0x26, 0xdd, 0x40, 0xf0,
-	0x98, 0xba, 0xf4, 0x3e, 0xa5, 0x52, 0xa1, 0x6f, 0xf0, 0xde, 0x58, 0xdc, 0xdc, 0x49, 0xce, 0x5a,
-	0xc5, 0x76, 0xb1, 0x53, 0x75, 0xc1, 0x3c, 0x0d, 0x24, 0x67, 0xc8, 0x82, 0x72, 0x2a, 0xa9, 0x60,
-	0x24, 0xa6, 0xad, 0x37, 0xed, 0x62, 0xa7, 0xe2, 0x2e, 0xef, 0xf6, 0x7f, 0xa8, 0x0f, 0x93, 0x31,
-	0x51, 0xf4, 0x42, 0xcf, 0x87, 0x54, 0xee, 0xea, 0x6a, 0xff, 0x83, 0x86, 0x47, 0xc5, 0x83, 0x11,
-	0xce, 0x7a, 0x44, 0x91, 0x85, 0xd4, 0x82, 0xb2, 0xcf, 0x99, 0xa2, 0x4c, 0xc9, 0xb9, 0x6e, 0x79,
-	0xb7, 0x0f, 0xa0, 0x99, 0x53, 0xc9, 0x84, 0x33, 0x49, 0x51, 0x0d, 0xde, 0xa6, 0x22, 0xca, 0x14,
-	0x15, 0x57, 0x1f, 0x11, 0x82, 0x52, 0x40, 0x64, 0x30, 0x0f, 0x9d, 0x9d, 0xff, 0x3c, 0x95, 0xe0,
-	0x83, 0x11, 0x6b, 0x9f, 0xd0, 0xa7, 0xe8, 0x0a, 0x3e, 0xe7, 0xd8, 0xa0, 0xdf, 0x78, 0x15, 0x30,
-	0xde, 0x04, 0xd0, 0x6a, 0x60, 0x83, 0x1e, 0x2f, 0xd0, 0xe3, 0xbe, 0x46, 0x6f, 0x17, 0x90, 0x07,
-	0x1f, 0x5f, 0xd2, 0x41, 0x3f, 0xf3, 0xbe, 0x6b, 0xf9, 0x6d, 0x31, 0x3d, 0x85, 0x7a, 0x37, 0xa0,
-	0xfe, 0xd4, 0x84, 0x38, 0x64, 0xe3, 0x63, 0x32, 0xa5, 0xbd, 0x73, 0x0f, 0x6d, 0x90, 0x6c, 0xb1,
-	0x3a, 0x81, 0x2f, 0x9e, 0xe2, 0xc9, 0x1e, 0x9c, 0xce, 0xa0, 0xe9, 0x29, 0x22, 0x54, 0xff, 0x51,
-	0xe9, 0x66, 0x44, 0x7a, 0x33, 0xd9, 0xa2, 0xc4, 0x2b, 0xcc, 0x02, 0xf8, 0xb4, 0xb2, 0x64, 0xd4,
-	0xc9, 0x73, 0x5b, 0xdf, 0x1e, 0xeb, 0xd7, 0x0e, 0x93, 0xa6, 0x31, 0x76, 0x01, 0x0d, 0xa0, 0xa1,
-	0x01, 0xec, 0x23, 0xf5, 0xd1, 0x8f, 0xeb, 0xef, 0xbe, 0x06, 0x19, 0xa6, 0x31, 0x97, 0x8e, 0x0e,
-	0xe1, 0x48, 0x53, 0x31, 0xe9, 0xe8, 0x34, 0x8e, 0x49, 0x33, 0x7a, 0x97, 0x29, 0xff, 0x3e, 0x07,
-	0x00, 0x00, 0xff, 0xff, 0xd6, 0x0f, 0xcb, 0xda, 0xd1, 0x03, 0x00, 0x00,
+	// 556 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x53, 0x5d, 0x4f, 0x13, 0x41,
+	0x14, 0xa5, 0xad, 0x36, 0xf4, 0xf2, 0x21, 0x4e, 0xa4, 0x6d, 0x4a, 0x22, 0xcd, 0xc6, 0x68, 0xf1,
+	0x61, 0x37, 0xa2, 0x26, 0x26, 0x3e, 0x10, 0x85, 0x12, 0xc0, 0x98, 0x90, 0xdd, 0xf0, 0xa0, 0x0f,
+	0x9a, 0x61, 0x7b, 0x69, 0x47, 0x76, 0x67, 0xd6, 0x99, 0x59, 0x22, 0xff, 0xc3, 0x1f, 0xe1, 0xcf,
+	0x34, 0xb3, 0xb3, 0x2d, 0xa5, 0xbb, 0x34, 0x0d, 0xe1, 0x6d, 0x3e, 0xce, 0x39, 0x73, 0xee, 0x9d,
+	0x73, 0x61, 0x35, 0x11, 0x11, 0x0b, 0xaf, 0xdd, 0x44, 0x0a, 0x2d, 0xc8, 0x86, 0xa6, 0x4a, 0xbb,
+	0xa1, 0x14, 0xca, 0xb5, 0xe7, 0x9d, 0xad, 0xa1, 0x10, 0xc3, 0x08, 0xbd, 0xec, 0xfe, 0x3c, 0xbd,
+	0xf0, 0x30, 0x4e, 0x74, 0x0e, 0x77, 0xfe, 0x56, 0xa0, 0xdd, 0xe7, 0x52, 0x44, 0xd1, 0x99, 0x62,
+	0x7c, 0xb8, 0x3f, 0x92, 0x22, 0x46, 0x1f, 0x7f, 0xa7, 0xa8, 0x34, 0xd9, 0x86, 0x15, 0xab, 0xf1,
+	0xf3, 0x97, 0x12, 0xbc, 0x5d, 0xe9, 0x56, 0x7a, 0xab, 0x3e, 0xd8, 0xa3, 0x13, 0x25, 0x38, 0xe9,
+	0xc0, 0x72, 0xaa, 0x50, 0x72, 0x1a, 0x63, 0xbb, 0xda, 0xad, 0xf4, 0x1a, 0xfe, 0x64, 0x4f, 0x3e,
+	0x02, 0xe0, 0x1f, 0x8d, 0x5c, 0x31, 0xc1, 0x55, 0xbb, 0xd6, 0xad, 0xf5, 0x56, 0x76, 0xb7, 0xdc,
+	0x59, 0x77, 0x6e, 0x7f, 0x8c, 0xf1, 0xa7, 0xe0, 0xce, 0x07, 0xd8, 0x3c, 0x4b, 0x06, 0x54, 0xe3,
+	0xa9, 0x41, 0x31, 0x54, 0x8b, 0x5a, 0x72, 0xde, 0x41, 0x33, 0x40, 0x79, 0x65, 0x89, 0xd7, 0x07,
+	0x54, 0xd3, 0x31, 0xb5, 0x03, 0xcb, 0xa1, 0xe0, 0x1a, 0xb9, 0x56, 0x39, 0x6f, 0xb2, 0x77, 0xf6,
+	0xa0, 0x55, 0x60, 0xa9, 0x44, 0x70, 0x85, 0x64, 0x03, 0x6a, 0xa9, 0x8c, 0x32, 0x46, 0xc3, 0x37,
+	0x4b, 0x42, 0xe0, 0xd1, 0x88, 0xaa, 0x51, 0x5e, 0x71, 0xb6, 0x76, 0x8e, 0xa0, 0xd9, 0xbf, 0xa2,
+	0xd1, 0x31, 0xbf, 0xa9, 0x27, 0x7f, 0x76, 0x1d, 0xaa, 0x6c, 0x90, 0xd3, 0xab, 0x6c, 0x40, 0x9e,
+	0x9b, 0xbe, 0x24, 0x12, 0x95, 0x01, 0xe5, 0x1a, 0x53, 0x27, 0xce, 0x1b, 0x68, 0x15, 0x94, 0x72,
+	0x2b, 0x4d, 0xa8, 0x4b, 0x54, 0x69, 0xa4, 0x73, 0xff, 0xf9, 0xce, 0xd9, 0x83, 0xb5, 0x09, 0xf8,
+	0x90, 0x45, 0x68, 0x1c, 0x66, 0x7f, 0x62, 0x5f, 0xcd, 0xd6, 0xb7, 0xca, 0xaf, 0xce, 0x94, 0xef,
+	0x43, 0x63, 0x22, 0x50, 0x30, 0xfc, 0x1e, 0x1e, 0x5f, 0xb0, 0x08, 0x0d, 0xcb, 0xfc, 0xe1, 0xf6,
+	0x9c, 0x3f, 0x34, 0x8f, 0xfb, 0x16, 0xbd, 0xfb, 0xaf, 0x0e, 0x6b, 0xb6, 0x9d, 0xa6, 0xb3, 0x2c,
+	0x44, 0xf2, 0x0d, 0x9e, 0x16, 0xa2, 0x46, 0x5e, 0x97, 0xc8, 0xdd, 0x91, 0xc7, 0x4e, 0xd3, 0xb5,
+	0x51, 0x76, 0xc7, 0x51, 0x76, 0xfb, 0x26, 0xca, 0xce, 0x12, 0x09, 0x60, 0xfd, 0x76, 0x5e, 0xc8,
+	0xab, 0xa2, 0x6e, 0x69, 0xa2, 0xe6, 0x88, 0x1e, 0xc3, 0xe6, 0xfe, 0x08, 0xc3, 0x4b, 0x6b, 0xe2,
+	0x13, 0x1f, 0x1c, 0xd2, 0x4b, 0x3c, 0xf8, 0x1a, 0x90, 0x3b, 0x28, 0x73, 0xa4, 0x8e, 0xe0, 0x59,
+	0xa0, 0x45, 0xf2, 0x00, 0x4a, 0x5f, 0xa0, 0x15, 0x68, 0x2a, 0xb5, 0xe9, 0xb9, 0xe4, 0x34, 0x32,
+	0x59, 0xcd, 0xa2, 0x2b, 0xef, 0x21, 0x36, 0x82, 0x27, 0x33, 0xb1, 0x27, 0xbd, 0x62, 0xdf, 0xca,
+	0xe7, 0xa9, 0xb3, 0xb3, 0x00, 0xd2, 0x06, 0xd7, 0x59, 0x22, 0x27, 0xd0, 0x34, 0x0d, 0x78, 0x10,
+	0xd7, 0x3f, 0xa0, 0x6d, 0x26, 0x24, 0xd0, 0x54, 0x63, 0x8c, 0x5c, 0x4f, 0x8d, 0x4a, 0x99, 0xfd,
+	0xf2, 0xb9, 0x9c, 0xa3, 0x2f, 0xec, 0x2c, 0x9f, 0x4a, 0x11, 0x33, 0x85, 0xf7, 0x53, 0xdf, 0x59,
+	0x00, 0x39, 0x6e, 0xce, 0xe7, 0x97, 0xdf, 0x5f, 0x84, 0x26, 0x19, 0x2c, 0x8d, 0x85, 0xf2, 0x0c,
+	0xd1, 0x53, 0x76, 0x66, 0x94, 0x67, 0x14, 0x3c, 0xab, 0x70, 0x5e, 0xcf, 0xac, 0xbe, 0xfd, 0x1f,
+	0x00, 0x00, 0xff, 0xff, 0xcd, 0x73, 0x2d, 0x37, 0xf2, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -254,6 +456,8 @@ type PolicyServiceClient interface {
 	StartExternalDataServer(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	ServePolicyData(ctx context.Context, in *ServePolicyDataRequest, opts ...grpc.CallOption) (*ServePolicyDataResponse, error)
 	StopExternalDataServer(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	EvalStatementInExtension(ctx context.Context, in *EvalInExtensionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	EvalPromiseInExtension(ctx context.Context, in *EvalInExtensionRequest, opts ...grpc.CallOption) (*EvalInExtensionResponse, error)
 }
 
 type policyServiceClient struct {
@@ -327,6 +531,24 @@ func (c *policyServiceClient) StopExternalDataServer(ctx context.Context, in *em
 	return out, nil
 }
 
+func (c *policyServiceClient) EvalStatementInExtension(ctx context.Context, in *EvalInExtensionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.policy.PolicyService/EvalStatementInExtension", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *policyServiceClient) EvalPromiseInExtension(ctx context.Context, in *EvalInExtensionRequest, opts ...grpc.CallOption) (*EvalInExtensionResponse, error) {
+	out := new(EvalInExtensionResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.policy.PolicyService/EvalPromiseInExtension", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PolicyServiceServer is the server API for PolicyService service.
 type PolicyServiceServer interface {
 	EnrollUsingChrome(context.Context, *EnrollUsingChromeRequest) (*empty.Empty, error)
@@ -336,6 +558,8 @@ type PolicyServiceServer interface {
 	StartExternalDataServer(context.Context, *empty.Empty) (*empty.Empty, error)
 	ServePolicyData(context.Context, *ServePolicyDataRequest) (*ServePolicyDataResponse, error)
 	StopExternalDataServer(context.Context, *empty.Empty) (*empty.Empty, error)
+	EvalStatementInExtension(context.Context, *EvalInExtensionRequest) (*empty.Empty, error)
+	EvalPromiseInExtension(context.Context, *EvalInExtensionRequest) (*EvalInExtensionResponse, error)
 }
 
 // UnimplementedPolicyServiceServer can be embedded to have forward compatible implementations.
@@ -362,6 +586,12 @@ func (*UnimplementedPolicyServiceServer) ServePolicyData(ctx context.Context, re
 }
 func (*UnimplementedPolicyServiceServer) StopExternalDataServer(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopExternalDataServer not implemented")
+}
+func (*UnimplementedPolicyServiceServer) EvalStatementInExtension(ctx context.Context, req *EvalInExtensionRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EvalStatementInExtension not implemented")
+}
+func (*UnimplementedPolicyServiceServer) EvalPromiseInExtension(ctx context.Context, req *EvalInExtensionRequest) (*EvalInExtensionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EvalPromiseInExtension not implemented")
 }
 
 func RegisterPolicyServiceServer(s *grpc.Server, srv PolicyServiceServer) {
@@ -494,6 +724,42 @@ func _PolicyService_StopExternalDataServer_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PolicyService_EvalStatementInExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EvalInExtensionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PolicyServiceServer).EvalStatementInExtension(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.policy.PolicyService/EvalStatementInExtension",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PolicyServiceServer).EvalStatementInExtension(ctx, req.(*EvalInExtensionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PolicyService_EvalPromiseInExtension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EvalInExtensionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PolicyServiceServer).EvalPromiseInExtension(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.policy.PolicyService/EvalPromiseInExtension",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PolicyServiceServer).EvalPromiseInExtension(ctx, req.(*EvalInExtensionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _PolicyService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.policy.PolicyService",
 	HandlerType: (*PolicyServiceServer)(nil),
@@ -525,6 +791,14 @@ var _PolicyService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "StopExternalDataServer",
 			Handler:    _PolicyService_StopExternalDataServer_Handler,
+		},
+		{
+			MethodName: "EvalStatementInExtension",
+			Handler:    _PolicyService_EvalStatementInExtension_Handler,
+		},
+		{
+			MethodName: "EvalPromiseInExtension",
+			Handler:    _PolicyService_EvalPromiseInExtension_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
