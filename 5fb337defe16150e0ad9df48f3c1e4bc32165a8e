@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa134c5f_cca45381",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-13T21:54:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22733a4_2b575b30",
+      "range": {
+        "startLine": 15,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "5fb337defe16150e0ad9df48f3c1e4bc32165a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc3a02a7_a03ebc90",
         "filename": "src/chromiumos/tast/common/firmware/const.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ff5bc7fc_ae59d7dd",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-13T21:54:24Z",
+      "side": 1,
+      "message": "Ack the state design pattern -- agree that it\u0027s outside the scope of this change.\n\nPreviously I had written these BootModes as ints with the value `iota`, making them a true Go enum. (See the deleted code in .../local/firmware/utils.go.) I switched to a string in order to aid printability.",
+      "parentUuid": "cc3a02a7_a03ebc90",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "5fb337defe16150e0ad9df48f3c1e4bc32165a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2657341_a9217944",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-13T21:05:27Z",
       "side": 1,
       "message": "There are differing views on creating RPC wrapper libraries (see go/no-wrapper-libraries).  This generally seems reasonable to me since usage will be contained in tast tests (i.e. there won\u0027t, for example be demand for the wrapper in other languages).  Just FYI.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "5fb337defe16150e0ad9df48f3c1e4bc32165a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0a7bcf8_7b035313",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-13T21:54:24Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll be curious to hear the Tast owners\u0027 viewpoint.",
+      "parentUuid": "b2657341_a9217944",
       "range": {
         "startLine": 20,
         "startChar": 5,
