@@ -75,14 +75,11 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 	cl.Close(ctx)
 	cl = nil
 
-	// init/upstart/test-init/early-falure.conf will crash early in boot.
+	// init/upstart/test-init/early-failure.conf will crash early in boot.
 	s.Log("Rebooting")
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}
-
-	// TODO(mutexlox): After the reboot, when crash runs with --boot_collect,
-	// it sometimes fails consent. (~3-4/10 times). Figure out why.
 
 	// When we lost the connection, these connections broke.
 	s.Log("Re-dialing")
