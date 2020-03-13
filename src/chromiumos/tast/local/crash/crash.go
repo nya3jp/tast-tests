@@ -158,7 +158,7 @@ func GetCrashDir(username string) (string, error) {
 	return p[0], nil
 }
 
-// GetDaemonStoreCrashDirs gives the path to the daemon store crash directory for the currently active session. It assumes that there is only a single active session at a time.
+// GetDaemonStoreCrashDirs gives the paths to the daemon store crash directories for the currently active sessions.
 func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 	sessionManager, err := session.NewSessionManager(ctx)
 	if err != nil {
