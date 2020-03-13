@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca92763_41bb36f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-13T17:26:35Z",
+      "side": 1,
+      "message": "Since this test is modifying the fixture that all of the tests depend on, and many of our tests are not CQ-blocking, can you please manually run them? (Re-running as necessary for flakes is fine, obviously - see https://tastboard.corp.google.com/test?contact\u003dcros-monitoring-forensics\u0026testname\u003d to see if the flakes are expected / how common they are)",
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c27096_8aeada5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-13T17:26:35Z",
+      "side": 1,
+      "message": "nit: this isn\u0027t really necessary, as long as SetUpCrashTest properly stashes the old crashes. Eventually we\u0027re going to get rid of the oldFiles parameter, we just haven\u0027t gotten around to it yet.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b918c52_3eccbd9d",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-13T17:26:35Z",
+      "side": 1,
+      "message": "I\u0027m concerned that this will be brittle. Can this method instead return a list of daemon store crash directories? Most of our methods that take crash directories already take lists as parameters, I believe, due to the fact that there may be multiple active sessions.\n\nAlternatively, can you use something like UserCrashDir?\n\n\t// UserCrashDir is the directory where crash reports of currently logged in user go.\n\tUserCrashDir \u003d \"/home/chronos/user/crash\"",
+      "range": {
+        "startLine": 161,
+        "startChar": 114,
+        "endLine": 161,
+        "endChar": 164
+      },
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8940964c_efe445b7",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-13T17:26:35Z",
+      "side": 1,
+      "message": "Please don\u0027t abort TearDown early in this case; we can still proceed with cleaning up the rest of the directories, even if we can\u0027t do daemon store.",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 71
+      },
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
