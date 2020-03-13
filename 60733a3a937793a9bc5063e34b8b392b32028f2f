@@ -16,6 +16,24 @@
       "revId": "60733a3a937793a9bc5063e34b8b392b32028f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1cab5aa_f098853c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-fscrypt.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2020-03-13T06:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c32f78bf_33edf942",
+      "revId": "60733a3a937793a9bc5063e34b8b392b32028f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
