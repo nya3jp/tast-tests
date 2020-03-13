@@ -6,8 +6,10 @@ package policy
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -24,7 +26,8 @@ func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
 			ppb.RegisterPolicyServiceServer(srv, &PolicyService{
-				s: s,
+				s:              s,
+				extensionConns: make(map[string]*chrome.Conn),
 			})
 		},
 	})
@@ -34,9 +37,11 @@ func init() {
 type PolicyService struct { // NOLINT
 	s *testing.ServiceState
 
-	chrome     *chrome.Chrome
-	fakeDMS    *fakedms.FakeDMS
-	fakeDMSDir string
+	chrome         *chrome.Chrome
+	extensionConns map[string]*chrome.Conn
+	extensionDirs  []string
+	fakeDMS        *fakedms.FakeDMS
+	fakeDMSDir     string
 
 	eds *externaldata.Server
 }
@@ -46,7 +51,39 @@ type PolicyService struct { // NOLINT
 func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUsingChromeRequest) (*empty.Empty, error) {
 	testing.ContextLogf(ctx, "Enrolling using Chrome with policy %s", string(req.PolicyJson))
 
+	var opts []chrome.Option
+
 	ok := false
+
+	for _, extension := range req.Extensions {
+		extDir, err := ioutil.TempDir("", "tast-extensions-")
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create temp dir")
+		}
+		defer func(ctx context.Context) {
+			if !ok {
+				if err := os.RemoveAll(extDir); err != nil {
+					testing.ContextLogf(ctx, "Failed to delete %s: %v", extDir, err)
+				}
+			}
+		}(ctx)
+
+		c.extensionDirs = append(c.extensionDirs, extDir)
+
+		for _, file := range extension.Files {
+			if err := ioutil.WriteFile(filepath.Join(extDir, file.Name), file.Contents, 0644); err != nil {
+				return nil, errors.Wrapf(err, "failed to write %s for %s", file.Name, extension.Id)
+			}
+		}
+
+		if extID, err := chrome.ComputeExtensionID(extDir); err != nil {
+			return nil, errors.Wrap(err, "failed to compute extension id")
+		} else if extID != extension.Id {
+			return nil, errors.Errorf("unexpected extension id: got %s; want %s", extID, extension.Id)
+		}
+
+		opts = append(opts, chrome.UnpackedExtension(extDir))
+	}
 
 	tmpdir, err := ioutil.TempDir("", "fdms-")
 	if err != nil {
@@ -83,8 +120,11 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	if user == "" {
 		user = "tast-user@managedchrome.com"
 	}
-	authOpt := chrome.Auth(user, "test0000", "gaia-id")
-	cr, err := chrome.New(ctx, authOpt, chrome.DMSPolicy(fdms.URL), chrome.EnterpriseEnroll())
+	opts = append(opts, chrome.Auth(user, "test0000", "gaia-id"))
+	opts = append(opts, chrome.DMSPolicy(fdms.URL))
+	opts = append(opts, chrome.EnterpriseEnroll())
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start chrome")
 	}
@@ -150,6 +190,15 @@ func (c *PolicyService) CheckChromeAndFakeDMS(ctx context.Context, req *empty.Em
 
 // StopChromeAndFakeDMS stops Chrome and FakeDMS.
 func (c *PolicyService) StopChromeAndFakeDMS(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	var lastErr error
+
+	for id, conn := range c.extensionConns {
+		if err := conn.Close(); err != nil {
+			testing.ContextLogf(ctx, "Failed to close connection to extension %s", id)
+			lastErr = errors.Wrapf(err, "failed to close connection to extension %s", id)
+		}
+	}
+
 	if c.fakeDMS == nil {
 		return nil, errors.New("fake DMS server not started")
 	}
@@ -157,17 +206,25 @@ func (c *PolicyService) StopChromeAndFakeDMS(ctx context.Context, req *empty.Emp
 	c.fakeDMS.Stop(ctx)
 	c.fakeDMS = nil
 
-	raerr := os.RemoveAll(c.fakeDMSDir)
-	if raerr != nil {
-		raerr = errors.Wrap(raerr, "failed to remove temporary directory")
+	if err := os.RemoveAll(c.fakeDMSDir); err != nil {
+		testing.ContextLog(ctx, "Failed to remove temporary directory: ", err)
+		lastErr = errors.Wrap(err, "failed to remove temporary directory")
 	}
 
 	if err := c.chrome.Close(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to close chrome")
+		testing.ContextLog(ctx, "Failed to close chrome: ", err)
+		lastErr = errors.Wrap(err, "failed to close chrome")
 	}
 	c.chrome = nil
 
-	return &empty.Empty{}, raerr
+	for _, extDir := range c.extensionDirs {
+		if err := os.RemoveAll(extDir); err != nil {
+			testing.ContextLog(ctx, "Failed to remove extension directory: ", err)
+			lastErr = errors.Wrap(err, "failed to remove extension directory")
+		}
+	}
+
+	return &empty.Empty{}, lastErr
 }
 
 // StartExternalDataServer starts  an instance of externaldata.Server.
@@ -212,4 +269,54 @@ func (c *PolicyService) StopExternalDataServer(ctx context.Context, req *empty.E
 	c.eds = nil
 
 	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) connToExtension(ctx context.Context, id string) (*chrome.Conn, error) {
+	if val, ok := c.extensionConns[id]; ok {
+		return val, nil
+	}
+
+	bgURL := chrome.ExtensionBackgroundPageURL(id)
+	conn, err := c.chrome.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to connect to extension at %s", bgURL)
+	}
+
+	c.extensionConns[id] = conn
+
+	return conn, nil
+}
+
+func (c *PolicyService) EvalStatementInExtension(ctx context.Context, req *ppb.EvalInExtensionRequest) (*empty.Empty, error) {
+	conn, err := c.connToExtension(ctx, req.ExtensionId)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create connection to extension")
+	}
+
+	if err := conn.Eval(ctx, req.Expression, nil); err != nil {
+		return nil, errors.Wrap(err, "failed to run javascript")
+	}
+
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) EvalPromiseInExtension(ctx context.Context, req *ppb.EvalInExtensionRequest) (*ppb.EvalInExtensionResponse, error) {
+	conn, err := c.connToExtension(ctx, req.ExtensionId)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create connection to extension")
+	}
+
+	var result json.RawMessage
+	if err := conn.EvalPromise(ctx, req.Expression, &result); err != nil {
+		return nil, errors.Wrap(err, "failed to run javascript")
+	}
+
+	encoded, err := json.Marshal(result)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to encode result")
+	}
+
+	return &ppb.EvalInExtensionResponse{
+		Result: encoded,
+	}, nil
 }
