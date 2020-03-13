@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0151944d_242afe80",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-13T22:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af4abfa_1eb78d0a",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "4083d55c09f3e8c8b17297ee6e53539f3a2905ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "938cf5c9_72dd9c9f",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4083d55c09f3e8c8b17297ee6e53539f3a2905ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5a8fa0_63f98968",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-13T22:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "938cf5c9_72dd9c9f",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 95
+      },
+      "revId": "4083d55c09f3e8c8b17297ee6e53539f3a2905ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
