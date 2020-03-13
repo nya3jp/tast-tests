@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"os"
 
@@ -212,4 +213,59 @@ func (c *PolicyService) StopExternalDataServer(ctx context.Context, req *empty.E
 	c.eds = nil
 
 	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) EvalStatementOnTestAPIConn(ctx context.Context, req *ppb.EvalOnTestAPIConnRequest) (*empty.Empty, error) {
+	tconn, err := c.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	if err := tconn.Eval(ctx, req.Expression, nil); err != nil {
+		return nil, errors.Wrap(err, "failed to run javascript")
+	}
+
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) EvalOnTestAPIConn(ctx context.Context, req *ppb.EvalOnTestAPIConnRequest) (*ppb.EvalOnTestAPIConnResponse, error) {
+	tconn, err := c.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	var result json.RawMessage
+	if err := tconn.Eval(ctx, req.Expression, &result); err != nil {
+		return nil, errors.Wrap(err, "failed to run javascript")
+	}
+
+	encoded, err := json.Marshal(result)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to encode result")
+	}
+
+	return &ppb.EvalOnTestAPIConnResponse{
+		Result: encoded,
+	}, nil
+}
+
+func (c *PolicyService) EvalPromiseOnTestAPIConn(ctx context.Context, req *ppb.EvalOnTestAPIConnRequest) (*ppb.EvalOnTestAPIConnResponse, error) {
+	tconn, err := c.chrome.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+
+	var result json.RawMessage
+	if err := tconn.EvalPromise(ctx, req.Expression, &result); err != nil {
+		return nil, errors.Wrap(err, "failed to run javascript")
+	}
+
+	encoded, err := json.Marshal(result)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to encode result")
+	}
+
+	return &ppb.EvalOnTestAPIConnResponse{
+		Result: encoded,
+	}, nil
 }
