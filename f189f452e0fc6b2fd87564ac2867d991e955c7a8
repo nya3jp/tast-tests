@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaf6397_dff4ee3d",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-13T20:53:48Z",
+      "side": 1,
+      "message": "return an error here just to be super clear that it\u0027s not the expected path (\"test has timed out\" or something)",
+      "revId": "f189f452e0fc6b2fd87564ac2867d991e955c7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a41212a_f121127c",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-13T20:53:48Z",
+      "side": 1,
+      "message": "you could return the error after this block and leave the case: lines blank.  You\u0027ll exit the select block for either case (without doing anything) and then return the error.  It would save you creating a named error and a few lines.",
+      "revId": "f189f452e0fc6b2fd87564ac2867d991e955c7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
