@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07adaf80_b604fadd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T20:09:41Z",
+      "side": 1,
+      "message": "curAP?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e653814d_57de7af7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T20:09:41Z",
+      "side": 1,
+      "message": "do we really need to create a new instance each time? I feel like this may be something we\u0027ll want to directly expose to tests eventually, rather than bloating the TestFixture with each gRPC method we want to invoke. So, should it be a TestFixture member?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52636ec_48fd1be2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T20:09:41Z",
+      "side": 1,
+      "message": "What\u0027s the logic in lumping \"disconnect\" and \"delete\" in this function? In Autotest we didn\u0027t do that, and I see tests where that\u0027s important; e.g., if we want to reconnect later, or if we\u0027re wanting to still monitor the service state afterward.\n\nI see that maybe it\u0027s because otherwise, you\u0027d lose track of the SSID, when you set curHostapd to nil? I wonder if you need to do the nil-ification (next 2 lines) at all. They\u0027re only used for safety checks in the Ping command, which seems a bit unnecessary.\n\nWe probably also should expose the SSID somehow, either as a Router method (and the Router then exposed publicly) or as a TestFixture method.\n\nLong term, we may find that hiding the AP instances in TestFixture will not be a great idea, but we can defer that question I suppose.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6047a25c_0114fce5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T20:09:41Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me that the defaults for PingRunner (3 x 0.5s) are really correct for this. Among other things that leaves a very small window for noticing any disconnects.\n\nOTOH, I\u0027m not sure increasing this a bit more really helps us a lot, other than to make all these tests take longer.\n\nMaybe the default is fine, and we add configurability later, for tests that are really targeting longer-term stability?\n\n[I\u0027ll just mark this Resolved, since I think my notes are only food for thought.]",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae1933fc_f5ad1626",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T20:09:41Z",
+      "side": 1,
+      "message": "what if we have both? Do we want to wrap one in the other? It at least seems like we\u0027d want to know the first failure (f() error), if it occurred.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
