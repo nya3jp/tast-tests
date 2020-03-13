@@ -21,7 +21,7 @@ func init() {
 		Func:         IMEBlocking,
 		Desc:         "Checks if IME blocking works on ARC",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      3 * time.Minute,
