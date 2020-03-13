@@ -16,6 +16,24 @@
       "revId": "2a565dcfdbc1571f8afeb601bcad07015334e6d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2445d22_9703f7f8",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T07:02:49Z",
+      "side": 1,
+      "message": "Oops, good point. Unfortunately, the remote/Commander interface isn\u0027t as nice, but I tried hacking something together.",
+      "parentUuid": "96b48996_68548ab9",
+      "revId": "2a565dcfdbc1571f8afeb601bcad07015334e6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
