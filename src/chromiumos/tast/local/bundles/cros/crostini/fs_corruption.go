@@ -53,7 +53,7 @@ func init() {
 			"mutexlox@google.com",
 			"cros-monitoring-forensics@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "metrics_consent", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
 		Pre:          crostini.StartedByDownload(),
@@ -202,7 +202,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	data := s.PreValue().(crostini.PreData)
 	cr := data.Chrome
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest()

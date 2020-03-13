@@ -15,7 +15,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -28,12 +27,10 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UdevCrash,
-		Desc:         "Verify udev triggered crash works as expected",
-		Contacts:     []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Func:     UdevCrash,
+		Desc:     "Verify udev triggered crash works as expected",
+		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
@@ -87,8 +84,7 @@ func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
 }
 
 func UdevCrash(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

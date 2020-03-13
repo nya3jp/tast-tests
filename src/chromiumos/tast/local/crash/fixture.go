@@ -32,6 +32,17 @@ const (
 	collectChromeCrashFile = "/mnt/stateful_partition/etc/collect_chrome_crashes"
 )
 
+// ConsentType is to be used for parameters to tests, to allow them to determine
+// whether they should use mock consent or real consent.
+type ConsentType int
+
+const (
+	// MockConsent indicates that a test should use the mock consent system.
+	MockConsent ConsentType = iota
+	// RealConsent indicates that a test should use the real consent system.
+	RealConsent
+)
+
 // SetConsent enables or disables metrics consent, based on the value of |consent|.
 // Pre: cr must point to a logged-in chrome session.
 func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
