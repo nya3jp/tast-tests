@@ -53,6 +53,11 @@ type NetDev struct {
 	IfName, IfType string
 }
 
+// String implements the String interface for NetDev.
+func (n NetDev) String() string {
+	return fmt.Sprintf("{phy=%d, name=%s, type=%s}", n.PhyNum, n.IfName, n.IfType)
+}
+
 // Phy contains phy# attributes.
 type Phy struct {
 	Name                                      string
@@ -139,20 +144,25 @@ func (r *Runner) ListInterfaces(ctx context.Context) ([]*NetDev, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to list interfaces with command \"iw dev\"")
 	}
+
+	return parseInterfaces(string(out))
+}
+
+func parseInterfaces(iwOut string) ([]*NetDev, error) {
 	var interfaces []*NetDev
 
-	sections, err := parseSection(`phy#([0-9]+)`, string(out))
+	sections, err := parseSection(`(?m)^phy#([0-9]+)$`, iwOut)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not parse a NetDev from \"iw dev\" output")
 	}
 	for _, sec := range sections {
 		phy := sec.header
-		ifaces, err := extractMatch(`\s*Interface (.*)`, sec.body)
+		ifaces, err := parseSection(`(?m)^\s*Interface (.*)$`, sec.body)
 		if err != nil {
 			return nil, errors.Wrap(err, "could not parse interface")
 		}
 		for _, iface := range ifaces {
-			netdev, err := newNetDev(phy, iface, sec.body)
+			netdev, err := newNetDev(phy, iface.header, iface.body)
 			if err != nil {
 				return nil, errors.Wrap(err, "could not extract interface attributes")
 			}
@@ -472,9 +482,9 @@ func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
 }
 
 // newNetDev constructs a NetDev object from "iw dev" output.
-func newNetDev(phyStr, ifName, dataMatch string) (*NetDev, error) {
+func newNetDev(phyHeader, ifHeader, ifBody string) (*NetDev, error) {
 	// Parse phy number.
-	m, err := extractMatch(`phy#([0-9]+)`, phyStr)
+	m, err := extractMatch(`^phy#([0-9]+)$`, phyHeader)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to parse phy number")
 	}
@@ -483,13 +493,20 @@ func newNetDev(phyStr, ifName, dataMatch string) (*NetDev, error) {
 		return nil, errors.Wrapf(err, "could not convert str %q to int", m[0])
 	}
 
-	// Parse ifType
-	m, err = extractMatch(`\s*type ([a-zA-Z]+)`, dataMatch)
+	// Parse interface name.
+	m, err = extractMatch(`^\s*Interface (.*)$`, ifHeader)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse ifname")
+	}
+	ifName := m[0]
+
+	// Parse ifType.
+	m, err = extractMatch(`(?m)^\s*type ([a-zA-Z]+)$`, ifBody)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to parse ifType")
 	}
-
 	ifType := m[0]
+
 	return &NetDev{PhyNum: phy, IfName: ifName, IfType: ifType}, nil
 }
 
