@@ -8,6 +8,7 @@ package crash
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -17,6 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
@@ -154,6 +156,26 @@ func GetCrashDir(username string) (string, error) {
 		return "", errors.Errorf("Wrong number of users logged in; got %d, want 1 or 0", len(p))
 	}
 	return p[0], nil
+}
+
+// GetDaemonStoreCrashDirs gives the path to the daemon store crash directory for the currently active session. It assumes that there is only a single active session at a time.
+func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
+	sessionManager, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return []string{}, err
+	}
+
+	sessions, err := sessionManager.RetrieveActiveSessions(ctx)
+	if err != nil {
+		return []string{}, err
+	}
+
+	var ret []string
+	for k := range sessions {
+		userhash := sessions[k]
+		ret = append(ret, fmt.Sprintf("/home/root/%s/crash", userhash))
+	}
+	return ret, nil
 }
 
 // WaitForCrashFiles waits for each regex in regexes to match a file in dirs that is not also in oldFiles.
