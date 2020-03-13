@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c712c75_aaa88477",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_keyboard_backlight.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-13T09:10:56Z",
+      "side": 1,
+      "message": "In general we should not parse the result of CombinedOutput because stdout and stderr are interleaved and can be a source of flakiness.\n\nIf the message is written to stdout, please use Output instead. If the message is written to stderr:\n\n cmd :\u003d testexec.CommandContext(...)\n var stderr bytes.Buffer\n cmd.Stderr \u003d \u0026stderr\n if err :\u003d cmd.Run(...); err !\u003d nil { ... }\n if out :\u003d stderr.String(); strings.HasPrefix(out, \"...\") { ... }",
+      "range": {
+        "startLine": 19,
+        "startChar": 97,
+        "endLine": 19,
+        "endChar": 111
+      },
+      "revId": "6eb1da9168676b1f16b21384f7401e3081ebf1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
