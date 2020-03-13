@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf60617d_68f81bfb",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T07:02:38Z",
+      "side": 1,
+      "message": "Oops, thanks.",
+      "parentUuid": "2086184b_5c2f507b",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "4a036435bca1c1728d70a285c6a05c5f866bd010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d53ab95_e3242914",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "4a036435bca1c1728d70a285c6a05c5f866bd010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fdd47a_26b262f0",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T07:02:38Z",
+      "side": 1,
+      "message": "\u003e It is not that trivial that iface.header and iface.body may have \u0027\\n\u0027 at the beginning.\n\nIIUC, header will not have \u0027\\n\u0027. But body will. I suppose I can comment that. (FWIW, I didn\u0027t change that part of the behavior.)",
+      "parentUuid": "5d53ab95_e3242914",
+      "revId": "4a036435bca1c1728d70a285c6a05c5f866bd010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
