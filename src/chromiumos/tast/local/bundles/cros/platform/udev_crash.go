@@ -28,12 +28,19 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UdevCrash,
-		Desc:         "Verify udev triggered crash works as expected",
-		Contacts:     []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Func:     UdevCrash,
+		Desc:     "Verify udev triggered crash works as expected",
+		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:              "real_consent",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			Pre:               crash.ChromePreWithVerboseConsent(),
+			Val:               "real_consent",
+		}, {
+			Name: "mock_consent",
+			Val:  "mock_consent",
+		}},
 	})
 }
 
@@ -87,8 +94,16 @@ func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
 }
 
 func UdevCrash(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	var cr *chrome.Chrome
+	var opt crash.Option
+	useConsent := s.Param().(string)
+	if useConsent == "real_consent" {
+		cr = s.PreValue().(*chrome.Chrome)
+		opt = crash.WithConsent(cr)
+	} else {
+		opt = crash.WithMockConsent()
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
