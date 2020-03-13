@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "61663b40_472c9e9e",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T18:55:52Z",
+      "side": 1,
+      "message": "Ah, I roughly matched it based on output, but not implementation. Knowing the specific escaping details used by the SSH runner seems like one reason that the host package should take care of this for us, but I\u0027ll give it a go and see what nya@ says.",
+      "parentUuid": "1367a872_87031130",
+      "revId": "48ac6354959a9b0a2c83da0bcc439994e57218f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4dd4357_1b1e8583",
         "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "48ac6354959a9b0a2c83da0bcc439994e57218f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55f9150e_90a12e66",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T18:55:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4dd4357_1b1e8583",
+      "range": {
+        "startLine": 34,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "48ac6354959a9b0a2c83da0bcc439994e57218f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
