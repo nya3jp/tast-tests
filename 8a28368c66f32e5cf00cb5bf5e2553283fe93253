@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "0cae93a5_a1bab70a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T00:08:52Z",
+      "side": 1,
+      "message": "I\u0027m seeing this fail on some local runs, and I don\u0027t get the stdout. Can you make sure that these sorts of things are dumping log output appropriately?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 88
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e1eafe3_5abd160c",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 20
