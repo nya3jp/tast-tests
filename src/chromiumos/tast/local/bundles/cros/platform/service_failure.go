@@ -64,18 +64,31 @@ var testParams = []failureParams{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ServiceFailure,
-		Desc:         "Verify service failures are logged as expected",
-		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Func:     ServiceFailure,
+		Desc:     "Verify service failures are logged as expected",
+		Contacts: []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
+		Attr:     []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:              "real_consent",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			Pre:               crash.ChromePreWithVerboseConsent(),
+			Val:               "real_consent",
+		}, {
+			Name: "mock_consent",
+			Val:  "mock_consent",
+		}},
 	})
 }
 
 func ServiceFailure(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	var opt crash.Option
+	useConsent := s.Param().(string)
+	if useConsent == "real_consent" {
+		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
+	} else {
+		opt = crash.WithMockConsent()
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

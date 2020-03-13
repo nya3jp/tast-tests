@@ -11,7 +11,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 )
@@ -26,9 +25,7 @@ func init() {
 			"cros-monitoring-forensics@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
@@ -39,8 +36,7 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 		maxRuns = 100
 	)
 
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
