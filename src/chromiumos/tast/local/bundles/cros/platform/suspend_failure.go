@@ -8,7 +8,6 @@ import (
 	"context"
 	"strings"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -23,17 +22,14 @@ func init() {
 			"mutexlox@google.com",
 			"cros-monitoring-forensics@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
 func SuspendFailure(ctx context.Context, s *testing.State) {
 	const suspendFailureName = "suspend-failure"
-	cr := s.PreValue().(*chrome.Chrome)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

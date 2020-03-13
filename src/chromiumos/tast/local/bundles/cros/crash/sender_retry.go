@@ -10,7 +10,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
 )
@@ -25,14 +24,12 @@ func init() {
 			"cros-monitoring-forensics@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
 func SenderRetry(ctx context.Context, s *testing.State) {
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(s.PreValue().(*chrome.Chrome))); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

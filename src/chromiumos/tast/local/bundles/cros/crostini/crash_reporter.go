@@ -28,7 +28,7 @@ func init() {
 			"mutexlox@google.com",
 			"cros-monitoring-forensics@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "metrics_consent", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "artifact",
@@ -76,7 +76,7 @@ func checkExitError(err error) error {
 func CrashReporter(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(pre.Chrome)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest()

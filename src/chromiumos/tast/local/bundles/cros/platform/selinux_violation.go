@@ -25,8 +25,16 @@ func init() {
 		Desc:         "Verify selinux violations are logged as expected",
 		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent", "selinux"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		SoftwareDeps: []string{"selinux"},
+		Params: []testing.Param{{
+			Name:              "real_consent",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			Pre:               crash.ChromePreWithVerboseConsent(),
+			Val:               crash.RealConsent,
+		}, {
+			Name: "mock_consent",
+			Val:  crash.MockConsent,
+		}},
 	})
 }
 
@@ -46,8 +54,12 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 	// Directory name should keep in sync with platform2/sepolicy/policy/chromeos/dev/cros_ssh_session.te
 	const markerDirName = "cros_selinux_audit_sanity_test"
 
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	opt := crash.WithMockConsent()
+	useConsent := s.Param().(crash.ConsentType)
+	if useConsent == crash.RealConsent {
+		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
