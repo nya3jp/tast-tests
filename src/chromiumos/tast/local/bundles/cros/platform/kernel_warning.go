@@ -16,18 +16,29 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KernelWarning,
-		Desc:         "Verify kernel warnings are logged as expected",
-		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		Func:     KernelWarning,
+		Desc:     "Verify kernel warnings are logged as expected",
+		Contacts: []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
+		Attr:     []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:              "real_consent",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			Pre:               crash.ChromePreWithVerboseConsent(),
+			Val:               crash.RealConsent,
+		}, {
+			Name: "mock_consent",
+			Val:  crash.MockConsent,
+		}},
 	})
 }
 
 func KernelWarning(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	opt := crash.WithMockConsent()
+	useConsent := s.Param().(crash.ConsentType)
+	if useConsent == crash.RealConsent {
+		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
