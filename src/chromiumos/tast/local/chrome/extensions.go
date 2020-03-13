@@ -96,6 +96,7 @@ func writeTestExtension(dir string) (id string, err error) {
     "languageSettingsPrivate",
     "management",
     "metricsPrivate",
+    "nativeMessaging",
     "proxy",
     "settingsPrivate",
     "system.display",
