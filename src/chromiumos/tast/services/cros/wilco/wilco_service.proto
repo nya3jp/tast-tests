@@ -33,6 +33,8 @@ service WilcoService {
     returns (google.protobuf.Empty) {}
   rpc WaitForHandleConfigurationDataChanged(google.protobuf.Empty)
     returns (google.protobuf.Empty) {}
+  rpc WaitForHandleMessageFromUi(google.protobuf.Empty)
+    returns (WaitForHandleMessageFromUiResponse) {}
 }
 
 message GetStatusResponse {
@@ -62,4 +64,8 @@ enum DiagnosticRoutineStatus {
 
 message ExecuteRoutineResponse {
   DiagnosticRoutineStatus status = 1;
+}
+
+message WaitForHandleMessageFromUiResponse {
+  string json_message = 1;
 }
