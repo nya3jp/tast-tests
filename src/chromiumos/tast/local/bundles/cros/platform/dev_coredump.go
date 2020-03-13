@@ -8,7 +8,6 @@ import (
 	"context"
 	"os"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -25,8 +24,7 @@ func init() {
 		Desc:         "Verify device coredumps are handled as expected",
 		Contacts:     []string{"mwiitala@google.com", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent", "wifi"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
+		SoftwareDeps: []string{"wifi"},
 	})
 }
 
@@ -38,12 +36,10 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
-
 	// This test uses crash.DevImage because it is designed to test device
 	// coredump handling on developer images.  Without it, no .devcore
 	// files would be created.
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr), crash.DevImage()); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent(), crash.DevImage()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()

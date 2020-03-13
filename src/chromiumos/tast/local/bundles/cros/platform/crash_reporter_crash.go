@@ -31,9 +31,16 @@ func init() {
 			"joonbug@chromium.org",
 			"cros-monitoring-forensics@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Pre:          crash.ChromePreWithVerboseConsent(),
-		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:              "real_consent",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			Pre:               crash.ChromePreWithVerboseConsent(),
+			Val:               "real_consent",
+		}, {
+			Name: "mock_consent",
+			Val:  "mock_consent",
+		}},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
@@ -61,8 +68,12 @@ func setCorePatternCrashTest(crashTest bool) error {
 }
 
 func CrashReporterCrash(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	opt := crash.WithMockConsent()
+	useConsent := s.Param().(string)
+	if useConsent == "real_consent" {
+		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest()
