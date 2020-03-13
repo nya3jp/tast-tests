@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "8d780bad_fe3699d7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-13T10:17:19Z",
+      "side": 1,
+      "message": "nit: to be consistent with error messages, what about:\n\n      Starting activity %q in package %q  ???",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b585d5_f6f49695",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-13T10:17:19Z",
+      "side": 1,
+      "message": "huge nit: activity must be closed here due to it\u0027s documentation:\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go?type\u003dcs\u0026q\u003darc.NewActivity\u0026sq\u003dpackage:chromeos_public\u0026g\u003d0\u0026l\u003d116",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 95
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10cac61e_3fc42e71",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-13T10:17:19Z",
+      "side": 1,
+      "message": "do you stop all activities or only one specific?",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40d8b27a_881ea1ce",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 26
