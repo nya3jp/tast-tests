@@ -32,7 +32,7 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(ctx)
 
 	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
 	if err != nil {

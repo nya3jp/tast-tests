@@ -87,7 +87,7 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(ctx)
 
 	// Memorize existing crash report to distinguish new reports from them.
 	files, err := ioutil.ReadDir(systemCrashDir)

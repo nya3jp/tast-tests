@@ -579,7 +579,7 @@ func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
 	defer func() {
-		if err := crash.TearDownCrashTest(); err != nil {
+		if err := crash.TearDownCrashTest(ctx); err != nil {
 			s.Error("Failed to tear down crash test: ", err)
 		}
 	}()

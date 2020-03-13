@@ -205,7 +205,7 @@ func FsCorruption(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(ctx)
 
 	s.Log("Writing test file to container")
 	if err := createTestFiles(ctx, data.Container); err != nil {

@@ -39,7 +39,7 @@ func SenderRateLimit(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(ctx)
 
 	// Continue uploading crash reports until we hit the rate limit.
 	runs := 0
