@@ -105,6 +105,30 @@
       "revId": "03dd8dce8e179ba8a22024c4c75326b0b914fa2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f64b92a_e8d95f74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-03-13T04:12:40Z",
+      "side": 1,
+      "message": "Per offline discussion. Change it to use chrome.JSObject.",
+      "parentUuid": "4e5a0b37_565a0451",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 3
+      },
+      "revId": "03dd8dce8e179ba8a22024c4c75326b0b914fa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
