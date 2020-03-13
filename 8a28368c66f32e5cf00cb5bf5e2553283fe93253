@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "b4e401df_0442179c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-13T00:17:59Z",
+      "side": 1,
+      "message": "BTW, the failure info I *do* see says exit code 161. I think that translates to errno 33 (128 + 33 \u003d 161), \"Numerical argument out of domain\". Not sure what that would come from.",
+      "parentUuid": "0cae93a5_a1bab70a",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 88
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e1eafe3_5abd160c",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 20
