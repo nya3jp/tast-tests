@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c057f6e9_564e9d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-03-13T02:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2827103c_752785dd",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd3c8a6e_186c9e36",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-12-18T00:17:08Z",
       "side": 1,
       "message": "Should we mention this is temporary, and when we expect to deprecate it? We can be a bit more verbose here than in the vd tests usage documentation.",
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74c33e8_670987c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-03-13T02:58:03Z",
+      "side": 1,
+      "message": "I feel it should be enough to mention at the VdVDA class.\nhttps://cs.chromium.org/chromium/src/media/gpu/chromeos/vd_video_decode_accelerator.h?l\u003d40\nWhen we deprecate the VDVDA, we must deprecate these tests first.",
+      "parentUuid": "bd3c8a6e_186c9e36",
       "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "709b49e0_c201b72b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-03-13T02:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a70cf2b_8a50a973",
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46cfd8dc_5e26cbef",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda_perf.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25750231_8496fddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-03-13T02:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46cfd8dc_5e26cbef",
+      "revId": "6a155c660760ea920ab3899fdf6378f45ae71e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
