@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92ebd585_0385cdaf",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-13T17:05:57Z",
+      "side": 1,
+      "message": "nit: This and others; I personally feel \"Till\" or \"Until\" might be slightly better than \"Til\".",
+      "range": {
+        "startLine": 274,
+        "startChar": 19,
+        "endLine": 274,
+        "endChar": 22
+      },
+      "revId": "60f31b3cc86b87d240ba134f67993a6308d64adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c498eb31_fbea67b2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-13T17:05:57Z",
+      "side": 1,
+      "message": "This method and WaitTilDescendntExists share a lot of similar code (of course they do). I guess it is still worthwhile to keep the implementation, as a private method, and then make them as wrappers of the private one; i.e.\nfunc (n *Node) waitForDescendant(...)\n\nfunc (n *Node) WaitTilDescendantGone(...) error {\n  return n.waitForDescendant(ctx, params, false, timeout)\n}",
+      "range": {
+        "startLine": 289,
+        "startChar": 15,
+        "endLine": 289,
+        "endChar": 36
+      },
+      "revId": "60f31b3cc86b87d240ba134f67993a6308d64adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9358b267_f92ce2f4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-13T17:05:57Z",
+      "side": 1,
+      "message": "(follow-up for my comment above): I think it\u0027s fine to keep this and WaitTilExists separated.",
+      "range": {
+        "startLine": 394,
+        "startChar": 5,
+        "endLine": 394,
+        "endChar": 16
+      },
+      "revId": "60f31b3cc86b87d240ba134f67993a6308d64adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
