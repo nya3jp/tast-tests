@@ -31,7 +31,7 @@ type Router struct {
 	board       string
 	busySubnet  map[byte]struct{}
 	phys        map[int]*iw.Phy       // map from phy idx to iw.Phy.
-	busyPhy     map[int]int           // map from phy idx to busy interface count.
+	busyPhy     map[int]int           // map from phy idx to bitmap of busy interface types.
 	availIfaces map[string]*iw.NetDev // map from interface name to iw.NetDev.
 	busyIfaces  map[string]*iw.NetDev // map from interface name to iw.NetDev.
 	handleID    int
@@ -245,15 +245,16 @@ func (r *Router) Close(ctx context.Context) error {
 	return err
 }
 
-// selectPhy finds an suitable phy for the given channel and returns its phy index.
-func (r *Router) selectPhy(ctx context.Context, channel int) (int, error) {
+// phy finds an suitable phy for the given channel and target interface type t.
+// The selected phy index is returned.
+func (r *Router) phy(ctx context.Context, channel int, t iw.IfType) (int, error) {
 	freq, err := hostapd.ChannelToFrequency(channel)
 	if err != nil {
 		return 0, errors.Errorf("channel %d not available", channel)
 	}
 	for id, phy := range r.phys {
 		// Skip busy phys.
-		if r.busyPhy[id] > 0 {
+		if r.isPhyBusy(id, t) {
 			continue
 		}
 		// Check channel support.
@@ -266,30 +267,21 @@ func (r *Router) selectPhy(ctx context.Context, channel int) (int, error) {
 	return 0, errors.Errorf("cannot find supported phy for channel=%d", channel)
 }
 
-// selectInterface finds an available interface suitable for the given channel and type.
-func (r *Router) selectInterface(ctx context.Context, channel int, t iw.IfType) (string, error) {
-	phyID, err := r.selectPhy(ctx, channel)
+// netDev finds an available interface suitable for the given channel and type.
+func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetDev, error) {
+	phyID, err := r.phy(ctx, channel, t)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	// First check if there's an available interface on target phy.
-	var selected string
-	for ifaceName, nd := range r.availIfaces {
+	for _, nd := range r.availIfaces {
 		if nd.PhyNum == phyID && nd.IfType == t {
-			selected = ifaceName
-			break
+			return nd, nil
 		}
 	}
 	// No available interface on phy, create one.
-	if selected == "" {
-		var err error
-		selected, err = r.createWifiIface(ctx, phyID, t)
-		if err != nil {
-			return "", err
-		}
-	}
 	// TODO(crbug.com/1034875): configure interface for monitor interfaces.
-	return selected, nil
+	return r.createWifiIface(ctx, phyID, t)
 }
 
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
@@ -297,10 +289,11 @@ func (r *Router) selectInterface(ctx context.Context, channel int, t iw.IfType) 
 // or related resources. The handle object for the service is returned.
 func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
 	// Reserve required resources.
-	iface, err := r.selectInterface(ctx, conf.Channel, iw.IfTypeManaged)
+	nd, err := r.netDev(ctx, conf.Channel, iw.IfTypeManaged)
 	if err != nil {
 		return nil, err
 	}
+	iface := nd.IfName
 	r.setIfaceBusy(iface)
 
 	idx, err := r.reserveSubnetIdx()
@@ -351,19 +344,51 @@ func (r *Router) uniqueIfaceName(t iw.IfType) string {
 }
 
 // createWifiIface creates an interface on phy with type=t and returns the name of created interface.
-func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (string, error) {
+func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (*iw.NetDev, error) {
 	iface := r.uniqueIfaceName(t)
 	phy := r.phys[phyID].Name
 	testing.ContextLogf(ctx, "Creating wdev %s on wiphy %s", iface, phy)
 	if err := r.iwr.AddInterface(ctx, phy, iface, t); err != nil {
-		return "", err
+		return nil, err
 	}
-	r.availIfaces[iface] = &iw.NetDev{
+	nd := &iw.NetDev{
 		PhyNum: phyID,
 		IfName: iface,
 		IfType: t,
 	}
-	return iface, nil
+	r.availIfaces[iface] = nd
+	return nd, nil
+}
+
+var ifaceTypeToBusyMaskMap = map[iw.IfType]int{
+	iw.IfTypeManaged: 1 << 0,
+	iw.IfTypeMonitor: 1 << 1,
+}
+
+// ifaceTypeToBusyMask convert the interface type string to the mask used by r.busyPhy.
+func (r *Router) ifaceTypeToBusyMask(t iw.IfType) int {
+	return ifaceTypeToBusyMaskMap[t]
+}
+
+// isPhyBusyAny returns if the phyID is occupied by a busy interface of any type.
+func (r *Router) isPhyBusyAny(phyID int) bool {
+	// Unseen phyID has zero value = 0: not busy.
+	return r.busyPhy[phyID] > 0
+}
+
+// isPhyBusy returns if the phyID is occupied by a busy interface of type t.
+func (r *Router) isPhyBusy(phyID int, t iw.IfType) bool {
+	return r.busyPhy[phyID]&r.ifaceTypeToBusyMask(t) > 0
+}
+
+// setPhyBusy marks the phy as occupied by a busy interface of type t.
+func (r *Router) setPhyBusy(phyID int, t iw.IfType) {
+	r.busyPhy[phyID] |= r.ifaceTypeToBusyMask(t)
+}
+
+// freePhy marks phyID as free for interface of type t.
+func (r *Router) freePhy(phyID int, t iw.IfType) {
+	r.busyPhy[phyID] &= ^r.ifaceTypeToBusyMask(t)
 }
 
 // setIfaceBusy marks iface as busy.
@@ -374,7 +399,7 @@ func (r *Router) setIfaceBusy(iface string) {
 	}
 	r.busyIfaces[iface] = nd
 	delete(r.availIfaces, iface)
-	r.busyPhy[nd.PhyNum]++
+	r.setPhyBusy(nd.PhyNum, nd.IfType)
 }
 
 // freeIface marks iface as free.
@@ -385,7 +410,7 @@ func (r *Router) freeIface(iface string) {
 	}
 	r.availIfaces[iface] = nd
 	delete(r.busyIfaces, iface)
-	r.busyPhy[nd.PhyNum]--
+	r.freePhy(nd.PhyNum, nd.IfType)
 }
 
 // reserveSubnetIdx finds a free subnet index and reserves it.
