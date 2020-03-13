@@ -11,13 +11,13 @@ import (
 	"io/ioutil"
 	"net"
 	"path/filepath"
-	"reflect"
 	"sort"
 	"strings"
 	"syscall"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/stringset"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -221,6 +221,28 @@ func interfaceNames() ([]string, error) {
 	return names, nil
 }
 
+// expectIface expects actual interfaces is the same as expected.
+func expectIface(expect, actual []string) error {
+	es := stringset.NewStringSet(expect)
+	as := stringset.NewStringSet(actual)
+	all := stringset.Union(es, as)
+	// wanted: strings in expect not in acutal.
+	wanted := stringset.Diff(all, as)
+	// unexpected: strings in actual not in expect.
+	unexpected := stringset.Diff(all, es)
+	if len(wanted) == 0 && len(unexpected) == 0 {
+		return nil
+	}
+	var errstr string
+	if len(wanted) > 0 {
+		errstr = fmt.Sprintf("missing: %v ", wanted)
+	}
+	if len(unexpected) > 0 {
+		errstr = errstr + fmt.Sprintf("unexpected: %v", unexpected)
+	}
+	return errors.New("failed expecting network interfaces: " + errstr)
+}
+
 func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 	iflistPre, err := interfaceNames()
 	if err != nil {
@@ -242,8 +264,8 @@ func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 		if err != nil {
 			return err
 		}
-		if !reflect.DeepEqual(iflistPre, iflistPost) {
-			return errors.Errorf("unexpected network interfaces: got %v, want %v", iflistPost, iflistPre)
+		if err := expectIface(iflistPre, iflistPost); err != nil {
+			return err
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
