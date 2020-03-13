@@ -23,11 +23,17 @@ service PolicyService {
       returns (ServePolicyDataResponse) {}
   rpc StopExternalDataServer(google.protobuf.Empty)
       returns (google.protobuf.Empty) {}
+
+  rpc EvalStatementInExtension(EvalInExtensionRequest)
+      returns (google.protobuf.Empty) {}
+  rpc EvalPromiseInExtension(EvalInExtensionRequest)
+      returns (EvalInExtensionResponse) {}
 }
 
 message EnrollUsingChromeRequest {
   bytes policy_json = 1;
   string username = 2;
+  repeated Extension extensions = 3;
 }
 
 message UpdatePoliciesRequest {
@@ -41,4 +47,23 @@ message ServePolicyDataRequest {
 message ServePolicyDataResponse {
   string url = 1;
   string hash = 2;
+}
+
+message EvalInExtensionRequest {
+  string id = 1;
+  string expression = 2;
+}
+
+message EvalInExtensionResponse {
+  bytes result = 1;
+}
+
+message ExtensionFile {
+  string name = 1;
+  bytes contents = 2;
+}
+
+message Extension {
+  string id = 1;
+  repeated ExtensionFile files = 2;
 }
