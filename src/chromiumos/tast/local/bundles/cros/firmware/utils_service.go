@@ -11,6 +11,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/firmware"
@@ -46,16 +47,16 @@ func (*UtilsService) Platform(ctx context.Context, req *empty.Empty) (*fwpb.Plat
 
 // CheckBootMode wraps a call to the local firmware support package.
 func (*UtilsService) CheckBootMode(ctx context.Context, req *fwpb.CheckBootModeRequest) (*fwpb.CheckBootModeResponse, error) {
-	var mode firmware.BootMode
+	var mode fwCommon.BootMode
 	switch req.BootMode {
 	case fwpb.BootMode_BOOT_MODE_UNSPECIFIED:
 		return nil, errors.New("cannot check unspecified boot mode")
 	case fwpb.BootMode_BOOT_MODE_NORMAL:
-		mode = firmware.BootModeNormal
+		mode = fwCommon.BootModeNormal
 	case fwpb.BootMode_BOOT_MODE_DEV:
-		mode = firmware.BootModeDev
+		mode = fwCommon.BootModeDev
 	case fwpb.BootMode_BOOT_MODE_RECOVERY:
-		mode = firmware.BootModeRecovery
+		mode = fwCommon.BootModeRecovery
 	default:
 		return nil, errors.Errorf("did not recognize boot mode %v", req.BootMode)
 	}

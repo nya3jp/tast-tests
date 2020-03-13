@@ -15,18 +15,9 @@ import (
 
 	"golang.org/x/net/context"
 
+	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
-)
-
-// BootMode is enum of the possible DUT states (besides OFF).
-type BootMode int
-
-// DUTs have three possible boot modes: Normal, Dev, and Recovery.
-const (
-	BootModeNormal   BootMode = iota
-	BootModeDev      BootMode = iota
-	BootModeRecovery BootMode = iota
 )
 
 // rePartition finds the partition number at the end of a device name.
@@ -47,14 +38,14 @@ func CheckCrossystemValues(ctx context.Context, values map[string]string) bool {
 }
 
 // CheckBootMode determines whether the DUT is in the specified boot mode based on crossystem values.
-func CheckBootMode(ctx context.Context, mode BootMode) (bool, error) {
+func CheckBootMode(ctx context.Context, mode fwCommon.BootMode) (bool, error) {
 	var crossystemValues map[string]string
 	switch mode {
-	case BootModeNormal:
+	case fwCommon.BootModeNormal:
 		crossystemValues = map[string]string{"devsw_boot": "0", "mainfw_type": "normal"}
-	case BootModeDev:
+	case fwCommon.BootModeDev:
 		crossystemValues = map[string]string{"devsw_boot": "1", "mainfw_type": "developer"}
-	case BootModeRecovery:
+	case fwCommon.BootModeRecovery:
 		crossystemValues = map[string]string{"mainfw_type": "recovery"}
 	default:
 		return false, errors.Errorf("unrecognized boot mode %d", mode)
