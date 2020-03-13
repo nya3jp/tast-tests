@@ -28,9 +28,9 @@ import (
 // BinaryPath is the root directory for linux-chrome related binaries.
 const BinaryPath = LacrosTestPath + "/lacros_binary"
 
-// linuxChrome contains all state associated with a linux-chrome instance
+// LinuxChrome contains all state associated with a linux-chrome instance
 // that has been launched. Must call Close() to release resources.
-type linuxChrome struct {
+type LinuxChrome struct {
 	Devsess     *cdputil.Session // Debugging session for linux-chrome
 	cmd         *testexec.Cmd    // The command context used to start linux-chrome.
 	logMaster   *jslog.Master    // collects JS console output
@@ -39,7 +39,7 @@ type linuxChrome struct {
 }
 
 // Close kills a launched instance of linux-chrome.
-func (l *linuxChrome) Close(ctx context.Context) error {
+func (l *LinuxChrome) Close(ctx context.Context) error {
 	if l.Devsess != nil {
 		l.Devsess.Close(ctx)
 		l.Devsess = nil
@@ -104,7 +104,7 @@ func killLinuxChrome(ctx context.Context) {
 }
 
 // LaunchLinuxChrome launches a fresh instance of linux-chrome.
-func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
+func LaunchLinuxChrome(ctx context.Context, p PreData) (*LinuxChrome, error) {
 	killLinuxChrome(ctx)
 
 	// Create a new temporary directory for user data dir. We don't bother
@@ -117,7 +117,7 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
-	l := &linuxChrome{testExtID: p.Chrome.TestExtID()}
+	l := &LinuxChrome{testExtID: p.Chrome.TestExtID()}
 	args := []string{
 		"--ozone-platform=wayland",                                  // Use wayland to connect to exo wayland server.
 		"--no-sandbox",                                              // Disable sandbox for now
