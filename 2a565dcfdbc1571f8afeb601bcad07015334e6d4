@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96b48996_68548ab9",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-13T03:12:52Z",
+      "side": 1,
+      "message": "localCmdRunner already set the flag testexec.DumpLogOnError[1]. Confirmed that in local test, when r.cmd fails, it output error like:\n\n2020/03/13 11:03:43 [11:03:41.025] Command: iw dev wlan0 scan bug\n2020/03/13 11:03:43 [11:03:41.025] Uncaptured output:\nBUG at file position lib/msg.c:572:void nlmsg_free(struct nl_msg *)\niw: lib/msg.c:572: void nlmsg_free(struct nl_msg *): Assertion `0\u0027 failed.\n\n[1] https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/iw/runner.go?g\u003d0\n\nIf we want remote command execution has the same effect, we shall do it in remote iw.Runner:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/network/iw/runner.go?g\u003d0",
+      "revId": "2a565dcfdbc1571f8afeb601bcad07015334e6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
