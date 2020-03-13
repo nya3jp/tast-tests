@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12060b7c_2a9ea009",
+        "filename": "src/chromiumos/tast/remote/wificell/interface_handle.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-13T05:51:47Z",
+      "side": 1,
+      "message": "APIface looks nice to me. Thanks!",
+      "parentUuid": "7185f6b5_fd1474f8",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee265926_645c67f3",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 20
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-12T22:46:12Z",
       "side": 1,
       "message": "kinda feels like this could be part of the iw package, maybe as a NetDev function. I know that\u0027s not currently how iw/runner.go is currently structured, but it really does look like there\u0027s a lot of operations in there that might be cleaner as NetDev functions.\n\nI\u0027ll leave that up to you; we can refactor later anyway, and it doesn\u0027t need to block this review.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 91
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2474fce_e30a69ba",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-13T05:51:47Z",
+      "side": 1,
+      "message": "Let me refactor this in another commit. The one in createWifiIface is also a candidate. (and we can also sync other functions that Autotest has)\nAdd a TODO here in case I forget it.",
+      "parentUuid": "ee265926_645c67f3",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -165,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5768b3f1_fd0e60bb",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-13T05:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e1eafe3_5abd160c",
+      "range": {
+        "startLine": 170,
+        "startChar": 45,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6fc8b98_6d3f5df7",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 20
@@ -176,6 +248,30 @@
       "writtenOn": "2020-03-12T22:46:12Z",
       "side": 1,
       "message": "Hmm, I feel like this is much more complicated than it needs to be. I don\u0027t believe we need to do *any* reuse of a busy phy, at least not in AP mode. We always expect to be creating at most 1 AP per phy (basically, 1 2GHz and 1 5GHz).\n\nIf we integrate monitor mode into this phy selection, we\u0027d want a separate parameter to consider: type. It\u0027s fair to have 1 AP and 1 monitor, but not 2 monitors (I don\u0027t think? or at least there\u0027s no reason to) and not 2 APs.\n\nDo you think the current structure really helps to add monitor support later? As I see it, we can start much smaller for now.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 75
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de07b17b_8e313ec7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-13T05:51:47Z",
+      "side": 1,
+      "message": "For the specific case, I think it\u0027s possible to include that by changing the busyPhy map into int -\u003e bitmask of occupied type (e.g. BUSY_MANAGED|BUSY_MONITOR) and add a filter on that.\n\nLet me simply this by only allowing none busy phy for now.",
+      "parentUuid": "f6fc8b98_6d3f5df7",
       "range": {
         "startLine": 185,
         "startChar": 0,
