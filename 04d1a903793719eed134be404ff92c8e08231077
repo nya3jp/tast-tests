@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "4d1487c9_2e0c1698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-13T10:08:54Z",
+      "side": 1,
+      "message": "hige nit: This should be `Error`, otherwise other defer function won\u0027t be able to finish",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "04d1a903793719eed134be404ff92c8e08231077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcb1e290_8e8de9a1",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 1
