@@ -9,6 +9,8 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	fwCommon "chromiumos/tast/common/firmware"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
@@ -33,26 +35,28 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	defer cl.Close(ctx)
 	utils := fwpb.NewUtilsServiceClient(cl.Conn)
 
-	// checkBootMode wraps an RPC call to check whether the DUT is in the specified mode.
-	checkBootMode := func(bootMode fwpb.BootMode) bool {
-		req := &fwpb.CheckBootModeRequest{BootMode: bootMode}
-		res, err := utils.CheckBootMode(ctx, req)
-		if err != nil {
-			s.Fatalf("Error when calling fwpb.CheckBootMode(%s): %s", bootMode, err)
-		}
-		return res.GetVerified()
-	}
-
 	// DUT should start in normal mode.
 	// Exercise both positive and negative checks.
-	if !checkBootMode(fwpb.BootMode_BOOT_MODE_NORMAL) {
+	normalMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeNormal)
+	if err != nil {
+		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
+	}
+	if !normalMode {
 		s.Error("DUT was not in Normal mode at start of test")
 	}
-	if checkBootMode(fwpb.BootMode_BOOT_MODE_DEV) {
+	devMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeDev)
+	if err != nil {
+		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
+	}
+	if devMode {
 		s.Error("DUT was thought to be in Dev mode at start of test")
 	}
-	if checkBootMode(fwpb.BootMode_BOOT_MODE_RECOVERY) {
-		s.Error("DUT was thought to be in Recovery mode at start of test")
+	recMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeRecovery)
+	if err != nil {
+		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
+	}
+	if recMode {
+		s.Error("DUT was thought to be in Rec mode at start of test")
 	}
 
 	// Exercise the BlockingSync, which will be used for each mode-switching reboot.
