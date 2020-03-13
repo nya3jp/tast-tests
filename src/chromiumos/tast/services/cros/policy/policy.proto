@@ -23,6 +23,13 @@ service PolicyService {
       returns (ServePolicyDataResponse) {}
   rpc StopExternalDataServer(google.protobuf.Empty)
       returns (google.protobuf.Empty) {}
+
+  rpc EvalStatementOnTestAPIConn(EvalOnTestAPIConnRequest)
+      returns (google.protobuf.Empty) {}
+  rpc EvalOnTestAPIConn(EvalOnTestAPIConnRequest)
+      returns (EvalOnTestAPIConnResponse) {}
+  rpc EvalPromiseOnTestAPIConn(EvalOnTestAPIConnRequest)
+      returns (EvalOnTestAPIConnResponse) {}
 }
 
 message EnrollUsingChromeRequest {
@@ -41,4 +48,12 @@ message ServePolicyDataRequest {
 message ServePolicyDataResponse {
   string url = 1;
   string hash = 2;
+}
+
+message EvalOnTestAPIConnRequest {
+  string expression = 1;
+}
+
+message EvalOnTestAPIConnResponse {
+  bytes result = 1;
 }
