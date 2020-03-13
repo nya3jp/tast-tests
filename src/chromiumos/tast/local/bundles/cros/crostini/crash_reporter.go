@@ -6,7 +6,9 @@ package crostini
 
 import (
 	"context"
+	"io/ioutil"
 	"os/exec"
+	"regexp"
 	"syscall"
 	"time"
 
@@ -14,6 +16,11 @@ import (
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
+)
+
+const (
+	boardRegexp = "board=(tatl|tael)"
+	osRegexp    = "upload_var_vm_os_release=.*(stretch|buster)"
 )
 
 func init() {
@@ -97,13 +104,24 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Triggered a crash in the VM")
 
-	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths, []string{}, []string{`.*\.meta`, `.*\.dmp`})
+	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths, []string{},
+		[]string{`vm_crash.*\.meta`,
+			`vm_crash.*\.dmp`,
+			`vm_crash.*\.proclog`})
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
 
-	// TODO(crbug.com/703926): Check that the values in the
-	// metadata file make sense. In paticular, check that the guest
-	// OS release (e.g. "buster") is available and that the board is
-	// set to "tatl" or "tael".
+	s.Log("Checking for expected metadata values")
+
+	metaData, err := ioutil.ReadFile(files[`vm_crash.*\.meta`][0])
+	if err != nil {
+		s.Fatal("Failed to read metadata file: ", err)
+	}
+	if re := regexp.MustCompile(boardRegexp); !re.Match(metaData) {
+		s.Fatalf("Did not find expected line %q in metadata file", boardRegexp)
+	}
+	if re := regexp.MustCompile(osRegexp); !re.Match(metaData) {
+		s.Fatalf("Did not find expected line %q in metadata file", osRegexp)
+	}
 }
