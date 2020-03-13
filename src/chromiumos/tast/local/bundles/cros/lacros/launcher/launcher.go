@@ -24,15 +24,15 @@ import (
 // BinaryPath is the root directory for linux-chrome related binaries.
 const BinaryPath = LacrosTestPath + "/lacros_binary"
 
-// linuxChrome contains all state associated with a linux-chrome instance
+// LinuxChrome contains all state associated with a linux-chrome instance
 // that has been launched. Must call Close() to release resources.
-type linuxChrome struct {
+type LinuxChrome struct {
 	Devsess *cdputil.Session // Debugging session for linux-chrome
 	cmd     *testexec.Cmd    // The command context used to start linux-chrome.
 }
 
 // Close kills a launched instance of linux-chrome.
-func (l *linuxChrome) Close(ctx context.Context) error {
+func (l *LinuxChrome) Close(ctx context.Context) error {
 	if l.Devsess != nil {
 		l.Devsess.Close(ctx)
 		l.Devsess = nil
@@ -89,7 +89,7 @@ func killLinuxChrome(ctx context.Context) {
 }
 
 // LaunchLinuxChrome launches a fresh instance of linux-chrome.
-func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
+func LaunchLinuxChrome(ctx context.Context, p PreData) (*LinuxChrome, error) {
 	killLinuxChrome(ctx)
 
 	// Create a new temporary directory for user data dir. We don't bother
@@ -121,7 +121,7 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*linuxChrome, error) {
 		"about:blank",                            // Specify first tab to load.
 	}
 
-	l := &linuxChrome{}
+	l := &LinuxChrome{}
 	l.cmd = testexec.CommandContext(ctx, BinaryPath+"/chrome", args...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))

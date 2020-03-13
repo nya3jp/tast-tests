@@ -16,8 +16,11 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/lacros/launcher"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
+
+const twentyTabs = "twentytabs"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -43,6 +46,9 @@ func init() {
 		}, {
 			Name: "youtube",
 			Val:  "https://www.youtube.com/watch?v=uS33jC2VYNU",
+		}, {
+			Name: "twentytabs",
+			Val:  twentyTabs,
 		},
 		},
 	})
@@ -155,24 +161,10 @@ func Memory(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to launch linux-chrome: ", err)
 		}
 
-		// Open a new tab and navigate to |url|.
-		newTab, err := l.Devsess.CreateTarget(ctx, url)
-		if err != nil {
-			s.Fatal("Failed to open new tab: ", err)
-		}
-
-		// Close the initial "about:blank" tab present at startup.
-		targetFilter := func(t *target.Info) bool {
-			return t.URL == "about:blank"
-		}
-		targets, err := l.Devsess.FindTargets(ctx, targetFilter)
-		if err != nil {
-			s.Fatal("Failed to query for about:blank pages: ", err)
-		}
-		for _, info := range targets {
-			if target := info.TargetID; target != newTab {
-				l.Devsess.CloseTarget(ctx, target)
-			}
+		if url == twentyTabs {
+			openTwentyTabsLinux(ctx, s, l)
+		} else {
+			navigateSingleTabToURLLinux(ctx, s, url, l)
 		}
 
 		// Measure memory after launching linux-chrome.
@@ -185,12 +177,21 @@ func Memory(ctx context.Context, s *testing.State) {
 		// Measure memory before launching chromeos-chrome.
 		pmf3, pss3 := measureBothChrome(ctx, s)
 
-		// Open a new tab to |url|.
-		conn, err := s.PreValue().(launcher.PreData).Chrome.NewConn(ctx, url)
-		if err != nil {
-			s.Fatal("Failed to open chromeos-chrome tab: ", err)
+		var connections []*chrome.Conn
+		if url == twentyTabs {
+			connections = openTwentyTabsChromeos(ctx, s, l)
+			for _, conn := range connections {
+				defer conn.Close()
+			}
+		} else {
+			// Open a new tab to |url|.
+			conn, err := s.PreValue().(launcher.PreData).Chrome.NewConn(ctx, url)
+			if err != nil {
+				s.Fatal("Failed to open chromeos-chrome tab: ", err)
+			}
+			defer conn.Close()
+			connections = append(connections, conn)
 		}
-		defer conn.Close()
 
 		// Set the window to 800x600 in size.
 		err = s.PreValue().(launcher.PreData).TestAPIConn.EvalPromise(ctx,
@@ -209,6 +210,62 @@ func Memory(ctx context.Context, s *testing.State) {
 		testing.ContextLogf(ctx, "chromeos-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf4-pmf3)/1024/1024, (pss4-pss3)/1024/1024)
 
 		// Close chromeos-chrome
-		conn.CloseTarget(ctx)
+		for _, conn := range connections {
+			conn.CloseTarget(ctx)
+		}
 	}
+}
+
+// navigateSingleTabToURLLinux assumes that there's a freshly launched instance
+// of linux-chrome, with a single tab open to about:blank. This function
+// creates a new tab, navigates it to the url, and closes the original tab.
+func navigateSingleTabToURLLinux(ctx context.Context, s *testing.State, url string, l *launcher.LinuxChrome) {
+	// Open a new tab and navigate to |url|.
+	newTab, err := l.Devsess.CreateTarget(ctx, url)
+	if err != nil {
+		s.Fatal("Failed to open new tab: ", err)
+	}
+
+	// Close the initial "about:blank" tab present at startup.
+	targetFilter := func(t *target.Info) bool {
+		return t.URL == "about:blank"
+	}
+	targets, err := l.Devsess.FindTargets(ctx, targetFilter)
+	if err != nil {
+		s.Fatal("Failed to query for about:blank pages: ", err)
+	}
+	for _, info := range targets {
+		if target := info.TargetID; target != newTab {
+			l.Devsess.CloseTarget(ctx, target)
+		}
+	}
+}
+
+// openTwentyTabsLinux assumes that linux-chrome has been freshly launched,
+// with a single tab opened to about:blank.
+func openTwentyTabsLinux(ctx context.Context, s *testing.State, l *launcher.LinuxChrome) {
+	for i := 0; i < 19; i++ {
+		// Open a new tab and navigate to about blank
+		_, err := l.Devsess.CreateTarget(ctx, "about:blank")
+		if err != nil {
+			s.Fatal("Failed to open new tab: ", err)
+		}
+
+		// Wait one second to quiesce.
+		testing.Sleep(ctx, time.Second)
+	}
+}
+
+// openTwentyTabsChromeos assumes that chromeos-chrome is running, but that
+// there is no open window.
+func openTwentyTabsChromeos(ctx context.Context, s *testing.State, l *launcher.LinuxChrome) []*chrome.Conn {
+	var connections []*chrome.Conn
+	for i := 0; i < 20; i++ {
+		conn, err := s.PreValue().(launcher.PreData).Chrome.NewConn(ctx, "about:blank")
+		if err != nil {
+			s.Fatal("Failed to open chromeos-chrome tab: ", err)
+		}
+		connections = append(connections, conn)
+	}
+	return connections
 }
