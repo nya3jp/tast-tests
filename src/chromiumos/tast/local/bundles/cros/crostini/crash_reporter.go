@@ -79,11 +79,11 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(pre.Chrome)); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
-	defer crash.TearDownCrashTest()
+	defer crash.TearDownCrashTest(ctx)
 
-	oldFiles, err := crash.GetCrashes(crash.SystemCrashDir)
+	daemonStorePaths, err := crash.GetDaemonStoreCrashDirs(ctx)
 	if err != nil {
-		s.Fatal("Failed to get original crashes: ", err)
+		s.Fatal("Failed to get daemon store crash dir: ", err)
 	}
 
 	// Trigger a crash in the root namespace of the VM
@@ -97,7 +97,8 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Triggered a crash in the VM")
 
-	if _, err := crash.WaitForCrashFiles(ctx, []string{crash.UserCrashDir}, oldFiles, []string{`.*\.meta`, `.*\.dmp`}); err != nil {
+	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths, []string{}, []string{`.*\.meta`, `.*\.dmp`})
+	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
 
