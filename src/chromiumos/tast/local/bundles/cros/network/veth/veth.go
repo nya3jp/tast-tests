@@ -17,8 +17,8 @@ import (
 // Pair represents a Linux pair of virtual Ethernet (veth) devices. Veth devices come in pairs,
 // a primary and a peer, representing two sides of a virtual link.
 type Pair struct {
-	Iface     string
-	PeerIface string
+	Iface     *net.Interface
+	PeerIface *net.Interface
 }
 
 // NewPair sets up a new Pair object, with interface |iface| and peer interface |peerIface|.
@@ -40,17 +40,27 @@ func NewPair(ctx context.Context, iface string, peerIface string) (*Pair, error)
 		return nil, errors.Wrapf(err, "failed to add veth interfaces %q/%q", iface, peerIface)
 	}
 
+	i, err := net.InterfaceByName(iface)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get interface %q", iface)
+	}
+
+	p, err := net.InterfaceByName(peerIface)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get peer interface %q", peerIface)
+	}
+
 	return &Pair{
-		Iface:     iface,
-		PeerIface: peerIface,
+		Iface:     i,
+		PeerIface: p,
 	}, nil
 }
 
 // Delete deletes the virtual link.
 func (v *Pair) Delete(ctx context.Context) error {
 	// Only need to delete one end of the pair.
-	if err := testexec.CommandContext(ctx, "ip", "link", "del", v.Iface).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrapf(err, "failed to delete veth iface %q", v.Iface)
+	if err := testexec.CommandContext(ctx, "ip", "link", "del", v.Iface.Name).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to delete veth iface %q", v.Iface.Name)
 	}
 	return nil
 }
