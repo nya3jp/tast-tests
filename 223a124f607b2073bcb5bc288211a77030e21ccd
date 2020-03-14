@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b3dd123_e7614df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-14T07:19:42Z",
+      "side": 1,
+      "message": "\"When concatenating a string and a value using default formatting, use s.Log(\"Some value: \", val) rather than the more-verbose s.Logf(\"Some value: %v\", val)\"\n\ntesting.ContextLogf(ctx, \"Attempting to connect with config: \", config)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf",
+      "revId": "223a124f607b2073bcb5bc288211a77030e21ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bac4d78_9f8030bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-14T07:19:42Z",
+      "side": 1,
+      "message": "testing.ContextLogf(ctx, \"Finding service with props: \", props)",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 65
+      },
+      "revId": "223a124f607b2073bcb5bc288211a77030e21ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3702d9a2_7bfa3e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-14T07:19:42Z",
+      "side": 1,
+      "message": "testing.ContextLogf(ctx, \"Connecting to service with path: \", servicePath)",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 76
+      },
+      "revId": "223a124f607b2073bcb5bc288211a77030e21ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
