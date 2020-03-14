@@ -54,7 +54,7 @@ func init() {
 		Desc:         "Checks that anomaly detector reports whether crash_reporter was invoked",
 		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			// The miss test currently only works for breakpad. TODO(crbug/1036582):
 			// Add crashpad variant.

@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Checks that Chrome writes crash dumps while logged in",
 		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "browser_breakpad",
 			Val:               chromeCrashLoggedInParams{ptype: chromecrash.Browser, handler: chromecrash.Breakpad},
