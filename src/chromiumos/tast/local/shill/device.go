@@ -27,6 +27,8 @@ const (
 	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
 	DevicePropertyEthernetLinkUp    = "Ethernet.LinkUp"
 	DevicePropertyEthernetMACSource = "Ethernet.UsbEthernetMacAddressSource"
+	DevicePropertyEapDetected       = "EapAuthenticatorDetected"
+	DevicePropertyEapCompleted      = "EapAuthenticationCompleted"
 )
 
 // Device wraps a Device D-Bus object in shill.
