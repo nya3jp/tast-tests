@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb4144bf_8c6fee39",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-14T00:07:43Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "7aaf6397_dff4ee3d",
+      "revId": "f189f452e0fc6b2fd87564ac2867d991e955c7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a41212a_f121127c",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "f189f452e0fc6b2fd87564ac2867d991e955c7a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba683c0c_cc73a6c4",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-14T00:07:43Z",
+      "side": 1,
+      "message": "Saving lines SGTM, done.",
+      "parentUuid": "6a41212a_f121127c",
+      "revId": "f189f452e0fc6b2fd87564ac2867d991e955c7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
