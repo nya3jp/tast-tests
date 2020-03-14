@@ -31,6 +31,13 @@ const (
 
 	// WiFi service property names.
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
+
+	// EAP service property names.
+	ServicePropertyEAPCACertPEM = "EAP.CACertPEM"
+	ServicePropertyEAPMethod    = "EAP.EAP"
+	ServicePropertyEAPInnerEAP  = "EAP.InnerEAP"
+	ServicePropertyEAPIdentity  = "EAP.Identity"
+	ServicePropertyEAPPassword  = "EAP.Password"
 )
 
 // Service state values defined in dbus-constants.h
