@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a9b8d25_2098b952",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-14T00:39:45Z",
+      "side": 1,
+      "message": "Is there a good reason to have 3 representations of available boot modes in pb, common, and local?  Originally the code just had to deal with pb and local versions.\n\nIt should be possible to factor out the BootMode enum at the pb level and reuse it in fwpb and and boot_mode.CheckBootMode.",
+      "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
