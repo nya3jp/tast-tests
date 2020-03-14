@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "352e7ec3_703bef93",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-14T00:40:07Z",
+      "side": 1,
+      "message": "Looks like this and the next line of comment belong with NewConfig?  Or do you mean that the field names should also come from a JSON file?",
+      "revId": "1339246321a25ab59bdb2bc003e4cea333f9de53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
