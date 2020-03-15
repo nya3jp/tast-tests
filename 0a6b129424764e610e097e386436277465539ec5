@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9848c931_ad3bd9ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-15T23:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c27096_8aeada5f",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b918c52_3eccbd9d",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 1
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "3d0a7df2_979e91cc",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-15T23:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b918c52_3eccbd9d",
+      "range": {
+        "startLine": 161,
+        "startChar": 114,
+        "endLine": 161,
+        "endChar": 164
+      },
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8940964c_efe445b7",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 1
@@ -85,6 +133,30 @@
       "revId": "0a6b129424764e610e097e386436277465539ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ac84f4_f2e7aae2",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-15T23:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8940964c_efe445b7",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 71
+      },
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
