@@ -22,6 +22,30 @@
       "revId": "fc841aec5ae7651b96040876b49aca1af8c660d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147d3638_53f892aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-15T23:05:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7645f7ca_95309b37",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "fc841aec5ae7651b96040876b49aca1af8c660d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
