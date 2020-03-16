@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -25,10 +24,18 @@ func init() {
 		Func:         BuildProperties,
 		Desc:         "Checks important Android properties such as first_api_level",
 		Contacts:     []string{"niwa@chromium.org", "risan@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 		Attr:    []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
@@ -38,16 +45,6 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		propertyFirstAPILevel = "ro.product.first_api_level"
 		propertySDKVersion    = "ro.build.version.sdk"
 	)
-
-	// TODO(niwa): Mount the Android image and get properties from build.prop
-	// instead of booting ARC once b/121170041 is resolved.
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to start UI: ", err)
-	}
-
-	if err := arc.WaitAndroidInit(ctx); err != nil {
-		s.Fatal("Failed to wait Android mini container: ", err)
-	}
 
 	getProperty := func(propertyName string) string {
 		var value string
@@ -75,10 +72,10 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// board that shares the first API level, and moreover they can be truncated
 	// (to -kerneln or -ker etc) and becomes hard to match exactly.
 	device := getProperty(propertyDevice)
-	deviceRegexp := regexp.MustCompile(`^([^-]+).*_cheets$`)
+	deviceRegexp := regexp.MustCompile(`^([^-]+).*_(cheets|bertha)$`)
 	match := deviceRegexp.FindStringSubmatch(device)
 	if match == nil {
-		s.Fatalf("%v property is %q; should have _cheets suffix",
+		s.Fatalf("%v property is %q; should have _cheets or _bertha suffix",
 			propertyDevice, device)
 	}
 	device = match[1]
