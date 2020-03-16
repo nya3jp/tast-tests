@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d075daa3_88d3a605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T14:46:15Z",
+      "side": 1,
+      "message": "huge nit: unneeded empty line (sorry I overlooked in the last iteration).",
+      "revId": "2330acefc66c67e19ddf88d05b684f707f3e0e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
