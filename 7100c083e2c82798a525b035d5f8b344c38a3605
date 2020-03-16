@@ -16,6 +16,24 @@
       "revId": "7100c083e2c82798a525b035d5f8b344c38a3605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d966ede_612ba1da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T16:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c70862d_0c0500ea",
+      "revId": "7100c083e2c82798a525b035d5f8b344c38a3605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
