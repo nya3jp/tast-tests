@@ -54,13 +54,13 @@ func VMDTC(ctx context.Context, s *testing.State) {
 		}`
 	)
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
+	// Shorten the total context by 15 seconds to allow for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	// Expect the VM to start within 5 seconds.
-	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	// Expect the VM to start within 15 seconds.
+	startCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
 	defer cancel()
 
 	config := wilco.DefaultVMConfig()
