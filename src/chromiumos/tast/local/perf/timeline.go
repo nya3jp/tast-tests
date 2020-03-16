@@ -20,10 +20,10 @@ import (
 //            Called from Timeline.Start.
 // Snapshot - Log one data point. Called from Timeline.Snapshot.
 
-// TimelineDatasource contains the only mandatory method for a datasource,
-// Snapshot.
+// TimelineDatasource is an interface that is implemented to add a source of
+// metrics to a Timeline.
 type TimelineDatasource interface {
-	Setup(context.Context) error
+	Setup(context.Context, string) error
 	Start(context.Context) error
 	Snapshot(context.Context, *Values) error
 }
@@ -33,10 +33,17 @@ type TimelineDatasource interface {
 type timestampSource struct {
 	begin   time.Time
 	started bool
+	metric  Metric
 }
 
 // Setup does nothing, but is needed to be a TimelineDatasource.
-func (t *timestampSource) Setup(_ context.Context) error {
+func (t *timestampSource) Setup(_ context.Context, prefix string) error {
+	t.metric = Metric{
+		Name:     prefix + "t",
+		Unit:     "s",
+		Variant:  DefaultVariantName,
+		Multiple: true,
+	}
 	return nil
 }
 
@@ -47,19 +54,12 @@ func (t *timestampSource) Start(_ context.Context) error {
 	return nil
 }
 
-var timestampMetric = Metric{
-	Name:     "t",
-	Unit:     "s",
-	Variant:  DefaultVariantName,
-	Multiple: true,
-}
-
 // Snapshot appends the current runtime of the test.
 func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 	if !t.started {
 		return errors.New("failed to snapshot Timeline, Start wasn't called")
 	}
-	v.Append(timestampMetric, time.Now().Sub(t.begin).Seconds())
+	v.Append(t.metric, time.Now().Sub(t.begin).Seconds())
 	return nil
 }
 
@@ -71,9 +71,15 @@ type Timeline struct {
 // NewTimeline creates a Timeline from a slice of TimelineDatasource, calling
 // all the Setup methods.
 func NewTimeline(ctx context.Context, sources ...TimelineDatasource) (*Timeline, error) {
+	return NewTimelineWithPrefix(ctx, "", sources...)
+}
+
+// NewTimelineWithPrefix creates a Timeline from a slice of TimelineDatasources,
+// all created metrics will be prefixed with the passed prefix.
+func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
 	ss := append(sources, &timestampSource{})
 	for _, s := range ss {
-		if err := s.Setup(ctx); err != nil {
+		if err := s.Setup(ctx, prefix); err != nil {
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}

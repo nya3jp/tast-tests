@@ -128,8 +128,10 @@ type BatteryMetrics struct {
 	voltageMetric perf.Metric
 	currentMetric perf.Metric
 	powerMetric   perf.Metric
+	energyMetric  perf.Metric
 	lowSys        float64
 	lowMargin     float64
+	prevState     *BatteryState
 }
 
 var _ perf.TimelineDatasource = &BatteryMetrics{}
@@ -138,27 +140,34 @@ var _ perf.TimelineDatasource = &BatteryMetrics{}
 // ectool command.
 func NewBatteryMetrics(lowBatteryMargin float64) *BatteryMetrics {
 	return &BatteryMetrics{
-		voltageMetric: perf.Metric{Name: "ectool_battery_voltage", Unit: "mV", Direction: perf.SmallerIsBetter, Multiple: true},
-		currentMetric: perf.Metric{Name: "ectool_battery_current", Unit: "mA", Direction: perf.SmallerIsBetter, Multiple: true},
-		powerMetric:   perf.Metric{Name: "ectool_battery_power", Unit: "mW", Direction: perf.SmallerIsBetter, Multiple: true},
-		lowSys:        100.0,
-		lowMargin:     lowBatteryMargin,
+		lowSys:    100.0,
+		lowMargin: lowBatteryMargin,
+		prevState: nil,
 	}
 }
 
 // Setup reads the low battery shutdown percent that that we can error out a
 // test if the battery is ever too low.
-func (b *BatteryMetrics) Setup(ctx context.Context) error {
+func (b *BatteryMetrics) Setup(ctx context.Context, prefix string) error {
 	low, err := LowBatteryShutdownPercent(ctx)
 	if err != nil {
 		return err
 	}
 	b.lowSys = low
+	b.voltageMetric = perf.Metric{Name: prefix + "ectool_battery_voltage", Unit: "mV", Direction: perf.SmallerIsBetter, Multiple: true}
+	b.currentMetric = perf.Metric{Name: prefix + "ectool_battery_current", Unit: "mA", Direction: perf.SmallerIsBetter, Multiple: true}
+	b.powerMetric = perf.Metric{Name: prefix + "ectool_battery_power", Unit: "mW", Direction: perf.SmallerIsBetter, Multiple: true}
+	b.energyMetric = perf.Metric{Name: prefix + "ectool_battery_energy", Unit: "mAh", Direction: perf.SmallerIsBetter, Multiple: true}
 	return nil
 }
 
 // Start does nothing, but is needed to be a TimelineDatasource.
-func (b *BatteryMetrics) Start(_ context.Context) error {
+func (b *BatteryMetrics) Start(ctx context.Context) error {
+	state, err := NewBatteryState(ctx)
+	if err != nil {
+		return err
+	}
+	b.prevState = state
 	return nil
 }
 
@@ -175,5 +184,7 @@ func (b *BatteryMetrics) Snapshot(ctx context.Context, values *perf.Values) erro
 	values.Append(b.voltageMetric, state.Voltage)
 	values.Append(b.currentMetric, state.Current)
 	values.Append(b.powerMetric, state.Power())
+	values.Append(b.energyMetric, b.prevState.Remaining-state.Remaining)
+	b.prevState = state
 	return nil
 }
