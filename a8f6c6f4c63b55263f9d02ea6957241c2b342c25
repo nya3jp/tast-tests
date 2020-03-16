@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1bd1ffb2_dda87268",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T09:23:46Z",
+      "side": 1,
+      "message": "If you return here, you actually don\u0027t provide cleanup callback to the caller",
+      "parentUuid": "d59d3b00_3b020d5d",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 95
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10cac61e_3fc42e71",
         "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
         "patchSetId": 26
@@ -116,6 +140,30 @@
       "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f302960_403afdd9",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T09:23:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61970ec3_6d218daa",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
