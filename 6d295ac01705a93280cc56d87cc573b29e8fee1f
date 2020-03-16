@@ -22,6 +22,30 @@
       "revId": "6d295ac01705a93280cc56d87cc573b29e8fee1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab0a627_c180a98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-03-16T07:53:24Z",
+      "side": 1,
+      "message": "Nice! Thanks for the tips.",
+      "parentUuid": "b688414e_da045f2b",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 63
+      },
+      "revId": "6d295ac01705a93280cc56d87cc573b29e8fee1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
