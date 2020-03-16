@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "609ce500_cffe40ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-16T17:29:46Z",
+      "side": 1,
+      "message": "Is this a new flag? If so, in what CL was it added?",
+      "range": {
+        "startLine": 66,
+        "startChar": 59,
+        "endLine": 66,
+        "endChar": 93
+      },
+      "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
