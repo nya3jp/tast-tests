@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"xliu@cienet.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"cros_video_decoder", "chrome", "chrome_internal"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoginReuse(),
 		Params: []testing.Param{{
 			Name: "h264_720p",
 			Val:  "https://storage.googleapis.com/chromiumos-test-assets-public/Shaka-Dash/720_60.mp4",
