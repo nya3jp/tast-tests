@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5813201_36d8cfa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-16T03:21:28Z",
+      "side": 1,
+      "message": "I\u0027ve run the tests with all my CLs patched in to save some time, and they pass.",
+      "parentUuid": "5ca92763_41bb36f4",
+      "revId": "0a6b129424764e610e097e386436277465539ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8c27096_8aeada5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
         "patchSetId": 1
