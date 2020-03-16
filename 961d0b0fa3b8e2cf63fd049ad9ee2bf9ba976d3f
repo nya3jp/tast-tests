@@ -319,6 +319,24 @@
     },
     {
       "key": {
+        "uuid": "59a1581c_7d25c2df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-16T20:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffe76ebb_3a111783",
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c6ce28f_089e28d1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -401,6 +419,30 @@
       "side": 1,
       "message": "Would you prefer me to add this check in this test or a separate one specifically for testing laptop mode power menu behavior?",
       "parentUuid": "1803d849_d1cfb22b",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d30597_e0c74373",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-16T20:43:34Z",
+      "side": 1,
+      "message": "If you can do it here I would prefer that. If you want you can do a separate cl and go ahead and submit this one.",
+      "parentUuid": "d8ee1621_fa010078",
       "range": {
         "startLine": 106,
         "startChar": 2,
