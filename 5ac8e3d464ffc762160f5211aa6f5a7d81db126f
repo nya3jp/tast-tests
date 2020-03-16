@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65e6b1a6_c4a00c17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T09:16:03Z",
+      "side": 1,
+      "message": "dbusutil.Connect returns a shared connection, once you close it, all follow D-Bus requests will fail. I had this error already.",
+      "parentUuid": "31988864_db609162",
+      "revId": "5ac8e3d464ffc762160f5211aa6f5a7d81db126f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2051392c_2aac362c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
         "patchSetId": 3
