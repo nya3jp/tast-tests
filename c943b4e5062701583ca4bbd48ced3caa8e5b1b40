@@ -63,6 +63,30 @@
       "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b1f87e_79accfb1",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-16T06:09:17Z",
+      "side": 1,
+      "message": "Fair enough.\n\nThough in many cases of hwsec, because of refactoring going on, it is expected that we have potentially several ways to do one thing (e.g., calling cryptohomed to enroll, calling attestationd to enroll, calling the command line tool to enroll, sending the dbus message to enroll...), I did use interfaces for that; in this case I think we need John\u0027s input.\n\nHey, John:\nDo you expect to implement |GetTokenForUser| in a different way soon? IIUC, even for cryptohome proxy we are still using cryptohome binary, no?",
+      "parentUuid": "6156e65d_6a2a1e67",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
