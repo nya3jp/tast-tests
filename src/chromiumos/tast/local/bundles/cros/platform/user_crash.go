@@ -35,6 +35,11 @@ const (
 	crashReporterEnabledPath = "/var/lib/crash_reporter/crash-handling-enabled"
 )
 
+type userCrashParams struct {
+	testFunc    func(context.Context, *chrome.Chrome, *testing.State)
+	consentType localcrash.ConsentType
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: UserCrash,
@@ -44,50 +49,107 @@ func init() {
 			"yamaguchi@chromium.org",    // Tast port author
 			"cros-monitoring-forensics@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent"},
+		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "reporter_startup",
-			Val:  testReporterStartup,
+			Val: userCrashParams{
+				testFunc:    testReporterStartup,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "core_file_removed_in_production",
-			Val:  testCoreFileRemovedInProduction,
+			Val: userCrashParams{
+				testFunc:    testCoreFileRemovedInProduction,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "reporter_shutdown",
-			Val:  testReporterShutdown,
+			Val: userCrashParams{
+				testFunc:    testReporterShutdown,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "no_crash",
-			Val:  testNoCrash,
+			Val: userCrashParams{
+				testFunc:    testNoCrash,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
-			Name: "chronos_crasher",
-			Val:  testChronosCrasher,
+			Name: "chronos_crasher_real_consent",
+			Val: userCrashParams{
+				testFunc:    testChronosCrasher,
+				consentType: localcrash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+		}, {
+			Name: "chronos_crasher_mock_consent",
+			Val: userCrashParams{
+				testFunc:    testChronosCrasher,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "chronos_crasher_no_consent",
-			Val:  testChronosCrasherNoConsent,
+			Val: userCrashParams{
+				testFunc:    testChronosCrasherNoConsent,
+				consentType: localcrash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
-			Name: "root_crasher",
-			Val:  testRootCrasher,
+			Name: "root_crasher_real_consent",
+			Val: userCrashParams{
+				testFunc:    testRootCrasher,
+				consentType: localcrash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+		}, {
+			Name: "root_crasher_mock_consent",
+			Val: userCrashParams{
+				testFunc:    testRootCrasher,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "root_crasher_no_consent",
-			Val:  testRootCrasherNoConsent,
+			Val: userCrashParams{
+				testFunc:    testRootCrasherNoConsent,
+				consentType: localcrash.RealConsent,
+			},
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "crash_filtering",
-			Val:  testCrashFiltering,
+			Val: userCrashParams{
+				testFunc:    testCrashFiltering,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "max_enqueued_crash",
-			Val:  testMaxEnqueuedCrash,
+			Val: userCrashParams{
+				testFunc:    testMaxEnqueuedCrash,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "core2md_failure",
-			Val:  testCore2mdFailure,
+			Val: userCrashParams{
+				testFunc:    testCore2mdFailure,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "internal_directory_failure",
-			Val:  testInternalDirectoryFailure,
+			Val: userCrashParams{
+				testFunc:    testInternalDirectoryFailure,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "crash_logs_creation",
-			Val:  testCrashLogsCreation,
+			Val: userCrashParams{
+				testFunc:    testCrashLogsCreation,
+				consentType: localcrash.MockConsent,
+			},
 		}, {
 			Name: "crash_log_infinite_recursion",
-			Val:  testCrashLogInfiniteRecursion,
+			Val: userCrashParams{
+				testFunc:    testCrashLogInfiniteRecursion,
+				consentType: localcrash.MockConsent,
+			},
 		}},
 	})
 }
@@ -644,14 +706,20 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart UI job")
 	}
 
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
+	consentType := s.Param().(userCrashParams).consentType
 
-	f := s.Param().(func(context.Context, *chrome.Chrome, *testing.State))
-	if err = crash.RunCrashTest(ctx, cr, s, f, true); err != nil {
+	var cr *chrome.Chrome
+	if consentType == localcrash.RealConsent {
+		var err error
+		cr, err = chrome.New(ctx)
+		if err != nil {
+			s.Fatal("Chrome login failed: ", err)
+		}
+		defer cr.Close(ctx)
+	}
+
+	f := s.Param().(userCrashParams).testFunc
+	if err := crash.RunCrashTest(ctx, cr, s, f, true, consentType); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
