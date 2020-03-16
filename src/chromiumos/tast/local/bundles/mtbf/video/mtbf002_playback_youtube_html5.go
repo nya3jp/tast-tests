@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Video Playback | Youtube HTML5 - To test YouTube video in different resolution and fullscreen / expand / shrink functionality",
 		Contacts:     []string{"xliu@cienet.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          chrome.LoginReuse(),
 		Attr:         []string{"group:mainline", "informational"},
 	})
 }
