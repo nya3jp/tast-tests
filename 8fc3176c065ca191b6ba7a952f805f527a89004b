@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d0ab1d2_17b68377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T14:01:35Z",
+      "side": 1,
+      "message": "- Could you use Sprintf for constructing complex terms?\n- Could you escape regexp meta chars for safeness?\n\nfmt.Sprintf(`^([^-]+).*_%s$`, regexp.QuoteMeta(s.Params().(string))",
+      "range": {
+        "startLine": 76,
+        "startChar": 36,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "8fc3176c065ca191b6ba7a952f805f527a89004b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7221e62_67769585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T14:01:35Z",
+      "side": 1,
+      "message": "_%s here, and add s.Paran().(string) at the end of args.",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "8fc3176c065ca191b6ba7a952f805f527a89004b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
