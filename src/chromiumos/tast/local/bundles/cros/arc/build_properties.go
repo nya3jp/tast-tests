@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -25,9 +24,17 @@ func init() {
 		Func:         BuildProperties,
 		Desc:         "Checks important Android properties such as first_api_level",
 		Contacts:     []string{"niwa@chromium.org", "risan@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
@@ -37,16 +44,6 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 		propertyFirstAPILevel = "ro.product.first_api_level"
 		propertySDKVersion    = "ro.build.version.sdk"
 	)
-
-	// TODO(niwa): Mount the Android image and get properties from build.prop
-	// instead of booting ARC once b/121170041 is resolved.
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to start UI: ", err)
-	}
-
-	if err := arc.WaitAndroidInit(ctx); err != nil {
-		s.Fatal("Failed to wait Android mini container: ", err)
-	}
 
 	getProperty := func(propertyName string) string {
 		var value string
@@ -74,13 +71,18 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// board that shares the first API level, and moreover they can be truncated
 	// (to -kerneln or -ker etc) and becomes hard to match exactly.
 	device := getProperty(propertyDevice)
-	deviceRegexp := regexp.MustCompile(`^([^-]+).*_cheets$`)
-	match := deviceRegexp.FindStringSubmatch(device)
-	if match == nil {
-		s.Fatalf("%v property is %q; should have _cheets suffix",
+	cheetsDeviceRegexp := regexp.MustCompile(`^([^-]+).*_cheets$`)
+	berthaDeviceRegexp := regexp.MustCompile(`^([^-]+).*_bertha$`)
+	cheetsMatch := cheetsDeviceRegexp.FindStringSubmatch(device)
+	berthaMatch := berthaDeviceRegexp.FindStringSubmatch(device)
+	if cheetsMatch == nil && berthaMatch == nil {
+		s.Fatalf("%v property is %q; should have _cheets or _bertha suffix",
 			propertyDevice, device)
+	} else if cheetsMatch != nil {
+		device = cheetsMatch[1]
+	} else {
+		device = berthaMatch[1]
 	}
-	device = match[1]
 
 	expectedFirstAPILevel := getProperty(propertySDKVersion)
 	if overwrite, ok := expectedFirstAPILevelMap[device]; ok {
