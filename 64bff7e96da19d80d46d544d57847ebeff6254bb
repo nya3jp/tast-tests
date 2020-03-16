@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e9cd730e_b86f747e",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T10:38:16Z",
+      "side": 1,
+      "message": "nit: Ack is used to just acknowledge without changing the code. Use Done instead if you actually changed the code.",
+      "parentUuid": "c98d6d2a_af1d983f",
+      "range": {
+        "startLine": 77,
+        "startChar": 13,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "64bff7e96da19d80d46d544d57847ebeff6254bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3143512a_a0957b53",
         "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
         "patchSetId": 15

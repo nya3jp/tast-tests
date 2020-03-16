@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9a265a6_62e25bdd",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T10:38:16Z",
+      "side": 1,
+      "message": "I think Value should be exported so that it\u0027s json serializable.\n\nValue uint `json:\"value\"`\nwould work.\n\nhttps://pkg.go.dev/encoding/json",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "29b07014669e8f5663ca62b7ca31173a5fa65590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77203502_3bad91d2",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T10:38:16Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 12
+      },
+      "revId": "29b07014669e8f5663ca62b7ca31173a5fa65590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
