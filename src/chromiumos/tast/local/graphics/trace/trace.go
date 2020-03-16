@@ -92,6 +92,7 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 	if err != nil {
 		return nil, err
 	}
+	defer cont.Command(ctx, "rm", "-f", containerPath).Run()
 
 	return replayTrace(ctx, cont, containerPath, traceName)
 }
