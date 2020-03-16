@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5066017c_d8f27cc6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-16T04:35:27Z",
+      "side": 1,
+      "message": "\u003e \"avaiable\" is a possible misspelling of \"available\".\n\nFixed.",
+      "parentUuid": "2c38ad13_1ae00d8a",
+      "range": {
+        "startLine": 168,
+        "startChar": 29,
+        "endLine": 168,
+        "endChar": 37
+      },
+      "revId": "dd26b674c18402d9d2e2a51ad8b9ee55f62a209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13b72970_0b6e044a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-16T04:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07adaf80_b604fadd",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e653814d_57de7af7",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 14
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "79eb6064_81959731",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-16T04:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e653814d_57de7af7",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b52636ec_48fd1be2",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 14
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-13T20:09:41Z",
       "side": 1,
       "message": "What\u0027s the logic in lumping \"disconnect\" and \"delete\" in this function? In Autotest we didn\u0027t do that, and I see tests where that\u0027s important; e.g., if we want to reconnect later, or if we\u0027re wanting to still monitor the service state afterward.\n\nI see that maybe it\u0027s because otherwise, you\u0027d lose track of the SSID, when you set curHostapd to nil? I wonder if you need to do the nil-ification (next 2 lines) at all. They\u0027re only used for safety checks in the Ping command, which seems a bit unnecessary.\n\nWe probably also should expose the SSID somehow, either as a Router method (and the Router then exposed publicly) or as a TestFixture method.\n\nLong term, we may find that hiding the AP instances in TestFixture will not be a great idea, but we can defer that question I suppose.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66155b9_052b215d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-16T04:35:27Z",
+      "side": 1,
+      "message": "SimpleConnect test did this by itself but not in test context. Let me sync the logic with Autotest now. (And let\u0027s export WifiClient with getter). For general usage, I\u0027m working on init/cleanup gRPCs which cleans wifi entries on Close. It will be available soon.\n\nFor SSID, the APIface is also returned from ConfigureAP so the caller can have that. (I guess it is clearer to get information from handle when multiple APIfaces are configured).\n\nFor curAP, it\u0027s not really necessary. It\u0027s also possible to let the caller pass the the APIface instance to ping. I\u0027m not yet sure what the best design is, but I guess we can refactor that if  we find some problems.",
+      "parentUuid": "b52636ec_48fd1be2",
       "range": {
         "startLine": 137,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "eec02b31_4728ef99",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-16T04:35:27Z",
+      "side": 1,
+      "message": "It is not hard to extend as ping uses Option. Let me include it in this commit so that callers can decide what options to use.",
+      "parentUuid": "6047a25c_0114fce5",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae1933fc_f5ad1626",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 14
@@ -114,6 +210,30 @@
       "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dded1e5a_782d15b8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-16T04:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae1933fc_f5ad1626",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
