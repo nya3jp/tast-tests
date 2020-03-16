@@ -22,6 +22,30 @@
       "revId": "aad6c0f0fee053fba9111f32e0e5b867168b3ebe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc554559_30c6c00c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T16:23:33Z",
+      "side": 1,
+      "message": "It looks like current implementation is fine.",
+      "parentUuid": "865be58c_5b3c688a",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "aad6c0f0fee053fba9111f32e0e5b867168b3ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
