@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13cae2ff_38c11ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:33:05Z",
+      "side": 1,
+      "message": "style: Could you avoid mixing concepts of URL and the \"twentytabs\" key?\nInstead, could you introduce a struct, such as;\n\ntype testMode int\nconst (\n  openURLMode testMode \u003d iota\n  openTabMode\n)\n\ntype testParams struct {\n  mode testMode\n  url string\n  numTabs int\n}\n\n...",
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "265acf81_19262f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:33:05Z",
+      "side": 1,
+      "message": "style: go perfers shorter name (even abbriviations), unlike other google-standard languages, such as C/C++, Java, Python etc. In this case, I\u0027d recomment \"conns\".\n\nAlso, []*chrome.Conn has Close() method.\n\nvar conns []*chrome.Conn\nif ... {\n  conns \u003d ...\n} else {\n  conn, err :\u003d ...\n  if err !\u003d nil {\n    ...\n  }\n  conns \u003d append(conns, conn)\n}\ndefer conns.Close()",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df35981_57ad14d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:33:05Z",
+      "side": 1,
+      "message": "In general, it is recommended not to pass testing.State.\nCould you return error, instead?",
+      "range": {
+        "startLine": 222,
+        "startChar": 54,
+        "endLine": 222,
+        "endChar": 70
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff62d89_1e54444e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:33:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 246,
+        "startChar": 46,
+        "endLine": 246,
+        "endChar": 62
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c762f6e0_1a877f61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:33:05Z",
+      "side": 1,
+      "message": "Ditto. Instead passing testing.State, could you pass Chrome instance, and return error if needed?",
+      "range": {
+        "startLine": 261,
+        "startChar": 49,
+        "endLine": 261,
+        "endChar": 65
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
