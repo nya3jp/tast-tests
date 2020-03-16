@@ -34,6 +34,24 @@
       "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7328d24_370bfbc7",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-16T17:48:21Z",
+      "side": 1,
+      "message": "This CL removes the local BootMode definitions. The only definitions remaining are in pb and common. My rationale is that the .pb.go objects are intended to be used with the RPC server, so it would be useful to have a definition for non-RPC contexts.\n\nBut if using the proto directly is preferred, then that makes this change irrelevant.",
+      "parentUuid": "7d97e417_ae4ae0cc",
+      "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
