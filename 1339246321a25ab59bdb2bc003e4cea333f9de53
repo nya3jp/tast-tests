@@ -16,6 +16,24 @@
       "revId": "1339246321a25ab59bdb2bc003e4cea333f9de53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa5dce5b_d862a968",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-16T04:29:22Z",
+      "side": 1,
+      "message": "I have the same question.\nIf this means the default attribute values are fed as a JSON file by future changes, this line looks already covered by the TODO comment in line 33.",
+      "parentUuid": "352e7ec3_703bef93",
+      "revId": "1339246321a25ab59bdb2bc003e4cea333f9de53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
