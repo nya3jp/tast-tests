@@ -23,10 +23,6 @@ import (
 
 const workingDir = "/tmp/tast-test/"
 
-const (
-	ifaceTypeManaged = "managed"
-)
-
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
 	host        *host.SSH // TODO(crbug.com/1019537): use a more suitable ssh object.
@@ -63,11 +59,7 @@ func NewRouter(ctx context.Context, host *host.SSH) (*Router, error) {
 // removeWifiIface removes iface with iw command.
 func (r *Router) removeWifiIface(ctx context.Context, iface string) error {
 	testing.ContextLogf(ctx, "Deleting wdev %s on router", iface)
-	// TODO(crbug.com/1034875): move iw operations into iw_runner.
-	if out, err := r.host.Command("iw", "dev", iface, "del").CombinedOutput(ctx); err != nil {
-		return errors.Wrapf(err, "failed to delete wdev %s: %q", iface, string(out))
-	}
-	return nil
+	return r.iwr.RemoveInterface(ctx, iface)
 }
 
 // removeWifiIfaces removes all WiFi interfaces.
@@ -204,7 +196,7 @@ func (r *Router) selectPhy(ctx context.Context, channel int) (int, error) {
 }
 
 // selectInterface finds an available interface suitable for the given channel and type.
-func (r *Router) selectInterface(ctx context.Context, channel int, t string) (string, error) {
+func (r *Router) selectInterface(ctx context.Context, channel int, t iw.IfType) (string, error) {
 	phyID, err := r.selectPhy(ctx, channel)
 	if err != nil {
 		return "", err
@@ -241,7 +233,7 @@ func (r *Router) getUniqueServiceName() string {
 func (r *Router) StartAPIface(ctx context.Context, conf *hostapd.Config) (*APIface, error) {
 	// Reserve required resources.
 	name := r.getUniqueServiceName()
-	iface, err := r.selectInterface(ctx, conf.Channel, ifaceTypeManaged)
+	iface, err := r.selectInterface(ctx, conf.Channel, iw.IfTypeManaged)
 	if err != nil {
 		return nil, err
 	}
@@ -288,21 +280,19 @@ func (r *Router) workDir() string {
 // Utilities for resource control.
 
 // uniqueIfaceName returns an unique name for interface with type t.
-func (r *Router) uniqueIfaceName(t string) string {
-	name := fmt.Sprintf("%s%d", t, r.ifaceID)
+func (r *Router) uniqueIfaceName(t iw.IfType) string {
+	name := fmt.Sprintf("%s%d", string(t), r.ifaceID)
 	r.ifaceID++
 	return name
 }
 
 // createWifiIface creates an interface on phy with type=t and returns the name of created interface.
-func (r *Router) createWifiIface(ctx context.Context, phyID int, t string) (string, error) {
+func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (string, error) {
 	iface := r.uniqueIfaceName(t)
 	phy := r.phys[phyID].Name
 	testing.ContextLogf(ctx, "Creating wdev %s on wiphy %s", iface, phy)
-	// TODO(crbug.com/1034875): move iw operations into iw_runner.
-	cmd := r.host.Command("iw", "phy", phy, "interface", "add", iface, "type", string(t))
-	if out, err := cmd.CombinedOutput(ctx); err != nil {
-		return "", errors.Wrapf(err, "failed to create wdev %s on wiphy %s: %q", iface, phy, string(out))
+	if err := r.iwr.AddInterface(ctx, phy, iface, t); err != nil {
+		return "", err
 	}
 	r.availIfaces[iface] = &iw.NetDev{
 		PhyNum: phyID,

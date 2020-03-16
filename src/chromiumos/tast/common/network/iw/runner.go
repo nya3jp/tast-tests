@@ -30,6 +30,16 @@ const (
 	securityMixed = "mixed"
 )
 
+// IfType is the type of WiFi interface.
+type IfType string
+
+// IfType enums. (Only defines the values useful for us. For complete
+// list of possible values, please refer to iftype_name in iw.)
+const (
+	IfTypeManaged IfType = "managed"
+	IfTypeMonitor IfType = "monitor"
+)
+
 // Band contains supported wireless band attributes.
 type Band struct {
 	Num            int
@@ -49,8 +59,9 @@ type BSSData struct {
 
 // NetDev contains interface attributes from `iw dev`.
 type NetDev struct {
-	PhyNum         int
-	IfName, IfType string
+	PhyNum int
+	IfName string
+	IfType IfType
 }
 
 // Phy contains phy# attributes.
@@ -374,6 +385,22 @@ func (r *Runner) SetAntennaBitmap(ctx context.Context, phy string, txBitmap int,
 	return nil
 }
 
+// AddInterface creates a interface on phy with name=iface and type=t.
+func (r *Runner) AddInterface(ctx context.Context, phy, iface string, t IfType) error {
+	if err := r.cmd.Run(ctx, "iw", "phy", phy, "interface", "add", iface, "type", string(t)); err != nil {
+		return errors.Wrapf(err, "failed to add interface %s on %s", iface, phy)
+	}
+	return nil
+}
+
+// RemoveInterface removes the iface.
+func (r *Runner) RemoveInterface(ctx context.Context, iface string) error {
+	if err := r.cmd.Run(ctx, "iw", "dev", iface, "del"); err != nil {
+		return errors.Wrapf(err, "failed to remove interface %s", iface)
+	}
+	return nil
+}
+
 // determineSecurity determines the security level of a connection based on the
 // number of supported securities.
 func determineSecurity(secs []string) string {
@@ -489,7 +516,7 @@ func newNetDev(phyStr, ifName, dataMatch string) (*NetDev, error) {
 		return nil, errors.Wrap(err, "failed to parse ifType")
 	}
 
-	ifType := m[0]
+	ifType := IfType(m[0])
 	return &NetDev{PhyNum: phy, IfName: ifName, IfType: ifType}, nil
 }
 
