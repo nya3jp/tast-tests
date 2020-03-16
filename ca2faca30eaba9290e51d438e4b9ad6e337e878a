@@ -403,6 +403,30 @@
       "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae291fc_f367b311",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:21:52Z",
+      "side": 1,
+      "message": "Hmm... I\u0027m still worried about it.\n\n\u003e Is it possible we have different versions of gofmt? I run gofmt [path/to/file], inside the chroot.\n\nI don\u0027t think so. My gofmt in cros chroot is \"/usr/bin/gofmt\". It looks like gofmt does not have version number to identify its features...?\n\nWould you mind to upload a CL with your change being reverted by skipping repo hooks, so I can double check locally?\nIn order to avoid confusion, maybe \"as another CL\" will be better, i think.",
+      "parentUuid": "7a2d60d7_1711d76a",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
