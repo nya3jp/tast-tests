@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9eaad9a5_636a76be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-16T22:19:18Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that be backwards logic though? We intentionally check if we\u0027ve found the service before initiating another scan, because if we\u0027ve found it, the scan is unnecessary. (Note: scans (performed by Shill/wpa_supplicant asynchronously) can take several seconds.)\n\nWe already aren\u0027t super careful about not requesting unnecessary scans, but this would make it worse.",
+      "parentUuid": "f1e7fa1e_701a043e",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d2681f1_62fc4c6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 22
