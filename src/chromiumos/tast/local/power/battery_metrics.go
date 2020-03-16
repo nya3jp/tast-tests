@@ -128,8 +128,10 @@ type BatteryMetrics struct {
 	voltageMetric perf.Metric
 	currentMetric perf.Metric
 	powerMetric   perf.Metric
+	powerMetric   perf.Metric
 	lowSys        float64
 	lowMargin     float64
+	prevState     *BatteryState
 }
 
 var _ perf.TimelineDatasource = &BatteryMetrics{}
@@ -141,8 +143,10 @@ func NewBatteryMetrics(lowBatteryMargin float64) *BatteryMetrics {
 		voltageMetric: perf.Metric{Name: "ectool_battery_voltage", Unit: "mV", Direction: perf.SmallerIsBetter, Multiple: true},
 		currentMetric: perf.Metric{Name: "ectool_battery_current", Unit: "mA", Direction: perf.SmallerIsBetter, Multiple: true},
 		powerMetric:   perf.Metric{Name: "ectool_battery_power", Unit: "mW", Direction: perf.SmallerIsBetter, Multiple: true},
+		energyMetric:  perf.Metric{Name: "ectool_battery_power", Unit: "mAh", Direction: perf.SmallerIsBetter, Multiple: true},
 		lowSys:        100.0,
 		lowMargin:     lowBatteryMargin,
+		prevState:     nil,
 	}
 }
 
@@ -159,6 +163,11 @@ func (b *BatteryMetrics) Setup(ctx context.Context) error {
 
 // Start does nothing, but is needed to be a TimelineDatasource.
 func (b *BatteryMetrics) Start(_ context.Context) error {
+	state, err := NewBatteryState(ctx)
+	if err != nil {
+		return err
+	}
+	b.prevState = state
 	return nil
 }
 
@@ -175,5 +184,7 @@ func (b *BatteryMetrics) Snapshot(ctx context.Context, values *perf.Values) erro
 	values.Append(b.voltageMetric, state.Voltage)
 	values.Append(b.currentMetric, state.Current)
 	values.Append(b.powerMetric, state.Power())
+	values.Append(b.energyMetric, state.Remaining-b.prevState.Remaining)
+	b.prevState = state
 	return nil
 }
