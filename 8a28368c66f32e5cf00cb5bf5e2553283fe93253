@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "81f007ca_ab7e7fc1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-16T19:12:03Z",
+      "side": 1,
+      "message": "I\u0027m not too worried specifically about interpreting the exit code on its own; that\u0027s where we just have to understand the tool in question (iw) and its executor (a shell or similar).\n\nMy point was primarily that we don\u0027t dump the stdout/err, which would have made this clearer (it dumps nice string representations, and sometimes other text). As you probably already noticed, I have CLs up to fix that.\n\nI\u0027ll call this Resolved, but if you have other ways of making this better, throw up a CL.\n\n\u003e Shall we show the error code as signed char?\n\nI\u0027m not sure what this looks like, specifically. You mean, unwrap the error here and try to repackage it? Or change how the Tast command interface works?",
+      "parentUuid": "64d9dae9_16a9798a",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 88
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e1eafe3_5abd160c",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 20
