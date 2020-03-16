@@ -44,25 +44,13 @@ func logInfo(ctx context.Context, cont *vm.Container, file string) error {
 
 // RunTest starts a VM and runs all traces in trace, which maps from filenames (passed to s.DataPath) to a human-readable name for the trace, that is used both for the output file's name and for the reported perf keyval.
 func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces map[string]string) {
-	outDir := filepath.Join(s.OutDir(), logDir)
-	if err := os.MkdirAll(outDir, 0755); err != nil {
-		s.Fatalf("Failed to create output dir %v: %v", outDir, err)
-	}
-	file := filepath.Join(outDir, envFile)
-	s.Log("Logging container graphics environment to ", envFile)
-	if err := logInfo(ctx, cont, file); err != nil {
-		s.Log("Failed to log container information: ", err)
-	}
-
 	shortCtx, shortCancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer shortCancel()
 
-	s.Log("Checking if apitrace installed")
-	cmd := cont.Command(shortCtx, "sudo", "dpkg", "-l", "apitrace")
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(shortCtx)
-		s.Fatal("Failed to get apitrace: ", err)
+	if err := setupReplay(ctx, s, cont); err != nil {
+		s.Fatal("Failed to setup for replaying: ", err)
 	}
+
 	for traceFile, traceName := range traces {
 		shortCtx, st := timing.Start(shortCtx, "trace:"+traceName)
 		defer st.End()
@@ -74,6 +62,28 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 			s.Fatal("Failed saving perf data: ", err)
 		}
 	}
+}
+
+// setupReplay prepares a container for replaying traces.
+func setupReplay(ctx context.Context, s *testing.State, cont *vm.Container) error {
+	outDir := filepath.Join(s.OutDir(), logDir)
+	if err := os.MkdirAll(outDir, 0755); err != nil {
+		return errors.Wrapf(err, "failed to create output dir %v", outDir)
+	}
+	file := filepath.Join(outDir, envFile)
+	s.Log("Logging container graphics environment to ", envFile)
+	if err := logInfo(ctx, cont, file); err != nil {
+		s.Log("Failed to log container information: ", err)
+	}
+
+	s.Log("Checking if apitrace installed")
+	cmd := cont.Command(ctx, "sudo", "dpkg", "-l", "apitrace")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to log container information")
+	}
+
+	return nil
 }
 
 // runTrace runs a trace and writes output to ${traceName}.txt. traceFile should be absolute path.
