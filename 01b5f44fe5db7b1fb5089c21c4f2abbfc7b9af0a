@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "470ca38a_58438053",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_dbus.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T10:01:18Z",
+      "side": 1,
+      "message": "Do we really can close this connection?\n\nhttps://godoc.org/github.com/godbus/dbus#SystemBus - SystemBus returns shared connecion, so we cannot close it.\n\n\nConnections are either shared or private. Shared connections are shared between calls to the functions that return them. As a result, the methods Close, Auth and Hello must not be called on them.",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "01b5f44fe5db7b1fb5089c21c4f2abbfc7b9af0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
