@@ -22,6 +22,30 @@
       "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e3321c_0a733470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-16T19:34:34Z",
+      "side": 1,
+      "message": "No, it\u0027s been in there since at least 2013. https://source.chromium.org/chromium/chromium/src/+/master:base/base_switches.cc;l\u003d131;drc\u003dac7514b02c7b01fe56a60f75387b63aa4f00a66e\n\nIt overrides the normal consent checks for breakpad, see https://source.chromium.org/chromium/chromium/src/+/master:components/crash/content/app/breakpad_linux.cc;l\u003d2046;drc\u003dd4d515710318eeedf16ebeb74e0b46456934f03d",
+      "parentUuid": "609ce500_cffe40ff",
+      "range": {
+        "startLine": 66,
+        "startChar": 59,
+        "endLine": 66,
+        "endChar": 93
+      },
+      "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
