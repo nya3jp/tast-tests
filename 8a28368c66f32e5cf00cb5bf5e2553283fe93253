@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "64d9dae9_16a9798a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-16T18:57:27Z",
+      "side": 1,
+      "message": "Yes. I discussed with Yenlin about the iw return code issue. It returns negative value for error (e.g. -16 for -EBUSY, but Tast command executor raises with error code 240 (256-16)). Shall we show the error code as signed char?",
+      "parentUuid": "ce0b1e90_ad649a01",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 88
+      },
+      "revId": "8a28368c66f32e5cf00cb5bf5e2553283fe93253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e1eafe3_5abd160c",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 20
