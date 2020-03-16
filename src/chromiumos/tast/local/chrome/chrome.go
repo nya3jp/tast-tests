@@ -33,6 +33,8 @@ const (
 	// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	LoginTimeout = 60 * time.Second
+	// LoginCheckTimeout is the maximum amount of time that Chrome is expected to check whether a user has logged in.
+	LoginCheckTimeout = 15 * time.Second
 
 	chromeUser = "chronos" // Chrome Unix username
 
@@ -54,6 +56,8 @@ const (
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * time.Millisecond}
+
+//var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 1000 * time.Millisecond}
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
 var locked = false
@@ -215,6 +219,12 @@ func UnpackedExtension(dir string) Option {
 	return func(c *Chrome) { c.extDirs = append(c.extDirs, dir) }
 }
 
+// ReuseLogin returns an Option that can be passed to New to make Chrome to reuse the existing
+// login session from same user
+func ReuseLogin() Option {
+	return func(c *Chrome) { c.reuseLogin = true }
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -241,6 +251,8 @@ type Chrome struct {
 
 	watcher   *browserWatcher // tries to catch Chrome restarts
 	logMaster *jslog.Master   // collects JS console output
+
+	reuseLogin bool // reuse exiting login session, if it's from the same user
 }
 
 // User returns the username that was used to log in to Chrome.
@@ -274,6 +286,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		breakpadTestMode: true,
 		watcher:          newBrowserWatcher(),
 		logMaster:        jslog.NewMaster(),
+		reuseLogin:       false,
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -316,11 +329,39 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	if err := c.prepareExtensions(ctx); err != nil {
 		return nil, err
 	}
+	if c.reuseLogin && cdputil.IsCdpListening(ctx) {
+		var err error
+		if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+			testing.ContextLog(ctx, "Chrome cannot create new session: ", err)
+			return nil, c.chromeErr(err)
+		}
+		userLoggedIn, err := c.IsLoggedIn(ctx)
+		if userLoggedIn {
+			testing.ContextLog(ctx, "User has logged in. ")
+			toClose = nil
+			return c, nil
+		}
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to determine login status: ", err)
+		}
+		// Need to restart extConn and CDP Session, because chrome will be restarted.
+		if c.testExtConn != nil {
+			c.testExtConn.locked = false
+			c.testExtConn.Close()
+			c.testExtConn = nil
+		}
+		if c.devsess != nil {
+			c.devsess.Close(ctx)
+			c.devsess = nil
+		}
+		testing.ContextLog(ctx, "No login session to reuse. Restart chrome")
+	}
 
 	if err := c.restartChromeForTesting(ctx); err != nil {
 		return nil, err
 	}
 	var err error
+
 	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
 		return nil, c.chromeErr(err)
 	}
@@ -990,4 +1031,63 @@ func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool,
 		return false, errors.Wrap(err, "failed to get targets")
 	}
 	return len(targets) != 0, nil
+}
+
+// IsLoggedIn checks if user has logged in.
+func (c *Chrome) IsLoggedIn(ctx context.Context) (bool, error) {
+	testing.ContextLog(ctx, "try to get user login status")
+
+	cancelCtx, cancel := context.WithTimeout(ctx, LoginCheckTimeout)
+	defer cancel()
+
+	var conn *Conn
+	conn, err := c.TestAPIConn(cancelCtx)
+	if err != nil {
+		// If a connect to existing chrome cannot be created, user is not in logged in status
+		return false, nil
+	}
+
+	js := `
+		var loginStatus = null;
+		var currentUser = null;
+
+		chrome.usersPrivate.getLoginStatus(function (status) {
+			loginStatus = status;
+		});
+		chrome.usersPrivate.getCurrentUser(function (user) {
+			currentUser = user;
+		});
+		`
+
+	//testing.ContextLog(ctx, "Run js: ", js)
+
+	if err := conn.Exec(cancelCtx, js); err != nil {
+		return false, errors.Wrap(err, "failed to run js to get loginStatus and current user")
+	}
+
+	var loginStatus, isScreenLocked, currentUser string
+
+	if err := conn.WaitForExpr(cancelCtx, "loginStatus != null"); err != nil {
+		return false, errors.Wrap(err, "failed to wait loginStatus")
+	}
+	if err := conn.Eval(cancelCtx, "loginStatus.isLoggedIn + ''", &loginStatus); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate loginStatus.isLoggedIn")
+	}
+	if err := conn.Eval(cancelCtx, "loginStatus.isScreenLocked + ''", &isScreenLocked); err != nil {
+		return false, errors.Wrap(err, "failed to evaluate loginStatus.isScreenLocked")
+	}
+
+	if loginStatus == "true" {
+		if err := conn.WaitForExpr(cancelCtx, "currentUser != null"); err != nil {
+			return false, errors.Wrap(err, "failed to wait currentUser")
+		}
+		if err := conn.Eval(cancelCtx, "currentUser.email + ''", &currentUser); err != nil {
+			return false, errors.Wrap(err, "failed to evaluate currentUser")
+		}
+	}
+
+	testing.ContextLog(cancelCtx, "loginStatus: ", loginStatus, ", screenLocked: ", isScreenLocked,
+		", currentUser: ", currentUser)
+
+	return loginStatus == "true" && currentUser == c.user, nil
 }
