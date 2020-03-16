@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3819291_828b5e8a",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2020-03-16T11:59:10Z",
+      "side": 1,
+      "message": "We probably also want /var/log/chrome/ folder.",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "00c8868da0f17db8552218672ef1f46208824a05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
