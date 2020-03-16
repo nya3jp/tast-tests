@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76661819_6b40a0e0",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T04:03:43Z",
+      "side": 1,
+      "message": "EvalPromise is deprecatd. Please use Eval or Call.",
+      "range": {
+        "startLine": 77,
+        "startChar": 13,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "64bff7e96da19d80d46d544d57847ebeff6254bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3143512a_a0957b53",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T04:03:43Z",
+      "side": 1,
+      "message": "could you use tast.promisify like so: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go?type\u003dcs\u0026q\u003dtast.promisify\u0026sq\u003dpackage:%5Echromeos_public$%7C%5Echromeos_internal$\u0026g\u003d0\u0026l\u003d182",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "64bff7e96da19d80d46d544d57847ebeff6254bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0205c8ff_30017740",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T04:03:43Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "64bff7e96da19d80d46d544d57847ebeff6254bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a159ef_3083f451",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T04:03:43Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "64bff7e96da19d80d46d544d57847ebeff6254bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b36e90_5010e004",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T04:03:43Z",
+      "side": 1,
+      "message": "same here. You can use Call to avoid embedding the boolean value.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "64bff7e96da19d80d46d544d57847ebeff6254bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
