@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/errors"
 )
 
@@ -142,6 +143,23 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	return builder.String(), nil
 }
 
+// PcapFreqOptions returns the options for the caller to set frequency with iw for
+// preparing interface for packet capturing.
+func (c *Config) PcapFreqOptions() []iw.SetFreqOption {
+	if c.is80211n() {
+		ht := c.htMode()
+		switch ht {
+		case HTCapHT40Minus:
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Minus)}
+		case HTCapHT40Plus:
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Plus)}
+		default:
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT20)}
+		}
+	}
+	return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthNOHT)}
+}
+
 // validate validates the Config, c.
 func (c *Config) validate() error {
 	if c.Ssid == "" || len(c.Ssid) > 32 {
@@ -242,12 +260,30 @@ func (c *Config) hwMode() (string, error) {
 	return "", errors.Errorf("invalid mode %s", string(c.Mode))
 }
 
+// htMode returns which of HT20, HT40+ and HT40- is used or 0 otherwise.
+func (c *Config) htMode() HTCap {
+	if c.HTCaps&(HTCapHT40|HTCapHT40Minus) > 0 && supportHT40Minus(c.Channel) {
+		return HTCapHT40Minus
+	}
+	if c.HTCaps&(HTCapHT40|HTCapHT40Plus) > 0 && supportHT40Plus(c.Channel) {
+		return HTCapHT40Plus
+	}
+	if c.HTCaps&HTCapHT20 > 0 {
+		return HTCapHT20
+	}
+	return 0
+}
+
 func (c *Config) htCapsString() (string, error) {
 	var caps []string
-	if c.HTCaps&(HTCapHT40|HTCapHT40Minus) > 0 && supportHT40Minus(c.Channel) {
+	htMode := c.htMode()
+	switch htMode {
+	case HTCapHT40Minus:
 		caps = append(caps, "[HT40-]")
-	} else if c.HTCaps&(HTCapHT40|HTCapHT40Plus) > 0 && supportHT40Plus(c.Channel) {
+	case HTCapHT40Plus:
 		caps = append(caps, "[HT40+]")
+	default:
+		// HT20 is default and no config string needed.
 	}
 	if c.HTCaps&HTCapSGI20 > 0 {
 		caps = append(caps, "[SHORT-GI-20]")
