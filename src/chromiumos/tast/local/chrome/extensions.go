@@ -87,21 +87,26 @@ func writeTestExtension(dir string) (id string, err error) {
     "accessibilityFeatures.modify",
     "accessibilityFeatures.read",
     "audio",
-    "autotestPrivate",
+	"autotestPrivate",
+	"networkingPrivate",
+	"usersPrivate",
     "fontSettings",
     "i18n",
     "inputMethodPrivate",
     "languageSettingsPrivate",
     "management",
     "proxy",
-    "settingsPrivate",
+	"settingsPrivate",
+	"terminalPrivate",
     "system.display",
-    "tabs"
+	"tabs",
+	"power"
   ],
   "automation": {
     "interact": true,
     "desktop": true
-  }
+  },
+  "bluetooth": {}
 }`
 
 		// In background.js, tast library is defined.
