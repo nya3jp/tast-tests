@@ -31,6 +31,13 @@ const (
 	envFile = "glxinfo.txt"
 )
 
+// Loop is used to specify frames to loop during replay.
+type Loop struct {
+	Begin int
+	End   int
+	Count int
+}
+
 func logInfo(ctx context.Context, cont *vm.Container, file string) error {
 	f, err := os.Create(file)
 	if err != nil {
@@ -66,7 +73,7 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 }
 
 // RunExtendedTest starts a VM and runs a single trace with additional options for repeating or CPU loading.
-func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, traceFile string, traceName string, cpuThreads int) {
+func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, traceFile string, traceName string, loop *Loop, cpuThreads int) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
@@ -89,7 +96,7 @@ func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, 
 
 	// Start tracing in a separate thread.
 	go func() {
-		perfValues, err := replayTrace(ctx, cont, containerPath, traceName, []string{})
+		perfValues, err := replayTrace(ctx, cont, containerPath, traceName, loop, []string{})
 		// Signal CPU threads to exit and signal completion.
 		cancel()
 		wait.Done()
@@ -156,7 +163,7 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 	}
 	defer cont.Command(ctx, "rm", "-f", containerPath).Run()
 
-	return replayTrace(ctx, cont, containerPath, traceName, []string{})
+	return replayTrace(ctx, cont, containerPath, traceName, nil, []string{})
 }
 
 // prepareTrace pushes a trace to the DUT and decompresses it prior to replay.
@@ -175,12 +182,17 @@ func prepareTrace(ctx context.Context, cont *vm.Container, traceFile string) (st
 }
 
 // replayTrace replays a trace and parses the results.
-func replayTrace(ctx context.Context, cont *vm.Container, containerPath string, traceName string, extraArgs []string) (*perf.Values, error) {
+func replayTrace(ctx context.Context, cont *vm.Container, containerPath string, traceName string, loop *Loop, extraArgs []string) (*perf.Values, error) {
 	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
 	args := []string{"apitrace", "replay", containerPath}
 	if deadline, ok := ctx.Deadline(); ok {
 		d := int(time.Until(deadline).Seconds())
 		args = append(args, fmt.Sprintf("--timeout=%d", d))
+		if loop != nil {
+			args = append(args, fmt.Sprintf("--loop-begin=%d", loop.Begin))
+			args = append(args, fmt.Sprintf("--loop-end=%d", loop.End))
+			args = append(args, fmt.Sprintf("--loop-repeat-cnt=%d", loop.Count))
+		}
 		args = append(args, extraArgs...)
 	}
 	ctx, st := timing.Start(ctx, "replay")
