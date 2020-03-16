@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45aa2bbe_6fcebf07",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-16T17:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ebd585_0385cdaf",
+      "range": {
+        "startLine": 274,
+        "startChar": 19,
+        "endLine": 274,
+        "endChar": 22
+      },
+      "revId": "60f31b3cc86b87d240ba134f67993a6308d64adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c498eb31_fbea67b2",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7a488011_09ee3087",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-16T17:53:12Z",
+      "side": 1,
+      "message": "I understand that these methods only differ by 2 lines, but I think they are much more explicit and readable as separate methods. I am going to leave them separate.",
+      "parentUuid": "c498eb31_fbea67b2",
+      "range": {
+        "startLine": 289,
+        "startChar": 15,
+        "endLine": 289,
+        "endChar": 36
+      },
+      "revId": "60f31b3cc86b87d240ba134f67993a6308d64adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9358b267_f92ce2f4",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "60f31b3cc86b87d240ba134f67993a6308d64adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03aa3004_1b4ea8c3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-16T17:53:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9358b267_f92ce2f4",
+      "range": {
+        "startLine": 394,
+        "startChar": 5,
+        "endLine": 394,
+        "endChar": 16
+      },
+      "revId": "60f31b3cc86b87d240ba134f67993a6308d64adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
