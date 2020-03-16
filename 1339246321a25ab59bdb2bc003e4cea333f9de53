@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "073a1f15_c8647345",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T08:14:45Z",
+      "side": 1,
+      "message": "nit: Could you move this above package firmware, and use // comment style instaed?\ncf. https://golang.org/src/runtime/time.go#L5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "1339246321a25ab59bdb2bc003e4cea333f9de53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "352e7ec3_703bef93",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 2
@@ -31,6 +54,29 @@
       "side": 1,
       "message": "I have the same question.\nIf this means the default attribute values are fed as a JSON file by future changes, this line looks already covered by the TODO comment in line 33.",
       "parentUuid": "352e7ec3_703bef93",
+      "revId": "1339246321a25ab59bdb2bc003e4cea333f9de53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e512a26f_0693fa52",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-16T08:14:45Z",
+      "side": 1,
+      "message": "I imagine this can fail given the future change. Could you make this return (*Config, error) ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 14
+      },
       "revId": "1339246321a25ab59bdb2bc003e4cea333f9de53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
