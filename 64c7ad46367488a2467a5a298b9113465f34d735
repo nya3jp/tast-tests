@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c3a06e7_beeca78b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-16T03:42:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1294d094_20d8a720",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9af0c2ec_d0e1958a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
         "patchSetId": 6
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "bf065f91_11fa977a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-16T03:42:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3dcfb422_a578de8d",
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55f7c447_cebd30f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
         "patchSetId": 6
@@ -83,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "d60a6c8a_7e15bc50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-16T03:42:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "55f7c447_cebd30f8",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 2
+      },
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b787058_af4065cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
         "patchSetId": 6
@@ -94,6 +160,30 @@
       "writtenOn": "2020-03-13T09:04:30Z",
       "side": 1,
       "message": "Can we use syslog.Program option to filter kernel message only?",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d3d0ae5_50a443b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-16T03:42:24Z",
+      "side": 1,
+      "message": "It needs to get messages from kernel and ARCVM (for kernel messages from the guest).\n\nARCVM seems to be special in that its name is /ARCVM\\(\\d+\\)/, so a simple string match won\u0027t do.",
+      "parentUuid": "1b787058_af4065cc",
       "range": {
         "startLine": 236,
         "startChar": 29,
@@ -126,6 +216,30 @@
       "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefa3c7c_e11f8faa",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-16T03:42:24Z",
+      "side": 1,
+      "message": "Thanks for catching! I did remove it, maybe git rerere is playing tricks on me again?",
+      "parentUuid": "367724f4_bf3822c4",
+      "range": {
+        "startLine": 310,
+        "startChar": 17,
+        "endLine": 310,
+        "endChar": 21
+      },
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
