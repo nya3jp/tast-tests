@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8732014c_ec72c24c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-16T19:06:00Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "d66155b9_052b215d",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6047a25c_0114fce5",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 14
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "It is not hard to extend as ping uses Option. Let me include it in this commit so that callers can decide what options to use.",
       "parentUuid": "6047a25c_0114fce5",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "560367b6290a1b74f8aa1156a87531366b5adc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6536f38a_da095d1f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-16T19:06:00Z",
+      "side": 1,
+      "message": "Ah, cool, thanks.",
+      "parentUuid": "eec02b31_4728ef99",
       "range": {
         "startLine": 152,
         "startChar": 0,
