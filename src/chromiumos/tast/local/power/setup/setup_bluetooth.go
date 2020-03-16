@@ -19,11 +19,10 @@ func DisableBluetooth(ctx context.Context) (CleanupCallback, error) {
 			path     = "/org/bluez/hci0"
 			property = "org.bluez.Adapter1.Powered"
 		)
-		conn, obj, err := dbusutil.Connect(ctx, name, path)
+		_, obj, err := dbusutil.Connect(ctx, name, path)
 		if err != nil {
 			return errors.Wrap(err, "failed to create DBUS connection to Bluetooth adapter")
 		}
-		s.Add(DBusCloseConnection(conn))
 		s.Add(DBusProperty(ctx, obj, property, false))
 		return nil
 	})
