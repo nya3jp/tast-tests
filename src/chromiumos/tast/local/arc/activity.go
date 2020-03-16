@@ -10,6 +10,7 @@ import (
 	"math"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -397,7 +398,7 @@ func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) e
 func (ac *Activity) WaitForFinished(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := ac.getTaskInfo(ctx)
-		if err != nil {
+		if err != nil && strings.Contains(err.Error(), "could not find task info for ") {
 			return nil
 		}
 		return errors.New("activity is still active")
