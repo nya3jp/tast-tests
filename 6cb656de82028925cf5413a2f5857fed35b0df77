@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b549adb6_68ccc705",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-16T19:08:37Z",
+      "side": 1,
+      "message": "At first I think maybe \"client\" is better. However, we may have other gRPC clients in the future. So with \"wifi\" prefix it leaves rooms for different gRPC calls.\n\nBy the way, is \"Cli\" the common abbreviation in golang for \"client\"? I\u0027m afraid it might be misinterpreted as CLI (command line interface). If it is not common, how about rename it as wifiClient?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "6cb656de82028925cf5413a2f5857fed35b0df77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
