@@ -14,6 +14,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -62,6 +63,65 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 			s.Fatal("Failed saving perf data: ", err)
 		}
 	}
+}
+
+// RunExtendedTest starts a VM and runs a single trace with additional options for repeating or CPU loading.
+func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, traceFile string, traceName string, cpuThreads int) {
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
+	if err := setupReplay(ctx, s, cont); err != nil {
+		s.Fatal("Failed to setup for replaying: ", err)
+	}
+
+	ctx, st := timing.Start(ctx, "trace:"+traceName)
+	defer st.End()
+
+	containerPath, err := prepareTrace(ctx, cont, s.DataPath(traceFile))
+	if err != nil {
+		s.Fatal("Failed preparing trace: ", err)
+	}
+	defer cont.Command(ctx, "rm", "-f", containerPath).Run()
+
+	// Synchronize shutdown.
+	var wait sync.WaitGroup
+	wait.Add(cpuThreads)
+
+	// Create N threads.
+	testing.ContextLogf(ctx, "Starting %d CPU threads", cpuThreads)
+	for i := 0; i < cpuThreads; i++ {
+		go func(t int) {
+			testing.ContextLog(ctx, "Starting thread ", t)
+			x := uint64(0)
+			for {
+				select {
+				case <-ctx.Done():
+					testing.ContextLogf(ctx, "Finished after %d iterations", x)
+					wait.Done()
+					return
+				default:
+					useCPU()
+					x++
+				}
+			}
+		}(i)
+	}
+
+	// Start replay.
+	perfValues, err := replayTrace(ctx, cont, containerPath, traceName)
+	if err != nil {
+		s.Fatal("Failed running trace: ", err)
+	}
+
+	// Signal CPU threads to exit and signal completion.
+	cancel()
+
+	if err := perfValues.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed saving perf data: ", err)
+	}
+
+	// Wait for all threads to complete.
+	wait.Wait()
 }
 
 // setupReplay prepares a container for replaying traces.
@@ -212,6 +272,17 @@ func parseResult(traceName, output string) (*perf.Values, error) {
 		Direction: perf.BiggerIsBetter,
 	}, fps)
 	return value, nil
+}
+
+func useCPU() int64 {
+	// Do stuff here.
+	cnt := int64(time.Now().Unix())
+	for i := int64(0); i < 1000000; i++ {
+		// TODO(davidriley): Add memory accesses.
+		cnt += i
+	}
+
+	return cnt
 }
 
 // TODO(pwang): Write a func to cleans up disk in best effort.
