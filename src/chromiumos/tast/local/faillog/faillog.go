@@ -12,8 +12,6 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -86,7 +84,7 @@ func saveScreenshotCDP(ctx context.Context, dir string) error {
 	}
 
 	bgURL := chrome.ExtensionBackgroundPageURL(chrome.TestExtensionID)
-	all, err := sm.FindTargets(ctx, func(t *target.Info) bool {
+	all, err := sm.FindTargets(ctx, func(t *cdputil.Target) bool {
 		return t.URL == bgURL
 	})
 	if len(all) == 0 {

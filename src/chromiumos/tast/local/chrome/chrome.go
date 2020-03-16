@@ -477,7 +477,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	defer st.End()
 
 	// Try to close all "normal" pages and apps.
-	targetFilter := func(t *target.Info) bool {
+	targetFilter := func(t *cdputil.Target) bool {
 		return t.Type == "page" || t.Type == "app"
 	}
 	targets, err := c.devsess.FindTargets(ctx, targetFilter)
@@ -779,26 +779,6 @@ func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) 
 	return newConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
 }
 
-// Target contains information about an available debugging target to which a connection can be established.
-type Target struct {
-	// URL contains the URL of the resource currently loaded by the target.
-	URL string
-	// The type of the target. It's obtained from target.Info.Type.
-	Type string
-}
-
-func newTarget(t *target.Info) *Target {
-	return &Target{URL: t.URL, Type: t.Type}
-}
-
-// TargetMatcher is a caller-provided function that matches targets with specific characteristics.
-type TargetMatcher func(t *Target) bool
-
-// MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
-func MatchTargetURL(url string) TargetMatcher {
-	return func(t *Target) bool { return t.URL == url }
-}
-
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm. It polls until the target is found or ctx's deadline expires.
 // An error is returned if no target is found, tm matches multiple targets, or the connection cannot
@@ -806,38 +786,11 @@ func MatchTargetURL(url string) TargetMatcher {
 //
 //	f := func(t *Target) bool { return t.URL == "http://example.net/" }
 //	conn, err := cr.NewConnForTarget(ctx, f)
-func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
-	var errNoMatch = errors.New("no targets matched")
-
-	var all, matched []*target.Info
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		all, err = c.devsess.FindTargets(ctx, nil)
-		if err != nil {
-			return c.chromeErr(err)
-		}
-		matched = []*target.Info{}
-		for _, t := range all {
-			if tm(newTarget(t)) {
-				matched = append(matched, t)
-			}
-		}
-		if len(matched) == 0 {
-			return errNoMatch
-		}
-		return nil
-	}, loginPollOpts); err != nil && err != errNoMatch {
-		return nil, err
+func (c *Chrome) NewConnForTarget(ctx context.Context, tm cdputil.TargetMatcher) (*Conn, error) {
+	t, err := c.devsess.WaitForTarget(ctx, tm)
+	if err != nil {
+		return nil, c.chromeErr(err)
 	}
-
-	if len(matched) != 1 {
-		testing.ContextLogf(ctx, "%d targets matched while unique match was expected. Existing targets:", len(matched))
-		for _, t := range all {
-			testing.ContextLogf(ctx, "  %+v", newTarget(t))
-		}
-		return nil, errors.Errorf("%d targets found", len(matched))
-	}
-	t := matched[0]
 	return c.newConnInternal(ctx, t.TargetID, t.URL)
 }
 
@@ -866,7 +819,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
 	bgURL := ExtensionBackgroundPageURL(c.testExtID)
 	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
 	var err error
-	if c.testExtConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
+	if c.testExtConn, err = c.NewConnForTarget(ctx, cdputil.MatchTargetURL(bgURL)); err != nil {
 		return nil, err
 	}
 	c.testExtConn.locked = true
@@ -909,7 +862,7 @@ func (c *Chrome) Responded(ctx context.Context) error {
 // getFirstOOBETarget returns the first OOBE-related DevTools target that it finds.
 // nil is returned if no target is found.
 func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
-	targets, err := c.devsess.FindTargets(ctx, func(t *target.Info) bool {
+	targets, err := c.devsess.FindTargets(ctx, func(t *cdputil.Target) bool {
 		return strings.HasPrefix(t.URL, oobePrefix)
 	})
 	if err != nil {
@@ -925,7 +878,7 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
 // to help enrollment on the device.
 // Returns nil if none are found.
 func (c *Chrome) enterpriseEnrollTargets(ctx context.Context, userDomain string) ([]*target.Info, error) {
-	isGAIAWebView := func(t *target.Info) bool {
+	isGAIAWebView := func(t *cdputil.Target) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
@@ -1046,7 +999,7 @@ func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
 		}
 		for _, gaiaTarget := range gaiaTargets {
 			testing.ContextLog(ctx, "Enrollment apps url: ", string(gaiaTarget.URL))
-			webViewConn, err := c.NewConnForTarget(ctx, MatchTargetURL(gaiaTarget.URL))
+			webViewConn, err := c.NewConnForTarget(ctx, cdputil.MatchTargetURL(gaiaTarget.URL))
 			if err != nil {
 				// If an error occurs during connection, continue to try.
 				// Enrollment will only exceed if the eval below succeeds.
@@ -1159,7 +1112,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 			return err
 		}
 	}
-	isGAIAWebView := func(t *target.Info) bool {
+	isGAIAWebView := func(t *cdputil.Target) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
@@ -1379,10 +1332,8 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 }
 
 // IsTargetAvailable checks if there is any matched target.
-func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
-	targets, err := c.devsess.FindTargets(ctx, func(t *target.Info) bool {
-		return tm(newTarget(t))
-	})
+func (c *Chrome) IsTargetAvailable(ctx context.Context, tm cdputil.TargetMatcher) (bool, error) {
+	targets, err := c.devsess.FindTargets(ctx, tm)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get targets")
 	}

@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -71,7 +71,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+		conn, err := cr.NewConnForTarget(ctx, func(t *cdputil.Target) bool {
 			return t.URL == url
 		})
 		if err != nil {

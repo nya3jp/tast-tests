@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/testing"
 )
 
@@ -61,7 +62,7 @@ func ChromeExtension(ctx context.Context, s *testing.State) {
 
 	s.Log("Connecting to background page")
 	bgURL := chrome.ExtensionBackgroundPageURL(extID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	conn, err := cr.NewConnForTarget(ctx, cdputil.MatchTargetURL(bgURL))
 	if err != nil {
 		s.Fatalf("Failed to connect to background page at %v: %v", bgURL, err)
 	}

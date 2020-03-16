@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/testing"
 )
 
@@ -50,7 +51,7 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 	SetPlayStoreEnabled(ctx, tconn, true)
 
 	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
-	conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+	conn, err := cr.NewConnForTarget(ctx, func(t *cdputil.Target) bool {
 		return t.URL == bgURL
 	})
 	if err != nil {

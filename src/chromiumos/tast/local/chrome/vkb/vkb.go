@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
@@ -102,7 +103,7 @@ func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.TestConn) error {
 // the returned connection.
 func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	extURLPrefix := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/inputview.html"
-	f := func(t *chrome.Target) bool { return strings.HasPrefix(t.URL, extURLPrefix) }
+	f := func(t *cdputil.Target) bool { return strings.HasPrefix(t.URL, extURLPrefix) }
 	return c.NewConnForTarget(ctx, f)
 }
 

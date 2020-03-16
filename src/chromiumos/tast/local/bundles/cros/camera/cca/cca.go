@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -171,7 +172,7 @@ type Resolution struct {
 // by launchApp event, camera intent or any other ways.
 type AppLauncher func(tconn *chrome.TestConn) error
 
-func isMatchCCAPrefix(t *chrome.Target) bool {
+func isMatchCCAPrefix(t *cdputil.Target) bool {
 	return strings.HasPrefix(t.URL, ccaURLPrefix)
 }
 
@@ -222,7 +223,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 	windowURL = ccaURLPrefix + strings.TrimPrefix(windowURL, "views/main.html")
 
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(windowURL))
+	conn, err := cr.NewConnForTarget(ctx, cdputil.MatchTargetURL(windowURL))
 	if err != nil {
 		return nil, err
 	}

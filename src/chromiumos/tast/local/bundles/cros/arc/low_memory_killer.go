@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -78,7 +79,7 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 
 	s.Log("Connecting to extension background page")
 	bgURL := chrome.ExtensionBackgroundPageURL(extID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	conn, err := cr.NewConnForTarget(ctx, cdputil.MatchTargetURL(bgURL))
 	if err != nil {
 		s.Fatalf("Could not connect to extension at %v: %v", bgURL, err)
 	}

@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
@@ -179,7 +180,7 @@ func waitAllocation(ctx context.Context, conn *chrome.Conn) error {
 
 // waitAllocationForURL waits for completion of JavaScript memory allocation on the tab with specified URL.
 func waitAllocationForURL(ctx context.Context, cr *chrome.Chrome, url string) error {
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+	conn, err := cr.NewConnForTarget(ctx, cdputil.MatchTargetURL(url))
 	if err != nil {
 		return errors.Wrap(err, "NewConnForTarget failed")
 	}
@@ -259,7 +260,7 @@ func reloadCrashedTab(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	}
 
 	// If the active tab's URL is not in the devtools targets, the active tab is crashed.
-	targetAvailable, err := cr.IsTargetAvailable(ctx, chrome.MatchTargetURL(tabURL))
+	targetAvailable, err := cr.IsTargetAvailable(ctx, cdputil.MatchTargetURL(tabURL))
 	if err != nil {
 		return false, errors.Wrap(err, "IsTargetAvailable failed")
 	}

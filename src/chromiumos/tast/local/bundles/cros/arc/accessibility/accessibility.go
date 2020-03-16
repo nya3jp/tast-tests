@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -92,7 +93,7 @@ func EnabledAndroidAccessibilityServices(ctx context.Context, a *arc.ARC) ([]str
 // Otherwise the calling function will close the connection.
 func chromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	testing.ContextLogf(ctx, "Waiting for ChromeVox background page at %s", extURL)
-	extConn, err := c.NewConnForTarget(ctx, chrome.MatchTargetURL(extURL))
+	extConn, err := c.NewConnForTarget(ctx, cdputil.MatchTargetURL(extURL))
 	if err != nil {
 		return nil, err
 	}

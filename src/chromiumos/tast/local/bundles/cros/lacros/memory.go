@@ -12,10 +12,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/lacros/launcher"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/testing"
 )
 
@@ -162,7 +161,7 @@ func Memory(ctx context.Context, s *testing.State) {
 		}
 
 		// Close the initial "about:blank" tab present at startup.
-		targetFilter := func(t *target.Info) bool {
+		targetFilter := func(t *cdputil.Target) bool {
 			return t.URL == "about:blank"
 		}
 		targets, err := l.Devsess.FindTargets(ctx, targetFilter)

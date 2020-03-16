@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -40,7 +41,7 @@ func CCAAPI(ctx context.Context, s *testing.State) {
 	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
 	bgURL := fmt.Sprintf("chrome-extension://%s/views/background.html", ccaID)
 	s.Log("Connecting to CCA background ", bgURL)
-	ccaConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	ccaConn, err := cr.NewConnForTarget(ctx, cdputil.MatchTargetURL(bgURL))
 	if err != nil {
 		s.Fatal("Failed to connect to CCA: ", err)
 	}

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
@@ -68,7 +68,7 @@ func LaunchBrowser(ctx context.Context, s *testing.State) {
 		}
 
 		s.Logf("Waiting for renderer with URL %q", urlTarget)
-		conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+		conn, err := cr.NewConnForTarget(ctx, func(t *cdputil.Target) bool {
 			return t.URL == urlTarget
 		})
 		if err != nil {

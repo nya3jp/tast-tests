@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/shutil"
@@ -142,7 +143,7 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 	// Share paths.
 	const filesAppExtID = "hhaomjibdihmijegdhdafkllkbggdgoj"
 	bgURL := chrome.ExtensionBackgroundPageURL(filesAppExtID)
-	f := func(t *chrome.Target) bool { return t.URL == bgURL }
+	f := func(t *cdputil.Target) bool { return t.URL == bgURL }
 	fconn, err := cr.NewConnForTarget(ctx, f)
 	if err != nil {
 		s.Fatalf("Failed to find %v: %v", bgURL, err)
