@@ -574,8 +574,12 @@ func CheckCrashingProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOp
 }
 
 // RunCrashTest runs a crash test case after setting up crash reporter.
-func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), initialize bool) error {
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, testFunc func(context.Context, *chrome.Chrome, *testing.State), initialize bool, consentType crash.ConsentType) error {
+	opt := crash.WithMockConsent()
+	if consentType == crash.RealConsent {
+		opt = crash.WithConsent(cr)
+	}
+	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
 		s.Fatal("Couldn't set up crash test: ", err)
 	}
 	defer func() {
