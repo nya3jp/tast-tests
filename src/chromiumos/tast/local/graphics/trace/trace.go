@@ -88,16 +88,31 @@ func setupReplay(ctx context.Context, s *testing.State, cont *vm.Container) erro
 
 // runTrace runs a trace and writes output to ${traceName}.txt. traceFile should be absolute path.
 func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName string) (*perf.Values, error) {
-	containerPath := filepath.Join("/tmp", filepath.Base(traceFile))
-	if err := cont.PushFile(ctx, traceFile, containerPath); err != nil {
-		return nil, errors.Wrap(err, "failed copying trace file to container")
-	}
-
-	containerPath, err := decompressTrace(ctx, cont, containerPath)
+	containerPath, err := prepareTrace(ctx, cont, traceFile)
 	if err != nil {
 		return nil, err
 	}
 
+	return replayTrace(ctx, cont, containerPath, traceName)
+}
+
+// prepareTrace pushes a trace to the DUT and decompresses it prior to replay.
+func prepareTrace(ctx context.Context, cont *vm.Container, traceFile string) (string, error) {
+	containerPath := filepath.Join("/tmp", filepath.Base(traceFile))
+	if err := cont.PushFile(ctx, traceFile, containerPath); err != nil {
+		return "", errors.Wrap(err, "failed copying trace file to container")
+	}
+
+	containerPath, err := decompressTrace(ctx, cont, containerPath)
+	if err != nil {
+		return "", err
+	}
+
+	return containerPath, nil
+}
+
+// replayTrace replays a trace and parses the results.
+func replayTrace(ctx context.Context, cont *vm.Container, containerPath string, traceName string) (*perf.Values, error) {
 	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
 	args := []string{"apitrace", "replay", containerPath}
 	if deadline, ok := ctx.Deadline(); ok {
