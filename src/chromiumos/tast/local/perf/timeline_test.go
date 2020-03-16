@@ -18,7 +18,7 @@ type testTimelineDatasource struct {
 
 var errSetup = errors.New("setup should fail")
 
-func (t *testTimelineDatasource) Setup(_ context.Context) error {
+func (t *testTimelineDatasource) Setup(_ context.Context, _ string) error {
 	if t.errSetup {
 		return errSetup
 	}
@@ -83,7 +83,15 @@ func TestTimeline(t *testing.T) {
 		t.Error("Wrong number of snapshots collected")
 	}
 
-	timestamps := p.values[timestampMetric]
+	var timestamps []float64
+	for k, v := range p.values {
+		if k.Name == "t" {
+			timestamps = v
+		}
+	}
+	if timestamps == nil {
+		t.Fatal("Could not find timestamps metric")
+	}
 	if len(timestamps) != 2 {
 		t.Fatalf("Wrong number of timestamps logged, got %d, expected 2", len(timestamps))
 	}
