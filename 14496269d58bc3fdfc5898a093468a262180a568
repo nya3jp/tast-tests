@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5576538_84f53ef3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T09:03:52Z",
+      "side": 1,
+      "message": "Could you comment that this could have false positive (at very sensitive timing, this may overlook the wrong flagTime condition)?",
+      "revId": "14496269d58bc3fdfc5898a093468a262180a568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
