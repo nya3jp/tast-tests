@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be65bec7_7026a136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-16T18:33:07Z",
+      "side": 1,
+      "message": "Do you want to have two cleanup contexts for the VM and wilco_dtc_supportd? I think using one would be simpler.",
+      "revId": "714bff015fafc1518d2c2b6c7237abb70f76c3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
