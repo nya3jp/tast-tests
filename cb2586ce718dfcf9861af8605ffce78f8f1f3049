@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1a4e2c5_5967042c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-16T19:06:05Z",
+      "side": 1,
+      "message": "Can we return an error here? Or a more brute hammer, s.Error() or s.Fatal()? If everything else works, but Disconnect is failing, we probably shouldn\u0027t treat that as passing.\n\nProbably a similar story for some other \u0027defer\u0027 statements.\n\n(Personally, I\u0027ve found these sorts of cases fairly awkward to handle in Go -- you may or may not have a current error for the \"normal\" flow, but you still want to tack on the error in cleanup. Is that where you use a named \u0027err\u0027 return variable, and use Wrap() on it? Tips welcome from you or Tast owners.)",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "cb2586ce718dfcf9861af8605ffce78f8f1f3049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
