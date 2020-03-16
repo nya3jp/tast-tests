@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bedc7580_31c71fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-16T01:17:07Z",
+      "side": 1,
+      "message": "I wonder if we have a race condition here. e.g. the following order:\n1. shill: interface gone. remove the device and send PropertyChanged.\n2. shill: interface is back. add back the device. (and send PropertyChanged)\n3. tast: captured the signal from step 1.\n4. tast: list devices and get interface name.\n(Once step 4 is executed after step 2, we cannot detect the removal.)\n\nI think there\u0027s a similar case in iwlwifi rescan test where the value of pw.WaitAll is used instead of another GetProperties. As there should be a signal where the interface is removed, we will definitely see the interface gone when traversing that list of ObjectPaths.",
+      "revId": "1a2e9166cba27891617e5466b3da81ef25f64b39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
