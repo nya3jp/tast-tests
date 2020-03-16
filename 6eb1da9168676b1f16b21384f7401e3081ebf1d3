@@ -22,6 +22,30 @@
       "revId": "6eb1da9168676b1f16b21384f7401e3081ebf1d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5496838_f6e7c934",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_keyboard_backlight.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-16T02:03:09Z",
+      "side": 1,
+      "message": "It\u0027s written to stderr, I\u0027ll update.",
+      "parentUuid": "7c712c75_aaa88477",
+      "range": {
+        "startLine": 19,
+        "startChar": 97,
+        "endLine": 19,
+        "endChar": 111
+      },
+      "revId": "6eb1da9168676b1f16b21384f7401e3081ebf1d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
