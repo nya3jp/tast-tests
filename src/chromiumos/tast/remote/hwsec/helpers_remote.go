@@ -118,6 +118,18 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 		return errors.New("ineffective reset of TPM")
 	}
 
+	if out, err := h.r.Run(ctx, "ls", "-A", "/home/.shadow"); err != nil {
+		return errors.Wrap(err, "failed to list /home/.shadow")
+	} else if len(out) > 0 {
+		testing.ContextLogf(ctx, "/home/.shadow not empty: %s", out)
+	}
+
+	if out, err := h.r.Run(ctx, "ls", "-A", "/run/lockbox/"); err != nil {
+		return errors.Wrap(err, "failed to list /run/lockbox/")
+	} else if len(out) > 0 {
+		testing.ContextLogf(ctx, "/run/lockbox/ not empty: %s", out)
+	}
+
 	return nil
 }
 
