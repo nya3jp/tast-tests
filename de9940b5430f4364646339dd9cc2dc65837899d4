@@ -1,0 +1,249 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "085f4a52_f6914a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "Clar: It looks like this test is for crosvm rather than ARCVM?",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426486ec_e81f1718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "Which output contains the expected line?\nI guess stdout, and if so could you use cmd.Output() instead?\nOtherwise, could you set bytes.Buffer instance to Stderr and parse the result?\nParsing CombinedOutput is a source of race so should not be used.\n\nDumpLogOnError will dump uncomsumed stderr in case of failure.\nOr, if you need stderr for error reporting, you may want to set bytes.Buffer to stderr, instead.",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7227ba_7caee70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "Instead, could you use regexp, so that you don\u0027t need this part.",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af84b49_6f5d400b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1736b6a8_3734d186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "How about checking the number of elements, to avoid accidental split?",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577cf93d_b1e0fbc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "Do you need the one under /usr/local/tmp explicitly?\nIf not, you can use \"\", instead.",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aced922_4b631382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "For simple string concat of two terms, + is simpler.\n\n\"init\u003d\" + s.DataPath(runFscript)",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abca3324_214eb0ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "Looks unused?",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375f8c38_29bc8155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 172,
+        "startChar": 73,
+        "endLine": 172,
+        "endChar": 75
+      },
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294fc583_46e51580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "%q for better escaping.",
+      "range": {
+        "startLine": 172,
+        "startChar": 65,
+        "endLine": 172,
+        "endChar": 67
+      },
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f61ffd8d_0efdddf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "error should be reported even if it is not ENOEXIST, IIUC?\n\nWould you mind to add comment where this \"newdir\" is created?",
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bdb5b47_0bf26e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 186,
+        "startChar": 70,
+        "endLine": 186,
+        "endChar": 72
+      },
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bbfe703_313cf85f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/fscrypt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T13:02:01Z",
+      "side": 1,
+      "message": "ditto,",
+      "range": {
+        "startLine": 186,
+        "startChar": 78,
+        "endLine": 186,
+        "endChar": 80
+      },
+      "revId": "de9940b5430f4364646339dd9cc2dc65837899d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
