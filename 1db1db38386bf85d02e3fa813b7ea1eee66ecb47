@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75ff3953_f06f5534",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T09:13:24Z",
+      "side": 1,
+      "message": "if it\u0027s a deadline exceeded, you just lost this information when will log received error",
+      "range": {
+        "startLine": 400,
+        "startChar": 34,
+        "endLine": 400,
+        "endChar": 58
+      },
+      "revId": "1db1db38386bf85d02e3fa813b7ea1eee66ecb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5efd35f_9bdb5cce",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T09:13:24Z",
+      "side": 1,
+      "message": "Such error handling looks a bit strange for me and it\u0027s hard to understand what is going on here and why.\n\nDue to implementation, getTaskInfo can return error in 2 cases:\n1) Cannot dump activities\n2) Cannot find activity\n\nI believe that in the first case you still want to retry.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go;l\u003d472?q\u003dgetTaskInfo%20tast-tests\n\n\nI guess, it\u0027s more clear and reliable to return nil only if you receive expected error, but not any arbitrary error.",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 12
+      },
+      "revId": "1db1db38386bf85d02e3fa813b7ea1eee66ecb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
