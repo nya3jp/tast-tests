@@ -10,6 +10,7 @@ This file implements miscellaneous and unsorted helpers.
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -67,6 +68,12 @@ func (h *HelperRemote) ensureTPMIsReset(ctx context.Context, removeFiles bool) e
 	if !isReady {
 		// TPM has already been reset by a previous test so we can skip doing it.
 		return nil
+	}
+
+	// Copy logs before TPM reset. Ignore errors on failure.
+	if outDir, ok := testing.ContextOutDir(ctx); ok {
+		h.d.GetFile(ctx, "/var/log/messages", filepath.Join(outDir, "messages-"+time.Now().Format(time.RFC3339)))
+		h.d.GetFile(ctx, "/var/log/chrome/", filepath.Join(outDir, "chrome-"+time.Now().Format(time.RFC3339)))
 	}
 
 	if _, err := h.r.Run(ctx, "cryptohome", "--action=unmount"); err != nil {
