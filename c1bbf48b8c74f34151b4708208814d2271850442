@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e8f0125_ff80c59c",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-16T20:28:46Z",
+      "side": 1,
+      "message": "nit: \"paths\"? since it returns a list of paths instead of a path.",
+      "range": {
+        "startLine": 161,
+        "startChar": 37,
+        "endLine": 161,
+        "endChar": 41
+      },
+      "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526c7fb0_a254d9d8",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-16T20:28:46Z",
+      "side": 1,
+      "message": "This code means that potentially SetUp and TearDown might have a different list of paths?  Isn\u0027t that a problem?\nCould you add some comment here for why this works fine, or the assumption you have.  Like, \"assumes the active session hasn\u0027t change between SetUp and TearDown\", I guess?",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 54
+      },
+      "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
