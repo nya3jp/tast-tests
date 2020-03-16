@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f2b0d2d_70184564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-16T21:32:28Z",
+      "side": 1,
+      "message": "unless you have a reason not to, please add the field: s *testing.ServiceState",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01caa8ce_55402bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-16T21:32:28Z",
+      "side": 1,
+      "message": "nit: please merge\nif err :\u003d ...; err !\u003d nil {\n}",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e7fa1e_701a043e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-16T21:32:28Z",
+      "side": 1,
+      "message": "nit: I feel like this will be cleaner if you switch the order:\n\nif err :\u003d m.RequestScan(ctx, shill.TechnologyWifi); err !\u003d nil {\n    return testing.PollBreak(errors.Wrap(err2, \"failed to request active scan\"))\n}\nservicePath, err \u003d m.FindMatchingService(ctx, props)\nreturn err",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d2681f1_62fc4c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-16T21:32:28Z",
+      "side": 1,
+      "message": "nit: please merge\nif err \u003d ...; err !\u003d nil {\n}",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
