@@ -54,30 +54,29 @@ func VMDTC(ctx context.Context, s *testing.State) {
 		}`
 	)
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	// Expect the VM to start within 5 seconds.
-	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	cleanCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	config := wilco.DefaultVMConfig()
 	config.TestDBusConfig = true
-	if err := wilco.StartVM(startCtx, config); err != nil {
+	if err := wilco.StartVM(ctx, config); err != nil {
 		s.Fatal("Unable to Start Wilco DTC VM: ", err)
 	}
-	defer wilco.StopVM(cleanupCtx)
+	defer wilco.StopVM(cleanCtx)
 
-	if err := wilco.StartSupportd(startCtx); err != nil {
+	cleanCtx = ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	if err := wilco.StartSupportd(ctx); err != nil {
 		s.Fatal("Unable to start the Wilco DTC Support Daemon: ", err)
 	}
-	defer wilco.StopSupportd(cleanupCtx)
+	defer wilco.StopSupportd(cleanCtx)
 
 	// Wait for ddv dbus service to be up and running before starting
 	// test.
-	if err := wilco.WaitForDDVDBus(startCtx); err != nil {
+	if err := wilco.WaitForDDVDBus(ctx); err != nil {
 		s.Fatal("DDV dbus service not available: ", err)
 	}
 
