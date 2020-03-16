@@ -397,7 +397,7 @@ func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) e
 func (ac *Activity) WaitForFinished(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := ac.getTaskInfo(ctx)
-		if err != nil {
+		if err != nil && errors.Is(err, errNoTaskInfo) {
 			return nil
 		}
 		return errors.New("activity is still active")
@@ -469,6 +469,8 @@ func (ac *Activity) initTouchscreenLazily(ctx context.Context) error {
 	return nil
 }
 
+var errNoTaskInfo = errors.New("could not find task info")
+
 // getTaskInfo returns the task record associated for the current activity.
 func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
 	tasks, err := ac.a.DumpsysActivityActivities(ctx)
@@ -482,5 +484,5 @@ func (ac *Activity) getTaskInfo(ctx context.Context) (TaskInfo, error) {
 			}
 		}
 	}
-	return TaskInfo{}, errors.Errorf("could not find task info for %s/%s", ac.pkgName, ac.activityName)
+	return TaskInfo{}, errors.Wrapf(errNoTaskInfo, "could not find task info for %s/%s", ac.pkgName, ac.activityName)
 }
