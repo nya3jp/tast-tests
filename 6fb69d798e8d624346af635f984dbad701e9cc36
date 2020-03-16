@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61c0a342_035249f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T08:48:40Z",
+      "side": 1,
+      "message": "Could you move the value to Param\u0027s Val for each, so that we should be able to have precise regexp here (i.e. cheets for container, and bertha for VM)?",
+      "revId": "6fb69d798e8d624346af635f984dbad701e9cc36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
