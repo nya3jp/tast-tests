@@ -397,10 +397,10 @@ func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) e
 func (ac *Activity) WaitForFinished(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		_, err := ac.getTaskInfo(ctx)
-		if err != nil {
-			return nil
+		if err == nil || errors.Is(err, context.DeadlineExceeded) {
+			return errors.New("activity is still active")
 		}
-		return errors.New("activity is still active")
+		return nil
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
