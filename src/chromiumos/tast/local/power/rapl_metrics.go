@@ -14,6 +14,7 @@ import (
 // RAPLMetrics records the energy consumption in Joules of the DUT.
 type RAPLMetrics struct {
 	snapshot *RAPLSnapshot
+	prefix   string
 }
 
 // Assert that RAPLMetrics can be used in perf.Timeline.
@@ -28,12 +29,13 @@ func NewRAPLMetrics() *RAPLMetrics {
 // Setup creates a RAPLSnapshot which lets us sample energy numbers without
 // worrying about overflow. We do this in Setup because there's some extra work
 // scanning sysfs that might be expensive if done during the test.
-func (r *RAPLMetrics) Setup(_ context.Context) error {
+func (r *RAPLMetrics) Setup(_ context.Context, prefix string) error {
 	snapshot, err := NewRAPLSnapshot()
 	if err != nil {
 		return errors.Wrap(err, "failed to create RAPL Snapshot")
 	}
 	r.snapshot = snapshot
+	r.prefix = prefix + "rapl_"
 	return nil
 }
 
@@ -53,6 +55,6 @@ func (r *RAPLMetrics) Snapshot(_ context.Context, perfValues *perf.Values) error
 	if err != nil {
 		return errors.Wrap(err, "failed to create collect RAPL metrics")
 	}
-	energy.ReportPerfMetrics(perfValues, "rapl_")
+	energy.ReportPerfMetrics(perfValues, r.prefix)
 	return nil
 }
