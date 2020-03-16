@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a98dd9b_3a079dea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-16T01:09:34Z",
+      "side": 1,
+      "message": "I think this might be more idiomatic:\n\tfor _, permission :\u003d range []string{\n\t\t\"ACCESS_COARSE_LOCATION\", \"ACCESS_FINE_LOCATION\", \"CAMERA\",\n\t\t\"READ_EXTERNAL_STORAGE\", \"RECORD_AUDIO\", \"WRITE_EXTERNAL_STORAGE\"} {",
+      "revId": "f1490fada6d44af755f50979c0c36ae2c0e9c1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
