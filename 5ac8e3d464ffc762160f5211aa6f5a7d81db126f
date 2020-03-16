@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31988864_db609162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-16T08:36:49Z",
+      "side": 1,
+      "message": "We need to close the DBus connection after.",
+      "revId": "5ac8e3d464ffc762160f5211aa6f5a7d81db126f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2051392c_2aac362c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-16T08:36:49Z",
+      "side": 1,
+      "message": "Perhaps we should re-enable Bluetooth in a defer to keep the system in a normal state.",
+      "revId": "5ac8e3d464ffc762160f5211aa6f5a7d81db126f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
