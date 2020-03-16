@@ -16,6 +16,24 @@
       "revId": "714bff015fafc1518d2c2b6c7237abb70f76c3d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad12397e_c400dfbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm_dtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-16T22:44:34Z",
+      "side": 1,
+      "message": "There is a benefit for having 2 cleanup contexts, we will give chance VM and daemon to shutdown.\n\nBut yeah, I agree, it\u0027s overkill here.",
+      "parentUuid": "be65bec7_7026a136",
+      "revId": "714bff015fafc1518d2c2b6c7237abb70f76c3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
