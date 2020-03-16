@@ -39,6 +39,30 @@
       "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6156e65d_6a2a1e67",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T06:01:53Z",
+      "side": 1,
+      "message": "My question here is; what is this interface for, if you have only one concrete struct which provides the function?\nAccording to the comment, at least, it is for the interface to the cryptohome, whose features a re provided by utilityCryptohomeBinary. Why do you need interface here?",
+      "parentUuid": "982c57b7_dbfe3a89",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
