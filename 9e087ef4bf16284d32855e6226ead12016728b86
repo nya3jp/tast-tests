@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51d5fafe_f02b5c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T08:55:55Z",
+      "side": 1,
+      "message": "You need to call Close to release the resources.",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 6
+      },
+      "revId": "9e087ef4bf16284d32855e6226ead12016728b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb6475d_124d5e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-16T08:55:55Z",
+      "side": 1,
+      "message": "huge nit: let\u0027s swap the order with above for consistency with inClamshellMode.",
+      "revId": "9e087ef4bf16284d32855e6226ead12016728b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
