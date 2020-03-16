@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16a73732_a1266c20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-16T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27325f54_6fcc62d7",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "04d1a903793719eed134be404ff92c8e08231077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d1487c9_2e0c1698",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "04d1a903793719eed134be404ff92c8e08231077",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "895d6222_a6ab93bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-16T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1487c9_2e0c1698",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "04d1a903793719eed134be404ff92c8e08231077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "04d1a903793719eed134be404ff92c8e08231077",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550b9680_a52f669f",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-16T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcb1e290_8e8de9a1",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "04d1a903793719eed134be404ff92c8e08231077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "162650c4_4c2931b5",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-16T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97161e30_f324d2fb",
+      "range": {
+        "startLine": 17,
+        "startChar": 54,
+        "endLine": 17,
+        "endChar": 83
+      },
+      "revId": "04d1a903793719eed134be404ff92c8e08231077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
