@@ -9,6 +9,7 @@ import (
 	"strings"
 	"testing"
 
+	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/errors"
 )
 
@@ -284,6 +285,67 @@ func TestConfigFormat(t *testing.T) {
 			if v != m[k] {
 				t.Errorf("testcase %d has %q=%q, expect %q", i, k, m[k], v)
 			}
+		}
+	}
+}
+
+func TestFreqOptions(t *testing.T) {
+	testcases := []struct {
+		conf   *Config
+		expect []iw.SetFreqOption
+	}{
+		{
+			conf: &Config{
+				Ssid:    "ssid000",
+				Mode:    Mode80211b,
+				Channel: 1,
+			},
+			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthNOHT)},
+		},
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nPure,
+				Channel: 3,
+			},
+			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT20)},
+		},
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nPure,
+				Channel: 1,
+				HTCaps:  HTCapHT40,
+			},
+			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Plus)},
+		},
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nMixed,
+				Channel: 5,
+				HTCaps:  HTCapHT40 | HTCapSGI40,
+			},
+			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Minus)},
+		},
+	}
+
+	equal := func(a, b []iw.SetFreqOption) bool {
+		if len(a) != len(b) {
+			return false
+		}
+		for i, op := range a {
+			if !op.Equal(b[i]) {
+				return false
+			}
+		}
+		return true
+	}
+
+	for i, tc := range testcases {
+		ops := tc.conf.PcapFreqOptions()
+		if !equal(ops, tc.expect) {
+			t.Errorf("testcase #%d failed, got %v, expect %v", i, ops, tc.expect)
 		}
 	}
 }
