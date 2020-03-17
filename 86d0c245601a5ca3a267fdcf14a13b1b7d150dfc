@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7e926bb_0da2c254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/common/url_bwlist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-17T12:59:01Z",
+      "side": 1,
+      "message": "common is not a good name for the package. Maybe \"blocking\".",
+      "revId": "86d0c245601a5ca3a267fdcf14a13b1b7d150dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6425aee2_d233a3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/common/url_bwlist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-17T12:59:01Z",
+      "side": 1,
+      "message": "Keep the loop (incl s.Run) in each test and just pass policies, allowedURLs and blockedURLs to this function; rename to CheckURLBlocking or something similar. The function would then not need to receive state as a parameter.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nIf there were more tests that worked in the same way I would merge them all into a single parametric test that took the table as a parameter. In this case I think moving the checking function to a shared package is sufficient.",
+      "revId": "86d0c245601a5ca3a267fdcf14a13b1b7d150dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
