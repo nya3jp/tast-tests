@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5e0e63d9_c8ccf5a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-17T04:17:41Z",
+      "side": 1,
+      "message": "Hmm do we need to release the JSObject?\n\nfrom http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/jsobject.go?rcl\u003d3ceb0f67206a2b754660147dc0243be9a7d53a4a\n\u003e // JSObjects must be released or they will stop the JavaScript GC from freeing the memory they reference.",
+      "revId": "382db9cc34460279f47f97bcf4cba060b0e931d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "214197db_fa87005e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
         "patchSetId": 6
