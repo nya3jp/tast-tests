@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d1c352d_1659bb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "Done. Also moved, // Setup Chrome.\n\tcr :\u003d s.PreValue().(arc.PreData).Chrome\n\ta :\u003d s.PreValue().(arc.PreData).ARC to SetUpDevice(ctx,s,appPkgName,appActivity).",
+      "parentUuid": "cc7610eb_71a059c5",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6927e00f_df67f620",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3176c90f_5be01e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6927e00f_df67f620",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 33
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4b60d2ef_94cd7224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "Done. Also I have observed that, on using defer act.Stop(ctx). It is closing the app before entering every sub test. So tests are getting failed.",
+      "parentUuid": "eba4d978_9c6f88e2",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 56
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cb52c20_16035cb3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37ae7a3_af1a4f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2cb52c20_16035cb3",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7ce891f2_bcbc7b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "733e5309_3ed3d546",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 27
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8195ad4d_c6f1d8dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb921543_d2e278fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "I could change to error, as I would like to continue the test.",
+      "parentUuid": "8195ad4d_c6f1d8dc",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 7
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "6a497177_ba668564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d566256d_3c59fb2a",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 2
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e00c035_20d53fa3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 5
@@ -183,6 +351,30 @@
       "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c833029_40cd20be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-17T02:33:19Z",
+      "side": 1,
+      "message": "handleCrashOrANRDialog is needed, as it is good to handle the crash/ANR dialog box. Even if we restart the app without handling the crash dialog. I have observed sometimes the dialog box won\u0027t go away.",
+      "parentUuid": "9e00c035_20d53fa3",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 0
+      },
+      "revId": "d651a8d31fdf9fc3a8804187355180560b8dfa45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
