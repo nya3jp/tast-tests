@@ -76,7 +76,9 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
 	pausePath := filepath.Join(tmpDir, "pause")
 	mockSendingPath := filepath.Join(tmpDir, "mock-sending")
-	mockConsentPath := filepath.Join(tmpDir, "mock-consent")
+	mockConsentPath := filepath.Join(runDir, "mock-consent")
+	remoteMockConsentPath := filepath.Join(sysCrashDir, "mock-consent")
+	remoteInProgPath := filepath.Join(sysCrashDir, "crash-test-in-progress")
 	sendDir := filepath.Join(tmpDir, "send")
 	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, sendDir); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
@@ -135,11 +137,11 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		senderPausePath: pausePath,
 		senderProcName:  procName,
 		mockSendingPath: mockSendingPath,
-		mockConsentPath: mockConsentPath,
 		sendRecordDir:   sendDir,
 		isDevImageTest:  false,
 		setConsent:      false,
 		setMockConsent:  true,
+		rebootTest:      false,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
@@ -154,6 +156,10 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 	if err := statAll(mockConsentPath); err != nil {
 		t.Error("Mock consent was not enabled: ", err)
+	}
+
+	if err := checkNonExistent(remoteMockConsentPath, remoteInProgPath); err != nil {
+		t.Error("Reboot-persistance files unexpectedly created: ", err)
 	}
 	if err := checkNonExistent(filepath.Join(sendDir, ".send.1")); err != nil {
 		t.Error("Send reports were not cleared: ", err)
@@ -184,7 +190,6 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
 		mockSendingPath: mockSendingPath,
-		mockConsentPath: mockConsentPath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
@@ -203,6 +208,84 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 }
 
+func TestSetUpAndTearDownReboot(t *testing.T) {
+	tmpDir := testutil.TempDir(t)
+	defer os.RemoveAll(tmpDir)
+
+	// We can't use the normal file location /run/crash_reporter; we don't have
+	// permission to write there. Instead write to a location under /tmp.
+	runDir := filepath.Join(tmpDir, "run")
+	sysCrashDir := filepath.Join(tmpDir, "sys_crash")
+	sysCrashStash := filepath.Join(tmpDir, "sys_crash.stash")
+	userCrashDir := filepath.Join(tmpDir, "user_crash")
+	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
+	pausePath := filepath.Join(tmpDir, "pause")
+	mockSendingPath := filepath.Join(tmpDir, "mock-sending")
+	remoteMockConsentPath := filepath.Join(sysCrashDir, "mock-consent")
+	remoteInProgPath := filepath.Join(sysCrashDir, "crash-test-in-progress")
+	sendDir := filepath.Join(tmpDir, "send")
+
+	// Explicitly _don't_ make runDir -- SetUpCrashTest should make it.
+	if err := mkdirAll(sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, sendDir); err != nil {
+		t.Fatalf("mkdirAll: %v", err)
+	}
+
+	sp := setUpParams{
+		inProgDir:       runDir,
+		sysCrashDir:     sysCrashDir,
+		sysCrashStash:   sysCrashStash,
+		userCrashDir:    userCrashDir,
+		userCrashStash:  userCrashStash,
+		senderPausePath: pausePath,
+		mockSendingPath: mockSendingPath,
+		sendRecordDir:   sendDir,
+		isDevImageTest:  false,
+		setConsent:      false,
+		setMockConsent:  true,
+		rebootTest:      true,
+	}
+	if err := setUpCrashTest(context.Background(), &sp); err != nil {
+		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
+	}
+	if err := statAll(remoteMockConsentPath, remoteInProgPath); err != nil {
+		t.Error("Reboot-persistence files were not created: ", err)
+	}
+
+	tp := tearDownParams{
+		inProgDir:       runDir,
+		sysCrashDir:     sysCrashDir,
+		sysCrashStash:   sysCrashStash,
+		userCrashDir:    userCrashDir,
+		userCrashStash:  userCrashStash,
+		senderPausePath: pausePath,
+		mockSendingPath: mockSendingPath,
+	}
+
+	if err := tearDownCrashTest(&tp); err != nil {
+		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
+	}
+	if err := checkNonExistent(remoteMockConsentPath, remoteInProgPath); err != nil {
+		t.Error("Reboot-persistance files not removed: ", err)
+	}
+
+	sp.setMockConsent = false
+	if err := setUpCrashTest(context.Background(), &sp); err != nil {
+		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
+	}
+	if err := statAll(remoteInProgPath); err != nil {
+		t.Error("Reboot-persistence in-prog file was not created: ", err)
+	}
+	if err := checkNonExistent(remoteMockConsentPath); err != nil {
+		t.Error("Reboot-persistance mock-consent file unexpectedly created: ", err)
+	}
+	if err := tearDownCrashTest(&tp); err != nil {
+		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
+	}
+	if err := checkNonExistent(remoteMockConsentPath, remoteInProgPath); err != nil {
+		t.Error("Reboot-persistance files not removed: ", err)
+	}
+}
+
 // TestSetUpAndTearDownCrashTestWithOldStash ensures that the crash_reporter
 // tests preserve files in an old stash directory that was not cleaned up.
 func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
@@ -218,7 +301,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	userCrashStash := filepath.Join(tmpDir, "user_crash.stash")
 	pausePath := filepath.Join(tmpDir, "pause")
 	mockSendingPath := filepath.Join(tmpDir, "mock-sending")
-	mockConsentPath := filepath.Join(tmpDir, "mock-consent")
+	mockConsentPath := filepath.Join(runDir, "mock-consent")
 	sendDir := filepath.Join(tmpDir, "send")
 	if err := mkdirAll(runDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash, sendDir); err != nil {
 		t.Fatalf("mkdirAll: %v", err)
@@ -240,7 +323,6 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		senderPausePath: pausePath,
 		senderProcName:  "crash_sender.fake",
 		mockSendingPath: mockSendingPath,
-		mockConsentPath: mockConsentPath,
 		isDevImageTest:  false,
 		setConsent:      false,
 		setMockConsent:  false,
@@ -269,7 +351,6 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		userCrashStash:  userCrashStash,
 		senderPausePath: pausePath,
 		mockSendingPath: mockSendingPath,
-		mockConsentPath: mockConsentPath,
 	}
 	if err := tearDownCrashTest(&tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
