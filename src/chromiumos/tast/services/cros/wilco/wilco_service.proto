@@ -8,6 +8,8 @@ package tast.cros.wilco;
 
 import "google/protobuf/empty.proto";
 
+import "wilco_dtc_supportd.proto";
+
 option go_package = "chromiumos/tast/services/cros/wilco";
 
 // WilcoDtc provides RPC methods to interact with the Wilco VM and
@@ -50,16 +52,9 @@ message GetConfigurationDataResponse {
 }
 
 message ExecuteRoutineRequest {
-  // TODO(vsavu): replace with RunRoutineRequest from wilco_dtc_supportd.proto
-  bytes request = 1;
-}
-
-enum DiagnosticRoutineStatus {
-  ROUTINE_STATUS_PASSED = 0;
-  ROUTINE_STATUS_FAILED = 1;
-  ROUTINE_STATUS_ERROR = 2;
+  diagnostics.grpc_api.RunRoutineRequest request = 1;
 }
 
 message ExecuteRoutineResponse {
-  DiagnosticRoutineStatus status = 1;
+  diagnostics.grpc_api.DiagnosticRoutineStatus status = 1;
 }
