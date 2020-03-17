@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "19c53f35_8295eecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-03-17T19:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13cae2ff_38c11ae3",
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c9fac5a_856e0c75",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "fc6cf247_37884487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-03-17T19:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c9fac5a_856e0c75",
+      "range": {
+        "startLine": 182,
+        "startChar": 31,
+        "endLine": 182,
+        "endChar": 39
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "265acf81_19262f41",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2020-03-16T13:33:05Z",
       "side": 1,
       "message": "style: go perfers shorter name (even abbriviations), unlike other google-standard languages, such as C/C++, Java, Python etc. In this case, I\u0027d recomment \"conns\".\n\nAlso, []*chrome.Conn has Close() method.\n\nvar conns []*chrome.Conn\nif ... {\n  conns \u003d ...\n} else {\n  conn, err :\u003d ...\n  if err !\u003d nil {\n    ...\n  }\n  conns \u003d append(conns, conn)\n}\ndefer conns.Close()",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7d9ff1_72321ec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-03-17T19:44:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure where the method comes from on the array?\n(type []*chrome.Conn has no field or method Close)",
+      "parentUuid": "265acf81_19262f41",
       "range": {
         "startLine": 181,
         "startChar": 2,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "34abb1c1_a56dbd2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-03-17T19:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df35981_57ad14d7",
+      "range": {
+        "startLine": 222,
+        "startChar": 54,
+        "endLine": 222,
+        "endChar": 70
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ff62d89_1e54444e",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
         "patchSetId": 2
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "079f3d31_00e8d915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-03-17T19:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff62d89_1e54444e",
+      "range": {
+        "startLine": 246,
+        "startChar": 46,
+        "endLine": 246,
+        "endChar": 62
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c762f6e0_1a877f61",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
         "patchSetId": 2
@@ -122,6 +236,30 @@
       "writtenOn": "2020-03-16T13:33:05Z",
       "side": 1,
       "message": "Ditto. Instead passing testing.State, could you pass Chrome instance, and return error if needed?",
+      "range": {
+        "startLine": 261,
+        "startChar": 49,
+        "endLine": 261,
+        "endChar": 65
+      },
+      "revId": "9c6403b30a05223cd54d34d19dc626628d5209e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37117cb8_6d33cb05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1115906
+      },
+      "writtenOn": "2020-03-17T19:44:52Z",
+      "side": 1,
+      "message": "I passed the PreData and returned an error",
+      "parentUuid": "c762f6e0_1a877f61",
       "range": {
         "startLine": 261,
         "startChar": 49,
