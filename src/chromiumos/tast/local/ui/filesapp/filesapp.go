@@ -50,6 +50,15 @@ func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
 	return f, nil
 }
 
+// Close closes Files App.
+func Close(ctx context.Context, tconn *chrome.Conn) error {
+	if err := apps.Close(ctx, tconn, apps.Files.ID); err != nil {
+		return errors.Wrap(err, "failed to close Files App")
+	}
+
+	return nil
+}
+
 // OpenDownloads opens the Downloads folder in the Files App.
 // An error is returned if Downloads is not found or does not open.
 func (f *FilesApp) OpenDownloads(ctx context.Context) error {
