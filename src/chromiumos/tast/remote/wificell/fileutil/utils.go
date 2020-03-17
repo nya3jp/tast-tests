@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/host"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -32,7 +33,7 @@ func WriteToHost(ctx context.Context, hst *host.SSH, path string, data []byte) e
 	tmpfile.Close()
 
 	pathMap := map[string]string{tmpfile.Name(): path}
-	if _, err := hst.PutFiles(ctx, pathMap, host.DereferenceSymlinks); err != nil {
+	if _, err := linuxssh.PutFiles(ctx, hst, pathMap, linuxssh.DereferenceSymlinks); err != nil {
 		return errors.Wrap(err, "unable to upload file to host")
 	}
 	return nil
