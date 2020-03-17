@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6197e0c0_a71ec960",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-17T18:17:43Z",
+      "side": 1,
+      "message": "\u003e \"seperate\" is a possible misspelling of \"separate\".\n\nPlease fix.",
+      "parentUuid": "2a5b4b9a_cb27ad0d",
+      "range": {
+        "startLine": 35,
+        "startChar": 63,
+        "endLine": 35,
+        "endChar": 71
+      },
+      "revId": "2b82ce31948ed8d4f09089e5117f630ded92647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
