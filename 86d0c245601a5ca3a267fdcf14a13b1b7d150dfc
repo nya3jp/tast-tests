@@ -33,6 +33,24 @@
       "revId": "86d0c245601a5ca3a267fdcf14a13b1b7d150dfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "610c01d8_7e473e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/common/url_bwlist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-03-17T13:44:44Z",
+      "side": 1,
+      "message": "I don\u0027t really see where you want to draw the line. If I pass the policies, and do the update in the common function, I still have to pass the Chrome, FakeDMS and even test state variables (as there could be both Fatal and Error events).\n\nEven with these two tests I think a parametric test looks a better option, it gives better maintainability. Can we go in this direction?",
+      "parentUuid": "6425aee2_d233a3c9",
+      "revId": "86d0c245601a5ca3a267fdcf14a13b1b7d150dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
