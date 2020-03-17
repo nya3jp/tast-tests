@@ -8,6 +8,7 @@ package iw
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
@@ -356,10 +357,189 @@ func (r *Runner) SetTxPowerAuto(ctx context.Context, iface string) error {
 	return nil
 }
 
+// ChWidth is the type of channel width setting (e.g. HT40+, 80 ...).
+type ChWidth string
+
+// ChWidth enum values.
+// TODO(crbug.com/1017533): we can use 80MHz instead of 80 if the routers in testlab
+// are upgraded to have new enough iw (>4.14).
+const (
+	ChWidthNOHT      ChWidth = "NOHT"
+	ChWidthHT20      ChWidth = "HT20"
+	ChWidthHT40Plus  ChWidth = "HT40+"
+	ChWidthHT40Minus ChWidth = "HT40-"
+	ChWidth80        ChWidth = "80"
+	ChWidth80P80     ChWidth = "80+80"
+	ChWidth160       ChWidth = "160"
+)
+
+// setFreqConf contains the optional information for iw "set freq" function.
+type setFreqConf struct {
+	ctrlFreq    int
+	width       ChWidth
+	centerFreq1 int
+	centerFreq2 int
+}
+
+// newSetFreqConf creates a setFreqConf with given options.
+func newSetFreqConf(ctrlFreq int, ops ...SetFreqOption) (*setFreqConf, error) {
+	conf := &setFreqConf{
+		ctrlFreq: ctrlFreq,
+		width:    ChWidthNOHT, // Default NOHT.
+	}
+	for _, op := range ops {
+		op(conf)
+	}
+	if err := conf.init(); err != nil {
+		return nil, err
+	}
+	return conf, nil
+}
+
+// init derives center frequency of 80, 160 MHz channel if not given and ensures the
+// options fits the input requirement of iw "set freq" function.
+// Format:
+//   set freq <freq> [NOHT|HT20|HT40+|HT40-|5MHz|10MHz|80MHz]
+//   set freq <control freq> [5|10|20|40|80|80+80|160] [<center1_freq> [<center2_freq>]]
+// We use the second pattern for 80, 80+80 and 160, and the first one for the rest as iw
+// will derive the center frequency for us so we don't have to duplicate the logic.
+// This function does not validate the given frequencies here and delegate it to iw.
+// (iw fails with invalid argument error if the frequencies are not matched or invalid.)
+func (c *setFreqConf) init() error {
+	switch c.width {
+	case ChWidthNOHT, ChWidthHT20, ChWidthHT40Plus, ChWidthHT40Minus:
+		// The center frequency can already be determined with control frequency
+		// and channel width. Let's return error if center frequency is still set.
+		if c.centerFreq1 != 0 || c.centerFreq2 != 0 {
+			return errors.Errorf("don't specify center frequencies for width=%s", c.width)
+		}
+	case ChWidth80P80:
+		// This needs both center frequency set.
+		if c.centerFreq1 == 0 || c.centerFreq2 == 0 {
+			return errors.Errorf("need both center frequencies for width=%s", c.width)
+		}
+	case ChWidth80:
+		// This needs center frequency 1.
+		if c.centerFreq1 == 0 {
+			cf, err := c.centerFreq80(c.ctrlFreq)
+			if err != nil {
+				return err
+			}
+			c.centerFreq1 = cf
+		}
+		if c.centerFreq2 != 0 {
+			return errors.Errorf("don't specify center frequency 2 for width=%s", c.width)
+		}
+	case ChWidth160:
+		// This needs center frequency 1.
+		if c.centerFreq1 == 0 {
+			cf, err := c.centerFreq160(c.ctrlFreq)
+			if err != nil {
+				return err
+			}
+			c.centerFreq1 = cf
+		}
+		if c.centerFreq2 != 0 {
+			return errors.Errorf("don't specify center frequency 2 for width=%s", c.width)
+		}
+	default:
+		return errors.Errorf("invalid channel width=%s", c.width)
+	}
+	return nil
+}
+
+// centerFreq80 derives the center frequency (in MHz) for the channel with
+// 80MHz width and control frequency = ctrlFreq MHz.
+func (c *setFreqConf) centerFreq80(ctrlFreq int) (int, error) {
+	vht80 := []int{5180, 5260, 5500, 5580, 5660, 5745}
+	for _, f := range vht80 {
+		if ctrlFreq >= f && ctrlFreq < f+80 {
+			return f + 30, nil
+		}
+	}
+	return 0, errors.Errorf("invalid control frequency %d for 80MHz channel width", ctrlFreq)
+}
+
+// centerFreq160 derives the center frequency (in MHz) for the channel with
+// 160MHz width and contrl frequency = ctrlFreq MHz.
+func (c *setFreqConf) centerFreq160(ctrlFreq int) (int, error) {
+	vht160 := []int{5180, 5500}
+	for _, f := range vht160 {
+		if ctrlFreq >= f && ctrlFreq < f+160 {
+			return f + 70, nil
+		}
+	}
+	return 0, errors.Errorf("invalid control frequency %d for 160MHz channel width", ctrlFreq)
+}
+
+// toArgs formats the config to the arguments for iw "set freq" function.
+// The argument format can be found in the doc of validate()
+func (c *setFreqConf) toArgs() []string {
+	args := []string{strconv.Itoa(c.ctrlFreq)}
+	switch c.width {
+	case ChWidthHT20, ChWidthHT40Plus, ChWidthHT40Minus:
+		args = append(args, string(c.width))
+	case ChWidth80, ChWidth160:
+		args = append(args, string(c.width), strconv.Itoa(c.centerFreq1))
+	case ChWidth80P80:
+		args = append(args, string(c.width), strconv.Itoa(c.centerFreq1), strconv.Itoa(c.centerFreq2))
+	}
+	// NOHT case, no extra argument needed.
+	return args
+}
+
+// SetFreqOption is a function signature that modifies setFreqConf.
+type SetFreqOption func(*setFreqConf)
+
+// Equal checks if the effects of the two SetFreqOptions on an empty setFreqConfig
+// are the same. This is useful for external package to write unit tests.
+func (op SetFreqOption) Equal(other SetFreqOption) bool {
+	c1 := &setFreqConf{}
+	c2 := &setFreqConf{}
+	op(c1)
+	other(c2)
+	return reflect.DeepEqual(c1, c2)
+}
+
+// String formats the option to string by the result of applying it on empty config.
+// This is useful for external packages to write unit tests.
+func (op SetFreqOption) String() string {
+	c1 := &setFreqConf{}
+	op(c1)
+	return fmt.Sprintf("%v", c1)
+}
+
+// SetFreqChWidth returns a SetFreqOption which sets channel width.
+func SetFreqChWidth(cw ChWidth) SetFreqOption {
+	return func(c *setFreqConf) {
+		c.width = cw
+	}
+}
+
+// SetFreqCenterFreq1 returns a SetFreqOption which sets the first center frequency (in MHz).
+func SetFreqCenterFreq1(f int) SetFreqOption {
+	return func(c *setFreqConf) {
+		c.centerFreq1 = f
+	}
+}
+
+// SetFreqCenterFreq2 returns a SetFreqOption which sets the second center frequency (in MHz).
+func SetFreqCenterFreq2(f int) SetFreqOption {
+	return func(c *setFreqConf) {
+		c.centerFreq2 = f
+	}
+}
+
 // SetFreq sets the wireless interface's LO center freq.
 // Interface should be in monitor mode before scanning.
-func (r *Runner) SetFreq(ctx context.Context, iface string, freq int) error {
-	if err := r.cmd.Run(ctx, "iw", "dev", iface, "set", "freq", strconv.Itoa(freq)); err != nil {
+func (r *Runner) SetFreq(ctx context.Context, iface string, freq int, ops ...SetFreqOption) error {
+	conf, err := newSetFreqConf(freq, ops...)
+	if err != nil {
+		return err
+	}
+	args := []string{"dev", iface, "set", "freq"}
+	args = append(args, conf.toArgs()...)
+	if err := r.cmd.Run(ctx, "iw", args...); err != nil {
 		return errors.Wrap(err, "failed to set freq")
 	}
 	return nil
