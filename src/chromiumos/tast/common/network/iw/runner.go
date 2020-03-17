@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 var htTable = map[string]string{
@@ -194,6 +195,29 @@ func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
 	return phys, nil
 }
 
+// PhyByName returns a Phy struct for the given name.
+func (r *Runner) PhyByName(ctx context.Context, name string) (*Phy, error) {
+	out, err := r.cmd.Output(ctx, "iw", "phy", name, "info")
+	if err != nil {
+		return nil, errors.Wrapf(err, "\"iw phy %s info\" failed", name)
+	}
+
+	// This has the same format as `iw list`, except that only one phy is printed.
+	sections, err := parseSection(`Wiphy (.*)`, string(out))
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse phys")
+	}
+	if len(sections) != 1 {
+		return nil, errors.Errorf("got %d phy info sections, want 1", len(sections))
+	}
+	sec := sections[0]
+	phy, err := newPhy(sec.header, sec.body)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not extract phy attributes")
+	}
+	return phy, nil
+}
+
 // PhyByID returns a Phy struct for the given phy id.
 func (r *Runner) PhyByID(ctx context.Context, id int) (*Phy, error) {
 	out, err := r.cmd.Output(ctx, "iw", fmt.Sprintf("phy#%d", id), "info")
@@ -246,6 +270,32 @@ func (r *Runner) TimedScan(ctx context.Context, iface string,
 	return &TimedScanData{scanTime, bssList}, nil
 }
 
+// WaitForScanResult is a wrapper of TimedScan which waits until a successful scan and filter the result with f.
+func (r *Runner) WaitForScanResult(ctx context.Context, iface string, timeout time.Duration, f func(*BSSData) bool) ([]*BSSData, error) {
+	timeoutCtx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
+	// Retry scan until the device
+	var result *TimedScanData
+	if err := testing.Poll(timeoutCtx, func(ctx context.Context) error {
+		var err error
+		result, err = r.TimedScan(ctx, iface, nil, nil)
+		return err
+	}, &testing.PollOptions{
+		Timeout: timeout,
+	}); err != nil {
+		return nil, err
+	}
+
+	var ret []*BSSData
+	for _, bss := range result.BSSList {
+		if f(bss) {
+			ret = append(ret, bss)
+		}
+	}
+	return ret, nil
+}
+
 // ScanDump returns a list of BSSData from a scan dump.
 func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error) {
 	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "scan", "dump")
@@ -253,6 +303,15 @@ func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error)
 		return nil, errors.Wrap(err, "scan dump failed")
 	}
 	return parseScanResults(string(out))
+}
+
+// CurrentBSSID gets the BSS ID the interface associated with from iw link output.
+func (r *Runner) CurrentBSSID(ctx context.Context, iface string) (string, error) {
+	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "link")
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
+	}
+	return extractBSSID(string(res))
 }
 
 // LinkValue gets the specified link value from the iw link output.
@@ -336,6 +395,20 @@ func (r *Runner) RegulatoryDomain(ctx context.Context) (string, error) {
 	return "", errors.New("could not find regulatory domain")
 }
 
+// IsRegulatorySelfManaged determines if any WiFi device on the system manages its own
+// regulatory info (NL80211_ATTR_WIPHY_SELF_MANAGED_REG).
+func (r *Runner) IsRegulatorySelfManaged(ctx context.Context) (bool, error) {
+	out, err := r.cmd.Output(ctx, "iw", "reg", "get")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get regulatory domain")
+	}
+	re := regexp.MustCompile(`(?m)^phy#.*\(self-managed\)`)
+	if m := re.FindStringSubmatch(string(out)); m != nil {
+		return true, nil
+	}
+	return false, nil
+}
+
 // SetRegulatoryDomain sets the regulatory domain code.
 // country is ISO/IEC 3166-1 alpha2 code for the country.
 func (r *Runner) SetRegulatoryDomain(ctx context.Context, country string) error {
@@ -410,6 +483,17 @@ func determineSecurity(secs []string) string {
 	} else {
 		return securityMixed
 	}
+}
+
+// extractBSSID parses the BSSID the interface associated with from the output
+// of `iw dev $iface link`.
+func extractBSSID(out string) (string, error) {
+	r := regexp.MustCompile(`(?m)^Connected to ([0-9a-fA-F:]{17})`)
+	m := r.FindStringSubmatch(out)
+	if len(m) < 2 {
+		return "", errors.New("no bssid found")
+	}
+	return m[1], nil
 }
 
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
