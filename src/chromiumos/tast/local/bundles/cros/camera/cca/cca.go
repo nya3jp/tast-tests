@@ -16,6 +16,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/mafredri/cdp/protocol/target"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
@@ -171,7 +173,7 @@ type Resolution struct {
 // by launchApp event, camera intent or any other ways.
 type AppLauncher func(tconn *chrome.TestConn) error
 
-func isMatchCCAPrefix(t *chrome.Target) bool {
+func isMatchCCAPrefix(t *target.Info) bool {
 	return strings.HasPrefix(t.URL, ccaURLPrefix)
 }
 

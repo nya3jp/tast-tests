@@ -12,8 +12,6 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -86,9 +84,7 @@ func saveScreenshotCDP(ctx context.Context, dir string) error {
 	}
 
 	bgURL := chrome.ExtensionBackgroundPageURL(chrome.TestExtensionID)
-	all, err := sm.FindTargets(ctx, func(t *target.Info) bool {
-		return t.URL == bgURL
-	})
+	all, err := sm.FindTargets(ctx, chrome.MatchTargetURL(bgURL))
 	if len(all) == 0 {
 		// Target not found.
 		return errors.New("the background page of the test extension not found")

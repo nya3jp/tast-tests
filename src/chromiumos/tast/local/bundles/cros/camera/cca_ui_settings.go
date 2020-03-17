@@ -8,6 +8,8 @@ import (
 	"context"
 	"strings"
 
+	"github.com/mafredri/cdp/protocol/target"
+
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -45,7 +47,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	if err := app.ClickWithSelector(ctx, "#settings-feedback"); err != nil {
 		s.Error("Failed to click feedback button")
 	}
-	matcher := func(t *chrome.Target) bool {
+	matcher := func(t *target.Info) bool {
 		return strings.Contains(t.URL, "gfdkimpbcpahaombhbimeihdjnejgicl") && t.Type == "app"
 	}
 	if fConn, err := cr.NewConnForTarget(ctx, matcher); err != nil {
@@ -58,7 +60,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	if err := app.ClickWithSelector(ctx, "#settings-help"); err != nil {
 		s.Error("Failed to click help button")
 	}
-	matcher = func(t *chrome.Target) bool {
+	matcher = func(t *target.Info) bool {
 		return strings.Contains(t.URL, "support.google.com") && t.Type == "page"
 	}
 	if hConn, err := cr.NewConnForTarget(ctx, matcher); err != nil {

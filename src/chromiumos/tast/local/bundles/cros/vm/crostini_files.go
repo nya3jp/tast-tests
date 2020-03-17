@@ -142,8 +142,7 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 	// Share paths.
 	const filesAppExtID = "hhaomjibdihmijegdhdafkllkbggdgoj"
 	bgURL := chrome.ExtensionBackgroundPageURL(filesAppExtID)
-	f := func(t *chrome.Target) bool { return t.URL == bgURL }
-	fconn, err := cr.NewConnForTarget(ctx, f)
+	fconn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
 		s.Fatalf("Failed to find %v: %v", bgURL, err)
 	}

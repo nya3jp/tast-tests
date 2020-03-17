@@ -181,8 +181,44 @@ func (s *Session) CloseTarget(ctx context.Context, id target.ID) error {
 	return nil
 }
 
+// TargetMatcher is a caller-provided function that matches targets with specific characteristics.
+type TargetMatcher func(t *target.Info) bool
+
+var pollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * time.Millisecond}
+
+// WaitForTarget iterates through all available targets and returns a connection to the
+// first one that is matched by tm. It polls until the target is found or ctx's deadline expires.
+// An error is returned if no target is found or tm matches multiple targets.
+func (s *Session) WaitForTarget(ctx context.Context, tm TargetMatcher) (*target.Info, error) {
+	var errNoMatch = errors.New("no targets matched")
+
+	var matched []*target.Info
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		matched, err = s.FindTargets(ctx, tm)
+		if err != nil {
+			return err
+		}
+		if len(matched) == 0 {
+			return errNoMatch
+		}
+		return nil
+	}, pollOpts); err != nil && err != errNoMatch {
+		return nil, err
+	}
+
+	if len(matched) != 1 {
+		testing.ContextLogf(ctx, "%d targets matched while unique match was expected. Existing matching targets:", len(matched))
+		for _, t := range matched {
+			testing.ContextLogf(ctx, "  %+v", t)
+		}
+		return nil, errors.Errorf("%d matching targets found", len(matched))
+	}
+	return matched[0], nil
+}
+
 // FindTargets returns the info about Targets, which satisfies the given cond condition.
-func (s *Session) FindTargets(ctx context.Context, cond func(*target.Info) bool) ([]*target.Info, error) {
+func (s *Session) FindTargets(ctx context.Context, tm TargetMatcher) ([]*target.Info, error) {
 	reply, err := s.client.Target.GetTargets(ctx)
 	if err != nil {
 		return nil, err
@@ -190,7 +226,7 @@ func (s *Session) FindTargets(ctx context.Context, cond func(*target.Info) bool)
 
 	var matches []*target.Info
 	for _, t := range reply.TargetInfos {
-		if cond == nil || cond(&t) {
+		if tm == nil || tm(&t) {
 			t := t
 			matches = append(matches, &t)
 		}

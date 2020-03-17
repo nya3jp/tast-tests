@@ -779,24 +779,12 @@ func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) 
 	return newConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
 }
 
-// Target contains information about an available debugging target to which a connection can be established.
-type Target struct {
-	// URL contains the URL of the resource currently loaded by the target.
-	URL string
-	// The type of the target. It's obtained from target.Info.Type.
-	Type string
-}
-
-func newTarget(t *target.Info) *Target {
-	return &Target{URL: t.URL, Type: t.Type}
-}
-
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
-type TargetMatcher func(t *Target) bool
+type TargetMatcher = cdputil.TargetMatcher
 
 // MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
 func MatchTargetURL(url string) TargetMatcher {
-	return func(t *Target) bool { return t.URL == url }
+	return func(t *target.Info) bool { return t.URL == url }
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
@@ -807,37 +795,10 @@ func MatchTargetURL(url string) TargetMatcher {
 //	f := func(t *Target) bool { return t.URL == "http://example.net/" }
 //	conn, err := cr.NewConnForTarget(ctx, f)
 func (c *Chrome) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
-	var errNoMatch = errors.New("no targets matched")
-
-	var all, matched []*target.Info
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		all, err = c.devsess.FindTargets(ctx, nil)
-		if err != nil {
-			return c.chromeErr(err)
-		}
-		matched = []*target.Info{}
-		for _, t := range all {
-			if tm(newTarget(t)) {
-				matched = append(matched, t)
-			}
-		}
-		if len(matched) == 0 {
-			return errNoMatch
-		}
-		return nil
-	}, loginPollOpts); err != nil && err != errNoMatch {
-		return nil, err
+	t, err := c.devsess.WaitForTarget(ctx, tm)
+	if err != nil {
+		return nil, c.chromeErr(err)
 	}
-
-	if len(matched) != 1 {
-		testing.ContextLogf(ctx, "%d targets matched while unique match was expected. Existing targets:", len(matched))
-		for _, t := range all {
-			testing.ContextLogf(ctx, "  %+v", newTarget(t))
-		}
-		return nil, errors.Errorf("%d targets found", len(matched))
-	}
-	t := matched[0]
 	return c.newConnInternal(ctx, t.TargetID, t.URL)
 }
 
@@ -1380,9 +1341,7 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 
 // IsTargetAvailable checks if there is any matched target.
 func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
-	targets, err := c.devsess.FindTargets(ctx, func(t *target.Info) bool {
-		return tm(newTarget(t))
-	})
+	targets, err := c.devsess.FindTargets(ctx, tm)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get targets")
 	}
