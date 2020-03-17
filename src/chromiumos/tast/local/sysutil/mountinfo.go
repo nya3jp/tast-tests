@@ -90,10 +90,10 @@ func unescape(s string) (string, error) {
 	return val, nil
 }
 
-// parseLine parses an entry in /proc/${PID}/mountinfo.
+// ParseLine parses an entry in /proc/${PID}/mountinfo.
 // Please see also "man proc" and show_mountinfo() in fs/proc_namespace.c for
 // the format details.
-func parseLine(line string) (MountInfo, error) {
+func ParseLine(line string) (MountInfo, error) {
 	matches := lineRe.FindStringSubmatch(line)
 	if matches == nil {
 		return MountInfo{}, errors.New("unknown format: " + line)
@@ -197,7 +197,7 @@ func MountInfoForPID(pid int) ([]MountInfo, error) {
 	var result []MountInfo
 	s := bufio.NewScanner(f)
 	for s.Scan() {
-		info, err := parseLine(s.Text())
+		info, err := ParseLine(s.Text())
 		if err != nil {
 			return nil, err
 		}
