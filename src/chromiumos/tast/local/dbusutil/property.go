@@ -53,3 +53,31 @@ func Property(ctx context.Context, obj dbus.BusObject, p string) (interface{}, e
 	}
 	return v.Value(), nil
 }
+
+// ManagedObjects gets all the objects managed under the passed object. Returns
+// a map from interface name to a slice of ObjectPaths that have an object with
+// that interface.
+func ManagedObjects(ctx context.Context, obj dbus.BusObject) (map[string][]dbus.ObjectPath, error) {
+	const dbusMethod = "org.freedesktop.DBus.ObjectManager.GetManagedObjects"
+	c := obj.CallWithContext(ctx, dbusMethod, 0)
+	if c.Err != nil {
+		return nil, errors.Wrap(c.Err, "failed to get DBUS managed objects")
+	}
+
+	v := dbus.Variant{}
+	if err := c.Store(&v); err != nil {
+		return nil, errors.Wrap(c.Err, "failed to extract DBUS managed objects")
+	}
+	managed, ok := v.Value().(map[dbus.ObjectPath]map[string]map[string]dbus.Variant)
+	if !ok {
+		return nil, errors.New("cannot convert bluez managed objects to map")
+	}
+
+	paths := map[string][]dbus.ObjectPath{}
+	for objPath, v := range managed {
+		for objIface := range v {
+			paths[objIface] = append(paths[objIface], objPath)
+		}
+	}
+	return paths, nil
+}
