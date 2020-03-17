@@ -52,6 +52,24 @@
       "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b26f4478_dd36cbd6",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-17T16:18:03Z",
+      "side": 1,
+      "message": "What would you like to abstract by introducing common package?\nThe all use looks like related to RPC stuff...?\nCould you clarify your intention a bit more details?",
+      "parentUuid": "b7328d24_370bfbc7",
+      "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
