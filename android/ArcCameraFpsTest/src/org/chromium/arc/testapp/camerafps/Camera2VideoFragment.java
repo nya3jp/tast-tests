@@ -14,9 +14,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
+import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
@@ -24,10 +26,14 @@ import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CameraMetadata;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.media.Image;
+import android.media.ImageReader;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.SystemClock;
+import android.util.Log;
 import android.util.Range;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -36,10 +42,14 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -80,6 +90,14 @@ public class Camera2VideoFragment extends Fragment {
     private Integer mTargetFps = null;
     // Target resolution for preview and recording.
     private Size mTargetResolution = null;
+    // Time when we started opening the camera.
+    private long mCameraStartTime;
+    // Time it took in milliseconds for opening the camera.
+    private long mCameraOpenTime;
+    // Time it took in milliseconds for closing the camera.
+    private long mCameraCloseTime;
+
+    private CameraCharacteristics mCameraCharacteristics;
 
     public Camera2VideoFragment(CaptureCallbackHistogram histogram) {
         super();
@@ -102,6 +120,14 @@ public class Camera2VideoFragment extends Fragment {
             }
         }
         return largestSize;
+    }
+
+    public long getCameraCloseTime() {
+        return mCameraCloseTime;
+    }
+
+    public long getCameraOpenTime() {
+        return mCameraOpenTime;
     }
 
     public String getPreviewSize() {
@@ -195,6 +221,82 @@ public class Camera2VideoFragment extends Fragment {
             throw new RuntimeException(e);
         }
     }
+    /** Triggers and waits for snapshot to finish. */
+    public long takeCameraPicture() throws InterruptedException {
+        long startTime = SystemClock.elapsedRealtime();
+        final CountDownLatch latch = new CountDownLatch(1);
+
+        try {
+            // TODO: Cache map instead.
+            final Size size =
+                    chooseResolution(
+                            mCameraCharacteristics
+                                    .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+                                    .getOutputSizes(ImageReader.class));
+            Log.i(TAG, "Taking picture: " + size);
+            final ImageReader reader =
+                    ImageReader.newInstance(
+                            size.getWidth(),
+                            size.getHeight(),
+                            ImageFormat.JPEG,
+                            1 /* maximum images */);
+            final CaptureRequest.Builder captureBuilder =
+                    mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
+            captureBuilder.addTarget(reader.getSurface());
+            captureBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
+
+            String filename = getPhotoFilePath(getActivity());
+            Log.i(TAG, "Saving picture in file: " + filename);
+
+            ImageReader.OnImageAvailableListener readerListener =
+                    new ImageReader.OnImageAvailableListener() {
+                        @Override
+                        public void onImageAvailable(ImageReader reader) {
+                            final Image image = reader.acquireLatestImage();
+                            ByteBuffer buffer = image.getPlanes()[0].getBuffer();
+                            byte[] bytes = new byte[buffer.remaining()];
+                            buffer.get(bytes);
+                            File file = new File(filename);
+                            FileOutputStream output = null;
+                            try {
+                                output = new FileOutputStream(file);
+                                output.write(bytes);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            } finally {
+                                image.close();
+                                try {
+                                    output.close();
+                                } catch (Exception e) {
+                                }
+                            }
+                            latch.countDown();
+                        }
+                    };
+            reader.setOnImageAvailableListener(readerListener, mBackgroundHandler);
+            mCameraDevice.createCaptureSession(
+                    Arrays.asList(reader.getSurface()),
+                    new CameraCaptureSession.StateCallback() {
+                        @Override
+                        public void onConfigured(CameraCaptureSession session) {
+                            try {
+                                session.capture(captureBuilder.build(), null, mBackgroundHandler);
+                            } catch (CameraAccessException e) {
+                                throw new RuntimeException("No Camera access", e);
+                            }
+                        }
+
+                        @Override
+                        public void onConfigureFailed(CameraCaptureSession session) {}
+                    },
+                    mBackgroundHandler);
+        } catch (CameraAccessException e) {
+            throw new RuntimeException("No Camera access", e);
+        }
+
+        latch.await();
+        return SystemClock.elapsedRealtime() - startTime;
+    }
 
     // Open the camera device.
     private void openCamera(int width, int height) {
@@ -202,6 +304,7 @@ public class Camera2VideoFragment extends Fragment {
         if (null == activity || activity.isFinishing()) {
             return;
         }
+        mCameraStartTime = SystemClock.elapsedRealtime();
         CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
         try {
             if (!mCameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
@@ -210,9 +313,10 @@ public class Camera2VideoFragment extends Fragment {
             String cameraId = manager.getCameraIdList()[0];
 
             // Choose the sizes for camera preview and video recording
-            CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
+            mCameraCharacteristics = manager.getCameraCharacteristics(cameraId);
             StreamConfigurationMap map =
-                    characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
+                    mCameraCharacteristics.get(
+                            CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             mVideoSize = chooseResolution(map.getOutputSizes(MediaRecorder.class));
             mPreviewSize = chooseResolution(map.getOutputSizes(SurfaceTexture.class));
 
@@ -229,6 +333,7 @@ public class Camera2VideoFragment extends Fragment {
                     new CameraDevice.StateCallback() {
                         @Override
                         public void onOpened(CameraDevice cameraDevice) {
+                            mCameraOpenTime = SystemClock.elapsedRealtime() - mCameraStartTime;
                             mCameraDevice = cameraDevice;
                             startPreview();
                             mCameraOpenCloseLock.release();
@@ -259,6 +364,8 @@ public class Camera2VideoFragment extends Fragment {
 
     // Close the camera device.
     private void closeCamera() {
+        long timeBefore = SystemClock.elapsedRealtime();
+
         try {
             mCameraOpenCloseLock.acquire();
             closePreviewSession();
@@ -276,6 +383,8 @@ public class Camera2VideoFragment extends Fragment {
         } finally {
             mCameraOpenCloseLock.release();
         }
+
+        mCameraCloseTime = SystemClock.elapsedRealtime() - timeBefore;
     }
 
     // Start the camera preview.
@@ -381,6 +490,13 @@ public class Camera2VideoFragment extends Fragment {
                 + "/"
                 + System.currentTimeMillis()
                 + ".mp4";
+    }
+
+    private String getPhotoFilePath(Context context) {
+        return context.getExternalFilesDir(null).getAbsolutePath()
+                + "/"
+                + System.currentTimeMillis()
+                + ".jpeg";
     }
 
     public String startRecordingVideo() {
