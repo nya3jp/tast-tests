@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7207dcc7_2517db08",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-17T10:54:06Z",
+      "side": 1,
+      "message": "They will be uninstalled after running all tests with shared precondition",
+      "parentUuid": "170191ee_539a5e01",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d780bad_fe3699d7",
         "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
         "patchSetId": 26
