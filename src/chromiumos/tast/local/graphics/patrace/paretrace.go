@@ -99,14 +99,14 @@ func setPerf(ctx context.Context, a *arc.ARC, perfValues *perf.Values, resultPat
 
 	perfValues.Set(
 		perf.Metric{
-			Name:      "trace",
+			Name:      "duration",
 			Unit:      "s",
 			Direction: perf.SmallerIsBetter,
 			Multiple:  false,
 		}, m.Results[0].Time)
 	perfValues.Set(
 		perf.Metric{
-			Name:      "trace",
+			Name:      "fps",
 			Unit:      "fps",
 			Direction: perf.BiggerIsBetter,
 			Multiple:  false,
