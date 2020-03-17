@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61db160c_e431bacf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T17:13:28Z",
+      "side": 1,
+      "message": "nit: Instead of passing in a sometimes nil and unused *chrome.Chrome + a localcrash.ConsentType, why not call crash.WithConsent/crash.WithMockConsent here and pass the crash.Option to crash.RunCrashTest.",
+      "range": {
+        "startLine": 722,
+        "startChar": 35,
+        "endLine": 722,
+        "endChar": 37
+      },
+      "revId": "15670f10cc913db42534be52d4f0cd89c84c7c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
