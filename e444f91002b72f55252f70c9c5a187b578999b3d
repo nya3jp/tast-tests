@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b99d0bcc_80d1fd44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-17T06:31:43Z",
+      "side": 1,
+      "message": "I was happy see this go away in one of your earlier CLs. (Less boilerplate code.) Do we really need this here? Can we pass `s` into setup.PowerTest instead?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "e444f91002b72f55252f70c9c5a187b578999b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2492d8e_f7e210e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-17T06:31:43Z",
+      "side": 1,
+      "message": "This will break other tests, e.g.:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2098363\n\nCan you modify those test in the same CL accordingly?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "e444f91002b72f55252f70c9c5a187b578999b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
