@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73a63a09_dfa3701a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-17T16:37:49Z",
+      "side": 1,
+      "message": "style:\n\nif err :\u003d runHistogram(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "40146781ff8b7c06b8026b1aa053bff62ee06d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa19690a_81012a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-17T16:37:49Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 9
+      },
+      "revId": "40146781ff8b7c06b8026b1aa053bff62ee06d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
