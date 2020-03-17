@@ -10,15 +10,26 @@ import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.TotalCaptureResult;
+import android.os.SystemClock;
 
 class CaptureCallbackHistogram extends CaptureCallback {
 
     // Maximum duration between two frames.
     private static final int HISTOGRAM_MAX = 1024;
+    // Frame considered dropped if it is more than 50% late.
+    private static final float FRAME_DROP_FACTOR = 1.5f;
+
     // Histogram of duration between two frames.
     private int[] histogram = new int[HISTOGRAM_MAX];
     // Last reocrded frame timestamp.
     private long mLastTimeStamp = 0;
+    // Total number of frames.
+    private long mNumFrames = 0;
+    // Total number of dropped frames.
+    private long mNumDroppedFrames = 0;
+    // Target frame duration in milliseconds, i.e., time between two frames.
+    // Default: 30 FPS -> 33 ms
+    private int mTargetFrameDuration = 33;
 
     // Get histogram as string.
     public String getHistogramString() {
@@ -33,20 +44,34 @@ class CaptureCallbackHistogram extends CaptureCallback {
         return sb.toString();
     }
 
+    public long getNumFrames() {
+        return mNumFrames;
+    }
+
+    public long getNumDroppedFrames() {
+        return mNumDroppedFrames;
+    }
+
     // Callback is fired when a frame arrives.
     @Override
     public void onCaptureCompleted(
             CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
+        mNumFrames++;
+
         if (mLastTimeStamp == 0) {
-            mLastTimeStamp = System.currentTimeMillis();
+            mLastTimeStamp = SystemClock.elapsedRealtime();
         } else {
-            int duration = (int) (System.currentTimeMillis() - mLastTimeStamp);
-            mLastTimeStamp = System.currentTimeMillis();
+            int duration = (int) (SystemClock.elapsedRealtime() - mLastTimeStamp);
+            mLastTimeStamp = SystemClock.elapsedRealtime();
 
             if (duration < HISTOGRAM_MAX - 1) {
                 histogram[duration]++;
             } else {
                 histogram[HISTOGRAM_MAX - 1]++;
+            }
+
+            if (mTargetFrameDuration > 0 && duration > FRAME_DROP_FACTOR * mTargetFrameDuration) {
+                mNumDroppedFrames++;
             }
         }
     }
@@ -54,5 +79,12 @@ class CaptureCallbackHistogram extends CaptureCallback {
     // Reset histogram to all zeros.
     public void resetHistogram() {
         histogram = new int[HISTOGRAM_MAX];
+        mLastTimeStamp = 0;
+        mNumDroppedFrames = 0;
+        mNumFrames = 0;
+    }
+
+    public void setTargetFrameDuration(int duration) {
+        mTargetFrameDuration = duration;
     }
 }
