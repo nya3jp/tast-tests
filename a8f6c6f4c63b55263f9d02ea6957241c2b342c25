@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c79d8715_7d614798",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T16:56:36Z",
+      "side": 1,
+      "message": "That is incorrect, or at least not complete. The arc precondition will uninstall all applications between every test and after running all tests with a shared precondition.\n\nIt will look like this in the logs:\n2020/03/17 09:52:36 [09:52:36.126] Preparing precondition \"arc_booted\"\n2020/03/17 09:52:36 [09:52:36.292] Stopping package \"org.chromium.arc.testapp.notification\"\n2020/03/17 09:52:36 [09:52:36.360] Uninstalling com.github.uiautomator\n2020/03/17 09:52:36 [09:52:36.607] Uninstalling org.chromium.arc.testapp.notification\n2020/03/17 09:52:36 [09:52:36.939] Uninstalling com.github.uiautomator.test\n2020/03/17 09:52:37 [09:52:37.196] Resetting Chrome\u0027s state\n2020/03/17 09:52:37 [09:52:37.198] Reusing existing ARC session",
+      "parentUuid": "7207dcc7_2517db08",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d780bad_fe3699d7",
         "filename": "src/chromiumos/tast/local/power/setup/setup_android.go",
         "patchSetId": 26
