@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da4d7103_83878f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "since tablet mode is not used anymore, this just be clamshellTestsForGmail\nsame below",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d30535b_ba659a75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "nit: Set up",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 10
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6652dc_16d91427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "You need to put the code from this method here. The issue is that the defer statements in the method will run too early. Just extract it and paste it here.\n\nAlso make sure to add:\ndefer act.Stop(ctx)",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 63
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff7c83dc_66b5fec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "This seems unnecessary. Either delete or make it not a comment.\n\nIf you delete it, change CurrentAppPackage back to currentAppPackage",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18e63022_daaa7a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "it looks like this struct is not needed anymore because the TabletMode bool is not used. Instead, []TestSuite can be used directly.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20f0e3a_456c58ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "Due to a change in master, you will need to rebase (repo sync -n \u0026\u0026 repo rebase .). Then every use of chrome.Conn will become chrome.TestConn",
+      "range": {
+        "startLine": 48,
+        "startChar": 120,
+        "endLine": 48,
+        "endChar": 124
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c7b50da_6cc34842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "defer act.Stop(ctx)",
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6767792_deb3ea78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "nit: only single constant:\n\nconst restartButtonResourceID \u003d \"android:id/button1\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b145fd9_758b40d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "nit: merge lines\n\nif !isNApp(...) {",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678ec61b_33a2eaeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "nit: only single constant\n\nconst restartButtonResourceID \u003d \"android:id/button1\"",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ba59e6_58263bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T19:46:21Z",
+      "side": 1,
+      "message": "nit: merge lines",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 11
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
