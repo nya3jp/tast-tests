@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/video/c2e2etest"
+	"chromiumos/tast/local/arc/c2e2etest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/gtest"
@@ -335,7 +335,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 			s.Fatal("Failed to wait for activity: ", err)
 		}
 
-		localOutputLogFile, localXMLLogFile, err := c2e2etest.PullLogs(ctx, s, arcFilePath, "", outputLogFileName, outputXMLFileName)
+		localOutputLogFile, localXMLLogFile, err := c2e2etest.PullLogs(ctx, a, arcFilePath, s.OutDir(), "", outputLogFileName, outputXMLFileName)
 
 		if err != nil {
 			s.Fatal("Failed to pull logs: ", err)

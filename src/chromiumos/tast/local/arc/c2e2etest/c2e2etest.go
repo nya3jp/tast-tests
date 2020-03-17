@@ -7,7 +7,9 @@ package c2e2etest
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -16,7 +18,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/testing"
 )
 
 const (
@@ -44,12 +45,16 @@ func ApkNameForArch(ctx context.Context, a *arc.ARC) (string, error) {
 	return ArmApkName, nil
 }
 
-// GrantApkPermissions grants the permissions necessary for the test APK.
-func GrantApkPermissions(ctx context.Context, a *arc.ARC) error {
-	permissions := []string{
+// RequiredPermissions returns the array of permissions necessary for the test APK.
+func RequiredPermissions() []string {
+	return []string{
 		"android.permission.READ_EXTERNAL_STORAGE",
 		"android.permission.WRITE_EXTERNAL_STORAGE"}
-	for _, perm := range permissions {
+}
+
+// GrantApkPermissions grants the permissions necessary for the test APK.
+func GrantApkPermissions(ctx context.Context, a *arc.ARC) error {
+	for _, perm := range RequiredPermissions() {
 		if err := a.Command(ctx, "pm", "grant", Pkg, perm).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrapf(err, "failed to grant permission: %v", err)
 		}
@@ -58,11 +63,9 @@ func GrantApkPermissions(ctx context.Context, a *arc.ARC) error {
 }
 
 // PullLogs pulls the specified gtest log files
-func PullLogs(ctx context.Context, s *testing.State, arcFilePath string, localFilePrefix string, textLogName string, xmlLogName string) (outLogFile string, outXMLFile string, err error) {
-	a := s.PreValue().(arc.PreData).ARC
-
-	outLogFile = fmt.Sprintf("%s/%s%s", s.OutDir(), localFilePrefix, textLogName)
-	outXMLFile = fmt.Sprintf("%s/%s%s", s.OutDir(), localFilePrefix, xmlLogName)
+func PullLogs(ctx context.Context, a *arc.ARC, arcFilePath string, localFilePath string, localFilePrefix string, textLogName string, xmlLogName string) (outLogFile string, outXMLFile string, err error) {
+	outLogFile = fmt.Sprintf("%s/%s%s", localFilePath, localFilePrefix, textLogName)
+	outXMLFile = fmt.Sprintf("%s/%s%s", localFilePath, localFilePrefix, xmlLogName)
 
 	if err := a.PullFile(ctx, filepath.Join(arcFilePath, textLogName), outLogFile); err != nil {
 		return "", "", errors.Wrapf(err, "failed fo pull %s: %v", textLogName, err)
@@ -98,4 +101,55 @@ func ValidateXMLLogs(xmlLogFile string) error {
 	}
 
 	return nil
+}
+
+// VideoMetadata stores parsed metadata from test video JSON files, which are external files located in
+// gs://chromiumos-test-assets-public/tast/cros/video/, e.g. test-25fps.h264.json.
+type VideoMetadata struct {
+	Profile      string   `json:"profile"`
+	Width        int      `json:"width"`
+	Height       int      `json:"height"`
+	FrameRate    int      `json:"frame_rate"`
+	NumFrames    int      `json:"num_frames"`
+	NumFragments int      `json:"num_fragments"`
+	MD5Checksums []string `json:"md5_checksums"`
+}
+
+// LoadMetadata loads a video's metadata from a file.
+func LoadMetadata(filePath string) (VideoMetadata, error) {
+	var md VideoMetadata
+	jf, err := os.Open(filePath)
+	if err != nil {
+		return md, errors.Wrap(err, "failed top open JSON file")
+	}
+	defer jf.Close()
+
+	if err := json.NewDecoder(jf).Decode(&md); err != nil {
+		return md, errors.Wrap(err, "failed to parse metadata from JSON file")
+	}
+
+	return md, nil
+}
+
+// videoCodecEnumValues maps profile string to its enum value.
+// These values must match integers in VideoCodecProfile in https://cs.chromium.org/chromium/src/media/base/video_codecs.h
+var videoCodecEnumValues = map[string]int{
+	"H264PROFILE_MAIN":    1,
+	"VP8PROFILE_ANY":      11,
+	"VP9PROFILE_PROFILE0": 12,
+}
+
+// StreamDataArg returns a string that can be used for an argument to the c2_e2e_test APK.
+// dataPath is the absolute path of the video file.
+func (d *VideoMetadata) StreamDataArg(dataPath string) (string, error) {
+	pEnum, found := videoCodecEnumValues[d.Profile]
+	if !found {
+		return "", errors.Errorf("cannot find enum value for profile %v", d.Profile)
+	}
+
+	// Set MinFPSNoRender and MinFPSWithRender to 0 for disabling FPS check because we would like
+	// TestFPS to be always passed and store FPS value into perf metric.
+	sdArg := fmt.Sprintf("--test_video_data=%s:%d:%d:%d:%d:0:0:%d:%d",
+		dataPath, d.Width, d.Height, d.NumFrames, d.NumFragments, pEnum, d.FrameRate)
+	return sdArg, nil
 }

@@ -8,10 +8,8 @@ package decode
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -21,7 +19,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/video/c2e2etest"
+	"chromiumos/tast/local/arc/c2e2etest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/perf"
@@ -43,39 +41,12 @@ const (
 	PerfTestRuntime = (perfMeasurementDuration * 2) + perfTestSlack
 )
 
-// videoMetadata stores parsed metadata from test video JSON files, which are external files located in
-// gs://chromiumos-test-assets-public/tast/cros/video/, e.g. test-25fps.h264.json.
-type videoMetadata struct {
-	Profile      string   `json:"profile"`
-	Width        int      `json:"width"`
-	Height       int      `json:"height"`
-	FrameRate    int      `json:"frame_rate"`
-	NumFrames    int      `json:"num_frames"`
-	NumFragments int      `json:"num_fragments"`
-	MD5Checksums []string `json:"md5_checksums"`
-}
-
-// streamDataArg returns a string that can be used for an argument to the c2_e2e_test APK.
-// dataPath is the absolute path of the video file.
-func (d *videoMetadata) streamDataArg(dataPath string) (string, error) {
-	pEnum, found := videoCodecEnumValues[d.Profile]
-	if !found {
-		return "", errors.Errorf("cannot find enum value for profile %v", d.Profile)
-	}
-
-	// Set MinFPSNoRender and MinFPSWithRender to 0 for disabling FPS check because we would like
-	// TestFPS to be always passed and store FPS value into perf metric.
-	sdArg := fmt.Sprintf("--test_video_data=%s:%d:%d:%d:%d:0:0:%d:%d",
-		dataPath, d.Width, d.Height, d.NumFrames, d.NumFragments, pEnum, d.FrameRate)
-	return sdArg, nil
-}
-
 // arcTestConfig stores GoogleTest configuration passed to c2_e2e_test APK.
 type arcTestConfig struct {
 	// testVideo stores the test video's name.
 	testVideo string
 	// videoMetadata stores video metadata.
-	metadata videoMetadata
+	metadata c2e2etest.VideoMetadata
 	// testFilter specifies test pattern the test can run.
 	// If unspecified, c2_e2e_test runs all tests.
 	testFilter string
@@ -94,7 +65,7 @@ func (t *arcTestConfig) argsList() ([]string, error) {
 
 	// Generate '--test_video_data' flag from metadata
 	dataPath := filepath.Join(arcFilePath, t.testVideo)
-	sdArg, err := t.metadata.streamDataArg(dataPath)
+	sdArg, err := t.metadata.StreamDataArg(dataPath)
 	if err != nil {
 		return nil, err
 	}
@@ -116,33 +87,23 @@ func writeLinesToFile(lines []string, filepath string) error {
 	return ioutil.WriteFile(filepath, []byte(strings.Join(lines, "\n")+"\n"), 0644)
 }
 
-// videoCodecEnumValues maps profile string to its enum value.
-// These values must match integers in VideoCodecProfile in https://cs.chromium.org/chromium/src/media/base/video_codecs.h
-var videoCodecEnumValues = map[string]int{
-	"H264PROFILE_MAIN":    1,
-	"VP8PROFILE_ANY":      11,
-	"VP9PROFILE_PROFILE0": 12,
-}
-
 func arcVideoTestCleanup(ctx context.Context, a *arc.ARC) {
 	if err := a.Command(ctx, "rm", "-rf", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
 		testing.ContextLog(ctx, "Failed cleaning test data dir")
 	}
 }
 
-func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) videoMetadata {
+func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) c2e2etest.VideoMetadata {
 	a := s.PreValue().(arc.PreData).ARC
 
 	videoPath := s.DataPath(testVideo)
 	pushFiles := []string{videoPath}
 
 	// Parse JSON metadata.
-	// TODO(johnylin) Adapt ARC decoder test to use the json file directly.
-	jf, err := os.Open(videoPath + ".json")
+	md, err := c2e2etest.LoadMetadata(videoPath + ".json")
 	if err != nil {
-		s.Fatal("Failed to open JSON file: ", err)
+		s.Fatal("Failed to get metadata: ", err)
 	}
-	defer jf.Close()
 
 	apkName, err := c2e2etest.ApkNameForArch(ctx, a)
 	if err != nil {
@@ -157,11 +118,6 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 	s.Log("Granting storage permissions")
 	if err := c2e2etest.GrantApkPermissions(ctx, a); err != nil {
 		s.Fatal("Failed granting storage permission: ", err)
-	}
-
-	var md videoMetadata
-	if err := json.NewDecoder(jf).Decode(&md); err != nil {
-		s.Fatal("Failed to parse metadata from JSON file: ", err)
 	}
 
 	if requireMD5File {
@@ -221,7 +177,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
-	_, localXMLLogFile, err := c2e2etest.PullLogs(shortCtx, s, arcFilePath, cfg.logPrefix, textLogName, xmlLogName)
+	_, localXMLLogFile, err := c2e2etest.PullLogs(shortCtx, a, arcFilePath, s.OutDir(), cfg.logPrefix, textLogName, xmlLogName)
 
 	if err != nil {
 		s.Fatal("Failed to pull logs: ", err)
@@ -283,7 +239,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 		s.Fatal("Failed to wait for activity: ", err)
 	}
 
-	outLogFile, outXMLLogFile, err := c2e2etest.PullLogs(ctx, s, arcFilePath, cfg.logPrefix, textLogName, xmlLogName)
+	outLogFile, outXMLLogFile, err := c2e2etest.PullLogs(ctx, a, arcFilePath, s.OutDir(), cfg.logPrefix, textLogName, xmlLogName)
 
 	if err != nil {
 		s.Fatal("Failed to pull logs: ", err)
