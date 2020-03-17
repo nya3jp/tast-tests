@@ -197,6 +197,28 @@ func (n *Node) RightClick(ctx context.Context) error {
 	return ash.MouseClick(ctx, n.tconn, n.Location.CenterPoint(), ash.RightButton)
 }
 
+// FocusAndWait calls the focus() Javascript method of the AutomationNode.
+// This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
+// The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
+// The EventWatcher waits the duration of timeout for the event to occur.
+func (n *Node) FocusAndWait(ctx context.Context, timeout time.Duration) error {
+	ew, err := NewWatcher(ctx, n, EventTypeFocus)
+	if err != nil {
+		return errors.Wrap(err, "failed to create focus event watcher")
+	}
+	defer ew.Release(ctx)
+
+	if err := n.object.Call(ctx, nil, "function(){this.focus()}"); err != nil {
+		return errors.Wrap(err, "failed to call focus() on the specified node")
+	}
+
+	if _, err := ew.WaitForEvent(ctx, timeout); err != nil {
+		return errors.Wrap(err, "failed to wait for the focus event on the specified node")
+	}
+
+	return nil
+}
+
 // Descendant finds the first descendant of this node matching the params and returns it.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error) {
