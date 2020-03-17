@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01dd2588_afefede4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-17T08:20:46Z",
+      "side": 1,
+      "message": "huge nit: I\u0027m afraid \"err\" is too famous for short-lived error variables. I recommend picking a different name (e.g. firstErr) for this variable and using \"err\" instead of \"err2\".",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "57be3c6a7d2ee3d61d6238c89610898cafd5eee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
