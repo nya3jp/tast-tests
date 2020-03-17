@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ea8160a_340cc185",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-17T20:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2759eeea_a12c7bc0",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "8f0ce22f11e8f739adea6535ddff2bf668804ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d6cb6a4_e01ed09a",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -64,6 +88,54 @@
         "startChar": 116,
         "endLine": 76,
         "endChar": 126
+      },
+      "revId": "8f0ce22f11e8f739adea6535ddff2bf668804ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7a449f_c616ebca",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-17T20:42:46Z",
+      "side": 1,
+      "message": "Thread safety wasn\u0027t an issue since it was just a single go routine accessing the structure in a read only fashion.  I removed the go routine and it\u0027s just used in the loop body.\n\nThe struct is intended as optional since looping usually is not desired for trace replay.  The replayTrace function called makes use of those semantics as well.",
+      "parentUuid": "f4961e13_0cfa3ca3",
+      "range": {
+        "startLine": 76,
+        "startChar": 116,
+        "endLine": 76,
+        "endChar": 126
+      },
+      "revId": "8f0ce22f11e8f739adea6535ddff2bf668804ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bfc9990_087c59a2",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-17T20:42:46Z",
+      "side": 1,
+      "message": "https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/2547695 but still deciding on the exact trace to use, and might also be delaying it until we have the newer version of apitrace available in the container.",
+      "parentUuid": "9d6cb6a4_e01ed09a",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 20
       },
       "revId": "8f0ce22f11e8f739adea6535ddff2bf668804ffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
