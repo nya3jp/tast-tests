@@ -20,7 +20,7 @@ func init() {
 			"gwendal@chromium.com", // Chrome OS sensors point of contact
 			"mathewk@chromium.org", // Test author
 			"jettrink@chromium.org",
-			"chromeos-sensors@google.com",
+			"chromeos-sensors-eng@google.com",
 		},
 		SoftwareDeps: []string{"cros_config"},
 		Attr:         []string{"group:mainline"},
