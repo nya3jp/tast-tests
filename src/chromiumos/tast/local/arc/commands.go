@@ -6,8 +6,10 @@ package arc
 
 import (
 	"context"
+	"regexp"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 )
@@ -60,4 +62,38 @@ func (a *ARC) GetProp(ctx context.Context, key string) (string, error) {
 		return "", err
 	}
 	return strings.TrimSpace(string(o)), nil
+}
+
+// BroadcastIntent broadcasts an intent with "am broadcast" and returns the result.
+func (a *ARC) BroadcastIntent(ctx context.Context, action string, params ...string) (string, error) {
+	args := []string{"broadcast", "-a", action}
+	if len(params) > 0 {
+		args = append(args, params...)
+	}
+
+	output, err := a.Command(ctx, "am", args...).Output()
+	if err != nil {
+		return "", err
+	}
+
+	// Result 0 indicates intent not handled. Result -1 indicates intent handled by one (?) app.
+	// broadcastResultRegexp matches the result from an Android Activity Manager broadcast.
+	broadcastResultRegexp := regexp.MustCompile(`Broadcast completed: result=(-?[0-9]+)(, data="(.*)")?`)
+	m := broadcastResultRegexp.FindSubmatch(output)
+
+	if m == nil {
+		return "", errors.Errorf("unable to parse broadcast result for %s: %q", action, output)
+	}
+
+	// Expect Activity.RESULT_OK == -1
+	if string(m[1]) != "-1" {
+		return "", errors.Errorf("broadcast failed, status = %s, %q", m[1], output)
+	}
+
+	// Extract result data if present
+	if string(m[2]) == "" {
+		// No data returned
+		return "", nil
+	}
+	return string(m[3]), nil
 }
