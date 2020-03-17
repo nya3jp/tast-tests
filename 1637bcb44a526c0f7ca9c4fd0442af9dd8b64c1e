@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "219653e6_b5c6df03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-17T06:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f2b0d2d_70184564",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01caa8ce_55402bcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7628735d_6e6ee20d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-17T06:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01caa8ce_55402bcf",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +211,30 @@
       "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa473fc_99af162e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-17T06:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d2681f1_62fc4c6f",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
