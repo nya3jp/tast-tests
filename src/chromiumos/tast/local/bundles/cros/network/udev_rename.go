@@ -221,11 +221,25 @@ func interfaceNames() ([]string, error) {
 	return names, nil
 }
 
+// filterVirtualInterface returns interfaces without known virtual interfaces, e.g., arc*, vmtap*.
+func filterVirtualInterface(ifaces []string) []string {
+	var ret []string
+	for _, iface := range ifaces {
+		if strings.HasPrefix(iface, "arc") || strings.HasPrefix(iface, "vmtap") {
+			continue
+		}
+		ret = append(ret, iface)
+	}
+	return ret
+}
+
 func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 	iflistPre, err := interfaceNames()
 	if err != nil {
 		return err
 	}
+	iflistPre = filterVirtualInterface(iflistPre)
+
 	if err := fn(ctx); err != nil {
 		return err
 	}
@@ -242,6 +256,7 @@ func testUdevDeviceList(ctx context.Context, fn deviceRestarter) error {
 		if err != nil {
 			return err
 		}
+		iflistPost = filterVirtualInterface(iflistPost)
 		if !reflect.DeepEqual(iflistPre, iflistPost) {
 			return errors.Errorf("unexpected network interfaces: got %v, want %v", iflistPost, iflistPre)
 		}
