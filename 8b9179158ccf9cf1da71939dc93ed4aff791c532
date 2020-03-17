@@ -16,6 +16,24 @@
       "revId": "8b9179158ccf9cf1da71939dc93ed4aff791c532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7fa1bb_20a05c4c",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-17T16:17:09Z",
+      "side": 1,
+      "message": "Huh, shows how literally I copy/paste/modified. All the others have this same extra line :D",
+      "parentUuid": "8bfd6739_1a4c9e3b",
+      "revId": "8b9179158ccf9cf1da71939dc93ed4aff791c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
