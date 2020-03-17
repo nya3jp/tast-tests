@@ -22,6 +22,30 @@
       "revId": "15670f10cc913db42534be52d4f0cd89c84c7c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca8466d2_93cbc3d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-17T17:20:57Z",
+      "side": 1,
+      "message": "The issue is that some of the tests (the *NoConsent ones) need to have access to cr when they run, but I agree with you that this is weird. I\u0027m not particularly sure of a clean way to resolve it, but I\u0027ve opened https://crbug.com/1062318 to track it.",
+      "parentUuid": "61db160c_e431bacf",
+      "range": {
+        "startLine": 722,
+        "startChar": 35,
+        "endLine": 722,
+        "endChar": 37
+      },
+      "revId": "15670f10cc913db42534be52d4f0cd89c84c7c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
