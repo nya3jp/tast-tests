@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "d024f777_dc778e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-17T07:57:03Z",
+      "side": 1,
+      "message": "Thanks for explanation! It might be good to have a comment here describing this background so that future readers won\u0027t try to add syslog.Program().",
+      "parentUuid": "9d3d0ae5_50a443b5",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "367724f4_bf3822c4",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 6
