@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04c11b83_84f84f5b",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-17T07:57:03Z",
+      "side": 1,
+      "message": "Could you add a unit test for the new behavior?",
+      "range": {
+        "startLine": 291,
+        "startChar": 17,
+        "endLine": 291,
+        "endChar": 21
+      },
+      "revId": "003fd438c1295cafc6ed123a9265d04707d9342c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91295026_6312f71d",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-17T07:57:03Z",
+      "side": 1,
+      "message": "To not assume that err is wrapped exactly 1 time, you can use errors.Is.\n\n if errors.Is(err, ErrNotFound) { ... }",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 309,
+        "endChar": 40
+      },
+      "revId": "003fd438c1295cafc6ed123a9265d04707d9342c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
