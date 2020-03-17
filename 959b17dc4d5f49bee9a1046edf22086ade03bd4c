@@ -46,6 +46,23 @@
       "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1a67f0_4607e0c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-17T16:27:25Z",
+      "side": 1,
+      "message": "Could you avoid using panic in public APIs?\n\ncf) https://blog.golang.org/defer-panic-and-recover\n\n\u003d\u003d quote \u003d\u003d\nThe convention in the Go libraries is that even when a package uses panic internally, its external API still presents explicit error return values.\n\nFrom API point of view, it is not the regression, so I\u0027m ok if you\u0027d like to work on this in another CL, like if the fix need wider code change.",
+      "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
