@@ -54,7 +54,7 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	sup, cleanup := setup.New("camera preview power")
+	sup, cleanup := setup.New("GCA camera preview power")
 	defer func() {
 		if err := cleanup(cleanupCtx); err != nil {
 			s.Error("Cleanup failed: ", err)
