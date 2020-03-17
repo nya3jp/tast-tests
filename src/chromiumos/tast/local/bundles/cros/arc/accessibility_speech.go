@@ -31,8 +31,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"android"},
 			Pre:               arc.Booted(),
 		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name:              "vm_r",
+			ExtraSoftwareDeps: []string{"android_vm_r"},
 			Pre:               arc.VMBooted(),
 		}},
 	})
@@ -99,6 +99,9 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			}, {
 				activateKey,
 				[]string{"test toast"},
+			}, {
+				nextKey,
+				[]string{"Hello world."},
 			},
 		} {
 			// Ensure that ChromeVox log is cleared before proceeding.
