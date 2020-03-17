@@ -10,6 +10,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/mafredri/cdp/protocol/target"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
@@ -102,7 +104,7 @@ func WaitUntilButtonsRender(ctx context.Context, tconn *chrome.TestConn) error {
 // the returned connection.
 func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	extURLPrefix := "chrome-extension://jkghodnilhceideoidjikpgommlajknk/inputview.html"
-	f := func(t *chrome.Target) bool { return strings.HasPrefix(t.URL, extURLPrefix) }
+	f := func(t *target.Info) bool { return strings.HasPrefix(t.URL, extURLPrefix) }
 	return c.NewConnForTarget(ctx, f)
 }
 

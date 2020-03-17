@@ -71,9 +71,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
-			return t.URL == url
-		})
+		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
 		if err != nil {
 			s.Errorf("%s(%s) -> %s: %v", action, data, url, err)
 		} else {

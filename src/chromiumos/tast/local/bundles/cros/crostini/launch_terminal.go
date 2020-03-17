@@ -9,7 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/chrome"
+	"github.com/mafredri/cdp/protocol/target"
+
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
@@ -73,7 +74,7 @@ func LaunchTerminal(ctx context.Context, s *testing.State) {
 		}
 
 		s.Logf("Waiting for renderer with URL containing %q and suffix %q", terminalURLContains, urlSuffix)
-		conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+		conn, err := cr.NewConnForTarget(ctx, func(t *target.Info) bool {
 			return strings.Contains(t.URL, terminalURLContains) &&
 				strings.HasSuffix(t.URL, urlSuffix)
 		})

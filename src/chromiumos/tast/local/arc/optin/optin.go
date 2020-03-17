@@ -50,9 +50,7 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 	SetPlayStoreEnabled(ctx, tconn, true)
 
 	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
-	conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
-		return t.URL == bgURL
-	})
+	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
 		return errors.Wrapf(err, "failed to find %v", bgURL)
 	}

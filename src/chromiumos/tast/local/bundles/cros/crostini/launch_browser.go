@@ -68,9 +68,7 @@ func LaunchBrowser(ctx context.Context, s *testing.State) {
 		}
 
 		s.Logf("Waiting for renderer with URL %q", urlTarget)
-		conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
-			return t.URL == urlTarget
-		})
+		conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(urlTarget))
 		if err != nil {
 			s.Error("Didn't see crosh renderer: ", err)
 		} else {
