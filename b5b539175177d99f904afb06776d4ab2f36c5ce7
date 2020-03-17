@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42b7023a_f2695496",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-17T06:03:40Z",
+      "side": 1,
+      "message": "\u003e \"utilites\" is a possible misspelling of \"utilities\".\n\nFixed.",
+      "parentUuid": "80d37d68_167ff2ad",
+      "range": {
+        "startLine": 5,
+        "startChar": 25,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "b5b539175177d99f904afb06776d4ab2f36c5ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
