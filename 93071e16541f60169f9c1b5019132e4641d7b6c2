@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0140b896_0e4c8434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-17T10:00:19Z",
+      "side": 1,
+      "message": "super nit: It\u0027s JCUKEN according to the Wikipedia https://en.wikipedia.org/wiki/JCUKEN.",
+      "range": {
+        "startLine": 124,
+        "startChar": 25,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "93071e16541f60169f9c1b5019132e4641d7b6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
