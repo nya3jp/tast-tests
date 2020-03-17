@@ -427,6 +427,30 @@
       "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c3993b_b8d5d040",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-17T16:45:10Z",
+      "side": 1,
+      "message": "Tested again today and the problem seems to be gone",
+      "parentUuid": "5ae291fc_f367b311",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "ca2faca30eaba9290e51d438e4b9ad6e337e878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

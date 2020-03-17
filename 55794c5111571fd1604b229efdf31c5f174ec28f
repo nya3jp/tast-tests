@@ -16,6 +16,24 @@
       "revId": "55794c5111571fd1604b229efdf31c5f174ec28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65eb3e74_65685b6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-17T16:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a8c9a4_edce9ef7",
+      "revId": "55794c5111571fd1604b229efdf31c5f174ec28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

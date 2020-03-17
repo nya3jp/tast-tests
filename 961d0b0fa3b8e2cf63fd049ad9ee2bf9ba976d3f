@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "79e83974_0c73795c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-17T16:45:10Z",
+      "side": 1,
+      "message": "Implemented hardware dependency to replace this. Marking resolved.",
+      "parentUuid": "fa803bf3_2fd6bf83",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "081f9972_7e97ea0b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -337,6 +361,24 @@
     },
     {
       "key": {
+        "uuid": "1e5155df_acc6157e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-17T16:45:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffe76ebb_3a111783",
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c6ce28f_089e28d1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
         "patchSetId": 2
@@ -452,6 +494,30 @@
       "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6595f62e_347e5e31",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-17T16:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d30597_e0c74373",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "961d0b0fa3b8e2cf63fd049ad9ee2bf9ba976d3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
