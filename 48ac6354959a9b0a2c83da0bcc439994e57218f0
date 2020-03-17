@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ee611f0b_d230e53d",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-17T07:53:10Z",
+      "side": 1,
+      "message": "This code LGTM. I also agree that having DumpLogOnError in the host package is a good idea.",
+      "parentUuid": "61663b40_472c9e9e",
+      "revId": "48ac6354959a9b0a2c83da0bcc439994e57218f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4dd4357_1b1e8583",
         "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
         "patchSetId": 2
