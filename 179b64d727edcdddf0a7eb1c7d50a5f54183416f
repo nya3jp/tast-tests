@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6915fb5d_a89f4b7b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-17T02:15:09Z",
+      "side": 1,
+      "message": "nit: maybe errors.Wrap(err, \"...\") for the consistency with line 103?",
+      "range": {
+        "startLine": 108,
+        "startChar": 13,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "179b64d727edcdddf0a7eb1c7d50a5f54183416f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
