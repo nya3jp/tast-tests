@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4948e53a_eda030f4",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-17T04:47:05Z",
+      "side": 1,
+      "message": "nit, delete \"because\".",
+      "revId": "9693e9d126d14f7a5c67ac4b7054500fa90f31d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
