@@ -61,7 +61,8 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	sup, cleanup := setup.New("camera preview power")
+	sup, cleanup := setup.New("GCA camera preview power")
+
 	defer func() {
 		if err := cleanup(cleanupCtx); err != nil {
 			s.Error("Cleanup failed: ", err)
