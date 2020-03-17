@@ -197,6 +197,14 @@ func (n *Node) RightClick(ctx context.Context) error {
 	return ash.MouseClick(ctx, n.tconn, n.Location.CenterPoint(), ash.RightButton)
 }
 
+// Focus calls the focus() Javascript method of the AutomationNode.
+// This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
+// The focus event is not instant, so it is recommended to use an EventWatcher (watcher.go)
+// to wait for the focus event to complete.
+func (n *Node) Focus(ctx context.Context) error {
+	return n.object.Call(ctx, nil, "function(){this.focus()}")
+}
+
 // Descendant finds the first descendant of this node matching the params and returns it.
 // If the JavaScript fails to execute, an error is returned.
 func (n *Node) Descendant(ctx context.Context, params FindParams) (*Node, error) {
