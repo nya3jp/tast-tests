@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d22bf04a_2ee70ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-17T16:49:21Z",
+      "side": 1,
+      "message": "Do you have special reason you cannot call files.Close()? If so, could you explicitly comment it here? Or, could you just call files.Close()?\n\nAlso, it looks like it is not necessary to keep the files app open until the end of this function? Then, could you call Close() directly here, instead of defer?\nNote that defer scope is function, rather than block.",
+      "revId": "637eee93c3d00e5f2a03fdf26dce0fc2b3b546c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
