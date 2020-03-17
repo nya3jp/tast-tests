@@ -21,10 +21,24 @@ func init() {
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"kathrelkeld@chromium.org",
+			"gabormagda@google.com",
+			"enterprise-policy-support-rotation@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Pre:          pre.User,
+		Params: []testing.Param{
+			{
+				Name:      "blacklist",
+				Val:       "blacklist",
+				ExtraAttr: []string{"informational"},
+			},
+			{
+				Name:      "whitelist",
+				Val:       "whitelist",
+				ExtraAttr: []string{"informational"},
+			},
+		},
 	})
 }
 
@@ -32,49 +46,94 @@ func URLBlacklist(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*pre.PreData).Chrome
 	fdms := s.PreValue().(*pre.PreData).FakeDMS
 
-	for _, param := range []struct {
-		// name is the subtest name.
-		name string
-		// value is the policy value.
-		value *policy.URLBlacklist
-		// blockedURLs is a list of urls expected to be blocked
-		blockedURLs []string
-		// allowedURLs is a list of urls expected to be accessible
-		allowedURLs []string
+	for _, testCase := range []struct {
+		name        string          // name is the subtest name.
+		param       string          // param is compared to test Param to decide whethet the subtest should be run or skipped.
+		blockedURLs []string        // blockedURLs is a list of urls expected to be blocked.
+		allowedURLs []string        // allowedURLs is a list of urls expected to be accessible.
+		policies    []policy.Policy // policies is a list of URLBlacklist and URLWhitelist policies to update before checking urls.
 	}{
 		{
-			name:        "unset",
-			value:       &policy.URLBlacklist{Stat: policy.StatusUnset},
-			blockedURLs: []string{},
-			allowedURLs: []string{"http://google.com", "http://chromium.org"},
-		},
-		{
-			name:        "single",
-			value:       &policy.URLBlacklist{Val: []string{"http://example.org/blocked.html"}},
+			name:        "single_blacklist",
+			param:       "blacklist",
 			blockedURLs: []string{"http://example.org/blocked.html"},
 			allowedURLs: []string{"http://google.com", "http://chromium.org"},
+			policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked.html"}}},
 		},
 		{
-			name:        "multi",
-			value:       &policy.URLBlacklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}},
+			name:        "multi_blacklist",
+			param:       "blacklist",
 			blockedURLs: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"},
 			allowedURLs: []string{"http://google.com", "http://chromium.org"},
+			policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}}},
 		},
 		{
-			name:        "wildcard",
-			value:       &policy.URLBlacklist{Val: []string{"example.com"}},
+			name:        "wildcard_blacklist",
+			param:       "blacklist",
 			blockedURLs: []string{"http://example.com/blocked1.html", "http://example.com/blocked2.html"},
 			allowedURLs: []string{"http://google.com", "http://chromium.org"},
+			policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"example.com"}}},
+		},
+		{
+			name:        "unset_blacklist",
+			param:       "blacklist",
+			blockedURLs: []string{},
+			allowedURLs: []string{"http://google.com", "http://chromium.org"},
+			policies:    []policy.Policy{&policy.URLBlacklist{Stat: policy.StatusUnset}},
+		},
+		{
+			name:        "single_whitelist",
+			param:       "whitelist",
+			blockedURLs: []string{"http://example.org"},
+			allowedURLs: []string{"http://chromium.org"},
+			policies: []policy.Policy{
+				&policy.URLBlacklist{Val: []string{"org"}},
+				&policy.URLWhitelist{Val: []string{"chromium.org"}},
+			},
+		},
+		{
+			name:        "identical_whitelist",
+			param:       "whitelist",
+			blockedURLs: []string{"http://example.org"},
+			allowedURLs: []string{"http://chromium.org"},
+			policies: []policy.Policy{
+				&policy.URLBlacklist{Val: []string{"http://chromium.org", "http://example.org"}},
+				&policy.URLWhitelist{Val: []string{"http://chromium.org"}},
+			},
+		},
+		{
+			name:        "https_whitelist",
+			param:       "whitelist",
+			blockedURLs: []string{"http://chromium.org"},
+			allowedURLs: []string{"https://chromium.org"},
+			policies: []policy.Policy{
+				&policy.URLBlacklist{Val: []string{"chromium.org"}},
+				&policy.URLWhitelist{Val: []string{"https://chromium.org"}},
+			},
+		},
+		{
+			name:        "unset_whitelist",
+			param:       "whitelist",
+			blockedURLs: []string{},
+			allowedURLs: []string{"http://chromium.org"},
+			policies: []policy.Policy{
+				&policy.URLBlacklist{Stat: policy.StatusUnset},
+				&policy.URLWhitelist{Stat: policy.StatusUnset},
+			},
 		},
 	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+		if testCase.param != s.Param() {
+			continue
+		}
+
+		s.Run(ctx, testCase.name, func(ctx context.Context, s *testing.State) {
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, testCase.policies); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
@@ -94,13 +153,13 @@ func URLBlacklist(ctx context.Context, s *testing.State) {
 				return strings.Contains(message, "ERR_BLOCKED_BY_ADMINISTRATOR")
 			}
 
-			for _, allowed := range param.allowedURLs {
+			for _, allowed := range testCase.allowedURLs {
 				if urlBlocked(allowed) {
 					s.Errorf("Expected %q to load", allowed)
 				}
 			}
 
-			for _, blocked := range param.blockedURLs {
+			for _, blocked := range testCase.blockedURLs {
 				if !urlBlocked(blocked) {
 					s.Errorf("Expected %q to be blocked", blocked)
 				}
