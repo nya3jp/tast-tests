@@ -185,6 +185,16 @@ func WithMockConsent() Option {
 	}
 }
 
+// RebootingTest indicates that this test will reboot the machine, and the crash
+// reporting state files (e.g. crash-test-in-progress) should also be placed in
+// /var/spool/crash/ (so that the persist-crash-test task moves them over to
+// /run/crash_reporter on boot).
+func RebootingTest() Option {
+	return func(p *setUpParams) {
+		p.rebootTest = true
+	}
+}
+
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this. If developer image
@@ -202,10 +212,10 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 		senderProcName:    senderProcName,
 		mockSendingPath:   mockSendingPath,
 		sendRecordDir:     SendRecordDir,
-		mockConsentPath:   filepath.Join(crashTestInProgressDir, mockConsentFile),
 		isDevImageTest:    false,
 		setConsent:        false,
 		setMockConsent:    false,
+		rebootTest:        false,
 		chrome:            nil,
 	}
 	for _, opt := range opts {
@@ -242,11 +252,11 @@ type setUpParams struct {
 	senderPausePath   string
 	senderProcName    string
 	mockSendingPath   string
-	mockConsentPath   string
 	sendRecordDir     string
 	isDevImageTest    bool
 	setConsent        bool
 	setMockConsent    bool
+	rebootTest        bool
 	chrome            *chrome.Chrome
 }
 
@@ -283,7 +293,6 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 				userCrashStash:    p.userCrashStash,
 				senderPausePath:   p.senderPausePath,
 				mockSendingPath:   p.mockSendingPath,
-				mockConsentPath:   p.mockConsentPath,
 			})
 		}
 	}()
@@ -292,15 +301,13 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 		return errors.New("Should not set consent and mock consent at the same time")
 	}
 
+	if err := os.MkdirAll(p.inProgDir, 0755); err != nil {
+		return errors.Wrapf(err, "could not make directory %v", p.inProgDir)
+	}
+
 	if p.setConsent {
 		if err := SetConsent(ctx, p.chrome, true); err != nil {
 			return errors.Wrap(err, "couldn't enable metrics consent")
-		}
-	}
-
-	if p.setMockConsent {
-		if err := ioutil.WriteFile(p.mockConsentPath, nil, 0644); err != nil {
-			return errors.Wrapf(err, "failed writing mock consent file %s", p.mockConsentPath)
 		}
 	}
 
@@ -338,19 +345,37 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 		return err
 	}
 
-	// If the test is meant to run with developer image behavior, return here to
-	// avoid creating the directory that indicates a crash test is in progress.
-	if p.isDevImageTest {
-		return nil
+	// We must set mock consent _after_ stashing crashes, or we'll stash
+	// the remote mock consent.
+	if p.setMockConsent {
+		mockConsentPath := filepath.Join(p.inProgDir, mockConsentFile)
+		if err := ioutil.WriteFile(mockConsentPath, nil, 0644); err != nil {
+			return errors.Wrapf(err, "failed writing mock consent file %s", mockConsentPath)
+		}
+		if p.rebootTest {
+			mockConsentPersistent := filepath.Join(p.sysCrashDir, mockConsentFile)
+			if err := ioutil.WriteFile(mockConsentPersistent, nil, 0644); err != nil {
+				return errors.Wrapf(err, "failed writing mock consent file %s", mockConsentPersistent)
+			}
+		}
 	}
 
-	if err := os.MkdirAll(p.inProgDir, 0755); err != nil {
-		return errors.Wrapf(err, "could not make directory %v", p.inProgDir)
+	// If the test is meant to run with developer image behavior, return here to
+	// avoid creating the file that indicates a crash test is in progress.
+	if p.isDevImageTest {
+		return nil
 	}
 
 	filePath := filepath.Join(p.inProgDir, crashTestInProgressFile)
 	if err := ioutil.WriteFile(filePath, nil, 0644); err != nil {
 		return errors.Wrapf(err, "could not create %v", filePath)
+	}
+
+	if p.rebootTest {
+		filePath = filepath.Join(p.sysCrashDir, crashTestInProgressFile)
+		if err := ioutil.WriteFile(filePath, nil, 0644); err != nil {
+			return errors.Wrapf(err, "could not create %v", filePath)
+		}
 	}
 	return nil
 }
@@ -381,7 +406,6 @@ func TearDownCrashTest() error {
 		userCrashStash:    userCrashStash,
 		senderPausePath:   senderPausePath,
 		mockSendingPath:   mockSendingPath,
-		mockConsentPath:   filepath.Join(crashTestInProgressDir, mockConsentFile),
 	}
 	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
 		firstErr = err
@@ -405,7 +429,6 @@ type tearDownParams struct {
 	userCrashStash    string
 	senderPausePath   string
 	mockSendingPath   string
-	mockConsentPath   string
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
@@ -417,6 +440,10 @@ func tearDownCrashTest(p *tearDownParams) error {
 	// or it was never created (See SetUpDevImageCrashTest).
 	// Well, whatever, we're in the correct state now (the file is gone).
 	filePath := filepath.Join(p.inProgDir, crashTestInProgressFile)
+	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
+		firstErr = err
+	}
+	filePath = filepath.Join(p.sysCrashDir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
 		firstErr = err
 	}
@@ -435,7 +462,12 @@ func tearDownCrashTest(p *tearDownParams) error {
 		firstErr = err
 	}
 
-	if err := os.Remove(p.mockConsentPath); err != nil && !os.IsNotExist(err) && firstErr == nil {
+	mockConsentPath := filepath.Join(p.inProgDir, mockConsentFile)
+	if err := os.Remove(mockConsentPath); err != nil && !os.IsNotExist(err) && firstErr == nil {
+		firstErr = err
+	}
+	mockConsentPersistent := filepath.Join(p.sysCrashDir, mockConsentFile)
+	if err := os.Remove(mockConsentPersistent); err != nil && !os.IsNotExist(err) && firstErr == nil {
 		firstErr = err
 	}
 
