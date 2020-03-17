@@ -63,6 +63,24 @@
       "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ca3af9_53d6e5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-17T19:24:23Z",
+      "side": 1,
+      "message": "I will point out that nya@ specifically said it is okay to panic in this function if the parameters are wrong: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2028522/2/src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go#60\n\nI\u0027ll change it if you want, but I do want to point out that my reviewers are arguing with each other. :)",
+      "parentUuid": "0f1a67f0_4607e0c3",
+      "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
