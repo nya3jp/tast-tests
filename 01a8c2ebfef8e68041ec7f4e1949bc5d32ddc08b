@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61c3aadf_4e78a251",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-17T14:54:50Z",
+      "side": 1,
+      "message": "To get list of all objects, you can use org.freedesktop.DBus.ObjectManager.GetManagedObjects\n\nhttps://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-objectmanager",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "01a8c2ebfef8e68041ec7f4e1949bc5d32ddc08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
