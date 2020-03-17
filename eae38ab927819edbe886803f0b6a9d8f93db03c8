@@ -16,6 +16,24 @@
       "revId": "eae38ab927819edbe886803f0b6a9d8f93db03c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c912c2_250dd126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-17T04:09:23Z",
+      "side": 1,
+      "message": "In the future this test will have multiple windows with the same URL so that method won\u0027t work. Since we\u0027ll have to change it anyway can we leave it as is for now?\n\nDone.",
+      "parentUuid": "bc54acc7_35d5c3d3",
+      "revId": "eae38ab927819edbe886803f0b6a9d8f93db03c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
