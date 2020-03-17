@@ -6,11 +6,30 @@
 package iw
 
 import (
+	"context"
 	"reflect"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
 )
+
+// stubCmdRunner is a simple stub of CmdRunner which always returns the given content
+// as command output. This is useful for testing some simple parsing that is not
+// extracted as an independent function.
+type stubCmdRunner struct {
+	out []byte
+}
+
+// Run is a noop mock which always returns nil.
+func (r *stubCmdRunner) Run(ctx context.Context, cmd string, args ...string) error {
+	return nil
+}
+
+// Output is a mock which pretends the command is executed successfully and prints
+// the pre-assigned output.
+func (r *stubCmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
+	return r.out, nil
+}
 
 func TestGetAllLinkKeys(t *testing.T) {
 	const testStr = `Connected to 74:e5:43:10:4f:c0 (on wlan0)
@@ -413,6 +432,134 @@ func TestSetFreqOption(t *testing.T) {
 			t.Errorf("testcase #%d failed with err=%s", i, err.Error())
 		} else if args := conf.toArgs(); !reflect.DeepEqual(args, tc.args) {
 			t.Errorf("testcase #%d failed, got args=%v, expect=%v", i, args, tc.args)
+		}
+	}
+}
+
+func TestExtractBSSID(t *testing.T) {
+	const testStr = `Connected to 74:e5:43:10:4f:c0 (on wlan0)
+	SSID: PMKSACaching_4m9p5_ch1
+	freq: 5220
+	RX: 5370 bytes (37 packets)
+	TX: 3604 bytes (15 packets)
+	signal: -59 dBm
+	tx bitrate: 13.0 MBit/s MCS 1
+
+	bss flags:      short-slot-time
+	dtim period:    5
+	beacon int:     100`
+	expected := "74:e5:43:10:4f:c0"
+	bss, err := extractBSSID(testStr)
+	if err != nil {
+		t.Errorf("unexpected error=%s", err.Error())
+	} else if bss != expected {
+		t.Errorf("got bss: %s, expect: %s", bss, expected)
+	}
+}
+
+func TestRegulatoryDomain(t *testing.T) {
+	testcases := []struct {
+		out         string
+		domain      string
+		selfManaged bool
+	}{
+		// JP.
+		{
+			out: `global
+country JP: DFS-JP
+	(2402 - 2482 @ 40), (N/A, 20), (N/A)
+	(2474 - 2494 @ 20), (N/A, 20), (N/A), NO-OFDM
+	(4910 - 4990 @ 40), (N/A, 23), (N/A)
+	(5030 - 5090 @ 40), (N/A, 23), (N/A)
+	(5170 - 5250 @ 80), (N/A, 20), (N/A), AUTO-BW
+	(5250 - 5330 @ 80), (N/A, 20), (0 ms), DFS, AUTO-BW
+	(5490 - 5710 @ 160), (N/A, 23), (0 ms), DFS
+	(59000 - 66000 @ 2160), (N/A, 10), (N/A)
+`,
+			domain:      "JP",
+			selfManaged: false,
+		},
+		// US.
+		{
+			out: `global
+country US: DFS-FCC
+	(2402 - 2472 @ 40), (N/A, 30), (N/A)
+	(5170 - 5250 @ 80), (N/A, 23), (N/A), AUTO-BW
+	(5250 - 5330 @ 80), (N/A, 23), (0 ms), DFS, AUTO-BW
+	(5490 - 5730 @ 160), (N/A, 23), (0 ms), DFS
+	(5735 - 5835 @ 80), (N/A, 30), (N/A)
+	(57240 - 71000 @ 2160), (N/A, 40), (N/A)
+`,
+			domain:      "US",
+			selfManaged: false,
+		},
+		// Self managed.
+		{
+			out: `global
+country 00: DFS-UNSET
+	(2402 - 2472 @ 40), (N/A, 20), (N/A)
+	(2457 - 2482 @ 20), (N/A, 20), (N/A), AUTO-BW, PASSIVE-SCAN
+	(2474 - 2494 @ 20), (N/A, 20), (N/A), NO-OFDM, PASSIVE-SCAN
+	(5170 - 5250 @ 80), (N/A, 20), (N/A), AUTO-BW, PASSIVE-SCAN
+	(5250 - 5330 @ 80), (N/A, 20), (0 ms), DFS, AUTO-BW, PASSIVE-SCAN
+	(5490 - 5730 @ 160), (N/A, 20), (0 ms), DFS, PASSIVE-SCAN
+	(5735 - 5835 @ 80), (N/A, 20), (N/A), PASSIVE-SCAN
+	(57240 - 63720 @ 2160), (N/A, 0), (N/A)
+
+phy#0 (self-managed)
+country US: DFS-UNSET
+	(2402 - 2437 @ 40), (6, 22), (N/A), AUTO-BW, NO-HT40MINUS, NO-80MHZ, NO-160MHZ
+	(2422 - 2462 @ 40), (6, 22), (N/A), AUTO-BW, NO-80MHZ, NO-160MHZ
+	(2447 - 2482 @ 40), (6, 22), (N/A), AUTO-BW, NO-HT40PLUS, NO-80MHZ, NO-160MHZ
+	(5170 - 5190 @ 80), (6, 22), (N/A), NO-OUTDOOR, AUTO-BW, IR-CONCURRENT, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5190 - 5210 @ 80), (6, 22), (N/A), NO-OUTDOOR, AUTO-BW, IR-CONCURRENT, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5210 - 5230 @ 80), (6, 22), (N/A), NO-OUTDOOR, AUTO-BW, IR-CONCURRENT, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5230 - 5250 @ 80), (6, 22), (N/A), NO-OUTDOOR, AUTO-BW, IR-CONCURRENT, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5250 - 5270 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5270 - 5290 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5290 - 5310 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5310 - 5330 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5490 - 5510 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5510 - 5530 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5530 - 5550 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5550 - 5570 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5570 - 5590 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5590 - 5610 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5610 - 5630 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5630 - 5650 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5650 - 5670 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5670 - 5690 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5690 - 5710 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5710 - 5730 @ 80), (6, 22), (0 ms), DFS, AUTO-BW, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5735 - 5755 @ 80), (6, 22), (N/A), AUTO-BW, IR-CONCURRENT, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5755 - 5775 @ 80), (6, 22), (N/A), AUTO-BW, IR-CONCURRENT, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5775 - 5795 @ 80), (6, 22), (N/A), AUTO-BW, IR-CONCURRENT, NO-HT40MINUS, NO-160MHZ, PASSIVE-SCAN
+	(5795 - 5815 @ 80), (6, 22), (N/A), AUTO-BW, IR-CONCURRENT, NO-HT40PLUS, NO-160MHZ, PASSIVE-SCAN
+	(5815 - 5835 @ 20), (6, 22), (N/A), AUTO-BW, IR-CONCURRENT, NO-HT40MINUS, NO-HT40PLUS, NO-80MHZ, NO-160MHZ, PASSIVE-SCAN
+`,
+			domain:      "00",
+			selfManaged: true,
+		},
+	}
+
+	mock := &stubCmdRunner{}
+	r := &Runner{cmd: mock}
+	for i, tc := range testcases {
+		mock.out = []byte(tc.out)
+		// Test regulatory domain.
+		domain, err := r.RegulatoryDomain(context.Background())
+		if err != nil {
+			t.Errorf("case#%d, unexpected error in RegulatoryDomain: %v", i, err)
+		} else if domain != tc.domain {
+			t.Errorf("case#%d, got reg domain: %s, expect: %s", i, domain, tc.domain)
+		}
+
+		// Test self-managed with the same output of "iw reg get".
+		selfManaged, err := r.IsRegulatorySelfManaged(context.Background())
+		if err != nil {
+			t.Errorf("case#%d, unexpected error in IsRegulatorySelfManaged: %v", i, err)
+		} else if selfManaged != tc.selfManaged {
+			t.Errorf("case#%d, got self managed: %t, expect: %t", i, selfManaged, tc.selfManaged)
 		}
 	}
 }

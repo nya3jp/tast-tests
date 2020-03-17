@@ -207,27 +207,22 @@ func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
 	return phys, nil
 }
 
+// PhyByName returns a Phy struct for the given name.
+func (r *Runner) PhyByName(ctx context.Context, name string) (*Phy, error) {
+	out, err := r.cmd.Output(ctx, "iw", "phy", name, "info")
+	if err != nil {
+		return nil, errors.Wrapf(err, `"iw phy %s info" failed`, name)
+	}
+	return parsePhyInfo(out)
+}
+
 // PhyByID returns a Phy struct for the given phy id.
 func (r *Runner) PhyByID(ctx context.Context, id int) (*Phy, error) {
 	out, err := r.cmd.Output(ctx, "iw", fmt.Sprintf("phy#%d", id), "info")
 	if err != nil {
 		return nil, errors.Wrapf(err, "\"iw phy#%d info\" failed", id)
 	}
-
-	// This has the same format as `iw list`, except that only one phy is printed.
-	sections, err := parseSection(`Wiphy (.*)`, string(out))
-	if err != nil {
-		return nil, errors.Wrap(err, "could not parse phys")
-	}
-	if len(sections) != 1 {
-		return nil, errors.Errorf("got %d phy info sections, want 1", len(sections))
-	}
-	sec := sections[0]
-	phy, err := newPhy(sec.header, sec.body)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not extract phy attributes")
-	}
-	return phy, nil
+	return parsePhyInfo(out)
 }
 
 // TimedScan runs a scan on a specified interface and frequencies (if applicable).
@@ -266,6 +261,15 @@ func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error)
 		return nil, errors.Wrap(err, "scan dump failed")
 	}
 	return parseScanResults(string(out))
+}
+
+// CurrentBSSID gets the BSS ID the interface associated with from iw link output.
+func (r *Runner) CurrentBSSID(ctx context.Context, iface string) (string, error) {
+	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "link")
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
+	}
+	return extractBSSID(string(res))
 }
 
 // LinkValue gets the specified link value from the iw link output.
@@ -347,6 +351,20 @@ func (r *Runner) RegulatoryDomain(ctx context.Context) (string, error) {
 		return m[1], nil
 	}
 	return "", errors.New("could not find regulatory domain")
+}
+
+// IsRegulatorySelfManaged determines if any WiFi device on the system manages its own
+// regulatory info (NL80211_ATTR_WIPHY_SELF_MANAGED_REG).
+func (r *Runner) IsRegulatorySelfManaged(ctx context.Context) (bool, error) {
+	out, err := r.cmd.Output(ctx, "iw", "reg", "get")
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get regulatory domain")
+	}
+	re := regexp.MustCompile(`(?m)^phy#.*\(self-managed\)`)
+	if m := re.FindStringSubmatch(string(out)); m != nil {
+		return true, nil
+	}
+	return false, nil
 }
 
 // SetRegulatoryDomain sets the regulatory domain code.
@@ -604,6 +622,17 @@ func determineSecurity(secs []string) string {
 	}
 }
 
+// extractBSSID parses the BSSID the interface associated with from the output
+// of `iw dev $iface link`.
+func extractBSSID(out string) (string, error) {
+	r := regexp.MustCompile(`(?m)^Connected to ([0-9a-fA-F:]{17})`)
+	m := r.FindStringSubmatch(out)
+	if len(m) < 2 {
+		return "", errors.New("no bssid found")
+	}
+	return m[1], nil
+}
+
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
 func getAllLinkKeys(out string) map[string]string {
 	kv := make(map[string]string)
@@ -813,6 +842,24 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 		SupportHT2040:  attrs.supportHT2040,
 		SupportHT40SGI: attrs.supportHT40SGI,
 	}, nil
+}
+
+// parsePhyInfo parses the output of "iw phy $phy info" or "iw phy#$id info".
+func parsePhyInfo(out []byte) (*Phy, error) {
+	// This has the same format as `iw list`, except that only one phy is printed.
+	sections, err := parseSection(`Wiphy (.*)`, string(out))
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse phys")
+	}
+	if len(sections) != 1 {
+		return nil, errors.Errorf("got %d phy info sections, want 1", len(sections))
+	}
+	sec := sections[0]
+	phy, err := newPhy(sec.header, sec.body)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not extract phy attributes")
+	}
+	return phy, nil
 }
 
 // parseScanResults parses the output of `scan` and `scan dump` commands into
