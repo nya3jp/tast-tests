@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f90aa01_2a67a1ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-17T16:34:10Z",
+      "side": 1,
+      "message": "logmaster needs to be closed.",
+      "revId": "9bca958a923688b998c24c8e7e48f33f39c40479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707d096e_fe70205b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-17T16:34:10Z",
+      "side": 1,
+      "message": "nit: Could you start using Eval(ctx, nil, ...) , since Exec is deprecated.",
+      "range": {
+        "startLine": 195,
+        "startChar": 25,
+        "endLine": 195,
+        "endChar": 29
+      },
+      "revId": "9bca958a923688b998c24c8e7e48f33f39c40479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
