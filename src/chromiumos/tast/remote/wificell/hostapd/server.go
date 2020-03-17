@@ -5,6 +5,7 @@
 package hostapd
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -14,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/host"
+	"chromiumos/tast/remote/wificell/daemonutil"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/testing"
 )
@@ -120,7 +122,15 @@ func (s *Server) start(ctx context.Context) (err error) {
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain StdoutPipe of hostapd")
 	}
-	readyWriter := newReadyWriter()
+	readyFunc := func(buf []byte) (bool, error) {
+		if bytes.Contains(buf, []byte("Interface initialization failed")) {
+			return false, errors.New("hostapd failed to initialize AP interface")
+		} else if bytes.Contains(buf, []byte("Setup of interface done")) {
+			return true, nil
+		}
+		return false, nil
+	}
+	readyWriter := daemonutil.NewReadyWriter(readyFunc)
 	s.wg.Add(1)
 	go func() {
 		defer s.wg.Done()
@@ -136,7 +146,7 @@ func (s *Server) start(ctx context.Context) (err error) {
 	s.cmd = cmd
 
 	// Wait for hostapd to get ready.
-	if err := readyWriter.wait(ctx); err != nil {
+	if err := readyWriter.Wait(ctx); err != nil {
 		return err
 	}
 
