@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "03050010_24cc4ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-17T00:18:33Z",
+      "side": 1,
+      "message": "Will there be a list of services if RequestScan hasn\u0027t been called at least once?",
+      "parentUuid": "9eaad9a5_636a76be",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d2681f1_62fc4c6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 22
