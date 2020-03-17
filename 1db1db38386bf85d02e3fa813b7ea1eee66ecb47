@@ -93,6 +93,30 @@
       "revId": "1db1db38386bf85d02e3fa813b7ea1eee66ecb47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcca5cad_765461c6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-17T12:04:24Z",
+      "side": 1,
+      "message": "For example, you can introduce your own error within the package: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/power/setup/setup_test.go;l\u003d67?q\u003d%22%3D%20errors.New%22%20file:tast-tests%20\n\n+ use errors.Is as you did in your CL:\nhttps://blog.golang.org/go1.13-errors",
+      "parentUuid": "6a7e67a8_f32c85d9",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 12
+      },
+      "revId": "1db1db38386bf85d02e3fa813b7ea1eee66ecb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
