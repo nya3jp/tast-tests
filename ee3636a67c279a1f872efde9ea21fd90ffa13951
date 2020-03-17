@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90da42c7_34d72798",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-17T10:40:56Z",
+      "side": 1,
+      "message": "huge nit: due to activity documentation, you must close activity. In your case you just return from the function.\n\nThis was discussed in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2035576.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "ee3636a67c279a1f872efde9ea21fd90ffa13951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
