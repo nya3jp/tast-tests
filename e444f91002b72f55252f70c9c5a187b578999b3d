@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "661c4036_18952c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-17T09:39:01Z",
+      "side": 1,
+      "message": "I was told not to pass testing.State around.\n\nThe good news is that it\u0027s only because we have a \u0027noarc\u0027 version of the test that uses a different precondition. So all the tests that actually do something in ARC++/VM won\u0027t have it.",
+      "parentUuid": "b99d0bcc_80d1fd44",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "e444f91002b72f55252f70c9c5a187b578999b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2492d8e_f7e210e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-17T06:31:43Z",
       "side": 1,
       "message": "This will break other tests, e.g.:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2098363\n\nCan you modify those test in the same CL accordingly?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "e444f91002b72f55252f70c9c5a187b578999b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ecdf11_ca3e95e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-17T09:39:01Z",
+      "side": 1,
+      "message": "That should stop this from being committed, since there will be a build failure in the CQ.\n\nI\u0027ll rebase this past your test and fix it.",
+      "parentUuid": "f2492d8e_f7e210e4",
       "range": {
         "startLine": 71,
         "startChar": 0,
