@@ -87,6 +87,30 @@
       "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02662538_14fa06ed",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-03-17T14:16:53Z",
+      "side": 1,
+      "message": "From a UtilityCryptohomeBinary perspective, no. I\u0027m not planning to change GetTokenForUser() soon. Launching of cryptohome-proxy doesn\u0027t change things (at least the launch itself). However, after the launch, when things gets migrated over, I\u0027m not certain if we are going to continue to depend on cryptohome command line utility (say, maybe use dbus directly or have another command line utility that uses UserDataAuth dbus APIs directly), and that premise I believe is the reason why we\u0027ve such abstractions in the first place.",
+      "parentUuid": "35b1f87e_79accfb1",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
