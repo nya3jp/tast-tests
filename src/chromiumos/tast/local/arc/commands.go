@@ -6,8 +6,10 @@ package arc
 
 import (
 	"context"
+	"regexp"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 )
@@ -60,4 +62,35 @@ func (a *ARC) GetProp(ctx context.Context, key string) (string, error) {
 		return "", err
 	}
 	return strings.TrimSpace(string(o)), nil
+}
+
+// BroadcastIntent broadcasts an intent with "am broadcast" and returns the result.
+func (a *ARC) BroadcastIntent(ctx context.Context, action string, params ...string) (string, error) {
+	args := []string{"broadcast", "-a", action}
+	if len(params) > 0 {
+		args = append(args, params...)
+	}
+
+	o, err := a.Command(ctx, "am", args...).Output()
+	if err != nil {
+		return "", err
+	}
+
+	// Result 0 indicates intent not handled. Result -1 indicates intent handled by one (?) app.
+	r, _ := regexp.Compile(`result=-1`)
+	m := r.MatchString(string(o))
+	if !m {
+		return "", errors.Errorf("Broadcasted Android intent %s, but no app handled it", action)
+	}
+
+	// Extract result data if present.
+	r, _ = regexp.Compile(`data="[^(^")]*"`)
+	data := r.FindString(string(o))
+
+	if len(data) > 0 {
+		data = strings.Trim(data[5:], `"`)
+		return data, nil
+	}
+
+	return "", nil
 }
