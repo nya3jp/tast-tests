@@ -31,8 +31,8 @@ func init() {
 			ExtraSoftwareDeps: []string{"android"},
 			Pre:               arc.Booted(),
 		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name:              "vm_r",
+			ExtraSoftwareDeps: []string{"android_vm_r"},
 			Pre:               arc.VMBooted(),
 		}},
 	})
