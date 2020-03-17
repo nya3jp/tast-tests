@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1e0a7ab0_fdf59a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-17T04:09:26Z",
+      "side": 1,
+      "message": "This is reset when restarting the UI, but I found that it interferes with running multiple tests in a row so made it so it re-enables notifications at the end of the test.",
+      "parentUuid": "13f19c77_f2547825",
+      "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41ec2b5d_c49b2d43",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0928a0f_9647dcb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-17T04:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ec2b5d_c49b2d43",
+      "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07df9efa_4c0dcfd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-17T04:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a1ef5d_48cff5ca",
+      "range": {
+        "startLine": 245,
+        "startChar": 8,
+        "endLine": 245,
+        "endChar": 9
+      },
+      "revId": "a6d9a7b2f8ca522abb8fd3fb4ee1e5c7ce32b2bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
