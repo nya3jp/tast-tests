@@ -244,3 +244,104 @@ func TestParseFrequencyFlags(t *testing.T) {
 		t.Errorf("unexpected result in parseFrequencyFlags: got %v, want %v", ret, expected)
 	}
 }
+
+func TestSetFreqOption(t *testing.T) {
+	testcases := []struct {
+		ctrlFreq int
+		ops      []SetFreqOption
+		valid    bool
+		args     []string
+	}{
+		{
+			ctrlFreq: 2412,
+			ops:      nil,
+			valid:    true,
+			args:     []string{"2412"},
+		},
+		{
+			ctrlFreq: 2412,
+			ops:      []SetFreqOption{SetFreqChWidth(ChWidthHT20)},
+			valid:    true,
+			args:     []string{"2412", "HT20"},
+		},
+		{
+			ctrlFreq: 2412,
+			ops:      []SetFreqOption{SetFreqChWidth(ChWidthHT40Plus)},
+			valid:    true,
+			args:     []string{"2412", "HT40+"},
+		},
+		{
+			ctrlFreq: 5240,
+			ops:      []SetFreqOption{SetFreqChWidth(ChWidthHT40Minus)},
+			valid:    true,
+			args:     []string{"5240", "HT40-"},
+		},
+		{
+			ctrlFreq: 5180,
+			ops: []SetFreqOption{
+				SetFreqChWidth(ChWidthHT40Plus),
+				SetFreqCenterFreq1(5190),
+			},
+			valid: false,
+		},
+		{
+			ctrlFreq: 5240,
+			ops:      []SetFreqOption{SetFreqChWidth(ChWidth80)},
+			valid:    true,
+			args:     []string{"5240", "80", "5210"},
+		},
+		{
+			ctrlFreq: 5240,
+			ops: []SetFreqOption{
+				SetFreqChWidth(ChWidth80),
+				SetFreqCenterFreq1(5210),
+			},
+			valid: true,
+			args:  []string{"5240", "80", "5210"},
+		},
+		{
+			ctrlFreq: 5240,
+			ops:      []SetFreqOption{SetFreqChWidth(ChWidth160)},
+			valid:    true,
+			args:     []string{"5240", "160", "5250"},
+		},
+		{
+			ctrlFreq: 5200,
+			ops: []SetFreqOption{
+				SetFreqChWidth(ChWidth160),
+				SetFreqCenterFreq1(5250),
+			},
+			valid: true,
+			args:  []string{"5200", "160", "5250"},
+		},
+		{
+			ctrlFreq: 5240,
+			ops:      []SetFreqOption{SetFreqChWidth(ChWidth80P80)},
+			valid:    false,
+		},
+		{
+			ctrlFreq: 5200,
+			ops: []SetFreqOption{
+				SetFreqChWidth(ChWidth80P80),
+				SetFreqCenterFreq1(5210),
+				SetFreqCenterFreq2(5530),
+			},
+			valid: true,
+			args:  []string{"5200", "80+80", "5210", "5530"},
+		},
+	}
+
+	for i, tc := range testcases {
+		conf, err := newSetFreqConf(tc.ctrlFreq, tc.ops...)
+		if !tc.valid {
+			if err == nil {
+				t.Errorf("testcase #%d should fail but succeed", i)
+			}
+			continue
+		} else if err != nil {
+			t.Errorf("testcase #%d failed with err=%s", i, err.Error())
+		} else if args := conf.toArgs(); !reflect.DeepEqual(args, tc.args) {
+			t.Errorf("testcase #%d failed, got args=%v, expect=%v", i, args, tc.args)
+		}
+	}
+}
