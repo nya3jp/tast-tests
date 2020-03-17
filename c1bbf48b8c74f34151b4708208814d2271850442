@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "547be04a_35679a6e",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-17T23:58:39Z",
+      "side": 1,
+      "message": "The comment claims that if the stash dir doesn\u0027t exist, that\u0027s an error, but the code seems to specifically discard those errors.",
+      "parentUuid": "68a2b52b_7e5d8043",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 83
+      },
+      "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "526c7fb0_a254d9d8",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 3
@@ -187,6 +211,30 @@
       "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1acfe886_890ec2d2",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-17T23:58:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e27bdb_b917082a",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 54
+      },
+      "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
