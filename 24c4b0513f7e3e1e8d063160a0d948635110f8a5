@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d961b41b_f93a24a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_whitelist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-17T06:18:10Z",
+      "side": 1,
+      "message": "Mind adding one or more group alias here?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "24c4b0513f7e3e1e8d063160a0d948635110f8a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e6790b4_3b7e2550",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_whitelist.go",
         "patchSetId": 3
