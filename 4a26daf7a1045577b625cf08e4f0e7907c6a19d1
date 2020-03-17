@@ -70,6 +70,24 @@
       "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b8e80c_125348c0",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-17T22:51:37Z",
+      "side": 1,
+      "message": "My first intention is to make test code cleaner. It will be common to call CheckBootMode and the upcoming SwitchBootMode RPCs. In Autotest, over 60% of firmware tests call the equivalent of SwitchBootMode. It would be cleaner to call:\n\n    verified, err :\u003d firmware.CheckBootMode(ctx, fwUtils, fwCommon.BootModeDev)\n\nrather than:\n\n    req :\u003d \u0026fwpb.CheckBootModeRequest{BootMode: fwpb.BootMode_BOOT_MODE_DEV}\n    res, err :\u003d fwUtils.CheckBootMode(ctx, req)\n    verified :\u003d res.GetVerified\n\nAs for a non-RPC use case... I thought I had one, but currently I can\u0027t think of any. So, perhaps it\u0027s better to save this discussion until we actually need it.\n\nGenerally speaking, if there were a common, non-RPC use case, would you still recommend using the proto directly as opposed to duplicating the enum?",
+      "parentUuid": "b26f4478_dd36cbd6",
+      "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
