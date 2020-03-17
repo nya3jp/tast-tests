@@ -19,12 +19,22 @@ public class CameraActivity extends Activity {
 
     private static final String TAG = "ArcCameraFpsTest";
 
+    private static final String ACTION_GET_CAMERA_CLOSE_TIME =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_CLOSE_TIME";
+    private static final String ACTION_GET_CAMERA_OPEN_TIME =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_CAMERA_OPEN_TIME";
     private static final String ACTION_GET_HISTOGRAM =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_HISTOGRAM";
+    private static final String ACTION_GET_NUM_FRAMES =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_FRAMES";
+    private static final String ACTION_GET_NUM_DROPPED_FRAMES =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES";
     private static final String ACTION_GET_PREVIEW_SIZE =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_PREVIEW_SIZE";
     private static final String ACTION_GET_RECORDING_SIZE =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_RECORDING_SIZE";
+    private static final String ACTION_RESET_CAMERA =
+            "org.chromium.arc.testapp.camerafps.ACTION_RESET_CAMERA";
     private static final String ACTION_RESET_HISTOGRAM =
             "org.chromium.arc.testapp.camerafps.ACTION_RESET_HISTOGRAM";
     private static final String ACTION_SET_TARGET_FPS =
@@ -35,6 +45,8 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_START_RECORDING";
     private static final String ACTION_STOP_RECORDING =
             "org.chromium.arc.testapp.camerafps.ACTION_STOP_RECORDING";
+    private static final String ACTION_TAKE_PHOTO =
+            "org.chromium.arc.testapp.camerafps.ACTION_TAKE_PHOTO";
 
     private static final String KEY_FPS = "fps";
     private static final int DEFAULT_FPS = 0;
@@ -54,8 +66,20 @@ public class CameraActivity extends Activity {
                 public void onReceive(Context context, Intent intent) {
                     try {
                         switch (intent.getAction()) {
+                            case ACTION_GET_CAMERA_CLOSE_TIME:
+                                setResultData(Long.toString(mCameraFragment.getCameraCloseTime()));
+                                break;
+                            case ACTION_GET_CAMERA_OPEN_TIME:
+                                setResultData(Long.toString(mCameraFragment.getCameraOpenTime()));
+                                break;
                             case ACTION_GET_HISTOGRAM:
                                 setResultData(mHistogram.getHistogramString());
+                                break;
+                            case ACTION_GET_NUM_FRAMES:
+                                setResultData(Long.toString(mHistogram.getNumFrames()));
+                                break;
+                            case ACTION_GET_NUM_DROPPED_FRAMES:
+                                setResultData(Long.toString(mHistogram.getNumDroppedFrames()));
                                 break;
                             case ACTION_GET_PREVIEW_SIZE:
                                 setResultData(mCameraFragment.getPreviewSize());
@@ -66,9 +90,16 @@ public class CameraActivity extends Activity {
                             case ACTION_RESET_HISTOGRAM:
                                 mHistogram.resetHistogram();
                                 break;
+                            case ACTION_RESET_CAMERA:
+                                mCameraFragment.onPause();
+                                mCameraFragment.onResume();
+                                mHistogram.resetHistogram();
+                                break;
                             case ACTION_SET_TARGET_FPS:
-                                int fps = intent.getIntExtra(KEY_FPS, DEFAULT_FPS);
-                                mCameraFragment.setTargetFps(fps == DEFAULT_FPS ? null : fps);
+                                int fpsParameter = intent.getIntExtra(KEY_FPS, DEFAULT_FPS);
+                                int fps = fpsParameter == DEFAULT_FPS ? null : fpsParameter;
+                                mHistogram.setTargetFrameDuration((int) (1000.0 / fps));
+                                mCameraFragment.setTargetFps(fps);
                                 mCameraFragment.startPreview();
                                 break;
                             case ACTION_SET_TARGET_RESOLUTION:
@@ -88,6 +119,10 @@ public class CameraActivity extends Activity {
                             case ACTION_STOP_RECORDING:
                                 mCameraFragment.stopRecordingVideo();
                                 break;
+                            case ACTION_TAKE_PHOTO:
+                                long time = mCameraFragment.takeCameraPicture();
+                                setResultData(Long.toString(time));
+                                break;
                         }
                         setResultCode(Activity.RESULT_OK);
                     } catch (Exception e) {
@@ -100,14 +135,20 @@ public class CameraActivity extends Activity {
 
     private static IntentFilter getFilter() {
         IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_GET_CAMERA_CLOSE_TIME);
+        filter.addAction(ACTION_GET_CAMERA_OPEN_TIME);
         filter.addAction(ACTION_GET_HISTOGRAM);
+        filter.addAction(ACTION_GET_NUM_FRAMES);
+        filter.addAction(ACTION_GET_NUM_DROPPED_FRAMES);
         filter.addAction(ACTION_GET_PREVIEW_SIZE);
         filter.addAction(ACTION_GET_RECORDING_SIZE);
+        filter.addAction(ACTION_RESET_CAMERA);
         filter.addAction(ACTION_RESET_HISTOGRAM);
         filter.addAction(ACTION_SET_TARGET_FPS);
         filter.addAction(ACTION_SET_TARGET_RESOLUTION);
         filter.addAction(ACTION_START_RECORDING);
         filter.addAction(ACTION_STOP_RECORDING);
+        filter.addAction(ACTION_TAKE_PHOTO);
         return filter;
     }
 
