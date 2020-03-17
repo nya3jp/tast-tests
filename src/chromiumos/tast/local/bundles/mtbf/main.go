@@ -10,6 +10,7 @@ package main
 import (
 	"chromiumos/tast/local/bundlemain"
 	// Underscore-imported packages register their tests via init functions.
+	_ "chromiumos/tast/local/bundles/mtbf/camera"
 	_ "chromiumos/tast/local/bundles/mtbf/video"
 )
 
