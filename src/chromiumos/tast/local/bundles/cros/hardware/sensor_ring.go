@@ -23,7 +23,7 @@ func init() {
 		Contacts: []string{
 			"gwendal@chromium.com", // Chrome OS sensors point of contact
 			"mathewk@chromium.org", // Test author
-			"chromeos-sensors@google.com",
+			"chromeos-sensors-eng@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})
