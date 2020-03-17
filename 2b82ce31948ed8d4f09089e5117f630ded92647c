@@ -23,6 +23,30 @@
       "revId": "2b82ce31948ed8d4f09089e5117f630ded92647c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e239238_34a4edc0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2020-03-17T18:39:35Z",
+      "side": 1,
+      "message": "I think I already fixed this through the Gerrit UI, I see a new patch named \"edit\" after Patchset 9 on my side. Does that not appear on your end?",
+      "parentUuid": "6197e0c0_a71ec960",
+      "range": {
+        "startLine": 35,
+        "startChar": 63,
+        "endLine": 35,
+        "endChar": 71
+      },
+      "revId": "2b82ce31948ed8d4f09089e5117f630ded92647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
