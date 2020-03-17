@@ -163,6 +163,30 @@
       "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e27bdb_b917082a",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-17T17:38:35Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t clear. I\u0027m not saying you should solve the problem, but I believe it is better to note the assumption as a comment.",
+      "parentUuid": "7077c129_f0431f02",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 54
+      },
+      "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
