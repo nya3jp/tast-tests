@@ -7,23 +7,28 @@ package setup
 import (
 	"context"
 
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/testing"
 )
 
 // DisableBluetooth disables the bluetooth adapter on the DUT.
 func DisableBluetooth(ctx context.Context) (CleanupCallback, error) {
-	return Nested(ctx, "disable Bluetooth", func(s *Setup) error {
-		const (
-			name     = "org.bluez"
-			path     = "/org/bluez/hci0"
-			property = "org.bluez.Adapter1.Powered"
-		)
-		_, obj, err := dbusutil.Connect(ctx, name, path)
-		if err != nil {
-			return errors.Wrap(err, "failed to create DBUS connection to Bluetooth adapter")
-		}
-		s.Add(DBusProperty(ctx, obj, property, false))
-		return nil
-	})
+	const path = "/org/bluez/hci0"
+	adapter, err := bluetooth.NewAdapter(ctx, path)
+	if err != nil {
+		return nil, err
+	}
+	prev, err := adapter.Powered(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	testing.ContextLogf(ctx, "Setting bluetooth powered to false from %t", prev)
+	if err := adapter.SetPowered(ctx, false); err != nil {
+		return nil, err
+	}
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Resetting bluetooth powered to %t", prev)
+		return adapter.SetPowered(ctx, prev)
+	}, nil
 }
