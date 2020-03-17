@@ -22,6 +22,30 @@
       "revId": "cb2586ce718dfcf9861af8605ffce78f8f1f3049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3236bb_73e7b304",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 43
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-17T01:34:29Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is a good pattern, but I\u0027ve seen someone wrap an error list to a single error. (e.g maybe an ErrorList struct implementing error)\n\ns.Error already does something similar, so I think it\u0027s good to use it.",
+      "parentUuid": "e1a4e2c5_5967042c",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "cb2586ce718dfcf9861af8605ffce78f8f1f3049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
