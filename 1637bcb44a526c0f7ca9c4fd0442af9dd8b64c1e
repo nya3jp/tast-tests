@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c991f358_996ca3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-17T01:34:09Z",
+      "side": 1,
+      "message": "Perhaps, but unlikely. Scans (and scan results) can happen independently of the test actions -- periodic scans, or requested by UI (e.g., login screen tends to request scans every 10 seconds).",
+      "parentUuid": "03050010_24cc4ede",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "1637bcb44a526c0f7ca9c4fd0442af9dd8b64c1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d2681f1_62fc4c6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 22
