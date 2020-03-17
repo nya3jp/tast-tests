@@ -34,7 +34,7 @@ type TestFixture struct {
 // NewTestFixture creates a TestFixture.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
-func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerHostname string) (ret *TestFixture, retErr error) {
+func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (ret *TestFixture, retErr error) {
 	tf := &TestFixture{}
 	defer func() {
 		if retErr != nil {
@@ -54,11 +54,11 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 	// or WiFiClient.__init__ in Autotest.
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
 
-	if routerHostname == "" {
+	if routerTarget == "" {
 		tf.routerHost, err = dut.DefaultWifiRouterHost(ctx)
 	} else {
 		var sopt host.SSHOptions
-		sopt.Hostname = routerHostname
+		host.ParseSSHTarget(routerTarget, &sopt)
 		sopt.KeyDir = dut.KeyDir()
 		sopt.KeyFile = dut.KeyFile()
 		sopt.ConnectTimeout = 10 * time.Second
