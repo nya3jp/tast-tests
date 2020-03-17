@@ -6,8 +6,11 @@ package arc
 
 import (
 	"context"
+	"regexp"
+	"strconv"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 )
@@ -60,4 +63,80 @@ func (a *ARC) GetProp(ctx context.Context, key string) (string, error) {
 		return "", err
 	}
 	return strings.TrimSpace(string(o)), nil
+}
+
+// BroadcastResult is the parsed result of an Android Activity Manager broadcast.
+type BroadcastResult struct {
+	// The result value of the broadcast.
+	result int
+	// Optional: Additional data to be passed with the result.
+	data *string
+	// Optional: A bundle of extra data passed with the result.
+	// TODO(springerm): extras is a key-value map and should be parsed.
+	extras *string
+}
+
+const (
+	// Activity.RESULT_OK
+	intentResultActivityResultOk = -1
+)
+
+// BroadcastIntent broadcasts an intent with "am broadcast" and returns the result.
+func (a *ARC) BroadcastIntent(ctx context.Context, action string, params ...string) (*BroadcastResult, error) {
+	args := []string{"broadcast", "-a", action}
+	args = append(args, params...)
+
+	output, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+
+	// TODO(springerm): Find a way to report metrics from Android apps, so we can avoid this parsing hackery.
+	// broadcastResultRegexp matches the result from an Android Activity Manager broadcast.
+	broadcastResultRegexp := regexp.MustCompile(`Broadcast completed: result=(-?[0-9]+)(, data="((\\.|[^\\"])*)")?(, extras: Bundle\[(.*)\])?`)
+	m := broadcastResultRegexp.FindSubmatch(output)
+
+	if m == nil {
+		return nil, errors.Errorf("unable to parse broadcast result for %s: %q", action, output)
+	}
+
+	resultValue, err := strconv.Atoi(string(m[1]))
+	if err != nil {
+		return nil, errors.Errorf("unable to parse broadcast result value for %s: %q", action, string(m[1]))
+	}
+
+	broadcastResult := BroadcastResult{}
+	broadcastResult.result = resultValue
+
+	// `m[3]` matches the data value. `m[2]` matches the entire "data=\"...\"" part.
+	// We have to check `m[2]` because the data could be an empty string, which is different from "no data", in which case we return nil.
+	data := string(m[3])
+	if string(m[2]) != "" {
+		broadcastResult.data = &data
+	}
+
+	extras := string(m[6])
+	if string(m[5]) != "" {
+		broadcastResult.extras = &extras
+	}
+
+	return &broadcastResult, nil
+}
+
+// BroadcastIntentGetData broadcasts an intent with "am broadcast" and returns the result data.
+func (a *ARC) BroadcastIntentGetData(ctx context.Context, action string, params ...string) (string, error) {
+	result, err := a.BroadcastIntent(ctx, action, params...)
+	if err != nil {
+		return "", err
+	}
+
+	if result.result != intentResultActivityResultOk {
+		return "", errors.Errorf("broadcast of %q failed, status = %d", action, result.result)
+	}
+
+	if result.data == nil {
+		return "", errors.Errorf("broadcast of %q has no result data", action)
+	}
+
+	return *result.data, nil
 }
