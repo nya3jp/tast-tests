@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd407b6e_93ca76cb",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-17T05:24:44Z",
+      "side": 1,
+      "message": "Done - error message seems okay to me, lmk if you want it changed.",
+      "parentUuid": "e771f66e_adfe1687",
+      "revId": "df2619b2b80b68388cb2a329ce95f99b0267e216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84b11f37_44180a3f",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d4a19e59_df3aa998",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-17T05:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b11f37_44180a3f",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "df2619b2b80b68388cb2a329ce95f99b0267e216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85a56234_28aecb38",
         "filename": "src/chromiumos/tast/local/faillog/faillog.go",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "df2619b2b80b68388cb2a329ce95f99b0267e216",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b176461_526b9aad",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-17T05:24:44Z",
+      "side": 1,
+      "message": "Done, changed other occurrences too.",
+      "parentUuid": "85a56234_28aecb38",
+      "range": {
+        "startLine": 87,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "df2619b2b80b68388cb2a329ce95f99b0267e216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
