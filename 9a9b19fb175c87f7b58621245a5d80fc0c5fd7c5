@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03748caa_2ee6b8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:42:06Z",
+      "side": 1,
+      "message": "style/optional:\n\nI think using named field initialization + relying on zero value initialization makes the code slightly easier to read.\n\nVal: testParams{\n  mode: openURLMode,\n  url: \"about:blank\",\n},\n\nVal: testParams{\n  mode: openURLMode,\n  url: \"https://old.reddit.com/\",\n},\n\n...\n\nVal: testParams{\n  mode: openTabMode,\n  numTabs: 20,\n},\n\netc.",
+      "revId": "9a9b19fb175c87f7b58621245a5d80fc0c5fd7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29069b43_7c1ff3ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:42:06Z",
+      "side": 1,
+      "message": "nit/style: could you merge these lines?\n\nif err :\u003d openTabsLinux(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "9a9b19fb175c87f7b58621245a5d80fc0c5fd7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8b4984_562c6500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:42:06Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 181,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 18
+      },
+      "revId": "9a9b19fb175c87f7b58621245a5d80fc0c5fd7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c02408_3e7ee1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:42:06Z",
+      "side": 1,
+      "message": "nit/style:\n\nif _, err :\u003d l.Devsess.CreateTarget(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 17
+      },
+      "revId": "9a9b19fb175c87f7b58621245a5d80fc0c5fd7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84a41d2d_4f624a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:42:06Z",
+      "side": 1,
+      "message": "To minimize the interface, could you take *chrome.Chrome instead?",
+      "range": {
+        "startLine": 283,
+        "startChar": 43,
+        "endLine": 283,
+        "endChar": 61
+      },
+      "revId": "9a9b19fb175c87f7b58621245a5d80fc0c5fd7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714cc584_49f61a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/memory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:42:06Z",
+      "side": 1,
+      "message": "Could you close already opend conns in this error case?\n(Sorry, I overlooked in the last iteration).",
+      "revId": "9a9b19fb175c87f7b58621245a5d80fc0c5fd7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
