@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c9a66f7f_f51f2112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-18T04:07:49Z",
+      "side": 1,
+      "message": "Done, also closed the test connection (chrome.go does this too).",
+      "parentUuid": "8f90aa01_2a67a1ec",
+      "revId": "9bca958a923688b998c24c8e7e48f33f39c40479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "707d096e_fe70205b",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "9bca958a923688b998c24c8e7e48f33f39c40479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b87596_e9461451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-18T04:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707d096e_fe70205b",
+      "range": {
+        "startLine": 195,
+        "startChar": 25,
+        "endLine": 195,
+        "endChar": 29
+      },
+      "revId": "9bca958a923688b998c24c8e7e48f33f39c40479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
