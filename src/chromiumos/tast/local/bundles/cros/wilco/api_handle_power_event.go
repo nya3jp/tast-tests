@@ -10,6 +10,7 @@ import (
 
 	pmpb "chromiumos/system_api/power_manager_proto"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wilco"
@@ -49,7 +50,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	}
 	defer rec.Stop(ctx)
 
-	waitForPowerEvent := func(ctx context.Context, expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) {
+	waitForPowerEvent := func(ctx context.Context, expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) error {
 		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
 
@@ -57,7 +58,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 			s.Log("Waiting for power event: ", expectedEvent)
 			msg := dtcpb.HandlePowerNotificationRequest{}
 			if err := rec.WaitForMessage(ctx, &msg); err != nil {
-				s.Fatal("Unable to receive power event: ", err)
+				return errors.Wrap(err, "unable to receive power event")
 			}
 			if msg.PowerEvent != expectedEvent {
 				s.Logf("Received power event %v, but waiting for %v. Continuing", msg.PowerEvent, expectedEvent)
@@ -66,75 +67,93 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 			s.Log("Received power event")
 			break
 		}
+
+		return nil
 	}
 
 	// Shorten the total context by 20 seconds to allow for cleanup.
 	shortCtx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
 
-	{
+	// TODO(crbug.com/1062564)
+	testing.Poll(shortCtx, func(ctx context.Context) error {
+		ctx, cancel = context.WithTimeout(ctx, 10*time.Second)
+		defer cancel()
+
 		// Do not wait for the first power event since WilcoDTCSupportd cashes
 		// the last external power AC event it sent to the WilcoDTC. That's why
 		// there is no guarantee which value is in the cache.
 		externalPower := pmpb.PowerSupplyProperties_AC
-		if err := emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
+		if err := emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		}); err != nil {
 			s.Fatal("Failed to emit PowerSupplyPoll AC: ", err)
 		}
 
 		externalPower = pmpb.PowerSupplyProperties_DISCONNECTED
-		if err := emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
+		if err := emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		}); err != nil {
 			s.Fatal("Failed to emit PowerSupplyPoll DISCONNECTED: ", err)
 		}
-		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_AC_REMOVE)
+		if err := waitForPowerEvent(ctx, dtcpb.HandlePowerNotificationRequest_AC_REMOVE); err != nil {
+			return err
+		}
 
 		externalPower = pmpb.PowerSupplyProperties_USB
-		if err := emitter.EmitPowerSupplyPoll(shortCtx, &pmpb.PowerSupplyProperties{
+		if err := emitter.EmitPowerSupplyPoll(ctx, &pmpb.PowerSupplyProperties{
 			ExternalPower: &externalPower,
 		}); err != nil {
 			s.Fatal("Failed to emit PowerSupplyPoll USB: ", err)
 		}
-		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_AC_INSERT)
-	}
+		return waitForPowerEvent(ctx, dtcpb.HandlePowerNotificationRequest_AC_INSERT)
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
 
-	{
+	testing.Poll(shortCtx, func(ctx context.Context) error {
+		ctx, cancel = context.WithTimeout(ctx, 10*time.Second)
+		defer cancel()
+
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-1)
-		if err := emitter.EmitSuspendImminent(shortCtx, &pmpb.SuspendImminent{
+		if err := emitter.EmitSuspendImminent(ctx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
 		}); err != nil {
 			s.Fatal("Failed to emit SuspendImminent: ", err)
 		}
-		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
+		if err := waitForPowerEvent(ctx, dtcpb.HandlePowerNotificationRequest_OS_SUSPEND); err != nil {
+			return err
+		}
 
-		if err := emitter.EmitSuspendDone(shortCtx, &pmpb.SuspendDone{
+		if err := emitter.EmitSuspendDone(ctx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
 		}); err != nil {
 			s.Fatal("Failed to emit SuspendDone: ", err)
 		}
-		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_RESUME)
-	}
+		return waitForPowerEvent(ctx, dtcpb.HandlePowerNotificationRequest_OS_RESUME)
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
 
-	{
+	testing.Poll(shortCtx, func(ctx context.Context) error {
+		ctx, cancel = context.WithTimeout(ctx, 10*time.Second)
+		defer cancel()
+
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-2)
-		if err := emitter.EmitDarkSuspendImminent(shortCtx, &pmpb.SuspendImminent{
+		if err := emitter.EmitDarkSuspendImminent(ctx, &pmpb.SuspendImminent{
 			Reason:    &reason,
 			SuspendId: &suspendID,
 		}); err != nil {
 			s.Fatal("Failed to emit DarkSuspendImminent: ", err)
 		}
-		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_SUSPEND)
+		if err := waitForPowerEvent(ctx, dtcpb.HandlePowerNotificationRequest_OS_SUSPEND); err != nil {
+			return err
+		}
 
-		if err := emitter.EmitSuspendDone(shortCtx, &pmpb.SuspendDone{
+		if err := emitter.EmitSuspendDone(ctx, &pmpb.SuspendDone{
 			SuspendId: &suspendID,
 		}); err != nil {
 			s.Fatal("Failed to emit DarkSuspendDone: ", err)
 		}
-		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_RESUME)
-	}
+		return waitForPowerEvent(ctx, dtcpb.HandlePowerNotificationRequest_OS_RESUME)
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
 }
