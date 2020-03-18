@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "07d6c66e_020b8660",
+        "filename": "src/chromiumos/tast/remote/wificell/daemonutil/ready_writer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-18T02:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6794acd_9f33abe0",
+      "revId": "0ebe6a310a2d2efa820e55ce8ff56d797fab57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c71fcd8_c3dc079c",
         "filename": "src/chromiumos/tast/remote/wificell/daemonutil/ready_writer.go",
         "patchSetId": 2
