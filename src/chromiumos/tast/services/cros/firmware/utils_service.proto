@@ -20,6 +20,9 @@ service UtilsService {
 
   // BlockingSync syncs the root device and internal device.
   rpc BlockingSync (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ReadServoKeyboard reads from the servo's keyboard emulator.
+  rpc ReadServoKeyboard (google.protobuf.Empty) returns (ReadServoKeyboardResponse) {}
 }
 
 // BootMode contains values for the three possible modes of a powered-on DUT.
@@ -36,4 +39,8 @@ message PlatformResponse {
 
 message CurrentBootModeResponse {
   BootMode boot_mode = 1;
+}
+
+message ReadServoKeyboardResponse {
+  string keys = 1;
 }
