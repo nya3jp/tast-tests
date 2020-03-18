@@ -34,6 +34,24 @@
       "revId": "14496269d58bc3fdfc5898a093468a262180a568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "613bd2de_32c0715e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-18T07:47:36Z",
+      "side": 1,
+      "message": "Added comment to make it clearer.",
+      "parentUuid": "dde0677f_e9e8ec0e",
+      "revId": "14496269d58bc3fdfc5898a093468a262180a568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
