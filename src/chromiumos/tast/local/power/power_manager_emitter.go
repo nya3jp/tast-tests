@@ -8,13 +8,17 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
+	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 
 	pmpb "chromiumos/system_api/power_manager_proto"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
 
 const powerdJob = "powerd"
@@ -72,11 +76,34 @@ func (*PowerManagerEmitter) emitEvent(ctx context.Context, msg proto.Message, ev
 		bytesAsStrings = append(bytesAsStrings, fmt.Sprintf("0x%02x", v))
 	}
 
+	watcher, err := dbusutil.NewSignalWatcherForSystemBus(ctx, dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      dbus.ObjectPath(dbusPath),
+		Interface: dbusInterface,
+		Member:    eventName,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to create dbus watcher")
+	}
+	defer watcher.Close(ctx)
+
 	data := "array:byte:" + strings.Join(bytesAsStrings, ",")
 	args := []string{"-u", "power", "--", "dbus-send", "--sender=" + dbusInterface, "--system", "--type=signal", dbusPath, dbusInterface + "." + eventName, data}
-	if err := testexec.CommandContext(ctx, "sudo", args...).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "unable to emit event using dbus-send")
-	}
+
+	// TODO(crbug.com/1062564): Remove polling and waiting for signals.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := testexec.CommandContext(ctx, "sudo", args...).Run(testexec.DumpLogOnError); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "unable to emit event using dbus-send"))
+		}
+
+		select {
+		case <-watcher.Signals:
+			return nil
+		case <-time.After(5 * time.Second):
+			testing.ContextLog(ctx, "dbus-send failed to send signal")
+			return errors.New("dbus-send failed to send signal")
+		}
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
 
 	return nil
 }
