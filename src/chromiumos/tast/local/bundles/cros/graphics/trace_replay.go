@@ -15,33 +15,39 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TraceReplayGlxgears,
+		Func:         TraceReplay,
 		Desc:         "Replay glxgears trace file in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com", "tutankhamen@google.com", "ddmail@google.com", "ihf@google.com"},
-		Attr:         []string{"group:graphics", "graphics_trace", "graphics_perbuild"},
 		Pre:          crostini.StartedGPUEnabledBuster(),
-		Timeout:      15 * time.Minute,
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
+		Params: []testing.Param{
+			{
+				Name: "glxgears",
+				Val: []*trace.TestEntryConfig{
+					{
+						Name: "glxgears",
+						StorageFile: trace.FileInfo{
+							GSURL:     "gs://chromiumos-test-assets-public/tast/cros/graphics/traces/glxgears.trace.bz2",
+							Size:      61066,
+							SHA256Sum: "1b36209dc466b3ebaea84295d5a5bc5e9df0b037215379dae43518e9f27fd2f3",
+							MD5Sum:    "e59e9f99ab035399c7fabd53e3e08829",
+						},
+						TestSettings: trace.TestSettings{
+							RepeatCount:    1,
+							CoolDownIntSec: 0,
+						},
+					},
+				},
+				Timeout:   15 * time.Minute,
+				ExtraAttr: []string{"group:graphics", "graphics_trace", "graphics_perbuild"},
+			},
+		},
 	})
 }
 
-func TraceReplayGlxgears(ctx context.Context, s *testing.State) {
+func TraceReplay(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	entries := []*trace.TestEntryConfig{
-		{
-			Name: "glxgears",
-			StorageFile: trace.FileInfo{
-				GSURL:     "gs://chromiumos-test-assets-public/tast/cros/graphics/traces/glxgears.trace.bz2",
-				Size:      61066,
-				SHA256Sum: "1b36209dc466b3ebaea84295d5a5bc5e9df0b037215379dae43518e9f27fd2f3",
-				MD5Sum:    "e59e9f99ab035399c7fabd53e3e08829",
-			},
-			TestSettings: trace.TestSettings{
-				RepeatCount:    1,
-				CoolDownIntSec: 0,
-			},
-		},
-	}
+	entries := s.Param().([]*trace.TestEntryConfig)
 	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, entries); err != nil {
 		s.Fatal("Trace replay test failed: ", err)
 	}
