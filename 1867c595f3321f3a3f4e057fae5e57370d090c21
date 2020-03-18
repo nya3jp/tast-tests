@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a351cb82_b58635a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-18T19:13:40Z",
+      "side": 1,
+      "message": "does this have to be a string?",
+      "revId": "1867c595f3321f3a3f4e057fae5e57370d090c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
