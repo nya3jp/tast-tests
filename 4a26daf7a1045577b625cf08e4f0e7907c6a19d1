@@ -88,6 +88,24 @@
       "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e1baad_d365dbea",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:59:35Z",
+      "side": 1,
+      "message": "Oh, I see your intention. Thank you for explanation.\nIt sounds like BootMode is more likely source of truth, and PB is the implementation details to deal with Tast-remote. Then It makes sense to me.\n\nThen, I\u0027d recommend to type conversion more consistent, by either;\n- Moving ProtoBootMode map from here to src/chromiumos/tast/remote/firmware/boot_mode.go, iff it is the only place needing the conversion. Or,\n- Extract proto-\u003eBootMode conversion from UtilsService.CheckBootMode to here (or some new file next to this, since \"const.go\" may not be a good place to put).",
+      "parentUuid": "e5b8e80c_125348c0",
+      "revId": "4a26daf7a1045577b625cf08e4f0e7907c6a19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
