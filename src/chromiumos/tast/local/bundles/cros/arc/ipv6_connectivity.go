@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Checks IPv6 connectivity inside ARC",
 		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})

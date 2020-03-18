@@ -25,7 +25,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               []string{},
 		}, {
 			Name:              "arcvm",

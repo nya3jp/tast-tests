@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val:               rebootConfig{},
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name: "vm",
 			Val: rebootConfig{

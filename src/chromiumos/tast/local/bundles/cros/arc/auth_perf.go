@@ -47,7 +47,7 @@ func init() {
 		Timeout: 20 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "unmanaged",
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:     "arc.AuthPerf.unmanaged_username",
 				password:     "arc.AuthPerf.unmanaged_password",
@@ -65,7 +65,7 @@ func init() {
 			},
 		}, {
 			Name:              "managed",
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				username:     "arc.AuthPerf.managed_username",
 				password:     "arc.AuthPerf.managed_password",

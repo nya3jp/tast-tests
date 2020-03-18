@@ -24,7 +24,7 @@ func init() {
 		},
 		// TODO(yusukes,ricardoq): ARCVM does not need the test. Remove this once we retire ARC container.
 		SoftwareDeps: []string{
-			"android",
+			"android_p",
 			"chrome",
 		},
 		Attr: []string{"group:mainline"},

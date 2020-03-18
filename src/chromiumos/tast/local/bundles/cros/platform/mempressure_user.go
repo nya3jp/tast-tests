@@ -28,7 +28,7 @@ func init() {
 			mempressure.WPRArchiveName,
 			"memory_user_youtube.apk",
 		},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 	})
 }
 

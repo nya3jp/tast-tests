@@ -25,7 +25,7 @@ func init() {
 		Data:         []string{"capybara.jpg"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",

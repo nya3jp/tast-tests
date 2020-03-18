@@ -52,7 +52,7 @@ func init() {
 				numTrials: 10,
 			},
 			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           25 * time.Minute,
 		}, {
 			Name: "vm_stress",

@@ -24,7 +24,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"ArcClipboardTest.apk"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",

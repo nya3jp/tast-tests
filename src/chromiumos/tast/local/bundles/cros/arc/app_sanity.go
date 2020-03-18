@@ -23,7 +23,7 @@ func init() {
 		Data:         []string{"app_sanity_hello_world.apk"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",

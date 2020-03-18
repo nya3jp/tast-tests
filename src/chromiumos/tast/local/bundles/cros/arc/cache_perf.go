@@ -40,7 +40,7 @@ func init() {
 		Timeout:      8 * time.Minute,
 		Vars:         []string{"arc.CachePerf.username", "arc.CachePerf.password"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               []string{},
 		}, {
 			Name:              "vm",
