@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9f3a00c_8c3010c8",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-18T23:07:15Z",
+      "side": 1,
+      "message": "huge nit, optional: while you are here, could you s/android/Android ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 7
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e124ed28_390a256e",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-18T23:07:15Z",
+      "side": 1,
+      "message": "huge hit: to avoid confusion, perhaps \"the\" instead of \"your\" ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9857f8bf_19c300de",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-18T23:07:15Z",
+      "side": 1,
+      "message": "nit: just to confirm that this argument is correct. it seems that it should be called \"enFullScreen\" instead.",
+      "range": {
+        "startLine": 101,
+        "startChar": 145,
+        "endLine": 101,
+        "endChar": 156
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0994dd_c8a8816d",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-18T23:07:15Z",
+      "side": 1,
+      "message": "nit: not sure what it is loading here. could you add more context? or perhaps move this line before \"startWithARgs\" and rename it \"Starting activity\" ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 17
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8589acd_defdf302",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-18T23:07:15Z",
+      "side": 1,
+      "message": "nit: not sure whether paretrace32 output changes frequently (probably not), but this seems kind of fragile.\nPerhaps doing something like `paretrace32\\s*:.*\u003d+\\sSTart\\stimer.*\u003d+`) ?",
+      "range": {
+        "startLine": 107,
+        "startChar": 45,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d9f7272_aead745b",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-18T23:07:15Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 118,
+        "startChar": 44,
+        "endLine": 118,
+        "endChar": 62
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f53e53e_5177fa75",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-18T23:07:15Z",
+      "side": 1,
+      "message": "should this waitForExpINLogcat be after the metris.Snapshot?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 63
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
