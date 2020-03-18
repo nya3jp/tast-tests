@@ -99,6 +99,30 @@
       "revId": "0ebe6a310a2d2efa820e55ce8ff56d797fab57a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bd8fc7_a18d2ceb",
+        "filename": "src/chromiumos/tast/remote/wificell/daemonutil/ready_writer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:39:17Z",
+      "side": 1,
+      "message": "Ack. I\u0027m still not well-versed in all the various \u0027interface\u0027s around. It\u0027s actually kind of strange to me that Golang doesn\u0027t really declare anything about what interfaces you implement -- you just have to \"know\" what these are for.\n\n(Now, you did write that in the comments, but apparently I really failed at reading the comments.)",
+      "parentUuid": "f7d2b178_41e760ef",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "0ebe6a310a2d2efa820e55ce8ff56d797fab57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
