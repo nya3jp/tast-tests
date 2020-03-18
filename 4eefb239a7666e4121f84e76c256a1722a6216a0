@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b406ac6_db30d9b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-18T17:15:08Z",
+      "side": 1,
+      "message": "There has to be a better way to do this. I think we just need to create something that checks to ensure the launch method exists. Basically poll for the launch method. Otherwise, there may be some other sort of readiness indicator that we can check for.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be8fe3b_e75f927d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-18T17:15:08Z",
+      "side": 1,
+      "message": "nit: merge these lines",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 14
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afb2e9b_81bb3522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-18T17:15:08Z",
+      "side": 1,
+      "message": "I don\u0027t think this delay is needed. Instead, you should be able to create a watcher for the focus event. Watchers are a newer thing. chrome/ui/watcher.go",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 91
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343f64e0_6869a57b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-18T17:15:08Z",
+      "side": 1,
+      "message": "if event watchers work, mention that here.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 116
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7991cefe_64f383d8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-18T17:15:08Z",
+      "side": 1,
+      "message": "return n.object.Call...",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 11
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
