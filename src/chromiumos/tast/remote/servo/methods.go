@@ -27,10 +27,24 @@ func (s *Servo) Echo(ctx context.Context, message string) (string, error) {
 	return val, err
 }
 
-// PowerNormalPress calls the Servo power_normal_press method.
+// PowerNormalPress calls servod's (hdctools repo) power_normal_press method.
 func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 	var val bool
 	err := s.run(ctx, newCall("power_normal_press"), &val)
+	return val, err
+}
+
+// CtrlD calls servod's (hdctools repo) ctrl_d method.
+func (s *Servo) CtrlD(ctx context.Context) (bool, error) {
+	var val bool
+	err := s.run(ctx, newCall("ctrl_d"), &val)
+	return val, err
+}
+
+// EnterKey calls servod's (hdctools repo) enter_key method.
+func (s *Servo) EnterKey(ctx context.Context) (bool, error) {
+	var val bool
+	err := s.run(ctx, newCall("enter_key"), &val)
 	return val, err
 }
 
