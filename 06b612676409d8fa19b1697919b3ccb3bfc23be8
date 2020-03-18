@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac1cb6e2_8992e947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T19:58:19Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 78,
+        "startChar": 17,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "06b612676409d8fa19b1697919b3ccb3bfc23be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "396fd26c_c4b03e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T19:58:19Z",
+      "side": 1,
+      "message": "%q\n?\n\nIf so, elsewhere too.",
+      "range": {
+        "startLine": 43,
+        "startChar": 28,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "06b612676409d8fa19b1697919b3ccb3bfc23be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
