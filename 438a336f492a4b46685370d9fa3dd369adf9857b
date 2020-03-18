@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62d8c2d9_7eccdc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-18T13:51:24Z",
+      "side": 1,
+      "message": "For proper cleanup I can suggest to use shorten context: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup.\n\nin you case it can look like:\n\nfunc KeyCharacterMap(ctx context.Context, s *testing.State) {\n  cleanupCtx :\u003d ctx\n  ctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\n  defer cancel()\n  ...\n  defer act.Stop(cleanupCtx)  // use cleanupCtx only in defer statements\n  ...\n  defer removeInputMethod(cleanupCtx, \"fr-FR\", \"xkb:fr::fra\")",
+      "revId": "438a336f492a4b46685370d9fa3dd369adf9857b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629e5ee9_9a0e69a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-18T13:51:24Z",
+      "side": 1,
+      "message": "Please pass context as a first parameter. Ditto for other functions.\n\n\nDo not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it. The Context should be the first parameter, typically named ctx.\nhttps://golang.org/pkg/context/",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 53
+      },
+      "revId": "438a336f492a4b46685370d9fa3dd369adf9857b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7c64f8_d9c0f26b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-18T13:51:24Z",
+      "side": 1,
+      "message": "don\u0027t you wanna change back to default input method during cleanup?",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "438a336f492a4b46685370d9fa3dd369adf9857b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "961edb10_8ee8b094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-18T13:51:24Z",
+      "side": 1,
+      "message": "it creates panic and if you run this inside defer it means that you won\u0027t be able to finish all other defer statements.\n\n\nPlease change into s.Errorf.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "438a336f492a4b46685370d9fa3dd369adf9857b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798e27d9_33b52941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-18T13:51:24Z",
+      "side": 1,
+      "message": "if it fails, you won\u0027t be able to remove input methods you introduced. Please put defer with remove before",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 18
+      },
+      "revId": "438a336f492a4b46685370d9fa3dd369adf9857b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
