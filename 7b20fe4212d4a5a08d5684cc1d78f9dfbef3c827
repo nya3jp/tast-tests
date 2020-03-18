@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac37a608_d7dc866f",
+        "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-18T14:10:30Z",
+      "side": 1,
+      "message": "nit: to be even more safe and avoid possible data races, we can add signal message content check to be 100% sure that we receive expected signal\n\nThere can be next scenario:\n\n1. send dbus message \"a\"\n2. we failed to receive dbus message \"a\", retry sending message \"b\"\n3. we received message \"a\"\n4. send another dbus message \"c\"\n5. received message \"b\" \u003c--- but actually we wanted \"c\" here.",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "7b20fe4212d4a5a08d5684cc1d78f9dfbef3c827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
