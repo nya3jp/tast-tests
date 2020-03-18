@@ -32,18 +32,22 @@ type FixtureService struct {
 	cr *chrome.Chrome
 }
 
-func (c *FixtureService) SetUp(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if c.cr != nil {
-		return nil, errors.New("already set up")
+func (c *FixtureService) SetUp(ctx context.Context, req *crash_service.SetUpCrashTestRequest) (*empty.Empty, error) {
+	consentOpt := crash.WithMockConsent()
+	if req.Consent == crash_service.SetUpCrashTestRequest_REAL_CONSENT {
+		if c.cr != nil {
+			return nil, errors.New("already set up")
+		}
+
+		cr, err := chrome.New(ctx, chrome.ExtraArgs(crash.ChromeVerboseConsentFlags))
+		if err != nil {
+			return nil, err
+		}
+		c.cr = cr
+		consentOpt = crash.WithConsent(cr)
 	}
 
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(crash.ChromeVerboseConsentFlags))
-	if err != nil {
-		return nil, err
-	}
-	c.cr = cr
-
-	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(cr)); err != nil {
+	if err := crash.SetUpCrashTest(ctx, consentOpt, crash.RebootingTest()); err != nil {
 		return nil, err
 	}
 	return &empty.Empty{}, nil
