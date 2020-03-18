@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "184bc640_fd1a5ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:35:38Z",
+      "side": 1,
+      "message": "dare I ask for unit tests?",
+      "revId": "9ff08f4b6f6252b2fcbb412d52023ab9e4f7f782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc488bf9_8a01c5d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:35:38Z",
+      "side": 1,
+      "message": "any reason Union(), Diff(), and Intersect() aren\u0027t methods of StringSet? That\u0027s typically how I\u0027d see them in other languages, I think.",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "9ff08f4b6f6252b2fcbb412d52023ab9e4f7f782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0265df2e_e3ff2b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:35:38Z",
+      "side": 1,
+      "message": "I think you\u0027re looking for \"Intersect\" spelling? Also on line 48.",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "9ff08f4b6f6252b2fcbb412d52023ab9e4f7f782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50546583_ed741346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:35:38Z",
+      "side": 1,
+      "message": "Stringer?",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "9ff08f4b6f6252b2fcbb412d52023ab9e4f7f782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a803b8_1b240d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:35:38Z",
+      "side": 1,
+      "message": "\u003e \"acutal\" is a possible misspelling of \"actual\".\n\nPlease fix.",
+      "parentUuid": "8e481772_ef3dc640",
+      "range": {
+        "startLine": 229,
+        "startChar": 37,
+        "endLine": 229,
+        "endChar": 43
+      },
+      "revId": "9ff08f4b6f6252b2fcbb412d52023ab9e4f7f782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122ad9c8_ac1b4eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:35:38Z",
+      "side": 1,
+      "message": "you don\u0027t actually need \u0027all\u0027. I believe this could just be:\n\n  wanted :\u003d stringset.Diff(es, as)\n  unexpected :\u003d stringset.Diff(as, es)",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 38
+      },
+      "revId": "9ff08f4b6f6252b2fcbb412d52023ab9e4f7f782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3229480f_5bedae00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T02:35:38Z",
+      "side": 1,
+      "message": "if \u0027unexpected\u0027 is empty, this will be trailing space\n\nmaybe build a slice and strings.Join() it?",
+      "range": {
+        "startLine": 238,
+        "startChar": 35,
+        "endLine": 238,
+        "endChar": 36
+      },
+      "revId": "9ff08f4b6f6252b2fcbb412d52023ab9e4f7f782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
