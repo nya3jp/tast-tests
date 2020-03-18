@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78b721ce_b748237d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-18T22:57:23Z",
+      "side": 1,
+      "message": "You could use the one from the proto, if you wanted an enum",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "ad447b8e6900edb8844cbc2b9341acb80849a0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be854db_6276c5eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-18T22:57:23Z",
+      "side": 1,
+      "message": "Would be nice to have a non-early boot crash that uses real consent",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "ad447b8e6900edb8844cbc2b9341acb80849a0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6fe7557_90fd1b08",
+        "filename": "src/chromiumos/tast/services/cros/crash/fixture_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-18T22:57:23Z",
+      "side": 1,
+      "message": "Update comment",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "ad447b8e6900edb8844cbc2b9341acb80849a0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
