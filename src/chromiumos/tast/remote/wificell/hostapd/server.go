@@ -15,8 +15,8 @@ import (
 
 	"chromiumos/tast/common/network/daemonutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
 	"chromiumos/tast/remote/wificell/fileutil"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -25,19 +25,19 @@ const (
 )
 
 // KillAll kills all running hostapd on host, useful for environment setup/cleanup.
-func KillAll(ctx context.Context, host *host.SSH) error {
+func KillAll(ctx context.Context, host *ssh.Conn) error {
 	return host.Command("killall", hostapdCmd).Run(ctx)
 }
 
 // Server controls a hostapd on router.
 type Server struct {
-	host    *host.SSH // TODO(crbug.com/1019537): use a more suitable ssh object.
+	host    *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
 	name    string
 	iface   string
 	workDir string
 	conf    *Config
 
-	cmd        *host.Cmd
+	cmd        *ssh.Cmd
 	wg         sync.WaitGroup
 	stdoutFile *os.File
 	stderrFile *os.File
@@ -46,7 +46,7 @@ type Server struct {
 // StartServer creates a new Server object and runs hostapd on iface of the given host with settings
 // specified in config. workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
-func StartServer(ctx context.Context, host *host.SSH, name, iface, workDir string, config *Config) (*Server, error) {
+func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (*Server, error) {
 	s := &Server{
 		host:    host,
 		name:    name,

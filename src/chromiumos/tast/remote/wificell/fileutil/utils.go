@@ -12,14 +12,14 @@ import (
 	"path"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
 // WriteToHost writes the content to a tmp file and uploads to the given host.
 // TODO(crbug.com/1019537): replace this if similar function is provided in SSH utilities.
-func WriteToHost(ctx context.Context, hst *host.SSH, path string, data []byte) error {
+func WriteToHost(ctx context.Context, hst *ssh.Conn, path string, data []byte) error {
 	tmpfile, err := ioutil.TempFile("", "upload_tmp_")
 	if err != nil {
 		return errors.Wrap(err, "unable to create temp file")
