@@ -5,6 +5,7 @@
 package firmware
 
 import (
+	"os"
 	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -128,4 +129,25 @@ func (*UtilsService) BlockingSync(ctx context.Context, req *empty.Empty) (*empty
 		}
 	}
 	return &empty.Empty{}, nil
+}
+
+// ReadServoKeyboard reads from the servo's keyboard emulator.
+func (*UtilsService) ReadServoKeyboard(ctx context.Context, req *empty.Empty) (*fwpb.ReadServoKeyboardResponse, error) {
+	// TODO stop ui
+	kbd, err := os.Open("/dev/input/by-id/usb-Google_Servo_LUFA_Keyboard_Emulator-event-kbd")
+	if err != nil {
+		return nil, errors.Wrap(err, "opening keyboard emulator device node")
+	}
+	defer kbd.Close()
+
+	// TODO(kmshelton): Provide the ability to specify the number of keys read or the time to read from the device node
+	// (for now this reads 6 bytes which is two keys).
+	keys := make([]byte, 6)
+	_, err = kbd.Read(keys)
+	if err != nil {
+		return nil, errors.Wrap(err, "reading keyboard emulator device node")
+	}
+	// TODO restart ui
+	// TODO(kmshelton): Decode the raw bytes read from the device node.
+	return &fwpb.ReadServoKeyboardResponse{Keys: string(keys)}, nil
 }
