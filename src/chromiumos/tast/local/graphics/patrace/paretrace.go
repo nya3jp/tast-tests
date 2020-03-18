@@ -10,12 +10,16 @@ import (
 	"context"
 	"encoding/json"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -24,12 +28,33 @@ import (
 // in android. APK and trace data are specified by apkFile and traceFile.
 func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) {
 	const (
-		pkgName      = "com.arm.pa.paretrace"
-		activityName = ".Activities.RetraceActivity"
+		pkgName                = "com.arm.pa.paretrace"
+		activityName           = ".Activities.RetraceActivity"
+		tPowerSnapshotInterval = 5 * time.Second
 	)
+
+	// Shorten the test context so that even if your test times out
+	// there will be time to clean up.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
 
 	// Reuse existing ARC and Chrome session.
 	a := s.PreValue().(arc.PreData).ARC
+
+	// setup.Setup configures a DUT for a test, and cleans up after.
+	sup, cleanup := setup.New("paretrace")
+	defer func() {
+		if err := cleanup(cleanupCtx); err != nil {
+			s.Fatal("Cleanup failed: ", err)
+		}
+	}()
+
+	// Add the default power test configuration.
+	sup.Add(setup.PowerTest(ctx))
+	if err := sup.Check(ctx); err != nil {
+		s.Fatal("Setup failed: ", err)
+	}
 
 	s.Log("Pushing trace file")
 
@@ -59,21 +84,61 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	}
 	defer act.Close()
 
-	if err := act.StartWithArgs(ctx, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}); err != nil {
-		s.Fatal("Cannot start retrace: ", err)
-	}
-
-	// timeout=0. The tast test should have its own timeout, and the run time of the test is dominated by the trace replay.
-	if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
-		s.Fatal("waitForFinished failed: ", err)
-	}
-
 	perfValues := perf.NewValues()
 	defer func() {
 		if err := perfValues.Save(s.OutDir()); err != nil {
 			s.Error("Cannot save perf data: ", err)
 		}
 	}()
+	metrics, err := perf.NewTimeline(
+		ctx,
+		power.TestMetrics()...,
+	)
+	if err != nil {
+		s.Fatal("Failed to build metrics: ", err)
+	}
+
+	if err := act.StartWithArgs(ctx, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath, "--ez", "enFullScree", "true"}); err != nil {
+		s.Fatal("Cannot start retrace: ", err)
+	}
+
+	s.Log("Loading")
+
+	exp := regexp.MustCompile(`paretrace32\s*:.*==================\sStart\stimer.*==================`)
+	if err := a.WaitForExpInLogcat(ctx, exp, 0*time.Second); err != nil {
+		s.Fatal("WaitForExpInLogcat failed: ", err)
+	}
+
+	s.Log("Start timer")
+
+	if err := metrics.Start(ctx); err != nil {
+		s.Fatal("Failed to start metrics: ", err)
+	}
+
+	exp = regexp.MustCompile(`paretrace32\s*:.*==================\sEnd\stimer.*==================`)
+	for {
+		err := a.WaitForExpInLogcat(ctx, exp, tPowerSnapshotInterval)
+
+		if snapErr := metrics.Snapshot(ctx, perfValues); snapErr != nil {
+			s.Fatal("Failed to snapshot metrics: ", snapErr)
+		}
+
+		if err == nil {
+			break
+		}
+	}
+
+	s.Log("End timer")
+
+	// Wait for app cleanup
+	if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
+		s.Fatal("waitForFinished failed: ", err)
+	}
+
+	if err := metrics.Snapshot(ctx, perfValues); err != nil {
+		s.Fatal("Failed to snapshot metrics: ", err)
+	}
+
 	if err := setPerf(ctx, a, perfValues, resultPath); err != nil {
 		s.Fatal("Failed to set perf values: ", err)
 	}
@@ -97,20 +162,24 @@ func setPerf(ctx context.Context, a *arc.ARC, perfValues *perf.Values, resultPat
 		return err
 	}
 
+	result := m.Results[0]
+
 	perfValues.Set(
 		perf.Metric{
 			Name:      "trace",
 			Unit:      "s",
 			Direction: perf.SmallerIsBetter,
 			Multiple:  false,
-		}, m.Results[0].Time)
+		}, result.Time)
 	perfValues.Set(
 		perf.Metric{
 			Name:      "trace",
 			Unit:      "fps",
 			Direction: perf.BiggerIsBetter,
 			Multiple:  false,
-		}, m.Results[0].FPS)
+		}, result.FPS)
+
+	testing.ContextLogf(ctx, "Duration: %fs, fps: %f", result.Time, result.FPS)
 
 	return nil
 }
