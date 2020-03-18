@@ -25,8 +25,19 @@ func init() {
 		Desc:         "Verify artificial early crash creates crash files",
 		Contacts:     []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "metrics_consent", "reboot"},
+		SoftwareDeps: []string{"reboot"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
+		Params: []testing.Param{{
+			Name:              "real_consent",
+			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			// We don't use the enum from local/crash here because
+			// most things don't depend on common/ and it'd be
+			// inconvenient to add that dependency everywhere
+			Val: true,
+		}, {
+			Name: "mock_consent",
+			Val:  false,
+		}},
 	})
 }
 
@@ -42,7 +53,14 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 
 	fs := crash_service.NewFixtureServiceClient(cl.Conn)
 
-	if _, err := fs.SetUp(ctx, &empty.Empty{}); err != nil {
+	req := crash_service.SetUpCrashTestRequest{
+		Consent: crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
+	}
+	if s.Param().(bool) {
+		req.Consent = crash_service.SetUpCrashTestRequest_REAL_CONSENT
+	}
+
+	if _, err := fs.SetUp(ctx, &req); err != nil {
 		cl.Close(ctx)
 		s.Fatal("Failed to set up: ", err)
 	}

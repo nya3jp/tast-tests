@@ -19,7 +19,7 @@ service FixtureService {
   // crash_test_in_progress state.
   // After the test is complete, you must call TearDown to clean up the
   // associated resources.
-  rpc SetUp (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc SetUp (SetUpCrashTestRequest) returns (google.protobuf.Empty) {}
 
   // EnableCrashFilter sets crash_reporter filter by process name.
   rpc EnableCrashFilter (EnableCrashFilterRequest) returns (google.protobuf.Empty) {}
@@ -38,6 +38,14 @@ service FixtureService {
   // TearDown undoes the actions SetUp does and resets the machine to normal
   // state.
   rpc TearDown (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message SetUpCrashTestRequest {
+  enum ConsentType {
+    MOCK_CONSENT = 0;
+    REAL_CONSENT = 1;
+  }
+  ConsentType consent = 1;
 }
 
 message EnableCrashFilterRequest {
