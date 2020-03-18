@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f82631f9_95c04a29",
+        "filename": "src/chromiumos/tast/remote/wificell/daemonutil/ready_writer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T00:19:03Z",
+      "side": 1,
+      "message": "I wonder, does this really need to be in \u0027remote\u0027? I see similar use cases for local tests, where we start up, e.g., local hostapd instances (see my network.Ethernet8021x work; currently, I\u0027m just lazy and poll for startup via hostapd_cli instead, but I could also reuse this if that\u0027s preferred) or VPN servers (I don\u0027t know specifically if there is log-parsing readiness required there, but I could imagine so).\n\nAnd then, it might not live in the \u0027wificell\u0027 namespace at all.\n\nI only say \"I wonder\", because this is still a fairly use-case-specific helper library, and I\u0027m not sure the expectations on libraries for this sort of thing.",
+      "revId": "0ebe6a310a2d2efa820e55ce8ff56d797fab57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c71fcd8_c3dc079c",
+        "filename": "src/chromiumos/tast/remote/wificell/daemonutil/ready_writer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-18T00:19:03Z",
+      "side": 1,
+      "message": "I know this isn\u0027t new, but why have this if it\u0027s never non-nil?",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "0ebe6a310a2d2efa820e55ce8ff56d797fab57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
