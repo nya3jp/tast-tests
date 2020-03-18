@@ -30,7 +30,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"arc"}, // to prevent this from running on non-ARC boards
 			Pre:               chrome.LoggedIn(),
 		}, {
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",

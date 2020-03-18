@@ -42,7 +42,7 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testArgs{
 				subtests: []startstop.Subtest{
 					&startstop.TestMidis{},

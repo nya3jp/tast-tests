@@ -23,7 +23,7 @@ func init() {
 		},
 		Attr: []string{"group:mainline"},
 		// TODO(crbug.com/952125): Consider to relax the SoftwareDeps.
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }

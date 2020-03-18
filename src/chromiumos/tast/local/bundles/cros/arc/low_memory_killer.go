@@ -32,7 +32,7 @@ func init() {
 		Desc:         "Checks that oom_score_adj is set for Chrome and Android processes and that a process is killed by Chrome tab manager before OOM",
 		Contacts:     []string{"wvk@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android"},
+		SoftwareDeps: []string{"chrome", "android_p"},
 		Timeout:      4 * time.Minute,
 		Data:         []string{"low_memory_killer_manifest.json", "low_memory_killer_background.js"},
 	})
