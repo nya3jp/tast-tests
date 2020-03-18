@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "979be89e_b4e08b6a",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-18T04:05:48Z",
+      "side": 1,
+      "message": "You may want to use testing.ContextLog(), if you don\u0027t want to make test failure here.",
+      "parentUuid": "396672b1_d2b8bf01",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 107
+      },
+      "revId": "02d93297439979f84fc4f21651770d95030d9d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0500e65_91bc49bf",
         "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
         "patchSetId": 2
