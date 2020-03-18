@@ -14,8 +14,8 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
 	"chromiumos/tast/remote/wificell/fileutil"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -25,20 +25,20 @@ const (
 )
 
 // KillAll kills all running dhcp server on host, useful for environment setup/cleanup.
-func KillAll(ctx context.Context, host *host.SSH) error {
+func KillAll(ctx context.Context, host *ssh.Conn) error {
 	return host.Command("killall", dnsmasqCmd).Run(ctx)
 }
 
 // Server controls a DHCP server on AP router.
 type Server struct {
-	host    *host.SSH // TODO(crbug.com/1019537): use a more suitable ssh object.
+	host    *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
 	name    string
 	iface   string
 	workDir string
 	ipStart net.IP
 	ipEnd   net.IP
 
-	cmd        *host.Cmd
+	cmd        *ssh.Cmd
 	stdoutFile *os.File
 	stderrFile *os.File
 }
@@ -47,7 +47,7 @@ type Server struct {
 // workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
 // ipStart, ipEnd specifies the leasable range for this dhcp server to offer.
-func StartServer(ctx context.Context, host *host.SSH, name, iface, workDir string, ipStart, ipEnd net.IP) (*Server, error) {
+func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, ipStart, ipEnd net.IP) (*Server, error) {
 	s := &Server{
 		host:    host,
 		name:    name,
