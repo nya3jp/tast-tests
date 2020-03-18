@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "a187a360_c46ab73d",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-18T00:15:13Z",
+      "side": 1,
+      "message": "Ah, I see - you\u0027re referring to https://crbug.com/1059136, I think. We\u0027ll probably fix that eventually",
+      "parentUuid": "547be04a_35679a6e",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 83
+      },
+      "revId": "c1bbf48b8c74f34151b4708208814d2271850442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "526c7fb0_a254d9d8",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 3
