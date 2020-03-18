@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62f9fc54_2e6cdef8",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-18T00:04:54Z",
+      "side": 1,
+      "message": "Remove persistent file here too?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "3fafb41dc599b52a696c294bf117a637240ea256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
