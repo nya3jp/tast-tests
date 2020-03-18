@@ -11,12 +11,12 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -24,7 +24,7 @@ import (
 type TestFixture struct {
 	dut        *dut.DUT
 	rpc        *rpc.Client
-	routerHost *host.SSH
+	routerHost *ssh.Conn
 	router     *Router
 	wifiClient network.WifiClient
 	curService *network.Service
@@ -57,12 +57,12 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 	if routerTarget == "" {
 		tf.routerHost, err = dut.DefaultWifiRouterHost(ctx)
 	} else {
-		var sopt host.SSHOptions
-		host.ParseSSHTarget(routerTarget, &sopt)
+		var sopt ssh.Options
+		ssh.ParseTarget(routerTarget, &sopt)
 		sopt.KeyDir = dut.KeyDir()
 		sopt.KeyFile = dut.KeyFile()
 		sopt.ConnectTimeout = 10 * time.Second
-		tf.routerHost, err = host.NewSSH(ctx, &sopt)
+		tf.routerHost, err = ssh.New(ctx, &sopt)
 	}
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the router")
