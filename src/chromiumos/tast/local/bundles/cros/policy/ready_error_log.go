@@ -21,6 +21,7 @@ func init() {
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"nya@chromium.org",
+			"chromeos-commercial-stability@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})
