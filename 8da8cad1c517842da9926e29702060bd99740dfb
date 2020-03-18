@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "169b421a_6954bab1",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-18T03:59:59Z",
+      "side": 1,
+      "message": "clar: For json marshalizable structs, fileds usually accompany tags like `json:\"varName\"`.\nWill you revisit this later?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "8da8cad1c517842da9926e29702060bd99740dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9955b53f_5bd63c1c",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-18T03:59:59Z",
+      "side": 1,
+      "message": "Could you introduce a type for this? e.g.\n\ntype ModeSwitcher string\n\nconst (\n\tJetStreamSwitcher        ModeSwitcher \u003d \"jetstream_switcher\"\n\tTabletDetachableSwitcher ModeSwitcher \u003d \"tablet_detachable_switcher\"\n\tKeyboardDevSwitcher      ModeSwitcher \u003d \"keyboard_dev_switcher\"\n)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "8da8cad1c517842da9926e29702060bd99740dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
