@@ -81,6 +81,24 @@
       "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e429c56_a15b3dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-18T04:29:34Z",
+      "side": 1,
+      "message": "Thank you for sharing.\n\nI\u0027ll put this topic to the reviewers.\n\nFor this specific case, as I described above, I don\u0027t think it is a blocker to land. Thank you for extra care of this!",
+      "parentUuid": "66ca3af9_53d6e5ae",
+      "revId": "959b17dc4d5f49bee9a1046edf22086ade03bd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
