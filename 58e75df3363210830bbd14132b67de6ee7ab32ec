@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a0478a5_f8b6f224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-03-18T04:47:16Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "58e75df3363210830bbd14132b67de6ee7ab32ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560577ab_0b1ce5ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-03-18T04:47:16Z",
+      "side": 1,
+      "message": "cap",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "58e75df3363210830bbd14132b67de6ee7ab32ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "404826cf_a3313af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-03-18T04:47:16Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 119,
+        "startChar": 72,
+        "endLine": 119,
+        "endChar": 83
+      },
+      "revId": "58e75df3363210830bbd14132b67de6ee7ab32ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
