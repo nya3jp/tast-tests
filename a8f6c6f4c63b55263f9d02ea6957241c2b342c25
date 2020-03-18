@@ -276,6 +276,29 @@
       "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286e5da3_d044c8e6",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-18T01:59:03Z",
+      "side": 1,
+      "message": "Will this fail if the app is no longer running? I had some camera stability issues in the past and it would be nice if the test fails if the app crashed halfway through the perf test.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
