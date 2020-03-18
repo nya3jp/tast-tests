@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f58bd587_e1db50f9",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-18T12:35:32Z",
+      "side": 1,
+      "message": "or I guess \"no task info\" fits better",
+      "parentUuid": "e509afbc_03454ce7",
+      "range": {
+        "startLine": 472,
+        "startChar": 32,
+        "endLine": 472,
+        "endChar": 56
+      },
+      "revId": "09a1f43ab2732c7684a4db6d1bcc11544c797167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e31edf24_25b2d3e5",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 4
