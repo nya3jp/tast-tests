@@ -44,7 +44,7 @@ func init() {
 			javascriptFilename,
 		},
 		Pre:          arc.Booted(),
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Vars:         []string{"platform.MemoryStressBasic.minFilelistKB"},
 	})
 

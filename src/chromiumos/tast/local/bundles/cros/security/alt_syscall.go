@@ -68,14 +68,14 @@ func AltSyscall(ctx context.Context, s *testing.State) {
 		{
 			name:    "adjtimex",
 			path:    adjtimexPath,
-			table:   "android",
+			table:   "android_p",
 			ret:     0,
 			failMsg: "android_adjtimex() filtering didn't work",
 		},
 		{
 			name:    "clock_adjtime",
 			path:    clockAdjtimePath,
-			table:   "android",
+			table:   "android_p",
 			ret:     0,
 			failMsg: "android_clock_adjtime() filtering didn't work",
 		},

@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Tests Assistant open Android app feature",
 		Contacts:     []string{"updowndota@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "chrome_internal", "android"},
+		SoftwareDeps: []string{"chrome", "chrome_internal", "android_p"},
 		Vars:         []string{"assistant.username", "assistant.password"},
 	})
 }

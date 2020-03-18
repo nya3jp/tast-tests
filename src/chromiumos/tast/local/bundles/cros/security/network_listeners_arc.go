@@ -20,7 +20,7 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "android"},
+		SoftwareDeps: []string{"chrome", "android_p"},
 		Pre:          arc.Booted(),
 		Timeout:      arc.BootTimeout,
 		Attr:         []string{"group:mainline"},

@@ -27,7 +27,7 @@ func init() {
 			"arc-performance@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService"},
 		Timeout:      5 * time.Minute,
 	})
