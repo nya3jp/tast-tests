@@ -5,6 +5,8 @@
 package firmware
 
 import (
+	"encoding/hex"
+	"os"
 	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -129,4 +131,26 @@ func (*UtilsService) BlockingSync(ctx context.Context, req *empty.Empty) (*empty
 		}
 	}
 	return &empty.Empty{}, nil
+}
+
+// ReadServoKeyboard reads from the servo's keyboard emulator.
+func (*UtilsService) ReadServoKeyboard(ctx context.Context, req *empty.Empty) (*fwpb.ReadServoKeyboardResponse, error) {
+	kbd, err := os.Open("/dev/input/by-id/usb-Google_Servo_LUFA_Keyboard_Emulator-event-kbd")
+	if err != nil {
+		return nil, errors.Wrap(err, "opening keyboard emulator device node")
+	}
+	defer kbd.Close()
+	stat, _ := kbd.Stat()
+	testing.ContextLog(ctx, "Servo keyboard emulator's device file attributes are:", stat)
+	// TODO(kmshelton): Interpret key events (likely with a third-party library), thus enabling detection of
+	// completion of events.  For now, this constant arbitrarily sets the number of bytes to read from the servo's
+	// keyboard emulator.
+	const amountToRead = 128
+	keys := make([]byte, amountToRead)
+	n, err := kbd.Read(keys)
+	if err != nil {
+		testing.ContextLog(ctx, "number of bytes read is", n)
+		return nil, errors.Wrap(err, "reading keyboard emulator device node")
+	}
+	return &fwpb.ReadServoKeyboardResponse{Keys: hex.Dump(keys)}, nil
 }
