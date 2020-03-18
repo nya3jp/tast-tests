@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "639b8140_0111ed92",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-18T09:13:33Z",
+      "side": 1,
+      "message": "I don\u0027t think I know fully about the background of this change. Does this mean this local test is invoked from another remote test?\nI was thinking that Tast local tests cannot conduct reboot and continue the test within single test run.",
+      "revId": "1779dc18ad7b6b828bfc9614f918d66a5404262c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
