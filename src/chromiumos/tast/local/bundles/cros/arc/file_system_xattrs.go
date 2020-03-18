@@ -23,7 +23,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		// TODO(yusukes,ricardoq): ARCVM does not need the test. Remove this once we retire ARC container.
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 		Attr:         []string{"group:mainline"},
 	})

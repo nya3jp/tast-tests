@@ -58,7 +58,7 @@ var locked = false
 
 // Supported returns true if ARC is supported on the board.
 //
-// This function must not be used to skip tests entirely; declare the "android"
+// This function must not be used to skip tests entirely; declare the "android_p"
 // software dependency instead. A valid use case would be to change the test
 // expectation by whether ARC is supported or not (e.g. existence of mount
 // points).
@@ -69,7 +69,7 @@ func Supported() bool {
 
 // Type detects the type (container or VM) of the ARC installation. As for
 // Supported(), it should not be used to skip tests entirely, both fall under
-// the "android" software dependency. But it could be used to change the
+// the "android_p" software dependency. But it could be used to change the
 // behaviour of a test (e.g. check that ARCVM is running or not).
 func Type() (t InstallType, ok bool) {
 	if _, err := os.Stat(filepath.Join(ARCPath, "system.raw.img")); err == nil {
@@ -226,7 +226,6 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 // androidDeps contains Android-related software features (see testing.Test.SoftwareDeps).
 // At least one of them must be declared to call New.
 var androidDeps = []string{
-	"android",
 	"android_vm",
 	"android_vm_p",
 	"android_vm_r",

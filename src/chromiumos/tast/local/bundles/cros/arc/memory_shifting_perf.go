@@ -26,7 +26,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         memory.AndroidData(),
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 			// TODO(b/146081124): Reenable the test when this test stops hanging ARC++ devices.
 			ExtraAttr: []string{"disabled"},

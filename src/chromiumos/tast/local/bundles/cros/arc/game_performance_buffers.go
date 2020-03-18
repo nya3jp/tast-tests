@@ -23,7 +23,7 @@ func init() {
 		Data:         []string{"ArcGamePerformanceTest.apk"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",

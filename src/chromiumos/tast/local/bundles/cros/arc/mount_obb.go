@@ -37,7 +37,7 @@ func init() {
 		// should be done very quickly so default Timeout should work.
 		// Added "chrome" and Timeout as a workaround, because
 		// it is not blocker, but we should revisit here.
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Attr:         []string{"group:mainline"},
 	})

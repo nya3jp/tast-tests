@@ -29,7 +29,7 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "",
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",

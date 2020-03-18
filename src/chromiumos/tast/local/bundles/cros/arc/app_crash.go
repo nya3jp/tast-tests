@@ -30,12 +30,12 @@ func init() {
 		Data:         []string{crashingAPKName},
 		Params: []testing.Param{{
 			Name:              "mock_consent",
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 			Val:               crash.MockConsent,
 		}, {
 			Name:              "real_consent",
-			ExtraSoftwareDeps: []string{"android", "metrics_consent"},
+			ExtraSoftwareDeps: []string{"android_p", "metrics_consent"},
 			Pre:               arc.Booted(),
 			Val:               crash.RealConsent,
 		}, {

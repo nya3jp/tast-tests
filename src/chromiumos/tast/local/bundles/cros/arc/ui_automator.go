@@ -23,7 +23,7 @@ func init() {
 		Data:         []string{"todo-mvp.apk"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
