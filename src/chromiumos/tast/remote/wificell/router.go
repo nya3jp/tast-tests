@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -281,7 +282,6 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 		}
 	}
 	// No available interface on phy, create one.
-	// TODO(crbug.com/1034875): configure interface for monitor interfaces.
 	return r.createWifiIface(ctx, phyID, t)
 }
 
@@ -328,6 +328,75 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 	r.freeSubnetIdx(h.subnetIdx)
 	r.freeIface(h.iface)
 	return err
+}
+
+// StartCapture starts a packet capturer.
+func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (ret *pcap.Capturer, retErr error) {
+	freq, err := hostapd.ChannelToFrequency(ch)
+	if err != nil {
+		return nil, err
+	}
+
+	nd, err := r.netDev(ctx, ch, iw.IfTypeMonitor)
+	if err != nil {
+		return nil, err
+	}
+	iface := nd.IfName
+	shared := r.isPhyBusyAny(nd.PhyNum)
+
+	r.setIfaceBusy(iface)
+	defer func() {
+		if retErr != nil {
+			r.freeIface(iface)
+		}
+	}()
+
+	if err := r.host.Command("ip", "link", "set", iface, "up").Run(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to set %s up", iface)
+	}
+	defer func() {
+		if retErr != nil {
+			if err := r.host.Command("ip", "link", "set", iface, "down").Run(ctx); err != nil {
+				testing.ContextLogf(ctx, "Failed to set %s down, err=%s", iface, err.Error())
+			}
+		}
+	}()
+
+	if !shared {
+		// The interface is not shared, set up frequency and bandwidth.
+		if err := r.iwr.SetFreq(ctx, iface, freq, freqOps...); err != nil {
+			return nil, errors.Wrapf(err, "failed to set frequency for interface %s", iface)
+		}
+	} else {
+		testing.ContextLogf(ctx, "Skip configuring of the shared interface %s", iface)
+	}
+
+	c, err := pcap.StartCapturer(ctx, r.host, name, iface, r.workDir(), pcapOps...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start a packet capturer")
+	}
+	return c, nil
+}
+
+// StopCapture stops the packet capturer and releases related resources.
+func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error {
+	var firstErr error
+	collectErr := func(err error) {
+		if firstErr != nil {
+			testing.ContextLog(ctx, "StopCapture error: ", err)
+		} else {
+			firstErr = err
+		}
+	}
+	iface := capturer.Interface()
+	if err := capturer.Close(ctx); err != nil {
+		collectErr(errors.Wrap(err, "failed to stop capturer"))
+	}
+	if err := r.host.Command("ip", "link", "set", iface, "down").Run(ctx); err != nil {
+		collectErr(errors.Wrapf(err, "failed to set %s down", iface))
+	}
+	r.freeIface(iface)
+	return firstErr
 }
 
 // workDir returns the directory to place temporary files on router.
