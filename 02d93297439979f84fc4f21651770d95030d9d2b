@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "396672b1_d2b8bf01",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-18T04:03:21Z",
+      "side": 1,
+      "message": "Could you check error?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 107
+      },
+      "revId": "02d93297439979f84fc4f21651770d95030d9d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a059e20f_6b4b44f3",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-18T04:03:21Z",
+      "side": 1,
+      "message": "How about calling Now only once. They can produce different values depending on the timing.",
+      "range": {
+        "startLine": 75,
+        "startChar": 74,
+        "endLine": 75,
+        "endChar": 84
+      },
+      "revId": "02d93297439979f84fc4f21651770d95030d9d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0500e65_91bc49bf",
+        "filename": "src/chromiumos/tast/remote/hwsec/helpers_remote.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-18T04:03:21Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 104
+      },
+      "revId": "02d93297439979f84fc4f21651770d95030d9d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
