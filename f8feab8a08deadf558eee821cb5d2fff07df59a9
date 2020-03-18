@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d6cf215_953a295e",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-18T09:17:35Z",
+      "side": 1,
+      "message": "In my local environment, the result pcap sometimes stops before capturing the last ICMP packet. The timestamp of the last packet captured \u003c expected time of 3rd ICMP request (0.5s + ts of 2nd ICMP).\n\nAutotest sleeps for LIBPCAP_POLL_FREQ_SECS * 2 \u003d 2 seconds. I think we need to wait a little bit here but I\u0027m not sure if there\u0027s anything to wait for if we can\u0027t just Sleep in Tast, given that no packet is guaranteed to be captured.",
+      "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e52539c_f5a0e46b",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-18T09:17:35Z",
+      "side": 1,
+      "message": "side note: I see that tcpdump set the same signal handler for SIGINT and SIGTERM, so I omit the \"-INT\". I\u0027m not sure why in autotest, it particularly specifies SIGINT. (it looks like -INT is given from the beginning.)",
+      "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
