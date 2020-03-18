@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "499c8d1e_b7b51852",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-18T16:47:31Z",
+      "side": 1,
+      "message": "nit: you can write as\n\n*it.out, err \u003d x509.ParseCertificate(pem)",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "1e431051fa39dcb9f4d1e32f69f698a2a469a6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
