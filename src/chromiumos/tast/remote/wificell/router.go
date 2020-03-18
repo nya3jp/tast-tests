@@ -14,10 +14,10 @@ import (
 
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -30,7 +30,7 @@ const (
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
-	host        *host.SSH // TODO(crbug.com/1019537): use a more suitable ssh object.
+	host        *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
 	board       string
 	busySubnet  map[byte]struct{}
 	phys        map[int]*iw.Phy       // map from phy idx to iw.Phy.
@@ -43,7 +43,7 @@ type Router struct {
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
-func NewRouter(ctx context.Context, host *host.SSH) (*Router, error) {
+func NewRouter(ctx context.Context, host *ssh.Conn) (*Router, error) {
 	r := &Router{
 		host:        host,
 		busySubnet:  make(map[byte]struct{}),
@@ -387,7 +387,7 @@ func (r *Router) collectLogs(ctx context.Context) error {
 // NOTICE: This function is only intended for handling some corner condition
 // for router setup. If you're trying to identify specific board of DUT, maybe
 // software/hardware dependency is what you want instead of this.
-func hostBoard(ctx context.Context, host *host.SSH) (string, error) {
+func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
 	const lsbReleasePath = "/etc/lsb-release"
 	const crosReleaseBoardKey = "CHROMEOS_RELEASE_BOARD"
 

@@ -10,10 +10,10 @@ import (
 	"net"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -21,7 +21,7 @@ import (
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	host      *host.SSH
+	host      *ssh.Conn
 	name      string
 	iface     string
 	workDir   string
