@@ -17,7 +17,7 @@ import (
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -27,6 +27,7 @@ type EventType int
 // EventType enums.
 const (
 	EventTypeDisconnect EventType = iota
+
 	EventTypeUnknown
 )
 
@@ -43,7 +44,7 @@ type EventLogger struct {
 	lock   sync.RWMutex
 	done   chan struct{}
 	dut    *dut.DUT
-	cmd    *host.Cmd
+	cmd    *ssh.Cmd
 	events []*Event
 }
 
