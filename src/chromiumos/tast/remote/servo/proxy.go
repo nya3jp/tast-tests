@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/host"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -21,8 +21,8 @@ const proxyTimeout = 10 * time.Second // max time for establishing SSH connectio
 // over SSH if needed.
 type Proxy struct {
 	svo *Servo
-	hst *host.SSH       // nil if servod is running locally
-	fwd *host.Forwarder // nil if servod is running locally
+	hst *ssh.Conn      // nil if servod is running locally
+	fwd *ssh.Forwarder // nil if servod is running locally
 }
 
 // NewProxy returns a Proxy object for communicating with the servod instance at spec,
@@ -49,18 +49,18 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 		}
 
 		// First, create an SSH connection to the remote system running servod.
-		sopt := host.SSHOptions{
+		sopt := ssh.Options{
 			KeyFile:        keyFile,
 			KeyDir:         keyDir,
 			ConnectTimeout: proxyTimeout,
 			WarnFunc:       func(msg string) { testing.ContextLog(ctx, msg) },
 		}
 		// Use the default SSH username and port.
-		if err := host.ParseSSHTarget(hostname, &sopt); err != nil {
+		if err := ssh.ParseTarget(hostname, &sopt); err != nil {
 			return nil, err
 		}
 		testing.ContextLogf(ctx, "Opening SSH connection to %s:%d", sopt.Hostname, sopt.Port)
-		if pxy.hst, err = host.NewSSH(ctx, &sopt); err != nil {
+		if pxy.hst, err = ssh.New(ctx, &sopt); err != nil {
 			return nil, err
 		}
 

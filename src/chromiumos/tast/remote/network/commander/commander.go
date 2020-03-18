@@ -6,11 +6,11 @@
 // for network related components.
 package commander
 
-import "chromiumos/tast/host"
+import "chromiumos/tast/ssh"
 
 // Commander is an interface for those who provides Command() function.
-// It is used to hold both dut.DUT and host.SSH object.
+// It is used to hold both dut.DUT and ssh.Conn object.
 // TODO(crbug.com/1019537): use a more suitable ssh object.
 type Commander interface {
-	Command(string, ...string) *host.Cmd
+	Command(string, ...string) *ssh.Cmd
 }
