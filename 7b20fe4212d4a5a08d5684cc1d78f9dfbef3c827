@@ -22,6 +22,30 @@
       "revId": "7b20fe4212d4a5a08d5684cc1d78f9dfbef3c827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007805af_a41c63c1",
+        "filename": "src/chromiumos/tast/local/power/power_manager_emitter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-18T14:58:09Z",
+      "side": 1,
+      "message": "Done, but not 100% safe as the same argument is sent repeatedly.",
+      "parentUuid": "ac37a608_d7dc866f",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "7b20fe4212d4a5a08d5684cc1d78f9dfbef3c827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
