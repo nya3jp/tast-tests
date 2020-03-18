@@ -31,6 +31,28 @@ const (
 	envFile = "glxinfo.txt"
 )
 
+// frameLoop has parameters to loop a trace replay.
+type frameLoop struct {
+	begin int
+	end   int
+	count int
+}
+
+// options has options for the trace replay.
+type options struct {
+	loop *frameLoop
+}
+
+// option is a self-referential function that can be used to configure traces. See https://github.com/tmrts/go-patterns/blob/master/idiom/functional-options.md
+type option func(o *options)
+
+// FrameLoop returns an option to specify frames to loop during replay.
+func FrameLoop(begin int, end int, count int) option {
+	return func(o *options) {
+		o.loop = &frameLoop{begin, end, count}
+	}
+}
+
 func logInfo(ctx context.Context, cont *vm.Container, file string) error {
 	f, err := os.Create(file)
 	if err != nil {
@@ -66,7 +88,12 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 }
 
 // RunExtendedTest starts a VM and runs a single trace with additional options for repeating or CPU loading.
-func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, traceFile string, traceName string, cpuThreads int) {
+func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, traceFile string, traceName string, cpuThreads int, setters ...option) {
+	options := &options{}
+	for _, setter := range setters {
+		setter(options)
+	}
+
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
@@ -108,7 +135,7 @@ func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, 
 	}
 
 	// Start replay.
-	perfValues, err := replayTrace(ctx, cont, containerPath, traceName)
+	perfValues, err := replayTrace(ctx, cont, containerPath, traceName, options)
 	if err != nil {
 		s.Fatal("Failed running trace: ", err)
 	}
@@ -154,7 +181,7 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 	}
 	defer cont.Command(ctx, "rm", "-f", containerPath).Run()
 
-	return replayTrace(ctx, cont, containerPath, traceName)
+	return replayTrace(ctx, cont, containerPath, traceName, nil)
 }
 
 // prepareTrace pushes a trace to the DUT and decompresses it prior to replay.
@@ -173,12 +200,17 @@ func prepareTrace(ctx context.Context, cont *vm.Container, traceFile string) (st
 }
 
 // replayTrace replays a trace and parses the results.
-func replayTrace(ctx context.Context, cont *vm.Container, containerPath string, traceName string) (*perf.Values, error) {
+func replayTrace(ctx context.Context, cont *vm.Container, containerPath string, traceName string, options *options) (*perf.Values, error) {
 	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
 	args := []string{"apitrace", "replay", containerPath}
 	if deadline, ok := ctx.Deadline(); ok {
 		d := int(time.Until(deadline).Seconds())
 		args = append(args, fmt.Sprintf("--timeout=%d", d))
+		if options != nil && options.loop != nil {
+			args = append(args, fmt.Sprintf("--loop-begin=%d", options.loop.begin))
+			args = append(args, fmt.Sprintf("--loop-end=%d", options.loop.end))
+			args = append(args, fmt.Sprintf("--loop-repeat-cnt=%d", options.loop.count))
+		}
 	}
 	ctx, st := timing.Start(ctx, "replay")
 	defer st.End()
