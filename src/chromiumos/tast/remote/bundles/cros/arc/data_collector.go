@@ -25,6 +25,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type buildDescriptor struct {
+	// true in case built by ab/
+	official bool
+	// ab/buildID
+	buildID string
+	// build flavor cheets_x86_64-user, bertha_x86_64-userdebug
+	flavor string
+	// sdk version, 25, 29 ...
+	sdkVersion string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DataCollector,
@@ -46,12 +57,13 @@ func init() {
 	})
 }
 
-// getArcVersionRemotely gets ARC build properties from the device, parses for build ID, ABI, and
-// returns these fields as a combined string. It also return weither this is official build or not
-func getArcVersionRemotely(ctx context.Context, dut *dut.DUT) (bool, string, error) {
+// getBuildDescriptorRemotely gets ARC build properties from the device, parses for build ID, ABI,
+// and returns these fields as a combined string. It also return weither this is official build or
+// not.
+func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT) (*buildDescriptor, error) {
 	isARCVM, err := dut.Command("cat", "/run/chrome/is_arcvm").Output(ctx)
 	if err != nil {
-		return false, "", errors.Wrap(err, "failed to check ARCVM status remotely")
+		return nil, errors.Wrap(err, "failed to check ARCVM status remotely")
 	}
 
 	var propertyFile string
@@ -63,25 +75,35 @@ func getArcVersionRemotely(ctx context.Context, dut *dut.DUT) (bool, string, err
 
 	buildProp, err := dut.Command("cat", propertyFile).Output(ctx)
 	if err != nil {
-		return false, "", errors.Wrap(err, "failed to read ARC build property file remotely")
+		return nil, errors.Wrap(err, "failed to read ARC build property file remotely")
 	}
 	buildPropStr := string(buildProp)
 
-	mArch := regexp.MustCompile(`(\n|^)ro.product.cpu.abi=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mArch == nil {
-		return false, "", errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
+	mFlavor := regexp.MustCompile(`(\n|^)ro.build.flavor=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	if mFlavor == nil {
+		return nil, errors.Errorf("ro.build.flavor is not found in %q", buildPropStr)
+	}
+
+	mSdkVersion := regexp.MustCompile(`(\n|^)ro.build.version.sdk=(\d+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	if mSdkVersion == nil {
+		return nil, errors.Errorf("ro.build.version.sdk is not found in %q", buildPropStr)
 	}
 
 	// Note, this should work on official builds only. Custom built Android image contains the
 	// version in different format.
-	mVersion := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mVersion == nil {
-		return false, "", errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
+	mBuildID := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	if mBuildID == nil {
+		return nil, errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
 	}
 
-	official := regexp.MustCompile(`^\d+$`).MatchString(mVersion[2])
-	result := fmt.Sprintf("%s_%s", mArch[2], mVersion[2])
-	return official, result, nil
+	desc := buildDescriptor{
+		official:   regexp.MustCompile(`^\d+$`).MatchString(mBuildID[2]),
+		buildID:    mBuildID[2],
+		flavor:     mFlavor[2],
+		sdkVersion: mSdkVersion[2],
+	}
+
+	return &desc, nil
 }
 
 // DataCollector performs ARC++ boots in various conditions, grabs required data and uploads it to
@@ -141,11 +163,13 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	desc, err := getBuildDescriptorRemotely(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to get ARC build desc: ", err)
+	}
+
 	genUreadaheadPack := func() {
-		official, v, err := getArcVersionRemotely(ctx, d)
-		if err != nil {
-			s.Fatal("Failed to get ARC version: ", err)
-		}
+		v := fmt.Sprintf("%s_%s_%s", desc.flavor, desc.sdkVersion, desc.buildID)
 		s.Logf("Detected version: %s", v)
 
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
@@ -158,7 +182,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 		// Checks if generated packs need to be uploaded to the server.
 		needUpload := func() bool {
-			if !official {
+			if !desc.official {
 				s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
 				return false
 			}
@@ -232,12 +256,12 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to read packages_cache.xml: ", err)
 		}
 
-		gmsCoreVersion := regexp.MustCompile(`<package name=\"com\.google\.android\.gms\".+primaryCpuAbi=\"(\S+)\".+version=\"(\d+)\".+>`).FindStringSubmatch(string(packages))
+		gmsCoreVersion := regexp.MustCompile(`<package name=\"com\.google\.android\.gms\".+version=\"(\d+)\".+>`).FindStringSubmatch(string(packages))
 		if gmsCoreVersion == nil {
 			s.Fatal("Failed to parse GMS Core version from packages_cache.xml")
 		}
 
-		v := fmt.Sprintf("%s_%s", gmsCoreVersion[1], gmsCoreVersion[2])
+		v := fmt.Sprintf("%s_%s_%s", desc.flavor, desc.sdkVersion, gmsCoreVersion[1])
 		s.Logf("Detected GMS core version: %s", v)
 
 		// Checks if generated GMS Core caches need to be uploaded to the server.
