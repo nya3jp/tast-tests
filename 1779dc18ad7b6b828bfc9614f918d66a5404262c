@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "960c7c5a_020bbd03",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-18T20:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b14e05cb_b2b3adca",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 25
+      },
+      "revId": "1779dc18ad7b6b828bfc9614f918d66a5404262c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "564adccd_39a7398c",
         "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
         "patchSetId": 4
@@ -74,6 +98,24 @@
       "revId": "1779dc18ad7b6b828bfc9614f918d66a5404262c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dde1822_47e119bc",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-18T20:32:55Z",
+      "side": 1,
+      "message": "In this case I think it\u0027s useful to be explicit about specifying them, since their state is key to understanding how the test should work.",
+      "parentUuid": "564adccd_39a7398c",
+      "revId": "1779dc18ad7b6b828bfc9614f918d66a5404262c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -97,6 +139,30 @@
       "revId": "1779dc18ad7b6b828bfc9614f918d66a5404262c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95cd6862_40bf69e9",
+        "filename": "src/chromiumos/tast/local/crash/fixture_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-18T20:32:55Z",
+      "side": 1,
+      "message": "Here as well.",
+      "parentUuid": "00f13428_189080b6",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 24
+      },
+      "revId": "1779dc18ad7b6b828bfc9614f918d66a5404262c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
