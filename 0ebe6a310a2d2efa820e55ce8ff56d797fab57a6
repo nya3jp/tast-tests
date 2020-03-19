@@ -123,6 +123,30 @@
       "revId": "0ebe6a310a2d2efa820e55ce8ff56d797fab57a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac2c8100_6fc3eb3b",
+        "filename": "src/chromiumos/tast/remote/wificell/daemonutil/ready_writer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-19T03:49:16Z",
+      "side": 1,
+      "message": "Not a declaration, but sometime a static assertion is added which might help a little bit. e.g.\n  var _ io.WriteCloser \u003d (*ReadyWriter)(nil)\n\nI think this still does not solve the problem of implicit interface, but at least it ensures that I don\u0027t mess up anything. ;) Add the line after the type declaration.",
+      "parentUuid": "86bd8fc7_a18d2ceb",
+      "range": {
+        "startLine": 62,
+        "startChar": 30,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "0ebe6a310a2d2efa820e55ce8ff56d797fab57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
