@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "8ba74bb6_26cdbf89",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T05:16:29Z",
+      "side": 1,
+      "message": "For sure. Thanks",
+      "parentUuid": "5fc1f5b6_980b6976",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 55
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9f7272_aead745b",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 1
