@@ -443,8 +443,11 @@ func TearDownCrashTest(ctx context.Context) error {
 	}
 	// The user crash directory should always be owned by chronos not root. The
 	// unit tests don't run as root and can't chown, so skip this in tests.
-	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil && firstErr == nil {
-		firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
+	// Only do this if the local crash dir actually exists.
+	if _, err := os.Stat(LocalCrashDir); err == nil {
+		if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil && firstErr == nil {
+			firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
+		}
 	}
 	return firstErr
 }
