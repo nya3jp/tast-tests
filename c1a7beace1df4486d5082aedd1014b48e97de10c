@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ac00a138_1c1453bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-19T09:20:16Z",
+      "side": 1,
+      "message": "Which comment do you mean?",
+      "parentUuid": "59099469_35032664",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "581a40a2_abbe2169",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-19T01:56:30Z",
       "side": 1,
       "message": "I\u0027m not sure if VHTChWidth and VHTCenterChannel also worth a check here.",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30bcef7_bb9c54d2",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-19T09:20:16Z",
+      "side": 1,
+      "message": "Should we guarantee that if a config pass this function, then no error should be returned from Format?",
+      "parentUuid": "581a40a2_abbe2169",
       "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
