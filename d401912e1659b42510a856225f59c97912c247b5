@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "6d597c54_63810d56",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T18:30:05Z",
+      "side": 1,
+      "message": "My bad.  Fixed for real.",
+      "parentUuid": "c25eebcd_fb11366e",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54440f2d_4af0626e",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 3
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "at line 185 you call replayTrace, but before you have defer statement to remove container file. If you will reach timeout in replayTrace, you won\u0027t be able to remove file.",
       "parentUuid": "4689609d_20a1749e",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "054ec085_da87958a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T18:30:05Z",
+      "side": 1,
+      "message": "Maybe I\u0027m not understanding how the context deadlines work, but RunTest and RunExtendedTest both artificially shorten the deadline 30 seconds.  Then replayTrace has a timeout passed to apitrace which will cause it to exit at that shortened deadline.  runTrace then still has that additional 30 seconds to perform the defer.",
+      "parentUuid": "ffbb56aa_b17cdcec",
       "range": {
         "startLine": 208,
         "startChar": 7,
