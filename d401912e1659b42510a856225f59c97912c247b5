@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "c25eebcd_fb11366e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T18:03:04Z",
+      "side": 1,
+      "message": "Looks like it\u0027s not resolved",
+      "parentUuid": "e5c8aab2_85defea2",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54440f2d_4af0626e",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 3
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "The callers have all shortened the deadline by 30 seconds at this point.",
       "parentUuid": "8952995f_a0d84a46",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffbb56aa_b17cdcec",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T18:03:04Z",
+      "side": 1,
+      "message": "at line 185 you call replayTrace, but before you have defer statement to remove container file. If you will reach timeout in replayTrace, you won\u0027t be able to remove file.",
+      "parentUuid": "4689609d_20a1749e",
       "range": {
         "startLine": 208,
         "startChar": 7,
