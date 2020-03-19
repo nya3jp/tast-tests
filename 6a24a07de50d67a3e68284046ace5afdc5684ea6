@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de303e9f_bc94152d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-19T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b9493ae_ad736c18",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d06bba99_7055174e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877ce7d8_e6ff8b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-19T20:17:35Z",
+      "side": 1,
+      "message": "No clue on the style. I figured private variables were less stringent, but makes sense to do the public ones consistently.\n\n\u003e If Tast does not enforce the first style, shall we pick one and be consistent?\n\nSure, I\u0027ll just match the function style for now.",
+      "parentUuid": "d06bba99_7055174e",
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "b9c6043e_96097d1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-19T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f43949_3c0adabe",
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "164e243d_a30de708",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c54c9373_0c6e86af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-19T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "164e243d_a30de708",
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -96,6 +174,30 @@
       "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1148316_497ca257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-19T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710e30d3_99e76c0e",
+      "range": {
+        "startLine": 172,
+        "startChar": 43,
+        "endLine": 172,
+        "endChar": 44
+      },
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
