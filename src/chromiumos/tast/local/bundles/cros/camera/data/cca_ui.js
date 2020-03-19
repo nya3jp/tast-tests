@@ -65,18 +65,6 @@ class LegacyVCDError extends Error {
 
 
 /**
- * Maps from new name to legacy name of states. TODO(inker): Remove this mapping
- * after landing of the renaming CL(crrev.com/c/1999898).
- * @const {!Object<string, string>}
- */
-const TO_LEGACY_STATE = {
-  'view-settings': 'settings',
-  'view-resolution-settings': 'resolutionsettings',
-  'view-photo-resolution-settings': 'photoresolutionsettings',
-  'view-video-resolution-settings': 'videoresolutionsettings',
-};
-
-/**
  * @typedef {{
  *   width: number,
  *   height: number,
@@ -90,8 +78,7 @@ window.Tast = class {
   }
 
   static getState(s) {
-    return state.get(s) ||
-        (TO_LEGACY_STATE.hasOwnProperty(s) && state.get(TO_LEGACY_STATE[s]));
+    return state.get(s);
   }
 
   static isVideoActive() {
