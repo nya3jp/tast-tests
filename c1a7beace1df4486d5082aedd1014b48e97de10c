@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "59099469_35032664",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T08:27:49Z",
+      "side": 1,
+      "message": "For 802.11AC tests, please follow Yenlin\u0027s comment. You can filter out unsupported board, monroe, by adding\n// TODO(crbug.com/1024554): remove it after Monroe platform is end-of-life.\nExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(\"Monroe\"))",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "581a40a2_abbe2169",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 8
@@ -30,6 +47,24 @@
       "writtenOn": "2020-03-19T01:56:30Z",
       "side": 1,
       "message": "Maybe some testcases for the newly added ac configs?",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b6cb2d_099fdee1",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T08:27:49Z",
+      "side": 1,
+      "message": "Good points.",
+      "parentUuid": "664f9e4e_054f4064",
       "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
