@@ -147,8 +147,10 @@ type HistogramBucket struct {
 // Histogram is returned.
 func GetHistogram(ctx context.Context, tconn *chrome.TestConn, name string) (*Histogram, error) {
 	h := Histogram{Name: name}
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getHistogram)(%q)`, name)
-	if err := tconn.EvalPromise(ctx, expr, &h); err != nil {
+	// Historically, chrome.autotestPrivate exposed getHistogram, but it was moved to metricsPrivate.
+	// We fallback autotestPrivate here for backward compatibility so, e.g., bisecting works.
+	// TODO(crbug.com/1064535): Clean up at M83 or later.
+	if err := tconn.Call(ctx, &h, `tast.promisify(chrome.metricsPrivate.getHistogram || chrome.autotestPrivate.getHistogram)`, name); err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf("Histogram %s not found", name)) {
 			return &Histogram{Name: name}, nil
 		}
