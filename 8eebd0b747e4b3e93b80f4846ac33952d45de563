@@ -22,6 +22,30 @@
       "revId": "8eebd0b747e4b3e93b80f4846ac33952d45de563",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d305766b_13579430",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/watchdog_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-19T17:08:56Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2109310 (still WIP; need to actually test).",
+      "parentUuid": "352dee90_4a82fa58",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "8eebd0b747e4b3e93b80f4846ac33952d45de563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
