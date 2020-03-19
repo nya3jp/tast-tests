@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "99fa57dd_45b10196",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-19T17:11:41Z",
+      "side": 1,
+      "message": "Is it possible to start an android activity that only runs in the background and does not have a visible window? If so, this might be detrimental in the future.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe770d4_4f644b15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-19T17:11:41Z",
+      "side": 1,
+      "message": "would it be better to put this in startActivityOnDisplay(..)? That would make it more similar to act.Start(...). Especially since that function will likely eventually be added to activity.go",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "475db931_2878b3b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 3
@@ -13,6 +59,30 @@
       "writtenOn": "2020-03-19T14:47:32Z",
       "side": 1,
       "message": "here and below: this wait is also flaky.\nI\u0027d rather replace it with a \"waitForResumed\" that only lives in this file, than adding a sleep. I\u0027d keep the TODO message.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82569671_174e9486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-19T17:11:41Z",
+      "side": 1,
+      "message": "I second this.",
+      "parentUuid": "475db931_2878b3b4",
       "range": {
         "startLine": 136,
         "startChar": 0,
