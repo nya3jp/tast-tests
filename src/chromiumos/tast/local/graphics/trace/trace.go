@@ -193,15 +193,19 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 func prepareTrace(ctx context.Context, cont *vm.Container, traceFile string) (string, error) {
 	containerPath := filepath.Join("/tmp", filepath.Base(traceFile))
 	if err := cont.PushFile(ctx, traceFile, containerPath); err != nil {
+		// No guarantee that PushFile will clean up.
+		cont.Command(ctx, "rm", "-f", containerPath).Run()
 		return "", errors.Wrap(err, "failed copying trace file to container")
 	}
 
-	containerPath, err := decompressTrace(ctx, cont, containerPath)
+	// decompressTrace will clean up any in-progress decompressions.
+	decompressedPath, err := decompressTrace(ctx, cont, containerPath)
 	if err != nil {
+		cont.Command(ctx, "rm", "-f", containerPath).Run()
 		return "", errors.Wrap(err, "failed to decompress trace")
 	}
 
-	return containerPath, nil
+	return decompressedPath, nil
 }
 
 // replayTrace replays a trace and parses the results.
@@ -253,15 +257,17 @@ func decompressTrace(ctx context.Context, cont *vm.Container, traceFile string) 
 	case ".trace":
 		decompressFile = traceFile
 	case ".bz2":
+		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
 		if _, err := cont.Command(ctx, "bunzip2", traceFile).CombinedOutput(testexec.DumpLogOnError); err != nil {
+			cont.Command(ctx, "rm", "-f", decompressFile).Run()
 			return "", errors.Wrap(err, "failed to decompress bz2")
 		}
-		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
 	case ".zst", ".xz":
+		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
 		if _, err := cont.Command(ctx, "zstd", "-d", "-f", "--rm", "-T0", traceFile).CombinedOutput(testexec.DumpLogOnError); err != nil {
+			cont.Command(ctx, "rm", "-f", decompressFile).Run()
 			return "", errors.Wrap(err, "failed to decompress zst")
 		}
-		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
 	default:
 		return "", errors.Errorf("unknown trace extension: %s", ext)
 	}
