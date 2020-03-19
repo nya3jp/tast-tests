@@ -67,7 +67,7 @@ func logInfo(ctx context.Context, cont *vm.Container, file string) error {
 
 // RunTest starts a VM and runs all traces in trace, which maps from filenames (passed to s.DataPath) to a human-readable name for the trace, that is used both for the output file's name and for the reported perf keyval.
 func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces map[string]string) {
-	shortCtx, shortCancel := ctxutil.Shorten(ctx, 30*time.Second)
+	shortCtx, shortCancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer shortCancel()
 
 	if err := setupReplay(ctx, s, cont); err != nil {
@@ -94,7 +94,8 @@ func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, 
 		setter(options)
 	}
 
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
 
 	if err := setupReplay(ctx, s, cont); err != nil {
@@ -108,7 +109,7 @@ func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, 
 	if err != nil {
 		s.Fatal("Failed preparing trace: ", err)
 	}
-	defer cont.Command(ctx, "rm", "-f", containerPath).Run()
+	defer cont.Command(cleanupCtx, "rm", "-f", containerPath).Run()
 
 	// Synchronize shutdown.
 	var wait sync.WaitGroup
@@ -175,11 +176,15 @@ func setupReplay(ctx context.Context, s *testing.State, cont *vm.Container) erro
 
 // runTrace runs a trace and writes output to ${traceName}.txt. traceFile should be absolute path.
 func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName string) (*perf.Values, error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	containerPath, err := prepareTrace(ctx, cont, traceFile)
 	if err != nil {
 		return nil, err
 	}
-	defer cont.Command(ctx, "rm", "-f", containerPath).Run()
+	defer cont.Command(cleanupCtx, "rm", "-f", containerPath).Run()
 
 	return replayTrace(ctx, cont, containerPath, traceName, nil)
 }
