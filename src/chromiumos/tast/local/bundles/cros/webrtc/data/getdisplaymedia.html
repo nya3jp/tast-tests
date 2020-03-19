@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <video id="video" controls autoplay muted></video>
+<script src="third_party/blackframe.js"></script>
+<script src="third_party/munge_sdp.js"></script>
+<script src="third_party/ssim.js"></script>
+<script>
+
+function start(surface) {
+  return new Promise((resolve, reject) => {
+    const video = document.querySelector('video');
+
+    const displayMediaOptions = { video: { displaySurface: surface }, audio: false };
+      
+    navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
+    .then(mediaStream => {
+      if (mediaStream.getVideoTracks().length != 1)
+        throw new DOMException("Wrong getVideoTracks() length", "InvalidStateError");
+
+      video.srcObject = mediaStream;
+      // TODO() verify mediaStream.getVideoTracks()[0].getSettings().displaySurface == surface
+
+      console.log(mediaStream.getVideoTracks()[0].getSettings().displaySurface);  
+      video.onplay = () => {
+        video.width = mediaStream.getVideoTracks()[0].getSettings().width;
+        video.height = mediaStream.getVideoTracks()[0].getSettings().height;
+
+        // getDisplayMedia() can produce very large dimensions, reduce for speed.
+        const width = video.width / 8;
+        const height = video.height / 8;
+        if (isNaN(width) || isNaN(height) || width == 0 || height == 0)
+          throw new DOMExpection("Bad dimensions, width=" + width + ", height=" + height);
+
+        const context = new OffscreenCanvas(width, height).getContext('2d');
+        context.drawImage(video, 0, 0, width, height);
+        const imageData = context.getImageData(0, 0, width, height);
+        if (isBlackFrame(imageData.data, imageData.data.length))
+          throw new DOMExpection("Captured data is considered all black");
+        resolve();
+      }
+    })
+    .catch(reject);
+  });
+}
+</script>
+</body>
+</html>
