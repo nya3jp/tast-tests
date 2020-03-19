@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73b9fe1b_884ebe6d",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-19T04:41:50Z",
+      "side": 1,
+      "message": "Is is intentional to return len(p), nil if the service is not yet ready (ok\u003dFalse, err\u003dnil)?\nShouldn\u0027t it return an error instead?",
+      "revId": "7d283200cae7df4eb8639746a628674c1013c90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
