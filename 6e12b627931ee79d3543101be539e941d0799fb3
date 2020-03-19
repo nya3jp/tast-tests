@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92aec3cd_974a49fb",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-19T06:36:37Z",
+      "side": 1,
+      "message": "\u003e \"upcomming\" is a possible misspelling of \"upcoming\".\n\nFixed.",
+      "parentUuid": "dfca0b9b_5b009a23",
+      "range": {
+        "startLine": 61,
+        "startChar": 61,
+        "endLine": 61,
+        "endChar": 70
+      },
+      "revId": "6e12b627931ee79d3543101be539e941d0799fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e73348_b7600216",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-19T06:36:37Z",
+      "side": 1,
+      "message": "\u003e \"determin\" is a possible misspelling of \"determine\".\n\nFixed.",
+      "parentUuid": "cf20e45c_b32b5fb2",
+      "range": {
+        "startLine": 62,
+        "startChar": 27,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "6e12b627931ee79d3543101be539e941d0799fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
