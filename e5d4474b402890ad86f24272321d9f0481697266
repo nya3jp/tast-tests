@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8463e46e_7fa83a7e",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-19T05:28:13Z",
+      "side": 1,
+      "message": "I see, but I\u0027m still hesitant to have this function in the arc package because it looks very official. Could you pick another package, e.g. chromiumos/tast/local/graphics/patrace?",
+      "parentUuid": "2f2c8b2d_83b95b30",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "e5d4474b402890ad86f24272321d9f0481697266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29bcbf0a_5182e0ca",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 2
