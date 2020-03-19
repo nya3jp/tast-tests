@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d779dc3d_6589de29",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T05:45:55Z",
+      "side": 1,
+      "message": "Nit, how about:\n\nReadyWriter expects that a ReadyFunc should return:\n  (false, nil) if the service is not ready yet;\n  (false, err) if the service has an error;\n  (true, nil) if the service is ready.",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "7d283200cae7df4eb8639746a628674c1013c90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce6fb07e_0a52a672",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T05:45:55Z",
+      "side": 1,
+      "message": "How about \"ready\"?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "7d283200cae7df4eb8639746a628674c1013c90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73b9fe1b_884ebe6d",
         "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
         "patchSetId": 4
@@ -31,6 +77,24 @@
       "side": 1,
       "message": "Yes, it is intentional.\nAs the caller may not write all its output in one Write call (depending how it buffers its output), it is possible that the service is not yet ready on the first Write call. In this case, if we return error here, the caller might think the target it is writing is broken/closed and stops. So we should let the Write success and buffer the data in w.buf, then wait for more logs in upcoming Write.",
       "parentUuid": "73b9fe1b_884ebe6d",
+      "revId": "7d283200cae7df4eb8639746a628674c1013c90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2280ce7_1f623361",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T05:45:55Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Let\u0027s put it on the comment.",
+      "parentUuid": "3963a95d_34f45d25",
       "revId": "7d283200cae7df4eb8639746a628674c1013c90b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
