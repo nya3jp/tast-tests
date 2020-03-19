@@ -28,7 +28,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "metrics_consent", "pstore", "reboot", "watchdog"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 		// TODO(https://crbug.com/1045821): Remove this once samus issue is resolved.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("samus")),
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("Samus")),
 	})
 }
 
