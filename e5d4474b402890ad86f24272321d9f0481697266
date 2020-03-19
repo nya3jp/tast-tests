@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4c21345_13d1db21",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-19T03:26:11Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m hesitant to have this function in the arc package because it might unexpectedly encourage test authors to parse logcat messages in unreliable ways.\n\nIn particular, I really want the following features:\n\n1. Structured entries instead of strings\n2. General Wait method not constrained to regexp matching\n\nActually we already have the similar utility for Chrome OS syslog.\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/syslog#Reader\n\nCould you try introducing a similar utility for logcat?",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "e5d4474b402890ad86f24272321d9f0481697266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29bcbf0a_5182e0ca",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-19T03:26:11Z",
+      "side": 1,
+      "message": "I discourage ctxutil.OptionalTimeout because its behavior near timeout\u003d0 is inconsistent. I filed crbug.com/1062899 to deprecate this function.\n\nCould you use context.WithTimeout instead?",
+      "range": {
+        "startLine": 72,
+        "startChar": 24,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "e5d4474b402890ad86f24272321d9f0481697266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
