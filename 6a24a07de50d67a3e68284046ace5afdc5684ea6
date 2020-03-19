@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b9493ae_ad736c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T08:04:11Z",
+      "side": 1,
+      "message": "Cert",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d06bba99_7055174e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T08:04:11Z",
+      "side": 1,
+      "message": "Not quite sure if Tast enforces the same comment style for struct members like function comment. I saw different comment styles here:\n1. Start with the member name. e.g. // Iface is ...\n2. Just a complete sentence describing what the member is for. Like this one.\n\nIf Tast does not enforce the first style, shall we pick one and be consistent?",
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f43949_3c0adabe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T08:04:11Z",
+      "side": 1,
+      "message": "Ending period.",
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "164e243d_a30de708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T08:04:11Z",
+      "side": 1,
+      "message": "If we use CombinedOutput(testexec.DumpLogOnError) here, we can save line 99 logging statement. However, it produces extra log in line 214 polling \"new_sta\" command. Shall we give a comment why we don\u0027t let the command execution DumpLogOnError?",
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710e30d3_99e76c0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T08:04:11Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 172,
+        "startChar": 43,
+        "endLine": 172,
+        "endChar": 44
+      },
+      "revId": "6a24a07de50d67a3e68284046ace5afdc5684ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
