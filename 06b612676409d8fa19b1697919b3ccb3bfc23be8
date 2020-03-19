@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9805c752_55d496cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T00:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1cb6e2_8992e947",
+      "range": {
+        "startLine": 78,
+        "startChar": 17,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "06b612676409d8fa19b1697919b3ccb3bfc23be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "396fd26c_c4b03e64",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset_test.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-18T19:58:19Z",
       "side": 1,
       "message": "%q\n?\n\nIf so, elsewhere too.",
+      "range": {
+        "startLine": 43,
+        "startChar": 28,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "06b612676409d8fa19b1697919b3ccb3bfc23be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "862381d9_477a5bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stringset/stringset_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T00:43:16Z",
+      "side": 1,
+      "message": "Use %s to make the error message easier to read:\nStringSet([\"a\"]).Union(StringSet([\"a\" \"b\" \"c\"])) \u003d StringSet([\"a\" \"b\" \"c\"]) failed; expect StringSet([\"a\" \"b\"])\nUse %q:\n\"StringSet([\\\"a\\\"])\".Union(\"StringSet([\\\"a\\\" \\\"b\\\" \\\"c\\\"])\") \u003d \"StringSet([\\\"a\\\" \\\"b\\\" \\\"c\\\"])\" failed; expect \"StringSet([\\\"a\\\" \\\"b\\\"])\"",
+      "parentUuid": "396fd26c_c4b03e64",
       "range": {
         "startLine": 43,
         "startChar": 28,
