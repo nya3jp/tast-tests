@@ -11,7 +11,6 @@ import (
 
 	"github.com/godbus/dbus"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
@@ -307,7 +306,7 @@ func (m *Manager) DeviceByName(ctx context.Context, iface string) (*Device, erro
 // WaitForDeviceByName returns the Device matching the given interface name.
 // If there's no match, it waits until one appears, or until timeout.
 func (m *Manager) WaitForDeviceByName(ctx context.Context, iface string, timeout time.Duration) (*Device, error) {
-	ctx, cancel := ctxutil.OptionalTimeout(ctx, timeout)
+	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	pw, err := m.CreateWatcher(ctx)
