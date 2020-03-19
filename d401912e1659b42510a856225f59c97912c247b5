@@ -424,6 +424,30 @@
       "revId": "d401912e1659b42510a856225f59c97912c247b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "634d02cf_11035a2a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T18:45:34Z",
+      "side": 1,
+      "message": "Right, RunTest and RunExtendedTest shorten context, but unfortunately, it used incorrectly.\n\n---------------------\n\nThis is how is used in your code right now:\n\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n\nWhat you did here:\n1. you created new context with shorten context by 30 seconds\n2. you assigned this context to variable `ctx` and lost your previous context that is 30 seconds longer.\n3. then you pass new `ctx` to other function, but then have no idea about old context, they know only deadline stored in context you passed.\n\n--------------------- \n\nExample how to use shorten context:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 30*time.Second)\ndefer cancel()\n\n\n// YES, it\u0027s safer to have this before prepareTrace, otherwise Fatal will raise panic and you won\u0027t be able to cleanup.\n// Also, here we pass `cleanupCtx` which is 30 seconds longer\ndefer cont.Command(cleanupCtx, \"rm\", \"-f\", containerPath).Run()\n\n// pass shorten context\ncontainerPath, err :\u003d prepareTrace(ctx, cont, s.DataPath(traceFile))\nif err !\u003d nil {\n\ts.Fatal(\"Failed preparing trace: \", err)\n}\n\n\n\nAlso, there is example in Tast codelab: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup\n\n---------------------\n\n\nThere is a good article about Go context: https://blog.golang.org/context",
+      "parentUuid": "054ec085_da87958a",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
