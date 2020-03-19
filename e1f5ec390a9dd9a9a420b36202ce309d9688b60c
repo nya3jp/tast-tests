@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "639c6ae8_f04334c9",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T21:33:24Z",
+      "side": 1,
+      "message": "Why do you need it here? Do you want to give less time to setupReplay?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e2b0e7_3428af31",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T21:33:24Z",
+      "side": 1,
+      "message": "if prepareTrace will return error, do you need to remove file?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 64
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c400973c_e8e52ef4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T21:33:24Z",
+      "side": 1,
+      "message": "here you used 5 seconds, but above 20? Can you use the same time everywhere? Do you know how long it takes to remove container file?",
+      "range": {
+        "startLine": 180,
+        "startChar": 37,
+        "endLine": 180,
+        "endChar": 50
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

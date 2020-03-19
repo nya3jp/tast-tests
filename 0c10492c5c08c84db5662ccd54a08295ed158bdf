@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7de98e_6173da47",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T21:33:24Z",
+      "side": 0,
+      "message": "not related to CL: This will be called on function exit, probably it\u0027s not what you want/need.\n\nPlease use s.Run instead:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/state.go;l\u003d236\ns.Run already support timing, so you don\u0027t need to care here :)\n\n\nusage example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go;l\u003d88?q\u003d%22s.Run(%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2F",
+      "revId": "0c10492c5c08c84db5662ccd54a08295ed158bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
