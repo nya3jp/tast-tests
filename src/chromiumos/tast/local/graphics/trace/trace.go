@@ -75,15 +75,15 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 	}
 
 	for traceFile, traceName := range traces {
-		shortCtx, st := timing.Start(shortCtx, "trace:"+traceName)
-		defer st.End()
-		perfValues, err := runTrace(shortCtx, cont, s.DataPath(traceFile), traceName)
-		if err != nil {
-			s.Fatal("Failed running trace: ", err)
-		}
-		if err := perfValues.Save(s.OutDir()); err != nil {
-			s.Fatal("Failed saving perf data: ", err)
-		}
+		s.Run(shortCtx, "trace:"+traceName, func(ctx context.Context, s *testing.State) {
+			perfValues, err := runTrace(ctx, cont, s.DataPath(traceFile), traceName)
+			if err != nil {
+				s.Fatal("Failed running trace: ", err)
+			}
+			if err := perfValues.Save(s.OutDir()); err != nil {
+				s.Fatal("Failed saving perf data: ", err)
+			}
+		})
 	}
 }
 
