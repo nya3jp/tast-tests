@@ -142,12 +142,9 @@ type HistogramBucket struct {
 	Count int64 `json:"count"`
 }
 
-// GetHistogram returns the current state of a Chrome histogram (e.g. "Tabs.TabCountActiveWindow").
-// If no samples have been reported for the histogram since Chrome was started, the zero value for
-// Histogram is returned.
-func GetHistogram(ctx context.Context, tconn *chrome.TestConn, name string) (*Histogram, error) {
+func getHistogramInternal(ctx context.Context, tconn *chrome.TestConn, name string, fn string) (*Histogram, error) {
 	h := Histogram{Name: name}
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getHistogram)(%q)`, name)
+	expr := fmt.Sprintf(`tast.promisify(%s)(%q)`, fn, name)
 	if err := tconn.EvalPromise(ctx, expr, &h); err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf("Histogram %s not found", name)) {
 			return &Histogram{Name: name}, nil
@@ -158,6 +155,24 @@ func GetHistogram(ctx context.Context, tconn *chrome.TestConn, name string) (*Hi
 		return nil, errors.Wrapf(err, "bad histogram %v", h)
 	}
 	return &h, nil
+}
+
+// GetHistogram returns the current state of a Chrome histogram (e.g. "Tabs.TabCountActiveWindow").
+// If no samples have been reported for the histogram since Chrome was started, the zero value for
+// Histogram is returned.
+func GetHistogram(ctx context.Context, tconn *chrome.TestConn, name string) (*Histogram, error) {
+	h, err := getHistogramInternal(ctx, tconn, name, "chrome.metricsPrivate.getHistogram")
+
+	// Fallback to old API on error.
+	if err != nil {
+		h, err2 := getHistogramInternal(ctx, tconn, name, "chrome.autotestPrivate.getHistogram")
+		if err2 != nil {
+			return nil, errors.Wrapf(err, "could not get histograms, fallback error %v", err2)
+		}
+		return h, err
+	}
+
+	return h, nil
 }
 
 // WaitForHistogram is a convenience function that calls GetHistogram until the requested histogram is available,
