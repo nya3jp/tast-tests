@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52571cfe_9c966bca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-19T18:00:16Z",
+      "side": 1,
+      "message": "style nit: I guess this struct is unnecessary; you can directly pass []simpleConnectTestCase to Val, and get the value as s.Param().([]simpleConnectTestCase)",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "fa1d804af4215cb38acddb1eabd511e18c188c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fefa85b_39ab0cdf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-19T18:00:16Z",
+      "side": 1,
+      "message": "with subtest (see below for s.Run()), you can simply do s.Fatal() here.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "fa1d804af4215cb38acddb1eabd511e18c188c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c1ec84_fc056bfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-19T18:00:16Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "fa1d804af4215cb38acddb1eabd511e18c188c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef87dad_6ec085c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-19T18:00:16Z",
+      "side": 1,
+      "message": "%v, and pass \"err\", not invoking Error method",
+      "range": {
+        "startLine": 101,
+        "startChar": 57,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "fa1d804af4215cb38acddb1eabd511e18c188c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0153dcce_0b1c3343",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-19T18:00:16Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 9
+      },
+      "revId": "fa1d804af4215cb38acddb1eabd511e18c188c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ef84701_7dc9d863",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-19T18:00:16Z",
+      "side": 1,
+      "message": "nit: no need to say return here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "fa1d804af4215cb38acddb1eabd511e18c188c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7fe6f1b_5accba70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 46
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-19T18:00:16Z",
+      "side": 1,
+      "message": "nit: you might want to use s.Run? i.e.\n\nif !s.Run(ctx, fmt.Sprintf(\"Testcase #%d\", i), func(ctx context.Context, s *testing.State) { testOnce(ctx, tc.apOption, s) }) {\n  return\n}\n\nIt helps for messaging.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "fa1d804af4215cb38acddb1eabd511e18c188c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
