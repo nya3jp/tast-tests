@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48bb017d_5ede271a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-19T15:02:23Z",
+      "side": 1,
+      "message": "Instead of skipping parts of the table at runtime, just use two tables and set them as Val for each test.",
+      "revId": "2b2847347dece64ceb52677d03f38e6e3b369a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1cd8805_39ecbb41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-19T15:02:23Z",
+      "side": 1,
+      "message": "ExtraAttr is not required if the all subtests have the same value. Keep it in the test Attr.",
+      "revId": "2b2847347dece64ceb52677d03f38e6e3b369a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c5ce471_74b595aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-19T15:02:23Z",
+      "side": 1,
+      "message": "nit: tc",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "2b2847347dece64ceb52677d03f38e6e3b369a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791e2305_9663d1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-19T15:02:23Z",
+      "side": 1,
+      "message": "keep the subtest names as they were. The test name already contains blacklist/whitelist.",
+      "revId": "2b2847347dece64ceb52677d03f38e6e3b369a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
