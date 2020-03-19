@@ -22,6 +22,30 @@
       "revId": "50e9a2f36cf3135611c5d3107e1a25ec133ba477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03fdb7d8_168899cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-03-19T08:46:48Z",
+      "side": 1,
+      "message": "Discussed offline, this should indeed be moved. Thanks a lot!",
+      "parentUuid": "671aba66_2c83a366",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 33
+      },
+      "revId": "50e9a2f36cf3135611c5d3107e1a25ec133ba477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
