@@ -423,6 +423,30 @@
       "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e09ad4c_8a76eb1f",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-19T15:48:48Z",
+      "side": 1,
+      "message": "The document says that metrics.Snapshot() should be called.\nWhat I wanted to say is that it looks strange that you have:\n\n```\n{\n  err :\u003d WaitForLogcat()\n\n  metris.Snapshot()\n\n  if err \u003d\u003d nil {\n    break\n  }\n}\n```\n\nI think the check for err should be right after the WaitForLogcat. e.g:\n\n```\n  if err :\u003d WaitForLogcat(); err !\u003d nil {\n    break \n  }\n  \n  ...do metrics snapshot here...\n\n```\n\nOr let me know if I missed something. thanks.",
+      "parentUuid": "6de08401_8bb93c2d",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 63
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
