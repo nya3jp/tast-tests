@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "9ac4c14e_3736fa61",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-19T10:14:25Z",
+      "side": 1,
+      "message": "I\u0027m not totally sure if it\u0027s a property that we should achieve. (apparently, I don\u0027t have it in my cl. if you give a random string in mode, it might pass validate) Especially checking the enum values is quite tedious.\n\nMy thought of the comment is maybe adding a check of VHT settings when mode!\u003dac (e.g. !ac \u0026\u0026 VHTCenterChannel!\u003d0 or ChWidth !\u003d 20or40) which is not caught in any checks for now.",
+      "parentUuid": "e30bcef7_bb9c54d2",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "664f9e4e_054f4064",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
         "patchSetId": 8
