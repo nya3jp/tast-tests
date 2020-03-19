@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e424439_ca4ff564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-03-19T08:58:41Z",
+      "side": 1,
+      "message": "used in",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "4ed2bfac8c803113c737bea5b6fa9dfcbb81878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128c9754_0913ce39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-03-19T08:58:41Z",
+      "side": 1,
+      "message": "move this too.",
+      "range": {
+        "startLine": 116,
+        "startChar": 49,
+        "endLine": 116,
+        "endChar": 65
+      },
+      "revId": "4ed2bfac8c803113c737bea5b6fa9dfcbb81878a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
