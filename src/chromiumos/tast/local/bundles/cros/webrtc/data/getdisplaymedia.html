@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <video id="video" controls autoplay muted></video>
+<script src="third_party/blackframe.js"></script>
+<script>
+
+function start(surface) {
+  return new Promise((resolve, reject) => {
+    const video = document.querySelector('video');
+
+    const displayMediaOptions = {
+      video: {
+        displaySurface: surface
+      },
+      audio: false
+    };
+
+    navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
+      .then(mediaStream => {
+        if (mediaStream.getVideoTracks().length != 1)
+          throw new DOMException("Wrong getVideoTracks() length",
+            "InvalidStateError");
+
+        video.srcObject = mediaStream;
+        const mediaStreamSettings = mediaStream.getVideoTracks()[0]
+          .getSettings();
+        // TODO(crbug.com/1063449) verify
+        // mediaStream.getVideoTracks()[0].getSettings().displaySurface == surface
+
+        video.onplay = () => {
+          video.width = mediaStreamSettings.width;
+          video.height = mediaStreamSettings.height;
+
+          if (isNaN(video.width) || isNaN(video.height) || video
+            .width == 0 || video.height == 0)
+            throw new DOMExpection("Bad stream dimensions, width=" +
+              video.width + ", height=" + video.height);
+
+
+          // getDisplayMedia() can produce very large dimensions, reduce for speed.
+          const width = video.width / 8;
+          const height = video.height / 8;
+
+          const context = new OffscreenCanvas(width, height).getContext('2d');
+          context.drawImage(video, 0, 0, width, height);
+          const imageData = context.getImageData(0, 0, width, height);
+          if (isBlackFrame(imageData.data, imageData.data.length))
+            throw new DOMExpection("Captured data is considered all black");
+
+          setTimeout(()=> {resolve();}, 5000);
+        }
+      })
+      .catch(reject);
+  });
+}
+</script>
+</body>
+</html>
