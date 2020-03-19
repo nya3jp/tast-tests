@@ -448,6 +448,30 @@
       "revId": "d401912e1659b42510a856225f59c97912c247b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92fc79ed_636f9b89",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T19:55:05Z",
+      "side": 1,
+      "message": "Addressed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2110794/1",
+      "parentUuid": "634d02cf_11035a2a",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
