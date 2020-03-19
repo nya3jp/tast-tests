@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68091155_322529ad",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f3a00c_8c3010c8",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 7
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e124ed28_390a256e",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb30338_ade9a540",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "This is copied from go/tast-power-measurements. I have just updated the guide as well",
+      "parentUuid": "e124ed28_390a256e",
+      "range": {
+        "startLine": 36,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3399db3d_d7454a7b",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "Good catch. Actually, ash.EnsureTabletModeEnabled is needed",
+      "parentUuid": "9857f8bf_19c300de",
+      "range": {
+        "startLine": 101,
+        "startChar": 145,
+        "endLine": 101,
+        "endChar": 156
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd0994dd_c8a8816d",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde89d2b_67af1b1c",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "OK. The app loads the textures for example before starting the timer. But starting activity would do as well.",
+      "parentUuid": "dd0994dd_c8a8816d",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 17
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9c2e41d9_e37f7a09",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8589acd_defdf302",
+      "range": {
+        "startLine": 107,
+        "startChar": 45,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41aa8b95_840a4ac0",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2020-03-19T02:51:47Z",
       "side": 1,
       "message": "Waiting for 0 second for a message in logcat sounds wrong. Even if we\u0027re sure that the app emitted a log message, it just means that it\u0027s written to kernel\u0027s logcat buffer, and it does not necessary mean that logcatd has read the message. I think we have to set some reasonable non-zero wait time here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 55
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c749a37f_a0e26a9b",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "0 means no timeout. Rather than putting some random numbers here, I thought it\u0027s better to just use the test\u0027s context timeout.",
+      "parentUuid": "41aa8b95_840a4ac0",
       "range": {
         "startLine": 108,
         "startChar": 42,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1c14ca71_c06e71e3",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9f7272_aead745b",
+      "range": {
+        "startLine": 118,
+        "startChar": 44,
+        "endLine": 118,
+        "endChar": 62
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f53e53e_5177fa75",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de08401_8bb93c2d",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T03:43:48Z",
+      "side": 1,
+      "message": "According to go/tast-power-measurements, \"Throughout your test, and when it’s done, run the following to collect a sample of all metrics:\"",
+      "parentUuid": "3f53e53e_5177fa75",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 63
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
