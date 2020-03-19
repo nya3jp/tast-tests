@@ -22,6 +22,30 @@
       "revId": "3c8db410861411728e596af7534b41cf9de8804d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25eccc2_34164c40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-19T22:45:20Z",
+      "side": 1,
+      "message": "Done. Kinda wish there were a better way to do this :(",
+      "parentUuid": "05aa5877_19e81533",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "3c8db410861411728e596af7534b41cf9de8804d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
