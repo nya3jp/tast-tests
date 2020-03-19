@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "5fc1f5b6_980b6976",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-19T04:19:39Z",
+      "side": 1,
+      "message": "Sorry, I think the root issue is that ctxutil.OptionalTimeout has a confusing behavior. We should not treat time.Duration(0) as infinite duration.\n\nAs I commented in crrev.com/c/2107021, I sent crrev.com/c/2109590 to introduce a constant representing a very long duration. Could you use it with context.WithTimeout instead?",
+      "parentUuid": "c749a37f_a0e26a9b",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 55
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d9f7272_aead745b",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 1
