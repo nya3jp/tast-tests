@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdf692b8_f94ed377",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T17:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5d12b61_3f39436d",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df0d1017_56eece27",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "d401912e1659b42510a856225f59c97912c247b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b95313a_cae0868c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T17:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0d1017_56eece27",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "e0092e31_c7529d3f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T17:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c51e3d1_a4ae9abd",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95be16ca_e068cb22",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T17:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7985a39_621a0d7e",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10618435_74904fd2",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "d401912e1659b42510a856225f59c97912c247b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c8aab2_85defea2",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T17:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10618435_74904fd2",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "e97ca9b6_b3422299",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T17:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54440f2d_4af0626e",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8952995f_a0d84a46",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2020-03-19T11:13:36Z",
       "side": 1,
       "message": "not related to CL: it\u0027s not very safe to put timeout close to context deadline, because you use this context for cleanup. In the worst case, you won\u0027t have time to cleanup.",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4689609d_20a1749e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T17:28:16Z",
+      "side": 1,
+      "message": "The callers have all shortened the deadline by 30 seconds at this point.",
+      "parentUuid": "8952995f_a0d84a46",
       "range": {
         "startLine": 208,
         "startChar": 7,
