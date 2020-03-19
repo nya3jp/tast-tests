@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "d54c934b_fd6dbc76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T16:49:08Z",
+      "side": 1,
+      "message": "My understanding is that the test definition is not allowed to be done in a loop and needs to be declarative, but it that\u0027s different for parameterized tests.",
+      "parentUuid": "10ac959e_c5373be4",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "5c9c3b94ff48ff0c20fafcce31dfde11a36fd984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5dded79_d56daf72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T16:49:08Z",
+      "side": 1,
+      "message": "Why is this an array?\n\nIs the expectation that thre will be multiple TestEntryConfig\u0027s per test?\n\nSo we\u0027d have graphics.TraceReplay.glxgears and it runs multiple traces?  Why not just have individual tests for each trace?  (See https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/2547695/2/src/chromiumos/tast/local/bundles/crosint/graphics/crostini_trace_cpu.go)",
+      "revId": "5c9c3b94ff48ff0c20fafcce31dfde11a36fd984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee1c9c91_21ca4bfb",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
         "patchSetId": 1
@@ -59,6 +100,30 @@
       "writtenOn": "2020-03-19T03:30:18Z",
       "side": 1,
       "message": "This will be the root to the json file/traces.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 100
+      },
+      "revId": "5c9c3b94ff48ff0c20fafcce31dfde11a36fd984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eff9f34_eaabeeb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-19T16:49:08Z",
+      "side": 1,
+      "message": "Does it make sense to have a hardcoded mapping from name to base URL?",
+      "parentUuid": "9b5beb1d_476e222a",
       "range": {
         "startLine": 30,
         "startChar": 7,
