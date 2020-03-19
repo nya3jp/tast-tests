@@ -11,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/testexec"
@@ -59,7 +58,7 @@ func CrasRecord(ctx context.Context, s *testing.State) {
 	}
 
 	// Set timeout to duration + 1s, which is the time buffer to complete the normal execution.
-	runCtx, cancel := ctxutil.OptionalTimeout(ctx, (duration+1)*time.Second)
+	runCtx, cancel := context.WithTimeout(ctx, (duration+1)*time.Second)
 	defer cancel()
 
 	// Record function by CRAS.
