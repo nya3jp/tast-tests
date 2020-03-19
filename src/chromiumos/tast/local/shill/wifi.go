@@ -10,14 +10,13 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 )
 
 // WifiInterface polls the WiFi interface name with timeout.
 // It returns "" with error if no (or more than one) WiFi interface is found.
 func WifiInterface(ctx context.Context, m *Manager, timeout time.Duration) (string, error) {
-	ctx, cancel := ctxutil.OptionalTimeout(ctx, timeout)
+	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	wifiIfaces := func() ([]string, error) {
