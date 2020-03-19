@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10ac959e_c5373be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-19T03:30:18Z",
+      "side": 1,
+      "message": "I assume we can just iterate over a list of names and add them in a loop.",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "5c9c3b94ff48ff0c20fafcce31dfde11a36fd984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1c9c91_21ca4bfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-19T03:30:18Z",
+      "side": 1,
+      "message": "This is going to be the parameter passed to the trace replay.\n\nWe will need a DUT config (say a dictionary of chipset, OS revision etc.)\n\nAnd maybe a revision of the replay to pick.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "5c9c3b94ff48ff0c20fafcce31dfde11a36fd984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b5beb1d_476e222a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-19T03:30:18Z",
+      "side": 1,
+      "message": "This will be the root to the json file/traces.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 100
+      },
+      "revId": "5c9c3b94ff48ff0c20fafcce31dfde11a36fd984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a1576e_5c4294eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-19T03:30:18Z",
+      "side": 1,
+      "message": "In the future we will delete this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "5c9c3b94ff48ff0c20fafcce31dfde11a36fd984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
