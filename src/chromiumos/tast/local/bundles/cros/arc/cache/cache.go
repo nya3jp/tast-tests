@@ -110,7 +110,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		appChimera   = "app_chimera"
 		tmpTarFile   = "/sdcard/Download/temp_gms_caches.tar"
 		packagesPath = "/data/system/packages_copy.xml"
-		gsfDatabase  = "/system/etc/gservices_cache/databases/gservices.db"
+		gsfDatabase  = "/data/data/com.google.android.gsf/databases/gservices.db"
 	)
 
 	chimeraPath := filepath.Join(gmsRoot, appChimera)
