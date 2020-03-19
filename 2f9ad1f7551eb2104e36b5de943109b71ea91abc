@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd079563_6c790782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_mount.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-19T08:11:52Z",
+      "side": 1,
+      "message": "This is because adb commands seem not to be easy to use in the TestMount.PostStart subtest of arc.StartStop.",
+      "range": {
+        "startLine": 48,
+        "startChar": 66,
+        "endLine": 48,
+        "endChar": 80
+      },
+      "revId": "2f9ad1f7551eb2104e36b5de943109b71ea91abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
