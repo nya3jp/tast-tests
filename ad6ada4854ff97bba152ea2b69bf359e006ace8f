@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "41aa8b95_840a4ac0",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-19T02:51:47Z",
+      "side": 1,
+      "message": "Waiting for 0 second for a message in logcat sounds wrong. Even if we\u0027re sure that the app emitted a log message, it just means that it\u0027s written to kernel\u0027s logcat buffer, and it does not necessary mean that logcatd has read the message. I think we have to set some reasonable non-zero wait time here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 55
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d9f7272_aead745b",
         "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
         "patchSetId": 1
