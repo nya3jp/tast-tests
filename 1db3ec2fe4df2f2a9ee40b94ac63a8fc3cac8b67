@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab07c44_c5fa051c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "It is needed as Tablet Mode check is used in \"hulu.go\"",
+      "parentUuid": "da4d7103_83878f20",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d30535b_ba659a75",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8605ca0_8037fd8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d30535b_ba659a75",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 10
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "16729755_9b9a8e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec6652dc_16d91427",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 63
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff7c83dc_66b5fec1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df2b9895_02e0913f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff7c83dc_66b5fec1",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b1457631_8c241219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "It is needed as Tablet Mode check is used in \"hulu.go\"",
+      "parentUuid": "18e63022_daaa7a9d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e20f0e3a_456c58ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9f83311a_f30e22ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20f0e3a_456c58ab",
+      "range": {
+        "startLine": 48,
+        "startChar": 120,
+        "endLine": 48,
+        "endChar": 124
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c7b50da_6cc34842",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 6
@@ -154,6 +298,24 @@
       "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b021d7_565be35e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "I have observed that, on using defer act.Stop(ctx). It is closing the app before entering every sub test. So tests are getting failed. Removed the func as suggested \"moved the code and included defer act.Stop(ctx)\" above test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity) in \"gmail.go\"",
+      "parentUuid": "3c7b50da_6cc34842",
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "01e34610_c2450ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6767792_deb3ea78",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b145fd9_758b40d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 6
@@ -200,6 +386,30 @@
       "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad6b39a_c80b677e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b145fd9_758b40d2",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "6035c484_f1931f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "678ec61b_33a2eaeb",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82ba59e6_58263bca",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 6
@@ -246,6 +480,30 @@
       "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e7428a7_78f58889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-19T00:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ba59e6_58263bca",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 11
+      },
+      "revId": "1db3ec2fe4df2f2a9ee40b94ac63a8fc3cac8b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
