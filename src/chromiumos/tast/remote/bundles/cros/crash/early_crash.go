@@ -54,15 +54,16 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 		Consent: s.Param().(crash_service.SetUpCrashTestRequest_ConsentType),
 	}
 
-	if _, err := fs.SetUp(ctx, &req); err != nil {
-		cl.Close(ctx)
-		s.Fatal("Failed to set up: ", err)
-	}
-
 	// Shorten deadline to leave time for cleanup
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	if _, err := fs.SetUp(ctx, &req); err != nil {
+		s.Error("Failed to set up: ", err)
+		cl.Close(cleanupCtx)
+		return
+	}
 
 	// This is a bit delicate. If the test fails _before_ we panic the machine,
 	// we need to do TearDown then, and on the same connection (so we can close Chrome).
