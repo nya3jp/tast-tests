@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5980837b_f26cd378",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-03-19T01:09:03Z",
+      "side": 1,
+      "message": "nit: s/Camera/camera/",
+      "revId": "2ec1cd6820804d471bcac95d429a78c803b2dee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
