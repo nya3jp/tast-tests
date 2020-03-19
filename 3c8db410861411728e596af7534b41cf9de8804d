@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05aa5877_19e81533",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-19T21:48:27Z",
+      "side": 1,
+      "message": "If the close times out, does this message get printed? Wonder if it should be s.Error() before the Close(), and then a return?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "3c8db410861411728e596af7534b41cf9de8804d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
