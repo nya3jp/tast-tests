@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5d12b61_3f39436d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T11:13:36Z",
+      "side": 1,
+      "message": "nit: if you don\u0027t export this struct to other modules, please rename to `options`",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0d1017_56eece27",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T11:13:36Z",
+      "side": 1,
+      "message": "nit: instead it can be simply: loop *frameLoop\nin this case, you don\u0027t need HasFrameLoop variable and all related to frame loop fields sits together in FrameLoop struct",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7985a39_621a0d7e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T11:13:36Z",
+      "side": 1,
+      "message": "same: it can be `option` if you don\u0027t export this sybmol",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c51e3d1_a4ae9abd",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T11:13:36Z",
+      "side": 1,
+      "message": "nit: why it\u0027s called `c`? looks not very related to *Options",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10618435_74904fd2",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T11:13:36Z",
+      "side": 1,
+      "message": "nit: begin, end, count int",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54440f2d_4af0626e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T11:13:36Z",
+      "side": 1,
+      "message": "By default, it\u0027s false, no need to specify explicitly",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8952995f_a0d84a46",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-19T11:13:36Z",
+      "side": 1,
+      "message": "not related to CL: it\u0027s not very safe to put timeout close to context deadline, because you use this context for cleanup. In the worst case, you won\u0027t have time to cleanup.",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "d401912e1659b42510a856225f59c97912c247b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
