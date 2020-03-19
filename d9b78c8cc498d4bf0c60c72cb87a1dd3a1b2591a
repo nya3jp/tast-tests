@@ -46,6 +46,30 @@
       "revId": "d9b78c8cc498d4bf0c60c72cb87a1dd3a1b2591a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30f1d53_fa3ba501",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-19T08:45:26Z",
+      "side": 1,
+      "message": "Good catch :)",
+      "parentUuid": "9e337e59_ae78bcf5",
+      "range": {
+        "startLine": 9,
+        "startChar": 55,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "d9b78c8cc498d4bf0c60c72cb87a1dd3a1b2591a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
