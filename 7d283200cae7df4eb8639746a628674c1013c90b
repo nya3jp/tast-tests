@@ -16,6 +16,24 @@
       "revId": "7d283200cae7df4eb8639746a628674c1013c90b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3963a95d_34f45d25",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-19T05:05:03Z",
+      "side": 1,
+      "message": "Yes, it is intentional.\nAs the caller may not write all its output in one Write call (depending how it buffers its output), it is possible that the service is not yet ready on the first Write call. In this case, if we return error here, the caller might think the target it is writing is broken/closed and stops. So we should let the Write success and buffer the data in w.buf, then wait for more logs in upcoming Write.",
+      "parentUuid": "73b9fe1b_884ebe6d",
+      "revId": "7d283200cae7df4eb8639746a628674c1013c90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
