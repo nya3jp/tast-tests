@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f2c8b2d_83b95b30",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T04:55:04Z",
+      "side": 1,
+      "message": "It sounds like a great idea. However, I have higher priority tasks in the following week. I would love to implement it if I have the time though.",
+      "parentUuid": "e4c21345_13d1db21",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "e5d4474b402890ad86f24272321d9f0481697266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29bcbf0a_5182e0ca",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "e5d4474b402890ad86f24272321d9f0481697266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0db982_ff273b12",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T04:55:04Z",
+      "side": 1,
+      "message": "Sounds good. Thanks",
+      "parentUuid": "dd358c64_220ee1f3",
+      "range": {
+        "startLine": 72,
+        "startChar": 24,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "e5d4474b402890ad86f24272321d9f0481697266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
