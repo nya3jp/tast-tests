@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "581a40a2_abbe2169",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-19T01:56:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure if VHTChWidth and VHTCenterChannel also worth a check here.",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664f9e4e_054f4064",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-19T01:56:30Z",
+      "side": 1,
+      "message": "Maybe some testcases for the newly added ac configs?",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
