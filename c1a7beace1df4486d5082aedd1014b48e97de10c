@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "464d1f47_50b7dee0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-19T10:45:11Z",
+      "side": 1,
+      "message": "Wow. It was a long time ago:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1989649/8#message-167ec2e5e3d062ac688c90807457a46ea1b0524d",
+      "parentUuid": "ac00a138_1c1453bb",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "581a40a2_abbe2169",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 8
