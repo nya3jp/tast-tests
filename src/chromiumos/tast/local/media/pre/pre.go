@@ -65,6 +65,13 @@ func ChromeVideoWithFakeWebcamAndVP9VaapiEncoder() testing.Precondition {
 
 var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndVP9VaapiEncoder", chromeVModuleArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
 
+// ChromeScreenCapture returns a precondition so that Chrome always picks
+// the entire screen for getDisplayMedia(), bypassing the picker UI.
+func ChromeScreenCapture() testing.Precondition { return chromeScreenCapturePre }
+
+var chromeScreenCapturePre = chrome.NewPrecondition("screenCapturePre",
+	chrome.ExtraArgs(`--auto-select-desktop-capture-source=Built-in display`))
+
 // ChromeVideoVD returns a precondition similar to ChromeVideo specified above.
 // In addition this precondition specifies that the new
 // media::VideoDecoder-based video decoders need to used (see go/vd-migration).
