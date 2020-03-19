@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "43988c5a_bbfbc91b",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T00:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "079dba1a_60bce654",
+      "range": {
+        "startLine": 400,
+        "startChar": 5,
+        "endLine": 400,
+        "endChar": 18
+      },
+      "revId": "09a1f43ab2732c7684a4db6d1bcc11544c797167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e509afbc_03454ce7",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "481260bf_2a0b915d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T00:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f58bd587_e1db50f9",
+      "range": {
+        "startLine": 472,
+        "startChar": 32,
+        "endLine": 472,
+        "endChar": 56
+      },
+      "revId": "09a1f43ab2732c7684a4db6d1bcc11544c797167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e31edf24_25b2d3e5",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 4
@@ -86,6 +134,24 @@
       "revId": "09a1f43ab2732c7684a4db6d1bcc11544c797167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1045455_620a8672",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-19T00:46:47Z",
+      "side": 1,
+      "message": "I thought no task info is a bit unclear, but I guess it doesn\u0027t matter as we are always wrapping it with the detailed error message",
+      "parentUuid": "e31edf24_25b2d3e5",
+      "revId": "09a1f43ab2732c7684a4db6d1bcc11544c797167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
