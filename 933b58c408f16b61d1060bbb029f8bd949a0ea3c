@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8aedb9_1c1e516d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-20T00:07:44Z",
+      "side": 1,
+      "message": "nit:\ncould you also add in the commit description that some fatals are treated as errors?",
+      "range": {
+        "startLine": 7,
+        "startChar": 48,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "933b58c408f16b61d1060bbb029f8bd949a0ea3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
