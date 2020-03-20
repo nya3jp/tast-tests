@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22ab1c5d_725e7783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-03-20T12:31:32Z",
+      "side": 1,
+      "message": "Would it make sense to qualify this, such as authServerCert or serverCert ?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e4e97d4_4fb71918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-03-20T12:31:32Z",
+      "side": 1,
+      "message": "supernit: This is wrapped weirdly in gerrit, do we have a different line number limit for Go than Gerrit uses by default?",
+      "range": {
+        "startLine": 77,
+        "startChar": 107,
+        "endLine": 77,
+        "endChar": 110
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ed9fe8_5c483e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-03-20T12:31:32Z",
+      "side": 1,
+      "message": "Is this actually standard practice or should there be some pre- / post- test hooks that always run and do such clean up?\nAfter all such leftover state could also affect other tests (in theory unrelated to Ethernet EAP) in some ways.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
