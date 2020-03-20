@@ -84,6 +84,48 @@
     },
     {
       "key": {
+        "uuid": "4b11832f_710abb56",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T17:40:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "059b1c47_fc6fb021",
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ae4ab9f_15624cb4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T17:40:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8e2f142_3338cf80",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 64
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad3ecc5_dc6ced86",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -222,6 +264,54 @@
       "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49926c60_9e2e6894",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T17:40:34Z",
+      "side": 1,
+      "message": "I meant:\n\nif cmdErr :\u003d cont.Command(ctx, \"rm\", \"-f\", containerPath).Run(); cmdErr !\u003d nil {\n  testing.ContextLog(ctx, ....)\n}",
+      "parentUuid": "67f8d6a7_08a08a32",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 14
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6377bc8_25e182e6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T17:40:34Z",
+      "side": 1,
+      "message": "you can introduce clean up context. Or just keep as it is and once you will have issues with deadlines, introduce clean up context",
+      "parentUuid": "1df7f2f7_3e619f9b",
+      "range": {
+        "startLine": 197,
+        "startChar": 15,
+        "endLine": 197,
+        "endChar": 18
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
