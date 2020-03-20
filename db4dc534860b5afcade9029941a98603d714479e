@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79b4ce24_fd44bc82",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:46:25Z",
+      "side": 1,
+      "message": "if error happened, you can log it using testing.ContextLog",
+      "range": {
+        "startLine": 448,
+        "startChar": 82,
+        "endLine": 448,
+        "endChar": 92
+      },
+      "revId": "db4dc534860b5afcade9029941a98603d714479e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
