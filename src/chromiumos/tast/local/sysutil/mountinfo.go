@@ -5,8 +5,8 @@
 package sysutil
 
 import (
-	"bufio"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"regexp"
 	"strconv"
@@ -174,6 +174,23 @@ func parseLine(line string) (MountInfo, error) {
 		superOpts}, nil
 }
 
+// ParseMountInfo parses the content of a mountinfo file using parseLine, and
+// returns an array of mount point info.
+func ParseMountInfo(b []byte) ([]MountInfo, error) {
+	var result []MountInfo
+	for _, line := range strings.Split(string(b), "\n") {
+		if line == "" {
+			continue
+		}
+		info, err := parseLine(line)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parse mount info")
+		}
+		result = append(result, info)
+	}
+	return result, nil
+}
+
 const (
 	// SelfPID can be used as an argument of MountInfoForPID to return
 	// the result for the current process.
@@ -188,23 +205,11 @@ func MountInfoForPID(pid int) ([]MountInfo, error) {
 		pid = os.Getpid()
 	}
 	path := fmt.Sprintf("/proc/%d/mountinfo", pid)
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, errors.Wrap(err, "Failed to open: "+path)
-	}
-	defer f.Close()
 
-	var result []MountInfo
-	s := bufio.NewScanner(f)
-	for s.Scan() {
-		info, err := parseLine(s.Text())
-		if err != nil {
-			return nil, err
-		}
-		result = append(result, info)
+	b, err := ioutil.ReadFile(path)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read: "+path)
 	}
-	if err := s.Err(); err != nil {
-		return nil, errors.Wrap(err, "Failed to scan: "+path)
-	}
-	return result, nil
+
+	return ParseMountInfo(b)
 }
