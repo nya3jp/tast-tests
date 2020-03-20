@@ -48,7 +48,8 @@ function randomSeek() {
     };
     video.onerror = (event) => {
       // |event| is a MediaError which has |code| and |message|.
-      reject(new Error('Video error: ' + event.message));
+      reject(new Error('onerror event message: ' + event.message +
+                       ', video.error.message: ' + video.error.message));
     };
     video.currentTime = random() * video.duration;
   });
