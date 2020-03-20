@@ -411,8 +411,9 @@ func TestConfigFormat(t *testing.T) {
 
 func TestFreqOptions(t *testing.T) {
 	testcases := []struct {
-		conf   *Config
-		expect []iw.SetFreqOption
+		conf       *Config
+		shouldFail bool
+		expect     []iw.SetFreqOption
 	}{
 		{
 			conf: &Config{
@@ -448,6 +449,47 @@ func TestFreqOptions(t *testing.T) {
 			},
 			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Minus)},
 		},
+		{
+			conf: &Config{
+				Ssid:       "ssid",
+				Mode:       Mode80211acMixed,
+				Channel:    157,
+				HTCaps:     HTCapHT40Plus,
+				VHTChWidth: VHTChWidth20Or40,
+			},
+			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Plus)},
+		},
+		{
+			conf: &Config{
+				Ssid:       "ssid",
+				Mode:       Mode80211acMixed,
+				Channel:    157,
+				HTCaps:     HTCapHT40Plus,
+				VHTChWidth: VHTChWidth80,
+			},
+			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidth80)},
+		},
+		{
+			conf: &Config{
+				Ssid:       "ssid",
+				Mode:       Mode80211acMixed,
+				Channel:    108,
+				HTCaps:     HTCapHT40Plus,
+				VHTChWidth: VHTChWidth160,
+			},
+			expect: []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidth160)},
+		},
+		{
+			// 80+80 not yet supported.
+			conf: &Config{
+				Ssid:       "ssid",
+				Mode:       Mode80211acMixed,
+				Channel:    157,
+				HTCaps:     HTCapHT40Plus,
+				VHTChWidth: VHTChWidth80Plus80,
+			},
+			shouldFail: true,
+		},
 	}
 
 	equal := func(a, b []iw.SetFreqOption) bool {
@@ -463,7 +505,17 @@ func TestFreqOptions(t *testing.T) {
 	}
 
 	for i, tc := range testcases {
-		ops := tc.conf.PcapFreqOptions()
+		ops, err := tc.conf.PcapFreqOptions()
+		if tc.shouldFail {
+			if err == nil {
+				t.Errorf("testcase #%d should fail", i)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("testcase #%d failed with err=%v", i, err)
+			continue
+		}
 		if !equal(ops, tc.expect) {
 			t.Errorf("testcase #%d failed, got %v, want %v", i, ops, tc.expect)
 		}
