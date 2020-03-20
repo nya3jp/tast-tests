@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/hello_world_arm_20200327",
+  "size": 5604,
+  "sha256sum": "17cdc02678f613da7e65452dda04dab70ef3a56f2de5a2c297680e92266dbd4b"
+}
