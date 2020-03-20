@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1c89ec66_b113803d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:34:19Z",
+      "side": 1,
+      "message": "`ctx` used only in setupReplay\n`shortCtx` used everywhere else after setupReplay which means that you just decrease running deadline for this function for no reason. Usually this time used to clean up.\n\n\nThere was reason for this context before, because there were some clean up before and longer context was used for proper clean up:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1733802/\n\nPo-Hsien, do we still need this context? Can you please create CL to remove it?",
+      "parentUuid": "8b17ef31_d8e27021",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33e2b0e7_3428af31",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "9be8838f_b928c513",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:34:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6fd9a565_6188a96a",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 64
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3015bde7_5908e3ae",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -140,6 +188,30 @@
       "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1b71ef3_5b47a250",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:34:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04fa1262_84250fc9",
+      "range": {
+        "startLine": 119,
+        "startChar": 39,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
