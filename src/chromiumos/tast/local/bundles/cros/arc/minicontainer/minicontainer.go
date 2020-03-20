@@ -81,29 +81,16 @@ func testCoreServices(ctx context.Context, s *testing.State) {
 		"servicemanager",
 		"surfaceflinger",
 		"vold",
-	}
-
-	ver, err := arc.SDKVersion()
-	if err != nil {
-		s.Error("Failed to get SDK version: ", err)
-		return
-	}
-	if ver == arc.SDKN {
-		// debuggerd was removed in Android P.
-		targets = append(targets, "debuggerd")
-	} else {
-		// Android P has a lot more services running.
-		targets = append(targets,
-			"android.hardware.audio@2.0-service-bertha",
-			"android.hardware.cas@1.0-service",
-			"android.hardware.configstore@1.1-service",
-			"android.hardware.graphics.allocator@2.0-service",
-			"android.hidl.allocator@1.0-service",
-			"audioserver",
-			"hwservicemanager",
-			"thermalserviced",
-			"ueventd",
-			"vndservicemanager")
+		"android.hardware.audio@2.0-service-bertha",
+		"android.hardware.cas@1.0-service",
+		"android.hardware.configstore@1.1-service",
+		"android.hardware.graphics.allocator@2.0-service",
+		"android.hidl.allocator@1.0-service",
+		"audioserver",
+		"hwservicemanager",
+		"thermalserviced",
+		"ueventd",
+		"vndservicemanager",
 	}
 
 	for _, target := range targets {
@@ -223,15 +210,7 @@ func testCPUSet(ctx context.Context, s *testing.State) {
 	s.Log("Running testCPUSet")
 
 	// Verify that /dev/cpuset is properly set up.
-	types := []string{"foreground", "background", "system-background", "top-app"}
-	if ver, err := arc.SDKVersion(); err != nil {
-		s.Error("Failed to find SDKVersion: ", err)
-		return
-	} else if ver == arc.SDKN {
-		types = append(types, "foreground/boost")
-	} else if ver >= arc.SDKP {
-		types = append(types, "restricted")
-	}
+	types := []string{"foreground", "background", "system-background", "top-app", "restricted"}
 
 	for _, t := range types {
 		path := fmt.Sprintf("/dev/cpuset/%s/effective_cpus", t)
