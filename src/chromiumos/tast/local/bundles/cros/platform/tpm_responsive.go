@@ -19,8 +19,8 @@ func init() {
 		Func: TPMResponsive,
 		Desc: "Checks that TPM is responsive",
 		Contacts: []string{
-			"semenzato@chromium.org", // Original autotest author
-			"nya@chromium.org",       // Tast port author
+			"apronin@chromium.org",
+			"nya@chromium.org", // Tast port author
 		},
 		SoftwareDeps: []string{"tpm"},
 		Attr:         []string{"group:mainline"},
