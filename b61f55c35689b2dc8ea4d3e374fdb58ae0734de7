@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "33d6f922_066c44ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-20T21:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74c440c9_df28bfa4",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38bb974c_2acc8eb6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 5
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ba77ad03_85d0f340",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-20T21:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38bb974c_2acc8eb6",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 20
+      },
+      "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e48d3d6_f52340c1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 5
@@ -91,6 +139,30 @@
       "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b15684_999163e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-20T21:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e48d3d6_f52340c1",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
