@@ -6,11 +6,14 @@ package hwsec
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -54,7 +57,12 @@ func CryptohomeTPMLiveTests(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
 
-	if _, err := cmdRunner.Run(ctx, "cryptohome-tpm-live-test", "--tpm2_use_system_owner_password"); err != nil {
+	if out, err := testexec.CommandContext(ctx, "cryptohome-tpm-live-test", "--tpm2_use_system_owner_password").CombinedOutput(); err != nil {
+		logFile := filepath.Join(s.OutDir(), "tpm_live_test_output.txt")
+		if writeErr := ioutil.WriteFile(logFile, out, 0644); writeErr != nil {
+			s.Errorf("Failed to write to %s: %v", logFile, writeErr)
+		}
+
 		s.Fatal("TPM live test failed: ", err)
 	}
 }
