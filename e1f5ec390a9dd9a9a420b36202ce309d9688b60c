@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b17ef31_d8e27021",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T00:08:09Z",
+      "side": 1,
+      "message": "This is the original logic that was here before.\n\nI was trying to make some minor changes here not get caught up in yak shaving.",
+      "parentUuid": "639c6ae8_f04334c9",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33e2b0e7_3428af31",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-19T21:33:24Z",
       "side": 1,
       "message": "if prepareTrace will return error, do you need to remove file?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 64
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd9a565_6188a96a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T00:08:09Z",
+      "side": 1,
+      "message": "I\u0027ve prepared another change to handle cleanup in error cases.",
+      "parentUuid": "33e2b0e7_3428af31",
       "range": {
         "startLine": 112,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "04fa1262_84250fc9",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T00:08:09Z",
+      "side": 1,
+      "message": "Trying to fully consume CPUs to stress the system from a thermal standpoint.  top shows CPU utilization as I would expect on hatch.  Here\u0027s with cpuThreads \u003d\u003d 3.\n\n  PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n15403 root      20   0  122256  20524  13840 S 299.3   0.1   0:23.10 crosint",
+      "parentUuid": "3015bde7_5908e3ae",
+      "range": {
+        "startLine": 119,
+        "startChar": 39,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c400973c_e8e52ef4",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-03-19T21:33:24Z",
       "side": 1,
       "message": "here you used 5 seconds, but above 20? Can you use the same time everywhere? Do you know how long it takes to remove container file?",
+      "range": {
+        "startLine": 180,
+        "startChar": 37,
+        "endLine": 180,
+        "endChar": 50
+      },
+      "revId": "e1f5ec390a9dd9a9a420b36202ce309d9688b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351c2a0f_e90c21e2",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T00:08:09Z",
+      "side": 1,
+      "message": "I didn\u0027t create the original 30 second and not sure if it\u0027s purpose.\n\n5 seconds seems more than enough time to remove the container file so it\u0027s what I picked with this function.",
+      "parentUuid": "c400973c_e8e52ef4",
       "range": {
         "startLine": 180,
         "startChar": 37,
