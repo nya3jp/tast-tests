@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8269e3c5_8c9c8328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-03-20T08:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3afbb2c2_7dd40fc3",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "aa473500060b4653fc68ea7ade0a5e8873bf7012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff97e758_53d0aa48",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "aa473500060b4653fc68ea7ade0a5e8873bf7012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "604b90d4_2a5d7e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-03-20T08:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff97e758_53d0aa48",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "aa473500060b4653fc68ea7ade0a5e8873bf7012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -103,6 +151,30 @@
       "revId": "aa473500060b4653fc68ea7ade0a5e8873bf7012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9b01ed_db8f3d70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-03-20T08:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf1c5f5_99871d2a",
+      "range": {
+        "startLine": 124,
+        "startChar": 20,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "aa473500060b4653fc68ea7ade0a5e8873bf7012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
