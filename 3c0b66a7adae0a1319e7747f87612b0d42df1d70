@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b6d76d8_8a0e6cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-20T22:04:21Z",
+      "side": 1,
+      "message": "nit:\nperhaps \"In ARC P or later\" ?",
+      "range": {
+        "startLine": 464,
+        "startChar": 7,
+        "endLine": 464,
+        "endChar": 12
+      },
+      "revId": "3c0b66a7adae0a1319e7747f87612b0d42df1d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
