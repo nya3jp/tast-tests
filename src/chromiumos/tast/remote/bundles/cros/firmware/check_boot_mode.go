@@ -21,6 +21,7 @@ func init() {
 		Func:        CheckBootMode,
 		Desc:        "Verifies that remote tests can check whether the DUT is in normal, dev, and recovery mode",
 		Contacts:    []string{"chromeos-engprod@google.com"},
+		Data:        []string{"fw-testing-configs", "fw-testing-configs/DEFAULTS.json"},
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
 		Attr:        []string{"group:mainline", "informational"},
 	})
@@ -70,7 +71,7 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	s.Logf("Platform name: %s", r.Platform)
 
 	// Exercise the creation of the config struct, which will be needed for mode-switching reboots.
-	c, err := firmware.NewConfig()
+	c, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir))
 	if err != nil {
 		s.Fatal("Error during NewConfig: ", err)
 	}
