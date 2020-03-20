@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "059b1c47_fc6fb021",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T16:30:12Z",
+      "side": 1,
+      "message": "Compressed file is removed by decompressTrace.  Normal behaviour for gunzip or bunzip2 (or zstd with --rm) is to delete the compressed file.  Error cases handle it otherwise.",
+      "parentUuid": "ee6ee14b_68fdc9c4",
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e2f142_3338cf80",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T16:30:12Z",
+      "side": 1,
+      "message": "Caller is responsible for cleaning up decompressed file.  decompressTrace handles clean up in errors and of the compressed file.",
+      "parentUuid": "6115a320_436fd244",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 64
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad3ecc5_dc6ced86",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a11f102_260416ef",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T16:30:12Z",
+      "side": 1,
+      "message": "It\u0027s not part of the contract of the function (nor is it implemented).",
+      "parentUuid": "dad3ecc5_dc6ced86",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 46
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +165,54 @@
       "writtenOn": "2020-03-20T00:58:20Z",
       "side": 1,
       "message": "you can check error and log it using testing.ContextLog",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 14
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df7f2f7_3e619f9b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T16:30:12Z",
+      "side": 1,
+      "message": "There\u0027s no cleanup context here.",
+      "parentUuid": "f6572454_72113489",
+      "range": {
+        "startLine": 197,
+        "startChar": 15,
+        "endLine": 197,
+        "endChar": 18
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f8d6a7_08a08a32",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2020-03-20T16:30:12Z",
+      "side": 1,
+      "message": "I don\u0027t follow what you mean here?  The error is being returned below.  I\u0027m not really worried about the clean up in the error cases, because to be honest, it\u0027s likely foolish to re-use the container after a random failure of a test, so it\u0027s just going to be wiped and restarted and the file will be gone next time anyways.",
+      "parentUuid": "e7d869e8_452467c2",
       "range": {
         "startLine": 197,
         "startChar": 2,
