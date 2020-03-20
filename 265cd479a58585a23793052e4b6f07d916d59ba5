@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5075247_1dd7aa42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1223189
+      },
+      "writtenOn": "2020-03-20T19:35:26Z",
+      "side": 1,
+      "message": "Maybe explicit check if it\u0027s arm and return early if it\u0027s not arm?\nThen we have can stronger check to make sure we\u0027ve seen \"CPU part\" string when parsing\ncpuinfo.\nThere should be some tast api can return arch, in the worst case, we can use \"uname -m\" returns aarch64 or arm* for arm",
+      "revId": "265cd479a58585a23793052e4b6f07d916d59ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
