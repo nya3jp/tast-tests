@@ -22,6 +22,30 @@
       "revId": "caedbc9a6bdc9e5a67397c8f93fa2b5d18cf5c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b07520f_1a05eabe",
+        "filename": "src/chromiumos/tast/common/network/daemonutil/ready_writer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-20T02:12:53Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Done.",
+      "parentUuid": "385ac537_4303cd1a",
+      "range": {
+        "startLine": 49,
+        "startChar": 31,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "caedbc9a6bdc9e5a67397c8f93fa2b5d18cf5c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
