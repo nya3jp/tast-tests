@@ -258,14 +258,16 @@ func decompressTrace(ctx context.Context, cont *vm.Container, traceFile string) 
 		decompressFile = traceFile
 	case ".bz2":
 		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
-		if _, err := cont.Command(ctx, "bunzip2", traceFile).CombinedOutput(testexec.DumpLogOnError); err != nil {
+		if out, err := cont.Command(ctx, "bunzip2", traceFile).CombinedOutput(testexec.DumpLogOnError); err != nil {
 			cont.Command(ctx, "rm", "-f", decompressFile).Run()
+			testing.ContextLog(ctx, string(out))
 			return "", errors.Wrap(err, "failed to decompress bz2")
 		}
 	case ".zst", ".xz":
 		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
-		if _, err := cont.Command(ctx, "zstd", "-d", "-f", "--rm", "-T0", traceFile).CombinedOutput(testexec.DumpLogOnError); err != nil {
+		if out, err := cont.Command(ctx, "zstd", "-d", "-f", "--rm", "-T0", traceFile).CombinedOutput(testexec.DumpLogOnError); err != nil {
 			cont.Command(ctx, "rm", "-f", decompressFile).Run()
+			testing.ContextLog(ctx, string(out))
 			return "", errors.Wrap(err, "failed to decompress zst")
 		}
 	default:
