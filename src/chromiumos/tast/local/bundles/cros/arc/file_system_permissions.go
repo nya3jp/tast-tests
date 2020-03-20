@@ -73,19 +73,6 @@ func FileSystemPermissions(ctx context.Context, s *testing.State) {
 		{"/sys/kernel/debug/tracing", aidUnknown, aidUnknown, "755"},
 	}
 
-	if ver, err := arc.SDKVersion(); err != nil {
-		s.Fatal("Failed to get ARC SDK version: ", err)
-	} else if ver == arc.SDKN {
-		// /cache directory mount was removed in ARC P.
-		expectMounts["/cache"] = sysutil.MntNoexec | sysutil.MntNosuid | sysutil.MntNodev
-		expectPerms = append(expectPerms, struct {
-			path string
-			uid  string
-			gid  string
-			perm string
-		}{"/cache", aidSystem, aidCache, "770"})
-	}
-
 	for _, m := range mounts {
 		e, ok := expectMounts[m.MountPath]
 		if !ok {
