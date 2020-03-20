@@ -68,16 +68,6 @@ func adbdMounts(ctx context.Context) ([]sysutil.MountInfo, error) {
 // In ARC N, it returns a list of mount point info for sdcard daemon's mount
 // namespace. In ARC P, it returns a list of esdfs typed mount points.
 func sdcardMounts() ([]sysutil.MountInfo, error) {
-	v, err := arc.SDKVersion()
-	if err != nil {
-		return nil, err
-	}
-	if v == arc.SDKN {
-		// In ARC N, sdcard daemon is used. Return the mount points
-		// in the mount namespace for the daemon.
-		return mountsForMinijail("/run/arc/sdcard.pid")
-	}
-
 	// In ARC P, esdfs is used. Returns the mount points of esdfs file
 	// system type.
 	global, err := sysutil.MountInfoForPID(sysutil.SelfPID)
@@ -419,9 +409,7 @@ func testSDCard(ctx context.Context, s *testing.State, sdcard []sysutil.MountInf
 	// In ARC Q, the follow points are also shared:
 	// - /run/arc/sdcard/full/$label
 	pat := `^/mnt/runtime(/(default|read|write)/[^/]+)?$`
-	if ver >= arc.SDKP {
-		pat += `|^/run/arc/sdcard(/(default|read|write)/[^/]+)?$`
-	}
+	pat += `|^/run/arc/sdcard(/(default|read|write)/[^/]+)?$`
 	if ver >= arc.SDKQ {
 		pat += `|^/run/arc/sdcard/full/[^/]+$`
 	}
@@ -472,18 +460,13 @@ func testMountShared(ctx context.Context, s *testing.State, arcMs, adbd, sdcard,
 		// needs to have hardware and kernel support.
 		ignored["/dev/usb-ffs/adb"] = struct{}{}
 	}
-	ver, err := arc.SDKVersion()
-	if err != nil {
-		s.Error("Failed to get SDK version: ", err)
-		return
-	}
-	if ver >= arc.SDKP {
-		// In ARC P, ignore initial tmpfs mount for /run/arc/sdcard
-		// because it is slave mount but has the initns as its parent.
-		ignored["/var/run/arc/sdcard"] = struct{}{}
-		// Ignore unix domain socket for ADB communication.
-		ignored["/var/run/arc/adb"] = struct{}{}
-	}
+
+	// In ARC P or later, ignore initial tmpfs mount for /run/arc/sdcard
+	// because it is slave mount but has the initns as its parent.
+	ignored["/var/run/arc/sdcard"] = struct{}{}
+	// Ignore unix domain socket for ADB communication.
+	ignored["/var/run/arc/adb"] = struct{}{}
+
 	if len(ignored) > 0 {
 		var paths []string
 		for p := range ignored {
