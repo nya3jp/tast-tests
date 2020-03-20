@@ -206,6 +206,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// First: scroll by click. Clicking the second one, clicking the first one to
 	// go back, clicking the last one to long-jump, clicking the first one again
 	// to long-jump back to the original page.
+	s.Log("Starting the scroll by click")
 	hists, err := metrics.Run(ctx, tconn, func() error {
 		for step, idx := range []int{1, 0, len(pageButtons) - 1, 0} {
 			if err := clickPageButtonAndWait(ctx, pageButtons[idx]); err != nil {
@@ -220,7 +221,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	for _, hist := range hists {
 		mean, err := hist.Mean()
 		if err != nil {
-			s.Fatal("Failed to find the histogram data: ", err)
+			s.Fatalf("Failed to find the histogram data for %s: %v", hist.Name, err)
 		}
 		pv.Set(perf.Metric{
 			Name:      hist.Name,
@@ -240,18 +241,22 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// there's a physical display because the metrics rely on the presentation
 	// callback from the display.
 	if connected {
+		s.Log("Starting the scroll by drags")
 		if err := clickPageButtonAndWait(ctx, pageButtons[1]); err != nil {
 			s.Fatal("Failed to switch to the second page: ", err)
 		}
 		appsGridLocation := appsGridView.Location
-		// drag-up gesture positions; starting at the bottom of the apps-grid (but
-		// not at the edge), and moves the height of the apps-grid. The X position
-		// should not be the center of the width since it would fall into an app
-		// icon. For now, it just sets 2/5 width position to avoid app icons.
+		// drag-up gesture positions; starting at a bottom part of the apps-grid (at
+		// 4/5 height), and moves the height of the apps-grid. The starting height
+		// shouldn't be very bottom of the apps-grid, since it may fall into the
+		// hotseat (the gesture won't cause page-switch in such case).
+		// The X position should not be the center of the width since it would fall
+		// into an app icon. For now, it just sets 2/5 width position to avoid app
+		// icons.
 		dragUpStart := coords.NewPoint(
 			appsGridLocation.Left+appsGridLocation.Width*2/5,
-			appsGridLocation.Top+appsGridLocation.Height-1)
-		dragUpEnd := coords.NewPoint(dragUpStart.X, appsGridLocation.Top-1)
+			appsGridLocation.Top+appsGridLocation.Height*4/5)
+		dragUpEnd := coords.NewPoint(dragUpStart.X, dragUpStart.Y-appsGridLocation.Height)
 
 		// drag-down gesture positions; starting at the top of the apps-grid (but
 		// not at the edge), and moves to the bottom edge of the apps-grid. Same
@@ -287,9 +292,10 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to run the test scenario: ", err)
 		}
 		for _, hist := range hists {
+			s.Log(hist)
 			mean, err := hist.Mean()
 			if err != nil {
-				s.Fatal("Failed to find the histogram data: ", err)
+				s.Fatalf("Failed to find the histogram data for %s: %v", hist.Name, err)
 			}
 			pv.Set(perf.Metric{
 				Name:      hist.Name,
