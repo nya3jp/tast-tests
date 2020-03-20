@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6115a320_436fd244",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:58:20Z",
+      "side": 1,
+      "message": "So, caller is responsible for cleaning decompressed file, are you OK to keep compressed file in the container?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 64
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6ee14b_68fdc9c4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:58:20Z",
+      "side": 1,
+      "message": "Caller remove only decompressed file, are you OK with keeping compressed file in the container?",
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad3ecc5_dc6ced86",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:58:20Z",
+      "side": 1,
+      "message": "Can you please explain why?",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 46
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6572454_72113489",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:58:20Z",
+      "side": 1,
+      "message": "nit: here can be clean up context",
+      "range": {
+        "startLine": 197,
+        "startChar": 15,
+        "endLine": 197,
+        "endChar": 18
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d869e8_452467c2",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-20T00:58:20Z",
+      "side": 1,
+      "message": "you can check error and log it using testing.ContextLog",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 14
+      },
+      "revId": "7ecf8859f54dad63bfd931fdec906fddcbbf20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
