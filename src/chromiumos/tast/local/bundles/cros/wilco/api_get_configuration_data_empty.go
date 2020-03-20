@@ -15,8 +15,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APIGetConfigurationData,
-		Desc: "Test sending GetConfigurationData gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
+		Func: APIGetConfigurationDataEmpty,
+		Desc: "Test sending GetConfigurationData gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon when not enrolled",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
 			"pmoy@chromium.org",   // wilco_dtc_supportd author
@@ -29,7 +29,7 @@ func init() {
 	})
 }
 
-func APIGetConfigurationData(ctx context.Context, s *testing.State) {
+func APIGetConfigurationDataEmpty(ctx context.Context, s *testing.State) {
 	request := dtcpb.GetConfigurationDataRequest{}
 	response := dtcpb.GetConfigurationDataResponse{}
 
