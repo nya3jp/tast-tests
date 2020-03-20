@@ -249,19 +249,31 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 // PcapFreqOptions returns the options for the caller to set frequency with iw for
 // preparing interface for packet capturing.
-func (c *Config) PcapFreqOptions() []iw.SetFreqOption {
-	if c.is80211n() {
+func (c *Config) PcapFreqOptions() ([]iw.SetFreqOption, error) {
+	if c.is80211ac() {
+		switch c.VHTChWidth {
+		case VHTChWidth80:
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidth80)}, nil
+		case VHTChWidth160:
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidth160)}, nil
+		case VHTChWidth80Plus80:
+			return nil, errors.New("unsupported 80+80 channel width")
+		}
+		// fallthrough VHTChWidth20Or40.
+	}
+	if c.is80211n() || c.is80211ac() {
+		// 80211n or 80211ac with VHTChWidth20Or40.
 		ht := c.htMode()
 		switch ht {
 		case HTCapHT40Minus:
-			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Minus)}
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Minus)}, nil
 		case HTCapHT40Plus:
-			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Plus)}
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT40Plus)}, nil
 		default:
-			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT20)}
+			return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthHT20)}, nil
 		}
 	}
-	return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthNOHT)}
+	return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthNOHT)}, nil
 }
 
 // validate validates the Config, c.
