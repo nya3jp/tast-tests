@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15c0290d_c6d6a285",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-20T15:57:34Z",
+      "side": 1,
+      "message": "nit: The convention in git is to wrap around 72 characters in the line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 121
+      },
+      "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74c440c9_df28bfa4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-20T15:57:34Z",
+      "side": 1,
+      "message": "nit: use a local constant in this function here and L90",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bb974c_2acc8eb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-20T15:57:34Z",
+      "side": 1,
+      "message": "Could you extract this to a function to deduplicate?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 20
+      },
+      "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e48d3d6_f52340c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-20T15:57:34Z",
+      "side": 1,
+      "message": "nit: maybe remove \"test\", since the intention is not testing the functionality but to reset?",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "b61f55c35689b2dc8ea4d3e374fdb58ae0734de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
