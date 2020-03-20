@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "c6a5cc2e_fb5112fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-20T08:01:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464d1f47_50b7dee0",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "581a40a2_abbe2169",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 8
@@ -108,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "a6d52f89_92e47771",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-20T08:01:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac4c14e_3736fa61",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "664f9e4e_054f4064",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
         "patchSetId": 8
@@ -140,6 +176,24 @@
       "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178ab70c_2601b7c8",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-20T08:01:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b6cb2d_099fdee1",
+      "revId": "c1a7beace1df4486d5082aedd1014b48e97de10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
