@@ -46,6 +46,30 @@
       "revId": "034f7b50cc6a17b97b58120b35824d9ff0cba86d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3783a7c_5e7416b3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-20T20:53:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5b48aab_2645e2b3",
+      "range": {
+        "startLine": 263,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 39
+      },
+      "revId": "034f7b50cc6a17b97b58120b35824d9ff0cba86d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
