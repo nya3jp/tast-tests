@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "079f8f07_c5d80232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-20T05:07:59Z",
+      "side": 1,
+      "message": "\u003e \"differnt\" is a possible misspelling of \"different\".\n\nPlease fix.",
+      "parentUuid": "e89e0528_c1e67d4d",
+      "range": {
+        "startLine": 344,
+        "startChar": 27,
+        "endLine": 344,
+        "endChar": 35
+      },
+      "revId": "a1014c5750a2b57e67c44526985f271d68ec0538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
