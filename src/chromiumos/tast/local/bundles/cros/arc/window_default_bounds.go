@@ -257,7 +257,7 @@ func getScreenSizeAndInternalWorkArea(ctx context.Context, tconn *chrome.TestCon
 
 // checkCentered is checking that a given rectangle is (roughly) in the middle of the screen.
 // We cannot do an exact job here as we might see rounding issues in X because of dp/px translations.
-// For Y we have the additional problem that the caption height is unknown to Android in NYC and PI
+// For Y we have the additional problem that the caption height is unknown to Android in Pi
 // as it is not part of the window, and Android will guess a height.
 func checkCentered(bounds, workArea coords.Rect) error {
 	const (
@@ -277,7 +277,7 @@ func checkCentered(bounds, workArea coords.Rect) error {
 		return errors.Errorf("window is not vertically not centered: got %dpx; want less than %dpx", deltaY, screenCenterHorizontalEpsilon)
 	}
 
-	// This expects that the caption is not part of the window (NYC/P case, might not be true for R).
+	// This expects that the caption is not part of the window (P case, might not be true for R).
 	if bounds.Top < 0 {
 		return errors.Errorf("a window should never go negative, making the caption inaccessible: got %d", bounds.Top)
 	}
