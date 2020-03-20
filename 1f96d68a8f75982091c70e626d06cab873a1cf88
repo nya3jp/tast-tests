@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4872f9b7_1df0c138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-03-20T21:38:11Z",
+      "side": 1,
+      "message": "This will be removed in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2112290",
+      "revId": "1f96d68a8f75982091c70e626d06cab873a1cf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
