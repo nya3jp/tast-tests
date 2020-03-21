@@ -21,9 +21,11 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/graphics/trace/proto"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -36,33 +38,6 @@ const (
 	fileServerPort       = 8085
 )
 
-// ProxyServerInfo is used as a container for a proxy sever information
-type ProxyServerInfo struct {
-	URL string `json:"url"`
-}
-
-// FileInfo is used to specify trace replay test storage artifact info
-type FileInfo struct {
-	GSURL     string `json:"gsURL"`
-	Size      uint64 `json:"size,string"`
-	SHA256Sum string `json:"sha256sum"`
-	MD5Sum    string `json:"md5sum"`
-}
-
-// TestSettings is used to configure trace replay test settings
-type TestSettings struct {
-	RepeatCount    uint32 `json:"repeatCount,string"`
-	CoolDownIntSec uint32 `json:"coolDownIntSec,string"`
-}
-
-// TestEntryConfig is used to define trace replay config entries
-type TestEntryConfig struct {
-	Name         string          `json:"name"`
-	ProxyServer  ProxyServerInfo `json:"proxyServer"`
-	StorageFile  FileInfo        `json:"storageFile"`
-	TestSettings TestSettings    `json:"testSettings"`
-}
-
 func logContainerInfo(ctx context.Context, cont *vm.Container, file string) error {
 	f, err := os.Create(file)
 	if err != nil {
@@ -73,6 +48,17 @@ func logContainerInfo(ctx context.Context, cont *vm.Container, file string) erro
 	cmd := cont.Command(ctx, "glxinfo")
 	cmd.Stdout, cmd.Stderr = f, f
 	return cmd.Run()
+}
+
+func fillHostInfo(hostInfo *proto.HostInfo) error {
+	lsbReleaseData, err := lsbrelease.Load()
+	if err != nil {
+		return errors.Wrap(err, "unable to retreive lsbrelease information")
+	}
+
+	hostInfo.SystemBoard = lsbReleaseData[lsbrelease.Board]
+	hostInfo.SystemVersion = lsbReleaseData[lsbrelease.Version]
+	return nil
 }
 
 func getOutboundIP() (string, error) {
@@ -89,7 +75,6 @@ func getOutboundIP() (string, error) {
 func setTCPPortState(ctx context.Context, port int, open bool) error {
 	const iptablesApp = "iptables"
 	iptablesArgs := []string{"INPUT", "-p", "tcp", "--dport", strconv.Itoa(port), "--syn", "-j", "ACCEPT"}
-
 	checkCmd := testexec.CommandContext(ctx, iptablesApp, append([]string{"-C"}, iptablesArgs...)...)
 	err := checkCmd.Run()
 	exitCode, ok := testexec.ExitCode(err)
@@ -111,17 +96,12 @@ func setTCPPortState(ctx context.Context, port int, open bool) error {
 // File server routine. It serves all the artifact requests request from the guest.
 type fileServer struct {
 	CloudStorage *testing.CloudStorage
-	Entries      []*TestEntryConfig
+	Repository   *proto.RepositoryInfo
 }
 
-func validateGSURL(gsURLStr string, entries []*TestEntryConfig) bool {
-	// TODO(tutankhamen): straightforward URL comparison for now
-	for _, entry := range entries {
-		if entry.StorageFile.GSURL == gsURLStr {
-			return true
-		}
-	}
-	return false
+func validateRequestedFilePath(filePath string) bool {
+	// detect dot segments in filePath using path.Join()
+	return path.Join("/", filePath)[1:] == filePath
 }
 
 func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
@@ -134,30 +114,31 @@ func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	gsURLStr := query["d"][0]
-	if !validateGSURL(gsURLStr, s.Entries) {
-		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to find gs url <%s> in the test artifacts list", gsURLStr)
+	requestedFilePath := query["d"][0]
+	if !validateRequestedFilePath(requestedFilePath) {
+		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to validate th requested path  <%s>", requestedFilePath)
 		wr.WriteHeader(http.StatusUnauthorized)
 		return
 	}
 
-	testing.ContextLog(ctx, "[Proxy Server] Downloading: ", gsURLStr)
-	gsURL, err := url.Parse(gsURLStr)
-	if err != nil {
-		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to parse gs url <%s>: %s", gsURLStr, err.Error())
+	requestURL, e := url.Parse(s.Repository.RootURL)
+	if e != nil {
+		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to parse repository URL <%s>: %s", s.Repository.RootURL, err.Error())
 		wr.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	r, err := s.CloudStorage.Open(ctx, gsURL.String())
+	requestURL.Path = path.Join(requestURL.Path, requestedFilePath)
+	testing.ContextLog(ctx, "[Proxy Server] Downloading: ", requestURL.String())
+	r, err := s.CloudStorage.Open(ctx, requestURL.String())
 	if err != nil {
-		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to open <%v>: %v", gsURL, err)
+		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to open <%v>: %v", requestURL, err)
 		wr.WriteHeader(http.StatusNotFound)
 		return
 	}
 	defer r.Close()
 
-	wr.Header().Set("Content-Disposition", "attachment; filename="+path.Base(gsURL.Path))
+	wr.Header().Set("Content-Disposition", "attachment; filename="+path.Base(requestedFilePath))
 	wr.WriteHeader(http.StatusOK)
 
 	copied, err := io.Copy(wr, r)
@@ -167,8 +148,8 @@ func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
 	testing.ContextLogf(ctx, "[Proxy Server] Request served successfully. %d byte(s) copied", copied)
 }
 
-func startFileServer(ctx context.Context, addr string, cloudStorage *testing.CloudStorage, entries []*TestEntryConfig) *http.Server {
-	handler := &fileServer{CloudStorage: cloudStorage, Entries: entries}
+func startFileServer(ctx context.Context, addr string, cloudStorage *testing.CloudStorage, repository *proto.RepositoryInfo) *http.Server {
+	handler := &fileServer{CloudStorage: cloudStorage, Repository: repository}
 	testing.ContextLog(ctx, "Starting server at "+addr)
 	server := &http.Server{
 		Addr:    addr,
@@ -204,7 +185,7 @@ func pushTraceReplayApp(ctx context.Context, cont *vm.Container) error {
 }
 
 // RunTraceReplayTest starts a VM and replays all the traces in the test config.
-func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont *vm.Container, entries []*TestEntryConfig) error {
+func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *testing.CloudStorage, cont *vm.Container, group *proto.TestGroupConfig) error {
 	// Guest is unable to use VM network interface to access it's host because of security reason,
 	// and the only to make such connectivity is to use host's outbound network interface.
 	outboundIP, err := getOutboundIP()
@@ -233,12 +214,16 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 		testing.ContextLog(ctx, "Warning: Unable to log container information: ", err)
 	}
 
+	if err := fillHostInfo(&group.Host); err != nil {
+		return err
+	}
+
 	if err := pushTraceReplayApp(ctx, cont); err != nil {
 		return err
 	}
 
 	serverAddr := fmt.Sprintf("%s:%d", outboundIP, fileServerPort)
-	server := startFileServer(ctx, serverAddr, cloudStorage, entries)
+	server := startFileServer(ctx, serverAddr, cloudStorage, &group.Repository)
 	defer func() {
 		if err := server.Shutdown(ctx); err != nil {
 			testing.ContextLog(ctx, "Unable to shutdown file server: ", err)
@@ -247,60 +232,36 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	shortCtx, shortCancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer shortCancel()
 	perfValues := perf.NewValues()
-	for _, entry := range entries {
-		entry.ProxyServer = ProxyServerInfo{
-			URL: "http://" + serverAddr,
-		}
-		if err := replayTraceEntry(shortCtx, cont, entry, perfValues); err != nil {
-			return errors.Wrapf(err, "replay of %s failed", entry.Name)
-		}
+
+	group.ProxyServer = proto.ProxyServerInfo{
+		URL: "http://" + serverAddr,
 	}
 
-	if err := perfValues.Save(resultDir); err != nil {
-		return errors.Wrap(err, "unable to save performance values")
-	}
-
-	return nil
-}
-
-type replayResult struct {
-	TotalFrames       uint32  `json:"TotalFrames,string"`
-	AverageFPS        float32 `json:"AverageFPS,string"`
-	DurationInSeconds float32 `json:"DurationInSeconds,string"`
-}
-
-type testResult struct {
-	Result       string         `json:"Result"`
-	ErrorMessage string         `json:"ErrorMessage"`
-	Values       []replayResult `json:"Values"`
-}
-
-// replayTraceEntry replays one trace entry inside the given VM instance
-func replayTraceEntry(ctx context.Context, cont *vm.Container, entry *TestEntryConfig, perfValues *perf.Values) error {
-	replayArgs, err := json.Marshal(*entry)
+	replayArgs, err := json.Marshal(*group)
 	if err != nil {
 		return err
 	}
-	testing.ContextLog(ctx, "Running replay with args: "+string(replayArgs))
-	replayCmd := cont.Command(ctx, path.Join(replayAppPathAtGuest, replayAppName), string(replayArgs))
+
+	testing.ContextLog(shortCtx, "Running replay with args: "+string(replayArgs))
+	replayCmd := cont.Command(shortCtx, path.Join(replayAppPathAtGuest, replayAppName), string(replayArgs))
 	replayOutput, err := replayCmd.Output()
 	if err != nil {
 		return err
 	}
 
-	testing.ContextLog(ctx, "Replay output: "+string(replayOutput))
+	testing.ContextLog(shortCtx, "Replay output: "+string(replayOutput))
 
-	var testResult testResult
+	var testResult proto.TestGroupResult
 	if err := json.Unmarshal(replayOutput, &testResult); err != nil {
-		return errors.Wrapf(err, "unable to parse: %q", string(replayOutput))
+		return errors.Wrapf(err, "unable to parse test group result output: %q", string(replayOutput))
 	}
 
-	if testResult.Result != "ok" {
+	if testResult.Result == proto.TestResultFailure {
 		return errors.Errorf("replay finished with the error: %s", testResult.ErrorMessage)
 	}
 
-	type getFieldValueFn func(val replayResult) float64
-	getValues := func(vals []replayResult, fn getFieldValueFn) []float64 {
+	type getFieldValueFn func(val proto.ReplayResult) float64
+	getValues := func(vals []proto.ReplayResult, fn getFieldValueFn) []float64 {
 		var values []float64
 		for _, val := range vals {
 			values = append(values, fn(val))
@@ -308,32 +269,43 @@ func replayTraceEntry(ctx context.Context, cont *vm.Container, entry *TestEntryC
 		return values
 	}
 
-	perfValues.Set(perf.Metric{
-		Name:      entry.Name,
-		Variant:   "time",
-		Unit:      "sec",
-		Direction: perf.SmallerIsBetter,
-		Multiple:  true,
-	}, getValues(testResult.Values, func(r replayResult) float64 {
-		return float64(r.DurationInSeconds)
-	})...)
-	perfValues.Set(perf.Metric{
-		Name:      entry.Name,
-		Variant:   "frames",
-		Unit:      "frame",
-		Direction: perf.BiggerIsBetter,
-		Multiple:  true,
-	}, getValues(testResult.Values, func(r replayResult) float64 {
-		return float64(r.TotalFrames)
-	})...)
-	perfValues.Set(perf.Metric{
-		Name:      entry.Name,
-		Variant:   "fps",
-		Unit:      "fps",
-		Direction: perf.BiggerIsBetter,
-		Multiple:  true,
-	}, getValues(testResult.Values, func(r replayResult) float64 {
-		return float64(r.AverageFPS)
-	})...)
+	for _, resultEntry := range testResult.Entries {
+		if resultEntry.Result != proto.TestResultSuccess {
+			testing.ContextLog(shortCtx, "Warning: "+resultEntry.ErrorMessage)
+			continue
+		}
+		perfValues.Set(perf.Metric{
+			Name:      resultEntry.Name,
+			Variant:   "time",
+			Unit:      "sec",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, getValues(resultEntry.Values, func(r proto.ReplayResult) float64 {
+			return float64(r.DurationInSeconds)
+		})...)
+		perfValues.Set(perf.Metric{
+			Name:      resultEntry.Name,
+			Variant:   "frames",
+			Unit:      "frame",
+			Direction: perf.BiggerIsBetter,
+			Multiple:  true,
+		}, getValues(resultEntry.Values, func(r proto.ReplayResult) float64 {
+			return float64(r.TotalFrames)
+		})...)
+		perfValues.Set(perf.Metric{
+			Name:      resultEntry.Name,
+			Variant:   "fps",
+			Unit:      "fps",
+			Direction: perf.BiggerIsBetter,
+			Multiple:  true,
+		}, getValues(resultEntry.Values, func(r proto.ReplayResult) float64 {
+			return float64(r.AverageFPS)
+		})...)
+	}
+
+	if err := perfValues.Save(resultDir); err != nil {
+		return errors.Wrap(err, "unable to save performance values")
+	}
+
 	return nil
 }
