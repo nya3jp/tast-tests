@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/graphics/trace"
+	"chromiumos/tast/local/graphics/trace/comm"
 	"chromiumos/tast/testing"
 )
 
@@ -27,22 +28,14 @@ func init() {
 
 func TraceReplayGlxgears(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	entries := []*trace.TestEntryConfig{
-		{
-			Name: "glxgears",
-			StorageFile: trace.FileInfo{
-				GSURL:     "gs://chromiumos-test-assets-public/tast/cros/graphics/traces/glxgears.trace.bz2",
-				Size:      61066,
-				SHA256Sum: "1b36209dc466b3ebaea84295d5a5bc5e9df0b037215379dae43518e9f27fd2f3",
-				MD5Sum:    "e59e9f99ab035399c7fabd53e3e08829",
-			},
-			TestSettings: trace.TestSettings{
-				RepeatCount:    1,
-				CoolDownIntSec: 0,
-			},
+	testGroupConfig := comm.TestGroupConfig{
+		Labels: []string{"short"},
+		Repository: comm.RepositoryInfo{
+			RootURL: "gs://chromeos-test-assets-private/tast/crosint/graphics/traces/repo",
+			Version: 5,
 		},
 	}
-	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, entries); err != nil {
+	if err := trace.RunTraceReplayTest(ctx, s.OutDir(), s.CloudStorage(), pre.Container, &testGroupConfig); err != nil {
 		s.Fatal("Trace replay test failed: ", err)
 	}
 }
