@@ -43,7 +43,7 @@ func init() {
 				numTrials:  1,
 				chromeArgs: []string{"--enable-arcvm"},
 			},
-			ExtraAttr:         []string{"group:mainline"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           5 * time.Minute,
 		}, {
