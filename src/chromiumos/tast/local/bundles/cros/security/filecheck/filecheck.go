@@ -177,7 +177,7 @@ func Tree(path string) Matcher {
 // Check inspects all files within (and including) root.
 // pats are executed in-order against each path.
 // If a pattern matches a path, no later patterns are evaluated against it.
-// If SkipChildren is included in a pattern , any matched directories' children are skipped.
+// If SkipChildren is included in a pattern, any matched directories' children are skipped.
 // A map from absolute path names to strings describing problems is returned,
 // along with the number of paths (not including ones skipped by SkipChildren) that were inspected.
 func Check(ctx context.Context, root string, pats []*Pattern) (
