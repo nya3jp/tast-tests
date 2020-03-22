@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type playParams struct {
@@ -56,6 +57,14 @@ func init() {
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
 			Pre:       pre.ChromeVideo(),
+		}, {
+			Name:      "vp9_hdr",
+			Val:       playParams{fileName: "peru.8k.cut.hdr.vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
+			// TODO(crbug.com/1057870): filter this by Intel SoC generation: KBL+. For now, hatch (including kohaku) will do.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("hatch")),
+			Pre:               pre.ChromeVideoWithHDRScreen(),
 		}, {
 			Name:              "h264_sw",
 			Val:               playParams{fileName: "bear-320x240.h264.mp4", videoType: play.NormalVideo, verifyMode: play.VerifyNoHWAcceleratorUsed},
