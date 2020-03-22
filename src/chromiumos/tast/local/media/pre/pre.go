@@ -33,6 +33,13 @@ func ChromeVideoWithGuestLogin() testing.Precondition { return chromeVideoWithGu
 var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin", chromeVModuleArgs,
 	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"), chrome.GuestLogin())
 
+// ChromeVideoWithHDRScreen returns a precondition equal to ChromeVideo but
+// also enabling the HDR screen if present.
+func ChromeVideoWithHDRScreen() testing.Precondition { return chromeVideoWithHDRScreenPre }
+
+var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen", chromeVModuleArgs,
+	chrome.ExtraArgs("--enable-features=EnableUseHDRTransferFunction"))
+
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.
 // "fake webcam"), see https://webrtc.org/testing/.
