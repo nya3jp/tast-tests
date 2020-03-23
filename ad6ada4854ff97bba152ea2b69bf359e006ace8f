@@ -471,6 +471,30 @@
       "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "820fbde7_65fe8163",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-23T04:49:24Z",
+      "side": 1,
+      "message": "gfxbench.go has a similar loop as well\nhttps://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/graphics/gfxbench.go?q\u003dgfxbench.go\u0026fromv2\u003dtrue\u0026l\u003d297",
+      "parentUuid": "f803487e_db573087",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 63
+      },
+      "revId": "ad6ada4854ff97bba152ea2b69bf359e006ace8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
