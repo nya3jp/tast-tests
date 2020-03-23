@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53038a6b_a9c053b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/concepts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-23T17:37:03Z",
+      "side": 1,
+      "message": "for this to pass CQ, you will need to name struct fields:\n\n{Name: \"...\", Fn: ...}",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "90be2014e3ce91490e90b56523e20d35410d1c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44843b85_c08a0e97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/concepts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-23T17:37:03Z",
+      "side": 1,
+      "message": "You will need to name the struct fields in each of the parameters as well:\n\nTabletMode: ...,\nTests: ...,",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "90be2014e3ce91490e90b56523e20d35410d1c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "523700e1_18e664a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/concepts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-23T17:37:03Z",
+      "side": 1,
+      "message": "If you rebase off of master, there is now a wrapper for this. Look at gmail.go for an example",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 28
+      },
+      "revId": "90be2014e3ce91490e90b56523e20d35410d1c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abcac48_2ce7f613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/concepts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-23T17:37:03Z",
+      "side": 1,
+      "message": "With the changes from gmail.go, you will want to change this function to match.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 56
+      },
+      "revId": "90be2014e3ce91490e90b56523e20d35410d1c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
