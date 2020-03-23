@@ -33,7 +33,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
 		// TODO(b/149247291): remove the blacklist once elm/hana upreved kernel to 4.19 or above.
-		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("Elm"), hwdep.SkipOnPlatform("Hana")),
+		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana")),
 	})
 }
 
