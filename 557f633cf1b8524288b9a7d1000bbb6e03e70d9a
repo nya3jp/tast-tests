@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad910bab_537024ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-23T04:27:26Z",
+      "side": 1,
+      "message": "These values should be no longer needed?\ngetCameraFacing() now should return only Facing.*.",
+      "range": {
+        "startLine": 271,
+        "startChar": 6,
+        "endLine": 274,
+        "endChar": 22
+      },
+      "revId": "557f633cf1b8524288b9a7d1000bbb6e03e70d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
