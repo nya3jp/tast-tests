@@ -59,13 +59,18 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName string, appAc
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
+	defer func() {
+		if s.HasError() {
+			d.Close()
+		}
+	}()
 	s.Log("Enable showing ANRs")
 	if err := a.Command(ctx, "settings", "put", "secure", "anr_show_background", "1").Run(testexec.DumpLogOnError); err != nil {
-		s.Error("Failed to enable showing ANRs: ", err)
+		s.Fatal("Failed to enable showing ANRs: ", err)
 	}
 	s.Log("Enable crash dialog")
 	if err := a.Command(ctx, "settings", "put", "secure", "show_first_crash_dialog_dev_option", "1").Run(testexec.DumpLogOnError); err != nil {
-		s.Error("Failed to enable crash dialog: ", err)
+		s.Fatal("Failed to enable crash dialog: ", err)
 	}
 
 	s.Log("Installing app")
