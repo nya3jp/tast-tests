@@ -182,12 +182,19 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 
 	var ch chan error
-	// Android container is up. Set up ADB auth in parallel to Android boot since
+	// Android is up. Set up ADB connection in parallel to Android boot since
 	// ADB local server takes a few seconds to start up.
-	testing.ContextLog(ctx, "Setting up ADB auth")
+	testing.ContextLog(ctx, "Setting up ADB connection")
 	ch = make(chan error, 1)
 	go func() {
-		ch <- setUpADBAuth(ctx)
+		if vm {
+			// No need to set up ADB auth since test ADB key is pre-installed on VM.
+			ch <- setUpADBForVM(ctx)
+		} else {
+			// Need to set up ADB auth for container.
+			// TODO(b/151797813): Pre-install test ADB key into ARC container as well.
+			ch <- setUpADBAuthForContainer(ctx)
+		}
 	}()
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
