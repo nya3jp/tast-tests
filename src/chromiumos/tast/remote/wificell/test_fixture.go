@@ -70,7 +70,7 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the router")
 	}
-	tf.router, err = NewRouter(ctx, tf.routerHost)
+	tf.router, err = NewRouter(ctx, tf.routerHost, "router")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a router object")
 	}
