@@ -109,7 +109,7 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting a dummy process")
-	dummy := testexec.CommandContext(ctx, "/usr/bin/sleep", "1m")
+	dummy := testexec.CommandContext(ctx, "/usr/bin/sleep", "300")
 	if err := dummy.Start(); err != nil {
 		s.Fatal("Failed to start a dummy process to kill: ", err)
 	}
