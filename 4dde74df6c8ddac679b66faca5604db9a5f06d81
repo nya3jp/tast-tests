@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb9141f3_db0ec891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-23T15:35:20Z",
+      "side": 1,
+      "message": "Although it seems this command gives us sufficient information to check the mount status of binfmt_misc, I\u0027m not sure if this is an appropriate/idiomatic way to do it.",
+      "revId": "4dde74df6c8ddac679b66faca5604db9a5f06d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c168551f_9907591d",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-23T15:35:20Z",
+      "side": 1,
+      "message": "It might be better to export this function in a separate CL.",
+      "revId": "4dde74df6c8ddac679b66faca5604db9a5f06d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
