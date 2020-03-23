@@ -15,3 +15,6 @@ __pycache__/
 
 # GN out directory
 android/out/
+
+# Nested checkout
+src/chromiumos/tast/remote/firmware/data/fw-testing-configs/
