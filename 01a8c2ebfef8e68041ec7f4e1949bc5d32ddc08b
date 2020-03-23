@@ -46,6 +46,30 @@
       "revId": "01a8c2ebfef8e68041ec7f4e1949bc5d32ddc08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52766d5_e6dceeb7",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-23T16:43:16Z",
+      "side": 1,
+      "message": "I created example for you: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2116090.",
+      "parentUuid": "702e5f54_2ee5a26c",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "01a8c2ebfef8e68041ec7f4e1949bc5d32ddc08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
