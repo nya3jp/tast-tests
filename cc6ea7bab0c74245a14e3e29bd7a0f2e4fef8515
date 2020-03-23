@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2af513f_cfa28653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-23T09:12:59Z",
+      "side": 1,
+      "message": "Could you move this var outside of the function?\n\n// Intel ...\n// ...\nvar cpuPartRE \u003d regexp.Must...\n\n// isHetero...\nfunc isHetero...",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 59
+      },
+      "revId": "cc6ea7bab0c74245a14e3e29bd7a0f2e4fef8515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "733b0b05_b4ea0887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-23T09:12:59Z",
+      "side": 1,
+      "message": "How about\n\nif matches \u003d\u003d nil {\n  continue\n}\n// use matches\n\nto reduce the nest?",
+      "revId": "cc6ea7bab0c74245a14e3e29bd7a0f2e4fef8515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0309000c_ced71341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-23T09:12:59Z",
+      "side": 1,
+      "message": "Could you use testing.ContextLog(), and remove s in the function parameter?",
+      "range": {
+        "startLine": 361,
+        "startChar": 4,
+        "endLine": 361,
+        "endChar": 9
+      },
+      "revId": "cc6ea7bab0c74245a14e3e29bd7a0f2e4fef8515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11fda91b_44a09fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-23T09:12:59Z",
+      "side": 1,
+      "message": "We don\u0027t use punctuation in error message. How about just \"no CPU part information found\" ?",
+      "range": {
+        "startLine": 367,
+        "startChar": 28,
+        "endLine": 367,
+        "endChar": 81
+      },
+      "revId": "cc6ea7bab0c74245a14e3e29bd7a0f2e4fef8515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d565f3ed_885f9631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-23T09:12:59Z",
+      "side": 1,
+      "message": "nit: map\u0027s key iteration order is not deterministic.\nYou may want to define types and cores seperately to keep the iteration order deterministic.",
+      "range": {
+        "startLine": 382,
+        "startChar": 12,
+        "endLine": 382,
+        "endChar": 113
+      },
+      "revId": "cc6ea7bab0c74245a14e3e29bd7a0f2e4fef8515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53576e38_a66e560c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-23T09:12:59Z",
+      "side": 1,
+      "message": "; f",
+      "range": {
+        "startLine": 429,
+        "startChar": 34,
+        "endLine": 429,
+        "endChar": 37
+      },
+      "revId": "cc6ea7bab0c74245a14e3e29bd7a0f2e4fef8515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
