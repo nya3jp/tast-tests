@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd413f4_6a70d068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-23T07:37:57Z",
+      "side": 1,
+      "message": "Doesn\u0027t this generate too many logs? Maybe move inside the error case.\n\ngo/tast-writing#When-to-log",
+      "revId": "349708970495955f75fb805ccdc8882432658e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
