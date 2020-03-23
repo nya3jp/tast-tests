@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5817c67f_2bd217fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:27:54Z",
+      "side": 1,
+      "message": "Please add a new section in README.md",
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "366f1ba2_fbe4bc5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:27:54Z",
+      "side": 1,
+      "message": "Instead of uploading meaningless data to crosbolt, can\u0027t we wait to add a VM test case until we get video decoder enabled on ARCVM?",
+      "range": {
+        "startLine": 10,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "301d5385_06f99c05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:27:54Z",
+      "side": 1,
+      "message": "nit: warmup",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4804b370_60122f38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:27:54Z",
+      "side": 1,
+      "message": "You can omit Name field because \"\" is the zero value of string.",
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19cdc2fa_dd9835f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:27:54Z",
+      "side": 1,
+      "message": "Question: Do you have any concrete idea or plan to solve this? I have no idea how we can get a result XML when running a test repeatedly with --loop.\n\nIf we have no simple solution and you have no plan to fix this soon, it might be better to file an issue in buganizer for easier tracking.",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 17
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5970b5e0_a5611c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:27:54Z",
+      "side": 1,
+      "message": "Question: Who raise this type of failure?",
+      "range": {
+        "startLine": 159,
+        "startChar": 59,
+        "endLine": 159,
+        "endChar": 94
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
