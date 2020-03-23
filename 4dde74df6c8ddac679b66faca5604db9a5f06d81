@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f5788144_f9ad25bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-23T15:45:38Z",
+      "side": 1,
+      "message": "TODO: make sure if this executable is always available when native bridge is enabled. If not, we probably should:\n(1) look for some existing arm executables available for test and push them\n(2) newly upload small arm executables and push them\n(3) embed small arm executables as const strings in the source code",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "4dde74df6c8ddac679b66faca5604db9a5f06d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb9141f3_db0ec891",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 1
