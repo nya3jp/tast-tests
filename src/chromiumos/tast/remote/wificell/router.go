@@ -28,6 +28,7 @@ const workingDir = "/tmp/tast-test/"
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
 	host        *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
+	name        string
 	board       string
 	busySubnet  map[byte]struct{}
 	phys        map[int]*iw.Phy            // map from phy idx to iw.Phy.
@@ -39,9 +40,10 @@ type Router struct {
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
-func NewRouter(ctx context.Context, host *ssh.Conn) (*Router, error) {
+func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
 	r := &Router{
 		host:        host,
+		name:        name,
 		busySubnet:  make(map[byte]struct{}),
 		phys:        make(map[int]*iw.Phy),
 		busyPhy:     make(map[int]map[iw.IfType]bool),
@@ -59,7 +61,7 @@ func NewRouter(ctx context.Context, host *ssh.Conn) (*Router, error) {
 
 // removeWifiIface removes iface with iw command.
 func (r *Router) removeWifiIface(ctx context.Context, iface string) error {
-	testing.ContextLogf(ctx, "Deleting wdev %s on router", iface)
+	testing.ContextLogf(ctx, "Deleting wdev %s on %s", iface, r.name)
 	return r.iwr.RemoveInterface(ctx, iface)
 }
 
@@ -447,8 +449,9 @@ func (r *Router) freeSubnetIdx(i byte) {
 // collectLogs downloads log files from router.
 func (r *Router) collectLogs(ctx context.Context) error {
 	collect := map[string]string{
-		"/var/log/messages": "debug/router_host_messages",
+		"/var/log/messages": fmt.Sprintf("debug/%s_host_messages", r.name),
 	}
+	// TODO(crbug.com/1034875): Trim logs before creation of this object.
 	outdir, ok := testing.ContextOutDir(ctx)
 	if !ok {
 		return errors.New("OutDir not supported")
