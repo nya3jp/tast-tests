@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840afbb7_069e170d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-23T16:42:17Z",
+      "side": 1,
+      "message": "In Autotest we used to, but it was for dead projects. We don\u0027t have any plans to port any such tests. So I think the wording here might be better as \"it just causes unnecessary network traffic\" (the original reason for disabling). We don\u0027t need to mention tests that quite possibly will never exist in Tast.",
+      "range": {
+        "startLine": 155,
+        "startChar": 31,
+        "endLine": 155,
+        "endChar": 67
+      },
+      "revId": "83ae6444a55cd1621454d9d32d31fbd1a200f5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
