@@ -152,6 +152,8 @@ func (r *Router) initialize(ctx context.Context) error {
 
 	// Stop upstart job wpasupplicant if available. (ignore the error as it might be stopped already)
 	r.host.Command("stop", "wpasupplicant").Run(ctx)
+	// Stop avahi if available as it just causes unnecessary network traffic.
+	r.host.Command("stop", "avahi").Run(ctx)
 
 	// TODO(crbug.com/774808): configure hw_random.
 
