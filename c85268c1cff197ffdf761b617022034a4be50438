@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc5090fe_53e88f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-23T19:30:11Z",
+      "side": 1,
+      "message": "nice!",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "c85268c1cff197ffdf761b617022034a4be50438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
