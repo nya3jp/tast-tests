@@ -88,6 +88,7 @@ func Gmail(ctx context.Context, s *testing.State) {
 
 	// Step up chrome on Chromebook.
 	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
+	defer d.Close()
 
 	testSet := s.Param().(testutil.TestParams)
 	// Run the different test cases.
