@@ -7,8 +7,11 @@ package wilco
 import (
 	"context"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 	dtcpb "chromiumos/wilco_dtc"
@@ -31,6 +34,29 @@ func init() {
 }
 
 func APIGetOsVersion(ctx context.Context, s *testing.State) {
+	s.Log("Connecting to the D-Bus")
+	_, obj, err := dbusutil.Connect(ctx, "org.bluez", "/")
+	if err != nil {
+		s.Fatal("Failed to connect to D-Bus: ", err)
+	}
+	value, err := dbusutil.GetManagedObjects(ctx, obj)
+	if err != nil {
+		s.Fatal("Failed get managed D-Bus objects: ", err)
+	}
+	s.Log("Managed D-Bus objects: ", value)
+	s.Logf("Managed D-Bus objects: %T", value)
+
+	m, ok := value.(map[dbus.ObjectPath]map[string]map[string]dbus.Variant)
+	if !ok {
+		s.Fatal("Cannot convert to map")
+	}
+
+	for objPath, v := range m {
+		for iface, vv := range v {
+			s.Log(objPath, " ", iface, " ", vv)
+		}
+	}
+
 	request := dtcpb.GetOsVersionRequest{}
 	response := dtcpb.GetOsVersionResponse{}
 

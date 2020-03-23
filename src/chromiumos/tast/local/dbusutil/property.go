@@ -53,3 +53,19 @@ func Property(ctx context.Context, obj dbus.BusObject, p string) (interface{}, e
 	}
 	return v.Value(), nil
 }
+
+func GetManagedObjects(ctx context.Context, obj dbus.BusObject) (interface{}, error) {
+	const dbusMethod = "org.freedesktop.DBus.ObjectManager.GetManagedObjects"
+	iface := "org.freedesktop.DBus.ObjectManager"
+	// c := obj.CallWithContext(ctx, dbusMethod, 0, iface)
+	c := obj.CallWithContext(ctx, dbusMethod, 0)
+	if c.Err != nil {
+		return nil, errors.Wrapf(c.Err, "failed to get DBUS managed objects on interface %q", iface)
+	}
+
+	v := dbus.Variant{}
+	if err := c.Store(&v); err != nil {
+		return nil, errors.Wrapf(c.Err, "failed to extract DBUS managed objects on interface %q", iface)
+	}
+	return v.Value(), nil
+}
