@@ -21,10 +21,17 @@ func init() {
 		Desc:         "Ensures that camera orientation compatibility solution works as expected",
 		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome", caps.BuiltinCamera},
+		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		Data:         []string{"ArcCameraOrientationTest.apk"},
-		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
