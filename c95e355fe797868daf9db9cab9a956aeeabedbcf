@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e08af57e_dadebc04",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "I\u0027m a bit nervous about this package name since we already have bundles/video package, I want to avoid duplication.\n\nI guess maybe you can bring all of your tests directly into \u0027mtbf\u0027 package instead.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 13
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbcda45_176bbbbb",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "Please move this inside of MTBF003PlayVideoMp4 function.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c45ed95d_4542fd3d",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "Please describe a bit more about this test. How it\u0027s different from other tests, especially like video.Play test cases?",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e8c7d2_bc096b59",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "Can you find at least one more contact for this test?",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "659247ba_fdeacf1e",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "I believe it is better to use data / external mechanism (see https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#External-data-files)",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 93
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cec3ebd_ab3ea395",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "you don\u0027t need comment for test scenario actually; your editor may warn but you can ignore it. Rather put this type of comment into \u0027Desc\u0027 part in init.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 63
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2c0228_5ebade75",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "Not sure about the test name: MTBF should be the package name, and what 003 means for this case. Be more descriptive on the function name. I\u0027d suggest to name like PlayMp4 or Play1080x720Mp4.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa216d21_6e745c1f",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "Do not use your own errors unless necessary. You should put your own messages here.",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 59
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87655410_0bc6d6ef",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf003_play_video_mp4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T20:41:54Z",
+      "side": 1,
+      "message": "Please check the return value of this. if err \u003d testing.Sleep(...); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "c95e355fe797868daf9db9cab9a956aeeabedbcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
