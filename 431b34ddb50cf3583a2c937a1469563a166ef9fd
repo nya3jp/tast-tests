@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "986eb91b_ef35b69e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:59:45Z",
+      "side": 1,
+      "message": "Question: Do you have a plan to remove power measurement in video.ARC*Perf* tests?",
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

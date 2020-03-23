@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "73c7da23_f1cc8f3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:59:45Z",
+      "side": 1,
+      "message": "Ah, I thought you added a new video.ARC* test.\nWe have a README for video tests:\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/video/README.md\n\nBut, it\u0027s under /arc/. So, we have no README. Sorry for the wrong comment.",
+      "parentUuid": "d94e1acf_0673052c",
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "366f1ba2_fbe4bc5d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -257,6 +275,30 @@
       "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64257708_361f3b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-03-23T10:59:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa60a3f8_7a93e525",
+      "range": {
+        "startLine": 159,
+        "startChar": 59,
+        "endLine": 159,
+        "endChar": 94
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
