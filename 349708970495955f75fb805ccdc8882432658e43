@@ -16,6 +16,24 @@
       "revId": "349708970495955f75fb805ccdc8882432658e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0c261a_56da2f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-23T16:29:09Z",
+      "side": 1,
+      "message": "Removed. It\u0027s just 2 lines (there are two histograms to be watched), but indeed the data of histogram name is reported on error below, which would be sufficient.",
+      "parentUuid": "cbd413f4_6a70d068",
+      "revId": "349708970495955f75fb805ccdc8882432658e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
