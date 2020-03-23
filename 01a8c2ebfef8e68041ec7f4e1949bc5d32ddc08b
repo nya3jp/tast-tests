@@ -22,6 +22,30 @@
       "revId": "01a8c2ebfef8e68041ec7f4e1949bc5d32ddc08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702e5f54_2ee5a26c",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_bluetooth.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-23T08:11:18Z",
+      "side": 1,
+      "message": "Do you have an example where this type of D-Bus call is done? I don\u0027t have much experience with it (or Go...)",
+      "parentUuid": "61c3aadf_4e78a251",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "01a8c2ebfef8e68041ec7f4e1949bc5d32ddc08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
