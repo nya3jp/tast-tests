@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8133837_0cb9618e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/boot_lockbox_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-23T05:43:49Z",
+      "side": 1,
+      "message": "Avoid renaming imports except to avoid a name collision.\ngo/gocomments#imports",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9455feec_92d390fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-23T05:43:49Z",
+      "side": 1,
+      "message": "This looks contain many sub-tests.\nDid you consider splitting tests using a test parameter?\nFor example, see src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7457f186_619df287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-23T05:43:49Z",
+      "side": 1,
+      "message": "Can this be simply done without defer, because this is the last line of the function?",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e094cb_4e5b9eb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-23T05:43:49Z",
+      "side": 1,
+      "message": "this err can be local to the if statement in the next line.",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045f3b98_4d960a0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-23T05:43:49Z",
+      "side": 1,
+      "message": "Add description why the test calls read client.Read two times.\nAlso make the LHS \"_, err\" because this value of response is discarded.",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f827f0_658ce254",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-23T05:43:49Z",
+      "side": 1,
+      "message": "Is this a correct log when err was non-nil at line 93 or 100?\nI also think test success would be obvious if a test did not output any errors.",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
