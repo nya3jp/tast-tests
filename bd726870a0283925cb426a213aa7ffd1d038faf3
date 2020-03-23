@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d94e1acf_0673052c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-23T10:47:17Z",
+      "side": 1,
+      "message": "There is no README.md to add things to. I\u0027m also not sure what such a section would say.",
+      "parentUuid": "5817c67f_2bd217fc",
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "366f1ba2_fbe4bc5d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17187e7d_7e21b3a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-23T10:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366f1ba2_fbe4bc5d",
+      "range": {
+        "startLine": 10,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "bb0a1f54_867e8ecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-23T10:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301d5385_06f99c05",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4804b370_60122f38",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8cc851d_b0cbe452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-23T10:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4804b370_60122f38",
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "29a70855_8be096a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-23T10:47:17Z",
+      "side": 1,
+      "message": "I know how it would be done, but I don\u0027t think it\u0027s worth implementing at the moment. I\u0027ve filed a bug.",
+      "parentUuid": "19cdc2fa_dd9835f9",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 17
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5970b5e0_a5611c45",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
         "patchSetId": 1
@@ -116,6 +224,30 @@
       "writtenOn": "2020-03-23T10:27:54Z",
       "side": 1,
       "message": "Question: Who raise this type of failure?",
+      "range": {
+        "startLine": 159,
+        "startChar": 59,
+        "endLine": 159,
+        "endChar": 94
+      },
+      "revId": "bd726870a0283925cb426a213aa7ffd1d038faf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa60a3f8_7a93e525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-23T10:47:17Z",
+      "side": 1,
+      "message": "I don\u0027t know what alerts we\u0027re planing on setting up for these power tests. That being said, any failures of the test app or the system will be detected by regular ARCDecodeAccel tests.",
+      "parentUuid": "5970b5e0_a5611c45",
       "range": {
         "startLine": 159,
         "startChar": 59,
