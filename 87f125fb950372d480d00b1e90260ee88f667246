@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "74ac8f99_58d21b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-23T18:33:01Z",
+      "side": 1,
+      "message": "Yes, this is the target SDK. \"24\" is Ok here. \nOn P, we still support pre-N (23) and \u003e\u003d N apks.",
+      "parentUuid": "8adaa86c_2cfeb0b2",
+      "range": {
+        "startLine": 45,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "87f125fb950372d480d00b1e90260ee88f667246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b248cab5_2e979db2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_default_bounds.go",
         "patchSetId": 1
