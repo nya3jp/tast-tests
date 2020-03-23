@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70bab7e7_67f29b0c",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "NOHT ?",
+      "range": {
+        "startLine": 365,
+        "startChar": 29,
+        "endLine": 365,
+        "endChar": 33
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82982a1e_19910f8a",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "do not specify",
+      "range": {
+        "startLine": 407,
+        "startChar": 25,
+        "endLine": 407,
+        "endChar": 44
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e5400f_7ea6b75f",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "frequencies",
+      "range": {
+        "startLine": 412,
+        "startChar": 42,
+        "endLine": 412,
+        "endChar": 51
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb97530_2d1a91e7",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "Do we want to validate if the center frequencies are valid?",
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff7bbdb_321645ae",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "Do we want to validate if center frequency 1 is valid?",
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7c0dce_e326a3b2",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "do not specify",
+      "range": {
+        "startLine": 420,
+        "startChar": 25,
+        "endLine": 420,
+        "endChar": 35
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e34ca26_1f0953d2",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "a function signature that modifies setFreqConf.",
+      "range": {
+        "startLine": 443,
+        "startChar": 20,
+        "endLine": 443,
+        "endChar": 57
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6d8e43_0d26c5a1",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "\"is\" as long as you are sure it is used later. If not, perhaps we remove them until needed.",
+      "range": {
+        "startLine": 447,
+        "startChar": 22,
+        "endLine": 447,
+        "endChar": 30
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b6ffd5_80f6d659",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "can be omitted",
+      "range": {
+        "startLine": 464,
+        "startChar": 67,
+        "endLine": 464,
+        "endChar": 73
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed06799_24ca0f51",
+        "filename": "src/chromiumos/tast/common/network/iw/runner_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-23T09:34:41Z",
+      "side": 1,
+      "message": "can be omitted",
+      "range": {
+        "startLine": 324,
+        "startChar": 38,
+        "endLine": 324,
+        "endChar": 50
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
