@@ -24,7 +24,7 @@ func init() {
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
 		},
 		SoftwareDeps: []string{"wilco"},
-		Timeout:      10 * time.Second,
+		Timeout:      20 * time.Second,
 		Attr:         []string{"group:mainline"},
 		Pre:          pre.WilcoDtcSupportdAPI,
 	})
@@ -35,6 +35,8 @@ func APIHandleECNotification(ctx context.Context, s *testing.State) {
 		// Message type defined at http://issuetracker.google.com/139017129.
 		expectedRequestType = 19
 	)
+
+  time.Sleep(time.Second * 10)
 
 	rec, err := wilco.NewDPSLMessageReceiver(ctx)
 	if err != nil {
