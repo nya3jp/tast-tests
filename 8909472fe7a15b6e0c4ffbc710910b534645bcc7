@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdbdea02_f5ec2943",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-24T16:29:12Z",
+      "side": 1,
+      "message": "nit. Can you indent the error handling?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
