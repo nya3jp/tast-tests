@@ -62,8 +62,8 @@ func init() {
 			Val:       playParams{fileName: "peru.8k.cut.hdr.vp9.webm", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
-			// TODO(crbug.com/1057870): filter this by Intel SoC generation: KBL+. For now, hatch (including kohaku) will do.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("hatch")),
+			// TODO(crbug.com/1057870): filter this by Intel SoC generation: KBL+. For now, kohaku will do.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("kohaku")),
 			Pre:               pre.ChromeVideoWithHDRScreen(),
 		}, {
 			Name:              "h264_sw",
