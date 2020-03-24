@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85c68f4d_856f59e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-24T00:16:41Z",
+      "side": 1,
+      "message": "I recommend you remove these two and use mock consent (see below)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "cd47c1b9b7e2701cc124c3af20578be1de589205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd75b27a_7703a66b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-24T00:16:41Z",
+      "side": 1,
+      "message": "I really would encourage you to at some point (doesn\u0027t have to be now) extend this test to also encompass the script that is supposed to detect crashes and invoke crash_reporter -- it\u0027s a key piece of this system",
+      "range": {
+        "startLine": 89,
+        "startChar": 40,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "cd47c1b9b7e2701cc124c3af20578be1de589205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3663137_e18c76bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-24T00:16:41Z",
+      "side": 1,
+      "message": "Can you log the length here too for easier debugging?",
+      "range": {
+        "startLine": 110,
+        "startChar": 65,
+        "endLine": 110,
+        "endChar": 71
+      },
+      "revId": "cd47c1b9b7e2701cc124c3af20578be1de589205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d6797fd_a74f6362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-24T00:16:41Z",
+      "side": 1,
+      "message": "I recommend crash.WithMockConsent() instead -- it will be more reliable.",
+      "range": {
+        "startLine": 134,
+        "startChar": 43,
+        "endLine": 134,
+        "endChar": 58
+      },
+      "revId": "cd47c1b9b7e2701cc124c3af20578be1de589205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a05a23f_0c26ddb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-24T00:16:41Z",
+      "side": 1,
+      "message": "FYI - this is no longer necessary; feel free to get rid of it and pass a placeholder empty array to WaitForCrashFiles. I\u0027m planning to update the API to remove it but it hasn\u0027t been a top priority.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "cd47c1b9b7e2701cc124c3af20578be1de589205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
