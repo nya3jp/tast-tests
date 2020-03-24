@@ -38,20 +38,19 @@ type QueryStatus struct {
 
 // Enable brings up Google Assistant service and returns any errors.
 func Enable(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)(true, 10 * 1000 /* timeout_ms */)`, nil)
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAssistantEnabled)`, true, 10*1000 /* timeout_ms */)
 }
 
 // EnableAndWaitForReady brings up Google Assistant service, waits for
 // NEW_READY signal and returns any errors.
 func EnableAndWaitForReady(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.enableAssistantAndWaitForReady)()`, nil)
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.enableAssistantAndWaitForReady)`)
 }
 
 // SendTextQuery sends text query to Assistant and returns the query status.
 func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (QueryStatus, error) {
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)(%q, 10 * 1000 /* timeout_ms */)`, query)
 	var status QueryStatus
-	err := tconn.EvalPromise(ctx, expr, &status)
+	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 10*1000 /* timeout_ms */)
 	return status, err
 }
 
@@ -67,10 +66,13 @@ func WaitForServiceReady(ctx context.Context, tconn *chrome.TestConn) error {
 
 // SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.
 func SetHotwordEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
-	const prefName string = "settings.voice_interaction.hotword.enabled"
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.autotestPrivate.setWhitelistedPref)('%s', %t)`, prefName, enabled)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return setPrefValue(ctx, tconn, "settings.voice_interaction.hotword.enabled", enabled)
+}
+
+// SetContextEnabled enables/disables the access to the screen context for Assistant.
+// This pref corresponds to the "Related Info" setting of Assistant.
+func SetContextEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
+	return setPrefValue(ctx, tconn, "settings.voice_interaction.context.enabled", enabled)
 }
 
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
@@ -93,4 +95,9 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// setPrefValue is a helper function to set value for Assistant related preferences.
+func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, enabled bool) error {
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, enabled)
 }
