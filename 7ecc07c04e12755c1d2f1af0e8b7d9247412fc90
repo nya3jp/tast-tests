@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0490fa5_bd73e8ed",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/dom/user_action.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:58:40Z",
+      "side": 1,
+      "message": "drive-by: please do not depend chrome package from cdputil, because cdputil is the package providing the behavior to chrome package, so chrome depends on cdputil. We should not have the reverse dependency here.",
+      "range": {
+        "startLine": 15,
+        "startChar": 47,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "7ecc07c04e12755c1d2f1af0e8b7d9247412fc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
