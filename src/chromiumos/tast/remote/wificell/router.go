@@ -191,7 +191,14 @@ func (r *Router) initialize(ctx context.Context) error {
 	hostapd.KillAll(ctx, r.host)
 	dhcp.KillAll(ctx, r.host)
 
-	// TODO(crbug.com/839164): Verify if we still need to truncate uma-events.
+	// TODO(crbug.com/839164): Current CrOS on router haven't got the fix in crrev.com/c/1979112.
+	// Let's keep the truncate and remove it after we have router updated.
+	const umaEventsPath = "/var/lib/metrics/uma-events"
+	if err := r.host.Command("truncate", "-s", "0", "-c", umaEventsPath).Run(ctx); err != nil {
+		// Don't return error here, as it might not bother the test as long as it does not
+		// fill the whole partition.
+		testing.ContextLogf(ctx, "Failed to truncate %s, err=%s", umaEventsPath, err.Error())
+	}
 
 	if err := r.iwr.SetRegulatoryDomain(ctx, "US"); err != nil {
 		return errors.Wrap(err, "failed to set regulatory domain to US")
