@@ -228,13 +228,6 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 
 	defer ui.WaitForLocationChangeCompleted(ctx, tconn)
 
-	// At login, we should have just Chrome in the Shelf.
-	if shelfItems, err := ash.ShelfItems(ctx, tconn); err != nil {
-		s.Fatal("Failed to get shelf items: ", err)
-	} else if len(shelfItems) != 1 {
-		s.Fatalf("Unexpected num of apps in the shelf: got %d; want 1", len(shelfItems))
-	}
-
 	pv := perf.NewValues()
 
 	for _, setting := range []struct {
