@@ -22,6 +22,30 @@
       "revId": "8490f888667ed4e1b9dbef618952e831dd6c66db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcce508c_35e2f3d3",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-24T09:23:29Z",
+      "side": 1,
+      "message": "Thanks, this way is a much better way of doing it.",
+      "parentUuid": "b28efaca_76529eba",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 57
+      },
+      "revId": "8490f888667ed4e1b9dbef618952e831dd6c66db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
