@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a39a9c00_d54c7a3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T04:28:37Z",
+      "side": 1,
+      "message": "typo \"small\"",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "bfcee8844c57d923495f8c5593a57dd67696f767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
