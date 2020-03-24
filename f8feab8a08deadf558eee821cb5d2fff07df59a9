@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb217e7b_9cd10ff0",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T03:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10bc5a0_60853f7a",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d6cf215_953a295e",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
         "patchSetId": 6
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "If we let the DUT sends a packet denoting \"pCap bye bye\" when test is done, we can expect the packet with timeout here. Not sure if it is overkill.",
       "parentUuid": "8d6cf215_953a295e",
+      "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0727a6fa_71c08e13",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T03:45:21Z",
+      "side": 1,
+      "message": "The problem of waiting specific packet is that the caller have to generate the packet and corresponding filter. (e.g. filter the \"bye\" packet with specific source mac address) It will make the interface difficult to use...",
+      "parentUuid": "012cc4a0_afdb557c",
       "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -97,6 +139,30 @@
       "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1eb26b_71ef0378",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T03:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f41ff25_bfdabcbb",
+      "range": {
+        "startLine": 144,
+        "startChar": 35,
+        "endLine": 144,
+        "endChar": 39
+      },
+      "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
