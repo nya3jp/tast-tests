@@ -396,12 +396,24 @@ func (ac *Activity) WaitForResumed(ctx context.Context, timeout time.Duration) e
 // https://developer.android.com/guide/components/activities/activity-lifecycle#alc
 func (ac *Activity) WaitForFinished(ctx context.Context, timeout time.Duration) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := ac.getTaskInfo(ctx)
-		if errors.Is(err, errNoTaskInfo) {
-			return nil
+		if running, _ := ac.IsRunning(ctx); running {
+			return errors.New("activity is still active")
 		}
-		return errors.New("activity is still active")
+		return nil
 	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// IsRunning returns true if the activity is running, false otherwise. It also
+// returns true if it cannot tell if the activity is running (context deadline
+// for example), with error
+func (ac *Activity) IsRunning(ctx context.Context) (bool, error) {
+	if _, err := ac.getTaskInfo(ctx); err == nil {
+		return true, nil
+	} else if errors.Is(err, errNoTaskInfo) {
+		return false, nil
+	} else {
+		return true, errors.Wrap(err, "cannot tell if the activity is running")
+	}
 }
 
 // PackageName returns the activity package name.
