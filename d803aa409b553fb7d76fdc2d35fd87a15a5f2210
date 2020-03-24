@@ -34,6 +34,24 @@
       "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d02177a_b933f9a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-24T15:09:52Z",
+      "side": 1,
+      "message": "Thanks for the explanation! personally still no problem with htat",
+      "parentUuid": "4986d25c_f3be9408",
+      "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
