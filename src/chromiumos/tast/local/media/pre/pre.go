@@ -38,7 +38,7 @@ var chromeVideoWithGuestLoginPre = chrome.NewPrecondition("videoWithGuestLogin",
 func ChromeVideoWithHDRScreen() testing.Precondition { return chromeVideoWithHDRScreenPre }
 
 var chromeVideoWithHDRScreenPre = chrome.NewPrecondition("videoWithHDRScreen", chromeVModuleArgs,
-	chrome.ExtraArgs("--enable-features=EnableUseHDRTransferFunction"))
+	chrome.ExtraArgs("--enable-use-hdr-transfer-function"))
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.
