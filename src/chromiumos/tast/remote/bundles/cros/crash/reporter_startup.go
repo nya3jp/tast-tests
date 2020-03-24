@@ -119,7 +119,10 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	// falsely fail when flagTime is right after the actual boot time.
 	bootTime := current.Add(time.Duration(-ut * float64(time.Second)))
 
-	if flagTime.Before(bootTime) {
+	// This test depends on the accuracy of the system clock. The clock may be
+	// adjusted between system boot and reporter startup, Considering such
+	// case, make it pass if the difference is samall enough.
+	if flagTime.Before(bootTime.Add(2 * time.Second)) {
 		s.Errorf("User space crash handling was not started during last boot: crash_reporter started at %s, system was booted at %s",
 			flagTime.Format(time.RFC3339Nano), bootTime.Format(time.RFC3339Nano))
 	}
