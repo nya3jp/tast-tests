@@ -189,6 +189,15 @@ func (m *Manager) ConfigureService(ctx context.Context, props map[string]interfa
 	return m.dbusObject.Call(ctx, "ConfigureService", props).Err
 }
 
+// ConfigureServicePath configures a service with the given properties.
+func (m *Manager) ConfigureServicePath(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
+	var service dbus.ObjectPath
+	if err := m.dbusObject.Call(ctx, "ConfigureService", props).Store(&service); err != nil {
+		return "", errors.Wrap(err, "failed to configure service")
+	}
+	return service, nil
+}
+
 // ConfigureServiceForProfile configures a service at the given profile path.
 func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath

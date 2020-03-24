@@ -19,9 +19,10 @@ const (
 // Device property names defined in dbus-constants.h .
 const (
 	// Device property names.
-	DevicePropertyAddress   = "Address"
-	DevicePropertyInterface = "Interface"
-	DevicePropertyType      = "Type"
+	DevicePropertyAddress         = "Address"
+	DevicePropertyInterface       = "Interface"
+	DevicePropertyType            = "Type"
+	DevicePropertySelectedService = "SelectedService"
 
 	// Ethernet device property names.
 	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
