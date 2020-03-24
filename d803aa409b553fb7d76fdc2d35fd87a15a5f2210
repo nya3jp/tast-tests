@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce0c197_f4c68e8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-03-24T14:01:50Z",
+      "side": 1,
+      "message": "I guess you already evaluated the risk, just a reminder that we don\u0027t log output like this because it is possible that the output could be very long or unprintable/unreadable.\n\nIIUC the output IS ALWAYS short+readable, and the logging is necessary to debug so i don\u0027t see problems with adding this.",
+      "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
