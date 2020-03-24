@@ -34,9 +34,9 @@ func init() {
 		Data:         []string{decode.ChromeMediaInternalsUtilsJSFile},
 		Params: []testing.Param{{
 			Name:      "av1",
-			Val:       playParams{fileName: "720p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			Val:       playParams{fileName: "360p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "720p_30fps_300frames.av1.mp4"},
+			ExtraData: []string{"video.html", "360p_30fps_300frames.av1.mp4"},
 			Pre:       pre.ChromeVideo(),
 		}, {
 			Name:              "h264",
@@ -128,9 +128,9 @@ func init() {
 			Pre:               pre.ChromeVideo(),
 		}, {
 			Name:      "av1_guest",
-			Val:       playParams{fileName: "720p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
+			Val:       playParams{fileName: "360p_30fps_300frames.av1.mp4", videoType: play.NormalVideo, verifyMode: play.NoVerifyHWAcceleratorUsed},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-			ExtraData: []string{"video.html", "720p_30fps_300frames.av1.mp4"},
+			ExtraData: []string{"video.html", "360p_30fps_300frames.av1.mp4"},
 			Pre:       pre.ChromeVideoWithGuestLogin(),
 		}, {
 			Name:              "h264_guest",
