@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c2d6b8e_621056ee",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-24T02:52:07Z",
+      "side": 1,
+      "message": "is there something more descriptive than set up?  Otherwise consider setUpIface since it\u0027s two words",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 28
+      },
+      "revId": "9580ea380a371fe6e3fe84940a8ae496c76ae605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41eabcc1_79f2f108",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-24T02:52:07Z",
+      "side": 1,
+      "message": "set",
+      "range": {
+        "startLine": 113,
+        "startChar": 43,
+        "endLine": 113,
+        "endChar": 48
+      },
+      "revId": "9580ea380a371fe6e3fe84940a8ae496c76ae605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1d174c0_ba5260ef",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-24T02:52:07Z",
+      "side": 1,
+      "message": "same here - tearDownIface",
+      "range": {
+        "startLine": 122,
+        "startChar": 18,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "9580ea380a371fe6e3fe84940a8ae496c76ae605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f10355f0_3ac43704",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-24T02:52:07Z",
+      "side": 1,
+      "message": "get is a stop word - consider dropping it as uniqueIfaceName http://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 291,
+        "startChar": 17,
+        "endLine": 291,
+        "endChar": 35
+      },
+      "revId": "9580ea380a371fe6e3fe84940a8ae496c76ae605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db207928_1de631f7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-24T02:52:07Z",
+      "side": 1,
+      "message": "reserveSubnetIdx? http://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 338,
+        "startChar": 17,
+        "endLine": 338,
+        "endChar": 29
+      },
+      "revId": "9580ea380a371fe6e3fe84940a8ae496c76ae605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fae56dd_a17023e2",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-24T02:52:07Z",
+      "side": 1,
+      "message": "hostBoard?  http://go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 380,
+        "startChar": 5,
+        "endLine": 380,
+        "endChar": 17
+      },
+      "revId": "9580ea380a371fe6e3fe84940a8ae496c76ae605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
