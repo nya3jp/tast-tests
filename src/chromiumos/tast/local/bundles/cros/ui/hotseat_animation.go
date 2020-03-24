@@ -32,6 +32,84 @@ func init() {
 	})
 }
 
+func createAndMinimizeWindow(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
+	const errorMsg = "failed to create and minimize a window"
+
+	// Verify the state before window creation.
+	initialWs, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+	if len(initialWs) != 0 {
+		return errors.Errorf("got %d window(s); expect 0 window", len(initialWs))
+	}
+
+	const numWindows = 1
+	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+	if err := conns.Close(); err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	// Verify that window creation is successful.
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+	if len(ws) != 1 {
+		return errors.Errorf("got %d windows; expect 1 window", len(initialWs))
+	}
+
+	// Minimize the created window.
+	if _, err := ash.SetWindowState(ctx, tconn, ws[0].ID, ash.WMEventMinimize); err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	return nil
+}
+
+func hideHotseatByActivatingWindow(ctx context.Context, tconn *chrome.TestConn, tsw *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter) error {
+	const errorMsg = "failed to hide hotseat by activating a window"
+
+	scrollableShelfInfo, err := ash.FetchScrollableShelfInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	if len(scrollableShelfInfo.IconsBoundsInScreen) != 1 {
+		return errors.Errorf("got %d shelf icons; expect one shelf icon", len(scrollableShelfInfo.IconsBoundsInScreen))
+	}
+
+	// Obtain the coordinate converter from the touch screen writer.
+	displayInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+	tcc := tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())
+	if err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	// Tap on the shelf icon to activate the window. Note that window creation is CPU-consuming. To measure the performance of hotseat background bounds animation more precisely, activating a window instead of creating a window to hide the hotseat.
+	centerPoint := scrollableShelfInfo.IconsBoundsInScreen[0].CenterPoint()
+	tapPointX, tapPointY := tcc.ConvertLocation(centerPoint)
+	if err := stw.Move(tapPointX, tapPointY); err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+		return errors.Wrap(err, errorMsg)
+	}
+
+	return nil
+}
+
+// HotseatAnimation measures the performance of hotseat background bounds animation.
 func HotseatAnimation(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
@@ -67,20 +145,18 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	histograms, err := metrics.Run(ctx, tconn, func() error {
-		// Open a window to hide the launcher and animate the hotseat to Hidden.
-		const numWindows = 1
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
-		if err != nil {
-			return errors.Wrap(err, "failed to open browser windows: ")
-		}
-		if err := conns.Close(); err != nil {
-			s.Error("Failed to close the connection to a browser window")
-		}
+	if err := createAndMinimizeWindow(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed to prepare for the hotseat animation perf test: ", err)
+	}
 
+	histograms, err := metrics.Run(ctx, tconn, func() error {
 		// Wait for the animations to complete and for things to settle down.
 		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed waiting for CPU to become idle: ", err)
+			return err
+		}
+
+		if err := hideHotseatByActivatingWindow(ctx, tconn, tsw, stw); err != nil {
+			return err
 		}
 
 		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
