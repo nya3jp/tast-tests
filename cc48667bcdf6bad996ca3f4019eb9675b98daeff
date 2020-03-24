@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd315a0a_4ab01bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-24T04:28:31Z",
+      "side": 1,
+      "message": "bonus, optional:\nhave this test also run on ARCVM. Details here: go/arc++tast-tests\nExample:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/gamepad.go?l\u003d26\n(although I think it should say android_vm_p instead of android_vm)",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "cc48667bcdf6bad996ca3f4019eb9675b98daeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2640cea_7fe0b6c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-24T04:28:31Z",
+      "side": 1,
+      "message": "nit:\nIIRC, act.MoveWindow / act.ResizeWindow could return before the window finishes its resize/move. \n\nSo in this case it might be a good idea to do the act.WindowBounds() + check expected size inside a poll.",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "cc48667bcdf6bad996ca3f4019eb9675b98daeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b3d1fd_77d72537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-24T04:28:31Z",
+      "side": 1,
+      "message": "nit: Unexpected window size: got %v, want %v",
+      "range": {
+        "startLine": 104,
+        "startChar": 12,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "cc48667bcdf6bad996ca3f4019eb9675b98daeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
