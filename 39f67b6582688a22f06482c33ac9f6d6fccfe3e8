@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "124e6e91_ce390b58",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "Oops..., fixed.",
+      "parentUuid": "70bab7e7_67f29b0c",
+      "range": {
+        "startLine": 365,
+        "startChar": 29,
+        "endLine": 365,
+        "endChar": 33
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82982a1e_19910f8a",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05952d1_20c53ac4",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82982a1e_19910f8a",
+      "range": {
+        "startLine": 407,
+        "startChar": 25,
+        "endLine": 407,
+        "endChar": 44
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "459cb0d5_245d3689",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8e5400f_7ea6b75f",
+      "range": {
+        "startLine": 412,
+        "startChar": 42,
+        "endLine": 412,
+        "endChar": 51
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4eb97530_2d1a91e7",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2020-03-23T09:34:41Z",
       "side": 1,
       "message": "Do we want to validate if the center frequencies are valid?",
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6e67da_09b46dd7",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "I think maybe we can have iw (or netlink) to validate them. iw will return invalid argument if we pass invalid center frequency to it.",
+      "parentUuid": "4eb97530_2d1a91e7",
       "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "3fdf2c77_2e3a3dac",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b7c0dce_e326a3b2",
+      "range": {
+        "startLine": 420,
+        "startChar": 25,
+        "endLine": 420,
+        "endChar": 35
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e34ca26_1f0953d2",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 3
@@ -148,6 +262,30 @@
       "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b41b27f_96b7d790",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e34ca26_1f0953d2",
+      "range": {
+        "startLine": 443,
+        "startChar": 20,
+        "endLine": 443,
+        "endChar": 57
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "af90921b_764c8ab4",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d6d8e43_0d26c5a1",
+      "range": {
+        "startLine": 447,
+        "startChar": 22,
+        "endLine": 447,
+        "endChar": 30
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31b6ffd5_80f6d659",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 3
@@ -194,6 +356,30 @@
       "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6cf3d55_23fd9231",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-24T06:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b6ffd5_80f6d659",
+      "range": {
+        "startLine": 464,
+        "startChar": 67,
+        "endLine": 464,
+        "endChar": 73
+      },
+      "revId": "39f67b6582688a22f06482c33ac9f6d6fccfe3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
