@@ -111,12 +111,12 @@ func testListKeysEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary)
 // testAddRemoveKeyEx tests that AddKeyEx() and RemoveKeyEx() work as expected.
 func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.UtilityCryptohomeBinary) error {
 	// AddKeyEx shouldn't work if password is incorrect.
-	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.IncorrectPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, true); err == nil {
+	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.IncorrectPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false); err == nil {
 		return errors.New("add key succeeded when it shouldn't")
 	}
 
 	// AddKey should work if everything is correct.
-	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, true); err != nil {
+	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false); err != nil {
 		return errors.Wrap(err, "failed to add keys")
 	}
 	if err := checkKeysLabels(ctx, utility, []string{util.PasswordLabel, util.PinLabel}); err != nil {
