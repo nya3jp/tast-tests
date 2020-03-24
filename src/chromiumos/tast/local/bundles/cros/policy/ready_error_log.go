@@ -23,7 +23,7 @@ func init() {
 			"nya@chromium.org",
 			"chromeos-commercial-stability@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
