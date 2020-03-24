@@ -154,13 +154,14 @@ type ShelfState struct {
 
 // ScrollableShelfInfoClass corresponds to the "ScrollableShelfInfo" defined in autotest_private.idl
 type ScrollableShelfInfoClass struct {
-	MainAxisOffset       float32     `json:"mainAxisOffset"`
-	PageOffset           float32     `json:"pageOffset"`
-	TargetMainAxisOffset float32     `json:"targetMainAxisOffset"`
-	LeftArrowBounds      coords.Rect `json:"leftArrowBounds"`
-	RightArrowBounds     coords.Rect `json:"rightArrowBounds"`
-	IsAnimating          bool        `json:"isAnimating"`
-	IsOverflow           bool        `json:"isOverflow"`
+	MainAxisOffset       float32        `json:"mainAxisOffset"`
+	PageOffset           float32        `json:"pageOffset"`
+	TargetMainAxisOffset float32        `json:"targetMainAxisOffset"`
+	LeftArrowBounds      coords.Rect    `json:"leftArrowBounds"`
+	RightArrowBounds     coords.Rect    `json:"rightArrowBounds"`
+	IsAnimating          bool           `json:"isAnimating"`
+	IsOverflow           bool           `json:"isOverflow"`
+	IconsBoundsInScreen  []*coords.Rect `json:"iconsBoundsInScreen"`
 }
 
 // HotseatStateType corresponds to the "HotseatState" defined in autotest_private.idl.
@@ -262,6 +263,11 @@ func fetchShelfInfoForState(ctx context.Context, c *chrome.TestConn, state *Shel
 		return nil, errors.Wrap(err, "failed to call getScrollableShelfInfoForState")
 	}
 	return &s, nil
+}
+
+// FetchScrollableShelfInfo returns the current scrollable shelf's ui info.
+func FetchScrollableShelfInfo(ctx context.Context, c *chrome.TestConn) (*ScrollableShelfInfoClass, error) {
+	return FetchScrollableShelfInfoForState(ctx, c, &ShelfState{})
 }
 
 // FetchScrollableShelfInfoForState returns the scrollable shelf's ui related information for the given state.
