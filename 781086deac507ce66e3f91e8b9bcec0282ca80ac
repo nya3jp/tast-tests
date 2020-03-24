@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "c75ec5e6_38d4b06f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-24T04:06:01Z",
+      "side": 1,
+      "message": "I think it makes sense to remove WaitForResumed from Activity, since as you mentioned is misleading and flaky.\nBut if we can\u0027t replace WaitForResumed with something that is non-flaky, then let\u0027s keep calling the existing WaitForResumed, but changing the scope of the function: private to the file so that nobody else call it.  I\u0027d also add a TODO/FIXME in the func.\n\nThe rationale is:\nIf we can\u0027t replace WaitForResumed with something that is stable, then just leave as it is. \nIf we are going to fix it, then we should fix it properly.\nI don\u0027t want to replace a flaky func with another flaky one.",
+      "parentUuid": "3cb13f5f_0d86806d",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48c142ba_6eec1cba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 3
