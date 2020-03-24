@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79a438b5_8d442cc9",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-24T17:14:16Z",
+      "side": 1,
+      "message": "Comment updated to be (hopefully) clearer.",
+      "parentUuid": "4df3d467_512d2809",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca026ec5_78db318c",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-24T00:12:27Z",
       "side": 1,
       "message": "Can\u0027t ConfigDir always be used so that it doesn\u0027t need to appear in the signature?",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab644f09_8147f129",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-24T17:14:16Z",
+      "side": 1,
+      "message": "Unfortunately not, because of the way Tast finds datafiles. For full info see go/tast-writing. The short version: ConfigDir gives us the relative pathname from within the test\u0027s datafiles. In order to get the full path to that directory, the test itself* needs to call s.DataPath(firmware.ConfigDir). This function needs that full path in order to find the datafiles.\n\n* Why the test itself? Because s.DataPath requires a testing.State, and writers are discouraged from passing a testing.State into a support package. From go/tast-writing: \"Avoid passing testing.State when it’s not actually necessary: If a function just needs the output directory, pass a path.\"",
+      "parentUuid": "ca026ec5_78db318c",
       "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92faabae_90efc4ad",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-24T17:14:16Z",
+      "side": 1,
+      "message": "Ultimately we\u0027ll need to call loadConfigJSON several times (always within NewConfig) in order to load the default config, the platform-specific config, and any parent configs. I\u0027ve added a comment clarifying this, above where we call loadConfigJSON(defaultName).",
+      "parentUuid": "72e27e8f_9f92de4e",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
