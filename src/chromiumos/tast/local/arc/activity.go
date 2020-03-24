@@ -404,6 +404,17 @@ func (ac *Activity) WaitForFinished(ctx context.Context, timeout time.Duration) 
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
+// IsRunning returns true if the activity is running, false otherwise.
+func (ac *Activity) IsRunning(ctx context.Context) (bool, error) {
+	if _, err := ac.getTaskInfo(ctx); err != nil {
+		if errors.Is(err, errNoTaskInfo) {
+			return false, nil
+		}
+		return false, errors.Wrap(err, "cannot tell if the activity is running")
+	}
+	return true, nil
+}
+
 // PackageName returns the activity package name.
 func (ac *Activity) PackageName() string {
 	return ac.pkgName
