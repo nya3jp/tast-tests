@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "a2575ed3_c44d822a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-24T04:09:50Z",
+      "side": 1,
+      "message": "If order doesn\u0027t matter, it\u0027s fine to iterate over map.\n\nIt\u0027s only a matter of taste. I just felt this construct (defining only keys of maps for iteration) a bit tricky. nvm too much.",
+      "parentUuid": "4b77be98_0019235f",
+      "range": {
+        "startLine": 382,
+        "startChar": 12,
+        "endLine": 382,
+        "endChar": 113
+      },
+      "revId": "cc6ea7bab0c74245a14e3e29bd7a0f2e4fef8515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53576e38_a66e560c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 5
