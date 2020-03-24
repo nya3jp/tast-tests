@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "96407384_caed6bfc",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-24T18:13:47Z",
+      "side": 1,
+      "message": "Is it possible to have a SetConfigDir function which does this, with the default being directory of the fw-testing-configs repo?  This way testing can still configure custom configs while in production there\u0027s one less thing to pass around.",
+      "parentUuid": "ab644f09_8147f129",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72e27e8f_9f92de4e",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 2
