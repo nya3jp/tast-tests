@@ -99,6 +99,10 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 // In case of JavaScript exceptions, errorText and exc are returned.
 func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out interface{}) (*runtime.ExceptionDetails, error) {
 	args := runtime.NewEvaluateArgs(expr)
+
+	// Set user gesture flag as if the script is triggered by user gesture.
+	args = args.SetUserGesture(true)
+
 	if awaitPromise {
 		args = args.SetAwaitPromise(true)
 	}
