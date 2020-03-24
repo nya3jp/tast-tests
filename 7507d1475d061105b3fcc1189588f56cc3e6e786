@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d05fdd92_0cf6d0d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:54:33Z",
+      "side": 1,
+      "message": "./fast_build.sh -T\n\nShould be run at least.",
+      "revId": "7507d1475d061105b3fcc1189588f56cc3e6e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7da30c_ac766443",
+        "filename": "src/chromiumos/tast/common/mtbferrors/errcode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:54:33Z",
+      "side": 1,
+      "message": "Could you add package document?\nDid you run tast-lint? It should warn this. If not, it is an issue, so could you file a bug with the repro steps?",
+      "revId": "7507d1475d061105b3fcc1189588f56cc3e6e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bf384d_4c60f4bd",
+        "filename": "src/chromiumos/tast/common/mtbferrors/errcode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:54:33Z",
+      "side": 1,
+      "message": "Please avoid defining constant like\n\n#define one 1\n\nstyle. Instead, give names properly for each.\nAlso, please add references for each where those values come from.",
+      "revId": "7507d1475d061105b3fcc1189588f56cc3e6e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c0b26b_e3df939f",
+        "filename": "src/chromiumos/tast/common/mtbferrors/errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:54:33Z",
+      "side": 1,
+      "message": "nit/style: IIUC, ErrType is bigger category of the code? Then could you declare it above?",
+      "revId": "7507d1475d061105b3fcc1189588f56cc3e6e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8562c909_9233230d",
+        "filename": "src/chromiumos/tast/common/mtbferrors/errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:54:33Z",
+      "side": 1,
+      "message": "Using the data derived from argument as format string is risky.\nCould you redesign the API properly to avoid that?",
+      "revId": "7507d1475d061105b3fcc1189588f56cc3e6e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac9f8d69_623525ba",
+        "filename": "src/chromiumos/tast/common/mtbferrors/errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:54:33Z",
+      "side": 1,
+      "message": "nit/style: could you reorder to adapt with the order of MTBFError field declaration?",
+      "revId": "7507d1475d061105b3fcc1189588f56cc3e6e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae652905_8ec7d166",
+        "filename": "src/chromiumos/tast/common/mtbferrors/errors.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-24T02:54:33Z",
+      "side": 1,
+      "message": "Unneeded, since E should be auto promoted.",
+      "revId": "7507d1475d061105b3fcc1189588f56cc3e6e786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
