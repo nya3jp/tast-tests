@@ -16,6 +16,24 @@
       "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4986d25c_f3be9408",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-03-24T14:15:20Z",
+      "side": 1,
+      "message": "The output log could be very long but still readable. Given that we don\u0027t usually run multiple tests locally and we can still check the test result dir to read the full logs if needed, I think this should be okay? I\u0027d like to see what Tast Owner says of course.\n\nI\u0027ve tried to log to syslog before (by modifying cryptohome-tpm-live-test.cc), but somehow the actual origins (e.g., trunks/tpm_utility_impl.cc) of the logs are hidden, and it looks like all logs come from cryptohome-tpm-live-test. This will make debugging more difficult. Here is an example:\nhttps://stainless.corp.google.com/browse/chromeos-autotest-results/swarming-4b0fffe43d05c710/\nYou can click into \"message\" under hwsec.CryptohomeTPMLiveTests, search cryptohome-tpm-live-test, and see what it looks like.",
+      "parentUuid": "cce0c197_f4c68e8b",
+      "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
