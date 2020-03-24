@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44bdf222_22ae7fab",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-03-24T06:33:01Z",
+      "side": 1,
+      "message": "unwrapping errors like this is generally a bad idea.  Also, I think it\u0027s confusing to organize this as one polling function called from another.  Consider using a function other than WaitForEvent, since it\u0027s the opposite of what you want here.  You could write a WaitForNoEvents function and have both it and WaitForEvent use a common helper (note: my example helper function name is bad if you can think of better ones)\n\n// common unexported function that\u0027s very similar to WaitForEvent(), but uses an extra boolean to decide whether to continue on zero events or not\nwaitForEventWithOptions(ctx context.Context, timeout time.Duration, eventsExpected bool)\n\n// returns waitForEventWithOptions(..., true)\nWaitForEvent(...)\n\n// returns waitForEventWithOptions(..., false)\nWaitForNoEvents(...)",
+      "revId": "4171efdd46a6e8d2e45fd1e09a1e93b2490f4341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
