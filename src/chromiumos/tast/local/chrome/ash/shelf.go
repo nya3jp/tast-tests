@@ -154,14 +154,15 @@ type ShelfState struct {
 
 // ScrollableShelfInfoClass corresponds to the "ScrollableShelfInfo" defined in autotest_private.idl
 type ScrollableShelfInfoClass struct {
-	MainAxisOffset         float32     `json:"mainAxisOffset"`
-	PageOffset             float32     `json:"pageOffset"`
-	TargetMainAxisOffset   float32     `json:"targetMainAxisOffset"`
-	LeftArrowBounds        coords.Rect `json:"leftArrowBounds"`
-	RightArrowBounds       coords.Rect `json:"rightArrowBounds"`
-	IsAnimating            bool        `json:"isAnimating"`
-	IsOverflow             bool        `json:"isOverflow"`
-	IsShelfWidgetAnimating bool        `json:"isShelfWidgetAnimating"`
+	MainAxisOffset         float32        `json:"mainAxisOffset"`
+	PageOffset             float32        `json:"pageOffset"`
+	TargetMainAxisOffset   float32        `json:"targetMainAxisOffset"`
+	LeftArrowBounds        coords.Rect    `json:"leftArrowBounds"`
+	RightArrowBounds       coords.Rect    `json:"rightArrowBounds"`
+	IsAnimating            bool           `json:"isAnimating"`
+	IsOverflow             bool           `json:"isOverflow"`
+	IsShelfWidgetAnimating bool           `json:"isShelfWidgetAnimating"`
+	IconsBoundsInScreen    []*coords.Rect `json:"iconsBoundsInScreen"`
 }
 
 // HotseatStateType corresponds to the "HotseatState" defined in autotest_private.idl.
