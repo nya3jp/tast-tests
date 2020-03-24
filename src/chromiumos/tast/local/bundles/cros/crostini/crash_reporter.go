@@ -109,7 +109,7 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 			`vm_crash.*\.dmp`,
 			`vm_crash.*\.proclog`})
 	if err != nil {
-		s.Error("Couldn't find expected files: ", err)
+		s.Fatal("Couldn't find expected files: ", err)
 	}
 
 	s.Log("Checking for expected metadata values")
