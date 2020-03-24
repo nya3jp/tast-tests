@@ -24,6 +24,9 @@ service WilcoService {
   rpc GetConfigurationData(google.protobuf.Empty)
     returns (GetConfigurationDataResponse) {}
 
+  rpc TestPerformWebRequest(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
+
   rpc ExecuteRoutine(ExecuteRoutineRequest)
     returns (ExecuteRoutineResponse) {}
   rpc TestRoutineCancellation(google.protobuf.Empty)
