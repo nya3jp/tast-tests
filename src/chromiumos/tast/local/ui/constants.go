@@ -11,3 +11,8 @@ package ui
 // page (chrome://newtab) would be great but it is not stable (e.g. the logo can
 // be replaced on holidays).
 const PerftestURL = "chrome://settings"
+
+// EmptyURL specifies the URL to an empty web page. Note that a empty web page
+// does not render the web contents so it uses less CPU resources than the
+// actual scenario.
+const EmptyURL = "about:blank"
