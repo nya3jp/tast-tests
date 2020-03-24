@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "558fdde9_5426c76c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-24T03:49:22Z",
+      "side": 1,
+      "message": "removing \"WaitForResumed\" from Activity LGTM.\nMy suggestion is to move func \"WaitForResumed\" to the resize_acivity.go file.",
+      "parentUuid": "f1779078_b052d24d",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48c142ba_6eec1cba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 3
