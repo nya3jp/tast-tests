@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "197dbc3d_3e141510",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-24T19:23:10Z",
+      "side": 1,
+      "message": "And chromeboxes based on Kepler (guado rikku, probably fizz), where\nthe external vp8/9 decoder chip is accessed using v4l2 API as well.",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "a29406d5caab9afe3c585431b83701edf9dbdc40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
