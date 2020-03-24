@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "453c8214_95417df2",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-24T18:18:48Z",
+      "side": 1,
+      "message": "Can you reuse it as well for https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2104849 ?",
+      "range": {
+        "startLine": 408,
+        "startChar": 20,
+        "endLine": 408,
+        "endChar": 29
+      },
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdbdea02_f5ec2943",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -13,6 +36,47 @@
       "writtenOn": "2020-03-24T16:29:12Z",
       "side": 1,
       "message": "nit. Can you indent the error handling?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432da3b1_463e6946",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-24T18:18:48Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "fdbdea02_f5ec2943",
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868247f0_3e0db092",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-24T18:18:48Z",
+      "side": 1,
+      "message": "why it\u0027s \"true\"?",
+      "range": {
+        "startLine": 416,
+        "startChar": 8,
+        "endLine": 416,
+        "endChar": 12
+      },
       "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
