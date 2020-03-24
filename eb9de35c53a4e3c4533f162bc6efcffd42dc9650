@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1082f1c5_965b013f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-24T17:43:03Z",
+      "side": 1,
+      "message": "Sure, serverCert sounds fine.",
+      "parentUuid": "22ab1c5d_725e7783",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e4e97d4_4fb71918",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fdb6fcd2_4c6ef039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-24T17:43:03Z",
+      "side": 1,
+      "message": "Golang has no line limits. I still tend to wrap comments eventually, but I\u0027m not sure there\u0027s a rule for that. When I think about it, I\u0027ve been setting it to 120 personally. Not sure what I did here.",
+      "parentUuid": "4e4e97d4_4fb71918",
+      "range": {
+        "startLine": 77,
+        "startChar": 107,
+        "endLine": 77,
+        "endChar": 110
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8ed9fe8_5c483e7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 12
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-20T12:31:32Z",
       "side": 1,
       "message": "Is this actually standard practice or should there be some pre- / post- test hooks that always run and do such clean up?\nAfter all such leftover state could also affect other tests (in theory unrelated to Ethernet EAP) in some ways.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df51cc3e_fded5ff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-24T17:43:03Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Startup-and-shutdown\n\nRelevant snippets:\n\n\"Previous tests may have aborted mid-run; it’s not safe to make assumptions that they undid all temporary changes that they made.\"\n\"Tests should also avoid performing unnecessary de-initialization steps on completion: UI tests should leave Chrome logged in at completion instead of restarting it, for example.\"\n...\n\"Note that tests should still undo atypical configuration that leaves the system in a non-fully-functional state, though. For example, if a test needs to temporarily stop a service, it should restart it before exiting.\"\n\nSo yes, if this can affect other tests, those tests should be aware. AFAIK, all tests that rely on any profiles are clearing the relevant profiles initially. I suppose this could be something to factor into a common library, but it\u0027s not clear they all want to do the exact same initialization. I can take a look though.\n\nIt\u0027s also not suggested to do too much in a post- step, when the same stuff is needed in pre- regardless.",
+      "parentUuid": "b8ed9fe8_5c483e7d",
       "range": {
         "startLine": 146,
         "startChar": 0,
