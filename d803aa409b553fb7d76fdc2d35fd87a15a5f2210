@@ -52,6 +52,24 @@
       "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5127da6f_a953b6fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-03-24T15:12:38Z",
+      "side": 1,
+      "message": "Wait, per Tast logging guidance, in this case I should log to a file:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\nWill update the CL later.",
+      "parentUuid": "1d02177a_b933f9a8",
+      "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
