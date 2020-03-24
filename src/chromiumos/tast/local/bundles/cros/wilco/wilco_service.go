@@ -98,6 +98,50 @@ func (c *WilcoService) GetConfigurationData(ctx context.Context, req *empty.Empt
 	}, nil
 }
 
+func (c *WilcoService) TestPerformWebRequest(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	{
+		request := dtcpb.PerformWebRequestParameter{
+			HttpMethod: dtcpb.PerformWebRequestParameter_HTTP_METHOD_GET,
+			Url:        "https://chromium.org",
+		}
+		response := dtcpb.PerformWebRequestResponse{}
+
+		if err := wilco.DPSLSendMessage(ctx, "PerformWebRequest", &request, &response); err != nil {
+			return nil, errors.Wrap(err, "failed to call PerformWebRequest")
+		}
+
+		if response.Status == dtcpb.PerformWebRequestResponse_STATUS_INTERNAL_ERROR {
+			return nil, errors.New("received status STATUS_INTERNAL_ERROR")
+		}
+
+		if response.Status != dtcpb.PerformWebRequestResponse_STATUS_OK {
+			// Don't fail website isn't reachable from the DUT.
+			testing.ContextLogf(ctx, "Request for chromium.org failed with status %s", response.Status)
+		}
+	}
+
+	{
+		request := dtcpb.PerformWebRequestParameter{
+			HttpMethod: dtcpb.PerformWebRequestParameter_HTTP_METHOD_GET,
+			Url:        "https://localhost/test",
+		}
+		response := dtcpb.PerformWebRequestResponse{}
+
+		if err := wilco.DPSLSendMessage(ctx, "PerformWebRequest", &request, &response); err != nil {
+			return nil, errors.Wrap(err, "failed to call PerformWebRequest")
+		}
+
+		// Requests to localhost are blocked.
+		if response.Status != dtcpb.PerformWebRequestResponse_STATUS_NETWORK_ERROR {
+			return nil, errors.Errorf("invalid status for localhost request; got %s; expect STATUS_NETWORK_ERROR", response.Status)
+		}
+	}
+
+	// TODO(crbug.com/1064236): add request to test server
+
+	return &empty.Empty{}, nil
+}
+
 func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRoutineRequest) (*wpb.ExecuteRoutineResponse, error) {
 	rrRequest := dtcpb.RunRoutineRequest{}
 	if err := proto.Unmarshal(req.Request, &rrRequest); err != nil {
