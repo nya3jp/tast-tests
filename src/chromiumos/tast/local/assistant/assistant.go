@@ -68,9 +68,14 @@ func WaitForServiceReady(ctx context.Context, tconn *chrome.TestConn) error {
 // SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.
 func SetHotwordEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
 	const prefName string = "settings.voice_interaction.hotword.enabled"
-	expr := fmt.Sprintf(
-		`tast.promisify(chrome.autotestPrivate.setWhitelistedPref)('%s', %t)`, prefName, enabled)
-	return tconn.EvalPromise(ctx, expr, nil)
+	return setPrefValue(ctx, tconn, prefName, enabled)
+}
+
+// SetContextEnabled enables/disables the access to the screen context for Assistant.
+// This pref corresponds to the "Related Info" setting for Assistant.
+func SetContextEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
+	const prefName string = "settings.voice_interaction.context.enabled"
+	return setPrefValue(ctx, tconn, prefName, enabled)
 }
 
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
@@ -93,4 +98,11 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// setPrefValue is a helper function to set value for Assistant related preferences.
+func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, enabled bool) error {
+	expr := fmt.Sprintf(
+		`tast.promisify(chrome.autotestPrivate.setWhitelistedPref)('%s', %t)`, prefName, enabled)
+	return tconn.EvalPromise(ctx, expr, nil)
 }

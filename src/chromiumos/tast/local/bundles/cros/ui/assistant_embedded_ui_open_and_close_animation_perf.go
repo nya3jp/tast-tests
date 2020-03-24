@@ -74,6 +74,11 @@ func AssistantEmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testin
 	}
 	defer cleanup(ctx)
 
+	// Enables the "Related Info" setting for Assistant.
+	// We explicitly enable this setting here because it controlled the root cause
+	// of the open animation jankiness in b/145218971.
+	assistant.SetContextEnabled(ctx, tconn, true)
+
 	// We measure the open/close animation smoothness of the embedded UI with 0, 1 or 2
 	// browser windows in the background.
 	const maxNumOfWindows = 2
