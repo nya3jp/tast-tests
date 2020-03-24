@@ -28,7 +28,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HotseatAnimation,
 		Desc:         "Measures the framerate of the hotseat animation in tablet mode",
-		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "cros-shelf-prod-notifications@google.com"},
+		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "andrewxu@chromium.org", "cros-shelf-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		Pre:          ash.LoggedInWith100DummyApps(),
@@ -47,7 +47,15 @@ func init() {
 	})
 }
 
+// HotseatAnimation measures the performance of hotseat background bounds animation.
 func HotseatAnimation(ctx context.Context, s *testing.State) {
+	// TODO(newcomer): please record performance of navigation widget (https://crbug.com/1065405).
+	const (
+		extendedHotseatHistogram = "Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"
+		hiddenHotseatHistogram   = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownHotseatHistogram    = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
+	)
+
 	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -95,95 +103,159 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	histograms, err := metrics.Run(ctx, tconn, func() error {
-		// Open a window to hide the launcher and animate the hotseat to Hidden.
+	// Wait for the animations to complete and for things to settle down.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
+
+	pv := perf.NewValues()
+
+	// Collect metrics data from hiding hotseat by window creation.
+	histogramGroup, err := metrics.Run(ctx, tconn, func() error {
 		const numWindows = 1
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
+		conns, err := ash.CreateWindows(ctx, cr, ui.EmptyURL, numWindows)
 		if err != nil {
 			return errors.Wrap(err, "failed to open browser windows: ")
 		}
 		if err := conns.Close(); err != nil {
-			s.Error("Failed to close the connection to a browser window")
+			return errors.Wrap(err, "failed to close the connection to a browser window")
 		}
 
-		// Wait for the animations to complete and for things to settle down.
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed waiting for CPU to become idle: ", err)
+		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+			return err
+		}
+
+		return nil
+	}, hiddenHotseatHistogram)
+	if err != nil {
+		s.Fatal("Failed to get mean histograms from hiding hotseat by window creation: ", err)
+	}
+
+	// Save metrics data from hiding hotseat by window creation.
+	for _, h := range histogramGroup {
+		mean, err := h.Mean()
+		if err != nil {
+			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+		}
+
+		pv.Set(perf.Metric{
+			Name:      h.Name + ".WindowCreation",
+			Unit:      "percent",
+			Direction: perf.BiggerIsBetter,
+		}, mean)
+	}
+
+	// Collect metrics data from entering/exiting overview.
+	histogramGroup, err = metrics.Run(ctx, tconn, func() error {
+		addNewTab := func(ctx context.Context, cr *chrome.Chrome, url string) error {
+			conn, err := cr.NewConn(ctx, url)
+			if err != nil {
+				return errors.Wrap(err, "cannot create a new tab")
+			}
+
+			conn.Close()
+			return nil
+		}
+		if err := addNewTab(ctx, cr, ui.PerftestURL); err != nil {
+			return err
 		}
 
 		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
 
-		pressX := tsw.Width() * 5 / 6
-		pressY := tsw.Height() / 2
-		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
-			return errors.Wrap(err, "failed to tap")
-		}
-		if err := stw.End(); err != nil {
-			return errors.Wrap(err, "failed to finish the tap gesture")
-		}
+		enterHomeLauncherFromOverview := func(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tsw *input.TouchscreenEventWriter) error {
+			const errorMsg = "failed to enter home launcher from overview"
 
-		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
-			return errors.Wrap(err, "failed to wait for animation to finish")
+			pressX := tsw.Width() * 5 / 6
+			pressY := tsw.Height() / 2
+			if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
+				return errors.Wrap(err, errorMsg)
+			}
+			if err := stw.End(); err != nil {
+				return errors.Wrap(err, errorMsg)
+			}
+			if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
+				return errors.Wrap(err, errorMsg)
+			}
+			if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
+				return errors.Wrap(err, errorMsg)
+			}
+
+			return nil
+		}
+		if err := enterHomeLauncherFromOverview(ctx, tconn, stw, tsw); err != nil {
+			return err
 		}
 
 		if err := ash.DragToShowOverview(ctx, tsw.Width(), tsw.Height(), stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}
 
-		pressX = tsw.Width() / 3
-		pressY = tsw.Height() / 3
+		enterInAppModeFromOverview := func(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tsw *input.TouchscreenEventWriter) error {
+			pressX := tsw.Width() / 3
+			pressY := tsw.Height() / 3
 
-		if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
-			return errors.Wrap(err, "failed to tap")
+			if err := stw.Swipe(ctx, pressX, pressY, pressX+5, pressY-5, 200*time.Millisecond); err != nil {
+				return err
+			}
+			if err := stw.End(); err != nil {
+				return err
+			}
+
+			if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
+				return err
+			}
+
+			if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+				return err
+			}
+
+			return nil
 		}
-		if err := stw.End(); err != nil {
-			return errors.Wrap(err, "failed to finish the tap gesture")
-		}
-
-		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
-			return errors.Wrap(err, "failed to wait for animation to finish")
-		}
-
-		startX := tsw.Width() / 2
-		startY := tsw.Height() - 1
-
-		endX := startX
-		endY := tsw.Height() / 2
-
-		if err := stw.Swipe(ctx, startX, startY, endX, endY, 200*time.Millisecond); err != nil {
-			return errors.Wrap(err, "failed to swipe")
-		}
-
-		if err := stw.End(); err != nil {
-			return errors.Wrap(err, "failed to finish the swipe gesture")
+		if err := enterInAppModeFromOverview(ctx, tconn, stw, tsw); err != nil {
+			return err
 		}
 
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
-			return errors.Wrap(err, "home launcher failed to show")
+		enterHomeLauncherFromInAppMode := func(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tsw *input.TouchscreenEventWriter) error {
+			startX := tsw.Width() / 2
+			startY := tsw.Height() - 1
+
+			endX := startX
+			endY := tsw.Height() / 2
+
+			if err := stw.Swipe(ctx, startX, startY, endX, endY, 200*time.Millisecond); err != nil {
+				return err
+			}
+
+			if err := stw.End(); err != nil {
+				return err
+			}
+
+			if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
+				return err
+			}
+
+			if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
+				return err
+			}
+
+			return nil
+		}
+		if err := enterHomeLauncherFromInAppMode(ctx, tconn, stw, tsw); err != nil {
+			return err
 		}
 
 		return nil
 	},
-		"Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat",
-		"Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat",
-		"Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat",
-		"Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToHiddenHotseat",
-		"Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToShownHotseat",
-		"Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToExtendedHotseat",
-		"Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToHiddenHotseat",
-		"Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToShownHotseat",
-		"Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToExtendedHotseat",
-		"Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToHiddenHotseat",
-		"Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToShownHotseat",
-		"Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToExtendedHotseat")
+		shownHotseatHistogram,
+		extendedHotseatHistogram)
 	if err != nil {
-		s.Fatal("Failed to swipe or get histogram: ", err)
+		s.Fatal("Failed to get mean histogram from entering/exiting overview: ", err)
 	}
 
-	pv := perf.NewValues()
-	for _, h := range histograms {
+	// Save metrics data from entering/exiting overview.
+	for _, h := range histogramGroup {
 		mean, err := h.Mean()
 		if err != nil {
 			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
@@ -196,7 +268,76 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}, mean)
 	}
 
+	// Collect metrics data from hiding hotseat by window activation.
+	histogramGroup, err = metrics.Run(ctx, tconn, func() error {
+		hideHotseatByActivatingWindow := func(ctx context.Context, tconn *chrome.TestConn, tsw *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter) error {
+			// Verify the initial hotseat state before hiding.
+			if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
+				return err
+			}
+
+			scrollableShelfInfo, err := ash.FetchScrollableShelfInfo(ctx, tconn)
+			if err != nil {
+				return err
+			}
+
+			if len(scrollableShelfInfo.IconsBoundsInScreen) == 0 {
+				return errors.New("failed to activate a window: got 0 shelf icons; expect at least one shelf icon")
+			}
+
+			// Obtain the coordinate converter from the touch screen writer.
+			displayInfo, err := display.GetInternalInfo(ctx, tconn)
+			if err != nil {
+				return err
+			}
+			tcc := tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())
+			if err != nil {
+				return err
+			}
+
+			// Tap on the shelf icon to activate the window. Note that window creation is CPU-consuming. To measure the performance of hotseat background bounds animation more precisely, activating a window instead of creating a window to hide the hotseat.
+			centerPoint := scrollableShelfInfo.IconsBoundsInScreen[0].CenterPoint()
+			tapPointX, tapPointY := tcc.ConvertLocation(centerPoint)
+			if err := stw.Move(tapPointX, tapPointY); err != nil {
+				return err
+			}
+			if err := stw.End(); err != nil {
+				return err
+			}
+
+			// Verify the hotseat state after hiding.
+			if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
+				return err
+			}
+
+			return nil
+		}
+		if err := hideHotseatByActivatingWindow(ctx, tconn, tsw, stw); err != nil {
+			return err
+		}
+
+		return nil
+	}, hiddenHotseatHistogram)
+	if err != nil {
+		s.Fatal("Failed to get mean histograms from hiding hotseat by window activation: ", err)
+	}
+
+	// Save metrics data from hiding hotseat by window activation.
+	for _, h := range histogramGroup {
+		mean, err := h.Mean()
+		if err != nil {
+			s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+		}
+
+		pv.Set(perf.Metric{
+			Name:      h.Name + ".WindowActivation",
+			Unit:      "percent",
+			Direction: perf.BiggerIsBetter,
+		}, mean)
+	}
+
+	// Save metrics data in file.
 	if err := pv.Save(s.OutDir()); err != nil {
-		s.Error("Failed saving perf data: ", err)
+		s.Fatal("Failed saving perf data in file: ", err)
 	}
 }
