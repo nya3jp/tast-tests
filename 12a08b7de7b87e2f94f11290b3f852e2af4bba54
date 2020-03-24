@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e5ac749_25492487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-24T18:11:34Z",
+      "side": 1,
+      "message": "I will change to error as I would like to continue the test.",
+      "parentUuid": "024e7ed6_cd94b740",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90bec916_dcd172df",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c9bf3f_4052e59b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-24T18:11:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "90bec916_dcd172df",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4561f668_ea8582be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-24T18:11:34Z",
+      "side": 1,
+      "message": "I will change to error as I would like to continue the test.",
+      "parentUuid": "cd65ee1c_fc90d762",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63703719_5cd62b64",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c6dcbe0a_8e6d362d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-24T18:11:34Z",
+      "side": 1,
+      "message": "I have observed that using settext will not type the password in password field as sometimes page will be in webview.Could not apply multiple keys as every key in the password is unique.  \n\nI don\u0027t have access to private repo.",
+      "parentUuid": "63703719_5cd62b64",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07f635fc_79d3b580",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a1f193_708af654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-24T18:11:34Z",
+      "side": 1,
+      "message": "I will change to error as I would like to continue the test.",
+      "parentUuid": "07f635fc_79d3b580",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
