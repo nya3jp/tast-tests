@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3505ea52_3a6c3c38",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-24T08:02:16Z",
+      "side": 1,
+      "message": "Thanks for the comment.",
+      "revId": "c9fc8d58f699e17f5fa54fe2580f223b50683b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
