@@ -60,7 +60,6 @@ func init() {
 				},
 				chromeArgs: []string{"--enable-arcvm"},
 			},
-			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
