@@ -22,7 +22,7 @@ func init() {
 
 func IWGetSet(ctx context.Context, s *testing.State) {
 	iwr := iw.NewRunner()
-	res, err := iwr.GetRegulatoryDomain(ctx)
+	res, err := iwr.RegulatoryDomain(ctx)
 	if err != nil {
 		s.Fatal("GetRegulatoryDomain failed: ", err)
 	}

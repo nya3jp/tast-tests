@@ -112,8 +112,8 @@ func NewRunner(c CmdRunner) *Runner {
 	return &Runner{cmd: c}
 }
 
-// GetInterfaceAttributes gets the interface's attributes.
-func (r *Runner) GetInterfaceAttributes(ctx context.Context, iface string) (*NetDev, error) {
+// InterfaceAttributes gets the interface's attributes.
+func (r *Runner) InterfaceAttributes(ctx context.Context, iface string) (*NetDev, error) {
 	var matchIfs []*NetDev
 	ifs, err := r.ListInterfaces(ctx)
 	if err != nil {
@@ -184,8 +184,8 @@ func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
 	return phys, nil
 }
 
-// GetPhyByID returns a Phy struct for the given phy id.
-func (r *Runner) GetPhyByID(ctx context.Context, id int) (*Phy, error) {
+// PhyByID returns a Phy struct for the given phy id.
+func (r *Runner) PhyByID(ctx context.Context, id int) (*Phy, error) {
 	out, err := r.cmd.Output(ctx, "iw", fmt.Sprintf("phy#%d", id), "info")
 	if err != nil {
 		return nil, errors.Wrapf(err, "\"iw phy#%d info\" failed", id)
@@ -245,8 +245,8 @@ func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error)
 	return parseScanResults(string(out))
 }
 
-// GetLinkValue gets the specified link value from the iw link output.
-func (r *Runner) GetLinkValue(ctx context.Context, iface string, iwLinkKey string) (string, error) {
+// LinkValue gets the specified link value from the iw link output.
+func (r *Runner) LinkValue(ctx context.Context, iface string, iwLinkKey string) (string, error) {
 	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "link")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
@@ -259,8 +259,8 @@ func (r *Runner) GetLinkValue(ctx context.Context, iface string, iwLinkKey strin
 	return out, nil
 }
 
-// GetOperatingMode gets the interface's operating mode.
-func (r *Runner) GetOperatingMode(ctx context.Context, iface string) (string, error) {
+// OperationMode gets the interface's operating mode.
+func (r *Runner) OperationMode(ctx context.Context, iface string) (string, error) {
 	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "info")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get interface information")
@@ -279,8 +279,8 @@ func (r *Runner) GetOperatingMode(ctx context.Context, iface string) (string, er
 	return "", errors.Wrapf(err, "unsupported operating mode %s found for interface: %s", opMode, iface)
 }
 
-// GetRadioConfig gets the radio configuration from the interface's information.
-func (r *Runner) GetRadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
+// RadioConfig gets the radio configuration from the interface's information.
+func (r *Runner) RadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
 	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "info")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get interface information")
@@ -313,8 +313,8 @@ func (r *Runner) GetRadioConfig(ctx context.Context, iface string) (*ChannelConf
 	}, nil
 }
 
-// GetRegulatoryDomain gets the regulatory domain code.
-func (r *Runner) GetRegulatoryDomain(ctx context.Context) (string, error) {
+// RegulatoryDomain gets the regulatory domain code.
+func (r *Runner) RegulatoryDomain(ctx context.Context) (string, error) {
 	out, err := r.cmd.Output(ctx, "iw", "reg", "get")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get regulatory domain")
