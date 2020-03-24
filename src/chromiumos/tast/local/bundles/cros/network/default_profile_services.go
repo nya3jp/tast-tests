@@ -71,7 +71,7 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to pop user profiles: ", err)
 	}
 
-	if err := manager.ConfigureService(ctx, map[string]interface{}{
+	if _, err := manager.ConfigureService(ctx, map[string]interface{}{
 		shill.ServicePropertyType:           "wifi",
 		shill.ServicePropertyMode:           "managed",
 		shill.ServicePropertySSID:           ssid,
