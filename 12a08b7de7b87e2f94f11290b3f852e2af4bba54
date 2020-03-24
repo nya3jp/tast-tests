@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "024e7ed6_cd94b740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-24T00:04:30Z",
+      "side": 1,
+      "message": "This should probably be Fatal",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90bec916_dcd172df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-24T00:04:30Z",
+      "side": 1,
+      "message": "This should probably be Fatal",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd65ee1c_fc90d762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-24T00:04:30Z",
+      "side": 1,
+      "message": "This should probably be Fatal",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63703719_5cd62b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-24T00:04:30Z",
+      "side": 1,
+      "message": "Does this have to be typed one key at a time? Can you just set the text or type multiple keys?\n\nAlso, we probably need to move this password to the private repo.",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f635fc_79d3b580",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-24T00:04:30Z",
+      "side": 1,
+      "message": "This should probably be Fatal",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 7
+      },
+      "revId": "12a08b7de7b87e2f94f11290b3f852e2af4bba54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
