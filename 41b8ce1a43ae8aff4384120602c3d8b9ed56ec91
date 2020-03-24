@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df3d467_512d2809",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-24T00:12:27Z",
+      "side": 1,
+      "message": "Nit, the comment mentions that DEFAULT does not have the .json extension, however, I see that the current DEFAULT config file does have the .json extension.  Otherwise, the logic in NewConfig needs to be modified to handle path generation for defaultName differently.",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca026ec5_78db318c",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-24T00:12:27Z",
+      "side": 1,
+      "message": "Can\u0027t ConfigDir always be used so that it doesn\u0027t need to appear in the signature?",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e27e8f_9f92de4e",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-24T00:12:27Z",
+      "side": 1,
+      "message": "Nit, why the need to have this lambda?  I assume it will facilitate merging with the DEFAULT configs later?  Better to add a comment to explain.",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
