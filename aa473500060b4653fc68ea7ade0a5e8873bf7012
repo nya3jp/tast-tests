@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "e02caf47_c7226109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-24T05:21:22Z",
+      "side": 1,
+      "message": "Yes it is intended.\n\n\u003e If Name is empty, the base test name is used as-is.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "parentUuid": "865807e2_f5a3fb58",
+      "revId": "aa473500060b4653fc68ea7ade0a5e8873bf7012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cf1c5f5_99871d2a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_blacklist.go",
         "patchSetId": 3
