@@ -191,7 +191,9 @@ func (r *Router) initialize(ctx context.Context) error {
 	hostapd.KillAll(ctx, r.host)
 	dhcp.KillAll(ctx, r.host)
 
-	// TODO(crbug.com/839164): Verify if we still need to truncate uma-events.
+	// TODO(crbug.com/839164): Current CrOS on router haven't got the fix in crrev.com/c/1979112.
+	// Let's keep the truncate and remove it after we have router updated.
+	r.host.Command("truncate", "-s", "0", "/var/lib/metrics/uma-events").Run(ctx)
 
 	if err := r.iwr.SetRegulatoryDomain(ctx, "US"); err != nil {
 		return errors.Wrap(err, "failed to set regulatory domain to US")
