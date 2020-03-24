@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de7177eb_59643538",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-24T02:54:21Z",
+      "side": 1,
+      "message": "I\u0027m not sure enough to fully rule that out. If we need that in the future I think we can add a separate function for this.",
+      "parentUuid": "99fa57dd_45b10196",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fe770d4_4f644b15",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-19T17:11:41Z",
       "side": 1,
       "message": "would it be better to put this in startActivityOnDisplay(..)? That would make it more similar to act.Start(...). Especially since that function will likely eventually be added to activity.go",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d5c7cb_ea5853f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-24T02:54:21Z",
+      "side": 1,
+      "message": "Yeah sgtm~~ Actually I realised I already added WaitForVisible to startActivityOnDisplay. Thanks for catching, will remove in a new patchset~!",
+      "parentUuid": "9fe770d4_4f644b15",
       "range": {
         "startLine": 184,
         "startChar": 3,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "I second this.",
       "parentUuid": "475db931_2878b3b4",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1779078_b052d24d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-24T02:54:21Z",
+      "side": 1,
+      "message": "Yes, I agree this is still flaky.\n\nI want to remove \u0027WaitForResumed\u0027 code in its entirety because it\u0027s being used incorrectly. Currently, it\u0027s equivalent to a sleep (that is, it serves the same purpose), but just looks a bit different. It seems misleading to me to leave it in and I don\u0027t want people to copy that code to other files.",
+      "parentUuid": "82569671_174e9486",
       "range": {
         "startLine": 136,
         "startChar": 0,
