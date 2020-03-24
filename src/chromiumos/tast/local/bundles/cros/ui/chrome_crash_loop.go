@@ -33,7 +33,7 @@ func init() {
 		Desc:         "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "memfd_create"},
 		Params: []testing.Param{{
 			Name: "breakpad",
 			Val: chromeCrashLoopParams{
