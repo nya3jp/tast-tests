@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "3cb13f5f_0d86806d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-24T03:55:48Z",
+      "side": 1,
+      "message": "I want to push back on this because functionally there\u0027s no difference between WaitForResumed and a sleep here, just that a sleep makes it more obvious what this code is actually doing.\n\nWhat is the reason for keeping WaitForResumed here?",
+      "parentUuid": "558fdde9_5426c76c",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48c142ba_6eec1cba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 3
