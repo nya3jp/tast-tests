@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package secconf
+// Package wep provides WEP implementation of the security common interface.
+package wep
 
 import (
 	"fmt"
@@ -10,46 +11,47 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/remote/wificell/security"
 )
 
-// WepAuthAlgsEnum is the type for specifying WEP authentication algorithms.
-type WepAuthAlgsEnum int
+// AuthAlgsEnum is the type for specifying WEP authentication algorithms.
+type AuthAlgsEnum int
 
 // WEP authentication algorithms modes.
 const (
-	WepAuthAlgsOpen   = 1
-	WepAuthAlgsShared = 2
+	AuthAlgsOpen   = 1
+	AuthAlgsShared = 2
 )
 
-// WepOption is the function signature used to specify options of WepConfig.
-type WepOption func(*WepConfig)
+// Option is the function signature used to specify options of Config.
+type Option func(*Config)
 
-// WepKeys returns a WepOption which sets keys in WEP config.
-func WepKeys(strs []string) WepOption {
-	return func(c *WepConfig) {
+// Keys returns a Option which sets keys in WEP config.
+func Keys(strs []string) Option {
+	return func(c *Config) {
 		c.Keys = make([]string, len(strs))
 		copy(c.Keys, strs)
 	}
 }
 
-// WepDefaultKey returns a WepOption which sets default key in WEP config.
-func WepDefaultKey(d int) WepOption {
-	return func(c *WepConfig) {
+// DefaultKey returns a Option which sets default key in WEP config.
+func DefaultKey(d int) Option {
+	return func(c *Config) {
 		c.DefaultKey = d
 	}
 }
 
-// WepAuthAlgs returns a WepOption which sets what authentication algorithm to use in WEP config.
-func WepAuthAlgs(a WepAuthAlgsEnum) WepOption {
-	return func(c *WepConfig) {
+// AuthAlgs returns a Option which sets what authentication algorithm to use in WEP config.
+func AuthAlgs(a AuthAlgsEnum) Option {
+	return func(c *Config) {
 		c.AuthAlgs = a
 	}
 }
 
-// NewWepConfig creates a WepConfig with given WEP options.
-func NewWepConfig(ops ...WepOption) (*WepConfig, error) {
+// NewConfig creates a Config with given WEP options.
+func NewConfig(ops ...Option) (*Config, error) {
 	// Default config.
-	conf := &WepConfig{AuthAlgs: WepAuthAlgsOpen}
+	conf := &Config{AuthAlgs: AuthAlgsOpen}
 	for _, op := range ops {
 		op(conf)
 	}
@@ -59,34 +61,34 @@ func NewWepConfig(ops ...WepOption) (*WepConfig, error) {
 	return conf, nil
 }
 
-// WepConfig is the security config used to start hostapd and set properties of DUT.
-type WepConfig struct {
+// Config is the security config used to start hostapd and set properties of DUT.
+type Config struct {
 	// Embed BaseConfig so we don't have to re-implement noop methods.
-	BaseConfig
+	security.BaseConfig
 	Keys       []string
 	DefaultKey int
-	AuthAlgs   WepAuthAlgsEnum
+	AuthAlgs   AuthAlgsEnum
 }
 
-var _ Config = (*WepConfig)(nil)
+var _ security.Config = (*Config)(nil)
 
-// WepGenerator holds some WepOption and provide Gen method to build a new WepConfig.
-type WepGenerator []WepOption
+// Generator holds some Option and provide Gen method to build a new Config.
+type Generator []Option
 
-// Gen simply calls NewWepConfig but returns as interface Config.
-func (g WepGenerator) Gen() (Config, error) {
-	return NewWepConfig(g...)
+// Gen simply calls NewConfig but returns as interface Config.
+func (g Generator) Gen() (security.Config, error) {
+	return NewConfig(g...)
 }
 
-var _ Generator = (WepGenerator)(nil)
+var _ security.Generator = (Generator)(nil)
 
 // GetClass returns security class of WEP network.
-func (c *WepConfig) GetClass() string {
+func (c *Config) GetClass() string {
 	return "wep"
 }
 
 // GetHostapdConfig returns hostapd config of WEP network.
-func (c *WepConfig) GetHostapdConfig() (map[string]string, error) {
+func (c *Config) GetHostapdConfig() (map[string]string, error) {
 	ret := make(map[string]string)
 	quote := func(s string) string { return fmt.Sprintf("%q", s) }
 	if err := c.validateKeys(); err != nil {
@@ -105,7 +107,7 @@ func (c *WepConfig) GetHostapdConfig() (map[string]string, error) {
 }
 
 // GetShillServiceProperties returns shill properties of WEP network.
-func (c *WepConfig) GetShillServiceProperties() map[string]interface{} {
+func (c *Config) GetShillServiceProperties() map[string]interface{} {
 	keyWithIndex := fmt.Sprintf("%d:%s", c.DefaultKey, c.Keys[c.DefaultKey])
 	return map[string]interface{}{shill.ServicePropertyPassphrase: keyWithIndex}
 }
@@ -122,12 +124,12 @@ func formatKey(key string, formatter func(string) string) (string, error) {
 	}
 }
 
-// validate validates the WepConfig.
-func (c *WepConfig) validate() error {
-	if c.AuthAlgs & ^(WepAuthAlgsOpen|WepAuthAlgsShared) > 0 {
+// validate validates the Config.
+func (c *Config) validate() error {
+	if c.AuthAlgs & ^(AuthAlgsOpen|AuthAlgsShared) > 0 {
 		return errors.New("invalid WEP auth algorithm is set")
 	}
-	if c.AuthAlgs&(WepAuthAlgsOpen|WepAuthAlgsShared) == 0 {
+	if c.AuthAlgs&(AuthAlgsOpen|AuthAlgsShared) == 0 {
 		return errors.New("no WEP auth algorithm is set")
 	}
 	if len(c.Keys) > 4 {
@@ -143,7 +145,7 @@ func (c *WepConfig) validate() error {
 }
 
 // validateKeys validates the keys.
-func (c *WepConfig) validateKeys() error {
+func (c *Config) validateKeys() error {
 	isValidHexChar := func(ch rune) bool {
 		for _, v := range "0123456789abcdefABCDEF" {
 			if ch == v {

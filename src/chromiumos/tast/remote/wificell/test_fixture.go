@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/hostapd/secconf"
+	secconf "chromiumos/tast/remote/wificell/security"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"

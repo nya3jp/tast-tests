@@ -10,7 +10,9 @@ import (
 
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/hostapd/secconf"
+	secconf "chromiumos/tast/remote/wificell/security"
+	"chromiumos/tast/remote/wificell/security/wep"
+	"chromiumos/tast/remote/wificell/security/wpa"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -131,9 +133,9 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP),
 						},
 					},
 				},
@@ -143,9 +145,9 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherCCMP),
 						},
 					},
 				},
@@ -155,9 +157,9 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 						},
 					},
 				},
@@ -167,9 +169,9 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.Wpa2Pure),
-							secconf.Wpa2Ciphers(secconf.CipherTKIP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure2),
+							wpa.Ciphers2(wpa.CipherTKIP),
 						},
 					},
 				},
@@ -179,9 +181,9 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.Wpa2Pure),
-							secconf.Wpa2Ciphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure2),
+							wpa.Ciphers2(wpa.CipherCCMP),
 						},
 					},
 				},
@@ -191,10 +193,10 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaMixed),
-							secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
-							secconf.Wpa2Ciphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModeMixed),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+							wpa.Ciphers2(wpa.CipherCCMP),
 						},
 					},
 				},
@@ -207,9 +209,9 @@ func init() {
 							hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT40Plus),
 							hostapd.VHTCenterChannel(42), hostapd.VHTChWidth(hostapd.VHTChWidth80),
 						},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 						},
 					},
 				},
@@ -221,44 +223,44 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"), secconf.WpaMode(secconf.Wpa2Pure),
-							secconf.Wpa2Ciphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89"), wpa.Mode(wpa.ModePure2),
+							wpa.Ciphers2(wpa.CipherCCMP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("abcdef\xc2\xa2"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("abcdef\xc2\xa2"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("abcdef\xc2\xa2"), secconf.WpaMode(secconf.Wpa2Pure),
-							secconf.Wpa2Ciphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("abcdef\xc2\xa2"), wpa.Mode(wpa.ModePure2),
+							wpa.Ciphers2(wpa.CipherCCMP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk(" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk(" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk(" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"), secconf.WpaMode(secconf.Wpa2Pure),
-							secconf.Wpa2Ciphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk(" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~"), wpa.Mode(wpa.ModePure2),
+							wpa.Ciphers2(wpa.CipherCCMP),
 						},
 					},
 				},
@@ -268,58 +270,58 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 				},
@@ -329,58 +331,58 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 				},
@@ -398,31 +400,31 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaPure),
-							secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.Wpa2Pure),
-							secconf.Wpa2Ciphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModePure2),
+							wpa.Ciphers2(wpa.CipherCCMP),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WpaGenerator{
-							secconf.WpaPsk("chromeos"), secconf.WpaMode(secconf.WpaMixed),
-							secconf.WpaCiphers(secconf.CipherTKIP, secconf.CipherCCMP),
-							secconf.Wpa2Ciphers(secconf.CipherCCMP),
+						genSecurityConfig: wpa.Generator{
+							wpa.Psk("chromeos"), wpa.Mode(wpa.ModeMixed),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+							wpa.Ciphers2(wpa.CipherCCMP),
 						},
 					},
 				},
@@ -432,114 +434,114 @@ func init() {
 				Val: []simpleConnectTestcase{
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsOpen),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(0), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(1), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(2), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 					{
 						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden(true)},
-						genSecurityConfig: secconf.WepGenerator{
-							secconf.WepKeys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
-							secconf.WepDefaultKey(3), secconf.WepAuthAlgs(secconf.WepAuthAlgsShared),
+						genSecurityConfig: wep.Generator{
+							wep.Keys([]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"}),
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
 						},
 					},
 				},

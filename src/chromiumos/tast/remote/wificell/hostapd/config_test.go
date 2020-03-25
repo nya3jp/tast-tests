@@ -10,7 +10,7 @@ import (
 	"testing"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/wificell/hostapd/secconf"
+	"chromiumos/tast/remote/wificell/security"
 )
 
 func TestNewConfig(t *testing.T) {
@@ -119,7 +119,7 @@ func TestNewConfig(t *testing.T) {
 				Mode:           Mode80211a,
 				Channel:        36,
 				HTCaps:         0,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			shouldFail: false,
 		},
@@ -134,7 +134,7 @@ func TestNewConfig(t *testing.T) {
 				Mode:           Mode80211g,
 				Channel:        1,
 				HTCaps:         0,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			shouldFail: false,
 		},
@@ -150,7 +150,7 @@ func TestNewConfig(t *testing.T) {
 				Mode:           Mode80211nMixed,
 				Channel:        1,
 				HTCaps:         HTCapHT20,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			shouldFail: false,
 		},
@@ -165,7 +165,7 @@ func TestNewConfig(t *testing.T) {
 				Mode:           Mode80211nPure,
 				Channel:        1,
 				HTCaps:         HTCapHT20,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			shouldFail: false,
 		},
@@ -182,7 +182,7 @@ func TestNewConfig(t *testing.T) {
 				Mode:           Mode80211nPure,
 				Channel:        36,
 				HTCaps:         HTCapHT40 | HTCapSGI20,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			shouldFail: false,
 		},
@@ -204,7 +204,7 @@ func TestNewConfig(t *testing.T) {
 				VHTCaps:          []VHTCap{VHTCapSGI80},
 				VHTCenterChannel: 155,
 				VHTChWidth:       VHTChWidth80,
-				SecurityConfig:   &secconf.BaseConfig{},
+				SecurityConfig:   &security.BaseConfig{},
 			},
 			shouldFail: false,
 		},
@@ -259,7 +259,7 @@ func TestConfigFormat(t *testing.T) {
 				Ssid:           "ssid000",
 				Mode:           Mode80211b,
 				Channel:        1,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			verify: map[string]string{
 				"ssid":           "ssid000",
@@ -275,7 +275,7 @@ func TestConfigFormat(t *testing.T) {
 				Ssid:           "ssid",
 				Mode:           Mode80211nPure,
 				Channel:        3,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "g",
@@ -291,7 +291,7 @@ func TestConfigFormat(t *testing.T) {
 				Mode:           Mode80211nPure,
 				Channel:        40,
 				HTCaps:         HTCapHT20,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "a",
@@ -307,7 +307,7 @@ func TestConfigFormat(t *testing.T) {
 				Mode:           Mode80211nMixed,
 				Channel:        36,
 				HTCaps:         HTCapHT40 | HTCapSGI20 | HTCapSGI40,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "a",
@@ -323,7 +323,7 @@ func TestConfigFormat(t *testing.T) {
 				Mode:           Mode80211nMixed,
 				Channel:        5,
 				HTCaps:         HTCapHT40 | HTCapSGI40,
-				SecurityConfig: &secconf.BaseConfig{},
+				SecurityConfig: &security.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":    "g",
@@ -341,7 +341,7 @@ func TestConfigFormat(t *testing.T) {
 				VHTCaps:          []VHTCap{VHTCapSGI80},
 				VHTCenterChannel: 155,
 				VHTChWidth:       VHTChWidth80,
-				SecurityConfig:   &secconf.BaseConfig{},
+				SecurityConfig:   &security.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":                      "a",
@@ -363,7 +363,7 @@ func TestConfigFormat(t *testing.T) {
 				HTCaps:           HTCapHT40Plus,
 				VHTCenterChannel: 42,
 				VHTChWidth:       VHTChWidth80,
-				SecurityConfig:   &secconf.BaseConfig{},
+				SecurityConfig:   &security.BaseConfig{},
 			},
 			verify: map[string]string{
 				"hw_mode":                      "a",

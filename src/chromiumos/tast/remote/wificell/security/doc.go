@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package secconf provides utilities for configuring wifi security protocols.
-package secconf
+// Package security provides utilities for configuring WiFi security protocols.
+package security
