@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "82ae15c2_41cf3fdd",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-25T22:25:37Z",
+      "side": 1,
+      "message": "While testing, you can already configure custom configs by editing the tast-tests checkout of fw-testing-configs (i.e. remote/firmware/data/fw-testing-configs/foo.json).",
+      "parentUuid": "96407384_caed6bfc",
+      "revId": "41b8ce1a43ae8aff4384120602c3d8b9ed56ec91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72e27e8f_9f92de4e",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 2
