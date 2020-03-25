@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "24e35dcb_3c5e8a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-25T13:54:21Z",
+      "side": 1,
+      "message": "yes, absolutely. I\u0027d add a margin error in the check.",
+      "parentUuid": "c4ae912d_9a20d416",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "cc48667bcdf6bad996ca3f4019eb9675b98daeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10b3d1fd_77d72537",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
         "patchSetId": 4
