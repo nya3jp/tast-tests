@@ -22,6 +22,30 @@
       "revId": "d95d960c79b93066a545b86d80ad1c01524e0145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2706777a_42b8278e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-25T07:33:49Z",
+      "side": 1,
+      "message": "Some routines are too fast to cancel reliably, I just ported the existing test. We can add more time based routines in a future CL.",
+      "parentUuid": "9678823e_ea923f30",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "d95d960c79b93066a545b86d80ad1c01524e0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
