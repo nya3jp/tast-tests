@@ -25,7 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"wilco"},
 		Timeout:      10 * time.Second,
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "disabled"},
 		Pre:          pre.WilcoDtcSupportdAPI,
 	})
 }
