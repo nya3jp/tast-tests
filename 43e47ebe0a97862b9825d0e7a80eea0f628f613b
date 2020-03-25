@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "3abe9e6f_3d3ed72f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a52a0c06_4e02aa26",
+      "range": {
+        "startLine": 21,
+        "startChar": 48,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c8a27b3_c9feb307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "805acb98_5757fc3c",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d3c926_832856c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
         "patchSetId": 7
@@ -68,6 +116,76 @@
       "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e4c2cf_7839dffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d3c926_832856c5",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc898446_f19bd1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Note: cannot throw from inside an event handler, because the catch in l.54\nwon\u0027t catch it; need to reject(new DOMException()) directly.",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ac3a4dd_7bec48e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "s/DOMExpection/DOMException/",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "497ed7ee_839097ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe5b828_dee33190",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c38054d1_412b2a84",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
         "patchSetId": 7
@@ -108,6 +250,47 @@
       "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "accfc419_476e784d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Hmm we know the expected dimensions for the screen capture case: they should be \nscreen.width and screen.height, but not for other capture cases (window, tab),\nbecause of the UI around them. Did you mean we could check the expected dimensions\nin this full-screen capture case? I\u0027ll implement that but let me know if I \nmisunderstood and I can fix that in subsequent CLs.",
+      "parentUuid": "c38054d1_412b2a84",
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64ddc291_ed28e905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "s/DOMExpection/DOMException/",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "a4845c3d_91c893db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Sorry, this is my bad: I had it during development to visually verify that the captured\ncontents were indeed the screen and not e.g. the fake video capture device (the pacman)\nor a tab or something else; also because I was tweaking the flag at the same time. Will\nremove.",
+      "parentUuid": "a79e72d9_74effa4b",
+      "range": {
+        "startLine": 51,
+        "startChar": 40,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e96f9d8_60e995ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia/get_display_media.go",
         "patchSetId": 7
@@ -154,6 +361,30 @@
       "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756ed4ed_79b124bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia/get_display_media.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-25T15:23:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e96f9d8_60e995ce",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
