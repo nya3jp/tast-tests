@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a8741ee_c8602cf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-25T02:49:21Z",
+      "side": 1,
+      "message": "\u003e \"versoin\" is a possible misspelling of \"version\".\n\nThe line is removed.",
+      "parentUuid": "65c620ee_3a0119f2",
+      "range": {
+        "startLine": 13,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "31d5975a8eb483c88c226914719bf2d144a1d702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -70,6 +70,30 @@
       "revId": "db8b1b2a9743668391ba4325d976a7e137110740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30e0389a_9d938d2d",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-25T02:49:21Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "72cfc7cb_c4161910",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 137
+      },
+      "revId": "db8b1b2a9743668391ba4325d976a7e137110740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
