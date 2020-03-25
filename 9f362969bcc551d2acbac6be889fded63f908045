@@ -22,6 +22,30 @@
       "revId": "9f362969bcc551d2acbac6be889fded63f908045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f85b3ef_e9a19a86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-25T16:12:09Z",
+      "side": 1,
+      "message": "Fair, I\u0027ll remove it.",
+      "parentUuid": "cd532953_f45acd9c",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "9f362969bcc551d2acbac6be889fded63f908045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
