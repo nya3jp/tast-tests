@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "874391a5_a4d8250a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-25T05:16:27Z",
+      "side": 1,
+      "message": "I think we should be switching to cpu.WaitUntilIdle(ctx) from \"chromiumos/tast/local/media/cpu\"\n\nTemperature doesn\u0027t seem enough.",
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5309f1d0_4c0d2752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-25T05:16:27Z",
+      "side": 1,
+      "message": "Maybe we could do something with `adb shell dumpsys activity`? Not for this CL though.",
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "986eb91b_ef35b69e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 2
