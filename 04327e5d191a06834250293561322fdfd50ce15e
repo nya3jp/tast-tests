@@ -69,6 +69,24 @@
       "revId": "04327e5d191a06834250293561322fdfd50ce15e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc431560_02ab7673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2020-03-25T04:37:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c295540b_97c09aa0",
+      "revId": "04327e5d191a06834250293561322fdfd50ce15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
