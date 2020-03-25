@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d15e380_de026275",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "WriteToHostSysfs write the content to the path in the remote host\u0027s procfs/sysfs with ...\nWriteToHost() does not work because it uses SSH.PutFiles() and the method will uncompress the compressed content, which invokes a unlink to the target file, and it is illegal on procfs/sysfs.",
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb6f8e50_6d55a615",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "How about \"WriteToHostSysfs\"?",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d136a4_45a3efa1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "random number",
+      "range": {
+        "startLine": 116,
+        "startChar": 31,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d71b1e_24dfa0f3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "How about configureRNG?\n\nconfigureRNG configures the system\u0027s random number generator (RNG) to tpm-rng if available.",
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95bedd47_7ce78db1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "Some router, e.g. Gale, uses an inferior RNG as system default RNG, which makes hostpad unable to generate high quality keys fast enough. Trusted platform module (TPM), if available, should contain a better RNG, named tpm-rng. This function tries to switch the system\u0027s current RNG to tpm-rng if available.",
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb71ee0_6d3edfb7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "Omit this line",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b8a698_5877df9b",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "Why not return err?",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 12
+      },
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706ea6d0_338ebfc0",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:41:19Z",
+      "side": 1,
+      "message": "How about performing the check first?",
+      "revId": "7b915afe05f047b8a19f3735755a6948769593af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
