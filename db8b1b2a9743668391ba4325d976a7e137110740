@@ -22,6 +22,30 @@
       "revId": "db8b1b2a9743668391ba4325d976a7e137110740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2334f9_6708c48c",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-25T02:14:39Z",
+      "side": 1,
+      "message": "No, I\u0027m just sync-ing the methods provided in Autotest. I think it\u0027s not used by wifi-matfunc tests either, so I can skip this one now as it is not going to be used in near future.",
+      "parentUuid": "2a2ec26d_ab69e25e",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 137
+      },
+      "revId": "db8b1b2a9743668391ba4325d976a7e137110740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
