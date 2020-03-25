@@ -111,6 +111,9 @@ func setUpADBForVM(ctx context.Context) error {
 	if err := os.MkdirAll(adbHome, 0755); err != nil {
 		return err
 	}
+	if err := ioutil.WriteFile(testPrivateKeyPath, []byte(testPrivateKey), 0600); err != nil {
+		return errors.Wrap(err, "failed installing ADB private key")
+	}
 
 	testing.ContextLog(ctx, "Killing existing ADB server process(es)")
 	if err := killADBLocalServer(ctx); err != nil {
