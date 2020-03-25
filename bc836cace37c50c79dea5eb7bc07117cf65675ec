@@ -16,6 +16,24 @@
       "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3958e3_c5a635da",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-25T18:36:53Z",
+      "side": 1,
+      "message": "I was wondering the same actually, but ended up deciding not to mention it.\n\nIf we do that, we should at least make the logging clearer about why we rejected the ifType.\n\nHere\u0027s the available types:\nhttps://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git/tree/util.c?h\u003dv5.4#n124\n\nwe don\u0027t expect any of the others, I don\u0027t think, except maybe \"AP\" (a \"managed\" interface will convert to \"AP\" once it\u0027s actually running an AP daemon) and possibly the \"P2P*\" [1] types, but it wouldn\u0027t hurt to add them. It *would* hurt if we start failing tests because we start to have unexpected (but otherwise unrelated and non-harmful) interfaces showing up, so we should try to be forgiving/inclusive if we can.\n\n[1] Old versions of the mwifiex driver would actually instantiate P2P devices by default, IIRC, and we would just ignore them. That version of the driver has been retired now, but it\u0027s still a reminder of a possible pitfall.",
+      "parentUuid": "e50dcfca_8be7f8e2",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
