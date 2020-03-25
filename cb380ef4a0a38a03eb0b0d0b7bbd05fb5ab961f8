@@ -22,6 +22,30 @@
       "revId": "cb380ef4a0a38a03eb0b0d0b7bbd05fb5ab961f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0d7e57_6c2f1e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-03-25T12:23:48Z",
+      "side": 1,
+      "message": "I want to see what is happening on the DUTs in the lab. we can remove it later.",
+      "parentUuid": "0e5b4979_a2d29633",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "cb380ef4a0a38a03eb0b0d0b7bbd05fb5ab961f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
