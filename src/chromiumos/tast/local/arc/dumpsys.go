@@ -168,8 +168,6 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 		return nil, err
 	}
 	switch n {
-	case SDKN:
-		return a.dumpsysActivityActivitiesN(ctx)
 	case SDKP:
 		return a.dumpsysActivityActivitiesP(ctx)
 	case SDKQ:
@@ -177,76 +175,6 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 	default:
 		return nil, errors.Errorf("unsupported Android version %d", n)
 	}
-}
-
-// dumpsysActivityActivitiesN returns the "dumpsys activity activities" output as a list of TaskInfo.
-// Should only be called on ARC NYC devices.
-func (a *ARC) dumpsysActivityActivitiesN(ctx context.Context) (tasks []TaskInfo, err error) {
-	// NYC doesn't support Probobuf output in dumpsys. Resorting to regexp.
-	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not get 'dumpsys activity activities' output")
-	}
-	output := string(out)
-	matches := regExpN.FindAllStringSubmatch(string(output), -1)
-	// At least it must match one activity. Home and/or Dummy activities must be present.
-	if len(matches) == 0 {
-		testing.ContextLog(ctx, "Using regexp: ", regStrN)
-		testing.ContextLog(ctx, "Output for regexp: ", string(output))
-		return nil, errors.New("could not match any activity; regexp outdated perhaps?")
-	}
-	for _, groups := range matches {
-		var t TaskInfo
-
-		// On NYC some tasks could contain null bounds. They are represented with the default Rect value.
-		if groups[2] != "null" {
-			t.Bounds, err = parseBounds(groups[3:7])
-			if err != nil {
-				return nil, err
-			}
-		}
-
-		for _, dst := range []struct {
-			v     *int
-			group int
-		}{
-			{&t.ID, 1},
-			{&t.StackID, 7},
-			{&t.StackSize, 8},
-		} {
-			*dst.v, err = strconv.Atoi(groups[dst.group])
-			if err != nil {
-				return nil, errors.Wrapf(err, "could not parse %q", groups[dst.group])
-			}
-		}
-		// TODO(crbug/1024139): Parse all the activities in the task.
-		t.ActivityInfos = append(t.ActivityInfos, ActivityInfo{groups[9], groups[10]})
-		t.resizable, err = strconv.ParseBool(groups[11])
-		if err != nil {
-			return nil, err
-		}
-		// Taken from WindowPositioner.java, arc-nyc-mr1 branch:
-		// http://cs/arc-nyc-mr1/frameworks/base/services/core/java/com/android/server/am/WindowPositioner.java
-		ws := map[string]WindowState{
-			"WINDOW_STATE_MAXIMIZED":         WindowStateMaximized,
-			"WINDOW_STATE_FULLSCREEN":        WindowStateFullscreen,
-			"WINDOW_STATE_NORMAL":            WindowStateNormal,
-			"WINDOW_STATE_MINIMIZED":         WindowStateMinimized,
-			"WINDOW_STATE_PRIMARY_SNAPPED":   WindowStatePrimarySnapped,
-			"WINDOW_STATE_SECONDARY_SNAPPED": WindowStateSecondarySnapped,
-		}
-		val, ok := ws[groups[12]]
-		if !ok {
-			return nil, errors.Errorf("unsupported window state value: %q", groups[12])
-		}
-		t.windowState = val
-		t.resumed, err = strconv.ParseBool(groups[13])
-		if err != nil {
-			return nil, err
-		}
-		tasks = append(tasks, t)
-	}
-	return tasks, nil
 }
 
 // dumpsysActivityActivitiesP returns the "dumpsys activity activities" output as a list of TaskInfo.
