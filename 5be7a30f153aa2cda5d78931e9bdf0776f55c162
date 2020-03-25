@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c96c1f3_1d242043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_compat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-25T07:46:07Z",
+      "side": 1,
+      "message": "nit: A comment describing this value is from InputDevice.SOURCE_MOUSE may be helpful for future readers.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "5be7a30f153aa2cda5d78931e9bdf0776f55c162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea8f45e_6c01bc68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_compat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-03-25T07:46:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 28
+      },
+      "revId": "5be7a30f153aa2cda5d78931e9bdf0776f55c162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
