@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "372804f0_d434f8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2020-03-25T02:54:10Z",
+      "side": 1,
+      "message": "How about we take advantage of this change to factorize the code setting args into a single function, since this happens in at least two places?",
+      "revId": "04327e5d191a06834250293561322fdfd50ce15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a36b5c44_beffbbcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196204
+      },
+      "writtenOn": "2020-03-25T02:54:10Z",
+      "side": 1,
+      "message": "Nit for another CL: the first element of ExtraData is always the base file name, and the second is always the base name + \".json\". How about adding a function to generate the array from the base name and limit the risk of copy/paste errors? (provided this is possible in Go)",
+      "revId": "04327e5d191a06834250293561322fdfd50ce15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
