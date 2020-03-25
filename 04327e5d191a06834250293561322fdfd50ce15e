@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8e863f6d_fae391d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-03-25T03:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "372804f0_d434f8ad",
+      "revId": "04327e5d191a06834250293561322fdfd50ce15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a36b5c44_beffbbcf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-25T02:54:10Z",
       "side": 1,
       "message": "Nit for another CL: the first element of ExtraData is always the base file name, and the second is always the base name + \".json\". How about adding a function to generate the array from the base name and limit the risk of copy/paste errors? (provided this is possible in Go)",
+      "revId": "04327e5d191a06834250293561322fdfd50ce15e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c295540b_97c09aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vda.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-03-25T03:26:43Z",
+      "side": 1,
+      "message": "I feel using a function for that might be too much.\nBecause we might manually check the needed files of the tests.\nAdding one more layer will increase the code search complexity.\n\ncopy/paste error could be easily found by running the single test.",
+      "parentUuid": "a36b5c44_beffbbcf",
       "revId": "04327e5d191a06834250293561322fdfd50ce15e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
