@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5d83c204_433b43a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-25T01:44:42Z",
+      "side": 1,
+      "message": "Actually, I forgot that this is the set of matching certificates, for both client and server. Maybe I\u0027ll just call it \"certs\" here, because it\u0027s not really just one or the other.",
+      "parentUuid": "1082f1c5_965b013f",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e4e97d4_4fb71918",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 12
