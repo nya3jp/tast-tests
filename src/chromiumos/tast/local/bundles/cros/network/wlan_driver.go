@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,11 +29,17 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // Connectivity team
 			"oka@chromium.org",                // Tast port author
 		},
-		// TODO(crbug.com/1007252): Remove informational after fixing flakiness.
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi"},
-
-		// TODO(crbug.com/984433): Consider skipping nyan_kitty. It has been skipped in the original test as it's unresolvably flaky (crrev.com/c/944502), exhibiting very similar symptoms to crbug.com/693724, b/65858242, b/36264732.
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("banon", "elm", "liara", "hana", "relm", "arcada", "veyron_mickey", "treeya360")),
+		}, {
+			// TODO(crbug.com/1007252): Remove informational after fixing flakiness.
+			Name:              "informational",
+			ExtraAttr:         []string{"informational"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("banon", "elm", "liara", "hana", "relm", "arcada", "veyron_mickey", "treeya360")),
+		}},
 	})
 }
 
