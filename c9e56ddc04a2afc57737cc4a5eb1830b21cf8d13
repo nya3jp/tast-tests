@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf8a0eb_d9789e6b",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-25T12:40:01Z",
+      "side": 1,
+      "message": "we cannot trust running if error happened",
+      "range": {
+        "startLine": 399,
+        "startChar": 38,
+        "endLine": 399,
+        "endChar": 45
+      },
+      "revId": "c9e56ddc04a2afc57737cc4a5eb1830b21cf8d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

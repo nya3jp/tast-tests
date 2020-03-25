@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "24644fc6_ce0e0df4",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-25T12:40:01Z",
+      "side": 1,
+      "message": "Please handle error value first",
+      "parentUuid": "ac0976d5_45df7489",
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "868247f0_3e0db092",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -137,6 +155,30 @@
       "side": 1,
       "message": "If err is not errNoTaskInfo, it means something went wrong with the adb command. You can\u0027t tell if it\u0027s running or not.",
       "parentUuid": "868247f0_3e0db092",
+      "range": {
+        "startLine": 416,
+        "startChar": 8,
+        "endLine": 416,
+        "endChar": 12
+      },
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcda8c6f_4acf4469",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-25T12:40:01Z",
+      "side": 1,
+      "message": "I guess if error happened, we should return default value, e.g. false for bool",
+      "parentUuid": "18809890_50cbd948",
       "range": {
         "startLine": 416,
         "startChar": 8,
