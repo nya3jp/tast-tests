@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "744d6cb4_9630550a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2020-03-25T18:07:03Z",
+      "side": 1,
+      "message": "I have a wip cl that will test the scrollable shelf case (by parameterizing this test):\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2095704\n\nWhy do we expect only one shelf icon? Do we need to do that?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "19134f006ec167219bd612352af17f031c33b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
