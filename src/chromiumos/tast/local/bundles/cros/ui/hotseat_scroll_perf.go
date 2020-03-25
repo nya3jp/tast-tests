@@ -263,7 +263,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		if err := metrics.StoreHistogramsMean(ctx, pv, histograms, perf.Metric{
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
-		}); err != nil {
+		}, s.OutDir()); err != nil {
 			s.Fatal("Failed to store metrics data: ", err)
 		}
 	}

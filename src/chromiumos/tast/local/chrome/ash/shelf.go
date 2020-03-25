@@ -154,13 +154,14 @@ type ShelfState struct {
 
 // ScrollableShelfInfoClass corresponds to the "ScrollableShelfInfo" defined in autotest_private.idl
 type ScrollableShelfInfoClass struct {
-	MainAxisOffset       float32     `json:"mainAxisOffset"`
-	PageOffset           float32     `json:"pageOffset"`
-	TargetMainAxisOffset float32     `json:"targetMainAxisOffset"`
-	LeftArrowBounds      coords.Rect `json:"leftArrowBounds"`
-	RightArrowBounds     coords.Rect `json:"rightArrowBounds"`
-	IsAnimating          bool        `json:"isAnimating"`
-	IsOverflow           bool        `json:"isOverflow"`
+	MainAxisOffset         float32     `json:"mainAxisOffset"`
+	PageOffset             float32     `json:"pageOffset"`
+	TargetMainAxisOffset   float32     `json:"targetMainAxisOffset"`
+	LeftArrowBounds        coords.Rect `json:"leftArrowBounds"`
+	RightArrowBounds       coords.Rect `json:"rightArrowBounds"`
+	IsAnimating            bool        `json:"isAnimating"`
+	IsOverflow             bool        `json:"isOverflow"`
+	IsShelfWidgetAnimating bool        `json:"isShelfWidgetAnimating"`
 }
 
 // HotseatStateType corresponds to the "HotseatState" defined in autotest_private.idl.
@@ -252,6 +253,10 @@ func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, erro
 		return nil, errors.Wrap(err, "failed to call getShelfItems")
 	}
 	return s, nil
+}
+
+func fetchShelfInfo(ctx context.Context, c *chrome.TestConn) (*ShelfInfo, error) {
+	return fetchShelfInfoForState(ctx, c, &ShelfState{})
 }
 
 func fetchShelfInfoForState(ctx context.Context, c *chrome.TestConn, state *ShelfState) (*ShelfInfo, error) {
@@ -348,13 +353,19 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error
 // WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
 func WaitForHotseatAnimatingToIdealState(ctx context.Context, tc *chrome.TestConn, state HotseatStateType) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := FetchHotseatInfo(ctx, tc)
+		info, err := fetchShelfInfo(ctx, tc)
 		if err != nil {
 			return err
 		}
 
-		if info.IsAnimating || info.HotseatState != state {
-			return errors.Errorf("got hotseat (state, animating) = (%v, %v); want (%v, false)", info.HotseatState, info.IsAnimating, state)
+		hotseatInfo := info.HotseatInfo
+		if hotseatInfo.IsAnimating || hotseatInfo.HotseatState != state {
+			return errors.Errorf("got hotseat (state, animating) = (%v, %v); want (%v, false)", hotseatInfo.HotseatState, hotseatInfo.IsAnimating, state)
+		}
+
+		scrollableShelfInfo := info.ScrollableShelfInfo
+		if scrollableShelfInfo.IsShelfWidgetAnimating {
+			return errors.New("got hotseat widget animation state is true; want false")
 		}
 
 		return nil
