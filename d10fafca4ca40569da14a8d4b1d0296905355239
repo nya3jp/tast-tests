@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72b20008_b6c76f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T03:01:25Z",
+      "side": 1,
+      "message": "I recommend naming the shorter context \"ctx\" and the longer context differently since the shorter one is more frequently used and it\u0027s easy to use a wrong one (e.g. when adding a new code in this function later).\n\n cleanCtx :\u003d ctx\n ctx, cancel :\u003d ctxutil.Shorten(cleanCtx, 5*time.Second)\n defer cancel()",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 15
+      },
+      "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86d0d9db_06a0b809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T03:01:25Z",
+      "side": 1,
+      "message": "Can we use testing.Poll here? It\u0027s a common function for polling for a condition.",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 2
+      },
+      "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b5e39b_66251b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T03:01:25Z",
+      "side": 1,
+      "message": "This error will be difficult to read, e.g.\n\n failed to cleanup profile: failed to do foo: failed to do bar\n\n... where foo and bar are actually unrelated errors.\n\nInstead I recommend logging the cleanup error and just returning the first error.\n\n if err !\u003d nil {\n   if err2 :\u003d cleanupProfile(...); err2 !\u003d nil {\n     testing.ContextLog(ctx, \"Failed to cleanup profile: \", err2)\n   }\n }\n\nSame comment goes for other similar error handling in this file.",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 74
+      },
+      "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
