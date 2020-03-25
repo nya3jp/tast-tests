@@ -108,6 +108,7 @@ var wlanDeviceLookup = map[wlanDeviceInfo]string{
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0034"}: intel9000,
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x4070"}: intel22560,
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0074"}: intel22560,
+	{vendor: "0x8086", device: "0x4df0", subsystem: "0x0074"}: intel22560,
 	{vendor: "0x02d0", device: "0x4354"}:                      broadcomBCM4354SDIO,
 	{vendor: "0x14e4", device: "0x43ec"}:                      broadcomBCM4356PCIE,
 	{vendor: "0x14e4", device: "0x440d"}:                      broadcomBCM4371PCIE,
@@ -159,6 +160,7 @@ var expectedWLANDriver = map[string]map[string]string{
 	},
 	intel22560: {
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"5.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	atherosAR9462: {
 		"3.4":  "wireless/ath/ath9k_btcoex/ath9k_btcoex.ko",
