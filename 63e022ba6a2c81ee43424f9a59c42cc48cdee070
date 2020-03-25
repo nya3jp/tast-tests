@@ -16,6 +16,24 @@
       "revId": "63e022ba6a2c81ee43424f9a59c42cc48cdee070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a15740_3456965b",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-25T05:10:28Z",
+      "side": 1,
+      "message": "I think so. Like, if we have the symptom of partition full, we can check whether we failed here in logs before really leasing the DUT(+router) in lab.",
+      "parentUuid": "f94da79a_bd5a51eb",
+      "revId": "63e022ba6a2c81ee43424f9a59c42cc48cdee070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
