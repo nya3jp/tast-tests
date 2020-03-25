@@ -58,8 +58,8 @@ func init() {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				username:     "arc.AuthPerf.unmanaged.username",
-				password:     "arc.AuthPerf.unmanaged.password",
+				username:     "arc.AuthPerf.unmanaged_username",
+				password:     "arc.AuthPerf.unmanaged_password",
 				resultSuffix: "",
 				chromeArgs:   []string{"--enable-arcvm"},
 			},
@@ -76,8 +76,8 @@ func init() {
 			Name:              "managed_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				username:     "arc.AuthPerf.managed.username",
-				password:     "arc.AuthPerf.managed.password",
+				username:     "arc.AuthPerf.managed_username",
+				password:     "arc.AuthPerf.managed_password",
 				resultSuffix: "_managed",
 				chromeArgs:   []string{"--enable-arcvm"},
 			},
