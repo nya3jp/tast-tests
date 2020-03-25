@@ -22,6 +22,23 @@
       "revId": "c9e56ddc04a2afc57737cc4a5eb1830b21cf8d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8f06e1_be5db794",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-03-25T19:41:10Z",
+      "side": 1,
+      "message": "Do you mind change the order? Something like the following.\n\nerr :\u003d ac.GetTaskInfo(ctx)\nif err !\u003d nil {\n  if errors.Is(err, errNoTaskInfo) {\n    return false, nil\n  }\n  return false, errors.Wrap(err, \"cannot tell if the activity is running\")\n}\n\nreturn true, nil",
+      "revId": "c9e56ddc04a2afc57737cc4a5eb1830b21cf8d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
