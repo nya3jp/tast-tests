@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f94da79a_bd5a51eb",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:52:31Z",
+      "side": 1,
+      "message": "Is this log useful?",
+      "revId": "63e022ba6a2c81ee43424f9a59c42cc48cdee070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
