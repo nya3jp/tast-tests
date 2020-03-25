@@ -16,6 +16,24 @@
       "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a024319_2fedf149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-25T03:41:31Z",
+      "side": 1,
+      "message": "Yeah, I thought about doing that. It might make sense, I\u0027ll look at doing it once this test goes in and starts showing up on crosbolt.",
+      "parentUuid": "986eb91b_ef35b69e",
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
