@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca74a750_d5b7604c",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-03-25T22:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e7a7e62_83cb5a72",
+      "range": {
+        "startLine": 77,
+        "startChar": 16,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "2529de91bc00117235b8e17834d0941717db75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d90dd56d_530e51fb",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f28b10e5_09d62c44",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-03-25T22:25:02Z",
+      "side": 1,
+      "message": "Sure, thanks for letting me know this. Done.",
+      "parentUuid": "d90dd56d_530e51fb",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "2529de91bc00117235b8e17834d0941717db75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e6fda19_e8f1c416",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2020-03-25T07:10:08Z",
       "side": 1,
       "message": "Clar: would this have the side effect for the tests run later?\nChrome instance will be reused in the following tests, so I\u0027m wondering if this should be reset before the next test.",
+      "revId": "2529de91bc00117235b8e17834d0941717db75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b928def1_6f3c85ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-03-25T22:25:02Z",
+      "side": 1,
+      "message": "My understanding is for those tests that are not Assistant related, there will be no side effects. As this pref will only take effect when there is an interaction with Assistant (i.e. open UI, send some specific queries) in the test. I will +wutao@ for his opinions here as an expert :) \n\nBut I agree that cleaning up after test has finished would always be the safest option.",
+      "parentUuid": "9e6fda19_e8f1c416",
       "revId": "2529de91bc00117235b8e17834d0941717db75a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -79,6 +145,24 @@
       "revId": "2529de91bc00117235b8e17834d0941717db75a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b401799_0ed3ee99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-03-25T22:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b473eed5_121d6bbb",
+      "revId": "2529de91bc00117235b8e17834d0941717db75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
