@@ -16,6 +16,24 @@
       "revId": "4171efdd46a6e8d2e45fd1e09a1e93b2490f4341",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77612c9c_1851f049",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-25T00:15:52Z",
+      "side": 1,
+      "message": "Done, but I\u0027ve realized the behavior of waitForEventsWithOptions(... false) would be confusing and complicates the polling logic.  WaitForEvent wants to skip early no-events and then returns once events are ready.\n\nOn the other hand, WaitForNoEvents() would mean \"no events occurred during the duration\". Thus this is implemented in a way like \u0027wait -\u003e check the current list\u0027.",
+      "parentUuid": "44bdf222_22ae7fab",
+      "revId": "4171efdd46a6e8d2e45fd1e09a1e93b2490f4341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
