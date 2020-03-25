@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e50dcfca_8be7f8e2",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-25T06:45:32Z",
+      "side": 1,
+      "message": "So. m[0] should be either \"managed\" or \"monitor\", right?\nIf so, Could you update the regex pattern at L513 to ensure it?\n\n`\\s*type (managed|monitor)`\n\nIf not, could you explicitly comment about there\u0027s outliers in the type/enum constant definition?",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
