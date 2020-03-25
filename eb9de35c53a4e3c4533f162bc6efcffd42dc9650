@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "eb3e962d_7be46c06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-03-25T00:36:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fdb6fcd2_4c6ef039",
+      "range": {
+        "startLine": 77,
+        "startChar": 107,
+        "endLine": 77,
+        "endChar": 110
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8ed9fe8_5c483e7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 12
@@ -140,6 +164,30 @@
       "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5994f32_7b7946fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2020-03-25T00:36:16Z",
+      "side": 1,
+      "message": "Interesting, thanks a lot for the background. Resolving this.",
+      "parentUuid": "df51cc3e_fded5ff9",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "eb9de35c53a4e3c4533f162bc6efcffd42dc9650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
