@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2bb54834_d66abe2d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-25T02:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453c8214_95417df2",
+      "range": {
+        "startLine": 408,
+        "startChar": 20,
+        "endLine": 408,
+        "endChar": 29
+      },
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdbdea02_f5ec2943",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "ac0976d5_45df7489",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-25T02:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "432da3b1_463e6946",
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "868247f0_3e0db092",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -71,6 +113,30 @@
       "writtenOn": "2020-03-24T18:18:48Z",
       "side": 1,
       "message": "why it\u0027s \"true\"?",
+      "range": {
+        "startLine": 416,
+        "startChar": 8,
+        "endLine": 416,
+        "endChar": 12
+      },
+      "revId": "8909472fe7a15b6e0c4ffbc710910b534645bcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18809890_50cbd948",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-25T02:16:38Z",
+      "side": 1,
+      "message": "If err is not errNoTaskInfo, it means something went wrong with the adb command. You can\u0027t tell if it\u0027s running or not.",
+      "parentUuid": "868247f0_3e0db092",
       "range": {
         "startLine": 416,
         "startChar": 8,
