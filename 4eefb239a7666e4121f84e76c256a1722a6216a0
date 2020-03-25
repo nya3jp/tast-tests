@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c72ffea3_ece9ed29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-25T16:46:10Z",
+      "side": 1,
+      "message": "Found a good readiness indicator. Immediately after we log in, the Settings app isn\u0027t present in the list of all Chrome apps, but it is soon after. Once it appears there, it can be launched. I added a poll here to get the list of available Chrome apps and see if Settings is there.",
+      "parentUuid": "2b406ac6_db30d9b5",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2be8fe3b_e75f927d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df20348_c2d66fdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-25T16:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be8fe3b_e75f927d",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 14
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "87220548_6bfa923b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-25T16:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8afb2e9b_81bb3522",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 91
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "343f64e0_6869a57b",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9661e93e_571fee1d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-25T16:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "343f64e0_6869a57b",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 116
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7991cefe_64f383d8",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa8170e_abcb64dc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-25T16:46:10Z",
+      "side": 1,
+      "message": "Haha, got a little caught up in the pattern here...",
+      "parentUuid": "7991cefe_64f383d8",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 11
+      },
+      "revId": "4eefb239a7666e4121f84e76c256a1722a6216a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
