@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "588ad237_7e06ac28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-25T05:39:36Z",
+      "side": 1,
+      "message": "May I jump in to make sure everyone on the same page? My understanding is:\n\nFirst, in this case, WaitForResumed() conceptually does nothing, because the task state should be \"resumed\" on calling timing already. So, this is just misuse.\nIn practice, WaitForResumed() takes time to execute, which is the reason this stabilized the test.\n\nThen, IMO, in this specific case, replacing by testing.Sleep() can make more sense,\nbecause it is what we do here (indeed, it shouldn\u0027t be the long term solution as described below).\n\nAlternatively, technically we can comment here that, like:\n\n// Calling WaitForResumed does nothing because the task state should be already in resumed,\n// but it contributes some stability here because WaitForResumed takes some execution time, which\n// gives the chance to the window gets stabilized.\n// TODO(...): ...\n\njust in order to keep the current code, but it sounds like more hacky approach.\n\nIn general, testing.Sleep() is not a way to wait for some stabilized condition.\nThis is the case, too, and tast reviewers (incl. me) carefully check it all the time.\nPractically, we still use testing.Sleep() for stabilization in Tast, if,\n\n- It is for a short term. I.e., there\u0027s some on-going work to address it, and \n- There\u0027s no proper alternative.\n\nI think this case meets the conditions, too. There\u0027s TODO/associated bug to remove the testing.Sleep() here (I expect it will be addressed sometime soon). Also, there\u0027s no good alternative. (I assume consuming the time by no-op WaitForResumed is not a good alternative).\n\nRicardo, Brendan, WDYT?\n\nIf we can agree, then that means we can remove the last use of WaitForResumed from here, so we can remove the WaitForResumed completely.",
+      "parentUuid": "c75ec5e6_38d4b06f",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48c142ba_6eec1cba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 3
