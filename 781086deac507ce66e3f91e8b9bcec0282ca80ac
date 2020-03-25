@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "4d59a69d_0a533852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-03-25T18:18:19Z",
+      "side": 1,
+      "message": "It\u0027s Ok for me to remove WaitForResumed which I added to stabilize but it seems not working well. I need to look for another method to stabilize it.",
+      "parentUuid": "588ad237_7e06ac28",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48c142ba_6eec1cba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 3
