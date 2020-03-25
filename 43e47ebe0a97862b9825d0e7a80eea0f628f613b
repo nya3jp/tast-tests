@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "805acb98_5757fc3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T02:49:54Z",
+      "side": 1,
+      "message": "style: Please always use braces.\n\nhttps://google.github.io/styleguide/jsguide.html#formatting-braces-all",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52a0c06_4e02aa26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T02:49:54Z",
+      "side": 1,
+      "message": "I recommend always using \u003d\u003d\u003d and !\u003d\u003d instead of \u003d\u003d and !\u003d.",
+      "range": {
+        "startLine": 21,
+        "startChar": 48,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d3c926_832856c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T02:49:54Z",
+      "side": 1,
+      "message": "style: Please use singlequotes or doublequotes consistently throughout the file. Usually singlequotes are preferred.",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe5b828_dee33190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T02:49:54Z",
+      "side": 1,
+      "message": "nit\u0026optional: You might want to use template literals instead of concatenation.\n\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c38054d1_412b2a84",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
         "patchSetId": 7
@@ -13,6 +105,52 @@
       "writtenOn": "2020-03-25T00:48:30Z",
       "side": 1,
       "message": "I suppose it\u0027s not feasible to know up front what video dimensions we can request, and put those in the displayMediaOptions?",
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79e72d9_74effa4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/getdisplaymedia.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T02:49:54Z",
+      "side": 1,
+      "message": "What\u0027s the intention of waiting 5s? Can it be shorter or can we wait for some event instead? Please add a comment describing the background.",
+      "range": {
+        "startLine": 51,
+        "startChar": 40,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e96f9d8_60e995ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia/get_display_media.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-25T02:49:54Z",
+      "side": 1,
+      "message": "I recommend conn.Call (new API). We can now avoid fmt.Sprintf!\n\n conn.Call(ctx, nil, \"start\", surfaceType)\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#Conn.Call",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 27
+      },
       "revId": "43e47ebe0a97862b9825d0e7a80eea0f628f613b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
