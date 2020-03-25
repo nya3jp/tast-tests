@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42cb3a34_4bb0f10e",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:56:21Z",
+      "side": 1,
+      "message": "Enable enables the device.",
+      "revId": "51ff61380ac5c62c0149d914d69dc5f952632c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "879e9d1c_873d819b",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:56:21Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "51ff61380ac5c62c0149d914d69dc5f952632c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82f7fc2b_295bb86f",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:56:21Z",
+      "side": 1,
+      "message": "the active profile.",
+      "range": {
+        "startLine": 168,
+        "startChar": 25,
+        "endLine": 168,
+        "endChar": 62
+      },
+      "revId": "51ff61380ac5c62c0149d914d69dc5f952632c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136a6f31_5edf97f5",
+        "filename": "src/chromiumos/tast/local/shill/profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-25T04:56:21Z",
+      "side": 1,
+      "message": "Is it used in this CL?",
+      "revId": "51ff61380ac5c62c0149d914d69dc5f952632c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
