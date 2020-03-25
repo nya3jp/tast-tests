@@ -260,11 +260,15 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to run animation with ui mode as %s and launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
 		}
 
-		if err := metrics.StoreHistogramsMean(ctx, pv, histograms, perf.Metric{
+		if err := metrics.SaveHistogramsMeanValue(ctx, pv, histograms, perf.Metric{
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
 		}); err != nil {
-			s.Fatal("Failed to store metrics data: ", err)
+			s.Fatal("Failed to save metrics data: ", err)
+		}
+
+		if err := pv.Save(s.OutDir()); err != nil {
+			s.Fatal("Failed to save performance data in file: ", err)
 		}
 	}
 }

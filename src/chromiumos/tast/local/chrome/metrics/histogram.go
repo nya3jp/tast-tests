@@ -394,14 +394,13 @@ func clearHistogramTransferFileByName(fileName string) error {
 	return nil
 }
 
-// StoreHistogramsMean stores the mean of each histogram as the performance metrics value.
-func StoreHistogramsMean(ctx context.Context, pv *perf.Values, histograms []*Histogram, metric perf.Metric) error {
+// SaveHistogramsMeanValue saves the mean of each histogram as the performance metrics value. Note that this function does not save data in file.
+func SaveHistogramsMeanValue(ctx context.Context, pv *perf.Values, histograms []*Histogram, metric perf.Metric) error {
 	for _, h := range histograms {
 		mean, err := h.Mean()
 		if err != nil {
 			return errors.Wrapf(err, "failed to get mean for histogram %s: %v", h.Name, err)
 		}
-		testing.ContextLogf(ctx, "h name: %s mean value: %f", h.Name, mean)
 
 		metric.Name = fmt.Sprintf("%s", h.Name)
 		pv.Set(metric, mean)
