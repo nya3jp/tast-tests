@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea54e563_524e957b",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-25T03:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1e3671_26e9a381",
+      "range": {
+        "startLine": 53,
+        "startChar": 61,
+        "endLine": 53,
+        "endChar": 66
+      },
+      "revId": "0615e65c5bd286cfd2858a93e33b52bfa05090d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77eec54c_3f6831e4",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f8a0b2fb_03a88ca4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-25T03:45:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77eec54c_3f6831e4",
+      "range": {
+        "startLine": 88,
+        "startChar": 56,
+        "endLine": 88,
+        "endChar": 61
+      },
+      "revId": "0615e65c5bd286cfd2858a93e33b52bfa05090d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d414626_beff6b4c",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "0615e65c5bd286cfd2858a93e33b52bfa05090d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1803cc36_015c7c87",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-03-25T03:45:12Z",
+      "side": 1,
+      "message": "segments",
+      "parentUuid": "9d414626_beff6b4c",
+      "range": {
+        "startLine": 184,
+        "startChar": 15,
+        "endLine": 184,
+        "endChar": 23
+      },
+      "revId": "0615e65c5bd286cfd2858a93e33b52bfa05090d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
