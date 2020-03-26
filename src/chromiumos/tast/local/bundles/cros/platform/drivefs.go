@@ -33,7 +33,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 		},
 		Vars: []string{
 			"platform.Drivefs.user",     // GAIA username.
@@ -84,7 +83,7 @@ func waitForMountConnected(ctx context.Context, timeout time.Duration, path stri
 func Drivefs(ctx context.Context, s *testing.State) {
 	const (
 		mountPointTimeout = 10 * time.Second
-		fuseIoTimeout     = 10 * time.Second
+		fuseIoTimeout     = 15 * time.Second
 	)
 
 	user := s.RequiredVar("platform.Drivefs.user")
@@ -150,6 +149,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	if !dir.IsDir() {
 		s.Fatal("Could not find root folder inside ", mountPath, ": ", err)
 	}
+	s.Log("drivefs is initialized")
 
 	// Now we are relatively confident that drivefs started correctly.
 	// Check for team_drives.
