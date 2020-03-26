@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0e3ee394_db20b016",
+        "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T03:47:26Z",
+      "side": 1,
+      "message": "Nice suggestion, but let me defer the rename for now. Spreading the comments in multiple patchset is kind of hard for discussion thread to be found.\n\nOr should I duplicate some codes into a google doc for discussion, and keep the cl updated?",
+      "parentUuid": "565c25b1_9dd56bda",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03561666_50ebe530",
         "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
         "patchSetId": 1
