@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "565c25b1_9dd56bda",
+        "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-26T02:58:04Z",
+      "side": 1,
+      "message": "Configurer\n\nThough the interface contains more than one method. Let\u0027s apply single method interface\u0027 naming rule: suffix \"er\". \n\nAlso, consider renaming interface.go to configurer.go.",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03561666_50ebe530",
+        "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-26T02:58:04Z",
+      "side": 1,
+      "message": "Remove stop word \"Get\".",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "964c4ef5_9d154457",
         "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
         "patchSetId": 1
