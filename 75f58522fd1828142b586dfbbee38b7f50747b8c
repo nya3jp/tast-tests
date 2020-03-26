@@ -16,6 +16,24 @@
       "revId": "75f58522fd1828142b586dfbbee38b7f50747b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9589a952_df119aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-03-26T06:03:38Z",
+      "side": 1,
+      "message": "Ah, that sounds much better",
+      "parentUuid": "1e5d35c7_0e851783",
+      "revId": "75f58522fd1828142b586dfbbee38b7f50747b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
