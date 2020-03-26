@@ -24,15 +24,21 @@ func init() {
 		Desc:         "Checks that foreground/background status of ARC applications reflects properly in cgroup limits",
 		Contacts:     []string{"sonnyrao@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               "/sys/fs/cgroup/cpu/session_manager_containers/cpu.shares",
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               "/sys/fs/cgroup/cpu/vms/arc/cpu.shares",
+		}},
 	})
 }
 
 // See platform2/login_manager/session_manager_impl.cc for defintion of these constants.
 const (
-	// cpuShares is a file that indicates the relative amount of CPU this cgroup gets when there's contention.
-	cpuShares = "/sys/fs/cgroup/cpu/session_manager_containers/cpu.shares"
 	// cpuSharesARCBackground is the value for cpu.shares when ARC has nothing in the foreground.
 	cpuSharesARCBackground = 64
 	// cpuSharesARCForeground is the value of cpu.shares when ARC is in the foreground.
@@ -40,8 +46,9 @@ const (
 )
 
 // getCPUCgroupShares retrieves the current value for cpu.shares for the container.
-func getCPUCgroupShares(ctx context.Context) (int, error) {
-	b, err := ioutil.ReadFile(cpuShares)
+func getCPUCgroupShares(ctx context.Context, s *testing.State) (int, error) {
+	// Read from a file that indicates the relative amount of CPU this cgroup gets when there's contention.
+	b, err := ioutil.ReadFile(s.Param().(string))
 	if err != nil {
 		return 0, err
 	}
@@ -119,7 +126,7 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	}
 
 	// Check shares after ARC window is up and in the foreground.
-	share, err := getCPUCgroupShares(ctx)
+	share, err := getCPUCgroupShares(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to get ARC CPU shares value: ", err)
 	}
@@ -132,11 +139,11 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	if err := setWindowState(ash.WindowStateMinimized, ash.WMEventMinimize); err != nil {
 		s.Fatal("Failed to deactivate the activity: ", err)
 	}
-	share, err = getCPUCgroupShares(ctx)
+	share, err = getCPUCgroupShares(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to get ARC CPU shares value: ", err)
 	}
-	if share != cpuSharesARCBackground {
+	if s.Param().(string) == "/sys/fs/cgroup/cpu/session_manager_containers/cpu.shares" && share != cpuSharesARCBackground {
 		s.Fatal("Unexpected ARC CPU shares value after minimize: ", share)
 	}
 }
