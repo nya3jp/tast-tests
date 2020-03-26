@@ -20,7 +20,7 @@ func init() {
 		Contacts: []string{
 			"dbasehore@google.com",
 			"mutexlox@google.com",
-			"cros-monitoring-forensics@chromium.org",
+			"cros-telemetry@chromium.org",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})

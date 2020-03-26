@@ -31,7 +31,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrashLoop,
 		Desc:         "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
-		Contacts:     []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
+		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{

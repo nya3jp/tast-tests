@@ -29,7 +29,7 @@ func init() {
 		Desc: "Verifies crash_reporter itself crashing is captured through anomaly detector",
 		Contacts: []string{
 			"joonbug@chromium.org",
-			"cros-monitoring-forensics@google.com",
+			"cros-telemetry@google.com",
 		},
 		Params: []testing.Param{{
 			Name:              "real_consent",

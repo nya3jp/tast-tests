@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SelinuxViolation,
 		Desc:         "Verify selinux violations are logged as expected",
-		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
+		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"selinux"},
 		Params: []testing.Param{{

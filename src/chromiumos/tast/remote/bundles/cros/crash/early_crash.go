@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EarlyCrash,
 		Desc:         "Verify artificial early crash creates crash files",
-		Contacts:     []string{"mutexlox@chromium.org", "cros-monitoring-forensics@google.com"},
+		Contacts:     []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"reboot"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},

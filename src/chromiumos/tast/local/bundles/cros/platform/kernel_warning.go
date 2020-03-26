@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     KernelWarning,
 		Desc:     "Verify kernel warnings are logged as expected",
-		Contacts: []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
+		Contacts: []string{"mutexlox@google.com", "cros-telemetry@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
