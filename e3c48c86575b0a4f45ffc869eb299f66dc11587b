@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27495726_d69c4ec5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "Since the depending changes are not landed yet, you can add Cq-Depends to ensure they land in order.\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#cq-depend",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c16ac32_d8ce15bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "For robustness, could you have another test: manually set the valie in bootlockbox to 1, then run the same test.  This might happen in real lab, and the test should be able to adjust itself by resetting  the value before the actual test.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab4ec3ad_f267ee78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "Could you add a reference to where this is done in Chrome?",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5211935b_b7d990d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "Instead of checking the output, looks like you can check the status code by this?  Might also need to adjust the grep parameter, not 100% sure.\n\n    exitCode, ok :\u003d testexec.ExitCode(err2)",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf3d605_bc77533d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "is this needed?",
+      "range": {
+        "startLine": 75,
+        "startChar": 35,
+        "endLine": 75,
+        "endChar": 46
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba02e41_621a73da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "arc-core",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408d2030_68c25723",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "nit: ConfirmEnablingAdbSideload(ing)\n\nAlso, maybe take a boolean argument that indicates ok/cancel, then you can test both cases here.",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781dda90_d1df34d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "After this, we should check the value in boot lockbox is set to 1 (or remains 0 if cancel is clicked).",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ef6674_a14d2735",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "we should also reset the value to 0 at the end\n\nNot sure if we can make it resistant to power cut.  Maybe tast owners can advise later.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 1
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d858bdb0_bea027f4",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 2,
+        "endChar": 5
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29dc62c4_ad3ba9c7",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "AdbSideload?",
+      "range": {
+        "startLine": 13,
+        "startChar": 57,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d867eb3_0375f7fe",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-26T23:45:46Z",
+      "side": 1,
+      "message": "nit: SetRequestAdbSideloadFlag? Just to avoid confusion since this does not enable adb sideloading",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
