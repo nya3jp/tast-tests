@@ -70,7 +70,7 @@ var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoW
 func ChromeScreenCapture() testing.Precondition { return chromeScreenCapturePre }
 
 var chromeScreenCapturePre = chrome.NewPrecondition("screenCapturePre",
-	chrome.ExtraArgs(`--auto-select-desktop-capture-source=Built-in display`))
+	chrome.ExtraArgs(`--auto-select-desktop-capture-source=display`))
 
 // ChromeVideoVD returns a precondition similar to ChromeVideo specified above.
 // In addition this precondition specifies that the new
