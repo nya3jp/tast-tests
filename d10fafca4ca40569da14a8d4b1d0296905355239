@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31cc4a45_39022c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-26T22:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72b20008_b6c76f02",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 15
+      },
+      "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86d0d9db_06a0b809",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1ca6d364_30f00854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-26T22:57:56Z",
+      "side": 1,
+      "message": "We\u0027re not really polling; we\u0027re waiting on D-Bus signals. If I were to use testing.Poll, we\u0027d be adding needless sleep delays (it seems that Interval\u003d0 means \"guess at a reasonable interval\", not \"do not sleep\").",
+      "parentUuid": "86d0d9db_06a0b809",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 2
+      },
+      "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13b5e39b_66251b16",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 13
@@ -68,6 +116,30 @@
       "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e06dc42f_edb44047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-26T22:57:56Z",
+      "side": 1,
+      "message": "Ah, good idea. I think I went overboard when trying to catch other error patterns. But this is unnecessary wrapping.",
+      "parentUuid": "13b5e39b_66251b16",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 74
+      },
+      "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
