@@ -70,6 +70,24 @@
       "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfe49f2b_b1a60091",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-26T09:41:01Z",
+      "side": 1,
+      "message": "Hidehiko, so in Golang, it does not have a strict enum type, right? Any string can convert to a string enum type. Based on this, what\u0027s the purpose of defining a string enum type?",
+      "parentUuid": "e419799e_42f02d82",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
