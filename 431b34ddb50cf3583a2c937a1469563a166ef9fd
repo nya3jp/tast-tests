@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "faaf3542_33df6e3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-03-26T01:40:18Z",
+      "side": 1,
+      "message": "I think I\u0027d switch from setup.StartActivityWithArgs to a custom setup function that starts the activity normally but then for shutdown uses the app\u0027s custom shutdown intent (instead of am force-stop), then waitForFinished (which uses dumpsys activity), and then parse the logs.",
+      "parentUuid": "5309f1d0_4c0d2752",
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "986eb91b_ef35b69e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 2
