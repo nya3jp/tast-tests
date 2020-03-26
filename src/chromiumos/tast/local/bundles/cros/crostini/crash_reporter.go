@@ -35,7 +35,7 @@ func init() {
 			"mutexlox@google.com",
 			"cros-monitoring-forensics@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host", "metrics_consent"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "artifact",
@@ -83,7 +83,7 @@ func checkExitError(err error) error {
 func CrashReporter(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 
-	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.WithConsent(pre.Chrome)); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)
@@ -94,7 +94,7 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	}
 
 	// Trigger a crash in the root namespace of the VM
-	cmd := pre.Container.VM.Command(ctx, "python3", "-c", "import os\nos.abort()")
+	cmd := pre.Container.VM.Command(ctx, "bash", "-c", "ps --no-headers -C bash -o pid | xargs kill -s SIGABRT")
 	// Reverse the usual error checking pattern because this
 	// command is supposed to crash. Instead we check that the right
 	// error was encountered.
