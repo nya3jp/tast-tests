@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79db5979_e043df9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-26T17:29:36Z",
+      "side": 1,
+      "message": "nit/style: I don\u0027t think no performance is concerned here, so you can just write\n\nvar keys []string",
+      "revId": "5fecf24314b82696f489ab54e71659f5d9668dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
