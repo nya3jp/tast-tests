@@ -66,7 +66,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ServiceFailure,
 		Desc:     "Verify service failures are logged as expected",
-		Contacts: []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
+		Contacts: []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "real_consent",

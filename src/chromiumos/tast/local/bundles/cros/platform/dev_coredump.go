@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DevCoredump,
 		Desc:         "Verify device coredumps are handled as expected",
-		Contacts:     []string{"mwiitala@google.com", "cros-monitoring-forensics@google.com"},
+		Contacts:     []string{"mwiitala@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
 	})

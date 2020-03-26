@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppCrash,
 		Desc:         "Test handling of a local app crash",
-		Contacts:     []string{"mutexlox@google.com", "cros-monitoring-forensics@google.com"},
+		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{crashingAPKName},

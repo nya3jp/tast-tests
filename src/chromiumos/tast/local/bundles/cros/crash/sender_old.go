@@ -23,7 +23,7 @@ func init() {
 		Contacts: []string{
 			"mutexlox@chromium.org",
 			"iby@chromium.org",
-			"cros-monitoring-forensics@google.com",
+			"cros-telemetry@google.com",
 			"nya@chromium.org", // ported to Tast
 		},
 		Attr: []string{"group:mainline", "informational"},
