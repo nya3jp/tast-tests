@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1be85bf0_45a4c279",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-26T09:52:15Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "ffe1556553ab07396c92be8c91b4262219e79188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a2bdda_f30f4112",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-26T09:52:15Z",
+      "side": 1,
+      "message": "I am surprised that Tast doesn\u0027t have functions for this already. \nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/lsbrelease/lsbrelease.go?q\u003dCHROMEOS_RELEASE_BOARD+tast+package:%5Echromeos_public$\u0026dr\u0026l\u003d7\n\nI think there is also model parsing\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/hwdep/dep.go?q\u003dtast+dut+model+package:%5Echromeos_public$\u0026dr\n\nAnd soon chipset?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 54
+      },
+      "revId": "ffe1556553ab07396c92be8c91b4262219e79188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa48bbe_55be1c9c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-26T09:52:15Z",
+      "side": 1,
+      "message": "Not needed?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "ffe1556553ab07396c92be8c91b4262219e79188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
