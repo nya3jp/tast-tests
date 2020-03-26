@@ -34,6 +34,24 @@
       "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d7875f_4ed79080",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-26T01:06:04Z",
+      "side": 1,
+      "message": "Thank you for explanation.\n\nCould you clarify that there can be more types, but these are only expected ones in our use cases clearly in the IfType type/enum definition above?\nWhen I read, it was only values the type can take, so I made the recommendation, but there\u0027re more actually.",
+      "parentUuid": "2a3958e3_c5a635da",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
