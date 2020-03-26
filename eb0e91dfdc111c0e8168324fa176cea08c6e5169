@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "153e0690_dc03ac57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_drag_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T17:31:32Z",
+      "side": 1,
+      "message": "defer appIcons.Release(ctx)",
+      "revId": "eb0e91dfdc111c0e8168324fa176cea08c6e5169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67dec63_b3d9a953",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T17:31:32Z",
+      "side": 1,
+      "message": "super nit: I might change the name to something like EnsureNoEvents. Waiting for nothing just sounds wrong.",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "eb0e91dfdc111c0e8168324fa176cea08c6e5169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
