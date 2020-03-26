@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "febbcd1f_d52c1eb9",
+        "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T02:56:19Z",
+      "side": 1,
+      "message": "I see some golang packages defines the interfaces in interface.go but I\u0027m not sure if it\u0027s a good practice. (or maybe config.go? as we move implementation into sub-package)",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "964c4ef5_9d154457",
+        "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T02:56:19Z",
+      "side": 1,
+      "message": "I suggested the name \"Generator\" but I guess that might not be a proper name for it.\n(generator seems to mean something else: https://en.wikipedia.org/wiki/Generator_(computer_programming) )\nMaybe just Factory?",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef252db_33eea06c",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security_test.go.bak",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T02:56:19Z",
+      "side": 1,
+      "message": "As the implementation is split into sub-packages, uni-tests should be moved into sub-package (which might increase many duplicated test codes.)\nThere are a lot of codes to move, so I skipped it by renaming now. :p",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0980c30b_0313726a",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T02:56:19Z",
+      "side": 1,
+      "message": "The required paramters in tunneled1x makes me think if it is simpler to only use Generator.Gen and remove NewConfig so that we can avoid defining the long required parameter list twice.\n\nIt might be harder to use in some other case but I\u0027m guess maybe it\u0027s OK?\ne.g. c, err :\u003d NewConfig(...) -\u003e c, err :\u003d NewGenerator(...).Gen()",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
