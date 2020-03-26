@@ -2,6 +2,190 @@
   "comments": [
     {
       "key": {
+        "uuid": "7bd3dc21_b646b9b9",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "you can omit all but the last string.\ne.g. (a string, b string) can be written as (a, b string).",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 150
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364e6fe9_373016a5",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 66,
+        "startChar": 153,
+        "endLine": 66,
+        "endChar": 189
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182ba3e1_53b74da3",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "this is redundant. Wrapf generates this.",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2154bf83_ee2632f8",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 71,
+        "startChar": 73,
+        "endLine": 71,
+        "endChar": 76
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f429e5f7_9913d248",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 75,
+        "startChar": 53,
+        "endLine": 75,
+        "endChar": 56
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3301ac0_1d2cd6e3",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "Could you return a pointer *VideoMetadata?",
+      "range": {
+        "startLine": 119,
+        "startChar": 36,
+        "endLine": 119,
+        "endChar": 49
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93459846_41d4d5e8",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "maybe: failed to load metadata\nor: load metadata\n\nerr tells open has failed, and also tells the filePath. I guess we can tell it\u0027s json file from the extension (I guess it\u0027s always *.json?).\n\nIn general, the call f(x) is responsible for reporting the attempted operation f and the argument value x as they relate to the context of the error.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 123,
+        "startChar": 38,
+        "endLine": 123,
+        "endChar": 56
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b8040f_199d6c03",
+        "filename": "src/chromiumos/tast/local/arc/c2e2etest/c2e2etest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "Could you include filePath in the error message?\n\nmaybe: errors.Wrapf(err, \"parsing %s to load metadata\", filePath)",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 71
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "874391a5_a4d8250a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
         "patchSetId": 2
@@ -13,6 +197,29 @@
       "writtenOn": "2020-03-25T05:16:27Z",
       "side": 1,
       "message": "I think we should be switching to cpu.WaitUntilIdle(ctx) from \"chromiumos/tast/local/media/cpu\"\n\nTemperature doesn\u0027t seem enough.",
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbae8023_fead42d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "nit: waiting\n?",
+      "range": {
+        "startLine": 132,
+        "startChar": 16,
+        "endLine": 132,
+        "endChar": 23
+      },
       "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -51,6 +258,52 @@
       "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e69518_d429234b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 155,
+        "startChar": 10,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2077c73d_273cf110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T02:13:48Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 9
+      },
+      "revId": "431b34ddb50cf3583a2c937a1469563a166ef9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
