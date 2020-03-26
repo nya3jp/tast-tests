@@ -31,7 +31,6 @@ func init() {
 		},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 		},
 		Vars: []string{
 			"platform.Drivefs.user",     // GAIA username.
