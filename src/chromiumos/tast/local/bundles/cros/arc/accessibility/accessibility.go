@@ -32,7 +32,7 @@ const (
 	// ApkName is the name of apk which is used in ARC++ accessibility tests.
 	ApkName      = "ArcAccessibilityTest.apk"
 	packageName  = "org.chromium.arc.testapp.accessibilitytest"
-	activityName = ".AccessibilityActivity"
+	activityName = ".MainActivity"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
 
@@ -218,8 +218,8 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 	defer cvconn.Close()
 
 	s.Log("Installing and starting test app")
-	if err := a.Install(ctx, s.DataPath(ApkName)); err != nil {
-		s.Fatal("Failed installing app: ", err)
+	if err := a.Install(ctx, arc.APKPath(ApkName)); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
 	}
 
 	act, err := arc.NewActivity(a, packageName, activityName)
