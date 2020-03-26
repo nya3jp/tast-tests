@@ -52,6 +52,24 @@
       "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e419799e_42f02d82",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T01:29:51Z",
+      "side": 1,
+      "message": "Thanks for the suggestion and Brian\u0027s explanation. Comment added before the enum values.",
+      "parentUuid": "b3d7875f_4ed79080",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
