@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "deec6ce6_e55426ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-26T03:42:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8d5c7cb_ea5853f2",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "475db931_2878b3b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 3
@@ -284,6 +308,30 @@
       "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d728f85b_8c2339f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-03-26T03:42:34Z",
+      "side": 1,
+      "message": "My suggestion for stabilisation is to wait for an expected bounds.\n\nIf that isn\u0027t possible, I think Takise-san is looking at implementing something similar to go/arc-wm-synchronization that could be used.",
+      "parentUuid": "4d59a69d_0a533852",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "781086deac507ce66e3f91e8b9bcec0282ca80ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
