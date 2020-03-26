@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf4e44ea_132cef10",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-26T01:19:04Z",
+      "side": 0,
+      "message": "I\u0027m not sure how the changes in this file are related to the test (and looks like very similar to crrev.com/c/2118650). Maybe the change is spilled out here?  If so, please revert to the origin for this file.",
+      "revId": "64e0a03237fc3e7c398eefe842329ddfc5c0198b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07e49723_964aae76",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-26T01:19:04Z",
+      "side": 1,
+      "message": "I got a review comment of skipping this type of log and I think it\u0027s valid. So please remove this logging. See also: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 406,
+        "startChar": 2,
+        "endLine": 406,
+        "endChar": 69
+      },
+      "revId": "e8b4dfd9a1f0b44324d415f05897077ec6537b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8111d602_99d295f4",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-26T01:19:04Z",
+      "side": 1,
+      "message": "I rather like to keep this outside of this function. Instead, you can have this in your test scenario.\n\nThe problem of Save here is; StoreHistogramsMean isn\u0027t composable anymore -- test case should only invoke this just once at the exactly end of the scenario. By omitting this, it\u0027s more composable and easier to use.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 3
+      },
+      "revId": "e8b4dfd9a1f0b44324d415f05897077ec6537b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
