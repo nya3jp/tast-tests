@@ -1,0 +1,579 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2caa6e36_68d65491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "I\u0027d name it Path. Same for others. For example mountFailureLog.LogPath becomes mountFailureLog.Path, which is less redundant.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d45e81_15cc4966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "Contents ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1f8ce4_cbe83b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "I think it\u0027s good to distinguish what\u0027s the inputs and what\u0027s the expected outcomes. How about\nWantLogHeader ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b90bedb2_6d23c0d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "Could you document them? \n- what does empty LogPath or LogContents means?\n- what is LogContents ?\n\nAlso, could you uncapitalize (unexport) them?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c6b1be_af0e8594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "Could you unexport the fields?",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e566d357_4901fb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "Could you document what is this struct for?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d0f71a_cc591b7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "WantCrashName?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e73941d_ad4d503e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "CrashReporterArgs ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43756185_32052330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "Could you document this too?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5530e9_a65109a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "q: Is this string just a name for making a mapping between mountFailures, or something generated outside?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 31
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a2ee00_5aff6fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "mf ?\nGo prefers short name for local variables in limited scope.\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names\n\nSame for other mountFailureLog in for loop.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd256d06_e9d2d966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "err !\u003d nil \u0026\u0026 !os.IsNotFound(err)",
+      "range": {
+        "startLine": 77,
+        "startChar": 48,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d633dc_d269b3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "generate here seems to be a stop word, which is discouraged. https://g3doc.corp.google.com/go/g3doc/readability/review-comments.md?cl\u003dhead#TOC-Getters\n\nexpectedFileRegexes ?",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 33
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291e9091_c46ecabd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "res ?",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea4e007_fc6c9521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "mf",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36b7110_d22a82fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "maybe validateCrashLogs, because it doesn\u0027t check meta files?",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e9d2f79_7103fe3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "mf",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b47492_bd29db25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "How about:\n\"multiple (%d) log files for the crash %s\", len(...), mf.CrashName)",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 134
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c2dfa1_14e765e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "nit: log\n?",
+      "range": {
+        "startLine": 107,
+        "startChar": 34,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d948f0_ea742335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "You don\u0027t need this too. Wrapf automatically adds it.",
+      "range": {
+        "startLine": 113,
+        "startChar": 56,
+        "endLine": 113,
+        "endChar": 58
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9006198a_b2b22a0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "err already contains f, so you can omit this.",
+      "range": {
+        "startLine": 113,
+        "startChar": 52,
+        "endLine": 113,
+        "endChar": 54
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8571371_6febda18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "nit:\n\nif  err :\u003d seve...\ndefer cleanup...\nif err !\u003d nil {\n  s.Fatal...\n}\n\nwould be better because save can fail in the middle of the for loop.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 32
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1793d929_2305d235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "How about reportMountFailures ?",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 36
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fed64bc_4158e3b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "wantFileRegs",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 16
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6511e2_6d2b22cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-26T03:45:49Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 157,
+        "startChar": 76,
+        "endLine": 157,
+        "endChar": 86
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
