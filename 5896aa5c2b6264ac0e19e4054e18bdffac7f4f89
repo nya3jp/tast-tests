@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "730416eb_623cfe35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T20:15:25Z",
+      "side": 1,
+      "message": "password should be a secret variable https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Secret-variables",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b20ad1_a54ab049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T20:15:25Z",
+      "side": 1,
+      "message": "can these be entered in a cleaner/shorter way? Also in a way that hides the password from this test file. Probably using setText",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 402,
+        "endChar": 28
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e11963e_3c3d44da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T20:15:25Z",
+      "side": 1,
+      "message": "Not sure why this is deferred. It is already at the end of the function.",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 6
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08986cf3_9bccd04c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T20:15:25Z",
+      "side": 1,
+      "message": "This seems like a weird time to start the activity again. Most likely we just want to return an error here?",
+      "range": {
+        "startLine": 446,
+        "startChar": 2,
+        "endLine": 448,
+        "endChar": 3
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267cbe76_56a2157f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T20:15:25Z",
+      "side": 1,
+      "message": "This probably should be Fatal. if we can\u0027t sign out that seems like an issue.",
+      "range": {
+        "startLine": 473,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 45
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
