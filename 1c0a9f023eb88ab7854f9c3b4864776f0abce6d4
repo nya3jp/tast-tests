@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1e1571f_01f3fdb4",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-03-26T00:31:31Z",
+      "side": 1,
+      "message": "Where do we call this to enable assistant? In your the other cl, you also do check:\npref_name \u003d\u003d chromeos::assistant::prefs::kAssistantEnabled",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "1c0a9f023eb88ab7854f9c3b4864776f0abce6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
