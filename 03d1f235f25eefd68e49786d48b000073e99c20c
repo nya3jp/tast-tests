@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4bd767c_baca8c73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-26T18:16:46Z",
+      "side": 1,
+      "message": "Let me bring your comments here:\n\n\u003e Miguel, what do you think about this CL?\nThe idea sounds ok, let\u0027s go to the details.\n\n\u003e I wonder if I should rather add PlaybackPerf.av1_*_gav1.\n\nYeah, add it here but: IIUC this only applies to ARM boards, so \nadd an \n  ExtraSoftwareDeps: []string{\"arm\"},\n\nto the new test cases av1_*_gav1\n\nwhere\u0027arm\u0027 needs to be added beforehand to local_test_runner.go [1]\nby negating amd64: i.e.\n  \"arm\" : `!amd64`\n \n(because anything not amd64, i.e. Intel and AMD, is ARM by definition, right?)\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go;l\u003d61?q\u003damd64%20tast%2F\n\n\n\u003e Additionally, I want to check if kVideoDecoderName is Gav1VideoDecoder.\n\u003e Is it ok to add a function to get kVideoDecoderName in chrome_media_internals_utils.js?\n\nIt should be fine to add a new function e.g.\n  checkChromeMediaInternalsVideoDecoderNameForURL(url, name)\nto that file and refactor the common parts. If I know the tast\nreviewers, they\u0027ll probably want that refactoring to happen \nbefore this CL...",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be07db2e_fa001212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-26T18:16:46Z",
+      "side": 1,
+      "message": "Instead of making a specific case for gav1, let\u0027s have here a SW entry,\nso that we contain the gav1 specifics to the playback_perf.go file.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb8543b_e758a79a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-26T18:16:46Z",
+      "side": 1,
+      "message": "Ah hmm this is unfortunate but it\u0027s needed because the playback_perf.go\ndoesn\u0027t use the Chrome preconditions. Two options: leave this with a \nTODO() to migrate the whole playback perf to preconditions, or switch\nbeforehand and add a precondition for this case next to this guy\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/pre/pre.go;l\u003d55?q\u003dchromeVideoWithFakeWebcamAndVP9VaapiEncoder\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
