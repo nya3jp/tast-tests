@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/perf"
@@ -32,6 +33,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	const (
 		pkgName                = "com.arm.pa.paretrace"
 		activityName           = ".Activities.RetraceActivity"
+		permissionButtonId     = "com.android.permissioncontroller:id/continue_button"
 		tPowerSnapshotInterval = 5 * time.Second
 	)
 
@@ -67,7 +69,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 
 	tabletCleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
-		s.Fatal("Failed to ensure in tablet mode: ", err)
+		s.Fatal("Failed to ensure tablet mode: ", err)
 	}
 	defer tabletCleanup(ctx)
 
@@ -99,6 +101,12 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	}
 	defer act.Close()
 
+	d, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close()
+
 	perfValues := perf.NewValues()
 	defer func() {
 		if err := perfValues.Save(s.OutDir()); err != nil {
@@ -117,6 +125,17 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 
 	if err := act.StartWithArgs(ctx, []string{"-W", "-S", "-n"}, []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath}); err != nil {
 		s.Fatal("Cannot start retrace: ", err)
+	}
+
+	// Give paretrace access to "Files and media". Only needed in Q+
+	if permissionButton := d.Object(ui.ID(permissionButtonId)); permissionButton.Exists(ctx) == nil {
+		permissionButton.Click(ctx)
+		// "This app was built for an older version of Android and may not work properly"
+		versionOkButton := d.Object(ui.Text("OK"), ui.PackageName("android"))
+		if err := versionOkButton.WaitForExists(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to start: ", err)
+		}
+		versionOkButton.Click(ctx)
 	}
 
 	exp := regexp.MustCompile(`paretrace32\s*:.*=+\sStart\stimer.*=+`)
