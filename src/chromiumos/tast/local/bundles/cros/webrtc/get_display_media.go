@@ -32,6 +32,10 @@ func init() {
 			Name: "monitor",
 			Val:  "monitor",
 			Pre:  pre.ChromeScreenCapture(),
+		}, {
+			Name: "window",
+			Val:  "window",
+			Pre:  pre.ChromeWindowCapture(),
 		}},
 	})
 }
