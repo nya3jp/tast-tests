@@ -22,6 +22,30 @@
       "revId": "1c0a9f023eb88ab7854f9c3b4864776f0abce6d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837df21e_d5816386",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-03-26T18:35:14Z",
+      "side": 1,
+      "message": "Enable/Disable Assistant service is done through |Enable| on L40, and the |setAssistantEnabled| also uses the |setWhitelistedPref| to toggle this pref. The key is user should never call |SetHotwordEnabled| or |SetContextEnabled| *before* |Enable| gets called. And we will let them know by printing error message that they need to enable the Assistant service first if they want to take any of those pref into effect.\n\nAlso Tao, can you take a look at hidehiko@\u0027s comment here [1]? in case that I got something wrong there. Thanks!\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2118932/3/src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go#80",
+      "parentUuid": "e1e1571f_01f3fdb4",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "1c0a9f023eb88ab7854f9c3b4864776f0abce6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
