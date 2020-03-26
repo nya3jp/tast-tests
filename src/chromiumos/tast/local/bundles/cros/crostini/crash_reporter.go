@@ -33,7 +33,7 @@ func init() {
 			"cros-containers-dev@google.com",
 			// Monitoring and forensics
 			"mutexlox@google.com",
-			"cros-monitoring-forensics@google.com",
+			"cros-telemetry@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline", "informational"},

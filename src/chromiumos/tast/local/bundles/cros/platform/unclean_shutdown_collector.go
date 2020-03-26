@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     UncleanShutdownCollector,
 		Desc:     "Verify unclean shutdown produces collection",
-		Contacts: []string{"joonbug@chromium.org", "cros-monitoring-forensics@google.com"},
+		Contacts: []string{"joonbug@chromium.org", "cros-telemetry@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }
