@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "3b2c4efc_3d17d6c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2020-03-26T19:27:40Z",
+      "side": 1,
+      "message": "Yeah, the screen context is only used by Assistant and when opening launcher.\n\nIn other Launcher related test, the Assistant feature may not enabled? but in case, we can reset both Assistant and context pref.",
+      "parentUuid": "b928def1_6f3c85ca",
+      "revId": "2529de91bc00117235b8e17834d0941717db75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b473eed5_121d6bbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 3
