@@ -72,6 +72,13 @@ func ChromeScreenCapture() testing.Precondition { return chromeScreenCapturePre 
 var chromeScreenCapturePre = chrome.NewPrecondition("screenCapturePre",
 	chrome.ExtraArgs(`--auto-select-desktop-capture-source=display`))
 
+// ChromeWindowCapture returns a precondition so that Chrome always picks
+// the Chromium window for getDisplayMedia(), bypassing the picker UI.
+func ChromeWindowCapture() testing.Precondition { return chromeWindowCapturePre }
+
+var chromeWindowCapturePre = chrome.NewPrecondition("windowCapturePre",
+	chrome.ExtraArgs(`--auto-select-desktop-capture-source=Chrome`))
+
 // ChromeVideoVD returns a precondition similar to ChromeVideo specified above.
 // In addition this precondition specifies that the new
 // media::VideoDecoder-based video decoders need to used (see go/vd-migration).

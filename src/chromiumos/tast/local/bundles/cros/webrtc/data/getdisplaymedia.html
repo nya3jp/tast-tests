@@ -26,8 +26,13 @@ function start(surface) {
         video.srcObject = mediaStream;
         const mediaStreamSettings = mediaStream.getVideoTracks()[0]
           .getSettings();
-        // TODO(crbug.com/1063449) verify
-        // mediaStream.getVideoTracks()[0].getSettings().displaySurface == surface
+        const actualSurfaceType =
+              mediaStream.getVideoTracks()[0].getSettings().displaySurface;
+        if (actualSurfaceType !== surface) {
+          throw new DOMException(`Wrong capture type, got: ` +
+                                 `${actualSurfaceType}, expected: ${surface}`,
+                                 'TypeError');
+        }
 
         video.onplay = () => {
           video.width = mediaStreamSettings.width;
