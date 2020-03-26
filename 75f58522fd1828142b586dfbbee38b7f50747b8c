@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e5d35c7_0e851783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/crash_reporter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-26T05:52:34Z",
+      "side": 1,
+      "message": "This would kill all the bash processes that the user can kill. I am not sure it affect other part of test run.\nHow about using \"$$\"?",
+      "revId": "75f58522fd1828142b586dfbbee38b7f50747b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
