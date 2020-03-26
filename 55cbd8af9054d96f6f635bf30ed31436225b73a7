@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3918dbbf_e328243e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-26T08:36:36Z",
+      "side": 1,
+      "message": "Could you briefly explain the difference?",
+      "revId": "55cbd8af9054d96f6f635bf30ed31436225b73a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
