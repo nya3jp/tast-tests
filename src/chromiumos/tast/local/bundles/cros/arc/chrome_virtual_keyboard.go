@@ -141,6 +141,12 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 	defer act.Stop(ctx)
 
+	// Make sure that the virtual keyboard is hidden now. It is the precondition of this test.
+	vkb.HideVirtualKeyboard(ctx, tconn)
+	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide the virtual keyboard: ", err)
+	}
+
 	// Focusing on the text field programmatically should not show the virtual keyboard.
 	button := d.Object(ui.ID(buttonID1))
 	if err := button.WaitForExists(ctx, 30*time.Second); err != nil {
@@ -201,11 +207,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	if err := d.Object(ui.ID(fieldID1), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Clicking the button didn't cause the focus move: ", err)
 	}
-	shown, err = vkb.IsShown(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the virtual keyboard visibility: ", err)
-	}
-	if shown {
+	if err := vkb.WaitUntilHidden(ctx, tconn); err != nil {
 		s.Fatal("The virtual keyboard doesn't hide")
 	}
 
