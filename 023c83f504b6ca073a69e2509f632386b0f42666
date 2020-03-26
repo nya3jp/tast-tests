@@ -46,6 +46,30 @@
       "revId": "023c83f504b6ca073a69e2509f632386b0f42666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1237ca5b_fbd2c35d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2020-03-26T00:20:49Z",
+      "side": 1,
+      "message": "Ok. That make sense.",
+      "parentUuid": "68a7af92_ef9b484e",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "023c83f504b6ca073a69e2509f632386b0f42666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
