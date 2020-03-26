@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19c1fda1_1cd0b336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-26T10:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea731c9_6d468790",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 68
+      },
+      "revId": "e276487dad627df2d93f80217bc0698603491862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9ae6565_4c54e807",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e276487dad627df2d93f80217bc0698603491862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7284027_39c610ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-26T10:43:54Z",
+      "side": 1,
+      "message": "Yes, it\u0027s expected to have only one video track in the mp4 recorded by CCA.",
+      "parentUuid": "a9ae6565_4c54e807",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 41
+      },
+      "revId": "e276487dad627df2d93f80217bc0698603491862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
