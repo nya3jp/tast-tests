@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87a19637_67fba50f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T17:40:16Z",
+      "side": 1,
+      "message": "Is there a reason this isn\u0027t using preconditions?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "0b755d4618301f3ee7ef250eda6ec9a11ca32c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
