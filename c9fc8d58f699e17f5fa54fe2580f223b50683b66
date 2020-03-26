@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "64be182d_6c6b01da",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-26T23:25:54Z",
+      "side": 1,
+      "message": "There\u0027s a reason we didn\u0027t use this yet:\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/1967946\nGo back to just \"80\" for now (and specify/auto-determine the center-freq), and leave a TODO?",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 35
+      },
+      "revId": "c9fc8d58f699e17f5fa54fe2580f223b50683b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3505ea52_3a6c3c38",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 4
@@ -16,6 +39,29 @@
       "revId": "c9fc8d58f699e17f5fa54fe2580f223b50683b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "834dca71_8b4e4f01",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-26T23:25:54Z",
+      "side": 1,
+      "message": "In Autotest, we found it easier to just list the mapping of channels to center frequencies, for both 80 and 160 MHz channels. (See _get_center_freq_80 and _get_center_freq_160.) They aren\u0027t the most beautiful pieces of work, but is there a good reason not to do something similar? There\u0027s only a 1:1 mapping for these, unlike HT40 (where there are a small number of HT40+ vs. HT40- options).\n\nI\u0027m a little torn, because in some cases (e.g., hostapd + packet capturer) you already have all the freq + center-freq parameters from the hostapd config; but in other cases (e.g., with interop tests (using off-the-shelf APs), or other non-hostapd-based tests, you end up having to come up with this redundantly).",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 3
+      },
+      "revId": "c9fc8d58f699e17f5fa54fe2580f223b50683b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
