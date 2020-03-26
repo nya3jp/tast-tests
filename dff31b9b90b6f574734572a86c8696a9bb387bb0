@@ -34,6 +34,25 @@
       "revId": "dff31b9b90b6f574734572a86c8696a9bb387bb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce93eed9_476eb99b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-26T05:28:37Z",
+      "side": 1,
+      "message": "Sent from Gmail mobile",
+      "parentUuid": "e80a85f0_47a22421",
+      "tag": "mailMessageId\u003d\u003cCAA1dreCmxQpvwPzckhhB9p4k0bR89noAbc8Stu1OCMJnk62t9A@mail.gmail.com\u003e",
+      "revId": "dff31b9b90b6f574734572a86c8696a9bb387bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
