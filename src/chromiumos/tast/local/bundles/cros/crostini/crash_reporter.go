@@ -94,7 +94,7 @@ func CrashReporter(ctx context.Context, s *testing.State) {
 	}
 
 	// Trigger a crash in the root namespace of the VM
-	cmd := pre.Container.VM.Command(ctx, "python3", "-c", "import os\nos.abort()")
+	cmd := pre.Container.VM.Command(ctx, "bash", "-c", "kill -s SIGABRT $$")
 	// Reverse the usual error checking pattern because this
 	// command is supposed to crash. Instead we check that the right
 	// error was encountered.
