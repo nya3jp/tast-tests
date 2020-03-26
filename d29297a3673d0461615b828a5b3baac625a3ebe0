@@ -107,6 +107,24 @@
       "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4383252d_a3cc3749",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T03:35:04Z",
+      "side": 1,
+      "message": "If we remove NewConfig, the list of parent Options may be moved into Generator and gain more control of the construction flow. And then Hsin-chen\u0027s design might also work. (i.e. can do something before and after parent construction)\nHowever, Hsin-chen\u0027s design will allow arbitrary option and reveals the inheritance details to caller. (the property has both pros and cons.)",
+      "parentUuid": "0980c30b_0313726a",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
