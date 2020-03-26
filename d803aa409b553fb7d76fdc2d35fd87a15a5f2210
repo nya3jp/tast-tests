@@ -70,6 +70,24 @@
       "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84fc8f6_5b649002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_tpm_live_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-03-26T06:20:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5127da6f_a953b6fd",
+      "revId": "d803aa409b553fb7d76fdc2d35fd87a15a5f2210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
