@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0f76254_ca287ab0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-26T02:17:05Z",
+      "side": 1,
+      "message": "\u003e \"Defaule\" is a possible misspelling of \"Default\".\n\nFixed.",
+      "parentUuid": "39ef9273_543c29c1",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "48df7d31ab17bd087862bea5f7aa09862aa952df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
