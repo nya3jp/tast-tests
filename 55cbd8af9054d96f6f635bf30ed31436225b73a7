@@ -16,6 +16,24 @@
       "revId": "55cbd8af9054d96f6f635bf30ed31436225b73a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98b84b95_10d4ca50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-03-26T08:52:43Z",
+      "side": 1,
+      "message": "\"--activity-single-top\" is used to trigger onNewIntent() when the activity is on the top of the stack. But if it is not on the top of the stack, or is in another task, the instance will still be created, which is not we want.\n\nThe intention for the workaround is to bring the activity back to the foreground if it is wrongly minimized. Therefore, \"--activity-brought-to-front\" should be more suitable.\n\nRef: https://developer.android.com/guide/topics/manifest/activity-element",
+      "parentUuid": "3918dbbf_e328243e",
+      "revId": "55cbd8af9054d96f6f635bf30ed31436225b73a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
