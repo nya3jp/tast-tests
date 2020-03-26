@@ -8,6 +8,7 @@ package lacros
 import (
 	"context"
 	"fmt"
+	"sort"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -114,25 +115,65 @@ func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
 	return nil
 }
 
+var histogramMap = map[string]struct {
+	unit      string
+	direction perf.Direction
+}{
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Universal": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.AllSequences": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.Universal": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.MainThread.AllSequences": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.Universal": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.AllSequences": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+	},
+	"Graphics.Smoothness.PercentDroppedFrames.AllSequences": {
+		unit:      "percent",
+		direction: perf.SmallerIsBetter,
+	},
+	"Compositing.Display.DrawToSwapUs": {
+		unit:      "ms",
+		direction: perf.SmallerIsBetter,
+	},
+}
+
 func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, testType string) error {
+	var keys []string
+	for k := range histogramMap {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
 	histograms, err := metrics.Run(ctx, tconn, func() error {
 		testing.Sleep(ctx, 20.0*time.Second)
 		return nil
-	}, "Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Universal",
-		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.AllSequences",
-		"Graphics.Smoothness.PercentDroppedFrames.MainThread.Universal",
-		"Graphics.Smoothness.PercentDroppedFrames.MainThread.AllSequences",
-		"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.Universal",
-		"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.AllSequences",
-		"Graphics.Smoothness.PercentDroppedFrames.AllSequences",
-		"Compositing.Display.DrawToSwapUs",
-	)
+	}, keys...)
 	if err != nil {
 		return errors.Wrap(err, "failed to get histograms")
 	}
 
 	for _, h := range histograms {
 		testing.ContextLog(ctx, "Histogram: ", h)
+		hinfo, ok := histogramMap[h.Name]
+		if !ok {
+			return errors.Wrapf(err, "failed to lookup histogram info: %s", h.Name)
+		}
 
 		if h.TotalCount() != 0 {
 			mean, err := h.Mean()
@@ -143,8 +184,8 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 
 			pv.Set(perf.Metric{
 				Name:      fmt.Sprintf("%s.%s", h.Name, testType),
-				Unit:      "",
-				Direction: perf.SmallerIsBetter,
+				Unit:      hinfo.unit,
+				Direction: hinfo.direction,
 			}, mean)
 		}
 	}
