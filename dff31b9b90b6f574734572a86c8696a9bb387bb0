@@ -53,6 +53,24 @@
       "revId": "dff31b9b90b6f574734572a86c8696a9bb387bb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498550f9_53e60f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-26T09:11:06Z",
+      "side": 1,
+      "message": "Sorry just found a new instance grunt/treeya360 failed once, cf. http://b/151954358#comment10. So please go ahead to exclude platform Grunt from CQ and let\u0027s observe for two weeks.",
+      "parentUuid": "a3e4f702_4c89aae2",
+      "revId": "dff31b9b90b6f574734572a86c8696a9bb387bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
