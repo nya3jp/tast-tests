@@ -323,6 +323,30 @@
       "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80110d3_7d24d124",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T18:24:26Z",
+      "side": 1,
+      "message": "In this case, I think that you would want the error to be check and returned in Stop. Close is just for resource cleanup. Stop could potentially check if an activity is running and throw an error if it isn\u0027t running. (ex: \"Can\u0027t stop activity that isn\u0027t running\")",
+      "parentUuid": "4e459a5f_4a7de738",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "a8f6c6f4c63b55263f9d02ea6957241c2b342c25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
