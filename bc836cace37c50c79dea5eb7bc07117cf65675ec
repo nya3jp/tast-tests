@@ -106,6 +106,24 @@
       "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33e662b6_7e3b913c",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-26T17:13:51Z",
+      "side": 1,
+      "message": "Maybe getting toward what Dean wants: we could have IfType be a non-string enum, and just supply conversion functions (that would return errors for unrecognized strings). I don\u0027t have strong opinions though.",
+      "parentUuid": "aa7a8068_e49da374",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
