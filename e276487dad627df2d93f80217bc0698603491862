@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4ff85215_e0723b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-26T11:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7317d7f_66aa7c8f",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 68
+      },
+      "revId": "e276487dad627df2d93f80217bc0698603491862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9ae6565_4c54e807",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Thanks. If so, maybe we can check the length of file.Moov.Tracks to be 1 and use the file.Moov.Traks[0] instead of a loop. WDYT?",
       "parentUuid": "b7284027_39c610ba",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 41
+      },
+      "revId": "e276487dad627df2d93f80217bc0698603491862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767d3b1c_3583904d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-26T11:35:10Z",
+      "side": 1,
+      "message": "There is exactly one \"video\" track, and there might be an audio track (with 0x0 width and height). The logic here is similar to the above one for mkv.",
+      "parentUuid": "183332be_6cdc7e19",
       "range": {
         "startLine": 168,
         "startChar": 2,
