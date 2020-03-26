@@ -88,6 +88,24 @@
       "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa7a8068_e49da374",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-26T15:32:05Z",
+      "side": 1,
+      "message": "Could you clarify what \"strict\" did you mean in detail?\n\nIf we write `type Foo string`, any string value can be converted to Foo, as you said. Though, there\u0027s some benefit still.\n\n1) Type checking\nstring and Foo are different type. So:\n\nfunc Bar(foo Foo) { ... }\n\nfunc main() {\n  Bar(\"abc\")\n}\n\nwill cause compile error, since string literal passed to Bar is not typed Foo.\n\n2) Adding method.\nWe can add a new method for Foo. E.g.: https://play.golang.org/p/7NmCwb_Oz-E",
+      "parentUuid": "cfe49f2b_b1a60091",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
