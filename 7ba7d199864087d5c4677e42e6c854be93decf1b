@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "319f6564_39fb27b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-26T17:48:38Z",
+      "side": 1,
+      "message": "nit: Can you check if it works if you poll for chrome.autotestPrivate.launchApp?\n\nI just want to see if there is a general way to ensure that chrome is ready to launch all apps. I feel like this is an initialization problem that may need to be fixed elsewhere.\n\nIf you don\u0027t want to look into this rn, can you just file a bug for it.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "7ba7d199864087d5c4677e42e6c854be93decf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
