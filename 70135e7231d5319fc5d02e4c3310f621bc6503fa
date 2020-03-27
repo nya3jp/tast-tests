@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48c0bcc3_4e7e21b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-03-27T15:40:41Z",
+      "side": 1,
+      "message": "nit: I would add a note that this gives the VM more time to start up.",
+      "revId": "70135e7231d5319fc5d02e4c3310f621bc6503fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
