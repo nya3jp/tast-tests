@@ -44,7 +44,7 @@ func init() {
 	})
 }
 
-func setCorePatternCrashTest(crashTest bool) error {
+func setCorePatternCrashTest(ctx context.Context, crashTest bool) error {
 	b, err := ioutil.ReadFile(commoncrash.CorePattern)
 	if err != nil {
 		return errors.Wrapf(err, "failed reading core pattern file %s",
@@ -53,6 +53,7 @@ func setCorePatternCrashTest(crashTest bool) error {
 
 	// Reset any crash test flag
 	corePatternExpr := strings.TrimSpace(string(b))
+	testing.ContextLogf(ctx, "Current core pattern: %s", corePatternExpr)
 	corePatternExpr = strings.Replace(corePatternExpr, " --crash_test", "", -1)
 
 	if crashTest {
@@ -83,10 +84,10 @@ func CrashReporterCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get original crashes: ", err)
 	}
 
-	if err := setCorePatternCrashTest(true); err != nil {
+	if err := setCorePatternCrashTest(ctx, true); err != nil {
 		s.Fatal(err, "failed to replace core pattern")
 	}
-	defer setCorePatternCrashTest(false)
+	defer setCorePatternCrashTest(ctx, false)
 
 	// TODO(crbug.com/1011932): Investigate if this is necessary
 	st, err := os.Stat(commoncrash.CrashReporterEnabledPath)
