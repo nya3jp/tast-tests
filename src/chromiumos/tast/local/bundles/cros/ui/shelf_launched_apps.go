@@ -22,7 +22,7 @@ func init() {
 		Contacts: []string{
 			"dhaddock@chromium.org",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -74,6 +74,10 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 			s.Errorf("App IDs did not match. Got: %v; Want: %v", shelfItem.AppID, expectedApp.ID)
 		}
 		if shelfItem.Title != expectedApp.Name {
+			// Exception for Google Chrome. On some builds, Google Chrome is named Chromium.
+			if expectedApp.Name == "Google Chrome" && shelfItem.Title == "Chromium" {
+				continue
+			}
 			s.Errorf("App names did not match. Got: %v; Want: %v", shelfItem.Title, expectedApp.Name)
 		}
 	}
@@ -95,7 +99,8 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	for _, app := range defaultApps {
 		var found = false
 		for _, icon := range icons {
-			if icon.Name == app.Name {
+			// Exception for Google Chrome. On some builds, Google Chrome is named Chromium.
+			if icon.Name == app.Name || (app.Name == "Google Chrome" && icon.Name == "Chromium") {
 				s.Logf("Found icon for %s", app.Name)
 				found = true
 				break
