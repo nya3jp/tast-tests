@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f1fab410_11ad02ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-03-27T01:28:23Z",
+      "side": 1,
+      "message": "Ack, thanks for clarification!",
+      "parentUuid": "1ca6d364_30f00854",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 2
+      },
+      "revId": "d10fafca4ca40569da14a8d4b1d0296905355239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13b5e39b_66251b16",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 13
