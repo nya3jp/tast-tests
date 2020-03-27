@@ -334,6 +334,24 @@
       "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8906c70_7244abc7",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-27T09:28:48Z",
+      "side": 1,
+      "message": "I agree that it is weird to be able to call factory.GetShillServiceProperties. Keeping a \"conf Config\" is better I think.",
+      "parentUuid": "e8227e0d_19ee6661",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
