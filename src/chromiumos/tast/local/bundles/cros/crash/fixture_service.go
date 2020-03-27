@@ -6,6 +6,8 @@
 package crash
 
 import (
+	"time"
+
 	"github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -68,7 +70,9 @@ func (c *FixtureService) WaitForCrashFiles(ctx context.Context, req *crash_servi
 	if len(req.GetRegexes()) == 0 {
 		return nil, errors.New("need to specify regexes to search for")
 	}
-	files, err := crash.WaitForCrashFiles(ctx, req.GetDirs(), []string(nil), req.GetRegexes())
+	// Extend the timeout to 60s because the boot collector sometimes takes
+	// a while to run after boot.
+	files, err := crash.WaitForCrashFilesWithTimeout(ctx, req.GetDirs(), []string(nil), req.GetRegexes(), 60*time.Second)
 	if err != nil {
 		return nil, err
 	}

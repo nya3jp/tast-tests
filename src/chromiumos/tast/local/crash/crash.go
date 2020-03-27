@@ -191,6 +191,12 @@ func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 //   * Leave matching files they do not expect to generate
 // If there are more matches than expected and the test can't tell which are expected, it shouldn't delete any.
 func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (map[string][]string, error) {
+	return WaitForCrashFilesWithTimeout(ctx, dirs, oldFiles, regexes, 15*time.Second)
+}
+
+// WaitForCrashFilesWithTimeout is identical to WaitForCrashFiles, but it also
+// allows a custom timeout.
+func WaitForCrashFilesWithTimeout(ctx context.Context, dirs, oldFiles, regexes []string, timeout time.Duration) (map[string][]string, error) {
 	var files map[string][]string
 	err := testing.Poll(ctx, func(c context.Context) error {
 		var newFiles []string
@@ -230,7 +236,7 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (m
 			return errors.Errorf("no file matched %s (found %s)", strings.Join(missing, ", "), strings.Join(diffFiles, ", "))
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second})
+	}, &testing.PollOptions{Timeout: timeout})
 	if err != nil {
 		return nil, err
 	}
