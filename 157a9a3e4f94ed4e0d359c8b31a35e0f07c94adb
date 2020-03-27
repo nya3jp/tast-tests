@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4194301c_a87924cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T19:28:18Z",
+      "side": 1,
+      "message": "It\u0027s a little weird to have this in a function named \"WaitForCrashFiles\" -- but I don\u0027t want to add more RPCs (each RPC is a chance to fail), so I guess it\u0027s OK.",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 42
+      },
+      "revId": "157a9a3e4f94ed4e0d359c8b31a35e0f07c94adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a05e35ad_a170a3b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T19:28:18Z",
+      "side": 1,
+      "message": "Update docs in proto file too",
+      "revId": "157a9a3e4f94ed4e0d359c8b31a35e0f07c94adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
