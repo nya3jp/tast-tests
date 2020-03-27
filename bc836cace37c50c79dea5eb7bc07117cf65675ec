@@ -124,6 +124,24 @@
       "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bca0695_79ee9732",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-03-27T03:53:02Z",
+      "side": 1,
+      "message": "Hidehiko, \nFor strict enum type, I mean like C++ enum class. The variable of the enum type can hold values within the enum definition. \n\nFor type checking that\u0027s what I\u0027m confused. I just tried your example on play.golang.org. It works\nhttps://play.golang.org/p/KXmIfGB4Ljr\n\nI don\u0027t have strong opinion for strict type checking. I\u0027m just curious if the enum pattern:\n\ntype Foo string\nconst (\n\tFooValue1 Foo \u003d \"f1\"\n\tFooValue2 Foo \u003d \"f2\"\n)\n\ncan really confine the value of Foo variable (answer is no). For me it is looks like just a contract among programmers.\n\nBrian,\nIf we want an enum type which can hold only the predefined values, we have to make it a struct with methods like Set(), Value() and String(). However, this might be overkill. We have more than a few string enum in our code base now.",
+      "parentUuid": "33e662b6_7e3b913c",
+      "revId": "bc836cace37c50c79dea5eb7bc07117cf65675ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
