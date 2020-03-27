@@ -27,7 +27,6 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{perAppDensityApk},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})
@@ -102,8 +101,8 @@ func PerAppDensity(ctx context.Context, s *testing.State) {
 	defer arc.BootstrapCommand(ctx, setprop, densitySetting, "false").Run(testexec.DumpLogOnError)
 
 	testing.ContextLog(ctx, "Installing app")
-	if err := a.Install(ctx, s.DataPath(perAppDensityApk)); err != nil {
-		s.Fatal("Failed to install app: ", err)
+	if err := a.Install(ctx, arc.APKPath(perAppDensityApk)); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
 	}
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
 	if err != nil {

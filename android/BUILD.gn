@@ -11,6 +11,7 @@ group("all") {
     "ArcInputMethodTest:ArcInputMethodTest",
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
+    "ArcPerAppDensityTest:ArcPerAppDensityTest",
     "ArcPrintTest:ArcPrintTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
   ]
