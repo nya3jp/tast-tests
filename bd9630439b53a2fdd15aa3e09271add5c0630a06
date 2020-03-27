@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "503544ad_85703c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-27T18:58:31Z",
+      "side": 1,
+      "message": "Unrelated but can you add here a\n\n// TODO(crbug.com/1065434): use preconditions.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "bd9630439b53a2fdd15aa3e09271add5c0630a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
