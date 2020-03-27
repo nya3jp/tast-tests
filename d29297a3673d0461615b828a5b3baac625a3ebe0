@@ -316,6 +316,24 @@
       "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8227e0d_19ee6661",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-27T09:18:53Z",
+      "side": 1,
+      "message": "Hmm..., I\u0027m not sure if the Config embedded in Factory here is good. Two concerns:\n1. it\u0027s weird that someone outside the package can see factory.GetShillServiceProperties. (i.e. it\u0027s not a private intermediate structure)\n2. With current code, all generated *Config, i.e. the pointer, is the same. However, if one want to build the second Config for some unknown reason. Then the parent Config is created again which also means the first *Config is changed. So I think either we always return the same pointer to an immutable object or we allocate a new Config in every time.\n\nI personally will prefer just keeping a copy of (Password, Inner, Outer) in Factory and assigning them in \u0026Config{} allocation in New (Gen). Or keep a \"conf Config\", i.e. not embedded, in Factory and have Password Option to do `f.conf.Password \u003d p` instead in order to reduce some code in New. (e.g. do the assign with a single *newConf \u003d f.conf)\n\nThe fields are necessary ingredients for the Factory to generate Config, so I guess it\u0027s fine to keep one more copy of those.\n\n(btw as for var/type/package naming, I\u0027m really bad at that, so you might rename them to anything you think it\u0027s better in real cl. My PoC is only for demonstrating the concept.)",
+      "parentUuid": "42ff80fe_8dca9b94",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
