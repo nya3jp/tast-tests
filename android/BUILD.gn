@@ -10,6 +10,7 @@ group("all") {
     "ArcImeBlockingTest:ArcImeBlockingTest",
     "ArcInputMethodTest:ArcInputMethodTest",
     "ArcKeyboardTest:ArcKeyboardTest",
+    "ArcPerAppDensityTest:ArcPerAppDensityTest",
     "ArcPrintTest:ArcPrintTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
   ]

@@ -27,7 +27,6 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{perAppDensityApk},
 		Timeout:      4 * time.Minute,
 		Pre:          arc.Booted(),
 	})
