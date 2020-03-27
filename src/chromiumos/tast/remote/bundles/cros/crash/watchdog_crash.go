@@ -29,6 +29,7 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
 		// TODO(https://crbug.com/1045821): Remove this once samus issue is resolved.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("samus")),
+		Timeout:      10 * time.Minute,
 	})
 }
 

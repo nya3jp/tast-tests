@@ -35,6 +35,7 @@ func init() {
 			Name: "mock_consent",
 			Val:  crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
 		}},
+		Timeout: 10 * time.Minute,
 	})
 }
 
