@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "587ef16b_fc1f77dd",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CameraActivity.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "I\u0027m hardly a Java expert, but are you assigning \"null\" to an int? is that valid?\nAnd in case you it is valid, it might be possible that you are dividing by \"null\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 32,
+        "endLine": 101,
+        "endChar": 88
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55db041_ad3bdcc2",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "According to this, \"am broadcast\" could return result, data and extra.\nhttp://cs/android/frameworks/base/services/core/java/com/android/server/am/ActivityManagerShellCommand.java?l\u003d712\n\nI\u0027d return an IntentResult struct which contains data, extra.",
+      "range": {
+        "startLine": 68,
+        "startChar": 85,
+        "endLine": 68,
+        "endChar": 91
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b0ba0e_a227ba00",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "nit: you might want to add: testexec.DumpLogOnError",
+      "range": {
+        "startLine": 74,
+        "startChar": 52,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce94b471_4673c897",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "huge nit: here and in the rest of comments finish sentence with period (.)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 93,
+        "startChar": 33,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b130a7aa_98d9775c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "any particular reason why power.WaitUntilCPUCoolDown is not called (instead of adding the TODO)? (see comment below)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef3d96e_20367fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "perhaps replacing this with cpu.WaitForIdle() or power.WaitUntilCPUCoolDown\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/media/cpu/cpu.go?g\u003d0\u0026l\u003d165\n\n(not sure why we have to similar functions: power.WaitUntilCPUCoolDown and cpu.WaitForIdle)",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de609e7_c48c7914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "ditto above: perhaps replacing this with a WaitForIdle() ?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c68dbe6b_004b59e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "huge nit: (here and below) would you mind swapping the order of the \"if\". e.g:\n\nif condition;\n   error condition\nelse\n   non-error condition",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 3
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c3bdf6_8bb2d548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T14:28:42Z",
+      "side": 1,
+      "message": "would it be possible that totalFrames\u003d\u003d0?",
+      "range": {
+        "startLine": 229,
+        "startChar": 64,
+        "endLine": 229,
+        "endChar": 75
+      },
+      "revId": "f53301284ef0405c73a7e489a4f233eb750bf0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
