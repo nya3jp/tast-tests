@@ -290,35 +290,7 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (usage float64, err
 }
 
 // VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for |codec|.
-func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.State, codec videotype.Codec) {
-	chromeArgs := []string{
-		// Enable verbose log messages for video components.
-		"--vmodule=" +
-			"*/media/gpu/*=2," +
-			"*/third_party/blink/renderer/modules/mediarecorder/*=2",
-		// Use a fake media capture device instead of live webcam(s)/microphone(s).
-		// See https://webrtc.org/testing/
-		"--use-fake-device-for-media-stream",
-		// Avoids the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream",
-	}
-	if codec == videotype.VP9 {
-		// TODO(crbug.com/811912): Remove this option when VA-API VP9 encoder is
-		// enabled by default.
-		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
-	} else if codec == videotype.H264 {
-		// Use command line option to enable the H264 encoder on AMD, as it's disabled by default.
-		// TODO(b/145961243): Remove this option when VA-API H264 encoder is
-		// enabled on grunt by default.
-		chromeArgs = append(chromeArgs, "--enable-features=VaapiH264AMDEncoder")
-	}
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.State, cr *chrome.Chrome, codec videotype.Codec) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
