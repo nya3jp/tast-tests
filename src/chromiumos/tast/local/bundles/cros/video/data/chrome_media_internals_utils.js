@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
+function getChromeMediaInternalsLogForURL(theURL) {
   return new Promise((resolve, reject) => {
     const listOfPlayers = document.getElementById('player-list');
     if (listOfPlayers === null || listOfPlayers.length == 0) {
@@ -39,19 +39,48 @@ function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
     if (logTable === null) {
       return reject(new Error('Could not find the "log" table.'));
     }
+    return resolve(logTable);
+  });
+}
 
-    const logTableRow = logTable.getElementsByTagName('tr');
-    if (logTableRow === null || logTableRow.length == 0) {
-      return reject(new Error('Could not find log rows.'));
-    }
-
-    for (const logTableEntry of logTableRow) {
-      if (logTableEntry.cells[1].innerHTML == 'is_platform_video_decoder' ||
-          // Changed after crrev.com/c/1904341 (Chromium 80.0.3974.0).
-          logTableEntry.cells[1].innerHTML == 'kIsPlatformVideoDecoder') {
-        return resolve(logTableEntry.cells[2].innerHTML == 'true');
+function checkChromeMediaInternalsIsPlatformVideoDecoderForURL(theURL) {
+  return new Promise((resolve, reject) => {
+    getChromeMediaInternalsLogForURL(theURL).then(function(logTable) {
+      const logTableRow = logTable.getElementsByTagName('tr');
+      if (logTableRow === null || logTableRow.length == 0) {
+        return reject(new Error('Could not find log rows.'));
       }
-    }
-    reject(new Error('Did not find is_platform_video_decoder.'));
+      for (const logTableEntry of logTableRow) {
+        if (logTableEntry.cells[1].innerHTML == 'is_platform_video_decoder' ||
+            // Changed after crrev.com/c/1904341 (Chromium 80.0.3974.0).
+            logTableEntry.cells[1].innerHTML == 'kIsPlatformVideoDecoder') {
+         return resolve(logTableEntry.cells[2].innerHTML == 'true');
+        }
+      }
+      reject(new Error('Did not find is_platform_video_decoder.'));
+    }).catch(function(error) {
+      reject(error);
+    });
+  });
+}
+
+function getChromeMediaInternalsVideoDecoderNameForURL(theURL) {
+  return new Promise((resolve, reject) => {
+    getChromeMediaInternalsLogForURL(theURL).then(function(logTable) {
+      const logTableRow = logTable.getElementsByTagName('tr');
+      if (logTableRow === null || logTableRow.length == 0) {
+        return reject(new Error('Could not find log rows.'));
+      }
+      for (const logTableEntry of logTableRow) {
+        if (logTableEntry.cells[1].innerHTML == 'kVideoDecoderName') {
+          // kVideoDecoderName contains " at the beginning and end, e.g.,
+          // "MojoVideoDecoder". Drop them for later processing.
+          return resolve(logTableEntry.cells[2].innerHTML.split('"').join(''));
+        }
+      }
+      reject(new Error('Did not find kVideoDecoderName'));
+    }).catch(function(error) {
+      reject(error);
+    });
   });
 }
