@@ -46,6 +46,30 @@
       "revId": "b7a337ac24e5de6a93d869e40b6ab50bc1a0cb6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa397f0_e8872314",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-27T13:12:57Z",
+      "side": 1,
+      "message": "perhaps there is a misunderstanding, but I was not suggesting to use dumpsysActivities here. dumpsysActivities should not be needed.",
+      "parentUuid": "421fca36_a829b616",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 98
+      },
+      "revId": "b7a337ac24e5de6a93d869e40b6ab50bc1a0cb6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
