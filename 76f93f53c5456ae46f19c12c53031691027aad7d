@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57a85297_1a4dd874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-03-27T02:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa1f296_a16d4178",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "76f93f53c5456ae46f19c12c53031691027aad7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "244d1e9c_6fd9ac54",
         "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "76f93f53c5456ae46f19c12c53031691027aad7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b73110_13445421",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-03-27T02:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "244d1e9c_6fd9ac54",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "76f93f53c5456ae46f19c12c53031691027aad7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
