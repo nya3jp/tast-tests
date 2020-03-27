@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28d85cd0_1b03f694",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-27T00:03:15Z",
+      "side": 1,
+      "message": "It\u0027s a little weird that we return this even when there are no HT caps. Shouldn\u0027t \u00270\u0027 be a valid return value? Maybe define a HTCapNone?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 17
+      },
+      "revId": "0a327004c54984b0da3092538c52e376688975f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
