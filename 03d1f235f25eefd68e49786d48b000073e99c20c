@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "bc33b9da_b4a37547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-27T16:19:52Z",
+      "side": 1,
+      "message": "More discussion below.",
+      "parentUuid": "a163d70a_5e2bd552",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ceb8543b_e758a79a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "If we don\u0027t have decoderType, we don\u0027t know when we should check if VideoDecoderName is Gav1VideoDecoder.",
       "parentUuid": "ceb8543b_e758a79a",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17599c1a_a8b3ddb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-03-27T16:19:52Z",
+      "side": 1,
+      "message": "Hmm I guess having GAV1 is the least bad option; can we rename it to e.g. \nLibGAV1 ? So it\u0027s clearer that this is a sw option, versus its peers VD and \nVDA.\n\nCould you also leave a TODO(crbug.com/1047051) to move playback_perf.go to \nmedia preconditions?",
+      "parentUuid": "73ea7e37_c346615d",
       "range": {
         "startLine": 170,
         "startChar": 0,
