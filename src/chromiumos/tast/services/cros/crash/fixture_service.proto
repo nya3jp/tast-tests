@@ -25,7 +25,8 @@ service FixtureService {
   // DisableCrashFilter disables crash_reporter filter.
   rpc DisableCrashFilter (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  // WaitForCrashFiles waits for the specified crash files to be present.
+  // WaitForCrashFiles waits for the crash boot collector to finish, and then
+  // for the specified crash files to be present.
   // See crash.go's WaitForCrashFiles for interface details.
   rpc WaitForCrashFiles (WaitForCrashFilesRequest)
       returns (WaitForCrashFilesResponse) {}
