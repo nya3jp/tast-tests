@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5a5f55e_6cf31b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2caa6e36_68d65491",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8d45e81_15cc4966",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1db2d832_a2158821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d45e81_15cc4966",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "665155f6_eb14e3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1f8ce4_cbe83b90",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "423f61f4_7bd056b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b90bedb2_6d23c0d2",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02c6b1be_af0e8594",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "02874819_ddac7281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c6b1be_af0e8594",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11c393af_2c4f01e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e566d357_4901fb3f",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d0f71a_cc591b7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2020-03-26T03:45:49Z",
       "side": 1,
       "message": "WantCrashName?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df3fe25_09217e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "It\u0027s just a description of the name and not an expectation, so I changed it to \u0027name\u0027.",
+      "parentUuid": "84d0f71a_cc591b7f",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "3355d85b_38fb9f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e73941d_ad4d503e",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43756185_32052330",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "d8f5f6e4_f51400f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43756185_32052330",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b5530e9_a65109a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -220,6 +436,30 @@
       "writtenOn": "2020-03-26T03:45:49Z",
       "side": 1,
       "message": "q: Is this string just a name for making a mapping between mountFailures, or something generated outside?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 31
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ff23e1_ed98c492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "We use the same string in crash-reporter/crash_reporter_log.conf so used the same here to be consistent. Added a comment pointing this out.",
+      "parentUuid": "2b5530e9_a65109a9",
       "range": {
         "startLine": 44,
         "startChar": 2,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "4d1dde70_65fa5531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "replaced with log; looks cleaner.",
+      "parentUuid": "99a2ee00_5aff6fd3",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd256d06_e9d2d966",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -275,6 +539,30 @@
       "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc7af426_6c51bd6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd256d06_e9d2d966",
+      "range": {
+        "startLine": 77,
+        "startChar": 48,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "bd1bb472_d717b508",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d633dc_d269b3de",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 33
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "291e9091_c46ecabd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -321,6 +633,30 @@
       "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db3a17d_e751b6b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "291e9091_c46ecabd",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "282b70c1_742c9e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea4e007_fc6c9521",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36b7110_d22a82fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "8b171ad4_bff9ccfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f36b7110_d22a82fc",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e9d2f79_7103fe3e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -390,6 +774,30 @@
       "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a305f08_31c87280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e9d2f79_7103fe3e",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +847,54 @@
     },
     {
       "key": {
+        "uuid": "85aa34d9_f3ce3ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c2dfa1_14e765e6",
+      "range": {
+        "startLine": 107,
+        "startChar": 34,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "631023cc_cdfb8af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b47492_bd29db25",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 134
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95d948f0_ea742335",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -485,6 +941,54 @@
     },
     {
       "key": {
+        "uuid": "88d6b2c1_40a3a8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d948f0_ea742335",
+      "range": {
+        "startLine": 113,
+        "startChar": 56,
+        "endLine": 113,
+        "endChar": 58
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4865ecc0_b9851dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9006198a_b2b22a0f",
+      "range": {
+        "startLine": 113,
+        "startChar": 52,
+        "endLine": 113,
+        "endChar": 54
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8571371_6febda18",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -505,6 +1009,30 @@
       "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd92d7a2_9dbddbd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8571371_6febda18",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 32
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -531,6 +1059,30 @@
     },
     {
       "key": {
+        "uuid": "a50503bf_7b886b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1793d929_2305d235",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 36
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fed64bc_4158e3b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -554,6 +1106,30 @@
     },
     {
       "key": {
+        "uuid": "f4d95912_7628b4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fed64bc_4158e3b2",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 16
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e6511e2_6d2b22cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
         "patchSetId": 2
@@ -574,6 +1150,30 @@
       "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22f787a_9fa2d3bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-03-27T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e6511e2_6d2b22cd",
+      "range": {
+        "startLine": 157,
+        "startChar": 76,
+        "endLine": 157,
+        "endChar": 86
+      },
+      "revId": "c731e4d2ae040949065048c3bcaa6530dbca2e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
