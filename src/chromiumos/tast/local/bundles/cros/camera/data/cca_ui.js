@@ -249,17 +249,12 @@ window.Tast = class {
     const facing =
         await deviceOperator.getCameraFacing(track.getSettings().deviceId);
     switch (facing) {
-      // TODO(b/151203869): Remove legacy cros.mojom.CameraFacing.XXX cases
-      // after crrev.com/c/2097782 landed.
-      case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
+      case Facing.USER:
         return 'user';
-      case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
+      case Facing.ENVIRONMENT:
         return 'environment';
-      case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
+      case Facing.EXTERNAL:
         return 'external';
-      case 'user':
-      case 'environment':
-      case 'external':
         return facing;
       default:
         throw new Error('Unexpected CameraFacing value: ' + facing);
