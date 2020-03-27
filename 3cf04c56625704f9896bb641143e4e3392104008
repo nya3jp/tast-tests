@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab77575_e9570b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T02:06:29Z",
+      "side": 1,
+      "message": "style/optional: In general, Go prefers to use shorter name. How about just \"enabled\"?",
+      "revId": "3cf04c56625704f9896bb641143e4e3392104008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13dfc9d_8be885d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T02:06:29Z",
+      "side": 1,
+      "message": "style: could you combine these lines to minimize the scope of variable?\n\nif s.Param().(overflowShelfTest).enabled {\n  ...\n}",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 39
+      },
+      "revId": "3cf04c56625704f9896bb641143e4e3392104008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
