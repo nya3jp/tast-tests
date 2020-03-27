@@ -170,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "203407c3_1eceb391",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-27T04:31:59Z",
+      "side": 1,
+      "message": "In this case, you can modify the Option to take something else as input instead of *Config, like if we\u0027re removing NewConfig, it can even take *Factory, then inheritOption can still work (by appending the option to factory.parentOps). Or a bigger object which embeds Config/*Config might also work.\n\nThe caller don\u0027t really care what function an Option is, I think. (We even want to prohibit the callers from defining Option)",
+      "parentUuid": "1aa180e3_856b4b04",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0980c30b_0313726a",
         "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
         "patchSetId": 1
@@ -235,6 +259,24 @@
       "side": 1,
       "message": "Removing NewConfig and just keeping Generator.Gen() is good. They actually do the same things. It\u0027s also good to define a NewGenerator since there are many required parameters.\n\nThe problem of my design, allowing arbitrary option to parent, is critical I think. An error of passing improper options to parent should be prevented and caught by this layer, or at least we should provide more info at here, but it\u0027s difficult. Perhaps not that good but we can define another option type like []ParentOption here in the struct.",
       "parentUuid": "eb0e31a4_6d72d59f",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "088762d6_6c0f8e38",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-27T04:31:59Z",
+      "side": 1,
+      "message": "Do you mean defining a new type ParentOption? Could you provide some more information on that? I\u0027m not yet sure how it might work.\n\nAnd if ParentOption is not Option, the interface might become NewFactory(requiredArg, []ParentOption, []Option) which is kind of hard to use.",
+      "parentUuid": "5149b412_0c0c0edb",
       "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
