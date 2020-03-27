@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51052209_1e519b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T06:05:14Z",
+      "side": 1,
+      "message": "What the build configuration these are installed?\nCan you control them by software dependency (USE flags) or device architecture?",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd53e4f6_2b75597d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T06:05:14Z",
+      "side": 1,
+      "message": "Should this file be removed after execution?",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7806e074_6e581632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T06:05:14Z",
+      "side": 1,
+      "message": "optional: how about adding testexec.DumpLogOnError just in case?",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 24
+      },
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "091308d9_59413222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/hello_world_arm.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T06:05:14Z",
+      "side": 1,
+      "message": "Could you document somewhere how to build/update/maintain these files?",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8473fa8_1101c5e2",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T06:05:14Z",
+      "side": 1,
+      "message": "How about introducing\nParseMountInfo(b []byte) ([]MountInfo, error)\nto parse entire file content and expose it, instead of exposing ParseMountInfoLine?\n\nI think you can share the line handling part, too.\n\nIn this file, the code will look like:\n\nb, err :\u003d ioutil.ReadFile(path)\nif err !\u003d nil {\n  ...\n}\n\nreturn ParseMountInfo(b)\n\nWDYT?",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
