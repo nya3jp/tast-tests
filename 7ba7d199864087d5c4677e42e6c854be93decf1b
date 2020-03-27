@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "642263af_5ed3983d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-27T17:25:46Z",
+      "side": 1,
+      "message": "IIRC, the autotestPrivate LaunchApp method gets the chrome launch controller and then instructs it to launch a specified app id. It then returns. The app will have been instructed to be launch but not necessarily launched.\n\nThat being said, ash.WaitForApp, and ui.FindWithTimeout(...advHeadingParams...) would both fail if the app didn\u0027t launch.\n\nNot sure if that exactly answered your question.",
+      "parentUuid": "f253bda6_8c4e3518",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 66
+      },
+      "revId": "7ba7d199864087d5c4677e42e6c854be93decf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f27d2b5_c1c4662a",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 2
