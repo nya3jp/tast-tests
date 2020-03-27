@@ -112,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "661b3367_5bb0b83d",
+        "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-27T03:48:03Z",
+      "side": 1,
+      "message": "Good idea, I think Factory is at least better than Generator.",
+      "parentUuid": "964c4ef5_9d154457",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eef252db_33eea06c",
         "filename": "src/chromiumos/tast/remote/wificell/security/security_test.go.bak",
         "patchSetId": 1
@@ -123,6 +141,29 @@
       "writtenOn": "2020-03-26T02:56:19Z",
       "side": 1,
       "message": "As the implementation is split into sub-packages, uni-tests should be moved into sub-package (which might increase many duplicated test codes.)\nThere are a lot of codes to move, so I skipped it by renaming now. :p",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa180e3_856b4b04",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-27T03:48:03Z",
+      "side": 1,
+      "message": "I don\u0027t think storing Options in Config is a good idea. Option is used for constructing Config, so it is weird that a Config contains an Option. I think it should be stored in Generator(Factory) instead.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 26
+      },
       "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -176,6 +217,24 @@
       "side": 1,
       "message": "Using generator, GenFoo(), instead of constructor, NewFoo(), to instantiate Config struct sounds like a good idea.",
       "parentUuid": "4383252d_a3cc3749",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5149b412_0c0c0edb",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-27T03:48:03Z",
+      "side": 1,
+      "message": "Removing NewConfig and just keeping Generator.Gen() is good. They actually do the same things. It\u0027s also good to define a NewGenerator since there are many required parameters.\n\nThe problem of my design, allowing arbitrary option to parent, is critical I think. An error of passing improper options to parent should be prevented and caught by this layer, or at least we should provide more info at here, but it\u0027s difficult. Perhaps not that good but we can define another option type like []ParentOption here in the struct.",
+      "parentUuid": "eb0e31a4_6d72d59f",
       "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
