@@ -6,6 +6,9 @@
 package crash
 
 import (
+	"os"
+	"time"
+
 	"github.com/golang/protobuf/ptypes/empty"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -68,6 +71,22 @@ func (c *FixtureService) WaitForCrashFiles(ctx context.Context, req *crash_servi
 	if len(req.GetRegexes()) == 0 {
 		return nil, errors.New("need to specify regexes to search for")
 	}
+
+	// The reboot tests generally rely on boot collection being done, so
+	// wait for that.
+	// Boot collection can take a while to start, so use a long timeout.
+	if err := testing.Poll(ctx, func(c context.Context) error {
+		if _, err := os.Stat("/run/crash_reporter/boot-collector-done"); err != nil {
+			if os.IsNotExist(err) {
+				return err
+			}
+			return testing.PollBreak(errors.Wrap(err, "failed to check boot-collector-done"))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 120 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "boot_collector did not complete")
+	}
+
 	files, err := crash.WaitForCrashFiles(ctx, req.GetDirs(), []string(nil), req.GetRegexes())
 	if err != nil {
 		return nil, err
