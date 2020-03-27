@@ -11,6 +11,8 @@ This file implements functions to check or switch the DUT's boot mode.
 import (
 	"context"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -18,10 +20,9 @@ import (
 
 // CheckBootMode forwards to the CheckBootMode RPC to check whether the DUT is in a specified boot mode.
 func CheckBootMode(ctx context.Context, utils fwpb.UtilsServiceClient, bootMode fwCommon.BootMode) (bool, error) {
-	req := &fwpb.CheckBootModeRequest{BootMode: fwCommon.ProtoBootMode[bootMode]}
-	res, err := utils.CheckBootMode(ctx, req)
+	res, err := utils.CurrentBootMode(ctx, &empty.Empty{})
 	if err != nil {
-		return false, errors.Wrapf(err, "calling fwpb.CheckBootMode with bootMode=%s", bootMode)
+		return false, errors.Wrap(err, "calling CurrentBootMode rpc")
 	}
-	return res.GetVerified(), nil
+	return bootMode == fwCommon.BootModeFromProto[res.BootMode], nil
 }
