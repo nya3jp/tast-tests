@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ecc4fca_39f91675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-27T09:12:46Z",
+      "side": 1,
+      "message": "They are installed according to build-time USE flags (houdini/ndk_translation).\n\nSo it is possible to use these flags via tast-use-flags and testing.ContextSoftwareDeps() here to determine whether native bridge is supported.\n\nBtw, currently binfmt_misc is mounted regardless of the flags and thus unmount check should be done regardless of their presence. But it is possible (and might be desirable) to make that mount conditional for some new flag (equivalent to the logical disjunction houdini || ndk_translation) and add it to SoftwareDeps of the test itself.",
+      "parentUuid": "51052209_1e519b00",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd53e4f6_2b75597d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa55df95_d684042a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-27T09:12:46Z",
+      "side": 1,
+      "message": "Thanks! I think it should. Done.",
+      "parentUuid": "bd53e4f6_2b75597d",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "137c18c4_11e26d0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-27T09:12:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f7160c69_d816fd6c",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7806e074_6e581632",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 2
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a5f2be7b_daa5b014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-27T09:12:46Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "7806e074_6e581632",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 24
+      },
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "091308d9_59413222",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/hello_world_arm.external",
         "patchSetId": 2
@@ -93,6 +177,24 @@
       "writtenOn": "2020-03-27T06:05:14Z",
       "side": 1,
       "message": "Could you document somewhere how to build/update/maintain these files?",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a878ac13_8956f18e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/hello_world_arm.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-27T09:12:46Z",
+      "side": 1,
+      "message": "I think I should, but am not sure where/how to put the information.\n\nBasically they are binaries compiled by NDK tools from the trivial hello_world.c.\n\nCould you give me any suggestions?",
+      "parentUuid": "091308d9_59413222",
       "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -113,6 +215,24 @@
       "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85536b54_69d15bdb",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-27T09:12:46Z",
+      "side": 1,
+      "message": "Sounds good! Done.",
+      "parentUuid": "c8473fa8_1101c5e2",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
