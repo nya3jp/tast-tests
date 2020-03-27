@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62dbe8f9_d4873e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-27T01:15:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "730416eb_623cfe35",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9b20ad1_a54ab049",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a528f686_bdad877a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-27T01:15:15Z",
+      "side": 1,
+      "message": "To enter email id and password using keyCode is needed. Because I have observed, on using settext did not type both \"username\" and \"password\" in their respective fields as sometimes page was on webview.",
+      "parentUuid": "e9b20ad1_a54ab049",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 402,
+        "endChar": 28
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2d9db7cd_7686a95c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-27T01:15:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e11963e_3c3d44da",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 6
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08986cf3_9bccd04c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c4c7bcc4_927f9758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-27T01:15:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08986cf3_9bccd04c",
+      "range": {
+        "startLine": 446,
+        "startChar": 2,
+        "endLine": 448,
+        "endChar": 3
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "267cbe76_56a2157f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849eb497_b82bb58f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-27T01:15:15Z",
+      "side": 1,
+      "message": "I will change to error. As I would like to continue the test.",
+      "parentUuid": "267cbe76_56a2157f",
+      "range": {
+        "startLine": 473,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 45
+      },
+      "revId": "5896aa5c2b6264ac0e19e4054e18bdffac7f4f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
