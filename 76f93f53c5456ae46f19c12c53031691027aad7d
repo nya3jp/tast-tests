@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5aa1f296_a16d4178",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-03-27T01:50:59Z",
+      "side": 1,
+      "message": "DUT_IP",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "76f93f53c5456ae46f19c12c53031691027aad7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "244d1e9c_6fd9ac54",
         "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/MainActivity.java",
         "patchSetId": 2
