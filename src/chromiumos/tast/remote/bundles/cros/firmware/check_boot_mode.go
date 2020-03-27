@@ -37,7 +37,14 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	utils := fwpb.NewUtilsServiceClient(cl.Conn)
 
 	// DUT should start in normal mode.
-	// Exercise both positive and negative checks.
+	// Exercise all ways of verifying the boot mode.
+	currentBootModeResponse, err := utils.CurrentBootMode(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Error during CurrentBootMode: ", err)
+	}
+	if currentBootModeResponse.BootMode != fwpb.BootMode_BOOT_MODE_NORMAL {
+		s.Fatalf("CurrentBootMode returned unexpected BootMode: %s", currentBootModeResponse.BootMode)
+	}
 	normalMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeNormal)
 	if err != nil {
 		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
@@ -66,11 +73,11 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	}
 
 	// Exercise the RPC to get the platform name, which will be used to get config info needed for mode-switching reboots.
-	r, err := utils.Platform(ctx, &empty.Empty{})
+	platformResponse, err := utils.Platform(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Error during Platform: ", err)
 	}
-	s.Logf("Platform name: %s", r.Platform)
+	s.Logf("Platform name: %s", platformResponse.Platform)
 
 	// Exercise the creation of the config struct, which will be needed for mode-switching reboots.
 	c, err := firmware.NewConfig()

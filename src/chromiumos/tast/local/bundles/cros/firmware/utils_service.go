@@ -11,7 +11,6 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/firmware"
@@ -45,17 +44,19 @@ func (*UtilsService) Platform(ctx context.Context, req *empty.Empty) (*fwpb.Plat
 	return &fwpb.PlatformResponse{Platform: p}, nil
 }
 
-// CheckBootMode wraps a call to the local firmware support package.
-func (*UtilsService) CheckBootMode(ctx context.Context, req *fwpb.CheckBootModeRequest) (*fwpb.CheckBootModeResponse, error) {
-	mode, ok := fwCommon.BootModeFromProto[req.BootMode]
-	if !ok {
-		return nil, errors.Errorf("did not recognize boot mode %v", req.BootMode)
+// CurrentBootMode determines the DUT's current firmware boot mode.
+func (*UtilsService) CurrentBootMode(ctx context.Context, req *empty.Empty) (*fwpb.CurrentBootModeResponse, error) {
+	csValsByMode := map[fwpb.BootMode](map[string]string){
+		fwpb.BootMode_BOOT_MODE_NORMAL:   {"devsw_boot": "0", "mainfw_type": "normal"},
+		fwpb.BootMode_BOOT_MODE_DEV:      {"devsw_boot": "1", "mainfw_type": "developer"},
+		fwpb.BootMode_BOOT_MODE_RECOVERY: {"mainfw_type": "recovery"},
 	}
-	verified, err := firmware.CheckBootMode(ctx, mode)
-	if err != nil {
-		return nil, err
+	for bootMode, csVals := range csValsByMode {
+		if firmware.CheckCrossystemValues(ctx, csVals) {
+			return &fwpb.CurrentBootModeResponse{BootMode: bootMode}, nil
+		}
 	}
-	return &fwpb.CheckBootModeResponse{Verified: verified}, nil
+	return nil, errors.New("Did not match any known boot mode")
 }
 
 // BlockingSync syncs the root device and internal device.

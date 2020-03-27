@@ -15,8 +15,8 @@ service UtilsService {
   // Platform gets the name of the DUT platform (coral, samus, drallion, etc).
   rpc Platform (google.protobuf.Empty) returns (PlatformResponse) {}
 
-  // CheckBootMode verifies whether the DUT is in a certain boot mode.
-  rpc CheckBootMode (CheckBootModeRequest) returns (CheckBootModeResponse) {}
+  // CurrentBootMode determines which boot mode the DUT is in.
+  rpc CurrentBootMode (google.protobuf.Empty) returns (CurrentBootModeResponse) {}
 
   // BlockingSync syncs the root device and internal device.
   rpc BlockingSync (google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -34,10 +34,6 @@ message PlatformResponse {
   string Platform = 1;
 }
 
-message CheckBootModeRequest {
+message CurrentBootModeResponse {
   BootMode boot_mode = 1;
-}
-
-message CheckBootModeResponse {
-  bool verified = 1;
 }
