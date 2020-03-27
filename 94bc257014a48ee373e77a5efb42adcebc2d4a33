@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1774ffd4_573009c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T02:09:57Z",
+      "side": 1,
+      "message": "\"%t\" for bool (this causes build failure).",
+      "range": {
+        "startLine": 340,
+        "startChar": 66,
+        "endLine": 340,
+        "endChar": 68
+      },
+      "revId": "94bc257014a48ee373e77a5efb42adcebc2d4a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02dd602_a09449ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-27T02:09:57Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 342,
+        "startChar": 63,
+        "endLine": 342,
+        "endChar": 65
+      },
+      "revId": "94bc257014a48ee373e77a5efb42adcebc2d4a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
