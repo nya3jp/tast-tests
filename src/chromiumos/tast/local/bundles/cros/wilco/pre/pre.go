@@ -54,7 +54,7 @@ var WilcoDtcSupportdAPI = NewPrecondition("supportd_api", SystemState{
 })
 
 func (p *preImpl) String() string         { return p.name }
-func (p *preImpl) Timeout() time.Duration { return 5 * time.Second }
+func (p *preImpl) Timeout() time.Duration { return 15 * time.Second }
 
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a PreData containing the current state that can be used by the test.
