@@ -83,8 +83,8 @@ func waitForMountConnected(ctx context.Context, timeout time.Duration, path stri
 
 func Drivefs(ctx context.Context, s *testing.State) {
 	const (
-		mountPointTimeout = 10 * time.Second
-		fuseIoTimeout     = 10 * time.Second
+		mountPointTimeout = 15 * time.Second
+		fuseIoTimeout     = 40 * time.Second
 	)
 
 	user := s.RequiredVar("platform.Drivefs.user")
@@ -150,6 +150,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	if !dir.IsDir() {
 		s.Fatal("Could not find root folder inside ", mountPath, ": ", err)
 	}
+	s.Log("drivefs fully started")
 
 	// Now we are relatively confident that drivefs started correctly.
 	// Check for team_drives.
