@@ -23,9 +23,7 @@ func init() {
 }
 
 func HAL3JEA(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{
-		CameraHALs:     []string{"usb"},
-		GtestFilter:    "*/Camera3SimpleStillCaptureTest.TakePictureTest/0",
-		ForceJPEGHWEnc: true,
-	})
+	if err := hal3.RunTest(ctx, hal3.JEATestConfig(s.OutDir())); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }

@@ -23,5 +23,7 @@ func init() {
 }
 
 func HAL3Device(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{GtestFilter: "Camera3DeviceTest/*"})
+	if err := hal3.RunTest(ctx, hal3.DeviceTestConfig(s.OutDir())); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }

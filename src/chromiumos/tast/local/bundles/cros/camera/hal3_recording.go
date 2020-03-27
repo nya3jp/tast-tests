@@ -23,8 +23,7 @@ func init() {
 }
 
 func HAL3Recording(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{
-		GtestFilter:            "Camera3RecordingFixture/*",
-		RequireRecordingParams: true,
-	})
+	if err := hal3.RunTest(ctx, hal3.RecordingTestConfig(s.OutDir())); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }

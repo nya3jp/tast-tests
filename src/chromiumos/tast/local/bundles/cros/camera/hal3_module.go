@@ -26,8 +26,7 @@ func init() {
 }
 
 func HAL3Module(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{
-		GtestFilter:            "Camera3ModuleFixture.*",
-		RequireRecordingParams: true,
-	})
+	if err := hal3.RunTest(ctx, hal3.ModuleTestConfig(s.OutDir())); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }
