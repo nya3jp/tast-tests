@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab05dc9a_ddadada3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T23:51:03Z",
+      "side": 1,
+      "message": "Seems slight confusing to say \"Current\" -- I would assume that\u0027s what we were changing it TO. I would say \"Previous\" instead.",
+      "range": {
+        "startLine": 56,
+        "startChar": 27,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "a659fa54f5e1dece49fcea77b1e031ea444cf028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82278a0_39c74d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T23:51:03Z",
+      "side": 1,
+      "message": "Minor -- would it be a good idea to put this above the \"TrimSpace\"? Just to get the real, unaltered pattern?\n\nI\u0027m not sure exactly what problem you are looking for here, though.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "a659fa54f5e1dece49fcea77b1e031ea444cf028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d57fe614_7435a858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T23:51:03Z",
+      "side": 1,
+      "message": "Print here as well, the \"New core pattern\"?",
+      "revId": "a659fa54f5e1dece49fcea77b1e031ea444cf028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
