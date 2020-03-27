@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4095c656_97ed53b4",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-27T18:32:31Z",
+      "side": 1,
+      "message": "maybe also (or instead) link the bug where we plan to upgrade routers? https://crbug.com/1005443",
+      "range": {
+        "startLine": 364,
+        "startChar": 8,
+        "endLine": 364,
+        "endChar": 25
+      },
+      "revId": "b090f819af8ace57b1c00751703e8c2d8d6db889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dd3232_3df030ba",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-27T18:32:31Z",
+      "side": 1,
+      "message": "init",
+      "range": {
+        "startLine": 476,
+        "startChar": 50,
+        "endLine": 476,
+        "endChar": 58
+      },
+      "revId": "b090f819af8ace57b1c00751703e8c2d8d6db889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
