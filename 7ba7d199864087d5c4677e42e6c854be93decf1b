@@ -22,6 +22,30 @@
       "revId": "7ba7d199864087d5c4677e42e6c854be93decf1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d288527_f5c2c60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-27T00:43:13Z",
+      "side": 1,
+      "message": "I checked for the existence of chrome.autotestPrivate.launchApp at the beginning of test by doing:\n\ncheck :\u003d false\ntconn.Eval(ctx, \"(typeof chrome.autotestPrivate.launchApp \u003d\u003d \u0027function\u0027)\", \u0026check)\n\nThe result is true immediately after initializing the tconn, so it should exist if this is a valid check (wasn\u0027t sure if there was a better way to check it). I tried launching the Files app without any polling and that one launches successfully, so the method should exist either way. Seems like the settings app just isn\u0027t available right away for some reason. The check I implemented works, but it definitely seems like there should be a better way than to do this before launching each app.",
+      "parentUuid": "319f6564_39fb27b0",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "7ba7d199864087d5c4677e42e6c854be93decf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
