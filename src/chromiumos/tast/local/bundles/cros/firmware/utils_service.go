@@ -58,6 +58,20 @@ func (*UtilsService) CheckBootMode(ctx context.Context, req *fwpb.CheckBootModeR
 	return &fwpb.CheckBootModeResponse{Verified: verified}, nil
 }
 
+// CurrentBootMode determines the DUT's current firmware boot mode.
+func (*UtilsService) CurrentBootMode(ctx context.Context, req *empty.Empty) (*fwpb.CurrentBootModeResponse, error) {
+	for _, mode := range [3]fwCommon.BootMode{fwCommon.BootModeNormal, fwCommon.BootModeDev, fwCommon.BootModeRecovery} {
+		verified, err := firmware.CheckBootMode(ctx, mode)
+		if err != nil {
+			return nil, errors.Wrapf(err, "checking boot mode %s", mode)
+		}
+		if verified {
+			return &fwpb.CurrentBootModeResponse{BootMode: fwCommon.ProtoBootMode[mode]}, nil
+		}
+	}
+	return nil, errors.New("Did not match any known boot mode")
+}
+
 // BlockingSync syncs the root device and internal device.
 func (*UtilsService) BlockingSync(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	// The double calls to sync fakes a blocking call

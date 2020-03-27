@@ -18,6 +18,9 @@ service UtilsService {
   // CheckBootMode verifies whether the DUT is in a certain boot mode.
   rpc CheckBootMode (CheckBootModeRequest) returns (CheckBootModeResponse) {}
 
+  // CurrentBootMode determines which boot mode the DUT is in.
+  rpc CurrentBootMode (google.protobuf.Empty) returns (CurrentBootModeResponse) {}
+
   // BlockingSync syncs the root device and internal device.
   rpc BlockingSync (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
@@ -40,4 +43,8 @@ message CheckBootModeRequest {
 
 message CheckBootModeResponse {
   bool verified = 1;
+}
+
+message CurrentBootModeResponse {
+  BootMode boot_mode = 1;
 }
