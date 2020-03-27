@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86e9df97_e41a8ccf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-27T19:18:38Z",
+      "side": 1,
+      "message": "wilco",
+      "range": {
+        "startLine": 17,
+        "startChar": 76,
+        "endLine": 17,
+        "endChar": 81
+      },
+      "revId": "da6b130fe2ddd1ea8de6f755d2ad7c20281e3cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "414d1b94_7d5a2453",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/drallion_tablet_power.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2020-03-27T19:18:38Z",
+      "side": 1,
+      "message": "Lets go ahead and do 2.0 and 8.5 in laptop mode as well for completeness.",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "da6b130fe2ddd1ea8de6f755d2ad7c20281e3cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
