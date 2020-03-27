@@ -367,8 +367,6 @@ type FixtureServiceClient interface {
 	// SetUp sets up the DUT for a crash test.
 	// For more details on what, precisely, it does, see documentation for
 	// "SetUpCrashTest" in the local/crash tast library.
-	// *NOTE*: If the DUT reboots during the test, it will clear
-	// crash_test_in_progress state.
 	// After the test is complete, you must call TearDown to clean up the
 	// associated resources.
 	SetUp(ctx context.Context, in *SetUpCrashTestRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -376,7 +374,8 @@ type FixtureServiceClient interface {
 	EnableCrashFilter(ctx context.Context, in *EnableCrashFilterRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DisableCrashFilter disables crash_reporter filter.
 	DisableCrashFilter(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
-	// WaitForCrashFiles waits for the specified crash files to be present.
+	// WaitForCrashFiles waits for the crash boot collector to finish, and then
+	// for the specified crash files to be present.
 	// See crash.go's WaitForCrashFiles for interface details.
 	WaitForCrashFiles(ctx context.Context, in *WaitForCrashFilesRequest, opts ...grpc.CallOption) (*WaitForCrashFilesResponse, error)
 	// RemoveAllFiles removes all files in the request.
@@ -453,8 +452,6 @@ type FixtureServiceServer interface {
 	// SetUp sets up the DUT for a crash test.
 	// For more details on what, precisely, it does, see documentation for
 	// "SetUpCrashTest" in the local/crash tast library.
-	// *NOTE*: If the DUT reboots during the test, it will clear
-	// crash_test_in_progress state.
 	// After the test is complete, you must call TearDown to clean up the
 	// associated resources.
 	SetUp(context.Context, *SetUpCrashTestRequest) (*empty.Empty, error)
@@ -462,7 +459,8 @@ type FixtureServiceServer interface {
 	EnableCrashFilter(context.Context, *EnableCrashFilterRequest) (*empty.Empty, error)
 	// DisableCrashFilter disables crash_reporter filter.
 	DisableCrashFilter(context.Context, *empty.Empty) (*empty.Empty, error)
-	// WaitForCrashFiles waits for the specified crash files to be present.
+	// WaitForCrashFiles waits for the crash boot collector to finish, and then
+	// for the specified crash files to be present.
 	// See crash.go's WaitForCrashFiles for interface details.
 	WaitForCrashFiles(context.Context, *WaitForCrashFilesRequest) (*WaitForCrashFilesResponse, error)
 	// RemoveAllFiles removes all files in the request.
