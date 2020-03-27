@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05020096_9429acb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernel_warning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T00:27:41Z",
+      "side": 1,
+      "message": "google.com?",
+      "range": {
+        "startLine": 21,
+        "startChar": 60,
+        "endLine": 21,
+        "endChar": 72
+      },
+      "revId": "08991d8599aeb3cfb8b18a5d6817503a299883b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47194fd2_334ccdad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T00:27:41Z",
+      "side": 1,
+      "message": "google.com?",
+      "range": {
+        "startLine": 26,
+        "startChar": 64,
+        "endLine": 26,
+        "endChar": 77
+      },
+      "revId": "08991d8599aeb3cfb8b18a5d6817503a299883b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bcd84d7_8af90b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T00:27:41Z",
+      "side": 1,
+      "message": "google.com?",
+      "range": {
+        "startLine": 69,
+        "startChar": 60,
+        "endLine": 69,
+        "endChar": 72
+      },
+      "revId": "08991d8599aeb3cfb8b18a5d6817503a299883b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8dc923b_e522523d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-03-27T00:27:41Z",
+      "side": 1,
+      "message": "google.com?",
+      "range": {
+        "startLine": 23,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "08991d8599aeb3cfb8b18a5d6817503a299883b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
