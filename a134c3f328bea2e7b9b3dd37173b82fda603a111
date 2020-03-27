@@ -22,6 +22,30 @@
       "revId": "a134c3f328bea2e7b9b3dd37173b82fda603a111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d1e78f2_c8b634ff",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-27T22:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2afd9f8_38f12c39",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 19
+      },
+      "revId": "a134c3f328bea2e7b9b3dd37173b82fda603a111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
