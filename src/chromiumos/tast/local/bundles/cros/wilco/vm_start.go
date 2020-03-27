@@ -36,23 +36,19 @@ func VMStart(ctx context.Context, s *testing.State) {
 		diagPath    = "/opt/dtc/diagnostics"
 	)
 
-	// Shorten the total context by 5 seconds to allow for cleanup.
+	// Shorten the total context by 15 seconds to allow for cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	// Expect the VM to start within 5 seconds.
-	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-
-	if err := wilco.StartVM(startCtx, wilco.DefaultVMConfig()); err != nil {
+	if err := wilco.StartVM(ctx, wilco.DefaultVMConfig()); err != nil {
 		s.Fatal("Unable to start Wilco DTC VM: ", err)
 	}
 	defer wilco.StopVM(cleanupCtx)
 
 	// Wait for the ddv dbus service to be up and running before continuing the
 	// test.
-	if err := wilco.WaitForDDVDBus(startCtx); err != nil {
+	if err := wilco.WaitForDDVDBus(ctx); err != nil {
 		s.Fatal("DDV dbus service not available: ", err)
 	}
 
