@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a77bccfc_0f1feaf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_compat.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-27T17:41:00Z",
+      "side": 1,
+      "message": "I see. thanks.",
+      "parentUuid": "b7ab8465_d0ebd586",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "11d6773ab5944b2c4b74dee447ebe8fc91cebc7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33295b48_e37fddb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_compat.go",
         "patchSetId": 5
