@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "fd7680c0_24868310",
+        "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-27T04:39:10Z",
+      "side": 1,
+      "message": "If we\u0027re just marking TODOs and let it be done in other cls, then I\u0027m find with gerrit.\nThe problem I want to avoid is that some not yet resolved comment might be buried in old patchsets.",
+      "parentUuid": "26d374ab_bdfca7ee",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03561666_50ebe530",
         "filename": "src/chromiumos/tast/remote/wificell/security/interface.go",
         "patchSetId": 1
