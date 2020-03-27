@@ -111,41 +111,43 @@ func (t *crosCameraTestConfig) toArgs() []string {
 }
 
 // runCrosCameraTest runs cros_camera_test with the arguments generated from the
-// config.  The cros-camera service must be stopped before calling this function.
-func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTestConfig) {
+// config and writes log to outDir.  The cros-camera service must be stopped
+// before calling this function.
+func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig, outDir string) error {
 	if err := upstart.WaitForJobStatus(ctx, "cros-camera", upstart.StopGoal,
 		upstart.WaitingState, upstart.RejectWrongGoal, 0); err != nil {
-		s.Fatal("The cros-camera service must be stopped before calling runCrosCameraTest: ", err)
+		return errors.Wrap(err, "the cros-camera service not stopped before calling runCrosCameraTest")
 	}
 
 	// The test is performance sensitive and frame drops might cause test failures.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
+		return errors.Wrap(err, "failed to wait for CPU to become idle")
 	}
 
 	uid, err := sysutil.GetUID("arc-camera")
 	if err != nil {
-		s.Fatal("Failed to get uid of arc-camera: ", err)
+		return errors.Wrap(err, "failed to get uid of arc-camera")
 	}
 
 	t := gtest.New("cros_camera_test",
-		gtest.TempLogfile(filepath.Join(s.OutDir(), "cros_camera_test_*.log")),
+		gtest.TempLogfile(filepath.Join(outDir, "cros_camera_test_*.log")),
 		gtest.Filter(cfg.gtestFilter),
 		gtest.ExtraArgs(cfg.toArgs()...),
 		gtest.UID(int(uid)))
 
 	if args, err := t.Args(); err == nil {
-		s.Log("Running " + shutil.EscapeSlice(args))
+		testing.ContextLog(ctx, "Running "+shutil.EscapeSlice(args))
 	}
 	report, err := t.Run(ctx)
 	if err != nil {
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
-				s.Error(name, " failed")
+				testing.ContextLog(ctx, name+" failed")
 			}
 		}
-		s.Fatal("Failed to run cros_camera_test: ", err)
+		return errors.Wrap(err, "failed to run cros_camera_test")
 	}
+	return nil
 }
 
 // TestConfig is the config for HAL3 tests.
@@ -268,23 +270,23 @@ func parsePerfLog(ctx context.Context, path string, p *perf.Values) error {
 
 // RunTest runs cros_camera_test with proper environment setup and arguments
 // according to the given config.
-func RunTest(ctx context.Context, s *testing.State, cfg TestConfig) {
+func RunTest(ctx context.Context, outDir string, cfg TestConfig) error {
 	if len(cfg.CameraHALs) > 0 && len(cfg.CameraFacing) > 0 {
-		s.Fatal("Cannot specify both CameraHALs and CameraFacing")
+		return errors.New("cannot specify both CameraHALs and CameraFacing")
 	}
 
 	// Use a shorter context to save time for cleanup.
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	s.Log("Stopping cros-camera")
+	testing.ContextLog(ctx, "Stopping cros-camera")
 	if err := upstart.StopJob(shortCtx, "cros-camera"); err != nil {
-		s.Fatal("Failed to stop cros-camera: ", err)
+		return errors.Wrap(err, "failed to stop cros-camera")
 	}
 	defer func() {
-		s.Log("Starting cros-camera")
+		testing.ContextLog(ctx, "Starting cros-camera")
 		if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
-			s.Error("Failed to start cros-camera: ", err)
+			testing.ContextLog(ctx, "Failed to start cros-camera: ", err)
 		}
 	}()
 
@@ -293,10 +295,10 @@ func RunTest(ctx context.Context, s *testing.State, cfg TestConfig) {
 		"force_jpeg_hw_dec": cfg.ForceJPEGHWDec,
 	})
 	if err != nil {
-		s.Fatal("Failed to encode test config as json: ", err)
+		return errors.Wrap(err, "failed to encode test config as json")
 	}
 	if err := ioutil.WriteFile(jsonConfigPath, jsonCfg, 0644); err != nil {
-		s.Fatal("Failed to write json config file: ", err)
+		return errors.Wrap(err, "failed to write json config file")
 	}
 	defer os.Remove(jsonConfigPath)
 
@@ -308,43 +310,53 @@ func RunTest(ctx context.Context, s *testing.State, cfg TestConfig) {
 	if cfg.RequireRecordingParams {
 		cameraCfg.recordingParams, err = getRecordingParams(shortCtx)
 		if err != nil {
-			s.Fatal("Failed to get recording params: ", err)
+			return errors.Wrap(err, "failed to get recording params")
 		}
 	}
 
 	p := perf.NewValues()
-	updatePerfIfNeeded := func() {
+	updatePerfIfNeeded := func() error {
 		if cameraCfg.perfLog != "" {
 			if err := parsePerfLog(ctx, cameraCfg.perfLog, p); err != nil {
-				s.Fatal("Failed to parse perf log: ", err)
+				return errors.Wrap(err, "failed to parse perf log")
 			}
 		}
+		return nil
 	}
 	if len(cfg.CameraFacing) > 0 {
 		if cfg.GeneratePerfLog {
-			cameraCfg.perfLog = filepath.Join(s.OutDir(), "perf.log")
+			cameraCfg.perfLog = filepath.Join(outDir, "perf.log")
 		}
-		runCrosCameraTest(shortCtx, s, cameraCfg)
-		updatePerfIfNeeded()
+		if err := runCrosCameraTest(shortCtx, cameraCfg, outDir); err != nil {
+			return err
+		}
+		if err := updatePerfIfNeeded(); err != nil {
+			return err
+		}
 	} else {
 		paths, err := getCameraHALPathsForTest(shortCtx, cfg.CameraHALs)
 		if err != nil {
-			s.Fatal("Failed to get paths of camera HALs: ", err)
+			return errors.Wrap(err, "failed to get paths of camera HALs")
 		}
 
 		for i, path := range paths {
 			cameraCfg.cameraHALPath = path
 			filepath.Base(path)
 			if cfg.GeneratePerfLog {
-				cameraCfg.perfLog = filepath.Join(s.OutDir(), fmt.Sprintf("perf_%d.log", i))
+				cameraCfg.perfLog = filepath.Join(outDir, fmt.Sprintf("perf_%d.log", i))
 			}
-			runCrosCameraTest(shortCtx, s, cameraCfg)
-			updatePerfIfNeeded()
+			if err := runCrosCameraTest(shortCtx, cameraCfg, outDir); err != nil {
+				return err
+			}
+			if err := updatePerfIfNeeded(); err != nil {
+				return err
+			}
 		}
 	}
 	if cfg.GeneratePerfLog {
-		if err := p.Save(s.OutDir()); err != nil {
-			s.Error("Failed to save perf data: ", err)
+		if err := p.Save(outDir); err != nil {
+			testing.ContextLog(ctx, "Failed to save perf data: ", err)
 		}
 	}
+	return nil
 }

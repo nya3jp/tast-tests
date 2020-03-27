@@ -23,8 +23,10 @@ func init() {
 }
 
 func HAL3Perf(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{
+	if err := hal3.RunTest(ctx, s.OutDir(), hal3.TestConfig{
 		GtestFilter:     "Camera3StillCaptureTest/Camera3SimpleStillCaptureTest.PerformanceTest/*",
 		GeneratePerfLog: true,
-	})
+	}); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }
