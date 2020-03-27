@@ -23,9 +23,11 @@ func init() {
 }
 
 func HAL3JDA(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{
+	if err := hal3.RunTest(ctx, s.OutDir(), hal3.TestConfig{
 		CameraHALs:     []string{"usb"},
 		GtestFilter:    "*/Camera3SingleFrameTest.GetFrame/0",
 		ForceJPEGHWDec: true,
-	})
+	}); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }
