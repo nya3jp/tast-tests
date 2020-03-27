@@ -298,6 +298,24 @@
       "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ff80fe_8dca9b94",
+        "filename": "src/chromiumos/tast/remote/wificell/security/tunneled1x/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-03-27T08:26:08Z",
+      "side": 1,
+      "message": "After some discuss with Yen-lin, here is a PoC that include the ideas below:\n* Option applies values to Factory struct in NewFactory.\n* We can store some temporary stuff in Factory struct(such as options of parent).\n* Embed Config into Factory so Option is able to assign field of Config directly.\n\nhttps://paste.googleplex.com/4730173964419072",
+      "parentUuid": "088762d6_6c0f8e38",
+      "revId": "d29297a3673d0461615b828a5b3baac625a3ebe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
