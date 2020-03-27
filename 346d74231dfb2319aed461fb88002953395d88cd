@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b66a1798_fc7ef0a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-03-27T00:23:15Z",
+      "side": 1,
+      "message": "\u003e \"Ocassional\" is a possible misspelling of \"Occasional\".\n\nPlease fix.",
+      "parentUuid": "0c2fb70b_dd8dd802",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "346d74231dfb2319aed461fb88002953395d88cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
