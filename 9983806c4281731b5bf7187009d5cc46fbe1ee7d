@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efff334e_f7cda0a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "Please move this constant within HotseatAnimation() function",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4aeb61_19a99f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "Personally, I don\u0027t like to have code like this as an unexposed function. You can directly bring them inline within metrics.Run(). Go supports anonymous functions quite well.\n\nThe problem of this approach is, this function can be shared with other test files in the same directory, so you really need to be careful with naming conflicts etc.\n\nAlso you can create local function, like\nfunc HotseatAnimation(...) {\n  hideHotseatByActivatingWindow :\u003d func(...) error {\n      ...\n  }\n}\n\nThis way, you can scope this within HotseatAnimation.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6375c817_be29465c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "I\u0027m sorry but this would be a bad idea from Go idioms. The reason why we need to say \u0027Fatal\u0027 is, you should put enough information in the fatal errors, and that helps for your future debugging. Thus, please remove this and leave all error messages as they are. They are fine.",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 23
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d022e927_9948a837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "Similarly, do not do this. In case you\u0027re sufferring from wrapping too much, you can directly return the error (\"return err\" instead of \"return errors.Wrap(err, \"...\")\")",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 16
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5d12b8d_d6c225dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "Instead of doing this, you can invoke pv.Set here with the custom name.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86565d40_a0119dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "Once the first group of histograms are recorded, you don\u0027t have to name this to another variable.",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 22
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36eb6e7f_ea7f4a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "Similarly, please remove this and provide meaningful error messages on each Wrap.",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 16
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ccd110_45affca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "This CL removes a lot of histograms. Is that intended?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 27
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bcd3608_a8fb92ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 279,
+        "startChar": 8,
+        "endLine": 279,
+        "endChar": 16
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "348e6c73_feb232c0",
+        "filename": "src/chromiumos/tast/local/ui/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:39:10Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary, just passing an empty string (\"\") would do the desired effect (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#Chrome.NewConn)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
