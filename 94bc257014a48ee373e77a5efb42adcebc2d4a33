@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "582c67e6_ccf31cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-27T19:14:00Z",
+      "side": 1,
+      "message": "Oops, I suppose I was just guessing at the fmt formatters... and then assuming the average build failure is not my fault without checking (judging by recent experience).\n\nDone, and ran through fast_build myself this team, which I think runs the appropriate \"go vet\" checks.",
+      "parentUuid": "1774ffd4_573009c5",
+      "range": {
+        "startLine": 340,
+        "startChar": 66,
+        "endLine": 340,
+        "endChar": 68
+      },
+      "revId": "94bc257014a48ee373e77a5efb42adcebc2d4a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e02dd602_a09449ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "94bc257014a48ee373e77a5efb42adcebc2d4a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7eee17_1a9f9c0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-27T19:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02dd602_a09449ff",
+      "range": {
+        "startLine": 342,
+        "startChar": 63,
+        "endLine": 342,
+        "endChar": 65
+      },
+      "revId": "94bc257014a48ee373e77a5efb42adcebc2d4a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
