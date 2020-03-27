@@ -188,6 +188,30 @@
       "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759f88b4_357f13e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-03-27T17:14:00Z",
+      "side": 1,
+      "message": "My point is we can enable Gav1 by precondition. But then we don\u0027t know when VideoDecoderName should be Gav1VideoDecoder.",
+      "parentUuid": "17599c1a_a8b3ddb7",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
