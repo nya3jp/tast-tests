@@ -15,9 +15,9 @@ type StringControl string
 
 // These are the Servo controls which can be get/set.
 const (
-	CtrlActiveChgPort StringControl = "active_chg_port"
-	CtrlDUTVoltageMV  StringControl = "dut_voltage_mv"
-	CtrlFWWPState     StringControl = "fw_wp_state"
+	ActiveChgPort StringControl = "active_chg_port"
+	DUTVoltageMV  StringControl = "dut_voltage_mv"
+	FWWPState     StringControl = "fw_wp_state"
 )
 
 // Echo calls the Servo echo method.
@@ -41,14 +41,14 @@ func (s *Servo) SetActChgPort(ctx context.Context, port string) error {
 	// response.  However it seems strange because if the call didn't succeed, I believe run() will return an
 	// error in err anyways so the variable seems useless.  This is why I'm ignoring val and only returning err.
 	var val bool
-	err := s.run(ctx, newCall("set", CtrlActiveChgPort, port), &val)
+	err := s.run(ctx, newCall("set", ActiveChgPort, port), &val)
 	return err
 }
 
 // DUTVoltageMV reads the voltage present on the DUT port on fluffy.
 func (s *Servo) DUTVoltageMV(ctx context.Context) (string, error) {
 	var voltageMV string
-	err := s.run(ctx, newCall("get", CtrlDUTVoltageMV), &voltageMV)
+	err := s.run(ctx, newCall("get", DUTVoltageMV), &voltageMV)
 	return voltageMV, err
 }
 
