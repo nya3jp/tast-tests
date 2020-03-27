@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2afd9f8_38f12c39",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-27T22:20:59Z",
+      "side": 1,
+      "message": "I\u0027m afraid that this function isn\u0027t necessary at all, it\u0027s used only once. Just use fetchShelfInfoForState would be sufficient.",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 19
+      },
+      "revId": "a134c3f328bea2e7b9b3dd37173b82fda603a111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
