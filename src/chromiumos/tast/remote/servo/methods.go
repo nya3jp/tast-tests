@@ -13,11 +13,39 @@ import (
 // A StringControl contains the name of a gettable/settable Control which takes a string value.
 type StringControl string
 
-// These are the Servo controls which can be get/set.
+// These are the Servo controls which can be get/set with a string value.
 const (
 	CtrlActiveChgPort StringControl = "active_chg_port"
 	CtrlDUTVoltageMV  StringControl = "dut_voltage_mv"
 	CtrlFWWPState     StringControl = "fw_wp_state"
+)
+
+// A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
+type KeypressControl StringControl
+
+// These are the Servo controls which can be set with either a numerical value or a KeypressDuration.
+const (
+	CtrlD        KeypressControl = "ctrl_d"
+	CtrlU        KeypressControl = "ctrl_u"
+	CtrlEnter    KeypressControl = "ctrl_enter"
+	Ctrl         KeypressControl = "ctrl_key"
+	Enter        KeypressControl = "enter_key"
+	Refresh      KeypressControl = "refresh_key"
+	CtrlRefresh  KeypressControl = "ctrl_refresh_key"
+	ImaginaryKey KeypressControl = "imaginary_key"
+	SysRQX       KeypressControl = "sysrq_x"
+	PowerKey     KeypressControl = "power_key"
+	Pwrbutton    KeypressControl = "pwr_button"
+)
+
+// A KeypressDuration is a string accepted by a KeypressControl.
+type KeypressDuration string
+
+// These are string values that can be passed to a KeypressControl.
+const (
+	DurTab       KeypressDuration = "tab"
+	DurPress     KeypressDuration = "press"
+	DurLongPress KeypressDuration = "long_press"
 )
 
 // Echo calls the Servo echo method.
@@ -86,6 +114,14 @@ func (s *Servo) SetStringAndCheck(ctx context.Context, control StringControl, va
 		return err
 	} else if checkedValue != value {
 		return errors.Errorf("after attempting to set %s to %s, checked value was %s", control, value, checkedValue)
+	}
+	return nil
+}
+
+// KeypressWithDuration sets a KeypressControl to a KeypressDuration value.
+func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressControl, value KeypressDuration) error {
+	if err := s.SetString(ctx, StringControl(control), string(value)); err != nil {
+		return errors.Wrapf(err, "control (%s) or value (%s) may not be valid", control, value)
 	}
 	return nil
 }
