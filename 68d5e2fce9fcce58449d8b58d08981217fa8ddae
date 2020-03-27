@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dddb7418_8921ca9c",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-27T06:17:14Z",
+      "side": 1,
+      "message": "\u003e \"contrl\" is a possible misspelling of \"control\".\n\nFixed.",
+      "parentUuid": "b89d202a_127eaa9f",
+      "range": {
+        "startLine": 464,
+        "startChar": 20,
+        "endLine": 464,
+        "endChar": 26
+      },
+      "revId": "68d5e2fce9fcce58449d8b58d08981217fa8ddae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

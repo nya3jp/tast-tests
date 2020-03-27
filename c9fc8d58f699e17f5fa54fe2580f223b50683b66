@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8207a008_e96c38c1",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-27T06:17:14Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t notice the history of \u002780\u0027 argument. Use \u002780\u0027 instead, and add auto-determine center-freq.",
+      "parentUuid": "64be182d_6c6b01da",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 35
+      },
+      "revId": "c9fc8d58f699e17f5fa54fe2580f223b50683b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3505ea52_3a6c3c38",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "c9fc8d58f699e17f5fa54fe2580f223b50683b66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6793f920_cb57dcae",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-27T06:17:14Z",
+      "side": 1,
+      "message": "The getCenterFreq* functions are ported.",
+      "parentUuid": "834dca71_8b4e4f01",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 3
+      },
+      "revId": "c9fc8d58f699e17f5fa54fe2580f223b50683b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
