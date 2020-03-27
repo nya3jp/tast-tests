@@ -15,7 +15,6 @@ import (
 
 	"golang.org/x/net/context"
 
-	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 )
@@ -35,22 +34,6 @@ func CheckCrossystemValues(ctx context.Context, values map[string]string) bool {
 		i++
 	}
 	return testexec.CommandContext(ctx, "crossystem", cmdArgs...).Run(testexec.DumpLogOnError) == nil
-}
-
-// CheckBootMode determines whether the DUT is in the specified boot mode based on crossystem values.
-func CheckBootMode(ctx context.Context, mode fwCommon.BootMode) (bool, error) {
-	var crossystemValues map[string]string
-	switch mode {
-	case fwCommon.BootModeNormal:
-		crossystemValues = map[string]string{"devsw_boot": "0", "mainfw_type": "normal"}
-	case fwCommon.BootModeDev:
-		crossystemValues = map[string]string{"devsw_boot": "1", "mainfw_type": "developer"}
-	case fwCommon.BootModeRecovery:
-		crossystemValues = map[string]string{"mainfw_type": "recovery"}
-	default:
-		return false, errors.Errorf("unrecognized boot mode %s", mode)
-	}
-	return CheckCrossystemValues(ctx, crossystemValues), nil
 }
 
 // RootDevice finds the name of the root device, strips off the partition number, and returns it.
