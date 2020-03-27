@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c10cedad_92108b50",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-27T00:49:22Z",
+      "side": 1,
+      "message": "I think you can just `sup.Add(ash.EnsureTabletModeEnabled(ctx, tconn, true))` and the error handling and cleanup will be taken care of. It looks like the types should match.",
+      "revId": "5b7b97c14db82dabc062e3f15360064491f9b9f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
