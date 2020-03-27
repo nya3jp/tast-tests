@@ -16,6 +16,24 @@
       "revId": "64e0a03237fc3e7c398eefe842329ddfc5c0198b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafb4a34_2b030d1a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-27T21:49:33Z",
+      "side": 0,
+      "message": "Two CLs are different. Here a new attribute called \"IsShelfWidgetAnimating\" is added. I think that the flaky issue of hotseat scroll animation test can be solved by waiting for the shelf widget bounds animation to finish. Sorry that two CLs may look similar.",
+      "parentUuid": "cf4e44ea_132cef10",
+      "revId": "64e0a03237fc3e7c398eefe842329ddfc5c0198b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

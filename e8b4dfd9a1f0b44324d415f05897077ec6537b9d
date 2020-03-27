@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1352eaf4_27518c68",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-27T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07e49723_964aae76",
+      "range": {
+        "startLine": 406,
+        "startChar": 2,
+        "endLine": 406,
+        "endChar": 69
+      },
+      "revId": "e8b4dfd9a1f0b44324d415f05897077ec6537b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8111d602_99d295f4",
         "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
         "patchSetId": 1
