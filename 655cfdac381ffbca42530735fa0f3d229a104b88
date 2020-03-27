@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69cc23e8_c978dd48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-27T19:14:09Z",
+      "side": 1,
+      "message": "Ah, good idea. Done.",
+      "parentUuid": "ecf0794d_7e3cc40e",
+      "revId": "655cfdac381ffbca42530735fa0f3d229a104b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "534f5000_607accc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-27T04:19:22Z",
       "side": 1,
       "message": "optional: I\u0027d suggest using named return value (which is initialized by a zero value) to read the return value inside a defer function.\nfunc f() (retErr error) {\n  defer func() {\n    if retErr !\u003d nil { ...",
+      "revId": "655cfdac381ffbca42530735fa0f3d229a104b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6c50546_47fb8cae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wiredhostapd/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-27T19:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "534f5000_607accc6",
       "revId": "655cfdac381ffbca42530735fa0f3d229a104b88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
