@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a9a0965_b1ada03d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-03-27T07:54:55Z",
+      "side": 1,
+      "message": "I introduced \"arm\" for this test. :)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2117374\nhttps://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/2117195\n\nI refactored chrome_media_internals_utils.js.\nCould you review? I can split the CL for the part only if you like.",
+      "parentUuid": "d4bd767c_baca8c73",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be07db2e_fa001212",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a163d70a_5e2bd552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-03-27T07:54:55Z",
+      "side": 1,
+      "message": "Hmm, SW entry is only used for GAV1. We should keep this GAV1 at this moment, shouldn\u0027t we?",
+      "parentUuid": "be07db2e_fa001212",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ceb8543b_e758a79a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-26T18:16:46Z",
       "side": 1,
       "message": "Ah hmm this is unfortunate but it\u0027s needed because the playback_perf.go\ndoesn\u0027t use the Chrome preconditions. Two options: leave this with a \nTODO() to migrate the whole playback perf to preconditions, or switch\nbeforehand and add a precondition for this case next to this guy\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/pre/pre.go;l\u003d55?q\u003dchromeVideoWithFakeWebcamAndVP9VaapiEncoder\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "03d1f235f25eefd68e49786d48b000073e99c20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ea7e37_c346615d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2020-03-27T07:54:55Z",
+      "side": 1,
+      "message": "If we don\u0027t have decoderType, we don\u0027t know when we should check if VideoDecoderName is Gav1VideoDecoder.",
+      "parentUuid": "ceb8543b_e758a79a",
       "range": {
         "startLine": 170,
         "startChar": 0,
