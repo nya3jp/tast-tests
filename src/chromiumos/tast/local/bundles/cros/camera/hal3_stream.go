@@ -23,5 +23,7 @@ func init() {
 }
 
 func HAL3Stream(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{GtestFilter: "Camera3StreamTest/*"})
+	if err := hal3.RunTest(ctx, hal3.StreamTestConfig(s.OutDir())); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }

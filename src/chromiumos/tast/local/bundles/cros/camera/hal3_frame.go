@@ -29,5 +29,7 @@ func init() {
 }
 
 func HAL3Frame(ctx context.Context, s *testing.State) {
-	hal3.RunTest(ctx, s, hal3.TestConfig{GtestFilter: "Camera3FrameTest/*"})
+	if err := hal3.RunTest(ctx, hal3.FrameTestConfig(s.OutDir())); err != nil {
+		s.Error("Test failed: ", err)
+	}
 }
