@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "1b69d3fa_49f5cc67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_toggle_advanced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-27T17:59:58Z",
+      "side": 1,
+      "message": "Given that this is the start of a test with the chrome.LoggedIn precondition, the app should be closed before this call. That is not something the test should have to worry about.",
+      "parentUuid": "33d935c2_aceaab9b",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 66
+      },
+      "revId": "7ba7d199864087d5c4677e42e6c854be93decf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f27d2b5_c1c4662a",
         "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
         "patchSetId": 2
