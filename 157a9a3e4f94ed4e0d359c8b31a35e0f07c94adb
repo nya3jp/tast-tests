@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "89548a63_2f29b927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-27T20:13:12Z",
+      "side": 1,
+      "message": "No, there aren\u0027t. I\u0027d thought that src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go would, but I just checked and it doesn\u0027t use WaitForCrashFiles, so we\u0027re good to not add the option.",
+      "parentUuid": "f21b22ae_5839b9a0",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 42
+      },
+      "revId": "157a9a3e4f94ed4e0d359c8b31a35e0f07c94adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a05e35ad_a170a3b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go",
         "patchSetId": 2
