@@ -164,6 +164,30 @@
       "revId": "7ba7d199864087d5c4677e42e6c854be93decf1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e324a815_3201a084",
+        "filename": "src/chromiumos/tast/local/chrome/ui/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-27T18:39:29Z",
+      "side": 1,
+      "message": "That sounds good, I went ahead and moved it into Focus. We\u0027ll just need to watch out in the future if other elements respond to focus() differently.",
+      "parentUuid": "4f27d2b5_c1c4662a",
+      "range": {
+        "startLine": 204,
+        "startChar": 15,
+        "endLine": 204,
+        "endChar": 20
+      },
+      "revId": "7ba7d199864087d5c4677e42e6c854be93decf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
