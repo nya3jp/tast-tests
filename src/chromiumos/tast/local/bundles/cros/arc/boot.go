@@ -35,7 +35,7 @@ func init() {
 				numTrials: 1,
 			},
 			ExtraAttr:         []string{"group:mainline"},
-			ExtraSoftwareDeps: []string{"android_all"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           5 * time.Minute,
 		}, {
 			Name: "vm",
@@ -68,7 +68,7 @@ func init() {
 			Val: bootConfig{
 				numTrials: 1000000,
 			},
-			ExtraSoftwareDeps: []string{"android_all"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           365 * 24 * time.Hour,
 		}, {
 			Name: "vm_forever",
