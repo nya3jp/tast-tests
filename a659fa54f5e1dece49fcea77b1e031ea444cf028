@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "7807b5fd_16977502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-28T01:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab05dc9a_ddadada3",
+      "range": {
+        "startLine": 56,
+        "startChar": 27,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "a659fa54f5e1dece49fcea77b1e031ea444cf028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba9ad2e3_b5d6028e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-28T01:28:49Z",
+      "side": 1,
+      "message": "Done. The theory I\u0027m trying to test is that some other process is resetting core_pattern out from under us and stopping crash_reporter from crashing, but can\u0027t hurt to do this.",
+      "parentUuid": "e82278a0_39c74d32",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "a659fa54f5e1dece49fcea77b1e031ea444cf028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d57fe614_7435a858",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "a659fa54f5e1dece49fcea77b1e031ea444cf028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbfc35eb_c4394d40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-03-28T01:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d57fe614_7435a858",
+      "revId": "a659fa54f5e1dece49fcea77b1e031ea444cf028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
