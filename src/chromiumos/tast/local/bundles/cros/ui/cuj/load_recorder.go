@@ -47,7 +47,7 @@ type loadRecorder struct {
 
 // browserProcData searches browser-related process IDs and fill their data
 // to |procNames|.
-func browserProcData(procNames map[int32]string) error {
+func browserProcData(ctx context.Context, procNames map[int32]string) error {
 	browserPID, err := chrome.GetRootPID()
 	if err != nil {
 		return errors.Wrap(err, "failed to find the browser process")
@@ -56,11 +56,12 @@ func browserProcData(procNames map[int32]string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to find the GPU process")
 	}
-	if len(gpuProcs) != 1 {
-		return errors.Errorf("found %d GPU processes, expected to have one", len(gpuProcs))
+	if len(gpuProcs) == 1 {
+		procNames[gpuProcs[0].Pid] = "gpu"
+	} else {
+		testing.ContextLogf(ctx, "Found %d GPU processes, expected to have one", len(gpuProcs))
 	}
 	procNames[int32(browserPID)] = "browser"
-	procNames[gpuProcs[0].Pid] = "gpu"
 	return nil
 }
 

@@ -101,7 +101,7 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error) {
 	// TODO(mukai): also introduce power data collector.
 	procNames := map[int32]string{}
-	if err := browserProcData(procNames); err != nil {
+	if err := browserProcData(ctx, procNames); err != nil {
 		return nil, errors.Wrap(err, "failed to obtain browser info")
 	}
 	if err := arcProcData(procNames); err != nil {
