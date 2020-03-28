@@ -18,6 +18,7 @@ import (
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -375,7 +376,7 @@ func (r *Router) collectLogs(ctx context.Context) error {
 		if err := os.MkdirAll(basedir, 0755); err != nil {
 			return errors.Wrapf(err, "failed to mkdir %s", basedir)
 		}
-		if err := r.host.GetFile(ctx, s, dst); err != nil {
+		if err := linuxssh.GetFile(ctx, r.host, s, dst); err != nil {
 			return errors.Wrapf(err, "failed to download %s to %s", s, dst)
 		}
 	}
