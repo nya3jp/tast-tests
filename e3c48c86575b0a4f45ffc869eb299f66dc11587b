@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "276e47cd_c659dfdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27495726_d69c4ec5",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c16ac32_d8ce15bd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-26T23:45:46Z",
       "side": 1,
       "message": "For robustness, could you have another test: manually set the valie in bootlockbox to 1, then run the same test.  This might happen in real lab, and the test should be able to adjust itself by resetting  the value before the actual test.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9718eb_7113d3c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "I don\u0027t know what you meant here. If I manually set the bootlock box value to 1 before running the test, the test will still run successfully as before running the test - I am explicitly setting the bootlock box value to 0",
+      "parentUuid": "8c16ac32_d8ce15bd",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "29486bfe_762ee9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4ec3ad_f267ee78",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5211935b_b7d990d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5976af4d_b86c8a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5211935b_b7d990d3",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "41f46222_b6bf2678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cf3d605_bc77533d",
+      "range": {
+        "startLine": 75,
+        "startChar": 35,
+        "endLine": 75,
+        "endChar": 46
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aba02e41_621a73da",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9941b839_f4d25930",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba02e41_621a73da",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f1e40a67_8b484601",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408d2030_68c25723",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "781dda90_d1df34d3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2456bff8_40af310a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781dda90_d1df34d3",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "be7e89da_064fc44c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65ef6674_a14d2735",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 1
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d858bdb0_bea027f4",
         "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
         "patchSetId": 2
@@ -229,6 +445,30 @@
       "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06cca34_ff89fb01",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d858bdb0_bea027f4",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 2,
+        "endChar": 5
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "b7233168_ee07391a",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29dc62c4_ad3ba9c7",
+      "range": {
+        "startLine": 13,
+        "startChar": 57,
+        "endLine": 13,
+        "endChar": 65
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d867eb3_0375f7fe",
         "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
         "patchSetId": 2
@@ -275,6 +539,30 @@
       "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc7e65a_fe7aaf18",
+        "filename": "src/chromiumos/tast/services/cros/arc/adb_sideload_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-28T07:27:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d867eb3_0375f7fe",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
