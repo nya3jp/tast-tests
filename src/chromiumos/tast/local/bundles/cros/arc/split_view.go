@@ -29,7 +29,7 @@ func init() {
 // waitUntilStateChangeInSplitView waits for window state changes on both Ash
 // and ARC sides. It assumes Ash is currently in split view mode, and ARC
 // activities passed as left and right are both shown side by side.
-func waitUntilStateChangeInSplitView(ctx context.Context, tconn *chrome.TestConn, left *arc.Activity, right *arc.Activity) error {
+func waitUntilStateChangeInSplitView(ctx context.Context, tconn *chrome.TestConn, left, right *arc.Activity) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		for _, test := range []struct {
 			act      *arc.Activity

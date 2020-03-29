@@ -1512,6 +1512,6 @@ func abs(num int) int {
 }
 
 // isSimilarRect compares two rectangle whether their similar by epsilon.
-func isSimilarRect(lhs coords.Rect, rhs coords.Rect, epsilon int) bool {
+func isSimilarRect(lhs, rhs coords.Rect, epsilon int) bool {
 	return abs(lhs.Left-rhs.Left) <= epsilon && abs(lhs.Width-rhs.Width) <= epsilon && abs(lhs.Top-rhs.Top) <= epsilon && abs(lhs.Height-rhs.Height) <= epsilon
 }

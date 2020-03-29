@@ -248,7 +248,7 @@ func (d *dhcpHandlingRule) isOurMsgType(packet *dhcpPacket) bool {
 // newRespondToDiscovery creates a handler that accepts any DISCOVER packet
 // received by the server. In response to such a packet, the handler will
 // construct an OFFER packet offering |intendedIP| from a server at |svrIP|.
-func newRespondToDiscovery(intendedIP string, svrIP string, options optionMap, fields fieldMap, shouldRespond bool) *dhcpHandlingRule {
+func newRespondToDiscovery(intendedIP, svrIP string, options optionMap, fields fieldMap, shouldRespond bool) *dhcpHandlingRule {
 	return &dhcpHandlingRule{
 		ruleType:      respondToDiscovery,
 		options:       options,
@@ -278,7 +278,7 @@ func newRejectRequestRule() *dhcpHandlingRule {
 // client at the address given in the REQUEST packet. If |responsesvrIP| or
 // |responseGrantedIP| are not given, then they default to |expSvrIP| and
 // |expReqIP| respectively.
-func newRespondToRequest(expReqIP string, expSvrIP string, options optionMap, fields fieldMap, shouldRespond bool, responsesvrIP string, responseGrantedIP string, expSvrIPSet bool) *dhcpHandlingRule {
+func newRespondToRequest(expReqIP, expSvrIP string, options optionMap, fields fieldMap, shouldRespond bool, responsesvrIP, responseGrantedIP string, expSvrIPSet bool) *dhcpHandlingRule {
 	rule := dhcpHandlingRule{
 		ruleType:      respondToRequest,
 		options:       options,
@@ -305,7 +305,7 @@ func newRespondToRequest(expReqIP string, expSvrIP string, options optionMap, fi
 // except that it expects request packets like those sent after the T2 deadline
 // (see RFC 2131). This is the only time that you can find a request packet
 // without the serverID option. It reseponds to packets in exactly the same way.
-func newRespondToPostT2Request(expReqIP string, responseSvrIP string, options optionMap, fields fieldMap, shouldRespond bool, responseGrantedIP string) *dhcpHandlingRule {
+func newRespondToPostT2Request(expReqIP, responseSvrIP string, options optionMap, fields fieldMap, shouldRespond bool, responseGrantedIP string) *dhcpHandlingRule {
 	rule := newRespondToRequest(expReqIP, "", options, fields, shouldRespond, responseSvrIP, responseGrantedIP, false)
 	rule.ruleType = respondToPostT2Request
 	return rule
@@ -330,7 +330,7 @@ func newAcceptRelease(expSvrIP string, options optionMap, fields fieldMap) *dhcp
 // |expSvrIP| and |expReqIP| respectively. It responds with
 // both an ACKNOWLEDGEMENT packet from a DHCP server as well as a NAK, in order
 // to simulate a network with two conflicting servers.
-func newRejectAndRespondToRequest(expReqIP string, expSvrIP string, options optionMap, fields fieldMap, nakFirst bool) *dhcpHandlingRule {
+func newRejectAndRespondToRequest(expReqIP, expSvrIP string, options optionMap, fields fieldMap, nakFirst bool) *dhcpHandlingRule {
 	rule := newRespondToRequest(expReqIP, expSvrIP, options, fields, true, "", "", true)
 	rule.respPktCnt = 2
 	rule.ruleType = rejectAndRespondToRequest

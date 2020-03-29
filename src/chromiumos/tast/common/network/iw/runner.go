@@ -246,7 +246,7 @@ func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error)
 }
 
 // GetLinkValue gets the specified link value from the iw link output.
-func (r *Runner) GetLinkValue(ctx context.Context, iface string, iwLinkKey string) (string, error) {
+func (r *Runner) GetLinkValue(ctx context.Context, iface, iwLinkKey string) (string, error) {
 	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "link")
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
@@ -338,7 +338,7 @@ func (r *Runner) SetRegulatoryDomain(ctx context.Context, country string) error 
 // SetTxPower sets the wireless interface's transmit power.
 // mode: 'fixed' or 'limit'
 // power: power in mBm (milli-Bel-milliwatts). 1 mBm = 100 * dBm (deci-Bell-milliwatts).
-func (r *Runner) SetTxPower(ctx context.Context, iface string, mode string, power int) error {
+func (r *Runner) SetTxPower(ctx context.Context, iface, mode string, power int) error {
 	if mode != "fixed" && mode != "limit" {
 		return errors.Errorf("unexpected mode = %q", mode)
 	}
@@ -366,7 +366,7 @@ func (r *Runner) SetFreq(ctx context.Context, iface string, freq int) error {
 }
 
 // SetAntennaBitmap sets the antenna bitmap.
-func (r *Runner) SetAntennaBitmap(ctx context.Context, phy string, txBitmap int, rxBitmap int) error {
+func (r *Runner) SetAntennaBitmap(ctx context.Context, phy string, txBitmap, rxBitmap int) error {
 	if err := r.cmd.Run(ctx, "iw", "phy", phy, "set", "antenna", strconv.Itoa(txBitmap),
 		strconv.Itoa(rxBitmap)); err != nil {
 		return errors.Wrap(err, "failed to set Antenna bitmap")
@@ -403,7 +403,7 @@ func getAllLinkKeys(out string) map[string]string {
 // scan entries.
 // bssMatch is the BSSID line from the scan.
 // dataMatch is the corresponding metadata associated with the BSS entry.
-func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
+func newBSSData(bssMatch, dataMatch string) (*BSSData, error) {
 	// Handle BSS.
 	bssFields := strings.Fields(bssMatch)
 	if len(bssFields) != 2 {
@@ -542,7 +542,7 @@ func parseMaxScanSSIDs(contents string) (int, error) {
 }
 
 // newPhy constructs a Phy object from "iw list" output.
-func newPhy(phyMatch string, dataMatch string) (*Phy, error) {
+func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 	// Phy name handling.
 	m, err := extractMatch(`Wiphy (.*)`, phyMatch)
 	if err != nil {
@@ -671,7 +671,7 @@ func parseFrequencyFlags(contents string) (map[int][]string, error) {
 	return ret, nil
 }
 
-func parseBand(attrs *sectionAttributes, sectionName string, contents string) error {
+func parseBand(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser constructs a Band for the phy.
 	var band Band
 
@@ -701,7 +701,7 @@ func parseBand(attrs *sectionAttributes, sectionName string, contents string) er
 	return nil
 }
 
-func parseThroughput(attrs *sectionAttributes, sectionName string, contents string) error {
+func parseThroughput(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser evaluates the throughput capabilities of the phy.
 	if strings.Contains(contents, "VHT Capabilities") {
 		attrs.supportVHT = true
@@ -714,7 +714,7 @@ func parseThroughput(attrs *sectionAttributes, sectionName string, contents stri
 	}
 	return nil
 }
-func parseIfaceModes(attrs *sectionAttributes, sectionName string, contents string) error {
+func parseIfaceModes(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser checks the supported interface modes for the phy.
 	matches := regexp.MustCompile(`\* (\w+)`).FindAllStringSubmatch(contents, -1)
 	for _, m := range matches {
@@ -722,7 +722,7 @@ func parseIfaceModes(attrs *sectionAttributes, sectionName string, contents stri
 	}
 	return nil
 }
-func parsePhyCommands(attrs *sectionAttributes, sectionName string, contents string) error {
+func parsePhyCommands(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser checks the Phy's supported commands.
 	matches := regexp.MustCompile(`\* (\w+)`).FindAllStringSubmatch(contents, -1)
 	for _, m := range matches {
@@ -733,7 +733,7 @@ func parsePhyCommands(attrs *sectionAttributes, sectionName string, contents str
 
 var parsers = []struct {
 	prefix string
-	parse  func(attrs *sectionAttributes, sectionName string, contents string) error
+	parse  func(attrs *sectionAttributes, sectionName, contents string) error
 }{
 	{
 		prefix: "Band",

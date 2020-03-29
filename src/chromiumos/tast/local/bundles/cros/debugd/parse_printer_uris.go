@@ -53,8 +53,7 @@ func addPrinterWithExpectedStatus(
 	if err != nil {
 		s.Error("Failed to call d.CupsAddManuallyConfiguredPrinter: ", err)
 	} else if result != spec.expectedStatus {
-		s.Errorf(
-			"%s (%s) failed: got %s; want %s",
+		s.Errorf("%s (%s) failed: got %s; want %s",
 			spec.name, spec.uri, result, spec.expectedStatus)
 	}
 }

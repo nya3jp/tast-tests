@@ -171,7 +171,7 @@ func saveAsAndCompare(t *testing.T, p *Values, goldenPath string, format Format,
 	}
 }
 
-func saveFormat(t *testing.T, format Format, expectedOutput string, expectedFileName string) {
+func saveFormat(t *testing.T, format Format, expectedOutput, expectedFileName string) {
 	// Note: format=Chromeperf does not currently support multiple variants.
 	var (
 		metric1 = Metric{Name: "metric1", Unit: "unit1", Direction: SmallerIsBetter}

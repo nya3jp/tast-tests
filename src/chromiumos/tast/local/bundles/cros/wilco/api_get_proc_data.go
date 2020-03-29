@@ -32,7 +32,7 @@ func init() {
 }
 
 func APIGetProcData(ctx context.Context, s *testing.State) {
-	getProcData := func(ctx context.Context, s *testing.State, typeField dtcpb.GetProcDataRequest_Type, expectedPrefix string, expectedFile string) {
+	getProcData := func(ctx context.Context, s *testing.State, typeField dtcpb.GetProcDataRequest_Type, expectedPrefix, expectedFile string) {
 		request := dtcpb.GetProcDataRequest{
 			Type: typeField,
 		}

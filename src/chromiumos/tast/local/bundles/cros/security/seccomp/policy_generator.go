@@ -20,7 +20,7 @@ import (
 
 // CommandContext wraps the functionality of testexec.CommandContext injecting the strace
 // command and arguments writing the strace log to the specified path.
-func CommandContext(ctx context.Context, logPath string, name string, arg ...string) *testexec.Cmd {
+func CommandContext(ctx context.Context, logPath, name string, arg ...string) *testexec.Cmd {
 	cmd := testexec.CommandContext(ctx, "strace", append([]string{"-f", "-o", logPath, "--", name}, arg...)...)
 	return cmd
 }
@@ -65,7 +65,7 @@ func (m *PolicyGenerator) addBasicSet() {
 
 // AddSyscall records a particular syscall in the frequency data. For sensitive system calls params
 // will be parsed so an argument filter can be computed.
-func (m *PolicyGenerator) AddSyscall(syscall string, params string) bool {
+func (m *PolicyGenerator) AddSyscall(syscall, params string) bool {
 	entry, ok := m.frequencyData[syscall]
 	if !ok {
 		m.frequencyData[syscall] = &argData{1, -1, map[string]struct{}{}, false}

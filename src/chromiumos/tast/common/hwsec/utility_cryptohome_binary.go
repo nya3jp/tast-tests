@@ -153,13 +153,13 @@ func (u *UtilityCryptohomeBinary) CreateCertRequest(
 	ctx context.Context,
 	pcaType PCAType,
 	profile apb.CertificateProfile,
-	username string,
+	username,
 	origin string) (string, error) {
 	return u.binary.TPMAttestationStartCertRequest(ctx, pcaType, int(profile), username, origin, u.attestationAsyncMode)
 }
 
 // FinishCertRequest handles cert response.
-func (u *UtilityCryptohomeBinary) FinishCertRequest(ctx context.Context, resp string, username string, label string) error {
+func (u *UtilityCryptohomeBinary) FinishCertRequest(ctx context.Context, resp, username, label string) error {
 	cert, err := u.binary.TPMAttestationFinishCertRequest(ctx, resp, username, label, u.attestationAsyncMode)
 	if err != nil {
 		return errors.Wrap(err, "failed to finish cert request")
@@ -174,9 +174,9 @@ func (u *UtilityCryptohomeBinary) FinishCertRequest(ctx context.Context, resp st
 func (u *UtilityCryptohomeBinary) SignEnterpriseVAChallenge(
 	ctx context.Context,
 	vaType VAType,
-	username string,
-	label string,
-	domain string,
+	username,
+	label,
+	domain,
 	deviceID string,
 	includeSignedPublicKey bool,
 	challenge []byte) (string, error) {
@@ -195,7 +195,7 @@ func (u *UtilityCryptohomeBinary) SignEnterpriseVAChallenge(
 // SignSimpleChallenge signs the challenge with the specified key.
 func (u *UtilityCryptohomeBinary) SignSimpleChallenge(
 	ctx context.Context,
-	username string,
+	username,
 	label string,
 	challenge []byte) (string, error) {
 	return u.binary.TPMAttestationSimpleChallenge(ctx,
@@ -207,7 +207,7 @@ func (u *UtilityCryptohomeBinary) SignSimpleChallenge(
 // GetPublicKey gets the public part of the key.
 func (u *UtilityCryptohomeBinary) GetPublicKey(
 	ctx context.Context,
-	username string,
+	username,
 	label string) (string, error) {
 	result, _, err := u.getKeyStatus(ctx, username, label)
 	if err != nil {
@@ -219,7 +219,7 @@ func (u *UtilityCryptohomeBinary) GetPublicKey(
 // getKeyStatus gets the status of the key in attestation database.
 func (u *UtilityCryptohomeBinary) getKeyStatus(
 	ctx context.Context,
-	username string,
+	username,
 	label string) (string, string, error) {
 	out, err := u.binary.TPMAttestationKeyStatus(ctx, username, label)
 	if err != nil {
@@ -361,7 +361,7 @@ func (u *UtilityCryptohomeBinary) UnmountAll(ctx context.Context) error {
 }
 
 // MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
-func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username string, password string, label string, create bool) error {
+func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, password, label string, create bool) error {
 	if _, err := u.binary.MountEx(ctx, username, password, create, label); err != nil {
 		return errors.Wrap(err, "failed to mount")
 	}
@@ -369,7 +369,7 @@ func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username strin
 }
 
 // CheckVault checks the vault via |CheckKeyEx| dbus mehod.
-func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username string, password string, label string) (bool, error) {
+func (u *UtilityCryptohomeBinary) CheckVault(ctx context.Context, username, password, label string) (bool, error) {
 	_, err := u.binary.CheckKeyEx(ctx, username, password, label)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to check key")
@@ -526,7 +526,7 @@ func (u *UtilityCryptohomeBinary) ClearOwnerPassword(ctx context.Context) error 
 // GetKeyPayload gets the payload associated with the specified key.
 func (u *UtilityCryptohomeBinary) GetKeyPayload(
 	ctx context.Context,
-	username string,
+	username,
 	label string) (string, error) {
 	out, err := u.binary.TPMAttestationGetKeyPayload(ctx, username, label)
 	if err != nil {
@@ -538,8 +538,8 @@ func (u *UtilityCryptohomeBinary) GetKeyPayload(
 // SetKeyPayload sets the payload associated with the specified key.
 func (u *UtilityCryptohomeBinary) SetKeyPayload(
 	ctx context.Context,
-	username string,
-	label string,
+	username,
+	label,
 	payload string) (bool, error) {
 	_, err := u.binary.TPMAttestationSetKeyPayload(ctx, username, label, payload)
 	if err != nil {
@@ -551,7 +551,7 @@ func (u *UtilityCryptohomeBinary) SetKeyPayload(
 // RegisterKeyWithChapsToken registers the key into chaps.
 func (u *UtilityCryptohomeBinary) RegisterKeyWithChapsToken(
 	ctx context.Context,
-	username string,
+	username,
 	label string) (bool, error) {
 	out, err := u.binary.TPMAttestationRegisterKey(ctx, username, label)
 	if err != nil {
@@ -573,7 +573,7 @@ func (u *UtilityCryptohomeBinary) SetAttestationAsyncMode(ctx context.Context, a
 }
 
 // DeleteKeys delete all he |usernames|'s keys with label having |prefix|.
-func (u *UtilityCryptohomeBinary) DeleteKeys(ctx context.Context, username string, prefix string) error {
+func (u *UtilityCryptohomeBinary) DeleteKeys(ctx context.Context, username, prefix string) error {
 	_, err := u.binary.TPMAttestationDelete(ctx, username, prefix)
 	if err != nil {
 		return errors.Wrap(err, "failed to delete keys")

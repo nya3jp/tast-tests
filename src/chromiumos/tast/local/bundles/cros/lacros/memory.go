@@ -84,7 +84,7 @@ func findMatch(input []byte, stat string) (int, error) {
 //  1. It finds all processes whose command line includes |path|.
 //  2. It queries /proc/{pid}/{endpoint} for each process.
 //  3. It filters and sums across all statistics that match |stat|.
-func procSum(ctx context.Context, path string, endpoint string, stat string) (int, error) {
+func procSum(ctx context.Context, path, endpoint, stat string) (int, error) {
 	pids, err := launcher.PidsFromPath(ctx, path)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get pids for "+path)

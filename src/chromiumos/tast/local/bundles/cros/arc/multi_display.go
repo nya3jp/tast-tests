@@ -676,7 +676,7 @@ func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Test
 }
 
 // ensureWinBoundsInDisplay checks whether the window bounds are inside of display bounds.
-func ensureWinBoundsInDisplay(winBounds coords.Rect, displayBounds coords.Rect) error {
+func ensureWinBoundsInDisplay(winBounds, displayBounds coords.Rect) error {
 	// Convert local window bounds to global window bounds.
 	winBounds.Left += displayBounds.Left
 	winBounds.Top += displayBounds.Top

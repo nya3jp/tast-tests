@@ -37,7 +37,7 @@ const perAppDensityApk = "ArcPerAppDensityTest.apk"
 
 // performAndConfirmDensityChange changes the density of the activity,
 // and confirms that the density was changed by validating the size of the square on the screen.
-func performAndConfirmDensityChange(ctx context.Context, cr *chrome.Chrome, ew *input.KeyboardEventWriter, a *arc.ARC, name string, keySequence string, blackPixelCount int) error {
+func performAndConfirmDensityChange(ctx context.Context, cr *chrome.Chrome, ew *input.KeyboardEventWriter, a *arc.ARC, name, keySequence string, blackPixelCount int) error {
 	testing.ContextLogf(ctx, "%s density using key %q", name, keySequence)
 	if err := ew.Accel(ctx, keySequence); err != nil {
 		return errors.Wrapf(err, "could not change scale factor using %q", keySequence)
