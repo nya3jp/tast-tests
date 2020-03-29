@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "aac5dec2_9c19e5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-03-29T21:53:09Z",
+      "side": 1,
+      "message": "I changed the condition (dev.SupportMUMIMO() \u0026\u0026 !res[0].SupportMUMIMO to) (dev.SupportMUMIMO() \u003d\u003d !res[0].SupportMUMIMO). Now, the test should pass if the device supports and claims the MU-MIMO feature, and if it doesn\u0027t support and not claiming the MU-MIMO .It fails otherwise and that includes the case of having a device that doesnt\u0027t support, and claims MU-MIMO which is unexpected.",
+      "parentUuid": "cc9a8c35_a9acda82",
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "990c66ec_63a21e1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
         "patchSetId": 12
@@ -165,6 +183,30 @@
       "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "474f060c_40497ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-03-29T21:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990c66ec_63a21e1b",
+      "range": {
+        "startLine": 186,
+        "startChar": 19,
+        "endLine": 186,
+        "endChar": 31
+      },
+      "revId": "0a1320f5409125b4fd1545658dd39bb02855db4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
