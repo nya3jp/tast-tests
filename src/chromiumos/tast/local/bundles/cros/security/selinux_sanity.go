@@ -22,7 +22,7 @@ func init() {
 }
 
 func SELinuxSanity(ctx context.Context, s *testing.State) {
-	assertFileContent := func(path string, expected string) {
+	assertFileContent := func(path, expected string) {
 		actual, err := ioutil.ReadFile(path)
 		if err != nil {
 			s.Errorf("Failed to read %q: %v", path, err)

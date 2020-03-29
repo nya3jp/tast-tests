@@ -100,8 +100,7 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) error 
 			if zoneTemp > cpuTemperatureThreshold {
 				testing.ContextLogf(ctx, "Waiting until %s temperature (%d) falls below %d",
 					zoneType, zoneTemp, cpuTemperatureThreshold)
-				return errors.Errorf(
-					"timed out while waiting until %s temperature (%d) falls below %d",
+				return errors.Errorf("timed out while waiting until %s temperature (%d) falls below %d",
 					zoneType, zoneTemp, cpuTemperatureThreshold)
 			}
 		}

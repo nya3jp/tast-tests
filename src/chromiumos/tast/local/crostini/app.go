@@ -26,7 +26,7 @@ func exitIfShown(ctx context.Context, tconn *chrome.TestConn, appID string) erro
 	return apps.Close(ctx, tconn, appID)
 }
 
-func findNewShelfItem(before []*ash.ShelfItem, after []*ash.ShelfItem) (string, error) {
+func findNewShelfItem(before, after []*ash.ShelfItem) (string, error) {
 	if len(before) == len(after) {
 		return "", errors.New("no new shelf item")
 	}

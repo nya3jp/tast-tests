@@ -17,7 +17,7 @@ const (
 )
 
 // replaceArgs finds commandline arguments that match by prefix and replaces it with newarg.
-func replaceArgs(orig string, prefix string, newarg string) string {
+func replaceArgs(orig, prefix, newarg string) string {
 	e := strings.Fields(strings.TrimSpace(orig))
 	var newargs []string
 	replaced := false

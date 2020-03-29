@@ -177,7 +177,7 @@ func (c *CryptohomeBinary) TPMAttestationStartCertRequest(
 	ctx context.Context,
 	pcaType PCAType,
 	profile int,
-	username string,
+	username,
 	origin string,
 	async bool) (string, error) {
 	if pcaType == TestPCA {
@@ -210,8 +210,8 @@ func (c *CryptohomeBinary) TPMAttestationStartCertRequest(
 // If |async| is set, calls it long with "--async" flag.
 func (c *CryptohomeBinary) TPMAttestationFinishCertRequest(
 	ctx context.Context,
-	resp string,
-	username string,
+	resp,
+	username,
 	label string,
 	async bool) (string, error) {
 	tmpFileIn, err := c.tempFile(ctx, "cert_response")
@@ -253,9 +253,9 @@ func (c *CryptohomeBinary) TPMAttestationFinishCertRequest(
 func (c *CryptohomeBinary) TPMAttestationEnterpriseVaChallenge(
 	ctx context.Context,
 	vaType VAType,
-	username string,
-	label string,
-	domain string,
+	username,
+	label,
+	domain,
 	deviceID string,
 	challenge []byte) (string, error) {
 	tmpFile, err := c.tempFile(ctx, "challenge")
@@ -280,7 +280,7 @@ func (c *CryptohomeBinary) TPMAttestationEnterpriseVaChallenge(
 // TPMAttestationSimpleChallenge calls "cryptohome --action=tpm_attestation_simple_challenge".
 func (c *CryptohomeBinary) TPMAttestationSimpleChallenge(
 	ctx context.Context,
-	username string,
+	username,
 	label string,
 	challenge []byte) (string, error) {
 	if len(challenge) > 0 {
@@ -297,7 +297,7 @@ func (c *CryptohomeBinary) TPMAttestationSimpleChallenge(
 // TPMAttestationKeyStatus calls "cryptohome --action=tpm_attestation_key_status".
 func (c *CryptohomeBinary) TPMAttestationKeyStatus(
 	ctx context.Context,
-	username string,
+	username,
 	label string) (string, error) {
 	out, err := c.call(
 		ctx,
@@ -310,7 +310,7 @@ func (c *CryptohomeBinary) TPMAttestationKeyStatus(
 // TPMAttestationGetKeyPayload calls "cryptohome --action=tpm_attestation_get_key_payload".
 func (c *CryptohomeBinary) TPMAttestationGetKeyPayload(
 	ctx context.Context,
-	username string,
+	username,
 	label string) (string, error) {
 	out, err := c.call(
 		ctx,
@@ -323,7 +323,7 @@ func (c *CryptohomeBinary) TPMAttestationGetKeyPayload(
 // TPMAttestationRegisterKey calls "cryptohome --action=tpm_attestation_register_key".
 func (c *CryptohomeBinary) TPMAttestationRegisterKey(
 	ctx context.Context,
-	username string,
+	username,
 	label string) (string, error) {
 	out, err := c.call(
 		ctx,
@@ -336,8 +336,8 @@ func (c *CryptohomeBinary) TPMAttestationRegisterKey(
 // TPMAttestationSetKeyPayload calls "cryptohome --action=tpm_attestation_set_key_payload".
 func (c *CryptohomeBinary) TPMAttestationSetKeyPayload(
 	ctx context.Context,
-	username string,
-	label string,
+	username,
+	label,
 	payload string) (string, error) {
 	out, err := c.call(
 		ctx,
@@ -402,7 +402,7 @@ func (c *CryptohomeBinary) IsMounted(ctx context.Context) ([]byte, error) {
 }
 
 // MountEx calls "cryptohome --action=mount_ex".
-func (c *CryptohomeBinary) MountEx(ctx context.Context, username string, password string, doesCreate bool, label string) ([]byte, error) {
+func (c *CryptohomeBinary) MountEx(ctx context.Context, username, password string, doesCreate bool, label string) ([]byte, error) {
 	args := []string{"--action=mount_ex", "--user=" + username, "--password=" + password, "--key_label=" + label}
 	if doesCreate {
 		args = append(args, "--create")
@@ -411,7 +411,7 @@ func (c *CryptohomeBinary) MountEx(ctx context.Context, username string, passwor
 }
 
 // CheckKeyEx calls "cryptohome --action=check_key_ex".
-func (c *CryptohomeBinary) CheckKeyEx(ctx context.Context, username string, password string, label string) ([]byte, error) {
+func (c *CryptohomeBinary) CheckKeyEx(ctx context.Context, username, password, label string) ([]byte, error) {
 	return c.call(ctx, "--action=check_key_ex", "--user="+username, "--password="+password, "--key_label="+label)
 }
 
@@ -471,7 +471,7 @@ func (c *CryptohomeBinary) GetEnrollmentID(ctx context.Context) ([]byte, error) 
 }
 
 // TPMAttestationDelete calls "cryptohome --action=tpm_attestation_delete".
-func (c *CryptohomeBinary) TPMAttestationDelete(ctx context.Context, username string, prefix string) ([]byte, error) {
+func (c *CryptohomeBinary) TPMAttestationDelete(ctx context.Context, username, prefix string) ([]byte, error) {
 	return c.call(ctx, "--action=tpm_attestation_delete", "--user="+username, "--name="+prefix)
 }
 

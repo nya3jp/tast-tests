@@ -24,7 +24,7 @@ func ChownContentsToChrome(dir string) error {
 }
 
 // chownContents recursively chowns dir's contents to username's uid and gid.
-func chownContents(dir string, username string) error {
+func chownContents(dir, username string) error {
 	var u *user.User
 	var err error
 	if u, err = user.Lookup(username); err != nil {

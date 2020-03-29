@@ -211,7 +211,7 @@ func openTabCount(mbPerTab int) (int, error) {
 }
 
 // openTabs opens tabs to create memory pressure.
-func openTabs(ctx context.Context, cr *chrome.Chrome, createTabCount int, mbPerTab int, baseURL string) error {
+func openTabs(ctx context.Context, cr *chrome.Chrome, createTabCount, mbPerTab int, baseURL string) error {
 	for i := 0; i < createTabCount; i++ {
 		url := fmt.Sprintf("%s?alloc=%d&ratio=%.3f&id=%d", baseURL, mbPerTab, compressRaio, i)
 		if err := openAllocationPage(ctx, url, cr); err != nil {

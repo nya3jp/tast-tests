@@ -106,7 +106,7 @@ func api(uiUseFlags map[string]struct{}) string {
 // extract the OpenGL version. An example of the OpenGL version string expected
 // in the wflinfo output is:
 // OpenGL version string: OpenGL ES 3.2 Mesa 18.1.0-devel (git-131e871385)
-func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
+func extractOpenGLVersion(ctx context.Context, wflout string) (major,
 	minor int, err error) {
 	re := regexp.MustCompile(
 		`OpenGL version string: OpenGL ES ([0-9]+).([0-9]+)`)
@@ -118,8 +118,7 @@ func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
 				testing.ContextLog(ctx, "Failed to write wflinfo output: ", err)
 			}
 		}
-		return 0, 0, errors.Errorf(
-			"%d OpenGL version strings found in wflinfo output", len(matches))
+		return 0, 0, errors.Errorf("%d OpenGL version strings found in wflinfo output", len(matches))
 	}
 	testing.ContextLogf(ctx, "Got %q", matches[0][0])
 	if major, err = strconv.Atoi(matches[0][1]); err != nil {
@@ -134,7 +133,7 @@ func extractOpenGLVersion(ctx context.Context, wflout string) (major int,
 // GLESVersion returns the OpenGL major and minor versions extracted from the
 // output of the wflinfo command. This is roughly a port of get_gles_version()
 // defined in autotest/files/client/cros/graphics/graphics_utils.py.
-func GLESVersion(ctx context.Context) (major int, minor int, err error) {
+func GLESVersion(ctx context.Context) (major, minor int, err error) {
 	f, err := parseUIUseFlags(uiUseFlagsPath)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "could not get UI USE flags")
@@ -187,7 +186,7 @@ func SupportsVulkanForDEQP(ctx context.Context) (bool, error) {
 // whether Vulkan is supported. If no APIs are supported, nil is returned. This
 // is a port of part of the functionality of GraphicsApiHelper defined in
 // autotest/files/client/cros/graphics/graphics_utils.py.
-func SupportedAPIs(glMajor int, glMinor int, vulkan bool) []APIType {
+func SupportedAPIs(glMajor, glMinor int, vulkan bool) []APIType {
 	var apis []APIType
 	if glMajor >= 2 {
 		apis = append(apis, GLES2)

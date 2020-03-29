@@ -772,7 +772,7 @@ func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) er
 	return nil
 }
 
-func (a *App) toggleOption(ctx context.Context, option string, toggleSelector string) (bool, error) {
+func (a *App) toggleOption(ctx context.Context, option, toggleSelector string) (bool, error) {
 	prev, err := a.GetState(ctx, option)
 	if err != nil {
 		return false, err
