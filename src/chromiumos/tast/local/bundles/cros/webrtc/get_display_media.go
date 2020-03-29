@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,9 +30,10 @@ func init() {
 		// for where the case names come from.
 		// TODO(crbug.com/1063449): add other cases when the adequate precondition is ready.
 		Params: []testing.Param{{
-			Name: "monitor",
-			Val:  "monitor",
-			Pre:  pre.ChromeScreenCapture(),
+			Name:              "monitor",
+			Val:               "monitor",
+			Pre:               pre.ChromeScreenCapture(),
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
 			Name: "window",
 			Val:  "window",
