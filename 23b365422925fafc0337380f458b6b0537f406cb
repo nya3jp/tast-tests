@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9b2339e_1cee83af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-30T20:56:09Z",
+      "side": 1,
+      "message": "I went ahead and added a check for the /sys/class/chromeos/cros_ec file since it is the same method we\u0027ll use in cros_healthd.",
+      "parentUuid": "3976e5a3_37ddce84",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 98
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5667cc34_b75bbc0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fb1feb02_e240db36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-30T20:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5667cc34_b75bbc0f",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0206489c_1e004b8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-30T09:44:25Z",
       "side": 1,
       "message": "your test will fail once you add one new column. Can you use csv parser and don\u0027t fail if there is some unexpected new item?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32df82f_553a5419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-30T20:56:09Z",
+      "side": 1,
+      "message": "That\u0027s the desired behavior, similar to the other cros_healthd_probe_* tast tests. If someone updates cros_healthd to collect and report info, we want them to have to update this test as well.",
+      "parentUuid": "0206489c_1e004b8b",
       "range": {
         "startLine": 73,
         "startChar": 0,
