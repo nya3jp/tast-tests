@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c0dbfc7_56a65a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T23:16:48Z",
+      "side": 1,
+      "message": "nit, even this loop can be eliminated, but that can be a future cl.",
+      "revId": "ea65a3557d41283064d0f68c561cb7515f898034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
