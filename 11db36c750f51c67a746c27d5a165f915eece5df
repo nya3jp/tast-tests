@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1f1f40_1345780f",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-30T04:10:33Z",
+      "side": 1,
+      "message": "Is it possible to use `adb shell dumpsys gfxinfo \u003cPACKAGE_NAME\u003e`? https://developer.android.com/training/testing/performance0\n\nIt appears to work for ARCVM but not ARC++.\n\nIdeally we would measure on the ChromeOS side, so we know exactly when the GPU work for the frame finished relative to the v-sync, but I\u0027m not sure there is something similar on ChromeOS.",
+      "revId": "11db36c750f51c67a746c27d5a165f915eece5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2836e91_3d59cfda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-30T04:10:33Z",
+      "side": 1,
+      "message": "Do you have the histogram data anywhere? I don\u0027t think we need to make it into a metric, but it would be nice to have in a log, or a least to look at to see if the numbers make sense.",
+      "revId": "11db36c750f51c67a746c27d5a165f915eece5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00488bd0_670491bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-03-30T04:10:33Z",
+      "side": 1,
+      "message": "These metrics should not have `Multiple: true`, since you only log them once.",
+      "revId": "11db36c750f51c67a746c27d5a165f915eece5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
