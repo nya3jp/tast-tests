@@ -88,6 +88,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee50d87_0afa80cd",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T22:56:02Z",
+      "side": 1,
+      "message": "But the control names themselves are in the set CtrlD to PwrButton?  In that case, for control name, you can check that it is one of those.  And for value, check that it is one of the special string values, or an int.  Doing these checks are for reasons of enforcing the interface.  Otherwise code could use it incorrectly and cause hard to spot bugs, or misuse it.",
+      "parentUuid": "b7aec635_f8aa74a0",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
