@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Verifies that the 'copies-supported' attribute of the printer is used to populate the cupsManualCopies and cupsMaxCopies values in the corresponding generated PPD",
 		Contacts:     []string{"valleau@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Data:         []string{"ippusb_copies_supported.json"},
 		Pre:          chrome.LoggedIn(),
 	})
