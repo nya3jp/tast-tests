@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a548869_6a42439a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mount_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-30T21:50:45Z",
+      "side": 1,
+      "message": "nit: we don\u0027t usually use :, but use complete sentence to describe declarations.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\nHere, path is the location where the log is stored.\nis preferred.\nSame for others.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "9703a5184cd9626eac07852cf5d956d577939d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
