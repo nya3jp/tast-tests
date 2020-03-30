@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "938b4202_0265b9e3",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-30T23:34:13Z",
+      "side": 1,
+      "message": "Feel like we might want to start splitting these into separate lines at this point...",
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552bc0b2_a666b5e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-30T23:34:13Z",
+      "side": 1,
+      "message": "is this spreadsheet public? Can we link it somewhere to make sure this is up-to-date? (or is this actually supposed to be \"datasheet\" in which case there\u0027s nothing we can do about it)",
+      "range": {
+        "startLine": 101,
+        "startChar": 48,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
