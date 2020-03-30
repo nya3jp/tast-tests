@@ -70,6 +70,30 @@
       "revId": "b7a337ac24e5de6a93d869e40b6ab50bc1a0cb6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fb7fe6d_9623e7d1",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-03-30T01:52:27Z",
+      "side": 1,
+      "message": "Oops sorry. I was trying to say that I was not sure if the permission has to be granted again if the app is launched more than once in the same login session. The permission dialog might not prompt after the first time.\n\nTo test that, I thought I needed to run different PATrace tests in the same session, and dumpsysActivityActivites had to work for that.\n\nI just tested it manually, and the permission dialog will only prompt once in a session.",
+      "parentUuid": "baa397f0_e8872314",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 98
+      },
+      "revId": "b7a337ac24e5de6a93d869e40b6ab50bc1a0cb6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
