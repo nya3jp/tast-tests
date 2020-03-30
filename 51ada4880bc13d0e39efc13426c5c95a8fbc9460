@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98f6c287_2f5898db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-30T02:52:37Z",
+      "side": 1,
+      "message": "Rather than just believing, could you explain why it is expected exact one GPU process in most cases, and in which case it wouldn\u0027t be so that it can be safely ignored, in the comment in the code?",
+      "revId": "51ada4880bc13d0e39efc13426c5c95a8fbc9460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
