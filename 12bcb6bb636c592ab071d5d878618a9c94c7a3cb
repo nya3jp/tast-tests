@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a13a7c11_c0335830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T19:10:15Z",
+      "side": 1,
+      "message": "It will be more efficient and simpler if the implementation was switched around so that local code implements CurrentBootMode, and CheckBootMode calls that to check for the expected boot mode.",
+      "revId": "12bcb6bb636c592ab071d5d878618a9c94c7a3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744ca1fe_fdfb3bf3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T19:10:15Z",
+      "side": 1,
+      "message": "nit, currentBootMode instead of currentBootModeResp would be more inline with previous variable names.  Or add Resp to the other variable names.",
+      "revId": "12bcb6bb636c592ab071d5d878618a9c94c7a3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abcaf0f6_c6b049d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T19:10:15Z",
+      "side": 1,
+      "message": "nit, moving this to after normal mode check would make things easier to read.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "12bcb6bb636c592ab071d5d878618a9c94c7a3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57571b0_6ae6f976",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T19:10:15Z",
+      "side": 1,
+      "message": "ditto here, consistent variable names Resp vs. Response or omit it.",
+      "revId": "12bcb6bb636c592ab071d5d878618a9c94c7a3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
