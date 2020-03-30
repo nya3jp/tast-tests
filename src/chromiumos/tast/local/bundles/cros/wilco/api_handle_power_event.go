@@ -72,7 +72,8 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
 
-	{
+	// Repeat tests to make sure they're not influenced by system events.
+	for i := 0; i < 10; i++ {
 		// Do not wait for the first power event since WilcoDTCSupportd cashes
 		// the last external power AC event it sent to the WilcoDTC. That's why
 		// there is no guarantee which value is in the cache.
@@ -100,7 +101,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_AC_INSERT)
 	}
 
-	{
+	for i := 0; i < 10; i++ {
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-1)
 		if err := emitter.EmitSuspendImminent(shortCtx, &pmpb.SuspendImminent{
@@ -119,7 +120,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		waitForPowerEvent(shortCtx, dtcpb.HandlePowerNotificationRequest_OS_RESUME)
 	}
 
-	{
+	for i := 0; i < 10; i++ {
 		reason := pmpb.SuspendImminent_IDLE
 		suspendID := int32(-2)
 		if err := emitter.EmitDarkSuspendImminent(shortCtx, &pmpb.SuspendImminent{
