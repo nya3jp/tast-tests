@@ -117,19 +117,26 @@ func APIHandleBluetoothDataChanged(ctx context.Context, s *testing.State) {
 	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	for _, enable := range []bool{true, false} {
-		if err := enableBluetooth(ctx, enable); err != nil {
-			s.Fatalf("Unable to set Bluetooth powered property to %t: %v", enable, err)
-		}
+	// Repeat tests to make sure they're not influenced by system events.
+	for i := 0; i < 10; i++ {
+		for _, enable := range []bool{true, false} {
+			if err := enableBluetooth(ctx, enable); err != nil {
+				s.Fatalf("Unable to set Bluetooth powered property to %t: %v", enable, err)
+			}
 
-		s.Log("Waiting for Bluetooth event")
-		msg := dtcpb.HandleBluetoothDataChangedRequest{}
-		if err := rec.WaitForMessage(ctx, &msg); err != nil {
-			s.Fatal("Unable to receive Bluetooth event: ", err)
-		}
+			for {
+				s.Log("Waiting for Bluetooth event")
+				msg := dtcpb.HandleBluetoothDataChangedRequest{}
+				if err := rec.WaitForMessage(ctx, &msg); err != nil {
+					s.Fatal("Unable to receive Bluetooth event: ", err)
+				}
 
-		if err := validateBluetoothData(&msg, enable); err != nil {
-			s.Errorf("Unable to validate Bluetooth data %v: %v", msg, err)
+				if err := validateBluetoothData(&msg, enable); err != nil {
+					s.Logf("Unable to validate Bluetooth data %v: %v", msg, err)
+				} else {
+					break
+				}
+			}
 		}
 	}
 }

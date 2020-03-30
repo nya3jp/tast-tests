@@ -71,6 +71,18 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			if p.wilcoDTCSupportdPID != pid {
 				s.Error("The Wilco DTC Support Daemon PID changed while testing")
 			}
+
+			// Restart the Wilco DTC Daemon to flush the queued events.
+			if err := wilco.StartSupportd(ctx); err != nil {
+				s.Fatal("Unable to restart the Wilco DTC Support Daemon: ", err)
+			}
+
+			pid, err = wilco.SupportdPID(ctx)
+			if err != nil {
+				s.Fatal("Unable to get Wilco DTC Support Daemon PID: ", err)
+			}
+
+			p.wilcoDTCSupportdPID = pid
 		}
 
 		if p.state.WilcoDTCVMRunning {
