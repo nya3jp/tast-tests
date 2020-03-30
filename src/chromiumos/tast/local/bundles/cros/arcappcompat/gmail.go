@@ -118,6 +118,7 @@ func Gmail(ctx context.Context, s *testing.State) {
 
 			defer act.Stop(ctx)
 
+			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
 		})
 	}
@@ -135,6 +136,11 @@ func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.Test
 		takeMeToGmailButtonText = "TAKE ME TO GMAIL"
 		userNameID              = "com.google.android.gm:id/account_address"
 	)
+
+	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
+		s.Fatal("Failed to launch the app: ", currentAppPkg)
+	}
+	s.Log("App is launched successfully in launchAppForGmail")
 
 	// Click on Got It button.
 	GotItButton := d.Object(ui.ClassName(textViewClassName), ui.Text(gotItButtonText))
