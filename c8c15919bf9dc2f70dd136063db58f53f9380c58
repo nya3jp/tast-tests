@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1ff82fc0_f40dc5fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-03-30T09:26:01Z",
+      "side": 1,
+      "message": "how do you define dependency for houdini or ndk translation? \nARM boards won\u0027t need to have binfmt_misc mounted.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51052209_1e519b00",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 2
