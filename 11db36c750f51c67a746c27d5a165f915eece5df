@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3522479_2cfa8421",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-30T08:12:24Z",
+      "side": 1,
+      "message": "I played around with this a little bit, but it does not seem to work for camera. Seems like screen frames do not correspond to camera frames. The screen is redrawn much more often than camera frames are coming in:\n\n```\nHISTOGRAM: 5ms\u003d1809 6ms\u003d93 7ms\u003d46 8ms\u003d44 9ms\u003d20 10ms\u003d19 11ms\u003d13 12ms\u003d9 13ms\u003d4 14ms\u003d5 15ms\u003d4 16ms\u003d7 17ms\u003d3 18ms\u003d8 19ms\u003d4 20ms\u003d4 21ms\u003d2 22ms\u003d1 23ms\u003d3 24ms\u003d0 25ms\u003d1 26ms\u003d0 27ms\u003d0 28ms\u003d0 29ms\u003d1 30ms\u003d0 31ms\u003d0 32ms\u003d1 34ms\u003d2 36ms\u003d0 38ms\u003d0 40ms\u003d0 42ms\u003d0 44ms\u003d0 46ms\u003d1 48ms\u003d0 53ms\u003d0 57ms\u003d1 61ms\u003d0 65ms\u003d0 69ms\u003d0 73ms\u003d0 77ms\u003d0 81ms\u003d0 85ms\u003d0 89ms\u003d0 93ms\u003d0 97ms\u003d0 101ms\u003d0 105ms\u003d0 109ms\u003d0 113ms\u003d0 117ms\u003d0 121ms\u003d0 125ms\u003d0 129ms\u003d0 133ms\u003d0 150ms\u003d0 200ms\u003d1 250ms\u003d1 300ms\u003d0 350ms\u003d0 400ms\u003d0 450ms\u003d0 500ms\u003d0 550ms\u003d0 600ms\u003d0 650ms\u003d0 700ms\u003d0 750ms\u003d0 800ms\u003d0 850ms\u003d0 900ms\u003d0 950ms\u003d0 1000ms\u003d0 1050ms\u003d0 1100ms\u003d0 1150ms\u003d0 1200ms\u003d0 1250ms\u003d0 1300ms\u003d0 1350ms\u003d0 1400ms\u003d0 1450ms\u003d0 1500ms\u003d0 1550ms\u003d0 1600ms\u003d0 1650ms\u003d0 1700ms\u003d0 1750ms\u003d0 1800ms\u003d0 1850ms\u003d0 1900ms\u003d0 1950ms\u003d0 2000ms\u003d0 2050ms\u003d0 2100ms\u003d0 2150ms\u003d0 2200ms\u003d0 2250ms\u003d0 2300ms\u003d0 2350ms\u003d0 2400ms\u003d0 2450ms\u003d0 2500ms\u003d0 2550ms\u003d0 2600ms\u003d0 2650ms\u003d0 2700ms\u003d0 2750ms\u003d0 2800ms\u003d0 2850ms\u003d0 2900ms\u003d0 2950ms\u003d0 3000ms\u003d0 3050ms\u003d0 3100ms\u003d0 3150ms\u003d0 3200ms\u003d0 3250ms\u003d0 3300ms\u003d0 3350ms\u003d0 3400ms\u003d0 3450ms\u003d0 3500ms\u003d0 3550ms\u003d0 3600ms\u003d0 3650ms\u003d0 3700ms\u003d0 3750ms\u003d0 3800ms\u003d0 3850ms\u003d0 3900ms\u003d0 3950ms\u003d0 4000ms\u003d0 4050ms\u003d0 4100ms\u003d0 4150ms\u003d0 4200ms\u003d0 4250ms\u003d0 4300ms\u003d0 4350ms\u003d0 4400ms\u003d0 4450ms\u003d0 4500ms\u003d0 4550ms\u003d0 4600ms\u003d0 4650ms\u003d0 4700ms\u003d0 4750ms\u003d0 4800ms\u003d0 4850ms\u003d0 4900ms\u003d0 4950ms\u003d0\n```\n\nThe method that I am using for getting camera frame durations is taken from the Android camera CTS tests. It seems like this is the best we can do.",
+      "parentUuid": "cb1f1f40_1345780f",
+      "revId": "11db36c750f51c67a746c27d5a165f915eece5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2836e91_3d59cfda",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8c3d0cde_15d77240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-30T08:12:24Z",
+      "side": 1,
+      "message": "Done.\n\nPrinting to log.",
+      "parentUuid": "b2836e91_3d59cfda",
+      "revId": "11db36c750f51c67a746c27d5a165f915eece5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00488bd0_670491bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
         "patchSetId": 5
@@ -50,6 +86,24 @@
       "revId": "11db36c750f51c67a746c27d5a165f915eece5df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9037f12d_2dd93ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-03-30T08:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00488bd0_670491bf",
+      "revId": "11db36c750f51c67a746c27d5a165f915eece5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
