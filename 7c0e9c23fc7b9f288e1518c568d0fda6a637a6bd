@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f3d56dc_e892d7ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-30T04:42:46Z",
+      "side": 1,
+      "message": "This needs to run in defer statement, otherwise the file could be retained in case of failure.",
+      "revId": "7c0e9c23fc7b9f288e1518c568d0fda6a637a6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb6992e_2557a2c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-30T04:42:46Z",
+      "side": 1,
+      "message": "nit: let\u0027s use arc.ARC.ReadFile.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/c312faa02a5a71fd3681bda2945e479b947950c1/src/chromiumos/tast/local/arc/file.go#68\n\n(Sorry, I should have mentioned it in the previous reply)",
+      "revId": "7c0e9c23fc7b9f288e1518c568d0fda6a637a6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

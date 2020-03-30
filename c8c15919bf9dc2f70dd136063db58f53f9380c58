@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "329ae757_70b4e617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-30T04:42:46Z",
+      "side": 1,
+      "message": "So, I\u0027d recommend to split this test into two.\n- arc.BinfmtMisc: to make sure binfmt_misc is unmounted as you did in L42-L51.\n- arc.NativeBridge: to make sure libhoudini/libndk_translation works.\n  - Guarding by SoftwareDeps.\n  - make sure ro.boot.native_bridge is properly set. (Fail if not).\n  - executes hello_world_arm(64)? and it works.\n\nWDYT?",
+      "parentUuid": "3ecc4fca_39f91675",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd53e4f6_2b75597d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 2
