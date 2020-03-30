@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "ba458e0d_64076ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T23:30:27Z",
+      "side": 1,
+      "message": "nit: still the same.  The current code will pass if you have a typo (e.g. \"c0nfirm\") on the caller side",
+      "parentUuid": "ece5f912_654aeb2f",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e60edeb5_a902d2bb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 6

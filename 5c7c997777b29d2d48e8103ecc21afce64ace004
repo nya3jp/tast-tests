@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3493a924_e607c165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T23:30:27Z",
+      "side": 1,
+      "message": "how about just \"ImportantFileWriter flushes every 10 seconds. Wait for EnableAdbSideloadingRequested to be written before continue.\"?\n\nBTW, I just check again.  It looks like you can add \ng_browser_process-\u003elocal_state()-\u003eCommitPendingWrite(...) then get rid of the pooling here.  Could you add a TODO?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "5c7c997777b29d2d48e8103ecc21afce64ace004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa72d589_43c3aead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T23:30:27Z",
+      "side": 1,
+      "message": "fmt.Sprintf is not necessary, just keep the string literal",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "5c7c997777b29d2d48e8103ecc21afce64ace004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4698a147_5773a6b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T23:30:27Z",
+      "side": 1,
+      "message": "why do you need this conversion? It looks like both values in L93 are strings.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "5c7c997777b29d2d48e8103ecc21afce64ace004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
