@@ -34,6 +34,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f73965f_3b4f945a",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-30T21:00:01Z",
+      "side": 1,
+      "message": "\u003e If an invalid control or value is passed in, servo will still accept it with no error\n\nUpon further testing, this appears to be wrong. I get the following error when I pass an invalid KeypressControl, or a valid KeypressControl with an invalid KeypressDuration:\n\n    response contains 0 arg(s); want 1\n\nSo, if someone is sending incorrect controls/values, then they will get an error. In my opinion, that is sufficient.",
+      "parentUuid": "cda66197_715d45cf",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
