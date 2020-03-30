@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "165750dd_f8329cce",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-30T17:50:09Z",
+      "side": 1,
+      "message": "Can we leave some trace of this issue? Like, file a bug or note a TODO at a minimum? This seems like a \"technical debt\" item that will bite us in the future. In the past, we masked this via a semi-magic LIBPCAP_POLL_FREQ_SECS sleep. If you\u0027re dropping that magic sleep, we really need something better.\n\nBy the way, there are some decent notes here:\n\nhttps://chromium-review.googlesource.com/288814",
+      "parentUuid": "cba970c1_8872ef65",
+      "revId": "f8feab8a08deadf558eee821cb5d2fff07df59a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e52539c_f5a0e46b",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
         "patchSetId": 6
