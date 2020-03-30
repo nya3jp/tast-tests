@@ -70,6 +70,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7aec635_f8aa74a0",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-30T22:18:41Z",
+      "side": 1,
+      "message": "The keypress values can take the declared constants, or optionally an int or a float. That\u0027s why I named the function KeypressWithDuration: so that we can also add KeypressWithInt or KeypressWithFloat if needed.\n\nThis is documented in the comment at line 26.",
+      "parentUuid": "ff1044df_a75b1780",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
