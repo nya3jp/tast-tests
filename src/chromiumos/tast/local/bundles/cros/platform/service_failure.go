@@ -67,10 +67,11 @@ func init() {
 		Func:     ServiceFailure,
 		Desc:     "Verify service failures are logged as expected",
 		Contacts: []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
 			Pre:               crash.ChromePreWithVerboseConsent(),
 			Val:               crash.RealConsent,
 		}, {
