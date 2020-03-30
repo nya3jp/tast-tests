@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6e2e26a_b10f7d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-03-30T13:05:42Z",
+      "side": 1,
+      "message": "arcvm-eng if the test is targeted for ARCVM only?",
+      "range": {
+        "startLine": 22,
+        "startChar": 56,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "48d27f89639638a13f012d9a41bc5aded84f18c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
