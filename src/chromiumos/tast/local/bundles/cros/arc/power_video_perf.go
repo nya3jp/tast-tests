@@ -46,7 +46,7 @@ func init() {
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName, testVideoFile, testVideoFile + ".json"},
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}},
 		Timeout: 45 * time.Minute,
