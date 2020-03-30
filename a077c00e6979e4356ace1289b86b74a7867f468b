@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4335815d_03bb4d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/chrome_media_internals.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-30T22:55:52Z",
+      "side": 1,
+      "message": "Nit: Can you change this and the return in the function above(L63) to nil. Since the error is always nil at these points, it is clearer to just return nil.",
+      "range": {
+        "startLine": 72,
+        "startChar": 21,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "a077c00e6979e4356ace1289b86b74a7867f468b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
