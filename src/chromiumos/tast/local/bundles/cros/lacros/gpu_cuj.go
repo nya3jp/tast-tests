@@ -24,6 +24,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type gpuCUJTestParams struct {
+	url      string
+	threedot bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GpuCUJ,
@@ -34,22 +39,91 @@ func init() {
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
 			Name: "aquarium_composited",
-			Val:  "https://webglsamples.org/aquarium/aquarium.html",
-			Pre:  launcher.StartedByDataForceComposition(),
+			Val: gpuCUJTestParams{
+				url:      "https://webglsamples.org/aquarium/aquarium.html",
+				threedot: false,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
+		}, {
+			Name: "aquarium_threedot",
+			Val: gpuCUJTestParams{
+				url:      "https://webglsamples.org/aquarium/aquarium.html",
+				threedot: true,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "aquarium",
-			Val:  "https://webglsamples.org/aquarium/aquarium.html",
-			Pre:  launcher.StartedByData(),
+			Val: gpuCUJTestParams{
+				url:      "https://webglsamples.org/aquarium/aquarium.html",
+				threedot: false,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "poster_composited",
-			Val:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-			Pre:  launcher.StartedByDataForceComposition(),
+			Val: gpuCUJTestParams{
+				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+				threedot: false,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
+		}, {
+			Name: "poster_threedot",
+			Val: gpuCUJTestParams{
+				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+				threedot: true,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "poster",
-			Val:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-			Pre:  launcher.StartedByData(),
+			Val: gpuCUJTestParams{
+				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+				threedot: false,
+			},
+			Pre: launcher.StartedByData(),
 		}},
 	})
+}
+
+var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
+
+func waitForWindowState(ctx context.Context, ctconn *chrome.TestConn, w *ash.Window, state ash.WindowStateType) error {
+	return ash.WaitForCondition(ctx, ctconn, func(cw *ash.Window) bool {
+		// Wait for the window given by |w| to be in the given |state| and also not be animating.
+		return w.ID == cw.ID && cw.State == state && !cw.IsAnimating
+	}, pollOptions)
+}
+
+func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, n *ui.Node) error {
+	if err := n.Update(ctx); err != nil {
+		return errors.Wrap(err, "failed to update the node's location")
+	}
+	if n.Location.Empty() {
+		return errors.New("this node doesn't have a location on the screen and can't be clicked")
+	}
+	w, err := findFirstWindow(ctx, ctconn)
+	if err != nil {
+		return err
+	}
+	// Compute the node coordinates in cros-chrome root window coordinate space by
+	// adding the top left coordinate of the linux-chrome window in cros-chrome root window coorindates.
+	return ash.MouseClick(ctx, ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), ash.LeftButton)
+}
+
+func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn func(*ui.Node) error) error {
+	// Find and click the three dot menu via UI.
+	params := ui.FindParams{
+		Role:      ui.RoleTypePopUpButton,
+		ClassName: "BrowserAppMenuButton",
+	}
+	menu, err := chromeui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the three dot menu")
+	}
+	defer menu.Release(ctx)
+
+	if err := clickFn(menu); err != nil {
+		return errors.Wrap(err, "failed to click three dot menu")
+	}
+	return nil
 }
 
 func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string) error {
@@ -100,8 +174,10 @@ func maximizeFirstWindow(ctx context.Context, ctconn *chrome.TestConn) error {
 	if err != nil {
 		return err
 	}
-	_, err = ash.SetWindowState(ctx, ctconn, w.ID, ash.WMEventMaximize)
-	return err
+	if _, err := ash.SetWindowState(ctx, ctconn, w.ID, ash.WMEventMaximize); err != nil {
+		return err
+	}
+	return waitForWindowState(ctx, ctconn, w, ash.WindowStateMaximized)
 }
 
 func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
@@ -192,7 +268,7 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 	return nil
 }
 
-func runTestLacros(ctx context.Context, pd launcher.PreData, pv *perf.Values, url string) error {
+func runTestLacros(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJTestParams) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
@@ -215,7 +291,7 @@ func runTestLacros(ctx context.Context, pd launcher.PreData, pv *perf.Values, ur
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	conn, err := l.NewConn(ctx, url)
+	conn, err := l.NewConn(ctx, p.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open new tab")
 	}
@@ -231,6 +307,16 @@ func runTestLacros(ctx context.Context, pd launcher.PreData, pv *perf.Values, ur
 		return errors.Wrap(err, "failed to maximize linux-chrome")
 	}
 
+	// Open the threedot menu if indicated.
+	// TODO(edcourtney): Sometimes the accessibility isn't populated for linux chrome, which causes this code to fail.
+	if p.threedot {
+		clickFn := func(n *ui.Node) error { return leftClickLacros(ctx, ctconn, n) }
+		if err := toggleThreeDotMenu(ctx, ltconn, clickFn); err != nil {
+			return errors.Wrap(err, "failed to open three dot menu")
+		}
+		defer toggleThreeDotMenu(ctx, ltconn, clickFn)
+	}
+
 	if err := runHistogram(ctx, ltconn, pv, "lacros"); err != nil {
 		return err
 	}
@@ -238,7 +324,7 @@ func runTestLacros(ctx context.Context, pd launcher.PreData, pv *perf.Values, ur
 	return nil
 }
 
-func runTestChromeOS(ctx context.Context, pd launcher.PreData, pv *perf.Values, url string) error {
+func runTestChromeOS(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJTestParams) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
@@ -249,7 +335,7 @@ func runTestChromeOS(ctx context.Context, pd launcher.PreData, pv *perf.Values, 
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	conn, err := pd.Chrome.NewConn(ctx, url)
+	conn, err := pd.Chrome.NewConn(ctx, p.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open new tab")
 	}
@@ -258,6 +344,15 @@ func runTestChromeOS(ctx context.Context, pd launcher.PreData, pv *perf.Values, 
 	// Maximize chrome window.
 	if err := maximizeFirstWindow(ctx, ctconn); err != nil {
 		return errors.Wrap(err, "failed to maximize chrome")
+	}
+
+	// Open the threedot menu if indicated.
+	if p.threedot {
+		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
+		if err := toggleThreeDotMenu(ctx, ctconn, clickFn); err != nil {
+			return errors.Wrap(err, "failed to open three dot menu")
+		}
+		defer toggleThreeDotMenu(ctx, ctconn, clickFn)
 	}
 
 	if err := runHistogram(ctx, ctconn, pv, "cros"); err != nil {
@@ -282,12 +377,13 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	p := s.Param().(gpuCUJTestParams)
 	pv := perf.NewValues()
-	if err := runTestLacros(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string)); err != nil {
+	if err := runTestLacros(ctx, s.PreValue().(launcher.PreData), pv, p); err != nil {
 		s.Fatal("Failed to run test: ", err)
 	}
 
-	if err := runTestChromeOS(ctx, s.PreValue().(launcher.PreData), pv, s.Param().(string)); err != nil {
+	if err := runTestChromeOS(ctx, s.PreValue().(launcher.PreData), pv, p); err != nil {
 		s.Fatal("Failed to run test: ", err)
 	}
 

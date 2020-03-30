@@ -27,6 +27,11 @@ func (p Point) String() string {
 	return fmt.Sprintf("(%d, %d)", p.X, p.Y)
 }
 
+// Add returns the addition of two Points.
+func (p Point) Add(p2 Point) Point {
+	return Point{p.X + p2.X, p.Y + p2.Y}
+}
+
 // Size represents a size of a region.
 type Size struct {
 	Width  int `json:"width"`
@@ -60,6 +65,11 @@ func NewRectLTRB(l, t, r, b int) Rect {
 // String returns the string representation of Rect.
 func (r Rect) String() string {
 	return fmt.Sprintf("(%d, %d) - (%d x %d)", r.Left, r.Top, r.Width, r.Height)
+}
+
+// TopLeft returns the location of the top left of the rectangle.
+func (r Rect) TopLeft() Point {
+	return Point{X: r.Left, Y: r.Top}
 }
 
 // CenterPoint returns the location of the center of the rectangle.
