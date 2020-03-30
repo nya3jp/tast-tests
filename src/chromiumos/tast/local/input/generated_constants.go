@@ -9,11 +9,11 @@ package input
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from include/uapi/linux/input-event-codes.h
-// in the Linux kernel repository at revision e071366d54aef88ed5a633a6c736cbd6b66c120e.
+// in the Linux kernel repository at revision fbc393e79a145db83667afd0d155cb803cd1d637.
 // Run "go generate" to regenerate it.
 
-//go:generate go run gen/gen_constants.go gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
-//go:generate go fmt generated_constants.go
+//go:generate ../../../../../../tast/tools/go.sh run gen/gen_constants.go gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+//go:generate ../../../../../../tast/tools/go.sh fmt generated_constants.go
 
 // EventType corresponds to the "type" field in the input_event C struct.
 // Per the kernel documentation, "event types are groupings of codes under a logical input construct."
@@ -316,10 +316,10 @@ const (
 	KEY_TITLE                    EventCode = 0x171
 	KEY_SUBTITLE                 EventCode = 0x172
 	KEY_ANGLE                    EventCode = 0x173
-	KEY_ZOOM                     EventCode = 0x174
+	KEY_FULL_SCREEN              EventCode = 0x174
 	KEY_MODE                     EventCode = 0x175
 	KEY_KEYBOARD                 EventCode = 0x176
-	KEY_SCREEN                   EventCode = 0x177
+	KEY_ASPECT_RATIO             EventCode = 0x177
 	KEY_PC                       EventCode = 0x178
 	KEY_TV                       EventCode = 0x179
 	KEY_TV2                      EventCode = 0x17a

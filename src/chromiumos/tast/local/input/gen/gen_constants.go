@@ -71,9 +71,14 @@ func main() {
 	inputFile := args[0]
 	outputFile := args[1]
 
-	repoPath, repoRev, err := getRepoInfo(inputFile)
+	repoPath, err := gitRelPath(inputFile)
 	if err != nil {
-		log.Fatalf("Failed to get repo info for %v: %v", inputFile, err)
+		log.Fatalf("Failed to get repo path for %v: %v", inputFile, err)
+	}
+
+	repoRev, err := gitRev(inputFile)
+	if err != nil {
+		log.Fatalf("Failed to get repo revision for %v: %v", inputFile, err)
 	}
 
 	const (
@@ -122,9 +127,10 @@ func main() {
 	}
 
 	const (
+		goSh    = "../../../../../../tast/tools/go.sh"
 		exeName = "gen/gen_constants.go"
-		goGen   = `//go:generate go run ` + exeName + ` gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
-//go:generate go fmt generated_constants.go`
+		goGen   = `//go:generate ` + goSh + ` run ` + exeName + ` gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+//go:generate ` + goSh + ` fmt generated_constants.go`
 	)
 
 	a := tmplArgs{
