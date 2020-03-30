@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/session"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -358,16 +357,6 @@ func USBGuard(ctx context.Context, s *testing.State) {
 		// Include results in the policy.
 		m := seccomp.NewPolicyGenerator()
 		if err := m.AddStraceLog(daemonLog, seccomp.IncludeAllSyscalls); err != nil {
-			s.Fatal("AddStraceLog(daemonLog) failed with: ", err)
-		}
-
-		// Include "usbguard generate-policy" in the seccomp policy.
-		clientLog := filepath.Join(s.OutDir(), "client-strace.log")
-		cmd = seccomp.CommandContext(ctx, clientLog, "usbguard", "generate-policy")
-		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-			s.Fatalf("%q failed with: %v", cmd.Args, err)
-		}
-		if err := m.AddStraceLog(clientLog, seccomp.IncludeAllSyscalls); err != nil {
 			s.Fatal("AddStraceLog(daemonLog) failed with: ", err)
 		}
 
