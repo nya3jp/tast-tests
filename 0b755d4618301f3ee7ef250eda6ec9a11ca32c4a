@@ -22,6 +22,30 @@
       "revId": "0b755d4618301f3ee7ef250eda6ec9a11ca32c4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c027b2_73a478b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_outside_display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-03-30T01:58:45Z",
+      "side": 1,
+      "message": "This is because we want to pass the additional Chrome flag --force-tablet-mode\u003dclamshell. There\u0027s currently no precondition like arc.BootedInTabletMode() that supports the flag.",
+      "parentUuid": "87a19637_67fba50f",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "0b755d4618301f3ee7ef250eda6ec9a11ca32c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
