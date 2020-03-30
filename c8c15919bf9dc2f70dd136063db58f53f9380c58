@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f047f839_ebb0c93c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-30T07:46:16Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!\n\nNow I\u0027m considering making binfmt_misc mounted/unmounted only when the property ro.boot.native_bridge has a non-zero value.\nThe change would make the init process a little bit safer and cleaner.\nThe property ro.boot.native_bridge has a non-zero value iff at least one of the USE flags houdini and ndk_translation is set; we already have a unittest for it.\nSo I guess it might be better to make the whole test dependent on a feature defined by (houdini || ndk_translation) after the change described above is made.\n\nOne possibility is that binfmt_misc is somehow erroneously mounted when the flags are not set.\nIf we should take the possibility seriously, then splitting the test would be a better idea even after the change.",
+      "parentUuid": "329ae757_70b4e617",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd53e4f6_2b75597d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 2
