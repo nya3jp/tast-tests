@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06d3040b_ac4abb28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T23:17:09Z",
+      "side": 1,
+      "message": "While trying to convert from new Promise() to tast.Promisify, I am getting an error- - tast not defined. I looked into other tests using tast. promisify - they don\u0027t import anything specific to tast. Now, I am wondering if this is because we are at the login screen and cannot use tast there, but I maybe wrong",
+      "parentUuid": "e97404b4_e45cdd72",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0998fd11_4509b328",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 6
@@ -116,6 +140,30 @@
       "revId": "727cc6449dea7b17af54246428efa896e12be583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367b155b_f84b3849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T23:17:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbbb330_3822156b",
+      "range": {
+        "startLine": 59,
+        "startChar": 93,
+        "endLine": 59,
+        "endChar": 98
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
