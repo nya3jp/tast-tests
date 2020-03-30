@@ -94,6 +94,30 @@
       "revId": "b7a337ac24e5de6a93d869e40b6ab50bc1a0cb6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70cb50c_a4c5185e",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-30T11:31:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fb7fe6d_9623e7d1",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 98
+      },
+      "revId": "b7a337ac24e5de6a93d869e40b6ab50bc1a0cb6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
