@@ -106,6 +106,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a6df4c_2d4506ed",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-30T23:29:28Z",
+      "side": 1,
+      "message": "Because there is no `value in list` syntax in Go like there is for Python, here is the most succinct way I have found to express that:\n\n    // KeypressWithDuration sets a KeypressControl to a KeypressDuration value.\n    func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressControl, value KeypressDuration) error {\n        controlIsValid :\u003d false\n            for _, c :\u003d range []KeypressControl{CtrlD, CtrlU, CtrlEnter, Ctrl, Enter, Refresh, CtrlRefresh, ImaginaryKey, SysRQX, PowerKey, PwrButton} {\n                    if control \u003d\u003d c {\n                            controlIsValid \u003d true\n                            break\n                    }\n            }\n            if !controlIsValid {\n                    return errors.Errorf(\"control %s is invalid\", control)\n            }\n            valueIsValid :\u003d false\n            for _, v :\u003d range []KeypressDuration{DurTab, DurPress, DurLongPress} {\n                    if value \u003d\u003d v {\n                            valueIsValid \u003d true\n                            break\n                    }\n            }\n            if !valueIsValid {\n                    return errors.Errorf(\"value %s is invalid\", value)\n            }\n            return s.SetString(ctx, StringControl(control), string(value))\n    }\n\n(It would be nontrivial to write a reusable `value in list` function, because Go doesn\u0027t support polymorphic functions: we would need to write keypressControlInArray, and keypressDurationInArray. Or a clever way to map an array of KeypressControls/KeypressDurations to an array of strings.)\n\nAs an alternative, based on my earlier comment (@2:00PT) that passing an invalid control or value yields an error, I think the following would suffice:\n\n    // KeypressWithDuration sets a KeypressControl to a KeypressDuration value.\n    func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressControl, value KeypressDuration) error {\n            if err :\u003d s.SetString(ctx, StringControl(control), string(value)); err !\u003d nil {\n                    return errors.Wrap(err, \"supplied control or value may not be valid\")\n            }\n            return nil\n    }\n\nWhat would you think of that solution?",
+      "parentUuid": "3ee50d87_0afa80cd",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
