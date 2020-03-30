@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da977393_d9545f74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-30T10:31:26Z",
+      "side": 1,
+      "message": "If I understand correctly, I think we can define a new feature \"native_bridge\" by (houdini || ndk_translation) and add it to SoftwareDeps, following the example in https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_dependencies.md#new-features.\nThen the test would be skipped by the boards on which these flags are not set.",
+      "parentUuid": "1ff82fc0_f40dc5fc",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51052209_1e519b00",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 2
