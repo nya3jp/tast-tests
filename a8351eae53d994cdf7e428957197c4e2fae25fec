@@ -52,6 +52,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1044df_a75b1780",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T22:01:17Z",
+      "side": 1,
+      "message": "Oh I need one thing clarified, does control and value only take values in the declared constants, or can they take other values?",
+      "parentUuid": "0f73965f_3b4f945a",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
