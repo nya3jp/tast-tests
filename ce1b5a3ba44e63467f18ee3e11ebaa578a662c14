@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c3f29d7c_2581f424",
+        "filename": "android/ArcPerAppDensityTest/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-03-30T00:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6230bac0_153fc415",
+      "revId": "ce1b5a3ba44e63467f18ee3e11ebaa578a662c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbf19f1b_e3dccc76",
         "filename": "android/ArcPerAppDensityTest/res/layout/surfaceview_activity.xml",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "ce1b5a3ba44e63467f18ee3e11ebaa578a662c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6be2b2_fd6a952e",
+        "filename": "android/ArcPerAppDensityTest/res/layout/surfaceview_activity.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-03-30T00:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf19f1b_e3dccc76",
+      "revId": "ce1b5a3ba44e63467f18ee3e11ebaa578a662c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a025eb59_048f4499",
+        "filename": "android/ArcPerAppDensityTest/res/layout/surfaceview_activity.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-03-30T00:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "458e4738_b49b5b8a",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "ce1b5a3ba44e63467f18ee3e11ebaa578a662c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "735213aa_99a08426",
         "filename": "android/ArcPerAppDensityTest/res/layout/view_activity.xml",
         "patchSetId": 5
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "1494050c_8c62ef98",
+        "filename": "android/ArcPerAppDensityTest/res/layout/view_activity.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-03-30T00:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "735213aa_99a08426",
+      "revId": "ce1b5a3ba44e63467f18ee3e11ebaa578a662c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cf22d7b_08f05e4c",
         "filename": "android/ArcPerAppDensityTest/res/values/strings.xml",
         "patchSetId": 5
@@ -90,6 +168,24 @@
       "revId": "ce1b5a3ba44e63467f18ee3e11ebaa578a662c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af6a6d2e_72e3955f",
+        "filename": "android/ArcPerAppDensityTest/res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-03-30T00:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cf22d7b_08f05e4c",
+      "revId": "ce1b5a3ba44e63467f18ee3e11ebaa578a662c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
