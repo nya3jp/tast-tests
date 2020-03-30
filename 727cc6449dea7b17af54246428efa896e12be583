@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e97404b4_e45cdd72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "use promisify",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0998fd11_4509b328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "nit: lower cases except \"E\"rror? Remove the space in the end.\n\nAlso, is it possible to wrap the actual err?  If not, at least print it out.",
+      "range": {
+        "startLine": 56,
+        "startChar": 27,
+        "endLine": 56,
+        "endChar": 77
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aac6409_1e6292b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "on",
+      "range": {
+        "startLine": 59,
+        "startChar": 93,
+        "endLine": 59,
+        "endChar": 98
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59e2a4e_9a95ed24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "unnecessary, same below",
+      "range": {
+        "startLine": 90,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6eec3e_7d01cdea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "nit: check unrecognized input to be defensive.  Turn L91-96 to if-else or switch.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60edeb5_a902d2bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 41,
+        "startChar": 63,
+        "endLine": 41,
+        "endChar": 65
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb4ca06_b5b25a99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "nit: inconsistent to the code below that says \"request\". I think we can just remove the whole comment, which doesn\u0027t seem to add extra value?",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0bfbcf_f14d0ce4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "nit: dialog? confirmation UI? It\u0027s not a warning",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2529380a_648403ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "Magic number. Why not string? Same below.",
+      "range": {
+        "startLine": 82,
+        "startChar": 17,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb8c65f5_4be48846",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "nit: no space between \"lock box\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e3f170e_4fec9ff9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-03-30T16:31:58Z",
+      "side": 1,
+      "message": "nit: I\u0027d prefer to extract the reset code into a function, and call it right after each doAdbSideloadAction call",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 108
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
