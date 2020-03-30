@@ -16,6 +16,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda66197_715d45cf",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-30T20:40:58Z",
+      "side": 1,
+      "message": "\u003e Should check control and value for validity before calling run.\n\nHow would you check this? If an invalid control or value is passed in, servo will still accept it with no error, so we would need some way of determining what is a valid control/value. That\u0027s why this function takes a KeypressControl and KeypressDuration, with constants defined above: to mitigate the risk of typos and errors. If tests use these constants, I expect there would be no issue.\n\n\u003e Also, can delegate rest of this function to SetString.\n\nDone.",
+      "parentUuid": "dbd18d5e_12df041b",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
