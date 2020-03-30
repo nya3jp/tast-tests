@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5db97c82_a6e35702",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a1971b4_8535156d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab4ec3ad_f267ee78",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 2
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "66d4ec94_73ae3c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e47dc4_4d0f1173",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5211935b_b7d990d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 2
@@ -259,6 +307,30 @@
       "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89500ece_a9829d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "939bde07_790a96c6",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "e3c48c86575b0a4f45ffc869eb299f66dc11587b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "48ed866c_41b67431",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60edeb5_a902d2bb",
+      "range": {
+        "startLine": 41,
+        "startChar": 63,
+        "endLine": 41,
+        "endChar": 65
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cb4ca06_b5b25a99",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 6
@@ -160,6 +184,30 @@
       "revId": "727cc6449dea7b17af54246428efa896e12be583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7bf968_e01d5101",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb4ca06_b5b25a99",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +234,30 @@
     },
     {
       "key": {
+        "uuid": "47bf3ff5_f583c89d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c0bfbcf_f14d0ce4",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2529380a_648403ec",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 6
@@ -206,6 +278,30 @@
       "revId": "727cc6449dea7b17af54246428efa896e12be583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f86d9b32_b6f6e9d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2529380a_648403ec",
+      "range": {
+        "startLine": 82,
+        "startChar": 17,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +328,30 @@
     },
     {
       "key": {
+        "uuid": "726565f5_f94549af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb8c65f5_4be48846",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3f170e_4fec9ff9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 6
@@ -252,6 +372,30 @@
       "revId": "727cc6449dea7b17af54246428efa896e12be583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b97636_83076213",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-30T22:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e3f170e_4fec9ff9",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 108
+      },
+      "revId": "727cc6449dea7b17af54246428efa896e12be583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
