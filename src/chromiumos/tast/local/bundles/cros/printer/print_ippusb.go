@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Tests ipp-over-usb printing",
 		Contacts:     []string{"valleau@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "cups"},
+		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Data:         []string{"print_ippusb_to_print.pdf", "print_ippusb_golden.pdf"},
 		Pre:          chrome.LoggedIn(),
 	})

@@ -62,7 +62,7 @@ func init() {
 			"jschettler@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome", "cups"},
+		SoftwareDeps: []string{"android_p", "chrome", "cups", "virtual_usb_printer"},
 		Data:         []string{"arc_print_ippusb_golden.pdf"},
 		Pre:          arc.Booted(),
 	})
