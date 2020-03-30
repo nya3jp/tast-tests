@@ -34,6 +34,24 @@
       "revId": "ea65a3557d41283064d0f68c561cb7515f898034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa1279e_555539d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-30T23:43:04Z",
+      "side": 1,
+      "message": "This involves adding a method to get the crossystem key value pairs and doing the check based on that.",
+      "parentUuid": "bad71752_36e91e6b",
+      "revId": "ea65a3557d41283064d0f68c561cb7515f898034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
