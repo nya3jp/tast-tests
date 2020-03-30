@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "470951f2_a1fdb458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-30T16:58:12Z",
+      "side": 1,
+      "message": "This script has bad error handling and magic sleeps. I would strongly suggest (in fact, I believe I already did in person) killing it and implementing something more directly.\n\nI wonder if we could implement this in Golang instead.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101d932d_a5506523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-30T16:58:12Z",
+      "side": 1,
+      "message": "if it helps, I\u0027m pretty sure all of this can be managed from outside the chroot/namespace (see: \u0027ip netns ...\u0027).\n\nAlso, the /run/ipsec stuff really doesn\u0027t belong in the generic network chroot implementation.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
