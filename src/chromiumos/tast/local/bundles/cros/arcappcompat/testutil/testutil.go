@@ -233,13 +233,14 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 }
 
 // CurrentAppPackage func to get info on current package name
-func CurrentAppPackage(ctx context.Context, s *testing.State, d *ui.Device) {
+func CurrentAppPackage(ctx context.Context, s *testing.State, d *ui.Device) string {
 	info, err := d.GetInfo(ctx)
 	if err != nil {
 		s.Log("Failed to get app package name: ", err)
 	} else {
 		s.Logf("Current app package name %+v", info.CurrentPackagename)
 	}
+	return info.CurrentPackagename
 }
 
 // DetectAndCloseCrashOrAppNotResponding func to handle Crash or ANR.
