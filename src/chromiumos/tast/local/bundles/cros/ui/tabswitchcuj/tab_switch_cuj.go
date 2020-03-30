@@ -160,6 +160,9 @@ func Run(ctx context.Context, s *testing.State) {
 		Category:      cuj.CategoryLatency,
 		JankCriteria:  []int64{800, 1600},
 	})
+	if err != nil {
+		s.Fatal("Failed to create a recorder: ", err)
+	}
 
 	for _, data := range []struct {
 		name     string
