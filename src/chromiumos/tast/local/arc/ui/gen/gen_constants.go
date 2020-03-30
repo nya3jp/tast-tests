@@ -77,9 +77,13 @@ func main() {
 	inputFile := args[0]
 	outputFile := args[1]
 
-	repoPath, repoRev, err := getRepoInfo(inputFile)
+	repoPath, err := gitRelPath(inputFile)
 	if err != nil {
-		log.Fatalf("Failed to get repo info for %v: %v", inputFile, err)
+		log.Fatalf("Failed to get the relpath to the git root for %v: %v", inputFile, err)
+	}
+	repoRev, err := gitRev(inputFile)
+	if err != nil {
+		log.Fatalf("Failed to get the git revision for %v: %v", inputFile, err)
 	}
 
 	const (
@@ -100,10 +104,11 @@ func main() {
 
 	const (
 		exeName = "gen/gen_constants.go"
+		goSh    = "../../../../../../../tast/tools/go.sh"
 		goGen   = `// Assumes that Android repo is checked out at same folder level as Chrome OS. e.g: If Chrome OS sources are in:
 // ~/src/chromeos/, then Android sources should be in ~/src/android/
-//go:generate go run ` + exeName + ` gen/util.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
-//go:generate go fmt generated_constants.go`
+//go:generate ` + goSh + ` run ` + exeName + ` gen/util.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
+//go:generate ` + goSh + ` fmt generated_constants.go`
 	)
 
 	a := tmplArgs{

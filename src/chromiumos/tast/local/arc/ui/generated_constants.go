@@ -9,13 +9,13 @@ package ui
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from core/java/android/view/KeyEvent.java
-// in the Android frameworks/base repository at revision 2e5dd8cffe49d7cac98ae39b6224c787e66b6ba1.
+// in the Android frameworks/base repository at revision 512c14973e91f7b3b721f9fde7e237627941ce98.
 // Run "go generate" to regenerate it.
 
 // Assumes that Android repo is checked out at same folder level as Chrome OS. e.g: If Chrome OS sources are in:
 // ~/src/chromeos/, then Android sources should be in ~/src/android/
-//go:generate go run gen/gen_constants.go gen/util.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
-//go:generate go fmt generated_constants.go
+//go:generate ../../../../../../../tast/tools/go.sh run gen/gen_constants.go gen/util.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
+//go:generate ../../../../../../../tast/tools/go.sh fmt generated_constants.go
 
 // KeyCode represents an Android key code.
 type KeyCode uint16

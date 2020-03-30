@@ -98,30 +98,30 @@ func getGroupForName(groups []*groupInfo, name string) *groupInfo {
 	return nil
 }
 
-// getRepoInfo returns path's location relative to its git repository and the HEAD revision for the repository.
-func getRepoInfo(path string) (relPath, rev string, err error) {
-	if path, err = filepath.Abs(path); err != nil {
-		return "", "", err
+// gitRelPath returns the path to the file or directory of the p relative to its git
+// repository's root.
+func gitRelPath(p string) (string, error) {
+	out, err := exec.Command("git", "-C", filepath.Dir(p), "ls-files", "--full-name", filepath.Base(p)).Output()
+	if err != nil {
+		return "", err
 	}
-	path = filepath.Clean(path)
+	return strings.TrimSpace(string(out)), nil
+}
 
+// gitRev returns the revision of the git repository containing the p.
+func gitRev(p string) (string, error) {
 	// This prints the base path of the repo on the first line and HEAD's revision on the second.
-	cmd := exec.Command("git", "rev-parse", "--show-toplevel", "HEAD")
-	cmd.Dir = filepath.Dir(path)
+	cmd := exec.Command("git", "-C", filepath.Dir(p), "rev-parse", "--show-toplevel", "HEAD")
 	out, err := cmd.Output()
 	if err != nil {
-		return "", "", err
+		return "", err
 	}
 
 	lines := strings.Split(strings.TrimSpace(string(out)), "\n")
 	if len(lines) != 2 {
-		return "", "", errors.Errorf("%q printed %q; wanted 2 lines", strings.Join(cmd.Args, " "), string(out))
+		return "", errors.Errorf("%q printed %q: wanted 2 lines", strings.Join(cmd.Args, " "), string(out))
 	}
-	rev = lines[1]
-	if relPath, err = filepath.Rel(lines[0], path); err != nil {
-		return "", "", err
-	}
-	return relPath, rev, nil
+	return lines[1], nil
 }
 
 // writeConstants writes consts to path as a Go source file, using a text/template.
