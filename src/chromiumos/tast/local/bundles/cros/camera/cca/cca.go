@@ -366,7 +366,7 @@ func (a *App) WaitForVideoActive(ctx context.Context) error {
 }
 
 // WaitForFileSaved waits for the presence of the captured file with file name matching the specified
-// pattern and modified time after the specified timestamp.
+// pattern, size larger than zero, and modified time after the specified timestamp.
 func (a *App) WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
 	const timeout = 5 * time.Second
 	var result os.FileInfo
@@ -377,7 +377,7 @@ func (a *App) WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Rege
 			return errors.Wrap(err, "failed to read the directory where media files are saved")
 		}
 		for _, file := range files {
-			if file.ModTime().Before(ts) {
+			if file.Size() == 0 || file.ModTime().Before(ts) {
 				continue
 			}
 			if _, ok := seen[file.Name()]; ok {
