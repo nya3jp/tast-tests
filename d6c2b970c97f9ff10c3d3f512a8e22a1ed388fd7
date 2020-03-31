@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8895036_0a9bcbd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T19:03:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a027156_85b48954",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 59
+      },
+      "revId": "d6c2b970c97f9ff10c3d3f512a8e22a1ed388fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8e1387f_9d20f7c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "d6c2b970c97f9ff10c3d3f512a8e22a1ed388fd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cce5d02f_cf3ea3d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T19:03:40Z",
+      "side": 1,
+      "message": "Sure.Thanks.",
+      "parentUuid": "a8e1387f_9d20f7c4",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 27
+      },
+      "revId": "d6c2b970c97f9ff10c3d3f512a8e22a1ed388fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
