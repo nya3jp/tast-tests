@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19d7f9cd_6fb63a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T18:22:52Z",
+      "side": 1,
+      "message": "ok. I will move DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName).\ntestutil.CurrentAppPackage(ctx, s, d) is needed in \"launchAppForGmail\" because I need to check whether app is launched successfully in launchAppForGmail.",
+      "parentUuid": "e27c16be_7ba7e3b1",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 59
+      },
+      "revId": "c01196b7e4e0f4159205ec977a7b26aea46b15a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac7bffe3_ee5b7d4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 1
