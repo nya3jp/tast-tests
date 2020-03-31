@@ -294,7 +294,7 @@ func UnsetCrashTestInProgress() error {
 func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	defer func() {
 		if retErr != nil {
-			tearDownCrashTest(&tearDownParams{
+			tearDownCrashTest(ctx, &tearDownParams{
 				inProgDir:         p.inProgDir,
 				sysCrashDir:       p.sysCrashDir,
 				sysCrashStash:     p.sysCrashStash,
@@ -417,8 +417,11 @@ func TearDownCrashTest(ctx context.Context) error {
 
 	// This could return a different list of paths then the original setup if a session has started or ended in the meantime. If a new session has started then the restore will just become a no-op, but if a session has ended we won't restore the crash files inside that session's cryptohome. We can't do much about this since we can't touch a cryptohome while that user isn't logged in.
 	daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
-	if err != nil && firstErr == nil {
-		firstErr = errors.Wrap(err, "failed to get daemon store crash directories")
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get daemon store crash dirs: ", err)
+		if firstErr == nil {
+			firstErr = errors.Wrap(err, "failed to get daemon store crash directories")
+		}
 	}
 	var daemonStoreStashPaths []string
 	for _, path := range daemonStorePaths {
@@ -438,15 +441,21 @@ func TearDownCrashTest(ctx context.Context) error {
 		senderPausePath:   senderPausePath,
 		mockSendingPath:   mockSendingPath,
 	}
-	if err := tearDownCrashTest(&p); err != nil && firstErr == nil {
-		firstErr = err
+	if err := tearDownCrashTest(ctx, &p); err != nil {
+		testing.ContextLog(ctx, "Failed to tearDownCrashTest: ", err)
+		if firstErr == nil {
+			firstErr = err
+		}
 	}
 	// The user crash directory should always be owned by chronos not root. The
 	// unit tests don't run as root and can't chown, so skip this in tests.
 	// Only do this if the local crash dir actually exists.
 	if _, err := os.Stat(LocalCrashDir); err == nil {
-		if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil && firstErr == nil {
-			firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
+		if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), crashUserAccessGID); err != nil {
+			testing.ContextLogf(ctx, "Couldn't chown %s: %v", LocalCrashDir, err)
+			if firstErr == nil {
+				firstErr = errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
+			}
 		}
 	}
 	return firstErr
@@ -469,51 +478,81 @@ type tearDownParams struct {
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTest(p *tearDownParams) error {
+func tearDownCrashTest(ctx context.Context, p *tearDownParams) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file
 	// or it was never created (See SetUpDevImageCrashTest).
 	// Well, whatever, we're in the correct state now (the file is gone).
 	filePath := filepath.Join(p.inProgDir, crashTestInProgressFile)
-	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
-		firstErr = err
-	}
-	filePath = filepath.Join(p.sysCrashDir, crashTestInProgressFile)
-	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
-		firstErr = err
-	}
-
-	if err := cleanUpStashDir(p.sysCrashStash, p.sysCrashDir); err != nil && firstErr == nil {
-		firstErr = err
-	}
-	for i := range p.daemonStoreDir {
-		if err := cleanUpStashDir(p.daemonStoreStash[i], p.daemonStoreDir[i]); err != nil && firstErr == nil {
+	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
+		testing.ContextLogf(ctx, "Error removing %s: %v", filePath, err)
+		if firstErr == nil {
 			firstErr = err
 		}
 	}
-	if err := cleanUpStashDir(p.chronosCrashStash, p.chronosCrashDir); err != nil && firstErr == nil {
-		firstErr = err
+	filePath = filepath.Join(p.sysCrashDir, crashTestInProgressFile)
+	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
+		testing.ContextLogf(ctx, "Error removing %s: %v", filePath, err)
+		if firstErr == nil {
+			firstErr = err
+		}
 	}
-	if err := cleanUpStashDir(p.userCrashStash, p.userCrashDir); err != nil && firstErr == nil {
-		firstErr = err
+
+	if err := cleanUpStashDir(p.sysCrashStash, p.sysCrashDir); err != nil {
+		testing.ContextLogf(ctx, "Error cleaning up system stash dir %s (real dir %s): %v", p.sysCrashStash, p.sysCrashDir, err)
+		if firstErr == nil {
+			firstErr = err
+		}
+	}
+	for i := range p.daemonStoreDir {
+		if err := cleanUpStashDir(p.daemonStoreStash[i], p.daemonStoreDir[i]); err != nil {
+			testing.ContextLogf(ctx, "Error cleaning up daemon store stash dir %s (real dir %s): %v", p.daemonStoreStash[i], p.daemonStoreDir[i], err)
+			if firstErr == nil {
+				firstErr = err
+			}
+		}
+	}
+	if err := cleanUpStashDir(p.chronosCrashStash, p.chronosCrashDir); err != nil {
+		testing.ContextLogf(ctx, "Error cleaning up chronos stash dir %s (real dir %s): %v", p.chronosCrashStash, p.chronosCrashDir, err)
+		if firstErr == nil {
+			firstErr = err
+		}
+	}
+	if err := cleanUpStashDir(p.userCrashStash, p.userCrashDir); err != nil {
+		testing.ContextLogf(ctx, "Error cleaning up user stash dir %s (real dir %s): %v", p.userCrashStash, p.userCrashDir, err)
+		if firstErr == nil {
+			firstErr = err
+		}
 	}
 
 	if err := disableMockSending(p.mockSendingPath); err != nil {
-		firstErr = err
+		testing.ContextLogf(ctx, "Error disabling mock sending with path %s: %v", p.mockSendingPath, err)
+		if firstErr == nil {
+			firstErr = err
+		}
 	}
 
 	mockConsentPath := filepath.Join(p.inProgDir, mockConsentFile)
-	if err := os.Remove(mockConsentPath); err != nil && !os.IsNotExist(err) && firstErr == nil {
-		firstErr = err
+	if err := os.Remove(mockConsentPath); err != nil && !os.IsNotExist(err) {
+		testing.ContextLogf(ctx, "Error removing mock consent file %s: %v", mockConsentPath, err)
+		if firstErr == nil {
+			firstErr = err
+		}
 	}
 	mockConsentPersistent := filepath.Join(p.sysCrashDir, mockConsentFile)
-	if err := os.Remove(mockConsentPersistent); err != nil && !os.IsNotExist(err) && firstErr == nil {
-		firstErr = err
+	if err := os.Remove(mockConsentPersistent); err != nil && !os.IsNotExist(err) {
+		testing.ContextLogf(ctx, "Error removing persistent mock consent file %s: %v", mockConsentPersistent, err)
+		if firstErr == nil {
+			firstErr = err
+		}
 	}
 
-	if err := os.Remove(p.senderPausePath); err != nil && !os.IsNotExist(err) && firstErr == nil {
-		firstErr = err
+	if err := os.Remove(p.senderPausePath); err != nil && !os.IsNotExist(err) {
+		testing.ContextLogf(ctx, "Error removing sender pause file %s: %v", p.senderPausePath, err)
+		if firstErr == nil {
+			firstErr = err
+		}
 	}
 
 	return firstErr
