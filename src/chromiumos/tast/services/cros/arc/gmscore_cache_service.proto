@@ -6,14 +6,17 @@ syntax = "proto3";
 
 package tast.cros.arc;
 
-import "google/protobuf/empty.proto";
-
 option go_package = "chromiumos/tast/services/cros/arc";
 
 // GmsCoreService provides GMS Core and GFS caches generation
 service GmsCoreCacheService {
   // Generate generates GMS Core and GFS caches.
-  rpc Generate (google.protobuf.Empty) returns (GmsCoreCacheResponse) {}
+  rpc Generate (GmsCoreCacheRequest) returns (GmsCoreCacheResponse) {}
+}
+
+message GmsCoreCacheRequest {
+  // Specify which build is requested.
+  bool vm_enabled = 1;
 }
 
 message GmsCoreCacheResponse {

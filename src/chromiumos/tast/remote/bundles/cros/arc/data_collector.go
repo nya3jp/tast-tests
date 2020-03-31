@@ -15,8 +15,6 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -51,6 +49,15 @@ func init() {
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
 		Timeout: 10 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               false,
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               true,
+		}},
 		Vars: []string{
 			"arc.DataCollector.UreadaheadService_username",
 			"arc.DataCollector.UreadaheadService_password",
@@ -61,14 +68,9 @@ func init() {
 // getBuildDescriptorRemotely gets ARC build properties from the device, parses for build ID, ABI,
 // and returns these fields as a combined string. It also return weither this is official build or
 // not.
-func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT) (*buildDescriptor, error) {
-	isARCVM, err := dut.Command("cat", "/run/chrome/is_arcvm").Output(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to check ARCVM status remotely")
-	}
-
+func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled bool) (*buildDescriptor, error) {
 	var propertyFile string
-	if string(isARCVM) == "1" {
+	if vmEnabled {
 		propertyFile = "/usr/share/arcvm/properties/build.prop"
 	} else {
 		propertyFile = "/usr/share/arc/properties/build.prop"
@@ -168,7 +170,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	desc, err := getBuildDescriptorRemotely(ctx, d)
+	vmEnabled := s.Param().(bool)
+
+	desc, err := getBuildDescriptorRemotely(ctx, d, vmEnabled)
 	if err != nil {
 		s.Fatal("Failed to get ARC build desc: ", err)
 	}
@@ -183,6 +187,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			InitialBoot: true,
 			Username:    s.RequiredVar("arc.DataCollector.UreadaheadService_username"),
 			Password:    s.RequiredVar("arc.DataCollector.UreadaheadService_password"),
+			VmEnabled:   vmEnabled,
 		}
 
 		// Checks if generated packs need to be uploaded to the server.
@@ -250,7 +255,10 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
-		response, err := service.Generate(shortCtx, &empty.Empty{})
+		request := arcpb.GmsCoreCacheRequest{
+			VmEnabled: vmEnabled,
+		}
+		response, err := service.Generate(shortCtx, &request)
 		if err != nil {
 			s.Fatal("GmsCoreCacheService.Generate returned an error: ", err)
 		}
