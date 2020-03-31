@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3eb7e3d0_a10c7279",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "nit: adapterIface? There is also device interface which is unused for now",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a0edb1_94d9992b",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "nit: maybe just `Adapters`? I\u0027d like to have AllAdapters if there were other methods like `OneAdapter`, `AnyAdapter`, etc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f283053_89945b4a",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "can you please make a separate constant `service`?",
+      "range": {
+        "startLine": 30,
+        "startChar": 39,
+        "endLine": 30,
+        "endChar": 48
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f42b5f61_5aabe315",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "nit: string",
+      "range": {
+        "startLine": 110,
+        "startChar": 48,
+        "endLine": 110,
+        "endChar": 52
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac3002f_6b925930",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "nit: name",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c24da6_fbdd0171",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "nit: D-Bus / DBus.... can you also change error message in previous functions?",
+      "range": {
+        "startLine": 64,
+        "startChar": 48,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "428353eb_28d902e1",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 69,
+        "startChar": 52,
+        "endLine": 69,
+        "endChar": 56
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7d91a9_626af55d",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "nit: this isn\u0027t bluez related",
+      "range": {
+        "startLine": 73,
+        "startChar": 41,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30563038_9c85d8a6",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T15:47:49Z",
+      "side": 1,
+      "message": "nit: ifaceToProps? `v` already was used before in the function",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
