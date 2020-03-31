@@ -191,7 +191,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		senderPausePath: pausePath,
 		mockSendingPath: mockSendingPath,
 	}
-	if err := tearDownCrashTest(&tp); err != nil {
+	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
 	}
 
@@ -261,7 +261,7 @@ func TestSetUpAndTearDownReboot(t *testing.T) {
 		mockSendingPath: mockSendingPath,
 	}
 
-	if err := tearDownCrashTest(&tp); err != nil {
+	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
 	}
 	if err := checkNonExistent(remoteMockConsentPath, remoteInProgPath); err != nil {
@@ -278,7 +278,7 @@ func TestSetUpAndTearDownReboot(t *testing.T) {
 	if err := checkNonExistent(remoteMockConsentPath); err != nil {
 		t.Error("Reboot-persistance mock-consent file unexpectedly created: ", err)
 	}
-	if err := tearDownCrashTest(&tp); err != nil {
+	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
 	}
 	if err := checkNonExistent(remoteMockConsentPath, remoteInProgPath); err != nil {
@@ -352,7 +352,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 		senderPausePath: pausePath,
 		mockSendingPath: mockSendingPath,
 	}
-	if err := tearDownCrashTest(&tp); err != nil {
+	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
 	}
 
