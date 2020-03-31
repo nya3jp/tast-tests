@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "4d96f220_7b1e4cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/boot_lockbox_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T19:10:41Z",
+      "side": 1,
+      "message": "cpb is actually used in the code below. So, we would need to keep it.",
+      "parentUuid": "0d6ceb13_333da893",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9455feec_92d390fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -66,6 +84,24 @@
       "writtenOn": "2020-03-23T05:43:49Z",
       "side": 1,
       "message": "This looks contain many sub-tests.\nDid you consider splitting tests using a test parameter?\nFor example, see src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "750fabe6_3ec18ccc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T19:10:41Z",
+      "side": 1,
+      "message": "Looked at the above file. In this file, I can think of moving to convert 3 of the sub-tests using test parameters. However, I have a doubt - as in what benefit does it provide ? Pros and Cons of writing helper functions v/s converting them into sub-tests ??",
+      "parentUuid": "9455feec_92d390fe",
       "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "151f7fa9_af780f36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T19:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7457f186_619df287",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0e094cb_4e5b9eb1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -103,6 +157,24 @@
       "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e070c6_766dfb00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T19:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0e094cb_4e5b9eb1",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "12bd4e7e_ad703451",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T19:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "045f3b98_4d960a0b",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03f827f0_658ce254",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -137,6 +227,24 @@
       "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d831a7b4_fb18db39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T19:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03f827f0_658ce254",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
