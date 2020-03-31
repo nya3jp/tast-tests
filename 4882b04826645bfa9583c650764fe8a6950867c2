@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "c620313a_dad0ce4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T21:03:25Z",
+      "side": 1,
+      "message": "OK, so this is not a public resource. That\u0027s fine.\n\nMaybe best just to say \"Not supported on 802.11n devices\" here and on L104-106",
+      "parentUuid": "f62b9e01_b2601355",
+      "range": {
+        "startLine": 101,
+        "startChar": 48,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a53f05ef_04f6f270",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 14
