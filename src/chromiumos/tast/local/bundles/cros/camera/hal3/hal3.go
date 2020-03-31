@@ -50,6 +50,15 @@ type mediaSettings struct {
 	}
 }
 
+// ArcCameraUID returns the user id used by camera service and camera test binary.
+func ArcCameraUID() (int, error) {
+	uid, err := sysutil.GetUID("arc-camera")
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to get uid of arc-camera")
+	}
+	return int(uid), nil
+}
+
 // IsV1Legacy returns true if current device is used to run camera HAL v1 but
 // now run camera HAL v3 as external devices.
 func IsV1Legacy(ctx context.Context) bool {
@@ -147,16 +156,16 @@ func runCrosCameraTest(ctx context.Context, cfg crosCameraTestConfig) error {
 		return errors.Wrap(err, "failed to wait for CPU to become idle")
 	}
 
-	uid, err := sysutil.GetUID("arc-camera")
+	uid, err := ArcCameraUID()
 	if err != nil {
-		return errors.Wrap(err, "failed to get uid of arc-camera")
+		return err
 	}
 
 	t := gtest.New("cros_camera_test",
 		gtest.TempLogfile(filepath.Join(cfg.outDir, "cros_camera_test_*.log")),
 		gtest.Filter(cfg.gtestFilter),
 		gtest.ExtraArgs(cfg.toArgs()...),
-		gtest.UID(int(uid)))
+		gtest.UID(uid))
 
 	if args, err := t.Args(); err == nil {
 		testing.ContextLog(ctx, "Running ", shutil.EscapeSlice(args))
