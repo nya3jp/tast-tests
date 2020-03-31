@@ -41,13 +41,22 @@ func InstallApp(ctx context.Context, a *arc.ARC, apkDataPath string, pkg string)
 
 // StartActivity starts an Android activity.
 func StartActivity(ctx context.Context, a *arc.ARC, pkg string, activityName string) (CleanupCallback, error) {
-	return StartActivityWithArgs(ctx, a, pkg, activityName, []string{}, []string{})
+	return StartActivityWithArgs(ctx, a, pkg, activityName, []string{}, []string{}, false)
+}
+
+// StartActivityAssertRunning starts an Android activity. Raises an error if the activity is no longer running at cleanup time.
+func StartActivityAssertRunning(ctx context.Context, a *arc.ARC, pkg string, activityName string) (CleanupCallback, error) {
+	return StartActivityWithArgs(ctx, a, pkg, activityName, []string{}, []string{}, true)
 }
 
 // StartActivityWithArgs starts an Android activity with prefixes and suffixes
 // to pkgName/activityName. This is useful for intent arguments.
 // https://developer.android.com/studio/command-line/adb.html#IntentSpec
-func StartActivityWithArgs(ctx context.Context, a *arc.ARC, pkg string, activityName string, prefixes, suffixes []string) (CleanupCallback, error) {
+func StartActivityWithArgs(ctx context.Context, a *arc.ARC, pkg string, activityName string, prefixes, suffixes []string, assertRunning bool) (CleanupCallback, error) {
+	const (
+		activityNotRunningMessage = "tried to close activity %q but it was no longer running"
+	)
+
 	testing.ContextLogf(ctx, "Starting activity %s/%s", pkg, activityName)
 	activity, err := arc.NewActivity(a, pkg, activityName)
 	if err != nil {
@@ -58,9 +67,26 @@ func StartActivityWithArgs(ctx context.Context, a *arc.ARC, pkg string, activity
 	}
 
 	return func(ctx context.Context) error {
+		// Check if the app is still running.
+		isRunning, err := activity.IsRunning(ctx)
+		if err != nil {
+			return err
+		}
+
+		// Just to be on the safe side: Try to close activity even if `!isRunning`.
+		// Closing an already closed activity does not throw an error.
 		testing.ContextLogf(ctx, "Stopping activities in package %s", pkg)
 		defer activity.Close()
-		return activity.Stop(ctx)
+		err = activity.Stop(ctx)
+
+		if !isRunning {
+			if assertRunning {
+				return errors.Errorf(activityNotRunningMessage, activityName)
+			}
+			testing.ContextLogf(ctx, activityNotRunningMessage, activityName)
+		}
+
+		return err
 	}, nil
 }
 

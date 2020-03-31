@@ -77,7 +77,7 @@ func PowerCameraGcaPreviewPerf(ctx context.Context, s *testing.State) {
 
 	// TODO(springerm): WaitUntilCPUCoolDown before starting GCA.
 	// Start GCA (Google Camera App).
-	sup.Add(setup.StartActivity(ctx, a, gcaPackage, gcaActivity))
+	sup.Add(setup.StartActivityAssertRunning(ctx, a, gcaPackage, gcaActivity))
 
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
