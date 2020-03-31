@@ -59,5 +59,9 @@ func (a *ARC) GetProp(ctx context.Context, key string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSpace(string(o)), nil
+	s := strings.TrimSpace(string(o))
+	if s == "" {
+		return "", err
+	}
+	return s, nil
 }
