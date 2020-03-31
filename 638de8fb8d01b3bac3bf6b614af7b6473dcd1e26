@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8cda0c_fc28cfb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-31T07:23:20Z",
+      "side": 1,
+      "message": "Question: Is it acceptable to check a feature via testing.ContextSoftwareDeps() within the body of a test?\n\nIf it\u0027s acceptable, then defining a feature \"native_bridge64\" as (houdini64 || ndk_translation64), and checking whether the feature is in the result of testing.ContextSoftwareDeps() instead of checking the property \"ro.product.cpu.abilist64\" would be better than the current implementation, I think.\n# The property \"ro.product.cpu.abilist64\" is set to \"x86_64,arm64-v8a\" iff either of the flags houdini64/ndk_translation64 is enabled. So proceeding as (1) check the USE flags via the feature -\u003e (2) check the property (throw an error if not properly set) -\u003e (3) check whether \"hello_world_arm64\" can be executed, would be more natural and informative as a test.\n\nIf is\u0027s not acceptable, then it\u0027s also possible to split the test into arc.NativeBridge and arc.NativeBridge64, but it seems a little redundant.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "638de8fb8d01b3bac3bf6b614af7b6473dcd1e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
