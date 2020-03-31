@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34eddc4f_ce9e50af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-03-31T20:23:02Z",
+      "side": 1,
+      "message": "Features for SoftwareDeps can be defined using USE flags: https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_dependencies.md#new-features\nThe feature \"native_bridge\" is defined as \"houdini || ndk_translation\" in https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2128170, which appears in the Cq-Depend field of this CL.\nSo adding this feature to SoftwareDeps enables DUTs lacking these USE flags to skip the test.",
+      "parentUuid": "0985010c_0fa4b579",
+      "range": {
+        "startLine": 24,
+        "startChar": 52,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "638de8fb8d01b3bac3bf6b614af7b6473dcd1e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b8cda0c_fc28cfb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
         "patchSetId": 6
