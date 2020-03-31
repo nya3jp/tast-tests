@@ -49,7 +49,7 @@ func init() {
 			"yamaguchi@chromium.org",    // Tast port author
 			"cros-telemetry@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "reporter_startup",
 			Val: userCrashParams{
@@ -80,6 +80,7 @@ func init() {
 				testFunc:    testChronosCrasher,
 				consentType: localcrash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "chronos_crasher_mock_consent",
@@ -87,12 +88,14 @@ func init() {
 				testFunc:    testChronosCrasher,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "chronos_crasher_no_consent",
 			Val: userCrashParams{
 				testFunc:    testChronosCrasherNoConsent,
 				consentType: localcrash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "root_crasher_real_consent",
@@ -100,6 +103,7 @@ func init() {
 				testFunc:    testRootCrasher,
 				consentType: localcrash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "root_crasher_mock_consent",
@@ -107,6 +111,7 @@ func init() {
 				testFunc:    testRootCrasher,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "root_crasher_no_consent",
 			Val: userCrashParams{
@@ -114,42 +119,49 @@ func init() {
 				consentType: localcrash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "crash_filtering",
 			Val: userCrashParams{
 				testFunc:    testCrashFiltering,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "max_enqueued_crash",
 			Val: userCrashParams{
 				testFunc:    testMaxEnqueuedCrash,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "core2md_failure",
 			Val: userCrashParams{
 				testFunc:    testCore2mdFailure,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "internal_directory_failure",
 			Val: userCrashParams{
 				testFunc:    testInternalDirectoryFailure,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "crash_logs_creation",
 			Val: userCrashParams{
 				testFunc:    testCrashLogsCreation,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "crash_log_infinite_recursion",
 			Val: userCrashParams{
 				testFunc:    testCrashLogInfiniteRecursion,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}},
 	})
 }
