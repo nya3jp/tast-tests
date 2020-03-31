@@ -1,0 +1,17 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.camerabox;
+
+option go_package = "chromiumos/tast/services/cros/camerabox";
+
+enum Facing {
+  FACING_UNSET = 0;
+  // DUT's back camera is facing to chart tablet.
+  FACING_BACK = 1;
+  // DUT's front camera is facing to chart tablet.
+  FACING_FRONT = 2;
+}
