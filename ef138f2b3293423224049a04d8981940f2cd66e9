@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9f012027_4e6d0365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "I have made the changes as requested. However, have doubts about 2 things:\n1. How will the 10s timeout interfere with other timeout polls\n2. the way I have created the func() returning an error",
+      "parentUuid": "f6265af7_52ea65d4",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82e896ee_35ad77ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9
@@ -306,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "13b4d712_46a8e407",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "719815b2_c03bd0f0",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5d489e9_2379e025",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9
@@ -517,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "e1cf666e_13fb7490",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1d57fc_b54aa085",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 56
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81e5ade4_e0cfd7ee",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 9
@@ -540,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "f36b5479_ca29346f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81e5ade4_e0cfd7ee",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07414062_8842996f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 9
@@ -551,6 +647,30 @@
       "writtenOn": "2020-03-31T15:00:57Z",
       "side": 1,
       "message": "Similary,\n\nfullCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(fullCtx, 10*time.Second)\ndefer cancel()\ncl, err :\u003d rpc.Dial(ctx, s.DUT(), s.RPCHint(), \"cros\")\nif err !\u003d nil {\n\ts.Fatal(\"Failed to connect to the RPC service on the DUT: \", err)\n}\ndefer func() {\n  if err :\u003d cr.Close(fullCtx); err !\u003d nil {\n    s.Fatal(..., err)\n  }\n}()",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51f94bb_495ec326",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "Tried using this setup. The test started giving errors - basically, going into the s.Fatal section of the defer func each time.",
+      "parentUuid": "07414062_8842996f",
       "range": {
         "startLine": 58,
         "startChar": 0,
@@ -586,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "076eadd0_8e5c5cc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31197269_cc0dd61d",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4295b3bf_05d8663e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 9
@@ -609,6 +753,30 @@
     },
     {
       "key": {
+        "uuid": "5a30629f_b2da50df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4295b3bf_05d8663e",
+      "range": {
+        "startLine": 97,
+        "startChar": 45,
+        "endLine": 97,
+        "endChar": 54
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e8cf60b_11043e3e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 9
@@ -629,6 +797,30 @@
       "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501ac03e_4fcb7773",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T21:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8cf60b_11043e3e",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
