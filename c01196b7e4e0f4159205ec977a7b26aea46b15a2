@@ -69,6 +69,30 @@
       "revId": "c01196b7e4e0f4159205ec977a7b26aea46b15a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7897cc47_9b871a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T18:24:06Z",
+      "side": 1,
+      "message": "Is is used in Gmail app.",
+      "parentUuid": "ac7bffe3_ee5b7d4d",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "c01196b7e4e0f4159205ec977a7b26aea46b15a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
