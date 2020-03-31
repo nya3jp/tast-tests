@@ -25,8 +25,21 @@ func init() {
 		Func:     Goofy,
 		Desc:     "Setup factory toolkit and exercise Goofy with custom TestList",
 		Contacts: []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Data:     []string{"factory_image.zip"},
+		Attr:     []string{"group:mainline"},
+		Params: []testing.Param{{
+			// Since the upstream factory toolkit could not backward compatible with
+			// factory-branched private overlay (b/112251287), we'd like to run test on
+			// upstream factory toolkit without device specific configuration.
+			// "qemu" implies VM tests (aka. "betty" boards)
+			Name:              "",
+			ExtraSoftwareDeps: []string{"qemu"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "manual",
+			ExtraSoftwareDeps: []string{"no_qemu"},
+			ExtraAttr:         []string{"disabled"},
+		}},
+		Data: []string{"factory_image.zip"},
 	})
 }
 
