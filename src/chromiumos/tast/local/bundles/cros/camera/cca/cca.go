@@ -169,6 +169,11 @@ type Resolution struct {
 	Height int `json:"height"`
 }
 
+// AspectRatio returns width divided by height as the aspect ratio of the resolution.
+func (r *Resolution) AspectRatio() float64 {
+	return float64(r.Width) / float64(r.Height)
+}
+
 // AppLauncher is used during the launch process of CCA. We could launch CCA
 // by launchApp event, camera intent or any other ways.
 type AppLauncher func(tconn *chrome.TestConn) error
