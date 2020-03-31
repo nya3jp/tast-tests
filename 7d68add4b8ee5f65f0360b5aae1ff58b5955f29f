@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acb2ca5a_c2cb3380",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-31T23:53:28Z",
+      "side": 1,
+      "message": "nit: I think the pattern in go for optionals is to use pointers (at least that is what protobuf is doing).\n\ne.g:\n\n  type BroadcastResult struct {\n    result int\n    data *string\n    extras *string\n  }\n\noptional: (see comments below) \"result\" might not be needed (depends on your needs actually)\n\nnya@ could you confirm this is correct?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add48f51_e73c93a6",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-31T23:53:28Z",
+      "side": 1,
+      "message": "nit: probably %s or %q",
+      "range": {
+        "startLine": 105,
+        "startChar": 76,
+        "endLine": 105,
+        "endChar": 78
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fbaeebd_8876a4ae",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-03-31T23:53:28Z",
+      "side": 1,
+      "message": "nit: \nan alternative way to do this is:\n\n  func (b *BroadcatResult) Data() (*string) {\n    return b.data\n  }\n\noptional: and let BroadcastIntent return error if result is not -1. If that is the case, then \"result\" might not be needed.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 108
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
