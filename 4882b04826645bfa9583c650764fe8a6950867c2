@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "369caada_9f1f91b8",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-03-31T20:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "938b4202_0265b9e3",
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "552bc0b2_a666b5e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
         "patchSetId": 14
@@ -30,6 +48,30 @@
       "writtenOn": "2020-03-30T23:34:13Z",
       "side": 1,
       "message": "is this spreadsheet public? Can we link it somewhere to make sure this is up-to-date? (or is this actually supposed to be \"datasheet\" in which case there\u0027s nothing we can do about it)",
+      "range": {
+        "startLine": 101,
+        "startChar": 48,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62b9e01_b2601355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-03-31T20:53:27Z",
+      "side": 1,
+      "message": "I was refering to the go/CrConn Tap WiFi/BT Component. All 802.11n don\u0027t support MU-MIMO and we expect all standards from 802.11ac second wave and new to support MU-MIMO.",
+      "parentUuid": "552bc0b2_a666b5e2",
       "range": {
         "startLine": 101,
         "startChar": 48,
@@ -56,6 +98,24 @@
       "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2f25e3_ae7b5a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-03-31T20:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a53f05ef_04f6f270",
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
