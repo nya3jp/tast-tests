@@ -63,7 +63,6 @@ func CheckAndroidVersion(ctx context.Context, s *testing.State) {
 		"betty":         struct{}{},
 		"betty-qt-arc":  struct{}{},
 		"betty-arcnext": struct{}{},
-		"betty-nyc-arc": struct{}{},
 
 		"asuka":             struct{}{},
 		"banon":             struct{}{},
