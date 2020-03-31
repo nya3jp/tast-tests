@@ -22,6 +22,30 @@
       "revId": "c60f9baba818379529bdf45f2fc1da940d440655",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df360346_6c2e6218",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-31T01:48:19Z",
+      "side": 1,
+      "message": "modified to \"OutDir\"",
+      "parentUuid": "31d4081a_54e897ff",
+      "range": {
+        "startLine": 124,
+        "startChar": 74,
+        "endLine": 124,
+        "endChar": 85
+      },
+      "revId": "c60f9baba818379529bdf45f2fc1da940d440655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
