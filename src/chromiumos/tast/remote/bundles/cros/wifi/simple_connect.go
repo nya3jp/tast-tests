@@ -23,7 +23,7 @@ func init() {
 		Func:        SimpleConnect,
 		Desc:        "Verifies that DUT can connect to the host via AP in different WiFi configuration",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:        []string{"group:wificell", "wificell_func"},
+		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		ServiceDeps: []string{"tast.cros.network.Wifi"},
 		Vars:        []string{"router"},
 		Params: []testing.Param{
