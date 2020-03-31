@@ -237,16 +237,14 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 		return errors.Wrap(err, "failed to remove "+collectChromeCrashFile)
 	}
 
-	return setUpCrashTest(ctx, &p)
-}
+	// Reinitialize crash_reporter in case previous tests have left bad state
+	// in core_pattern, etc.
+	if out, err := testexec.CommandContext(ctx, "/sbin/crash_reporter", "--init").CombinedOutput(); err != nil {
+		testing.ContextLog(ctx, "Couldn't initialize crash reporter: ", out)
+		return err
+	}
 
-// SetUpDevImageCrashTest stashes away existing crash files to prevent tests which
-// generate crashes from failing due to full crash directories. This function does
-// not indicate to the DUT that a crash test is in progress, allowing the test to
-// complete with standard developer image behavior. The test should
-// "defer TearDownCrashTest(ctx)" after calling this
-func SetUpDevImageCrashTest(ctx context.Context) error {
-	return SetUpCrashTest(ctx, DevImage())
+	return setUpCrashTest(ctx, &p)
 }
 
 // setUpParams is a collection of parameters to setUpCrashTest.
