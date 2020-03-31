@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20598b24_e7c77649",
+        "filename": "src/chromiumos/tast/local/graphics/trace/proto/proto.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "I was also confused about proto and protocol buffers. Maybe call it \"protocol\", \"ipc\", \"api\", \"comm\"?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b0d4429_197a5c6c",
+        "filename": "src/chromiumos/tast/local/graphics/trace/proto/proto.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "We really need model and chipset here as well (long term we should probably not use board as it is ill-defined for graphics purposes, but for now it is ok), could you please add model and chipset already? You don\u0027t need to fill them out already, but they strings should be in the api.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "735fe291_c3eee890",
+        "filename": "src/chromiumos/tast/local/graphics/trace/proto/proto.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "We need Model and Chipset here as well.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d77ae9f_9e639b2f",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "When I read \"fill\" the first time I thought this was a misspelling of \"file\". Could you keep this at \"get\"?",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53540c2_51844dc4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "// The requested path is specified relative to the repository root URL to restrict access to arbitrary files via this request.",
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d33af38_e848f6bb",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "\"the\" or delete.",
+      "range": {
+        "startLine": 119,
+        "startChar": 69,
+        "endLine": 119,
+        "endChar": 72
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a61377b_6721ea60",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "\"the\" for consistency with above?",
+      "range": {
+        "startLine": 126,
+        "startChar": 65,
+        "endLine": 126,
+        "endChar": 66
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7da987f_4039eb3e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "We can get numbers even when there was no success.\n\nWhat you should to is have a counts number_of_passing/failing_tests and increment them here. At the end when there were any failing tests please fail the tast test with the message indicating how many tests passing/failing.",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 52
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f92de9_34bc1f98",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:23:27Z",
+      "side": 1,
+      "message": "There can be a message also when passing, so this needs to move out of the if statement. For now just print any message if it is not empty.\n\nAlso have one string an concatenate all the messages. At the end if there were failing tests concatenate this with the error message.",
+      "range": {
+        "startLine": 274,
+        "startChar": 3,
+        "endLine": 274,
+        "endChar": 64
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
