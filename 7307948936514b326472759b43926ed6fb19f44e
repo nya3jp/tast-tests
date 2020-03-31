@@ -22,6 +22,30 @@
       "revId": "7307948936514b326472759b43926ed6fb19f44e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46e1aa6_b3b0781b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-03-31T18:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1cd5de6_fa6a61bb",
+      "range": {
+        "startLine": 261,
+        "startChar": 47,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "7307948936514b326472759b43926ed6fb19f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
