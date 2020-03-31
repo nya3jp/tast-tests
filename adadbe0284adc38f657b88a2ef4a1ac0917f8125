@@ -22,6 +22,30 @@
       "revId": "adadbe0284adc38f657b88a2ef4a1ac0917f8125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b15c944_415cce7a",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-03-31T02:24:44Z",
+      "side": 1,
+      "message": "Oops. copied the wrong id. Also add the bug id of the original problem in Autotest.",
+      "parentUuid": "697af67a_11f098ad",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 26
+      },
+      "revId": "adadbe0284adc38f657b88a2ef4a1ac0917f8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
