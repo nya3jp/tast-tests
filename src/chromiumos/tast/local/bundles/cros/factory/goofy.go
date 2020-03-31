@@ -25,8 +25,19 @@ func init() {
 		Func:     Goofy,
 		Desc:     "Setup factory toolkit and exercise Goofy with custom TestList",
 		Contacts: []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Data:     []string{"factory_image.zip"},
+		Attr:     []string{"group:mainline"},
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"qemu"},
+			// ExtraHardwareDeps: hwdep.D(hwdep.Model("betty", "betty-pi-arc"))
+			ExtraAttr: []string{"informational"},
+		}, {
+			// TODO(b/150189948): Fix the non-stable board due to buildbot deps issue.
+			Name:              "not_stable",
+			ExtraSoftwareDeps: []string{"no_qemu"},
+			ExtraAttr:         []string{"informational"},
+		}},
+		Data: []string{"factory_image.zip"},
 	})
 }
 
