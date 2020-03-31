@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"image/jpeg"
+	"math"
 	"os"
 	"path/filepath"
 	"time"
@@ -119,7 +120,7 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err != nil {
 				return err
 			}
-			if pr.Width*or.Height != pr.Height*or.Width {
+			if math.Abs(float64(pr.Width)/float64(pr.Height)-float64(or.Width)/float64(or.Height)) > 0.02 {
 				return errors.Wrapf(err, "inconsistent preview aspect ratio get %d:%d; want %d:%d", pr.Width, pr.Height, or.Width, or.Height)
 			}
 
