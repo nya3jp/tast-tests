@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "195cdf8b_60898c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-31T14:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a03d2242_56e9e4f2",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 98
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5667cc34_b75bbc0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
         "patchSetId": 1
@@ -263,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "7278529c_6d0494a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-31T14:21:50Z",
+      "side": 1,
+      "message": "Golang\u0027s csv parser only works on files, not strings. I believe that\u0027s why everyone parses them the way I do here.",
+      "parentUuid": "dff7445b_d2f91133",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e37f0f09_6eae0dbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
         "patchSetId": 1
@@ -283,6 +331,30 @@
       "revId": "23b365422925fafc0337380f458b6b0537f406cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d5ab6fa_e5c4ddd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-31T14:21:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e37f0f09_6eae0dbc",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
