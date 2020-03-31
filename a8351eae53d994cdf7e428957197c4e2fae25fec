@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a4c6dabb_4fc6738a",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-31T16:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258c45f4_a0669296",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbd18d5e_12df041b",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 1
