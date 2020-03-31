@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29b85f71_f572db4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T01:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3493a924_e607c165",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "5c7c997777b29d2d48e8103ecc21afce64ace004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa72d589_43c3aead",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d9fb03e9_abd9ab07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T01:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa72d589_43c3aead",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "5c7c997777b29d2d48e8103ecc21afce64ace004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4698a147_5773a6b1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "5c7c997777b29d2d48e8103ecc21afce64ace004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d780554c_c99270a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-03-31T01:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4698a147_5773a6b1",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "5c7c997777b29d2d48e8103ecc21afce64ace004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
