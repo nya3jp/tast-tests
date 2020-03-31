@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "02c29048_4c401888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:01:03Z",
+      "side": 1,
+      "message": "some inconsistent indentation here: the first line uses a tab but all subsequent lines use spaces.\n\nI think the go style is actually to leave the inner text of a multiline comment unindented...\n\n /*\n like this\n */\n\n(see https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/8dfe23978461de8db0e4bc9867386a54ea9a38a6/src/chromiumos/tast/common/hwsec/daemon_control.go#7 for example)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "470951f2_a1fdb458",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
         "patchSetId": 2
@@ -42,6 +65,103 @@
         "endLine": 82,
         "endChar": 26
       },
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a403178d_d2244637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:01:03Z",
+      "side": 1,
+      "message": "feels a little consistent for one to be just \"out\" and the other \"stderr\"",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 24
+      },
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e5bacf_176318e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:01:03Z",
+      "side": 1,
+      "message": "If stdout or stderr are multiline strings this is gonna be formatted very strangely. I would also consider using %q in any case where the extent of single format string arguments might not be clear.",
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139fb299_80aa90c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:01:03Z",
+      "side": 1,
+      "message": "nit: delete",
+      "range": {
+        "startLine": 319,
+        "startChar": 55,
+        "endLine": 319,
+        "endChar": 57
+      },
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3397ec_a07fba35",
+        "filename": "src/chromiumos/tast/local/shill/ipconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:01:03Z",
+      "side": 1,
+      "message": "If we aren\u0027t making this property accessible from this library, you can just get rid of this.",
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de4eacca_a5edc1a7",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:01:03Z",
+      "side": 1,
+      "message": "The name of this method is a bit weird since it makes it seem like we\u0027re configuring some other kind of thing called a service path -- in fact, I\u0027m not sure why we don\u0027t just always return the dbus.ObjectPath in ConfigureService, and then we can assign its return value to (_, err) when we don\u0027t care about the object path of the resulting service.",
       "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
