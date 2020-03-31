@@ -52,6 +52,52 @@
       "revId": "ea65a3557d41283064d0f68c561cb7515f898034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d89f1ef_01793226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-31T00:44:45Z",
+      "side": 1,
+      "message": "nit: error string should not be capitalized (see https://github.com/golang/go/wiki/CodeReviewComments#error-strings)",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 29
+      },
+      "revId": "ea65a3557d41283064d0f68c561cb7515f898034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a26e082b_d1b370ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-31T00:44:45Z",
+      "side": 1,
+      "message": "nit: print the expected value on the error message. See also https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 96
+      },
+      "revId": "ea65a3557d41283064d0f68c561cb7515f898034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
