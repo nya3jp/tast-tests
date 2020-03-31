@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "79817e8e_77a21ab0",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T09:54:56Z",
+      "side": 1,
+      "message": "*** Will you get non nil error if you\u0027ll try to stop not running activity? ***",
+      "parentUuid": "9553433b_319703f5",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "cbd09f58bcd81048b491d92af109abb25f52425e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a7a786b_14647460",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 3
