@@ -157,6 +157,52 @@
     },
     {
       "key": {
+        "uuid": "e9b8ad14_75b0a09e",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:44:16Z",
+      "side": 1,
+      "message": "I am paranoid, please change to  \"!\u003d proto.TestResultSuccess\".",
+      "range": {
+        "startLine": 259,
+        "startChar": 22,
+        "endLine": 259,
+        "endChar": 48
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f83a91_c28da1ca",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-03-31T05:44:16Z",
+      "side": 1,
+      "message": "This needs to go to the very end of this function.",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 21
+      },
+      "revId": "36cb6de7d2499e1f4d5eedb92ad2776ba056a000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7da987f_4039eb3e",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 10
