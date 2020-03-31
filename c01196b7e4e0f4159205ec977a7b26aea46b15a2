@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d116022d_8fae31e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T18:53:21Z",
+      "side": 1,
+      "message": "Chang this to name to something like currentAppPkg. It isn\u0027t an error.",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 7
+      },
+      "revId": "c01196b7e4e0f4159205ec977a7b26aea46b15a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e27c16be_7ba7e3b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/gmail.go",
         "patchSetId": 1
@@ -84,6 +107,30 @@
       "side": 1,
       "message": "Is is used in Gmail app.",
       "parentUuid": "ac7bffe3_ee5b7d4d",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "c01196b7e4e0f4159205ec977a7b26aea46b15a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6bceb1d_06c451f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T18:53:21Z",
+      "side": 1,
+      "message": "I see. Missed it at first.",
+      "parentUuid": "7897cc47_9b871a8e",
       "range": {
         "startLine": 236,
         "startChar": 5,
