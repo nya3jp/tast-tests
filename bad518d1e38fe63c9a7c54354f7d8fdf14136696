@@ -134,6 +134,46 @@
     },
     {
       "key": {
+        "uuid": "947efcf7_ebf1f571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:04:48Z",
+      "side": 1,
+      "message": "does this glob work properly? Looks like it gets joined to another filepath and then passed to os.Stat which I don\u0027t think handles globbing.",
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab69c2b2_67193cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-03-31T18:04:48Z",
+      "side": 1,
+      "message": "nit: \"%s does not exist\"",
+      "range": {
+        "startLine": 402,
+        "startChar": 28,
+        "endLine": 402,
+        "endChar": 47
+      },
+      "revId": "bad518d1e38fe63c9a7c54354f7d8fdf14136696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb3397ec_a07fba35",
         "filename": "src/chromiumos/tast/local/shill/ipconfig.go",
         "patchSetId": 2
