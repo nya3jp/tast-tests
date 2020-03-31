@@ -12,7 +12,6 @@ import (
 
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/remote/firmware"
-	"chromiumos/tast/rpc"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -28,38 +27,40 @@ func init() {
 }
 
 func CheckBootMode(ctx context.Context, s *testing.State) {
-	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC: ", err)
+	// hb, err := firmware.NewHelper(ctx, s.DUT(), s.RPCHint(), s.RequiredVar("servo"))
+	h := firmware.NewHelper(s.DUT())
+	defer h.Close(ctx)
+	if err := h.AddRPC(ctx, s.RPCHint()); err != nil {
+		s.Error("registering rpc to helper: ")
 	}
-	defer cl.Close(ctx)
-	utils := fwpb.NewUtilsServiceClient(cl.Conn)
+	if err := h.AddConfig(ctx); err != nil {
+		s.Error("registering config to helper: ", err)
+	}
 
 	// DUT should start in normal mode.
 	// Exercise all ways of verifying the boot mode.
-	currentBootModeResponse, err := utils.CurrentBootMode(ctx, &empty.Empty{})
+	currentBootModeResponse, err := h.Utils.CurrentBootMode(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Error during CurrentBootMode: ", err)
 	}
 	if currentBootModeResponse.BootMode != fwpb.BootMode_BOOT_MODE_NORMAL {
 		s.Fatalf("CurrentBootMode returned BootMode %s; want %s", currentBootModeResponse.BootMode, fwpb.BootMode_BOOT_MODE_NORMAL)
 	}
-	normalMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeNormal)
+	normalMode, err := firmware.CheckBootMode(ctx, h.Utils, fwCommon.BootModeNormal)
 	if err != nil {
 		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
 	}
 	if !normalMode {
 		s.Error("DUT was not in Normal mode at start of test")
 	}
-	devMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeDev)
+	devMode, err := firmware.CheckBootMode(ctx, h.Utils, fwCommon.BootModeDev)
 	if err != nil {
 		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
 	}
 	if devMode {
 		s.Error("DUT was thought to be in Dev mode at start of test")
 	}
-	recMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeRecovery)
+	recMode, err := firmware.CheckBootMode(ctx, h.Utils, fwCommon.BootModeRecovery)
 	if err != nil {
 		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
 	}
@@ -68,22 +69,18 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	}
 
 	// Exercise the BlockingSync, which will be used for each mode-switching reboot.
-	if _, err := utils.BlockingSync(ctx, &empty.Empty{}); err != nil {
+	if _, err := h.Utils.BlockingSync(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error during BlockingSync: ", err)
 	}
 
 	// Exercise the RPC to get the platform name, which will be used to get config info needed for mode-switching reboots.
-	platformResponse, err := utils.Platform(ctx, &empty.Empty{})
+	platformResponse, err := h.Utils.Platform(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Error during Platform: ", err)
 	}
 	s.Logf("Platform name: %s", platformResponse.Platform)
 
 	// Exercise the creation of the config struct, which will be needed for mode-switching reboots.
-	c, err := firmware.NewConfig()
-	if err != nil {
-		s.Fatal("Error during NewConfig: ", err)
-	}
 	expectedConfig := &firmware.Config{
 		ModeSwitcherType:     firmware.KeyboardDevSwitcher,
 		PowerButtonDevSwitch: false,
@@ -93,8 +90,8 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 		ConfirmScreen:        3,
 		USBPlug:              10,
 	}
-	if !reflect.DeepEqual(c, expectedConfig) {
-		s.Fatalf("NewConfig produced %+v, unequal to expected %+v", c, expectedConfig)
+	if !reflect.DeepEqual(h.Config, expectedConfig) {
+		s.Fatalf("NewConfig produced %+v, unequal to expected %+v", h.Config, expectedConfig)
 	}
 
 	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
