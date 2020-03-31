@@ -142,6 +142,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db255ca_4b04b7ed",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-03-31T00:16:02Z",
+      "side": 1,
+      "message": "That kind of function is possible, but is not built-in. So we would need to write our own.\n\nBut because we\u0027re using a special KeypressControl class and a special KeypressDuration class (following dicussion with nya@, https://crrev.com/c/2003686), we would instead need to write two separate functions, `isThisKeyboardControlInArray(c KeyboardControl, arr []KeyboardControl)` and `isThisKeyboardDurationInArray(d KeyboardDuration, arr []KeyboardDuration])`, each of which would only be used once.",
+      "parentUuid": "1c4de924_e9d029ff",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
