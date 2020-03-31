@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29739079_0d27efcc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-31T09:17:30Z",
+      "side": 1,
+      "message": "Ahhhh.... Good catch.\n\nhuge nit: bootTime.Sub(2 * time.Second)",
+      "revId": "656b161da4445020fcded045d7c7b88524852d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
