@@ -54,20 +54,31 @@ type buildProp struct {
 	fingerprint string
 }
 
+func getProp(ctx context.Context, a *arc.ARC, key string) (string, error) {
+	val, err := a.GetProp(ctx, key)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get %s", key)
+	}
+	if val == "" {
+		return "", errors.Errorf("%s is empty", key)
+	}
+	return val, err
+}
+
 func getBuildProp(ctx context.Context, a *arc.ARC) (*buildProp, error) {
-	device, err := a.GetProp(ctx, "ro.product.device")
+	device, err := getProp(ctx, a, "ro.product.device")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get device")
 	}
-	board, err := a.GetProp(ctx, "ro.product.board")
+	board, err := getProp(ctx, a, "ro.product.board")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get board")
 	}
-	cpuAbi, err := a.GetProp(ctx, "ro.product.cpu.abi")
+	cpuAbi, err := getProp(ctx, a, "ro.product.cpu.abi")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get cpu_abi")
 	}
-	fingerprint, err := a.GetProp(ctx, "ro.build.fingerprint")
+	fingerprint, err := getProp(ctx, a, "ro.build.fingerprint")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get fingerprint")
 	}
