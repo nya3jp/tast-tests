@@ -39,26 +39,83 @@ func InstallApp(ctx context.Context, a *arc.ARC, apkDataPath string, pkg string)
 	}, nil
 }
 
-// StartActivity starts an Android activity.
-func StartActivity(ctx context.Context, a *arc.ARC, pkg string, activityName string) (CleanupCallback, error) {
-	return StartActivityWithArgs(ctx, a, pkg, activityName, []string{}, []string{})
+// StartActivityOptions holds all optional parameters of StartActivity.
+type StartActivityOptions struct {
+	// Optional: prefixes and suffixes to pkgName/activityName. This is useful for intent arguments.
+	// See also: https://developer.android.com/studio/command-line/adb.html#IntentSpec
+	Prefixes []string
+	Suffixes []string
+
+	// Raises an error if the activity is no longer running at cleanup time, if set to true.
+	AssertStillRunningOnTeardown bool
 }
 
-// StartActivityWithArgs starts an Android activity with prefixes and suffixes
-// to pkgName/activityName. This is useful for intent arguments.
-// https://developer.android.com/studio/command-line/adb.html#IntentSpec
-func StartActivityWithArgs(ctx context.Context, a *arc.ARC, pkg string, activityName string, prefixes, suffixes []string) (CleanupCallback, error) {
+// StartActivityOption sets an optional parameter of StartActivity.
+type StartActivityOption func(*StartActivityOptions)
+
+// Prefixes sets the optional prefixes parameter of StartActivity.
+func Prefixes(prefixes []string) StartActivityOption {
+	return func(args *StartActivityOptions) {
+		args.Prefixes = prefixes
+	}
+}
+
+// Suffixes sets the optional suffixes parameter of StartActivity.
+func Suffixes(suffixes []string) StartActivityOption {
+	return func(args *StartActivityOptions) {
+		args.Suffixes = suffixes
+	}
+}
+
+// AssertStillRunningOnTeardown sets a parameter that determines if an error should be thrown at the end of the test if the activity is no longer running.
+func AssertStillRunningOnTeardown(value bool) StartActivityOption {
+	return func(args *StartActivityOptions) {
+		args.AssertStillRunningOnTeardown = value
+	}
+}
+
+// StartActivity starts an Android activity.
+func StartActivity(ctx context.Context, a *arc.ARC, pkg string, activityName string, setters ...StartActivityOption) (CleanupCallback, error) {
+	// Default options.
+	args := &StartActivityOptions{
+		Prefixes:                     []string{},
+		Suffixes:                     []string{},
+		AssertStillRunningOnTeardown: true,
+	}
+
+	for _, setter := range setters {
+		setter(args)
+	}
+
 	testing.ContextLogf(ctx, "Starting activity %s/%s", pkg, activityName)
 	activity, err := arc.NewActivity(a, pkg, activityName)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create activity %q in package %q", activityName, pkg)
 	}
-	if err := activity.StartWithArgs(ctx, prefixes, suffixes); err != nil {
+	if err := activity.StartWithArgs(ctx, args.Prefixes, args.Suffixes); err != nil {
 		return nil, errors.Wrapf(err, "failed to start activity %q in package %q", activityName, pkg)
 	}
 
 	return func(ctx context.Context) error {
+		const (
+			activityNotRunningMessage = "tried to close activity %q but it was no longer running"
+		)
+
+		// Check if the app is still running.
+		isRunning, err := activity.IsRunning(ctx)
+		if err != nil {
+			return err
+		}
+
 		testing.ContextLogf(ctx, "Stopping activities in package %s", pkg)
+
+		if !isRunning {
+			if args.AssertStillRunningOnTeardown {
+				return errors.Errorf(activityNotRunningMessage, activityName)
+			}
+			return nil
+		}
+
 		defer activity.Close()
 		return activity.Stop(ctx)
 	}, nil
