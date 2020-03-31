@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "777e5eb1_7669a3c6",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T09:53:35Z",
+      "side": 1,
+      "message": "Looks like it\u0027s going more and more complicated.\n\nWDYT about using functional options?\n\nhttps://github.com/tmrts/go-patterns/blob/master/idiom/functional-options.md",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 26
+      },
+      "revId": "cbd09f58bcd81048b491d92af109abb25f52425e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc49b71_eeb77e58",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T09:53:35Z",
+      "side": 1,
+      "message": "nit: can you put this inside function where it\u0027s used?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "cbd09f58bcd81048b491d92af109abb25f52425e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9553433b_319703f5",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T09:53:35Z",
+      "side": 1,
+      "message": "Will you can non nil error if you are trying to stop activity that isn\u0027t running?\n\nAlso it\u0027s hard to understand error handling flow if you don\u0027t return error immediately. Can you  just call activity.Stop(ctx) in line 89 as it was before? Does it make sense to stop activity even if it isn\u0027t running?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "cbd09f58bcd81048b491d92af109abb25f52425e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7a786b_14647460",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T09:53:35Z",
+      "side": 1,
+      "message": "looks like it\u0027s useless: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 68
+      },
+      "revId": "cbd09f58bcd81048b491d92af109abb25f52425e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
