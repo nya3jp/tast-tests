@@ -162,12 +162,12 @@ func GetCrashDir(username string) (string, error) {
 func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 	sessionManager, err := session.NewSessionManager(ctx)
 	if err != nil {
-		return []string{}, err
+		return []string{}, errors.Wrap(err, "couldn't start session manager")
 	}
 
 	sessions, err := sessionManager.RetrieveActiveSessions(ctx)
 	if err != nil {
-		return []string{}, err
+		return []string{}, errors.Wrap(err, "couldn't retrieve active sessions")
 	}
 
 	var ret []string
@@ -232,7 +232,7 @@ func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) (m
 		return nil
 	}, &testing.PollOptions{Timeout: 15 * time.Second})
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "timed out while waiting for crash files")
 	}
 	return files, nil
 }
@@ -246,7 +246,7 @@ func MoveFilesToOut(ctx context.Context, outDir string, files ...string) error {
 		testing.ContextLogf(ctx, "Saving %s", base)
 		if err := fsutil.MoveFile(f, filepath.Join(outDir, base)); err != nil {
 			if firstErr == nil {
-				firstErr = err
+				firstErr = errors.Wrapf(err, "couldn't save %s", base)
 			}
 			testing.ContextLogf(ctx, "Couldn't save %s: %v", base, err)
 		}
@@ -261,7 +261,7 @@ func RemoveAllFiles(ctx context.Context, files map[string][]string) error {
 		for _, f := range v {
 			if err := os.Remove(f); err != nil && !os.IsNotExist(err) {
 				if firstErr == nil {
-					firstErr = err
+					firstErr = errors.Wrapf(err, "couldn't clean up %s", f)
 				}
 				testing.ContextLogf(ctx, "Couldn't clean up %s: %v", f, err)
 			}
