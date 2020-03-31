@@ -22,6 +22,29 @@
       "revId": "c01196b7e4e0f4159205ec977a7b26aea46b15a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7bffe3_ee5b7d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T18:22:26Z",
+      "side": 1,
+      "message": "Why did this change? This doesn\u0027t look to be used.",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "c01196b7e4e0f4159205ec977a7b26aea46b15a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
