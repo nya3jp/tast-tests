@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "256b1854_f9354fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dccb5de_2f18ac0d",
+      "range": {
+        "startLine": 276,
+        "startChar": 44,
+        "endLine": 276,
+        "endChar": 59
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a87979_c587fb8d",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5decca_dea86848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct. hashAlg is not relevant for keyGen and keyVer ops.",
+      "parentUuid": "77a87979_c587fb8d",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 297,
+        "endChar": 28
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "10a9692f_5e1cfd2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9599b36c_0f9257c2",
+      "range": {
+        "startLine": 312,
+        "startChar": 22,
+        "endLine": 312,
+        "endChar": 28
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0e64701_4bd6c285",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9a215037_edf08cca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "The values are the parameters that the trunks command accepts (which is being tested). We never test the TEST_VERIFY value as it is not relevant for the NIST tests.",
+      "parentUuid": "a0e64701_4bd6c285",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 107
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38fb4ed7_1071383b",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 9
@@ -114,6 +210,30 @@
       "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc899f3_50fd1abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38fb4ed7_1071383b",
+      "range": {
+        "startLine": 547,
+        "startChar": 3,
+        "endLine": 547,
+        "endChar": 13
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,54 @@
     },
     {
       "key": {
+        "uuid": "da948afc_25b7ea91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49ede1c0_c488666f",
+      "range": {
+        "startLine": 578,
+        "startChar": 68,
+        "endLine": 578,
+        "endChar": 76
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcc7b5f8_dc6f60bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2189346b_299a52bf",
+      "range": {
+        "startLine": 578,
+        "startChar": 66,
+        "endLine": 578,
+        "endChar": 67
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91fc2740_5dc835a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 9
@@ -183,6 +351,30 @@
       "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c852836_64bb2a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91fc2740_5dc835a7",
+      "range": {
+        "startLine": 873,
+        "startChar": 45,
+        "endLine": 873,
+        "endChar": 52
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "68c462a1_0e1c80d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b24817_99a5b5cb",
+      "range": {
+        "startLine": 874,
+        "startChar": 59,
+        "endLine": 874,
+        "endChar": 63
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38500920_b4a5b33e",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 9
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "455d3929_f9bd687c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38500920_b4a5b33e",
+      "range": {
+        "startLine": 897,
+        "startChar": 18,
+        "endLine": 897,
+        "endChar": 19
+      },
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc0c8251_948b42f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 9
@@ -249,6 +489,24 @@
     },
     {
       "key": {
+        "uuid": "b5965015_c950c155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc0c8251_948b42f9",
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecc6dda6_b2e8c996",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 9
@@ -263,6 +521,24 @@
       "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580e9062_ff848a22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2020-03-31T21:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecc6dda6_b2e8c996",
+      "revId": "a8a04013c800ccf103e58d006b54708d57dbed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
