@@ -366,6 +366,18 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 	return nil, errors.New("failed to find window")
 }
 
+// WaitForWindow repeatedly tries to find the target Chrome window until a given timeout.
+// The target window is one for which the given predicate returns true, as in the FindWindow function.
+func WaitForWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		window, err := FindWindow(ctx, tconn, predicate)
+		if window == nil {
+			return errors.Wrap(err, "window not found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
 // CreateWindows create n browser windows with specified URL. It will fail and
 // return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller

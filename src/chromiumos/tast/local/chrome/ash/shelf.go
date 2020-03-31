@@ -345,6 +345,18 @@ func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error
 	}, &testing.PollOptions{Timeout: time.Minute})
 }
 
+// WaitForAppClosed waits for the app specifed by appID to be closed.
+func WaitForAppClosed(ctx context.Context, tconn *chrome.TestConn, appID string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if visible, err := AppShown(ctx, tconn, appID); err != nil {
+			return testing.PollBreak(err)
+		} else if visible {
+			return errors.New("app is not closed yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
+}
+
 // WaitForHotseatAnimatingToIdealState waits for the hotseat to reach the expected state after animation.
 func WaitForHotseatAnimatingToIdealState(ctx context.Context, tc *chrome.TestConn, state HotseatStateType) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
