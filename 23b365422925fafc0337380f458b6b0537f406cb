@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "92ec1064_0cf75937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-31T15:04:47Z",
+      "side": 1,
+      "message": "I updated it to use the csv parser. Thanks for the help!",
+      "parentUuid": "7278529c_6d0494a9",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e37f0f09_6eae0dbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
         "patchSetId": 1
