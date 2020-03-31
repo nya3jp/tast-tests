@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88217ce2_88425ed9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-31T07:48:33Z",
+      "side": 1,
+      "message": "This was wrong. The offset should be negative here.\nflagTime right after bootTime would be rejected by this, as this fakes the time of the boot later than actual. (not to be confused with adding to uptime duration)\nfollowed up by https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2128213",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 49
+      },
+      "revId": "60338885ef236f4135c8e6d7b77d8dee452a754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
