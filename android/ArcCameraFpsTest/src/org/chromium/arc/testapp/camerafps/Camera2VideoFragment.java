@@ -510,6 +510,12 @@ public class Camera2VideoFragment extends Fragment {
             assert texture != null;
             texture.setDefaultBufferSize(mPreviewSize.getWidth(), mPreviewSize.getHeight());
             mPreviewBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_RECORD);
+
+            // Set target FPS range
+            int fps = mTargetFps == null ? DEFAULT_FPS : mTargetFps;
+            mPreviewBuilder.set(
+                    CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, new Range<Integer>(fps, fps));
+
             List<Surface> surfaces = new ArrayList<>();
 
             // Set up Surface for the camera preview
