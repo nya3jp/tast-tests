@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2182d848_15a0b5b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T19:17:30Z",
+      "side": 1,
+      "message": "When I tried using launching the activity in the loop below, i have observed that app failed to launch every time. To avoid flaky failure, I have used open button here.",
+      "parentUuid": "4c94f08d_4dd88951",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "277b39d5f53831647ec631ac98e12f1728a0904d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f22f1071_ccad19e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
         "patchSetId": 1
