@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1cd5de6_fa6a61bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-03-31T16:17:44Z",
+      "side": 1,
+      "message": "style nit: I\u0027d embed the value directly (i.e. service.Generate(shortCtx, \u0026arcpb.GmsCoreCacheRequest{VmEnabled: vmEnabled}))",
+      "range": {
+        "startLine": 261,
+        "startChar": 47,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "7307948936514b326472759b43926ed6fb19f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
