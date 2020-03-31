@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "258c45f4_a0669296",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-31T15:16:26Z",
+      "side": 1,
+      "message": "why not using DurTab KeypressDuration \u003d ... for type checking?",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbd18d5e_12df041b",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 1
@@ -160,6 +177,24 @@
       "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d119e701_713bd782",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-03-31T15:16:26Z",
+      "side": 1,
+      "message": "Gotcha, thanks.  That discussion was helpful.  The static type checking should be good enough then.",
+      "parentUuid": "8db255ca_4b04b7ed",
+      "revId": "a8351eae53d994cdf7e428957197c4e2fae25fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
