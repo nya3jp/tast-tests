@@ -39,6 +39,23 @@
       "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53f05ef_04f6f270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-03-31T17:18:30Z",
+      "side": 1,
+      "message": "nit: We often don\u0027t update copyright year?",
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
