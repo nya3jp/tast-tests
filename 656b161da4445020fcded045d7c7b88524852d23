@@ -16,6 +16,24 @@
       "revId": "656b161da4445020fcded045d7c7b88524852d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726f2c5c_aaaa47f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/reporter_startup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-03-31T09:39:48Z",
+      "side": 1,
+      "message": "With the time.Time class, Sub and Add are asymmetric. Sub() takes another Time as an argument, like flagTime.Sub(bootTime) \u003c -2 * time.Second.\nhttps://golang.org/pkg/time/#Time.Sub\nSo keeping this as-is.",
+      "parentUuid": "29739079_0d27efcc",
+      "revId": "656b161da4445020fcded045d7c7b88524852d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
