@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d66b4017_743b9dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-03-31T02:33:47Z",
+      "side": 1,
+      "message": "Could we have an AspectRatio() function on cca.Resolution type?",
+      "revId": "624043002f23e901711b91e95abcaf869d3e8e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
