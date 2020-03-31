@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "697af67a_11f098ad",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-03-31T02:10:09Z",
+      "side": 1,
+      "message": "that doesn\u0027t look like a relevant bug for this issue",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 26
+      },
+      "revId": "adadbe0284adc38f657b88a2ef4a1ac0917f8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
