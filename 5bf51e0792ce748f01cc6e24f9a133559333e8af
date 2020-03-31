@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "25af41b1_f28b9175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:48:55Z",
+      "side": 1,
+      "message": "You can probably poll ash.ShelfItems to see if the Files app is pinned yet.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d53159c4_3c413683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:48:55Z",
+      "side": 1,
+      "message": "Might be good to look at the state when you call FindFithTimeout. Make sure it isn\u0027t invisible and that it is onscreen. That may fix this.",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c885623f_e8d3bc9f",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 1
@@ -19,6 +65,52 @@
         "startChar": 38,
         "endLine": 348,
         "endChar": 46
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66efd3a1_605c0dc0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:48:55Z",
+      "side": 1,
+      "message": "This is the same as WaitForCondition?",
+      "range": {
+        "startLine": 371,
+        "startChar": 5,
+        "endLine": 371,
+        "endChar": 18
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dabfbb6f_e3b6930b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:48:55Z",
+      "side": 1,
+      "message": "This should be based on the err not the window:\nif err !\u003d nil {",
+      "range": {
+        "startLine": 374,
+        "startChar": 4,
+        "endLine": 374,
+        "endChar": 18
       },
       "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
