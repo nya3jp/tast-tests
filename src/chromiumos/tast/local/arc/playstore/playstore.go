@@ -25,11 +25,13 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 
 		accountSetupText = "Complete account setup"
 		permissionsText  = "needs access to"
+		cantDownloadText = "Can..?t download"
 		acceptButtonID   = "com.android.vending:id/continue_button"
 
 		continueButtonText = "continue"
 		installButtonText  = "install"
 		openButtonText     = "open"
+		okButtonText       = "ok"
 		skipButtonText     = "skip"
 	)
 
@@ -44,6 +46,20 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 	// Wait for the app to install.
 	testing.ContextLog(ctx, "Waiting for app to install")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Sometimes a dialog of "Can't download <app name>" pops up. Press Okay to
+		// dismiss the dialog. This check needs to be done before checking the
+		// install button since the install button exists underneath.
+		if err := d.Object(ui.TextMatches(cantDownloadText)).Exists(ctx); err == nil {
+			testing.ContextLog(ctx, `"Can't download" popup found. Skipping`)
+			okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+okButtonText))
+			if err := okButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := okButton.Click(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+		}
+
 		// If the install button is enabled, click it.
 		installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(true))
 		if err := installButton.Exists(ctx); err == nil {
