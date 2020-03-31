@@ -49,7 +49,7 @@ func init() {
 			"yamaguchi@chromium.org",    // Tast port author
 			"cros-telemetry@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name: "reporter_startup",
 			Val: userCrashParams{
@@ -80,6 +80,7 @@ func init() {
 				testFunc:    testChronosCrasher,
 				consentType: localcrash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "chronos_crasher_mock_consent",
@@ -93,6 +94,7 @@ func init() {
 				testFunc:    testChronosCrasherNoConsent,
 				consentType: localcrash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "root_crasher_real_consent",
@@ -100,6 +102,7 @@ func init() {
 				testFunc:    testRootCrasher,
 				consentType: localcrash.RealConsent,
 			},
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "root_crasher_mock_consent",
@@ -114,6 +117,7 @@ func init() {
 				consentType: localcrash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "crash_filtering",
 			Val: userCrashParams{
@@ -126,6 +130,7 @@ func init() {
 				testFunc:    testMaxEnqueuedCrash,
 				consentType: localcrash.MockConsent,
 			},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name: "core2md_failure",
 			Val: userCrashParams{
