@@ -25,8 +25,16 @@ func init() {
 		Func:     Goofy,
 		Desc:     "Setup factory toolkit and exercise Goofy with custom TestList",
 		Contacts: []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Data:     []string{"factory_image.zip"},
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"factory_toolkit"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:      "all",
+			ExtraAttr: []string{"informational"},
+		}},
 	})
 }
 
