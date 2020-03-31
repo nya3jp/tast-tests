@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a3882ce2_67f40fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T19:18:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df11ac5d_7ca92bc0",
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "638c8e71_23f1821d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a1902d_73a9995d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T19:18:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "638c8e71_23f1821d",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4308869e_64059826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T19:18:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f54f3c30_8df4dd3b",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 25
+      },
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74537292_9b9f6816",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_photos.go",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f58319_5722cc93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_photos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-03-31T19:18:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74537292_9b9f6816",
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
