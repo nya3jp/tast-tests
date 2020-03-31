@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30cfcbb0_b6151c46",
+        "filename": "src/chromiumos/tast/services/cros/arc/gen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 0,
+      "message": "I guess you should keep this line.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 86
+      },
+      "revId": "88d8d37d82e37856c83feb58e58970d67575f217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
