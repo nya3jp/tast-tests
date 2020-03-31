@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "610e42cc_3f178099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/boot_lockbox_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T14:56:25Z",
+      "side": 1,
+      "message": "I think for pb, this is allowed.",
+      "parentUuid": "e8133837_0cb9618e",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9455feec_92d390fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
