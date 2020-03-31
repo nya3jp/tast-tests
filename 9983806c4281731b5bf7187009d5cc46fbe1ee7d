@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f565527_22a706f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efff334e_f7cda0a8",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a4aeb61_19a99f47",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "34097ab9_45d72b3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a4aeb61_19a99f47",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6375c817_be29465c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-27T22:39:10Z",
       "side": 1,
       "message": "I\u0027m sorry but this would be a bad idea from Go idioms. The reason why we need to say \u0027Fatal\u0027 is, you should put enough information in the fatal errors, and that helps for your future debugging. Thus, please remove this and leave all error messages as they are. They are fine.",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 23
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d941bcac_5dd78829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "The reason why I did this is because I notice the duplicate error message. For example, calling func B in func A. func B may return the error message which looks like \"failed to call B...\". So I think it may be better for A\u0027s error message to be \"failed to call A...\".\n\nBut anyway, I have redone my change on error message.",
+      "parentUuid": "6375c817_be29465c",
       "range": {
         "startLine": 172,
         "startChar": 7,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "df64e9bb_c4f55a18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d022e927_9948a837",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 16
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5d12b8d_d6c225dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 6
@@ -114,6 +210,30 @@
       "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd46eee0_9c61a053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d12b8d_d6c225dc",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "4bc3fbff_6a17c99c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86565d40_a0119dba",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 22
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36eb6e7f_ea7f4a7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 6
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "52fe854a_74a77d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36eb6e7f_ea7f4a7e",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 16
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4ccd110_45affca3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 6
@@ -174,6 +342,30 @@
       "writtenOn": "2020-03-27T22:39:10Z",
       "side": 1,
       "message": "This CL removes a lot of histograms. Is that intended?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 27
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c9ecf2_ee2422ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Yes. The issue here is: we disable the visibility of navigation widget in tablet mode as default. As a result, the histograms related to navigation widget here causes the error (like histogram cannot be found). Alex has created an issue for this problem. To address this problem, more efforts are required. So removes these problematic histograms in this CL.",
+      "parentUuid": "f4ccd110_45affca3",
       "range": {
         "startLine": 271,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "f6d3ff40_0975a230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bcd3608_a8fb92ae",
+      "range": {
+        "startLine": 279,
+        "startChar": 8,
+        "endLine": 279,
+        "endChar": 16
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "348e6c73_feb232c0",
         "filename": "src/chromiumos/tast/local/ui/constants.go",
         "patchSetId": 6
@@ -229,6 +445,30 @@
       "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0088a98_8eebbb52",
+        "filename": "src/chromiumos/tast/local/ui/constants.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-03-31T17:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "348e6c73_feb232c0",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "9983806c4281731b5bf7187009d5cc46fbe1ee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
