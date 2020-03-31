@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "a03d2242_56e9e4f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-31T14:05:10Z",
+      "side": 1,
+      "message": "We don\u0027t want the test to fail on devices that don\u0027t have a Google EC chip. This is similar to Smart Battery metrics. If a device does not have a Smart Battery, we don\u0027t fail the test, we just verify that no data is reported.\n\nI\u0027ll change the error value to -1.",
+      "parentUuid": "7c52b7b8_35a7d18b",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 98
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5667cc34_b75bbc0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
         "patchSetId": 1
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "What about csv parser?",
       "parentUuid": "d32df82f_553a5419",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff7445b_d2f91133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-03-31T14:05:10Z",
+      "side": 1,
+      "message": "We don\u0027t use a csv parser in any of the other tests, but I\u0027ll give it a try.",
+      "parentUuid": "9d693938_5cbe180c",
       "range": {
         "startLine": 73,
         "startChar": 0,
