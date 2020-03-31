@@ -65,6 +65,14 @@ func ChromeVideoWithFakeWebcamAndVP9VaapiEncoder() testing.Precondition {
 
 var chromeVideoWithFakeWebcamAndVP9VaapiEncoder = chrome.NewPrecondition("videoWithFakeWebcamAndVP9VaapiEncoder", chromeVModuleArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--enable-features=VaapiVP9Encoder"))
 
+// ChromeVideoWithFakeWebcamAndSWDecoding returns a precondition equal to
+// ChromeVideoWithFakeWebcam and with hardware decoding disabled.
+func ChromeVideoWithFakeWebcamAndSWDecoding() testing.Precondition {
+	return chromeVideoWithFakeWebcamAndSWDecoding
+}
+
+var chromeVideoWithFakeWebcamAndSWDecoding = chrome.NewPrecondition("videoWithFakeWebcamAndSWDecoding", chromeVModuleArgs, chromeFakeWebcamArgs, chrome.ExtraArgs("--disable-accelerated-video-decode"))
+
 // ChromeScreenCapture returns a precondition so that Chrome always picks
 // the entire screen for getDisplayMedia(), bypassing the picker UI.
 func ChromeScreenCapture() testing.Precondition { return chromeScreenCapturePre }

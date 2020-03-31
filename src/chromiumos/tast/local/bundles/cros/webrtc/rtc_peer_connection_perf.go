@@ -9,7 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -33,24 +35,33 @@ func init() {
 			Name:              "h264_hw",
 			Val:               rtcPerfTest{enableHWAccel: true, profile: "H264"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			// TODO(b/145961243): remove when this is enabled by default.
+			Pre: pre.ChromeVideoWithFakeWebcamAndH264AMDEncoder(),
 		}, {
 			Name:              "h264_sw",
 			Val:               rtcPerfTest{enableHWAccel: false, profile: "H264"},
 			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
 		}, {
 			Name:              "vp8_hw",
 			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name: "vp8_sw",
 			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP8"},
+			Pre:  pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
 		}, {
-			Name:              "vp9_hw",
-			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP9"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Name: "vp9_hw",
+			Val:  rtcPerfTest{enableHWAccel: true, profile: "VP9"},
+			// TODO(crbug.com/811912): Remove "vaapi" and pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder()
+			// once the feature is enabled by default on VA-API devices.
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			Pre:               pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
 		}, {
 			Name: "vp9_sw",
 			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP9"},
+			Pre:  pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
 		}},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
@@ -60,5 +71,5 @@ func init() {
 // RTCPeerConnectionPerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
 func RTCPeerConnectionPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcPerfTest)
-	peerconnection.RunDecodePerf(ctx, s, testOpt.profile, testOpt.enableHWAccel)
+	peerconnection.RunDecodePerf(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.profile, testOpt.enableHWAccel)
 }
