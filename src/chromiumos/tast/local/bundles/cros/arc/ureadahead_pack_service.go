@@ -54,14 +54,9 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		"--force-trace",
 	}
 
-	vmEnabled, err := arc.VMEnabled()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to check ARCVM status")
-	}
-
 	var packPath string
 	// Part of arguments differ in container and arcvm.
-	if vmEnabled {
+	if request.VmEnabled {
 		packPath = filepath.Join(ureadaheadDataDir, arcvmPackName)
 		args = append(args, fmt.Sprintf("--path-prefix-filter=%s", arcvmRoot))
 		args = append(args, fmt.Sprintf("--pack-file=%s", packPath))
@@ -94,15 +89,22 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		}
 	}()
 
+	chromeArgs := []string{
+		"--arc-force-show-optin-ui",
+		"--arc-disable-app-sync",
+		"--arc-disable-play-auto-install",
+		"--arc-disable-locale-sync",
+		"--arc-play-store-auto-update=off",
+		"--arc-disable-ureadahead"}
+
+	if request.VmEnabled {
+		chromeArgs = append(args, "--enable-arcvm")
+	}
+
 	opts := []chrome.Option{
 		chrome.ARCSupported(), chrome.RestrictARCCPU(), chrome.GAIALogin(),
 		chrome.Auth(request.Username, request.Password, ""),
-		chrome.ExtraArgs("--arc-force-show-optin-ui",
-			"--arc-disable-app-sync",
-			"--arc-disable-play-auto-install",
-			"--arc-disable-locale-sync",
-			"--arc-play-store-auto-update=off",
-			"--arc-disable-ureadahead")}
+		chrome.ExtraArgs(chromeArgs...)}
 
 	if !request.InitialBoot {
 		opts = append(opts, chrome.KeepState())
@@ -113,6 +115,15 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 	defer cr.Close(ctx)
+
+	actualVMEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check ARCVM status")
+	}
+
+	if actualVMEnabled != request.VmEnabled {
+		return nil, errors.New("ARCVM enabled mismatch with actual ARC type")
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

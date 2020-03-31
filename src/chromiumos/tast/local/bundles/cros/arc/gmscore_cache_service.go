@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
@@ -32,7 +31,7 @@ type GmsCoreCacheService struct {
 }
 
 // Generate generates GMS Core and GFS caches.
-func (c *GmsCoreCacheService) Generate(ctx context.Context, req *empty.Empty) (res *arcpb.GmsCoreCacheResponse, retErr error) {
+func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCoreCacheRequest) (res *arcpb.GmsCoreCacheResponse, retErr error) {
 	// Boot ARC without existing GMS caches enabled to let GMS Core generate genuine caches.
 	testing.ContextLog(ctx, "Starting ARC, with existing GMS caches disabled")
 
@@ -46,7 +45,12 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, req *empty.Empty) (r
 		}
 	}()
 
-	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreDisabled, nil, targetDir)
+	var extraArgs []string
+	if request.VmEnabled {
+		extraArgs = append(extraArgs, "--enable-arcvm")
+	}
+
+	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreDisabled, extraArgs, targetDir)
 	if err != nil {
 		os.RemoveAll(targetDir)
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
