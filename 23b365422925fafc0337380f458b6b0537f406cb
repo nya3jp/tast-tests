@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f59f9474_df6469d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T13:46:35Z",
+      "side": 1,
+      "message": "if there is no EC chip and you are not able to get fan number, programm should fail instead of simply ignoring issue.\n\n\"0 fans\" doesn\u0027t mean error as well, there are devices without fans.",
+      "parentUuid": "f9b2339e_1cee83af",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 98
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5667cc34_b75bbc0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "That\u0027s the desired behavior, similar to the other cros_healthd_probe_* tast tests. If someone updates cros_healthd to collect and report info, we want them to have to update this test as well.",
       "parentUuid": "0206489c_1e004b8b",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "23b365422925fafc0337380f458b6b0537f406cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d693938_5cbe180c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-03-31T13:46:35Z",
+      "side": 1,
+      "message": "What about csv parser?",
+      "parentUuid": "d32df82f_553a5419",
       "range": {
         "startLine": 73,
         "startChar": 0,
