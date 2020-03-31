@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0d6ceb13_333da893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/boot_lockbox_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T14:57:58Z",
+      "side": 1,
+      "message": "We have many examples like this. https://cs.corp.google.com/search/?q\u003d%5E%5Cs%2B%5Cw%2Bpb%5Cs%2B%5C%22.*%5C%22+file:%5C.go+file:tast-tests\u0026m\u003d100\u0026sq\u003dpackage:%5Echromeos_public$%7C%5Echromeos_internal$\u0026type\u003dcs",
+      "parentUuid": "610e42cc_3f178099",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9455feec_92d390fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
