@@ -1,0 +1,406 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf7a5b9c_963866b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "nit: remove the empty line?\nSame for others. We don\u0027t usually insert an empty line after method declaration.",
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6265af7_52ea65d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "Could you update this as described in http://crbug.com/1049020#c1 ?\n\nfunc ... (_ empty.Empty, retErr error) {\n  fullCtx :\u003d ctx\n  ctx, cancel :\u003d ctxutil.Shorten(fullCtx, 10*time.Second)\n  defer cancel()\n  cr, err :\u003d chrome.New(ctx, ...)\n  if err !\u003d nil {\n    return nil, errors.Wrap(err, ...)\n  }\n  defer func() {\n    if err :\u003d cr.Close(fullCtx); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n      retErr \u003d errors.Wrap(err, ...)\n    }\n  }()\n  ...",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e896ee_35ad77ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "creating\n\nError strings should not be capitalized\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 43,
+        "startChar": 32,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "769d9b3d_aa3c2579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "Exec is deprecatd.\nCould you use Call ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee448f0_2b66555b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "Could you use tast.promisify?\ncf. https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/conn.go?type\u003dcs\u0026q\u003d%22tast.promisify%22+Call\u0026sq\u003dpackage:%5Echromeos_public$%7C%5Echromeos_internal$\u0026g\u003d0\u0026l\u003d182",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46aa28c_c01d072a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "nit: you can concatinate it",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adefa62f_5ffd8b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "719815b2_c03bd0f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "same to the comment in L39",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d489e9_2379e025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "I\u0027d define a stirng template instead.\n\nconst codeTmpl \u003d \"document...ById(%s).shadowRoot...\"\n\ncode \u003d fmt.Sprintf(codeTmpl, \"...\")",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 7
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a780f218_c4105df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "nit: var code string\nis more common.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9768b1_9145884b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "unrecognized",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ef4550_d6f361f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "clicking",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1d57fc_b54aa085",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "Could you reuse the client created in doAdbSideloadAction?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 56
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e5ade4_e0cfd7ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "Could you check error?",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07414062_8842996f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "Similary,\n\nfullCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(fullCtx, 10*time.Second)\ndefer cancel()\ncl, err :\u003d rpc.Dial(ctx, s.DUT(), s.RPCHint(), \"cros\")\nif err !\u003d nil {\n\ts.Fatal(\"Failed to connect to the RPC service on the DUT: \", err)\n}\ndefer func() {\n  if err :\u003d cr.Close(fullCtx); err !\u003d nil {\n    s.Fatal(..., err)\n  }\n}()",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31197269_cc0dd61d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "var expected []byte\n\nI think the suffix Byte is redundant.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4295b3bf_05d8663e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "!bytes.Equal(...)",
+      "range": {
+        "startLine": 97,
+        "startChar": 45,
+        "endLine": 97,
+        "endChar": 54
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8cf60b_11043e3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-03-31T15:00:57Z",
+      "side": 1,
+      "message": "Changing this to Errorf makes sense?\nFatalf aborts test when called. You may want to proceed to the next test doAdbSideloadAction(ctx, s, \"cancel\"), if it failed on \"confirm\".",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 10
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
