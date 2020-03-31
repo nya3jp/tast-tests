@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -104,6 +105,22 @@ func (a *ARC) WriteFile(ctx context.Context, filename string, data []byte) error
 	}
 
 	return a.PushFile(ctx, f.Name(), filename)
+}
+
+// FileSize returns the size of the specified file in bytes. Returns an error if the file does not exist.
+func (a *ARC) FileSize(ctx context.Context, filename string) (int64, error) {
+	// `stat -c %s` measures the size of a file in bytes.
+	statOutput, err := a.Command(ctx, "stat", "-c", "%s", filename).Output()
+	if err != nil {
+		return 0, errors.Wrapf(err, "could not determine size of file: %s", filename)
+	}
+
+	fileSize, err := strconv.ParseInt(strings.TrimSpace(string(statOutput)), 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "tried to check file size of %q but received unexpected result: %q", filename, string(statOutput))
+	}
+
+	return fileSize, nil
 }
 
 // directWriteFile writes to a file in Android file system with android-sh.
