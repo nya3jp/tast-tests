@@ -58,9 +58,22 @@ func StartActivityWithArgs(ctx context.Context, a *arc.ARC, pkg string, activity
 	}
 
 	return func(ctx context.Context) error {
+		// Check if the app is still running.
+		isRunning, err := activity.IsRunning(ctx)
+		if err != nil {
+			return err
+		}
+
+		// Just to be on the safe side: Try to close activity even if `!isRunning`.
+		// Closing an already closed activity does not throw an error.
 		testing.ContextLogf(ctx, "Stopping activities in package %s", pkg)
 		defer activity.Close()
-		return activity.Stop(ctx)
+		err = activity.Stop(ctx)
+
+		if !isRunning {
+			return errors.Errorf("tried to close activity %q but it was no longer running", activityName)
+		}
+		return err
 	}, nil
 }
 
