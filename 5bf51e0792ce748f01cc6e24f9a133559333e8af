@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c885623f_e8d3bc9f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-03-31T01:48:00Z",
+      "side": 1,
+      "message": "\u003e \"specifed\" is a possible misspelling of \"specified\".\n\nPlease fix.",
+      "parentUuid": "91104e42_dcf0b901",
+      "range": {
+        "startLine": 348,
+        "startChar": 38,
+        "endLine": 348,
+        "endChar": 46
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
