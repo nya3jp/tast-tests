@@ -110,7 +110,7 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait until CPU is idle: ", err)
 	}
 
-	sup.Add(setup.StartActivityWithArgs(ctx, a, c2e2etest.Pkg, c2e2etest.ActivityName, []string{"-n"}, intentExtras))
+	sup.Add(setup.StartActivityWithArgs(ctx, a, c2e2etest.Pkg, c2e2etest.ActivityName, []string{"-n"}, intentExtras, true))
 
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
