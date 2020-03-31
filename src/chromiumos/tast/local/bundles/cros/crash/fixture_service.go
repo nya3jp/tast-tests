@@ -36,11 +36,13 @@ func (c *FixtureService) SetUp(ctx context.Context, req *crash_service.SetUpCras
 	consentOpt := crash.WithMockConsent()
 	if req.Consent == crash_service.SetUpCrashTestRequest_REAL_CONSENT {
 		if c.cr != nil {
+			testing.ContextLog(ctx, "Already set up. Not setting up again")
 			return nil, errors.New("already set up")
 		}
 
 		cr, err := chrome.New(ctx, chrome.ExtraArgs(crash.ChromeVerboseConsentFlags))
 		if err != nil {
+			testing.ContextLog(ctx, "Error setting up chrome: ", err)
 			return nil, err
 		}
 		c.cr = cr
@@ -48,6 +50,7 @@ func (c *FixtureService) SetUp(ctx context.Context, req *crash_service.SetUpCras
 	}
 
 	if err := crash.SetUpCrashTest(ctx, consentOpt, crash.RebootingTest()); err != nil {
+		testing.ContextLog(ctx, "Error setting up crash test: ", err)
 		return nil, err
 	}
 	return &empty.Empty{}, nil
@@ -63,14 +66,17 @@ func (c *FixtureService) DisableCrashFilter(ctx context.Context, req *empty.Empt
 
 func (c *FixtureService) WaitForCrashFiles(ctx context.Context, req *crash_service.WaitForCrashFilesRequest) (*crash_service.WaitForCrashFilesResponse, error) {
 	if len(req.GetDirs()) == 0 {
+		testing.ContextLog(ctx, "Need to specify directories to examine")
 		return nil, errors.New("need to specify directories to examine")
 	}
 	if len(req.GetRegexes()) == 0 {
+		testing.ContextLog(ctx, "Need to specify regexes to search for")
 		return nil, errors.New("need to specify regexes to search for")
 	}
 	files, err := crash.WaitForCrashFiles(ctx, req.GetDirs(), []string(nil), req.GetRegexes())
 	if err != nil {
-		return nil, err
+		testing.ContextLog(ctx, "Failed to wait for crash files: ", err)
+		return nil, errors.Wrap(err, "failed to wait for crash files")
 	}
 	out := crash_service.WaitForCrashFilesResponse{}
 	for k, v := range files {
@@ -93,13 +99,17 @@ func (c *FixtureService) RemoveAllFiles(ctx context.Context, req *crash_service.
 func (c *FixtureService) TearDown(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	var firstErr error
 	if err := crash.TearDownCrashTest(ctx); err != nil {
-		firstErr = err
+		testing.ContextLog(ctx, "Error tearing down: ", err)
+		firstErr = errors.Wrap(err, "error tearing down fixture: ")
 	}
 	if c.cr != nil {
 		// c.cr could be nil if the machine rebooted in the middle,
 		// so don't complain if it is.
-		if err := c.cr.Close(ctx); err != nil && firstErr == nil {
-			firstErr = err
+		if err := c.cr.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Error closing Chrome: ", err)
+			if firstErr == nil {
+				firstErr = errors.Wrap(err, "error closing Chrome:")
+			}
 		}
 		c.cr = nil
 	}
