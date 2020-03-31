@@ -98,8 +98,11 @@ func (c *FixtureService) TearDown(ctx context.Context, req *empty.Empty) (*empty
 	if c.cr != nil {
 		// c.cr could be nil if the machine rebooted in the middle,
 		// so don't complain if it is.
-		if err := c.cr.Close(ctx); err != nil && firstErr == nil {
-			firstErr = err
+		if err := c.cr.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Error closing Chrome: ", err)
+			if firstErr == nil {
+				firstErr = err
+			}
 		}
 		c.cr = nil
 	}
