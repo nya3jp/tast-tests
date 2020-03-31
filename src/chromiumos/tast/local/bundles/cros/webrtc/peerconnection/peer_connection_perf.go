@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -234,21 +233,8 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 	return nil
 }
 
-// decodePerf starts a Chrome instance (with or without hardware video decoder),
-// opens a WebRTC loopback page that repeatedly plays a loopback video stream.
-func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL string, enableHWAccel bool, p *perf.Values) {
-	chromeArgs := webrtc.ChromeArgsWithFakeCameraInput(false)
-	if !enableHWAccel {
-		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
-	} else if profile == "VP9" {
-		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
-	}
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
-	if err != nil {
-		s.Fatal("Failed to create Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+// decodePerf opens a WebRTC Loopback connection and streams while collecting statistics.
+func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, p *perf.Values) {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
@@ -298,7 +284,7 @@ func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL stri
 
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunDecodePerf(ctx context.Context, s *testing.State, profile string, enableHWAccel bool) {
+func RunDecodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile string, enableHWAccel bool) {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -318,7 +304,7 @@ func RunDecodePerf(ctx context.Context, s *testing.State, profile string, enable
 	defer cancel()
 
 	p := perf.NewValues()
-	decodePerf(ctx, s, profile, loopbackURL, enableHWAccel, p)
+	decodePerf(ctx, s, cr, profile, loopbackURL, enableHWAccel, p)
 
 	p.Save(s.OutDir())
 }
