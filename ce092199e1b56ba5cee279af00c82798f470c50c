@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df11ac5d_7ca92bc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:16:58Z",
+      "side": 1,
+      "message": "defer d.Close()",
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638c8e71_23f1821d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:16:58Z",
+      "side": 1,
+      "message": "please make a CL to add these to the private repo. go/tast-writing#Secret-variables",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f54f3c30_8df4dd3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/amazon_prime_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:16:58Z",
+      "side": 1,
+      "message": "I am gonna make a pressKeys() method that will type out a string. That way you can use a string secret variable and just pass it to press keys.",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 25
+      },
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74537292_9b9f6816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_photos.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-03-31T19:16:58Z",
+      "side": 1,
+      "message": "defer d.Close()",
+      "revId": "ce092199e1b56ba5cee279af00c82798f470c50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
