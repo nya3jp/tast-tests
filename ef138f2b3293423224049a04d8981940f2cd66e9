@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "92f8da62_4954b507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T06:55:20Z",
+      "side": 1,
+      "message": "nvm.",
+      "parentUuid": "78b2dd4c_4427a65b",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82e896ee_35ad77ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9
@@ -767,6 +791,30 @@
       "side": 1,
       "message": "Sorry cr.Close is a typo of cl.Close.\n\nIf it gives error, I think it indicates a real issue. Could you check it?",
       "parentUuid": "d51f94bb_495ec326",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "268566aa_5039c003",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T06:55:20Z",
+      "side": 1,
+      "message": "Same here. Please feel free to use the original construct, instead of the suggested lengthy setup.",
+      "parentUuid": "9ab4d450_0a72a178",
       "range": {
         "startLine": 58,
         "startChar": 0,

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "394789b3_99ef4fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T06:55:20Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "d31c2dc3_f5a28315",
+      "range": {
+        "startLine": 35,
+        "startChar": 93,
+        "endLine": 35,
+        "endChar": 112
+      },
+      "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5ebf448_27477666",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 11
@@ -41,6 +65,53 @@
         "startChar": 7,
         "endLine": 43,
         "endChar": 21
+      },
+      "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e466f2c_9b8ae59a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T06:55:20Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "c5ebf448_27477666",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb26ba35_e263c4e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T06:55:20Z",
+      "side": 1,
+      "message": "Sorry, but I checked in tast-reviewers@ that the original construct was OK for now. https://groups.google.com/a/google.com/g/tast-reviewers/c/webLvneWfMc\n\nPlease feel free to revert this.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 4
       },
       "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
