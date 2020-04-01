@@ -22,6 +22,30 @@
       "revId": "761c752b63d8578992860612c1cc19207b68e80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "077a4cdd_51bcbb1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-01T16:40:57Z",
+      "side": 1,
+      "message": "Do you only see one reboot message in the logs? I think what you\u0027re seeing may be the result of the polling by timberslide: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/docs/fingerprint/fingerprint.md#Logs.\n\nIt fetches the logs from the FPMCU every 10 seconds, so there will be some delay in when the logs show up. However, I did make some changes so that the timestamps that it prints out should match up with the timestamps in biod: https://crrev.com/c/1769578.",
+      "parentUuid": "901a88d5_0fefd6ae",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 39
+      },
+      "revId": "761c752b63d8578992860612c1cc19207b68e80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
