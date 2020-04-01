@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70bc75d0_d992c46c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T08:27:25Z",
+      "side": 1,
+      "message": "nit: Can you please wrap all errors? In some places you did it, but not everywhere",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "0b6f42eb229d036d715c882d89e2ca41739cbd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5adfd9a_89098629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T08:27:25Z",
+      "side": 1,
+      "message": "nit: Can you please add log here as well?",
+      "revId": "0b6f42eb229d036d715c882d89e2ca41739cbd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
