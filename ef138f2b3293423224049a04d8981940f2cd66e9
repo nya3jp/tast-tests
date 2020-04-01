@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "78b2dd4c_4427a65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T04:41:30Z",
+      "side": 1,
+      "message": "I commented suggested fix. By naming return value, it can be accessed and modified from defer function.",
+      "parentUuid": "9f012027_4e6d0365",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82e896ee_35ad77ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9
@@ -225,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "31bd038e_e339fa1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T04:41:30Z",
+      "side": 1,
+      "message": "Hmm. It\u0027s interesting. Could you leave comment about it?",
+      "parentUuid": "153e1562_776a6585",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46aa28c_c01d072a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9
@@ -260,6 +308,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "d46aa28c_c01d072a",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3c726e1_6e73ed48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T04:41:30Z",
+      "side": 1,
+      "message": "Sorry. I mean:\n\nif err :\u003d testexec.CommandContext(ctx, \"grep\", \"-c\", \"EnableAdbSideloadingRequested\", \"/home/chronos/Local State\").Run(); err !\u003d nil {\n\nPlease revert the change to concat the strings.",
+      "parentUuid": "48aec403_22fcbb2c",
       "range": {
         "startLine": 61,
         "startChar": 2,
@@ -671,6 +743,30 @@
       "side": 1,
       "message": "Tried using this setup. The test started giving errors - basically, going into the s.Fatal section of the defer func each time.",
       "parentUuid": "07414062_8842996f",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ab4d450_0a72a178",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T04:41:30Z",
+      "side": 1,
+      "message": "Sorry cr.Close is a typo of cl.Close.\n\nIf it gives error, I think it indicates a real issue. Could you check it?",
+      "parentUuid": "d51f94bb_495ec326",
       "range": {
         "startLine": 58,
         "startChar": 0,
