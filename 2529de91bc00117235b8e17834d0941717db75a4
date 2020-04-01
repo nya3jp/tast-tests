@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "70491a53_bcd1827e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-04-01T18:38:07Z",
+      "side": 1,
+      "message": "Thanks for the confirmation, Tao! And yes, Assistant feature is not explicitly enabled in the Launcher test, but it\u0027s not guaranteed that Assistant service is off while running that test given that chrome session can be reused among several tests, as hidehiko@ mentioned above. But per offline discussion with Tao, as far as we reset the context pref, we should be fine.",
+      "parentUuid": "3b2c4efc_3d17d6c7",
+      "revId": "2529de91bc00117235b8e17834d0941717db75a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b473eed5_121d6bbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
         "patchSetId": 3
