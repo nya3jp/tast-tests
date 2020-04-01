@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package arc
 
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/libvda"
+	"chromiumos/tast/local/bundles/cros/arc/libvda"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
