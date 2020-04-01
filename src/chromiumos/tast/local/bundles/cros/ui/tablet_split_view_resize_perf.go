@@ -23,7 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SplitViewResizePerf,
+		Func:         TabletSplitViewResizePerf,
 		Desc:         "Measures smoothness of resizing windows in the split view of the tablet mode",
 		Contacts:     []string{"mukai@chromium.org", "sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -33,7 +33,7 @@ func init() {
 	})
 }
 
-func SplitViewResizePerf(ctx context.Context, s *testing.State) {
+func TabletSplitViewResizePerf(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
