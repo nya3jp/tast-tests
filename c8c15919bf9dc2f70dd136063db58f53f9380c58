@@ -326,6 +326,24 @@
     },
     {
       "key": {
+        "uuid": "e3ac8a2b_c9d867a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/hello_world_arm.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T20:45:34Z",
+      "side": 1,
+      "message": "I added a comment in the code for the information.",
+      "parentUuid": "a878ac13_8956f18e",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8473fa8_1101c5e2",
         "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
         "patchSetId": 2
