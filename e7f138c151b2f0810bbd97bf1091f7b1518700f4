@@ -46,6 +46,30 @@
       "revId": "e7f138c151b2f0810bbd97bf1091f7b1518700f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d10ff68_ec818693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-04-01T01:33:47Z",
+      "side": 1,
+      "message": "I just made a public repository.",
+      "parentUuid": "6654b198_8cdd2371",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "e7f138c151b2f0810bbd97bf1091f7b1518700f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
