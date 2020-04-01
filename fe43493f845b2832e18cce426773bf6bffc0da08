@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e9d7fe77_9cdbd916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pointer/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-01T00:07:39Z",
+      "side": 1,
+      "message": "Multiple errors in golang always seem to get ugly.\n\nMight be cleaner to write it without defer. Something like:\nif err :\u003d c.Move(...); err !\u003d nil {\n if err :\u003d c.Release(...); err !\u003d nil{\n  testing.ContextLog(...)\n }\n return err\n}\nreturn c.Release(...)\n\nI am not really sure which is better though. Might be worth asking tast-owners@ just to see if anyone else has better suggestions.",
+      "parentUuid": "845f55f0_f13755b4",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "fe43493f845b2832e18cce426773bf6bffc0da08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9863f9d8_baddce71",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/pointer/controller.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "fe43493f845b2832e18cce426773bf6bffc0da08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e6b3ca_11160b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pointer/controller.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-01T00:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f8359c9_6082a3e2",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 37
+      },
+      "revId": "fe43493f845b2832e18cce426773bf6bffc0da08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
