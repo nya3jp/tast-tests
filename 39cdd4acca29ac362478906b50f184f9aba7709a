@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcc8d41f_55ffe308",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-01T02:17:23Z",
+      "side": 1,
+      "message": "There are many other ways for this call to fail (e.g. broken connection to servo), so I\u0027m afraid this message might be confusing in those cases.",
+      "range": {
+        "startLine": 124,
+        "startChar": 28,
+        "endLine": 124,
+        "endChar": 71
+      },
+      "revId": "39cdd4acca29ac362478906b50f184f9aba7709a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
