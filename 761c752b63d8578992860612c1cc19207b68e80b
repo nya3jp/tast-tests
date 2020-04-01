@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "901a88d5_0fefd6ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-01T02:06:58Z",
+      "side": 1,
+      "message": "One thing that I don\u0027t understand here: 7~17 seconds after this AP reboot (which should cause FPMCU reboot immediately), FPMCU reboots, cros_fp.log says:\n--- UART initialized after reboot ---                             \n[Reset cause: reset-pin power-on hard ap-off]\n\nNo matter how I insert sleeps before and after this AP reboot, this always happens, and happens on Nocturne, Nami and Kohaku.\n\nThe current test would succeed because we query fpencstatus before the strange FPMCU reboot. But if you run the same test again on the device, the second time fails - FPMCU rebooted without rebooting AP, so seed is gone.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 39
+      },
+      "revId": "761c752b63d8578992860612c1cc19207b68e80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
