@@ -116,6 +116,29 @@
       "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8dac56_1afea513",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-01T15:56:25Z",
+      "side": 1,
+      "message": "This is not a performance test.  Looks like this should be \"group:mainline\", \"informational\".\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/master/docs/test_attributes.md",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 95
+      },
+      "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

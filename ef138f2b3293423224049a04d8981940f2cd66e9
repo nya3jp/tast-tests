@@ -368,6 +368,30 @@
     },
     {
       "key": {
+        "uuid": "d5fbf270_041dfa54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-01T15:56:25Z",
+      "side": 1,
+      "message": "+1, note that the space is the file name will ruin the execution",
+      "parentUuid": "e3c726e1_6e73ed48",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adefa62f_5ffd8b5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9
@@ -682,6 +706,30 @@
       "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06a8993_6258a851",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-01T15:56:25Z",
+      "side": 1,
+      "message": "Forgot to upload? Same to other comments.  Please double check :)",
+      "parentUuid": "e1cf666e_13fb7490",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 56
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
