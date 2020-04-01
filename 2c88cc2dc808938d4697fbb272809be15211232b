@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "407b44c1_f2d879bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pointer/controller.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-01T15:04:43Z",
+      "side": 1,
+      "message": "I was curious how this works and googled it. It seems that the return vallue must be a named result parameter so that it is within the scope when the deferred func executes if we want the deferred func to modify it.\n\nThat is, \n\n\tfunc Drag(...) error {\n\t\tvar err error\n\t\t...\n\u003d\u003e\n\n\tfunc Drag(...) (err error) {\n\t\t...\n\nSee \"Defer and return value\" in https://medium.com/a-journey-with-go/go-how-does-defer-statement-work-1a9492689b6e",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "2c88cc2dc808938d4697fbb272809be15211232b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
