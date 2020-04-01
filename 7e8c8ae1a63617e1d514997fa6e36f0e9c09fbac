@@ -1,0 +1,544 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22b0135d_44ddb804",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "not what this implementation is doing - it\u0027s sleeping for the duration and checking the time afterwards",
+      "range": {
+        "startLine": 19,
+        "startChar": 61,
+        "endLine": 19,
+        "endChar": 75
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603f897d_8275b4fd",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "the given duration",
+      "range": {
+        "startLine": 19,
+        "startChar": 80,
+        "endLine": 19,
+        "endChar": 96
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da8e79f_ae3a7801",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "ElementIsPlaying?  Verify is a pretty vague word https://g3doc.corp.google.com/go/g3doc/readability/review-comments.md?cl\u003dhead#TOC-Getters",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5aab0f5_0c5a6ab6",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "it\u0027s preferable to use :\u003d instead of var when possible, and I don\u0027t see any reason not do to so here (and in the similar code elsewhere in this file)\n\npreviousTime, err :\u003d ...\nif err !\u003d nil {",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258d6bf9_56fc620d",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "checking whether",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a98cd6_9351dee5",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "changes over the given timeout duration",
+      "range": {
+        "startLine": 45,
+        "startChar": 61,
+        "endLine": 45,
+        "endChar": 77
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc15c81_f056a2bd",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "ElementIsPaused?",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95500a92_287d4340",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "endTime !\u003d startTime",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5386f793_964cdec0",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "Seems cleaner to put this in a for loop - for try 0 to 1, calculate the end time and compare it to the start time.  Return if it\u0027s good, continue if it\u0027s not.\n\nThen you don\u0027t have the nesting here, and you can add/remove tries later.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28797fbd_828da5b1",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "Named return values are very useful in some contexts, but I don\u0027t think this is complex enough to merit it.  It\u0027s a little harder to read when you don\u0027t have \"return err\" written out since it\u0027s not immediately obvious that you are returning a value.",
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf04a344_f47d6b6f",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "verifies that the element\u0027s",
+      "range": {
+        "startLine": 87,
+        "startChar": 45,
+        "endLine": 87,
+        "endChar": 56
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68186500_a7b5bfc5",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "add a space",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "896c1dbe_1a6e5031",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "are you likely to get rounding errors here?  if so adding a tolerance might help with flake down the road",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 65
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5273dc90_0968344c",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/media/verify_media_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "will it cause problems if the currentTime is set to the end of the video?",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 54
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b9b3c9_502c070a",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/youtube/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "put this in the if statement below to avoid sleeping if there are no ads",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d883ba_6505d740",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/youtube/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "seems like this should happen elsewhere and this function should just be for changing quality",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a77c60b6_13b8ecd8",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/youtube/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "we generally avoid sleeps - does WaitAndClick not already do this?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8de6734_accadf92",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/youtube/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "Nerds (here and in the the functions below)",
+      "range": {
+        "startLine": 134,
+        "startChar": 17,
+        "endLine": 134,
+        "endChar": 21
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14108d08_c2ba4f13",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/youtube/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "\"Get\" is a stop word (here and in the functions below) https://golang.org/doc/effective_go.html#Getters\n\nThis can be just \"CurrentTime\"",
+      "range": {
+        "startLine": 152,
+        "startChar": 5,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e85bca3d_0dc5ae8e",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/youtube/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "was there supposed to be more to this sentence?",
+      "range": {
+        "startLine": 209,
+        "startChar": 89,
+        "endLine": 209,
+        "endChar": 96
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0071e8f_0f81b660",
+        "filename": "src/chromiumos/tast/local/mtbf/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of this package, but I\u0027ll hold off on suggestions until I finish going through the other related CLs",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8300ef34_ac8ff87b",
+        "filename": "src/chromiumos/tast/local/mtbf/chrome/settings/os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "put these into one comment block rather than on two separate lines",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f56a80_bb18c7c8",
+        "filename": "src/chromiumos/tast/local/mtbf/chrome/settings/os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "that the key is specifically the tab key isn\u0027t particularly relevant (since you\u0027re just using it to wake) and it is only used in one place.  Move this const into that function instead.",
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a096540_6a540a57",
+        "filename": "src/chromiumos/tast/local/mtbf/chrome/settings/os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T23:43:48Z",
+      "side": 1,
+      "message": "there\u0027s no common code between these two cases - I think two separate functions would be appropriate here",
+      "range": {
+        "startLine": 23,
+        "startChar": 64,
+        "endLine": 23,
+        "endChar": 81
+      },
+      "revId": "7e8c8ae1a63617e1d514997fa6e36f0e9c09fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
