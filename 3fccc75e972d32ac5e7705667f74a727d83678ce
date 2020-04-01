@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "df5e3232_63da25d9",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T07:56:44Z",
+      "side": 1,
+      "message": "cmd.Stdin \u003d bytes.Reader(content)\n\nmay work instead of using pipe.\n\ncmd.Stdin \u003d ...\ncmd.Run(ctx)",
+      "revId": "3fccc75e972d32ac5e7705667f74a727d83678ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddfc5248_12964972",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 6
