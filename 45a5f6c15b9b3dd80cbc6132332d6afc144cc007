@@ -108,6 +108,47 @@
     },
     {
       "key": {
+        "uuid": "66a908d2_32fccc31",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T03:22:59Z",
+      "side": 1,
+      "message": "Parameters are not for creating subtests I think. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests for valid usage of params.\nFor this case, I think it\u0027s fine to keep the subtest functions, because they all depend on the same setup.\n\nRather than passing s to subtests and helpers, I\u0027d recommend to make them return an error, and handle the errors on main test function. For example:\n\nfunc testReadNonExistingEntry(ctx context.Context, client security.BootLockboxServiceClient) error {\n\ttesting.ContextLog(\"Test reading from non-existing entry\")\n\tresponse, err :\u003d client.Read(ctx, \u0026security.ReadBootLockboxRequest{Key: testKeyNeverStored})\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"Unexpected error when read from boot lockbox\")\n\t}\n\tif len(response.Value) \u003e 0 {\n                return errors.Errorf(\"Reading from unused key should return empty result, but got %q (encoded)\", hex.EncodeToString(response.Value))\n\t}\n\treturn nil\n}\n\nIf you really want to distinguish fatal errors (which was s.Fatalf before) and continuable errors (s.Error before), you can make the error sentinel. See https://play.golang.org/p/1Fnvi80Bo32",
+      "parentUuid": "750fabe6_3ec18ccc",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab197b3_5ff291db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T03:22:59Z",
+      "side": 1,
+      "message": "Could you return error from cr.Close ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7457f186_619df287",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -245,6 +286,29 @@
       "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "400a282a_429360ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T03:22:59Z",
+      "side": 1,
+      "message": "Could you check error? same for others.\n\ndefer func() {\n  err :\u003d ...\n}()",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
