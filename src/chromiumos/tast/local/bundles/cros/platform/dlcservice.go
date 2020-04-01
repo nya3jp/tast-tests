@@ -6,6 +6,9 @@ package platform
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -38,6 +41,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
 		dlcCacheDir     = "/var/cache/dlc"
+		tmpDir          = "/tmp"
 	)
 
 	type expect bool
@@ -45,6 +49,20 @@ func DLCService(ctx context.Context, s *testing.State) {
 		success expect = true
 		failure expect = false
 	)
+
+	// TODO(kimjae): Manage this in seperate .go file..
+	type dlcListOutput struct {
+		Manifest         string `json:"manifest"`
+		RootMount        string `json:"root_mount"`
+		FsType           string `json:"fs-type"`
+		ID               string `json:"id"`
+		ImageType        string `json:"image_type"`
+		Name             string `json:"name"`
+		Package          string `json:"package"`
+		PreallocatedSize string `json:"preallocated_size"`
+		Size             string `json:"size"`
+		Version          string `json:"version"`
+	}
 
 	// Check dlcservice is up and running.
 	if err := upstart.EnsureJobRunning(ctx, dlcserviceJob); err != nil {
@@ -78,15 +96,109 @@ func DLCService(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for D-Bus service: ", err)
 	}
 
-	// dumpInstalledDLCModules calls dlcservice's GetInstalled D-Bus method
+	readFile := func(path string) []byte {
+		b, err := ioutil.ReadFile(path)
+		if err != nil {
+			s.Fatal("Failed to read file: ", err)
+		}
+		return b
+	}
+
+	writeFile := func(path string, b []byte) {
+		if err := ioutil.WriteFile(path, b, 644); err != nil {
+			s.Fatal("Failed to write file: ", err)
+		}
+	}
+
+	removeFile := func(path string) {
+		if err := os.Remove(path); err != nil {
+			s.Fatal("Failed to remove file: ", err)
+		}
+	}
+
+	dlcList := func(path string) (output map[string][]dlcListOutput) {
+		if err := json.Unmarshal(readFile(path), &output); err != nil {
+			s.Fatal("Failed to read json: ", err)
+		}
+		return output
+	}
+
+	verifyDlcContent := func(path string, dlc string) {
+		removeExt := func(path string) string {
+			return strings.TrimSuffix(path, filepath.Ext(path))
+		}
+		checkSHA2Sum := func(hash_path string) {
+			path := removeExt(hash_path)
+			actualSumBytes := sha256.Sum256(readFile(path))
+			actualSum := hex.EncodeToString(actualSumBytes[:])
+			expectedSum := strings.Fields(string(readFile(hash_path)))[0]
+			if actualSum != expectedSum {
+				s.Fatalf("SHA2 checksum do not match for %s. Actual=%s Expected=%s",
+					path, actualSum, expectedSum)
+			}
+		}
+		checkPerms := func(perms_path string) {
+			path := removeExt(perms_path)
+			info, err := os.Stat(path)
+			if err != nil {
+				s.Fatal("Failed to stat: ", err)
+			}
+			actualPerm := fmt.Sprintf("%#o", info.Mode().Perm())
+			expectedPerm := strings.TrimSpace(string(readFile(perms_path)))
+			if actualPerm != expectedPerm {
+				s.Fatalf("Permissions do not match for %s. Actual=%s Expected=%s",
+					path, actualPerm, expectedPerm)
+			}
+		}
+		dlcWalkFunc := func() filepath.WalkFunc {
+			return func(path string, info os.FileInfo, err error) error {
+				switch filepath.Ext(path) {
+				case ".sum":
+					checkSHA2Sum(path)
+					break
+				case ".perms":
+					checkPerms(path)
+					break
+				default:
+					break
+				}
+				return nil
+			}
+		}
+		getRootMounts := func(path string, dlc string) (rootMounts []string) {
+			if l, ok := dlcList(path)[dlc]; ok {
+				for _, val := range l {
+					rootMounts = append(rootMounts, val.RootMount)
+				}
+			}
+			return rootMounts
+		}
+
+		rootMounts := getRootMounts(path, dlc)
+		if len(rootMounts) == 0 {
+			s.Fatal("Failed to get root mount for ", dlc)
+		}
+		for _, rootMount := range rootMounts {
+			filepath.Walk(rootMount, dlcWalkFunc())
+		}
+	}
+
+	// dumpAndVerifyInstalledDLCs calls dlcservice's GetInstalled D-Bus method
 	// via dlcservice_util command.
-	dumpInstalledDLCModules := func(tag string) {
+	dumpAndVerifyInstalledDLCs := func(tag string, dlcs ...string) {
 		s.Log("Asking dlcservice for installed DLC modules")
-		cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list")
-		// TODO(ahassani): Get the output of the run and check if installed DLCs are
-		// there.
+		f := fmt.Sprintf("%s.log", tag)
+		path := filepath.Join(tmpDir, f)
+		// Remove as sanity the dump to file.
+		removeFile(path)
+		cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list", "--dump="+path)
 		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to get installed DLC modules: ", err)
+		}
+		// Write out to tast directory.
+		writeFile(filepath.Join(s.OutDir(), f), readFile(path))
+		for _, dlc := range dlcs {
+			verifyDlcContent(path, dlc)
 		}
 	}
 
@@ -187,39 +299,39 @@ func DLCService(ctx context.Context, s *testing.State) {
 		defer stopNebraska(cmd, "single-dlc")
 
 		// Before performing any Install/Uninstall.
-		dumpInstalledDLCModules("initial_state")
+		dumpAndVerifyInstalledDLCs("initial_state")
 
 		// Install empty DLC.
 		install([]string{}, url, failure)
-		dumpInstalledDLCModules("install_empty")
+		dumpAndVerifyInstalledDLCs("install_empty")
 
 		// Install single DLC.
 		install([]string{dlcID1}, url, success)
-		dumpInstalledDLCModules("install_single")
+		dumpAndVerifyInstalledDLCs("install_single", dlcID1)
 
 		// Install already installed DLC.
 		install([]string{dlcID1}, url, success)
-		dumpInstalledDLCModules("install_already_installed")
+		dumpAndVerifyInstalledDLCs("install_already_installed", dlcID1)
 
 		// Install duplicates of already installed DLC.
 		install([]string{dlcID1, dlcID1}, url, success)
-		dumpInstalledDLCModules("install_already_installed_duplicate")
+		dumpAndVerifyInstalledDLCs("install_already_installed_duplicate", dlcID1)
 
 		// Uninstall single DLC.
 		uninstall(dlcID1, success)
-		dumpInstalledDLCModules("uninstall_dlc")
+		dumpAndVerifyInstalledDLCs("uninstall_dlc")
 
 		// Uninstall already uninstalled DLC.
 		uninstall(dlcID1, success)
-		dumpInstalledDLCModules("uninstall_already_uninstalled")
+		dumpAndVerifyInstalledDLCs("uninstall_already_uninstalled")
 
 		// Install duplicates of DLC atomically.
 		install([]string{dlcID1, dlcID1}, url, success)
-		dumpInstalledDLCModules("atommically_install_duplicate")
+		dumpAndVerifyInstalledDLCs("atommically_install_duplicate", dlcID1)
 
 		// Install unsupported DLC.
 		install([]string{"unsupported-dlc"}, url, failure)
-		dumpInstalledDLCModules("install_unsupported")
+		dumpAndVerifyInstalledDLCs("install_unsupported")
 
 	})
 
@@ -229,15 +341,15 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 		// Install multiple DLC(s).
 		install([]string{dlcID1, dlcID2}, url, success)
-		dumpInstalledDLCModules("install_multiple")
+		dumpAndVerifyInstalledDLCs("install_multiple", dlcID1, dlcID2)
 
 		// Install multiple DLC(s) already installed.
 		install([]string{dlcID1, dlcID2}, url, success)
-		dumpInstalledDLCModules("install_multiple_already_installed")
+		dumpAndVerifyInstalledDLCs("install_multiple_already_installed", dlcID1, dlcID2)
 
 		// Uninstall multiple installed DLC(s).
 		uninstall(dlcID1, success)
 		uninstall(dlcID2, success)
-		dumpInstalledDLCModules("uninstall_multiple_installed")
+		dumpAndVerifyInstalledDLCs("uninstall_multiple_installed")
 	})
 }
