@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7feac673_9b749e7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-01T06:28:21Z",
+      "side": 1,
+      "message": "Could you run other tests which use GetProp, too?",
+      "revId": "a59a353347c23f3dae4801206c7e8ac7b65b4d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f36f60d_2feb7030",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-01T06:28:21Z",
+      "side": 1,
+      "message": "This is \"nil\" here, because of L59.\n\nI think you need errors.New() or something, instead.\n\nBTW, is there a way to distinguish \"empty value is set\" and \"key not found\" cases?\nIf not, maybe handling in the caller may be better to make this function consistent with getprop command?",
+      "range": {
+        "startLine": 64,
+        "startChar": 13,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "a59a353347c23f3dae4801206c7e8ac7b65b4d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
