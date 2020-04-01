@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package arc
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCDecodeAccelPerf,
+		Func:         VideoDecodeAccelPerf,
 		Desc:         "Measures ARC++ hardware video decode performance by running the c2_e2e_test APK",
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -88,6 +88,6 @@ func init() {
 	})
 }
 
-func ARCDecodeAccelPerf(ctx context.Context, s *testing.State) {
+func VideoDecodeAccelPerf(ctx context.Context, s *testing.State) {
 	decode.RunARCVideoPerfTest(ctx, s, s.Param().(string))
 }
