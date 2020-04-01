@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c55466d2_682224ff",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb7e3d0_a10c7279",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80a0edb1_94d9992b",
         "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6fe950cc_5f6cf7b2",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a0edb1_94d9992b",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f283053_89945b4a",
         "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02821128_303b2350",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f283053_89945b4a",
+      "range": {
+        "startLine": 30,
+        "startChar": 39,
+        "endLine": 30,
+        "endChar": 48
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "694e45fe_71a7ed60",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ac3002f_6b925930",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae4e0a2c_c5e99f78",
+        "filename": "src/chromiumos/tast/local/bluetooth/bluez.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42b5f61_5aabe315",
+      "range": {
+        "startLine": 110,
+        "startChar": 48,
+        "endLine": 110,
+        "endChar": 52
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4c24da6_fbdd0171",
         "filename": "src/chromiumos/tast/local/dbusutil/property.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc877a2_309bdf56",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "I changed everything to D-Bus",
+      "parentUuid": "d4c24da6_fbdd0171",
+      "range": {
+        "startLine": 64,
+        "startChar": 48,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "969d0314_0e90b68f",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "428353eb_28d902e1",
+      "range": {
+        "startLine": 69,
+        "startChar": 52,
+        "endLine": 69,
+        "endChar": 56
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f7d91a9_626af55d",
         "filename": "src/chromiumos/tast/local/dbusutil/property.go",
         "patchSetId": 3
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "80e0c575_794f4d27",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7d91a9_626af55d",
+      "range": {
+        "startLine": 73,
+        "startChar": 41,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30563038_9c85d8a6",
         "filename": "src/chromiumos/tast/local/dbusutil/property.go",
         "patchSetId": 3
@@ -206,6 +398,30 @@
       "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ae1f9f_85f16149",
+        "filename": "src/chromiumos/tast/local/dbusutil/property.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-01T00:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30563038_9c85d8a6",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "4f13d85c34930969ce90a64c56ea47c1dba79e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
