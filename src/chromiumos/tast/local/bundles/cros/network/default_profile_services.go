@@ -24,7 +24,8 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // WiFi team
 			"oka@chromium.org",                // Tast port author
 		},
-		Attr: []string{"group:mainline"},
+		SoftwareDeps: []string{"shill-wifi"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
