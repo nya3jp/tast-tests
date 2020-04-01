@@ -22,6 +22,30 @@
       "revId": "2c88cc2dc808938d4697fbb272809be15211232b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab61518_d42c36e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pointer/controller.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-01T17:40:08Z",
+      "side": 1,
+      "message": "There\u0027s a guideline to avoid such pattern -- naming result value just for simplifying the implementation: see https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\n\n\u003e Don\u0027t name result parameters just to avoid declaring a var inside the function; that trades off a minor implementation brevity at the cost of unnecessary API verbosity.",
+      "parentUuid": "407b44c1_f2d879bb",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "2c88cc2dc808938d4697fbb272809be15211232b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
