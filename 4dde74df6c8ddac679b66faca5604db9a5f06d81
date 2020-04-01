@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9bc133e3_a3e1f85b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T11:15:15Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "bb44627b_16eb989c",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "4dde74df6c8ddac679b66faca5604db9a5f06d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb9141f3_db0ec891",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 1
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "1aee253d_813c1e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T11:15:15Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "cb9141f3_db0ec891",
+      "revId": "4dde74df6c8ddac679b66faca5604db9a5f06d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c168551f_9907591d",
         "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
         "patchSetId": 1
@@ -80,6 +122,24 @@
       "revId": "4dde74df6c8ddac679b66faca5604db9a5f06d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6093b1c9_23aa1779",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T11:15:15Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "c168551f_9907591d",
+      "revId": "4dde74df6c8ddac679b66faca5604db9a5f06d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

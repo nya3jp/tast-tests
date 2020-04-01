@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6711549b_f91c22fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T11:15:15Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "da977393_d9545f74",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51052209_1e519b00",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
         "patchSetId": 2
@@ -117,6 +141,24 @@
       "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583d3904_98b87781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/binfmt_misc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T11:15:15Z",
+      "side": 1,
+      "message": "Made the whole test dependent on the USE flags.",
+      "parentUuid": "f047f839_ebb0c93c",
+      "revId": "c8c15919bf9dc2f70dd136063db58f53f9380c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9ae8bb35_84d88ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T11:15:15Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "34eddc4f_ce9e50af",
+      "range": {
+        "startLine": 24,
+        "startChar": 52,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "638de8fb8d01b3bac3bf6b614af7b6473dcd1e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8cda0c_fc28cfb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
         "patchSetId": 6
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I recommend defining separate tests for arm and arm64. It is in general confusing to debug if a test checks different scenarios depending on environment. Also in this case IIUC we use very different NDK translation implementation for arm and arm64, so it might be useful to report those results separately.\n\nYou can define parameterized tests to avoid too redundant tests:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
       "parentUuid": "2b8cda0c_fc28cfb7",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "638de8fb8d01b3bac3bf6b614af7b6473dcd1e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d41fa9ca_131bc34d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-01T11:15:15Z",
+      "side": 1,
+      "message": "Thanks!\n\nI have splitted the test to two parameterized tests: arc.NativeBridge.arm and arc.NativeBridge.arm64.\nAlthough it\u0027s possible to make these tests mutually exclusive (.arm test for 32-bit only and .arm64 test for both 32-bit and 64-bit), I made .arm64 test specific to 64-bit executables with some duplication with .arm test.",
+      "parentUuid": "e1e0da3d_c7d6b7b5",
       "range": {
         "startLine": 61,
         "startChar": 1,
