@@ -81,6 +81,30 @@
       "revId": "0b6f42eb229d036d715c882d89e2ca41739cbd87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8ea3aa7_8dafc1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/fixture_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T20:19:27Z",
+      "side": 1,
+      "message": "Here is guide: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Error-construction\n\n\nIt is recommended to wrap when you cross package boundary, which represents some kind of barrier beneath which everything is an implementation detail. Otherwise it is fine to return an error without wrapping, if you can\u0027t really add much context to make debugging easier. Use your best judgement to decide wrap or not.\n\nFollowing quotes from The Go programming language 5.4.1 Error-Handling Strategies are useful to design good errors:\n\nWhen designing error messages, be deliberate, so that each one is a meaningful description of the problem with sufficient and relevant detail.\nIn general, the call f(x) is responsible for reporting the attempted operation f and the argument value x as they relate to the context of the error.\nThe caller is responsible for adding further information that it has but the call f(x) does not.",
+      "parentUuid": "fbe51408_a7c47661",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "0b6f42eb229d036d715c882d89e2ca41739cbd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
