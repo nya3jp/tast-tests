@@ -94,6 +94,30 @@
       "revId": "2c88cc2dc808938d4697fbb272809be15211232b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49859880_ab02ad93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pointer/controller.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-01T18:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37cee5bf_5a1b8d09",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "2c88cc2dc808938d4697fbb272809be15211232b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
