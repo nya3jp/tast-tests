@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "327073af_69b8cb20",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-01T08:49:56Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! The code is much simpler now.",
+      "parentUuid": "df5e3232_63da25d9",
+      "revId": "3fccc75e972d32ac5e7705667f74a727d83678ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddfc5248_12964972",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 6
