@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -22,6 +23,9 @@ func init() {
 		Contacts:     []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
 		SoftwareDeps: []string{"reboot"},
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      8 * time.Minute,
+		// Skip "nyan_kitty" due to slow reboot speed.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
 	})
 }
 
