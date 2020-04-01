@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d31c2dc3_f5a28315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T04:41:30Z",
+      "side": 1,
+      "message": "_ *empty.Empty, retErr error",
+      "range": {
+        "startLine": 35,
+        "startChar": 93,
+        "endLine": 35,
+        "endChar": 112
+      },
+      "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ebf448_27477666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-01T04:41:30Z",
+      "side": 1,
+      "message": "func() {\n  if err :\u003d cr.Close(fullCtx); err !\u003d nil \u0026\u0026 retErr \u003d\u003d nil {\n    retErr \u003d err\n  }\n}()",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "51a0683de4f598e4b875658e705a75dc9079ba5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
