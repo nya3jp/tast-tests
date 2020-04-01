@@ -34,6 +34,24 @@
       "revId": "4171efdd46a6e8d2e45fd1e09a1e93b2490f4341",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d23eb236_cd72d3cd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-01T21:59:58Z",
+      "side": 1,
+      "message": "You are missing the chance to return early with the new function (if you see an event) - but overall I don\u0027t think that potential time delta is a big deal if you don\u0027t think it is",
+      "parentUuid": "77612c9c_1851f049",
+      "revId": "4171efdd46a6e8d2e45fd1e09a1e93b2490f4341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
