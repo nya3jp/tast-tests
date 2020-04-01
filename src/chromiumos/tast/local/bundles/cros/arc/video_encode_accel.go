@@ -2,10 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package arc
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/c2e2etest"
@@ -17,13 +18,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCEncodeAccel,
+		Func:         VideoEncodeAccel,
 		Desc:         "Verifies ARC++ hardware encode acceleration by running the arcvideoencoder_test binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.BootedWithVideoLogging(),
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_192p_i420",
 			Val: encode.TestOptions{
@@ -37,6 +39,6 @@ func init() {
 	})
 }
 
-func ARCEncodeAccel(ctx context.Context, s *testing.State) {
+func VideoEncodeAccel(ctx context.Context, s *testing.State) {
 	encode.RunARCVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encode.TestOptions))
 }
