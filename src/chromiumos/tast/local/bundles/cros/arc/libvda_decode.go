@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package arc
 
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/libvda"
+	"chromiumos/tast/local/bundles/cros/arc/libvda"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -19,6 +19,7 @@ func init() {
 		Contacts:     []string{"alexlau@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
+                Timeout:      3 * time.Minute,                                                     
 		Params: []testing.Param{{
 			Name: "h264",
 			Val:  "h264",
