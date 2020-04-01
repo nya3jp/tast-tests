@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "fc8c6ff4_b83da860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/boot_lockbox_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-01T06:39:33Z",
+      "side": 1,
+      "message": "Keigo, thanks for the correction.\n\nJust FYI,\n\nVaibhav wrote:\n\u003e cpb is actually used in the code below. \n\nSorry if my comment was not clear. I did not say \"cdp\" is unused.\nI thought the Google\u0027s internal guideline (not specific to Chrome) said not to use import renaming other than avoiding name collision of the package.\nHowever, this case is a commonly used pattern renaming a protobuf binding package. I\u0027ve got that this is allowed.",
+      "parentUuid": "4d96f220_7b1e4cd6",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9455feec_92d390fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -184,6 +202,24 @@
     },
     {
       "key": {
+        "uuid": "f6f09145_cf35089e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-01T06:39:33Z",
+      "side": 1,
+      "message": "By my last comment I suggested just doing\n\u003e cr.Close(ctx, \u0026empty.Empty{})\nin this line based on what you wrote. But in PS9 the line is removed. Is it intended change?",
+      "parentUuid": "151f7fa9_af780f36",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0e094cb_4e5b9eb1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -251,6 +287,24 @@
       "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5ed2599_b632ecb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-01T06:39:33Z",
+      "side": 1,
+      "message": "Based on the PS7 code I was thinking you needed to call the method twice for some reason which I don\u0027t know.\nWas it not needed?",
+      "parentUuid": "12bd4e7e_ad703451",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

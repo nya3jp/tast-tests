@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "172364ea_0c92be7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-01T06:39:33Z",
+      "side": 1,
+      "message": "The example package is for a series of tests made as Tast test examples, like example.GRPC.\nOther real tests should not depend on it.",
+      "revId": "daaa352807cbc2981380322a87bf44db10971db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
