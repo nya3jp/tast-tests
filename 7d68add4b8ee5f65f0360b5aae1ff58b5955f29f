@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5cb18dd1_3cb7ee17",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-01T03:34:46Z",
+      "side": 1,
+      "message": "Thanks nya@!\n\n(tagging comment as \"resolved\" since my comment was not correct)",
+      "parentUuid": "b6f7e4b2_c7935820",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "491df775_d13cd50d",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 8
