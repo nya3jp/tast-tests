@@ -46,6 +46,30 @@
       "revId": "2c88cc2dc808938d4697fbb272809be15211232b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e2c9a8_bd7ff331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pointer/controller.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-01T17:46:03Z",
+      "side": 1,
+      "message": "But then this line would be useless since we would only \"return err\" at L65 from \"c.Move()\". Whatever we get from |releaseErr| here would not get returned.",
+      "parentUuid": "cab61518_d42c36e8",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "2c88cc2dc808938d4697fbb272809be15211232b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
