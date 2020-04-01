@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7924a5a3_8af9ffa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay_glxgears.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-01T00:55:21Z",
+      "side": 1,
+      "message": "chromeos-test-assets-public?\n\nto nya@, Will exposing the path cause any security issue?",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "e7f138c151b2f0810bbd97bf1091f7b1518700f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
