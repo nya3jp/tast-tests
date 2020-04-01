@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb9e8a77_b70c2586",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-01T04:35:16Z",
+      "side": 1,
+      "message": "Added RESULT_OK as a constant. The other one is not needed at the moment.",
+      "parentUuid": "b5ba7e24_12051609",
+      "range": {
+        "startLine": 70,
+        "startChar": 39,
+        "endLine": 70,
+        "endChar": 119
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acb2ca5a_c2cb3380",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 8
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "86f9ecc8_f74a7973",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-01T04:35:16Z",
+      "side": 1,
+      "message": "I already changed to string pointers now. There is a difference between empty strings and \"no result data\", so I think we should at least distinguish between the two.\n\nCan you check the current implementation? I think it is a bit more readable, but I can change it back to the previous one if you think it\u0027s better.",
+      "parentUuid": "acb2ca5a_c2cb3380",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "491df775_d13cd50d",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 8
@@ -116,6 +164,30 @@
       "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c402f8_24eacf4f",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-01T04:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "491df775_d13cd50d",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +237,54 @@
     },
     {
       "key": {
+        "uuid": "02360761_056d38c2",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-01T04:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16f2e6d2_f1b4de09",
+      "range": {
+        "startLine": 96,
+        "startChar": 99,
+        "endLine": 96,
+        "endChar": 104
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1214937_4e12beac",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-01T04:35:16Z",
+      "side": 1,
+      "message": "There was in fact one backslash missing.\n\nThis is the correct regex: data\u003d\"((\\\\.|[^\\\\\"])*)\"\n\nThis regex matches strings that may include escaped quotes. The first part \\\\. matches a backslash followed by any other character. The second part [^\\\\\"] matches any character except for backslash and quotes.\n\nIt seems like this is how many libraries implement syntax highlighting etc. (https://stackoverflow.com/questions/249791/regex-for-quoted-string-with-escaping-quotes)\n\nNote: We don\u0027t really need to be that fancy here, but this regex also filters out invalid strings, e.g., a string with just one backslash and no following character.",
+      "parentUuid": "765c41e4_6bc651ce",
+      "range": {
+        "startLine": 96,
+        "startChar": 95,
+        "endLine": 96,
+        "endChar": 97
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "add48f51_e73c93a6",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 8
@@ -188,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "56951fd3_b0c8d7a6",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-01T04:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "add48f51_e73c93a6",
+      "range": {
+        "startLine": 105,
+        "startChar": 76,
+        "endLine": 105,
+        "endChar": 78
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fbaeebd_8876a4ae",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 8
@@ -208,6 +352,30 @@
       "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7cde48_3415e4df",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-01T04:35:16Z",
+      "side": 1,
+      "message": "Actually, I think `result` could also have values different from 0 and -1. I am not entirely sure what the other possible values are and I couldn\u0027t find a comprehensive list of all possible values anywhere. Presumably, they\u0027re the ones defined as constants in `android.app.Activity`, but maybe there are more. So I would keep `result` as a struct member for the moment.\n\nI\u0027ve only seen return values of 0 and -1 so far when sending intents, though...",
+      "parentUuid": "1fbaeebd_8876a4ae",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 108
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
