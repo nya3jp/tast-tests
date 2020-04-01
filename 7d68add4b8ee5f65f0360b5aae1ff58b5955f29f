@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b5ba7e24_12051609",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-01T03:11:00Z",
+      "side": 1,
+      "message": "Could you define constants for these values?",
+      "range": {
+        "startLine": 70,
+        "startChar": 39,
+        "endLine": 70,
+        "endChar": 119
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acb2ca5a_c2cb3380",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 8
@@ -18,6 +41,99 @@
         "startChar": 1,
         "endLine": 73,
         "endChar": 12
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f7e4b2_c7935820",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-01T03:11:00Z",
+      "side": 1,
+      "message": "If we don\u0027t need to distinguish empty strings and unset strings, I think it\u0027s rather preferred to use non-pointer strings. But I guess it\u0027s not the case here.\n\nIn general I think it\u0027s rather preferred to use explicit (string, bool) pair to distinguish empty vs. unset, as we can guess from this style recommend to avoid in-band errors:\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\nAs for protobuf, I guess it was a design decision because protobufs are mutable and it is cumbersome to always need 2 lines to set a value to a field (i.e. pb.Foo \u003d \"bar\"; pb.FooSet \u003d true).\n\nFYI protobuf used to distinguish empty strings and unset strings in v2, but they stopped distinguishing them in v3.\nhttps://developers.google.com/protocol-buffers/docs/reference/go-generated#singular-scalar-proto2\nhttps://developers.google.com/protocol-buffers/docs/reference/go-generated#singular-scalar-proto3",
+      "parentUuid": "acb2ca5a_c2cb3380",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "491df775_d13cd50d",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-01T03:11:00Z",
+      "side": 1,
+      "message": "huge nit: This check is not needed :)",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765c41e4_6bc651ce",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-01T03:11:00Z",
+      "side": 1,
+      "message": "I don\u0027t understand this regular expression. What is `\\\\.` for? Do we need two backslashes?",
+      "range": {
+        "startLine": 96,
+        "startChar": 95,
+        "endLine": 96,
+        "endChar": 97
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f2e6d2_f1b4de09",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-01T03:11:00Z",
+      "side": 1,
+      "message": "It seems like the command does not do any escaping.\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/am/ActivityManagerShellCommand.java;l\u003d696\n\nIt would be good to leave a TODO to avoid parsing \"am broadcast\" output and instead do it from Android app...",
+      "range": {
+        "startLine": 96,
+        "startChar": 99,
+        "endLine": 96,
+        "endChar": 104
       },
       "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
