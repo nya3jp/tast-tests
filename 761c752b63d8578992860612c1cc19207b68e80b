@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc9ad633_6f5c659b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-01T17:37:03Z",
+      "side": 1,
+      "message": "Flashing is around 26 seconds; the entire test with flashing is around 50 seconds.\n\nLet\u0027s only flash on \"FPMCU not responding\" for now. Yes we can change if always flashing is better.",
+      "parentUuid": "8efd654b_58bc36bc",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 20
+      },
+      "revId": "761c752b63d8578992860612c1cc19207b68e80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "901a88d5_0fefd6ae",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Do you only see one reboot message in the logs? I think what you\u0027re seeing may be the result of the polling by timberslide: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/docs/fingerprint/fingerprint.md#Logs.\n\nIt fetches the logs from the FPMCU every 10 seconds, so there will be some delay in when the logs show up. However, I did make some changes so that the timestamps that it prints out should match up with the timestamps in biod: https://crrev.com/c/1769578.",
       "parentUuid": "901a88d5_0fefd6ae",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 39
+      },
+      "revId": "761c752b63d8578992860612c1cc19207b68e80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4483708b_087f08de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-01T17:37:03Z",
+      "side": 1,
+      "message": "There are definitely two reboots in cros_fp.log. Sample cros_fp.log:\n\nlocalhost ~ # cat /var/log/cros_fp.log    \n[1.120294 UART initialized after sysjump]\n[Image: RW, nami_fp_v2.0.3266-99b5e2c98 private:1.1.9999-99b5e2c 2020-02-06 13:19:21 @chromeos-ci-legacy-us-east1-d-x32-76-g9mv]\n[1.120457 Inits done]       \n[1.120504 WARNING: Reset flags power-on + ap-off were forged.]\nConsole is enabled; type HELP for help.\n\u003e [1.120635 event set 0x0000000000002000]\n[1.120701 hostcmd init 0x0000000000002000]\n.......                \u003c------- Sometimes \"Seed has already been set\" appears here\n[7.744686 HC 0xd3]                 \n[7.750670 HC 0x08]                                \n                                       \n                                         \n--- UART initialized after reboot ---                             \n[Reset cause: reset-pin power-on hard ap-off]                                                                                   \n[Image: RO, nami_fp_v2.2.144-7a08e07eb 2019-02-16 01:50:14 @swarm-cros-540]\n[0.000139 Inits done]                  \nConsole is enabled; type HELP for help.           \n\u003e [0.000246 event set 0x0000000000002000] \n[0.000299 hostcmd init 0x0000000000002000]\n[0.000399 Verifying RW image...]                                                                                                \n......                  \n[1.120260 UART initialized after sysjump]\n[Image: RW, nami_fp_v2.0.3266-99b5e2c98 private:1.1.9999-99b5e2c 2020-02-06 13:19:21 @chromeos-ci-legacy-us-east1-d-x32-76-g9mv]\n[1.120423 Inits done]                                  \n\nAnd after this second FPMCU reboot, seed is gone as reflected by fpencstatus command, even if \"Seed has already been set\" appeared above.\n\nI suspect the second reboot has to do with \"[1.120504 WARNING: Reset flags power-on + ap-off were forged.]\". This doesn\u0027t appear in a normal reboot. I feel this might be delaying the effects of the reset flags, but what caused this?",
+      "parentUuid": "077a4cdd_51bcbb1c",
       "range": {
         "startLine": 95,
         "startChar": 1,
