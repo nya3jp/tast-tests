@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abaff816_bf5f4010",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "nit: startActivityOptions since you don\u0027t wanna export this type",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fc22b9_bc55002d",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "Do you need this? You already have in description info that this struct contains optional parameters...",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde588bb_4bd9bcc1",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "Please use oposite variable name since you probably want default value to be \"True\" for this variable, but it\u0027s better to rely on defualt Go value which is \"False\" for bool.\n\nAlso, can you create shorter name?\n\n\nSo, what about \"StoppedOnCleanup\" / \"StoppedOnTeardown\" ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd2dca1_faeb817b",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "nit: prefixes ...string",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a63c527_c97b406a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b036932_c1924240",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "I guess it\u0027s better to don\u0027t have value here.\n\nYou have default value which is false and with additional function you can change to true",
+      "range": {
+        "startLine": 71,
+        "startChar": 34,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2748f903_931cea4a",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "using only default values it can be simply:\n\nvar args StartActivityOptions\nfor _, setter :\u003d range setters {\n    setter(\u0026args)\n}",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9885e542_94812616",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "used only once, so maybe let\u0027s just put into line 144",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 28
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ecbd50_64f848e6",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-01T17:17:59Z",
+      "side": 1,
+      "message": "can you please put it just before line 120?\n\notherwise based on logs you may assume that you was trying to stop activity even if it wasn\u0027t running.",
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
