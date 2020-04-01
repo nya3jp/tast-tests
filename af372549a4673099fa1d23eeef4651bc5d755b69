@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a03e4e6_04daf9ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernel_warning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-04-01T20:32:35Z",
+      "side": 1,
+      "message": "Is this going to have the lkdtm function name?",
+      "range": {
+        "startLine": 62,
+        "startChar": 36,
+        "endLine": 62,
+        "endChar": 43
+      },
+      "revId": "af372549a4673099fa1d23eeef4651bc5d755b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
