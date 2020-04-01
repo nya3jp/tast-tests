@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8efd654b_58bc36bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-01T16:48:02Z",
+      "side": 1,
+      "message": "Approximately, how long does this end up taking? I\u0027m wondering if we should always flash the firmware, even if it means the test always runs more slowly. I\u0027m wondering if it will be harder to diagnose failures if sometimes we flash and sometimes we don\u0027t (versus always doing the exact same thing). I think it\u0027s fine to try this though since it will be faster in many cases. We can always change it later if necessary.",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 20
+      },
+      "revId": "761c752b63d8578992860612c1cc19207b68e80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "901a88d5_0fefd6ae",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 1
