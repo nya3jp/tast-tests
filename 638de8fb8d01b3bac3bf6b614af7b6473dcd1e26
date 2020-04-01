@@ -69,6 +69,30 @@
       "revId": "638de8fb8d01b3bac3bf6b614af7b6473dcd1e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e0da3d_c7d6b7b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-01T02:37:10Z",
+      "side": 1,
+      "message": "I recommend defining separate tests for arm and arm64. It is in general confusing to debug if a test checks different scenarios depending on environment. Also in this case IIUC we use very different NDK translation implementation for arm and arm64, so it might be useful to report those results separately.\n\nYou can define parameterized tests to avoid too redundant tests:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "parentUuid": "2b8cda0c_fc28cfb7",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "638de8fb8d01b3bac3bf6b614af7b6473dcd1e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
