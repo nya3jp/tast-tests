@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c682d03_d6224e7f",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-01T04:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b4af6fc_32a0aa59",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "9bc5d857fd19493be3e9db45f8c8eadfda37a244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efb014cf_65703376",
         "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
         "patchSetId": 5
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ccdd758a_de57d3ed",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-01T04:50:26Z",
+      "side": 1,
+      "message": "Renamed to WriteToHostDirect.",
+      "parentUuid": "fb734a25_a28c4585",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "9bc5d857fd19493be3e9db45f8c8eadfda37a244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0754c732_9528804f",
         "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
         "patchSetId": 5
@@ -82,6 +130,30 @@
       "writtenOn": "2020-03-31T19:44:42Z",
       "side": 1,
       "message": "can\u0027t you save a few operations by just piping the Stdin of a command like \u0027tee\u0027 (and discard Stdout)? No need for either \u0027echo\u0027 or \u0027sh\u0027.\n\nYou also probably should dump the Stderr on error. (See also https://crbug.com/1062481.)",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "9bc5d857fd19493be3e9db45f8c8eadfda37a244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d198bc32_f17f079e",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-01T04:50:26Z",
+      "side": 1,
+      "message": "The disadvantage of using \u0027tee\u0027 is that even when we discard the stdout (which is the default if cmd.Stdout not assigned) the content of stdout is still transmitted through SSH. It is the client who does the discard. If we want to discard it on the server side, I guess we\u0027ll need the \u0027sh\u0027 back again.\n\nI changed to use \u0027tee\u0027 in this patchset as it is more general (i.e. taking []byte).",
+      "parentUuid": "0754c732_9528804f",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -114,6 +186,30 @@
       "revId": "9bc5d857fd19493be3e9db45f8c8eadfda37a244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30db9781_5973690e",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-01T04:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e42942_07622933",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "9bc5d857fd19493be3e9db45f8c8eadfda37a244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
