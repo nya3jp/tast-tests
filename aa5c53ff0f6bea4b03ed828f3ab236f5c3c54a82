@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6c2e0e2_235cacaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/remote_pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-02T05:58:12Z",
+      "side": 1,
+      "message": "I guess meta is more suitable for this test since it\u0027s rather a test for Tast itself, rather than an example for users.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "aa5c53ff0f6bea4b03ed828f3ab236f5c3c54a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3537b02a_054e1eb0",
+        "filename": "src/chromiumos/tast/remote/example/hello_pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-02T05:58:12Z",
+      "side": 1,
+      "message": "Since this precondition is used only in a single meta test, we can move this to the test file itself.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "aa5c53ff0f6bea4b03ed828f3ab236f5c3c54a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8523dbe4_c4213ad5",
+        "filename": "src/chromiumos/tast/remote/example/hello_pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-02T05:58:12Z",
+      "side": 1,
+      "message": "huge nit: \"Prepare: \"\n\nditto for others.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "aa5c53ff0f6bea4b03ed828f3ab236f5c3c54a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc9abec_9d0f583c",
+        "filename": "src/chromiumos/tast/remote/example/hello_pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-02T05:58:12Z",
+      "side": 1,
+      "message": "tee is not best for writing files remotely because it sends back the content to the SSH client.\n\nAn alternative example:\n\n d.Command(\"sh\", \"-c\", `cat \u003e \"$0\"`, p.path)",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "aa5c53ff0f6bea4b03ed828f3ab236f5c3c54a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ed830d_826ca46b",
+        "filename": "src/chromiumos/tast/remote/example/hello_pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-02T05:58:12Z",
+      "side": 1,
+      "message": "nit: please insert one blank line.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "aa5c53ff0f6bea4b03ed828f3ab236f5c3c54a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
