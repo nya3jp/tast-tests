@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "227728e1_44165059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-04-02T17:14:38Z",
+      "side": 1,
+      "message": "I think we have had this discussion a lot. You need to dump this to a file and read it from file. This way it will be really hard to debug things if we need to instrument dlcservice_util. If you\u0027re not convinced, set up a meeting with me so we can discuss it again :)",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 8
+      },
+      "revId": "6bad0ec0126edfd7f003b57563f2fb0568151859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
