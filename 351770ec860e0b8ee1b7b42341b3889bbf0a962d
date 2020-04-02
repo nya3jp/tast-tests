@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d8c7345f_c5a04d60",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T08:08:29Z",
+      "side": 1,
+      "message": "Make sense, can you please change field comment?\n\n\nAlso, what do you think about `ExpectStoppedOnTeardown`? Default value is `False` and you are OK with it. You will have option called `ExpectStoppedOnTeardown` to set value to `True`. In the cleanup callback you your expectation is wrogn, we return error.\n\n\nBut I am OK with both.",
+      "parentUuid": "5523eb51_3c5becbf",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fd2dca1_faeb817b",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 5

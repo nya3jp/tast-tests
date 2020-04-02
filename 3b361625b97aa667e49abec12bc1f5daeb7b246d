@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e0c9306_f44bdaac",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T08:08:29Z",
+      "side": 1,
+      "message": "nit: not needed\n\nargs :\u003d \u0026startActivityOptions{StopOnTeardown: true}",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "3b361625b97aa667e49abec12bc1f5daeb7b246d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b9b6d2_b90c77ed",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T08:08:29Z",
+      "side": 1,
+      "message": "nit: please update comment since you wasn\u0027t tried to close/stop activity",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 81
+      },
+      "revId": "3b361625b97aa667e49abec12bc1f5daeb7b246d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10bb6ea_dd8fd840",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T08:08:29Z",
+      "side": 1,
+      "message": "huge nit: please put this statement at the beginning of the function, because we must close activity in any case",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "3b361625b97aa667e49abec12bc1f5daeb7b246d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
