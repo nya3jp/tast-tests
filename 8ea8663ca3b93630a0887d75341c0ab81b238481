@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d184d8e_4ced7c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf_30fps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T09:37:39Z",
+      "side": 1,
+      "message": "I don\u0027t think that you really need two tests: for 30fps and for 60fps.\n\nFPS probably should be just a test param \"Val\". So, you basically will have one test with 4 different parameters.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nWDYT?",
+      "revId": "8ea8663ca3b93630a0887d75341c0ab81b238481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
