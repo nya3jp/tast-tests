@@ -6,11 +6,11 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -54,69 +54,32 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the address to appear.
-	const node = "{role: 'staticText', name: '1600 amphitheatre parkway'}"
-	findQuery := fmt.Sprintf(
-		`(async () => {
-		  const root = await tast.promisify(chrome.automation.getDesktop)();
-		  await new Promise((resolve, reject) => {
-		    let timeout;
-		    const interval = setInterval(() => {
-		      if (!!root.find({attributes: %[1]s})) {
-		        clearInterval(interval);
-		        clearTimeout(timeout);
-		        resolve();
-		      }
-		    }, 10);
-		    timeout = setTimeout(()=> {
-		      clearInterval(interval);
-		      reject("timed out waiting for node %[1]s");
-		    }, 10000);
-		  });
-		})()`, node)
-	if err := tconn.EvalPromise(ctx, findQuery, nil); err != nil {
+	node, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeStaticText, Name: "1600 amphitheatre parkway"}, 30*time.Second)
+	if err != nil {
 		s.Fatal("Failed to wait for address to load: ", err)
 	}
+	defer node.Release(ctx)
 
 	// Select the address.
-	selectQuery := fmt.Sprintf(
-		`tast.promisify(chrome.automation.getDesktop)().then(
-		  root => root.find({attributes: %s})
-		).then(
-		  x => chrome.automation.setDocumentSelection({anchorObject: x, anchorOffset: 0, focusObject: x, focusOffset: 25})
-		);`, node)
-	if err := tconn.EvalPromise(ctx, selectQuery, nil); err != nil {
+	watcher, err := ui.NewRootWatcher(ctx, tconn, ui.EventTypeTextSelectionChanged)
+	if err != nil {
+		s.Fatal("Failed to create selection watcher: ", err)
+	}
+	defer watcher.Release(ctx)
+	if err := ui.Select(ctx, node, 0, node, 25); err != nil {
 		s.Fatal("Failed to select address: ", err)
+	}
+	if _, err := watcher.WaitForEvent(ctx, 20*time.Second); err != nil {
+		s.Fatal("Failed to wait for the address to be selected: ", err)
 	}
 
 	// Right click the selected address.
-	rightClickQuery := fmt.Sprintf(
-		`tast.promisify(chrome.automation.getDesktop)().then(
-		  root => root.find({attributes: %s}).showContextMenu()
-		);`, node)
-	if err := tconn.EvalPromise(ctx, rightClickQuery, nil); err != nil {
+	if err := node.RightClick(ctx); err != nil {
 		s.Fatal("Failed to right click address: ", err)
 	}
 
 	// Ensure the smart selection map option is available.
-	findQuery =
-		`(async () => {
-		  const root = await tast.promisify(chrome.automation.getDesktop)();
-		  await new Promise((resolve, reject) => {
-		    let timeout;
-		    const interval = setInterval(() => {
-		      if (!!root.find({attributes: {role: "menuItem", name: "Map"}})) {
-		        clearInterval(interval);
-		        clearTimeout(timeout);
-		        resolve();
-		      }
-		    }, 10);
-		    timeout = setTimeout(()=> {
-		      clearInterval(interval);
-		      reject('timed out waiting for node {role: "menuItem", name: "Map"}');
-		    }, 10000);
-		  });
-		})()`
-	if err := tconn.EvalPromise(ctx, findQuery, nil); err != nil {
+	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{Role: ui.RoleTypeMenuItem, Name: "Map"}, 30*time.Second); err != nil {
 		s.Fatal("Failed to show map option: ", err)
 	}
 }
