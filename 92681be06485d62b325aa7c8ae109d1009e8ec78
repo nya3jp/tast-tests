@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b4bca0e_4b4c0e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-02T17:53:18Z",
+      "side": 0,
+      "message": "nit: maybe still return an err if !os.IsNotExist(err) to catch issues, so like:\n\nif err !\u003d nil {\n  if !os.IsNotExist(err) {\n    return 0, err\n  }\n  return 0, nil\n}",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "92681be06485d62b325aa7c8ae109d1009e8ec78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
