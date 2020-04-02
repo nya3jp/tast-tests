@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6b073a1_36af46ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-02T01:54:11Z",
+      "side": 1,
+      "message": "I tried this out but with no luck. I waited for ShelfItem\u0027s with Type: \"PinnedApp\" and Title field corresponding to the app names, but it wasn\u0027t a better readiness indicator. I also tried checking the \"IsAnimating\" property of the ScrollableShelfInfoClass as another possibility, but that didn\u0027t work either.\n\nI could possibly poll for the coordinates of the shelf icons until they\u0027re all non-overlapping, or at least until Chrome is to the left of its initial position. That seems a bit like overkill, though. Not sure what else to try though, any other thoughts?",
+      "parentUuid": "25af41b1_f28b9175",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d53159c4_3c413683",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-31T19:48:55Z",
       "side": 1,
       "message": "Might be good to look at the state when you call FindFithTimeout. Make sure it isn\u0027t invisible and that it is onscreen. That may fix this.",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "525a014a_7f692d8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-02T01:54:11Z",
+      "side": 1,
+      "message": "Also no luck here. The \u0027Close\u0027 button seems to never have a state. I tried adding a check for state in FindParams but then it won\u0027t find anything, and its state is always {} when dumping the tree at various points.\n\nThe only other non-sleep alternative I came up with that worked is to poll clicking the close button, but that basically just seems like the Sleep option with extra steps",
+      "parentUuid": "d53159c4_3c413683",
       "range": {
         "startLine": 124,
         "startChar": 5,
@@ -72,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "f77ecec3_21543927",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-02T01:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c885623f_e8d3bc9f",
+      "range": {
+        "startLine": 348,
+        "startChar": 38,
+        "endLine": 348,
+        "endChar": 46
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66efd3a1_605c0dc0",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 1
@@ -95,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "23238af9_bdeeb550",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-02T01:54:11Z",
+      "side": 1,
+      "message": "Indeed...somehow missed that other function haha. Will be removed in next patch set.",
+      "parentUuid": "66efd3a1_605c0dc0",
+      "range": {
+        "startLine": 371,
+        "startChar": 5,
+        "endLine": 371,
+        "endChar": 18
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabfbb6f_e3b6930b",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 1
@@ -115,6 +211,30 @@
       "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072aface_1ada4e02",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-02T01:54:11Z",
+      "side": 1,
+      "message": "Okay, will keep that in mind. Will be removing this function in the next patch as I can just use WaitForCondition",
+      "parentUuid": "dabfbb6f_e3b6930b",
+      "range": {
+        "startLine": 374,
+        "startChar": 4,
+        "endLine": 374,
+        "endChar": 18
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
