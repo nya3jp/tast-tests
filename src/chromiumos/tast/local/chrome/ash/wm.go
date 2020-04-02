@@ -201,6 +201,21 @@ func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEv
 	return state, nil
 }
 
+type setBoundsResult struct {
+	Bounds    coords.Rect `json:"bounds"`
+	DisplayID string      `json:"displayId"`
+}
+
+// SetWindowBounds requests changing the bounds of the window and which display it is on to the given values.
+func SetWindowBounds(ctx context.Context, tconn *chrome.TestConn, id int, b coords.Rect, displayID string) (coords.Rect, string, error) {
+	var result setBoundsResult
+	if err := tconn.Call(ctx, &result, "tast.promisify(chrome.autotestPrivate.setWindowBounds)", id, b, displayID); err != nil {
+		return coords.Rect{}, "", err
+	}
+	testing.ContextLog(ctx, "RESULT: ", result)
+	return result.Bounds, result.DisplayID, nil
+}
+
 // CloseWindow requests to close this window.
 func (w *Window) CloseWindow(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.closeAppWindow)(%d)`, w.ID), nil)
