@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "090a5645_2e55313f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-04-02T23:48:06Z",
+      "side": 1,
+      "message": "I considered a nested loop to combine all iterations, but it turned out much cleaner to just create them all manually.",
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
