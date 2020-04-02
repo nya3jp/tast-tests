@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f294ef0_ccfeb819",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-02T14:11:37Z",
+      "side": 1,
+      "message": "nit:\nI\u0027d mention that the returned values might be different than the requested ones.\nIt it not obvious why you are returning them.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 109
+      },
+      "revId": "bf185da6c173a059bd80ae92649929bd306b07aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
