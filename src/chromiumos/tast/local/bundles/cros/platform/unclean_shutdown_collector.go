@@ -26,17 +26,26 @@ func init() {
 
 func getUncleanShutdownCount(ctx context.Context) (uint64, error) {
 	const metricsFile = "/var/lib/metrics/Platform.UncleanShutdownsDaily"
-	numUnclean := make([]byte, 8) // 8 bytes for uint64
+	const bytesUint64 = 8 // 8 bytes for uint64
+	numUnclean := make([]byte, bytesUint64)
 
 	f, err := os.Open(metricsFile)
 	if err != nil {
+		if os.IsNotExist(err) {
+			return 0, nil // On file not exist error, assume count of 0.
+		}
 		return 0, err
 	}
 
 	// Read the persistent integer consisting of uint32 version info and uint64 value.
 	// chromium.googlesource.com/chromiumos/platform2/+/HEAD/metrics/persistent_integer.h
-	f.Seek(4, 0) // Skip version information.
-	f.Read(numUnclean)
+	if _, err = f.Seek(4, 0); err != nil { // Skip version information.
+		return 0, errors.Wrap(err, "Error while seeking unclean shutdown file")
+	}
+
+	if _, err := f.Read(numUnclean); err != nil {
+		return 0, errors.Wrap(err, "Error while reading unclean shutdown count")
+	}
 	f.Close()
 
 	return binary.LittleEndian.Uint64(numUnclean), nil
@@ -50,6 +59,7 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not get unclean shutdown count: ", err)
 	}
+
 	s.Log("Current unclean count: ", oldUnclean)
 
 	// Create uncleanShutdownDetectedFile to simulate an unclean shutdown.
