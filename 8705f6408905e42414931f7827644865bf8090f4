@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02d5ad04_d1faaede",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-02T19:28:07Z",
+      "side": 1,
+      "message": "I\u0027m a bit lost on how many steps there are now, but I won\u0027t worry about that :)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "8705f6408905e42414931f7827644865bf8090f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
