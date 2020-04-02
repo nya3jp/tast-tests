@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92bf89e7_5c7141aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-02T02:03:36Z",
+      "side": 1,
+      "message": "It is important to make the code reproducible.\n\n- Could you check in hello_world.c somewhere with its build rule even if it is looks trivial?\n  Maybe in Chrome OS, or maybe in ARC.\n- Then refer it from here?",
+      "revId": "1a1c2a36c3358978e279e8e555ecfbf8449d45db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
