@@ -334,6 +334,14 @@ func Root(ctx context.Context, tconn *chrome.TestConn) (*Node, error) {
 	return NewNode(ctx, tconn, obj)
 }
 
+// Select sets the document selection to include everything between the two nodes at the offsets.
+// If the JavaScript fails to execute, an error is returned.
+func Select(ctx context.Context, startNode *Node, startOffset int, endNode *Node, endOffset int) error {
+	return startNode.tconn.Call(ctx, nil, `function(anchorObject, anchorOffset, focusObject, focusOffset){
+		chrome.automation.setDocumentSelection({anchorObject, anchorOffset, focusObject, focusOffset})
+	}`, startNode.object, startOffset, endNode.object, endOffset)
+}
+
 // Find finds the first descendant of the root node matching the params and returns it.
 // If the JavaScript fails to execute, an error is returned.
 func Find(ctx context.Context, tconn *chrome.TestConn, params FindParams) (*Node, error) {

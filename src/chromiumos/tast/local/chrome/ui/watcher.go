@@ -52,6 +52,17 @@ func NewWatcher(ctx context.Context, n *Node, eventType EventType) (*EventWatche
 	return ew, nil
 }
 
+// NewRootWatcher creates a new event watcher on the root node for the specified
+// event type.
+func NewRootWatcher(ctx context.Context, tconn *chrome.TestConn, eventType EventType) (*EventWatcher, error) {
+	root, err := Root(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	defer root.Release(ctx)
+	return NewWatcher(ctx, root, eventType)
+}
+
 // WaitForEvent waits for at least one event to occur on the event watcher and
 // returns the list of the events.
 func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration) ([]Event, error) {
