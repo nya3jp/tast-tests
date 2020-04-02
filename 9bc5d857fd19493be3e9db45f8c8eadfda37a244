@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0f7f885d_a30259f0",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-02T23:38:54Z",
+      "side": 1,
+      "message": "\u003e The disadvantage of using \u0027tee\u0027 is that even when we discard the stdout (which is the default if cmd.Stdout not assigned) the content of stdout is still transmitted through SSH. It is the client who does the discard. If we want to discard it on the server side, I guess we\u0027ll need the \u0027sh\u0027 back again.\n\nHmm, good point. We don\u0027t currently intend to send much data this way, but that doesn\u0027t make for a very nice general API. Anyway, if you don\u0027t mind the shell, you could still use \u0027cat\u0027 instead of \u0027echo\u0027. So \u0027sh -c \"cat \u003e YOURPATH\"\u0027.",
+      "parentUuid": "d198bc32_f17f079e",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "9bc5d857fd19493be3e9db45f8c8eadfda37a244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7e42942_07622933",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 5
