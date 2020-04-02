@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f84f24_14abad95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "nit: APIHandleMessageFromUI and in other places",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4478413_8930fdfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "nit: extensionConns ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8d050f_de30bd1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "pelase pass context here",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 14
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5137fc6_978c25ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "Don\u0027t we want to remove files on service stop?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 4
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4f99c4_0d7d9b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "nit: connToExtension / extensionConn for simplicity?",
+      "range": {
+        "startLine": 260,
+        "startChar": 24,
+        "endLine": 260,
+        "endChar": 45
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a6127d_533db0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "is it too long?",
+      "range": {
+        "startLine": 278,
+        "startChar": 140,
+        "endLine": 278,
+        "endChar": 149
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2555d1_a79b2be2",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66659513_7a253452",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_handle_message_from_ui.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "why do you need it?",
+      "range": {
+        "startLine": 44,
+        "startChar": 70,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd5809b_8c3a7dbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_handle_message_from_ui.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "May I ask you to change listener implementation and send some random JSON in response, or it can be `echo` for example? It\u0027s better to do it in the follow CL\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform2/diagnostics/dpsl/test_utils/listener.cc;l\u003d33",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 5
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f07babd_a7430c8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_handle_message_from_ui.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "Do we really need this limitation? I just remember how we removed such contexts in other wilco Tast tests",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "618c7f70_f0f121d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/data/wilco_extension_manifest.json",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "You already import wilcoextension in test body, so it looks like if we put this file into constant under wilcoextension/ package, it should simplify test code. Also it looks logical to keep in one place everything.",
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f18bf71_06288b45",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T22:17:14Z",
+      "side": 1,
+      "message": "nit: extension_id.\n\n`id` is a bit confusing, for example I was thinking that it\u0027s request id",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "9dc8b4cb9771b7c12d0d74f2188fe172d676018d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
