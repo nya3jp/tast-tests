@@ -19,18 +19,18 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     UncleanShutdownCollector,
 		Desc:     "Verify unclean shutdown produces collection",
-		Contacts: []string{"joonbug@chromium.org", "cros-telemetry@google.com"},
+		Contacts: []string{"joonbug@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
-func getUncleanShutdownCount(ctx context.Context) (uint64, error) {
+func getUncleanShutdownCount(ctx context.Context) uint64 {
 	const metricsFile = "/var/lib/metrics/Platform.UncleanShutdownsDaily"
 	numUnclean := make([]byte, 8) // 8 bytes for uint64
 
 	f, err := os.Open(metricsFile)
 	if err != nil {
-		return 0, err
+		return 0 // On file access error, assume count of 0.
 	}
 
 	// Read the persistent integer consisting of uint32 version info and uint64 value.
@@ -39,21 +39,18 @@ func getUncleanShutdownCount(ctx context.Context) (uint64, error) {
 	f.Read(numUnclean)
 	f.Close()
 
-	return binary.LittleEndian.Uint64(numUnclean), nil
+	return binary.LittleEndian.Uint64(numUnclean)
 }
 
 func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 
 	const uncleanShutdownDetectedFile = "/run/metrics/external/crash-reporter/unclean-shutdown-detected"
 
-	oldUnclean, err := getUncleanShutdownCount(ctx)
-	if err != nil {
-		s.Fatal("Could not get unclean shutdown count: ", err)
-	}
+	oldUnclean := getUncleanShutdownCount(ctx)
 	s.Log("Current unclean count: ", oldUnclean)
 
 	// Create uncleanShutdownDetectedFile to simulate an unclean shutdown.
-	_, err = os.Stat(uncleanShutdownDetectedFile)
+	_, err := os.Stat(uncleanShutdownDetectedFile)
 	if os.IsNotExist(err) {
 		var f, err = os.Create(uncleanShutdownDetectedFile)
 		if err != nil {
@@ -82,11 +79,7 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not wait for unclean shutdown to be detected: ", err)
 	}
 
-	newUnclean, err := getUncleanShutdownCount(ctx)
-	if err != nil {
-		s.Fatal("Could not get unclean shutdown count: ", err)
-	}
-
+	newUnclean := getUncleanShutdownCount(ctx)
 	if newUnclean != oldUnclean+1 {
 		s.Fatalf("Unclean shutdown was logged incorrectly. Got %d but expected %d", newUnclean, oldUnclean+1)
 	}
