@@ -22,6 +22,30 @@
       "revId": "8705f6408905e42414931f7827644865bf8090f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02374e77_8d4993a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-02T19:54:43Z",
+      "side": 1,
+      "message": "Three steps:\n1. Tast: Add an attribute, wificell_unstable https://crrev.com/c/2120876\n2. (current) Tast-tests: Add wificell_unstable to network.SimpleConnect test https://crrev.com/c/2128218\n3. Autotest: Add wificell_unstable attribute.  https://crrev.com/c/2129616\n\nThe third one needs your review :)",
+      "parentUuid": "02d5ad04_d1faaede",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "8705f6408905e42414931f7827644865bf8090f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
