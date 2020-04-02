@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "864e7973_895833aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "What is the reason to have all login in this file and not in src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf_30fps.go?",
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33667a1a_305bdb1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "nit: \n\ndefer func(ctx context.Context) {\n    ...\n}(cleanupCtx)\n\n\nDo not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it. The Context should be the first parameter, typically named ctx:\n\nhttps://golang.org/pkg/context/",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a9e40e_2a571985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "Don\u0027t use Fatal in defer statement. Fatal creates panic. If you panic in one defer statement, you won\u0027t be able to run other defer statements.\n\nUse s.Error instead",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a740a59_4bce4938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "nit: create a bug instead",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "176dfaf3_a8b794f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 76,
+        "startChar": 10,
+        "endLine": 76,
+        "endChar": 19
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f1b60af_5fc0432d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "afterBootWarmupDuration",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436e0a53_e3d82c2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "nit: \ts.Log(\"Recording to file:\", outputFile)",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d1bd7ab_ffc6ca14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "Can you use testing.Poll?",
+      "range": {
+        "startLine": 114,
+        "startChar": 11,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5cd080_927a5c8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "else if, please try to have less indent if possible",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 4
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fc5639_e8c7efce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "nit: Why it has name `o`? What about `histo` or at least `h`?",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f334b00f_812e7d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "Don\u0027t you need to send stop intent on cleanup if you have some failure?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 70
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52409ba_fbf9adc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "This looks like a good candidate for ARC function FileSize():\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/arc/file.go",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdead75_56d5d782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "please use want/got: https://golang.org/pkg/testing/\n\n\n\nVideo recording file is smaller than expected: got %d, want \u003e\u003d%d",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 67
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cfad71_0c29380c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf_30fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T10:31:07Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
