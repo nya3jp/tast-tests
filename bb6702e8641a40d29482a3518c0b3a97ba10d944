@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99374608_70b6004c",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-02T00:00:26Z",
+      "side": 1,
+      "message": "I\u0027ll do some additional thinking on what the best option here is",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "bb6702e8641a40d29482a3518c0b3a97ba10d944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f2f694_ec0f8ec1",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-02T00:00:26Z",
+      "side": 1,
+      "message": "end comments with .",
+      "range": {
+        "startLine": 31,
+        "startChar": 71,
+        "endLine": 31,
+        "endChar": 81
+      },
+      "revId": "bb6702e8641a40d29482a3518c0b3a97ba10d944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9c8db2_fd11ff01",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-02T00:00:26Z",
+      "side": 1,
+      "message": "why are these two different functions?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "bb6702e8641a40d29482a3518c0b3a97ba10d944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe450ab_dd983c64",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-02T00:00:26Z",
+      "side": 1,
+      "message": "sleeping is generally not preferred - how hard would it be to poll instead?  You could check the value every half second (for maybe a longer period of time total than 2 seconds) and return as soon as the quality is correct",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "bb6702e8641a40d29482a3518c0b3a97ba10d944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
