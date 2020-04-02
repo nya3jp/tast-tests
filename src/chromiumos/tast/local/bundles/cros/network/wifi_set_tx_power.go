@@ -38,15 +38,22 @@ func WifiSetTXPower(ctx context.Context, s *testing.State) {
 	}
 
 	for _, tc := range []struct {
-		mode string
-		args []string
+		mode   string
+		domain string
+		args   []string
 	}{
-		// Run tablet mode first, then switch back to non-tablet mode.
-		{"tablet", []string{"--tablet"}},
-		{"non-tablet", []string{}},
+		// Iterate through each combination of regdomain and tablet mode.
+		{"tablet", "fcc", []string{"--tablet", "--domain=fcc"}},
+		{"tablet", "eu", []string{"--tablet", "--domain=eu"}},
+		{"tablet", "rest-of-world", []string{"--tablet", "--domain=rest-of-world"}},
+		{"tablet", "none", []string{"--notablet", "--domain=none"}},
+		{"non-tablet", "fcc", []string{"--notablet", "--domain=fcc"}},
+		{"non-tablet", "eu", []string{"--notablet", "--domain=eu"}},
+		{"non-tablet", "rest-of-world", []string{"--notablet", "--domain=rest-of-world"}},
+		{"non-tablet", "none", []string{"--notablet", "--domain=none"}},
 	} {
 		if err := testexec.CommandContext(ctx, setTxPowerExe, tc.args...).Run(testexec.DumpLogOnError); err != nil {
-			s.Errorf("Failed to set TX power for %s mode: %v", tc.mode, err)
+			s.Errorf("Failed to set TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
 		}
 	}
 }
