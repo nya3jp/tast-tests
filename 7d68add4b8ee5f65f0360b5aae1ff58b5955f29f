@@ -376,6 +376,121 @@
       "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4aa8c87_5649ebb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T09:50:22Z",
+      "side": 1,
+      "message": "pass ctx here",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd453a17_f101d9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T09:50:22Z",
+      "side": 1,
+      "message": "huge nit: s.Error, fatal creates panic",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e3358ed_7720beb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T09:50:22Z",
+      "side": 1,
+      "message": "nit: this looks useless\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 24
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7575d971_46454aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T09:50:22Z",
+      "side": 1,
+      "message": "It isn\u0027t recommended to sleep in test, instead it\u0027s recommended to use testing.Poll instead",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc96dba_a4729553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-02T09:50:22Z",
+      "side": 1,
+      "message": "else if",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 5
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
