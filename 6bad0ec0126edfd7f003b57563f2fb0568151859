@@ -22,6 +22,30 @@
       "revId": "6bad0ec0126edfd7f003b57563f2fb0568151859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c811076_8fbbf684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-04-02T17:23:32Z",
+      "side": 1,
+      "message": "I\u0027ll run the new --dump option that\u0027s added in the Cq-Depend of dlcservice_util and read from the dump file.\nSGTM",
+      "parentUuid": "227728e1_44165059",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 8
+      },
+      "revId": "6bad0ec0126edfd7f003b57563f2fb0568151859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
