@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3a7a279_46a59431",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-03T04:54:11Z",
+      "side": 1,
+      "message": "How about moving this to SetWindowBounds, assuming it won\u0027t be reused in another function?\n\nfunc SetWindowBounds(...) (...) {\n  var result struct {\n    Bounds ...\n    DisplayID ...\n  }\n  if err :\u003d tconn.Call(ctx, \u0026result, ...); ...\n}",
+      "revId": "bebb36fd47ffb0a8e0a509e5c61e2c10506a6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
