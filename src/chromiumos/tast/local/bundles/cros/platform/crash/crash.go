@@ -70,6 +70,9 @@ type CrasherResult struct {
 
 	// .log crash report filename.
 	Log string
+
+	// .pslog crash report filename (optional; only for crash reporter failures)
+	Pslog string
 }
 
 // DefaultCrasherOptions creates a CrasherOptions which actually cause and catch crash.
@@ -352,9 +355,20 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	}
 
 	basename := crashFilePrefix(opts.CrasherPath)
+	crashReporterFailureBasename := "crash_reporter_failure"
 
 	// A dict tracking files for each crash report.
 	crashReportFiles := make(map[string]string)
+	// A map tracking files for crash reporter issues.  This is separate
+	// from crashReportFiles because the for loop below verifies that each
+	// extension appears at most once, but it is possible for the crash
+	// reporter to generate a .log file for the original crashing
+	// executable as well as the crash_reporter.  If we stored all crash
+	// report files in the same map, the for loop would fail due to the
+	// repeated extension.  By keeping two separate maps, we sidestep that
+	// issue.
+	crashReporterFailureFiles := make(map[string]string)
+
 	if err := checkCrashDirectoryPermissions(crashDir); err != nil {
 		return result, err
 	}
@@ -374,18 +388,26 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 			// Ignore core files.  We'll test them later.
 			continue
 		}
-		if !strings.HasPrefix(f.Name(), basename+".") {
+		if !strings.HasPrefix(f.Name(), basename+".") && !strings.HasPrefix(f.Name(), crashReporterFailureBasename+".") {
 			// Flag all unknown files.
 			return nil, errors.Errorf("crash reporter created an unknown file: %s / base=%s",
 				f.Name(), basename)
 		}
 		ext := filepath.Ext(f.Name())
 		testing.ContextLogf(ctx, "Found crash report file (%s): %s", ext, f.Name())
-		if data, ok := crashReportFiles[ext]; ok {
-			return nil, errors.Errorf("found multiple files with %s: %s and %s",
-				ext, f.Name(), data)
+		if strings.HasPrefix(f.Name(), basename+".") {
+			if data, ok := crashReportFiles[ext]; ok {
+				return nil, errors.Errorf("found multiple files with %s: %s and %s",
+					ext, f.Name(), data)
+			}
+			crashReportFiles[ext] = f.Name()
+		} else {
+			if data, ok := crashReporterFailureFiles[ext]; ok {
+				return nil, errors.Errorf("found multiple files with %s: %s and %s",
+					ext, f.Name(), data)
+			}
+			crashReporterFailureFiles[ext] = f.Name()
 		}
-		crashReportFiles[ext] = f.Name()
 	}
 
 	// Every crash report needs one of these to be valid.
@@ -394,9 +416,12 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	}
 	// Reports might have these and that's OK!
 	reportOptionalFiletypes := []string{
-		".dmp", ".log", ".proclog",
+		".dmp", ".log", ".proclog", ".pslog",
 	}
 
+	for k, v := range crashReporterFailureFiles {
+		crashReportFiles[k] = v
+	}
 	// Make sure we generated the exact set of files we expected.
 	var missingFileTypes []string
 	for _, rt := range reportRequiredFiletypes {
@@ -451,6 +476,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	result.Basename = filepath.Base(opts.CrasherPath)
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
+	result.Pslog = crashReportFiles[".pslog"]
 	return result, nil
 }
 
