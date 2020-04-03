@@ -42,10 +42,11 @@ var nonAlphaNumericRegex = regexp.MustCompile("[^0-9A-Za-z]")
 
 // CrasherOptions stores configurations for running crasher process.
 type CrasherOptions struct {
-	Username    string
-	CauseCrash  bool
-	Consent     bool
-	CrasherPath string
+	Username                string
+	CauseCrash              bool
+	Consent                 bool
+	CrasherPath             string
+	ExpectCrashReporterFail bool
 }
 
 // CrasherResult stores result status and outputs from a crasher process execution.
@@ -70,15 +71,19 @@ type CrasherResult struct {
 
 	// .log crash report filename.
 	Log string
+
+	// .pslog crash report filename (optional; only for crash reporter failures)
+	Pslog string
 }
 
 // DefaultCrasherOptions creates a CrasherOptions which actually cause and catch crash.
 // Username is not populated as it should be set explicitly by each test.
 func DefaultCrasherOptions() CrasherOptions {
 	return CrasherOptions{
-		CauseCrash:  true,
-		Consent:     true,
-		CrasherPath: CrasherPath,
+		CauseCrash:              true,
+		Consent:                 true,
+		CrasherPath:             CrasherPath,
+		ExpectCrashReporterFail: false,
 	}
 }
 
@@ -352,6 +357,11 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	}
 
 	basename := crashFilePrefix(opts.CrasherPath)
+	oldBasename := ""
+	if opts.ExpectCrashReporterFail {
+		oldBasename = basename
+		basename = "crash_reporter_failure"
+	}
 
 	// A dict tracking files for each crash report.
 	crashReportFiles := make(map[string]string)
@@ -374,6 +384,12 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 			// Ignore core files.  We'll test them later.
 			continue
 		}
+		if opts.ExpectCrashReporterFail && strings.HasPrefix(f.Name(), oldBasename+".") {
+			// In the CrashReporterFail case, we might generate
+			// some files with the basename of the crashing
+			// executable. That's okay -- just ignore them.
+			continue
+		}
 		if !strings.HasPrefix(f.Name(), basename+".") {
 			// Flag all unknown files.
 			return nil, errors.Errorf("crash reporter created an unknown file: %s / base=%s",
@@ -394,7 +410,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	}
 	// Reports might have these and that's OK!
 	reportOptionalFiletypes := []string{
-		".dmp", ".log", ".proclog",
+		".dmp", ".log", ".proclog", ".pslog",
 	}
 
 	// Make sure we generated the exact set of files we expected.
@@ -451,6 +467,7 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, cr *chrome.Chrome, opts Cr
 	result.Basename = filepath.Base(opts.CrasherPath)
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
+	result.Pslog = crashReportFiles[".pslog"]
 	return result, nil
 }
 
