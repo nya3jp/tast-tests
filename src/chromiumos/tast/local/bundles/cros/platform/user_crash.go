@@ -485,6 +485,7 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 	defer reader.Close()
 	opts := crash.DefaultCrasherOptions()
 	opts.Username = "root"
+	opts.ExpectCrashReporterFail = true
 	result, err := crash.RunCrasherProcessAndAnalyze(ctx, cr, opts)
 	if err != nil {
 		return errors.Wrap(err, "failed to call crasher")
@@ -528,6 +529,13 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 	if !strings.Contains(logContents, failureString) {
 		return errors.Errorf("did not find %q in the result log %s", failureString, result.Log)
 	}
+
+	pslogName := result.Pslog
+	out, err = ioutil.ReadFile(pslogName)
+	if err != nil {
+		return err
+	}
+	logContents = string(out)
 
 	// Verify we are generating appropriate diagnostic output.
 	if !strings.Contains(logContents, "===ps output===") || !strings.Contains(logContents, "===meminfo===") {
