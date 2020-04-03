@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "7a8a0fe6_a4cfe132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-03T05:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c620313a_dad0ce4b",
+      "range": {
+        "startLine": 101,
+        "startChar": 48,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "4882b04826645bfa9583c650764fe8a6950867c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a53f05ef_04f6f270",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 14
