@@ -268,23 +268,11 @@ var histogramMap = map[string]struct {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
 	},
-	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.AllSequences": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-	},
 	"Graphics.Smoothness.PercentDroppedFrames.MainThread.Universal": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
 	},
-	"Graphics.Smoothness.PercentDroppedFrames.MainThread.AllSequences": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-	},
 	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.Universal": {
-		unit:      "percent",
-		direction: perf.SmallerIsBetter,
-	},
-	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.AllSequences": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
 	},
