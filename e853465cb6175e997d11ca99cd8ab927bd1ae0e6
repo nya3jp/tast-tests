@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d9a2127_2bb01f4f",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-03T05:00:41Z",
+      "side": 1,
+      "message": "string(out)\n\n[]byte.String() is not pretty. :(\n\nhttps://play.golang.org/p/Ojao-XaY_3E",
+      "range": {
+        "startLine": 243,
+        "startChar": 66,
+        "endLine": 243,
+        "endChar": 69
+      },
+      "revId": "e853465cb6175e997d11ca99cd8ab927bd1ae0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
