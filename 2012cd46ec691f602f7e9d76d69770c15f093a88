@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1f0f54a_cac4fd72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-03T23:19:07Z",
+      "side": 1,
+      "message": "Instead if adding !isSimulcast here 4 times would it make sense to refactor this into 2 functions, one for Simulcast and one for classic? I think it might be shorter and more readable.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d75f685_44308845",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/sdp.js",
         "patchSetId": 2
@@ -41,6 +64,29 @@
         "startChar": 0,
         "endLine": 5,
         "endChar": 0
+      },
+      "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc291474_43cab2fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-03T23:19:07Z",
+      "side": 1,
+      "message": "Maybe longer line for comment?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 3
       },
       "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
