@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "33fca62d_9610e2a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Same as the preview test.\n\nNow a parameterized test.",
+      "parentUuid": "864e7973_895833aa",
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33667a1a_305bdb1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ffd4cc_e0ea7970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33667a1a_305bdb1b",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f347682f_68028c3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a9e40e_2a571985",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a740a59_4bce4938",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3bc901c_2931c9e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done\n\nRemoved the TODO. I don\u0027t think it\u0027s worth creating a bug for this.",
+      "parentUuid": "5a740a59_4bce4938",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "6f603a2b_b562e2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "176dfaf3_a8b794f1",
+      "range": {
+        "startLine": 76,
+        "startChar": 10,
+        "endLine": 76,
+        "endChar": 19
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f1b60af_5fc0432d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4
@@ -131,6 +245,30 @@
       "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ed6fa6_09e0a28f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f1b60af_5fc0432d",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "6f6dbe7f_29e2e34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436e0a53_e3d82c2f",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d1bd7ab_ffc6ca14",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4
@@ -177,6 +339,30 @@
       "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fdd070d_9df3a53c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "I am not waiting for anything here, apart from time to pass to get stable number.",
+      "parentUuid": "3d1bd7ab_ffc6ca14",
+      "range": {
+        "startLine": 114,
+        "startChar": 11,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "a8471b16_cf2e468f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5cd080_927a5c8f",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 4
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1fc5639_e8c7efce",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4
@@ -223,6 +433,30 @@
       "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6679fe3a_16668d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done\n\nIt was `o` for output.",
+      "parentUuid": "c1fc5639_e8c7efce",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "9c6bfa21_bb0712af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Should not be necessary. Recording stops automatically when the activity is closed. (Which is also a cleanup action.)",
+      "parentUuid": "f334b00f_812e7d06",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 70
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b52409ba_fbf9adc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4
@@ -272,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "468e83a2_fa327b07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b52409ba_fbf9adc6",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fdead75_56d5d782",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4
@@ -292,6 +574,30 @@
       "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2382b1eb_fbbce715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T06:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fdead75_56d5d782",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 67
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
