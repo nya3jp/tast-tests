@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d75f685_44308845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/sdp.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-03T23:13:25Z",
+      "side": 1,
+      "message": "Can you pull down the whole webrtc/third_party/sdp/ directory unchanged and place it into our test tree?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec14f0f0_47444f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/simulcast.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-03T23:13:25Z",
+      "side": 1,
+      "message": "Same for simulcast.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
