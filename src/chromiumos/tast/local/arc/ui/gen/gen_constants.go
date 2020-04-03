@@ -15,7 +15,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/pkg/errors"
+	"chromiumos/tast/errors"
 )
 
 // readConstants reads path, a KeyEvent.java file, and returns a subset of relevant constants from it.

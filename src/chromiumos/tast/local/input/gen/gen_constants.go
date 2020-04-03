@@ -15,7 +15,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/pkg/errors"
+	"chromiumos/tast/errors"
 )
 
 // readConstants reads path, a kernel input-event-codes.h file, and returns a subset of relevant constants from it.
