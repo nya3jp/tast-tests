@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/pre"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -24,7 +23,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.DataFiles(), getdisplaymedia.HTMLFile),
+		Data:         append(getdisplaymedia.DataFiles()),
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		// See https://w3c.github.io/mediacapture-screen-share/#displaycapturesurfacetype
 		// for where the case names come from.
