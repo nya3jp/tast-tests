@@ -9,11 +9,14 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"sort"
+	"strconv"
 	"strings"
 	"text/template"
 
@@ -183,4 +186,51 @@ func writeConstants(consts constantGroups, groups []*groupInfo, types []*typeInf
 	}
 
 	return os.Rename(f.Name(), path)
+}
+
+// readConstants reads the constants from the file at path.
+// For each line, parser is called. The parser is expected to return two tokens:
+// name and its integer value in string format with ok = true. If the line should be
+// skipped, it should return with ok = false.
+func readConstants(path string, parser func(line string) (name, sval string, ok bool)) ([]constant, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+
+	var result []constant
+	sc := bufio.NewScanner(f)
+	for sc.Scan() {
+		name, sval, ok := parser(sc.Text())
+		if !ok {
+			continue
+		}
+		val, err := strconv.ParseInt(sval, 0, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "unable to parse int literal %q for %q", sval, name)
+		}
+		result = append(result, constant{name, val})
+	}
+	return result, nil
+}
+
+// classifyConstants makes groups by their name prefixes. The values in each group are sorted in
+// ascending order of value.
+func classifyConstants(cs []constant, groups []*groupInfo) constantGroups {
+	result := make(constantGroups)
+	for _, c := range cs {
+		g := getGroupForName(groups, c.name)
+		if g == nil {
+			// Ignore constants which does not have a corresponding group.
+			continue
+		}
+		result[g.prefix] = append(result[g.prefix], c)
+	}
+
+	// Sort each group by ascending value.
+	for _, cs := range result {
+		sort.Slice(cs, func(i, j int) bool { return cs[i].val < cs[j].val })
+	}
+	return result
 }

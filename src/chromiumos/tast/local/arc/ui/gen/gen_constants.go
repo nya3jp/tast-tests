@@ -6,65 +6,12 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
 	"log"
 	"os"
 	"regexp"
-	"sort"
-	"strconv"
-
-	"chromiumos/tast/errors"
 )
-
-// readConstants reads path, a KeyEvent.java file, and returns a subset of relevant constants from it.
-func readConstants(groups []*groupInfo, path string) (constantGroups, error) {
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	consts := make(constantGroups)
-	// Looking for:
-	//  public static final int META_SELECTING = 0x800;
-	// TODO(ricardoq): Multiline, bitwise-or metas are not supported. Find a robust way to support them. e.g:
-	//   public static final int META_SHIFT_MASK = META_SHIFT_ON
-	//        | META_SHIFT_LEFT_ON | META_SHIFT_RIGHT_ON;
-	re := regexp.MustCompile(`^\s+public static final int ([_A-Z0-9]+)\s*=\s*(0x[0-9a-fA-F]+|\d+);$`)
-	sc := bufio.NewScanner(f)
-	for sc.Scan() {
-		matches := re.FindStringSubmatch(sc.Text())
-		if matches == nil {
-			continue
-		}
-		name, sval := matches[1], matches[2]
-		grp := getGroupForName(groups, name)
-		if grp == nil {
-			// It is safe to silently ignore unsupported groups.
-			continue
-		}
-
-		base := 10
-		if len(sval) > 2 && sval[:2] == "0x" {
-			base = 16
-			sval = sval[2:] // strconv.ParseInt doesn't want "0x" prefix
-		}
-		var val int64
-		if val, err = strconv.ParseInt(sval, base, 64); err != nil {
-			return nil, errors.Wrapf(err, "unable to parse value %q for %q", sval, name)
-		}
-		consts[grp.prefix] = append(consts[grp.prefix], constant{name, val})
-	}
-
-	// Sort each group by ascending value.
-	for _, cs := range consts {
-		sort.Slice(cs, func(i, j int) bool { return cs[i].val < cs[j].val })
-	}
-
-	return consts, sc.Err()
-}
 
 func main() {
 	flag.Parse()
@@ -121,12 +68,24 @@ func main() {
 		CopyrightYear:  "2019",
 	}
 
-	consts, err := readConstants(groups, inputFile)
+	// Read inputFile, a KeyEvent.java. Looking for lines like:
+	//   public static final int META_SELECTING = 0x800;
+	// TODO(ricardoq): Multiline, bitwise-or metas are not supported. Find a robust way to support them. e.g:
+	//   public static final int META_SHIFT_MASK = META_SHIFT_ON
+	//        | META_SHIFT_LEFT_ON | META_SHIFT_RIGHT_ON;
+	re := regexp.MustCompile(`^\s+public static final int ([_A-Z0-9]+)\s*=\s*(0x[0-9a-fA-F]+|\d+);$`)
+	consts, err := readConstants(inputFile, func(line string) (name, sval string, ok bool) {
+		m := re.FindStringSubmatch(line)
+		if m == nil {
+			return "", "", false
+		}
+		return m[1], m[2], true
+	})
 	if err != nil {
 		log.Fatalf("Failed to read %v: %v", inputFile, err)
 	}
 
-	if err := writeConstants(consts, groups, types, a, outputFile); err != nil {
+	if err := writeConstants(classifyConstants(consts, groups), groups, types, a, outputFile); err != nil {
 		log.Fatalf("Failed to write %v: %v", outputFile, err)
 	}
 }
