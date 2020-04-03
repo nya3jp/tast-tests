@@ -32,6 +32,9 @@ const (
 
 	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
 	LoopbackFile = "loopback_peerconnection.html"
+
+	// The name of the RTC Stat value when simulcast encoding is used.
+	simulcastAdapterName = "SimulcastEncoderAdapter"
 )
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
@@ -62,7 +65,8 @@ func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chro
 	}
 
 	if codecType != DontCare {
-		if err := checkForCodecImplementation(ctx, s, conn, codecType); err != nil {
+		isSimulcast := strings.HasSuffix(profile, "SIM")
+		if err := checkForCodecImplementation(ctx, s, conn, codecType, isSimulcast); err != nil {
 			s.Fatal("checkForCodecImplementation() failed: ", err)
 		}
 	}
@@ -72,12 +76,15 @@ func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chro
 // is using hardware acceleration for codecType. This method uses the
 // RTCPeerConnection getStats() API [1].
 // [1] https://w3c.github.io/webrtc-pc/#statistics-model
-func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *chrome.Conn, codecType CodecType) error {
+func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *chrome.Conn, codecType CodecType, isSimulcast bool) error {
 	// See [1] and [2] for the statNames to use here. The values are browser
 	// specific, for Chrome, "ExternalDecoder" and "{V4L2,Vaapi, etc.}VideoEncodeAccelerator"
 	// means that WebRTC is using hardware acceleration and anything else
 	// (e.g. "libvpx", "ffmpeg", "unknown") means it is not.
-	// This would not handle a SimulcastEncoderAdapter (Simulcast case).
+	// A SimulcastEncoderAdapter is actually a grouping of implementations, so it can read e.g.
+	//  SimulcastEncoderAdapter (libvpx, VaapiVideoEncodeAccelerator, VaapiVideoEncodeAccelerator)
+	// (Note that there isn't a SimulcastDecoderAdapter).
+	//
 	// [1] https://w3c.github.io/webrtc-stats/#dom-rtcinboundrtpstreamstats-decoderimplementation
 	// [2] https://w3c.github.io/webrtc-stats/#dom-rtcoutboundrtpstreamstats-encoderimplementation
 	statName := "encoderImplementation"
@@ -131,11 +138,13 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	}
 	s.Logf("%s: %s", statName, implementation)
 
-	if strings.HasSuffix(implementation, expectedImplementation) {
-		return nil
+	if !strings.Contains(implementation, expectedImplementation) {
+		return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementation)
 	}
-
-	return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementation)
+	if codecType == Encoding && isSimulcast && !strings.HasPrefix(implementation, simulcastAdapterName) {
+		return errors.Errorf("simulcast adapter not found, got %v, looking for %v", implementation, simulcastAdapterName)
+	}
+	return nil
 }
 
 // DataFiles returns a list of required files that tests that use this package
