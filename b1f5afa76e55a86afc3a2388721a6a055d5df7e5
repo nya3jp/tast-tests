@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd58fc9_49de471c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1234564
+      },
+      "writtenOn": "2020-04-03T20:35:17Z",
+      "side": 1,
+      "message": "i think you can just go for {width: 1280, height: 720} - but make sure to praise guidou",
+      "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
