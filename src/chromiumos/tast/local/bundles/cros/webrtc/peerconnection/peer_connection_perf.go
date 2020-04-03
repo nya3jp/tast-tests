@@ -275,7 +275,7 @@ func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL stri
 	}
 
 	prefix := "sw."
-	hwAccelUsed := checkForCodecImplementation(ctx, s, conn, Decoding) == nil
+	hwAccelUsed := checkForCodecImplementation(ctx, s, conn, Decoding /*isSimulcast=*/, false) == nil
 	if enableHWAccel {
 		if !hwAccelUsed {
 			s.Fatal("Error: HW accelerator wasn't used")
