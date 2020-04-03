@@ -6,59 +6,12 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
 	"log"
 	"os"
 	"regexp"
-	"sort"
-	"strconv"
-
-	"chromiumos/tast/errors"
 )
-
-// readConstants reads path, a kernel input-event-codes.h file, and returns a subset of relevant constants from it.
-func readConstants(groups []*groupInfo, path string) (constantGroups, error) {
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	consts := make(constantGroups)
-	re := regexp.MustCompile(`^#define\s+([A-Z][_A-Z0-9]+)\s+(0x[0-9a-fA-F]+|\d+)`)
-	sc := bufio.NewScanner(f)
-	for sc.Scan() {
-		matches := re.FindStringSubmatch(sc.Text())
-		if matches == nil {
-			continue
-		}
-		name, sval := matches[1], matches[2]
-		grp := getGroupForName(groups, name)
-		if grp == nil {
-			return nil, errors.Errorf("unable to classify %q", name)
-		}
-
-		base := 10
-		if len(sval) > 2 && sval[:2] == "0x" {
-			base = 16
-			sval = sval[2:] // strconv.ParseInt doesn't want "0x" prefix
-		}
-		var val int64
-		if val, err = strconv.ParseInt(sval, base, 64); err != nil {
-			return nil, errors.Wrapf(err, "unable to parse value %q for %q", sval, name)
-		}
-		consts[grp.prefix] = append(consts[grp.prefix], constant{name, val})
-	}
-
-	// Sort each group by ascending value.
-	for _, cs := range consts {
-		sort.Slice(cs, func(i, j int) bool { return cs[i].val < cs[j].val })
-	}
-
-	return consts, sc.Err()
-}
 
 func main() {
 	flag.Parse()
@@ -143,12 +96,21 @@ func main() {
 		CopyrightYear:  "2018",
 	}
 
-	consts, err := readConstants(groups, inputFile)
+	// Reads inputFile, a kernel input-event-codes.h. Looking for lines like:
+	//   #define EV_SYN 0x00
+	re := regexp.MustCompile(`^#define\s+([A-Z][_A-Z0-9]+)\s+(0x[0-9a-fA-F]+|\d+)`)
+	consts, err := readConstants(inputFile, func(line string) (name, sval string, ok bool) {
+		m := re.FindStringSubmatch(line)
+		if m == nil {
+			return "", "", false
+		}
+		return m[1], m[2], true
+	})
 	if err != nil {
 		log.Fatalf("Failed to read %v: %v", inputFile, err)
 	}
 
-	if err := writeConstants(consts, groups, types, a, outputFile); err != nil {
+	if err := writeConstants(classifyConstants(consts, groups), groups, types, a, outputFile); err != nil {
 		log.Fatalf("Failed to write %v: %v", outputFile, err)
 	}
 }
