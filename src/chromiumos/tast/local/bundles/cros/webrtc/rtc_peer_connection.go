@@ -87,6 +87,11 @@ func init() {
 			Name: "vp8_simulcast",
 			Val:  rtcTest{codec: peerconnection.DontCare, profile: "VP8", simulcast: true},
 			Pre:  pre.ChromeVideoWithFakeWebcam(),
+		}, {
+			Name:              "vp8_enc_simulcast",
+			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8", simulcast: true},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}},
 	})
 }
