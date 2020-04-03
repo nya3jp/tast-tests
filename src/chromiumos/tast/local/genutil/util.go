@@ -23,6 +23,64 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// Params holds the parameters to configure generated file.
+type Params struct {
+	PackageName   string // package name of the generated file, e.g. "input"
+	PreludeCode   string // Go code to be embedded before generated constants, including comments like //go:generate
+	RepoName      string // human readable repository name of the input file, e.g. "Linux Kernel"
+	ExeName       string // name of the main .go file
+	CopyrightYear int    // copyright year to be embedded
+
+	Types  []TypeInfo  // type definition of output constants.
+	Groups []GroupInfo // group definition of the constants, including how to categorize each.
+
+	// LineParser is called for each line of input file. It should parse
+	// the line and return the name and the value of the constant with ok = true.
+	// If the line should be skipped, ok = false should be returned.
+	LineParser func(string line) (name, val string, ok bool)
+}
+
+// groupInfo describes a group of constants.
+type GroupInfo struct {
+	prefix   string // constant prefix used as group identifier, e.g, the prefix for "KEY_*" should be "KEY".
+	typeName string // constant type name, e.g. "EventCode"
+	desc     string // human-readable group description used in comment
+}
+
+// typeInfo describes a Go type to be defined in the generated code.
+type TypeInfo struct {
+	name       string // type name, e.g "EventCode"
+	nativeType string // Go native type, e.g "uint16"
+	desc       string // human-readable type description used in comment
+}
+
+// Generate reads the constants from input, converts them to constants in Go lang,
+// and write it into output file.
+// The output is configurable by params. See Params explanation for details.
+func Generate(input, output string, params Params) error {
+	// Retrieve git related information about the input file.
+	repoPath, err := gitRelPath(input)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the relpath to the git root for %q", input)
+	}
+	repoRev, err := gitRev(inputFile)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the git revision for %q", input)
+	}
+
+	// Read constants from the input file.
+	consts, err := readConstants(input, params.LineParser)
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse constants in %q", input)
+	}
+
+	// Write constants to the output file.
+	if err := writeConstants(classifyConstants(consts, params.groups), params, output); err != nil {
+		return errors.Wrapf(err, "failed to dump constants to %q", output)
+	}
+	return nil
+}
+
 const tmplStr = `// Copyright {{.CopyrightYear}} The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -66,20 +124,22 @@ type tmplArgs struct {
 	PreludeCode    string // Go code to include at the top of file (typically "//go:generate go run ...")
 	CopyrightYear  string // copyright year used in the license, e.g "2018"
 	ExecutableName string // name of the executable that generates the constants, e.g "gen/gen_constants.go"
+
+	// TODO comment.
+	Types  typeData
+	Groups groupData
 }
 
-// groupInfo describes a group of constants.
-type groupInfo struct {
-	prefix   string // constant prefix used as group identifier, e.g, the prefix for "KEY_*" should be "KEY".
-	typeName string // constant type name, e.g. "EventCode"
-	desc     string // human-readable group description used in comment
+type constData struct {
+	Name, Val string
+}
+type groupData struct {
+	TypeName, Desc string
+	Constants      []constData
 }
 
-// typeInfo describes a Go type to be defined in the generated code.
-type typeInfo struct {
-	name       string // type name, e.g "EventCode"
-	nativeType string // Go native type, e.g "uint16"
-	desc       string // human-readable type description used in comment
+type typeData struct {
+	Name, Desc, NativeType string
 }
 
 // constant describes an individual constant.
