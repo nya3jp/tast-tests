@@ -135,6 +135,30 @@
       "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb02c1c_0d22a7d3",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-03T05:14:44Z",
+      "side": 1,
+      "message": "Well, John still knows the best about his own plan 😊\nif he is going to use it one day for sure, then it\u0027s probably fine doing it now.\n\n\nthe worst case would be we use interface here, and no one cleans it up even if we don\u0027t really need interface, and i don\u0027t wanna see it happen (again).\n\nMakes sense?",
+      "parentUuid": "eaa7efa8_d80cacc2",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
