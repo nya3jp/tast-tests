@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -29,7 +28,7 @@ func init() {
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.DataFiles(), peerconnection.LoopbackFile),
+		Data:         append(peerconnection.DataFiles(), peerconnection.LoopbackFile),
 		// TODO(crbug.com/1029548): Add more variations here, e.g. vp8.
 		Params: []testing.Param{{
 			Name:              "h264_hw",

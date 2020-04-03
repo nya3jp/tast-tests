@@ -5,6 +5,8 @@
   <video id="remoteVideo" autoplay muted style="max-width:100%;max-height:100%"></video>
 <script src="third_party/blackframe.js"></script>
 <script src="third_party/munge_sdp.js"></script>
+<script src="third_party/simulcast.js"></script>
+<script src="third_party/sdp.js"></script>
 <script src="third_party/ssim.js"></script>
 <script>
 
@@ -15,8 +17,9 @@ const offerOptions = {
   offerToReceiveAudio: 1,
   offerToReceiveVideo: 1
 };
+const rids = [0, 1, 2];
 
-async function start(profile, width = 1280, height = 720) {
+async function start(profile, isSimulcast, width = 1280, height = 720) {
   const constraints = {audio: false, video: {width: width, height: height}};
 
   localPeerConnection.onicecandidate = e => remotePeerConnection.addIceCandidate(e.candidate).catch(e => { return Promise.reject(e.toString()); });
@@ -26,7 +29,14 @@ async function start(profile, width = 1280, height = 720) {
     remoteVideo.srcObject = e.streams[0];
     return Promise.resolve();
   }
+  if (isSimulcast) {
+    await runLoopbackPeerConnectionWithSimulcast(constraints);
+  } else {
+    await runLoopbackPeerConnection(constraints);
+  }
+}
 
+async function runLoopbackPeerConnection(constraints, profile) {
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
   stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream));
 
@@ -40,6 +50,28 @@ async function start(profile, width = 1280, height = 720) {
   const answer = await remotePeerConnection.createAnswer();
   await remotePeerConnection.setLocalDescription(answer);
   await localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription);
+}
+
+async function runLoopbackPeerConnectionWithSimulcast(constraints) {
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
+    streams: [stream],
+    sendEncodings: rids.map(rid => {rid}),
+  });
+
+  const offer = await localPeerConnection.createOffer();
+  await localPeerConnection.setLocalDescription(offer);
+  await remotePeerConnection.setRemoteDescription({
+    type: 'offer',
+    sdp: swapRidAndMidExtensionsInSimulcastOffer(offer, rids),
+  });
+
+  const answer = await remotePeerConnection.createAnswer();
+  await remotePeerConnection.setLocalDescription(answer);
+  await localPeerConnection.setRemoteDescription({
+    type: 'answer',
+    sdp: swapRidAndMidExtensionsInSimulcastAnswer(answer, localPeerConnection.localDescription, rids),
+  });
 }
 
 // Returns true if the video frame being displayed is considered "black".
