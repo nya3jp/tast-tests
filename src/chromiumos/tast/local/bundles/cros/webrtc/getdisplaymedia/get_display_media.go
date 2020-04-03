@@ -40,3 +40,11 @@ func RunGetDisplayMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome
 	}
 	return nil
 }
+
+// DataFiles returns a list of required files that tests that use this package
+// should include in their Data fields.
+func DataFiles() []string {
+	return []string{
+		"third_party/blackframe.js",
+	}
+}
