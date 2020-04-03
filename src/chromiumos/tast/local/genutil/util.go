@@ -17,7 +17,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/pkg/errors"
+	"chromiumos/tast/errors"
 )
 
 const tmplStr = `// Copyright {{.CopyrightYear}} The Chromium OS Authors. All rights reserved.
