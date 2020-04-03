@@ -270,7 +270,7 @@ func decodePerf(ctx context.Context, s *testing.State, profile, loopbackURL stri
 		s.Fatal("Timed out waiting for page loading: ", err)
 	}
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q, %d, %d)", profile, streamWidth, streamHeight), nil); err != nil {
+	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q, false, %d, %d)", profile, streamWidth, streamHeight), nil); err != nil {
 		s.Fatal("Error establishing connection: ", err)
 	}
 
