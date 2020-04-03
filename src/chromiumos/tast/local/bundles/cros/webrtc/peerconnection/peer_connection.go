@@ -36,7 +36,7 @@ const (
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // CodecType codec is hardware accelerated if profile is not DontCare.
-func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chrome, codecType CodecType, profile string) {
+func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chrome, codecType CodecType, profile string, simulcast bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -57,7 +57,7 @@ func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chro
 		s.Fatal("Timed out waiting for page loading: ", err)
 	}
 
-	if err := conn.Call(ctx, nil, "start", profile); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile, simulcast); err != nil {
 		s.Fatal("Error establishing connection: ", err)
 	}
 
@@ -136,4 +136,16 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	}
 
 	return errors.Errorf("unexpected implementation, got %v, expected %v", implementation, expectedImplementation)
+}
+
+// DataFiles returns a list of required files that tests that use this package
+// should include in their Data fields.
+func DataFiles() []string {
+	return []string{
+		"third_party/blackframe.js",
+		"third_party/munge_sdp.js",
+		"third_party/sdp/sdp.js",
+		"third_party/simulcast/simulcast.js",
+		"third_party/ssim.js",
+	}
 }
