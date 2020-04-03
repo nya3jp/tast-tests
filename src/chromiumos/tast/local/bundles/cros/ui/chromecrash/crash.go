@@ -7,6 +7,7 @@
 package chromecrash
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"os"
@@ -41,6 +42,10 @@ const (
 	// gopsutil/process which reports creation times in milliseconds-since-UNIX-epoch,
 	// while golang's time can only be constructed using nanoseconds-since-UNIX-epoch.
 	nanosecondsPerMillisecond = 1000 * 1000
+
+	// chromeConfPath is the path to the Chrome config file. Extra entries in that
+	// file occassionally mess up Chrome crash tests.
+	chromeConfPath = "/etc/chrome_dev.conf"
 )
 
 // CrashHandler indicates which crash handler the test wants Chrome to use:
@@ -185,6 +190,37 @@ func NewCrashTester(ptype ProcessType, waitFor CrashFileType) (*CrashTester, err
 func (ct *CrashTester) Close() {
 	if ct.logReader != nil {
 		ct.logReader.Close()
+	}
+}
+
+// verifyChromeConfFile verifies that the Chrome configuration file
+// (/etc/chrome_dev.conf) doesn't have any non-comment entries.
+//
+// We've had problems with extranous crash configuration entries left over from
+// other tests causing crash tests to flake. To avoid breaking developers'
+// workflows (they may have some options in there and still want to run tast
+// tests), this will just print warnings about extra entries; it doesn't return
+// an error and doesn't fail the test. That should be enough information to
+// understand the problem.
+func verifyChromeConfFile(ctx context.Context) {
+	file, err := os.Open(chromeConfPath)
+	if err != nil {
+		testing.ContextLogf(ctx, "Could not read %s: %v", chromeConfPath, err)
+		return
+	}
+	defer file.Close()
+
+	var extraOptions []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if line != "" && line[0] != '#' {
+			extraOptions = append(extraOptions, line)
+		}
+	}
+
+	if len(extraOptions) > 0 {
+		testing.ContextLogf(ctx, "Extra options in %s: %v", chromeConfPath, extraOptions)
 	}
 }
 
@@ -506,6 +542,8 @@ func killBrowser(ctx context.Context) error {
 // KillAndGetCrashFiles sends SIGSEGV to the given Chrome process, waits for it to
 // crash, finds all the new crash files, and then deletes them and returns their paths.
 func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
+	verifyChromeConfFile(ctx)
+
 	dirs, err := cryptohomeCrashDirs(ctx)
 	if err != nil {
 		return nil, err
