@@ -87,6 +87,21 @@ func (r Rect) Size() Size {
 	return Size{Width: r.Width, Height: r.Height}
 }
 
+// WithInset returns a new Rect inset by the given amounts. If insetting would cause the rectangle to
+// have negative area, instead an empty rectangle with the same CenterPoint is returned.
+// Note that dw and dh may be negative to outset a rectangle.
+func (r Rect) WithInset(dw, dh int) Rect {
+	dw2 := dw * 2
+	if dw2 > r.Width {
+		dw2 = r.Width
+	}
+	dh2 := dh * 2
+	if dh2 > r.Height {
+		dh2 = r.Height
+	}
+	return NewRect(r.Left+dw2/2, r.Top+dh2/2, r.Width-dw2, r.Height-dh2)
+}
+
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
 func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
 	return Rect{
