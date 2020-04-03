@@ -16,6 +16,24 @@
       "revId": "bebb36fd47ffb0a8e0a509e5c61e2c10506a6145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c94da86_aa7378e6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-03T07:02:14Z",
+      "side": 1,
+      "message": "Good idea, thanks~",
+      "parentUuid": "e3a7a279_46a59431",
+      "revId": "bebb36fd47ffb0a8e0a509e5c61e2c10506a6145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
