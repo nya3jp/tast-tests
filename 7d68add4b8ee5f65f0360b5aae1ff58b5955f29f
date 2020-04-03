@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f4099aed_88ddc5d3",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-03T05:13:13Z",
+      "side": 1,
+      "message": "Either sounds okay for me. Thanks!",
+      "parentUuid": "86f9ecc8_f74a7973",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "491df775_d13cd50d",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 8
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "There was in fact one backslash missing.\n\nThis is the correct regex: data\u003d\"((\\\\.|[^\\\\\"])*)\"\n\nThis regex matches strings that may include escaped quotes. The first part \\\\. matches a backslash followed by any other character. The second part [^\\\\\"] matches any character except for backslash and quotes.\n\nIt seems like this is how many libraries implement syntax highlighting etc. (https://stackoverflow.com/questions/249791/regex-for-quoted-string-with-escaping-quotes)\n\nNote: We don\u0027t really need to be that fancy here, but this regex also filters out invalid strings, e.g., a string with just one backslash and no following character.",
       "parentUuid": "765c41e4_6bc651ce",
+      "range": {
+        "startLine": 96,
+        "startChar": 95,
+        "endLine": 96,
+        "endChar": 97
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77c524e3_b4869700",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-03T05:13:13Z",
+      "side": 1,
+      "message": "Ah thanks for explanation, now I understand this expression!",
+      "parentUuid": "c1214937_4e12beac",
       "range": {
         "startLine": 96,
         "startChar": 95,
