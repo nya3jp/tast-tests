@@ -529,6 +529,13 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 		return errors.Errorf("did not find %q in the result log %s", failureString, result.Log)
 	}
 
+	pslogName := result.Pslog
+	out, err = ioutil.ReadFile(pslogName)
+	if err != nil {
+		return err
+	}
+	logContents = string(out)
+
 	// Verify we are generating appropriate diagnostic output.
 	if !strings.Contains(logContents, "===ps output===") || !strings.Contains(logContents, "===meminfo===") {
 		return errors.Errorf("expected full logs in the result log %s", result.Log)
