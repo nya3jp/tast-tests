@@ -57,7 +57,7 @@ func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chro
 		s.Fatal("Timed out waiting for page loading: ", err)
 	}
 
-	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q)", profile), nil); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile); err != nil {
 		s.Fatal("Error establishing connection: ", err)
 	}
 

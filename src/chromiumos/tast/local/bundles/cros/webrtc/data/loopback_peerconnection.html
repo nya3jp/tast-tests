@@ -11,48 +11,30 @@
 let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
-function start(profile, width = 1280, height = 720) {
-  return new Promise((resolve, reject) => {
+async function start(profile, width = 1280, height = 720) {
+  const constraints = {audio: false, video: {width: width, height: height}};
 
-    localPeerConnection.onicecandidate = e => remotePeerConnection.addIceCandidate(e.candidate).catch(e => reject(e.toString()));
-    remotePeerConnection.onicecandidate = e => localPeerConnection.addIceCandidate(e.candidate).catch(e => reject(e.toString()));
-    remotePeerConnection.ontrack = e => {
-      let remoteVideo = document.getElementById('remoteVideo');
-      remoteVideo.srcObject = e.streams[0];
-      resolve();
-    };
+  localPeerConnection.onicecandidate = e => remotePeerConnection.addIceCandidate(e.candidate).catch(e => { return Promise.reject(e.toString()); });
+  remotePeerConnection.onicecandidate = e => localPeerConnection.addIceCandidate(e.candidate).catch(e => { return Promise.reject(e.toString()); });
+  remotePeerConnection.ontrack = e => {
+    let remoteVideo = document.getElementById('remoteVideo');
+    remoteVideo.srcObject = e.streams[0];
+    return Promise.resolve();
+  }
 
-    const offerOptions = {
-      offerToReceiveAudio: 1,
-      offerToReceiveVideo: 1
-    };
-    const constraints =  {
-      audio: false,
-      video: {
-        mandatory: {
-          minWidth: width,
-          maxWidth: width,
-          minHeight: height,
-          maxHeight: height
-        }
-      },
-    };
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream));
 
-    navigator.mediaDevices.getUserMedia(constraints)
-    .then(stream => stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream)))
-    .then(() => localPeerConnection.createOffer(offerOptions))
-    .then(offer => {
-      if (profile) {
-        offer.sdp = setSdpDefaultVideoCodec(offer.sdp, profile, false, "");
-      }
-      localPeerConnection.setLocalDescription(offer)
-    })
-    .then(() => remotePeerConnection.setRemoteDescription(localPeerConnection.localDescription))
-    .then(() => remotePeerConnection.createAnswer())
-    .then(offer => remotePeerConnection.setLocalDescription(offer))
-    .then(() => localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription))
-    .catch(e => reject(e.toString()));
-  });
+  const offer = await localPeerConnection.createOffer();
+  if (profile) {
+    offer.sdp = setSdpDefaultVideoCodec(offer.sdp, profile, false, "");
+  }
+  await localPeerConnection.setLocalDescription(offer);
+  await remotePeerConnection.setRemoteDescription(localPeerConnection.localDescription);
+
+  const answer = await remotePeerConnection.createAnswer();
+  await remotePeerConnection.setLocalDescription(answer);
+  await localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription);
 }
 
 // Returns true if the video frame being displayed is considered "black".
