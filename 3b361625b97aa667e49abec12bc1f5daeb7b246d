@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab7a9340_4d23de21",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T01:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0c9306_f44bdaac",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "3b361625b97aa667e49abec12bc1f5daeb7b246d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35b9b6d2_b90c77ed",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e82f53c8_64f8ee2e",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T01:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b9b6d2_b90c77ed",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 81
+      },
+      "revId": "3b361625b97aa667e49abec12bc1f5daeb7b246d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d10bb6ea_dd8fd840",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "3b361625b97aa667e49abec12bc1f5daeb7b246d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db64ab57_925a1987",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T01:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10bb6ea_dd8fd840",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "3b361625b97aa667e49abec12bc1f5daeb7b246d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

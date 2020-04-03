@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "a268244c_eb86bb42",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T01:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c7345f_c5a04d60",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "351770ec860e0b8ee1b7b42341b3889bbf0a962d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fd2dca1_faeb817b",
         "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
         "patchSetId": 5
