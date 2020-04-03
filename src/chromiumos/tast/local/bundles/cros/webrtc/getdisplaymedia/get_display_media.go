@@ -19,8 +19,8 @@ import (
 )
 
 const (
-	// HTMLFile is the file containing the HTML+JS code exercising getDisplayMedia().
-	HTMLFile = "getdisplaymedia.html"
+	// htmlFile is the file containing the HTML+JS code exercising getDisplayMedia().
+	htmlFile = "getdisplaymedia.html"
 )
 
 // RunGetDisplayMedia drives the code verifying the getDisplayMedia functionality.
@@ -28,9 +28,9 @@ func RunGetDisplayMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	conn, err := cr.NewConn(ctx, server.URL+"/"+HTMLFile)
+	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlFile)
 	if err != nil {
-		return errors.Wrapf(err, "failed to open %v", HTMLFile)
+		return errors.Wrapf(err, "failed to open %v", htmlFile)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
@@ -39,4 +39,12 @@ func RunGetDisplayMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome
 		return errors.Wrap(err, "failed to run getDisplayMedia()")
 	}
 	return nil
+}
+
+// DataFiles returns a list of files required to run the tests in this package.
+func DataFiles() []string {
+	return []string{
+		htmlFile,
+		"third_party/blackframe.js",
+	}
 }
