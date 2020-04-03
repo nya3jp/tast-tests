@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "12d95b58_44e1a0d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-03T10:10:22Z",
+      "side": 1,
+      "message": "Drive by comment: Is there a better name we can use for this? I think we already have a shelf test that is even more basic than this. Why is this the sanity?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593e08db_17bf3dc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-03T10:10:22Z",
+      "side": 1,
+      "message": "Could some/all of this be put in apps.go: type App Struct?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25af41b1_f28b9175",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
         "patchSetId": 1
@@ -61,6 +107,30 @@
       "side": 1,
       "message": "Instead of putting a TODO with your ldap, can you create a bug for both of these comments(1 bug is good for both)",
       "parentUuid": "b6b073a1_36af46ed",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f237bd_db2f1e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-03T10:10:22Z",
+      "side": 1,
+      "message": "Why was it not a better readiness indicator? Can you give a bit more detail?",
+      "parentUuid": "ddee35a2_741aefc9",
       "range": {
         "startLine": 66,
         "startChar": 1,
