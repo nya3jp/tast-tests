@@ -16,6 +16,24 @@
       "revId": "8ea8663ca3b93630a0887d75341c0ab81b238481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9570d84_c95d20b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_preview_perf_30fps.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-03T04:01:01Z",
+      "side": 1,
+      "message": "Good idea!",
+      "parentUuid": "2d184d8e_4ced7c83",
+      "revId": "8ea8663ca3b93630a0887d75341c0ab81b238481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
