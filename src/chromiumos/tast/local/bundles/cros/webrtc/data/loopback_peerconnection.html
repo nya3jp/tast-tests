@@ -5,13 +5,15 @@
   <video id="remoteVideo" autoplay muted style="max-width:100%;max-height:100%"></video>
 <script src="third_party/blackframe.js"></script>
 <script src="third_party/munge_sdp.js"></script>
+<script src="third_party/simulcast.js"></script>
+<script src="third_party/sdp.js"></script>
 <script src="third_party/ssim.js"></script>
 <script>
 
 let localPeerConnection = new RTCPeerConnection({sdpSemantics: 'unified-plan'});
 let remotePeerConnection = new RTCPeerConnection({sdpSemantics: 'unified-plan'});
 
-async function start(profile, width = 1280, height = 720) {
+async function start(profile, isSimulcast, width = 1280, height = 720) {
   localPeerConnection.onicecandidate = e => remotePeerConnection.addIceCandidate(e.candidate).catch(e => reject(e.toString()));
   remotePeerConnection.onicecandidate = e => localPeerConnection.addIceCandidate(e.candidate).catch(e => reject(e.toString()));
   remotePeerConnection.ontrack = e => {
@@ -35,20 +37,42 @@ async function start(profile, width = 1280, height = 720) {
       }
     },
   };
+  const rids = [0, 1, 2];
 
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
-  stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream));
+  if (!isSimulcast) {
+    stream.getTracks().forEach(track => localPeerConnection.addTrack(track, stream));
+  } else {
+    localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
+      streams: [stream],
+      sendEncodings: rids.map(rid => {rid}),
+    });
+  }
 
   const offer = await localPeerConnection.createOffer();
-  if (profile) {
+  if (profile && !isSimulcast) {
     offer.sdp = setSdpDefaultVideoCodec(offer.sdp, profile, false, "");
   }
   await localPeerConnection.setLocalDescription(offer);
-  await remotePeerConnection.setRemoteDescription(localPeerConnection.localDescription);
+  if (!isSimulcast) {
+    await remotePeerConnection.setRemoteDescription(localPeerConnection.localDescription);
+  } else {
+    await remotePeerConnection.setRemoteDescription({
+      type: 'offer',
+      sdp: swapRidAndMidExtensionsInSimulcastOffer(offer, rids),
+    });
+  }
 
   const answer = await remotePeerConnection.createAnswer();
   await remotePeerConnection.setLocalDescription(answer);
-  await localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription);
+  if (!isSimulcast) {
+    await localPeerConnection.setRemoteDescription(remotePeerConnection.localDescription);
+  } else {
+    await localPeerConnection.setRemoteDescription({
+      type: 'answer',
+      sdp: swapRidAndMidExtensionsInSimulcastAnswer(answer, localPeerConnection.localDescription, rids),
+    });
+  }
 }
 
 // Returns true if the video frame being displayed is considered "black".
