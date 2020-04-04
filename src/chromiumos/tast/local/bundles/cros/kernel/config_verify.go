@@ -128,6 +128,10 @@ type kernelVersion struct {
 	major, minor int
 }
 
+func (v *kernelVersion) is(major, minor int) bool {
+	return v.major == major && v.minor == minor
+}
+
 func (v *kernelVersion) isOrLater(major, minor int) bool {
 	return v.major > major || v.major == major && v.minor >= minor
 }
@@ -208,8 +212,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// Settings that are commented out need to be enabled in the kernel first.
 		// TODO(crbug.com/1061514): Start enabling these.
 		"HARDENED_USERCOPY",
-
-		// "FORTIFY_SOURCE",
 
 		// "VMAP_STACK",
 
@@ -323,6 +325,12 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// We run udev everywhere which uses netlink sockets for event
 		// propagation rather than executing programs, so don't need this.
 		missing = append(missing, "UEVENT_HELPER", "UEVENT_HELPER_PATH")
+	}
+
+	if ver.is(4, 4) {
+		// FORTIFY_SOURCE is currently only enabled for 4.4 kernels.
+		// TODO(crbug.com/1061514): Enable on newer kernels.
+		builtin = append(builtin, "FORTIFY_SOURCE")
 	}
 
 	if ver.isOrLater(4, 4) {
