@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "564638ed_d48e1ff8",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T01:16:24Z",
+      "side": 1,
+      "message": "add description for the package (only one file per package should have the description)\ne.g:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/raw.go?l\u003d5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "a65b359c43aa768289b9f11ba59b8d8e65e99a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f80665e1_8d9e1001",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T01:16:24Z",
+      "side": 1,
+      "message": "Hid -\u003e HID\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "a65b359c43aa768289b9f11ba59b8d8e65e99a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36292ca4_70857239",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T01:16:24Z",
+      "side": 1,
+      "message": "use tab instead of spaces.\nyou don\u0027t have to do it manually, \"gofmt\" should do it for you.\n\nif you are using \"chrome remote desktop\" you can use VSCode and here are the instructions to set it up:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/quickstart.md#ide\n\nthe good thing about vscode, is that it will install all the golang toolchain.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 2
+      },
+      "revId": "a65b359c43aa768289b9f11ba59b8d8e65e99a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a314a83c_b5256389",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T01:16:24Z",
+      "side": 1,
+      "message": "if this is what you need, then Ok.\notherwise, it is preferred to use \"string\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "a65b359c43aa768289b9f11ba59b8d8e65e99a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef22d0cb_88d503c7",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T01:16:24Z",
+      "side": 1,
+      "message": "add comment for all funcs. e.g:\n// NewKernelDevice returns ...",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "a65b359c43aa768289b9f11ba59b8d8e65e99a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf1dc2e_4e40eb93",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T01:16:24Z",
+      "side": 1,
+      "message": "libraries should not log errors.\ninstead they should return the error.",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "a65b359c43aa768289b9f11ba59b8d8e65e99a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
