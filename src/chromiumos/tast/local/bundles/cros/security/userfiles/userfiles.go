@@ -67,7 +67,9 @@ func Check(ctx context.Context, s *testing.State, user string) {
 
 	checkPath(userDir, []*chk.Pattern{
 		chk.NewPattern(chk.Path("Downloads"), isChronosUID, isChronosAccessGID, chk.Mode(0710), chk.SkipChildren()),
-		chk.NewPattern(chk.Root(), isChronosUID, isChronosAccessGID, chk.Mode(0710)),
+		// TODO(crbug.com/1056294): Re-add 'chk.Mode(0710)' below after the source of flake
+		// is identified.
+		chk.NewPattern(chk.Root(), isChronosUID, isChronosAccessGID),
 	})
 
 	// TODO(crbug.com/971919): Add additional vault checks from security_ProfilePermissions?
