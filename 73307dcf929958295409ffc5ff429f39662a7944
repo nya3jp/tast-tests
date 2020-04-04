@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ced6122_961a7876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T00:13:29Z",
+      "side": 1,
+      "message": "add description to func.\n[without reading the code is not clear what \"conn\" does].",
+      "range": {
+        "startLine": 327,
+        "startChar": 5,
+        "endLine": 327,
+        "endChar": 12
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07a995c_d42ad376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T00:13:29Z",
+      "side": 1,
+      "message": "is this needed? a \"tconn\" is being passed. can you reuse it? (or avoid passing it?)\nif not, add a comment describing the different use cases.",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 7
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ecb5e0_ac04734e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T00:13:29Z",
+      "side": 1,
+      "message": "nit: AFAIK, we don\u0027t use \"|\" in docstrings in golang.",
+      "range": {
+        "startLine": 352,
+        "startChar": 66,
+        "endLine": 352,
+        "endChar": 80
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2b17b1_51d72da0",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T00:13:29Z",
+      "side": 1,
+      "message": "nit: I\u0027d mention that it accepts negative values to outset the rectangle.\nAnd if this is not expected, perhaps adding a check in the code?",
+      "range": {
+        "startLine": 91,
+        "startChar": 87,
+        "endLine": 91,
+        "endChar": 88
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd7da28c_b30ef97f",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T00:13:29Z",
+      "side": 1,
+      "message": "nit: `w, h int`\n\nnit, optional: perhaps using \"dw, dh\" (or \"dx\", \"dy\" to express that they are deltas)\n(taken from here: https://cs.corp.google.com/pi-arc-dev/frameworks/base/graphics/java/android/graphics/Rect.java?l\u003d348 )",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a64b640_d36062ef",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-04T00:13:29Z",
+      "side": 1,
+      "message": "nit: Inset, in this context, might confuse people that it insets the current Rect.\nPerhaps renaming it to \"NewRectWithInset\" ? Usually, in go, when you create a new object, the func should start with New.\n(open to other names as well...)",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
