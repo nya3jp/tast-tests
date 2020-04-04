@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b491639d_20a8f6f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-04T00:35:43Z",
+      "side": 1,
+      "message": "2121407 ? Your CL doesn\u0027t resolve to anything for me (HTTP 404).",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "090a5645_2e55313f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 1
@@ -16,6 +39,70 @@
       "revId": "b7750b1f5210099b759104e4e5957720475dad86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9df027a_d75cd90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-04T00:35:43Z",
+      "side": 1,
+      "message": "For fun, I wrote up the double loop:\n\n        // Iterate through each combination of regdomain and tablet mode.\n        for _, tc :\u003d range []struct {\n                mode string\n                args []string\n        }{\n                {\"tablet\", []string{\"--tablet\"}},\n                {\"non-tablet\", []string{\"--notablet\"}},\n        } {\n                for _, tcDomain :\u003d range []struct {\n                        domain string\n                        args   []string\n                }{\n                        {\"fcc\", []string{\"--domain\u003dfcc\"}},\n                        {\"eu\", []string{\"--domain\u003deu\"}},\n                        {\"rest-of-world\", []string{\"--domain\u003drow\"}},\n                        {\"none\", []string{\"--domain\u003dnone\"}},\n                } {\n                        if err :\u003d testexec.CommandContext(ctx, setTxPowerExe, append(tc.args, tcDomain.args...)...).Run(testexec.DumpLogOnError); err !\u003d nil {\n                                s.Errorf(\"Failed to set TX power for %s mode with reg domain %s: %v\", tc.mode, tcDomain.domain, err)\n                        }\n                }\n        }\n\n\nI guess I don\u0027t really care either way, although the copy/paste error below is somewhat ironic.",
+      "parentUuid": "090a5645_2e55313f",
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79c0f23b_5517a2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-04T00:35:43Z",
+      "side": 1,
+      "message": "hehe, copy/paste error :)",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4a8cdd_c05d9f27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-04T00:35:43Z",
+      "side": 1,
+      "message": "Looks like --domain\u003d isn\u0027t technically required (it just gets a default\u003d\"none\"), but powerd always sends this arg, right? So we should probably use --domain\u003dnone.\n\nBy that logic, I also probably should have made this \u0027--tablet\u0027 and \u0027--notablet\u0027 before, but I failed to do that...",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
