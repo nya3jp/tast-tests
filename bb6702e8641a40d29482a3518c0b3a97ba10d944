@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "73dd50d9_e65621cb",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2020-04-04T00:58:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f2f694_ec0f8ec1",
+      "range": {
+        "startLine": 31,
+        "startChar": 71,
+        "endLine": 31,
+        "endChar": 81
+      },
+      "revId": "bb6702e8641a40d29482a3518c0b3a97ba10d944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df9c8db2_fd11ff01",
         "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "47ac935d_7330bd4e",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2020-04-04T00:58:31Z",
+      "side": 1,
+      "message": "CloseTarget is to close the Chrome tab, while conn.Close() is to close the connection to Chrome. Similar usage can be found in many tests.",
+      "parentUuid": "df9c8db2_fd11ff01",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "bb6702e8641a40d29482a3518c0b3a97ba10d944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe450ab_dd983c64",
         "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2020-04-02T00:00:26Z",
       "side": 1,
       "message": "sleeping is generally not preferred - how hard would it be to poll instead?  You could check the value every half second (for maybe a longer period of time total than 2 seconds) and return as soon as the quality is correct",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "bb6702e8641a40d29482a3518c0b3a97ba10d944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025c83c3_46b94c83",
+        "filename": "src/chromiumos/tast/local/bundles/mtbf/video/mtbf002_playback_youtube_html5.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2020-04-04T00:58:31Z",
+      "side": 1,
+      "message": "I understand that sleeping in generally not preferred in order to fasten the test case execution. Sleeping is used in many cases in MTBF testing design - in some cases it waits for something happening, but in other cases we deliberately slow down the test execution to simulate user operations on UI.\nFor this particular case, there could be some way to wait for the video with new quality to play, and then do further verification. I will ask the team to do further check.",
+      "parentUuid": "6fe450ab_dd983c64",
       "range": {
         "startLine": 61,
         "startChar": 2,
