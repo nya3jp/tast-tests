@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "660209ea_d7d8ec4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-04T00:28:13Z",
+      "side": 1,
+      "message": "\u003e \"occassionally\" is a possible misspelling of \"occasionally\".\n\nPlease fix.",
+      "parentUuid": "6f5bc37b_32fad96b",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "97699e4ebf8d965908a6fc40c71621aa99cf756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce71bf8_465c3e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-04T00:28:13Z",
+      "side": 1,
+      "message": "\u003e \"extranous\" is a possible misspelling of \"extraneous\".\n\nPlease fix.",
+      "parentUuid": "fa8db793_0d8216ea",
+      "range": {
+        "startLine": 199,
+        "startChar": 27,
+        "endLine": 199,
+        "endChar": 36
+      },
+      "revId": "97699e4ebf8d965908a6fc40c71621aa99cf756b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
