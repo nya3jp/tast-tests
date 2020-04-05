@@ -121,6 +121,14 @@ func init() {
 				},
 				// TODO(crbug.com/1024554): remove it after Monroe platform is end-of-life.
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("monroe")),
+			}, {
+				// Verifies that DUT can connect to an hidden network on 2.4GHz and 5GHz channels.
+				Name: "hidden",
+				Val: []simpleConnectTestcase{
+					{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(6), hostapd.Hidden()}},
+					{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.Hidden()}},
+					{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.Hidden()}},
+				},
 			},
 		},
 	})
