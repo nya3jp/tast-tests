@@ -32,6 +32,7 @@ const (
 
 	// WiFi service property names.
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
+	ServicePropertyFtEnabled      = "WiFi.FTEnabled"
 )
 
 // Service state values defined in dbus-constants.h
