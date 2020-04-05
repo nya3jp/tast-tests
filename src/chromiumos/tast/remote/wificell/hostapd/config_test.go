@@ -197,6 +197,22 @@ func TestNewConfig(t *testing.T) {
 			},
 			shouldFail: false,
 		},
+		{
+			ops: []Option{
+				SSID("ssid"),
+				Mode(Mode80211a),
+				Channel(36),
+				Hidden(),
+			},
+			expected: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211a,
+				Channel: 36,
+				HTCaps:  0,
+				Hidden:  true,
+			},
+			shouldFail: false,
+		},
 	}
 
 	for i, tc := range testcases {
@@ -357,6 +373,18 @@ func TestConfigFormat(t *testing.T) {
 				"vht_oper_chwidth":             "1",
 				"vht_oper_centr_freq_seg0_idx": "42",
 				"vht_capab":                    "",
+			},
+		},
+		// Check hidden.
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211b,
+				Channel: 1,
+				Hidden:  true,
+			},
+			verify: map[string]string{
+				"ignore_broadcast_ssid": "1",
 			},
 		},
 	}
