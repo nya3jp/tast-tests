@@ -117,7 +117,8 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, h *APIface) error {
 // ConnectWifi asks the DUT to connect to the given WiFi service.
 func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 	config := &network.Config{
-		Ssid: h.Config().Ssid,
+		Ssid:   h.Config().Ssid,
+		Hidden: h.Config().Hidden,
 	}
 	service, err := tf.wifiClient.Connect(ctx, config)
 	if err != nil {
