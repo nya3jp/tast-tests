@@ -42,18 +42,14 @@ func MediaRecorder(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
+	conn, err := cr.NewConn(ctx, server.URL+"/media_recorder.html")
+	if err != nil {
+		s.Error(err, "failed to open recorder page")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
 	runTest := func(js string) error {
-		conn, err := cr.NewConn(ctx, server.URL+"/media_recorder.html")
-		if err != nil {
-			return errors.Wrap(err, "failed to open recorder page")
-		}
-		defer conn.Close()
-		defer conn.CloseTarget(ctx)
-
-		if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-			return errors.Wrap(err, "timed out waiting for page loading")
-		}
-
 		s.Logf("Running %s", js)
 		if err := conn.EvalPromise(ctx, js, nil); err != nil {
 			return errors.Wrap(err, "failed to evaluate test function")
