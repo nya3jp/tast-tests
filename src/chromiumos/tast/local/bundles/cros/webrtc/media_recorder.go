@@ -12,41 +12,32 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: MediaRecorder,
-		Desc: "Checks MediaRecorder on local and remote streams",
+		Desc: "Verifies the MediaRecorder API",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
-			"chromeos-video-eng@google.com",
 		},
 		Attr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"media_recorder.html", "media_recorder.js"},
+		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Timeout:      3 * time.Minute,
 	})
 }
 
-// MediaRecorder checks that MediaRecorder is able to record a local stream or a
-// peer connection remote stream. It also checks the basic Media Recorder
-// functions such as start, stop, pause, resume. The test fails if the media recorder
-// cannot exercise these basic functions.
+// MediaRecorder verifies the MediaRecorder API, e.g. functions such as start,
+// stop, pause, resume. The test fails if the media recorder cannot exercise
+// these basic functions.
 func MediaRecorder(ctx context.Context, s *testing.State) {
-	chromeArgs := []string{
-		"--use-fake-ui-for-media-stream",     // Avoids the need to grant camera/microphone permissions.
-		"--use-fake-device-for-media-stream", // Feeds fake stream with specified fps to getUserMedia() instead of live camera input.
-	}
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
-	if err != nil {
-		s.Error(err, "Failed to connect to Chrome: ")
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(*chrome.Chrome)
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -63,6 +54,7 @@ func MediaRecorder(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "timed out waiting for page loading")
 		}
 
+		s.Logf("Running %s", js)
 		if err := conn.EvalPromise(ctx, js, nil); err != nil {
 			return errors.Wrap(err, "failed to evaluate test function")
 		}
