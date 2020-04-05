@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-const DEFAULT_CONSTRAINTS = {audio: true, video: true};
+const DEFAULT_CONSTRAINTS = {audio: true, video: {width:320 , height: 240}};
 
 /**
  * @param {string} mimeType
