@@ -41,6 +41,20 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a manager object")
 	}
+
+	// Configure a service for the hidden SSID as a result of manual input SSID.
+	if config.Hidden {
+		props := map[string]interface{}{
+			shill.ServicePropertyType:           shill.TypeWifi,
+			shill.ServicePropertySSID:           config.Ssid,
+			shill.ServicePropertyWiFiHiddenSSID: config.Hidden,
+		}
+		err := m.ConfigureService(ctx, props)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to configure a hidden SSID")
+		}
+	}
+
 	props := map[string]interface{}{
 		shill.ServicePropertyType: shill.TypeWifi,
 		shill.ServicePropertyName: config.Ssid,
