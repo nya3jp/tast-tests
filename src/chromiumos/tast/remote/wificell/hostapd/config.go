@@ -11,6 +11,8 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/wificell/security"
+	"chromiumos/tast/remote/wificell/security/base"
 )
 
 // ModeEnum is the type for specifying hostap mode.
@@ -157,7 +159,8 @@ func Hidden(h bool) Option {
 func NewConfig(ops ...Option) (*Config, error) {
 	// Default config.
 	conf := &Config{
-		Ssid: RandomSSID("TAST_TEST_"),
+		Ssid:           RandomSSID("TAST_TEST_"),
+		SecurityConfig: &base.Config{},
 	}
 	for _, op := range ops {
 		op(conf)
@@ -185,6 +188,7 @@ type Config struct {
 	VHTCenterChannel int
 	VHTChWidth       VHTChWidthEnum
 	Hidden           bool
+	SecurityConfig   security.Config
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -247,6 +251,14 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	}
 	if c.Hidden {
 		configure("ignore_broadcast_ssid", "1")
+	}
+
+	securityConf, err := c.SecurityConfig.HostapdConfig()
+	if err != nil {
+		return "", err
+	}
+	for k, v := range securityConf {
+		configure(k, v)
 	}
 
 	return builder.String(), nil
