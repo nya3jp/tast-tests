@@ -22,6 +22,7 @@ service Wifi {
 
 message Config {
   string ssid = 1;
+  bool hidden = 2;
 }
 
 message Service {
