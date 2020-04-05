@@ -159,6 +159,30 @@
       "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc78004_52f52b2d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-05T22:35:11Z",
+      "side": 1,
+      "message": "I\u0027m not really certain if we are going to need a new form of cryptohome utility after the launch, and I\u0027ve been given the impression (through code review from hidehiko@) that it\u0027s best to leave things out of this CL unless it\u0027s used in this CL.\n\nSince the change to cryptohome utility is not going to happen any time soon (as in before this CL gets merged), by the above logic, it would be best to leave the UserTokenGetter interface out of this CL, and take a utilityCryptohomeBinary here.\n\nTo go ahead with this plan, I would need Leo\u0027s +1/+2.",
+      "parentUuid": "bbb02c1c_0d22a7d3",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
