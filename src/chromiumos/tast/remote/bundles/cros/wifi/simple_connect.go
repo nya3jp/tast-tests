@@ -9,6 +9,8 @@ import (
 	"fmt"
 
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/wep"
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -129,6 +131,271 @@ func init() {
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(36), ap.HTCaps(ap.HTCapHT20), ap.Hidden()}},
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20), ap.Hidden()}},
 				},
+			}, {
+				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 40-bit pre-shared keys.
+				Name: "wep40",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 104-bit pre-shared keys.
+				Name: "wep104",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
+				Name: "wephidden",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					},
+					{
+						apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with TKIP.
+				Name: "wpatkip",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with AES based CCMP.
+				Name: "wpaccmp",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with both AES based CCMP and TKIP.
+				Name: "wpamuti",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
+				Name: "wpa2tkip",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherTKIP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) and encrypted under AES.
+				Name: "wpa2",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				Name: "wpamixed",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModeMixed),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected 802.11ac network supporting for WPA.
+				Name: "wpavht80",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{
+							ap.Mode(ap.Mode80211acPure), ap.Channel(36), ap.HTCaps(ap.HTCapHT40Plus),
+							ap.VHTCenterChannel(42), ap.VHTChWidth(ap.VHTChWidth80),
+						},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+						),
+					},
+				},
+				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
+			}, {
+				// Verifies that DUT can connect to an protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
+				Name: "wpaoddpassphrase",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"abcdef\xc2\xa2", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							"abcdef\xc2\xa2", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: wpa.NewConfigFactory(
+							" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
+				Name: "wpahidden",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModeMixed),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
 			},
 		},
 	})
@@ -195,4 +462,26 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}
 	}
 	s.Log("Tearing down")
+}
+
+// WEP keys for WEP tests.
+
+func wep40Keys() []string {
+	return []string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}
+}
+func wep104Keys() []string {
+	return []string{
+		"0123456789abcdef0123456789", "mlk:ihgfedcba",
+		"d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b",
+		"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3",
+	}
+}
+func wep40KeysHidden() []string {
+	return []string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}
+}
+func wep104KeysHidden() []string {
+	return []string{
+		"0123456789abcdef0123456789", "89abcdef0123456789abcdef01",
+		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
+	}
 }
