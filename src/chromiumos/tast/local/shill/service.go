@@ -28,6 +28,7 @@ const (
 	ServicePropertyState          = "State"
 	ServicePropertyStaticIPConfig = "StaticIPConfig"
 	ServicePropertySecurityClass  = "SecurityClass"
+	ServicePropertyPassphrase     = "Passphrase"
 
 	// WiFi service property names.
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
