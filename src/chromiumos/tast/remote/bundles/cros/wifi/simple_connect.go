@@ -9,6 +9,8 @@ import (
 	"fmt"
 
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/wep"
+	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -131,6 +133,416 @@ func init() {
 					{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(6), hostapd.Hidden()}},
 					{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.Hidden()}},
 					{apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20), hostapd.Hidden()}},
+				},
+			}, {
+				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 40-bit pre-shared keys.
+				Name: "wep40",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an WEP network with both open and shared system authentication and 104-bit pre-shared keys.
+				Name: "wep104",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "mlk:ihgfedcba", "d\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xe5\x9b\x9b", "\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
+				Name: "wephidden",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsOpen),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wep.NewFactory(
+							[]string{"0123456789abcdef0123456789", "89abcdef0123456789abcdef01", "fedcba9876543210fedcba9876", "109fedcba987654321fedcba98"},
+							wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgsShared),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with TKIP.
+				Name: "wpatkip",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with AES based CCMP.
+				Name: "wpaccmp",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for pure WPA with both AES based CCMP and TKIP.
+				Name: "wpamuti",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) with TKIP. Some AP still uses TKIP in WPA2.
+				Name: "wpa2tkip",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa2),
+							wpa.Ciphers2(wpa.CipherTKIP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for WPA2 (aka RSN) and encrypted under AES.
+				Name: "wpa2",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected network supporting for both WPA and WPA2 with TKIP/AES supported for WPA and AES supported for WPA2.
+				Name: "wpamixed",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModeMixed),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an protected 802.11ac network supporting for WPA.
+				Name: "wpavht80",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{
+							hostapd.Mode(hostapd.Mode80211acPure), hostapd.Channel(36), hostapd.HTCaps(hostapd.HTCapHT40Plus),
+							hostapd.VHTCenterChannel(42), hostapd.VHTChWidth(hostapd.VHTChWidth80),
+						},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+						),
+					},
+				},
+				// TODO(crbug.com/1024554): remove it after Monroe platform is end-of-life.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("monroe")),
+			}, {
+				// Verifies that DUT can connect to an protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
+				Name: "wpaoddpassphrase",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89", wpa.Mode(wpa.ModePureWpa2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"abcdef\xc2\xa2", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							"abcdef\xc2\xa2", wpa.Mode(wpa.ModePureWpa2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1)},
+						securityFactory: wpa.NewFactory(
+							" !\"#$%&'()>*+,-./:;<=>?@[\\]^_{|}~", wpa.Mode(wpa.ModePureWpa2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to an hidden network supporting for WPA with TKIP, WPA with TKIP/AES, WPA2 with AES, and mixed WPA with TKIP/AES and WPA2 with AES.
+				Name: "wpahidden",
+				Val: []simpleConnectTestcase{
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWpa2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+					{
+						apOptions: []hostapd.Option{hostapd.Mode(hostapd.Mode80211g), hostapd.Channel(1), hostapd.Hidden()},
+						securityFactory: wpa.NewFactory(
+							"chromeos", wpa.Mode(wpa.ModeMixed),
+							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
 				},
 			},
 		},
