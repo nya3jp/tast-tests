@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a1cd202_bfe4aec4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-04-05T22:58:26Z",
+      "side": 1,
+      "message": "Please network.WlanDriver to your TEST\u003d since you are changing how that works.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a89e553_807bce1e",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-04-05T22:58:26Z",
+      "side": 1,
+      "message": "SGI can be paired with both HT and VHT rates, at 20/40/80 MHz rates. See mcsindex.com. \nSo I am not following why the previous code was singling out HT40SGI among all possible combinations?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9466de28_bc6ea39a",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-04-05T22:58:26Z",
+      "side": 1,
+      "message": "Please leave a note in the commit message expaining whether SupportMUMIMO is really a binary flag (yes or no) or it can be paired with other parameters (yes for VHT80 but no otherwise?) ?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5fb287_7ef2a056",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-04-05T22:58:26Z",
+      "side": 1,
+      "message": "spurious spacing change or required by gofmt?",
+      "range": {
+        "startLine": 91,
+        "startChar": 35,
+        "endLine": 92,
+        "endChar": 66
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8dea5f_27e66155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2020-04-05T22:58:26Z",
+      "side": 1,
+      "message": "Why not \"res[0].SupportMUMIMO\" ?\n\nAnd if you want to get the WifiInterface from shill anyways, why not also change how the previous parameters (SupportHT40SGI / SupportHT20 etc) are also tested?",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
