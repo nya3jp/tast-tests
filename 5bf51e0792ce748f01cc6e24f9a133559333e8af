@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "75dd3d58_5862b3e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-05T22:58:55Z",
+      "side": 1,
+      "message": "I thought using ash.FetchScrollableShelfInfoForState and checking the IsShelfWidgetAnimating property might work here, but it didn\u0027t either. I think we\u0027ll probably have to take a look at the shelf/hotseat code and find another indicator we can use to tell when the shelf icons have stopped moving.",
+      "parentUuid": "f1d71d7a_a5c13fb0",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d53159c4_3c413683",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
         "patchSetId": 1
