@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af7b07e4_cb37e89b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-05T19:25:15Z",
+      "side": 1,
+      "message": "This one exercises the basic shelf functionality (open/switch/close apps) so I just called it \u0027sanity\u0027, but I\u0027ll switch it to \"ShelfOpenCloseSwitchApps\" to be more descriptive.",
+      "parentUuid": "12d95b58_44e1a0d5",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "593e08db_17bf3dc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-03T10:10:22Z",
       "side": 1,
       "message": "Could some/all of this be put in apps.go: type App Struct?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03930261_7b3aa66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-05T19:25:15Z",
+      "side": 1,
+      "message": "Maybe we could put the window title in the App struct, renamed to something like \"InitialWindowTitle\". Would having the ShelfBtn field be useful though? It seems like the one one in apps.go is mostly used for static information about the apps. I just added this struct here since it helped me clean up the test structure into a few loops.",
+      "parentUuid": "593e08db_17bf3dc6",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "f1d71d7a_a5c13fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-05T19:25:15Z",
+      "side": 1,
+      "message": "With both checks above, the test was still flaky. The shelf can still be animating even when Files appears as a \"PinnedApp\" in ash.ShelfItems, and likewise for the \"IsAnimating\" property. The test will fail when trying to click the Chrome shelf button. You\u0027ll see the cursor in the middle of the shelf between the two app icons, since the next line gets the Chrome button AutomationNode before the animation finishes, and it\u0027s still in its initial position.\n\nI emailed one of the devs from the UI team and he had some ideas for this, and there might be a function that landed in a later version that we could possibly use for checking the shelf animation. I\u0027ll try that out and see if it works. If not, we\u0027ll need to come up with a different solution (and one for the context menu).",
+      "parentUuid": "a1f237bd_db2f1e61",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d53159c4_3c413683",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
         "patchSetId": 1
@@ -187,6 +259,30 @@
       "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dadd753f_d112ade4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-05T19:25:15Z",
+      "side": 1,
+      "message": "I asked andrewxu@ about this one, and there\u0027s no API available now for checking the context menu animation state, so we\u0027ll need to add something later for this. I\u0027ll make a bug for this task.",
+      "parentUuid": "525a014a_7f692d8d",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 76
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
