@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/errors"
 )
 
@@ -151,13 +153,21 @@ func Hidden(h bool) Option {
 	}
 }
 
+// SecurityConfig returns an Option which sets the security config in hostapd config.
+func SecurityConfig(conf security.Config) Option {
+	return func(c *Config) {
+		c.SecurityConfig = conf
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 // Default value of HTCaps is HTCapHT20 in either 802.11n or 802.11ac mode.
 func NewConfig(ops ...Option) (*Config, error) {
 	// Default config.
 	conf := &Config{
-		Ssid: RandomSSID("TAST_TEST_"),
+		Ssid:           RandomSSID("TAST_TEST_"),
+		SecurityConfig: &base.Config{},
 	}
 	for _, op := range ops {
 		op(conf)
@@ -185,6 +195,7 @@ type Config struct {
 	VHTCenterChannel int
 	VHTChWidth       VHTChWidthEnum
 	Hidden           bool
+	SecurityConfig   security.Config
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -249,6 +260,14 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		configure("ignore_broadcast_ssid", "1")
 	}
 
+	securityConf, err := c.SecurityConfig.HostapdConfig()
+	if err != nil {
+		return "", err
+	}
+	for k, v := range securityConf {
+		configure(k, v)
+	}
+
 	return builder.String(), nil
 }
 
@@ -282,6 +301,9 @@ func (c *Config) validate() error {
 	}
 	if err := c.validateChannel(); err != nil {
 		return err
+	}
+	if c.SecurityConfig == nil {
+		return errors.New("no SecurityConfig set")
 	}
 	return nil
 }
