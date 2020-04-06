@@ -30,7 +30,7 @@ func init() {
 		Func:         UdevRename,
 		Desc:         "Verifies that network interfaces remain intact after udev restart and WiFi driver rebind",
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi"},
 		// TODO(b/149247291): remove the blacklist once elm/hana upreved kernel to 4.19 or above.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("elm"), hwdep.SkipOnPlatform("hana")),
