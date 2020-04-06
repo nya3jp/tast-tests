@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
@@ -90,7 +89,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	// Create gtest that runs the video encoder performance test.
 	encodeTest := newGTest("video_encode_accelerator_unittest", "SimpleEncode/*/0", s.OutDir(),
 		[]string{
-			encode.CreateStreamDataArg(encodeParams, encodeProfile, encodePixelFormat, streamPath, "/dev/null"),
+			encoding.CreateStreamDataArg(encodeParams, encodeProfile, encodePixelFormat, streamPath, "/dev/null"),
 			"--run_at_fps",
 			"--ozone-platform=gbm",
 			"--num_frames_to_encode=1000000",  // Large enough to encode entire measurement duration.

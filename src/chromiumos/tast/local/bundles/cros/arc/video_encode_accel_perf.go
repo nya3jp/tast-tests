@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/c2e2etest"
-	"chromiumos/tast/local/bundles/cros/video/encode"
+	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
@@ -41,5 +41,5 @@ func init() {
 }
 
 func VideoEncodeAccelPerf(ctx context.Context, s *testing.State) {
-	encode.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encoding.TestOptions))
+	video.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encoding.TestOptions))
 }
