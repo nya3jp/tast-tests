@@ -40,43 +40,39 @@ func main() {
 		propType = "DeviceProperty"
 	)
 
-	var types = []*typeInfo{
-		&typeInfo{
-			etType,
-			"uint16",
-			`corresponds to the "type" field in the input_event C struct.
+	types := []typeInfo{{
+		etType,
+		"uint16",
+		`corresponds to the "type" field in the input_event C struct.
 	// Per the kernel documentation, "event types are groupings of codes under a logical input construct."
 	// Stated more plainly, event types represent broad categories like "keyboard events".`,
-		},
-		&typeInfo{
-			ecType,
-			"uint16",
-			`corresponds to the "code" field in the input_event C struct.
+	}, {
+		ecType,
+		"uint16",
+		`corresponds to the "code" field in the input_event C struct.
 	// Per the kernel documentation, "event codes define the precise type of event."
 	// There are codes corresponding to different keys on a keyboard or different mouse buttons, for example.`,
-		},
-		&typeInfo{
-			propType,
-			"uint16",
-			`describes additional information about an input device beyond
+	}, {
+		propType,
+		"uint16",
+		`describes additional information about an input device beyond
 	// the event types that it supports.`,
-		},
-	}
+	}}
 
 	// These are documented at https://www.kernel.org/doc/Documentation/input/event-codes.txt.
-	var groups = []*groupInfo{
-		&groupInfo{"EV", etType, "Event types"},
-		&groupInfo{"SYN", ecType, "Synchronization events"},
-		&groupInfo{"KEY", ecType, "Keyboard events"},
-		&groupInfo{"BTN", ecType, "Momentary switch events"},
-		&groupInfo{"REL", ecType, "Relative change events"},
-		&groupInfo{"ABS", ecType, "Absolute change events"},
-		&groupInfo{"SW", ecType, "Stateful binary switch events"},
-		&groupInfo{"MSC", ecType, "Miscellaneous input and output events"},
-		&groupInfo{"LED", ecType, "LED events"},
-		&groupInfo{"SND", ecType, "Commands to simple sound output devices"},
-		&groupInfo{"REP", ecType, "Autorepeat events"},
-		&groupInfo{"INPUT_PROP", propType, "Device properties"},
+	groups := []groupInfo{
+		{"EV", etType, "Event types"},
+		{"SYN", ecType, "Synchronization events"},
+		{"KEY", ecType, "Keyboard events"},
+		{"BTN", ecType, "Momentary switch events"},
+		{"REL", ecType, "Relative change events"},
+		{"ABS", ecType, "Absolute change events"},
+		{"SW", ecType, "Stateful binary switch events"},
+		{"MSC", ecType, "Miscellaneous input and output events"},
+		{"LED", ecType, "LED events"},
+		{"SND", ecType, "Commands to simple sound output devices"},
+		{"REP", ecType, "Autorepeat events"},
+		{"INPUT_PROP", propType, "Device properties"},
 	}
 
 	const (
@@ -94,6 +90,7 @@ func main() {
 		PreludeCode:    goGen,
 		ExecutableName: exeName,
 		CopyrightYear:  "2018",
+		Types:          types,
 	}
 
 	// Reads inputFile, a kernel input-event-codes.h. Looking for lines like:
@@ -110,7 +107,7 @@ func main() {
 		log.Fatalf("Failed to read %v: %v", inputFile, err)
 	}
 
-	if err := writeConstants(classifyConstants(consts, groups), groups, types, a, outputFile); err != nil {
+	if err := writeConstants(classifyConstants(consts, groups), a, outputFile); err != nil {
 		log.Fatalf("Failed to write %v: %v", outputFile, err)
 	}
 }

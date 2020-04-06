@@ -38,15 +38,15 @@ func main() {
 		metaStateType = "MetaState"
 	)
 
-	var types = []*typeInfo{
-		&typeInfo{keyCodeType, "uint16", "represents an Android key code."},
-		&typeInfo{metaStateType, "uint64", "represents a meta-key state. Each bit set to 1 represents a pressed meta key."},
+	types := []typeInfo{
+		{keyCodeType, "uint16", "represents an Android key code."},
+		{metaStateType, "uint64", "represents a meta-key state. Each bit set to 1 represents a pressed meta key."},
 	}
 
 	// We only care about KEYCODE and META prefixes. We ignore the rest.
-	var groups = []*groupInfo{
-		&groupInfo{"KEYCODE", keyCodeType, "KeyCodes constants"},
-		&groupInfo{"META", metaStateType, "Meta-key constants"},
+	groups := []groupInfo{
+		{"KEYCODE", keyCodeType, "KeyCodes constants"},
+		{"META", metaStateType, "Meta-key constants"},
 	}
 
 	const (
@@ -66,6 +66,7 @@ func main() {
 		PreludeCode:    goGen,
 		ExecutableName: exeName,
 		CopyrightYear:  "2019",
+		Types:          types,
 	}
 
 	// Read inputFile, a KeyEvent.java. Looking for lines like:
@@ -85,7 +86,7 @@ func main() {
 		log.Fatalf("Failed to read %v: %v", inputFile, err)
 	}
 
-	if err := writeConstants(classifyConstants(consts, groups), groups, types, a, outputFile); err != nil {
+	if err := writeConstants(classifyConstants(consts, groups), a, outputFile); err != nil {
 		log.Fatalf("Failed to write %v: %v", outputFile, err)
 	}
 }
