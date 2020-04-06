@@ -46,6 +46,8 @@ const (
 	TextView = "android.widget.TextView"
 	// ToggleButton class name.
 	ToggleButton = "android.widget.ToggleButton"
+	// WebView class name.
+	WebView = "android.webkit.WebView"
 )
 
 // Feature represents an accessibility feature in Chrome OS.

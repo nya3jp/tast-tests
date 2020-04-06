@@ -52,10 +52,32 @@
           android:layout_height="wrap_content"
           android:text="Click to show toast" />
 
+      <!-- Set WebView height to 100dp, as it does not contain any elements,
+             and to ensure that element beneath it will be visible in the UI.-->
       <WebView
           android:id="@+id/webView"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
+          android:layout_height="100dp"
           android:focusableInTouchMode="false" />
+
+      <EditText
+          android:id="@+id/editText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text" />
+
+      <EditText
+          android:id="@+id/editTextWithHint"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:hint="enter email"/>
+
+      <EditText
+          android:id="@+id/editTextWithText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:text="hello world"/>
 
 </LinearLayout>

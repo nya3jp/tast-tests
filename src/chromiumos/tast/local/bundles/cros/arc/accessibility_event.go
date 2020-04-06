@@ -102,6 +102,8 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 
 		seekBarInitialValue         = 25
 		seekBarDiscreteInitialValue = 3
+
+		nextKey = "Tab"
 	)
 
 	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
@@ -124,7 +126,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		for i, test := range []testStep{
 			// Move focus to ToggleButton and toggle it.
 			{
-				"Tab",
+				nextKey,
 				ui.FindParams{
 					ClassName: accessibility.ToggleButton,
 					Name:      "OFF",
@@ -136,7 +138,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 				eventLog{"focus", "OFF", appName},
 			}, {
-				"Search+Space",
+				nextKey,
 				ui.FindParams{
 					ClassName: accessibility.ToggleButton,
 					Name:      "ON",
@@ -150,7 +152,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			// Move focus to CheckBox and check it.
 			{
-				"Tab",
+				nextKey,
 				ui.FindParams{
 					ClassName: accessibility.CheckBox,
 					Name:      "CheckBox",
@@ -162,7 +164,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				},
 				eventLog{"focus", "CheckBox", appName},
 			}, {
-				"Search+Space",
+				nextKey,
 				ui.FindParams{
 					ClassName: accessibility.CheckBox,
 					Name:      "CheckBox",
@@ -176,7 +178,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			// Move focus to SeekBar and increment it.
 			{
-				"Tab",
+				nextKey,
 				ui.FindParams{
 					ClassName: accessibility.SeekBar,
 					Name:      "seekBar",
@@ -200,7 +202,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 			// Move focus to SeekbarDiscrete and decrement it.
 			{
-				"Tab",
+				nextKey,
 				ui.FindParams{
 					ClassName: accessibility.SeekBar,
 					Name:      "seekBarDiscrete",
@@ -210,17 +212,6 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					},
 				},
 				eventLog{"focus", "seekBarDiscrete", appName},
-			}, {
-				"-",
-				ui.FindParams{
-					ClassName: accessibility.SeekBar,
-					Name:      "seekBarDiscrete",
-					Role:      ui.RoleTypeSlider,
-					Attributes: map[string]interface{}{
-						"valueForRange": seekBarDiscreteInitialValue - 1,
-					},
-				},
-				eventLog{"valueChanged", "seekBarDiscrete", appName},
 			},
 		} {
 			if err := runTestStep(ctx, cvconn, tconn, ew, test, i == 0); err != nil {

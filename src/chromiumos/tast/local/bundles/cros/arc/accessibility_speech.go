@@ -61,7 +61,7 @@ func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
 		const (
-			nextKey     = "Search+Right"
+			nextKey     = "Tab" //"Search+Right"
 			activateKey = "Search+Space"
 		)
 
@@ -98,6 +98,18 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			}, {
 				activateKey,
 				[]string{"test toast"},
+			}, {
+				nextKey,
+				[]string{"Press Search+Space to activate"},
+			}, {
+				nextKey,
+				[]string{"Edit text", "Press Search+Space to activate"},
+			}, {
+				nextKey,
+				[]string{"enter email", "Edit text", "Press Search+Space to activate"},
+			}, {
+				nextKey,
+				[]string{"hello world", "Edit text", "Press Search+Space to activate"},
 			},
 		} {
 			// Ensure that ChromeVox log is cleared before proceeding.

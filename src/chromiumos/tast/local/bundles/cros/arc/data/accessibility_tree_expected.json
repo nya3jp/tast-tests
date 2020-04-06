@@ -35,7 +35,18 @@
         },
         {
           "role": "genericContainer"
-        }
+        },
+	{
+	  "role": "textField"
+	},
+	{
+	  "name": "enter email",
+	  "role": "textField"
+	},
+	{
+	  "role": "textField",
+	  "text": "hello world"
+	}
       ]
     }
   ]
