@@ -59,7 +59,8 @@ func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
 }
 
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+	testActivities := []accessibility.TestActivity{accessibility.MainActivity}
+	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		const (
 			nextKey     = "Search+Right"
 			activateKey = "Search+Space"
@@ -69,6 +70,11 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		if err := cvconn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
 			return errors.Wrap(err, "could not enable speech logging")
 		}
+		ew, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Error with creating EventWriter from keyboard: ", err)
+		}
+		defer ew.Close()
 
 		for _, testStep := range []struct {
 			key      string
@@ -121,5 +127,6 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			}
 		}
 		return nil
-	})
+	}
+	accessibility.RunTest(ctx, s, testActivities, testFunc)
 }
