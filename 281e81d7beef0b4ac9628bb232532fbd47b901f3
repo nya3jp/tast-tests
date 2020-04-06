@@ -23,6 +23,80 @@
       "revId": "281e81d7beef0b4ac9628bb232532fbd47b901f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0267c2a_812f9c3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-06T14:07:59Z",
+      "side": 1,
+      "message": "Could you remove wrapping function, which is redundant.",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 21
+      },
+      "revId": "281e81d7beef0b4ac9628bb232532fbd47b901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85147c6e_b9b393f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-06T14:07:59Z",
+      "side": 1,
+      "message": "nit: tag + \".log\"",
+      "revId": "281e81d7beef0b4ac9628bb232532fbd47b901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fceb8a55_80da66ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-06T14:07:59Z",
+      "side": 1,
+      "message": "Does this need to ignore the ENOENT error?\nBTW, how about just dump the content under out dir directly?",
+      "revId": "281e81d7beef0b4ac9628bb232532fbd47b901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c96ef325_4cf3f94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-06T14:07:59Z",
+      "side": 1,
+      "message": "(If there\u0027s a reason to keep this)\ncould you use fsutil.CopyFile ?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/d1d2fe8c2679e7d5d1ddf770afacc4c4c32430e1/src/chromiumos/tast/fsutil/fsutil.go",
+      "revId": "281e81d7beef0b4ac9628bb232532fbd47b901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
