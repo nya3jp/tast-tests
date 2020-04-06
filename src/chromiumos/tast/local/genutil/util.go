@@ -10,7 +10,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -51,7 +50,7 @@ const (
 {{- range .Groups}}
 	// {{.Desc}}{{$type := .TypeName -}}
 {{range .Constants}}
-	{{.Name}} {{$type}} = {{.Val}}
+	{{.Name}} {{$type}} = {{printf "%#x" .Val}}
 {{- end}}
 {{end}}
 )
@@ -59,46 +58,40 @@ const (
 
 // tmplArgs represents the arguments, besides groupInfo and typeInfo, used in the template.
 type tmplArgs struct {
-	PackageName    string // Go package name, e.g. "input"
-	RepoName       string // repo name, e.g "Linux kernel"
-	RepoRev        string // repo git revision
-	RepoPath       string // filepath relative to the repo root, e.g "include/uapi/linux/input-event-codes.h"
-	PreludeCode    string // Go code to include at the top of file (typically "//go:generate go run ...")
-	CopyrightYear  string // copyright year used in the license, e.g "2018"
-	ExecutableName string // name of the executable that generates the constants, e.g "gen/gen_constants.go"
+	PackageName    string     // Go package name, e.g. "input"
+	RepoName       string     // repo name, e.g "Linux kernel"
+	RepoRev        string     // repo git revision
+	RepoPath       string     // filepath relative to the repo root, e.g "include/uapi/linux/input-event-codes.h"
+	PreludeCode    string     // Go code to include at the top of file (typically "//go:generate go run ...")
+	CopyrightYear  string     // copyright year used in the license, e.g "2018"
+	ExecutableName string     // name of the executable that generates the constants, e.g "gen/gen_constants.go"
+	Types          []typeInfo // type meta data to be defined
 }
 
 // groupInfo describes a group of constants.
 type groupInfo struct {
-	prefix   string // constant prefix used as group identifier, e.g, the prefix for "KEY_*" should be "KEY".
-	typeName string // constant type name, e.g. "EventCode"
-	desc     string // human-readable group description used in comment
+	Prefix   string // constant prefix used as group identifier, e.g, the prefix for "KEY_*" should be "KEY".
+	TypeName string // constant type name, e.g. "EventCode"
+	Desc     string // human-readable group description used in comment
 }
 
 // typeInfo describes a Go type to be defined in the generated code.
 type typeInfo struct {
-	name       string // type name, e.g "EventCode"
-	nativeType string // Go native type, e.g "uint16"
-	desc       string // human-readable type description used in comment
+	Name       string // type name, e.g "EventCode"
+	NativeType string // Go native type, e.g "uint16"
+	Desc       string // human-readable type description used in comment
 }
 
 // constant describes an individual constant.
 type constant struct {
-	name string // name of the constant, e.g "KEY_ENTER"
-	val  int64  // value of the constant, e.g. 0x1c
+	Name string // name of the constant, e.g "KEY_ENTER"
+	Val  int64  // value of the constant, e.g. 0x1c
 }
 
-// constantGroups is a map from a group name (e.g. "KEY") to the corresponding constants.
-type constantGroups map[string][]constant
-
-// getGroupForName returns group info for the supplied constant.
-func getGroupForName(groups []*groupInfo, name string) *groupInfo {
-	for _, g := range groups {
-		if strings.HasPrefix(name, g.prefix) {
-			return g
-		}
-	}
-	return nil
+type group struct {
+	TypeName  string     // type name of this group.
+	Desc      string     // description to be embedded at the beginning
+	Constants []constant // constants of this group
 }
 
 // gitRelPath returns the path to the file or directory of the p relative to its git
@@ -128,41 +121,14 @@ func gitRev(p string) (string, error) {
 }
 
 // writeConstants writes consts to path as a Go source file, using a text/template.
-// consts, groups, types and args are used to populate the template.
-func writeConstants(consts constantGroups, groups []*groupInfo, types []*typeInfo, args tmplArgs, path string) error {
-	type constData struct {
-		Name, Val string
-	}
-	type groupData struct {
-		TypeName, Desc string
-		Constants      []constData
-	}
-
-	type typeData struct {
-		Name, Desc, NativeType string
-	}
-
+// groups and args are used to populate the template.
+func writeConstants(groups []group, args tmplArgs, path string) error {
 	data := struct {
 		tmplArgs
-		Groups []groupData
-		Types  []typeData
+		Groups []group
 	}{
 		args,
-		nil,
-		nil,
-	}
-
-	for _, grp := range groups {
-		gd := groupData{TypeName: grp.typeName, Desc: grp.desc}
-		for _, c := range consts[grp.prefix] {
-			gd.Constants = append(gd.Constants, constData{c.name, fmt.Sprintf("%#x", c.val)})
-		}
-		data.Groups = append(data.Groups, gd)
-	}
-
-	for _, typ := range types {
-		td := typeData{Name: typ.name, Desc: typ.desc, NativeType: typ.nativeType}
-		data.Types = append(data.Types, td)
+		groups,
 	}
 
 	f, err := ioutil.TempFile(filepath.Dir(path), "."+filepath.Base(path)+".")
@@ -177,11 +143,11 @@ func writeConstants(consts constantGroups, groups []*groupInfo, types []*typeInf
 		os.Remove(f.Name())
 	}()
 
-	if err = template.Must(template.New("header").Parse(tmplStr)).Execute(f, data); err != nil {
+	if err := template.Must(template.New("header").Parse(tmplStr)).Execute(f, data); err != nil {
 		return err
 	}
 
-	if err = f.Close(); err != nil {
+	if err := f.Close(); err != nil {
 		return err
 	}
 
@@ -217,20 +183,25 @@ func readConstants(path string, parser func(line string) (name, sval string, ok 
 
 // classifyConstants makes groups by their name prefixes. The values in each group are sorted in
 // ascending order of value.
-func classifyConstants(cs []constant, groups []*groupInfo) constantGroups {
-	result := make(constantGroups)
+func classifyConstants(cs []constant, groups []groupInfo) []group {
+	result := make([]group, len(groups))
+	for i, g := range groups {
+		result[i] = group{TypeName: g.TypeName, Desc: g.Desc}
+	}
+
 	for _, c := range cs {
-		g := getGroupForName(groups, c.name)
-		if g == nil {
-			// Ignore constants which does not have a corresponding group.
-			continue
+		// Note if a corresponding group is not found, the constant will be ignored intentionally.
+		for i, g := range groups {
+			if strings.HasPrefix(c.Name, g.Prefix) {
+				result[i].Constants = append(result[i].Constants, c)
+				break
+			}
 		}
-		result[g.prefix] = append(result[g.prefix], c)
 	}
 
 	// Sort each group by ascending value.
-	for _, cs := range result {
-		sort.Slice(cs, func(i, j int) bool { return cs[i].val < cs[j].val })
+	for _, g := range result {
+		sort.Slice(g.Constants, func(i, j int) bool { return g.Constants[i].Val < g.Constants[j].Val })
 	}
 	return result
 }
