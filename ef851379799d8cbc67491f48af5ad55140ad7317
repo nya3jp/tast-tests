@@ -19,6 +19,148 @@
     },
     {
       "key": {
+        "uuid": "f24285cc_fb304942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "As long as security is used in both local and remote, how about defining it in tast/common/wifi/security ?",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e862dbb_84618f3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "How about\n// If unassigned, use default security config: open network.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f673258f_3c04a4a7",
+        "filename": "src/chromiumos/tast/remote/wificell/security/base/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "// Config implements security.Config interface for open network, i.e., no security.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc448f71_6abd3860",
+        "filename": "src/chromiumos/tast/remote/wificell/security/base/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "// Static check: Config implements security.Config interface.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "536c0d4f_fdf954a5",
+        "filename": "src/chromiumos/tast/remote/wificell/security/base/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "the security",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f97b5f_9305ffe9",
+        "filename": "src/chromiumos/tast/remote/wificell/security/base/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "If the package contains only one file or a file with its unittest, I think it is better to just place the package comment in the only file of the package.\n\nFor this package, how about:\n// Package base provides a Config type for open network.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48f849b_3027060b",
+        "filename": "src/chromiumos/tast/remote/wificell/security/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "You may duplicate the CL comment here:\n\nPackage security defines interfaces for test authors to deal with the various WiFi security protocols:\n- Interface Config defines methods to get config of AP or DUT.\n- Interface Factory lets the authors to register the security options in testing.AddTest and Gen() the Config object later in test body.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf7bef7_d85eee89",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "Please give comments for interface methods.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72e27019_1d9e3300",
         "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
         "patchSetId": 1
@@ -69,6 +211,86 @@
       "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "505cf564_6eb4a06f",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "A security protocol should implement its own Factory interface as well as a NewFactory() function to compose a declarative factory object for generating a security config.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059739c9_7b47da67",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "A factory, once created via NewFactory, holds a list of options provided in testing.AddTest. Gen() then uses the stored options to compose a Config.\nNoted that the creation of an Factory object must not emit an error to satisfy the requirement of declarative test registration.",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7146204e_c2d3da2b",
+        "filename": "src/chromiumos/tast/remote/wificell/security/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "Maybe make an alias\ntype ShillValMap map[string]*network.ShillVal",
+      "range": {
+        "startLine": 13,
+        "startChar": 55,
+        "endLine": 13,
+        "endChar": 83
+      },
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91735106_af1c8989",
+        "filename": "src/chromiumos/tast/remote/wificell/security/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T15:57:11Z",
+      "side": 1,
+      "message": "The two functions may be better placed in tast/common/network/protoutil?\n\nPlease add unittest.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
