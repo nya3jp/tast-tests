@@ -474,6 +474,30 @@
     },
     {
       "key": {
+        "uuid": "d2273a9b_5aabfc70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-06T10:39:13Z",
+      "side": 1,
+      "message": "Rght:\n\ndefer func(ctx context.Context) {\n\tif err :\u003d cleanup(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Cleanup failed: \", err)\n\t}\n}(cleanupCtx)",
+      "parentUuid": "f0e1c2f6_db39b1bb",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd453a17_f101d9a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
         "patchSetId": 8
@@ -650,6 +674,30 @@
       "side": 1,
       "message": "I don\u0027t know what I could poll here. Basically, I just want to wait a bit for Android to settle down, so that the test result numbers are more stable.\n\nE.g., even after Android finished booting, there is CPU usage by Google Play services and other stuff, which put a lot of noise on performance numbers.",
       "parentUuid": "7575d971_46454aa0",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "7d68add4b8ee5f65f0360b5aae1ff58b5955f29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "920f6e38_eaaa0931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/extra_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-06T10:39:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "743cc09c_74f56312",
       "range": {
         "startLine": 74,
         "startChar": 11,
