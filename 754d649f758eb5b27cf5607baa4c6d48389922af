@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76e6dea7_18211513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_open_close_switch_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-06T17:35:45Z",
+      "side": 1,
+      "message": "apps.Chrome.Name?",
+      "range": {
+        "startLine": 78,
+        "startChar": 70,
+        "endLine": 78,
+        "endChar": 78
+      },
+      "revId": "754d649f758eb5b27cf5607baa4c6d48389922af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c34843_edea7641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_open_close_switch_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-06T17:35:45Z",
+      "side": 1,
+      "message": "apps.Files.Name?",
+      "range": {
+        "startLine": 79,
+        "startChar": 67,
+        "endLine": 79,
+        "endChar": 74
+      },
+      "revId": "754d649f758eb5b27cf5607baa4c6d48389922af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

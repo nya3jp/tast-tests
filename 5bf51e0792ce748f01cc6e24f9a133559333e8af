@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "86a81767_07cdaf3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-06T17:35:45Z",
+      "side": 1,
+      "message": "ShelfBtn should definitely not got in the App struct. Also, I don\u0027t think the windowTitle should either because it changes.\n\nAs a side note, this test as it is currently could never be in CQ. CQ runs both Chrome and Chromium builds and this would fail. Thus, even storing name in the App struct can lead to failures.\n\nShould probably change the App struct to have a list of possible names instead of one specific name, but that isn\u0027t necessarily related to this",
+      "parentUuid": "03930261_7b3aa66a",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25af41b1_f28b9175",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
         "patchSetId": 1
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "I thought using ash.FetchScrollableShelfInfoForState and checking the IsShelfWidgetAnimating property might work here, but it didn\u0027t either. I think we\u0027ll probably have to take a look at the shelf/hotseat code and find another indicator we can use to tell when the shelf icons have stopped moving.",
       "parentUuid": "f1d71d7a_a5c13fb0",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "5bf51e0792ce748f01cc6e24f9a133559333e8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b7d944_6fe070c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-06T17:35:45Z",
+      "side": 1,
+      "message": "I think there may already be a solution to this or in the works. I remember that Mukai@ ran into the issue before. He was trying to click next to an app to drag open the launcher, but it would move and click the app. Add me to whatever bug you create and I will try to dig up that information to see what he did.",
+      "parentUuid": "75dd3d58_5862b3e4",
       "range": {
         "startLine": 66,
         "startChar": 1,
