@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe6d9dbe_b35ca23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T10:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea33ff7b_a3fdaa77",
+      "revId": "c3274df29b6a980680143807eeeb1033848f25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52891796_a673c235",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "67ad3045_f8627907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T10:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52891796_a673c235",
+      "range": {
+        "startLine": 53,
+        "startChar": 53,
+        "endLine": 53,
+        "endChar": 59
+      },
+      "revId": "c3274df29b6a980680143807eeeb1033848f25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "047e49a4_cdecfb5e",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "c3274df29b6a980680143807eeeb1033848f25f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c5534b_064a6d3c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T10:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "047e49a4_cdecfb5e",
+      "range": {
+        "startLine": 147,
+        "startChar": 39,
+        "endLine": 147,
+        "endChar": 66
+      },
+      "revId": "c3274df29b6a980680143807eeeb1033848f25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
