@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ad6335e_16faf913",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T09:05:36Z",
+      "side": 1,
+      "message": "2.4GHz channels\nSame below.",
+      "range": {
+        "startLine": 55,
+        "startChar": 67,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "9a8004a8e9da0a5fb233d25b3bfdd44a1e6a59bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e43d5ce_bdf20bdc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T09:05:36Z",
+      "side": 1,
+      "message": "5GHz channel",
+      "range": {
+        "startLine": 69,
+        "startChar": 67,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "9a8004a8e9da0a5fb233d25b3bfdd44a1e6a59bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf0f621_032b712d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T09:05:36Z",
+      "side": 1,
+      "message": "Will we have test for 80211ac 2.4GHz band (I don\u0027t know yet)? If not, we may remove the \"5\" here.",
+      "range": {
+        "startLine": 83,
+        "startChar": 18,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "9a8004a8e9da0a5fb233d25b3bfdd44a1e6a59bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
