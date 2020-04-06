@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ebcfabb_427f9829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-06T16:25:59Z",
+      "side": 1,
+      "message": "Just FYI: you actually don\u0027t have to put comments for test scenarios (but it\u0027s good to keep this)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "4e464ad2803d920ae27f1d60d6d66eee309874d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
