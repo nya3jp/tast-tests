@@ -31,7 +31,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8, caps.HWEncodeVP8},
-		Data:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json", encode.Crowd1080P.Name},
+		Data:         []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json", encoding.Crowd1080P.Name},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 5 * time.Minute,
 	})
@@ -53,7 +53,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		encodeProfile = videotype.VP8Prof
 	)
 	// Properties of the video that will be encoded.
-	encodeParams := encode.Crowd1080P
+	encodeParams := encoding.Crowd1080P
 	encodeParams.FrameRate = 30
 
 	// Only a single process can have access to the GPU, so we are required to

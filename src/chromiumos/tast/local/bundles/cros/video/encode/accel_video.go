@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/c2e2etest"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
@@ -43,52 +42,6 @@ const powerLog = "power.log"
 
 // bitrateTestFilter is the test pattern in googletest style for disabling bitrate control related tests.
 const bitrateTestFilter = "-MidStreamParamSwitchBitrate/*:ForceBitrate/*:MultipleEncoders/VideoEncodeAcceleratorTest.TestSimpleEncode/1"
-
-// StreamParams is the parameter for video_encode_accelerator_unittest.
-type StreamParams struct {
-	// Name is the name of input raw data file.
-	Name string
-	// Size is the width and height of YUV image in the input raw data.
-	Size coords.Size
-	// Bitrate is the requested bitrate in bits per second. VideoEncodeAccelerator is forced to output
-	// encoded video in expected range around the bitrate.
-	Bitrate int
-	// FrameRate is the initial frame rate in the test. This value is optional, and will be set to
-	// 30 if unspecified.
-	FrameRate int
-	// SubseqBitrate is the bitrate to switch to in the middle of the stream in some test cases in
-	// video_encode_accelerator_unittest. This value is optional, and will be set to two times of Bitrate if unspecified.
-	SubseqBitrate int
-	// SubseqFrameRate is the frame rate to switch to in the middle of the stream in some test cases in
-	// video_encode_accelerator_unittest. This value is optional, and will be set to 30 if unspecified.
-	SubseqFrameRate int
-	// Level is the requested output level. This value is optional and currently only used by the H264 codec. The value
-	// should be aligned with the H264LevelIDC enum in https://cs.chromium.org/chromium/src/media/video/h264_parser.h,
-	// as well as level_idc(u8) definition of sequence parameter set data in official H264 spec.
-	Level int
-}
-
-// InputStorageMode represents the input buffer storage type of video_encode_accelerator_unittest.
-type InputStorageMode int
-
-const (
-	// SharedMemory is a mode where video encode accelerator uses MEM-backed input VideoFrame on encode.
-	SharedMemory InputStorageMode = iota
-	// DMABuf is a mode where video encode accelerator uses DmaBuf-backed input VideoFrame on encode.
-	DMABuf
-)
-
-// TestOptions is the options for runAccelVideoTest.
-type TestOptions struct {
-	// Profile is the codec profile to encode.
-	Profile videotype.CodecProfile
-	// Params is the test parameters for video_encode_accelerator_unittest.
-	Params StreamParams
-	// PixelFormat is the pixel format of input raw video data.
-	PixelFormat videotype.PixelFormat
-	// InputMode indicates which input storage mode the unittest runs with.
-	InputMode InputStorageMode
-}
 
 // binArgs is the arguments and the modes for executing video_encode_accelerator_unittest binary.
 type binArgs struct {
@@ -115,7 +68,7 @@ const (
 
 // runAccelVideoTest runs video_encode_accelerator_unittest for each binArgs.
 // It fails if video_encode_accelerator_unittest fails.
-func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opts TestOptions, bas ...binArgs) {
+func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opts encoding.TestOptions, bas ...binArgs) {
 	// Reserve time to restart the ui job at the end of the test.
 	// Only a single process can have access to the GPU, so we are required
 	// to call "stop ui" at the start of the test. This will shut down the
@@ -156,7 +109,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 		// Set a huge timeout (3600000 milliseconds, 1 hour) here.
 		"--test-launcher-timeout=3600000",
 	}
-	if opts.InputMode == DMABuf {
+	if opts.InputMode == encoding.DMABuf {
 		commonArgs = append(commonArgs, "--native_input")
 	}
 
@@ -218,7 +171,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 // It pushes the binary files with different ABI and testing video data into ARC, and runs each binary for each binArgs.
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureUsage is set at binArgs.
-func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions, pv *perf.Values, bas ...binArgs) {
+func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts encoding.TestOptions, pv *perf.Values, bas ...binArgs) {
 	// Install the test APK and grant permissions
 	apkName, err := c2e2etest.ApkNameForArch(ctx, a)
 	if err != nil {
@@ -321,7 +274,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 			return errors.Wrap(err, "failed to write CPU usage to file")
 		}
 
-		if err := reportCPUUsage(pv, schemaName, cpuLogPath); err != nil {
+		if err := encoding.ReportCPUUsage(pv, schemaName, cpuLogPath); err != nil {
 			return errors.Wrap(err, "failed to report CPU usage")
 		}
 
@@ -333,7 +286,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 				return errors.Wrap(err, "failed to write power consumption to file")
 			}
 
-			if err := reportPowerConsumption(pv, schemaName, powerLogPath); err != nil {
+			if err := encoding.ReportPowerConsumption(pv, schemaName, powerLogPath); err != nil {
 				return errors.Wrap(err, "failed to report power consumption")
 			}
 		}
@@ -355,10 +308,10 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 
 		// Parse the performance result.
 		if pv != nil {
-			if err := reportFPS(pv, schemaName, localOutputLogFile); err != nil {
+			if err := encoding.ReportFPS(pv, schemaName, localOutputLogFile); err != nil {
 				return errors.Wrap(err, "failed to report FPS value")
 			}
-			if err := reportEncodeLatency(pv, schemaName, localOutputLogFile); err != nil {
+			if err := encoding.ReportEncodeLatency(pv, schemaName, localOutputLogFile); err != nil {
 				return errors.Wrap(err, "failed to report encode latency")
 			}
 		}
@@ -366,35 +319,8 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 	return nil
 }
 
-// CreateStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
-func CreateStreamDataArg(params StreamParams, profile videotype.CodecProfile, pixelFormat videotype.PixelFormat, dataPath, outFile string) string {
-	const (
-		defaultFrameRate          = 30
-		defaultSubseqBitrateRatio = 2
-	)
-
-	// Fill default values if they are unsettled.
-	if params.FrameRate == 0 {
-		params.FrameRate = defaultFrameRate
-	}
-	if params.SubseqBitrate == 0 {
-		params.SubseqBitrate = params.Bitrate * defaultSubseqBitrateRatio
-	}
-	if params.SubseqFrameRate == 0 {
-		params.SubseqFrameRate = defaultFrameRate
-	}
-	streamDataArgs := fmt.Sprintf("--test_stream_data=%s:%d:%d:%d:%s:%d:%d:%d:%d:%d",
-		dataPath, params.Size.Width, params.Size.Height, int(profile), outFile,
-		params.Bitrate, params.FrameRate, params.SubseqBitrate,
-		params.SubseqFrameRate, int(pixelFormat))
-	if params.Level != 0 {
-		streamDataArgs += fmt.Sprintf(":%d", params.Level)
-	}
-	return streamDataArgs
-}
-
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
-func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
+func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts encoding.TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -412,7 +338,7 @@ func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptio
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
-func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptions) {
+func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts encoding.TestOptions) {
 	const (
 		// testLogSuffix is the log name suffix of dumping log from test binary.
 		testLogSuffix = "test.log"
@@ -479,15 +405,15 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 
 	p := perf.NewValues()
 
-	if err := reportFPS(p, schemaName, fpsLogPath); err != nil {
+	if err := encoding.ReportFPS(p, schemaName, fpsLogPath); err != nil {
 		s.Fatal("Failed to report FPS value: ", err)
 	}
 
-	if err := reportEncodeLatency(p, schemaName, latencyLogPath); err != nil {
+	if err := encoding.ReportEncodeLatency(p, schemaName, latencyLogPath); err != nil {
 		s.Fatal("Failed to report encode latency: ", err)
 	}
 
-	if err := reportCPUUsage(p, schemaName, cpuLogPath); err != nil {
+	if err := encoding.ReportCPUUsage(p, schemaName, cpuLogPath); err != nil {
 		s.Fatal("Failed to report CPU usage: ", err)
 	}
 
@@ -495,19 +421,19 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 	if _, err := os.Stat(powerLogPath); os.IsNotExist(err) {
 		s.Logf("Skipped reporting power consumption because %s does not exist", powerLog)
 	} else {
-		if err := reportPowerConsumption(p, schemaName, powerLogPath); err != nil {
+		if err := encoding.ReportPowerConsumption(p, schemaName, powerLogPath); err != nil {
 			s.Fatal("Failed to report power consumption: ", err)
 		}
 	}
 
-	if err := reportFrameStats(p, schemaName, frameStatsPath); err != nil {
+	if err := encoding.ReportFrameStats(p, schemaName, frameStatsPath); err != nil {
 		s.Fatal("Failed to report frame stats: ", err)
 	}
 	p.Save(s.OutDir())
 }
 
 // RunARCVideoTest runs all non-perf tests of arcvideoencoder_test in ARC.
-func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions) {
+func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts encoding.TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -518,7 +444,7 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 }
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
-func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions) {
+func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts encoding.TestOptions) {
 	const (
 		// duration of the interval during which CPU usage will be measured.
 		measureDuration = 10 * time.Second
