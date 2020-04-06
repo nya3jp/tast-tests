@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0c829db_888ff9cf",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "601f18f0_258e20f4",
+      "range": {
+        "startLine": 126,
+        "startChar": 40,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "7b5a505b1f37fedd7ece6100766ae816700e7682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc1654df_e726060b",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "18e2fee6_4d06a60a",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc1654df_e726060b",
+      "range": {
+        "startLine": 378,
+        "startChar": 34,
+        "endLine": 378,
+        "endChar": 44
+      },
+      "revId": "7b5a505b1f37fedd7ece6100766ae816700e7682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8cb5cc4_32570e0a",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "7b5a505b1f37fedd7ece6100766ae816700e7682",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4e8d9a_75e24c42",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:34:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8cb5cc4_32570e0a",
+      "revId": "7b5a505b1f37fedd7ece6100766ae816700e7682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
