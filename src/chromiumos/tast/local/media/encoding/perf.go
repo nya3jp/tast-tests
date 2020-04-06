@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package encode
+package encoding
 
 import (
 	"fmt"
@@ -23,8 +23,8 @@ var regExpEncodeLatency50 = regexp.MustCompile(`(?m)^Encode latency for the 50th
 var regExpEncodeLatency75 = regexp.MustCompile(`(?m)^Encode latency for the 75th percentile: (\d+) us$`)
 var regExpEncodeLatency95 = regexp.MustCompile(`(?m)^Encode latency for the 95th percentile: (\d+) us$`)
 
-// reportFPS reports FPS info from log file and sets as the perf metric.
-func reportFPS(p *perf.Values, name, logPath string) error {
+// ReportFPS reports FPS info from log file and sets as the perf metric.
+func ReportFPS(p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
@@ -48,8 +48,8 @@ func reportFPS(p *perf.Values, name, logPath string) error {
 	return nil
 }
 
-// reportEncodeLatency reports encode latency from log file and sets as the perf metrics.
-func reportEncodeLatency(p *perf.Values, name, logPath string) error {
+// ReportEncodeLatency reports encode latency from log file and sets as the perf metrics.
+func ReportEncodeLatency(p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
@@ -82,8 +82,8 @@ func reportEncodeLatency(p *perf.Values, name, logPath string) error {
 	return nil
 }
 
-// reportCPUUsage reports CPU usage from log file and sets as the perf metric.
-func reportCPUUsage(p *perf.Values, name, logPath string) error {
+// ReportCPUUsage reports CPU usage from log file and sets as the perf metric.
+func ReportCPUUsage(p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
@@ -103,8 +103,8 @@ func reportCPUUsage(p *perf.Values, name, logPath string) error {
 	return nil
 }
 
-// reportPowerConsumption reports power consumption from log file and sets as the perf metric.
-func reportPowerConsumption(p *perf.Values, name, logPath string) error {
+// ReportPowerConsumption reports power consumption from log file and sets as the perf metric.
+func ReportPowerConsumption(p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
@@ -183,8 +183,8 @@ func newFrameStats() frameStats {
 	}
 }
 
-// reportFrameStats reports quality from log file which assumes input is YUV420 (for MSE samples per channel), and sets as the perf metrics.
-func reportFrameStats(p *perf.Values, name, logPath string) error {
+// ReportFrameStats reports quality from log file which assumes input is YUV420 (for MSE samples per channel), and sets as the perf metrics.
+func ReportFrameStats(p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)

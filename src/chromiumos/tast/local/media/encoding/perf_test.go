@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package encode
+package encoding
 
 import (
 	"encoding/json"
@@ -74,20 +74,20 @@ func TestReportMetrics(t *testing.T) {
 	const name = "crowd-1920x1080_h264"
 
 	p := perf.NewValues()
-	if err := reportFPS(p, name, "testdata/TestFPS.log"); err != nil {
-		t.Error("Failed at reportFPS(): ", err)
+	if err := ReportFPS(p, name, "testdata/TestFPS.log"); err != nil {
+		t.Error("Failed at ReportFPS(): ", err)
 	}
 
-	if err := reportEncodeLatency(p, name, "testdata/TestLatency.log"); err != nil {
-		t.Error("Failed at reportEncodeLatency(): ", err)
+	if err := ReportEncodeLatency(p, name, "testdata/TestLatency.log"); err != nil {
+		t.Error("Failed at ReportEncodeLatency(): ", err)
 	}
 
-	if err := reportCPUUsage(p, name, "testdata/TestCPU.log"); err != nil {
-		t.Error("Failed at reportCPUUsage(): ", err)
+	if err := ReportCPUUsage(p, name, "testdata/TestCPU.log"); err != nil {
+		t.Error("Failed at ReportCPUUsage(): ", err)
 	}
 
-	if err := reportFrameStats(p, name, "testdata/TestFrameStats.log"); err != nil {
-		t.Error("Failed at reportFrameStats(): ", err)
+	if err := ReportFrameStats(p, name, "testdata/TestFrameStats.log"); err != nil {
+		t.Error("Failed at ReportFrameStats(): ", err)
 	}
 
 	saveAndCompare(t, p, "testdata/TestResultsChart.json")
