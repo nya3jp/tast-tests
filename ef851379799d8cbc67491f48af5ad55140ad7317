@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a115fce2_764e5f8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-06T08:12:14Z",
+      "side": 1,
+      "message": "Maybe also mention that this cl includes setup in gRPC/TestFixture and common constants for WPA/WEP (e.g. Passphrase)?",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e27019_1d9e3300",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-06T08:12:14Z",
+      "side": 1,
+      "message": "Is it possible that some errors can come up when generating shill properties?",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c465958d_ce3b60a2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-06T08:12:14Z",
+      "side": 1,
+      "message": "Not sure if giving SecurityConfig an hostapd.Option might be better as it will make the interface more consistent.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
