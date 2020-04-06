@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
@@ -75,7 +76,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Create a raw YUV video to encode for the video encoder tests.
-	streamPath, err := encode.PrepareYUV(ctx, s.DataPath(encodeParams.Name), encodePixelFormat, encodeParams.Size)
+	streamPath, err := encoding.PrepareYUV(ctx, s.DataPath(encodeParams.Name), encodePixelFormat, encodeParams.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
