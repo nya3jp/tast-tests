@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "34266c02_4aec492e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-06T17:05:05Z",
+      "side": 1,
+      "message": "Removed, thanks.",
+      "parentUuid": "eaca891a_ca925c5b",
+      "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be98335a_42607495",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
         "patchSetId": 1
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "71bf1f06_1126b237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-06T17:05:05Z",
+      "side": 1,
+      "message": "Good catch - using a return Promise.reject(..) and return Promise.resolve(...).",
+      "parentUuid": "be98335a_42607495",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd58fc9_49de471c",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
         "patchSetId": 1
@@ -74,6 +116,24 @@
       "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4cbdf6_53dfbec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-06T17:05:05Z",
+      "side": 1,
+      "message": "Done - just overly cautious.",
+      "parentUuid": "cbd58fc9_49de471c",
+      "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
