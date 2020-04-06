@@ -4,7 +4,12 @@
 
 package encoding
 
-import "chromiumos/tast/local/coords"
+import (
+	"fmt"
+
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/media/videotype"
+)
 
 // StreamParams is the parameter for video_encode_accelerator_unittest.
 type StreamParams struct {
@@ -28,4 +33,31 @@ type StreamParams struct {
 	// should be aligned with the H264LevelIDC enum in https://cs.chromium.org/chromium/src/media/video/h264_parser.h,
 	// as well as level_idc(u8) definition of sequence parameter set data in official H264 spec.
 	Level int
+}
+
+// CreateStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
+func CreateStreamDataArg(params StreamParams, profile videotype.CodecProfile, pixelFormat videotype.PixelFormat, dataPath, outFile string) string {
+	const (
+		defaultFrameRate          = 30
+		defaultSubseqBitrateRatio = 2
+	)
+
+	// Fill default values if they are unsettled.
+	if params.FrameRate == 0 {
+		params.FrameRate = defaultFrameRate
+	}
+	if params.SubseqBitrate == 0 {
+		params.SubseqBitrate = params.Bitrate * defaultSubseqBitrateRatio
+	}
+	if params.SubseqFrameRate == 0 {
+		params.SubseqFrameRate = defaultFrameRate
+	}
+	streamDataArgs := fmt.Sprintf("--test_stream_data=%s:%d:%d:%d:%s:%d:%d:%d:%d:%d",
+		dataPath, params.Size.Width, params.Size.Height, int(profile), outFile,
+		params.Bitrate, params.FrameRate, params.SubseqBitrate,
+		params.SubseqFrameRate, int(pixelFormat))
+	if params.Level != 0 {
+		streamDataArgs += fmt.Sprintf(":%d", params.Level)
+	}
+	return streamDataArgs
 }
