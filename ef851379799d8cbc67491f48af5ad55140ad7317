@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c7a7b03c_8b0871c0",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:06:33Z",
+      "side": 1,
+      "message": "No, I think, at least there is no any check in xmlrpc_security_types.py. ShillServiceProperties often just prints some fields, so it should not fail if it pass the validate function.\nOr should we check again here?",
+      "parentUuid": "72e27019_1d9e3300",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c465958d_ce3b60a2",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2020-04-06T08:12:14Z",
       "side": 1,
       "message": "Not sure if giving SecurityConfig an hostapd.Option might be better as it will make the interface more consistent.",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19d688c_e4146be2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:06:33Z",
+      "side": 1,
+      "message": "You mean Gen security config first and then pass it as option to NewConfig here? Not a bad idea.",
+      "parentUuid": "c465958d_ce3b60a2",
       "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
