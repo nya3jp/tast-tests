@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/c2e2etest"
-	"chromiumos/tast/local/bundles/cros/video/decode"
+	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -45,5 +45,5 @@ func init() {
 }
 
 func VideoDecodeAccel(ctx context.Context, s *testing.State) {
-	decode.RunAllARCVideoTests(ctx, s, s.Param().(string))
+	video.RunAllARCVideoTests(ctx, s, s.Param().(string))
 }
