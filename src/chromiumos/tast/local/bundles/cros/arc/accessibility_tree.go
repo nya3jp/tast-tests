@@ -24,9 +24,9 @@ import (
 )
 
 const (
-	expectedTreeFile = "accessibility_tree_expected.json"
-	actualTreeFile   = "accessibility_tree_actual.json"
-	diffFile         = "accessibility_tree_diff.txt"
+	axTreeExpectedTreeFilePrefix = "accessibility_tree_expected_"
+	axTreeActualTreeFilePrefix   = "accessibility_tree_actual_"
+	axTreeDiffFilePrefix         = "accessibility_tree_diff_"
 )
 
 // simpleAutomationNode represents the node of accessibilityTree we can obtain from ChromeVox LogStore.
@@ -40,13 +40,19 @@ type simpleAutomationNode struct {
 }
 
 func init() {
+	// Create list of expected file names.
+	axTreeTestActivities := []string{"MainActivity", "EdittextActivity"}
+	expectedTreeFiles := make([]string, len(axTreeTestActivities))
+	for i, activityName := range axTreeTestActivities {
+		expectedTreeFiles[i] = axTreeExpectedTreeFilePrefix + activityName + ".json"
+	}
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilityTree,
 		Desc:         "Checks that Chrome accessibility tree for ARC application is correct",
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{expectedTreeFile},
+		Data:         expectedTreeFiles,
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -83,7 +89,12 @@ func getDesktopTree(ctx context.Context, cvconn *chrome.Conn) (*simpleAutomation
 				resolve(logTree[0].logTree_.rootNode);
 			});
 		})`
+	// Maybe we need to clear the log here.
 	err := cvconn.EvalPromise(ctx, script, &root)
+	// Ensure that ChromeVox log is cleared before proceeding.
+	if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+		return nil, errors.Wrap(err, "error with clearing ChromeVox log")
+	}
 	return &root, err
 }
 
@@ -115,12 +126,10 @@ func dumpTree(tree *simpleAutomationNode, filepath string) error {
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
-		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
-		diffFilePath := filepath.Join(s.OutDir(), diffFile)
-
-		// Parse expected tree.
-		expected, err := getExpectedTree(s.DataPath(expectedTreeFile))
+	accessibility.RunTest(ctx, s, []string{accessibility.MainActivity, accessibility.EdittextActivity}, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, activityName string) error {
+		outFilePath := filepath.Join(s.OutDir(), axTreeActualTreeFilePrefix+activityName+".json")
+		diffFilePath := filepath.Join(s.OutDir(), axTreeDiffFilePrefix+activityName+".txt")
+		expected, err := getExpectedTree(s.DataPath(axTreeExpectedTreeFilePrefix + activityName + ".json"))
 		if err != nil {
 			return errors.Wrap(err, "failed to get the expected accessibility tree from the file")
 		}
@@ -138,7 +147,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			if err := dumpTree(root, outFilePath); err != nil {
 				return errors.Wrap(err, "failed to get Android root from accessibility tree, and dumpTree failed")
 			}
-			return errors.Errorf("failed to get Android root from accessibility tree, wrote the entire tree to %q", actualTreeFile)
+			return errors.Errorf("failed to get Android root from accessibility tree, wrote the entire tree to %q", outFilePath)
 		}
 
 		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
@@ -149,7 +158,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			if err := dumpTree(appRoot, outFilePath); err != nil {
 				return errors.Wrap(err, "accessibility tree did not match; failed to dump the actual tree")
 			}
-			return errors.Errorf("accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
+			return errors.Errorf("accessibility tree did not match (see diff:%s, actual:%s)", diffFilePath, outFilePath)
 		}
 		return nil
 	})
