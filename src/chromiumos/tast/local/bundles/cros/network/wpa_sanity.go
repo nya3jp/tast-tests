@@ -21,7 +21,7 @@ func init() {
 		Func:         WPASanity,
 		Desc:         "Verifies wpa_supplicant is up and running",
 		Contacts:     []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi"},
 	})
 }
