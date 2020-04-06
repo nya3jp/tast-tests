@@ -1,0 +1,27 @@
+{
+  "name": "Accessibility Test App",
+  "role": "application",
+  "children": [
+    {
+      "role": "genericContainer",
+      "children": [
+        {
+          "name": "Accessibility Test App",
+          "role": "staticText"
+        },
+	{
+	  "name": "A text field to enter your email",
+	  "role": "textField"
+	},
+	{
+	  "name": "enter email",
+	  "role": "textField"
+	},
+	{
+	  "role": "textField",
+	  "value": "hello world"
+	}
+      ]
+    }
+  ]
+}
