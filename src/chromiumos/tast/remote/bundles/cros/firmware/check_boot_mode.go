@@ -22,7 +22,7 @@ func init() {
 		Func:        CheckBootMode,
 		Desc:        "Verifies that remote tests can check whether the DUT is in normal, dev, and recovery mode",
 		Contacts:    []string{"chromeos-engprod@google.com"},
-		Data:        []string{"fw-testing-configs", "fw-testing-configs/DEFAULTS.json"},
+		Data:        firmware.ConfigDatafiles(),
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
 		Attr:        []string{"group:mainline", "informational"},
 	})
