@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7df2b4b_4215a2d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ad6335e_16faf913",
+      "range": {
+        "startLine": 55,
+        "startChar": 67,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "9a8004a8e9da0a5fb233d25b3bfdd44a1e6a59bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e43d5ce_bdf20bdc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "08b06e88_29e88eaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e43d5ce_bdf20bdc",
+      "range": {
+        "startLine": 69,
+        "startChar": 67,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "9a8004a8e9da0a5fb233d25b3bfdd44a1e6a59bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daf0f621_032b712d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 11
@@ -68,6 +116,30 @@
       "revId": "9a8004a8e9da0a5fb233d25b3bfdd44a1e6a59bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223cebc1_c88abf05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-06T09:49:27Z",
+      "side": 1,
+      "message": "802.11ac is only running on 5GHz I think. Done.",
+      "parentUuid": "daf0f621_032b712d",
+      "range": {
+        "startLine": 83,
+        "startChar": 18,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "9a8004a8e9da0a5fb233d25b3bfdd44a1e6a59bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
