@@ -6,7 +6,7 @@ package firmware
 
 import (
 	"context"
-	"reflect"
+	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
@@ -73,29 +73,18 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Error during BlockingSync: ", err)
 	}
 
-	// Exercise the RPC to get the platform name, which will be used to get config info needed for mode-switching reboots.
+	// Exercise loading fw-testing-configs, which is needed for mode-switching reboots.
 	platformResponse, err := utils.Platform(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatal("Error during Platform: ", err)
 	}
-	s.Logf("Platform name: %s", platformResponse.Platform)
-
-	// Exercise the creation of the config struct, which will be needed for mode-switching reboots.
-	c, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir))
+	platform := strings.ToLower(platformResponse.Platform)
+	cfg, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir), platform)
 	if err != nil {
 		s.Fatal("Error during NewConfig: ", err)
 	}
-	expectedConfig := &firmware.Config{
-		ModeSwitcherType:     firmware.KeyboardDevSwitcher,
-		PowerButtonDevSwitch: false,
-		RecButtonDevSwitch:   false,
-		FirmwareScreen:       10,
-		DelayRebootToPing:    30,
-		ConfirmScreen:        3,
-		USBPlug:              10,
-	}
-	if !reflect.DeepEqual(c, expectedConfig) {
-		s.Fatalf("NewConfig produced %+v, unequal to expected %+v", c, expectedConfig)
+	if cfg.Platform != platform {
+		s.Fatalf("cfg has Platform %s, want %s: %+v", cfg.Platform, platform, cfg)
 	}
 
 	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
