@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "be98335a_42607495",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-06T09:07:42Z",
+      "side": 1,
+      "message": "resolve and reject are no longer defined.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbd58fc9_49de471c",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
         "patchSetId": 1
