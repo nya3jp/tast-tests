@@ -183,6 +183,30 @@
       "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c86f34_fa3dea02",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-06T03:21:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cdc78004_52f52b2d",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "c943b4e5062701583ca4bbd48ced3caa8e5b1b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
