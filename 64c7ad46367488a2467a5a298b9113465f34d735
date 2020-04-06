@@ -220,6 +220,30 @@
     },
     {
       "key": {
+        "uuid": "303cf60c_e5104dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/memory/chromeos.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-06T10:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d024f777_dc778e2d",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "64c7ad46367488a2467a5a298b9113465f34d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "367724f4_bf3822c4",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 6
