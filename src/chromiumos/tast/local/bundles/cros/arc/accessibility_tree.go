@@ -24,18 +24,22 @@ import (
 )
 
 const (
-	expectedTreeFile = "accessibility_tree_expected.json"
-	actualTreeFile   = "accessibility_tree_actual.json"
-	diffFile         = "accessibility_tree_diff.txt"
+	axTreeExpectedTreeFilePrefix = "accessibility_tree_expected"
+	axTreeActualTreeFilePrefix   = "accessibility_tree_actual_"
+	axTreeDiffFilePrefix         = "accessibility_tree_diff_"
 )
 
+var axTreeTestActivities = []string{accessibility.MainActivity, accessibility.EditTextActivity}
+
 // simpleAutomationNode represents the node of accessibilityTree we can obtain from ChromeVox LogStore.
-// Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/chromevox/cvox2/background/tree_types.js
+// Defined in https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/tree_dumper.js
+// TODO(sarakato): Consider using ui.Node here, as number of tests increase.
 type simpleAutomationNode struct {
 	Name     string                  `json:"name,omitempty"`
 	Role     string                  `json:"role,omitempty"`
+	Value    string                  `json:"value,omitempty"`
 	Children []*simpleAutomationNode `json:"children,omitempty"`
-	// There are other variables (url, location, value and logStr).
+	// There are other variables (url, location and logStr).
 	// They will not be used in the test and thus not included here.
 }
 
@@ -46,7 +50,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{expectedTreeFile},
+		Data:         []string{"accessibility_tree_expected.MainActivity.json", "accessibility_tree_expected.EditTextActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -78,7 +82,9 @@ func getDesktopTree(ctx context.Context, cvconn *chrome.Conn) (*simpleAutomation
 	const script = `
 		new Promise((resolve, reject) => {
 			chrome.automation.getDesktop((root) => {
-				LogStore.getInstance().writeTreeLog(new TreeDumper(root));
+				const instance = LogStore.getInstance();
+				instance.clearLog();
+				instance.writeTreeLog(new TreeDumper(root));
 				const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
 				resolve(logTree[0].logTree_.rootNode);
 			});
@@ -115,12 +121,19 @@ func dumpTree(tree *simpleAutomationNode, filepath string) error {
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
-		outFilePath := filepath.Join(s.OutDir(), actualTreeFile)
-		diffFilePath := filepath.Join(s.OutDir(), diffFile)
+	testActivities := []accessibility.TestCase{
+		accessibility.TestCase{
+			Name:  accessibility.MainActivity,
+			Title: "Main Activity",
+		},
+		accessibility.TestCase{
+			Name:  accessibility.EditTextActivity,
+			Title: "Edit Text Activity",
+		},
+	}
+	accessibility.RunTest(ctx, s, testActivities, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, activityName string) error {
 
-		// Parse expected tree.
-		expected, err := getExpectedTree(s.DataPath(expectedTreeFile))
+		expected, err := getExpectedTree(s.DataPath(axTreeExpectedTreeFilePrefix + activityName + ".json"))
 		if err != nil {
 			return errors.Wrap(err, "failed to get the expected accessibility tree from the file")
 		}
@@ -131,25 +144,30 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
 		}
 
+		actualFileName := axTreeActualTreeFilePrefix + activityName + ".json"
+		actualFilePath := filepath.Join(s.OutDir(), actualFileName)
+
 		// Find the root node of Android application.
 		appRoot, ok := findNode(root, expected.Name, expected.Role)
 		if appRoot == nil || !ok {
 			// When the root could not be found, dump the entire tree.
-			if err := dumpTree(root, outFilePath); err != nil {
+			if err := dumpTree(root, actualFilePath); err != nil {
 				return errors.Wrap(err, "failed to get Android root from accessibility tree, and dumpTree failed")
 			}
-			return errors.Errorf("failed to get Android root from accessibility tree, wrote the entire tree to %q", actualTreeFile)
+			return errors.Errorf("failed to get Android root from accessibility tree, wrote the entire tree to %q", actualFileName)
 		}
 
 		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
+			diffFileName := axTreeDiffFilePrefix + activityName + ".txt"
+			diffFilePath := filepath.Join(s.OutDir(), diffFileName)
 			// When the accessibility tree is different, dump the diff and the obtained tree.
 			if err := ioutil.WriteFile(diffFilePath, []byte(diff), 0644); err != nil {
 				return errors.Wrap(err, "accessibility tree did not match; failed to write diff to the file")
 			}
-			if err := dumpTree(appRoot, outFilePath); err != nil {
+			if err := dumpTree(appRoot, actualFilePath); err != nil {
 				return errors.Wrap(err, "accessibility tree did not match; failed to dump the actual tree")
 			}
-			return errors.Errorf("accessibility tree did not match (see diff:%s, actual:%s)", diffFile, actualTreeFile)
+			return errors.Errorf("accessibility tree did not match (see diff:%s, actual:%s)", diffFileName, actualFileName)
 		}
 		return nil
 	})
