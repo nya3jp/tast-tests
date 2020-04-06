@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea33ff7b_a3fdaa77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T09:56:21Z",
+      "side": 1,
+      "message": "Maybe adding a comment:\n\n// Configure a service for the hidden SSID as a result of manual input SSID.",
+      "revId": "c3274df29b6a980680143807eeeb1033848f25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52891796_a673c235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T09:56:21Z",
+      "side": 1,
+      "message": "a hidden",
+      "range": {
+        "startLine": 53,
+        "startChar": 53,
+        "endLine": 53,
+        "endChar": 59
+      },
+      "revId": "c3274df29b6a980680143807eeeb1033848f25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047e49a4_cdecfb5e",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T09:56:21Z",
+      "side": 1,
+      "message": "if it is a hidden network",
+      "range": {
+        "startLine": 147,
+        "startChar": 39,
+        "endLine": 147,
+        "endChar": 66
+      },
+      "revId": "c3274df29b6a980680143807eeeb1033848f25f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
