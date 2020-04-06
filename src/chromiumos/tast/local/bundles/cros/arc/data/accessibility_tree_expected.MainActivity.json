@@ -1,12 +1,12 @@
 {
-  "name": "Accessibility Test App",
+  "name": "Main Activity",
   "role": "application",
   "children": [
     {
       "role": "genericContainer",
       "children": [
         {
-          "name": "Accessibility Test App",
+          "name": "Main Activity",
           "role": "staticText"
         },
         {
