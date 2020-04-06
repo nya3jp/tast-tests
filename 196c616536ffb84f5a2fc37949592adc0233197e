@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "32d87cf6_f79dc5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-06T10:00:13Z",
+      "side": 1,
+      "message": "For context, they are going to have 30/60 fps tests.\nBut I agree, it can be too early to inrtoduce \"Val\". Please introduce once you\u0027ll add 60fps tests.",
+      "parentUuid": "4dedcf27_ed465b94",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b423c10_f025c35f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
         "patchSetId": 7
