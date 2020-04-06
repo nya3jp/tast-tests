@@ -9,7 +9,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/c2e2etest"
-	"chromiumos/tast/local/bundles/cros/video/decode"
+	"chromiumos/tast/local/bundles/cros/arc/video"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
@@ -23,7 +23,7 @@ func init() {
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
-		Timeout:      decode.PerfTestRuntime,
+		Timeout:      video.PerfTestRuntime,
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",
 			Val:               "1080p_30fps_300frames.h264",
@@ -89,5 +89,5 @@ func init() {
 }
 
 func VideoDecodeAccelPerf(ctx context.Context, s *testing.State) {
-	decode.RunARCVideoPerfTest(ctx, s, s.Param().(string))
+	video.RunARCVideoPerfTest(ctx, s, s.Param().(string))
 }
