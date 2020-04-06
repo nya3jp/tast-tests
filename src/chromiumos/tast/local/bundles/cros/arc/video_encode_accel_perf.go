@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
@@ -28,17 +29,17 @@ func init() {
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_1080p_i420",
-			Val: encode.TestOptions{
+			Val: encoding.TestOptions{
 				Profile:     videotype.H264Prof,
-				Params:      encode.Crowd1080P,
+				Params:      encoding.Crowd1080P,
 				PixelFormat: videotype.I420,
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         []string{encode.Crowd1080P.Name},
+			ExtraData:         []string{encoding.Crowd1080P.Name},
 		}},
 	})
 }
 
 func VideoEncodeAccelPerf(ctx context.Context, s *testing.State) {
-	encode.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encode.TestOptions))
+	encode.RunARCPerfVideoTest(ctx, s, s.PreValue().(arc.PreData).ARC, s.Param().(encoding.TestOptions))
 }
