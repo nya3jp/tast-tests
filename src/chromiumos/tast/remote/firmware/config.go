@@ -32,6 +32,128 @@ const ConfigDir = "fw-testing-configs"
 // Although the actual filepath contains a .json extension, this variable does not, so that it can be passed into loadConfigJSON.
 const defaultName = "DEFAULTS"
 
+// configPlatforms is a list of all platforms with JSON files in the fw-testing-configs directory.
+var configPlatforms = []string{
+	defaultName,
+	"arkham",
+	"asuka",
+	"atlas",
+	"auron",
+	"banjo",
+	"banon",
+	"bob",
+	"brain",
+	"buddy",
+	"candy",
+	"caroline",
+	"cave",
+	"celes",
+	"chell",
+	"cheza",
+	"cid",
+	"coral",
+	"cyan",
+	"dragonegg",
+	"drallion",
+	"edgar",
+	"elm",
+	"enguarde",
+	"eve",
+	"expresso",
+	"fievel",
+	"fizz",
+	"gale",
+	"gandof",
+	"glados",
+	"gnawty",
+	"gru",
+	"grunt",
+	"guado",
+	"gus",
+	"hana",
+	"hatch",
+	"heli",
+	"jacuzzi",
+	"jaq",
+	"jecht",
+	"jerry",
+	"jetstream",
+	"kalista",
+	"kefka",
+	"kevin",
+	"kevin-tpm2",
+	"kip",
+	"kitty",
+	"kukui",
+	"kunimitsu",
+	"lars",
+	"lulu",
+	"mickey",
+	"mighty",
+	"minnie",
+	"mistral",
+	"monroe",
+	"nami",
+	"nasher",
+	"nautilus",
+	"ninja",
+	"nocturne",
+	"nyan",
+	"oak",
+	"octopus",
+	"orco",
+	"paine",
+	"pinky",
+	"poppy",
+	"puff",
+	"pyro",
+	"rambi",
+	"rammus",
+	"reef",
+	"reef_uni",
+	"reks",
+	"relm",
+	"rikku",
+	"samus",
+	"sand",
+	"sarien",
+	"scarlet",
+	"sentry",
+	"setzer",
+	"slippy",
+	"snappy",
+	"soraka",
+	"speedy",
+	"storm",
+	"strago",
+	"sumo",
+	"swanky",
+	"terra",
+	"tidus",
+	"tiger",
+	"trogdor",
+	"ultima",
+	"umaro",
+	"veyron",
+	"volteer",
+	"whirlwind",
+	"winky",
+	"wizpig",
+	"yuna",
+	"zork",
+}
+
+// ConfigDatafiles returns the relative paths from data/ to all config files in fw-testing-configs, as well as to fw-testing-configs itself.
+// It is intended to be used in the Data field of a testing.Test declaration.
+func ConfigDatafiles() []string {
+	var dfs []string
+	for _, platform := range configPlatforms {
+		dfs = append(dfs, filepath.Join(ConfigDir, fmt.Sprintf("%s.json", platform)))
+	}
+	dfs = append(dfs, ConfigDir)
+	return dfs
+}
+
 // Config contains platform-specific attributes.
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
@@ -51,6 +173,16 @@ func NewConfig(configDataDir string) (*Config, error) {
 
 	// loadConfigJSON reads '${platform}.json' and loads its contents into a Config struct.
 	loadConfigJSON := func(platform string) (*Config, error) {
+		cfgFound := false
+		for _, p := range configPlatforms {
+			if platform == p {
+				cfgFound = true
+				break
+			}
+		}
+		if !cfgFound {
+			return nil, errors.Errorf("configPlatforms in remote/firmware/config.go does not contain platform %q", platform)
+		}
 		fp := filepath.Join(configDataDir, fmt.Sprintf("%s.json", platform))
 		b, err := ioutil.ReadFile(fp)
 		if err != nil {
