@@ -16,6 +16,24 @@
       "revId": "56a7182b378a43e6a571aeb5d9f241955a968ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4d0062f_283fba55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-06T06:12:55Z",
+      "side": 1,
+      "message": "Let\u0027s have a log here in that case.",
+      "parentUuid": "74d88445_431eba45",
+      "revId": "56a7182b378a43e6a571aeb5d9f241955a968ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
