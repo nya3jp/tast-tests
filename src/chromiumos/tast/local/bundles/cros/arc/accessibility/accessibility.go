@@ -30,9 +30,12 @@ const (
 	ArcAccessibilityHelperService = "org.chromium.arc.accessibilityhelper/org.chromium.arc.accessibilityhelper.ArcAccessibilityHelperService"
 
 	// ApkName is the name of apk which is used in ARC++ accessibility tests.
-	ApkName      = "ArcAccessibilityTest.apk"
-	packageName  = "org.chromium.arc.testapp.accessibilitytest"
-	activityName = ".MainActivity"
+	ApkName     = "ArcAccessibilityTest.apk"
+	packageName = "org.chromium.arc.testapp.accessibilitytest"
+	// MainActivity is the main activity for in ArcAccessibilityTest app.
+	MainActivity = "MainActivity"
+	// EdittextActivity is the activity that contains edit text elements.
+	EdittextActivity = "EdittextActivity"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
 
@@ -46,6 +49,8 @@ const (
 	TextView = "android.widget.TextView"
 	// ToggleButton class name.
 	ToggleButton = "android.widget.ToggleButton"
+	// WebView class name.
+	WebView = "android.webkit.WebView"
 )
 
 // Feature represents an accessibility feature in Chrome OS.
@@ -173,7 +178,7 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready.
-func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *chrome.TestConn, *input.KeyboardEventWriter) error) {
+func RunTest(ctx context.Context, s *testing.State, activityName string, f func(context.Context, *arc.ARC, *chrome.Conn, *chrome.TestConn, *input.KeyboardEventWriter) error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -222,7 +227,7 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
-	act, err := arc.NewActivity(a, packageName, activityName)
+	act, err := arc.NewActivity(a, packageName, "."+activityName)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
