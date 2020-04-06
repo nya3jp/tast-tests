@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e1769063_4261d038",
+        "filename": "src/chromiumos/tast/remote/wificell/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-06T09:30:22Z",
+      "side": 1,
+      "message": "I think we don\u0027t have to check again here. I\u0027m just a little confused when seeing HostapdConfig has error but ShillServiceProperties doesn\u0027t and I\u0027m not totally sure if it is guaranteed that ShillServiceProperties will never have error (e.g. in new security type).\nGiven that none of current implementation needs to return error, I guess we can add it when future security type really needs it.",
+      "parentUuid": "c7a7b03c_8b0871c0",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c465958d_ce3b60a2",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 1
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "You mean Gen security config first and then pass it as option to NewConfig here? Not a bad idea.",
       "parentUuid": "c465958d_ce3b60a2",
+      "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "896b92a8_dd417eb7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-06T09:30:22Z",
+      "side": 1,
+      "message": "Yape, I guess it\u0027s better to do the assign with Option than assigning it directly after New.",
+      "parentUuid": "c19d688c_e4146be2",
       "revId": "ef851379799d8cbc67491f48af5ad55140ad7317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
