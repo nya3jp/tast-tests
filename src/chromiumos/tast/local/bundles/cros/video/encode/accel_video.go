@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
@@ -128,7 +129,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	params := opts.Params
-	streamPath, err := PrepareYUV(shortCtx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
+	streamPath, err := encoding.PrepareYUV(shortCtx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
@@ -236,7 +237,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 
 	// Prepare video stream.
 	params := opts.Params
-	streamPath, err := PrepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
+	streamPath, err := encoding.PrepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}

@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package encode
+// Package encoding contains common code to interact with the video encode accelerator test binary.
+package encoding
 
 import (
 	"context"
