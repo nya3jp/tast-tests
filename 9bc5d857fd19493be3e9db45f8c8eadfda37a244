@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "005be80b_c008419d",
+        "filename": "src/chromiumos/tast/remote/wificell/fileutil/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-06T06:02:50Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Let\u0027s use \u0027sh -c \"cat \u003e path\"\u0027 to save some network traffic.",
+      "parentUuid": "0f7f885d_a30259f0",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "9bc5d857fd19493be3e9db45f8c8eadfda37a244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7e42942_07622933",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 5
