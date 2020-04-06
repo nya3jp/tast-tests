@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6f60c1b_8f7c2159",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2020-04-06T09:28:30Z",
+      "side": 1,
+      "message": "No need to run other tests becaue the callee itself doesn\u0027t change now.\nJust add parametars because AppCrash itself is deprecated.",
+      "parentUuid": "7feac673_9b749e7e",
+      "revId": "a59a353347c23f3dae4801206c7e8ac7b65b4d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f36f60d_2feb7030",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "a59a353347c23f3dae4801206c7e8ac7b65b4d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8220f4d2_908dc482",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2020-04-06T09:28:30Z",
+      "side": 1,
+      "message": "It seems that there is no way to distinguish because base::GetProperty doesn\u0027t support optional.\nhttps://android.googlesource.com/platform/system/core/+/refs/heads/master/base/include/android-base/properties.h#33\n\nHandling in the caller would be better.",
+      "parentUuid": "8f36f60d_2feb7030",
+      "range": {
+        "startLine": 64,
+        "startChar": 13,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "a59a353347c23f3dae4801206c7e8ac7b65b4d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
