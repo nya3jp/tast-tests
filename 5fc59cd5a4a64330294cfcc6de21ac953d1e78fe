@@ -507,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "71b0e7e0_5464e86c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-06T10:49:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c6bfa21_bb0712af",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 70
+      },
+      "revId": "5fc59cd5a4a64330294cfcc6de21ac953d1e78fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b52409ba_fbf9adc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera/camera_recording.go",
         "patchSetId": 4

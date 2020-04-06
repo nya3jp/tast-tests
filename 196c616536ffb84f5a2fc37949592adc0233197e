@@ -141,6 +141,29 @@
     },
     {
       "key": {
+        "uuid": "f50860a5_0d9ca03a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-06T10:49:51Z",
+      "side": 1,
+      "message": "nit: is it useful?\nMaybe add log message that you starting setup instead?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 24
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b423c10_f025c35f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
         "patchSetId": 7
