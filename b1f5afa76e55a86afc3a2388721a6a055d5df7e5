@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "573477b3_0423eda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-06T07:11:46Z",
+      "side": 1,
+      "message": "Why was the argument added here?",
+      "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbd58fc9_49de471c",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
         "patchSetId": 1
