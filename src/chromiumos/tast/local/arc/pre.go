@@ -105,6 +105,23 @@ var bootedWithVideoLoggingPre = &preImpl{
 			"*/components/arc/video_accelerator/*"}, ",")},
 }
 
+// VMBootedWithVideoLogging returns a precondition similar to BootedWithVideoLogging(). The only difference from BootedWithVideoLogging() is
+// that ARC VM, and not the ARC Container, is enabled in this precondition.
+func VMBootedWithVideoLogging() testing.Precondition { return vmBootedWithVideoLoggingPre }
+
+// vmBootedWithVideoLoggingPre is returned by VMBootedWithVideoLogging.
+var vmBootedWithVideoLoggingPre = &preImpl{
+	name:    "arc_booted_with_video_logging",
+	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: []string{
+		"--vmodule=" + strings.Join([]string{
+			"*/media/gpu/chromeos/*=2",
+			"*/media/gpu/vaapi/*==2",
+			"*/media/gpu/v4l2/*=2",
+			"*/components/arc/video_accelerator/*"}, ",")},
+	useARCVM: true,
+}
+
 // BootedAppCompat returns a precondition similar to Booted(). The only difference from Booted() is
 // that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
 func BootedAppCompat() testing.Precondition { return bootedAppCompatPre }

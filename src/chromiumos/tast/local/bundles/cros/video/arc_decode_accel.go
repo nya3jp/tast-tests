@@ -21,23 +21,43 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
-		SoftwareDeps: []string{"android_p", "chrome"},
-		Pre:          arc.BootedWithVideoLogging(),
+		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "test-25fps.h264",
-			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+			Pre:               arc.BootedWithVideoLogging(),
+		}, {
+			Name:              "h264_vm",
+			Val:               "test-25fps.h264",
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWDecodeH264},
+			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
+			Pre:               arc.VMBootedWithVideoLogging(),
 		}, {
 			Name:              "vp8",
 			Val:               "test-25fps.vp8",
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWDecodeVP8},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+			Pre:               arc.BootedWithVideoLogging(),
+		}, {
+			Name:              "vp8_vm",
+			Val:               "test-25fps.vp8",
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWDecodeVP8},
+			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
+			Pre:               arc.VMBootedWithVideoLogging(),
 		}, {
 			Name:              "vp9",
 			Val:               "test-25fps.vp9",
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraSoftwareDeps: []string{"android_p", caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+			Pre:               arc.BootedWithVideoLogging(),
+		}, {
+			Name:              "vp9_vm",
+			Val:               "test-25fps.vp9",
+			ExtraSoftwareDeps: []string{"android_vm", caps.HWDecodeVP9},
+			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
+			Pre:               arc.VMBootedWithVideoLogging(),
 		}},
 	})
 }
