@@ -16,6 +16,24 @@
       "revId": "11c8aaf452f3743e4aeb29a8cc192d20b35ea7d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a72ef3_19e6bcda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-06T06:17:55Z",
+      "side": 1,
+      "message": "That\u0027s a signal that we shall retire Autotest version ASAP.",
+      "parentUuid": "f06adc5c_4f2f18b3",
+      "revId": "11c8aaf452f3743e4aeb29a8cc192d20b35ea7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
