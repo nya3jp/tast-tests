@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a17f3b6_a80e6170",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-06T09:00:13Z",
+      "side": 1,
+      "message": "Optional: I recommend stat(1) with which we can avoid parsing the formatted output.\n\n stat -c %s /path/to/file",
+      "range": {
+        "startLine": 113,
+        "startChar": 31,
+        "endLine": 113,
+        "endChar": 54
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd0d712_b52a9bd9",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-06T09:00:13Z",
+      "side": 1,
+      "message": "String concatenation with + is not popular in Go. Instead we can use errors.Wrapf here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 65,
+        "endLine": 115,
+        "endChar": 74
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd61b0d_83bdc086",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-06T09:00:13Z",
+      "side": 1,
+      "message": "style: Please start error strings with lower letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 115,
+        "startChar": 30,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ecf2676_0f6c30e7",
+        "filename": "src/chromiumos/tast/local/arc/file.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-06T09:00:13Z",
+      "side": 1,
+      "message": "Please use errors.Wrapf(err, ...) to include detailed error message from strconv.ParseInt.",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 122
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dedcf27_ed465b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-06T09:00:13Z",
+      "side": 1,
+      "message": "Val is not useful when all paramters have the same value. Let us make it a constant.",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b423c10_f025c35f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_recording_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-06T09:00:13Z",
+      "side": 1,
+      "message": "Please use s.Logf instead to avoid string concatenation.",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "196c616536ffb84f5a2fc37949592adc0233197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
