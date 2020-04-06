@@ -30,9 +30,12 @@ const (
 	ArcAccessibilityHelperService = "org.chromium.arc.accessibilityhelper/org.chromium.arc.accessibilityhelper.ArcAccessibilityHelperService"
 
 	// ApkName is the name of apk which is used in ARC++ accessibility tests.
-	ApkName      = "ArcAccessibilityTest.apk"
-	packageName  = "org.chromium.arc.testapp.accessibilitytest"
-	activityName = ".MainActivity"
+	ApkName     = "ArcAccessibilityTest.apk"
+	packageName = "org.chromium.arc.testapp.accessibilitytest"
+	// MainActivity is the main activity for in ArcAccessibilityTest app.
+	MainActivity = "MainActivity"
+	// EdittextActivity is the activity that contains edit text elements.
+	EdittextActivity = "EdittextActivity"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/chromevox/background/background.html"
 
@@ -173,7 +176,7 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 
 // RunTest installs the ArcAccessibilityTestApplication, launches it, and waits
 // for ChromeVox to be ready.
-func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc.ARC, *chrome.Conn, *chrome.TestConn, *input.KeyboardEventWriter) error) {
+func RunTest(ctx context.Context, s *testing.State, activities []string, f func(context.Context, *arc.ARC, *chrome.Conn, *chrome.TestConn, *input.KeyboardEventWriter, string) error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -190,16 +193,6 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
-	}
-
-	// It takes some time for ArcServiceManager to be ready.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)(true)", nil); err != nil {
-			return err
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		s.Fatal("Timed out waiting for touch mode: ", err)
 	}
 
 	if err := SetFeatureEnabled(ctx, tconn, SpokenFeedback, true); err != nil {
@@ -222,36 +215,50 @@ func RunTest(ctx context.Context, s *testing.State, f func(context.Context, *arc
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
-	act, err := arc.NewActivity(a, packageName, activityName)
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
-
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start activity: ", err)
-	}
-
-	if err := WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
-		ClassName: TextView,
-		Name:      "Accessibility Test App",
-		Role:      ui.RoleTypeStaticText,
-	}); err != nil {
-		s.Fatal("Failed to wait for initial ChromeVox focus: ", err)
-	}
-
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Error with creating EventWriter from keyboard: ", err)
 	}
 	defer ew.Close()
 
-	if err := f(ctx, a, cvconn, tconn, ew); err != nil {
-		// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
-		path := filepath.Join(s.OutDir(), "screenshot-with-chromevox.png")
-		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-			s.Log("Failed to capture screenshot: ", err)
-		}
-		s.Fatal("Failed to run the test: ", err)
+	for _, activityName := range activities {
+		s.Run(ctx, activityName, func(ctx context.Context, s *testing.State) {
+			// It takes some time for ArcServiceManager to be ready.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)(true)", nil); err != nil {
+					return err
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+				s.Fatal("Timed out waiting for touch mode: ", err)
+			}
+
+			act, err := arc.NewActivity(a, packageName, "."+activityName)
+			if err != nil {
+				s.Fatal("Failed to create new activity: ", err)
+			}
+			defer act.Close()
+
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatal("Failed to start activity: ", err)
+			}
+
+			if err := WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
+				ClassName: TextView,
+				Name:      "Accessibility Test App",
+				Role:      ui.RoleTypeStaticText,
+			}); err != nil {
+				s.Fatal("Failed to wait for initial ChromeVox focus: ", err)
+			}
+
+			if err := f(ctx, a, cvconn, tconn, ew, activityName); err != nil {
+				// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
+				path := filepath.Join(s.OutDir(), "screenshot-with-chromevox.png")
+				if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+					s.Log("Failed to capture screenshot: ", err)
+				}
+				s.Fatal("Failed to run the test: ", err)
+			}
+		})
 	}
 }
