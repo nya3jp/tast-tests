@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "935325fe_deb3376c",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-06T10:05:10Z",
+      "side": 1,
+      "message": "I\u0027ve updated the existing TestReaderWait/NotFound to hit this case.",
+      "parentUuid": "04c11b83_84f84f5b",
+      "range": {
+        "startLine": 291,
+        "startChar": 17,
+        "endLine": 291,
+        "endChar": 21
+      },
+      "revId": "003fd438c1295cafc6ed123a9265d04707d9342c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91295026_6312f71d",
         "filename": "src/chromiumos/tast/local/syslog/reader.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "003fd438c1295cafc6ed123a9265d04707d9342c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ee9dbcd_49c65117",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-06T10:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91295026_6312f71d",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 309,
+        "endChar": 40
+      },
+      "revId": "003fd438c1295cafc6ed123a9265d04707d9342c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
