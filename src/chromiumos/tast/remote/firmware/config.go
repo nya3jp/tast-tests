@@ -157,6 +157,7 @@ func ConfigDatafiles() []string {
 // Config contains platform-specific attributes.
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
+	Platform             string           `json:"platform"`
 	ModeSwitcherType     ModeSwitcherType `json:"mode_switcher_type"`
 	PowerButtonDevSwitch bool             `json:"power_button_dev_switch"`
 	RecButtonDevSwitch   bool             `json:"rec_button_dev_switch"`
@@ -169,21 +170,21 @@ type Config struct {
 // NewConfig creates a new Config matching the DUT platform.
 // For now, it only returns default values.
 // TODO(b/151469239): Populate with config data matching the DUT platform.
-func NewConfig(configDataDir string) (*Config, error) {
+func NewConfig(configDataDir, platform string) (*Config, error) {
 
-	// loadConfigJSON reads '${platform}.json' and loads its contents into a Config struct.
-	loadConfigJSON := func(platform string) (*Config, error) {
+	// loadConfigJSON reads '${s}.json' and loads its contents into a Config struct.
+	loadConfigJSON := func(s string) (*Config, error) {
 		cfgFound := false
 		for _, p := range configPlatforms {
-			if platform == p {
+			if s == p {
 				cfgFound = true
 				break
 			}
 		}
 		if !cfgFound {
-			return nil, errors.Errorf("remote/firmware/config.go::configPlatforms does not contain platform %q", platform)
+			return nil, errors.Errorf("remote/firmware/config.go::configPlatforms does not contain platform %q", s)
 		}
-		fp := filepath.Join(configDataDir, fmt.Sprintf("%s.json", platform))
+		fp := filepath.Join(configDataDir, fmt.Sprintf("%s.json", s))
 		b, err := ioutil.ReadFile(fp)
 		if err != nil {
 			return nil, errors.Wrapf(err, "reading datafile %s", fp)
@@ -196,6 +197,7 @@ func NewConfig(configDataDir string) (*Config, error) {
 		return cfg, nil
 	}
 
-	// TODO(b/151469239): Overwrite the default config with the platform config and any parent configs.
-	return loadConfigJSON(defaultName)
+	// TODO(b/151469239): Use the platform config to overwrite parent config(s) and default config
+	// TODO(b/151469239): Load model config and overwrite platform config
+	return loadConfigJSON(platform)
 }
