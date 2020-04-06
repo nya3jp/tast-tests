@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eaca891a_ca925c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1247458
+      },
+      "writtenOn": "2020-04-06T11:52:35Z",
+      "side": 1,
+      "message": "This is the default value, you shouldn\u0027t have to specify it unless the tests are run with Plan-B as default.",
+      "parentUuid": "573477b3_0423eda3",
+      "revId": "b1f5afa76e55a86afc3a2388721a6a055d5df7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be98335a_42607495",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
         "patchSetId": 1
