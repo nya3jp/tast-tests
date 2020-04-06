@@ -26,6 +26,29 @@
     },
     {
       "key": {
+        "uuid": "1b4cf729_3b23b24e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-04-06T16:09:32Z",
+      "side": 1,
+      "message": "Don\u0027t grab everything. Just grab the things you want to check. That allows us to change stuff in dlcservice_util(like remove, rename, etc) without breaking this. If in the future we needed more attributes, then add it back here.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 42
+      },
+      "revId": "281e81d7beef0b4ac9628bb232532fbd47b901f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0267c2a_812f9c3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 4
