@@ -98,13 +98,12 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	const (
-		appName = "Accessibility Test App"
-
 		seekBarInitialValue         = 25
 		seekBarDiscreteInitialValue = 3
 	)
 
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+	testActivities := []accessibility.TestActivity{accessibility.MainActivity}
+	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		// Set up event stream logging for accessibility events.
 		if err := cvconn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {
@@ -121,6 +120,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "enabling event stream logging failed")
 		}
 
+		ew, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Error with creating EventWriter from keyboard: ", err)
+		}
+		defer ew.Close()
+
 		for i, test := range []testStep{
 			// Move focus to ToggleButton and toggle it.
 			{
@@ -134,7 +139,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"tooltip": "button tooltip",
 					},
 				},
-				eventLog{"focus", "OFF", appName},
+				eventLog{"focus", "OFF", currentActivity.Title},
 			}, {
 				"Search+Space",
 				ui.FindParams{
@@ -146,7 +151,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"tooltip": "button tooltip",
 					},
 				},
-				eventLog{"checkedStateChanged", "ON", appName},
+				eventLog{"checkedStateChanged", "ON", currentActivity.Title},
 			},
 			// Move focus to CheckBox and check it.
 			{
@@ -160,7 +165,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"tooltip": "checkbox tooltip",
 					},
 				},
-				eventLog{"focus", "CheckBox", appName},
+				eventLog{"focus", "CheckBox", currentActivity.Title},
 			}, {
 				"Search+Space",
 				ui.FindParams{
@@ -172,7 +177,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"tooltip": "checkbox tooltip",
 					},
 				},
-				eventLog{"checkedStateChanged", "CheckBox", appName},
+				eventLog{"checkedStateChanged", "CheckBox", currentActivity.Title},
 			},
 			// Move focus to SeekBar and increment it.
 			{
@@ -185,7 +190,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"valueForRange": seekBarInitialValue,
 					},
 				},
-				eventLog{"focus", "seekBar", appName},
+				eventLog{"focus", "seekBar", currentActivity.Title},
 			}, {
 				"=",
 				ui.FindParams{
@@ -196,7 +201,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"valueForRange": seekBarInitialValue + 1,
 					},
 				},
-				eventLog{"valueChanged", "seekBar", appName},
+				eventLog{"valueChanged", "seekBar", currentActivity.Title},
 			},
 			// Move focus to SeekbarDiscrete and decrement it.
 			{
@@ -209,7 +214,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"valueForRange": seekBarDiscreteInitialValue,
 					},
 				},
-				eventLog{"focus", "seekBarDiscrete", appName},
+				eventLog{"focus", "seekBarDiscrete", currentActivity.Title},
 			}, {
 				"-",
 				ui.FindParams{
@@ -220,7 +225,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 						"valueForRange": seekBarDiscreteInitialValue - 1,
 					},
 				},
-				eventLog{"valueChanged", "seekBarDiscrete", appName},
+				eventLog{"valueChanged", "seekBarDiscrete", currentActivity.Title},
 			},
 		} {
 			if err := runTestStep(ctx, cvconn, tconn, ew, test, i == 0); err != nil {
@@ -228,5 +233,6 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			}
 		}
 		return nil
-	})
+	}
+	accessibility.RunTest(ctx, s, testActivities, testFunc)
 }
