@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f06adc5c_4f2f18b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-06T05:44:48Z",
+      "side": 1,
+      "message": "not sure if it\u0027s worth mentioning that in Autotest, it is added in crrev.com/c/2077338, so this cl is syncing the list in Autotest rather than adding a new one.\n(although the original cl is not for grunt-kernelnext)",
+      "revId": "11c8aaf452f3743e4aeb29a8cc192d20b35ea7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
