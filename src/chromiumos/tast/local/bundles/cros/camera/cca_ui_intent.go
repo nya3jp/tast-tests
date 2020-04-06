@@ -47,9 +47,18 @@ func init() {
 		Desc:         "Verifies if the camera intents fired from Android apps could be delivered and handled by CCA",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome", caps.BuiltinOrVividCamera},
-		Pre:          arc.Booted(),
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+			Val:               "cheets",
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+			Val:               "bertha",
+		}},
 	})
 }
 
@@ -128,7 +137,8 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Error("Failed for take photo (no extra) behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+	// TODO(b/153317294): Enable this once Downloads sharing works in ARCVM.
+	if err := checkIntentBehaviorCheetsOnly(ctx, s, cr, a, uiDevice, intentOptions{
 		Action:       takePhotoAction,
 		URI:          testPhotoURI,
 		Mode:         cca.Photo,
@@ -154,7 +164,8 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Error("Failed for launch camera on photo mode behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+	// TODO(b/153317294): Enable this once sdcard sharing works.
+	if err := checkIntentBehaviorCheetsOnly(ctx, s, cr, a, uiDevice, intentOptions{
 		Action:       recordVideoAction,
 		URI:          "",
 		Mode:         cca.Video,
@@ -167,7 +178,8 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		s.Error("Failed for record video (no extras) behavior test: ", err)
 	}
 
-	if err := checkIntentBehavior(ctx, s, cr, a, uiDevice, intentOptions{
+	// TODO(b/153317294): Enable this once Downloads sharing works in ARCVM.
+	if err := checkIntentBehaviorCheetsOnly(ctx, s, cr, a, uiDevice, intentOptions{
 		Action:       recordVideoAction,
 		URI:          testVideoURI,
 		Mode:         cca.Video,
@@ -293,6 +305,13 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 		}
 	}
 	return nil
+}
+
+func checkIntentBehaviorCheetsOnly(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions) error {
+	if s.Param().(string) != "cheets" {
+		return nil
+	}
+	return checkIntentBehavior(ctx, s, cr, a, uiDevice, options)
 }
 
 // checkLandingMode checks whether CCA window lands in correct capture mode.
