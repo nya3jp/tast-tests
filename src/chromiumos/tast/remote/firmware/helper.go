@@ -10,6 +10,9 @@ This file implements firmware.Helper, a struct which provides access to several 
 
 import (
 	"context"
+	"strings"
+
+	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -43,9 +46,17 @@ func NewHelper(d *dut.DUT) *Helper {
 
 // AddConfig creates a Config object, and registers it to the Helper.
 func (h *Helper) AddConfig(ctx context.Context, configDataDir string) error {
-	cfg, err := NewConfig(configDataDir)
+	if !h.hasRPC {
+		return errors.New("must call Helper.AddRPC before Helper.AddConfig")
+	}
+	platformResponse, err := h.Utils.Platform(ctx, &empty.Empty{})
 	if err != nil {
-		return errors.Wrap(err, "creating config")
+		return errors.Wrap(err, "calling Platform rpc")
+	}
+	p := strings.ToLower(platformResponse.Platform)
+	cfg, err := NewConfig(configDataDir, p)
+	if err != nil {
+		return errors.Wrapf(err, "creating config for platform %s", p)
 	}
 	h.Config = cfg
 	return nil
