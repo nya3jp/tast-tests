@@ -59,7 +59,14 @@ func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
 }
 
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+
+	testActivities := []accessibility.TestCase{
+		accessibility.TestCase{
+			Name:  accessibility.MainActivity,
+			Title: "Main Activity",
+		},
+	}
+	accessibility.RunTest(ctx, s, testActivities, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, activityName string) error {
 		const (
 			nextKey     = "Search+Right"
 			activateKey = "Search+Space"

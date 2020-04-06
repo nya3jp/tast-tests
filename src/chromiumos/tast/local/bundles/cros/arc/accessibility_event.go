@@ -103,8 +103,14 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		seekBarInitialValue         = 25
 		seekBarDiscreteInitialValue = 3
 	)
+	testActivities := []accessibility.TestCase{
+		accessibility.TestCase{
+			Name:  accessibility.MainActivity,
+			Title: "Main Activity",
+		},
+	}
 
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+	accessibility.RunTest(ctx, s, testActivities, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, activityName string) error {
 		// Set up event stream logging for accessibility events.
 		if err := cvconn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {
