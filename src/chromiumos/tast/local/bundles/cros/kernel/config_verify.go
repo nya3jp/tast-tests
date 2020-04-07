@@ -346,6 +346,10 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	if ver.isOrLater(4, 14) {
 		builtin = append(builtin, "SLAB_FREELIST_RANDOM")
 		builtin = append(builtin, "SLAB_FREELIST_HARDENED")
+		if arch != "arm" {
+			builtin = append(builtin, "VMAP_STACK")
+			builtin = append(builtin, "INIT_STACK_ALL")
+		}
 	}
 
 	if ver.isOrLater(4, 19) {
