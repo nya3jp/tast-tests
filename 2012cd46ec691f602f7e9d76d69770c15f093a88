@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6def2c3a_c1ad33e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T19:16:35Z",
+      "side": 1,
+      "message": "Done dividing into two functions. Looks better indeed.",
+      "parentUuid": "e1f0f54a_cac4fd72",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d75f685_44308845",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/sdp.js",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2d6e86_bb6821cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/sdp.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T19:16:35Z",
+      "side": 1,
+      "message": "Hmm there\u0027s just one file there, and same for simulcast.js, so I don\u0027t think it\u0027s \nworth it? I changed the links to a permalink (here and in the simulcast.js).",
+      "parentUuid": "7d75f685_44308845",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,30 @@
       "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519e1570_5790ab78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T19:16:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "bc291474_43cab2fc",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 3
+      },
+      "revId": "2012cd46ec691f602f7e9d76d69770c15f093a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
