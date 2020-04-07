@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "469d1cb5_51da3082",
+        "filename": "src/chromiumos/tast/local/media/encoding/yuv.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-07T07:22:36Z",
+      "side": 1,
+      "message": "minor nit: move docstring to a separate file to make it clearer when other files are added to the package",
+      "revId": "ad24721fa5749fe2c2d08fb260a854d08a2c08b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
