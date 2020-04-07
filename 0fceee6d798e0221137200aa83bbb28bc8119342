@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c9a76d6e_f876f259",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_cases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-07T15:38:07Z",
+      "side": 1,
+      "message": "Keep the video test cases where they currently are and duplicate the required ones for arc inside the test directory. Unless the test cases are usable by other tests (outside arc/video) I would not keep them in a central location.",
+      "parentUuid": "22deeeaf_83d4d7ac",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "737e1f10_0f0fd077",
         "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
         "patchSetId": 4
@@ -69,6 +87,24 @@
       "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f011be5_7c4768df",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-07T15:38:07Z",
+      "side": 1,
+      "message": "I\u0027d do it now before more tests are added/changed. Let\u0027s minimise the number of changes that could cause conflicts.",
+      "parentUuid": "f580816d_96a69e97",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
