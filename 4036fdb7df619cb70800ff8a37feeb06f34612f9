@@ -51,6 +51,46 @@
       "revId": "4036fdb7df619cb70800ff8a37feeb06f34612f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1ac2e4_842669e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-04-07T05:24:35Z",
+      "side": 1,
+      "message": "This test has already been moved to arc.* by CL:2136713.",
+      "revId": "4036fdb7df619cb70800ff8a37feeb06f34612f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774f0d57_8fca763e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-04-07T05:24:35Z",
+      "side": 1,
+      "message": "Change to \"ARC\" to include ARCVM?",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "4036fdb7df619cb70800ff8a37feeb06f34612f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
