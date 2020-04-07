@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fec86734_77c944a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-07T22:05:32Z",
+      "side": 1,
+      "message": "Which part? I can\u0027t tell if this means I shouldn\u0027t even review this at all.",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522f0ffe_5fd6ac68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-07T22:05:32Z",
+      "side": 1,
+      "message": "please don\u0027t carry over TODO\u0027s for these people... If they\u0027re still issues, reassign them to a bug number or something. Or better yet, let\u0027s resolve them.",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "188f17a3_b9f39351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-07T22:05:32Z",
+      "side": 1,
+      "message": "Please kill this. We should be able to either forcefully kill processes, or else wait appropriately for them. We really don\u0027t want a 10 second sleep here.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\"Sleeping without polling for a condition is discouraged, since it makes tests flakier (when the sleep duration isn\u0027t long enough) or slower (when the duration is too long).\"\n\nI\u0027m pretty sure we\u0027re in the \"too long\" territory.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 59
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7fc0ca_3ae9af01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-07T22:05:32Z",
+      "side": 1,
+      "message": "I\u0027m confused: who creates these .pid files? Are you sure they even exist, given you\u0027re saying \"missingOK\u003d\u003dtrue\"?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b279e42c_269e4098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-07T22:05:32Z",
+      "side": 1,
+      "message": "I don\u0027t think any of these log contents need to be dumped to the test log directly, and they also don\u0027t need to go into /var/log/ in between -- they should probably just go into s.OutDir(). Maybe structure this so the main test file just hands us a path, and things get logged there directly?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 54
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
