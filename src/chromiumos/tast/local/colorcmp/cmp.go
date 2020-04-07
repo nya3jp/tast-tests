@@ -61,7 +61,7 @@ func ColorsMatch(a, b color.Color, maxDiff uint8) bool {
 	bn := toNRGBA(b)
 
 	allowed := int(maxDiff)
-	near := func(x uint8, y uint8) bool {
+	near := func(x, y uint8) bool {
 		d := int(x) - int(y)
 		return -allowed <= d && d <= allowed
 	}

@@ -104,7 +104,7 @@ func Microphone(ctx context.Context, s *testing.State) {
 	// Recording function by ALSA.
 	// - |path| argument of the function is the destination path.
 	// - |numChans| and |samplingRate| are as same as below.
-	recordAlsa := func(path string, numChans int, samplingRate int) error {
+	recordAlsa := func(path string, numChans, samplingRate int) error {
 		return testexec.CommandContext(
 			ctx, "arecord",
 			"-d", strconv.Itoa(int(duration.Seconds())),

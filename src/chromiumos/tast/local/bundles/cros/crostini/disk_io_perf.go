@@ -78,7 +78,7 @@ type runEnv struct {
 	// Returns the absolute path of the fio jobfile name.
 	jobFilePath func(jobFile string) string
 	// Returns the full fio command to execute.
-	fioCmd func(ctx context.Context, jobFile string, envArgs []string, args []string) *testexec.Cmd
+	fioCmd func(ctx context.Context, jobFile string, envArgs, args []string) *testexec.Cmd
 }
 
 type fioSettings struct {
@@ -253,7 +253,7 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 		jobFilePath: func(jobFile string) string {
 			return filepath.Join(containerHomeDir, jobFile)
 		},
-		fioCmd: func(ctx context.Context, jobFile string, envArgs []string, args []string) *testexec.Cmd {
+		fioCmd: func(ctx context.Context, jobFile string, envArgs, args []string) *testexec.Cmd {
 			cmdLine := append(envArgs, "fio", jobFile)
 			cmdLine = append(cmdLine, args...)
 			return cont.Command(ctx, cmdLine...)
@@ -263,7 +263,7 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 	hostEnv := runEnv{
 		testDataPath: filepath.Join("/mnt/stateful_partition", testDataFileName),
 		jobFilePath:  s.DataPath,
-		fioCmd: func(ctx context.Context, jobFile string, envArgs []string, args []string) *testexec.Cmd {
+		fioCmd: func(ctx context.Context, jobFile string, envArgs, args []string) *testexec.Cmd {
 			cmd := testexec.CommandContext(ctx, "fio", append([]string{jobFile}, args...)...)
 			cmd.Env = envArgs
 			return cmd

@@ -88,7 +88,7 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 }
 
 // RunExtendedTest starts a VM and runs a single trace with additional options for repeating or CPU loading.
-func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, traceFile string, traceName string, cpuThreads int, setters ...option) {
+func RunExtendedTest(ctx context.Context, s *testing.State, cont *vm.Container, traceFile, traceName string, cpuThreads int, setters ...option) {
 	options := &options{}
 	for _, setter := range setters {
 		setter(options)
@@ -209,7 +209,7 @@ func prepareTrace(ctx context.Context, cont *vm.Container, traceFile string) (st
 }
 
 // replayTrace replays a trace and parses the results.
-func replayTrace(ctx context.Context, cont *vm.Container, containerPath string, traceName string, options *options) (*perf.Values, error) {
+func replayTrace(ctx context.Context, cont *vm.Container, containerPath, traceName string, options *options) (*perf.Values, error) {
 	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
 	args := []string{"apitrace", "replay", containerPath}
 	if deadline, ok := ctx.Deadline(); ok {

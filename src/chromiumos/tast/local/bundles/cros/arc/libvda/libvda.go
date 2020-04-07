@@ -34,7 +34,7 @@ func startChrome(ctx context.Context) (*chrome.Chrome, error) {
 
 // RunGPUFileDecodeTest runs libvda_gpu_unittest for the GPU file decode test.
 // videoFile is the target file to be decoded and test output will be saved to logFile.
-func RunGPUFileDecodeTest(ctx context.Context, s *testing.State, logFileName string, videoFile string) {
+func RunGPUFileDecodeTest(ctx context.Context, s *testing.State, logFileName, videoFile string) {
 	cr, err := startChrome(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)

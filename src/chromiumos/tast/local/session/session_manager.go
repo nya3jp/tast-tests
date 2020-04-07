@@ -97,7 +97,7 @@ func NewSessionManager(ctx context.Context) (*SessionManager, error) {
 
 // EnableChromeTesting calls SessionManager.EnableChromeTesting D-Bus method.
 func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch bool,
-	extraArguments []string, extraEnvironmentVariables []string) (filepath string, err error) {
+	extraArguments, extraEnvironmentVariables []string) (filepath string, err error) {
 	ctx, st := timing.Start(ctx, "enable_chrome_testing")
 	defer st.End()
 

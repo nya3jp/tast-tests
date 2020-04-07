@@ -30,7 +30,7 @@ const (
 )
 
 // TestFunc represents the "test" function.
-type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string, appActivity string)
+type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
 
 // TestSuite represents the  name of test, and the function to call.
 type TestSuite struct {
@@ -45,7 +45,7 @@ type TestParams struct {
 }
 
 // SetUpDevice func setup Chrome on Chromebook.
-func SetUpDevice(ctx context.Context, s *testing.State, appPkgName string, appActivity string) (*chrome.Chrome, *chrome.TestConn, *arc.ARC, *ui.Device) {
+func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity string) (*chrome.Chrome, *chrome.TestConn, *arc.ARC, *ui.Device) {
 
 	// Setup Chrome.
 	cr := s.PreValue().(arc.PreData).Chrome
@@ -84,7 +84,7 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName string, appAc
 }
 
 // ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR.
-func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string, appActivity string) {
+func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const restartButtonResourceID = "android:id/button1"
 
 	s.Log("Set the window to fullscreen")
@@ -117,7 +117,7 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 }
 
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
-func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string, appActivity string) {
+func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	s.Log("Minimize the window")
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMinimize); err != nil {
@@ -144,7 +144,7 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 }
 
 // ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR.
-func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string, appActivity string) {
+func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const restartButtonResourceID = "android:id/button1"
 
 	if !isNApp(ctx, s, tconn, a, d, appPkgName) {
@@ -208,7 +208,7 @@ func isNApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 }
 
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
-func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string, appActivity string) {
+func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	s.Log("Close the app")
 	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {

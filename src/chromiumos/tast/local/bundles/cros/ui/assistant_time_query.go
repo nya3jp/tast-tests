@@ -144,7 +144,7 @@ func parseTimeNearNow(fallback string, now time.Time) ([]time.Time, error) {
 
 // interpretTimeNearNow chooses the interpretation closest to the now time because the fallback
 // string only contains HH:MM.
-func interpretTimeNearNow(now time.Time, hrs int, min int) time.Time {
+func interpretTimeNearNow(now time.Time, hrs, min int) time.Time {
 	t := time.Date(now.Year(), now.Month(), now.Day(), hrs, min, 0, 0, now.Location())
 	if diff := t.Sub(now); diff > 12*time.Hour {
 		t.AddDate(0, 0, -1)

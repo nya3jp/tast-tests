@@ -28,7 +28,7 @@ func GrantAndroidPermission(ctx context.Context, a *arc.ARC, pkg, permission str
 }
 
 // InstallApp installs an Android APK.
-func InstallApp(ctx context.Context, a *arc.ARC, apkDataPath string, pkg string) (CleanupCallback, error) {
+func InstallApp(ctx context.Context, a *arc.ARC, apkDataPath, pkg string) (CleanupCallback, error) {
 	testing.ContextLogf(ctx, "Installing Android app %q", pkg)
 	if err := a.Install(ctx, apkDataPath); err != nil {
 		return nil, errors.Wrapf(err, "failed to install apk %q", apkDataPath)
@@ -76,7 +76,7 @@ func ExpectStoppedOnTeardown() StartActivityOption {
 }
 
 // StartActivity starts an Android activity.
-func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg string, activityName string, setters ...StartActivityOption) (CleanupCallback, error) {
+func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg, activityName string, setters ...StartActivityOption) (CleanupCallback, error) {
 	// Default options.
 	var args startActivityOptions
 	for _, setter := range setters {

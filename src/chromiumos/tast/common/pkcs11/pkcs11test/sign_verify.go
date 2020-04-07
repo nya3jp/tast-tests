@@ -13,7 +13,7 @@ import (
 
 // SignAndVerify is just a convenient runner to test both signing and verification.
 // altInput is path to another test file that differs in content to input. It is used to check that verify() indeed reject corrupted input.
-func SignAndVerify(ctx context.Context, p *pkcs11.Chaps, key *pkcs11.KeyInfo, input string, altInput string, mechanism *pkcs11.MechanismInfo) error {
+func SignAndVerify(ctx context.Context, p *pkcs11.Chaps, key *pkcs11.KeyInfo, input, altInput string, mechanism *pkcs11.MechanismInfo) error {
 	// Test signing.
 	if err := p.Sign(ctx, key, input, input+".sig", mechanism); err != nil {
 		return err
