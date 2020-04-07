@@ -174,6 +174,12 @@ func AppCrash(ctx context.Context, s *testing.State) {
 
 	bp, err := getBuildProp(ctx, a)
 	if err != nil {
+		// Upload /system/build.prop to invetigate because getprop sometimes fails to get the device name
+		// even though the device name should always exists.
+		// See details in https://bugs.chromium.org/p/chromium/issues/detail?id=1039512#c16
+		if err := a.PullFile(ctx, "/system/build.prop", filepath.Join(s.OutDir(), "build.prop")); err != nil {
+			s.Error("Failed to get build.prop: ", err)
+		}
 		s.Fatal("Failed to get BuildProperty: ", err)
 	}
 
