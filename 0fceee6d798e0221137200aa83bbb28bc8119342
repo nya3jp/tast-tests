@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "54b74c3f_c208beb4",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_cases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T17:02:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c9a76d6e_f876f259",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "737e1f10_0f0fd077",
         "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
         "patchSetId": 4
@@ -105,6 +123,24 @@
       "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1320c252_2f292754",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T17:02:24Z",
+      "side": 1,
+      "message": "I tried doing it but it\u0027s messy because of a number of reasons but\nmore importantly I think it\u0027s logically and semantically correct that\nlocal/media/ contains in a single encoding package all the necessary \ndata structures (StreamParams + TestOptions) to interact with the \nencoder for the purpose of testing. IOW There\u0027s no need to make a \ntesting sub package, everything we do here is about testing anyway.",
+      "parentUuid": "6f011be5_7c4768df",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
