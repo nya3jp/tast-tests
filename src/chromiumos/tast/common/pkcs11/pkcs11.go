@@ -55,7 +55,7 @@ func (p *Chaps) RunPkcs11Tool(ctx context.Context, args ...string) ([]byte, erro
 
 // ClearObjects remove all objects with the given ID objID in the token in slot slot and of type objType.
 // objType is usually "privkey" or "cert".
-func (p *Chaps) ClearObjects(ctx context.Context, slot int, objID string, objType string) error {
+func (p *Chaps) ClearObjects(ctx context.Context, slot int, objID, objType string) error {
 	// We try to delete the key 20 times, an anecdotally chosen number,
 	// because we don't usually encounter 20 objects with the same ID.
 	for i := 0; i < 20; i++ {

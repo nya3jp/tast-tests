@@ -220,7 +220,7 @@ func dbusCallMember(dbusMessage *dbus.Message) (string, error) {
 }
 
 // AssureMethodCalls assure that the expected methods are called.
-func AssureMethodCalls(ctx context.Context, expectedMethodCalls []string, calledMethods []string) error {
+func AssureMethodCalls(ctx context.Context, expectedMethodCalls, calledMethods []string) error {
 	if len(expectedMethodCalls) != len(calledMethods) {
 		return errors.Errorf("found unexpected number of method calls: got %v, want %v ", calledMethods, expectedMethodCalls)
 	}

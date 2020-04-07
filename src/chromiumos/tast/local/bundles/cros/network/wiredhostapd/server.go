@@ -94,7 +94,7 @@ func (s *Server) cliCmd(ctx context.Context, args ...string) (stdout, stderr str
 
 // ExpectSTAStatus retrieves the status for the station at 'staAddr', logs it to a file in OutDir, and
 // verifies if the expected status 'key=val' entry is found.
-func (s *Server) ExpectSTAStatus(ctx context.Context, staAddr string, key string, val string) error {
+func (s *Server) ExpectSTAStatus(ctx context.Context, staAddr, key, val string) error {
 	// Log hostapd status to file with increasing index.
 	defer func() {
 		s.logIndex++

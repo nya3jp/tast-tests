@@ -125,7 +125,7 @@ func Gmail(ctx context.Context, s *testing.State) {
 
 // launchAppForGmail verifies Gmail is logged in and
 // verify Gmail reached main activity page of the app.
-func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string, appActivity string) {
+func launchAppForGmail(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
 		composeIconClassName    = "android.widget.ImageButton"

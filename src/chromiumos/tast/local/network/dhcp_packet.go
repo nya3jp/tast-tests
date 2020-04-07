@@ -804,7 +804,7 @@ func createDiscovery(macAddr []byte) (*dhcpPacket, error) {
 
 // createOffer creates an offer packet, given some fields that tie the
 // packet to a particular offer.
-func createOffer(txnID uint32, macAddr []byte, offerIP string, svrIP string) (*dhcpPacket, error) {
+func createOffer(txnID uint32, macAddr []byte, offerIP, svrIP string) (*dhcpPacket, error) {
 	packet, err := newDHCPPacket(nil)
 	if err != nil {
 		return nil, err
@@ -848,7 +848,7 @@ func createRequest(txnID uint32, macAddr []byte) (*dhcpPacket, error) {
 	return packet, nil
 }
 
-func createAck(txnID uint32, macAddr []byte, grantedIP string, svrIP string) (*dhcpPacket, error) {
+func createAck(txnID uint32, macAddr []byte, grantedIP, svrIP string) (*dhcpPacket, error) {
 	packet, err := newDHCPPacket(nil)
 	if err != nil {
 		return nil, err

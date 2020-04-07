@@ -141,7 +141,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 
 // writeUserTestContent writes the given content to the given file into the given user's home dir.
 // The file is created if it doesn't exist.
-func writeUserTestContent(ctx context.Context, user string, fileName string, content []byte) error {
+func writeUserTestContent(ctx context.Context, user, fileName string, content []byte) error {
 	testFile, err := getUserTestFilePath(ctx, user, fileName)
 	if err != nil {
 		return err
@@ -152,7 +152,7 @@ func writeUserTestContent(ctx context.Context, user string, fileName string, con
 
 // readUserTestContent reads content from the given file under the given user's home dir.
 // Returns the file contents if the read succeeded or an error if there's anything wrong.
-func readUserTestContent(ctx context.Context, user string, fileName string) ([]byte, error) {
+func readUserTestContent(ctx context.Context, user, fileName string) ([]byte, error) {
 	testFile, err := getUserTestFilePath(ctx, user, fileName)
 	if err != nil {
 		return nil, err
@@ -162,7 +162,7 @@ func readUserTestContent(ctx context.Context, user string, fileName string) ([]b
 }
 
 // doesUserTestFileExist checks and returns if the given test file exists in the given user's home dir.
-func doesUserTestFileExist(ctx context.Context, user string, fileName string) (bool, error) {
+func doesUserTestFileExist(ctx context.Context, user, fileName string) (bool, error) {
 	testFile, err := getUserTestFilePath(ctx, user, fileName)
 	if err != nil {
 		return false, err
@@ -186,7 +186,7 @@ func doesUserTestFileExist(ctx context.Context, user string, fileName string) (b
 }
 
 // getUserTestFilePath returns the full path of the given file under the given user's home dir.
-func getUserTestFilePath(ctx context.Context, user string, fileName string) (string, error) {
+func getUserTestFilePath(ctx context.Context, user, fileName string) (string, error) {
 	userPath, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		return "", err
