@@ -325,16 +325,12 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		missing = append(missing, "UEVENT_HELPER", "UEVENT_HELPER_PATH")
 	}
 
-	if ver.is(4, 4) {
-		// FORTIFY_SOURCE is currently only enabled for 4.4 kernels.
-		// TODO(crbug.com/1061514): Enable on newer kernels.
-		builtin = append(builtin, "FORTIFY_SOURCE")
-	}
-
 	if ver.isOrLater(4, 4) {
 		// Security; make sure usermode helper is our tool for linux-4.4+.
 		builtin = append(builtin, "STATIC_USERMODEHELPER")
 		value["STATIC_USERMODEHELPER_PATH"] = `"/sbin/usermode-helper"`
+		// Security; prevent overflows that can be checked at compile-time.
+		builtin = append(builtin, "FORTIFY_SOURCE")
 	} else {
 		// For kernels older than linux-4.4.
 		builtin = append(builtin, "EXT4_USE_FOR_EXT23")
