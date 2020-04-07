@@ -215,9 +215,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 
 		// "VMAP_STACK",
 
-		// "SLAB_FREELIST_RANDOM",
-		// "SLAB_FREELIST_HARDENED",
-
 		// CONFIG_UNMAP_KERNEL_AT_EL0=y (aarch64)
 
 		// CONFIG_ARM64_SW_TTBR0_PAN=y (aarch64)
@@ -348,6 +345,11 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	}
 	if arch == "aarch64" {
 		builtin = append(builtin, "DEBUG_ALIGN_RODATA")
+	}
+
+	if ver.isOrLater(4, 14) {
+		builtin = append(builtin, "SLAB_FREELIST_RANDOM")
+		builtin = append(builtin, "SLAB_FREELIST_HARDENED")
 	}
 
 	if ver.isOrLater(4, 19) {
