@@ -6,14 +6,17 @@ package arc
 
 import (
 	"context"
+	"math"
 	"strconv"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -30,6 +33,18 @@ func init() {
 }
 
 func InputCompat(ctx context.Context, s *testing.State) {
+	tpw, err := input.Trackpad(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a trackpad device: ", err)
+	}
+	defer tpw.Close()
+
+	tw, err := tpw.NewMultiTouchWriter(2)
+	if err != nil {
+		s.Fatal("Failed to create a multi touch writer: ", err)
+	}
+	defer tw.Close()
+
 	p := s.PreValue().(arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
@@ -72,12 +87,74 @@ func InputCompat(ctx context.Context, s *testing.State) {
 
 		numPointersID = pkg + ":id/num_pointers"
 		inputSourceID = pkg + ":id/input_source"
+		isScrollingID = pkg + ":id/is_scrolling"
 	)
 
+	expectEvent := func(ctx context.Context, isScrolling bool, inputSource, numPointers int) error {
+		if err := d.Object(ui.ID(isScrollingID), ui.Text(strconv.FormatBool(isScrolling))).WaitForExists(ctx, 30*time.Second); err != nil {
+			if isScrolling {
+				return errors.Wrap(err, "expected a scrolling event")
+			}
+			return errors.Wrap(err, "expected a non-scrolling event")
+		}
+		if err := d.Object(ui.ID(inputSourceID), ui.Text(strconv.Itoa(inputSource))).WaitForExists(ctx, 30*time.Second); err != nil {
+			actual, err := d.Object(ui.ID(inputSourceID)).GetText(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get input source")
+			}
+			return errors.Errorf("wrong input source: got %s, want %d", actual, inputSource)
+		}
+		if err := d.Object(ui.ID(numPointersID), ui.Text(strconv.Itoa(numPointers))).WaitForExists(ctx, 30*time.Second); err != nil {
+			actual, err := d.Object(ui.ID(numPointersID)).GetText(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the number of pointers")
+			}
+			return errors.Errorf("wrong number of pointers: got %s, want %d", actual, numPointers)
+		}
+		return nil
+	}
+
+	// Perform two finger scrolling on the trackpad
+	doTrackpadScroll := func(ctx context.Context) error {
+		x0 := tpw.Width() / 2
+		y0 := tpw.Height() / 4
+		x1 := tpw.Width() / 2
+		y1 := tpw.Height() / 4 * 3
+		d := tpw.Width() / 8 // x-axis distance between two fingers
+
+		const (
+			t     = time.Second
+			freq  = 5 * time.Millisecond
+			steps = int(t / freq)
+		)
+
+		deltaX := float64(x1-x0) / float64(steps-1)
+		deltaY := float64(y1-y0) / float64(steps-1)
+		for i := 0; i < steps; i++ {
+			x := x0 + input.TouchCoord(math.Round(deltaX*float64(i)))
+			y := y0 + input.TouchCoord(math.Round(deltaY*float64(i)))
+			if err := tw.TouchState(0).SetPos(x, y); err != nil {
+				return err
+			}
+			if err := tw.TouchState(1).SetPos(x+d, y); err != nil {
+				return err
+			}
+			if err := tw.Send(); err != nil {
+				return err
+			}
+			if err := testing.Sleep(ctx, freq); err != nil {
+				return errors.Wrap(err, "timeout while doing sleep")
+			}
+		}
+		return nil
+	}
+
 	type compatSettings struct {
-		Name        string
-		Apk         string
-		InputSource int
+		Name                    string
+		Apk                     string
+		InputSource             int
+		NumPointersDuringScroll int
+		InputSourceDuringScroll int
 	}
 
 	runTest := func(ctx context.Context, s *testing.State, settings *compatSettings) {
@@ -115,45 +192,48 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to move mouse: ", err)
 		}
 
-		if err := d.Object(ui.ID(inputSourceID), ui.Text(strconv.Itoa(settings.InputSource))).WaitForExists(ctx, 30*time.Second); err != nil {
-			if actual, err := d.Object(ui.ID(inputSourceID)).GetText(ctx); err != nil {
-				s.Fatal("Failed to get input source: ", err)
-			} else {
-				s.Fatalf("Wrong input source: got %s, want %d", actual, settings.InputSource)
-			}
-		}
-		if err := d.Object(ui.ID(numPointersID), ui.Text("1")).WaitForExists(ctx, 30*time.Second); err != nil {
-			if actual, err := d.Object(ui.ID(numPointersID)).GetText(ctx); err != nil {
-				s.Fatal("Failed to get the number of pointers: ", err)
-			} else {
-				s.Fatalf("Wrong number of pointers: got %s, want 1", actual)
-			}
+		if err := expectEvent(ctx, false, settings.InputSource, 1); err != nil {
+			s.Fatal("Failed to receive the expected event: ", err)
 		}
 
-		// TODO(b/128546026): Implement a virtual trackpad device and test scroll gesture
-		// In MNC apps, scroll gesture should have two pointers.
+		if err := doTrackpadScroll(ctx); err != nil {
+			s.Fatal("Failed to perform two finger scroll: ", err)
+		}
+
+		if err := expectEvent(ctx, true, settings.InputSourceDuringScroll, settings.NumPointersDuringScroll); err != nil {
+			s.Fatal("Failed to receive the expected event: ", err)
+		}
+
+		if err := tw.End(); err != nil {
+			s.Fatal("Failed to finish trackpad scroll: ", err)
+		}
 	}
 
 	for _, settings := range []compatSettings{
 		{
-			Name:        "InputCompatDisabled",
-			Apk:         "ArcInputCompatDisabledTest.apk",
-			InputSource: sourceMouse,
+			Name:                    "InputCompatDisabled",
+			Apk:                     "ArcInputCompatDisabledTest.apk",
+			InputSource:             sourceMouse,
+			NumPointersDuringScroll: 1,
+			InputSourceDuringScroll: sourceMouse,
 		},
 		{
-			Name:        "InputCompatGame",
-			Apk:         "ArcInputCompatGameTest.apk",
-			InputSource: sourceTouchscreen,
+			Name:                    "InputCompatGame",
+			Apk:                     "ArcInputCompatGameTest.apk",
+			InputSource:             sourceTouchscreen,
+			NumPointersDuringScroll: 1,
+			InputSourceDuringScroll: sourceTouchscreen,
 		},
 		{
-			Name:        "InputCompatM",
-			Apk:         "ArcInputCompatMTest.apk",
-			InputSource: sourceMouse,
+			Name:                    "InputCompatM",
+			Apk:                     "ArcInputCompatMTest.apk",
+			InputSource:             sourceMouse,
+			NumPointersDuringScroll: 2,
+			InputSourceDuringScroll: sourceTouchscreen,
 		},
 	} {
 		s.Run(ctx, settings.Name, func(ctx context.Context, s *testing.State) {
 			runTest(ctx, s, &settings)
 		})
 	}
-
 }
