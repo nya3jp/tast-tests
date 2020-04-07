@@ -21,18 +21,19 @@ import (
 )
 
 func init() {
-	dataFiles := []string{crostini.ImageArtifact}
-	for _, job := range fioJobs {
-		dataFiles = append(dataFiles, job.fileName)
-	}
-
 	testing.AddTest(&testing.Test{
-		Func:         DiskIOPerf,
-		Desc:         "Tests Crostini Disk IO Performance",
-		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		Timeout:      30 * time.Minute,
-		Data:         dataFiles,
+		Func:     DiskIOPerf,
+		Desc:     "Tests Crostini Disk IO Performance",
+		Contacts: []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
+		Attr:     []string{"group:crosbolt", "crosbolt_nightly"},
+		Timeout:  30 * time.Minute,
+		Data: []string{
+			"disk_io_perf_fio_seq_write.ini",
+			"disk_io_perf_fio_seq_read.ini",
+			"disk_io_perf_fio_rand_write.ini",
+			"disk_io_perf_fio_rand_read.ini",
+			"disk_io_perf_fio_stress_rw.ini",
+		},
 		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
