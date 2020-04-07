@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2088b811_1f5068b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace_replay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-07T19:23:42Z",
+      "side": 1,
+      "message": "Please add a comment with why this test is running in both groups - it will help future readers know whether this is eventually safe to change or not.",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 59
+      },
+      "revId": "b33a4efb4b2994f825bd13620921ba53b12d06c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
