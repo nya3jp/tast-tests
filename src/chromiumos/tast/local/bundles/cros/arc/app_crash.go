@@ -174,6 +174,9 @@ func AppCrash(ctx context.Context, s *testing.State) {
 
 	bp, err := getBuildProp(ctx, a)
 	if err != nil {
+		if err := a.PullFile(ctx, "/system/build.prop", filepath.Join(s.OutDir(), "build.prop")); err != nil {
+			s.Fatal("Failed to get build.prop: ", err)
+		}
 		s.Fatal("Failed to get BuildProperty: ", err)
 	}
 
