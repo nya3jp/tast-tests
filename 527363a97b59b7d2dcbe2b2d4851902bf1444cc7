@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7df06ed6_13b5850e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-07T18:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7cfa8ad_1adfee02",
+      "range": {
+        "startLine": 397,
+        "startChar": 9,
+        "endLine": 397,
+        "endChar": 73
+      },
+      "revId": "527363a97b59b7d2dcbe2b2d4851902bf1444cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b58b8973_6ef5335c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e79ddc83_3774f892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-07T18:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58b8973_6ef5335c",
+      "range": {
+        "startLine": 415,
+        "startChar": 1,
+        "endLine": 415,
+        "endChar": 40
+      },
+      "revId": "527363a97b59b7d2dcbe2b2d4851902bf1444cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc536868_53f2d6d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-07T02:07:50Z",
       "side": 1,
       "message": "I\u0027m not clear on why you keep a whole separate map for the crashReporterFailureFiles and then just combine lists anyways. Why not just keep everything in crashReportFiles?\n\nOr, if you are expecting a crash reporter crash, why accept any files from the base (crashReportFiles) map?",
+      "range": {
+        "startLine": 417,
+        "startChar": 3,
+        "endLine": 417,
+        "endChar": 25
+      },
+      "revId": "527363a97b59b7d2dcbe2b2d4851902bf1444cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf6ae8dd_3a30969c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-07T18:42:11Z",
+      "side": 1,
+      "message": "Added additional commenting to explain. PTAL",
+      "parentUuid": "bc536868_53f2d6d7",
       "range": {
         "startLine": 417,
         "startChar": 3,
