@@ -218,8 +218,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// "SLAB_FREELIST_RANDOM",
 		// "SLAB_FREELIST_HARDENED",
 
-		// "RANDOMIZE_BASE",
-
 		// CONFIG_UNMAP_KERNEL_AT_EL0=y (aarch64)
 
 		// CONFIG_ARM64_SW_TTBR0_PAN=y (aarch64)
@@ -378,6 +376,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 
 		// Kernel hardening.
 		builtin = append(builtin, "PAGE_TABLE_ISOLATION")
+		builtin = append(builtin, "RANDOMIZE_BASE")
 		// builtin = append(builtin, "RANDOMIZE_MEMORY")
 	}
 
