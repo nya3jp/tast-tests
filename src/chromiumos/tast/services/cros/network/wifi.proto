@@ -29,6 +29,9 @@ service Wifi {
 
   // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
   rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
+
+  // MACAddress returns MAC address of the WiFi interface.
+  rpc MACAddress(google.protobuf.Empty) returns (MACAddr) {}
 }
 
 message Config {
@@ -42,4 +45,8 @@ message Service {
 
 message SSID {
   string ssid = 1;
+}
+
+message MACAddr {
+  string address = 1;
 }

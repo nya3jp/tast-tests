@@ -39,6 +39,7 @@ type Server struct {
 
 	cmd        *ssh.Cmd
 	wg         sync.WaitGroup
+	evWriter   *EventWriter
 	stdoutFile *os.File
 	stderrFile *os.File
 }
@@ -130,13 +131,15 @@ func (s *Server) start(ctx context.Context) (err error) {
 		}
 		return false, nil
 	}
+	s.evWriter = NewEventWriter()
 	readyWriter := daemonutil.NewReadyWriter(readyFunc)
 	s.wg.Add(1)
 	go func() {
 		defer s.wg.Done()
 		defer stdoutPipe.Close()
 		defer readyWriter.Close()
-		multiWriter := io.MultiWriter(s.stdoutFile, readyWriter)
+		defer s.evWriter.Close()
+		multiWriter := io.MultiWriter(s.stdoutFile, readyWriter, s.evWriter)
 		io.Copy(multiWriter, stdoutPipe)
 	}()
 
@@ -188,4 +191,9 @@ func (s *Server) Interface() string {
 // Config returns the config used by the hostapd.
 func (s *Server) Config() Config {
 	return *s.conf
+}
+
+// Events returns the events detected from stdout of hostapd.
+func (s *Server) Events() []*Event {
+	return s.evWriter.Events()
 }

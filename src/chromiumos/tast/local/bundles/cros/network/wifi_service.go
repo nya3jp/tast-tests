@@ -6,6 +6,8 @@ package network
 
 import (
 	"context"
+	"encoding/hex"
+	"net"
 	"reflect"
 	"time"
 
@@ -303,4 +305,32 @@ func (s *WifiService) removeMatchedEntries(ctx context.Context, propFilter map[s
 		}
 	}
 	return nil
+}
+
+// MACAddress returns MAC address of WiFi interface.
+func (s *WifiService) MACAddress(ctx context.Context, _ *empty.Empty) (*network.MACAddr, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+	_, props, err := m.DevicesByTechnology(ctx, shill.TechnologyWifi)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get WiFi devices")
+	} else if len(props) != 1 {
+		return nil, errors.Wrapf(err, "%d interfaces found, expect only 1", len(props))
+	}
+	addr, err := props[0].GetString(shill.DevicePropertyAddress)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get address")
+	}
+	// The format of shill address is a hex string without ':' separating bytes.
+	// The format with ':' seems to be more common. (e.g. iw, ip and HardwareAddr
+	// in golang) For ease of use, let's format it here.
+	b, err := hex.DecodeString(addr)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse hex address %q", addr)
+	}
+	return &network.MACAddr{
+		Address: net.HardwareAddr(b).String(),
+	}, nil
 }

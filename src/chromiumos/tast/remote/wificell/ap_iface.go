@@ -57,6 +57,21 @@ func (h *APIface) ServerIP() net.IP {
 	return h.subnetIP(254)
 }
 
+// DetectClientDeauth returns if any deauth hostapd event from clientMac
+// is detected.
+func (h *APIface) DetectClientDeauth(clientMac string) bool {
+	for _, ev := range h.hostapd.Events() {
+		if ev.Type != hostapd.EventDeauth {
+			continue
+		}
+		if ev.Client != clientMac {
+			continue
+		}
+		return true
+	}
+	return false
+}
+
 // start the service. Make this private as one should start this from Router.
 func (h *APIface) start(ctx context.Context) (retErr error) {
 	defer func() {

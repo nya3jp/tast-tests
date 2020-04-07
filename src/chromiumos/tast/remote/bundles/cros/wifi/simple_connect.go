@@ -8,6 +8,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -175,7 +177,13 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
 			s.Fatal("Failed to ping from DUT, err: ", err)
 		}
-		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.
+		macAddr, err := tf.WifiClient().MACAddress(ctx, &empty.Empty{})
+		if err != nil {
+			s.Fatal("Failed to get MAC address of WiFi interface: ", err)
+		}
+		if ap.DetectClientDeauth(macAddr.Address) {
+			s.Fatal("Client de-authenticated during the test")
+		}
 		// TODO(crbug.com/1034875): Maybe some more check on the WiFi capabilities to
 		// verify we really have the settings as expected. (ref: crrev.com/c/1995105)
 		s.Log("Deconfiguring")
