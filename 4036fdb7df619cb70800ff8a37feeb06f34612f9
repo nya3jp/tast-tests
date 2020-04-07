@@ -16,6 +16,41 @@
       "revId": "4036fdb7df619cb70800ff8a37feeb06f34612f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0405ef6b_678396b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-04-07T04:14:40Z",
+      "side": 1,
+      "message": "Also, b:148580073",
+      "parentUuid": "6aafbdbd_451d3817",
+      "revId": "4036fdb7df619cb70800ff8a37feeb06f34612f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7581de19_2fcf40a1",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-04-07T04:14:40Z",
+      "side": 1,
+      "message": "\"arc_vm_booted_with_video_logging\"?\n(\"vm\" is missing)",
+      "revId": "4036fdb7df619cb70800ff8a37feeb06f34612f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
