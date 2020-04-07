@@ -38,6 +38,7 @@ func ConfigVerify(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get kernel version and arch: ", err)
 	}
+	s.Logf("Version is %v, arch is %v", *ver, arch)
 
 	conf, err := readKernelConfig(ctx)
 	if err != nil {
@@ -213,13 +214,9 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		// TODO(crbug.com/1061514): Start enabling these.
 		"HARDENED_USERCOPY",
 
-		// "VMAP_STACK",
-
 		// CONFIG_UNMAP_KERNEL_AT_EL0=y (aarch64)
 
 		// CONFIG_ARM64_SW_TTBR0_PAN=y (aarch64)
-
-		// CONFIG_INIT_STACK_ALL=y (since v5.2, with Clang)
 
 		// CONFIG_SHUFFLE_PAGE_ALLOCATOR=y (since v5.2)
 
@@ -346,6 +343,10 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 	if ver.isOrLater(4, 14) {
 		builtin = append(builtin, "SLAB_FREELIST_RANDOM")
 		builtin = append(builtin, "SLAB_FREELIST_HARDENED")
+		builtin = append(builtin, "INIT_STACK_ALL")
+		if arch != "armv7l" {
+			builtin = append(builtin, "VMAP_STACK")
+		}
 	}
 
 	if ver.isOrLater(4, 19) {
