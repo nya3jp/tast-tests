@@ -16,7 +16,7 @@ func init() {
 		Func:     BasicProfileProperties,
 		Desc:     "Test that shill's DBus properties for profiles work",
 		Contacts: []string{"arowa@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
