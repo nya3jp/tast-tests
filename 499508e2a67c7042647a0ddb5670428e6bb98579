@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5e0cb28_2626ae96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-07T21:59:14Z",
+      "side": 1,
+      "message": "What happened to the check for default firmware config?",
+      "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27ff268_55a4debd",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-07T21:59:14Z",
+      "side": 1,
+      "message": "This is not great.  Instead of having these Add* methods, would having Create* methods be better?  Then tests can then do rpc :\u003d h.CreateRPC(...)  config :\u003d h.CreateConfig(..., rpc, ...).  Or even helper.CreateRPC(dut, ...), etc.\n\nAlternatively, can roll some of these dependencies into the constructor(s): NewHelperWithConfig, NewHelperWithRPC, etc...\n\nI\u0027m in favor of the 1st approach, less stuff to maintain in the helper struct.",
+      "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
