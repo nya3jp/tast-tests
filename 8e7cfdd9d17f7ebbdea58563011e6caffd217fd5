@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "b82eb608_d54ea4bd",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-07T19:35:50Z",
+      "side": 1,
+      "message": "Done, took a pointer to utilityCryptohomeBinary instead.",
+      "parentUuid": "6880c286_b090e13d",
+      "range": {
+        "startLine": 57,
+        "startChar": 120,
+        "endLine": 57,
+        "endChar": 180
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a4f2eba_272c6a2b",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 33
@@ -331,6 +355,30 @@
       "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5757c05f_934489d8",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-07T19:35:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c0c000_9303afc8",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -708,6 +756,30 @@
       "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ef061a_6bb1dd5c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-07T19:35:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "269b5235_8d5a7735",
+      "range": {
+        "startLine": 250,
+        "startChar": 78,
+        "endLine": 250,
+        "endChar": 103
+      },
+      "revId": "8e7cfdd9d17f7ebbdea58563011e6caffd217fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
