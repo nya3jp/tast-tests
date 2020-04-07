@@ -29,7 +29,8 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // Connectivity team
 			"oka@chromium.org",                // Tast port author
 		},
-		Attr:         []string{"group:mainline"},
+		// Run on both Tast CQ and suite:wifi_matfunc.
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi"},
 		Params: []testing.Param{{
 			Name:              "",
@@ -37,7 +38,7 @@ func init() {
 		}, {
 			// TODO(crbug.com/1007252): Remove informational after fixing flakiness.
 			Name:              "informational",
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"informational", "wificell_unstable"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("banon", "elm", "liara", "hana", "relm", "arcada", "veyron_mickey", "treeya360")),
 		}},
 	})
