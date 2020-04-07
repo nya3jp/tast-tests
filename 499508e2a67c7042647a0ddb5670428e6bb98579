@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ac06f81_62971f54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-07T23:16:24Z",
+      "side": 1,
+      "message": "I had added checking the default config as a temporary measure to verify that we were reading files as intended. Now that we can load platform-specific configs, it makes more sense to check that we are correctly loading the platform\u0027s config. A quick way to do this is by checking the config\u0027s Platform field, which should match the platform reported by RPC.\n\nIt would be more proper to have an entire test that is dedicated to checking that we load configs properly, rather than throwing it into CheckBootMode like I have done here. That is currently on my to-do list.",
+      "parentUuid": "f5e0cb28_2626ae96",
+      "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c27ff268_55a4debd",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-07T21:59:14Z",
       "side": 1,
       "message": "This is not great.  Instead of having these Add* methods, would having Create* methods be better?  Then tests can then do rpc :\u003d h.CreateRPC(...)  config :\u003d h.CreateConfig(..., rpc, ...).  Or even helper.CreateRPC(dut, ...), etc.\n\nAlternatively, can roll some of these dependencies into the constructor(s): NewHelperWithConfig, NewHelperWithRPC, etc...\n\nI\u0027m in favor of the 1st approach, less stuff to maintain in the helper struct.",
+      "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e4fbcea_73ce969f",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-07T23:16:24Z",
+      "side": 1,
+      "message": "This comment relates more directly to https://crrev.com/c/2130763/5, which is where the Add* methods were defined.\n\nMy intention with creating the Add* methods is so that the Helper can contain the RPC, and the configs, and other structures that are frequently used such as Servo and DUT. The reason is that a lot of firmware methods will require as arguments (context, servo, dut, config, rpc_utils) as boilerplate before even getting to the functional arguments. So, by maintaining all this in the helper struct, I hope to reduce boilerplate and make functions easier to read and make tests easier to write.",
+      "parentUuid": "c27ff268_55a4debd",
       "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
