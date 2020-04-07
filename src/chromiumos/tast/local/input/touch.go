@@ -54,6 +54,8 @@ type TouchscreenEventWriter struct {
 
 var nextVirtTouchNum = 1 // appended to virtual touchscreen device name
 
+const touchFrequency = 5 * time.Millisecond
+
 // Touchscreen returns an TouchscreenEventWriter to inject events into an arbitrary touchscreen device.
 func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 	infos, err := readDevices("")
@@ -445,6 +447,41 @@ func (tw *TouchEventWriter) Close() {
 	}
 }
 
+// DoubleSwipe performs a swipe movement with two touches. One is from x0/y0 to x1/y1, and the other is x0+d/y0 to x1+d/y0.
+// t represents how long the swipe should last.
+// If t is less than 5 milliseconds, 5 milliseconds will be used instead.
+// DoubleSwipe() does not call End(), allowing the user to concatenate multiple swipes together.
+func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, d TouchCoord, t time.Duration) error {
+	if len(tw.touches) < 2 {
+		return errors.Errorf("requested 2 touches for double finger swipe; got %d", len(tw.touches))
+	}
+	steps := int(t/touchFrequency) + 1
+	// A minimum of two touches are needed. One for the start point and another one for the end point.
+	if steps < 2 {
+		steps = 2
+	}
+	deltaX := float64(x1-x0) / float64(steps-1)
+	deltaY := float64(y1-y0) / float64(steps-1)
+
+	for i := 0; i < steps; i++ {
+		x := x0 + TouchCoord(math.Round(deltaX*float64(i)))
+		y := y0 + TouchCoord(math.Round(deltaY*float64(i)))
+		if err := tw.touches[0].SetPos(x, y); err != nil {
+			return err
+		}
+		if err := tw.touches[1].SetPos(x+d, y); err != nil {
+			return err
+		}
+		if err := tw.Send(); err != nil {
+			return err
+		}
+		if err := testing.Sleep(ctx, touchFrequency); err != nil {
+			return errors.Wrap(err, "timeout while doing sleep")
+		}
+	}
+	return nil
+}
+
 // Move injects a touch event at x and y touchscreen coordinates. This is applied
 // only to the first TouchState. Calling this function is equivalent to:
 //  ts := touchEventWriter.TouchState(0)
@@ -474,7 +511,6 @@ func (stw *SingleTouchEventWriter) LongPressAt(ctx context.Context, x, y TouchCo
 // If t is less than 5 milliseconds, 5 milliseconds will be used instead.
 // Swipe() does not call End(), allowing the user to concatenate multiple swipes together.
 func (stw *SingleTouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1 TouchCoord, t time.Duration) error {
-	const touchFrequency = 5 * time.Millisecond
 	steps := int(t/touchFrequency) + 1
 	// A minimum of two touches are needed. One for the start point and another one for the end point.
 	if steps < 2 {

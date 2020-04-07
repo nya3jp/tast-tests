@@ -23,10 +23,11 @@ const (
 	sysfsDir    = "/sys"                    // base sysfs directory
 	deviceDir   = "/dev/input"              // directory containing event devices
 
-	evGroup     = "EV"  // event type group in devInfo.bits
-	keyGroup    = "KEY" // keyboard event code group in devInfo.bits
-	switchGroup = "SW"  // switch event code group in devInfo.bits
-	absGroup    = "ABS" // absolute type group in devInfo.bits
+	evGroup     = "EV"   // event type group in devInfo.bits
+	keyGroup    = "KEY"  // keyboard event code group in devInfo.bits
+	switchGroup = "SW"   // switch event code group in devInfo.bits
+	absGroup    = "ABS"  // absolute type group in devInfo.bits
+	propGroup   = "PROP" // property type group in devInfo.bits
 )
 
 // These match lines in /proc/bus/input/devices. See readDevices for details.
@@ -81,6 +82,18 @@ func (di *devInfo) isTouchscreen() bool {
 		di.hasBit(keyGroup, uint16(BTN_TOUCH)) &&
 		!di.hasBit(keyGroup, uint16(BTN_TOOL_DOUBLETAP)) &&
 		di.hasBit(absGroup, uint16(ABS_MT_SLOT))
+}
+
+// isTrackpad returns true if this appears to be a trackpad device.
+func (di *devInfo) isTrackpad() bool {
+	// Taken from HasTouchpad() in ui/events/ozone/evdev/event_device_info.cc
+	return di.path != "" &&
+		di.hasBit(absGroup, uint16(ABS_X)) &&
+		di.hasBit(absGroup, uint16(ABS_Y)) &&
+		di.hasBit(propGroup, uint16(INPUT_PROP_POINTER)) &&
+		!di.hasBit(evGroup, uint16(BTN_TOOL_PEN)) &&
+		!di.hasBit(evGroup, uint16(BTN_STYLUS)) &&
+		!di.hasBit(evGroup, uint16(BTN_STYLUS2))
 }
 
 // hasBit returns true if the n-th bit in di.bits is set.
