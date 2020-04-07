@@ -70,6 +70,23 @@
       "revId": "2186832a7db770f11968b7adc53ecc710b98cfe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "987ba111_4a0f6793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-07T18:10:44Z",
+      "side": 1,
+      "message": "We often avoid runtime condition check, so before moving forward I\u0027d like to make sure if table-driven test would work for you.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests\n\nWDYT?\n\nAlso,\n\narc.VMEnabled() is the condition if you really need in this style.",
+      "revId": "2186832a7db770f11968b7adc53ecc710b98cfe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
