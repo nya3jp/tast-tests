@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -30,6 +31,18 @@ func init() {
 }
 
 func InputCompat(ctx context.Context, s *testing.State) {
+	tw, err := input.Trackpad(ctx)
+	if err != nil {
+		s.Log("Failed to create a trackpad device: ", err)
+	}
+	defer tw.Close()
+
+	tew, err := tw.NewMultiTouchWriter(2)
+	if err != nil {
+		s.Log("Failed: ", err)
+	}
+	defer tew.Close()
+
 	p := s.PreValue().(arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
@@ -78,6 +91,8 @@ func InputCompat(ctx context.Context, s *testing.State) {
 		Name        string
 		Apk         string
 		InputSource int
+		NumPointersDuringScroll int
+		InputSourceDuringScroll int
 	}
 
 	runTest := func(ctx context.Context, s *testing.State, settings *compatSettings) {
@@ -130,8 +145,30 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		// TODO(b/128546026): Implement a virtual trackpad device and test scroll gesture
-		// In MNC apps, scroll gesture should have two pointers.
+		if err := tew.DoubleSwipe(ctx, tw.Width() / 2, tw.Height() / 4, tw.Width() / 2, tw.Height() / 4 * 3, tw.Width() / 8, time.Second); err != nil {
+			s.Fatal("Failed to double swipe: ", err)
+		}
+
+		// TODO: insert proper wait?
+
+		if err := d.Object(ui.ID(inputSourceID), ui.Text(strconv.Itoa(settings.InputSourceDuringScroll))).WaitForExists(ctx, 30*time.Second); err != nil {
+			if actual, err := d.Object(ui.ID(inputSourceID)).GetText(ctx); err != nil {
+				s.Fatal("Failed to get input source: ", err)
+			} else {
+				s.Fatalf("Wrong input source: got %s, want %d", actual, settings.InputSourceDuringScroll)
+			}
+		}
+		if err := d.Object(ui.ID(numPointersID), ui.Text(strconv.Itoa(settings.NumPointersDuringScroll))).WaitForExists(ctx, 30*time.Second); err != nil {
+			if actual, err := d.Object(ui.ID(numPointersID)).GetText(ctx); err != nil {
+				s.Fatal("Failed to get the number of pointers: ", err)
+			} else {
+				s.Fatalf("Wrong number of pointers: got %s, want %d", actual, settings.NumPointersDuringScroll)
+			}
+		}
+
+		if err := tew.End(); err != nil {
+			s.Fatal("Failed to finsih trackpad touch: ", err)
+		}
 	}
 
 	for _, settings := range []compatSettings{
@@ -139,21 +176,26 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			Name:        "InputCompatDisabled",
 			Apk:         "ArcInputCompatDisabledTest.apk",
 			InputSource: sourceMouse,
+			NumPointersDuringScroll: 1,
+			InputSourceDuringScroll: sourceMouse,
 		},
 		{
 			Name:        "InputCompatGame",
 			Apk:         "ArcInputCompatGameTest.apk",
 			InputSource: sourceTouchscreen,
+			NumPointersDuringScroll: 1,
+			InputSourceDuringScroll: sourceTouchscreen,
 		},
 		{
 			Name:        "InputCompatM",
 			Apk:         "ArcInputCompatMTest.apk",
 			InputSource: sourceMouse,
+			NumPointersDuringScroll: 2,
+			InputSourceDuringScroll: sourceTouchscreen,
 		},
 	} {
 		s.Run(ctx, settings.Name, func(ctx context.Context, s *testing.State) {
 			runTest(ctx, s, &settings)
 		})
 	}
-
 }

@@ -445,6 +445,38 @@ func (tw *TouchEventWriter) Close() {
 	}
 }
 
+func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, distance TouchCoord, t time.Duration) error {
+	const touchFrequency = 5 * time.Millisecond
+	steps := int(t/touchFrequency) + 1
+	// A minimum of two touches are needed. One for the start point and another one for the end point.
+	if steps < 2 {
+		steps = 2
+	}
+	deltaX := float64(x1-x0) / float64(steps-1)
+	deltaY := float64(y1-y0) / float64(steps-1)
+
+	for i := 0; i < steps; i++ {
+		x := x0 + TouchCoord(math.Round(deltaX*float64(i)))
+		y := y0 + TouchCoord(math.Round(deltaY*float64(i)))
+		if err := tw.touches[0].SetPos(x, y); err != nil {
+			return err
+		}
+
+		if err := tw.touches[1].SetPos(x + distance, y); err != nil {
+			return err
+		}
+
+		if err := tw.Send(); err != nil {
+			return err
+		}
+
+		if err := testing.Sleep(ctx, touchFrequency); err != nil {
+			return errors.Wrap(err, "timeout while doing sleep")
+		}
+	}
+	return nil
+}
+
 // Move injects a touch event at x and y touchscreen coordinates. This is applied
 // only to the first TouchState. Calling this function is equivalent to:
 //  ts := touchEventWriter.TouchState(0)
