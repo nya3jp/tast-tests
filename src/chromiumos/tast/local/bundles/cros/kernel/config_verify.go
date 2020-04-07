@@ -344,6 +344,11 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		builtin = append(builtin, "DEBUG_ALIGN_RODATA")
 	}
 
+	if ver.isOrLater(4, 14) {
+		builtin = append(builtin, "VMAP_STACK")
+		builtin = append(builtin, "INIT_STACK_ALL")
+	}
+
 	if ver.isOrLater(4, 19) {
 		builtin = append(builtin, "HAVE_EBPF_JIT", "BPF_JIT_ALWAYS_ON", "STACKPROTECTOR")
 	} else {
