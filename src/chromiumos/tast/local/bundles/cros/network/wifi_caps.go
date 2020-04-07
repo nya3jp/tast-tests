@@ -16,7 +16,7 @@ func init() {
 		Func:         WifiCaps,
 		Desc:         "Verifies DUT supports a minimum set of required protocols",
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi"},
 	})
 }
