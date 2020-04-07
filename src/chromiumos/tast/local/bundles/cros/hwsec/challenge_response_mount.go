@@ -112,13 +112,11 @@ func handleChallengeKey(
 		return nil, errors.New("missing account_id")
 	}
 	if *accountID.AccountId != testUser {
-		return nil, errors.Errorf(
-			"wrong account_id: expected %q, got %q", testUser, *accountID.AccountId)
+		return nil, errors.Errorf("wrong account_id: expected %q, got %q", testUser, *accountID.AccountId)
 	}
 	if challReq.ChallengeType == nil ||
 		*challReq.ChallengeType != cpb.KeyChallengeRequest_CHALLENGE_TYPE_SIGNATURE {
-		return nil, errors.Errorf(
-			"wrong challenge_type: %s", challReq.ChallengeType)
+		return nil, errors.Errorf("wrong challenge_type: %s", challReq.ChallengeType)
 	}
 	sigReqData := challReq.SignatureRequestData
 	if sigReqData == nil {
@@ -129,14 +127,12 @@ func handleChallengeKey(
 	}
 	if sigReqData.PublicKeySpkiDer == nil ||
 		!reflect.DeepEqual(sigReqData.PublicKeySpkiDer, pubKeySPKIDER) {
-		return nil, errors.Errorf(
-			"bad public_key_spki_der: expected %s, got %s", pubKeySPKIDER,
+		return nil, errors.Errorf("bad public_key_spki_der: expected %s, got %s", pubKeySPKIDER,
 			sigReqData.PublicKeySpkiDer)
 	}
 	if sigReqData.SignatureAlgorithm == nil ||
 		*sigReqData.SignatureAlgorithm != keyAlg {
-		return nil, errors.Errorf(
-			"wrong signature_algorithm: expected %s, got %s", keyAlg,
+		return nil, errors.Errorf("wrong signature_algorithm: expected %s, got %s", keyAlg,
 			sigReqData.SignatureAlgorithm)
 	}
 	dataToSignHash := sha1.Sum(sigReqData.DataToSign)

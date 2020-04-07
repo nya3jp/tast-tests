@@ -23,7 +23,7 @@ type Pair struct {
 
 // NewPair sets up a new Pair object, with interface |iface| and peer interface |peerIface|.
 // It removes any existing links of the same name.
-func NewPair(ctx context.Context, iface string, peerIface string) (*Pair, error) {
+func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error) {
 	// Delete any existing links.
 	for _, name := range []string{iface, peerIface} {
 		// Check if interface 'name' exists.

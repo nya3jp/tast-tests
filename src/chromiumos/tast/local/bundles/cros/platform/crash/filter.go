@@ -16,7 +16,7 @@ import (
 
 // replaceArgs finds commandline arguments that match by prefix and replaces it with newarg.
 // TODO(yamaguchi): Deduplicate with the one in chromiumos/tast/local/crash/filter.go
-func replaceArgs(orig string, prefix string, newarg string) string {
+func replaceArgs(orig, prefix, newarg string) string {
 	e := strings.Fields(strings.TrimSpace(orig))
 	var newargs []string
 	replaced := false

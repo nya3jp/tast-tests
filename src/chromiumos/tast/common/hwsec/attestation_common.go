@@ -25,7 +25,7 @@ import (
 )
 
 // SendPostRequestTo sends POST request with |body| to |serverURL|.
-func SendPostRequestTo(ctx context.Context, body string, serverURL string) (string, error) {
+func SendPostRequestTo(ctx context.Context, body, serverURL string) (string, error) {
 	req, err := http.NewRequest("POST", serverURL, strings.NewReader(body))
 	req.WithContext(ctx)
 	if err != nil {
@@ -92,23 +92,23 @@ type attestationClient interface {
 	FinishEnroll(ctx context.Context, pcaType PCAType, resp string) error
 	// Creates a certificate request that is sent to the corresponding pca server
 	// of |pcaType| later, and any error encountered during the operation.
-	CreateCertRequest(ctx context.Context, pcaType PCAType, profile apb.CertificateProfile, username string, origin string) (string, error)
+	CreateCertRequest(ctx context.Context, pcaType PCAType, profile apb.CertificateProfile, username, origin string) (string, error)
 	// Finishes the certified key creation with |resp| from PCA server. Returns any encountered error during the operation.
-	FinishCertRequest(ctx context.Context, response string, username string, label string) error
+	FinishCertRequest(ctx context.Context, response, username, label string) error
 	// SignEnterpriseVAChallenge performs SPKAC for the challenge.
 	SignEnterpriseVAChallenge(
 		ctx context.Context,
 		vaType VAType,
-		username string,
-		label string,
-		domain string,
+		username,
+		label,
+		domain,
 		deviceID string,
 		includeSignedPublicKey bool,
 		challenge []byte) (string, error)
 	// SignSimpleChallenge signs the challenge with the specified key.
-	SignSimpleChallenge(ctx context.Context, username string, label string, challenge []byte) (string, error)
+	SignSimpleChallenge(ctx context.Context, username, label string, challenge []byte) (string, error)
 	// GetPublicKey gets the public part of the key.
-	GetPublicKey(ctx context.Context, username string, label string) (string, error)
+	GetPublicKey(ctx context.Context, username, label string) (string, error)
 }
 
 func caServerURL(pcaType PCAType) string {
@@ -164,7 +164,7 @@ func (at *AttestationTest) Enroll(ctx context.Context) error {
 }
 
 // GetCertificate creates the cert request, sends it to the corresponding PCA server, and finishes the request with the received response.
-func (at *AttestationTest) GetCertificate(ctx context.Context, username string, label string) error {
+func (at *AttestationTest) GetCertificate(ctx context.Context, username, label string) error {
 	req, err := at.ac.CreateCertRequest(ctx, DefaultPCA, DefaultCertProfile, username, DefaultCertOrigin)
 	if err != nil {
 		return errors.Wrap(err, "failed to create certificate request")
@@ -184,7 +184,7 @@ func (at *AttestationTest) GetCertificate(ctx context.Context, username string, 
 }
 
 // SignEnterpriseChallenge gets the challenge from default VA server, perform SPKAC, and sends the signed challenge back to verify it
-func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username string, label string) error {
+func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username, label string) error {
 	resp, err := SendGetRequestTo(ctx, "https://test-dvproxy-server.sandbox.google.com/dvproxy/getchallenge")
 	if err != nil {
 		return errors.Wrap(err, "failed to send request to VA")
@@ -215,7 +215,7 @@ func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username
 }
 
 // SignSimpleChallenge signs a known, short data with the cert, and verify it using its public key
-func (at *AttestationTest) SignSimpleChallenge(ctx context.Context, username string, label string) error {
+func (at *AttestationTest) SignSimpleChallenge(ctx context.Context, username, label string) error {
 	signedChallenge, err := at.ac.SignSimpleChallenge(ctx, username, label, []byte{})
 	if err != nil {
 		return errors.Wrap(err, "failed to sign simple challenge")

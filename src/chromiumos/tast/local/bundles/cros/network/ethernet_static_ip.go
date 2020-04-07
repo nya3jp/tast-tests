@@ -46,7 +46,7 @@ func getIPForInterface(iface string) (string, error) {
 	return "", errors.New("no IPv4 address found for " + iface)
 }
 
-func waitForIPOnInterface(ctx context.Context, iface string, expected string, timeout time.Duration) error {
+func waitForIPOnInterface(ctx context.Context, iface, expected string, timeout time.Duration) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if ip, err := getIPForInterface(iface); err != nil {
 			return err

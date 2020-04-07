@@ -217,7 +217,7 @@ func GetHistograms(ctx context.Context, tconn *chrome.TestConn, histogramNames [
 }
 
 // DiffHistograms is a convenience function to diff multiple histograms.
-func DiffHistograms(older []*Histogram, newer []*Histogram) ([]*Histogram, error) {
+func DiffHistograms(older, newer []*Histogram) ([]*Histogram, error) {
 	if len(older) != len(newer) {
 		return nil, errors.New("histogram count mismatched")
 	}

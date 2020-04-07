@@ -35,7 +35,7 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 }
 
 // RunWithOptions executes the main test logic with |options| included in the lp command.
-func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string, options string) {
+func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile, options string) {
 	const printerID = "FakePrinterID"
 
 	ppd, err := ioutil.ReadFile(s.DataPath(ppdFile))
