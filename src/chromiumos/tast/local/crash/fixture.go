@@ -156,15 +156,15 @@ func moveAllCrashesTo(source, target string) error {
 	return nil
 }
 
-// Option is a self-referential function can be used to configure crash tests.
+// option is a self-referential function can be used to configure crash tests.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type Option func(p *setUpParams)
+type option func(p *setUpParams)
 
 // DevImage prevents the test library from indicating to the DUT that a crash
 // test is in progress, allowing the test to complete with standard developer
 // image behavior.
-func DevImage() Option {
+func DevImage() option {
 	return func(p *setUpParams) {
 		p.isDevImageTest = true
 	}
@@ -172,7 +172,7 @@ func DevImage() Option {
 
 // WithConsent indicates that the test should enable metrics consent.
 // Pre: cr should be a logged-in chrome session.
-func WithConsent(cr *chrome.Chrome) Option {
+func WithConsent(cr *chrome.Chrome) option {
 	return func(p *setUpParams) {
 		p.setConsent = true
 		p.chrome = cr
@@ -182,7 +182,7 @@ func WithConsent(cr *chrome.Chrome) Option {
 // WithMockConsent indicates that the test should touch the mock metrics consent
 // file which causes crash_reporter and crash_sender to act as if they had
 // consent to process crashes.
-func WithMockConsent() Option {
+func WithMockConsent() option {
 	return func(p *setUpParams) {
 		p.setMockConsent = true
 	}
@@ -192,9 +192,17 @@ func WithMockConsent() Option {
 // reporting state files (e.g. crash-test-in-progress) should also be placed in
 // /var/spool/crash/ (so that the persist-crash-test task moves them over to
 // /run/crash_reporter on boot).
-func RebootingTest() Option {
+func RebootingTest() option {
 	return func(p *setUpParams) {
 		p.rebootTest = true
+	}
+}
+
+// DaemonStore indicates that this test wants to use the daemon store
+// directories, so SetUp should stash them.
+func DaemonStore() option {
+	return func(p *setUpParams) {
+		p.useDaemonStore = true
 	}
 }
 
@@ -202,22 +210,12 @@ func RebootingTest() Option {
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest(ctx)" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest(ctx context.Context, opts ...Option) error {
-	daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get daemon store crash directories")
-	}
-	var daemonStoreStashPaths []string
-	for _, path := range daemonStorePaths {
-		daemonStoreStashPaths = append(daemonStoreStashPaths, path+".real")
-	}
+func SetUpCrashTest(ctx context.Context, opts ...option) error {
 
 	p := setUpParams{
 		inProgDir:         crashTestInProgressDir,
 		sysCrashDir:       SystemCrashDir,
 		sysCrashStash:     systemCrashStash,
-		daemonStoreDir:    daemonStorePaths,
-		daemonStoreStash:  daemonStoreStashPaths,
 		chronosCrashDir:   LocalCrashDir,
 		chronosCrashStash: localCrashStash,
 		userCrashDir:      UserCrashDir,
@@ -229,6 +227,16 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	}
 	for _, opt := range opts {
 		opt(&p)
+	}
+	if p.useDaemonStore {
+		daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get daemon store crash directories")
+		}
+		p.daemonStoreDir = daemonStorePaths
+		for _, path := range p.daemonStoreDir {
+			p.daemonStoreStash = append(p.daemonStoreStash, path+".real")
+		}
 	}
 
 	// This file usually doesn't exist; don't error out if it doesn't. "Not existing"
@@ -266,6 +274,7 @@ type setUpParams struct {
 	setConsent        bool
 	setMockConsent    bool
 	rebootTest        bool
+	useDaemonStore    bool
 	chrome            *chrome.Chrome
 }
 
@@ -304,6 +313,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 				userCrashStash:    p.userCrashStash,
 				senderPausePath:   p.senderPausePath,
 				mockSendingPath:   p.mockSendingPath,
+				useDaemonStore:    p.useDaemonStore,
 			})
 		}
 	}()
@@ -409,36 +419,29 @@ func cleanUpStashDir(stashDir, realDir string) error {
 	return nil
 }
 
+// tearDownOption is a self-referential function can be used to configure crash tests.
+// See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
+// for details about this pattern.
+type tearDownOption func(p *tearDownParams)
+
+// TearDownDaemonStore indicates that this test used the daemon store
+// directories, so TearDown should restore them.
+func TearDownDaemonStore() tearDownOption {
+	return func(p *tearDownParams) {
+		p.useDaemonStore = true
+	}
+}
+
 // TearDownCrashTest undoes the work of SetUpCrashTest. We assume here that the
 // set of active sessions hasn't changed since SetUpCrashTest was called for
 // the purpose of restoring the per-user-cryptohome crash directories.
-func TearDownCrashTest(ctx context.Context) error {
+func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 	var firstErr error
-
-	// This could return a different list of paths then the original setup
-	// if a session has started or ended in the meantime. If a new session
-	// has started then the restore will just become a no-op, but if a
-	// session has ended we won't restore the crash files inside that
-	// session's cryptohome. We can't do much about this since we can't
-	// touch a cryptohome while that user isn't logged in.
-	daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to get daemon store crash dirs: ", err)
-		if firstErr == nil {
-			firstErr = errors.Wrap(err, "failed to get daemon store crash directories")
-		}
-	}
-	var daemonStoreStashPaths []string
-	for _, path := range daemonStorePaths {
-		daemonStoreStashPaths = append(daemonStoreStashPaths, path+".real")
-	}
 
 	p := tearDownParams{
 		inProgDir:         crashTestInProgressDir,
 		sysCrashDir:       SystemCrashDir,
 		sysCrashStash:     systemCrashStash,
-		daemonStoreDir:    daemonStorePaths,
-		daemonStoreStash:  daemonStoreStashPaths,
 		chronosCrashDir:   LocalCrashDir,
 		chronosCrashStash: localCrashStash,
 		userCrashDir:      UserCrashDir,
@@ -446,6 +449,31 @@ func TearDownCrashTest(ctx context.Context) error {
 		senderPausePath:   senderPausePath,
 		mockSendingPath:   mockSendingPath,
 	}
+
+	for _, opt := range opts {
+		opt(&p)
+	}
+
+	if p.useDaemonStore {
+		// This could return a different list of paths then the original setup
+		// if a session has started or ended in the meantime. If a new session
+		// has started then the restore will just become a no-op, but if a
+		// session has ended we won't restore the crash files inside that
+		// session's cryptohome. We can't do much about this since we can't
+		// touch a cryptohome while that user isn't logged in.
+		daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to get daemon store crash dirs: ", err)
+			if firstErr == nil {
+				firstErr = errors.Wrap(err, "failed to get daemon store crash directories")
+			}
+		}
+		p.daemonStoreDir = daemonStorePaths
+		for _, path := range daemonStorePaths {
+			p.daemonStoreStash = append(p.daemonStoreStash, path+".real")
+		}
+	}
+
 	if err := tearDownCrashTest(ctx, &p); err != nil {
 		testing.ContextLog(ctx, "Failed to tearDownCrashTest: ", err)
 		if firstErr == nil {
@@ -479,6 +507,7 @@ type tearDownParams struct {
 	userCrashStash    string
 	senderPausePath   string
 	mockSendingPath   string
+	useDaemonStore    bool
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
