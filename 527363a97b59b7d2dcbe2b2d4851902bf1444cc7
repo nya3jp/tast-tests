@@ -164,6 +164,30 @@
       "revId": "527363a97b59b7d2dcbe2b2d4851902bf1444cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299a83ba_4ecaecb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-07T19:59:41Z",
+      "side": 1,
+      "message": "It\u0027s true that in some cases we don\u0027t want the crash_reporter_failure* files, but in the case where we do want it, we\u0027re okay with also having the normal crash report. For example, if we are processing a crash in the logging_UserCrash_crasher binary, and we generate a log for it but then core2md fails, we\u0027ll still have that log file present in /var/spool/crash, and that\u0027s okay.\n\nHowever, you raised some great points, so I\u0027ve taken them to heart and simplified the code somewhat substantially. Thanks for pushing on this!",
+      "parentUuid": "757f58c5_5e376345",
+      "range": {
+        "startLine": 417,
+        "startChar": 3,
+        "endLine": 417,
+        "endChar": 25
+      },
+      "revId": "527363a97b59b7d2dcbe2b2d4851902bf1444cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
