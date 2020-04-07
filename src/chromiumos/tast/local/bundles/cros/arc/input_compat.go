@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -30,6 +31,12 @@ func init() {
 }
 
 func InputCompat(ctx context.Context, s *testing.State) {
+	tw, err := input.Trackpad(ctx)
+	if err != nil {
+		s.Log("Failed to create a trackpad device: ", err)
+	}
+	defer tw.Close()
+
 	p := s.PreValue().(arc.PreData)
 	cr := p.Chrome
 	a := p.ARC
@@ -129,9 +136,6 @@ func InputCompat(ctx context.Context, s *testing.State) {
 				s.Fatalf("Wrong number of pointers: got %s, want 1", actual)
 			}
 		}
-
-		// TODO(b/128546026): Implement a virtual trackpad device and test scroll gesture
-		// In MNC apps, scroll gesture should have two pointers.
 	}
 
 	for _, settings := range []compatSettings{
@@ -155,5 +159,7 @@ func InputCompat(ctx context.Context, s *testing.State) {
 			runTest(ctx, s, &settings)
 		})
 	}
+
+	testing.Sleep(ctx, 1*time.Minute)
 
 }
