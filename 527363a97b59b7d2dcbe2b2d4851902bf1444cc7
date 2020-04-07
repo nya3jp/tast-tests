@@ -188,6 +188,30 @@
       "revId": "527363a97b59b7d2dcbe2b2d4851902bf1444cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97b70c03_a13b4406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-04-07T20:14:35Z",
+      "side": 1,
+      "message": "Much nicer, thanks!",
+      "parentUuid": "299a83ba_4ecaecb1",
+      "range": {
+        "startLine": 417,
+        "startChar": 3,
+        "endLine": 417,
+        "endChar": 25
+      },
+      "revId": "527363a97b59b7d2dcbe2b2d4851902bf1444cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
