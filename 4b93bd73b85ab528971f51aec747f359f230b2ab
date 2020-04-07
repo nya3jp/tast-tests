@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1ed90f4_286d2a08",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-07T21:58:36Z",
+      "side": 1,
+      "message": "Can add a check to see if platform belongs to configPlatforms.",
+      "revId": "4b93bd73b85ab528971f51aec747f359f230b2ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
