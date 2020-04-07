@@ -29,10 +29,16 @@ public class CameraActivity extends Activity {
             "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_FRAMES";
     private static final String ACTION_GET_NUM_DROPPED_FRAMES =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES";
+    private static final String ACTION_GET_PREVIEW_RESOLUTIONS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_PREVIEW_RESOLUTIONS";
     private static final String ACTION_GET_PREVIEW_SIZE =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_PREVIEW_SIZE";
+    private static final String ACTION_GET_RECORDING_RESOLUTIONS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_RECORDING_RESOLUTIONS";
     private static final String ACTION_GET_RECORDING_SIZE =
             "org.chromium.arc.testapp.camerafps.ACTION_GET_RECORDING_SIZE";
+    private static final String ACTION_GET_SNAPSHOT_RESOLUTIONS =
+            "org.chromium.arc.testapp.camerafps.ACTION_GET_SNAPSHOT_RESOLUTIONS";
     private static final String ACTION_RESET_CAMERA =
             "org.chromium.arc.testapp.camerafps.ACTION_RESET_CAMERA";
     private static final String ACTION_RESET_HISTOGRAM =
@@ -50,6 +56,8 @@ public class CameraActivity extends Activity {
 
     private static final String KEY_FPS = "fps";
     private static final int DEFAULT_FPS = 30;
+
+    // A resolution of 0x0 falls back to the maximum supported resolution.
     private static final String KEY_WIDTH = "width";
     private static final int DEFAULT_WIDTH = 0;
     private static final String KEY_HEIGHT = "height";
@@ -81,14 +89,23 @@ public class CameraActivity extends Activity {
                             case ACTION_GET_NUM_DROPPED_FRAMES:
                                 setResultData(Long.toString(mHistogram.getNumDroppedFrames()));
                                 break;
+                            case ACTION_GET_PREVIEW_RESOLUTIONS:
+                                setResultData(mCameraFragment.getPreviewResolutions());
+                                break;
                             case ACTION_GET_PREVIEW_SIZE:
                                 setResultData(mCameraFragment.getPreviewSize());
+                                break;
+                            case ACTION_GET_RECORDING_RESOLUTIONS:
+                                setResultData(mCameraFragment.getRecordingResolutions());
                                 break;
                             case ACTION_GET_RECORDING_SIZE:
                                 setResultData(mCameraFragment.getRecordingSize());
                                 break;
                             case ACTION_RESET_HISTOGRAM:
                                 mHistogram.resetHistogram();
+                                break;
+                            case ACTION_GET_SNAPSHOT_RESOLUTIONS:
+                                setResultData(mCameraFragment.getSnapshotResolutions());
                                 break;
                             case ACTION_RESET_CAMERA:
                                 mCameraFragment.onPause();
@@ -139,12 +156,15 @@ public class CameraActivity extends Activity {
         filter.addAction(ACTION_GET_HISTOGRAM);
         filter.addAction(ACTION_GET_NUM_FRAMES);
         filter.addAction(ACTION_GET_NUM_DROPPED_FRAMES);
+        filter.addAction(ACTION_GET_PREVIEW_RESOLUTIONS);
         filter.addAction(ACTION_GET_PREVIEW_SIZE);
+        filter.addAction(ACTION_GET_RECORDING_RESOLUTIONS);
         filter.addAction(ACTION_GET_RECORDING_SIZE);
         filter.addAction(ACTION_RESET_CAMERA);
         filter.addAction(ACTION_RESET_HISTOGRAM);
         filter.addAction(ACTION_SET_TARGET_FPS);
         filter.addAction(ACTION_SET_TARGET_RESOLUTION);
+        filter.addAction(ACTION_GET_SNAPSHOT_RESOLUTIONS);
         filter.addAction(ACTION_START_RECORDING);
         filter.addAction(ACTION_STOP_RECORDING);
         filter.addAction(ACTION_TAKE_PHOTO);
