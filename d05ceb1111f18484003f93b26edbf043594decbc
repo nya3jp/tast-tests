@@ -22,6 +22,30 @@
       "revId": "d05ceb1111f18484003f93b26edbf043594decbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab16a82_a5b78887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-04-07T04:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb80ef3a_1c129c6a",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "d05ceb1111f18484003f93b26edbf043594decbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
