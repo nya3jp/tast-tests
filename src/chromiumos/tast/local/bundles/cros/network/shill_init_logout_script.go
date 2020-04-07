@@ -19,7 +19,7 @@ func init() {
 		Func:     ShillInitLogoutScript,
 		Desc:     "Test that shill init logout script perform as expected",
 		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
