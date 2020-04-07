@@ -172,7 +172,7 @@ func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 		{ABS_X, absInfo{0, 0, axisMaxX, 0, 0, axisCoordResolution}},
 		{ABS_Y, absInfo{0, 0, axisMaxY, 0, 0, axisCoordResolution}},
 		{ABS_PRESSURE, absInfo{0, 0, axisMaxPressure, 0, 0, 0}},
-		{ABS_MT_SLOT, absInfo{0, 0, uint32(axisMaxTouchSlot), 0, 0, 0}},
+		{ABS_MT_SLOT, absInfo{0, 0, int32(axisMaxTouchSlot), 0, 0, 0}},
 		{ABS_MT_TOUCH_MAJOR, absInfo{0, 0, 255, 0, 0, 1}},
 		{ABS_MT_TOUCH_MINOR, absInfo{0, 0, 255, 0, 0, 1}},
 		{ABS_MT_ORIENTATION, absInfo{0, 0, 1, 0, 0, 0}},
@@ -346,12 +346,12 @@ func (ts *TouchState) SetPos(x, y TouchCoord) error {
 // absInfo corresponds to a input_absinfo struct.
 // Taken from: include/uapi/linux/input.h
 type absInfo struct {
-	value      uint32
-	minimum    uint32
-	maximum    uint32
-	fuzz       uint32
-	flat       uint32
-	resolution uint32
+	value      int32
+	minimum    int32
+	maximum    int32
+	fuzz       int32
+	flat       int32
+	resolution int32
 }
 
 // evIOCGAbs returns an encoded Event-Ioctl-Get-Absolute value to be used for ioctl().

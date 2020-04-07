@@ -83,6 +83,16 @@ func (di *devInfo) isTouchscreen() bool {
 		di.hasBit(absGroup, uint16(ABS_MT_SLOT))
 }
 
+// isTrackpad returns true if this appears to be a touchscreen device.
+func (di *devInfo) isTrackpad() bool {
+	return di.path != "" &&
+		di.hasBit(evGroup, uint16(EV_KEY)) &&
+		di.hasBit(evGroup, uint16(EV_ABS)) &&
+		di.hasBit(keyGroup, uint16(BTN_TOUCH)) &&
+		di.hasBit(keyGroup, uint16(BTN_TOOL_DOUBLETAP)) &&
+		di.hasBit(absGroup, uint16(ABS_MT_SLOT))
+}
+
 // hasBit returns true if the n-th bit in di.bits is set.
 func (di *devInfo) hasBit(grp string, n uint16) bool {
 	bits, ok := di.bits[grp]
