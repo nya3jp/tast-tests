@@ -10,7 +10,15 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/coords"
 )
+
+// DeskMiniViewBoundsInfo corresponds to the type by the same name in
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
+type DeskMiniViewBoundsInfo struct {
+	Success bool        `json:"success"`
+	Bounds  coords.Rect `json:"bounds"`
+}
 
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
 // the maximum number of desks have been reached.
@@ -54,4 +62,19 @@ func RemoveActiveDesk(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.New("failed to remove the active desk")
 	}
 	return nil
+}
+
+// GetDeskMiniViewBounds gets the bounds of a desk mini-view, in screen coordinates.
+// This call will fail if the desks bar is not showing or the arguments are not all
+// valid.
+func GetDeskMiniViewBounds(ctx context.Context, tconn *chrome.TestConn, displayID int, index int) (*coords.Rect, error) {
+	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.getDeskMiniViewBounds)(%v, %v)`, displayID, index)
+	var info DeskMiniViewBoundsInfo
+	if err := tconn.EvalPromise(ctx, expr, &info); err != nil {
+		return err, nil
+	}
+	if !info.Success {
+		return errors.Errorf("failed to get desk mini-view bounds on display %v at index %v", displayID, index), nil
+	}
+	return nil, &info.Bounds
 }
