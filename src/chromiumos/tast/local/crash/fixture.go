@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -203,6 +204,14 @@ func RebootingTest() Option {
 // test should "defer TearDownCrashTest(ctx)" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
 func SetUpCrashTest(ctx context.Context, opts ...Option) error {
+	// We need session_manager to be running to get the daemon
+	// store directories, but some tests stop it without starting
+	// it back up later, so start it if it wasn't already
+	// running. If it was, this function is a no-op.
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+		return errors.Wrap(err, "could not start session_manager")
+	}
+
 	daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get daemon store crash directories")
