@@ -22,6 +22,30 @@
       "revId": "7d33fef4e933a274e62c9a65404df48fb7fc56f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385f1bec_10acc6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T03:09:40Z",
+      "side": 1,
+      "message": "My bad, it should be in the previous.",
+      "parentUuid": "c55e6c9a_edb31fd8",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "7d33fef4e933a274e62c9a65404df48fb7fc56f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
