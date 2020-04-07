@@ -25,7 +25,6 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wilco"},
-		Timeout:      10 * time.Second,
 		Pre:          pre.WilcoDtcSupportdAPI,
 	})
 }
@@ -43,7 +42,7 @@ func APIHandleECNotification(ctx context.Context, s *testing.State) {
 	defer rec.Stop(ctx)
 
 	// Give Stop time to clean up.
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	if err := wilco.TriggerECEvent(); err != nil {
