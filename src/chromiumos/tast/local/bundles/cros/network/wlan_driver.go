@@ -29,7 +29,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // Connectivity team
 			"oka@chromium.org",                // Tast port author
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi"},
 		Params: []testing.Param{{
 			Name:              "",
