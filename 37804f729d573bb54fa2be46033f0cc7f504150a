@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a93cd86b_c3e2af70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "can you also mention that this also changes the test to use the new activity?",
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c6dbae_c4de3e60",
+        "filename": "android/ArcAccessibilityTest/res/layout/edittext_activity.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "This is now pure empty EditText and doesn\u0027t have meaningful information compared to the two below.\nHow about adding contentDescription for this EditText?",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8df2ca_9bb9c74e",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/EdittextActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6b1c65_16a51bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "nit: we\u0027re not using this for now, how about adding this when actually required.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f636c2e7_084d473e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "These variables are visible from other arc teat tests. Also, it is a little wired that only the expected file name is declared as a fullname and others are only prefix.\nHow about\n\ndefining here:\nconst (\naxTreeExpectedFilePrefix \u003d ...\naxTreeActualFilePrefix   \u003d ...\naxTreeDiffFilePrefix     \u003d ...\naxTreeTestActivities     \u003d (list of activity names)\n)\n\nand in init() function before calling AddTest, build a list of expected tree files.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013da343_856b1ec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "nit: this is not directly related to this change, but could you update this to the latest path?\nhttps://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/tree_dumper.js",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 125
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68a403d_56935686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "This implementation calls RunTest twice, which means various initialization logics (e.g. the connection establishment, booting ChromeVox...) are called twice.\n\nHow about giving the list of activity names as an additional argument of RunTest, and making the given func be called with activity name?",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c71eb20a_54b7c54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected_EdittextActivity.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-07T08:29:04Z",
+      "side": 1,
+      "message": "IIUC, I don\u0027t think SimpleAutomationNode has text field both in accessibility_tree.go and chrome: https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/tree_dumper.js;l\u003d14;drc\u003dd1aec337941485a1a4064b1061ae0ad79c0a3ebb",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
