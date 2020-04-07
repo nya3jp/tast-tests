@@ -67,6 +67,7 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 		cameraAppPackage       = "org.chromium.arc.testapp.camerafps"
 		intentGetDroppedFrames = "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES"
 		intentGetHistogram     = "org.chromium.arc.testapp.camerafps.ACTION_GET_HISTOGRAM"
+		intentGetPreviewSize   = "org.chromium.arc.testapp.camerafps.ACTION_GET_PREVIEW_SIZE"
 		intentGetTotalFrames   = "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_FRAMES"
 		intentResetData        = "org.chromium.arc.testapp.camerafps.ACTION_RESET_HISTOGRAM"
 		intentSetFps           = "org.chromium.arc.testapp.camerafps.ACTION_SET_TARGET_FPS"
@@ -117,7 +118,7 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 		iterationCount            = 30
 		iterationDuration         = 2 * time.Second
 		afterBootWarmupDuration   = 30 * time.Second
-		cameraResetWarmupDuration = 15 * time.Second
+		cameraResetWarmupDuration = 30 * time.Second
 	)
 
 	s.Log("Warmup: Waiting for Android to settle down")
@@ -127,23 +128,27 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 
 	targetFps := s.Param().(string)
 	s.Log("Set target FPS: " + targetFps + " FPS")
+	if _, err = a.BroadcastIntent(ctx, intentSetFps, "--ei", "fps", targetFps); err != nil {
+		s.Fatal("Could not send intent: ", err)
+	}
+
+	resolution, err := a.BroadcastIntentGetData(ctx, intentGetPreviewSize)
+	if err != nil {
+		s.Fatal("Failed to query resolution from activity: ", err)
+	}
 
 	// Create metrics. We report separately for each target FPS.
-	numFramesMetric := perf.Metric{Name: "total_num_frames", Unit: "frames", Direction: perf.BiggerIsBetter}
-	numDroppedFramesMetric := perf.Metric{Name: "num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
-	frameDropRatioMetric := perf.Metric{Name: "frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
+	numFramesMetric := perf.Metric{Name: resolution + "_total_num_frames", Unit: "frames", Direction: perf.BiggerIsBetter}
+	numDroppedFramesMetric := perf.Metric{Name: resolution + "_num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
+	frameDropRatioMetric := perf.Metric{Name: resolution + "_frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
 
-	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics()...)
+	powerMetrics, err := perf.NewTimelineWithPrefix(ctx, resolution+"_", power.TestMetrics()...)
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
 
 	if err := powerMetrics.Start(ctx); err != nil {
 		s.Fatal("Failed to start metrics: ", err)
-	}
-
-	if _, err = a.BroadcastIntent(ctx, intentSetFps, "--ei", "fps", targetFps); err != nil {
-		s.Fatal("Could not send intent: ", err)
 	}
 
 	s.Log("Warmup: Waiting a bit before starting the measurement")

@@ -51,6 +51,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 		intentGetDroppedFrames = "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_DROPPED_FRAMES"
 		intentGetHistogram     = "org.chromium.arc.testapp.camerafps.ACTION_GET_HISTOGRAM"
 		intentGetTotalFrames   = "org.chromium.arc.testapp.camerafps.ACTION_GET_NUM_FRAMES"
+		intentGetRecordingSize = "org.chromium.arc.testapp.camerafps.ACTION_GET_RECORDING_SIZE"
 		intentResetData        = "org.chromium.arc.testapp.camerafps.ACTION_RESET_HISTOGRAM"
 		intentSetFps           = "org.chromium.arc.testapp.camerafps.ACTION_SET_TARGET_FPS"
 		intentStartRecording   = "org.chromium.arc.testapp.camerafps.ACTION_START_RECORDING"
@@ -105,7 +106,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 		iterationCount          = 30
 		iterationDuration       = 2 * time.Second
 		afterBootWarmupDuration = 30 * time.Second
-		cameraWarmupDuration    = 10 * time.Second
+		cameraWarmupDuration    = 30 * time.Second
 	)
 
 	s.Log("Warmup: Waiting for Android to settle down")
@@ -113,17 +114,22 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sleep: ", err)
 	}
 
-	s.Logf("Set target FPS: %s", targetFps)
+	s.Log("Set target FPS:", targetFps)
 	if _, err := a.BroadcastIntent(ctx, intentSetFps, "--ei", "fps", targetFps); err != nil {
 		s.Fatal("Could not send intent: ", err)
 	}
 
-	// Create metrics. We report separately for each target FPS.
-	numFramesMetric := perf.Metric{Name: "total_num_frames", Unit: "frames", Direction: perf.BiggerIsBetter}
-	numDroppedFramesMetric := perf.Metric{Name: "num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
-	frameDropRatioMetric := perf.Metric{Name: "frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
+	resolution, err := a.BroadcastIntentGetData(ctx, intentGetRecordingSize)
+	if err != nil {
+		s.Fatal("Failed to query resolution from activity: ", err)
+	}
 
-	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics()...)
+	// Create metrics. We report separately for each target FPS.
+	numFramesMetric := perf.Metric{Name: resolution + "_total_num_frames", Unit: "frames", Direction: perf.BiggerIsBetter}
+	numDroppedFramesMetric := perf.Metric{Name: resolution + "_num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
+	frameDropRatioMetric := perf.Metric{Name: resolution + "_frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
+
+	powerMetrics, err := perf.NewTimelineWithPrefix(ctx, resolution+"_", power.TestMetrics()...)
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}

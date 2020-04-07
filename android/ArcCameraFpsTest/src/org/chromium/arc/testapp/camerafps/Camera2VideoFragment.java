@@ -72,6 +72,8 @@ public class Camera2VideoFragment extends Fragment {
     private Size mPreviewSize;
     // Size of video recording.
     private Size mVideoSize;
+    // Size of camera snapshots;
+    private Size mSnapshotSize;
     // MediaRecorder for recording videos.
     private MediaRecorder mMediaRecorder;
     // An additional thread for running tasks that shouldn't block the UI.
@@ -96,7 +98,7 @@ public class Camera2VideoFragment extends Fragment {
     private long mCameraOpenTime;
     // Time it took in milliseconds for closing the camera.
     private long mCameraCloseTime;
-
+    // Camera characteristics contain information about supported resolutions etc.
     private CameraCharacteristics mCameraCharacteristics;
 
     public Camera2VideoFragment(CaptureCallbackHistogram histogram) {
@@ -104,12 +106,13 @@ public class Camera2VideoFragment extends Fragment {
         mCaptureHistogram = histogram;
     }
 
-    // Select the largest resolution among all choices.
+    // Select the largest resolution among all choices. If a specific target resolution was
+    // requested, use that resolution instead (if it is supported).
     private Size chooseResolution(Size[] choices) {
         long largestPixels = 0;
         Size largestSize = null;
         for (Size size : choices) {
-            if (mTargetResolution != null && mTargetResolution == size) {
+            if (size.equals(mTargetResolution)) {
                 return size;
             }
 
@@ -221,6 +224,34 @@ public class Camera2VideoFragment extends Fragment {
             throw new RuntimeException(e);
         }
     }
+
+    private <T> String getSupportedResolutions(Class<T> klass) {
+        Size[] sizes = mCameraCharacteristics
+                .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+                .getOutputSizes(klass);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (Size size : sizes) {
+            sb.append(size.toString());
+            sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    public String getSnapshotResolutions() {
+        return getSupportedResolutions(ImageReader.class);
+    }
+
+    public String getRecordingResolutions() {
+        return getSupportedResolutions(MediaRecorder.class);
+    }
+
+    public String getPreviewResolutions() {
+        return getSupportedResolutions(SurfaceTexture.class);
+    }
+
     /** Triggers and waits for snapshot to finish. */
     public long takeCameraPicture() throws InterruptedException {
         long startTime = SystemClock.elapsedRealtime();
@@ -228,16 +259,16 @@ public class Camera2VideoFragment extends Fragment {
 
         try {
             // TODO: Cache map instead.
-            final Size size =
+            mSnapshotSize =
                     chooseResolution(
                             mCameraCharacteristics
                                     .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
                                     .getOutputSizes(ImageReader.class));
-            Log.i(TAG, "Taking picture: " + size);
+            Log.i(TAG, "Taking picture: " + mSnapshotSize);
             final ImageReader reader =
                     ImageReader.newInstance(
-                            size.getWidth(),
-                            size.getHeight(),
+                            mSnapshotSize.getWidth(),
+                            mSnapshotSize.getHeight(),
                             ImageFormat.JPEG,
                             1 /* maximum images */);
             final CaptureRequest.Builder captureBuilder =
@@ -365,6 +396,7 @@ public class Camera2VideoFragment extends Fragment {
     // Close the camera device.
     private void closeCamera() {
         long timeBefore = SystemClock.elapsedRealtime();
+        mCameraCharacteristics = null;
 
         try {
             mCameraOpenCloseLock.acquire();
