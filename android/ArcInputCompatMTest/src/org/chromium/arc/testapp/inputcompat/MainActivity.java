@@ -14,6 +14,9 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
     private TextView mNumPointers;
     private TextView mInputSource;
+    private TextView mIsScrollingText;
+
+    boolean mIsScrolling = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,12 +25,21 @@ public class MainActivity extends Activity {
 
         mNumPointers = findViewById(R.id.num_pointers);
         mInputSource = findViewById(R.id.input_source);
+        mIsScrollingText = findViewById(R.id.is_scrolling);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (!mIsScrolling && ev.getAction() == MotionEvent.ACTION_DOWN &&
+                ev.getButtonState() == 0) {
+            mIsScrolling = true;
+        } if (mIsScrolling && ev.getAction() == MotionEvent.ACTION_UP ||
+                ev.getAction() == MotionEvent.ACTION_CANCEL) {
+            mIsScrolling = false;
+        }
         mNumPointers.setText(Integer.toString(ev.getPointerCount()));
         mInputSource.setText(Integer.toString(ev.getSource()));
+        mIsScrollingText.setText(Boolean.toString(mIsScrolling));
         return true;
     }
 
