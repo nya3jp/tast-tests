@@ -16,6 +16,24 @@
       "revId": "01649b1edf702cd665fcd4f950e687815176ff14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5b0cb7_55714da4",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-07T18:26:38Z",
+      "side": 1,
+      "message": "We\u0027re trying pretty hard to avoid hard dependencies on chrome if we can (because it tends to flake tests a lot, at least on tastboard). If we really do need to go this route I would significantly prefer it if we conditionally tried to get the daemon store crash dirs only for crostini tests.",
+      "parentUuid": "64494c83_2ec1d3f7",
+      "revId": "01649b1edf702cd665fcd4f950e687815176ff14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
