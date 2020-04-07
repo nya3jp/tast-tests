@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22deeeaf_83d4d7ac",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_cases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T15:28:15Z",
+      "side": 1,
+      "message": "They overlap, with video/ taking the largest amount and arc using only 2:\n\nvideo:\n./encode_accel_perf.go:31:\t\t\tParams:      encoding.Bear192P,\n./encode_accel_perf.go:41:\t\t\tParams:      encoding.Tulip360P,\n./encode_accel_perf.go:51:\t\t\tParams:      encoding.Tulip720P,\n./encode_accel_perf.go:61:\t\t\tParams:      encoding.Vidyo720P,\n./encode_accel_perf.go:71:\t\t\tParams:      encoding.Crowd1080P,\n./encode_accel_perf.go:81:\t\t\tParams:      encoding.Crowd2160P,\n./encode_accel_perf.go:91:\t\t\tParams:      encoding.Bear192P,\n./encode_accel_perf.go:101:\t\t\tParams:      encoding.Tulip360P,\n./encode_accel_perf.go:111:\t\t\tParams:      encoding.Tulip720P,\n./encode_accel_perf.go:121:\t\t\tParams:      encoding.Vidyo720P,\n./encode_accel_perf.go:131:\t\t\tParams:      encoding.Crowd1080P,\n./encode_accel_perf.go:141:\t\t\tParams:      encoding.Crowd2160P,\n./encode_accel.go:30:\t\t\t\t\tParams:      encoding.Tulip180P,\n./encode_accel.go:40:\t\t\t\t\tParams:      encoding.Bear192P,\n./encode_accel.go:50:\t\t\t\t\tParams:      encoding.Tulip360P,\n./encode_accel.go:60:\t\t\t\t\tParams:      encoding.Tulip720P,\n./encode_accel.go:70:\t\t\t\t\tParams:      encoding.Crowd1080P,\n./encode_accel.go:80:\t\t\t\t\tParams:      encoding.Crowd2160P,\n./encode_accel.go:90:\t\t\t\t\tParams:      encoding.Bear192P,\n./encode_accel.go:100:\t\t\t\tParams:      encoding.Bear192P,\n./encode_accel.go:114:\t\t\t\tParams:      encoding.Tulip180P,\n./encode_accel.go:124:\t\t\t\tParams:      encoding.Bear192P,\n./encode_accel.go:134:\t\t\t\tParams:      encoding.Tulip360P,\n./encode_accel.go:144:\t\t\t\tParams:      encoding.Tulip720P,\n./encode_accel.go:154:\t\t\t\tParams:      encoding.Crowd1080P,\n./encode_accel.go:164:\t\t\t\tParams:      encoding.Crowd2160P,\n./encode_accel.go:174:\t\t\t\tParams:      encoding.Bear192P,\n./encode_accel.go:184:\t\t\t\tParams:      encoding.Bear192P,\n./encode_accel.go:198:\t\t\t\tParams:      encoding.Crowd361P,\n./encode_accel.go:208:\t\t\t\tParams:      encoding.Tulip180P,\n./encode_accel.go:218:\t\t\t\tParams:      encoding.Bear192P,\n./encode_accel.go:228:\t\t\t\tParams:      encoding.Tulip360P,\n./encode_accel.go:238:\t\t\t\tParams:      encoding.Tulip720P,\n./encode_accel.go:248:\t\t\t\tParams:      encoding.Crowd1080P,\n./encode_accel.go:258:\t\t\t\tParams:      encoding.Crowd2160P,\n./encode_accel.go:268:\t\t\t\tParams:      encoding.Crowd361P,\n\narc:\n../arc/video_encode_accel_perf.go:34:\t\t\t\tParams:      encoding.Crowd1080P,\n../arc/video_encode_accel.go:34:\t\t\t\tParams:      encoding.Bear192P,\n\n\nI just wanted to change the files as little as possible to ease the review\nand in the often-quoted-to-me philosophy of having very small CLs...",
+      "parentUuid": "ab067561_4398cf50",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "737e1f10_0f0fd077",
         "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f580816d_96a69e97",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-07T15:28:15Z",
+      "side": 1,
+      "message": "Hmm I could do it but then the callsites would change like e.g.\nencoding.TestOptions to encoding.testing.TestOptions and then I\u0027d\nneed to rename to a better encoding.testing.Options, which would \ncause an even larger ripple of line substitutions. If you don\u0027t mind\nI\u0027d rather do that in a follow up CL, but happy to leave a TODO(bug)\nhere, WDYT?",
+      "parentUuid": "737e1f10_0f0fd077",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
