@@ -20,19 +20,22 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func init() {
-	dataFiles := []string{crostini.ImageArtifact}
-	for _, job := range fioJobs {
-		dataFiles = append(dataFiles, job.fileName)
-	}
+var fioFiles []string
 
+func init() {
+	for _, job := range fioJobs {
+		fioFiles = append(fioFiles, job.fileName)
+	}
+}
+
+func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DiskIOPerf,
 		Desc:         "Tests Crostini Disk IO Performance",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
-		Data:         dataFiles,
+		Data:         append([]string{crostini.ImageArtifact}, fioFiles...),
 		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
