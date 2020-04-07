@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab067561_4398cf50",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_cases.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-07T07:38:34Z",
+      "side": 1,
+      "message": "Are all these test cases used by all involved tests? Does it make sense to separate the test cases between ARC/video?",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "737e1f10_0f0fd077",
+        "filename": "src/chromiumos/tast/local/media/encoding/test_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-07T07:38:34Z",
+      "side": 1,
+      "message": "Perhaps move this and test_cases to a testing package inside encoding.",
+      "revId": "0fceee6d798e0221137200aa83bbb28bc8119342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
