@@ -118,7 +118,7 @@ func getDeviceIdentity(ctx context.Context) (string, error) {
 
 // buildCommands returns the shell quoted command lines rom the JSON input file for the
 // device to be tested.
-func buildCommands(ctx context.Context, cmdPath string, deviceFilter string) ([]string, error) {
+func buildCommands(ctx context.Context, cmdPath, deviceFilter string) ([]string, error) {
 	// JSON struct for each command to run.
 	commandRecs := struct {
 		ChromeOS struct {

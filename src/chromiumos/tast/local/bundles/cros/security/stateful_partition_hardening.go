@@ -30,7 +30,7 @@ func init() {
 }
 
 func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
-	generateTempFilename := func(parent string, fileType string) string {
+	generateTempFilename := func(parent, fileType string) string {
 		template := fmt.Sprintf("tast.security.StatefulPartitionHardening.%v.", fileType)
 		tempFile, err := ioutil.TempFile(parent, template)
 		if err != nil {

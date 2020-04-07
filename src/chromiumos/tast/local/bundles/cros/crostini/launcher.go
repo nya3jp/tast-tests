@@ -302,7 +302,7 @@ func Launcher(ctx context.Context, s *testing.State) {
 
 // launchAppAndMeasureWindowSize is a helper function that sets the app "scaled" property, launches the app and returns its window size.
 func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
-	ew *input.KeyboardEventWriter, ownerID, appID string, windowName string, scaled bool) (coords.Size, error) {
+	ew *input.KeyboardEventWriter, ownerID, appID, windowName string, scaled bool) (coords.Size, error) {
 	s.Log("Setting application property 'scaled' to ", scaled)
 	if err := setAppScaled(ctx, tconn, appID, scaled); err != nil {
 		return coords.Size{}, err

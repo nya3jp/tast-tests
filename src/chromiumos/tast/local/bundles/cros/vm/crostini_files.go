@@ -250,7 +250,7 @@ func verifyFileInContainer(ctx context.Context, s *testing.State, ownerID, path,
 	}
 }
 
-func verifyFileNotInContainer(ctx context.Context, s *testing.State, ownerID string, path string) {
+func verifyFileNotInContainer(ctx context.Context, s *testing.State, ownerID, path string) {
 	cmd := vm.DefaultContainerCommand(ctx, ownerID, "sh", "-c", "[ -f "+path+" ]")
 	if err := cmd.Run(); err == nil {
 		s.Errorf("File %v unexpectedly exists", path)
