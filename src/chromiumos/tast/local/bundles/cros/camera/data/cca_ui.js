@@ -17,6 +17,7 @@ function ccaImport(path) {
 const state = await ccaImport('state.js');
 const {DeviceOperator} = await ccaImport('mojo/device_operator.js');
 const {ChromeHelper} = await ccaImport('mojo/chrome_helper.js');
+const {Facing} = await ccaImport('type.js');
 
 /**
  * @typedef {chrome.app.window.AppWindow} AppWindow
