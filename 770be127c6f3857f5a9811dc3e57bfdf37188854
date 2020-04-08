@@ -46,6 +46,30 @@
       "revId": "770be127c6f3857f5a9811dc3e57bfdf37188854",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af8d017_8fb2a8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-08T16:51:16Z",
+      "side": 1,
+      "message": "Thanks for the pointer. Maybe we could have some comment in dep.go [1] or the hwdep doc [2] to make it easier to find (?) Those are the first two sources I try to find the definition. (The third is other usages in Tast and the 4th is the design doc of hwdep).\n\n[1] http://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/hwdep/dep.go?l\u003d97\u0026rcl\u003d9e385cf6dfff7157abb74ddc7baa9c8880dd9a76\n[2] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#hardware-dependencies",
+      "parentUuid": "3ca9f7ce_097902d9",
+      "range": {
+        "startLine": 48,
+        "startChar": 36,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "770be127c6f3857f5a9811dc3e57bfdf37188854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
