@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "452be012_91edbcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-08T16:10:44Z",
+      "side": 1,
+      "message": "nit: getprop",
+      "range": {
+        "startLine": 177,
+        "startChar": 53,
+        "endLine": 177,
+        "endChar": 61
+      },
+      "revId": "7d3d32b064ea32f518d045639c54254db35715e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e4d6a8_732cf0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-08T16:10:44Z",
+      "side": 1,
+      "message": "nit: s.Error() to report the BuildProperty error at L183.",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 10
+      },
+      "revId": "7d3d32b064ea32f518d045639c54254db35715e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
