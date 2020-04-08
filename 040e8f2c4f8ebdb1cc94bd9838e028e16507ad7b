@@ -22,6 +22,30 @@
       "revId": "040e8f2c4f8ebdb1cc94bd9838e028e16507ad7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3bd0b1_b4e81c26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T16:37:57Z",
+      "side": 1,
+      "message": "sorry, the name of the test is example.Touch but it seems that multitouch is not working ATM 😞\n\noptional: add an example test that shows how to use the new Touchpad API",
+      "parentUuid": "6bcb59a2_f6c707d4",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "040e8f2c4f8ebdb1cc94bd9838e028e16507ad7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
