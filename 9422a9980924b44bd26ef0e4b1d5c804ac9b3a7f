@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e75e1d2b_bcb2306f",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-04-08T02:40:11Z",
+      "side": 1,
+      "message": "If we\u0027re trying to test a specific resolution but it\u0027s not available, would it be better to just fail instead of falling back to the largest resolution?",
+      "range": {
+        "startLine": 110,
+        "startChar": 47,
+        "endLine": 110,
+        "endChar": 65
+      },
+      "revId": "9422a9980924b44bd26ef0e4b1d5c804ac9b3a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faae63e3_85bfca78",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-04-08T02:40:11Z",
+      "side": 1,
+      "message": "mSnapshotSize doesn\u0027t look to be used outside of this function, so just leave it as a local variable.",
+      "range": {
+        "startLine": 262,
+        "startChar": 12,
+        "endLine": 262,
+        "endChar": 25
+      },
+      "revId": "9422a9980924b44bd26ef0e4b1d5c804ac9b3a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
