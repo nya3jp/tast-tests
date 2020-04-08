@@ -305,6 +305,30 @@
       "revId": "73307dcf929958295409ffc5ff429f39662a7944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9aab182_e3df3662",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-08T04:29:54Z",
+      "side": 1,
+      "message": "My reasoning for this is that the other methods that start with New are not methods of Rect, whereas this is a method of Rect, so you can distinguish between whether you need to call it on a rect or not. But I don\u0027t really mind in either case.\n\nAbe-san, wdyt?",
+      "parentUuid": "a823ff77_7a56ab66",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
