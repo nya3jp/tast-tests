@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a4f20fa_ca945f80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-08T18:07:56Z",
+      "side": 1,
+      "message": "Are you sure we want to isolate these particular hwdep boards in group:wificell? For some of the problems (e.g., flaky hardware; bad RF environment causing firmware issues), we would hold the WiFi lab to a higher bar.\n\nRF: in the WiFi lab, we have shield boxes, so there should be fewer unexpected calibration issues.\nFlaky hardware: this is a high-touch lab, and if devices have bad WiFi modules or other similar hardware issues, we want to get lab techs to help us address these issues.\n\nAdditionally, if we can\u0027t even detect the WiFi device at all (i.e., we can\u0027t pass this test), then there\u0027s no point in having such hardware in the WiFi lab at all.\n\nAll that\u0027s to say: I don\u0027t think we should carry these board exceptions here.\n\nWe *might* want to stick \u0027wificell_unstable\u0027 in at line 33 for a short time, while we make sure the Tast/Autotest plumbing is working right. But after that, I don\u0027t see a reason to keep this test in wificell_unstable.",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "0753182853185374425329ce58ee7a0e7f73d4cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
