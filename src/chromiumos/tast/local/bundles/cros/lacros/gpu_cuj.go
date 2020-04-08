@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -358,9 +359,19 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 	}
 	sort.Strings(keys)
 
+	rapl, err := power.NewRAPLSnapshot()
+	if err != nil {
+		return errors.Wrap(err, "failed to get RAPL snapshot")
+	}
+
 	histograms, err := metrics.Run(ctx, tconn, perfFn, keys...)
 	if err != nil {
 		return errors.Wrap(err, "failed to get histograms")
+	}
+
+	raplv, err := rapl.DiffWithCurrentRAPL()
+	if err != nil {
+		return errors.Wrap(err, "failed to compute RAPL diffs")
 	}
 
 	for _, h := range histograms {
@@ -384,6 +395,26 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 			}, mean)
 		}
 	}
+
+	totalPower := raplv.Package0 + raplv.Psys
+	nongpuPower := totalPower - raplv.Uncore
+	testing.ContextLogf(ctx, "Total power: %.2f; GPU power: %.2f; Non-GPU power: %.2f",
+		totalPower, raplv.Uncore, nongpuPower)
+	pv.Set(perf.Metric{
+		Name:      fmt.Sprintf("total_power.%s", testType),
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+	}, raplv.Package0+raplv.Psys)
+	pv.Set(perf.Metric{
+		Name:      fmt.Sprintf("nongpu_power.%s", testType),
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+	}, raplv.Package0+raplv.Psys-raplv.Uncore)
+	pv.Set(perf.Metric{
+		Name:      fmt.Sprintf("gpu_power.%s", testType),
+		Unit:      "joules",
+		Direction: perf.SmallerIsBetter,
+	}, raplv.Uncore)
 	return nil
 }
 
