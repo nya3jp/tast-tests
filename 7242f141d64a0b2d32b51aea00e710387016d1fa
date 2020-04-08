@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "76fc782d_5b61b8d4",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-08T11:59:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7d0697_6d61a7a3",
+      "range": {
+        "startLine": 86,
+        "startChar": 51,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "7242f141d64a0b2d32b51aea00e710387016d1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "601c6525_6ce912f8",
         "filename": "src/chromiumos/tast/local/input/device.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-08T09:53:39Z",
       "side": 1,
       "message": "I\u0027m not sure whether a track pad device on all boards are supporting all of those BTN bits. However, it won\u0027t be a problem because virtual trackpad device will be created for tests, right?\n\nIf not all track pad on all devices matches these conditions, we may want to move this function into trackpad.go because it\u0027s used to decide whether a virtual trackpad device should be created or not.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "7242f141d64a0b2d32b51aea00e710387016d1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59476e16_5422e635",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-08T11:59:37Z",
+      "side": 1,
+      "message": "\u003e However, it won\u0027t be a problem because virtual trackpad device will be created for tests, right?\n\nYes, that is correct.\n\nIdeally these conditions should be aligned with https://source.chromium.org/chromium/chromium/src/+/master:ui/events/ozone/evdev/event_device_info.cc;l\u003d489;drc\u003d7bf6998a6433c26266180353473b5153ffab0517 By doing so, we can guarantee that we can always detect trackpads.\n\nAs the condition is complex enough and other types of devices have the same potential issue as well, let me do that in a follow-up CL.\n\nI\u0027d prefer not to embed this in trackpad.go as we don\u0027t want to have duplicate and slightly different definitions of trackpads here and there in Tast.",
+      "parentUuid": "601c6525_6ce912f8",
       "range": {
         "startLine": 92,
         "startChar": 2,
