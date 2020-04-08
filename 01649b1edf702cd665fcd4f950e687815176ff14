@@ -34,6 +34,24 @@
       "revId": "01649b1edf702cd665fcd4f950e687815176ff14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d611dedf_4edb318c",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-08T06:54:49Z",
+      "side": 1,
+      "message": "If there is no way for session_manager to be misconfigured by another test then it\u0027s fine.\n\nYou can also pass the NoLogin option which will remove most of the operations performed by Chrome::New and should remove flakes.",
+      "parentUuid": "1d5b0cb7_55714da4",
+      "revId": "01649b1edf702cd665fcd4f950e687815176ff14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
