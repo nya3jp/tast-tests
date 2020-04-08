@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fbb4fd_585789a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T22:26:27Z",
+      "side": 1,
+      "message": "Alternatively, you could pass the app to cleanup function and call Close within it.",
+      "revId": "3f190d04427325a0bc2c5f57b8da4b7548e6f1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0b62c0_f4c398a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T22:26:27Z",
+      "side": 1,
+      "message": "This means that content of textfield isn\u0027t checked after unminimizing the activity. Is this intended?",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 468,
+        "endChar": 12
+      },
+      "revId": "3f190d04427325a0bc2c5f57b8da4b7548e6f1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
