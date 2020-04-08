@@ -242,7 +242,8 @@ func launchIntent(ctx context.Context, s *testing.State, cr *chrome.Chrome, a *a
 	})
 }
 
-func cleanup(ctx context.Context, a *arc.ARC) {
+func cleanup(ctx context.Context, a *arc.ARC, app *cca.App) {
+	app.Close(ctx)
 	a.Command(ctx, "am", "force-stop", testAppPkg).Run(testexec.DumpLogOnError)
 }
 
@@ -252,8 +253,7 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err != nil {
 		return err
 	}
-	defer app.Close(ctx)
-	defer cleanup(ctx, a)
+	defer cleanup(ctx, a, app)
 
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
@@ -427,8 +427,7 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA by intent")
 	}
-	defer intentApp.Close(ctx)
-	defer cleanup(ctx, a)
+	defer cleanup(ctx, a, intentApp)
 
 	// Check if the regular CCA is suspeneded.
 	if err := regularApp.WaitForState(ctx, "suspend", true); err != nil {
@@ -449,16 +448,17 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 }
 
 func checkTestAppResult(ctx context.Context, a *arc.ARC, uiDevice *ui.Device, shouldFinished bool) error {
-	// TODO(b/148995660): These lines are added since the test app sometimes will be minimized after
-	// launching CCA. Remove these lines once the issue is resolved.
-	args := []string{"start", "--activity-brought-to-front", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity)}
-	if _, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError); err != nil {
-		return err
-	}
-
 	textField := uiDevice.Object(ui.ID(testAppTextFieldID))
-	if err := textField.WaitForExists(ctx, 10*time.Second); err != nil {
-		return err
+	if err := textField.WaitForExists(ctx, 5*time.Second); err != nil {
+		// TODO(b/148995660): These lines are added since the test app sometimes will be minimized after
+		// launching CCA. Remove these lines once the issue is resolved.
+		args := []string{"start", "--activity-brought-to-front", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity)}
+		if _, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError); err != nil {
+			return err
+		}
+		if err := textField.WaitForExists(ctx, 5*time.Second); err != nil {
+			return err
+		}
 	}
 
 	text, err := textField.GetText(ctx)
