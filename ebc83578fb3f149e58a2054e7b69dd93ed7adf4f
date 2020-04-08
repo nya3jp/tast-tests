@@ -16,6 +16,24 @@
       "revId": "ebc83578fb3f149e58a2054e7b69dd93ed7adf4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246bc754_fc790646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2020-04-08T08:16:55Z",
+      "side": 1,
+      "message": "It\u0027s intended.\n\nIt seems that ro.product.device, which is based on /system/build.prop, is sometimes empty. I think it\u0027s guranteeed that it exists. I want to split the problem build.prop lacks ro.product.device or the other bugs.\n\nError details; https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1039512#c13",
+      "parentUuid": "8ab3ddbf_58da0096",
+      "revId": "ebc83578fb3f149e58a2054e7b69dd93ed7adf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
