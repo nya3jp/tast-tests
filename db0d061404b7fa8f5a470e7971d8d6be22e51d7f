@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "905d25cf_dacf9213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia/get_display_media.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-08T15:55:35Z",
+      "side": 1,
+      "message": "We need it in l.31 and 33.",
+      "parentUuid": "d279eca5_5d24c9b8",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "db0d061404b7fa8f5a470e7971d8d6be22e51d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49b47896_44e20b33",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia/get_display_media.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "db0d061404b7fa8f5a470e7971d8d6be22e51d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff94f65_19f2c17c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia/get_display_media.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-08T15:55:35Z",
+      "side": 1,
+      "message": "Simplified, hopefully.",
+      "parentUuid": "49b47896_44e20b33",
+      "range": {
+        "startLine": 44,
+        "startChar": 46,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "db0d061404b7fa8f5a470e7971d8d6be22e51d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
