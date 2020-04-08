@@ -153,44 +153,22 @@ func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 			EV_KEY: makeBigInt([]uint64{0x400, 0, 0, 0, 0, 0}), // BTN_TOUCH
 			EV_ABS: big.NewInt(absSupportedAxes),
 			EV_MSC: big.NewInt(1 << MSC_TIMESTAMP),
-		}, nil)
+		}, map[EventCode]Axis{
+			ABS_X:              Axis{axisMaxX, 0, 0, 0, axisCoordResolution},
+			ABS_Y:              Axis{axisMaxY, 0, 0, 0, axisCoordResolution},
+			ABS_PRESSURE:       Axis{axisMaxPressure, 0, 0, 0, 0},
+			ABS_MT_SLOT:        Axis{int32(axisMaxTouchSlot), 0, 0, 0, 0},
+			ABS_MT_TOUCH_MAJOR: Axis{255, 0, 0, 0, 1},
+			ABS_MT_TOUCH_MINOR: Axis{255, 0, 0, 0, 1},
+			ABS_MT_ORIENTATION: Axis{1, 0, 0, 0, 0},
+			ABS_MT_POSITION_X:  Axis{axisMaxX, 0, 0, 0, axisCoordResolution},
+			ABS_MT_POSITION_Y:  Axis{axisMaxY, 0, 0, 0, axisCoordResolution},
+			ABS_MT_TOOL_TYPE:   Axis{2, 0, 0, 0, 0},
+			ABS_MT_TRACKING_ID: Axis{axisMaxTracking, 0, 0, 0, 0},
+			ABS_MT_PRESSURE:    Axis{axisMaxPressure, 0, 0, 0, 0},
+		})
 	if err != nil {
 		return nil, err
-	}
-
-	f, err := os.Open(dev)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	fd := int(f.Fd())
-
-	for _, entry := range []struct {
-		ec   EventCode
-		info absInfo
-	}{
-		{ABS_X, absInfo{0, 0, axisMaxX, 0, 0, axisCoordResolution}},
-		{ABS_Y, absInfo{0, 0, axisMaxY, 0, 0, axisCoordResolution}},
-		{ABS_PRESSURE, absInfo{0, 0, axisMaxPressure, 0, 0, 0}},
-		{ABS_MT_SLOT, absInfo{0, 0, uint32(axisMaxTouchSlot), 0, 0, 0}},
-		{ABS_MT_TOUCH_MAJOR, absInfo{0, 0, 255, 0, 0, 1}},
-		{ABS_MT_TOUCH_MINOR, absInfo{0, 0, 255, 0, 0, 1}},
-		{ABS_MT_ORIENTATION, absInfo{0, 0, 1, 0, 0, 0}},
-		{ABS_MT_POSITION_X, absInfo{0, 0, axisMaxX, 0, 0, axisCoordResolution}},
-		{ABS_MT_POSITION_Y, absInfo{0, 0, axisMaxY, 0, 0, axisCoordResolution}},
-		{ABS_MT_TOOL_TYPE, absInfo{0, 0, 2, 0, 0, 0}},
-		{ABS_MT_TRACKING_ID, absInfo{0, 0, axisMaxTracking, 0, 0, 0}},
-		{ABS_MT_PRESSURE, absInfo{0, 0, axisMaxPressure, 0, 0, 0}},
-	} {
-		if err := ioctl(fd, evIOCSAbs(uint(entry.ec)), uintptr(unsafe.Pointer(&entry.info))); err != nil {
-			if entry.ec == ABS_MT_SLOT {
-				// TODO(ricardoq): ABS_MT_SLOT fails, preventing multitouch support. Further research needed.
-				testing.ContextLogf(ctx, "Failed to set ABS_MT_SLOT to %+v. Multitouch disabled", entry.info)
-				axisMaxTouchSlot = 0
-			} else {
-				return nil, errors.Wrapf(err, "failed to set ABS value %d to %+v", entry.ec, entry.info)
-			}
-		}
 	}
 
 	device, err := Device(ctx, dev)
