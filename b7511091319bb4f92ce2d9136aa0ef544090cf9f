@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ee8784b_fd228016",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-08T17:35:41Z",
+      "side": 1,
+      "message": "Should be named ServoProxy",
+      "revId": "b7511091319bb4f92ce2d9136aa0ef544090cf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c30c205_ee78fda0",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-08T17:35:41Z",
+      "side": 1,
+      "message": "ClientUtils, DutUtils (or something like that) may be a better name.",
+      "revId": "b7511091319bb4f92ce2d9136aa0ef544090cf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d711a6a8_02dd3909",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-08T17:35:41Z",
+      "side": 1,
+      "message": "Context copied over from 2138144 to continue discussion here.\n\nOriginal comment\n\"\nThis is not great. Instead of having these Add* methods, would having Create* methods be better?  Then tests can then do rpc :\u003d h.CreateRPC(...)  config :\u003d h.CreateConfig(..., rpc, ...).  Or even helper.CreateRPC(dut, ...), etc.\n\nAlternatively, can roll some of these dependencies into the constructor(s): NewHelperWithConfig, NewHelperWithRPC, etc...\n\nI\u0027m in favor of the 1st approach, less stuff to maintain in the helper struct.\n\"\n\nOriginal response\n\"\nThis comment relates more directly to https://crrev.com/c/2130763/5, which is where the Add* methods were defined.\n\nMy intention with creating the Add* methods is so that the Helper can contain the RPC, and the configs, and other structures that are frequently used such as Servo and DUT. The reason is that a lot of firmware methods will require as arguments (context, servo, dut, config, rpc_utils) as boilerplate before even getting to the functional arguments. So, by maintaining all this in the helper struct, I hope to reduce boilerplate and make functions easier to read and make tests easier to write.\n\n\"\n\nFor reducing boilerplate code, have you considered splitting up the helpers to their respective go files?  For example in boot_mode.go, have a CheckBootModeHelper object that stores the dependencies it needs.",
+      "revId": "b7511091319bb4f92ce2d9136aa0ef544090cf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f010723_7e895874",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-08T17:35:41Z",
+      "side": 1,
+      "message": "made redundant by rpcClient field.",
+      "revId": "b7511091319bb4f92ce2d9136aa0ef544090cf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb44363_431ef96c",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-08T17:35:41Z",
+      "side": 1,
+      "message": "made redundant by Servo field.",
+      "revId": "b7511091319bb4f92ce2d9136aa0ef544090cf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
