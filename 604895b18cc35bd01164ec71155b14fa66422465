@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fe4756_32d22b56",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "maybe 1 \u003c\u003c iota? it will looks more like a bit mask.",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9ef3af_e75d2cc3",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "I guess it is better to have a comment at least for this value as it might not be very obvious that the \u00272\u0027 in wpa.ModePure2 is for WPA2.",
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "739389be_87fed44b",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "maybe 1 \u003c\u003c iota?",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8bf2bb6_d5755ab2",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "need to specify the unit of period (in seconds). same below.",
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b8268a_557357f2",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "Hmm... I think you want to keep consistency in Option function signature (i.e. operating on *Factory). But seeing the long list of optional fields in both Factory and Config, I wonder if it is simpler to allow wpa.Option to be func(*wpa.Config) and apply the options on every new default Config in Gen. Or maybe keep a blueprint copy of Config in Factory. (the fields is the same as Factory and base.Config is struct{}, so no memory wasted)",
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae45e66_9588045f",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "I think the string is only for shill? If so, we can have the constant defined in shill.\n\n(Or maybe include all securities in https://cs.corp.google.com/chromeos_public/src/platform2/system_api/dbus/shill/dbus-constants.h?l\u003d342 in the foundation cl)",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061f8da6_940544a0",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "maybe let hex.DecodeString checks this for you?",
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a24f4d46_7c78c8f1",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T07:08:43Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\n\"Don\u0027t name result parameters just to avoid declaring a var inside the function.\"\n\nmaybe use strings.Builder?",
+      "range": {
+        "startLine": 288,
+        "startChar": 44,
+        "endLine": 288,
+        "endChar": 47
+      },
+      "revId": "604895b18cc35bd01164ec71155b14fa66422465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
