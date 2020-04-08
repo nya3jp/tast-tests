@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e21ba73_70505430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_ec_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-08T06:56:26Z",
+      "side": 0,
+      "message": "Keep the timeout, but make it more generous (like 1 minute) or set a deadline for WairForMessage.",
+      "revId": "2fc50de785c6bb9339cd4255942efc6be7ec4704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
