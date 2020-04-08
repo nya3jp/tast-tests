@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bb9763ca_d231a4a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_compat.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T16:47:03Z",
+      "side": 1,
+      "message": "can you move this as a method of touchpad or multi-touch writer?\nAt least, it should share the same \"freq\" with Swipe?",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "ab6da7b7a6709b3feba1161503ac4a9560f17eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2930213_178f89b7",
         "filename": "src/chromiumos/tast/local/input/device.go",
         "patchSetId": 6
@@ -87,6 +110,29 @@
         "startChar": 4,
         "endLine": 37,
         "endChar": 84
+      },
+      "revId": "ab6da7b7a6709b3feba1161503ac4a9560f17eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "948ba506_1b46451a",
+        "filename": "src/chromiumos/tast/local/input/trackpad.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T16:47:03Z",
+      "side": 1,
+      "message": "out-of-curiosity: did you verify that works?  like testing with some VMs (like betty-pi-arc)?",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 20
       },
       "revId": "ab6da7b7a6709b3feba1161503ac4a9560f17eec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
