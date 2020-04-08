@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9667cba_623b83db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-08T09:10:40Z",
+      "side": 1,
+      "message": "rjkroege@: What do you reckon we should add about the value of this test over occluding using the same type of window?\n\nFYI this test type corresponds to move-a and move-d in your document.",
+      "range": {
+        "startLine": 45,
+        "startChar": 43,
+        "endLine": 45,
+        "endChar": 92
+      },
+      "revId": "a01ddcc97fa8f70113d473ca54c6fd07d34611e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
