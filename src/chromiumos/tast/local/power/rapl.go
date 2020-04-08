@@ -234,5 +234,5 @@ func readRAPLEnergy(filepath string) (float64, error) {
 	// RAPL reports energy in micro joules. Micro joules gives us too much resolution,
 	// and can make it a bit difficult to read. We use joules instead, gaining readability
 	// the cost of losing some precision that we don't need.
-	return float64(uj) / 1000., nil
+	return float64(uj) / 1000000., nil
 }
