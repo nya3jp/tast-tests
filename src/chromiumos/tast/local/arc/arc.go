@@ -234,7 +234,6 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 // At least one of them must be declared to call New.
 var androidDeps = []string{
 	"android_vm",
-	"android_vm_p",
 	"android_vm_r",
 	"android_p",
 	"arc",
