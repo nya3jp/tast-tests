@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a2616c4_f28ece42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "huge nit: Dp -\u003e DP ?\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e85abadd_6a19631a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "optional, huge nit: while you are here, change \":\" with \".\" ?",
+      "range": {
+        "startLine": 381,
+        "startChar": 19,
+        "endLine": 381,
+        "endChar": 20
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7938f328_c8e70006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "huge nit: replace \":\" with \".\" ?\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 409,
+        "startChar": 20,
+        "endLine": 409,
+        "endChar": 21
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a7d9f6_32e9cc25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "nit: to distinguish errors:\n\"failed to restore non-blank window\"",
+      "range": {
+        "startLine": 411,
+        "startChar": 28,
+        "endLine": 411,
+        "endChar": 52
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e2e036_bf8278cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "ditto above: \"failed to restore blank window\"",
+      "range": {
+        "startLine": 415,
+        "startChar": 28,
+        "endLine": 415,
+        "endChar": 52
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a767726b_4caf4a6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "huge nit: end sentences with period (.)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 418,
+        "startChar": 61,
+        "endLine": 418,
+        "endChar": 62
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8eda9de_e45a69d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "nit: any reason why height is truncated? perhaps adding a constant with a descriptive name?",
+      "range": {
+        "startLine": 420,
+        "startChar": 72,
+        "endLine": 420,
+        "endChar": 75
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e4b9a8_ba957b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "nit: ditto above... distinguish this error message from the next one.\nperhaps: \"failed to set initial bounds to non-blank window\" ? (feel free to choose a better one... your english is much better than mine :)",
+      "range": {
+        "startLine": 422,
+        "startChar": 28,
+        "endLine": 422,
+        "endChar": 63
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90b8c72c_489897fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "nit: ditto above",
+      "range": {
+        "startLine": 428,
+        "startChar": 28,
+        "endLine": 428,
+        "endChar": 63
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7491a09b_afe5279e",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:22:33Z",
+      "side": 1,
+      "message": "(ditto comment from previous CL... my feeling is that it should start with \"New\", but deferring to hidehiko@)",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "837ba0da396a73a40e8de6791b58fe847978c1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
