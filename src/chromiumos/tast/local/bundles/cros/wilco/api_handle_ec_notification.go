@@ -49,15 +49,16 @@ func APIHandleECNotification(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to trigger EC event: ", err)
 	}
 
-	s.Log("Waiting for EC Notification")
-	msg := dtcpb.HandleEcNotificationRequest{}
-	if err := rec.WaitForMessage(ctx, &msg); err != nil {
-		s.Fatal("Unable to receive EC response: ", err)
-	}
-	s.Log("Received EC Notification")
+	for {
+		s.Log("Waiting for EC Notification")
+		msg := dtcpb.HandleEcNotificationRequest{}
+		if err := rec.WaitForMessage(ctx, &msg); err != nil {
+			s.Fatal("Unable to receive EC response: ", err)
+		}
 
-	if msg.Type != expectedRequestType {
-		s.Fatalf("EC Notification Request is the wrong type. Got %v, expected %v",
-			msg.Type, expectedRequestType)
+		if msg.Type == expectedRequestType {
+			break
+		}
+		s.Logf("Received unexpected EC Notification: got %v; want %v. Continuing", msg.Type, expectedRequestType)
 	}
 }
