@@ -297,6 +297,30 @@
     },
     {
       "key": {
+        "uuid": "362b4773_c3cb14ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-08T00:11:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31bd038e_e339fa1f",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d46aa28c_c01d072a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9
@@ -389,6 +413,30 @@
       "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3cc262b_91c1255b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-08T00:11:51Z",
+      "side": 1,
+      "message": "Done. Do you want some other way to put the \u0027space\u0027 in the file name ? Works like this.",
+      "parentUuid": "d5fbf270_041dfa54",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -733,6 +781,30 @@
     },
     {
       "key": {
+        "uuid": "d3b736b2_2b926954",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-08T00:11:51Z",
+      "side": 1,
+      "message": "Yes, changes failed to upload somehow. Made all changes again.",
+      "parentUuid": "b06a8993_6258a851",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 56
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81e5ade4_e0cfd7ee",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
         "patchSetId": 9
@@ -872,6 +944,30 @@
       "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b9f2be_eb62a795",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-08T00:11:51Z",
+      "side": 1,
+      "message": "Using the original setup",
+      "parentUuid": "268566aa_5039c003",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
