@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df7ac1c6_566ac194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:27:05Z",
+      "side": 1,
+      "message": "huge nit: RAPL",
+      "range": {
+        "startLine": 358,
+        "startChar": 41,
+        "endLine": 358,
+        "endChar": 45
+      },
+      "revId": "cb27f925ae172d2f391b3cfc2311e2dab954c1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98471691_e445ea52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T17:27:05Z",
+      "side": 1,
+      "message": "RAPL",
+      "range": {
+        "startLine": 368,
+        "startChar": 45,
+        "endLine": 368,
+        "endChar": 49
+      },
+      "revId": "cb27f925ae172d2f391b3cfc2311e2dab954c1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
