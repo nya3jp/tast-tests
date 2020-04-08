@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c816f730_a07e170b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-08T16:02:04Z",
+      "side": 1,
+      "message": "btw I spent sometime to figure out what\u0027s \"platform\" means here, and found the definition by peeking at the proto [1]. Is it documented somewhere?\n\n[1] http://cs/chromeos_public/src/platform/tast/proto/infra/device/platform_id.proto?l\u003d13\u0026rcl\u003d44fd04fc69217f17d12b90328bdee9c70507e0fe",
+      "range": {
+        "startLine": 48,
+        "startChar": 36,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "770be127c6f3857f5a9811dc3e57bfdf37188854",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
