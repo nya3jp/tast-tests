@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97cfe5f0_8761af6d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-08T19:29:03Z",
+      "side": 1,
+      "message": "if there\u0027s no other logical grouping, maybe alphabetical? so, line 26?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "464403f3e90428c119230ea49f2ba124d8993f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd53f0e_97ddf3ec",
+        "filename": "src/chromiumos/tast/local/shill/profile.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-08T19:29:03Z",
+      "side": 1,
+      "message": "you don\u0027t have to do it in this CL, but food for thought: there are several tests that hard-code this now. Might be worth factoring those out.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "464403f3e90428c119230ea49f2ba124d8993f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
