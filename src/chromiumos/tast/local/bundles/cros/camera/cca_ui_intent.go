@@ -252,8 +252,8 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err != nil {
 		return err
 	}
-	defer app.Close(ctx)
 	defer cleanup(ctx, a)
+	defer app.Close(ctx)
 
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
@@ -289,8 +289,13 @@ func checkIntentBehavior(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}
 
 	if options.TestBehavior.ShouldShowResultInApp {
-		shouldFinished := options.TestBehavior.ShouldReview && options.TestBehavior.ShouldConfirmAfterCapture
-		if err := checkTestAppResult(ctx, a, uiDevice, shouldFinished); err != nil {
+		var expectedAppResult string
+		if options.TestBehavior == closeApp {
+			expectedAppResult = resultCanceled
+		} else {
+			expectedAppResult = resultOK
+		}
+		if err := checkTestAppResult(ctx, a, uiDevice, expectedAppResult); err != nil {
 			return err
 		}
 	}
@@ -427,8 +432,8 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA by intent")
 	}
-	defer intentApp.Close(ctx)
 	defer cleanup(ctx, a)
+	defer intentApp.Close(ctx)
 
 	// Check if the regular CCA is suspeneded.
 	if err := regularApp.WaitForState(ctx, "suspend", true); err != nil {
@@ -448,17 +453,19 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 	return nil
 }
 
-func checkTestAppResult(ctx context.Context, a *arc.ARC, uiDevice *ui.Device, shouldFinished bool) error {
-	// TODO(b/148995660): These lines are added since the test app sometimes will be minimized after
-	// launching CCA. Remove these lines once the issue is resolved.
-	args := []string{"start", "--activity-brought-to-front", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity)}
-	if _, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError); err != nil {
-		return err
-	}
-
+func checkTestAppResult(ctx context.Context, a *arc.ARC, uiDevice *ui.Device, expectedAppResult string) error {
 	textField := uiDevice.Object(ui.ID(testAppTextFieldID))
-	if err := textField.WaitForExists(ctx, 10*time.Second); err != nil {
-		return err
+	if err := textField.WaitForExists(ctx, 5*time.Second); err != nil {
+		// TODO(b/148995660): These lines are added since the test app sometimes will be minimized after
+		// launching CCA. Remove these lines once the issue is resolved.
+		args := []string{"start", "--activity-brought-to-front", "-n", fmt.Sprintf("%s/%s", testAppPkg, testAppActivity)}
+		if _, err := a.Command(ctx, "am", args...).Output(testexec.DumpLogOnError); err != nil {
+			return err
+		}
+		if err := textField.WaitForExists(ctx, 5*time.Second); err != nil {
+			return err
+		}
+		return nil
 	}
 
 	text, err := textField.GetText(ctx)
@@ -466,14 +473,8 @@ func checkTestAppResult(ctx context.Context, a *arc.ARC, uiDevice *ui.Device, sh
 		return err
 	}
 
-	var expected string
-	if shouldFinished {
-		expected = resultOK
-	} else {
-		expected = resultCanceled
-	}
-	if text != expected {
-		return errors.Errorf("unexpected end state of the testing app: got: %q, want: %q", text, expected)
+	if text != expectedAppResult {
+		return errors.Errorf("unexpected end state of the testing app: got: %q, want: %q", text, expectedAppResult)
 	}
 	return nil
 }
