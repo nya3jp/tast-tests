@@ -50,9 +50,6 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 	defer rec.Stop(ctx)
 
 	waitForPowerEvent := func(ctx context.Context, expectedEvent dtcpb.HandlePowerNotificationRequest_PowerEvent) {
-		ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-		defer cancel()
-
 		for {
 			s.Log("Waiting for power event: ", expectedEvent)
 			msg := dtcpb.HandlePowerNotificationRequest{}
