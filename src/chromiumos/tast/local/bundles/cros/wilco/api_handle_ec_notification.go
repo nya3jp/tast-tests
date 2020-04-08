@@ -45,21 +45,24 @@ func APIHandleECNotification(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	if err := wilco.TriggerECEvent(); err != nil {
-		s.Fatal("Unable to trigger EC event: ", err)
-	}
-
-	for {
-		s.Log("Waiting for EC Notification")
-		msg := dtcpb.HandleEcNotificationRequest{}
-		if err := rec.WaitForMessage(ctx, &msg); err != nil {
-			s.Fatal("Unable to receive EC response: ", err)
+	// Repeat tests to make sure they're not influenced by system events.
+	for i := 0; i < 10; i++ {
+		if err := wilco.TriggerECEvent(); err != nil {
+			s.Fatal("Unable to trigger EC event: ", err)
 		}
 
-		if msg.Type == expectedRequestType {
-			s.Log("Received matched EC event")
-			break
+		for {
+			s.Log("Waiting for EC Notification")
+			msg := dtcpb.HandleEcNotificationRequest{}
+			if err := rec.WaitForMessage(ctx, &msg); err != nil {
+				s.Fatal("Unable to receive EC response: ", err)
+			}
+
+			if msg.Type == expectedRequestType {
+				s.Log("Received matched EC event")
+				break
+			}
+			s.Logf("Received unexpected EC Notification: got %v; want %v. Continuing", msg.Type, expectedRequestType)
 		}
-		s.Logf("Received unexpected EC Notification: got %v; want %v. Continuing", msg.Type, expectedRequestType)
 	}
 }
