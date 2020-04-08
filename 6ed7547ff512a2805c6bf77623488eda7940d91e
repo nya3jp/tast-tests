@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2e7eb21_9d4a3038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/lacros_binary.tar.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-08T16:20:53Z",
+      "side": 1,
+      "message": "4?",
+      "range": {
+        "startLine": 2,
+        "startChar": 81,
+        "endLine": 2,
+        "endChar": 82
+      },
+      "revId": "6ed7547ff512a2805c6bf77623488eda7940d91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
