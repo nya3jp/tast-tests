@@ -22,6 +22,30 @@
       "revId": "a01ddcc97fa8f70113d473ca54c6fd07d34611e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b099ab81_3daec549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000246
+      },
+      "writtenOn": "2020-04-08T14:46:59Z",
+      "side": 1,
+      "message": "I think these cases are different in the following way:\n\n* ash-chrome-window over lacros-window: the ash-chrome window doesn\u0027t need the wayland surface machinery and the additional IPCs\n* lacros-window over lacros-window tests wayland surface over wayland surface\n\nthe difference ought to (eventually) be instructive about exo overhead.",
+      "parentUuid": "e9667cba_623b83db",
+      "range": {
+        "startLine": 45,
+        "startChar": 43,
+        "endLine": 45,
+        "endChar": 92
+      },
+      "revId": "a01ddcc97fa8f70113d473ca54c6fd07d34611e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
