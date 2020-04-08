@@ -51,9 +51,6 @@ func APIRequestBluetoothDataNotification(ctx context.Context, s *testing.State) 
 			s.Fatal("Unable to request notification: ", err)
 		}
 
-		ctx, cancel = context.WithTimeout(ctx, 5*time.Second)
-		defer cancel()
-
 		s.Log("Waiting for bluetooth event")
 		msg := dtcpb.HandleBluetoothDataChangedRequest{}
 		if err := rec.WaitForMessage(ctx, &msg); err != nil {
