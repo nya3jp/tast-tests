@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ab3ddbf_58da0096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-08T06:46:17Z",
+      "side": 1,
+      "message": "Clar: does /system/build.prop is what you need here, instead of the result of getprop command?\nThe result of getprop command is constructed not only from /system/build.prop, but also ones under /vendor/, so some diff is expected and the code above is looking at the getprop command, instead.\n\nIf this is expected behavior, could you add comment the reason why the logging data is different from what you used in getBuildProp?",
+      "revId": "ebc83578fb3f149e58a2054e7b69dd93ed7adf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
