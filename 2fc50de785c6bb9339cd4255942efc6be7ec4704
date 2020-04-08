@@ -16,6 +16,24 @@
       "revId": "2fc50de785c6bb9339cd4255942efc6be7ec4704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9a7e344_6d8d27bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_ec_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-08T09:18:02Z",
+      "side": 0,
+      "message": "IIUC, default Tast timeout is ~90 secounds. All these timeouts looks too artificial especially it they less than default timeout.\n\nUnfortunately, looks like there is no Tast recommendation about timeouts, so it\u0027s still open question.\n\nIn case if test is really flaky and slow down CQ, I\u0027ll vote to limit it\u0027s timeout.\n\nWDYT?",
+      "parentUuid": "9e21ba73_70505430",
+      "revId": "2fc50de785c6bb9339cd4255942efc6be7ec4704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
