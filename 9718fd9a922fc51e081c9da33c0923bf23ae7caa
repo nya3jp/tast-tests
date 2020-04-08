@@ -164,6 +164,30 @@
       "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74f29128_8c90008f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-08T20:54:21Z",
+      "side": 1,
+      "message": "Thank you! Using that approach, I found that the class name is DeskMiniView instead of ash/DeskMiniView. Done.",
+      "parentUuid": "7c228e69_1b45da30",
+      "range": {
+        "startLine": 71,
+        "startChar": 60,
+        "endLine": 71,
+        "endChar": 81
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
