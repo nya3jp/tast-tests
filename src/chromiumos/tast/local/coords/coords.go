@@ -102,6 +102,11 @@ func (r Rect) WithInset(dw, dh int) Rect {
 	return NewRect(r.Left+dw2/2, r.Top+dh2/2, r.Width-dw2, r.Height-dh2)
 }
 
+// WithOffset returns a new Rect offset by the given amounts.
+func (r Rect) WithOffset(dl, dt int) Rect {
+	return NewRect(r.Left+dl, r.Top+dt, r.Width, r.Height)
+}
+
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
 func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
 	return Rect{

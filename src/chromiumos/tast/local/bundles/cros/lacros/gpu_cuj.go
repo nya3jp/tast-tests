@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"math"
 	"sort"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -31,13 +32,15 @@ type testType string
 type chromeType string
 
 const (
-	testTypeMaximized testType = "maximized"
-	testTypeThreeDot  testType = "threedot"
-	testTypeResize    testType = "resize"
+	testTypeMaximized     testType = "maximized"
+	testTypeThreeDot      testType = "threedot"
+	testTypeResize        testType = "resize"
+	testTypeMoveOcclusion testType = "moveocclusion"
 
 	testDuration time.Duration = 20 * time.Second
-	dragInsetDp  int           = 5
-	insetSlopDp  int           = 25
+	// dragMoveOffsetDP indicates the offset from the top-left of a Chrome window to drag to ensure we can drag move it.
+	dragMoveOffsetDP int = 5
+	insetSlopDP      int = 40
 
 	chromeTypeCros   = "cros"
 	chromeTypeLacros = "lacros"
@@ -78,6 +81,20 @@ func init() {
 			},
 			Pre: launcher.StartedByData(),
 		}, {
+			Name: "aquarium_moveocclusion",
+			Val: gpuCUJTestParams{
+				url:      "https://webglsamples.org/aquarium/aquarium.html",
+				testType: testTypeMoveOcclusion,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "aquarium_moveocclusion_composited",
+			Val: gpuCUJTestParams{
+				url:      "https://webglsamples.org/aquarium/aquarium.html",
+				testType: testTypeMoveOcclusion,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
+		}, {
 			Name: "aquarium",
 			Val: gpuCUJTestParams{
 				url:      "https://webglsamples.org/aquarium/aquarium.html",
@@ -105,6 +122,20 @@ func init() {
 				testType: testTypeResize,
 			},
 			Pre: launcher.StartedByData(),
+		}, {
+			Name: "poster_moveocclusion",
+			Val: gpuCUJTestParams{
+				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+				testType: testTypeMoveOcclusion,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "poster_moveocclusion_composited",
+			Val: gpuCUJTestParams{
+				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+				testType: testTypeMoveOcclusion,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
 		}, {
 			Name: "poster",
 			Val: gpuCUJTestParams{
@@ -202,9 +233,15 @@ func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string)
 	return nil
 }
 
-func findFirstWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
+func findFirstBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
 	return ash.FindWindow(ctx, ctconn, func(w *ash.Window) bool {
-		return true
+		return strings.Contains(w.Title, "about:blank")
+	})
+}
+
+func findFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
+	return ash.FindWindow(ctx, ctconn, func(w *ash.Window) bool {
+		return !strings.Contains(w.Title, "about:blank")
 	})
 }
 
@@ -330,7 +367,12 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 		return errors.Wrap(err, "failed to connect to test API")
 	}
 
-	w, err := findFirstWindow(ctx, ctconn)
+	w, err := findFirstNonBlankWindow(ctx, ctconn)
+	if err != nil {
+		return err
+	}
+
+	info, err := display.GetInternalInfo(ctx, ctconn)
 	if err != nil {
 		return err
 	}
@@ -340,18 +382,14 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 		return nil
 	}
 	if p.testType == testTypeResize {
-		// Restore window:
+		// Restore window.
 		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
-			return errors.Wrap(err, "failed to restore window")
+			return errors.Wrap(err, "failed to restore non-blank window")
 		}
 
-		info, err := display.GetInternalInfo(ctx, ctconn)
-		if err != nil {
-			return err
-		}
-		// Create a landscape rectangle. Avoid snapping by insetting by insetSlopDp.
+		// Create a landscape rectangle. Avoid snapping by insetting by insetSlopDP.
 		ms := math.Min(float64(info.WorkArea.Width), float64(info.WorkArea.Height))
-		sb := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, int(ms), int(ms*0.6)).WithInset(insetSlopDp, insetSlopDp)
+		sb := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, int(ms), int(ms*0.6)).WithInset(insetSlopDP, insetSlopDP)
 		if err := setWindowBounds(ctx, ctconn, w.ID, sb); err != nil {
 			return errors.Wrap(err, "failed to set window initial bounds")
 		}
@@ -363,6 +401,41 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 			end := coords.NewPoint(sb.Left+sb.Height, sb.Top+sb.Width)
 			if err := ash.MouseDrag(ctx, ctconn, start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag resize")
+			}
+			return nil
+		}
+	} else if p.testType == testTypeMoveOcclusion {
+		wb, err := findFirstBlankWindow(ctx, ctconn)
+		if err != nil {
+			return err
+		}
+
+		// Restore windows.
+		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
+			return errors.Wrap(err, "failed to restore non-blank window")
+		}
+
+		if err := setWindowState(ctx, ctconn, wb.ID, ash.WindowStateNormal); err != nil {
+			return errors.Wrap(err, "failed to restore blank window")
+		}
+
+		// Set content window to take up the left half of the screen.
+		sbl := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width/2, info.WorkArea.Height).WithInset(insetSlopDP, insetSlopDP)
+		if err := setWindowBounds(ctx, ctconn, w.ID, sbl); err != nil {
+			return errors.Wrap(err, "failed to set non-blank window initial bounds")
+		}
+
+		// Set the occluding window to take up the right side of the screen.
+		sbr := sbl.WithOffset(sbl.Width, 0)
+		if err := setWindowBounds(ctx, ctconn, wb.ID, sbr); err != nil {
+			return errors.Wrap(err, "failed to set blank window initial bounds")
+		}
+		perfFn = func() error {
+			// Drag from not occluding to completely occluding.
+			start := coords.NewPoint(sbr.Left+dragMoveOffsetDP, sbr.Top+dragMoveOffsetDP)
+			end := coords.NewPoint(sbl.Left, sbr.Top+1)
+			if err := ash.MouseDrag(ctx, ctconn, start, end, testDuration); err != nil {
+				return errors.Wrap(err, "failed to drag move")
 			}
 			return nil
 		}
@@ -408,15 +481,23 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p 
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	conn, err := l.NewConn(ctx, p.url)
+	connURL, err := l.NewConn(ctx, p.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open new tab")
 	}
-	defer conn.Close()
+	defer connURL.Close()
 
 	// Close the initial "about:blank" tab present at startup.
 	if err := closeAboutBlank(ctx, l.Devsess); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
+	}
+
+	if p.testType == testTypeMoveOcclusion {
+		connBlank, err := l.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		if err != nil {
+			return errors.Wrap(err, "failed to open new tab")
+		}
+		defer connBlank.Close()
 	}
 
 	return runTest(ctx, pd, pv, p, chromeTypeLacros, ltconn)
@@ -433,11 +514,19 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gp
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	conn, err := pd.Chrome.NewConn(ctx, p.url)
+	connURL, err := pd.Chrome.NewConn(ctx, p.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open new tab")
 	}
-	defer conn.Close()
+	defer connURL.Close()
+
+	if p.testType == testTypeMoveOcclusion {
+		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		if err != nil {
+			return errors.Wrap(err, "failed to open new tab")
+		}
+		defer connBlank.Close()
+	}
 
 	return runTest(ctx, pd, pv, p, chromeTypeCros, ctconn)
 }
