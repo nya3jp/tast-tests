@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d852d8b_74b7c53c",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-08T02:56:42Z",
+      "side": 1,
+      "message": "Done.\n\nAlso FYI, our current tests never request a specific resolution. They use the largest possible one. But it is useful for manual debugging to request specific resolutions.",
+      "parentUuid": "e75e1d2b_bcb2306f",
+      "range": {
+        "startLine": 110,
+        "startChar": 47,
+        "endLine": 110,
+        "endChar": 65
+      },
+      "revId": "9422a9980924b44bd26ef0e4b1d5c804ac9b3a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faae63e3_85bfca78",
         "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "9422a9980924b44bd26ef0e4b1d5c804ac9b3a7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b954955_21fde7b1",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-08T02:56:42Z",
+      "side": 1,
+      "message": "Done.\n\nAlthough not currently used in the test, it is useful to be able to query this manually. Added the corresponding Android intent.",
+      "parentUuid": "faae63e3_85bfca78",
+      "range": {
+        "startLine": 262,
+        "startChar": 12,
+        "endLine": 262,
+        "endChar": 25
+      },
+      "revId": "9422a9980924b44bd26ef0e4b1d5c804ac9b3a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
