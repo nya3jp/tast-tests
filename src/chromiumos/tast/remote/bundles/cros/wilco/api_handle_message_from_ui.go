@@ -7,6 +7,7 @@ package wilco
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -105,9 +106,22 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 	}
 	defer wc.StopDPSLListener(ctx, &empty.Empty{})
 
+	type testMsg struct {
+		Test int
+	}
+
+	sendMsg := testMsg{
+		Test: 5,
+	}
+
+	marshaled, err := json.Marshal(&sendMsg)
+	if err != nil {
+		s.Fatalf("Failed to marshall %v: %v", sendMsg, err)
+	}
+
 	if _, err := pc.EvalStatementInExtension(ctx, &ps.EvalInExtensionRequest{
 		ExtensionId: wilcoextension.ID,
-		Expression:  "chrome.runtime.sendNativeMessage('com.google.wilco_dtc', {'test': 1})",
+		Expression:  fmt.Sprintf("chrome.runtime.sendNativeMessage('com.google.wilco_dtc', %s)", string(marshaled)),
 	}); err != nil {
 		s.Fatal("Failed to send native message: ", err)
 	}
@@ -116,7 +130,17 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 	eventCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
-	if _, err := wc.WaitForHandleMessageFromUi(eventCtx, &empty.Empty{}); err != nil {
+	msg, err := wc.WaitForHandleMessageFromUi(eventCtx, &empty.Empty{})
+	if err != nil {
 		s.Error("Did not recieve HandleMessageFromUi event: ", err)
+	}
+
+	var recvMsg testMsg
+	if err := json.Unmarshal([]byte(msg.JsonMessage), &recvMsg); err != nil {
+		s.Fatalf("Failed to unmarshall %q: %v", msg.JsonMessage, err)
+	}
+
+	if sendMsg != recvMsg {
+		s.Errorf("Unexpected message received: got %v; want %v", recvMsg, sendMsg)
 	}
 }
