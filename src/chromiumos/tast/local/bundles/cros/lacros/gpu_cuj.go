@@ -43,6 +43,8 @@ const (
 	// Test of performance of gradual occlusion via drag-move of web content. This is useful for tracking impact
 	// of hardware overlay forwarding and clipping (due to occlusion) of tiles optimisations.
 	testTypeMoveOcclusion testType = "moveocclusion"
+	// Test similar to testTypeMoveOcclusion but always occludes using a ChromeOS chrome window.
+	testTypeMoveOcclusionWithCrosWindow testType = "moveocclusion_withcroswindow"
 
 	// testDuration indicates how long histograms should be sampled for during performance tests.
 	testDuration time.Duration = 20 * time.Second
@@ -104,6 +106,20 @@ func init() {
 			Val: gpuCUJTestParams{
 				url:      "https://webglsamples.org/aquarium/aquarium.html",
 				testType: testTypeMoveOcclusion,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
+		}, {
+			Name: "aquarium_moveocclusion_withcroswindow",
+			Val: gpuCUJTestParams{
+				url:      "https://webglsamples.org/aquarium/aquarium.html",
+				testType: testTypeMoveOcclusionWithCrosWindow,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "aquarium_moveocclusion_withcroswindow_composited",
+			Val: gpuCUJTestParams{
+				url:      "https://webglsamples.org/aquarium/aquarium.html",
+				testType: testTypeMoveOcclusionWithCrosWindow,
 			},
 			Pre: launcher.StartedByDataForceComposition(),
 		}, {
@@ -416,7 +432,7 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 			}
 			return nil
 		}
-	} else if p.testType == testTypeMoveOcclusion {
+	} else if p.testType == testTypeMoveOcclusion || p.testType == testTypeMoveOcclusionWithCrosWindow {
 		wb, err := findFirstBlankWindow(ctx, ctconn)
 		if err != nil {
 			return err
@@ -498,18 +514,29 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p 
 		return errors.Wrap(err, "failed to open new tab")
 	}
 	defer connURL.Close()
+	defer connURL.CloseTarget(ctx)
 
 	// Close the initial "about:blank" tab present at startup.
 	if err := closeAboutBlank(ctx, l.Devsess); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
 	}
 
+	// Setup extra window for multi-window tests.
 	if p.testType == testTypeMoveOcclusion {
 		connBlank, err := l.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
 		}
 		defer connBlank.Close()
+		defer connBlank.CloseTarget(ctx)
+
+	} else if p.testType == testTypeMoveOcclusionWithCrosWindow {
+		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		if err != nil {
+			return errors.Wrap(err, "failed to open new tab")
+		}
+		defer connBlank.Close()
+		defer connBlank.CloseTarget(ctx)
 	}
 
 	return runTest(ctx, pd, pv, p, chromeTypeLacros, ltconn)
@@ -531,13 +558,16 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gp
 		return errors.Wrap(err, "failed to open new tab")
 	}
 	defer connURL.Close()
+	defer connURL.CloseTarget(ctx)
 
-	if p.testType == testTypeMoveOcclusion {
+	// Setup extra window for multi-window tests.
+	if p.testType == testTypeMoveOcclusion || p.testType == testTypeMoveOcclusionWithCrosWindow {
 		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
 		}
 		defer connBlank.Close()
+		defer connBlank.CloseTarget(ctx)
 	}
 
 	return runTest(ctx, pd, pv, p, chromeTypeCros, ctconn)
