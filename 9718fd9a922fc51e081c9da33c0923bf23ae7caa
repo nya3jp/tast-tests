@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25a1c504_4608319a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-08T17:44:04Z",
+      "side": 1,
+      "message": "The for loop body will definitely be more complicated if I use mouse input for clamshell mode and touch input for tablet mode. Do you think that the input source might significantly impact performance?\n\nAnyway, your comment reminded me that in clamshell mode, you can touch drag from overview without long pressing. Now I have updated the test so it does not long press overview items in clamshell mode.",
+      "parentUuid": "8f5bd79e_125cec8d",
+      "range": {
+        "startLine": 83,
+        "startChar": 13,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1224c843_2f635226",
         "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f58f8ab8_d504141f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-08T17:44:04Z",
+      "side": 1,
+      "message": "Yes, it returns with success\u003dfalse if the desks bar is not showing or the arguments are not all valid.",
+      "parentUuid": "1224c843_2f635226",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5033bf7_bc8e015e",
         "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133acbdf_c2a8a5a6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-08T17:44:04Z",
+      "side": 1,
+      "message": "See Patchset 2 for my attempt at that. For some reason, nothing is found for chromeui.FindParams{ClassName: \"ash/DeskMiniView\"}. Is there a way to view the DOM tree?",
+      "parentUuid": "c5033bf7_bc8e015e",
+      "range": {
+        "startLine": 71,
+        "startChar": 60,
+        "endLine": 71,
+        "endChar": 81
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
