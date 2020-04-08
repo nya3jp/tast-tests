@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "a5d7fe66_f8e9b8c8",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-08T21:58:45Z",
+      "side": 1,
+      "message": "That sounds fine to me. This would more closely mimic what we have in Autotest, of having a BootModeChecker class, and a FAFTCheckers class, and so on.\n\nAbandoning this CL; if the need arises in the future, we can re-investigate.",
+      "parentUuid": "d711a6a8_02dd3909",
+      "revId": "b7511091319bb4f92ce2d9136aa0ef544090cf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f010723_7e895874",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 5
