@@ -281,6 +281,30 @@
       "revId": "73307dcf929958295409ffc5ff429f39662a7944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a823ff77_7a56ab66",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T03:48:13Z",
+      "side": 1,
+      "message": "I think it should start with \"New...\".\nBut deferring to hidehiko@ (he knows better than me).",
+      "parentUuid": "0d5193f7_05a3a747",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

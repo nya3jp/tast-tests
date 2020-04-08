@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69c61687_4cf28518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-08T03:48:13Z",
+      "side": 1,
+      "message": "huge nit: replace tab with space",
+      "revId": "e85562df804ec5eff66a5f6d04a4edc9e9a68ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
