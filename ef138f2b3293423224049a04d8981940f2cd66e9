@@ -440,6 +440,30 @@
     },
     {
       "key": {
+        "uuid": "f9d80921_634d0467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-08T17:50:09Z",
+      "side": 1,
+      "message": "No, patchset 13 is perfect, patchset 11 is not.  In patchset 11, you were trying to execute an executable called \"grep -c blahblah\".  Whitespace doesn\u0027t mean anything to exec.  It only means something to shell, which splits the string by space and passes to exec.",
+      "parentUuid": "e3cc262b_91c1255b",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "ef138f2b3293423224049a04d8981940f2cd66e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adefa62f_5ffd8b5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sideload_service.go",
         "patchSetId": 9

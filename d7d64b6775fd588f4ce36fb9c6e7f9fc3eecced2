@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b084a73e_1bd3680b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/adb_sideload.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-08T17:50:09Z",
+      "side": 1,
+      "message": "There is no code to restart Chrome after this and before ConfirmEnablingAdbSideloading.  I guess it works because ConfirmEnablingAdbSideloading creates a new Chrome and handle the request.  Could you mention this in the comment?  For example, in L72:\n\n// Restarting Chrome to handle the request by showing the dialog. Clicking the button on the dialog to confirm or cancel ADB sideloading.",
+      "range": {
+        "startLine": 68,
+        "startChar": 22,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "d7d64b6775fd588f4ce36fb9c6e7f9fc3eecced2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
