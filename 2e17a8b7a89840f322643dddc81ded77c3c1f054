@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55fc9a38_f03b8de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/simulcast/LICENSE.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-08T16:11:52Z",
+      "side": 1,
+      "message": "Do we need to worry about this in tast?",
+      "revId": "2e17a8b7a89840f322643dddc81ded77c3c1f054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
