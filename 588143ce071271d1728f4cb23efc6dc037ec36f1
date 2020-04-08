@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bce3b60c_a9014949",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T05:35:45Z",
+      "side": 1,
+      "message": "as you have unit test, you may use \"fast_build.sh -T\" to test.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1e08ea_a11db6cc",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T05:35:45Z",
+      "side": 1,
+      "message": "1 \u003c\u003c iota? it will be more obvious that this type is a bit mask.",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865fdd09_3c7cf5c5",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T05:35:45Z",
+      "side": 1,
+      "message": "nit: I guess maybe the fields of Factory can all be private? Callers shouldn\u0027t read the fields of Factory.",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e613424_fa1ab97a",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T05:35:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we can skip this copy, as we don\u0027t really expect anyone modifying Config.Keys after Gen. But I don\u0027t have strong opinion.",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07808432_4d6c069c",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T05:35:45Z",
+      "side": 1,
+      "message": "add comment for formatter? e.g. formatter is the the function to escape a WEP string-encoded passphrase whose format varies depending on the consumer.\n\nOr maybe we could just ignore wpa_cli case for now?",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e36304_4ae281cf",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-08T05:35:45Z",
+      "side": 1,
+      "message": "maybe use hex.DecodeString to check? (although you don\u0027t really need the result)",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
