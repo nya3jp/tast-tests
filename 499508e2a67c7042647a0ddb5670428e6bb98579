@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e5a0ded0_1c465823",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-08T17:41:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ac06f81_62971f54",
+      "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c27ff268_55a4debd",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
@@ -69,6 +87,24 @@
       "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42dc8be2_f1e29a2c",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-08T17:41:52Z",
+      "side": 1,
+      "message": "Moved this discussion to 2130763.  I\u0027m hoping you can avoid having to throw this error by changing the api.",
+      "parentUuid": "3e4fbcea_73ce969f",
+      "revId": "499508e2a67c7042647a0ddb5670428e6bb98579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
