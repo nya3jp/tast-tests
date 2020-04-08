@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f5bd79e_125cec8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T00:25:15Z",
+      "side": 1,
+      "message": "Is touchscreen a good input source for clamshell mode splitview?\n\nI recently introduced \u0027pointer\u0027 package, you might find this useful (see https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/launcher_page_switch_perf.go#72)",
+      "range": {
+        "startLine": 83,
+        "startChar": 13,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1224c843_2f635226",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T00:25:15Z",
+      "side": 1,
+      "message": "Why do we have \u0027success\u0027 here?  Is is possible for autotest to success as the API but return with success\u003dfalse?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5033bf7_bc8e015e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T00:25:15Z",
+      "side": 1,
+      "message": "Do we really need this?  Can\u0027t be extracted through chrome/ui package?\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui#Find",
+      "range": {
+        "startLine": 71,
+        "startChar": 60,
+        "endLine": 71,
+        "endChar": 81
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
