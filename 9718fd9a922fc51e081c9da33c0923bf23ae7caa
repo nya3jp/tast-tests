@@ -140,6 +140,30 @@
       "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c228e69_1b45da30",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-08T18:24:23Z",
+      "side": 1,
+      "message": "you can use RootDebugInfo() function for checking structure. https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui#RootDebugInfo (or LogRootDebugInfo())\n\nFor example, a line like \u0027s.Log(ui.RootDebugInfo(ctx, tconn))\u0027 would provide the entire tree in the testlog at that point.",
+      "parentUuid": "133acbdf_c2a8a5a6",
+      "range": {
+        "startLine": 71,
+        "startChar": 60,
+        "endLine": 71,
+        "endChar": 81
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
