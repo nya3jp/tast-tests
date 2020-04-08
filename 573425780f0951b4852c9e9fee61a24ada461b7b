@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48a2e25d_41fa9e96",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-08T09:38:22Z",
+      "side": 1,
+      "message": "nit: tearDownOption if you don\u0027t wanna export this type\n\nsame for \"Option\", also you can rename \"option\" to \"setUpOption\"",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 19
+      },
+      "revId": "573425780f0951b4852c9e9fee61a24ada461b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
