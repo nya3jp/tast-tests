@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb2881ad_f1240ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/getdisplaymedia/get_display_media.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-08T16:25:00Z",
+      "side": 1,
+      "message": "should this return HTMLFile, too?\nAnd so, HTMLFile can be package private.",
+      "revId": "cabdf130c197fa221048f649b1e27f52d9a7e871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
