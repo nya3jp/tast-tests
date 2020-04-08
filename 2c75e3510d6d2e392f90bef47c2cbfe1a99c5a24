@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4b99e9fe_0cadc3e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/simulcast.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-08T15:53:10Z",
+      "side": 1,
+      "message": "Done - for these new files.",
+      "parentUuid": "a34cd81e_f2f25bcd",
+      "revId": "2c75e3510d6d2e392f90bef47c2cbfe1a99c5a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdfd6e6a_850690ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
         "patchSetId": 6
@@ -69,6 +87,24 @@
       "revId": "2c75e3510d6d2e392f90bef47c2cbfe1a99c5a24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c529f61e_6ac72a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-08T15:53:10Z",
+      "side": 1,
+      "message": "I thought it was style in tast-tests to explicit all parameters. I\nprefer seeing it that having to scroll back to the struct to see\nwhich parameters are left to default -- code is read many more times\nthan written.",
+      "parentUuid": "0046c390_ae8021a1",
+      "revId": "2c75e3510d6d2e392f90bef47c2cbfe1a99c5a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
