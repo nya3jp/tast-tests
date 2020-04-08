@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8721dfac_977240f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a93cd86b_c3e2af70",
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57c6dbae_c4de3e60",
         "filename": "android/ArcAccessibilityTest/res/layout/edittext_activity.xml",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0640c43_61cdec8a",
+        "filename": "android/ArcAccessibilityTest/res/layout/edittext_activity.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57c6dbae_c4de3e60",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "252aff70_8f9a8233",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/EdittextActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "sorry this should have been removed.",
+      "parentUuid": "4f8df2ca_9bb9c74e",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d6b1c65_16a51bc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 6
@@ -85,6 +151,30 @@
       "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5baf6b59_afb705df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6b1c65_16a51bc7",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "70ede071_8e4a1225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "f636c2e7_084d473e",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "013da343_856b1ec5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 6
@@ -131,6 +245,30 @@
       "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0671d62a_0d1d472f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013da343_856b1ec5",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 125
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "60217f30_45d4414b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "e68a403d_56935686",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c71eb20a_54b7c54a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected_EdittextActivity.json",
         "patchSetId": 6
@@ -177,6 +339,30 @@
       "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6394d07_646c3ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected_EdittextActivity.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-08T11:58:52Z",
+      "side": 1,
+      "message": "ok thanks, it should be value.",
+      "parentUuid": "c71eb20a_54b7c54a",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "37804f729d573bb54fa2be46033f0cc7f504150a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
