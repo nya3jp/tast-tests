@@ -2,19 +2,19 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package arc
 
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeAccelVDVDAPerf,
+		Func:         VideoDecodeAccelVDVDAPerf,
 		Desc:         "Measures performance of hardware decode acceleration performance using media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -83,6 +83,6 @@ func init() {
 	})
 }
 
-func DecodeAccelVDVDAPerf(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoPerfTest(ctx, s, s.Param().(string), decode.VDVDA)
+func VideoDecodeAccelVDVDAPerf(ctx context.Context, s *testing.State) {
+	decoding.RunAccelVideoPerfTest(ctx, s, s.Param().(string), decoding.VDVDA)
 }

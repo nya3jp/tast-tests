@@ -7,8 +7,8 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
 )
 
@@ -84,5 +84,5 @@ func init() {
 }
 
 func DecodeAccelVDPerf(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoPerfTest(ctx, s, s.Param().(string), decode.VD)
+	decoding.RunAccelVideoPerfTest(ctx, s, s.Param().(string), decoding.VD)
 }
