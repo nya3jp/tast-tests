@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -225,7 +226,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 	defer ui.WaitForLocationChangeCompleted(ctx, tconn)
 
 	pv := perf.NewValues()

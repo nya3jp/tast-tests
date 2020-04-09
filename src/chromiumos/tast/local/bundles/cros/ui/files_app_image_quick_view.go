@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -52,6 +53,7 @@ func FilesAppImageQuickView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	// Open the Files App.
 	files, err := filesapp.Launch(ctx, tconn)

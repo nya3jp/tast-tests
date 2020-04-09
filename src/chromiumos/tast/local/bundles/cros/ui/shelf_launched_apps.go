@@ -6,9 +6,9 @@ package ui
 
 import (
 	"context"
-	"path/filepath"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
@@ -35,6 +35,7 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	// At login, we should have just Chrome in the Shelf.
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
@@ -81,13 +82,6 @@ func ShelfLaunchedApps(ctx context.Context, s *testing.State) {
 			s.Errorf("App names did not match. Got: %v; Want: %v", shelfItem.Title, expectedApp.Name)
 		}
 	}
-
-	// Get the list of apps in the shelf via UI.
-	defer func() {
-		if s.HasError() {
-			ui.LogRootDebugInfo(ctx, tconn, filepath.Join(s.OutDir(), "ui_tree.txt"))
-		}
-	}()
 
 	icons, err := ui.FindAll(ctx, tconn, ui.FindParams{Role: ui.RoleTypeButton})
 	if err != nil {
