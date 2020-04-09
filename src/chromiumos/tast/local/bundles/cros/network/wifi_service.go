@@ -123,7 +123,7 @@ func (s *WifiService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empt
 
 // Connect connects to a WiFi service with specific config.
 // This is the implementation of network.Wifi/Connect gRPC.
-func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*network.Service, error) {
+func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*network.ConnectResp, error) {
 	testing.ContextLog(ctx, "Attempting to connect with config: ", config)
 
 	testing.ContextLog(ctx, "Discovering")
@@ -151,7 +151,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 		shill.ServicePropertySecurityClass: config.Security,
 	}
 
-	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
+	start := time.Now()
 	testing.ContextLog(ctx, "Finding service with props: ", props)
 	var service *shill.Service
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -170,6 +170,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}); err != nil {
 		return nil, err
 	}
+	discoveryTime := time.Now().Sub(start)
 
 	testing.ContextLog(ctx, "Connecting to service: ", service)
 
@@ -190,21 +191,51 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}
 	defer pw.Close(ctx)
 
+	start = time.Now()
 	if err := service.Connect(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to service")
 	}
 
 	// Wait until connection established.
-	// According to previous Autotest tests, a reasonable timeout is
-	// 15 seconds for association and 15 seconds for configuration.
-	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
-		return nil, err
-	}
+	// For debug and profile purpose, it is separated into association
+	// and configuration stages.
 
-	return &network.Service{
-		Path: string(service.ObjectPath()),
+	// Prepare the state list for ExpectIn.
+	var connectedStates []interface{}
+	for _, s := range shill.ServiceConnectedStates {
+		connectedStates = append(connectedStates, s)
+	}
+	associatedStates := append(connectedStates, shill.ServiceStateConfiguration)
+
+	testing.ContextLog(ctx, "Associating with ", service)
+	assocCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+	state, err := pw.ExpectIn(assocCtx, shill.ServicePropertyState, associatedStates)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to wait for service associated")
+	}
+	assocTime := time.Now().Sub(start)
+	start = time.Now()
+
+	testing.ContextLog(ctx, "Configuring ", service)
+	configCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+	if state == shill.ServiceStateConfiguration {
+		// We're not yet in connected state, wait until connected.
+		_, err = pw.ExpectIn(configCtx, shill.ServicePropertyState, connectedStates)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to wait for service connected")
+		}
+	}
+	configTime := time.Now().Sub(start)
+
+	return &network.ConnectResp{
+		Service: &network.Service{
+			Path: string(service.ObjectPath()),
+		},
+		DiscoveryTime:     discoveryTime.Nanoseconds(),
+		AssociationTime:   assocTime.Nanoseconds(),
+		ConfigurationTime: configTime.Nanoseconds(),
 	}, nil
 }
 

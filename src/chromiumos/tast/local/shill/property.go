@@ -168,13 +168,22 @@ func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]in
 
 // Expect waits for the expected value of a given property.
 func (pw *PropertiesWatcher) Expect(ctx context.Context, prop string, expected interface{}) error {
+	_, err := pw.ExpectIn(ctx, prop, []interface{}{expected})
+	return err
+}
+
+// ExpectIn waits for a change signal of prop with its value in the expected slice.
+// The value detected will be returned, if not found before ctx.Done, error is returned.
+func (pw *PropertiesWatcher) ExpectIn(ctx context.Context, prop string, expected []interface{}) (interface{}, error) {
 	for {
 		vals, err := pw.WaitAll(ctx, prop)
 		if err != nil {
-			return err
+			return nil, err
 		}
-		if reflect.DeepEqual(expected, vals[0]) {
-			return nil
+		for _, e := range expected {
+			if reflect.DeepEqual(e, vals[0]) {
+				return vals[0], nil
+			}
 		}
 	}
 }
