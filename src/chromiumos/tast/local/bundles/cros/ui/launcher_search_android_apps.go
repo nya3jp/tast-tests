@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/testing"
@@ -48,6 +49,7 @@ func LauncherSearchAndroidApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	if err := launcher.SearchAndLaunch(ctx, tconn, apps.PlayStore.Name); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)

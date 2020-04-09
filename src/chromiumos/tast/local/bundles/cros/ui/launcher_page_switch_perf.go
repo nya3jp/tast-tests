@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -53,6 +54,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	connected, err := display.PhysicalDisplayConnected(ctx, tconn)
 	if err != nil {

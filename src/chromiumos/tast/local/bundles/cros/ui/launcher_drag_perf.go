@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -40,6 +41,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	if connected, err := display.PhysicalDisplayConnected(ctx, tconn); err != nil {
 		s.Fatal("Failed to check physical display existence: ", err)

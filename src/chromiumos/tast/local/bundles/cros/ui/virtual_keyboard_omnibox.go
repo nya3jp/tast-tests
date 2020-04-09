@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
@@ -41,6 +42,7 @@ func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	shown, err := vkb.IsShown(ctx, tconn)
 	if err != nil {
