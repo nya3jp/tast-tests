@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c6cdd3a_e3ae6a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-09T18:12:38Z",
+      "side": 1,
+      "message": "Instead of calling s.Fatal here, why not return an error?\n\nThe only place we get an error and continue is when collecting the errors in the loop at the end, so it seems like we should be able to combine those into one error and return that as well.",
+      "revId": "63d4715f0141ccf8bc1ad2986f12093bb461b805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
