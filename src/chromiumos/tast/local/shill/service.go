@@ -61,6 +61,16 @@ const (
 	ServiceStateActivationFailure = "activation-failure"
 )
 
+// ServiceConnectedStates is a list of service states that are considered connected.
+var ServiceConnectedStates = []string{
+	ServiceStatePortal,
+	ServiceStateNoConnectivity,
+	ServiceStateRedirectFound,
+	ServiceStatePortalSuspected,
+	ServiceStateOnline,
+	ServiceStateReady,
+}
+
 // Security options defined in dbus-constants.h
 const (
 	SecurityWPA   = "wpa"

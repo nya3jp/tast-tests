@@ -59,8 +59,14 @@ message ShillVal {
   }
 }
 
+// ConnectResponse is the response of Connect call which includes the
+// object path of connected service and timing data of the connection
+// (all time in nanosecond unit).
 message ConnectResponse {
   string service_path = 1;
+  int64 discovery_time = 2;
+  int64 association_time = 3;
+  int64 configuration_time = 4;
 }
 
 message DisconnectRequest {
