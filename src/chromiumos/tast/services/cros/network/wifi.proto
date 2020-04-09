@@ -22,7 +22,7 @@ service Wifi {
   rpc TearDown(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
   // Connect attempts to connect WiFi network.
-  rpc Connect(Config) returns (Service) {}
+  rpc Connect(Config) returns (ConnectResp) {}
 
   // Disconnect attempts to disconnect from a service.
   rpc Disconnect(Service) returns (google.protobuf.Empty) {}
@@ -51,6 +51,14 @@ message ShillVal {
 
 message Service {
   string path = 1;
+}
+
+// ConnectResp is the response of Connect call which includes a Service
+// object and timing data of connect (all time in nanosecond unit).
+message ConnectResp {
+  Service service = 1;
+  int64 discovery_time = 2;
+  int64 connect_time = 3;
 }
 
 message SSID {
