@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "126e4e32_513b7d4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-09T10:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce3b60c_a9014949",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f1e08ea_a11db6cc",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b049f744_a3d2f64d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-09T10:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f1e08ea_a11db6cc",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "865fdd09_3c7cf5c5",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 2
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "e0958925_640af82d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-09T10:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "865fdd09_3c7cf5c5",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e613424_fa1ab97a",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 2
@@ -76,6 +142,42 @@
       "writtenOn": "2020-04-08T05:35:45Z",
       "side": 1,
       "message": "I\u0027m not sure if we can skip this copy, as we don\u0027t really expect anyone modifying Config.Keys after Gen. But I don\u0027t have strong opinion.",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddcb6576_99336273",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-09T10:01:05Z",
+      "side": 1,
+      "message": "It is true that we don\u0027t really expect Keys to be modified after Gen. But it may be confusing in the scenarios of inheritance -- Two Config Gen-ed by the same Factory will share the same Keys (or let\u0027s say array), but not share the same parent. Moreover, share the same array again between the different parents. Thus I think doing copy would be better, though we also don\u0027t expect a Factory would Gen multiple Config, too. :p",
+      "parentUuid": "0e613424_fa1ab97a",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413af115_187a4aa7",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-09T10:01:05Z",
+      "side": 1,
+      "message": "It is true that we don\u0027t really expect Keys to be modified after Gen. But it may be confusing in the scenarios of inheritance -- Two Config Gen-ed by the same Factory will share the same Keys (or let\u0027s say array), but not share the same parent. Moreover, share the same array again between the different parents. Thus I think doing copy would be better, though we also don\u0027t expect a Factory would Gen multiple Config, too. :p",
+      "parentUuid": "0e613424_fa1ab97a",
       "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "012a3181_ae542314",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-09T10:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07808432_4d6c069c",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89e36304_4ae281cf",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 2
@@ -113,6 +233,24 @@
       "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b046b28f_589f0865",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-09T10:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e36304_4ae281cf",
+      "revId": "588143ce071271d1728f4cb23efc6dc037ec36f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
