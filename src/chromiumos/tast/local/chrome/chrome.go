@@ -16,8 +16,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -25,9 +23,12 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
+	"github.com/mafredri/cdp/protocol/target"
+	"github.com/shirou/gopsutil/disk"
 )
 
 const (
@@ -1066,11 +1067,13 @@ func (c *Chrome) logIn(ctx context.Context) error {
 
 	switch c.loginMode {
 	case fakeLogin:
+		testing.ContextLog(ctx, "Performing fake login")
 		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
 			c.user, c.pass, c.gaiaID, c.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
+		testing.ContextLog(ctx, "Performing gaia login")
 		if err = c.performGAIALogin(ctx, conn); err != nil {
 			return err
 		}
@@ -1082,7 +1085,37 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		}
 	}
 
+	getMountPoints := func() ([]string, error) {
+		var mountPoints []string
+
+		partitions, err := disk.Partitions(true /* all */)
+		if err != nil {
+			return mountPoints, err
+		}
+
+		for _, point := range partitions {
+			mountPoints = append(mountPoints, point.Mountpoint)
+		}
+		return mountPoints, nil
+	}
+
+	userpath, err := cryptohome.UserPath(ctx, c.normalizedUser)
+	if err != nil {
+		testing.ContextLogf(ctx, "failed to get user path for %v", c.normalizedUser)
+	}
+
 	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
+	  if out, err2 := testexec.CommandContext(ctx, "cryptohome", "--action=is_user_mounted", "--user="+userpath).Output(); err2 != nil {
+			testing.ContextLogf(ctx, "cryptohome says %s is not mounted: %v", userpath, out)
+		} else {
+			testing.ContextLogf(ctx, "cryptohome says %s is mounted", userpath)
+		}
+
+		if mountPoints, err2 := getMountPoints(); err2 != nil {
+			testing.ContextLog(ctx, "failed to get mount points: ", err2)
+		} else {
+			testing.ContextLogf(ctx, "mount points: %v", mountPoints)
+		}
 		return err
 	}
 
