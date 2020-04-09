@@ -46,6 +46,30 @@
       "revId": "9053d627b8fb51cb20fc5763a305e05421571688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9717567_8d110d1e",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-09T15:46:28Z",
+      "side": 1,
+      "message": "Ack\n\nif you are planning to reuse it, please keep it :)",
+      "parentUuid": "1c1d1160_da5c25d3",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "9053d627b8fb51cb20fc5763a305e05421571688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
