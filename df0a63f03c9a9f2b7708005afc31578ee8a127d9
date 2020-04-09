@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "346b0a96_553ee7ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-04-09T01:46:37Z",
+      "side": 1,
+      "message": "This method is very similar to RunAccelVideoTest(), I prefer to gut them together.\nSo how about moving the whole file to media/decoding/accel_video.go?",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129206f3_90580bf8",
+        "filename": "src/chromiumos/tast/local/media/decoding/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-04-09T01:46:37Z",
+      "side": 1,
+      "message": "Is it related to this CL?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
