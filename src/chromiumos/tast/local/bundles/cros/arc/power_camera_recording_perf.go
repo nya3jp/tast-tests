@@ -81,7 +81,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	sup.Add(setup.PowerTest(ctx))
+	sup.Add(setup.PowerTest(ctx, tconn))
 
 	// Install camera testing app.
 	a := s.PreValue().(arc.PreData).ARC
