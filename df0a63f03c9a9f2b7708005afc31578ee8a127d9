@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0224574e_fe2e770f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-09T03:01:53Z",
+      "side": 1,
+      "message": "This function is called only from video.DecodeAccelSanity [1], which is\nuntouched in this CL, and according to the tast reviews markdown [2],\nCLs should be doing one thing only to ease the task of the reviewers\u0027.\nWe can move this later on.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity.go;l\u003d56?q\u003dRunAccelVideoSanityTest\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/docs/code_reviews.md#do-not-make-large-changes",
+      "parentUuid": "346b0a96_553ee7ec",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129206f3_90580bf8",
         "filename": "src/chromiumos/tast/local/media/decoding/perf.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a65ebdd_39210d07",
+        "filename": "src/chromiumos/tast/local/media/decoding/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-09T03:01:53Z",
+      "side": 1,
+      "message": "Yes, the parse*() functions below are used from the accel_video.go\nfile that is moved to this location so that it can be shared from\narc/ and video/.",
+      "parentUuid": "129206f3_90580bf8",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
