@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0dbcfca3_d6c243db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-04-09T04:28:25Z",
+      "side": 1,
+      "message": "I think moving the whole file should reduce the CL actually, only change \"package decode\" to \"package decoding\"?",
+      "parentUuid": "0224574e_fe2e770f",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129206f3_90580bf8",
         "filename": "src/chromiumos/tast/local/media/decoding/perf.go",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yes, the parse*() functions below are used from the accel_video.go\nfile that is moved to this location so that it can be shared from\narc/ and video/.",
       "parentUuid": "129206f3_90580bf8",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85ceecd5_bc0dc066",
+        "filename": "src/chromiumos/tast/local/media/decoding/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2020-04-09T04:28:25Z",
+      "side": 1,
+      "message": "Ah I didn\u0027t notice you moved the file to media/decoding/.",
+      "parentUuid": "7a65ebdd_39210d07",
       "range": {
         "startLine": 4,
         "startChar": 0,
