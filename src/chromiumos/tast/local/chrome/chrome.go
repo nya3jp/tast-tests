@@ -1066,11 +1066,13 @@ func (c *Chrome) logIn(ctx context.Context) error {
 
 	switch c.loginMode {
 	case fakeLogin:
+		testing.ContextLog(ctx, "Performing fake login")
 		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
 			c.user, c.pass, c.gaiaID, c.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
+		testing.ContextLog(ctx, "Performing gaia login")
 		if err = c.performGAIALogin(ctx, conn); err != nil {
 			return err
 		}
