@@ -34,6 +34,24 @@
       "revId": "2e17a8b7a89840f322643dddc81ded77c3c1f054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6b8a7f1_9f3dc483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/simulcast/LICENSE.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-09T09:35:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7eabfb3d_07e2420c",
+      "revId": "2e17a8b7a89840f322643dddc81ded77c3c1f054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
