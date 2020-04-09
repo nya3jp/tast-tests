@@ -234,14 +234,14 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		}
 		up := findPartition(partitions, userpath)
 		if up == nil {
-			return errors.Errorf("%v not found", userpath)
+			return errors.Errorf("userpath %v not found", userpath)
 		}
 		if err = validatePartition(up); err != nil {
 			return err
 		}
 		sp := findPartition(partitions, systempath)
 		if sp == nil {
-			return errors.Errorf("%v not found", systempath)
+			return errors.Errorf("systempath %v not found", systempath)
 		}
 		if err = validatePartition(sp); err != nil {
 			return err

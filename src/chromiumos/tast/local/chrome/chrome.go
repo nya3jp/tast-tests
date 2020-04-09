@@ -6,8 +6,10 @@
 package chrome
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/url"
 	"os"
@@ -16,8 +18,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -25,9 +25,13 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
+	"github.com/mafredri/cdp/protocol/target"
+	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/process"
 )
 
 const (
@@ -1079,11 +1083,13 @@ func (c *Chrome) logIn(ctx context.Context) error {
 
 	switch c.loginMode {
 	case fakeLogin:
+		testing.ContextLog(ctx, "Performing fake login")
 		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
 			c.user, c.pass, c.gaiaID, c.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
+		testing.ContextLog(ctx, "Performing gaia login")
 		if err = c.performGAIALogin(ctx, conn); err != nil {
 			return err
 		}
@@ -1095,7 +1101,104 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		}
 	}
 
+	userpath, err := cryptohome.UserPath(ctx, c.normalizedUser)
+	if err != nil {
+		testing.ContextLogf(ctx, "failed to get user path for %v", c.normalizedUser)
+	}
+
+	systempath, err := cryptohome.SystemPath(c.normalizedUser)
+	if err != nil {
+		testing.ContextLogf(ctx, "failed to get system path for %v", c.normalizedUser)
+	}
+
+	getMountPoints := func() ([]string, error) {
+		var mountPoints []string
+
+		partitions, err := disk.Partitions(true /* all */)
+		if err != nil {
+			return mountPoints, err
+		}
+
+		for _, point := range partitions {
+			mountPoints = append(mountPoints, point.Mountpoint)
+		}
+		return mountPoints, nil
+	}
+
+	dumpProcMountinfo := func(ctx context.Context, pid string) {
+		mountinfoPath := fmt.Sprintf("/proc/%s/mountinfo", pid)
+		f, err := os.Open(mountinfoPath)
+		if err != nil {
+			testing.ContextLogf(ctx, "failed to open %s: %v", mountinfoPath, err)
+			return
+		}
+		defer f.Close()
+
+		testing.ContextLogf(ctx, "%s: ", mountinfoPath)
+		r := bufio.NewReader(f)
+		for {
+			line, err := r.ReadString('\n')
+
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				testing.ContextLogf(ctx, "failed to read lines from %s: %v", mountinfoPath, err)
+				return
+			}
+
+			testing.ContextLog(ctx, strings.Trim(line, "\n"))
+		}
+		testing.ContextLog(ctx, "done reading ", mountinfoPath)
+	}
+
+	findCryptohomedPID := func() (int32, error) {
+		procs, err := process.Processes()
+		if err != nil {
+			return -1, errors.Wrap(err, "could not list running processes")
+		}
+
+		for _, proc := range procs {
+			if exe, err := proc.Exe(); err == nil && exe == "/usr/sbin/cryptohomed" {
+				return proc.Pid, nil
+			}
+		}
+
+		return -1, errors.New("cryptohomed not found")
+	}
+
+	checkFolder := func(path string) {
+		if _, err := os.Stat(path); os.IsNotExist(err) {
+			testing.ContextLogf(ctx, "path %s doesn't exist", path)
+		} else if err != nil {
+			testing.ContextLogf(ctx, "failed to check %s: %v", path, err)
+		} else {
+			testing.ContextLogf(ctx, "path %s exists", path)
+		}
+	}
+
 	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
+	  if out, err2 := testexec.CommandContext(ctx, "cryptohome", "--action=is_user_mounted", "--user="+userpath).Output(); err2 != nil {
+			testing.ContextLogf(ctx, "cryptohome says %s is not mounted: %s", userpath, string(out))
+		} else {
+			testing.ContextLogf(ctx, "cryptohome says %s is mounted", userpath)
+		}
+
+		if mountPoints, err2 := getMountPoints(); err2 != nil {
+			testing.ContextLog(ctx, "failed to get mount points: ", err2)
+		} else {
+			testing.ContextLogf(ctx, "mount points: %v", mountPoints)
+		}
+
+		checkFolder(userpath + "/MyFiles/Downloads")
+		checkFolder(systempath + "/crash")
+
+		dumpProcMountinfo(ctx, "self")
+		if mounterPid, err2 := findCryptohomedPID(); err2 != nil {
+			testing.ContextLog(ctx, "failed to find cryptohomed pid: ", err2)
+		} else {
+			dumpProcMountinfo(ctx, fmt.Sprintf("%d", mounterPid))
+		}
+
 		return err
 	}
 
