@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2bd188_3c122276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-09T10:10:41Z",
+      "side": 1,
+      "message": "nit: EditTextActivity",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12c0e49_3d23fc59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-09T10:10:41Z",
+      "side": 1,
+      "message": "Is this not part of the test? Why was it previously only performed after activity creation?",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b898e25d_ace8fd0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-09T10:10:41Z",
+      "side": 1,
+      "message": "Does this need to be checked in each subtest or would it suffice to do this once?",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd1bd4b_101c0f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-09T10:10:41Z",
+      "side": 1,
+      "message": "Give each screenshot a different name.",
+      "range": {
+        "startLine": 256,
+        "startChar": 38,
+        "endLine": 256,
+        "endChar": 69
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83c52dc_de44d620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-09T10:10:41Z",
+      "side": 1,
+      "message": "List the Data files explicitly to make it clear which are required.",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
