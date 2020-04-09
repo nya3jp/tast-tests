@@ -22,6 +22,30 @@
       "revId": "72df31222c45f797b3f56a0a232e81e95d0ca6c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9aba946_e6750e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-09T16:52:30Z",
+      "side": 1,
+      "message": "Argh! My replace command didn\u0027t catch this :-(",
+      "parentUuid": "579c4771_19402c0e",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "72df31222c45f797b3f56a0a232e81e95d0ca6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
