@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1ed7a5d_2c4e915e",
+        "filename": "android/ArcAccessibilityTest/res/layout/edittext_activity.xml",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-09T19:26:37Z",
+      "side": 1,
+      "message": "nit/style: IIUC, 4 indent is expected?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a2bd188_3c122276",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14
@@ -19,6 +42,23 @@
         "endLine": 38,
         "endChar": 17
       },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c1ec28c_2a1805d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-09T19:26:37Z",
+      "side": 1,
+      "message": "Could you add document for the new params (both for \"activities\" and the string added to \"f\").",
       "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +99,29 @@
     },
     {
       "key": {
+        "uuid": "6ddda038_d3ee0e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-09T19:26:37Z",
+      "side": 1,
+      "message": "Clar: activityName should contain the leading \".\"?",
+      "range": {
+        "startLine": 236,
+        "startChar": 47,
+        "endLine": 236,
+        "endChar": 51
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cd1bd4b_101c0f52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14
@@ -93,6 +156,40 @@
       "writtenOn": "2020-04-09T10:10:41Z",
       "side": 1,
       "message": "List the Data files explicitly to make it clear which are required.",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13588b9_114a776b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-09T19:26:37Z",
+      "side": 1,
+      "message": "let instance \u003d LogStore.getInstance();\ninstance.clearLog();\ninstance.writeTreeLog(...);\n\notherwise, this may cause an access to undefined value.",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f812627c_1339db8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-09T19:26:37Z",
+      "side": 1,
+      "message": "nit: could you move this to L157 to minimize the scope?",
       "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
