@@ -130,7 +130,6 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 	defer st.End()
 	testing.ContextLog(ctx, "Discovering a WiFi service with properties: ", props)
 
-	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
 	var service *shill.Service
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
@@ -152,31 +151,59 @@ func (s *WifiService) discoverService(ctx context.Context, m *shill.Manager, pro
 	return service, nil
 }
 
-func (s *WifiService) connectService(ctx context.Context, service *shill.Service) error {
+// connectService connects to a WiFi service and wait until conntected state.
+// The time used for association and configuration is returned when success.
+func (s *WifiService) connectService(ctx context.Context, service *shill.Service) (assocTime, configTime time.Duration, retErr error) {
 	ctx, st := timing.Start(ctx, "connectService")
 	defer st.End()
 	testing.ContextLog(ctx, "Connecting to the service: ", service)
 
+	start := time.Now()
+
 	// Spawn watcher before connect.
 	pw, err := service.CreateWatcher(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to create watcher")
+		return 0, 0, errors.Wrap(err, "failed to create watcher")
 	}
 	defer pw.Close(ctx)
 
 	if err := service.Connect(ctx); err != nil {
-		return errors.Wrap(err, "failed to connect to service")
+		return 0, 0, errors.Wrap(err, "failed to connect to service")
 	}
 
 	// Wait until connection established.
-	// According to previous Autotest tests, a reasonable timeout is
-	// 15 seconds for association and 15 seconds for configuration.
-	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
-		return err
+	// For debug and profile purpose, it is separated into association
+	// and configuration stages.
+
+	// Prepare the state list for ExpectIn.
+	var connectedStates []interface{}
+	for _, s := range shill.ServiceConnectedStates {
+		connectedStates = append(connectedStates, s)
 	}
-	return nil
+	associatedStates := append(connectedStates, shill.ServiceStateConfiguration)
+
+	testing.ContextLog(ctx, "Associating with ", service)
+	assocCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+	state, err := pw.ExpectIn(assocCtx, shill.ServicePropertyState, associatedStates)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to associate")
+	}
+	assocTime = time.Since(start)
+	start = time.Now()
+
+	testing.ContextLog(ctx, "Configuring ", service)
+	if state == shill.ServiceStateConfiguration {
+		// We're not yet in connectedStates, wait until connected.
+		configCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
+		defer cancel()
+		if _, err := pw.ExpectIn(configCtx, shill.ServicePropertyState, connectedStates); err != nil {
+			return 0, 0, errors.Wrap(err, "failed to configure")
+		}
+	}
+	configTime = time.Since(start)
+
+	return assocTime, configTime, nil
 }
 
 // Connect connects to a WiFi service with specific config.
@@ -192,6 +219,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	}
 
 	hexSSID := s.hexSSID(request.Ssid)
+	start := time.Now()
 
 	// Configure a service for the hidden SSID as a result of manual input SSID.
 	if request.Hidden {
@@ -215,6 +243,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	if err != nil {
 		return nil, err
 	}
+	discoveryTime := time.Since(start)
 
 	shillProps, err := protoutil.DecodeFromShillValMap(request.Shillprops)
 	if err != nil {
@@ -226,12 +255,16 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 		}
 	}
 
-	if err := s.connectService(ctx, service); err != nil {
+	assocTime, configTime, err := s.connectService(ctx, service)
+	if err != nil {
 		return nil, err
 	}
 
 	return &network.ConnectResponse{
-		ServicePath: string(service.ObjectPath()),
+		ServicePath:       string(service.ObjectPath()),
+		DiscoveryTime:     discoveryTime.Nanoseconds(),
+		AssociationTime:   assocTime.Nanoseconds(),
+		ConfigurationTime: configTime.Nanoseconds(),
 	}, nil
 }
 

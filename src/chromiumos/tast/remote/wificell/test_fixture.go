@@ -316,17 +316,17 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 }
 
 // ConnectWifi asks the DUT to connect to the specified WiFi.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) error {
+func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) (*network.ConnectResponse, error) {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
 
 	props, err := secConf.ShillServiceProperties()
 	if err != nil {
-		return err
+		return nil, err
 	}
 	propsEnc, err := protoutil.EncodeToShillValMap(props)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	request := &network.ConnectRequest{
 		Ssid:       []byte(ssid),
@@ -336,14 +336,14 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	tf.curServicePath = response.ServicePath
-	return nil
+	return response, nil
 }
 
 // ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
-func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) error {
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) (*network.ConnectResponse, error) {
 	conf := ap.Config()
 	return tf.ConnectWifi(ctx, conf.Ssid, conf.Hidden, conf.SecurityConfig)
 }

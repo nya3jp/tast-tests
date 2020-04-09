@@ -191,13 +191,21 @@ func (pw *PropertiesWatcher) WaitAll(ctx context.Context, props ...string) ([]in
 
 // Expect waits for the expected value of a given property.
 func (pw *PropertiesWatcher) Expect(ctx context.Context, prop string, expected interface{}) error {
+	_, err := pw.ExpectIn(ctx, prop, []interface{}{expected})
+	return err
+}
+
+// ExpectIn expects the prop's value to become one of the expected values and returns the first matched one.
+func (pw *PropertiesWatcher) ExpectIn(ctx context.Context, prop string, expected []interface{}) (interface{}, error) {
 	for {
 		vals, err := pw.WaitAll(ctx, prop)
 		if err != nil {
-			return err
+			return nil, err
 		}
-		if reflect.DeepEqual(expected, vals[0]) {
-			return nil
+		for _, e := range expected {
+			if reflect.DeepEqual(e, vals[0]) {
+				return vals[0], nil
+			}
 		}
 	}
 }
