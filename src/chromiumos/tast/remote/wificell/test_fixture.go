@@ -144,19 +144,20 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, h *APIface) error {
 	return tf.router.StopAPIface(ctx, h)
 }
 
-// ConnectWifi asks the DUT to connect to the given WiFi service.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
+// ConnectWifi asks the DUT to connect to the given WiFi service and returns
+// the gRPC response which includes discovery/connection timing information.
+func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) (*network.ConnectResp, error) {
 	config := &network.Config{
 		Ssid:   h.Config().Ssid,
 		Hidden: h.Config().Hidden,
 	}
-	service, err := tf.wifiClient.Connect(ctx, config)
+	resp, err := tf.wifiClient.Connect(ctx, config)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	tf.curService = service
+	tf.curService = resp.Service
 	tf.curAP = h
-	return nil
+	return resp, nil
 }
 
 // DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
