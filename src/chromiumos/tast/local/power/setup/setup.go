@@ -110,7 +110,7 @@ func (s *Setup) Check(ctx context.Context) error {
 
 // PowerTest configures a DUT to run a power test by disabling features that add
 // noise, and consistently configuring components that change power draw.
-func PowerTest(ctx context.Context, c ...*chrome.TestConn) (CleanupCallback, error) {
+func PowerTest(ctx context.Context, c *chrome.TestConn) (CleanupCallback, error) {
 	return Nested(ctx, "power test", func(s *Setup) error {
 		s.Add(DisableService(ctx, "powerd"))
 		s.Add(DisableService(ctx, "update-engine"))
@@ -122,13 +122,7 @@ func PowerTest(ctx context.Context, c ...*chrome.TestConn) (CleanupCallback, err
 		s.Add(DisableWiFiInterfaces(ctx))
 		s.Add(SetBatteryDischarge(ctx, 2.0))
 		s.Add(DisableBluetooth(ctx))
-		// NB: tast-internal has some tests that depend on PowerTest. Introduce
-		// the chrome.TestConn parameter as optional so that we can migrate
-		// those tests to provide it. We can make it required once all callers
-		// pass it.
-		if len(c) == 1 {
-			s.Add(TurnOffNightLight(ctx, c[0]))
-		}
+		s.Add(TurnOffNightLight(ctx, c))
 		return nil
 	})
 }

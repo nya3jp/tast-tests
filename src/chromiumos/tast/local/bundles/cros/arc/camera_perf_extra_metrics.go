@@ -72,7 +72,7 @@ func CameraPerfExtraMetrics(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	sup.Add(setup.PowerTest(ctx))
+	sup.Add(setup.PowerTest(ctx, tconn))
 
 	// Install camera testing app.
 	a := s.PreValue().(arc.PreData).ARC
