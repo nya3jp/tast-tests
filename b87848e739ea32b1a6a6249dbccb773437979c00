@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "75b0c47f_44f30e9f",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-09T23:59:28Z",
+      "side": 1,
+      "message": "go fmt likely did this to line these up with the type on L93. I suggested splitting up such a long line in another place which might be prudent here as well.",
+      "parentUuid": "fe5fb287_7ef2a056",
+      "range": {
+        "startLine": 91,
+        "startChar": 35,
+        "endLine": 92,
+        "endChar": 66
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb8dea5f_27e66155",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
         "patchSetId": 16
