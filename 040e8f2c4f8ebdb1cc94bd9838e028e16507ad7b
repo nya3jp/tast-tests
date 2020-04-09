@@ -46,6 +46,30 @@
       "revId": "040e8f2c4f8ebdb1cc94bd9838e028e16507ad7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c17e5b_e3c19627",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-09T02:57:02Z",
+      "side": 1,
+      "message": "Done. BTW it seems that multitouch is actually working but the webside no longer support zooming in and out by pinching. (I tried it with my fingers but it didn\u0027t work)",
+      "parentUuid": "eb3bd0b1_b4e81c26",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "040e8f2c4f8ebdb1cc94bd9838e028e16507ad7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
