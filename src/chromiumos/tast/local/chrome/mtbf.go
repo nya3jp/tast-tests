@@ -16,10 +16,18 @@ import (
 // NewForLoginReuse restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 func NewForLoginReuse(ctx context.Context, s *testing.State) (*Chrome, error) {
 	pre := s.Pre().(*preImpl)
-	expectedPre := namePrefix + loginReusePreName
-	if pre.String() != expectedPre {
-		panic(fmt.Sprintf("Do not call NewForLoginReuse while precondition %s is being used. Expecting: %s",
-			pre.String(), expectedPre))
+
+	expectedPres := []string{namePrefix + loginReusePreName, namePrefix + forceReloginPreName}
+	expected := false
+	for _, v := range expectedPres {
+		if pre.String() == v {
+			expected = true
+			break
+		}
+	}
+	if !expected {
+		panic(fmt.Sprintf("Do not call NewForLoginReuse while precondition %s is being used. Expecting: %v",
+			pre.String(), expectedPres))
 	}
 	Unlock()
 
@@ -56,6 +64,7 @@ func (pl *preLoginReuse) prepare(ctx context.Context, s *testing.State, p *preIm
 			return p.cr
 		}
 		s.Log("Failed to reuse existing Chrome session: ", err)
+		Unlock()
 		p.closeInternal(ctx, s)
 	}
 
@@ -72,9 +81,9 @@ func (pl *preLoginReuse) prepare(ctx context.Context, s *testing.State, p *preIm
 }
 
 // newChrome gets the Chrome instance.
-// Try to reuse the exsting running chrome if "reuse" is true (i.e. no ui restart).
+// try to reuse the exsting running chrome if "reuse" is true (i.e. no ui restart).
 func newChrome(ctx context.Context, s *testing.State, reuseUI bool) (*Chrome, error) {
-	var opts []Option // Options that should be passed to New
+	var opts []Option // Options that should be passed to New.
 	opts = append(opts, KeepState(), ARCSupported())
 	if reuseUI {
 		opts = append(opts, ReuseLogin())
@@ -121,4 +130,41 @@ func PreReset(ctx context.Context, cr *Chrome) error {
 		return errors.Wrap(err, "failed resetting existing Chrome session")
 	}
 	return nil
+}
+
+// ForceRelogin returns the forceRelogin pre.
+func ForceRelogin() testing.Precondition { return forceReloginPre }
+
+var forceReloginPreName = "force_relogin"
+var forceReloginPre = newPrecondition(forceReloginPreName, &preForceRelogin{})
+
+// preLoginReuse implements the preInternal interface.
+type preForceRelogin struct{}
+
+func (pl *preForceRelogin) prepare(ctx context.Context, s *testing.State, p *preImpl) interface{} {
+	ctx, st := timing.Start(ctx, "prepare_"+p.name)
+	defer st.End()
+
+	Unlock()
+	if p.cr != nil {
+		p.closeInternal(ctx, s)
+	}
+
+	ctx, cancel := context.WithTimeout(ctx, LoginTimeout)
+	defer cancel()
+
+	var err error
+	if p.cr, err = newChrome(ctx, s, false); err != nil {
+		s.Fatal("Failed to start Chrome: ", err, " MTBF- Reboot DUT Required.")
+	}
+	Lock()
+	return p.cr
+}
+
+func (pl *preForceRelogin) close(ctx context.Context, s *testing.State, p *preImpl) {
+	ctx, st := timing.Start(ctx, "close_"+p.name)
+	defer st.End()
+
+	Unlock()
+	p.closeInternal(ctx, s)
 }
