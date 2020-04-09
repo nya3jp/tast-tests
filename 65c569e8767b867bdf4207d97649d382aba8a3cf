@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0497d8fb_6fc2f43e",
+        "filename": "android/ArcAccessibilityTest/res/layout/edittext_activity.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "nit\nHow about setting android:contentDescription\u003d\"description\". (and ditto to other hint and text fields below)\n\nAFAIK, setting a sentence as content description is not recommended (https://developer.android.com/guide/topics/ui/accessibility/apps#describe-ui-element). Because this is just a test, I would use very simple words for them.\nAnother idea is to consider these are fields of phone number or email address, and giving more appropriate strings.",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 71
+      },
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0379ea1_9085e4ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "can you make it run every time before launching the activity? (i.e. move this in the loop)",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 0
+      },
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40a1148c_6d0ecf06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "How about using testing.State.Run() for this?\n\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/state.go?l\u003d236\u0026rcl\u003d293b854e257f4822ba79a6e229316abf961d9da9",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 42
+      },
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa18004_141a2358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "We don\u0027t need to do this for each activity. can you move this before for-loop?",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 18
+      },
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f8541dc_ceea0db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "please update this in order to validate |value|.\notherwise, for example, try to change value in the expected json file. Even if the expectation is not correct, test would pass.",
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9daf27_204df063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "This array is also declared in the test body. \nCan we move this in package global const section?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30f5e83_125c2b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "How about clearing the log *before* getting the tree?\nIn the |script| above, I think we can clear log before \"LogStore.getInstance().writeTreeLog(new TreeDumper(root));\"",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5475ff8c_e33d9440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T04:51:31Z",
+      "side": 1,
+      "message": "Full path is not useful. (this path is that of DUT. Files are copied from DUT to host.)\nCan you keep this to output only the file name?",
+      "range": {
+        "startLine": 151,
+        "startChar": 107,
+        "endLine": 151,
+        "endChar": 118
+      },
+      "revId": "65c569e8767b867bdf4207d97649d382aba8a3cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
