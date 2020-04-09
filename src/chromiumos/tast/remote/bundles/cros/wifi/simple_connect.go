@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -140,6 +141,13 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	pv := perf.NewValues()
+	defer func() {
+		if err := pv.Save(s.OutDir()); err != nil {
+			s.Log("Failed to save perf data, err: ", err)
+		}
+	}()
+
 	testOnce := func(ctx context.Context, s *testing.State, options []hostapd.Option) {
 		ap, err := tf.ConfigureAP(ctx, options...)
 		if err != nil {
@@ -152,7 +160,8 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}()
 		s.Log("AP setup done")
 
-		if err := tf.ConnectWifi(ctx, ap); err != nil {
+		resp, err := tf.ConnectWifi(ctx, ap)
+		if err != nil {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
 		defer func() {
@@ -165,6 +174,26 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}()
 		s.Log("Connected")
 
+		desc := ap.Config().PerfDesc()
+
+		pv.Set(perf.Metric{
+			Name:      desc,
+			Variant:   "Discovery",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+		}, float64(resp.DiscoveryTime)/1e9)
+		pv.Set(perf.Metric{
+			Name:      desc,
+			Variant:   "Association",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+		}, float64(resp.AssociationTime)/1e9)
+		pv.Set(perf.Metric{
+			Name:      desc,
+			Variant:   "Configuration",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+		}, float64(resp.ConfigurationTime)/1e9)
 		ping := func(ctx context.Context) error {
 			return tf.PingFromDUT(ctx)
 		}
