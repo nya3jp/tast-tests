@@ -129,19 +129,26 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	sp := setUpParams{
-		inProgDir:       runDir,
-		sysCrashDir:     sysCrashDir,
-		sysCrashStash:   sysCrashStash,
-		userCrashDir:    userCrashDir,
-		userCrashStash:  userCrashStash,
-		senderPausePath: pausePath,
-		senderProcName:  procName,
-		mockSendingPath: mockSendingPath,
-		sendRecordDir:   sendDir,
-		isDevImageTest:  false,
-		setConsent:      false,
-		setMockConsent:  true,
-		rebootTest:      false,
+		inProgDir: runDir,
+		crashDirs: []crashAndStash{
+			{
+				crashDir: sysCrashDir,
+				stashDir: sysCrashStash,
+			},
+			{
+				crashDir: userCrashDir,
+				stashDir: userCrashStash,
+			},
+		},
+		rebootPersistDir: sysCrashDir,
+		senderPausePath:  pausePath,
+		senderProcName:   procName,
+		mockSendingPath:  mockSendingPath,
+		sendRecordDir:    sendDir,
+		isDevImageTest:   false,
+		setConsent:       false,
+		setMockConsent:   true,
+		rebootTest:       false,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
@@ -183,13 +190,20 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	}
 
 	tp := tearDownParams{
-		inProgDir:       runDir,
-		sysCrashDir:     sysCrashDir,
-		sysCrashStash:   sysCrashStash,
-		userCrashDir:    userCrashDir,
-		userCrashStash:  userCrashStash,
-		senderPausePath: pausePath,
-		mockSendingPath: mockSendingPath,
+		inProgDir: runDir,
+		crashDirs: []crashAndStash{
+			{
+				crashDir: sysCrashDir,
+				stashDir: sysCrashStash,
+			},
+			{
+				crashDir: userCrashDir,
+				stashDir: userCrashStash,
+			},
+		},
+		rebootPersistDir: sysCrashDir,
+		senderPausePath:  pausePath,
+		mockSendingPath:  mockSendingPath,
 	}
 	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
@@ -231,18 +245,25 @@ func TestSetUpAndTearDownReboot(t *testing.T) {
 	}
 
 	sp := setUpParams{
-		inProgDir:       runDir,
-		sysCrashDir:     sysCrashDir,
-		sysCrashStash:   sysCrashStash,
-		userCrashDir:    userCrashDir,
-		userCrashStash:  userCrashStash,
-		senderPausePath: pausePath,
-		mockSendingPath: mockSendingPath,
-		sendRecordDir:   sendDir,
-		isDevImageTest:  false,
-		setConsent:      false,
-		setMockConsent:  true,
-		rebootTest:      true,
+		inProgDir: runDir,
+		crashDirs: []crashAndStash{
+			{
+				crashDir: sysCrashDir,
+				stashDir: sysCrashStash,
+			},
+			{
+				crashDir: userCrashDir,
+				stashDir: userCrashStash,
+			},
+		},
+		rebootPersistDir: sysCrashDir,
+		senderPausePath:  pausePath,
+		mockSendingPath:  mockSendingPath,
+		sendRecordDir:    sendDir,
+		isDevImageTest:   false,
+		setConsent:       false,
+		setMockConsent:   true,
+		rebootTest:       true,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
@@ -252,13 +273,20 @@ func TestSetUpAndTearDownReboot(t *testing.T) {
 	}
 
 	tp := tearDownParams{
-		inProgDir:       runDir,
-		sysCrashDir:     sysCrashDir,
-		sysCrashStash:   sysCrashStash,
-		userCrashDir:    userCrashDir,
-		userCrashStash:  userCrashStash,
-		senderPausePath: pausePath,
-		mockSendingPath: mockSendingPath,
+		inProgDir: runDir,
+		crashDirs: []crashAndStash{
+			{
+				crashDir: sysCrashDir,
+				stashDir: sysCrashStash,
+			},
+			{
+				crashDir: userCrashDir,
+				stashDir: userCrashStash,
+			},
+		},
+		rebootPersistDir: sysCrashDir,
+		senderPausePath:  pausePath,
+		mockSendingPath:  mockSendingPath,
 	}
 
 	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
@@ -315,17 +343,24 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	}
 
 	sp := setUpParams{
-		inProgDir:       runDir,
-		sysCrashDir:     sysCrashDir,
-		sysCrashStash:   sysCrashStash,
-		userCrashDir:    userCrashDir,
-		userCrashStash:  userCrashStash,
-		senderPausePath: pausePath,
-		senderProcName:  "crash_sender.fake",
-		mockSendingPath: mockSendingPath,
-		isDevImageTest:  false,
-		setConsent:      false,
-		setMockConsent:  false,
+		inProgDir: runDir,
+		crashDirs: []crashAndStash{
+			{
+				crashDir: sysCrashDir,
+				stashDir: sysCrashStash,
+			},
+			{
+				crashDir: userCrashDir,
+				stashDir: userCrashStash,
+			},
+		},
+		rebootPersistDir: sysCrashDir,
+		senderPausePath:  pausePath,
+		senderProcName:   "crash_sender.fake",
+		mockSendingPath:  mockSendingPath,
+		isDevImageTest:   false,
+		setConsent:       false,
+		setMockConsent:   false,
 	}
 	if err := setUpCrashTest(context.Background(), &sp); err != nil {
 		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
@@ -344,13 +379,20 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 	}
 
 	tp := tearDownParams{
-		inProgDir:       runDir,
-		sysCrashDir:     sysCrashDir,
-		sysCrashStash:   sysCrashStash,
-		userCrashDir:    userCrashDir,
-		userCrashStash:  userCrashStash,
-		senderPausePath: pausePath,
-		mockSendingPath: mockSendingPath,
+		inProgDir: runDir,
+		crashDirs: []crashAndStash{
+			{
+				crashDir: sysCrashDir,
+				stashDir: sysCrashStash,
+			},
+			{
+				crashDir: userCrashDir,
+				stashDir: userCrashStash,
+			},
+		},
+		rebootPersistDir: sysCrashDir,
+		senderPausePath:  pausePath,
+		mockSendingPath:  mockSendingPath,
 	}
 	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
 		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)

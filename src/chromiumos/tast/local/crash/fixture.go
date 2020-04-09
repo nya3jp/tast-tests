@@ -211,19 +211,21 @@ func DaemonStore() option {
 // test should "defer TearDownCrashTest(ctx)" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
 func SetUpCrashTest(ctx context.Context, opts ...option) error {
+	var crashDirs []crashAndStash
+
+	crashDirs = append(crashDirs, crashAndStash{SystemCrashDir, systemCrashStash})
+	crashDirs = append(crashDirs, crashAndStash{LocalCrashDir, localCrashStash})
+	crashDirs = append(crashDirs, crashAndStash{UserCrashDir, userCrashStash})
+	crashDirs = append(crashDirs, crashAndStash{ClobberCrashDir, clobberCrashStash})
 
 	p := setUpParams{
-		inProgDir:         crashTestInProgressDir,
-		sysCrashDir:       SystemCrashDir,
-		sysCrashStash:     systemCrashStash,
-		chronosCrashDir:   LocalCrashDir,
-		chronosCrashStash: localCrashStash,
-		userCrashDir:      UserCrashDir,
-		userCrashStash:    userCrashStash,
-		senderPausePath:   senderPausePath,
-		senderProcName:    senderProcName,
-		mockSendingPath:   mockSendingPath,
-		sendRecordDir:     SendRecordDir,
+		inProgDir:        crashTestInProgressDir,
+		crashDirs:        crashDirs,
+		rebootPersistDir: SystemCrashDir,
+		senderPausePath:  senderPausePath,
+		senderProcName:   senderProcName,
+		mockSendingPath:  mockSendingPath,
+		sendRecordDir:    SendRecordDir,
 	}
 	for _, opt := range opts {
 		opt(&p)
@@ -233,9 +235,8 @@ func SetUpCrashTest(ctx context.Context, opts ...option) error {
 		if err != nil {
 			return errors.Wrap(err, "failed to get daemon store crash directories")
 		}
-		p.daemonStoreDir = daemonStorePaths
-		for _, path := range p.daemonStoreDir {
-			p.daemonStoreStash = append(p.daemonStoreStash, path+".real")
+		for _, path := range daemonStorePaths {
+			p.crashDirs = append(p.crashDirs, crashAndStash{path, path + ".real"})
 		}
 	}
 
@@ -255,27 +256,27 @@ func SetUpCrashTest(ctx context.Context, opts ...option) error {
 	return setUpCrashTest(ctx, &p)
 }
 
+type crashAndStash struct {
+	crashDir string
+	stashDir string
+}
+
 // setUpParams is a collection of parameters to setUpCrashTest.
 type setUpParams struct {
-	inProgDir         string
-	sysCrashDir       string
-	sysCrashStash     string
-	daemonStoreDir    []string
-	daemonStoreStash  []string
-	chronosCrashDir   string
-	chronosCrashStash string
-	userCrashDir      string
-	userCrashStash    string
-	senderPausePath   string
-	senderProcName    string
-	mockSendingPath   string
-	sendRecordDir     string
-	isDevImageTest    bool
-	setConsent        bool
-	setMockConsent    bool
-	rebootTest        bool
-	useDaemonStore    bool
-	chrome            *chrome.Chrome
+	inProgDir string
+	// crashDirs is a list of all crash directories, along with the directories to which we should stash them.
+	crashDirs        []crashAndStash
+	rebootPersistDir string
+	senderPausePath  string
+	senderProcName   string
+	mockSendingPath  string
+	sendRecordDir    string
+	isDevImageTest   bool
+	setConsent       bool
+	setMockConsent   bool
+	rebootTest       bool
+	useDaemonStore   bool
+	chrome           *chrome.Chrome
 }
 
 // SetCrashTestInProgress creates a file to tell crash_reporter that a crash_reporter test is in progress.
@@ -302,18 +303,12 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	defer func() {
 		if retErr != nil {
 			tearDownCrashTest(ctx, &tearDownParams{
-				inProgDir:         p.inProgDir,
-				sysCrashDir:       p.sysCrashDir,
-				sysCrashStash:     p.sysCrashStash,
-				daemonStoreDir:    p.daemonStoreDir,
-				daemonStoreStash:  p.daemonStoreStash,
-				chronosCrashDir:   p.chronosCrashDir,
-				chronosCrashStash: p.chronosCrashStash,
-				userCrashDir:      p.userCrashDir,
-				userCrashStash:    p.userCrashStash,
-				senderPausePath:   p.senderPausePath,
-				mockSendingPath:   p.mockSendingPath,
-				useDaemonStore:    p.useDaemonStore,
+				inProgDir:        p.inProgDir,
+				crashDirs:        p.crashDirs,
+				rebootPersistDir: p.rebootPersistDir,
+				senderPausePath:  p.senderPausePath,
+				mockSendingPath:  p.mockSendingPath,
+				useDaemonStore:   p.useDaemonStore,
 			})
 		}
 	}()
@@ -355,20 +350,12 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	}
 
 	// Move all crashes into stash directory so a full directory won't stop
-	// us from saving a new crash report.
-	if err := moveAllCrashesTo(p.sysCrashDir, p.sysCrashStash); err != nil && !os.IsNotExist(err) {
-		return errors.Wrapf(err, "couldn't stash sys crashes from %s to %s", p.sysCrashDir, p.sysCrashStash)
-	}
-	for i := range p.daemonStoreDir {
-		if err := moveAllCrashesTo(p.daemonStoreDir[i], p.daemonStoreStash[i]); err != nil && !os.IsNotExist(err) {
-			return errors.Wrapf(err, "couldn't stash daemon crashes from %s to %s", p.daemonStoreDir[i], p.daemonStoreStash[i])
+	// us from saving a new crash report, and so that we don't improperly
+	// interpret preexisting crashes as being created during the test.
+	for _, crashAndStash := range p.crashDirs {
+		if err := moveAllCrashesTo(crashAndStash.crashDir, crashAndStash.stashDir); err != nil && !os.IsNotExist(err) {
+			return errors.Wrapf(err, "couldn't stash crashes from %s to %s", crashAndStash.crashDir, crashAndStash.stashDir)
 		}
-	}
-	if err := moveAllCrashesTo(p.chronosCrashDir, p.chronosCrashStash); err != nil && !os.IsNotExist(err) {
-		return errors.Wrapf(err, "couldn't stash chronos crashes from %s to %s", p.chronosCrashDir, p.chronosCrashStash)
-	}
-	if err := moveAllCrashesTo(p.userCrashDir, p.userCrashStash); err != nil && !os.IsNotExist(err) {
-		return errors.Wrapf(err, "couldn't stash user crashes from %s to %s", p.userCrashDir, p.userCrashStash)
 	}
 
 	// We must set mock consent _after_ stashing crashes, or we'll stash
@@ -379,7 +366,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 			return errors.Wrapf(err, "failed writing mock consent file %s", mockConsentPath)
 		}
 		if p.rebootTest {
-			mockConsentPersistent := filepath.Join(p.sysCrashDir, mockConsentFile)
+			mockConsentPersistent := filepath.Join(p.rebootPersistDir, mockConsentFile)
 			if err := ioutil.WriteFile(mockConsentPersistent, nil, 0644); err != nil {
 				return errors.Wrapf(err, "failed writing mock consent file %s", mockConsentPersistent)
 			}
@@ -398,7 +385,7 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 	}
 
 	if p.rebootTest {
-		filePath = filepath.Join(p.sysCrashDir, crashTestInProgressFile)
+		filePath = filepath.Join(p.rebootPersistDir, crashTestInProgressFile)
 		if err := ioutil.WriteFile(filePath, nil, 0644); err != nil {
 			return errors.Wrapf(err, "could not create %v", filePath)
 		}
@@ -438,16 +425,19 @@ func TearDownDaemonStore() tearDownOption {
 func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 	var firstErr error
 
+	var crashDirs []crashAndStash
+
+	crashDirs = append(crashDirs, crashAndStash{SystemCrashDir, systemCrashStash})
+	crashDirs = append(crashDirs, crashAndStash{LocalCrashDir, localCrashStash})
+	crashDirs = append(crashDirs, crashAndStash{UserCrashDir, userCrashStash})
+	crashDirs = append(crashDirs, crashAndStash{ClobberCrashDir, clobberCrashStash})
+
 	p := tearDownParams{
-		inProgDir:         crashTestInProgressDir,
-		sysCrashDir:       SystemCrashDir,
-		sysCrashStash:     systemCrashStash,
-		chronosCrashDir:   LocalCrashDir,
-		chronosCrashStash: localCrashStash,
-		userCrashDir:      UserCrashDir,
-		userCrashStash:    userCrashStash,
-		senderPausePath:   senderPausePath,
-		mockSendingPath:   mockSendingPath,
+		inProgDir:        crashTestInProgressDir,
+		crashDirs:        crashDirs,
+		rebootPersistDir: SystemCrashDir,
+		senderPausePath:  senderPausePath,
+		mockSendingPath:  mockSendingPath,
 	}
 
 	for _, opt := range opts {
@@ -468,9 +458,8 @@ func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 				firstErr = errors.Wrap(err, "failed to get daemon store crash directories")
 			}
 		}
-		p.daemonStoreDir = daemonStorePaths
 		for _, path := range daemonStorePaths {
-			p.daemonStoreStash = append(p.daemonStoreStash, path+".real")
+			p.crashDirs = append(p.crashDirs, crashAndStash{path, path + ".real"})
 		}
 	}
 
@@ -496,18 +485,13 @@ func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 
 // tearDownParams is a collection of parameters to tearDownCrashTest.
 type tearDownParams struct {
-	inProgDir         string
-	sysCrashDir       string
-	sysCrashStash     string
-	daemonStoreDir    []string
-	daemonStoreStash  []string
-	chronosCrashDir   string
-	chronosCrashStash string
-	userCrashDir      string
-	userCrashStash    string
-	senderPausePath   string
-	mockSendingPath   string
-	useDaemonStore    bool
+	inProgDir string
+	// crashDirs is a list of all crash directories, along with the directories to which we stashed them in setUp
+	crashDirs        []crashAndStash
+	rebootPersistDir string
+	senderPausePath  string
+	mockSendingPath  string
+	useDaemonStore   bool
 }
 
 // tearDownCrashTest is a helper function for TearDownCrashTest. We need
@@ -525,7 +509,7 @@ func tearDownCrashTest(ctx context.Context, p *tearDownParams) error {
 			firstErr = errors.Wrapf(err, "removing crash test in progress file %s", filePath)
 		}
 	}
-	filePath = filepath.Join(p.sysCrashDir, crashTestInProgressFile)
+	filePath = filepath.Join(p.rebootPersistDir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
 		testing.ContextLogf(ctx, "Error removing persistent crash test in progress file %s: %v", filePath, err)
 		if firstErr == nil {
@@ -533,30 +517,13 @@ func tearDownCrashTest(ctx context.Context, p *tearDownParams) error {
 		}
 	}
 
-	if err := cleanUpStashDir(p.sysCrashStash, p.sysCrashDir); err != nil {
-		testing.ContextLogf(ctx, "Error cleaning up system stash dir %s (real dir %s): %v", p.sysCrashStash, p.sysCrashDir, err)
-		if firstErr == nil {
-			firstErr = errors.Wrapf(err, "couldn't clean up system stash dir %s to %s", p.sysCrashStash, p.sysCrashDir)
-		}
-	}
-	for i := range p.daemonStoreDir {
-		if err := cleanUpStashDir(p.daemonStoreStash[i], p.daemonStoreDir[i]); err != nil {
-			testing.ContextLogf(ctx, "Error cleaning up daemon store stash dir %s (real dir %s): %v", p.daemonStoreStash[i], p.daemonStoreDir[i], err)
+	// Clean up stash directories
+	for _, crashAndStash := range p.crashDirs {
+		if err := cleanUpStashDir(crashAndStash.stashDir, crashAndStash.crashDir); err != nil {
+			testing.ContextLogf(ctx, "Error cleaning up stash dir %s (real dir %s): %v", crashAndStash.stashDir, crashAndStash.crashDir, err)
 			if firstErr == nil {
-				firstErr = errors.Wrapf(err, "couldn't clean up daemon store stash dir %s to %s", p.daemonStoreStash[i], p.daemonStoreDir[i])
+				firstErr = errors.Wrapf(err, "couldn't clean up stash dir %s to %s", crashAndStash.stashDir, crashAndStash.crashDir)
 			}
-		}
-	}
-	if err := cleanUpStashDir(p.chronosCrashStash, p.chronosCrashDir); err != nil {
-		testing.ContextLogf(ctx, "Error cleaning up chronos stash dir %s (real dir %s): %v", p.chronosCrashStash, p.chronosCrashDir, err)
-		if firstErr == nil {
-			firstErr = errors.Wrapf(err, "couldn't clean up chronos stash dir %s to %s", p.chronosCrashStash, p.chronosCrashDir)
-		}
-	}
-	if err := cleanUpStashDir(p.userCrashStash, p.userCrashDir); err != nil {
-		testing.ContextLogf(ctx, "Error cleaning up user stash dir %s (real dir %s): %v", p.userCrashStash, p.userCrashDir, err)
-		if firstErr == nil {
-			firstErr = errors.Wrapf(err, "couldn't clean up user stash dir %s to %s", p.userCrashStash, p.userCrashDir)
 		}
 	}
 
@@ -574,7 +541,7 @@ func tearDownCrashTest(ctx context.Context, p *tearDownParams) error {
 			firstErr = errors.Wrapf(err, "couldn't remove mock consent file %s", mockConsentPath)
 		}
 	}
-	mockConsentPersistent := filepath.Join(p.sysCrashDir, mockConsentFile)
+	mockConsentPersistent := filepath.Join(p.rebootPersistDir, mockConsentFile)
 	if err := os.Remove(mockConsentPersistent); err != nil && !os.IsNotExist(err) {
 		testing.ContextLogf(ctx, "Error removing persistent mock consent file %s: %v", mockConsentPersistent, err)
 		if firstErr == nil {
