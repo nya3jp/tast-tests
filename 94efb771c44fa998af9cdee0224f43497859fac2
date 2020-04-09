@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88c44781_cd25f6ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-09T17:14:48Z",
+      "side": 1,
+      "message": "this is different from the previous conditions -- closeApp is \u0027ShouldConfirmAfterCapture\u003dfalse\u0027, while other entities satisfied previous condition (for example, captureConfirmAndDone is ShouldReview\u003dtrue and ShouldConfirmAfterCapture\u003dtrue).\n\nSo I guess this changes the expecedAppResult. I\u0027m not sure if this is intended.",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 38
+      },
+      "revId": "94efb771c44fa998af9cdee0224f43497859fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
