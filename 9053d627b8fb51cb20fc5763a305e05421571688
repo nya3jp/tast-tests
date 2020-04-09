@@ -22,6 +22,30 @@
       "revId": "9053d627b8fb51cb20fc5763a305e05421571688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c1d1160_da5c25d3",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-09T15:41:28Z",
+      "side": 1,
+      "message": "That\u0027s true. But in upcoming CL\u0027s, NewConfig is going to need to load several config files: the platform\u0027s config file, its parent config file, and the default config file. So I made this function in anticipation of the upcoming need.\n\nIf preferred, I can undo that and save the functionalization until it\u0027s needed later. But I think that would be unnecessary work.",
+      "parentUuid": "46eeca0f_6d90864e",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "9053d627b8fb51cb20fc5763a305e05421571688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
