@@ -122,7 +122,7 @@ func (s *WifiService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empt
 
 // Connect connects to a WiFi service with specific config.
 // This is the implementation of network.Wifi/Connect gRPC.
-func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*network.Service, error) {
+func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*network.ConnectResp, error) {
 	testing.ContextLog(ctx, "Attempting to connect with config: ", config)
 
 	testing.ContextLog(ctx, "Discovering")
@@ -148,7 +148,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 		shill.ServicePropertyName: config.Ssid,
 	}
 
-	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
+	start := time.Now()
 	testing.ContextLog(ctx, "Finding service with props: ", props)
 	var service *shill.Service
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -167,6 +167,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}); err != nil {
 		return nil, err
 	}
+	discoveryTime := time.Now().Sub(start)
 
 	testing.ContextLog(ctx, "Connecting to service: ", service)
 
@@ -177,6 +178,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}
 	defer pw.Close(ctx)
 
+	start = time.Now()
 	if err := service.Connect(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to service")
 	}
@@ -189,9 +191,14 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	if err := pw.Expect(timeoutCtx, shill.ServicePropertyIsConnected, true); err != nil {
 		return nil, err
 	}
+	connectTime := time.Now().Sub(start)
 
-	return &network.Service{
-		Path: string(service.ObjectPath()),
+	return &network.ConnectResp{
+		Service: &network.Service{
+			Path: string(service.ObjectPath()),
+		},
+		DiscoveryTime: discoveryTime.Nanoseconds(),
+		ConnectTime:   connectTime.Nanoseconds(),
 	}, nil
 }
 
