@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cdfd8ec_6cb449e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T08:57:13Z",
+      "side": 1,
+      "message": "can you define this array here?\n\naxTreeTestActivities \u003d []string{accessibility.MainActivity, accessibility.EdittextActivity}",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "4f09873a1d732f79258495d7faaaf81fa90f63de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65afa5e5_6986c3a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T08:57:13Z",
+      "side": 1,
+      "message": "nit: put this after role before children. (to match the order of js one)",
+      "revId": "4f09873a1d732f79258495d7faaaf81fa90f63de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57c9eca_15edf9e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T08:57:13Z",
+      "side": 1,
+      "message": "Calling clearLog() here is very confusing.\nCan you put clearLog() at the top of this lambda function? (just before writeTreeLog)",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "4f09873a1d732f79258495d7faaaf81fa90f63de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642a6519_54947381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-09T08:57:13Z",
+      "side": 1,
+      "message": "can you insert a space after this line for readability?",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 14
+      },
+      "revId": "4f09873a1d732f79258495d7faaaf81fa90f63de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
