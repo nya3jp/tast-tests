@@ -22,6 +22,30 @@
       "revId": "0753182853185374425329ce58ee7a0e7f73d4cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee5a87c_a53e11fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T06:10:24Z",
+      "side": 1,
+      "message": "Agreed your assessment. Also, it is time to remove the blacklist as WLANDriver.informational is all green in recent 19 builds.\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dnetwork.WLANDriver*\u0026dep\u003d",
+      "parentUuid": "5a4f20fa_ca945f80",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "0753182853185374425329ce58ee7a0e7f73d4cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
