@@ -317,17 +317,17 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 }
 
 // ConnectWifi asks the DUT to connect to the given WiFi service.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
+func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) (*network.ConnectResponse, error) {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
 
 	props, err := h.Config().SecurityConfig.ShillServiceProperties()
 	if err != nil {
-		return err
+		return nil, err
 	}
 	propsEnc, err := protoutil.EncodeToShillValMap(props)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	request := &network.ConnectRequest{
 		Ssid:       []byte(h.Config().Ssid),
@@ -337,11 +337,11 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	tf.curServicePath = response.ServicePath
 	tf.curAP = h
-	return nil
+	return response, nil
 }
 
 // DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
