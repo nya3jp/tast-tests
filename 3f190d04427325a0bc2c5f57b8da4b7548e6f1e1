@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "57d26dee_8fbffd18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-04-09T06:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45fbb4fd_585789a2",
+      "revId": "3f190d04427325a0bc2c5f57b8da4b7548e6f1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e0b62c0_f4c398a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "3f190d04427325a0bc2c5f57b8da4b7548e6f1e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d2f63b_ab20367e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-04-09T06:26:28Z",
+      "side": 1,
+      "message": "Oops. We should not return nil here. Removed it. Thanks for catching this bug!",
+      "parentUuid": "3e0b62c0_f4c398a1",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 468,
+        "endChar": 12
+      },
+      "revId": "3f190d04427325a0bc2c5f57b8da4b7548e6f1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
