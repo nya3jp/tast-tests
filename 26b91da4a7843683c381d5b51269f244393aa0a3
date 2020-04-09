@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58b1be8f_2cfe39e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-04-09T01:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506ffc47_5cd921dd",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 10
+      },
+      "revId": "26b91da4a7843683c381d5b51269f244393aa0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8dca8be_f8962464",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "26b91da4a7843683c381d5b51269f244393aa0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830b7eae_4b35d11e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-04-09T01:06:48Z",
+      "side": 1,
+      "message": "Not sure how this happened :)",
+      "parentUuid": "c8dca8be_f8962464",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "26b91da4a7843683c381d5b51269f244393aa0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
