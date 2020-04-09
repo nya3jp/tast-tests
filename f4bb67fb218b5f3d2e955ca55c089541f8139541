@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81899674_248424ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T09:52:38Z",
+      "side": 1,
+      "message": "initialization logic",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "217ebc1c_ae8e7856",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T09:52:38Z",
+      "side": 1,
+      "message": "cleanup logic",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f37e317f_b8f30aaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T09:52:38Z",
+      "side": 1,
+      "message": "TODO: logic related to TPM store",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541c9db4_1b25a076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T09:52:38Z",
+      "side": 1,
+      "message": "Some of InitTestState() logic may move to a precondition. Refer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions\n\nAnd chrome/pre.go shows how to implement a testing.Precondition.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/pre.go?type\u003dcs\u0026q\u003dnewprecondition+file:%5Esrc/platform/tast-tests/src/chromiumos/tast/local/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d38",
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0287b296_6f8da560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T09:52:38Z",
+      "side": 1,
+      "message": "a WiFi",
+      "range": {
+        "startLine": 53,
+        "startChar": 46,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b12f9e4_0e4e903d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T09:52:38Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be removed in s.cleanProfiles()?",
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4693f7_d802c73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T09:52:38Z",
+      "side": 1,
+      "message": "We don\u0027t need to start ui. Tests who needs Chrome should set \"chrome\" software dependency.",
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
