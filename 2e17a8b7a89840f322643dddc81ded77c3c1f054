@@ -16,6 +16,24 @@
       "revId": "2e17a8b7a89840f322643dddc81ded77c3c1f054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eabfb3d_07e2420c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/third_party/simulcast/LICENSE.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-09T09:32:47Z",
+      "side": 1,
+      "message": "Fortunately just putting a file under data/ should include it in the test image even if we don\u0027t put the file in Data: section of any test.",
+      "parentUuid": "55fc9a38_f03b8de6",
+      "revId": "2e17a8b7a89840f322643dddc81ded77c3c1f054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
