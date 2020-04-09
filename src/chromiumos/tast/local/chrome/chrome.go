@@ -16,7 +16,9 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/local/testexec"
 	"github.com/mafredri/cdp/protocol/target"
+	"github.com/shirou/gopsutil/disk"
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
@@ -355,6 +357,23 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 			return nil, err
 		}
 	}
+
+	partitions, err2 := disk.Partitions(true /* all */)
+	if err2 != nil {
+		testing.ContextLog(ctx, "failed to list partitions: ", err2)
+	}
+	defaultUserPath, err2 := cryptohome.UserPath(ctx, c.user)
+	if err2 != nil {
+		testing.ContextLog(ctx, "failed to get default user path: ", err2)
+	}
+	testing.ContextLogf(ctx, "default user path: %v", defaultUserPath)
+	mountPointFound := false
+	for _, part := range partitions {
+		if part.Mountpoint == defaultUserPath {
+			mountPointFound = true
+		}
+	}
+	testing.ContextLogf(ctx, "is default mount point found: %v", mountPointFound)
 
 	if err := c.PrepareExtensions(ctx); err != nil {
 		return nil, err
@@ -1066,11 +1085,13 @@ func (c *Chrome) logIn(ctx context.Context) error {
 
 	switch c.loginMode {
 	case fakeLogin:
+		testing.ContextLog(ctx, "Performing fake login")
 		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
 			c.user, c.pass, c.gaiaID, c.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
+		testing.ContextLog(ctx, "Performing gaia login")
 		if err = c.performGAIALogin(ctx, conn); err != nil {
 			return err
 		}
@@ -1082,7 +1103,17 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		}
 	}
 
+	userpath, err := cryptohome.UserPath(ctx, c.normalizedUser)
+	if err != nil {
+		testing.ContextLogf(ctx, "failed to get user path for %v", c.normalizedUser)
+	}
+
 	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
+	  if out, err2 := testexec.CommandContext(ctx, "cryptohome", "--action=is_user_mounted", "--user="+userpath).Output(); err2 != nil {
+			testing.ContextLogf(ctx, "cryptohome says %s is not mounted: %v", userpath, out)
+		} else {
+			testing.ContextLogf(ctx, "cryptohome says %s is mounted", userpath)
+		}
 		return err
 	}
 

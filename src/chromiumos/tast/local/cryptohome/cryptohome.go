@@ -225,6 +225,14 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		return err
 	}
 
+	getMountPoints := func(parts []disk.PartitionStat) []string {
+		var mountPoints []string
+		for _, point := range parts {
+			mountPoints = append(mountPoints, point.Mountpoint)
+		}
+		return mountPoints
+	}
+
 	const waitTimeout = 30 * time.Second
 	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, waitTimeout)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
@@ -232,16 +240,17 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		if err != nil {
 			return err
 		}
+		mountPoints := getMountPoints(partitions)
 		up := findPartition(partitions, userpath)
 		if up == nil {
-			return errors.Errorf("%v not found", userpath)
+			return errors.Errorf("userpath %v not found, mount points = %v", userpath, mountPoints)
 		}
 		if err = validatePartition(up); err != nil {
 			return err
 		}
 		sp := findPartition(partitions, systempath)
 		if sp == nil {
-			return errors.Errorf("%v not found", systempath)
+			return errors.Errorf("systempath %v not found, mount points = %v", systempath, mountPoints)
 		}
 		if err = validatePartition(sp); err != nil {
 			return err
