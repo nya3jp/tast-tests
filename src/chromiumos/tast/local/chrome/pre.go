@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -62,6 +61,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
+	/*
 	if p.cr != nil {
 		err := func() error {
 			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
@@ -84,6 +84,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		Unlock()
 		p.closeInternal(ctx, s)
 	}
+	 */
 
 	ctx, cancel := context.WithTimeout(ctx, LoginTimeout)
 	defer cancel()
@@ -92,7 +93,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.cr, err = New(ctx, p.opts...); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	Lock()
+	//Lock()
 
 	return p.cr
 }
@@ -102,7 +103,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
-	Unlock()
+	//Unlock()
 	p.closeInternal(ctx, s)
 }
 
