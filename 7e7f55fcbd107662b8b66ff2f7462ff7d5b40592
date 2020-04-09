@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe48809b_7ad755aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_ec_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-09T07:36:41Z",
+      "side": 1,
+      "message": "nit: don\u0027t need to log here",
+      "revId": "7e7f55fcbd107662b8b66ff2f7462ff7d5b40592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
