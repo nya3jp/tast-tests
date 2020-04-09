@@ -70,6 +70,30 @@
       "revId": "0753182853185374425329ce58ee7a0e7f73d4cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e687683_8ce10538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-09T17:47:27Z",
+      "side": 1,
+      "message": "Reason to close the issue is addressed in https://crbug.com/1052730#c20. Updated crbug.com/1007252, too.",
+      "parentUuid": "229d8e66_44eae666",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "0753182853185374425329ce58ee7a0e7f73d4cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
