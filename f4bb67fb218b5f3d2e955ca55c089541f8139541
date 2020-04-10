@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbbfa1c3_c287ae45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T03:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81899674_248424ba",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217ebc1c_ae8e7856",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73df4ea7_18e1fb09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T03:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "217ebc1c_ae8e7856",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a7fddd16_fc74064b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T03:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37e317f_b8f30aaa",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "541c9db4_1b25a076",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2020-04-09T09:52:38Z",
       "side": 1,
       "message": "Some of InitTestState() logic may move to a precondition. Refer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions\n\nAnd chrome/pre.go shows how to implement a testing.Precondition.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/pre.go?type\u003dcs\u0026q\u003dnewprecondition+file:%5Esrc/platform/tast-tests/src/chromiumos/tast/local/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d38",
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05bd6490_ead7202c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T03:43:30Z",
+      "side": 1,
+      "message": "Good suggestion. I\u0027ll try what we can access in precondition. (e.g. gRPC, Var, ...) Maybe we can even move TestFixture to precondition.",
+      "parentUuid": "541c9db4_1b25a076",
       "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c74b7d34_ecc02601",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T03:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0287b296_6f8da560",
+      "range": {
+        "startLine": 53,
+        "startChar": 46,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b12f9e4_0e4e903d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 3
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "d4f8399d_852b9b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T03:43:30Z",
+      "side": 1,
+      "message": "It might not be removed if it is not in the stack of active profiles.\nBut I think it is good to move this line into cleanProfiles.",
+      "parentUuid": "7b12f9e4_0e4e903d",
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b4693f7_d802c73d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 3
@@ -142,6 +274,24 @@
       "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628f54da_5216b7e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T03:43:30Z",
+      "side": 1,
+      "message": "This one has a duplication in later patchset, let\u0027s close this one.",
+      "parentUuid": "7b4693f7_d802c73d",
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
