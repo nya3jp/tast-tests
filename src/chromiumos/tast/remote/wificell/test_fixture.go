@@ -51,6 +51,9 @@ func TFCapture(b bool) TFOption {
 	}
 }
 
+// TFServiceName is the service needed by TestFixture.
+const TFServiceName = "tast.cros.network.Wifi"
+
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
 	dut        *dut.DUT
@@ -166,6 +169,11 @@ func NewTestFixture(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, o
 	// Seed the random as we have some randomization. e.g. default SSID.
 	rand.Seed(time.Now().UnixNano())
 	return tf, nil
+}
+
+// CollectLogs downloads related log files to OutDir.
+func (tf *TestFixture) CollectLogs(ctx context.Context) error {
+	return tf.router.CollectLogs(ctx)
 }
 
 // Close closes the connections created by TestFixture.
