@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58cf09df_2490b00c",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-10T00:12:22Z",
+      "side": 1,
+      "message": "you could write like:\n\ncrashDirs :\u003d []crashAndStash{\n  {SystemCrashDir, systemCrashStash},\n  {LocalCrashDir, localCrashStash},\n  {UserCrashDir, userCrashStash},\n  {ClobberCrashDir, clobberCrashStash},\n}\n\nrather than append. cf. https://play.golang.org/p/x7j8YHoT8pz",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 14
+      },
+      "revId": "0e52da3bd12105d6e613f18bb3a9620847036793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419eb890_6605ac78",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-10T00:12:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 428,
+        "startChar": 6,
+        "endLine": 433,
+        "endChar": 81
+      },
+      "revId": "0e52da3bd12105d6e613f18bb3a9620847036793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
