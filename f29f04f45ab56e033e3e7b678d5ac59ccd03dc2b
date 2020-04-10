@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8bf07de_a4be70c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-10T04:02:22Z",
+      "side": 1,
+      "message": "are there any documents (or rule or standards) on this?\nI know that other files are following 4-spaces rule, but following a standardized rule sounds good to me.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "f29f04f45ab56e033e3e7b678d5ac59ccd03dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
