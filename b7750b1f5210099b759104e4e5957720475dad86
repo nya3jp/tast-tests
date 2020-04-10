@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "269ea25e_b4bd0e41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-04-10T20:18:19Z",
+      "side": 1,
+      "message": "Oh yeah, that\u0027s still pointing to the old dupe CL I accidentally made.",
+      "parentUuid": "b491639d_20a8f6f9",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "090a5645_2e55313f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 1
@@ -83,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "73b32e94_0172ace5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-04-10T20:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c0f23b_5517a2b2",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c4a8cdd_c05d9f27",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 1
@@ -103,6 +151,30 @@
       "revId": "b7750b1f5210099b759104e4e5957720475dad86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113ce69c_45a9a5d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-04-10T20:18:19Z",
+      "side": 1,
+      "message": "I went ahead and made them all explicit.",
+      "parentUuid": "7c4a8cdd_c05d9f27",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "b7750b1f5210099b759104e4e5957720475dad86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
