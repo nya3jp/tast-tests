@@ -8,6 +8,7 @@ package cca
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -228,7 +229,11 @@ func (a *App) CollectPerfEvents(ctx context.Context, perfEvents *chrome.JSObject
 	informativeEventName := func(event perfEvent) string {
 		extras := event.Extras
 		if len(extras.Facing) > 0 {
-			return fmt.Sprintf(`%s-facing-%s`, event.Event, extras.Facing)
+			// To avoid containing invalid character in the metrics name, we should remove the non-Alphanumeric characters from the facing.
+			// e.g. When the facing is not set, the corresponding string will be (not-set).
+			reg := regexp.MustCompile("[^a-zA-Z0-9]+")
+			validFacingString := reg.ReplaceAllString(extras.Facing, "")
+			return fmt.Sprintf(`%s-facing-%s`, event.Event, validFacingString)
 		}
 		return event.Event
 	}
