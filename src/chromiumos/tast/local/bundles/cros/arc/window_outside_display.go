@@ -22,7 +22,8 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      4 * time.Minute,
+		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
+		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               []string{},

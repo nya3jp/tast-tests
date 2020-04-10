@@ -39,8 +39,9 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
-		Attr:         []string{"group:mainline"},
+		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
+		Timeout: 5 * time.Minute,
+		Attr:    []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testArgs{

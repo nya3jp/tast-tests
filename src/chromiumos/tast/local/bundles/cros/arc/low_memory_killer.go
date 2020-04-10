@@ -33,8 +33,9 @@ func init() {
 		Contacts:     []string{"wvk@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_p"},
-		Timeout:      4 * time.Minute,
-		Data:         []string{"low_memory_killer_manifest.json", "low_memory_killer_background.js"},
+		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
+		Timeout: 5 * time.Minute,
+		Data:    []string{"low_memory_killer_manifest.json", "low_memory_killer_background.js"},
 	})
 }
 
