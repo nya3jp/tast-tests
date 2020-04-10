@@ -112,8 +112,11 @@ func Attestation(ctx context.Context, s *testing.State) {
 				s.Fatal("Faild to get certificate: ", enrollReply.Status.String())
 			}
 
-			if err := at.SignEnterpriseChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {
-				s.Fatal("Failed to sign enterprise challenge: ", err)
+			// TODO(b/165426637): Enable it after we inject the fake devive policy with customer ID.
+			if username != "" {
+				if err := at.SignEnterpriseChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {
+					s.Fatal("Failed to sign enterprise challenge: ", err)
+				}
 			}
 
 			if err := at.SignSimpleChallenge(ctx, username, hwsec.DefaultCertLabel); err != nil {
