@@ -9,8 +9,10 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/wifi/security/base"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -26,35 +28,20 @@ func init() {
 		Desc:        "Verifies that DUT can see two APs in the same network and prefer 5Ghz one",
 		Contacts:    []string{"deanliao@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
 	})
 }
 
 func Prefer5Ghz(fullCtx context.Context, s *testing.State) {
-	s.Log("Setting up fixture / AP")
-	ops := []wificell.TFOption{
-		wificell.TFCapture(true),
-	}
-	if router, _ := s.Var("router"); router != "" {
-		ops = append(ops, wificell.TFRouter(router))
-	}
-	if pcap, _ := s.Var("pcap"); pcap != "" {
-		ops = append(ops, wificell.TFPcap(pcap))
-	}
-	// As we are not in precondition, we have fullCtx as both method context and
-	// daemon context.
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), ops...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
-			s.Log("Failed to tear down test fixture: ", err)
+		if err := tf.CollectLogs(fullCtx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}()
-
-	ctx, cancel := tf.ReserveForClose(fullCtx)
+	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
 	defer cancel()
 
 	// Configure an AP on the specific channel with given SSID.

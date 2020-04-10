@@ -25,7 +25,8 @@ func init() {
 		Desc:        "Verifies that DUT will move off-channel after the AP sends a Spectrum Management action frame with a Channel Move element",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
 		Vars:        []string{"router", "pcap"},
 	})
 }
@@ -34,24 +35,13 @@ func CSA(ctx context.Context, s *testing.State) {
 	// Note: Not all clients support CSA, but they generally should at least try
 	// to disconnect from the AP which is what the test expects to see.
 
-	var ops []wificell.TFOption
-	if router, _ := s.Var("router"); router != "" {
-		ops = append(ops, wificell.TFRouter(router))
-	}
-	if pcap, _ := s.Var("pcap"); pcap != "" {
-		ops = append(ops, wificell.TFPcap(pcap))
-	}
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), ops...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
-	defer func(dCtx context.Context) {
-		if err := tf.Close(dCtx); err != nil {
-			s.Log("Failed to tear down test fixture: ", err)
+	tf := s.PreValue().(*wificell.TestFixture)
+	defer func() {
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
-	}(ctx)
-
-	ctx, cancel := tf.ReserveForClose(ctx)
+	}()
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
 
 	// TODO(b/154879577): Currently the action frames sent by FrameSender

@@ -29,7 +29,8 @@ func init() {
 		Desc:         "Verifies that the MAC address is randomized (or not) according to the setting when we toggle it on/off",
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:         []string{"group:wificell", "wificell_func"},
-		ServiceDeps:  []string{"tast.cros.network.WifiService"},
+		ServiceDeps:  []string{wificell.TFServiceName},
+		Pre:          wificell.TestFixturePre(),
 		Vars:         []string{"router", "pcap"},
 		HardwareDeps: hwdep.D(hwdep.WifiMACAddrRandomize()),
 		Params: []testing.Param{
@@ -54,25 +55,14 @@ func RandomMACAddress(testCtx context.Context, s *testing.State) {
 	// Notice that this test aggressively scans all probe requests captured so when
 	// run in open air environment, it is very probable to fail due to the packets
 	// from other devices. (esp. the mac randomization disabled case)
-	var ops []wificell.TFOption
-	if router, _ := s.Var("router"); router != "" {
-		ops = append(ops, wificell.TFRouter(router))
-	}
-	if pcap, _ := s.Var("pcap"); pcap != "" {
-		ops = append(ops, wificell.TFPcap(pcap))
-	}
-	tf, err := wificell.NewTestFixture(testCtx, testCtx, s.DUT(), s.RPCHint(), ops...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
-	defer func(dCtx context.Context) {
-		if err := tf.Close(dCtx); err != nil {
-			s.Error("Failed to tear down test fixture, err: ", err)
-		}
-	}(testCtx)
 
-	// testCtx is shorten for each deferred clean up on the way.
-	testCtx, cancel := tf.ReserveForClose(testCtx)
+	tf := s.PreValue().(*wificell.TestFixture)
+	defer func() {
+		if err := tf.CollectLogs(testCtx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
+		}
+	}()
+	testCtx, cancel := ctxutil.Shorten(testCtx, time.Second)
 	defer cancel()
 
 	ap, err := tf.DefaultOpenNetworkAP(testCtx)
@@ -84,7 +74,8 @@ func RandomMACAddress(testCtx context.Context, s *testing.State) {
 			s.Error("Failed to deconfig the AP: ", err)
 		}
 	}(testCtx)
-	testCtx, _ = tf.ReserveForDeconfigAP(testCtx, ap)
+	testCtx, cancel = tf.ReserveForDeconfigAP(testCtx, ap)
+	defer cancel()
 
 	// Get the MAC address of WiFi interface.
 	iface, err := tf.ClientInterface(testCtx)

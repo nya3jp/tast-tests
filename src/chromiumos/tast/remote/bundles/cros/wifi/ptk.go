@@ -6,10 +6,12 @@ package wifi
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/ctxutil"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -23,7 +25,8 @@ func init() {
 		Desc:        "Verifies that pairwise temporal key rotations works as expected",
 		Contacts:    []string{"chharry@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
 	})
 }
@@ -38,24 +41,13 @@ func PTK(ctx context.Context, s *testing.State) {
 		pingInterval      = 0.5
 	)
 
-	tfOps := []wificell.TFOption{wificell.TFCapture(true)}
-	if router, ok := s.Var("router"); ok {
-		tfOps = append(tfOps, wificell.TFRouter(router))
-	}
-	if pcap, ok := s.Var("pcap"); ok {
-		tfOps = append(tfOps, wificell.TFPcap(pcap))
-	}
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), tfOps...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := tf.Close(ctx); err != nil {
-			s.Error("Failed to tear down test fixture: ", err)
+	tf := s.PreValue().(*wificell.TestFixture)
+	defer func() {
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
-	}(ctx)
-
-	ctx, cancel := tf.ReserveForClose(ctx)
+	}()
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
 
 	apOps := []hostapd.Option{

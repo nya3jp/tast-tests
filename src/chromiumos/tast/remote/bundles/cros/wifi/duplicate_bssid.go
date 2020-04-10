@@ -6,7 +6,9 @@ package wifi
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/testing"
@@ -18,24 +20,20 @@ func init() {
 		Desc:        "Test that two APs with the same BSSID, but with different SSIDs can both be seen in the scan results",
 		Contacts:    []string{"arowa@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
-		Vars:        []string{"router"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePre(),
+		Vars:        []string{"router", "pcap"},
 	})
 }
 
 func DuplicateBSSID(fullCtx context.Context, s *testing.State) {
-	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), wificell.TFRouter(router))
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
-			s.Error("Failed to tear down test fixture: ", err)
+		if err := tf.CollectLogs(fullCtx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}()
-
-	ctx, cancel := tf.ReserveForClose(fullCtx)
+	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
 	defer cancel()
 
 	// Configure an AP on the specific channel with given SSID. It returns a shortened
