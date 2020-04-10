@@ -59,7 +59,7 @@ const (
 	Mag SensorName = "cros-ec-mag"
 	// Light is a light or proximity sensor.
 	Light SensorName = "cros-ec-light"
-	// Baro is a magnetometer.
+	// Baro is a barometer.
 	Baro SensorName = "cros-ec-baro"
 	// Ring is a special sensor for ChromeOS that produces a stream of data from
 	// all sensors on the DUT.
@@ -105,6 +105,7 @@ var readingNames = map[SensorName]string{
 	Accel: "accel",
 	Gyro:  "anglvel",
 	Mag:   "magn",
+	Light: "illuminance",
 }
 
 const iioBasePath = "sys/bus/iio/devices"
@@ -244,38 +245,90 @@ func parseSensor(devName string) (*Sensor, error) {
 	return &sensor, nil
 }
 
-// Read returns the current readings of the sensor.
-func (s *Sensor) Read() (*SensorReading, error) {
-	var ret SensorReading
-	rName, ok := readingNames[s.Name]
-	if !ok {
-		return nil, errors.Errorf("cannot read data from %v", s.Name)
-	}
-
-	rawReading := func(axis string) (float64, error) {
-		r, err := s.ReadAttr(fmt.Sprintf("in_%s_%s_raw", rName, axis))
-		if err != nil {
-			return 0, err
+func (s *Sensor) rawRead(attr string) (float64, error) {
+	possiblePostfix := []string{"raw", "input"}
+	var file string
+	var err error
+	rName, _ := readingNames[s.Name]
+	for _, postfix := range possiblePostfix {
+		if attr != "" {
+			file = fmt.Sprintf("in_%s_%s_%s", rName, attr, postfix)
+		} else {
+			file = fmt.Sprintf("in_%s_%s", rName, postfix)
 		}
-
-		return strconv.ParseFloat(strings.TrimSpace(string(r)), 64)
+		r, err := s.ReadAttr(file)
+		if err == nil {
+			return strconv.ParseFloat(strings.TrimSpace(string(r)), 64)
+		}
 	}
+	return 0, err
+}
 
+func (s *Sensor) axisRead() (*SensorReading, error) {
+	var ret SensorReading
 	ret.Data = make([]float64, 3)
 	for axis, prop := range map[string]*float64{
 		"x": &ret.Data[0],
 		"y": &ret.Data[1],
 		"z": &ret.Data[2],
 	} {
-		reading, err := rawReading(axis)
+		reading, err := s.rawRead(axis)
 		if err != nil {
 			return nil, errors.Wrapf(err, "error reading from sensor %v", s.Name)
 		}
 
 		*prop = reading * s.Scale
 	}
-
 	return &ret, nil
+}
+
+func (s *Sensor) lightRead() (*SensorReading, error) {
+	var ret SensorReading
+	ret.Data = make([]float64, 3)
+	for axis, prop := range map[string]*float64{
+		"red":   &ret.Data[0],
+		"blue":  &ret.Data[1],
+		"green": &ret.Data[2],
+	} {
+		reading, err := s.rawRead(axis)
+		if err != nil {
+			return nil, errors.Wrapf(err, "error reading from sensor %v", s.Name)
+		}
+
+		*prop = reading * s.Scale
+	}
+	return &ret, nil
+}
+
+func (s *Sensor) singleRead() (*SensorReading, error) {
+	var ret SensorReading
+	ret.Data = make([]float64, 1)
+	reading, err := s.rawRead("")
+	if err != nil {
+		return nil, errors.Wrapf(err, "error reading from sensor %v", s.Name)
+	}
+
+	ret.Data[0] = reading * s.Scale
+	return &ret, nil
+}
+
+// Read returns the current readings of the sensor.
+func (s *Sensor) Read() (*SensorReading, error) {
+	_, ok := readingNames[s.Name]
+	if !ok {
+		return nil, errors.Errorf("cannot read data from %v", s.Name)
+	}
+
+	if s.Name == Accel || s.Name == Gyro {
+		return s.axisRead()
+	} else if s.Name == Light {
+		reading, err := s.lightRead()
+		if err != nil {
+			return s.singleRead()
+		}
+		return reading, err
+	}
+	return nil, errors.Errorf("unsupport sensor %v", s.Name)
 }
 
 // WriteAttr writes value to the sensor's attr file.
