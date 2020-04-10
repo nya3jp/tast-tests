@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea4aa633_c8379043",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-10T00:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58cf09df_2490b00c",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 14
+      },
+      "revId": "0e52da3bd12105d6e613f18bb3a9620847036793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "419eb890_6605ac78",
         "filename": "src/chromiumos/tast/local/crash/fixture.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "0e52da3bd12105d6e613f18bb3a9620847036793",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b266df9_fd1b8dfc",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-10T00:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "419eb890_6605ac78",
+      "range": {
+        "startLine": 428,
+        "startChar": 6,
+        "endLine": 433,
+        "endChar": 81
+      },
+      "revId": "0e52da3bd12105d6e613f18bb3a9620847036793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
