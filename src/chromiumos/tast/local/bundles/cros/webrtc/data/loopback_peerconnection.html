@@ -29,7 +29,7 @@ async function start(profile, isSimulcast, width = 1280, height = 720) {
   if (isSimulcast) {
     await runLoopbackPeerConnectionWithSimulcast(constraints);
   } else {
-    await runLoopbackPeerConnection(constraints);
+    await runLoopbackPeerConnection(constraints, profile);
   }
   await onTrack;
 }
