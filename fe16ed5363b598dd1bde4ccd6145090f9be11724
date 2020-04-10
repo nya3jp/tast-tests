@@ -529,6 +529,24 @@
     },
     {
       "key": {
+        "uuid": "0b6343b4_ca462c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-10T16:58:08Z",
+      "side": 1,
+      "message": "Use upstart.EnsureJobRunning(ctx, \"ui\")",
+      "parentUuid": "f0bcde98_56a9060f",
+      "revId": "fe16ed5363b598dd1bde4ccd6145090f9be11724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e0944b2_50b3f3d3",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 7
