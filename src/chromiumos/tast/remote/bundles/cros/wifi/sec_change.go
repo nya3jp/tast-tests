@@ -6,9 +6,11 @@ package wifi
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/wpa"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -22,33 +24,20 @@ func init() {
 		Desc:        "Verifies that the DUT can connect to a BSS despite security changes",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.WifiService"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Pre:         wificell.TestFixturePreWithCapture(),
 		Vars:        []string{"router", "pcap"},
 	})
 }
 
 func SecChange(fullCtx context.Context, s *testing.State) {
-	tfOps := []wificell.TFOption{
-		wificell.TFCapture(true),
-	}
-	if router, _ := s.Var("router"); router != "" {
-		tfOps = append(tfOps, wificell.TFRouter(router))
-	}
-	if pcap, _ := s.Var("pcap"); pcap != "" {
-		tfOps = append(tfOps, wificell.TFPcap(pcap))
-	}
-
-	tf, err := wificell.NewTestFixture(fullCtx, fullCtx, s.DUT(), s.RPCHint(), tfOps...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func() {
-		if err := tf.Close(fullCtx); err != nil {
-			s.Log("Failed to tear down test fixture, err: ", err)
+		if err := tf.CollectLogs(fullCtx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}()
-
-	ctx, cancel := tf.ReserveForClose(fullCtx)
+	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
 	defer cancel()
 
 	// setUpAndConnect sets up the WiFi AP and verifies the DUT can connect to it.
