@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "37ecfb90_dd55dfaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-10T00:19:53Z",
+      "side": 1,
+      "message": "forgotten to reply: I think usually mouse events are faster since touch requires gesture-recognition. But honestly, I believe that wouldn\u0027t cause much differences. Sometimes creating gestures can be harder since fling detection can be flaky.",
+      "parentUuid": "25a1c504_4608319a",
+      "range": {
+        "startLine": 83,
+        "startChar": 13,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "9718fd9a922fc51e081c9da33c0923bf23ae7caa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1224c843_2f635226",
         "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
         "patchSetId": 1

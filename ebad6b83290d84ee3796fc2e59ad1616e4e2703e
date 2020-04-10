@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbf06e48_755df7bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-10T00:19:53Z",
+      "side": 1,
+      "message": "Can you add a TODO, like \u0027remove this and use chrome.Pre() when this feature is enabled by default\u0027",
+      "revId": "ebad6b83290d84ee3796fc2e59ad1616e4e2703e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
