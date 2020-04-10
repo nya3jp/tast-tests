@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/bali_640x368_P420_20190909.yuv",
+  "size": 353280,
+  "sha256sum": "3032ad9ca8902bbe12def207f069ad4a213fb07e8e5635d8a58d853131fb847d"
+}

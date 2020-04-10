@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -22,25 +23,25 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         EncodeAccelJPEGPerf,
+		Func:         MTBF019EncodeAccelJPEGPerf,
 		Desc:         "Measures jpeg_encode_accelerator_unittest performance",
-		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"xliu@cienet.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"coast_3840x2160_P420.yuv"},
 		Timeout:      10 * time.Minute,
+		Pre:          chrome.LoginReuse(),
 	})
 }
 
-// EncodeAccelJPEGPerf measures SW/HW JPEG encode performance by running the
+// MTBF019EncodeAccelJPEGPerf measures SW/HW JPEG encode performance by running the
 // SimpleEncode test in jpeg_encode_accelerator_unittest.
-func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
+func MTBF019EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	const (
 		// GTest filter used to run JPEG encode tests.
 		filter = "JpegEncodeAcceleratorTest.SimpleEncode"
@@ -54,17 +55,9 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		cleanupTime = 10 * time.Second
 	)
 
-	// Stop the UI job. While this isn't required to run the test binary, it's
-	// possible a previous tests left tabs open or an animation is playing,
-	// influencing our performance results.
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to stop ui: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
-
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
-		s.Fatal("Failed to set up benchmark mode: ", err)
+		s.Fatal(mtbferrors.New(mtbferrors.VideoBenchmark, err))
 	}
 	defer cleanUpBenchmark(ctx)
 
@@ -73,7 +66,7 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
+		s.Fatal(mtbferrors.New(mtbferrors.VideoCPUIdle, err))
 	}
 
 	// Execute the test binary.
@@ -90,23 +83,24 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 			"--yuv_filenames="+s.DataPath(testFilename)+testFileSuffix),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
-		s.Errorf("Failed to run %v: %v", exec, err)
+		s.Error(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
-				s.Error(name, " failed")
+				s.Error(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
 			}
 		}
 	}
 
 	// Parse and write performance data.
 	if err := parseJPEGEncodeLog(logPath, s.OutDir(), testFilename); err != nil {
-		s.Fatal("Failed to parse test log: ", err)
+		s.Fatal(mtbferrors.New(mtbferrors.VideoParseLog, err))
 	}
 }
 
 // parseJPEGEncodeLog parses and processes the log file created by the JPEG
 // encode test. The results are written to results-chart.json, which can be
 // parsed by crosbolt.
+// Borrowed from: cros/camera/encode_accel_jpeg_perf.go
 func parseJPEGEncodeLog(testLogPath, outputDir, testFilename string) error {
 	file, err := os.Open(testLogPath)
 	if err != nil {
@@ -141,7 +135,6 @@ func parseJPEGEncodeLog(testLogPath, outputDir, testFilename string) error {
 	if err := scanner.Err(); err != nil {
 		return errors.Wrap(err, "failed to scan test log")
 	}
-
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JEAPerf in autotest.
 	p := perf.NewValues()
 	if err := calculatePercentiles(p, encodeTimesSW, "tast_sw_"+testFilename); err != nil {
@@ -157,6 +150,7 @@ func parseJPEGEncodeLog(testLogPath, outputDir, testFilename string) error {
 
 // calculatePercentiles calculates the 50, 75 and 95th percentile for the
 // specified list of encode times, and adds them to the passed perf object.
+// Borrowed from: cros/camera/encode_accel_jpeg_perf.go
 func calculatePercentiles(p *perf.Values, encodeTimes []time.Duration, metricName string) error {
 	if len(encodeTimes) == 0 {
 		return errors.New("list of encode times is empty")
