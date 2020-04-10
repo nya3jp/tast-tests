@@ -24,8 +24,9 @@ func init() {
 		Desc:        "Verifies that DUT can connect to the host via AP in different WiFi configuration",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.Wifi"},
-		Vars:        []string{"router"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Vars:        []string{wificell.VarRouter},
+		Pre:         wificell.TestFixturePre(),
 		Params: []testing.Param{
 			{
 				// Verifies that DUT can connect to an open 802.11a network on channels 48, 64.
@@ -56,16 +57,7 @@ func init() {
 }
 
 func SimpleConnect(ctx context.Context, s *testing.State) {
-	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(ctx, s.DUT(), s.RPCHint(), router)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
-	defer func() {
-		if err := tf.Close(ctx); err != nil {
-			s.Log("Failed to tear down test fixture, err: ", err)
-		}
-	}()
+	tf := s.PreValue().(*wificell.TestFixture)
 
 	testOnce := func(ctx context.Context, s *testing.State, options []hostapd.Option) {
 		ap, err := tf.ConfigureAP(ctx, options...)

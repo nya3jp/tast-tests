@@ -20,6 +20,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// TFServiceName is the service needed by TestFixture.
+const TFServiceName = "tast.cros.network.Wifi"
+
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
 	dut        *dut.DUT
