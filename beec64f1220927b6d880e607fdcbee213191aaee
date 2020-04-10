@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "e74a353d_e7dfb96d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-10T16:24:27Z",
+      "side": 1,
+      "message": "https://developer.android.com/guide/topics/manifest/manifest-intro#components\n\nActivity name should be fully qualified name. If there\u0027s no leading \".\", it means the Activity lives on the top-level package.\nIt sounds like a responsibility of a11y_tree.go to strip the leading \".\"?\n\nIf you\u0027d like to make this without leading \".\" assuming it is the one under the package directly,\nthat\u0027s fine, too, but please explicitly document it in the function documentation in detail. Current one looks ambiguous.",
+      "parentUuid": "34f8579e_efa05d9f",
+      "range": {
+        "startLine": 236,
+        "startChar": 47,
+        "endLine": 236,
+        "endChar": 51
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cd1bd4b_101c0f52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14
