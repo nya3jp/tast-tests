@@ -8,9 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/chrome"
 	hwseclocal "chromiumos/tast/local/hwsec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +18,7 @@ func init() {
 		Desc:         "Verifies attestation-related functionality",
 		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
-		SoftwareDeps: []string{"chrome", "tpm"},
+		SoftwareDeps: []string{"tpm"},
 	})
 }
 
@@ -70,18 +68,29 @@ func Attestation(ctx context.Context, s *testing.State) {
 		})
 	}
 
-	auth := chrome.Auth("test@crashwsec.bigr.name", "testpass", "gaia-id")
-	cr, err := chrome.New(ctx, auth)
-	if err != nil {
-		s.Fatal("Failed to log in by Chrome: ", err)
-	}
-	defer func() {
-		cr.Close(ctx)
-		if err = upstart.RestartJob(ctx, "ui"); err != nil {
-			s.Error("Chrome logout failed: ", err)
+	const username = "test@crashwsec.bigr.name"
+
+	resetVault := func() {
+		if _, err := utility.Unmount(ctx, username); err != nil {
+			s.Fatal("Failed to remove user vault: ", err)
 		}
+		if _, err := utility.RemoveVault(ctx, username); err != nil {
+			s.Fatal("Failed to remove user vault: ", err)
+		}
+	}
+
+	s.Log("Resetting vault in case the cryptohome status is contaminated")
+	// Okay to call it even if the vault doesn't exist.
+	resetVault()
+
+	if err := utility.MountVault(ctx, username, "testpass", "dummy_label", true /* create */); err != nil {
+		s.Fatal("Failed to create user vault: ", err)
+	}
+
+	defer func() {
+		s.Log("Resetting vault after use")
+		resetVault()
 	}()
-	username := cr.User()
 
 	for _, param := range []struct {
 		name     string
