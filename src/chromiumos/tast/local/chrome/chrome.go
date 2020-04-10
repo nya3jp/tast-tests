@@ -53,7 +53,7 @@ const (
 )
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
-var loginPollOpts *testing.PollOptions = &testing.PollOptions{Interval: 10 * time.Millisecond}
+var loginPollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond}
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
 var locked = false
@@ -1111,16 +1111,21 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 		return err
 	}
 
-	if c.keepState {
-		// Force show GAIA webview even if the cryptohome exists. When there is
-		// an existing user on the device, the login screen would be
-		// chrome://oobe/gaia-signin instead of the accounts.google.com
-		// webview. Use Oobe.showAddUserForTesting() to open that webview so we
-		// can reuse the same login logic below.
+	var url string
+	if err := oobeConn.Eval(ctx, "window.location.href", &url); err != nil {
+		return err
+	}
+	if strings.HasPrefix(url, "chrome://oobe/gaia-signin") {
+		// Force show GAIA webview even if the cryptohome exists. When there is an existing
+		// user on the device, the login screen would be chrome://oobe/gaia-signin instead
+		// of the accounts.google.com webview. Use Oobe.showAddUserForTesting() to open that
+		// webview so we can reuse the same login logic below.
+		testing.ContextLogf(ctx, "Found %s, force opening GAIA webview", url)
 		if err := oobeConn.Exec(ctx, "Oobe.showAddUserForTesting()"); err != nil {
 			return err
 		}
 	}
+
 	isGAIAWebView := func(t *target.Info) bool {
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
