@@ -22,6 +22,30 @@
       "revId": "5cf6bb828d5d7fadfcc7df08df76a34e67311793",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9254b0be_2d4447e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-10T20:43:50Z",
+      "side": 1,
+      "message": "Oh yeah! Confusion between Ctrl+v and Ctrl+y...",
+      "parentUuid": "8f620fdc_d4cf2c75",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "5cf6bb828d5d7fadfcc7df08df76a34e67311793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
