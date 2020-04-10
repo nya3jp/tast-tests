@@ -16,6 +16,24 @@
       "revId": "ebad6b83290d84ee3796fc2e59ad1616e4e2703e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6dfc74_68fb7d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-10T16:56:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf06e48_755df7bf",
+      "revId": "ebad6b83290d84ee3796fc2e59ad1616e4e2703e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
