@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8b7fc13_9cb3eb0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T07:57:26Z",
+      "side": 1,
+      "message": "This does not pass tast-lint now, as tast-lint only allows string literals in Vars.\n\nTo set up TestFixture, the precondition will need the router target variable, then we will have to duplicate the string literal in every tests using this precondition. No sure if there\u0027s better solution?",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd191b90_8bd16032",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T07:57:26Z",
+      "side": 1,
+      "message": "In tast-lint VerifyTestingStateParam check, there\u0027s a whitelist for using testing.State, should one add paths there before adding new Preconditions?\nThis step is not written in go/tast-writing, so I would like to make sure (and maybe update the doc :) ).",
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
