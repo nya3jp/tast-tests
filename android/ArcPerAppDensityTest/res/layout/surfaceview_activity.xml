@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     tools:context=".SurfaceViewActivity">
 
-  <SurfaceView
+    <SurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="100dp"
         android:layout_height="100dp"

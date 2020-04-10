@@ -10,10 +10,10 @@
     android:layout_height="match_parent"
     tools:context=".ViewActivity">
 
-  <View
-      android:id="@+id/view"
-      android:layout_width="100dp"
-      android:layout_height="100dp"
-      android:foreground="@android:color/black" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:foreground="@android:color/black" />
 
 </LinearLayout>
