@@ -31,7 +31,8 @@ func init() {
 		Desc:         "Verifies that the 802.11 probe frames with expected SSIDs are seen over-the-air when connecting to WiFi",
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-platform-connectivity@google.com"},
 		Attr:         []string{"group:wificell", "wificell_func"},
-		ServiceDeps:  []string{"tast.cros.network.WifiService"},
+		ServiceDeps:  []string{wificell.TFServiceName},
+		Pre:          wificell.TestFixturePreWithCapture(),
 		Vars:         []string{"router", "pcap"},
 		HardwareDeps: hwdep.D(hwdep.WifiMACAddrRandomize()),
 		Params: []testing.Param{
@@ -72,25 +73,13 @@ func init() {
 }
 
 func ConnectScan(ctx context.Context, s *testing.State) {
-	ops := []wificell.TFOption{
-		wificell.TFCapture(true),
-	}
-	if router, _ := s.Var("router"); router != "" {
-		ops = append(ops, wificell.TFRouter(router))
-	}
-	if pcap, _ := s.Var("pcap"); pcap != "" {
-		ops = append(ops, wificell.TFPcap(pcap))
-	}
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), ops...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func(ctx context.Context) {
-		if err := tf.Close(ctx); err != nil {
-			s.Error("Failed to tear down test fixture, err: ", err)
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}(ctx)
-	ctx, cancel := tf.ReserveForClose(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
 
 	// Disable MAC randomization as we're filtering the packets with MAC address.
