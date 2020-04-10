@@ -25,8 +25,9 @@ func init() {
 		Desc:        "Verifies that DUT can connect to the host via AP in different WiFi configuration",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.Wifi"},
+		ServiceDeps: []string{wificell.TFServiceName},
 		Vars:        []string{"router", "pcap"},
+		Pre:         wificell.TestFixturePre(),
 		Params: []testing.Param{
 			{
 				// Verifies that DUT can connect to an open 802.11a network on channels 48, 64.
@@ -132,24 +133,10 @@ func init() {
 }
 
 func SimpleConnect(ctx context.Context, s *testing.State) {
-	ops := []wificell.TFOption{
-		wificell.TFCapture(true),
-	}
-	if router, _ := s.Var("router"); router != "" {
-		ops = append(ops, wificell.TFRouter(router))
-	}
-	if pcap, _ := s.Var("pcap"); pcap != "" {
-		ops = append(ops, wificell.TFPcap(pcap))
-	}
-	// As we are not in precondition, we have ctx as both method context and
-	// daemon context.
-	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), ops...)
-	if err != nil {
-		s.Fatal("Failed to set up test fixture: ", err)
-	}
+	tf := s.PreValue().(*wificell.TestFixture)
 	defer func() {
-		if err := tf.Close(ctx); err != nil {
-			s.Log("Failed to tear down test fixture, err: ", err)
+		if err := tf.CollectLogs(ctx); err != nil {
+			s.Log("Error collecting logs, err: ", err)
 		}
 	}()
 
