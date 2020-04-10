@@ -51,6 +51,24 @@
       "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f001db3_dc7ed913",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-10T19:12:04Z",
+      "side": 1,
+      "message": "I think it\u0027s safe to assume that.\n\nThe proposed way is actually very similar to my first version locally (the difference is that I merged to logic into the first polling). When verifying that version I found that the |oobeConn| is already connected to chrome://oobe/gaia-signin in this case, so I changed to the current version.\n\nSome side notes:\n1. I tried to check the url of |oobeConn|, but it seems that only target id is stored in Conn type, and I didn\u0027t find an easy way to get the url from it.\n2. The first time (OOBE flow) url is chrome://oobe/oobe",
+      "parentUuid": "889ae01c_e103d256",
+      "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
