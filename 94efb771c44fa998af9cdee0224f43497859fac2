@@ -46,6 +46,47 @@
       "revId": "94efb771c44fa998af9cdee0224f43497859fac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd52301_7cceeb04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-04-10T07:43:42Z",
+      "side": 1,
+      "message": "The previous CL break the test scenario into multiple self explanatory flag and use the flags in test logic which makes it easy to read. If you want to use |closeApp| instead of flags here, I think it would be better to have comment describing the scenario of each test behavior.",
+      "parentUuid": "7c60b9d2_8faa6334",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 38
+      },
+      "revId": "94efb771c44fa998af9cdee0224f43497859fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6b2c06_59db831c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-04-10T07:43:42Z",
+      "side": 1,
+      "message": "Viewing from the changes of parameter type of |checkTestAppResult|, it become unclear that what kind of string the function is expected. I prefer to simply use bool or have a\ntype testAppResult string\nconst (\n\ttestAppResult resultOK \u003d \"-1\"\n\tresultCanceled \u003d \"0\"\n)\nAnd use the testAppResult rather than string.",
+      "revId": "94efb771c44fa998af9cdee0224f43497859fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
