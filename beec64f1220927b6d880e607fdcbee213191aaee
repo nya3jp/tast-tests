@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbb238d6_8c5dc7d9",
+        "filename": "android/ArcAccessibilityTest/res/layout/edittext_activity.xml",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1ed7a5d_2c4e915e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a2bd188_3c122276",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aa4ea740_4689e8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a2bd188_3c122276",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c1ec28c_2a1805d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14
@@ -62,6 +110,24 @@
       "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62815f3_ca1f3411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c1ec28c_2a1805d0",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "1bb142fe_8aed660d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "this is not part of this test. So as I understand, it shouldn\u0027t matter if it is performed before/ after activity creation.",
+      "parentUuid": "f12c0e49_3d23fc59",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b898e25d_ace8fd0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14
@@ -96,6 +180,24 @@
       "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40616d6e_d6c7cef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "Currently we need to this to reduce flakiness.\nBut we can move it out of each subtest once b/150734712 is fixed. I\u0027ve added this as a TODO comment.",
+      "parentUuid": "b898e25d_ace8fd0a",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "34f8579e_efa05d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "actually, this would be mean we\u0027d need to strip \".\" before the f() call in line 254 below. Since the file name in a11y_tree.go is called \"accessibility_tree_expected_\u003cactivityName\u003e.json\". So i\u0027ve left it as it is.",
+      "parentUuid": "6ddda038_d3ee0e24",
+      "range": {
+        "startLine": 236,
+        "startChar": 47,
+        "endLine": 236,
+        "endChar": 51
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cd1bd4b_101c0f52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "4a992ce5_8f62c9d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cd1bd4b_101c0f52",
+      "range": {
+        "startLine": 256,
+        "startChar": 38,
+        "endLine": 256,
+        "endChar": 69
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e83c52dc_de44d620",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 14
@@ -159,6 +309,24 @@
       "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c768391a_7bb812cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83c52dc_de44d620",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "5c4d704a_9e36c954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "thanks.",
+      "parentUuid": "f13588b9_114a776b",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f812627c_1339db8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 14
@@ -193,6 +379,24 @@
       "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ee5013_8d583ff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T02:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f812627c_1339db8e",
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
