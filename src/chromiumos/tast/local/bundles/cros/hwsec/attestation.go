@@ -6,6 +6,7 @@ package hwsec
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
 	hwseclocal "chromiumos/tast/local/hwsec"
@@ -19,6 +20,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"tpm"},
+		Timeout:      4 * time.Minute,
 	})
 }
 
