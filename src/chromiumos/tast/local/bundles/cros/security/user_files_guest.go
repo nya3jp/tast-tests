@@ -6,6 +6,7 @@ package security
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sys/unix"
@@ -60,12 +61,12 @@ func UserFilesGuest(ctx context.Context, s *testing.State) {
 	// chrome.Chrome.Close() will not log the user out.
 	defer upstart.RestartJob(ctx, "ui")
 
-	nsPath := "/run/namespaces/mnt_chrome"
-	if _, err := getCryptohomeNamespaceMounterPID(); err != nil {
-		nsPath = "/proc/1/ns/mnt"
+	nsPath := "/proc/1/ns/mnt"
+	if mounterPid, err := getCryptohomeNamespaceMounterPID(); err == nil {
+		nsPath = fmt.Sprintf("/proc/%d/ns/mnt", mounterPid)
 	}
 
-	// Guest sessions are mounted in a non-root mount namespace
+	// Guest sessions can be mounted in a non-root mount namespace
 	// so the test needs to perform checks in that same namespace.
 	chromeNsFd, err := unix.Open(nsPath, unix.O_CLOEXEC, unix.O_RDWR)
 	if err != nil {
