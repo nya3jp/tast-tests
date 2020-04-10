@@ -22,6 +22,30 @@
       "revId": "f29f04f45ab56e033e3e7b678d5ac59ccd03dc2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105d7638_48320c6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-10T06:03:11Z",
+      "side": 1,
+      "message": "I was not able to find any document, but I\u0027m basing this off consistency from (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2137173/14/android/ArcAccessibilityTest/res/layout/edittext_activity.xml#13)",
+      "parentUuid": "d8bf07de_a4be70c4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "f29f04f45ab56e033e3e7b678d5ac59ccd03dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
