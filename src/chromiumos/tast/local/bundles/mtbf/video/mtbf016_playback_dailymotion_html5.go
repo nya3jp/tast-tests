@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/mtbf/video/dailymotion"
 	"chromiumos/tast/local/chrome"
 	mtbfchrome "chromiumos/tast/local/mtbf/chrome"
+	"chromiumos/tast/local/mtbf/debug"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +27,7 @@ func init() {
 	})
 }
 
+// MTBF016PlaybackDailymotionHTML5 test Dailymotion video in different resolution and fullscreen/ expand/ shrink functionality
 func MTBF016PlaybackDailymotionHTML5(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	url := "https://www.dailymotion.com/video/x7mi4l2?playlist=x6huns" // Dailymotion video without AD
@@ -40,9 +42,10 @@ func MTBF016PlaybackDailymotionHTML5(ctx context.Context, s *testing.State) {
 
 	s.Log("Toggle fullscreen mode")
 	dailymotion.ToggleFullScreen(ctx, conn)
-	testing.Sleep(ctx, 5*time.Second)
-	if err := dailymotion.IsPlaying(ctx, conn, 3*time.Second); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.VideoVeriPlay, err))
+	testing.Sleep(ctx, 10*time.Second)
+	if mtbferr := dailymotion.IsPlaying(ctx, conn, 3*time.Second); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
 
 	for _, quality := range []string{
@@ -55,27 +58,32 @@ func MTBF016PlaybackDailymotionHTML5(ctx context.Context, s *testing.State) {
 	} {
 		s.Log("Change video quality to ", quality)
 		if err := dailymotion.ChangeQuality(ctx, conn, dailymotion.Quality[quality]); err != nil {
-			s.Fatal(mtbferrors.New(mtbferrors.VideoChgQuality2, err, quality))
+			debug.TakeScreenshot(ctx)
+			s.Error(mtbferrors.New(mtbferrors.VideoChgQuality, err, quality))
 		}
-		testing.Sleep(ctx, 5*time.Second) // Wait for video to change quality...
-		if err := dailymotion.IsPlaying(ctx, conn, 3*time.Second); err != nil {
-			s.Fatal(mtbferrors.New(mtbferrors.VideoVeriPlay, err))
+		s.Log("Verify video is currently playing")
+		if mtbferr := dailymotion.IsPlaying(ctx, conn, 3*time.Second); mtbferr != nil {
+			debug.TakeScreenshot(ctx)
+			s.Fatal(mtbferr)
 		}
 	}
 
 	dailymotion.ToggleFullScreen(ctx, conn)
-	testing.Sleep(ctx, 5*time.Second)
-	if err := dailymotion.IsPlaying(ctx, conn, 3*time.Second); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.VideoVeriPlay, err))
+	testing.Sleep(ctx, 10*time.Second)
+	if mtbferr := dailymotion.IsPlaying(ctx, conn, 3*time.Second); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Pause/ resume video")
 	if err := dailymotion.PauseAndResume(ctx, conn); err != nil {
+		debug.TakeScreenshot(ctx)
 		s.Fatal(mtbferrors.New(mtbferrors.VideoPauseResume, err))
 	}
 
 	s.Log("Random seeking")
 	if err := dailymotion.RandomSeek(ctx, conn, 5); err != nil {
+		debug.TakeScreenshot(ctx)
 		s.Fatal(mtbferrors.New(mtbferrors.VideoSeek, err))
 	}
 }

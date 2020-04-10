@@ -57,7 +57,7 @@ func MTBF007PlayYoutube4K(ctx context.Context, s *testing.State) {
 		if err = youtube.ChangeQuality(ctx, conn, youtube.Quality[quality]); err != nil {
 			s.Error(mtbferrors.New(mtbferrors.VideoChgQuality, err, quality))
 		}
-		testing.Sleep(ctx, 20*time.Second) // Wait for video to change quality...
+		s.Log("Verify video is currently playing")
 		if err = youtube.IsPlaying(ctx, conn, 3*time.Second); err != nil {
 			s.Error(mtbferrors.New(mtbferrors.VideoNoPlay, err, videoURL))
 			path := filepath.Join(s.OutDir(), "screenshot-youtube-failed-playing.png")

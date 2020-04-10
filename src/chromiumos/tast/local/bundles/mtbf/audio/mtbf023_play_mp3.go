@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/bundles/mtbf/audio/player"
 	"chromiumos/tast/local/chrome"
+	mtbfFilesapp "chromiumos/tast/local/mtbf/ui/filesapp"
 	"chromiumos/tast/local/ui/filesapp"
 	"chromiumos/tast/testing"
 )
@@ -41,9 +42,9 @@ func MTBF023PlayMp3(ctx context.Context, s *testing.State) {
 	defer tconn.CloseTarget(ctx)
 
 	s.Log("Open the Files App")
-	files, err := filesapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Error(mtbferrors.New(mtbferrors.ChromeOpenApp, err, "Files App"))
+	files, mtbferr := mtbfFilesapp.Launch(ctx, tconn)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer filesapp.Close(ctx, tconn)
 
