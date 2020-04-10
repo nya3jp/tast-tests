@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mtbferrors"
-	"chromiumos/tast/local/bundles/mtbf/audio/player"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/mtbf/audio"
 	mtbfFilesapp "chromiumos/tast/local/mtbf/ui/filesapp"
 	"chromiumos/tast/local/ui/filesapp"
 	"chromiumos/tast/testing"
@@ -47,28 +47,23 @@ func MTBF025PlayPcmWav(ctx context.Context, s *testing.State) {
 	}
 	defer filesapp.Close(ctx, tconn)
 
-	audioplayer, mtbferr := player.New(s, audioFile, s.DataPath(audioFile))
-	if mtbferr != nil {
+	if mtbferr := audio.PlayFromDownloadsFolder(ctx, files, s.DataPath(audioFile), audioFile); mtbferr != nil {
 		s.Fatal("MTBF failed: ", mtbferr)
 	}
-
-	if mtbferr := audioplayer.StartToPlay(ctx, files); mtbferr != nil {
-		s.Fatal("MTBF failed: ", mtbferr)
-	}
-	defer player.ClickButton(ctx, tconn, "Close")
+	defer audio.ClickButton(ctx, tconn, "Close")
 
 	testing.Sleep(ctx, time.Second)
 
 	s.Log("Pause and play PCM")
-	if mtbferr = player.Pause(ctx, tconn); mtbferr != nil {
+	if mtbferr = audio.Pause(ctx, tconn); mtbferr != nil {
 		s.Fatal("MTBF failed: ", mtbferr)
 	}
 
 	testing.Sleep(ctx, time.Second)
-	if mtbferr = player.Play(ctx, tconn); mtbferr != nil {
+	if mtbferr = audio.Play(ctx, tconn); mtbferr != nil {
 		s.Fatal("MTBF failed: ", mtbferr)
 	}
-	if err = player.IsPlaying(ctx, tconn, time.Second); err != nil {
+	if err = audio.IsPlaying(ctx, tconn, time.Second); err != nil {
 		s.Error(mtbferrors.New(mtbferrors.AudioPlayPause, err))
 	}
 
