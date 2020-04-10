@@ -10,52 +10,52 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-      <ToggleButton
-          android:id="@+id/toggleButton"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="ToggleButton"
-          android:tooltipText="button tooltip" />
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton"
+        android:tooltipText="button tooltip" />
 
-      <CheckBox
-          android:id="@+id/checkBox"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="CheckBox"
-          android:tooltipText="checkbox tooltip" />
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        android:tooltipText="checkbox tooltip" />
 
-      <SeekBar
-          android:id="@+id/seekBar"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:contentDescription="seekBar"
-          android:max="100"
-          android:progress="25" />
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="seekBar"
+        android:max="100"
+        android:progress="25" />
 
-      <SeekBar
-          android:id="@+id/seekBarDiscrete"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:contentDescription="seekBarDiscrete"
-          android:max="10"
-          android:progress="3" />
+    <SeekBar
+        android:id="@+id/seekBarDiscrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="seekBarDiscrete"
+        android:max="10"
+        android:progress="3" />
 
-      <Button
-          android:id="@+id/announceButton"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Announce" />
+    <Button
+        android:id="@+id/announceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Announce" />
 
-      <Button
-          android:id="@+id/toastButton"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Click to show toast" />
+    <Button
+        android:id="@+id/toastButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click to show toast" />
 
-      <WebView
-          android:id="@+id/webView"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:focusableInTouchMode="false" />
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="false" />
 
 </LinearLayout>
