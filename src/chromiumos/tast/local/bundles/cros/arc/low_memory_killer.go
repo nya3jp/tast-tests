@@ -33,7 +33,7 @@ func init() {
 		Contacts:     []string{"wvk@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_p"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Data:         []string{"low_memory_killer_manifest.json", "low_memory_killer_background.js"},
 	})
 }
