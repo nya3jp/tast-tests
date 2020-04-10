@@ -22,6 +22,30 @@
       "revId": "2cfffe0e297943835a2cb940f0fbfc49bd0df277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e88a27_62d74086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usb_printer_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-04-10T19:35:53Z",
+      "side": 1,
+      "message": "Added comment in code.",
+      "parentUuid": "319a5703_b40d7a16",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 66
+      },
+      "revId": "2cfffe0e297943835a2cb940f0fbfc49bd0df277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
