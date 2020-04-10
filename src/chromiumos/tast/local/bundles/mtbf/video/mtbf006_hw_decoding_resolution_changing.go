@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"xliu@cienet.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          chrome.LoginReuse(),
+		Pre:          chrome.ForceRelogin(),
 		Params: []testing.Param{{
 			Name: "h264",
 			Val:  "https://storage.googleapis.com/chromiumos-test-assets-public/Shaka-Dash/switch_1080p_720p.mp4",
@@ -55,11 +55,8 @@ func MTBF006HWDecodingResolutionChanging(ctx context.Context, s *testing.State) 
 		histogramName = "Media.GpuVideoDecoderInitializeStatus"
 		histogramURL  = "chrome://histograms/" + histogramName
 	)
-	testing.Sleep(ctx, 5*time.Second)          // Sleep to make sure last login stable
-	cr, err := chrome.NewForLoginReuse(ctx, s) // Use a new login to ensure clean histogram state
-	if err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.ChromeInit, err))
-	}
+	testing.Sleep(ctx, 5*time.Second) // Sleep to make sure last login stable.
+	cr := s.PreValue().(*chrome.Chrome)
 
 	histogramConn, err := mtbfchrome.NewConn(ctx, cr, histogramURL)
 	if err != nil {
