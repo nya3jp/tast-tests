@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "54bca55a_406852a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-04-10T20:08:20Z",
+      "side": 1,
+      "message": "Hmm, if it is just me that think the original logic is hard to understand, then I am okay to change it back. Reverted this part. Thanks!",
+      "parentUuid": "8bd52301_7cceeb04",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 38
+      },
+      "revId": "94efb771c44fa998af9cdee0224f43497859fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e6b2c06_59db831c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
         "patchSetId": 2
@@ -87,6 +111,24 @@
       "revId": "94efb771c44fa998af9cdee0224f43497859fac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18d625f_95d79e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-04-10T20:08:20Z",
+      "side": 1,
+      "message": "ditto, reverted it.",
+      "parentUuid": "7e6b2c06_59db831c",
+      "revId": "94efb771c44fa998af9cdee0224f43497859fac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
