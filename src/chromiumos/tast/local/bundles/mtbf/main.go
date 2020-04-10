@@ -14,6 +14,7 @@ import (
 	_ "chromiumos/tast/local/bundles/mtbf/bluetooth"
 	_ "chromiumos/tast/local/bundles/mtbf/camera"
 	_ "chromiumos/tast/local/bundles/mtbf/video"
+	_ "chromiumos/tast/local/bundles/mtbf/wifi"
 )
 
 func main() {
