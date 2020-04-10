@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fb78c5f_d454a200",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-10T04:48:39Z",
+      "side": 1,
+      "message": "It\u0027s a fix for lint error in repo upload:\n\n[FAILED] chromiumos/platform/tast-tests: tast_lint\n    Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/chrome/chrome.go:56:19: should omit type *testing.PollOptions from declaration of var loginPollOpts; it will be inferred from the right-hand side",
+      "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
