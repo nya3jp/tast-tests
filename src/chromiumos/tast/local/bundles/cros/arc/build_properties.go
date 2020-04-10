@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Checks important Android properties such as first_api_level",
 		Contacts:     []string{"niwa@chromium.org", "risan@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Attr:         []string{"group:mainline"},
 	})
 }

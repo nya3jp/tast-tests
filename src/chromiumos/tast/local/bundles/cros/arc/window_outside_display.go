@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               []string{},
