@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3b95fe6a_88280f7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-10T18:52:59Z",
+      "side": 1,
+      "message": "It\u0027s a little bit cleaner if you remove the \"grep\" here and have a function which transforms the whole file into a \u003ckey,value\u003e map like: https://chromium.googlesource.com/chromiumos/third_party/autotest/+/22834b281ceb052d36f0d5c7297e79a162e1724a/client/bin/utils.py#1595\n\nLooks like there may be a function to do this already: https://chromium.googlesource.com/chromiumos/platform/tast/+/d9198f29bcfb92ddadbe0330586acd3db2812565/src/chromiumos/tast/cmd/tast/internal/symbolize/release.go#24\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/rialto/rialto.go#16",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 103
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e796f7e_2a32d954",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-10T18:52:59Z",
+      "side": 1,
+      "message": "In general, let\u0027s try to use native Go if the language supports what we\u0027re trying to do. In this case I think you can use https://golang.org/pkg/io/ioutil/#ReadDir and then find the firmware file that starts with fpBoard and ends with \".bin\".",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0753217e_35d1d4b8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 2
@@ -37,6 +83,30 @@
       "side": 1,
       "message": "No, the \" err !\u003d nil \" happens only when the command itself failed to complete (as apposed to fpencstatus output being wrong).\n\nIf \"ectool --name\u003dcros_fp fpencstatus\" completes, we don\u0027t enter that if block, but go directly  to compare the output string.\n\nIn the case of an actual test failure (ectool returns a wrong output string e.g. seed not set), err will be nil here.\n\nIf you like, I can even change this to \"ectool --name\u003dcros_fp version\", flashFpFirmware on error, then actually run \"ectool --name\u003dcros_fp fpencstatus\".",
       "parentUuid": "0753217e_35d1d4b8",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906064b3_2e9dcb6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-10T18:52:59Z",
+      "side": 1,
+      "message": "It may be a little clearer if you use the version command first to determine whether the FPMCU is in a good state (I think we did that in a few places in the autotest code).\n\n get version\n\n if err\n   flash\n\n get fpencstatus",
+      "parentUuid": "bb57d86f_c9888c70",
       "range": {
         "startLine": 107,
         "startChar": 0,
