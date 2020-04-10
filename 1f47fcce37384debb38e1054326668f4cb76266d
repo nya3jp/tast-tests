@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33b54596_7e208b18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usb_printer_timeout.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-04-10T21:32:44Z",
+      "side": 1,
+      "message": "That is correct.  The regex is constructed so it only matches the line representing the terminal state for what we\u0027re testing.",
+      "parentUuid": "d2e3e747_d09a05da",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "1f47fcce37384debb38e1054326668f4cb76266d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95fc7fc3_2c946110",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usb_printer_timeout.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "1f47fcce37384debb38e1054326668f4cb76266d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "158961e0_2126e6f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usb_printer_timeout.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2020-04-10T21:32:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95fc7fc3_2c946110",
+      "revId": "1f47fcce37384debb38e1054326668f4cb76266d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
