@@ -24,7 +24,8 @@ func init() {
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.BootedWithVideoLogging(),
-		Timeout:      4 * time.Minute,
+		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
+		Timeout: 5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "test-25fps.h264",

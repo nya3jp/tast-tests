@@ -38,8 +38,9 @@ func init() {
 		// Added "chrome" and Timeout as a workaround, because
 		// it is not blocker, but we should revisit here.
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Timeout:      4 * time.Minute,
-		Attr:         []string{"group:mainline"},
+		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
+		Timeout: 5 * time.Minute,
+		Attr:    []string{"group:mainline"},
 	})
 }
 
