@@ -16,6 +16,41 @@
       "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88911188_9207647e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-10T15:30:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8fb78c5f_d454a200",
+      "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "889ae01c_e103d256",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-10T15:30:33Z",
+      "side": 1,
+      "message": "Clar: at this timing, can we assume chrome://oobe/gaia-signin is already available?\nI.e., do we need to wait for the page in some amount of seconds?\n\nBased on the code, it is not the regression so it\u0027s not a blocker of this change, but as you\u0027re trying to stabilize this function, I\u0027d appreciate if you double check we can safely assume it.\n\nOr, if not guarantee, maybe:\n- wait for accounts.google.com webview, first.\n- if not found, wait for chrome://oobe/gaia-signin.\n  - If not found, return an error\n  - if succeed, wait for accounts.google.com webview again\n?\n\nWDYT?",
+      "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
