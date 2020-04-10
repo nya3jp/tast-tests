@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "d1e028d6_5e816262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-10T07:43:46Z",
+      "side": 1,
+      "message": "Looks like we can have the TestFixture moved to precondition. But it\u0027ll encounter some tast-lint problem. Draft cl in crrev.com/c/2142664.\n\nFor this cl, now I divide the init logic into two gRPC: InitDUT for global init, InitTestState for per testcase init. PTAL.",
+      "parentUuid": "05bd6490_ead7202c",
+      "revId": "f4bb67fb218b5f3d2e955ca55c089541f8139541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0287b296_6f8da560",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 3
