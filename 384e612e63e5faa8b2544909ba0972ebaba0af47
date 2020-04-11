@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ab704f3_269f1510",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "nit: include full path.",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10c77d3_ec27d5d4",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "nit:\nfor all types and funcs that are non-trivial, add doc-strings (regardless whether they are public or private)\n\neg:\n// UHIDCreate2Request represents ...",
+      "range": {
+        "startLine": 8,
+        "startChar": 5,
+        "endLine": 8,
+        "endChar": 23
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6fb747_3ecb0585",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "(nit, ditto above):\n// createRequest creates a ...",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f2ba8a_6a37a04f",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "nit:\nit should start with: \"getDeviceNodes returns ...\"\n\nAlso, in Golang, getters should not start with Get (unless they clash with another name)",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b51c25_f6c07d3f",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "ditto above:\n// devicePath returns ... (or choose the correct verb)",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff9f713_ef1a0e1e",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "avoid \"shell-out\", specially if there is a golang alternative (or if it is easy to implement in go).\n\nIn this case, you can iterate a folder easily. You have some alternatives: https://flaviocopes.com/go-list-files/",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 62
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713bd1bd_40a9e22f",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b36f9fa_1a9ce4bb",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-11T00:24:10Z",
+      "side": 1,
+      "message": "in golang, it should be ID (or URL) instead of Id or Url:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "384e612e63e5faa8b2544909ba0972ebaba0af47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
