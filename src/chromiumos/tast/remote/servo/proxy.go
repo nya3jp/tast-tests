@@ -59,7 +59,7 @@ func NewProxy(ctx context.Context, spec, keyFile, keyDir string) (*Proxy, error)
 		if err := ssh.ParseTarget(hostname, &sopt); err != nil {
 			return nil, err
 		}
-		testing.ContextLogf(ctx, "Opening SSH connection to %s:%d", sopt.Hostname, sopt.Port)
+		testing.ContextLogf(ctx, "Opening SSH connection to %s", sopt.Hostname)
 		if pxy.hst, err = ssh.New(ctx, &sopt); err != nil {
 			return nil, err
 		}
