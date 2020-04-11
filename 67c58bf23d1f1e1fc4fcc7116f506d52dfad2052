@@ -16,6 +16,24 @@
       "revId": "67c58bf23d1f1e1fc4fcc7116f506d52dfad2052",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638a79bf_22652f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-04-11T00:28:39Z",
+      "side": 1,
+      "message": "But we explicitly don\u0027t want to fail in that case, at least not this early. If the process is not found, we still want to check in the root mount namespace, pointed to by /proc/1/ns/mnt.",
+      "parentUuid": "a4c66ecc_5d3d156a",
+      "revId": "67c58bf23d1f1e1fc4fcc7116f506d52dfad2052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
