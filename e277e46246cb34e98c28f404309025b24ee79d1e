@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0adf289_7c062aaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-11T02:06:13Z",
+      "side": 1,
+      "message": "double-check the Autotest versions for these: these set GREENFIELD in Autotest, but not here",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a2a695_85fd57cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-11T02:06:13Z",
+      "side": 1,
+      "message": "I think these deps moved to all-lowercase\n\nAlso, can we factor this hwdep out into some reusable name that has meaning on its own (e.g., with 802.11ac in the name)? We will need other WiFi hardware dependencies in the future, and it would be nice to start having a reasonable pattern for that.",
+      "range": {
+        "startLine": 91,
+        "startChar": 53,
+        "endLine": 91,
+        "endChar": 59
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faaef452_2070b43f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-11T02:06:13Z",
+      "side": 1,
+      "message": "this is a \"mixed\" test, so shouldn\u0027t a non-AC client still be able to connect?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
