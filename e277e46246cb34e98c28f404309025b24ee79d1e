@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "28ed9387_d6ec2f0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-12T17:21:45Z",
+      "side": 1,
+      "message": "Didn\u0027t notice that the lowercase normalization landed recently: https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/2114870\n\nFor WiFi hardware dependency / feature, this is a good topic to develop. Shall we note it as a TODO and skip \"monroe\" for now for 802.11ac test?",
+      "parentUuid": "68a2a695_85fd57cb",
+      "range": {
+        "startLine": 91,
+        "startChar": 53,
+        "endLine": 91,
+        "endChar": 59
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faaef452_2070b43f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 12
