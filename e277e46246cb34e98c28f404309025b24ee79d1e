@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c83c77e9_081f55ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-12T17:37:21Z",
+      "side": 1,
+      "message": "However, GREENFIELD in Autotest HostapConfig is a no-op except emitting a warning:\nhttp://cs/chromeos_public/src/third_party/autotest/files/server/cros/network/hostap_config.py?l\u003d278",
+      "parentUuid": "e0adf289_7c062aaf",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68a2a695_85fd57cb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 12
