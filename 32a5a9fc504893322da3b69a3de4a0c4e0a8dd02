@@ -22,6 +22,30 @@
       "revId": "32a5a9fc504893322da3b69a3de4a0c4e0a8dd02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc319dff_2dc7c2d9",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-12T17:44:57Z",
+      "side": 1,
+      "message": "We may force 11n and 11ac configs to set HTCaps explicitly.\n\nHowever, in CL:1989649, for test \"80211acvht40\", the HTCaps is set to HTCapHT40; for test \"80211acvht80pure\", the HTCaps is set to HTCapHT40Plus. They both don\u0027t go into the default value logic.",
+      "parentUuid": "aad528e6_2c8092d8",
+      "range": {
+        "startLine": 159,
+        "startChar": 23,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "32a5a9fc504893322da3b69a3de4a0c4e0a8dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
