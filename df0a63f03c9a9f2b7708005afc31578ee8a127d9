@@ -73,6 +73,53 @@
     },
     {
       "key": {
+        "uuid": "641f2aad_067ed37b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T15:23:57Z",
+      "side": 1,
+      "message": "RunAccelVideoSanityTest is only called from\nsrc/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity.go\n￼\nso it doesn\u0027t make sense to move it to\nsrc/platform/tast-tests/src/chromiumos/tast/local/media/decoding/accel_video.go\n\nsince the code should be pushed as down in the hierarchy as possible.",
+      "parentUuid": "0dbcfca3_d6c243db",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ade32d48_4a39120b",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T15:23:57Z",
+      "side": 1,
+      "message": "nya@ said in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2142588/2#message-3e8e860b6c964747f57403fc2fc8d42f674077d8:\n\n\u003e Does this CL pass preupload hooks? Use of testing.State in support packages are prohibited.\n\n\nCorrect. Removed this use.",
+      "range": {
+        "startLine": 58,
+        "startChar": 44,
+        "endLine": 58,
+        "endChar": 61
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129206f3_90580bf8",
         "filename": "src/chromiumos/tast/local/media/decoding/perf.go",
         "patchSetId": 2
