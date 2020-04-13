@@ -93,6 +93,30 @@
       "revId": "9053d627b8fb51cb20fc5763a305e05421571688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ceaeb9_97b86dcf",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-13T20:04:33Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a large tracking bug, and these TODOs describe two subtly different aspects of the same bug.",
+      "parentUuid": "ce4884d7_11baed76",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 70
+      },
+      "revId": "9053d627b8fb51cb20fc5763a305e05421571688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
