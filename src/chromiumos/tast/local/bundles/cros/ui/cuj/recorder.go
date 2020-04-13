@@ -14,47 +14,55 @@ import (
 	"chromiumos/tast/local/perf"
 )
 
-// MetricCategory is the category for the metrics tracked by Recorder.
-type MetricCategory string
+type metricGroup string
 
 const (
-	// CategorySmoothness is the category of animation smoothness metrics.
-	CategorySmoothness MetricCategory = "AnimationSmoothness"
-	// CategoryLatency is the category of input latency metrics.
-	CategoryLatency MetricCategory = "InputLatency"
+	groupSmoothness metricGroup = "AnimationSmoothness"
+	groupLatency    metricGroup = "InputLatency"
+	groupOther      metricGroup = ""
 )
-
-// Direction returns the perf.Direction for the category.
-func (c MetricCategory) Direction() perf.Direction {
-	if c == CategorySmoothness {
-		return perf.BiggerIsBetter
-	}
-	return perf.SmallerIsBetter
-}
-
-// Smoothness less than 50% (i.e. 30fps) will be considered to be janky. 20%
-// (i.e. 12fps) will be considered to be extremely janky.
-var smoothnessJankCriteria = []int64{50, 20}
-
-// Latency longer than 100 msecs will be considered to be janky. 250 msecs will
-// be considered to be extremely janky.
-var latencyJankCriteria = []int64{100, 250}
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
 	// The name of the histogram to be recorded.
-	HistogramName string
-
-	// The category of the histogram.
-	Category MetricCategory
+	histogramName string
 
 	// The unit of the histogram, like "percent" or "ms".
-	Unit string
+	unit string
+
+	// The direction of the histogram.
+	direction perf.Direction
 
 	// The criteria to be considered jank, used to aggregated rate of janky
 	// instances. This can be empty, in that case the defualt criteria will be
 	// used.
-	JankCriteria []int64
+	jankCriteria []int64
+
+	// The group of the metrics. Metrics in the same group will be aggregated
+	// nto one, except for groupOther.
+	group metricGroup
+}
+
+// NewSmoothnessMetricConfig creates a new MetricConfig instance for collecting
+// animation smoothness data for the given histogram name. The whole data of all
+// smoothness metrics will be aggregated into the "AnimationSmoothness" entry at
+// the end.
+func NewSmoothnessMetricConfig(histogramName string) MetricConfig {
+	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter, jankCriteria: []int64{50, 20}, group: groupSmoothness}
+}
+
+// NewLatencyMetricConfig creates a new MetricConfig instance for collecting
+// input latency data for the given histogram name. The whole data of all input
+// latency metrics will be aggregated into the "InputLatency" entry at the end.
+func NewLatencyMetricConfig(histogramName string) MetricConfig {
+	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter, jankCriteria: []int64{100, 250}, group: groupLatency}
+}
+
+// NewCustomMetricConfig creates a new MetricConfig for the given histogram
+// name, unit, direction, and jankCriteria. The data are reported as-is but
+// not aggregated with other histograms.
+func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction, jankCriteria []int64) MetricConfig {
+	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, jankCriteria: jankCriteria, group: groupOther}
 }
 
 type record struct {
@@ -118,35 +126,21 @@ func NewRecorder(ctx context.Context, configs ...MetricConfig) (*Recorder, error
 		loadRecorder: loadRecorder,
 	}
 	for _, config := range configs {
-		if config.HistogramName == string(CategoryLatency) || config.HistogramName == string(CategorySmoothness) {
-			return nil, errors.Errorf("invalid histogram name: %s", config.HistogramName)
+		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
+			return nil, errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
-		r.names = append(r.names, config.HistogramName)
-		record := &record{config: config}
-		r.records[config.HistogramName] = record
-		// Use the default criteria if JankCriteria is not specified explicitly.
-		if len(config.JankCriteria) == 0 {
-			switch config.Category {
-			case CategorySmoothness:
-				record.config.JankCriteria = append(record.config.JankCriteria, smoothnessJankCriteria...)
-			case CategoryLatency:
-				record.config.JankCriteria = append(record.config.JankCriteria, latencyJankCriteria...)
-			default:
-				return nil, errors.Errorf("unsupported category: %v", config.Category)
-			}
-		} else if len(config.JankCriteria) != 2 {
-			return nil, errors.Errorf("jank criteria for %s has %d element, it must be exactly 2", config.HistogramName, len(config.JankCriteria))
-		}
+		r.names = append(r.names, config.histogramName)
+		r.records[config.histogramName] = &record{config: config}
 	}
-	r.records[string(CategoryLatency)] = &record{config: MetricConfig{
-		HistogramName: string(CategoryLatency),
-		Unit:          "ms",
-		Category:      CategoryLatency,
+	r.records[string(groupLatency)] = &record{config: MetricConfig{
+		histogramName: string(groupLatency),
+		unit:          "ms",
+		direction:     perf.SmallerIsBetter,
 	}}
-	r.records[string(CategorySmoothness)] = &record{config: MetricConfig{
-		HistogramName: string(CategorySmoothness),
-		Unit:          "percent",
-		Category:      CategorySmoothness,
+	r.records[string(groupSmoothness)] = &record{config: MetricConfig{
+		histogramName: string(groupSmoothness),
+		unit:          "percent",
+		direction:     perf.BiggerIsBetter,
 	}}
 
 	return r, nil
@@ -176,16 +170,18 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 		record.totalCount += hist.TotalCount()
 		record.sum += hist.Sum
 		jankCounts := []float64{
-			getJankCounts(hist, record.config.Category.Direction(), record.config.JankCriteria[0]),
-			getJankCounts(hist, record.config.Category.Direction(), record.config.JankCriteria[1]),
+			getJankCounts(hist, record.config.direction, record.config.jankCriteria[0]),
+			getJankCounts(hist, record.config.direction, record.config.jankCriteria[1]),
 		}
 		record.jankCounts[0] += jankCounts[0]
 		record.jankCounts[1] += jankCounts[1]
-		totalRecord := r.records[string(record.config.Category)]
-		totalRecord.totalCount += hist.TotalCount()
-		totalRecord.sum += hist.Sum
-		totalRecord.jankCounts[0] += jankCounts[0]
-		totalRecord.jankCounts[1] += jankCounts[1]
+
+		if totalRecord, ok := r.records[string(record.config.group)]; ok {
+			totalRecord.totalCount += hist.TotalCount()
+			totalRecord.sum += hist.Sum
+			totalRecord.jankCounts[0] += jankCounts[0]
+			totalRecord.jankCounts[1] += jankCounts[1]
+		}
 	}
 	return nil
 }
@@ -203,9 +199,9 @@ func (r *Recorder) Record(pv *perf.Values) error {
 		}
 		pv.Set(perf.Metric{
 			Name:      name,
-			Unit:      record.config.Unit,
+			Unit:      record.config.unit,
 			Variant:   "average",
-			Direction: record.config.Category.Direction(),
+			Direction: record.config.direction,
 		}, float64(record.sum)/float64(record.totalCount))
 		pv.Set(perf.Metric{
 			Name:      name,
