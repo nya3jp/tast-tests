@@ -115,7 +115,7 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 // MountArtifactComponent extracts and mounts the VM image from build artifacts.
 func MountArtifactComponent(ctx context.Context, artifactPath string) error {
 	componentDir := filepath.Join(terminaComponentDownloadPath, "artifact")
-	// Remove |componentDir| if it already exists to make sure we
+	// Remove componentDir if it already exists to make sure we
 	// don't reuse any files from a previous test run.
 	if err := os.RemoveAll(componentDir); err != nil {
 		return err
@@ -277,8 +277,8 @@ func EnableCrostini(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-// waitForDBusSignal waits on a SignalWatcher and returns the unmarshaled signal. |optSpec| matches a subset of the watching signals if |watcher|
-// listens on multiple signals. Pass nil if we want to wait for any signal matches by |watcher|.
+// waitForDBusSignal waits on a SignalWatcher and returns the unmarshaled signal. optSpec matches a subset of the watching signals if watcher
+// listens on multiple signals. Pass nil if we want to wait for any signal matches by watcher.
 func waitForDBusSignal(ctx context.Context, watcher *dbusutil.SignalWatcher, optSpec *dbusutil.MatchSpec, sigResult proto.Message) error {
 	for {
 		select {

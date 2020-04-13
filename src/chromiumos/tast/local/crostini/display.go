@@ -127,13 +127,13 @@ func VerifyWindowDensities(ctx context.Context, tconn *chrome.TestConn, sizeHigh
 	return nil
 }
 
-// RunWindowedApp Runs the command |cmdline| in the container, waits
-// for the window |windowName| to open, sends it a key press event,
-// runs |condition|, and then closes all open windows. Note that this
-// will close windows other then the one with title |windowName|! The
+// RunWindowedApp Runs the command cmdline in the container, waits
+// for the window windowName to open, sends it a key press event,
+// runs condition, and then closes all open windows. Note that this
+// will close windows other then the one with title windowName! The
 // return value is a string containing the what program wrote to
-// stdout. The intended use of |condition| is to delay closing the
-// application window until some event has occurred. If |condition|
+// stdout. The intended use of condition is to delay closing the
+// application window until some event has occurred. If condition
 // returns an error then the call will be considered a failure and the
 // error will be propagated.
 func RunWindowedApp(ctx context.Context, tconn *chrome.TestConn, cont *vm.Container, keyboard *input.KeyboardEventWriter, timeout time.Duration, condition func(context.Context) error, closeWindow bool, windowName string, cmdline []string) (string, error) {

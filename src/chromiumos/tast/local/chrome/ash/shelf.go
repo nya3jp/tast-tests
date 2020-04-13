@@ -75,7 +75,7 @@ func GetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID str
 	return b, nil
 }
 
-// PinApp pins the shelf icon for the app specified by |appID|.
+// PinApp pins the shelf icon for the app specified by appID.
 func PinApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.pinShelfIcon)(%q)", appID)
 	return tconn.EvalPromise(ctx, query, nil)

@@ -147,10 +147,10 @@ func checkHistogram(ctx context.Context, tconn *chrome.TestConn, baseline int64)
 }
 
 // testOverwriteAtOffsets overwrites the VM disk that stores
-// |container| at the locations in |offsets| with uuidReplacement. It
+// container at the locations in offsets with uuidReplacement. It
 // then restarts the VM and container and checks that the filesystem
 // corruption is detected. Finally, it stops the VM and restores the VM
-// disk from |backupPath|. |outDir| is passed to
+// disk from backupPath. outDir is passed to
 // vm.RestartDefaultVMContainer and may be used to store logs from
 // container startup on failure.
 func testOverwriteAtOffsets(ctx context.Context, offsets []int64, container *vm.Container, backupPath, outDir string) error {

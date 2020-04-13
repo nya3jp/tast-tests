@@ -93,7 +93,7 @@ type fioSettings struct {
 type logFunc func(title string, content []byte) error
 
 // runFIO runs a fio command and returns the average read/write bandwidth in kB per second.
-// |jobFile| is the .ini file to be used by the fio command. The job file may contain variables which
+// jobFile is the .ini file to be used by the fio command. The job file may contain variables which
 // can be substituted by environment variables passed to fio command. For example, if the .ini file has lines like:
 //
 //   [fio_rand_write]
@@ -104,7 +104,7 @@ type logFunc func(title string, content []byte) error
 //
 // An example fio command could be like
 //     FILESIZE=1G FILENAME=fio_test_data BLOCKSIZE=4m fio fio_seq_write --output-format=json
-// |settings| are fio parameters to be passed via the environment variables.
+// settings are fio parameters to be passed via the environment variables.
 func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings, writeError logFunc) (avgRead, avgWrite float64, err error) {
 	envArgs := []string{
 		"FILENAME=" + re.testDataPath,
@@ -156,11 +156,11 @@ func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings
 	return avgRead, avgWrite, nil
 }
 
-// reportMetric given the metric name |metricName| and perf numbers of the same configuration running in the container as |guestValue|
-// and on the native host machine as |hostValue|, reports three metrics:
+// reportMetric given the metric name metricName and perf numbers of the same configuration running in the container as guestValue
+// and on the native host machine as hostValue, reports three metrics:
 // - guest_|metricName| : The perf value in the container.
 // - host_|metricName| : The perf value on the host machine.
-// - ratio_|metricName| : The ratio of |guestValue| divided by |hostValue|.
+// - ratio_|metricName| : The ratio of guestValue divided by hostValue.
 func reportMetric(ctx context.Context, metricName string, guestValue, hostValue float64, perfValues *perf.Values) {
 	ratio := guestValue / hostValue
 	testing.ContextLogf(ctx, "Reporting metric %v: %.1f %.1f %.2f", metricName, guestValue, hostValue, ratio)
