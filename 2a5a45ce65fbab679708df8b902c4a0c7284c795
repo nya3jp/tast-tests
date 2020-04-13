@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0bd18401_04f08a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T23:00:28Z",
+      "side": 1,
+      "message": "Let\u0027s make both non capitalized.",
+      "parentUuid": "c238b8d0_c59a3e4c",
+      "range": {
+        "startLine": 61,
+        "startChar": 57,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae1f8b27_1dd39b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -234,6 +258,30 @@
       "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434ddc60_839bf71c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T23:00:28Z",
+      "side": 1,
+      "message": "An example final destination is crosbolt:\n\nhttps://crosbolt.googleplex.com/crosbolt/index.html?tab\u003dtime_series\u0026sku_filter\u003dkevin_rk3399_4GB%7Ckevin_rk3399_4GB%7Ckrane_ARMv8_4GB%7Cnocturne_IntelR_CoreTM_m3_8100Y_CPU_1_10GHz_8GB%7Cscarlet_ARMv8_Processor_rev_4_v8l_4GB\u0026suite\u003dcrosbolt\u0026test\u003dtast.webrtc.MediaRecorderPerf.h264\u0026metric\u003d\u0026num_versions\u003d-1",
+      "parentUuid": "f15546e3_a001dd21",
+      "range": {
+        "startLine": 169,
+        "startChar": 52,
+        "endLine": 169,
+        "endChar": 68
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
