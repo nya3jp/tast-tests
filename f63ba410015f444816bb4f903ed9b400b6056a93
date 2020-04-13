@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5580661_76da326c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-13T17:30:37Z",
+      "side": 1,
+      "message": "There\u0027s already arc.SplitView test. I guess you might consider merging into it.",
+      "revId": "f63ba410015f444816bb4f903ed9b400b6056a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
