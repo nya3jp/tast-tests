@@ -58,6 +58,9 @@ func InstallApp(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string) e
 			if err := okButton.Click(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
+			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+				return testing.PollBreak(err)
+			}
 		}
 
 		// If the install button is enabled, click it.
