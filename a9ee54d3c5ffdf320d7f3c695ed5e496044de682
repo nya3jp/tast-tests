@@ -22,6 +22,30 @@
       "revId": "a9ee54d3c5ffdf320d7f3c695ed5e496044de682",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e904269d_6e0a897d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-04-13T17:15:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a37a8220_2203edf7",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "a9ee54d3c5ffdf320d7f3c695ed5e496044de682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
