@@ -351,7 +351,7 @@ const (
 	used
 )
 
-// checkStatefulDisk reports the chosen fstat |metric| in the /mnt/stateful
+// checkStatefulDisk reports the chosen fstat metric in the /mnt/stateful
 // partition. Returns the size as a human-readable string like "12G".
 func checkStatefulDisk(ctx context.Context, metric fstatMetric) (string, error) {
 	var result unix.Statfs_t

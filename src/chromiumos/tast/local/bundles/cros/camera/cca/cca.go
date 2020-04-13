@@ -182,7 +182,7 @@ func isMatchCCAPrefix(t *target.Info) bool {
 	return strings.HasPrefix(t.URL, ccaURLPrefix)
 }
 
-// Init launches a CCA instance by |appLauncher|, evaluates the helper script
+// Init launches a CCA instance by appLauncher, evaluates the helper script
 // within it and waits until its AppWindow interactable. The scriptPath should
 // be the data path to the helper script cca_ui.js. The returned App instance
 // must be closed when the test is finished.
@@ -350,7 +350,7 @@ func (a *App) checkVideoState(ctx context.Context, active bool, duration time.Du
 
 	// Due to the pipeline delay in camera stack, animation delay, and other
 	// reasons, sometimes a bug would be triggered after several frames. Wait
-	// |duration| here and check that the state does not change afterwards.
+	// duration here and check that the state does not change afterwards.
 	if err := testing.Sleep(ctx, duration); err != nil {
 		return err
 	}
@@ -753,7 +753,7 @@ func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 	return nil
 }
 
-// ConfirmResult clicks the confirm button or the cancel button according to the given |isConfirmed|.
+// ConfirmResult clicks the confirm button or the cancel button according to the given isConfirmed.
 func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) error {
 	if err := a.WaitForState(ctx, "review-result", true); err != nil {
 		return errors.Wrap(err, "does not enter review result state")

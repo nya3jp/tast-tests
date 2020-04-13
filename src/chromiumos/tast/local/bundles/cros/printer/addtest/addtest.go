@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// cleanPSContents filters any unwanted lines from |content| to ensure a stable
+// cleanPSContents filters any unwanted lines from content to ensure a stable
 // diff.
 func cleanPSContents(content string) string {
 	// Matches the embedded poppler version in the PS file. This gets
@@ -34,7 +34,7 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 	RunWithOptions(ctx, s, ppdFile, toPrintFile, goldenFile, diffFile, "")
 }
 
-// RunWithOptions executes the main test logic with |options| included in the lp command.
+// RunWithOptions executes the main test logic with options included in the lp command.
 func RunWithOptions(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile, options string) {
 	const printerID = "FakePrinterID"
 

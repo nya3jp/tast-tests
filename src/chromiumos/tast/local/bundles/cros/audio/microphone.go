@@ -102,8 +102,8 @@ func Microphone(ctx context.Context, s *testing.State) {
 	}
 
 	// Recording function by ALSA.
-	// - |path| argument of the function is the destination path.
-	// - |numChans| and |samplingRate| are as same as below.
+	// - path argument of the function is the destination path.
+	// - numChans and samplingRate are as same as below.
 	recordAlsa := func(path string, numChans, samplingRate int) error {
 		return testexec.CommandContext(
 			ctx, "arecord",
@@ -134,8 +134,8 @@ func Microphone(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Testing for each param.
-	// - |numChans| is the number of channels for the recording.
-	// - |samplingRate| is the number of samples per second.
+	// - numChans is the number of channels for the recording.
+	// - samplingRate is the number of samples per second.
 	test := func(numChans, samplingRate int) {
 		tmpfile, err := ioutil.TempFile("", "audio")
 		if err != nil {

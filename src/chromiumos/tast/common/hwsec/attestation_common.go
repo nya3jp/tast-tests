@@ -24,7 +24,7 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// SendPostRequestTo sends POST request with |body| to |serverURL|.
+// SendPostRequestTo sends POST request with body to serverURL.
 func SendPostRequestTo(ctx context.Context, body, serverURL string) (string, error) {
 	req, err := http.NewRequest("POST", serverURL, strings.NewReader(body))
 	req.WithContext(ctx)
@@ -35,7 +35,7 @@ func SendPostRequestTo(ctx context.Context, body, serverURL string) (string, err
 	return sendHTTPRequest(req)
 }
 
-// SendGetRequestTo sends GET request to |serverURL|
+// SendGetRequestTo sends GET request to serverURL
 func SendGetRequestTo(ctx context.Context, serverURL string) (string, error) {
 	req, err := http.NewRequest("GET", serverURL, strings.NewReader(""))
 	req.WithContext(ctx)
@@ -61,7 +61,7 @@ func sendHTTPRequest(req *http.Request) (string, error) {
 	return string(respBody), nil
 }
 
-// UnmarshalSignedData unmarshal |d| into apb.SignedData; also returns encountered  error if any
+// UnmarshalSignedData unmarshal d into apb.SignedData; also returns encountered  error if any
 func UnmarshalSignedData(d []byte) (*apb.SignedData, error) {
 	var out apb.SignedData
 	if err := proto.Unmarshal(d, &out); err != nil {
@@ -70,7 +70,7 @@ func UnmarshalSignedData(d []byte) (*apb.SignedData, error) {
 	return &out, nil
 }
 
-// HexDecode decode the hex-encoded |enc| into []byte; also returns encountered error if any
+// HexDecode decode the hex-encoded enc into []byte; also returns encountered error if any
 func HexDecode(enc []byte) ([]byte, error) {
 	dec := make([]byte, hex.DecodedLen(len(enc)))
 	n, err := hex.Decode(dec, enc)
@@ -84,14 +84,14 @@ type attestationClient interface {
 	// IsEnrolled returns the flag to indicate if the DUT is
 	// enrolled and any encountered error during the operation.
 	IsEnrolled(ctx context.Context) (bool, error)
-	// Creates an enroll request that is sent to the corresponding pca server of |pcaType|
+	// Creates an enroll request that is sent to the corresponding pca server of pcaType
 	// later, and any error encountered during the operation.
 	CreateEnrollRequest(ctx context.Context, pcaType PCAType) (string, error)
-	// Finishes the enroll with |resp| from pca server of |pcaType|. Returns any
+	// Finishes the enroll with resp from pca server of pcaType. Returns any
 	// encountered error during the operation.
 	FinishEnroll(ctx context.Context, pcaType PCAType, resp string) error
 	// Creates a certificate request that is sent to the corresponding pca server
-	// of |pcaType| later, and any error encountered during the operation.
+	// of pcaType later, and any error encountered during the operation.
 	CreateCertRequest(ctx context.Context, pcaType PCAType, profile apb.CertificateProfile, username, origin string) (string, error)
 	// Finishes the certified key creation with |resp| from PCA server. Returns any encountered error during the operation.
 	FinishCertRequest(ctx context.Context, response, username, label string) error

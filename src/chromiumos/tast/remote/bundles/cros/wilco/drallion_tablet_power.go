@@ -104,7 +104,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	// Press power key for |pressDuration| seconds and verify DUT reboots as expected
+	// Press power key for pressDuration seconds and verify DUT reboots as expected
 	testCaseReboot := func(pressDuration string) error {
 		// Restarting Chrome clears the power down menu if already present
 		if _, err = powerMenuService.NewChrome(ctx, &empty.Empty{}); err != nil {
@@ -166,7 +166,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	// Press power key for |pressDuration| seconds, check that power menu only appears if expected, confirm DUT did not reboot
+	// Press power key for pressDuration seconds, check that power menu only appears if expected, confirm DUT did not reboot
 	testCaseNoReboot := func(pressDuration string, menuExpected bool) error {
 		// Chrome instance is necessary to check for the presence of the power menu
 		if _, err = powerMenuService.NewChrome(ctx, &empty.Empty{}); err != nil {

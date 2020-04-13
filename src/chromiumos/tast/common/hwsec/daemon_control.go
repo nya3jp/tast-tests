@@ -29,7 +29,7 @@ type DaemonController struct {
 	r CmdRunner
 }
 
-// NewDaemonController creates a new DaemonController object, where |r| is used to run the command internally.
+// NewDaemonController creates a new DaemonController object, where r is used to run the command internally.
 func NewDaemonController(r CmdRunner) *DaemonController {
 	return &DaemonController{r}
 }
@@ -41,7 +41,7 @@ func (dc *DaemonController) WaitForAllDBusServices(ctx context.Context) error {
 }
 
 func (dc *DaemonController) waitForDBusService(ctx context.Context, name string) error {
-	// Without quote, we might find something prefixed by |name|.
+	// Without quote, we might find something prefixed by name.
 	name = "\"" + name + "\""
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if out, err := dc.r.Run(
