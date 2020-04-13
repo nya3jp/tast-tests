@@ -69,6 +69,24 @@
       "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ecb1bde_f68de0ad",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T02:48:15Z",
+      "side": 1,
+      "message": "Thank you for explanation!\n\nhttps://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo\ncontains url, so L943 is the URL.\n\nThen, how about carrying the URL to here?",
+      "parentUuid": "8f001db3_dc7ed913",
+      "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
