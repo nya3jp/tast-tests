@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5efea645_602907c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_attribute_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-13T14:30:02Z",
+      "side": 1,
+      "message": "objID is reported in the error object so it is included.",
+      "parentUuid": "70aadec3_477ddb5e",
+      "range": {
+        "startLine": 126,
+        "startChar": 40,
+        "endLine": 126,
+        "endChar": 42
+      },
+      "revId": "9ab1583a103b8a74c596554d3f8eb560ffea7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19657a00_231f7f24",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ac463d61_b723d595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_pkcs1v15.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-13T14:30:02Z",
+      "side": 1,
+      "message": "As the first comment.",
+      "parentUuid": "19657a00_231f7f24",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 74
+      },
+      "revId": "9ab1583a103b8a74c596554d3f8eb560ffea7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee0a14eb_1df35e1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "9ab1583a103b8a74c596554d3f8eb560ffea7ebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9be2c89_c7cf8e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-13T14:30:02Z",
+      "side": 1,
+      "message": "As the first comment.",
+      "parentUuid": "ee0a14eb_1df35e1d",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 40
+      },
+      "revId": "9ab1583a103b8a74c596554d3f8eb560ffea7ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
