@@ -22,6 +22,30 @@
       "revId": "09af09be7317d00962e19bfd554817d19d943a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4885b7bf_59bfe843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-13T02:33:18Z",
+      "side": 1,
+      "message": "yeah right. I will fix the readability.\nI\u0027ve seen quite a few places in hwsec tast it not aware of that. We should address it when hwsec team has cycles.",
+      "parentUuid": "cf1eddb1_ba757d84",
+      "range": {
+        "startLine": 86,
+        "startChar": 72,
+        "endLine": 86,
+        "endChar": 76
+      },
+      "revId": "09af09be7317d00962e19bfd554817d19d943a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
