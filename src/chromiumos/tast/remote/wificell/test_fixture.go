@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -112,8 +114,16 @@ func (tf *TestFixture) getUniqueAPName() string {
 }
 
 // ConfigureAP configures the router to provide a WiFi service with the options specified.
-func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (*APIface, error) {
+func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (*APIface, error) {
 	name := tf.getUniqueAPName()
+	if fac != nil {
+		// Defer the securityConfig generation from test's init() to here because the step may emit error and that's not allowed in test init().
+		securityConfig, err := fac.Gen()
+		if err != nil {
+			return nil, err
+		}
+		ops = append([]hostapd.Option{hostapd.SecurityConfig(securityConfig)}, ops...)
+	}
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
 		return nil, err
@@ -128,9 +138,19 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, h *APIface) error {
 
 // ConnectWifi asks the DUT to connect to the given WiFi service.
 func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
+	props, err := h.Config().SecurityConfig.ShillServiceProperties()
+	if err != nil {
+		return err
+	}
+	propsEnc, err := protoutil.EncodeToShillValMap(props)
+	if err != nil {
+		return err
+	}
 	config := &network.Config{
-		Ssid:   h.Config().Ssid,
-		Hidden: h.Config().Hidden,
+		Ssid:       h.Config().Ssid,
+		Hidden:     h.Config().Hidden,
+		Security:   h.Config().SecurityConfig.Class(),
+		Shillprops: propsEnc,
 	}
 	service, err := tf.wifiClient.Connect(ctx, config)
 	if err != nil {
