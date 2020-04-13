@@ -17,6 +17,7 @@ import (
 
 	"github.com/pixelbender/go-matroska/matroska"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -25,7 +26,6 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/media/videotype"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
