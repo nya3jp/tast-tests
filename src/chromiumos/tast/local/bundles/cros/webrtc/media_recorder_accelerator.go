@@ -47,6 +47,11 @@ func init() {
 			// once the feature is enabled by default on VA-API devices.
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 			Pre:               pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
+		}, {
+			Name:              "vp8_cam",
+			Val:               videotype.VP8,
+			ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, caps.HWEncodeVP8},
+			Pre:               pre.ChromeCameraPerf(),
 		}},
 	})
 }
