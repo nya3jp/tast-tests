@@ -7,7 +7,7 @@ package example
 import (
 	"context"
 
-	"chromiumos/tast/local/perf"
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/testing"
 )
 

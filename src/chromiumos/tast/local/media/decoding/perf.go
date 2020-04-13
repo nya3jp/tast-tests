@@ -8,8 +8,8 @@ import (
 	"encoding/json"
 	"os"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/perf"
 )
 
 // This file contains helper functions that can be used to parse the log files

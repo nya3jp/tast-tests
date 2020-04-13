@@ -8,11 +8,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )

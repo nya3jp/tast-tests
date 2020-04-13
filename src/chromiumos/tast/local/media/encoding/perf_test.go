@@ -12,9 +12,9 @@ import (
 	"reflect"
 	"testing"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/diff"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testutil"
 )
 
