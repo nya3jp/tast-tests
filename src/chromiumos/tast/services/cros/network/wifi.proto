@@ -23,6 +23,12 @@ service Wifi {
 message Config {
   string ssid = 1;
   bool hidden = 2;
+  // security is the SecurityClass (defined in shill/service.go) of the WiFi
+  // service to Connect.
+  string security = 3;
+  // shillprops is the shill properties the DUT should set to Connect to the
+  // WiFi service.
+  map<string, ShillVal> shillprops = 4;
 }
 
 message ShillVal {
