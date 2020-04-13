@@ -210,6 +210,30 @@
       "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f15546e3_a001dd21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-13T21:51:26Z",
+      "side": 1,
+      "message": "Ack. Can you give a link for where we\u0027re uploading these metrics?",
+      "parentUuid": "e2845fda_6a8d8859",
+      "range": {
+        "startLine": 169,
+        "startChar": 52,
+        "endLine": 169,
+        "endChar": 68
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
