@@ -25,6 +25,13 @@ message Config {
   bool hidden = 2;
 }
 
+message ShillVal {
+  oneof val {
+    string str = 1;
+    bool bool = 2;
+  }
+}
+
 message Service {
   string path = 1;
 }
