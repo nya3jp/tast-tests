@@ -87,6 +87,24 @@
       "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f8fbfe2_9bf3e31c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-13T07:43:54Z",
+      "side": 1,
+      "message": "Hmm I tried that by returning both the connection and url from WaitForOOBEConnection(). But the only usage of the URL is here, and I have to add a place holder _ for all other callers of WaitForOOBEConnection(), which is a little bit tedious imo.\n\nAfter a second thought, I changed it to get url by evaluating |window.location.href| on oobeConn, so it\u0027s clearly safe and keeping the signature of WaitForOOBEConnection() unchanged.",
+      "parentUuid": "9ecb1bde_f68de0ad",
+      "revId": "107885427aeae47a43853e1cf0bf0ba918d94a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
