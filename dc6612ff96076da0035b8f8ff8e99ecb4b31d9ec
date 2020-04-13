@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78d8faf2_b3bc43b3",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T08:15:30Z",
+      "side": 1,
+      "message": "nit: `\"iw phy %s info\" failed` is cleaner.",
+      "range": {
+        "startLine": 203,
+        "startChar": 32,
+        "endLine": 203,
+        "endChar": 59
+      },
+      "revId": "dc6612ff96076da0035b8f8ff8e99ecb4b31d9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4463c882_c119bab0",
+        "filename": "src/chromiumos/tast/common/network/iw/runner_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T08:15:30Z",
+      "side": 1,
+      "message": "s/mock/stub/ ?\nI think this is stub rather than mock.\ncf. https://engdoc.corp.google.com/eng/doc/tott/episodes/296.md?cl\u003dhead",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "dc6612ff96076da0035b8f8ff8e99ecb4b31d9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33daef76_27150c47",
+        "filename": "src/chromiumos/tast/common/network/iw/runner_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T08:15:30Z",
+      "side": 1,
+      "message": "you can use %v and .Error() is not needed.",
+      "range": {
+        "startLine": 552,
+        "startChar": 63,
+        "endLine": 552,
+        "endChar": 65
+      },
+      "revId": "dc6612ff96076da0035b8f8ff8e99ecb4b31d9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda755e2_a770a154",
+        "filename": "src/chromiumos/tast/common/network/iw/runner_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T08:15:30Z",
+      "side": 1,
+      "message": "remove Get?",
+      "range": {
+        "startLine": 552,
+        "startChar": 42,
+        "endLine": 552,
+        "endChar": 45
+      },
+      "revId": "dc6612ff96076da0035b8f8ff8e99ecb4b31d9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b772f780_e1b6ba3d",
+        "filename": "src/chromiumos/tast/common/network/iw/runner_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T08:15:30Z",
+      "side": 1,
+      "message": "same here?\n%x is for hexadecimal notation.",
+      "range": {
+        "startLine": 560,
+        "startChar": 67,
+        "endLine": 560,
+        "endChar": 69
+      },
+      "revId": "dc6612ff96076da0035b8f8ff8e99ecb4b31d9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
