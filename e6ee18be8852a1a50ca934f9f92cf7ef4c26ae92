@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f92526e6_a8163cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-13T08:02:37Z",
+      "side": 1,
+      "message": "IIUC gzip.Reader.Read (called via ioutil.ReadAll below) may also return io.EOF when EOF is reached in the middle of the file. So I recommend keeping this check as-is and ignoring an error from readLog entirely instead.",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "e6ee18be8852a1a50ca934f9f92cf7ef4c26ae92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
