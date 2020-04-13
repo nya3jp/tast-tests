@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "90efb339_9f315ef3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-13T06:50:23Z",
+      "side": 1,
+      "message": "As Dean mentioned, GREENFIELD is a no-op in Autotest, so currently it is declared but also a should not be used flag in Tast:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/hostapd/config.go?l\u003d177",
+      "parentUuid": "c83c77e9_081f55ab",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a2a695_85fd57cb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 12
@@ -116,6 +140,30 @@
       "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b7aa85_f3ae433b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-13T06:50:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faaef452_2070b43f",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
