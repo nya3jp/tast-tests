@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59a0fe2f_6a2b2bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-13T16:37:54Z",
+      "side": 1,
+      "message": "you need to rebase on master. Then this will be act.Start(ctx,tconn)",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5790337c_e75a7137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-13T16:37:54Z",
+      "side": 1,
+      "message": "you aren\u0027t using this variable to check if it is focused. I think you want to add\n\n} else if(!pwdFocusOrNot) {\n    enterPassword.Click(ctx)\n    return errors.New(\"Password text field not focused yet\")\n}\n\n\nalso, nit: maybe call it pwdFocused instead.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 18
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b451ba1_319cab68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-13T16:37:54Z",
+      "side": 1,
+      "message": "You probably shouldn\u0027t log within testing.Poll, it could generate. ton of messages.",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 66
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85684886_4a852e0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-13T16:37:54Z",
+      "side": 1,
+      "message": "This should probably be fatal. The test will run out of time to execute anyway if this fails.",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 7
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cdcb2e9_1955ab45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-13T16:37:54Z",
+      "side": 1,
+      "message": "nit: didn\u0027t",
+      "range": {
+        "startLine": 192,
+        "startChar": 18,
+        "endLine": 192,
+        "endChar": 25
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1c8f96_45d93181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-13T16:37:54Z",
+      "side": 1,
+      "message": "remove this else. Have it type the password whether or not the above succeeds",
+      "range": {
+        "startLine": 193,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 9
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
