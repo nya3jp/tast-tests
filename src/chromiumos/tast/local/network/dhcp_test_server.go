@@ -167,7 +167,7 @@ func (s *dhcpTestServer) runLoop(ctx context.Context, rules []dhcpHandlingRule) 
 	}
 }
 
-// runTest runs |testFunc| against a server with the given handling rules.
+// runTest runs testFunc against a server with the given handling rules.
 func (s *dhcpTestServer) runTest(ctx context.Context, rules []dhcpHandlingRule, testFunc testFunction) error {
 	if err := s.setupAndBindSocket(ctx); err != nil {
 		return err

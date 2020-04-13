@@ -313,7 +313,7 @@ func (o domainListOption) unpack(buf []byte) (interface{}, error) {
 
 // Various RFC's let you finish a domain name by pointing to an existing domain
 // name rather than repeating the same suffix.  All such pointers are two buf
-// long, specify the offset in the byte string, and begin with |pointerPrefix|
+// long, specify the offset in the byte string, and begin with pointerPrefix
 // to distinguish them from normal characters.
 const pointerPrefix = '\xC0'
 
@@ -771,7 +771,7 @@ type dhcpPacket struct {
 }
 
 // createDiscovery creates a discovery packet.
-// Fill in fields of a DHCP packet as if it were being sent from |macAddr|.
+// Fill in fields of a DHCP packet as if it were being sent from macAddr.
 // Requests subnet masks, broadcast addresses, router addresses, DNS addresses,
 // domain search lists, client host name, and NTP server addresses. Note that
 // the offer packet received in response to this packet will probably not
