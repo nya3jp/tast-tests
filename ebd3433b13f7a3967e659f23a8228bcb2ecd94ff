@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af60650a_3ee9a10c",
+        "filename": "android/ArcAccessibilityTest/AndroidManifest.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-13T07:03:30Z",
+      "side": 1,
+      "message": "Can you move this string to resource file for consistency with the application title (@string/app_name)?",
+      "range": {
+        "startLine": 20,
+        "startChar": 90,
+        "endLine": 20,
+        "endChar": 106
+      },
+      "revId": "ebd3433b13f7a3967e659f23a8228bcb2ecd94ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e152b60_3f12ef78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-13T07:03:30Z",
+      "side": 1,
+      "message": "I think we need to update this instead of changing AccessibilityTree test.\n\nOne idea is we define testActivity struct, which have class name and header title (and maybe resource filenemas?), and then we can use that struct around the tests.",
+      "range": {
+        "startLine": 250,
+        "startChar": 15,
+        "endLine": 250,
+        "endChar": 39
+      },
+      "revId": "ebd3433b13f7a3967e659f23a8228bcb2ecd94ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
