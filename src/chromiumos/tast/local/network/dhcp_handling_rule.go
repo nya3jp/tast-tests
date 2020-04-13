@@ -206,7 +206,7 @@ func (d *dhcpHandlingRule) respond(queryPacket *dhcpPacket) (*dhcpPacket, error)
 }
 
 // injectOptions adds options listed in the intersection of
-// |requestedParameters| and |d.Options| to |packet|. Also include the options
+// requestedParameters and |d.Options| to packet. Also include the options
 // in the intersection of |d.ForceReplyOptions| and |d.Options|.
 func (d *dhcpHandlingRule) injectOptions(packet *dhcpPacket, requestedParameters []uint8) {
 	for option, value := range d.options {
@@ -231,7 +231,7 @@ func (d *dhcpHandlingRule) injectOptions(packet *dhcpPacket, requestedParameters
 	}
 }
 
-// injectFields adds fields listed in |d.fields| to |packet|.
+// injectFields adds fields listed in |d.fields| to packet.
 func (d *dhcpHandlingRule) injectFields(packet *dhcpPacket) {
 	for field, value := range d.fields {
 		packet.setField(field, value)
@@ -247,7 +247,7 @@ func (d *dhcpHandlingRule) isOurMsgType(packet *dhcpPacket) bool {
 
 // newRespondToDiscovery creates a handler that accepts any DISCOVER packet
 // received by the server. In response to such a packet, the handler will
-// construct an OFFER packet offering |intendedIP| from a server at |svrIP|.
+// construct an OFFER packet offering intendedIP from a server at svrIP.
 func newRespondToDiscovery(intendedIP, svrIP string, options optionMap, fields fieldMap, shouldRespond bool) *dhcpHandlingRule {
 	return &dhcpHandlingRule{
 		ruleType:      respondToDiscovery,
@@ -272,12 +272,12 @@ func newRejectRequestRule() *dhcpHandlingRule {
 }
 
 // newRespondToRequest creates a handler that accepts any REQUEST packet that
-// contains options for serverID and requestedIP that match |expSvrIP| and
+// contains options for serverID and requestedIP that match expSvrIP and
 // |expectedRequestIP| respectively. It responds with an ACKNOWLEDGEMENT packet
-// from a DHCP server at |responsesvrIP| granting |responseGrantedIP| to a
-// client at the address given in the REQUEST packet. If |responsesvrIP| or
-// |responseGrantedIP| are not given, then they default to |expSvrIP| and
-// |expReqIP| respectively.
+// from a DHCP server at responsesvrIP granting responseGrantedIP to a
+// client at the address given in the REQUEST packet. If responsesvrIP or
+// responseGrantedIP are not given, then they default to expSvrIP and
+// expReqIP respectively.
 func newRespondToRequest(expReqIP, expSvrIP string, options optionMap, fields fieldMap, shouldRespond bool, responsesvrIP, responseGrantedIP string, expSvrIPSet bool) *dhcpHandlingRule {
 	rule := dhcpHandlingRule{
 		ruleType:      respondToRequest,
@@ -312,7 +312,7 @@ func newRespondToPostT2Request(expReqIP, responseSvrIP string, options optionMap
 }
 
 // newAcceptRelease creates a handler that accepts any RELEASE packet that
-// contains an option for serverID that matches |expSvrIP|. There is no
+// contains an option for serverID that matches expSvrIP. There is no
 // response to this packet.
 func newAcceptRelease(expSvrIP string, options optionMap, fields fieldMap) *dhcpHandlingRule {
 	return &dhcpHandlingRule{
@@ -327,7 +327,7 @@ func newAcceptRelease(expSvrIP string, options optionMap, fields fieldMap) *dhcp
 
 // newRejectAndRespondToRequest creates a handler that accepts any REQUEST
 // packet that contains options for serverID and resquestedIP that match
-// |expSvrIP| and |expReqIP| respectively. It responds with
+// expSvrIP and expReqIP respectively. It responds with
 // both an ACKNOWLEDGEMENT packet from a DHCP server as well as a NAK, in order
 // to simulate a network with two conflicting servers.
 func newRejectAndRespondToRequest(expReqIP, expSvrIP string, options optionMap, fields fieldMap, nakFirst bool) *dhcpHandlingRule {
@@ -339,7 +339,7 @@ func newRejectAndRespondToRequest(expReqIP, expSvrIP string, options optionMap, 
 }
 
 // newAcceptDecline creates a handler that accepts any DECLINE packet that
-// contains an option for serverID that matches |expSvrIP|. There is no
+// contains an option for serverID that matches expSvrIP. There is no
 // response to this packet.
 func newAcceptDecline(expSvrIP string, options optionMap, fields fieldMap) *dhcpHandlingRule {
 	return &dhcpHandlingRule{

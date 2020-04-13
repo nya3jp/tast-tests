@@ -41,7 +41,7 @@ func (w *FileWiper) Restore(ctx context.Context, path string) error {
 	return nil
 }
 
-// NewFileWiper creates a new FileWiper with |r| running commands internally.
+// NewFileWiper creates a new FileWiper with r running commands internally.
 func NewFileWiper(r CmdRunner) *FileWiper {
 	return &FileWiper{r}
 }

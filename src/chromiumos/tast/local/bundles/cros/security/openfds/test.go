@@ -51,7 +51,7 @@ func (m fileMode) String() string {
 	return fmt.Sprintf("{path: %q mode: %o lmode: %o}", m.path, m.mode, m.lmode)
 }
 
-// DumpFDs outputs the current file descriptor status into a file at |path|.
+// DumpFDs outputs the current file descriptor status into a file at path.
 func DumpFDs(ctx context.Context, path string) error {
 	// To expand the glob pattern, use shell.
 	cmd := testexec.CommandContext(ctx, "sh", "-c", "ls -l /proc/[0-9]*/fd")
@@ -61,7 +61,7 @@ func DumpFDs(ctx context.Context, path string) error {
 	return ioutil.WriteFile(path, o, 0644)
 }
 
-// expectType returns whether the given |mode| is allowed or not for an open
+// expectType returns whether the given mode is allowed or not for an open
 // file of Chrome.
 func expectType(mode uint32) bool {
 	// This is whitelist fd-type check, suitable for Chrome processes.
@@ -71,12 +71,12 @@ func expectType(mode uint32) bool {
 		return true
 	}
 
-	// Checks if |mode| represents an "anonymous inode" or not.
+	// Checks if mode represents an "anonymous inode" or not.
 	return (mode & 0770000) == 0
 }
 
 // findExpectation returns a corresponding entry in the given
-// Expecatation array which matches to the given |path|.
+// Expecatation array which matches to the given path.
 func findExpectation(path string, es []Expectation) (*Expectation, error) {
 	for _, e := range es {
 		if e.pathRegex.MatchString(path) {
@@ -86,7 +86,7 @@ func findExpectation(path string, es []Expectation) (*Expectation, error) {
 	return nil, errors.Errorf("mode expectation is not found: %s", path)
 }
 
-// expectMode checks if the given |lmode| is contained in |expectModes|.
+// expectMode checks if the given lmode is contained in expectModes.
 func expectMode(lmode uint32, expectModes []uint32) bool {
 	m := lmode & 0777
 	for _, e := range expectModes {
@@ -97,7 +97,7 @@ func expectMode(lmode uint32, expectModes []uint32) bool {
 	return false
 }
 
-// openFileModes extracts all the opened files of the |p|, with annotating
+// openFileModes extracts all the opened files of the p, with annotating
 // mode of the original file and mode of the lstat(2) of the /proc/*/fd/{FD}
 // file.
 func openFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) {
@@ -148,9 +148,9 @@ func openFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) 
 }
 
 // Expect tests the file types and file modes of the opened files for the
-// given Chrome process |p|.
-// |asan| should be true if the image is built with enabling ASan.
-// |es| is a list of expected file modes. Please see also the comment of
+// given Chrome process p.
+// asan should be true if the image is built with enabling ASan.
+// es is a list of expected file modes. Please see also the comment of
 // Expectation for details.
 func Expect(ctx context.Context, s *testing.State, asan bool, p *process.Process, es []Expectation) {
 	// Create Regex object if necessary.
