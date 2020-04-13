@@ -31,7 +31,7 @@ func (r *CmdRunnerRemote) Run(ctx context.Context, cmd string, args ...string) (
 	return r.d.Command(cmd, args...).Output(ctx)
 }
 
-// NewCmdRunner creates a new CmdRunnerRemote instance associated with |d|.
+// NewCmdRunner creates a new CmdRunnerRemote instance associated with d.
 func NewCmdRunner(d *dut.DUT) (*CmdRunnerRemote, error) {
 	return &CmdRunnerRemote{d}, nil
 }

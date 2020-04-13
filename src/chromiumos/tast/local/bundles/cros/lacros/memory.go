@@ -81,9 +81,9 @@ func findMatch(input []byte, stat string) (int, error) {
 }
 
 // procSum is a complex function.
-//  1. It finds all processes whose command line includes |path|.
+//  1. It finds all processes whose command line includes path.
 //  2. It queries /proc/{pid}/{endpoint} for each process.
-//  3. It filters and sums across all statistics that match |stat|.
+//  3. It filters and sums across all statistics that match stat.
 func procSum(ctx context.Context, path, endpoint, stat string) (int, error) {
 	pids, err := launcher.PidsFromPath(ctx, path)
 	if err != nil {
@@ -199,7 +199,7 @@ func Memory(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open chromeos-chrome tabs: ", err)
 			}
 		} else {
-			// Open a new tab to |url|.
+			// Open a new tab to url.
 			conn, err := s.PreValue().(launcher.PreData).Chrome.NewConn(ctx, url)
 			if err != nil {
 				s.Fatal("Failed to open chromeos-chrome tab: ", err)
@@ -237,7 +237,7 @@ func Memory(ctx context.Context, s *testing.State) {
 // of linux-chrome, with a single tab open to about:blank. This function
 // creates a new tab, navigates it to the url, and closes the original tab.
 func navigateSingleTabToURLLinux(ctx context.Context, url string, l *launcher.LinuxChrome) error {
-	// Open a new tab and navigate to |url|.
+	// Open a new tab and navigate to url.
 	newTab, err := l.Devsess.CreateTarget(ctx, url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open new tab")

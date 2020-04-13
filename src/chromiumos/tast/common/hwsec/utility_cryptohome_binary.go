@@ -343,7 +343,7 @@ func (u *UtilityCryptohomeBinary) IsMounted(ctx context.Context) (bool, error) {
 	return result, nil
 }
 
-// Unmount unmounts the vault for |username|.
+// Unmount unmounts the vault for username.
 func (u *UtilityCryptohomeBinary) Unmount(ctx context.Context, username string) (bool, error) {
 	_, err := u.binary.Unmount(ctx, username)
 	if err != nil {
@@ -459,7 +459,7 @@ func (u *UtilityCryptohomeBinary) ChangeVaultLabel(ctx context.Context, username
 	return nil
 }
 
-// RemoveVault remove the vault for |username|.
+// RemoveVault remove the vault for username.
 func (u *UtilityCryptohomeBinary) RemoveVault(ctx context.Context, username string) (bool, error) {
 	_, err := u.binary.Remove(ctx, username)
 	if err != nil {
@@ -588,7 +588,7 @@ func (u *UtilityCryptohomeBinary) SetAttestationAsyncMode(ctx context.Context, a
 	return nil
 }
 
-// DeleteKeys delete all he |usernames|'s keys with label having |prefix|.
+// DeleteKeys delete all he |usernames|'s keys with label having prefix.
 func (u *UtilityCryptohomeBinary) DeleteKeys(ctx context.Context, username, prefix string) error {
 	_, err := u.binary.TPMAttestationDelete(ctx, username, prefix)
 	if err != nil {
@@ -627,7 +627,7 @@ func parseTokenStatus(cmdOutput string) (returnedLabel, returnedPin string, retu
 	return params["Label"], params["Pin"], slot, nil
 }
 
-// GetTokenForUser retrieve the token slot for the user token if |username| is non-empty, or system token if |username| is empty.
+// GetTokenForUser retrieve the token slot for the user token if username is non-empty, or system token if username is empty.
 func (u *UtilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username string) (int, error) {
 	cmdOutput := ""
 	if username == "" {

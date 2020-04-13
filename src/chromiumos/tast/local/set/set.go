@@ -6,7 +6,7 @@
 package set
 
 // DiffStringSlice returns a - b (where - is  the set difference operator).
-// In other words, it returns all elements of |a| that are not in |b|.
+// In other words, it returns all elements of a that are not in b.
 func DiffStringSlice(a, b []string) []string {
 	om := make(map[string]bool, len(b))
 	for _, p := range b {

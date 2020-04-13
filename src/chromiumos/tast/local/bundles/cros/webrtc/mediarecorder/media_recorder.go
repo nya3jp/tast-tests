@@ -192,7 +192,7 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 		return 0, 0, false, errors.Wrap(err, "failed to measure CPU")
 	}
 
-	// Recorded video will be saved in |videoBuffer| in base64 format.
+	// Recorded video will be saved in videoBuffer in base64 format.
 	videoBuffer := ""
 	if err := conn.EvalPromise(ctx, "stopRecording()", &videoBuffer); err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to stop recording")
@@ -289,7 +289,7 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (usage float64, err
 	return usage, nil
 }
 
-// VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for |codec|.
+// VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for codec.
 func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.State, cr *chrome.Chrome, codec videotype.Codec) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()

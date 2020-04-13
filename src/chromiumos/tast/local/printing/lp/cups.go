@@ -21,7 +21,7 @@ import (
 const lpstatPatternPrefix = `device for ([-a-zA-Z0-9]+): `
 
 // PrinterNameByURI runs the lpstat command to search for a configured printer
-// which corresponds to |uri|. Return the name of the matching printer if found.
+// which corresponds to uri. Return the name of the matching printer if found.
 func PrinterNameByURI(ctx context.Context, uri string) (name string, err error) {
 	out, err := testexec.CommandContext(ctx, "lpstat", "-v").Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -39,7 +39,7 @@ func PrinterNameByURI(ctx context.Context, uri string) (name string, err error) 
 	return "", errors.Errorf("failed to find printer with uri %s", uri)
 }
 
-// CupsAddPrinter adds a new printer using CUPS. Returns an error if the |ppd|
+// CupsAddPrinter adds a new printer using CUPS. Returns an error if the ppd
 // is empty or lpadmin fails.
 func CupsAddPrinter(ctx context.Context, printerName, uri, ppd string) error {
 	if ppd == "" {
@@ -54,7 +54,7 @@ func CupsRemovePrinter(ctx context.Context, printerName string) error {
 	return testexec.CommandContext(ctx, "lpadmin", "-x", printerName).Run()
 }
 
-// CupsStartPrintJob starts a new print job for the file |toPrint|. Returns the
+// CupsStartPrintJob starts a new print job for the file toPrint. Returns the
 // ID of the newly created job if successful.
 func CupsStartPrintJob(ctx context.Context, printerName, toPrint string) (job string, err error) {
 	testing.ContextLog(ctx, "Starting print job")

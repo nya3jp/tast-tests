@@ -328,7 +328,7 @@ func physicalInterfaces(ctx context.Context) ([]string, error) {
 	return strings.Split(strings.TrimSpace(string(out)), "\n"), nil
 }
 
-// sendMDNS creates an mDNS question query for |hostname| with a socket bound to |port| and |ifname|.
+// sendMDNS creates an mDNS question query for hostname with a socket bound to port and ifname.
 // This will call sendMulticast which intentionally set a flag to loopback the multicast packet.
 func sendMDNS(hostname, port, ifname string, dst *net.UDPAddr) error {
 	// Craft mDNS message.
@@ -360,7 +360,7 @@ func sendMDNS(hostname, port, ifname string, dst *net.UDPAddr) error {
 	return nil
 }
 
-// sendSSDP creates an SSDP search query with USER-AGENT |ua| with a socket bound to |port| and |ifname|.
+// sendSSDP creates an SSDP search query with USER-AGENT ua with a socket bound to port and ifname.
 // This will call sendMulticast which intentionally set a flag to loopback the multicast packet.
 func sendSSDP(ua, port, ifname string, dst *net.UDPAddr) error {
 	// Craft SSDP message.
@@ -384,7 +384,7 @@ func sendSSDP(ua, port, ifname string, dst *net.UDPAddr) error {
 	return nil
 }
 
-// sendMulticast take data |b| and send it using a temporarily create socket bound to |port| and |ifname|.
+// sendMulticast take data b and send it using a temporarily create socket bound to |port| and ifname.
 // This function intentionally set multicast loopback to true.
 func sendMulticast(b []byte, src, dst *net.UDPAddr, ifname string) error {
 	ifi, err := net.InterfaceByName(ifname)
@@ -416,7 +416,7 @@ func sendMulticast(b []byte, src, dst *net.UDPAddr, ifname string) error {
 	return nil
 }
 
-// streamCmd takes a command |cmd| and stream its output. It search its output for every string in map |s|.
+// streamCmd takes a command cmd and stream its output. It search its output for every string in map |s|.
 // This function will return an error if all string in |s| is not found before context is finished.
 func streamCmd(ctx context.Context, cmd *testexec.Cmd, m map[string]string) error {
 	stdout, err := cmd.StdoutPipe()
