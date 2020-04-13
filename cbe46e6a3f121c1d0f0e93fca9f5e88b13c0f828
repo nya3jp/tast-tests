@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "583a327a_7dac8c4e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "nit: retrieves",
+      "range": {
+        "startLine": 395,
+        "startChar": 22,
+        "endLine": 395,
+        "endChar": 30
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b304be36_edb079f5",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "err (to be consistent with latter phrases)?",
+      "range": {
+        "startLine": 395,
+        "startChar": 167,
+        "endLine": 395,
+        "endChar": 172
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bfeb656_cbd01cf0",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "returns",
+      "range": {
+        "startLine": 395,
+        "startChar": 91,
+        "endLine": 395,
+        "endChar": 94
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9da6f45_0b277b09",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "in precise, Go does not have tuple. Could you avoid using the word?",
+      "range": {
+        "startLine": 395,
+        "startChar": 137,
+        "endLine": 395,
+        "endChar": 142
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3389ece2_2243992f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "Could you use named return value?",
+      "range": {
+        "startLine": 396,
+        "startChar": 101,
+        "endLine": 396,
+        "endChar": 124
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c62fc8bc_f462f61b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "style: could you merge two const into one block? Also, go heavily prefers shorter name by using surrounding context. Could you follow the style? Recommendation:\n\nconst (\n  dataPrefix \u003d \"Attribute Data in hex: \"\n  errorPrefix \u003d \"...\"\n)",
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d355159_4dd5648b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "To handle multiple-message-found better, how about using array.\n\nvar results []string\nvar errorMsgs []string\n\nfor ... {\n  if strings.HasPrefix(...) {\n    results \u003d append(results, ...)\n  }\n  ...\n}\n\nif len(results) \u003e 1 || len(errors) \u003e 1 {\n  ...\n}\n...",
+      "range": {
+        "startLine": 408,
+        "startChar": 1,
+        "endLine": 412,
+        "endChar": 0
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa43c21_798725b6",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "why not wrap err, if not nil?",
+      "range": {
+        "startLine": 439,
+        "startChar": 19,
+        "endLine": 439,
+        "endChar": 100
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997fa8fd_3cbb5ac6",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 444,
+        "startChar": 18,
+        "endLine": 444,
+        "endChar": 28
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73591266_5681834a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:06:31Z",
+      "side": 1,
+      "message": "Clar: results-not-found should be handled as a valid case?",
+      "range": {
+        "startLine": 451,
+        "startChar": 8,
+        "endLine": 451,
+        "endChar": 14
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
