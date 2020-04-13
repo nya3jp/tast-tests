@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af025511_7cefe797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68afe900_6b14f7ab",
+      "range": {
+        "startLine": 51,
+        "startChar": 73,
+        "endLine": 51,
+        "endChar": 80
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae1f8b27_1dd39b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9767184b_4312d488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T21:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae1f8b27_1dd39b37",
+      "range": {
+        "startLine": 75,
+        "startChar": 78,
+        "endLine": 75,
+        "endChar": 84
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fd520819_28ce94f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T21:19:45Z",
+      "side": 1,
+      "message": "Because now the test cases have it, ToT says: MediaRecorderPerf.h264, now\nit\u0027ll be MediaRecorderPerf.h264_hw and MediaRecorderPerf.h264_sw.",
+      "parentUuid": "31bb5a0f_952d51e4",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94ea8196_75af88b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2845fda_6a8d8859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-13T21:19:45Z",
+      "side": 1,
+      "message": "My bad, rests of a debugging try.",
+      "parentUuid": "94ea8196_75af88b3",
+      "range": {
+        "startLine": 169,
+        "startChar": 52,
+        "endLine": 169,
+        "endChar": 68
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
