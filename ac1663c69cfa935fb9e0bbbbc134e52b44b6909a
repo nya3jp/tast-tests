@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07397ff8_2f3df5ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-13T01:35:16Z",
+      "side": 1,
+      "message": "small nit: can be const?",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 7
+      },
+      "revId": "ac1663c69cfa935fb9e0bbbbc134e52b44b6909a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389b0104_5f56608b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-13T01:35:16Z",
+      "side": 1,
+      "message": "I think \"out\" is not clear and inconsistent. can you rename to \"actualFileName\" and actual FilePath?",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 13
+      },
+      "revId": "ac1663c69cfa935fb9e0bbbbc134e52b44b6909a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
