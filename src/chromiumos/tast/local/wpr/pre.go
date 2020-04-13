@@ -37,7 +37,7 @@ func getCallerPackage() string {
 // redirects its traffic through WPR.
 //
 // The precondition is keyed by pkg and archive. Tests of the same package
-// and the same |archive| would use the same precondition instance and save
+// and the same archive would use the same precondition instance and save
 // the time to start WPR and Chrome. Pkg is determined by caller.Get(). Test
 // must supply the name of the archive.
 //

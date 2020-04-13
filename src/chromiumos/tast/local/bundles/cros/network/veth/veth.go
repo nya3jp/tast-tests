@@ -21,7 +21,7 @@ type Pair struct {
 	PeerIface *net.Interface
 }
 
-// NewPair sets up a new Pair object, with interface |iface| and peer interface |peerIface|.
+// NewPair sets up a new Pair object, with interface iface and peer interface peerIface.
 // It removes any existing links of the same name.
 func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error) {
 	// Delete any existing links.

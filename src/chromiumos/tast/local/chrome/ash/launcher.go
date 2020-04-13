@@ -37,7 +37,7 @@ const (
 	AccelShiftSearch Accelerator = "{keyCode: 'search', shift: true, control: false, alt: false, search: false, pressed: true}"
 )
 
-// WaitForLauncherState waits until the launcher state becomes |state|.
+// WaitForLauncherState waits until the launcher state becomes state.
 func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state LauncherState) error {
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.waitForLauncherState)('%s')`, state)
@@ -64,8 +64,8 @@ func TriggerLauncherStateChange(ctx context.Context, tconn *chrome.TestConn, acc
 	return nil
 }
 
-// PrepareDummyApps creates directories for |num| dummy apps (hosted apps) under
-// the directory of |baseDir| and returns their path names. The intermediate
+// PrepareDummyApps creates directories for num dummy apps (hosted apps) under
+// the directory of baseDir and returns their path names. The intermediate
 // data may remain even when an error is returned. It is the caller's
 // responsibility to clean up the contents under the baseDir. This also may
 // update the ownership of baseDir.

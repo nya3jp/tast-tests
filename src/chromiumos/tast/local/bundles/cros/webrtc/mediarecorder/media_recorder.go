@@ -105,7 +105,7 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 		return errors.Wrap(err, "error measuring cpu")
 	}
 
-	// Recorded video will be saved in |videoBuffer| in base64 format.
+	// Recorded video will be saved in videoBuffer in base64 format.
 	var videoBuffer string
 	if err := conn.Eval(ctx, "stopRecording()", &videoBuffer); err != nil {
 		return errors.Wrap(err, "failed to stop recording")
@@ -215,7 +215,7 @@ VideoTrackNumLoop:
 	return frameNum, nil
 }
 
-// VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for |codec|.
+// VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for codec.
 func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.State, cr *chrome.Chrome, codec videotype.Codec) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()

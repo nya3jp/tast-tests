@@ -46,7 +46,7 @@ type loadRecorder struct {
 }
 
 // browserProcData searches browser-related process IDs and fill their data
-// to |procNames|.
+// to procNames.
 func browserProcData(procNames map[int32]string) error {
 	browserPID, err := chrome.GetRootPID()
 	if err != nil {
@@ -65,7 +65,7 @@ func browserProcData(procNames map[int32]string) error {
 }
 
 // arcProcData searches ARC-related process IDs and fill their data to
-// |procNames|.
+// procNames.
 func arcProcData(procNames map[int32]string) error {
 	procs, err := process.Processes()
 	if err != nil {
