@@ -134,7 +134,7 @@ func parseTimeNearNow(fallback string, now time.Time) ([]time.Time, error) {
 			// Under this case we know Assistant is using 24-hour clock.
 			results = append(results, time.Date(now.Year(), now.Month(), now.Day(), hrs, min, 0, 0, now.Location()))
 		} else {
-			// If |hrs| <= 12, Assistant might be using either time notation.
+			// If hrs <= 12, Assistant might be using either time notation.
 			results = append(results, interpretTimeNearNow(now, hrs, min), interpretTimeNearNow(now, (hrs+12)%24, min))
 		}
 	}

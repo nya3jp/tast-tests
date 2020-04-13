@@ -271,7 +271,7 @@ func Logout(ctx context.Context) error {
 	return nil
 }
 
-// CreateShillUserProfile creates a fake user profile with |contents|.
+// CreateShillUserProfile creates a fake user profile with contents.
 func CreateShillUserProfile(contents string, env *TestEnv) error {
 	if err := os.Mkdir(env.ShillUserProfileDir, os.ModePerm); err != nil {
 		return errors.Wrapf(err, "failed making the directory: %s", env.ShillUserProfileDir)
@@ -312,7 +312,7 @@ func CreateProfile(ctx context.Context, profileName string) error {
 	return nil
 }
 
-// AssureIsDir asserts that |path| is a directory.
+// AssureIsDir asserts that path is a directory.
 func AssureIsDir(path string) error {
 	stat, err := os.Stat(path)
 	if err != nil {
@@ -325,7 +325,7 @@ func AssureIsDir(path string) error {
 	return nil
 }
 
-// AssureExists asserts that |path| exists.
+// AssureExists asserts that path exists.
 func AssureExists(path string) error {
 	if _, err := os.Stat(path); err != nil {
 		return errors.Wrapf(err, "failed path %s doesn't exist", path)
@@ -333,7 +333,7 @@ func AssureExists(path string) error {
 	return nil
 }
 
-// AssureNotExists asserts that |path| doesn't exist.
+// AssureNotExists asserts that path doesn't exist.
 func AssureNotExists(path string) error {
 	_, err := os.Stat(path)
 	if os.IsNotExist(err) {
@@ -342,7 +342,7 @@ func AssureNotExists(path string) error {
 	return errors.Errorf("%s exists unexpectedly", path)
 }
 
-// AssurePathOwner asserts that |path| is owned by |owner|.
+// AssurePathOwner asserts that path is owned by owner.
 func AssurePathOwner(path, owner string) error {
 	errPrefix := func() string {
 		return fmt.Sprintf("failed asserting that %s is the owner of path %s", owner, path)
@@ -363,7 +363,7 @@ func AssurePathOwner(path, owner string) error {
 	return nil
 }
 
-// AssurePathGroup asserts that |path| is owned by |group|.
+// AssurePathGroup asserts that path is owned by group.
 func AssurePathGroup(path, group string) error {
 	errPrefix := func() string {
 		return fmt.Sprintf("failed asserting that %s is the group owner of path %s", group, path)
@@ -384,7 +384,7 @@ func AssurePathGroup(path, group string) error {
 	return nil
 }
 
-// AssureIsLink asserts that |path| is a symbolic link.
+// AssureIsLink asserts that path is a symbolic link.
 func AssureIsLink(path string) error {
 	errPrefix := func() string {
 		return fmt.Sprintf("failed asserting that the path %s is a symbolic link", path)
@@ -402,7 +402,7 @@ func AssureIsLink(path string) error {
 	return nil
 }
 
-// AssureIsLinkTo asserts that |path| is a symbolic link to |pointee|.
+// AssureIsLinkTo asserts that path is a symbolic link to pointee.
 func AssureIsLinkTo(path, pointee string) error {
 	errPrefix := func() string {
 		return fmt.Sprintf("failed asserting that %s is a symbolic link to %s", path, pointee)
@@ -420,7 +420,7 @@ func AssureIsLinkTo(path, pointee string) error {
 	return nil
 }
 
-// CreateFileWithContents creates a file named |filename| that contains |contents|.
+// CreateFileWithContents creates a file named |filename| that contains contents.
 func CreateFileWithContents(fileName, contents string) error {
 	if err := ioutil.WriteFile(fileName, []byte(contents), 0644); err != nil {
 		return err
@@ -428,7 +428,7 @@ func CreateFileWithContents(fileName, contents string) error {
 	return nil
 }
 
-// Touch creates an empty file named |filename|.
+// Touch creates an empty file named filename.
 func Touch(filename string) error {
 	if err := CreateFileWithContents(filename, ""); err != nil {
 		return errors.Wrapf(err, "failed creating an empty file: %s", filename)
