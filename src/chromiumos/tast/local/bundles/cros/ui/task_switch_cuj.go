@@ -144,34 +144,18 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
 	configs := []cuj.MetricConfig{
-		{
-			HistogramName: "Ash.WindowCycleView.AnimationSmoothness.Container",
-			Unit:          "percent",
-			Category:      cuj.CategorySmoothness,
-		},
-		{
-			HistogramName: "Ash.DragWindowFromShelf.PresentationTime",
-			Unit:          "ms",
-			Category:      cuj.CategoryLatency,
-		},
+		cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
+		cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
 	}
 	for _, state := range []string{"Peeking", "Close", "Half"} {
-		configs = append(configs, cuj.MetricConfig{
-			HistogramName: "Apps.StateTransition.AnimationSmoothness." + state + ".ClamshellMode",
-			Unit:          "percent",
-			Category:      cuj.CategorySmoothness,
-		})
+		configs = append(configs, cuj.NewSmoothnessMetricConfig(
+			"Apps.StateTransition.AnimationSmoothness."+state+".ClamshellMode"))
 	}
 	for _, suffix := range []string{"SingleClamshellMode", "ClamshellMode", "TabletMode"} {
-		configs = append(configs, cuj.MetricConfig{
-			HistogramName: "Ash.Overview.AnimationSmoothness.Enter." + suffix,
-			Unit:          "percent",
-			Category:      cuj.CategorySmoothness,
-		}, cuj.MetricConfig{
-			HistogramName: "Ash.Overview.AnimationSmoothness.Exit." + suffix,
-			Unit:          "percent",
-			Category:      cuj.CategorySmoothness,
-		})
+		configs = append(configs,
+			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter."+suffix),
+			cuj.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit."+suffix),
+		)
 	}
 	recorder, err := cuj.NewRecorder(ctx, configs...)
 	if err != nil {

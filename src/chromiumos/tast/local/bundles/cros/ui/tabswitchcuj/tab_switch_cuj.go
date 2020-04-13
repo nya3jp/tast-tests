@@ -154,12 +154,8 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cuj.MetricConfig{
-		HistogramName: "MPArch.RWH_TabSwitchPaintDuration",
-		Unit:          "ms",
-		Category:      cuj.CategoryLatency,
-		JankCriteria:  []int64{800, 1600},
-	})
+	recorder, err := cuj.NewRecorder(ctx, cuj.NewCustomMetricConfig(
+		"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}))
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
