@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "353bc8f3_79d33523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-13T08:07:14Z",
+      "side": 1,
+      "message": "The key value of SSID at #49 and #60 is not exactly the same (ServicePropertySSID and ServicePropertyName), so I think keeping declaring twice would be better.",
+      "parentUuid": "df8f876e_207ea139",
+      "revId": "09eb47839f96e84ace5ace9c1fec1eeda01e5750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8246710_082fdcab",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "09eb47839f96e84ace5ace9c1fec1eeda01e5750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde0901a_c41ae09a",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-13T08:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8246710_082fdcab",
+      "revId": "09eb47839f96e84ace5ace9c1fec1eeda01e5750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
