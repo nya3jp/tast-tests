@@ -12,6 +12,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/services/cros/network"
@@ -48,6 +49,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 			shill.ServicePropertyType:           shill.TypeWifi,
 			shill.ServicePropertySSID:           config.Ssid,
 			shill.ServicePropertyWiFiHiddenSSID: config.Hidden,
+			shill.ServicePropertySecurityClass:  config.Security,
 		}
 		if err := m.ConfigureService(ctx, props); err != nil {
 			return nil, errors.Wrap(err, "failed to configure a hidden SSID")
@@ -55,8 +57,9 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}
 
 	props := map[string]interface{}{
-		shill.ServicePropertyType: shill.TypeWifi,
-		shill.ServicePropertyName: config.Ssid,
+		shill.ServicePropertyType:          shill.TypeWifi,
+		shill.ServicePropertyName:          config.Ssid,
+		shill.ServicePropertySecurityClass: config.Security,
 	}
 
 	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
@@ -83,6 +86,17 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	service, err := shill.NewService(ctx, servicePath)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create service object")
+	}
+
+	shillprops, err := protoutil.DecodeFromShillValMap(config.Shillprops)
+	if err != nil {
+		return nil, err
+	}
+	for k, v := range shillprops {
+		err = service.SetProperty(ctx, k, v)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to set properties %s to %v", k, v)
+		}
 	}
 
 	// Spawn watcher before connect.
