@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68afe900_6b14f7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-13T20:37:57Z",
+      "side": 1,
+      "message": "nit: If you can group many arguments of the same type, you could also remove this.",
+      "range": {
+        "startLine": 51,
+        "startChar": 73,
+        "endLine": 51,
+        "endChar": 80
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae1f8b27_1dd39b37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-13T20:37:57Z",
+      "side": 1,
+      "message": "nit: Same here.",
+      "range": {
+        "startLine": 75,
+        "startChar": 78,
+        "endLine": 75,
+        "endChar": 84
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31bb5a0f_952d51e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-13T20:37:57Z",
+      "side": 1,
+      "message": "Why did the hw_ or sw_ prefix go away?",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ea8196_75af88b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-13T20:37:57Z",
+      "side": 1,
+      "message": "Why is this needed? video_type.go has the codecs in uppercase, so does that mean that the MediaRecorder API doesn\u0027t care?",
+      "range": {
+        "startLine": 169,
+        "startChar": 52,
+        "endLine": 169,
+        "endChar": 68
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
