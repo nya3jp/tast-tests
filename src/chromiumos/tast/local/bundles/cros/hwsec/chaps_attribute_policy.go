@@ -128,12 +128,23 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 	defer pkcs11test.CleanupScratchpad(ctx, r, scratchpadPath)
 
 	// Create the software-generated, then imported key.
-	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, "", "testkey1", "999999")
+	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, "", "testkey1", "999999", false, true)
 	if err != nil {
 		s.Fatal("Failed to create software key: ", err)
 	}
 	defer func() {
 		if err := pkcs11Util.DestroyKey(ctx, importedKey); err != nil {
+			s.Error("Failed to clean up software key: ", err)
+		}
+	}()
+
+	// Create the software-generated, then imported as software-backed key.
+	softwareKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, "", "testkey2", "888888", true, true)
+	if err != nil {
+		s.Fatal("Failed to create software key: ", err)
+	}
+	defer func() {
+		if err := pkcs11Util.DestroyKey(ctx, softwareKey); err != nil {
 			s.Error("Failed to clean up software key: ", err)
 		}
 	}()
@@ -149,7 +160,7 @@ func ChapsAttributePolicy(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	keys := []*pkcs11.KeyInfo{importedKey, generatedKey}
+	keys := []*pkcs11.KeyInfo{importedKey, softwareKey, generatedKey}
 
 	// Create a copy of software key for every key.
 	var copiedKeys []*pkcs11.KeyInfo
