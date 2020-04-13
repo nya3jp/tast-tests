@@ -46,7 +46,10 @@ func readLog(filename string) ([]byte, error) {
 	if strings.HasSuffix(filename, ".gz") {
 		r, err = gzip.NewReader(f)
 		if err != nil {
-			return nil, err
+			// Content error of .gz file (e.g. Unexpected EOF) can happen when
+			// the file has not been written to the end. Treat it as empty log
+			// so that the file can be visited again by the polling.
+			return []byte{}, nil
 		}
 	}
 	return ioutil.ReadAll(r)
