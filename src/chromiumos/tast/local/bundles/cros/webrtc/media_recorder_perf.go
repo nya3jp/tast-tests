@@ -9,9 +9,15 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
-	"chromiumos/tast/local/media/videotype"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
+
+// mediaRecorderPerfTest is used to describe the config used to run each test case.
+type mediaRecorderPerfTest struct {
+	enableHWAccel bool   // Instruct to use hardware or software decoding.
+	profile       string // Codec to try, e.g. VP8, VP9.
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -27,15 +33,27 @@ func init() {
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
-			Name:              "h264",
-			Val:               videotype.H264,
+			Name:              "h264_sw",
+			Val:               mediaRecorderPerfTest{enableHWAccel: false, profile: "H264"},
 			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
 		}, {
-			Name: "vp8",
-			Val:  videotype.VP8,
+			Name: "vp8_sw",
+			Val:  mediaRecorderPerfTest{enableHWAccel: false, profile: "VP8"},
 		}, {
-			Name: "vp9",
-			Val:  videotype.VP9,
+			Name: "vp9_sw",
+			Val:  mediaRecorderPerfTest{enableHWAccel: false, profile: "VP9"},
+		}, {
+			Name:              "h264_hw",
+			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "H264"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+		}, {
+			Name:              "vp8_hw",
+			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP8"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+		}, {
+			Name:              "vp9_hw",
+			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP9"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}},
 	})
 }
@@ -43,7 +61,8 @@ func init() {
 // MediaRecorderPerf captures the perf data of MediaRecorder for HW and SW
 // cases with a given codec and uploads to server.
 func MediaRecorderPerf(ctx context.Context, s *testing.State) {
-	if err := mediarecorder.MeasurePerf(ctx, s.DataFileSystem(), s.OutDir(), s.Param().(videotype.Codec), s.DataPath(mediarecorder.PerfStreamFile)); err != nil {
+	testOpt := s.Param().(mediaRecorderPerfTest)
+	if err := mediarecorder.MeasurePerf(ctx, s.DataFileSystem(), s.OutDir(), testOpt.profile, s.DataPath(mediarecorder.PerfStreamFile), testOpt.enableHWAccel); err != nil {
 		s.Error("Failed to measure performance: ", err)
 	}
 }
