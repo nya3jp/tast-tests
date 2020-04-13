@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d907a5e8_0a4db9fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-13T06:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00b3e898_d066a14a",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "fe16ed5363b598dd1bde4ccd6145090f9be11724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7f0e2a2_ebc1d6d1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3bdf29e1_72ac8ac2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-13T06:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f0e2a2_ebc1d6d1",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "fe16ed5363b598dd1bde4ccd6145090f9be11724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa4b515b_0cca1234",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "fe16ed5363b598dd1bde4ccd6145090f9be11724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb315d27_79d124aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-13T06:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa4b515b_0cca1234",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "fe16ed5363b598dd1bde4ccd6145090f9be11724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -544,6 +616,24 @@
       "revId": "fe16ed5363b598dd1bde4ccd6145090f9be11724",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2192df83_82c281ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-13T06:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b6343b4_ca462c12",
+      "revId": "fe16ed5363b598dd1bde4ccd6145090f9be11724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
