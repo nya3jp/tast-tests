@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "c238b8d0_c59a3e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-13T21:32:24Z",
+      "side": 1,
+      "message": "nit: does this need to be capitalized? the one below isn\u0027t",
+      "range": {
+        "startLine": 61,
+        "startChar": 57,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "2a5a45ce65fbab679708df8b902c4a0c7284c795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae1f8b27_1dd39b37",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 1
