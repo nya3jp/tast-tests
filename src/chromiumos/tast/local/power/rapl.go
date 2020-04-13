@@ -12,8 +12,8 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/perf"
 )
 
 // RAPLValues represents the Intel "Running Average Power Limit" (RAPL) values.

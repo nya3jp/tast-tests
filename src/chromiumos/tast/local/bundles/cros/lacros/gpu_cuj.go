@@ -11,6 +11,7 @@ import (
 	"sort"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/lacros/launcher"
 	"chromiumos/tast/local/chrome"
@@ -20,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 

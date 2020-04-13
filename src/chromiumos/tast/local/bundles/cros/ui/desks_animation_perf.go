@@ -7,11 +7,11 @@ package ui
 import (
 	"context"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 

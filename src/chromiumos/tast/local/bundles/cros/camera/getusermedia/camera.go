@@ -10,10 +10,10 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 

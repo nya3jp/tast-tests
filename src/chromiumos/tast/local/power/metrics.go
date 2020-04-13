@@ -5,7 +5,7 @@
 package power
 
 import (
-	"chromiumos/tast/local/perf"
+	"chromiumos/tast/common/perf"
 )
 
 // TestMetrics returns a slice of metrics that should be used for power

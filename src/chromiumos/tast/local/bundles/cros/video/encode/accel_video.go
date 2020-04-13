@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
@@ -21,7 +22,6 @@ import (
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"

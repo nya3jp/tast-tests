@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/chrome"
@@ -18,7 +19,6 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
