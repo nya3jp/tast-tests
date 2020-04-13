@@ -14,9 +14,9 @@ import (
 	"path"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/wificell/linuxssh"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
