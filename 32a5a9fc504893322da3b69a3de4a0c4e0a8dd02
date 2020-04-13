@@ -46,6 +46,30 @@
       "revId": "32a5a9fc504893322da3b69a3de4a0c4e0a8dd02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafa4bcf_59da70ff",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-13T06:30:23Z",
+      "side": 1,
+      "message": "Default value of 20MHz on HT really doesn\u0027t make sense in the situation of VHT 40 or 80. Removed it so validate() will abort if HT is not set in ac tests.",
+      "parentUuid": "cc319dff_2dc7c2d9",
+      "range": {
+        "startLine": 159,
+        "startChar": 23,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "32a5a9fc504893322da3b69a3de4a0c4e0a8dd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
