@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "199373c3_755138cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-13T06:41:09Z",
+      "side": 1,
+      "message": "Done\n\"It sounds like a responsibility of a11y_tree.go to strip the leading \".\"?\" \u003e sgtm",
+      "parentUuid": "e74a353d_e7dfb96d",
+      "range": {
+        "startLine": 236,
+        "startChar": 47,
+        "endLine": 236,
+        "endChar": 51
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cd1bd4b_101c0f52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14

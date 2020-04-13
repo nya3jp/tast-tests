@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ad7bc4f_762ed38a",
+        "filename": "android/ArcAccessibilityTest/AndroidManifest.xml",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-13T06:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b78475_67ed1d91",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "e4d4b8aa4bb0a0c2aee2a59adc535280c1811ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5545b6_1f6e4eca",
         "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/EdittextActivity.java",
         "patchSetId": 16
@@ -39,6 +63,24 @@
       "revId": "e4d4b8aa4bb0a0c2aee2a59adc535280c1811ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db910391_1149ae20",
+        "filename": "android/ArcAccessibilityTest/src/org/chromium/arc/testapp/accessibilitytest/EdittextActivity.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-13T06:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5545b6_1f6e4eca",
+      "revId": "e4d4b8aa4bb0a0c2aee2a59adc535280c1811ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
