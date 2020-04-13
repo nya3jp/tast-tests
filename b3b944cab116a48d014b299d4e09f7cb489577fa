@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d9f03f2_97792167",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-13T14:19:07Z",
+      "side": 1,
+      "message": "Not sure if this naming is in line with the coding style. Please advise.",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "b3b944cab116a48d014b299d4e09f7cb489577fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50e96bcc_d9f04d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-13T14:19:07Z",
+      "side": 1,
+      "message": "It\u0027s correct to add this right?",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "b3b944cab116a48d014b299d4e09f7cb489577fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
