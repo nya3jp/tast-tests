@@ -40,7 +40,7 @@ func TabletModeEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error
 	return enabled, err
 }
 
-// EnsureTabletModeEnabled makes sure that the tablet mode state is |enabled|,
+// EnsureTabletModeEnabled makes sure that the tablet mode state is enabled,
 // and returns a function which reverts back to the original state.
 //
 // Typically, this will be used like:
