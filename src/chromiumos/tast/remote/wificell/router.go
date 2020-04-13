@@ -18,8 +18,8 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/linuxssh"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
