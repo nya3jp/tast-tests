@@ -19,6 +19,27 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type settingsBridgeParam struct {
+	accessibilityFeatures []accessibility.Feature
+	runProxySync          bool
+}
+
+var stableSettingsBridgeParam = settingsBridgeParam{
+	accessibilityFeatures: []accessibility.Feature{
+		accessibility.SpokenFeedback,
+	},
+	runProxySync: true,
+}
+
+var unstableSettingsBridgeParam = settingsBridgeParam{
+	accessibilityFeatures: []accessibility.Feature{
+		accessibility.SwitchAccess,
+		accessibility.SelectToSpeak,
+		accessibility.FocusHighlight,
+	},
+	runProxySync: false,
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SettingsBridge,
@@ -28,11 +49,22 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
+			Val:               stableSettingsBridgeParam,
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "unstable",
+			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"informational"},
+			Val:               stableSettingsBridgeParam,
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}, {
+			Name:              "vm_unstable",
+			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Pre:               arc.VMBooted(),
 		}},
@@ -62,7 +94,7 @@ func checkAndroidAccessibility(ctx context.Context, a *arc.ARC, enable bool) err
 
 // testAccessibilitySync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
-func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) (retErr error) {
+func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, features []accessibility.Feature) (retErr error) {
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
@@ -71,10 +103,6 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		return err
 	} else if res {
 		return errors.New("accessibility is unexpectedly enabled on boot")
-	}
-
-	features := []accessibility.Feature{
-		accessibility.SpokenFeedback, accessibility.SwitchAccess, accessibility.SelectToSpeak, accessibility.FocusHighlight,
 	}
 
 	defer func() {
@@ -312,12 +340,16 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	}
 
 	// Run accessibility test.
-	if err := testAccessibilitySync(ctx, tconn, a); err != nil {
+	accessibilityFeatures := s.Param().(settingsBridgeParam).accessibilityFeatures
+	if err := testAccessibilitySync(ctx, tconn, a, accessibilityFeatures); err != nil {
 		s.Error("Failed to sync accessibility: ", err)
 	}
 
 	// Run proxy settings test.
-	if err := testProxySync(ctx, tconn, a); err != nil {
-		s.Error("Failed to sync proxy settings: ", err)
+	runProxySync := s.Param().(settingsBridgeParam).runProxySync
+	if runProxySync {
+		if err := testProxySync(ctx, tconn, a); err != nil {
+			s.Error("Failed to sync proxy settings: ", err)
+		}
 	}
 }
