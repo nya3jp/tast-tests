@@ -73,7 +73,10 @@ func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
 		}
 		b, err := readLog(filepath.Join(systemCrashDir, filename))
 		if err != nil {
-			return false, err
+			// Content error of .gz file (e.g. Unexpected EOF) can happen when
+			// the file has not been written to the end. Skip it so that the
+			// file can be visited again by the polling.
+			continue
 		}
 		if string(b) != "ok\n" {
 			continue
