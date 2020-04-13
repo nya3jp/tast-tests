@@ -7,8 +7,8 @@ package power
 import (
 	"context"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/perf"
 )
 
 // RAPLMetrics records the energy consumption in Joules of the DUT.

@@ -11,11 +11,11 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 

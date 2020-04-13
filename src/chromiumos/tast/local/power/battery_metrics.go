@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 )
 

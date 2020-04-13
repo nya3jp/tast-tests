@@ -9,9 +9,9 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )

@@ -17,9 +17,9 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )

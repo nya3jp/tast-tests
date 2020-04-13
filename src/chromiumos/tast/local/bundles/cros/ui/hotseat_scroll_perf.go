@@ -8,6 +8,7 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
@@ -17,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 

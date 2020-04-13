@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
@@ -18,7 +19,6 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 )

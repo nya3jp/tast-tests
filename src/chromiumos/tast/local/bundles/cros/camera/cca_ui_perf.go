@@ -8,10 +8,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 

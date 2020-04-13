@@ -16,11 +16,11 @@ import (
 
 	"github.com/shirou/gopsutil/mem"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )

@@ -16,10 +16,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"

@@ -15,10 +15,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/lsbrelease"

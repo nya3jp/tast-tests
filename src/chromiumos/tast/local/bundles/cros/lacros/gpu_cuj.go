@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/lacros/launcher"
 	"chromiumos/tast/local/chrome"
@@ -24,7 +25,6 @@ import (
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
