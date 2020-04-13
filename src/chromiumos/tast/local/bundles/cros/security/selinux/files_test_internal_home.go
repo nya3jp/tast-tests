@@ -31,6 +31,10 @@ func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 		{`/home`, `cros_home`},
 		// TODO(crbug.com/955116): test file created by other tests but not gets cleaned-up correctly.
 		{`/home/\.test_file_to_be_deleted`, skipTest},
+		// Files created under /home/chromeos-test are side effects or
+		// other tests, and shouldn't matter in real OS in users'
+		// environment.
+		{`/home/chromeos-test(/.*)?`, skipTest},
 		{`/home/chronos/user/(Downloads|MyFiles)(/.*)?`, mediaRWFileContextPattern},
 		// Not logged in users doesn't have real data bind-mounted (cros_home_chronos).
 		{`/home/chronos/user(/.*)?`, `(cros_home_shadow_uid_user|cros_home_chronos)`},
