@@ -105,7 +105,7 @@ type KeyInfo struct {
 }
 
 // CreateRSASoftwareKey create a key and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in /tmp/$keyname.key.
-func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, username, keyname, objID string) (*KeyInfo, error) {
+func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, username, keyname, objID string, forceSoftwareBacked, checkSoftwareBacked bool) (*KeyInfo, error) {
 	// Get the corresponding slot.
 	slot, err := p.utility.GetTokenForUser(ctx, username)
 	if err != nil {
@@ -156,7 +156,11 @@ func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, userna
 	}
 
 	// Import the private key into chaps.
-	if _, err = p.runner.Run(ctx, "p11_replay", "--import", "--path="+result.privKeyPath, "--type=privkey", "--id="+result.objID); err != nil {
+	args := []string{"--import", "--path=" + result.privKeyPath, "--type=privkey", "--id=" + result.objID}
+	if forceSoftwareBacked {
+		args = append(args, "--force_software")
+	}
+	if _, err := p.runner.Run(ctx, "p11_replay", args...); err != nil {
 		return nil, errors.Wrap(err, "failed to import private key into chaps")
 	}
 
@@ -165,6 +169,17 @@ func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, userna
 		return nil, errors.Wrap(err, "failed to import certificate into chaps")
 	}
 
+	// If required, check that it's software backed or not.
+	if checkSoftwareBacked {
+		isSoftwareBacked, err := p.IsSoftwareBacked(ctx, result)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get kKeyInSoftware attribute")
+		}
+
+		if isSoftwareBacked != forceSoftwareBacked {
+			return nil, errors.Errorf("mismatch in kKeyInSoftware attribute (%t) and force software backed parameter (%t)", isSoftwareBacked, forceSoftwareBacked)
+		}
+	}
 	return result, nil
 }
 
@@ -519,4 +534,22 @@ func (p *Chaps) SetObjectAttribute(ctx context.Context, key *KeyInfo, objType, a
 		return msg, errors.New("failed to set attribute with p11_replay, incorrect response")
 	}
 	return msg, nil
+}
+
+// IsSoftwareBacked checks if the given key is backed by hardware or software.
+// The return error is nil iff the operation is successful, in that case, the boolean is true iff it is backed in software.
+func (p *Chaps) IsSoftwareBacked(ctx context.Context, key *KeyInfo) (bool, error) {
+	isSoftwareBackedStr, msg, err := p.GetObjectAttribute(ctx, key, "privkey", "kKeyInSoftware")
+	if err != nil {
+		testing.ContextLog(ctx, "GetObjectAttribute failed with: ", msg)
+		return false, errors.Wrap(err, "failed to get object attribute kKeyInSoftware")
+	}
+
+	if isSoftwareBackedStr == "00" {
+		return false, nil
+	} else if isSoftwareBackedStr == "01" {
+		return true, nil
+	}
+
+	return false, errors.Errorf("unknown attribute value %s for kKeyInSoftware", isSoftwareBackedStr)
 }
