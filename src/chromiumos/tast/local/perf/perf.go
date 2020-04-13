@@ -36,10 +36,10 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
-	"strings"
+
+	"github.com/google/uuid"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 )
 
 var (
@@ -54,12 +54,11 @@ const DefaultVariantName = "summary"
 
 // genGUID generates a guid for diagnostic structs.
 func genGUID(ctx context.Context) (string, error) {
-	cmd := testexec.CommandContext(ctx, "uuidgen")
-	out, err := cmd.Output(testexec.DumpLogOnError)
+	id, err := uuid.NewRandom()
 	if err != nil {
 		return "", err
 	}
-	return strings.TrimSpace(string(out)), nil
+	return id.String(), nil
 }
 
 // Overridable function pointer for tests.
