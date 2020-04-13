@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d06f4e_bd661ec4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-13T18:10:00Z",
+      "side": 1,
+      "message": "Could you include url into the log message?",
+      "revId": "9eae3e7911d9556b1667ffb4ace4e5da15cf5c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
