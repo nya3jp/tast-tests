@@ -22,6 +22,7 @@ import (
 
 // TimelineDatasource is an interface that is implemented to add a source of
 // metrics to a Timeline.
+// DEPRECATED: please use common/perf package instead.
 type TimelineDatasource interface {
 	Setup(ctx context.Context, prefix string) error
 	Start(ctx context.Context) error
@@ -65,18 +66,21 @@ func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 }
 
 // Timeline collects performance metrics periodically on a common timeline.
+// DEPRECATED: please use common/perf package instead.
 type Timeline struct {
 	sources []TimelineDatasource
 }
 
 // NewTimeline creates a Timeline from a slice of TimelineDatasource, calling
 // all the Setup methods.
+// DEPRECATED: please use common/perf package instead.
 func NewTimeline(ctx context.Context, sources ...TimelineDatasource) (*Timeline, error) {
 	return NewTimelineWithPrefix(ctx, "", sources...)
 }
 
 // NewTimelineWithPrefix creates a Timeline from a slice of TimelineDatasources,
 // all created metrics will be prefixed with the passed prefix.
+// DEPRECATED: please use common/perf package instead.
 func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
 	ss := append(sources, &timestampSource{})
 	for _, s := range ss {

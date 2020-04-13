@@ -50,6 +50,7 @@ var (
 )
 
 // DefaultVariantName is the default variant name treated specially by the dashboard.
+// DEPRECATED: please use common/perf package instead.
 const DefaultVariantName = "summary"
 
 // genGUID generates a guid for diagnostic structs.
@@ -66,17 +67,21 @@ var runGenGUID = genGUID
 
 // Direction indicates which direction of change (bigger or smaller) means improvement
 // of a performance metric.
+// DEPRECATED: please use common/perf package instead.
 type Direction int
 
 const (
 	// SmallerIsBetter means the performance metric is considered improved when it decreases.
+	// DEPRECATED: please use common/perf package instead.
 	SmallerIsBetter Direction = iota
 
 	// BiggerIsBetter means the performance metric is considered improved when it increases.
+	// DEPRECATED: please use common/perf package instead.
 	BiggerIsBetter
 )
 
 // Metric defines the schema of a performance metric.
+// DEPRECATED: please use common/perf package instead.
 type Metric struct {
 	// Name is the name of the chart this performance metric appears in.
 	Name string
@@ -132,11 +137,13 @@ func (s *Metric) histogramUnit() string {
 }
 
 // Values holds performance metric values.
+// DEPRECATED: please use common/perf package instead.
 type Values struct {
 	values map[Metric][]float64
 }
 
 // NewValues returns a new empty Values.
+// DEPRECATED: please use common/perf package instead.
 func NewValues() *Values {
 	return &Values{values: make(map[Metric][]float64)}
 }
@@ -160,12 +167,15 @@ func (p *Values) Set(s Metric, vs ...float64) {
 }
 
 // Format describes the output format for perf data.
+// DEPRECATED: please use common/perf package instead.
 type Format int
 
 const (
 	// Crosbolt is used for Chrome OS infra dashboards (go/crosbolt).
+	// DEPRECATED: please use common/perf package instead.
 	Crosbolt Format = iota
 	// Chromeperf is used for Chrome OS infra dashboards (go/chromeperf).
+	// DEPRECATED: please use common/perf package instead.
 	Chromeperf
 )
 
