@@ -185,7 +185,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		Multiple:  false,
 	}, (timing.vmStart + timing.containerCreate + timing.containerStart).Seconds())
 
-	// Measure crostini starting time for |sampleNum| times.
+	// Measure crostini starting time for sampleNum times.
 	const sampleNum = 3
 
 	for i := 0; i < sampleNum; i++ {

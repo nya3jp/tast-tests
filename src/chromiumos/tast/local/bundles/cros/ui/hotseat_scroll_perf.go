@@ -106,7 +106,7 @@ func scrollToEnd(ctx context.Context, tconn *chrome.TestConn, d direction) error
 			pageOffset = info.PageOffset
 		}
 
-		// Calculate the target scroll offset based on |pageOffset|.
+		// Calculate the target scroll offset based on pageOffset.
 		if info, err = ash.FetchScrollableShelfInfoForState(ctx, tconn, &ash.ShelfState{ScrollDistance: pageOffset}); err != nil {
 			return err
 		}

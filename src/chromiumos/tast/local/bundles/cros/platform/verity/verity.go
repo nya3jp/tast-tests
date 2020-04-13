@@ -91,7 +91,7 @@ func createImage(ctx context.Context, dir, name string, nBlocks uint) (string, e
 	return ret, nil
 }
 
-// createFileSystem creates a file system on |path|.
+// createFileSystem creates a file system on path.
 func createFileSystem(ctx context.Context, path string) error {
 	cmd := testexec.CommandContext(
 		ctx, "mkfs.ext3", "-b", strconv.Itoa(blockSize), "-F", path)

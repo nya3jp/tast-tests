@@ -87,7 +87,7 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
 func waitForWindowState(ctx context.Context, ctconn *chrome.TestConn, w *ash.Window, state ash.WindowStateType) error {
 	return ash.WaitForCondition(ctx, ctconn, func(cw *ash.Window) bool {
-		// Wait for the window given by |w| to be in the given |state| and also not be animating.
+		// Wait for the window given by w to be in the given state and also not be animating.
 		return w.ID == cw.ID && cw.State == state && !cw.IsAnimating
 	}, pollOptions)
 }

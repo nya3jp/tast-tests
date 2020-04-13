@@ -113,7 +113,7 @@ func (c *CryptohomeBinary) TPMClearStoredPassword(ctx context.Context) ([]byte, 
 }
 
 // TPMAttestationStartEnroll calls "cryptohome --action=enroll_request".
-// If |async| is set, calls it long with "--async" flag.
+// If async is set, calls it long with "--async" flag.
 func (c *CryptohomeBinary) TPMAttestationStartEnroll(ctx context.Context, pcaType PCAType, async bool) (string, error) {
 	if pcaType == TestPCA {
 		return "", errors.New("test PCA doesn't support automated test")
@@ -142,7 +142,7 @@ func (c *CryptohomeBinary) TPMAttestationStartEnroll(ctx context.Context, pcaTyp
 }
 
 // TPMAttestationFinishEnroll calls "cryptohome --action=finish_enroll".
-// If |async| is set, calls it long with "--async" flag.
+// If async is set, calls it long with "--async" flag.
 func (c *CryptohomeBinary) TPMAttestationFinishEnroll(ctx context.Context, pcaType PCAType, resp string, async bool) (bool, error) {
 	if pcaType == TestPCA {
 		return false, errors.New("test PCA doesn't support automated test")

@@ -43,7 +43,7 @@ const (
 	RealConsent
 )
 
-// SetConsent enables or disables metrics consent, based on the value of |consent|.
+// SetConsent enables or disables metrics consent, based on the value of consent.
 // Pre: cr must point to a logged-in chrome session.
 func SetConsent(ctx context.Context, cr *chrome.Chrome, consent bool) error {
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
@@ -136,7 +136,7 @@ func ensureSoftwareDeps(ctx context.Context) error {
 	return errors.Errorf("crash tests must declare %q software dependency", exp)
 }
 
-// moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
+// moveAllCrashesTo moves crashes from source to target. This allows us to
 // start crash tests with an empty spool directory, reducing risk of flakes if
 // the dir is already full when the test starts.
 func moveAllCrashesTo(source, target string) error {

@@ -141,7 +141,7 @@ func (k *Kerberos) callProtoMethod(ctx context.Context, method string, in, out p
 	return dbusutil.CallProtoMethod(ctx, k.obj, dbusInterface+"."+method, in, out)
 }
 
-// writeStringToPipe writes |str| to a pipe and returns the reading end.
+// writeStringToPipe writes str to a pipe and returns the reading end.
 func writeStringToPipe(str string) (*os.File, error) {
 	pipeR, pipeW, err := os.Pipe()
 	if err != nil {

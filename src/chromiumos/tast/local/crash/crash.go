@@ -254,7 +254,7 @@ func MoveFilesToOut(ctx context.Context, outDir string, files ...string) error {
 	return firstErr
 }
 
-// RemoveAllFiles removes all files in the values of |map|.
+// RemoveAllFiles removes all files in the values of map.
 func RemoveAllFiles(ctx context.Context, files map[string][]string) error {
 	var firstErr error
 	for _, v := range files {

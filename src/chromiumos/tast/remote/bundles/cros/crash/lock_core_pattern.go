@@ -45,7 +45,7 @@ func LockCorePattern(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to initialize crash reporter: ", err)
 	}
 
-	// Try to modify |core_pattern|.
+	// Try to modify core_pattern.
 	cmd := d.Command("sh", "-c", "echo 'hello' > /proc/sys/kernel/core_pattern")
 	if err := cmd.Run(ctx); err == nil {
 		s.Fatal("|core_pattern| writable after crash_reporter initialization")
