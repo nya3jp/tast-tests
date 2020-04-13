@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b811a9c3_d978d005",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T07:44:08Z",
+      "side": 1,
+      "message": "Could you add Cq-Depend to https://chromium-review.googlesource.com/c/chromiumos/platform2/+/2132468 ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "979d52df_eac66bbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T07:44:08Z",
+      "side": 1,
+      "message": "nit: IPC file\nsame for others",
+      "range": {
+        "startLine": 39,
+        "startChar": 71,
+        "endLine": 39,
+        "endChar": 74
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a1e3c8_874e0114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T07:44:08Z",
+      "side": 1,
+      "message": "does it also create a session?\nDoes it mean it wait until a session is created by polling the status of the IPC file?",
+      "range": {
+        "startLine": 40,
+        "startChar": 95,
+        "endLine": 40,
+        "endChar": 122
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4329052_de38f0c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T07:44:08Z",
+      "side": 1,
+      "message": "Memo\n\nloop: 1. create a session. 2. create ipc file. 3. loop to verify session working 4. exit if ipc file is removed\ncheck: 1. wait for ipc file. 2. create a session 3. C_CloseAllSession(). 4. remove IPC file.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5707c8e_36f6a76e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T07:44:08Z",
+      "side": 1,
+      "message": "Could you defer removal of ipcFile here in case commands are killed by timeout and the file remains?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931ebd07_18340027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-13T07:44:08Z",
+      "side": 1,
+      "message": "Is it still needed?\nI thought check routine waits for loop routine by checking the IPC file.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
