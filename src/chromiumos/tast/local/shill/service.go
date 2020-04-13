@@ -24,13 +24,15 @@ const (
 	ServicePropertyType           = "Type"
 	ServicePropertyIsConnected    = "IsConnected"
 	ServicePropertyMode           = "Mode"
-	ServicePropertySSID           = "SSID"
 	ServicePropertyState          = "State"
 	ServicePropertyStaticIPConfig = "StaticIPConfig"
-	ServicePropertySecurityClass  = "SecurityClass"
 
 	// WiFi service property names.
+	ServicePropertyPassphrase     = "Passphrase"
+	ServicePropertySecurityClass  = "SecurityClass"
+	ServicePropertySSID           = "SSID"
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
+	ServicePropertyFTEnabled      = "WiFi.FTEnabled"
 
 	// EAP service property names.
 	ServicePropertyEAPCACertPEM = "EAP.CACertPEM"
@@ -56,6 +58,16 @@ const (
 	ServiceStateDisconnect        = "disconnecting"
 	ServiceStateFailure           = "failure"
 	ServiceStateActivationFailure = "activation-failure"
+)
+
+// Security options defined in dbus-constants.h
+const (
+	SecurityWPA   = "wpa"
+	SecurityWEP   = "wep"
+	SecurityRSN   = "rsn"
+	Security8021x = "802_1x"
+	SecurityPSK   = "psk"
+	SecurityNone  = "none"
 )
 
 // Service wraps a Service D-Bus object in shill.
