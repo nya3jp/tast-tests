@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/pixelbender/go-matroska/matroska"
@@ -32,11 +33,6 @@ import (
 const (
 	stabilizationDuration = 5 * time.Second
 	measurementDuration   = 15 * time.Second
-	// The maximum time we will wait for the CPU to become idle.
-	waitIdleCPUTimeout = 30 * time.Second
-
-	// The CPU is considered idle when average usage is below this threshold.
-	idleCPUUsagePercent = 10.0
 
 	// PerfStreamFile is the name of the data file used for performance testing.
 	PerfStreamFile = "crowd720_25frames.y4m"
@@ -51,51 +47,45 @@ func reportMetric(name, unit string, value float64, direction perf.Direction, p 
 	}, value)
 }
 
-func getMetricName(name string, hwAccelUsed bool) string {
-	if hwAccelUsed {
-		return "hw_" + name
-	}
-	return "sw_" + name
-}
-
 // MeasurePerf measures the frame processing time and CPU usage while recording and report the results.
-func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, streamFile string) error {
+func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec, streamFile string, hwAccelEnabled bool) error {
 
 	p := perf.NewValues()
-	hwAccelUsed, err := measureAndReport(ctx, fileSystem, outDir, codec, streamFile, true, p)
+	hwAccelUsed, err := measureAndReport(ctx, fileSystem, outDir, codec, streamFile, hwAccelEnabled, p)
 	if err != nil {
 		return err
 	}
 
-	if !hwAccelUsed {
-		// Requested HW but got SW result. Don't need to measure SW again.
-		if err := p.Save(outDir); err != nil {
-			return errors.Wrap(err, "failed to store performance data")
+	if hwAccelEnabled {
+		if !hwAccelUsed {
+			return errors.Wrap(err, "Hw accelerator requested but NOT used")
 		}
-		return nil
+	} else {
+		if hwAccelUsed {
+			return errors.Wrap(err, "Hw accelerator not requested but used")
+		}
 	}
-	_, err = measureAndReport(ctx, fileSystem, outDir, codec, streamFile, false, p)
-	if err != nil {
-		return err
-	}
+
 	if err = p.Save(outDir); err != nil {
 		return errors.Wrap(err, "failed to store performance data")
 	}
 	return nil
 }
 
-func measureAndReport(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec,
+func measureAndReport(ctx context.Context, fileSystem http.FileSystem, outDir string, codec,
 	streamFile string, hwAccelEnabled bool, p *perf.Values) (hwAccelUsed bool, err error) {
 	processingTimePerFrame, cpuUsage, hwAccelUsed, err := doMeasurePerf(ctx, fileSystem, outDir, codec, !hwAccelEnabled, streamFile)
 	if err != nil {
-		return hwAccelUsed, errors.Wrapf(err, "failed to measure perf. HWAccel requested = %v used = %v", hwAccelEnabled, hwAccelUsed)
+		return hwAccelUsed, errors.Wrap(err, "failed to measure perf")
 	}
-	testing.ContextLogf(ctx, "HW requested = %v, used = %v, processing time per frame = %v, cpu usage = %v", hwAccelEnabled, hwAccelUsed, processingTimePerFrame, cpuUsage)
-	reportPerf(processingTimePerFrame, cpuUsage, hwAccelUsed, p)
+	testing.ContextLogf(ctx, "processing time per frame = %v, cpu usage = %v", processingTimePerFrame, cpuUsage)
+
+	reportMetric("frame_processing_time", "millisecond", float64(processingTimePerFrame.Nanoseconds()*1000000), perf.SmallerIsBetter, p)
+	reportMetric("cpu_usage", "percent", cpuUsage, perf.SmallerIsBetter, p)
 	return hwAccelUsed, nil
 }
 
-func getChromeArgs(streamFile string, disableHWAccel bool, codec videotype.Codec) (chromeArgs []string) {
+func getChromeArgs(streamFile string, disableHWAccel bool, codec string) (chromeArgs []string) {
 	chromeArgs = []string{
 		// Use a fake media capture device instead of live webcam(s)/microphone(s);
 		// this is needed to enable use-file-for-fake-video-capture below.
@@ -103,16 +93,18 @@ func getChromeArgs(streamFile string, disableHWAccel bool, codec videotype.Codec
 		"--use-fake-device-for-media-stream",
 		// Avoids the need to grant camera/microphone permissions.
 		"--use-fake-ui-for-media-stream",
+		// Enable verbose logging of interesting code areas.
+		"--vmodule=*recorder*=2,*video*=2",
 		// Read a test file as input for the fake media capture device. The file,
 		// usually a Y4M, specifies resolution (size) and frame rate.
 		"--use-file-for-fake-video-capture=" + streamFile,
 	}
 	if disableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-encode")
-	} else if codec == videotype.VP9 {
+	} else if codec == "VP9" {
 		// Vaapi VP9 Encoder is disabled by default on Chrome. Enable the feature by the command line option.
 		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
-	} else if codec == videotype.H264 {
+	} else if codec == "H264" {
 		// Use command line option to enable the H264 encoder on AMD, as it's disabled by default.
 		// TODO(b/145961243): Remove this option when VA-API H264 encoder is
 		// enabled on grunt by default.
@@ -122,15 +114,8 @@ func getChromeArgs(streamFile string, disableHWAccel bool, codec videotype.Codec
 	return chromeArgs
 }
 
-func reportPerf(processingTimePerFrame time.Duration, cpuUsage float64, hwAccelUsed bool, p *perf.Values) {
-	metricName := getMetricName("frame_processing_time", hwAccelUsed)
-	reportMetric(metricName, "millisecond", float64(processingTimePerFrame.Nanoseconds()*1000000), perf.SmallerIsBetter, p)
-	metricName = getMetricName("cpu_usage", hwAccelUsed)
-	reportMetric(metricName, "percent", cpuUsage, perf.SmallerIsBetter, p)
-}
-
 // doMeasurePerf measures the frame processing time and CPU usage while recording.
-func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, disableHWAccel bool,
+func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir, codec string, disableHWAccel bool,
 	streamFile string) (processingTimePerFrame time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
 	// time reserved for cleanup.
 	const cleanupTime = 10 * time.Second
@@ -180,8 +165,8 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 		return 0, 0, false, errors.Wrap(err, "Timed out waiting for page loading")
 	}
 
-	// startRecording() will start record a video in given format. The recording will end when stopRecording() is called.
-	startRecordJS := fmt.Sprintf("startRecording(%q)", codec)
+	// startRecording() will start recording a video in given format. The recording will end when stopRecording() is called.
+	startRecordJS := fmt.Sprintf("startRecording(%q)", strings.ToLower(codec))
 	if err := conn.EvalPromise(ctx, startRecordJS, nil); err != nil {
 		return 0, 0, false, errors.Wrapf(err, "failed to evaluate %v", startRecordJS)
 	}
