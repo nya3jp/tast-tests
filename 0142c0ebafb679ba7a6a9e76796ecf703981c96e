@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a428301c_28ca06b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T14:24:49Z",
+      "side": 1,
+      "message": "Check for error here",
+      "revId": "0142c0ebafb679ba7a6a9e76796ecf703981c96e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ac4185_f4af0f1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T14:24:49Z",
+      "side": 1,
+      "message": "Move the rest of the method into the else as it\u0027s no longer required for cancellation.",
+      "revId": "0142c0ebafb679ba7a6a9e76796ecf703981c96e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
