@@ -113,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "951aab20_d55b5617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T14:11:07Z",
+      "side": 1,
+      "message": "Due to the response only become a constant status, I\u0027ll roll back into the original response (keep as empty).",
+      "parentUuid": "21184d25_c9ba7d22",
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d949b09_825fc9e3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
         "patchSetId": 8
@@ -136,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "01f7c455_ec4c7f78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T14:11:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d949b09_825fc9e3",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93836f2a_59e9bebb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
         "patchSetId": 8
@@ -150,6 +192,24 @@
       "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7cae28_e1164e5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T14:11:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93836f2a_59e9bebb",
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
