@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f9ef4f96_29d71f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T08:38:00Z",
+      "side": 1,
+      "message": "This test is currently disabled, you could move it to the main test in a separate CL.",
+      "revId": "766cbeb05cc8f97d4cb051ab25c36a4ac7d3ed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1963936d_1c64c25b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T08:38:00Z",
+      "side": 1,
+      "message": "Also add a cancellation test for this routine.",
+      "revId": "766cbeb05cc8f97d4cb051ab25c36a4ac7d3ed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7ca984c_4755c214",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
         "patchSetId": 9
@@ -13,6 +47,29 @@
       "writtenOn": "2020-04-14T07:40:07Z",
       "side": 1,
       "message": "nit: please add a short comment why you expect to have failed status",
+      "revId": "766cbeb05cc8f97d4cb051ab25c36a4ac7d3ed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f72f334b_72d73989",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T08:38:00Z",
+      "side": 1,
+      "message": "cpu_stress_cancelled\n\nalso add a cpu_stress for success.",
+      "range": {
+        "startLine": 229,
+        "startChar": 10,
+        "endLine": 229,
+        "endChar": 20
+      },
       "revId": "766cbeb05cc8f97d4cb051ab25c36a4ac7d3ed1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
