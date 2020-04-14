@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "314e71a6_866caf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-14T10:31:54Z",
+      "side": 1,
+      "message": "Sorry for overlooking this earlier, but now we don\u0027t need to use arc.BootstrapCommand for this test because ARC is already booted. We don\u0027t need to change this in this CL but it\u0027s good to do.",
+      "range": {
+        "startLine": 52,
+        "startChar": 15,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "1dbf8f7992240de5029dfa9782a357ffa10cb179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
