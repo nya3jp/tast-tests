@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5e4a0ca_cc172488",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-14T21:09:34Z",
+      "side": 1,
+      "message": "Needed for \"requestFullscreen()\" api call which is only allowed in response to a user action/gesture.\n\nFor tast, we are simulating user actions in tests, so I am always setting the flag here.",
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
