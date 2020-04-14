@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "a9ddf3ce_2914550e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-14T22:33:53Z",
+      "side": 1,
+      "message": "all of the browser window should be gone as a cleanup step of chrome\u0027s precondition -- ResetState (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/chrome.go#473) should be called, so you don\u0027t have to worry about this.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d5f4c4b_79255fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-14T22:33:53Z",
+      "side": 1,
+      "message": "Instead of requestFullscreen, can we emulate user behaviors?\n\nFor example, keytype of \u0027f\u0027 will enter the video into the fullscreen mode (that seems a shortcut of youtube). In tablet mode, maybe finding the DOM element of the fullscreen icon in the player and clicking it would be an alternative.",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 55
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7274eb85_14d14c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-14T22:33:53Z",
+      "side": 1,
+      "message": "you can use ash.WaitForCondition. This can be done by invoking ash.GetWindows() before and after ytConn is created to check the id of the youtube window, then\n\n  if err :\u003d ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool { return w.ID \u003d\u003d ytWinID \u0026\u0026 w.State \u003d\u003d ash.WindowStateFullscreen }, \u0026testing.PollOptions{Timeout: 5*time.Second}); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 51
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1994403b_e032a428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-14T22:33:53Z",
+      "side": 1,
+      "message": "Similarly above: can we use a swipe-down gesture (from the top edge of the screen) to cancel the fullscreen rather than using API?",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5e4a0ca_cc172488",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
         "patchSetId": 1
