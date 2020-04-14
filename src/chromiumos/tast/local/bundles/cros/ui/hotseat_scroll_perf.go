@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -169,6 +170,10 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		return nil, errors.Wrap(err, "failed to ensure in clamshell mode")
 	}
 	defer cleanup(ctx)
+
+	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		return nil, err
+	}
 
 	launcherTargetState := ash.Closed
 	if isLauncherVisible {
