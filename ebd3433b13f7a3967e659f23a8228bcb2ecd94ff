@@ -93,6 +93,30 @@
       "revId": "ebd3433b13f7a3967e659f23a8228bcb2ecd94ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daf0a46f_fa61ed16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-14T07:51:51Z",
+      "side": 1,
+      "message": "Would you do it in this CL?\nThis CL introduces capability of testing multiple activities in arc a11y tests, so adding such a struct in this CL makes sense.",
+      "parentUuid": "516e9981_88a30361",
+      "range": {
+        "startLine": 250,
+        "startChar": 15,
+        "endLine": 250,
+        "endChar": 39
+      },
+      "revId": "ebd3433b13f7a3967e659f23a8228bcb2ecd94ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
