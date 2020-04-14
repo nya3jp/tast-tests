@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "029203a5_439e3a23",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T19:37:50Z",
+      "side": 1,
+      "message": "this is actually only for WiFi services too, so belongs in the line 33+ block. Same with SSID and SecurityClass, actually.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "7db84b9fc0214039a1d79ce19353d17e600cc4c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df6d32fe_4a5f0203",
         "filename": "src/chromiumos/tast/local/shill/service.go",
         "patchSetId": 1
