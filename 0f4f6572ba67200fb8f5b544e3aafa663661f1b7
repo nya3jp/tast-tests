@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2cfaa0f3_4da19ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-04-14T00:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccdb2141_4ab78ce3",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5790337c_e75a7137",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
         "patchSetId": 7
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "76a4fe4a_81446063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-04-14T00:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a9db89_f1349fa9",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 18
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b451ba1_319cab68",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
         "patchSetId": 7
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "9b451ba1_319cab68",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 66
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2845fb_71251357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-04-14T00:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31a8bb4_5dc3a335",
       "range": {
         "startLine": 187,
         "startChar": 3,
@@ -237,6 +309,54 @@
     },
     {
       "key": {
+        "uuid": "17ae01c3_0344076d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-04-14T00:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a392ab0_a934c773",
+      "range": {
+        "startLine": 192,
+        "startChar": 18,
+        "endLine": 192,
+        "endChar": 25
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3e70836_8c1e1eca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-04-14T00:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dcdd52d_4ec26c25",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 7
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df1c8f96_45d93181",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
         "patchSetId": 7
@@ -272,6 +392,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "df1c8f96_45d93181",
+      "range": {
+        "startLine": 193,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 9
+      },
+      "revId": "0f4f6572ba67200fb8f5b544e3aafa663661f1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f34e8ce2_b070cd80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/microsoft_word.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-04-14T00:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f517a274_eea81563",
       "range": {
         "startLine": 193,
         "startChar": 3,
