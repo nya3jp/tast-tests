@@ -123,11 +123,12 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	defer ct.Close()
 
 	extraArgs := chromecrash.GetExtraArgs(params.handler, params.consent)
+	chromeOpts := []chrome.Option{chrome.NoLogin(), chrome.CrashNormalMode(), chrome.ExtraArgs(extraArgs...)}
 
 	if params.consent == crash.RealConsent {
 		// We need to be logged in to set up consent, but then log out for the actual test.
 		if err := func() error {
-			cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(extraArgs...))
+			cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(extraArgs...))
 			if err != nil {
 				return errors.Wrap(err, "chrome startup failed")
 			}
@@ -139,6 +140,8 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 		}(); err != nil {
 			s.Fatal("Setting up crash test failed: ", err)
 		}
+		// Need to KeepState to avoid erasing the consent we just set up
+		chromeOpts = append(chromeOpts, chrome.KeepState())
 	} else {
 		if err = crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 			s.Fatal("Setting up crash test failed: ", err)
@@ -146,7 +149,7 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(extraArgs...))
+	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
