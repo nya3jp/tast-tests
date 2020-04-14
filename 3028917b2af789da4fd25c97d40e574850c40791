@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ead800f_ec6a5712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2020-04-14T04:25:51Z",
+      "side": 1,
+      "message": "nit: could you please add a bug link in comment so someone can easily refer to in the future?",
+      "revId": "3028917b2af789da4fd25c97d40e574850c40791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
