@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de9779db_cd17143a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T08:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84844002_0e9796cf",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d577825_11a9a276",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0dce68a_31259646",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T08:48:20Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll move this change into the future CL when it\u0027s not enough for the routine test as 2 seconds timeout.",
+      "parentUuid": "9d577825_11a9a276",
+      "range": {
+        "startLine": 161,
+        "startChar": 114,
+        "endLine": 161,
+        "endChar": 115
+      },
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +176,30 @@
     },
     {
       "key": {
+        "uuid": "e46a4c44_b61b08bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T08:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7971e6cb_27b976cf",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f411408_e63a9003",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
         "patchSetId": 8
@@ -151,6 +223,30 @@
     },
     {
       "key": {
+        "uuid": "2732aaf5_e1608b1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T08:48:20Z",
+      "side": 1,
+      "message": "I\u0027ll only move the line 93 since the err has been used at line 96, thanks.",
+      "parentUuid": "4f411408_e63a9003",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85445b77_6eb56aad",
         "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
         "patchSetId": 8
@@ -165,6 +261,24 @@
       "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32b3c3c_12c3850d",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-14T08:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85445b77_6eb56aad",
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
