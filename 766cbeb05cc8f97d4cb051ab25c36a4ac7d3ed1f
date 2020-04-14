@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7ca984c_4755c214",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-14T07:40:07Z",
+      "side": 1,
+      "message": "nit: please add a short comment why you expect to have failed status",
+      "revId": "766cbeb05cc8f97d4cb051ab25c36a4ac7d3ed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec44aaaa_e98de03a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-14T07:40:07Z",
+      "side": 1,
+      "message": "same",
+      "revId": "766cbeb05cc8f97d4cb051ab25c36a4ac7d3ed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
