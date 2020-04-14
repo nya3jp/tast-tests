@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "e2e7a1dd_9137958f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-14T23:57:57Z",
+      "side": 1,
+      "message": "\u003e Alright. Though I still prefer to put the similar methods together to avoid we only update one side, but keeping it in smaller scope is also important.\n\u003e \n\u003e BTW, should we also replace passing testing.State for this method?\n\nSure, can do it in the next CL.",
+      "parentUuid": "5372aded_fa0d25fe",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "df0a63f03c9a9f2b7708005afc31578ee8a127d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ade32d48_4a39120b",
         "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
         "patchSetId": 2
