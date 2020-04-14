@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c50a2822_20f517a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "nit: this is also available as crash.SystemCrashDir, and the rest either are or should be constants there as well.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8770751_adb8575d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "nit: this is a deprecated email; please use cros-telemetry@google.com",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3a1305_59b47fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "Unless you particularly want to verify the real consent system, I\u0027d strongly recommend using mock consent instead of the real thing. That should let you get rid of both chrome and metrics_consent. You may also be able to get rid of pstore, as the test doesn\u0027t reboot or (as far as I\u0027ve seen from reading this far) read from it.",
+      "range": {
+        "startLine": 43,
+        "startChar": 36,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc905d1_d799e37b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "nit: crashContents?",
+      "range": {
+        "startLine": 70,
+        "startChar": 63,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da3f26d_80893a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "I would\u0027ve expected the ephemeral collector to only copy .meta files (and associated files for those crashes). Does it copy everything?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b735f8_7b3f2a8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "Is it helpful to also grab stdout / stderr here and log them, or odes the Run method automatically log them? I don\u0027t recall",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ba3fe9_d6936233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "I think this is backwards; if the file does exist, err will be nil and os.IsNotExist(nil) should be false",
+      "range": {
+        "startLine": 110,
+        "startChar": 14,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df6d8a6c_6eac5951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "What about this function makes it specific to pre-OOBE? it looks the same as the post-OOBE method.",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 44
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f5e05f_d689985e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-14T20:27:18Z",
+      "side": 1,
+      "message": "crash.SetConsent and mock consent are unfortunately incompatible. I\u0027d recommend using mock consent for the two subtests that are supposed to have consent, and then real consent for those that are not. See https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/user_crash.go;l\u003d53-158?q\u003dplatform%2Fuser_crash.go for an example of how this works in another test.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 58
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
