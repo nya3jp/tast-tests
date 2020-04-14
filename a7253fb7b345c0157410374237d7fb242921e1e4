@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9180c76a_48a1eba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-14T22:02:54Z",
+      "side": 1,
+      "message": "I think you forgot to change the precondition to ChromeVideoWithFakeWebcamAndSWEncoding.",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "a7253fb7b345c0157410374237d7fb242921e1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f98a723b_7d7fa387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-14T22:02:54Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "a7253fb7b345c0157410374237d7fb242921e1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7c45f8_bb686308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-14T22:02:54Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "a7253fb7b345c0157410374237d7fb242921e1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
