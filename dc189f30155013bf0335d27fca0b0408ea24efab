@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30aecc30_4b69c702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-04-14T16:38:08Z",
+      "side": 1,
+      "message": "If I understand correctly (and I may not be), clearPolicies gets run between each test, and the chrome.LoggedIn precondition would only start/login to chrome once at the beginning of a batch of tests.\n\nIf that\u0027s the case, then the precondition is not sufficient, because clearPolicies would still delete /var/lib/whitelist between each test in the batch.",
+      "parentUuid": "b96ed16d_0c5e4fe4",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 19
+      },
+      "revId": "dc189f30155013bf0335d27fca0b0408ea24efab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "365b00af_3d14de92",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 2
