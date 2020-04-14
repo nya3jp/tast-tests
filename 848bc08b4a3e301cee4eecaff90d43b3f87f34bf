@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d53c79b_62dc489d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_enroll_only.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-14T11:20:21Z",
+      "side": 1,
+      "message": "I am not familiar with this logic with autotest.\nLooking the discussion thread and the conditions defined in control.informational-chrome\n and so, looks correct to me.\nIt would be the best if nya@ can also take a look, may it be a TBR.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "848bc08b4a3e301cee4eecaff90d43b3f87f34bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62ecc74f_6e83d300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/attestation_enroll_only.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-14T11:20:21Z",
+      "side": 1,
+      "message": "optional: I might consider removing this line if the message doesn\u0027t give additional information for debugging.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\nThough, this case will not clutter the log much, thus looks acceptable to me.",
+      "revId": "848bc08b4a3e301cee4eecaff90d43b3f87f34bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
