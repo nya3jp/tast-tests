@@ -230,5 +230,5 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 		return errors.Errorf("node(s) %+v not in requested state", crasNodes)
 	}
 
-	return testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: 5 * time.Second})
+	return testing.Poll(ctx, checkActiveNodes, &testing.PollOptions{Timeout: 10 * time.Second})
 }
