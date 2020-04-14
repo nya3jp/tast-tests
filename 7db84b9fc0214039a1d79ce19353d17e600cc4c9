@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df6d32fe_4a5f0203",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-14T10:33:23Z",
+      "side": 1,
+      "message": "nit: \"FT\"? and also WPA, WEP, ... below\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "7db84b9fc0214039a1d79ce19353d17e600cc4c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
