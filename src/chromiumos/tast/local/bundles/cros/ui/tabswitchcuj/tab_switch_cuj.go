@@ -177,8 +177,17 @@ func Run(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, data.name, func(ctx context.Context, s *testing.State) {
-			conns := chrome.Conns(make([]*chrome.Conn, 0, numPages+1))
-			defer conns.Close()
+			conns := make([]*chrome.Conn, 0, numPages+1)
+			defer func() {
+				for _, c := range conns {
+					if err = c.CloseTarget(ctx); err != nil {
+						s.Error("Failed to close target: ", err)
+					}
+					if err = c.Close(); err != nil {
+						s.Error("Failed to close the connection: ", err)
+					}
+				}
+			}()
 			firstPage, err := cr.NewConn(ctx, data.startURL)
 			if err != nil {
 				s.Fatalf("Failed to open %s: %v", data.startURL, err)
@@ -217,11 +226,6 @@ func Run(ctx context.Context, s *testing.State) {
 				return nil
 			}); err != nil {
 				s.Fatal("Failed to conduct the test scenario, or collect the histogram data: ", err)
-			}
-			for _, c := range conns {
-				if err = c.CloseTarget(ctx); err != nil {
-					s.Fatal("Failed to close target: ", err)
-				}
 			}
 		})
 	}
