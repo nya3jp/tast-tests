@@ -46,6 +46,30 @@
       "revId": "33e2f3a465950488ddd28d1cb985e6dd837d086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97227278_727a7cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-14T21:16:24Z",
+      "side": 1,
+      "message": "It is not about waiting for the desk mini-views to appear; it is about waiting for them to finish sliding horizontally. WaitUntilExists returns immediately because the desk mini-views appear instantly.",
+      "parentUuid": "8c283c6b_5fb76337",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 5
+      },
+      "revId": "33e2f3a465950488ddd28d1cb985e6dd837d086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
