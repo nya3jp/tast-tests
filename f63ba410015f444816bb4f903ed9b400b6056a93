@@ -16,6 +16,24 @@
       "revId": "f63ba410015f444816bb4f903ed9b400b6056a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa101aef_cb6c88c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-14T22:34:03Z",
+      "side": 1,
+      "message": "The tested functionality is closely related from a user\u0027s perspective, but the tested code is less closely related. My proposed tests check for a bug in overview code, whereas arc.SplitView seems more like a test of split view code and maybe ARC code. I just do not see any useful way to combine the tests.",
+      "parentUuid": "d5580661_76da326c",
+      "revId": "f63ba410015f444816bb4f903ed9b400b6056a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
