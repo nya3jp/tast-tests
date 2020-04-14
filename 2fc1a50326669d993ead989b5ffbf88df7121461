@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ced20d4_0a68f29b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-14T15:13:58Z",
+      "side": 1,
+      "message": "\u003e \"settting\" is a possible misspelling of \"setting\".\n\nPlease fix.",
+      "parentUuid": "bb8cdb95_62deb208",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "2fc1a50326669d993ead989b5ffbf88df7121461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6dbcfb0_4dd1a426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-14T15:13:58Z",
+      "side": 1,
+      "message": "nit: Wrap the commit message at 72 cols?",
+      "revId": "2fc1a50326669d993ead989b5ffbf88df7121461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f91d9c7_380ca232",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-14T15:13:58Z",
+      "side": 1,
+      "message": "\u003e \"procesed\" is a possible misspelling of \"processed\".\n\nPlease fix.",
+      "parentUuid": "9e48accf_f21bf62b",
+      "range": {
+        "startLine": 405,
+        "startChar": 51,
+        "endLine": 405,
+        "endChar": 59
+      },
+      "revId": "2fc1a50326669d993ead989b5ffbf88df7121461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
