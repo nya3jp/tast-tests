@@ -32,9 +32,6 @@ import (
 const (
 	stabilizationDuration = 5 * time.Second
 	measurementDuration   = 15 * time.Second
-
-	// PerfStreamFile is the name of the data file used for performance testing.
-	PerfStreamFile = "crowd720_25frames.y4m"
 )
 
 func reportMetric(name, unit string, value float64, direction perf.Direction, p *perf.Values) {
@@ -46,10 +43,10 @@ func reportMetric(name, unit string, value float64, direction perf.Direction, p 
 }
 
 // MeasurePerf measures the frame processing time and CPU usage while recording and report the results.
-func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir, codec, streamFile string, hwAccelEnabled bool) error {
+func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, hwAccelEnabled bool) error {
 
 	p := perf.NewValues()
-	hwAccelUsed, err := measureAndReport(ctx, fileSystem, outDir, codec, streamFile, hwAccelEnabled, p)
+	hwAccelUsed, err := measureAndReport(ctx, cr, fileSystem, outDir, codec, hwAccelEnabled, p)
 	if err != nil {
 		return err
 	}
@@ -70,9 +67,8 @@ func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir, codec,
 	return nil
 }
 
-func measureAndReport(ctx context.Context, fileSystem http.FileSystem, outDir, codec,
-	streamFile string, hwAccelEnabled bool, p *perf.Values) (hwAccelUsed bool, err error) {
-	processingTimePerFrame, cpuUsage, hwAccelUsed, err := doMeasurePerf(ctx, fileSystem, outDir, codec, !hwAccelEnabled, streamFile)
+func measureAndReport(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, hwAccelEnabled bool, p *perf.Values) (hwAccelUsed bool, err error) {
+	processingTimePerFrame, cpuUsage, hwAccelUsed, err := doMeasurePerf(ctx, cr, fileSystem, outDir, codec, !hwAccelEnabled)
 	if err != nil {
 		return hwAccelUsed, errors.Wrap(err, "failed to measure perf")
 	}
@@ -83,46 +79,10 @@ func measureAndReport(ctx context.Context, fileSystem http.FileSystem, outDir, c
 	return hwAccelUsed, nil
 }
 
-func getChromeArgs(streamFile string, disableHWAccel bool, codec string) (chromeArgs []string) {
-	chromeArgs = []string{
-		// Use a fake media capture device instead of live webcam(s)/microphone(s);
-		// this is needed to enable use-file-for-fake-video-capture below.
-		// See https://webrtc.org/testing/
-		"--use-fake-device-for-media-stream",
-		// Avoids the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream",
-		// Enable verbose logging of interesting code areas.
-		"--vmodule=*recorder*=2,*video*=2",
-		// Read a test file as input for the fake media capture device. The file,
-		// usually a Y4M, specifies resolution (size) and frame rate.
-		"--use-file-for-fake-video-capture=" + streamFile,
-	}
-	if disableHWAccel {
-		chromeArgs = append(chromeArgs, "--disable-accelerated-video-encode")
-	} else if codec == "VP9" {
-		// Vaapi VP9 Encoder is disabled by default on Chrome. Enable the feature by the command line option.
-		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
-	} else if codec == "H264" {
-		// Use command line option to enable the H264 encoder on AMD, as it's disabled by default.
-		// TODO(b/145961243): Remove this option when VA-API H264 encoder is
-		// enabled on grunt by default.
-		chromeArgs = append(chromeArgs, "--enable-features=VaapiH264AMDEncoder")
-	}
-
-	return chromeArgs
-}
-
 // doMeasurePerf measures the frame processing time and CPU usage while recording.
-func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir, codec string, disableHWAccel bool,
-	streamFile string) (processingTimePerFrame time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
+func doMeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, disableHWAccel bool) (processingTimePerFrame time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
 	// time reserved for cleanup.
 	const cleanupTime = 10 * time.Second
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(getChromeArgs(streamFile, disableHWAccel, codec)...))
-	if err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to connect to Chrome")
-	}
-	defer cr.Close(ctx)
 
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
