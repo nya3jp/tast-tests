@@ -9,13 +9,15 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
 // mediaRecorderPerfTest is used to describe the config used to run each test case.
 type mediaRecorderPerfTest struct {
-	enableHWAccel bool   // Instruct to use hardware or software decoding.
+	enableHWAccel bool   // Instruct to use hardware or software encoding.
 	profile       string // Codec to try, e.g. VP8, VP9.
 }
 
@@ -29,31 +31,39 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{mediarecorder.PerfStreamFile, "loopback_media_recorder.html"},
+		Data:         []string{"loopback_media_recorder.html"},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264_sw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: false, profile: "H264"},
 			ExtraSoftwareDeps: []string{"chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			Pre:               pre.ChromeVideoWithFakeWebcamAndSWEncoding(),
 		}, {
 			Name: "vp8_sw",
 			Val:  mediaRecorderPerfTest{enableHWAccel: false, profile: "VP8"},
+			Pre:  pre.ChromeVideoWithFakeWebcamAndSWEncoding(),
 		}, {
 			Name: "vp9_sw",
 			Val:  mediaRecorderPerfTest{enableHWAccel: false, profile: "VP9"},
+			Pre:  pre.ChromeVideoWithFakeWebcamAndSWEncoding(),
 		}, {
 			Name:              "h264_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "H264"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "chrome_internal"}, // "chrome_internal" is needed because H.264 is a proprietary codec.
+			// TODO(b/145961243): Use ChromeVideoWithFakeWebcam when the H264 encoder is enabled by default on AMD.
+			Pre: pre.ChromeVideoWithFakeWebcamAndH264AMDEncoder(),
 		}, {
 			Name:              "vp8_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP8"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}, {
 			Name:              "vp9_hw",
 			Val:               mediaRecorderPerfTest{enableHWAccel: true, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			// TODO(crbug.com/811912): Use pre.ChromeVideoWithFakeWebcam() when VP9 encoder is enabled by default.
+			Pre: pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder(),
 		}},
 	})
 }
@@ -62,7 +72,7 @@ func init() {
 // cases with a given codec and uploads to server.
 func MediaRecorderPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(mediaRecorderPerfTest)
-	if err := mediarecorder.MeasurePerf(ctx, s.DataFileSystem(), s.OutDir(), testOpt.profile, s.DataPath(mediarecorder.PerfStreamFile), testOpt.enableHWAccel); err != nil {
+	if err := mediarecorder.MeasurePerf(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), s.OutDir(), testOpt.profile, testOpt.enableHWAccel); err != nil {
 		s.Error("Failed to measure performance: ", err)
 	}
 }
