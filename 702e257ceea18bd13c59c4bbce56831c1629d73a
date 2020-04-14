@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c70099c_636ca6fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-14T09:09:03Z",
+      "side": 1,
+      "message": "nit: this line is useless. in line 98 you already have \"err\" which you can reuse in line 106 and 110",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "702e257ceea18bd13c59c4bbce56831c1629d73a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
