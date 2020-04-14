@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4909a02b_8501cce8",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T08:13:14Z",
+      "side": 1,
+      "message": "Do we need to have a Factory to generate base.Config?",
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "effdd0bb_c8c8c7f8",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T08:13:14Z",
+      "side": 1,
+      "message": "compose configuration files",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c715ad_c8ac8ee9",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T08:13:14Z",
+      "side": 1,
+      "message": "the SecurityClass (defined in shill/service.go) of the WiFi service to configure.",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 87
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0606330c_e2ee3f8b",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T08:13:14Z",
+      "side": 1,
+      "message": "ConfigFactory defines a Gen() method to generate a Config instance.",
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529f74a2_b575df63",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T08:13:14Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 28,
+        "startChar": 30,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "205ac726_3f3f43cc",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T08:13:14Z",
+      "side": 1,
+      "message": "How about ConfigFactory?",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
