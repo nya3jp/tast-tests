@@ -34,6 +34,24 @@
       "revId": "f63ba410015f444816bb4f903ed9b400b6056a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36da3a72_3397c40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-14T23:02:03Z",
+      "side": 1,
+      "message": "Okay, I see what\u0027s different, but I\u0027m afraid that doesn\u0027t justify this as a separate test case here.\n\nRather, it looks like the existing arc.SplitView isn\u0027t enough -- it uses Snap event to cause splitview, but that is slightly different from the actual splitview UX IIRC. I would suggest to rewrite the entire arc.SplitView so that it also checks your condition (overview on the other side if 1 app window exists) in addition to the existing ones (2 apps splitview, swap). We should ask tetsui@ probably.",
+      "parentUuid": "fa101aef_cb6c88c7",
+      "revId": "f63ba410015f444816bb4f903ed9b400b6056a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
