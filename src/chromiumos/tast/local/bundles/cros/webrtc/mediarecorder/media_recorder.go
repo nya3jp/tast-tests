@@ -39,8 +39,7 @@ const (
 
 func reportMetric(name, unit string, value float64, direction perf.Direction, p *perf.Values) {
 	p.Set(perf.Metric{
-		// TODO(crbug.com/955957): Remove "tast_" prefix after removing video_MediaRecoderPerf in autotest
-		Name:      "tast_" + name,
+		Name:      name,
 		Unit:      unit,
 		Direction: direction,
 	}, value)
