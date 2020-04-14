@@ -497,23 +497,13 @@ func checkCollectionFailure(ctx context.Context, cr *chrome.Chrome, testOption, 
 		return errors.New("logs do not contain crash_reporter message")
 	}
 
-	// RunCrasherProcessAndAnalyze already waits log output. Therefore the expected log should already be written.
-	foundFailure := false
-	for {
-		entry, err := reader.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return errors.Wrap(err, "failed to read log")
-		}
-		if strings.Contains(entry.Content, failureString) {
-			foundFailure = true
-			break
-		}
-	}
-	if !foundFailure {
-		return errors.Errorf("did not find fail string in the log: %s", failureString)
+	// RunCrasherProcessAndAnalyze waits the first line of crash_reporter log appears.
+	// However, the rest of the log by crash_reporter is written asynchronously.
+	// Therefore we need Wait here.
+	if _, err := reader.Wait(ctx, 1*time.Second, func(e *syslog.Entry) bool {
+		return strings.Contains(e.Content, failureString)
+	}); err != nil {
+		return errors.Wrapf(err, "did not find fail string in the log: %s", failureString)
 	}
 	if result.Minidump != "" {
 		return errors.New("failed collection resulted in minidump")
