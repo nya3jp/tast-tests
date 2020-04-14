@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "ef32c779_51459986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-14T07:18:50Z",
+      "side": 1,
+      "message": "actually, I decided to rename the expected filename to contain \".\"",
+      "parentUuid": "199373c3_755138cc",
+      "range": {
+        "startLine": 236,
+        "startChar": 47,
+        "endLine": 236,
+        "endChar": 51
+      },
+      "revId": "beec64f1220927b6d880e607fdcbee213191aaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cd1bd4b_101c0f52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 14

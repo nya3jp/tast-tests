@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5073a80_d76b9508",
+        "filename": "android/ArcAccessibilityTest/AndroidManifest.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-14T07:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af60650a_3ee9a10c",
+      "range": {
+        "startLine": 20,
+        "startChar": 90,
+        "endLine": 20,
+        "endChar": 106
+      },
+      "revId": "ebd3433b13f7a3967e659f23a8228bcb2ecd94ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e152b60_3f12ef78",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "ebd3433b13f7a3967e659f23a8228bcb2ecd94ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516e9981_88a30361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-14T07:18:50Z",
+      "side": 1,
+      "message": "sg. I\u0027ll defer defining testA11y struct to a followup CL.",
+      "parentUuid": "5e152b60_3f12ef78",
+      "range": {
+        "startLine": 250,
+        "startChar": 15,
+        "endLine": 250,
+        "endChar": 39
+      },
+      "revId": "ebd3433b13f7a3967e659f23a8228bcb2ecd94ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
