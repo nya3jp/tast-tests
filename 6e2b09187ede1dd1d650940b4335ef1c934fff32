@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04ea6b7f_a0c863a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T15:31:41Z",
+      "side": 1,
+      "message": "nit: cancel\n\nThis will make it easier to differentiate error messages.",
+      "range": {
+        "startLine": 108,
+        "startChar": 39,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "6e2b09187ede1dd1d650940b4335ef1c934fff32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0127fb25_ce94295e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T15:31:41Z",
+      "side": 1,
+      "message": "minor nit: add newline before",
+      "revId": "6e2b09187ede1dd1d650940b4335ef1c934fff32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
