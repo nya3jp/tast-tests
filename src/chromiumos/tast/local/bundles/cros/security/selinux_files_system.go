@@ -10,6 +10,7 @@ import (
 	"syscall"
 
 	"chromiumos/tast/local/bundles/cros/security/selinux"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -18,7 +19,7 @@ func init() {
 		Func:         SELinuxFilesSystem,
 		Desc:         "Checks that SELinux file labels are set correctly for system files",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		SoftwareDeps: []string{"selinux"},
+		SoftwareDeps: []string{"chrome", "selinux"},
 		Attr:         []string{"group:mainline"},
 	})
 }
@@ -214,6 +215,14 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/var/spool/crash", Context: "cros_crash_spool", Recursive: true, IgnoreErrors: true, Log: true},
 		{Path: "/var/spool/cron-lite", Context: "cros_periodic_scheduler_cache_t", Recursive: true, Log: true},
 	}
+
+	// Restart Chromium to ensure that /var/lib/whitelist is created and populated.
+	// See b/153398236
+	cr, err := chrome.New(ctx, chrome.NoLogin())
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	cr.Close(ctx)
 
 	selinux.FilesTestInternal(ctx, s, testArgs)
 }
