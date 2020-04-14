@@ -23,6 +23,9 @@ service WilcoService {
   // GetConfigurationData performs the grpc request from inside the VM
   rpc GetConfigurationData(google.protobuf.Empty)
     returns (GetConfigurationDataResponse) {}
+  // SendMessageToUi performs the grpc request from inside the VM
+  rpc SendMessageToUi(SendMessageToUiRequest)
+    returns (SendMessageToUiResponse) {}
 
   rpc TestPerformWebRequest(google.protobuf.Empty)
     returns (google.protobuf.Empty) {}
@@ -54,6 +57,14 @@ message RestartVMRequest {
 
 message GetConfigurationDataResponse {
   string json_configuration_data = 1;
+}
+
+message SendMessageToUiRequest {
+  string json_message = 1;
+}
+
+message SendMessageToUiResponse {
+  string response_json_message = 1;
 }
 
 message ExecuteRoutineRequest {

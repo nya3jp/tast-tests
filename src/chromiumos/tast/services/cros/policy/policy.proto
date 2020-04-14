@@ -26,7 +26,7 @@ service PolicyService {
 
   rpc EvalStatementInExtension(EvalInExtensionRequest)
       returns (google.protobuf.Empty) {}
-  rpc EvalPromiseInExtension(EvalInExtensionRequest)
+  rpc EvalInExtension(EvalInExtensionRequest)
       returns (EvalInExtensionResponse) {}
 }
 
