@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "916a1d2f_4eb9d3ee",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-14T10:26:38Z",
+      "side": 1,
+      "message": "According to https://github.com/golang/go/wiki/CodeReviewComments#initialisms, \"WPA\" might be preferred. And maybe also PTK, GTK, ... below.\n\n(Sorry that I violated the rule in some names under wificell. maybe I should find some time to review them all. :p)",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "36c35e58cd175d8a9e03035eddc75bc396650b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
