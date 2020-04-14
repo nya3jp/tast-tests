@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52457ef3_31556901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2020-04-14T18:31:28Z",
+      "side": 1,
+      "message": "I\u0027m having problems with this. IIUC, this is saying that we want a Chrome instance that uses the fake webcam and software decoding, but it\u0027s not disabling hardware encoding. How are you ensuring that hardware encoding is not used?",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "8747646af550e4b372825e518dd6e8a8d14f1e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
