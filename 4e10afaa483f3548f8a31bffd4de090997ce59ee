@@ -48,6 +48,63 @@
     },
     {
       "key": {
+        "uuid": "21184d25_c9ba7d22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T08:24:06Z",
+      "side": 1,
+      "message": "Since the response is constant does it make sense to send it across the network?",
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d949b09_825fc9e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T08:24:06Z",
+      "side": 1,
+      "message": "Since the routine performs both normal and cancellation tests I would rename it to something else like testRoutineExecution.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93836f2a_59e9bebb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T08:24:06Z",
+      "side": 1,
+      "message": "Perhaps: If the expected status is ROUTINE_STATUS_CANCELLED the routine is cancelled before completing.",
+      "revId": "4e10afaa483f3548f8a31bffd4de090997ce59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7971e6cb_27b976cf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
         "patchSetId": 8
