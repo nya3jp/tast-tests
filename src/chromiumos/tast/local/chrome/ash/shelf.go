@@ -431,7 +431,7 @@ func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tc *chrome.TestConn
 	}
 	defer stw.Close()
 
-	if err := stw.Swipe(ctx, startX, startY, endX, endY, time.Millisecond); err != nil {
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, 200*time.Millisecond); err != nil {
 		return errors.Wrap(err, errorMsg)
 	}
 
