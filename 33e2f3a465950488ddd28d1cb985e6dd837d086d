@@ -22,6 +22,30 @@
       "revId": "33e2f3a465950488ddd28d1cb985e6dd837d086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c283c6b_5fb76337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-14T00:27:01Z",
+      "side": 1,
+      "message": "I guess it is better to use ui.WaitUntilExists(). And you should check the error (I hope FindAllWithTimeout exists, but it does not). i.e.\n\n  findParams :\u003d chromeui.FindParams{ClassName: \"DeskMiniView\"}\n  if err :\u003d chromeui.WaitUntilExists(ctx, tconn, findParams, 5*time.Second); err !\u003d nil {\n    return errors.Wrap(err, \"failed to wait appearing DesksMiniView\")\n  }\n  desksMiniViews, err :\u003d chromeui.FindAll(ctx, tconn, findParams)\n  if err !\u003d nil {\n    ...\n  }",
+      "parentUuid": "1fefa2fe_1d24978d",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 5
+      },
+      "revId": "33e2f3a465950488ddd28d1cb985e6dd837d086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
