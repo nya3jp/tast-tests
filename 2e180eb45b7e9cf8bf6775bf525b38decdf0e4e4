@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44d33894_095f3bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-14T17:52:10Z",
+      "side": 1,
+      "message": "Maybe just WindowCycle...still not an amazing name, but I don\u0027t think that ForwardBackward really helps to define the test",
+      "parentUuid": "0ceefd81_39e94946",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebf0f6e7_28fa153a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
         "patchSetId": 1
@@ -41,6 +65,122 @@
         "startChar": 0,
         "endLine": 39,
         "endChar": 1
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb782d70_f489c822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-14T17:52:10Z",
+      "side": 1,
+      "message": "Go for it, though you may want to use the app id instead of the title if possible.",
+      "parentUuid": "ebf0f6e7_28fa153a",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4c7d66_3e93c1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-14T17:52:10Z",
+      "side": 1,
+      "message": "This is gonna be wrong on every chromium builder and fail. That will block this test from eventually being added to cq.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f692d7b4_59e0c16b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-14T17:52:10Z",
+      "side": 1,
+      "message": "nit: if you want to ensure that defers fire at the right moment, you can just wrap a block of code in a function:\n\nfor i...{\n  func() {\n    pressKey()\n    defer releaseKey()\n    ...\n  }()\n}\n\ninstead of:\n\nfor i...{\n  pressKey()\n  defer releaseKey()\n  ...\n  releaseKey()\n}",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1260ddf_0eb4138b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-14T17:52:10Z",
+      "side": 1,
+      "message": "The canonical go way to make a set is like this:\n\nopenAppNames :\u003d make(map[string]struct{})\nfor j :\u003d 0; j \u003c len(openApps); j++ {\n\topenAppNames[openApps[j].Name] \u003d struct{}{}\n}\nfor title :\u003d range checkApps {\n\tif _, present :\u003d openAppNames[title]; !present {\n\t\ts.Fatalf(\"Failed to find %v window in cycle menu: %v\", title, err)\n\t}\n}",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 4
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74dce503_ebc83306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-14T17:52:10Z",
+      "side": 1,
+      "message": "I think you probably want to add the case where you press tab 1 more time and you shift far enough that you are back on the same item",
+      "range": {
+        "startLine": 126,
+        "startChar": 22,
+        "endLine": 126,
+        "endChar": 41
       },
       "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
