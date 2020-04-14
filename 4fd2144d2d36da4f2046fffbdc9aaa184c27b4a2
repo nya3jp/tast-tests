@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e43dda19_9561bfab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-14T19:51:08Z",
+      "side": 1,
+      "message": "The lsbrelease package only works in local tests (because it uses os.Open(\"/etc/lsb-release\")). To do it in remote tests like this, we need a function that takes a DUT* as an argument. No generic \"parse command output\" function is used in remote tests, so I\u0027m adding a parse function to this test.",
+      "parentUuid": "3b95fe6a_88280f7f",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 103
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e796f7e_2a32d954",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-10T18:52:59Z",
       "side": 1,
       "message": "In general, let\u0027s try to use native Go if the language supports what we\u0027re trying to do. In this case I think you can use https://golang.org/pkg/io/ioutil/#ReadDir and then find the firmware file that starts with fpBoard and ends with \".bin\".",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a648a7_c8d68ce6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-14T19:51:08Z",
+      "side": 1,
+      "message": "The native ReadDir works on the local machine; here we are checking the remote DUT, so it seems this doesn\u0027t work. One library function I found is https://chromium.git.corp.google.com/chromiumos/platform/tast/+/3e808334727c57e9736cf49c60309c7a4f25c935/src/chromiumos/tast/dut/dut.go#118 which copies the directory to the host. I think that\u0027s overkill.",
+      "parentUuid": "8e796f7e_2a32d954",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -116,6 +164,30 @@
       "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49de4d3_ba72945c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-14T19:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "906064b3_2e9dcb6f",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
