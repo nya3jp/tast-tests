@@ -300,7 +300,7 @@ func (c *PolicyService) EvalStatementInExtension(ctx context.Context, req *ppb.E
 	return &empty.Empty{}, nil
 }
 
-func (c *PolicyService) EvalPromiseInExtension(ctx context.Context, req *ppb.EvalInExtensionRequest) (*ppb.EvalInExtensionResponse, error) {
+func (c *PolicyService) EvalInExtension(ctx context.Context, req *ppb.EvalInExtensionRequest) (*ppb.EvalInExtensionResponse, error) {
 	conn, err := c.connToExtension(ctx, req.ExtensionId)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create connection to extension")
