@@ -24,8 +24,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APIHandleMessageFromUI,
-		Desc: "Test sending a message from a Chromium extension to the Wilco DTC VM",
+		Func: APISendMessageToUI,
+		Desc: "Test sending a message from the Wilco DTC VM to the Chromium extension",
 		Contacts: []string{
 			"vsavu@chromium.org",  // Test author
 			"pmoy@chromium.org",   // wilco_dtc_supportd author
@@ -39,7 +39,7 @@ func init() {
 	})
 }
 
-func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
+func APISendMessageToUI(ctx context.Context, s *testing.State) { // NOLINT
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMIsResetAndPowerwash(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
@@ -93,21 +93,13 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 	}
 	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
-	if _, err = wc.RestartVM(ctx, &wilco.RestartVMRequest{
-		StartProcesses: false,
-		TestDbusConfig: false,
-	}); err != nil {
-		s.Fatal("Failed to restart the VM without processes: ", err)
-	}
-
-	if _, err := wc.StartDPSLListener(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to create listener: ", err)
-	}
-	defer wc.StopDPSLListener(ctx, &empty.Empty{})
-
 	nm, err := wilcoextension.NewNativeMessaging(ctx, pc)
 	if err != nil {
 		s.Fatal("Failed to start native messaging: ", err)
+	}
+
+	if err := nm.StartListener(ctx); err != nil {
+		s.Fatal("Failed to start listener: ", err)
 	}
 
 	type testMsg struct {
@@ -118,22 +110,21 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 		Test: 5,
 	}
 
-	if err := nm.SendMessage(ctx, &sendMsg); err != nil {
-		s.Fatal("Failed to send message using extension: ", err)
-	}
-
-	s.Log("Waiting for HandleMessageFromUi")
-	eventCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
-	defer cancel()
-
-	msg, err := wc.WaitForHandleMessageFromUi(eventCtx, &empty.Empty{})
+	marshaled, err := json.Marshal(sendMsg)
 	if err != nil {
-		s.Error("Did not recieve HandleMessageFromUi event: ", err)
+		s.Fatal("Failed to marshal message: ", err)
 	}
 
+	if _, err := wc.SendMessageToUi(ctx, &wilco.SendMessageToUiRequest{
+		JsonMessage: string(marshaled),
+	}); err != nil {
+		s.Fatal("Failed to perform SendMessageToUi: ", err)
+	}
+
+	s.Log("Waiting for message")
 	var recvMsg testMsg
-	if err := json.Unmarshal([]byte(msg.JsonMessage), &recvMsg); err != nil {
-		s.Fatalf("Failed to unmarshall %q: %v", msg.JsonMessage, err)
+	if err := nm.WaitForMessage(ctx, &recvMsg); err != nil {
+		s.Fatal("Failed to send message using extension: ", err)
 	}
 
 	if sendMsg != recvMsg {

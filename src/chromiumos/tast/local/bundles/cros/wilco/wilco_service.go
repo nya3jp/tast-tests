@@ -98,6 +98,29 @@ func (c *WilcoService) GetConfigurationData(ctx context.Context, req *empty.Empt
 	}, nil
 }
 
+func (c *WilcoService) SendMessageToUi(ctx context.Context, req *wpb.SendMessageToUiRequest) (*wpb.SendMessageToUiResponse, error) { // NOLINT
+	if status, err := c.GetStatus(ctx, &empty.Empty{}); err != nil {
+		return nil, errors.Wrap(err, "failed to get status")
+	} else if status.WilcoDtcSupportdPid == 0 {
+		return nil, errors.Wrap(err, "Wilco DTC Support Daemon not running")
+	} else if status.WilcoDtcPid == 0 {
+		return nil, errors.Wrap(err, "Wilco DTC VM not running")
+	}
+
+	request := dtcpb.SendMessageToUiRequest{
+		JsonMessage: req.JsonMessage,
+	}
+	response := dtcpb.SendMessageToUiResponse{}
+
+	if err := wilco.DPSLSendMessage(ctx, "SendMessageToUi", &request, &response); err != nil {
+		return nil, errors.Wrap(err, "unable to send message to ui")
+	}
+
+	return &wpb.SendMessageToUiResponse{
+		ResponseJsonMessage: response.ResponseJsonMessage,
+	}, nil
+}
+
 func (c *WilcoService) TestPerformWebRequest(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	{
 		request := dtcpb.PerformWebRequestParameter{
