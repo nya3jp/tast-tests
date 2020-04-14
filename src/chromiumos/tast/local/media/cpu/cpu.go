@@ -340,6 +340,7 @@ func getStat() (*cpu.TimesStat, error) {
 // This is needed as on some platforms we might not have the right permissions
 // to disable frequency scaling.
 type cpuConfigEntry struct {
+	path         string
 	value        string
 	ignoreErrors bool
 }
@@ -348,30 +349,43 @@ type cpuConfigEntry struct {
 // set to always run at their maximum frequency. A function is returned so the
 // caller can restore the original CPU frequency scaling configuration.
 // Depending on the platform different mechanisms are present:
-//  - Most platforms use the scaling_governor to control CPU frequency scaling.
-//  - Some platforms (e.g. Dru) use a different CPU frequency scaling governor.
 //  - Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
 //    in the scaling_governor, and instead use the intel_pstate application to
 //    control CPU frequency scaling.
+//  - Most platforms use the scaling_governor to control CPU frequency scaling.
+//  - Some platforms (e.g. Dru) use a different CPU frequency scaling governor.
 func disableCPUFrequencyScaling(ctx context.Context) (func(ctx context.Context) error, error) {
-	optimizedConfig := make(map[string]cpuConfigEntry)
-	for glob, config := range map[string]cpuConfigEntry{
+	configPats := []cpuConfigEntry{
+		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
+		{"/sys/devices/system/cpu/intel_pstate/no_turbo", "1", true},
+		// Fix the intel_pstate percentage to 100 if possible. We raise he
+		// maximum value before the minimum value as the min cannot exceed the
+		// max. To restore them, the order must be inverted. Note that we set
+		// and save the original values for these values because changing
+		// scaling_governor to "performance" can change these values as well.
+		{"/sys/devices/system/cpu/intel_pstate/max_perf_pct", "100", false},
+		{"/sys/devices/system/cpu/intel_pstate/min_perf_pct", "100", false},
 		// crbug.com/977925: Disabled hyperthreading cores are listed but
 		// writing config for these disabled cores results in 'invalid argument'.
 		// TODO(dstaessens): Skip disabled CPU cores when setting scaling_governor.
-		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": {"performance", true},
-		"/sys/class/devfreq/devfreq[0-9]*/governor":                  {"performance", true},
-		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
-		"/sys/devices/system/cpu/intel_pstate/no_turbo":     {"1", true},
-		"/sys/devices/system/cpu/intel_pstate/min_perf_pct": {"100", false},
-		"/sys/devices/system/cpu/intel_pstate/max_perf_pct": {"100", false},
-	} {
-		paths, err := filepath.Glob(glob)
+		{"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor", "performance", true},
+		{"/sys/class/devfreq/devfreq[0-9]*/governor", "performance", true},
+	}
+
+	var optimizedConfig []cpuConfigEntry
+	// Expands patterns in configPats and pack actual configs into
+	// optimizedConfig.
+	for _, config := range configPats {
+		paths, err := filepath.Glob(config.path)
 		if err != nil {
 			return nil, err
 		}
 		for _, path := range paths {
-			optimizedConfig[path] = config
+			optimizedConfig = append(optimizedConfig, cpuConfigEntry{
+				path,
+				config.value,
+				config.ignoreErrors,
+			})
 		}
 	}
 
@@ -387,31 +401,35 @@ func disableCPUFrequencyScaling(ctx context.Context) (func(ctx context.Context) 
 	return undo, nil
 }
 
-// applyConfig applies the specified frequency scaling configuration. A map of
-// path-value pairs needs to be provided. A map of the original path-value pairs
-// is returned to allow restoring the original config. If ignoreErrors is true
-// for a config entry we won't return an error upon failure, but will only show
-// a warning. The provided context will only be used for logging, so the config
+// applyConfig applies the specified frequency scaling configuration. A slice of
+// cpuConfigEntry needs to be provided and will be processed in order. A slice
+// of the original cpuConfigEntry values that were successfully processed is
+// returned in reverse order so the caller can restore the original config by
+// passing the slice to this function as is. If ignoreErrors is true for a
+// config entry we won't return an error upon failure, but will only show a
+// warning. The provided context will only be used for logging, so the config
 // will even be applied upon timeout.
-func applyConfig(ctx context.Context, cpuConfig map[string]cpuConfigEntry) (map[string]cpuConfigEntry, error) {
-	origConfig := make(map[string]cpuConfigEntry)
-	for path, config := range cpuConfig {
-		origValue, err := ioutil.ReadFile(path)
+func applyConfig(ctx context.Context, cpuConfig []cpuConfigEntry) ([]cpuConfigEntry, error) {
+	var origConfig []cpuConfigEntry
+	for _, config := range cpuConfig {
+		origValue, err := ioutil.ReadFile(config.path)
 		if err != nil {
 			if !config.ignoreErrors {
 				return origConfig, err
 			}
-			testing.ContextLogf(ctx, "Failed to read %v: %v", path, err)
+			testing.ContextLogf(ctx, "Failed to read %v: %v", config.path, err)
 			continue
 		}
-		if err = ioutil.WriteFile(path, []byte(config.value), 0644); err != nil {
+		if err = ioutil.WriteFile(config.path, []byte(config.value), 0644); err != nil {
 			if !config.ignoreErrors {
 				return origConfig, err
 			}
-			testing.ContextLogf(ctx, "Failed to write to %v: %v", path, err)
+			testing.ContextLogf(ctx, "Failed to write to %v: %v", config.path, err)
 			continue
 		}
-		origConfig[path] = cpuConfigEntry{string(origValue), false}
+		// Inserts a new entry at the front of origConfig.
+		e := cpuConfigEntry{config.path, string(origValue), false}
+		origConfig = append([]cpuConfigEntry{e}, origConfig...)
 	}
 	return origConfig, nil
 }
