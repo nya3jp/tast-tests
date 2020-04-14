@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -38,6 +39,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"biometrics_daemon"},
+		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 	})
 }
 
