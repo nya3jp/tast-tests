@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba31b6db_7455de0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T09:38:45Z",
+      "side": 1,
+      "message": "secFactory",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "b9b265d345e1599aa47fb0fd21a938d8f6e6b6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb645a35_b3eac35b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T09:38:45Z",
+      "side": 1,
+      "message": "This is going lengthy. How about:\n1. rename \"apOptions\" as \"apOpts\"\n2. alias import: ap \"chromiumos/tast/remote/wificell/hostapd\"",
+      "revId": "b9b265d345e1599aa47fb0fd21a938d8f6e6b6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58dac4ac_8f966a41",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T09:38:45Z",
+      "side": 1,
+      "message": "Why passing a pointer to a non-pointer field?",
+      "revId": "b9b265d345e1599aa47fb0fd21a938d8f6e6b6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d8e6294_35a3c9f8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T09:38:45Z",
+      "side": 1,
+      "message": "// Defer the securityConfig generation from test\u0027s init() to here because the step may emit error and that\u0027s not allowed in test init().",
+      "revId": "b9b265d345e1599aa47fb0fd21a938d8f6e6b6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297eba66_f9b669b0",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-14T09:38:45Z",
+      "side": 1,
+      "message": "It would be nice to have some comment.",
+      "revId": "b9b265d345e1599aa47fb0fd21a938d8f6e6b6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
