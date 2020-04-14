@@ -137,12 +137,6 @@ func scrollToEnd(ctx context.Context, tconn *chrome.TestConn, d direction) error
 }
 
 func runShelfScroll(ctx context.Context, tconn *chrome.TestConn) error {
-	// The best effort to stabilize CPU usage. This may or
-	// may not be satisfied in time.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for system UI to be stabilized")
-	}
-
 	if err := scrollToEnd(ctx, tconn, scrollToRight); err != nil {
 		return err
 	}
@@ -169,6 +163,12 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		return nil, errors.Wrap(err, "failed to ensure in clamshell mode")
 	}
 	defer cleanup(ctx)
+
+	// The best effort to stabilize CPU usage. This may or
+	// may not be satisfied in time.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for system UI to be stabilized")
+	}
 
 	launcherTargetState := ash.Closed
 	if isLauncherVisible {
