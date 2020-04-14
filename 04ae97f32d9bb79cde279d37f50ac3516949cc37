@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d8822c_6cf07103",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T15:37:11Z",
+      "side": 1,
+      "message": "Perhaps a better phrasing: Success is not tested because the CPU cache routine takes too much time.",
+      "revId": "04ae97f32d9bb79cde279d37f50ac3516949cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79c3be4_586b5d39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-14T15:37:11Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "04ae97f32d9bb79cde279d37f50ac3516949cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
