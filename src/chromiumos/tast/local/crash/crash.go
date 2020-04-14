@@ -43,6 +43,8 @@ const (
 	senderPausePath = "/var/lib/crash_sender_paused"
 	// senderProcName is the name of the crash_sender process.
 	senderProcName = "crash_sender"
+	// EarlyCrashDir is the directory where system crashes are stored in absence of persistent storage.
+	EarlyCrashDir = "/run/crash_reporter/crash"
 	// SystemCrashDir is the directory where system crash reports go.
 	SystemCrashDir = "/var/spool/crash"
 	// systemCrashStash is a directory to stash pre-existing system crashes during crash tests.
