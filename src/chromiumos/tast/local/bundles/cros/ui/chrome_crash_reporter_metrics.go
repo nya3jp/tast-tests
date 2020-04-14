@@ -67,7 +67,7 @@ func init() {
 				// should count the crash as a missed crash. (See code in
 				// chrome.restartChromeForTesting, where it sets CHROME_HEADLESS and
 				// BREAKPAD_DUMP_LOCATION environmental variables)
-				chromeOptions: []chrome.Option{chrome.KeepState()},
+				chromeOptions: nil,
 				crashFileType: chromecrash.BreakpadDmp,
 				expectMissing: true,
 			},
@@ -76,7 +76,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"breakpad"},
 			Val: chromeCrashReporterMetricsParams{
 				handler:       chromecrash.Breakpad,
-				chromeOptions: []chrome.Option{chrome.CrashNormalMode(), chrome.KeepState()},
+				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
 				crashFileType: chromecrash.MetaFile,
 				expectMissing: false,
 			},
@@ -85,7 +85,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"crashpad"},
 			Val: chromeCrashReporterMetricsParams{
 				handler:       chromecrash.Crashpad,
-				chromeOptions: []chrome.Option{chrome.CrashNormalMode(), chrome.KeepState()},
+				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
 				crashFileType: chromecrash.MetaFile,
 				expectMissing: false,
 			},
