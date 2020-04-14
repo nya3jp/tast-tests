@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00703b01_1c27e801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-14T10:25:24Z",
+      "side": 1,
+      "message": "I\u0027m afraid that we don\u0027t want to manage the list in two places. How about something like:\n\n Data: append([]string{crostini.ImageArtifact}, fioFiles...)\n\n var fioFiles []string\n\n func init() {\n   for _, job :\u003d range fioJobs {\n     fioFiles \u003d append(fioFiles, job.fileName)\n   }\n }",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "92465285b09bfbdcef76df4607452b318aca38ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
