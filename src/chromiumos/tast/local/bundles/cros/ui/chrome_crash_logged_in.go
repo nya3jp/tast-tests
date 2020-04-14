@@ -122,7 +122,7 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 	defer ct.Close()
 
 	extraArgs := chromecrash.GetExtraArgs(params.handler, params.consent)
-	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(extraArgs...))
+	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.ExtraArgs(extraArgs...))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
