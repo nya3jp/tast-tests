@@ -258,6 +258,30 @@
       "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f60166_424eea2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T23:03:40Z",
+      "side": 1,
+      "message": "I added a comment that might improve the clarity on the latest patch. Hopefully that makes this comment \"resolved\" (marking as such).",
+      "parentUuid": "b66c3aa8_298bb403",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

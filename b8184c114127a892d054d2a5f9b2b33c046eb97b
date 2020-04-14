@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51db443c_de6a10b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T23:03:40Z",
+      "side": 1,
+      "message": "Also include \"shill-wifi\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "b8184c114127a892d054d2a5f9b2b33c046eb97b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b64a0f_4dae8283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T23:03:40Z",
+      "side": 1,
+      "message": "Drop these. They\u0027re not used, and it\u0027s redundant with shill.WifiInterface(), which *is* used.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "b8184c114127a892d054d2a5f9b2b33c046eb97b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e392488d_85da89d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T23:03:40Z",
+      "side": 1,
+      "message": "It feels like this could all go near the top of the test, before we start checking each feature. It\u0027s a bit clearer to read when all the assertions are in one place, separate from the identification logic.\n\nAlso, moving this up helps highlight the fact that lines 30-37 are now redundant.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "b8184c114127a892d054d2a5f9b2b33c046eb97b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e1c7bd_013683f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T23:03:40Z",
+      "side": 1,
+      "message": "I think part of what might have confused Kirtika (?) is that this error message is now confusing; you should probably write it more like:\n\n    s.Errorf(\"Unexpected MU-MIMO support status: supported\u003d\u003d%t, expected\u003d\u003d%t\", dev.SupportMUMIMO(), res[0].SupportMUMIMO)\n\nYou might also update the comment at line 102 to also note something like:\n\n    \"Older generations don\u0027t support MU-MIMO.\"\n\nIt\u0027s also possible the clever usage of \u0027\u003d\u003d\u0027 is more confusing than just expanding the logic more, like:\n\n    if dev.SupportMUMIMO() {\n        // New chips require MU-MIMO.\n        if !res[0].SupportMUMIMO {\n            s.Error(\"Device doesn\u0027t support MU-MIMO\")\n        }\n    } else {\n        // We do not expect older chips to have MU-MIMO support.\n        if res[0].SupportMUMIMO {\n            s.Error(\"Device unexpxectedly supports MU-MIMO\")\n        }\n    }\n\nIt\u0027s more wordy, but matches the above structure a little more closely.\n\nTake your pick ;)",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 43
+      },
+      "revId": "b8184c114127a892d054d2a5f9b2b33c046eb97b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeebed7f_e96037d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T23:03:40Z",
+      "side": 1,
+      "message": "You want to add \"shill-wifi\" in here too, now that you\u0027re using Shill to get the WiFi interface. (This is relevant for a few odd non-Chromebook devices (e.g., moblab), where they have WiFi hardware, but disable Shill support for it because they\u0027re managing WiFi on their own.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "b8184c114127a892d054d2a5f9b2b33c046eb97b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
