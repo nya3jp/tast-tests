@@ -22,6 +22,30 @@
       "revId": "8747646af550e4b372825e518dd6e8a8d14f1e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb74341_2a88eb01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-14T18:45:54Z",
+      "side": 1,
+      "message": "Ah yes, sorry, my bad, I should make a new precondition. \n\nNote that this works because at the level of the Renderer in Chrome, \nif we disable decoding, then we disable encoding as well:\n\nhttps://source.chromium.org/chromium/chromium/src/+/master:content/renderer/render_thread_impl.cc;l\u003d1140;drc\u003d0e1e59c69a449885aa58c403e05feb8274a67c3b;bpv\u003d0;bpt\u003d1\n\n(I\u0027m not saying that\u0027s right, just stating the facts...).",
+      "parentUuid": "52457ef3_31556901",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "8747646af550e4b372825e518dd6e8a8d14f1e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
