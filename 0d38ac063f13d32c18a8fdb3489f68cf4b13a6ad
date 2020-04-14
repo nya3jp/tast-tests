@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6fdfc7_d4632c25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-14T20:24:28Z",
+      "side": 1,
+      "message": "You don\u0027t have to make any changes right now for this test case, but we\u0027re starting to tread on the edge of this topic: https://crbug.com/827829\nFor tests where we\u0027re not specifically targeting a particular PHY (so, this \"hidden\" test case; all the others are iterating over the {a,b,g,n(HT),ac(VHT)} PHYs and bandwidths, so they don\u0027t count), we should be biasing toward newer PHYs (HT or maybe VHT). In Autotest, we have too many tests that choose things like 802.11g / channel {1 or 6} just because they\u0027re easy to type, I guess.\n\nIn other words, not all test cases must be a literal translation of exactly what Autotest was doing; initial porting and review might be a good time to give some of them a second thought.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 136
+      },
+      "revId": "0d38ac063f13d32c18a8fdb3489f68cf4b13a6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
