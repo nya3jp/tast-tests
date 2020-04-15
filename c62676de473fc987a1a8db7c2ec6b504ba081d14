@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e98b0730_36a54bd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-15T04:59:13Z",
+      "side": 1,
+      "message": "Can you enumerate each activities here and use them in each tests?\n\ne.g. in accessibility/accessibility.go:\nMainActivity :\u003d accessibility.TestCase{\".MainActivity\", \"Main Activity\")\nEditTextActivity :\u003d accessibility.TestCase{\".EditTextActivity\", \"EditText Activity\")\n\neach test file:\ntestActivities :\u003d []accessibility.TestCase{accessibility.MainActivity, accessibility.EditTextActivity}\n\nbtw. TestCase sounds like enumerating actual test steps or scenarios, but this struct honds only values related to activity. How about renaming this to TestActivity or something like that?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91b7af9_92052324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-15T04:59:13Z",
+      "side": 1,
+      "message": "how about giving activity here instead of activity.Name? Then, you can use activity.Title in AccessibilityEvent test.",
+      "range": {
+        "startLine": 262,
+        "startChar": 42,
+        "endLine": 262,
+        "endChar": 55
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3fb053_9883856e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-15T04:59:13Z",
+      "side": 1,
+      "message": "I think these two string don\u0027t need underscores either.",
+      "range": {
+        "startLine": 28,
+        "startChar": 58,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac15bbcb_69ea9444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-15T04:59:13Z",
+      "side": 1,
+      "message": "is this no longer used?",
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66f1c868_fdd42a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.MainActivity.json",
+        "patchSetId": 22
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-15T04:59:13Z",
+      "side": 1,
+      "message": "Oh I previously thought this comes from \u003capplication android:label\u003d\"...\"\u003e. That\u0027s why I requested to keep @string/app_name in the previous round. Sorry for making a confusion.",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 25
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
