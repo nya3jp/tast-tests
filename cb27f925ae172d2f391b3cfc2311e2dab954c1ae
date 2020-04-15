@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab88eb7e_986a2235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-15T09:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df7ac1c6_566ac194",
+      "range": {
+        "startLine": 358,
+        "startChar": 41,
+        "endLine": 358,
+        "endChar": 45
+      },
+      "revId": "cb27f925ae172d2f391b3cfc2311e2dab954c1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98471691_e445ea52",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "cb27f925ae172d2f391b3cfc2311e2dab954c1ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec16f0ad_f4df6223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-15T09:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98471691_e445ea52",
+      "range": {
+        "startLine": 368,
+        "startChar": 45,
+        "endLine": 368,
+        "endChar": 49
+      },
+      "revId": "cb27f925ae172d2f391b3cfc2311e2dab954c1ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
