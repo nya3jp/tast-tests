@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6724efb1_59a5621a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-15T07:18:26Z",
+      "side": 1,
+      "message": "Other tests in the directory check for the existence of the job before starting it. Are you sure all board covered by the SoftwareDeps have this service?",
+      "revId": "32815dd39b65c8b3781f4754820645761c0a8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdeee17a_5fe06428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-15T07:18:26Z",
+      "side": 1,
+      "message": "Would it be safer to use an absolute path here?",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "32815dd39b65c8b3781f4754820645761c0a8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a12579_ee476e0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-15T07:18:26Z",
+      "side": 1,
+      "message": "very minor nit: move call to one line",
+      "revId": "32815dd39b65c8b3781f4754820645761c0a8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
