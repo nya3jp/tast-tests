@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7029092f_f6b185de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T20:32:40Z",
+      "side": 1,
+      "message": "If you\u0027re going to do it like this, it might be more readable to combine the conditions (since we only do anything in either branch if both conditions are true.)\n\nOtherwise, you marked Dean\u0027s comment \"Done\" without applying its suggestion -- was that intentional or did you forget to amend the patch? (Normally, suggestions that we are not planning to implement are marked with \"Ack\" instead.)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "23c2947716d5aecf05360dc318cf2767c59490c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f8bf2b_8f1016b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T20:32:40Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "23c2947716d5aecf05360dc318cf2767c59490c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0712f45_2b9d833f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T20:32:40Z",
+      "side": 1,
+      "message": "nit: \"For now\"",
+      "range": {
+        "startLine": 170,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "23c2947716d5aecf05360dc318cf2767c59490c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddfb848f_265713c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T20:32:40Z",
+      "side": 1,
+      "message": "We should invert these conditions and return early to avoid indenting super hard.\n\n if dev.vendor !\u003d intelVendorNum {\n   return\n }\n if len(dev.subsystem) \u003c 4 {\n   return\n }\n // ...",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 30
+      },
+      "revId": "23c2947716d5aecf05360dc318cf2767c59490c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
