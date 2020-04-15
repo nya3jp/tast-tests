@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "a9a40e47_121d818f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/boot_lockbox_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-15T05:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8c6ff4_b83da860",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9455feec_92d390fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -144,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "b19b5c4b_16409f06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-15T05:56:32Z",
+      "side": 1,
+      "message": "Not passing s to any unnecessary sub-tests now and returning errors as mentioned",
+      "parentUuid": "66a908d2_32fccc31",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ab197b3_5ff291db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -164,6 +200,30 @@
       "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd553436_4b86fb31",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-15T05:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ab197b3_5ff291db",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -217,6 +277,24 @@
       "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa99a7b5_cf9c7d56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-15T05:56:32Z",
+      "side": 1,
+      "message": "No, got confused from your earlier message. Now, returning error from cr.Close()",
+      "parentUuid": "f6f09145_cf35089e",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -308,6 +386,24 @@
     },
     {
       "key": {
+        "uuid": "9e65a683_53a12d86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-15T05:56:32Z",
+      "side": 1,
+      "message": "Yes, realized that it wasn\u0027t needed.",
+      "parentUuid": "b5ed2599_b632ecb3",
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03f827f0_658ce254",
         "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
         "patchSetId": 7
@@ -354,6 +450,30 @@
       "writtenOn": "2020-04-01T03:22:59Z",
       "side": 1,
       "message": "Could you check error? same for others.\n\ndefer func() {\n  err :\u003d ...\n}()",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "45a5f6c15b9b3dd80cbc6132332d6afc144cc007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb336e73_6f52b7cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-15T05:56:32Z",
+      "side": 1,
+      "message": "Tried using this setup of the defer func(). But the GO code panicked. It is trying to close an already closed channel. This means - only using cl.Close(ctx) before was not working as expected anyway. What should be the thought process to solve this ?",
+      "parentUuid": "400a282a_429360ca",
       "range": {
         "startLine": 125,
         "startChar": 7,
