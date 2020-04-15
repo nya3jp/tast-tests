@@ -1,0 +1,36 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.platform;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/platform";
+
+// BootPerfService provides RPC methods to the platform.BootPerf remote test.
+service BootPerfService {
+  //  Enables bootchart collection for next system boot.
+  rpc EnableBootchart(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Disables bootchart collection for next system boot.
+  rpc DisableBootchart(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Collects boot perf metrics from the device.
+  rpc GetBootPerfMetrics(google.protobuf.Empty) returns (GetBootPerfMetricsResponse) {}
+
+  // Saves boot perf raw data and other files like console-ramoops for debugging.
+  rpc GetBootPerfRawData(google.protobuf.Empty) returns (GetBootPerfRawDataResponse) {}
+}
+
+message GetBootPerfMetricsResponse {
+  // Key: metric name. Value: boot metric. Example: "seconds_power_on_to_login" => 10.0.
+  map<string, double> metrics = 1;
+}
+
+message GetBootPerfRawDataResponse {
+  // Key: file name. Value: file content. Example: "uptime-chrome-exec" => "3.92 24.14"
+  map<string, bytes> raw_data = 1;
+}
