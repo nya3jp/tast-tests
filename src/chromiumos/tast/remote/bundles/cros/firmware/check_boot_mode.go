@@ -6,7 +6,6 @@ package firmware
 
 import (
 	"context"
-	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
@@ -71,20 +70,6 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	// Exercise the BlockingSync, which will be used for each mode-switching reboot.
 	if _, err := utils.BlockingSync(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error during BlockingSync: ", err)
-	}
-
-	// Exercise loading fw-testing-configs, which is needed for mode-switching reboots.
-	platformResponse, err := utils.Platform(ctx, &empty.Empty{})
-	if err != nil {
-		s.Fatal("Error during Platform: ", err)
-	}
-	platform := strings.ToLower(platformResponse.Platform)
-	cfg, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir), platform)
-	if err != nil {
-		s.Fatal("Error during NewConfig: ", err)
-	}
-	if cfg.Platform != platform {
-		s.Fatalf("cfg has Platform %s, want %s: %+v", cfg.Platform, platform, cfg)
 	}
 
 	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
