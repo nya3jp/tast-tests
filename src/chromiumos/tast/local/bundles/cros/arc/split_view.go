@@ -60,6 +60,7 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 		return nil, errors.Wrap(err, "failed to create a new activity")
 	}
 	if err := act.Start(ctx, tconn); err != nil {
+		act.Close()
 		return nil, errors.Wrap(err, "failed to start the activity")
 	}
 	return act, nil
@@ -83,11 +84,13 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer rightAct.Close()
+	defer rightAct.Stop(ctx)
 	leftAct, err := showActivityForSplitViewTest(ctx, tconn, a, "com.android.settings", ".Settings")
 	if err != nil {
 		s.Fatal("Failed to show an activity: ", err)
 	}
 	defer leftAct.Close()
+	defer leftAct.Stop(ctx)
 
 	// Snap activities to left and right.
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, leftAct.PackageName(), ash.WMEventSnapLeft); err != nil {
