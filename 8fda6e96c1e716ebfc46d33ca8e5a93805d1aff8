@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "557ce348_740cf642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-15T21:23:03Z",
+      "side": 1,
+      "message": "nit, refactor \"/etc/lsb-release\" into a constant in lsbrelease.go or just say \"lsbrelease\" here.  Ditto for all occurances.",
+      "revId": "8fda6e96c1e716ebfc46d33ca8e5a93805d1aff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
