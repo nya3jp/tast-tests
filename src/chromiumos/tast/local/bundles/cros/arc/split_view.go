@@ -60,6 +60,7 @@ func showActivityForSplitViewTest(ctx context.Context, tconn *chrome.TestConn, a
 		return nil, errors.Wrap(err, "failed to create a new activity")
 	}
 	if err := act.Start(ctx, tconn); err != nil {
+		act.Close()
 		return nil, errors.Wrap(err, "failed to start the activity")
 	}
 	return act, nil
