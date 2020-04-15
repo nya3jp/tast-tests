@@ -84,6 +84,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/dev/shm":                          {nil, "tmpfs", defaultRW},
 		"/home":                             {nil, "ext4", defaultRW},
 		"/home/chronos":                     {nil, "ext4", defaultRW},
+		"/home/root":                        {nil, "ext4", defaultRW}, // TODO(crbug.com/1069501): remove once bug is fixed.
 		"/media":                            {nil, "tmpfs", defaultRW},
 		"/mnt/stateful_partition":           {nil, "ext4", defaultRW},
 		"/mnt/stateful_partition/encrypted": {nil, "ext4", defaultRW},
