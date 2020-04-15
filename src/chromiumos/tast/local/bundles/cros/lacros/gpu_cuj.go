@@ -32,17 +32,29 @@ type testType string
 type chromeType string
 
 const (
-	testTypeMaximized     testType = "maximized"
-	testTypeThreeDot      testType = "threedot"
-	testTypeResize        testType = "resize"
+	// Simple test of performance with a maximized window opening various web content.
+	// This is useful for tracking the performance w.r.t hardware overlay forwarding of video or WebGL content.
+	testTypeMaximized testType = "maximized"
+	// Test of performance while showing the three-dot context menu. This is intended to track the
+	// performance impact of potential double composition of the context menu and hardware overlay usage.
+	testTypeThreeDot testType = "threedot"
+	// Test of performance during a drag-resize operation.
+	testTypeResize testType = "resize"
+	// Test of performance of gradual occlusion via drag-move of web content. This is useful for tracking impact
+	// of hardware overlay forwarding and clipping (due to occlusion) of tiles optimisations.
 	testTypeMoveOcclusion testType = "moveocclusion"
 
+	// testDuration indicates how long histograms should be sampled for during performance tests.
 	testDuration time.Duration = 20 * time.Second
 	// dragMoveOffsetDP indicates the offset from the top-left of a Chrome window to drag to ensure we can drag move it.
 	dragMoveOffsetDP int = 5
-	insetSlopDP      int = 40
+	// insetSlopDP indicates how much to inset the work area (display area) to avoid window snapping to the
+	// edges of the screen intefering with drag-move and drag-resize of windows.
+	insetSlopDP int = 40
 
-	chromeTypeCros   = "cros"
+	// chromeTypeCros indicates we are using the ChromeOS system's Chrome browser
+	chromeTypeCros = "cros"
+	// chromeTypeLacros indicates we are using Linux Chrome
 	chromeTypeLacros = "lacros"
 )
 
