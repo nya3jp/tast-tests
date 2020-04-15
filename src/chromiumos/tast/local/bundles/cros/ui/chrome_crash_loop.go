@@ -135,14 +135,22 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 				break
 			}
 		}
-		if !hasChromeDump {
-			testing.ContextLog(ctx, "No Chrome dumps found; this should be the crash-loop upload. Polling for success message")
-			crashLoopModeUsed = true
-			if _, err := r.Wait(ctx, time.Minute, func(e *syslog.Entry) bool {
-				return strings.Contains(e.Content, testModeSuccessful)
-			}); err != nil {
-				s.Error("Test-successful message not found: ", err)
-			}
+		if hasChromeDump {
+			continue
+		}
+
+		testing.ContextLog(ctx, "No Chrome dumps found; this should be the crash-loop upload. Polling for success message")
+		crashLoopModeUsed = true
+		if _, err := r.Wait(ctx, time.Minute, func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, testModeSuccessful)
+		}); err != nil {
+			s.Error("Test-successful message not found: ", err)
+		} else {
+			// Success! Don't keep trying to crash Chrome; session_manager restarts
+			// after a crash loop, so we'll have lost all our test arguments (in
+			// particular, the mock consent arguments for breakpad) and future
+			// itertions of this loop will fail.
+			break
 		}
 	}
 
