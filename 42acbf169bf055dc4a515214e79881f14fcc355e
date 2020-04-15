@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b0f1d48_6666050d",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-04-15T08:04:54Z",
+      "side": 1,
+      "message": "I named this as an abbreviation of \"config patterns\" because their \u0027path\u0027 fields may contain wild cards. I thought \"configPatterns\" is too long for Go lang.",
+      "parentUuid": "ee253c79_e1a64b9a",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 12
+      },
+      "revId": "42acbf169bf055dc4a515214e79881f14fcc355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c089bd68_13f46be1",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 3
