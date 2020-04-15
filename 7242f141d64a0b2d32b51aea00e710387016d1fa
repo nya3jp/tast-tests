@@ -93,6 +93,30 @@
       "revId": "7242f141d64a0b2d32b51aea00e710387016d1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90e50349_78a17395",
+        "filename": "src/chromiumos/tast/local/input/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-15T03:01:25Z",
+      "side": 1,
+      "message": "I updated the definition above based on event_device_info.cc and moved ABS_MT_SLOT check to Trackpad().",
+      "parentUuid": "59476e16_5422e635",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "7242f141d64a0b2d32b51aea00e710387016d1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
