@@ -16,6 +16,24 @@
       "revId": "92b9c47e191eb238d71c452181a0dee300eae64b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c516a0_d40d4e70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-15T22:50:06Z",
+      "side": 1,
+      "message": "It\u0027s probably good to ask hidehiko@ on that. He\u0027s owning the WiFi deps bug still.",
+      "parentUuid": "ee7fd2b1_d355cc39",
+      "revId": "92b9c47e191eb238d71c452181a0dee300eae64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

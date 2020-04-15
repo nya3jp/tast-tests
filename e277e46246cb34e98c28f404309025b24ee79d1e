@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "6162b364_3b0f7286",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-15T22:50:06Z",
+      "side": 1,
+      "message": "Ah. That\u0027s not saying that hostapd doesn\u0027t support it; it\u0027s saying our test AP hardware doesn\u0027t support it. On my Gale AP:\n\n  # iw phy | grep \u0027Capabilities:\u0027\n\t\tCapabilities: 0x19ef\n\t\tCapabilities: 0x19ef\n\nThe 802.11 definition is:\n\n  #define HT_CAP_INFO_GREEN_FIELD                       ((u16) BIT(4))\n\nBIT(4) is not set.\n\nI guess continuing to ignore GF is fine, then. I wonder if that\u0027s worth a note somewhere (e.g., next to the hostapd cap definitions).",
+      "parentUuid": "b41d2a80_70f54adb",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "e277e46246cb34e98c28f404309025b24ee79d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a2a695_85fd57cb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 12
