@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "451d2342_61f0fe90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-15T21:27:42Z",
+      "side": 1,
+      "message": "The only reason this test has to be remote is we need to reboot the DUT to get seed from bio_crypto_init in the case of reflashing FPMCU. If it\u0027s a local test, the test cannot continue after the reboot.\n\nYou could set the seed in some other way to avoid having to reboot, but that defeats the purpose of this test - in this test we want the setup to be as \"natural\" as possible.",
+      "parentUuid": "27e9fcef_05e6de28",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 103
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e796f7e_2a32d954",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 2
