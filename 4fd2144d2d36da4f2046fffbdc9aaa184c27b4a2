@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "27e9fcef_05e6de28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-15T20:29:21Z",
+      "side": 1,
+      "message": "Is there a reason that this test needs to be remote?\n\nIt looks like everything in this test is on the DUT, so it can be a local test?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md#specifying-where-to-run-tests",
+      "parentUuid": "e43dda19_9561bfab",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 103
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e796f7e_2a32d954",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 2
