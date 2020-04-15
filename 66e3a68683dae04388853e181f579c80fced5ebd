@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa04c090_b32d31f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-15T08:55:23Z",
+      "side": 1,
+      "message": "nit: can you move this before testFunc for consistency with other files?",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 11
+      },
+      "revId": "66e3a68683dae04388853e181f579c80fced5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
