@@ -8,9 +8,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -233,6 +235,112 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 }
 
+func chromeVirtualKeyboardRotationTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		pkg          = "org.chromium.arc.testapp.keyboard"
+		activityName = ".MainActivity"
+
+		fieldID = "org.chromium.arc.testapp.keyboard:id/text"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, pkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx)
+
+	field := d.Object(ui.ID(fieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for virtual keyboard to be ready")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+
+	// Chrome OS virtual keyboard is shown and ready. Let's rotate the device.
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display info: ", err)
+	}
+	if len(infos) == 0 {
+		s.Fatal("No display found")
+	}
+	var info *display.Info
+	for i := range infos {
+		if infos[i].IsInternal {
+			info = &infos[i]
+		}
+	}
+	if info == nil {
+		s.Log("No internal display found. Default to the first display")
+		info = &infos[0]
+	}
+
+	waitForRotation := func(expectLandscape bool) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			defer disp.Close()
+			s, err := disp.Size(ctx)
+			if err != nil {
+				// It may return error while transition, keep retrying.
+				return err
+			}
+			if s.Width > s.Height == expectLandscape {
+				return nil
+			}
+
+			return errors.New("display not rotated in ARC")
+		}, nil)
+	}
+
+	// Restore the initial rotation after the test.
+	defer func() {
+		if err := display.SetDisplayProperties(ctx, tconn, info.ID,
+			display.DisplayProperties{Rotation: &info.Rotation}); err != nil {
+			s.Fatal("Failed to restore the initial rotation: ", err)
+		}
+	}()
+
+	// Try all rotations
+	rotations := []int{0, 90, 180, 270}
+	for _, r := range rotations {
+		if err := display.SetDisplayProperties(ctx, tconn, info.ID,
+			display.DisplayProperties{Rotation: &r}); err != nil {
+			s.Fatalf("Failed to rotate display to %d: %q", r, err)
+		}
+		if err := waitForRotation((r % 180) == 0); err != nil {
+			s.Fatal("Failed to wait for rotation: ", err)
+		}
+		testing.Sleep(ctx, 3*time.Second)
+		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+			s.Fatalf("Failed to wait for the virtual keyboard to show at rotation %d: %q", r, err)
+		}
+
+	}
+}
+
 func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	a := p.ARC
@@ -259,5 +367,8 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	})
 	s.Run(ctx, "focusChange", func(ctx context.Context, s *testing.State) {
 		chromeVirtualKeyboardFocusChangeTest(ctx, tconn, a, cr, d, s)
+	})
+	s.Run(ctx, "rotation", func(ctx context.Context, s *testing.State) {
+		chromeVirtualKeyboardRotationTest(ctx, tconn, a, cr, d, s)
 	})
 }

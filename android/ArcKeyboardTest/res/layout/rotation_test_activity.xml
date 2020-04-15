@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2020 The Chromium OS Authors. All rights reserved.
+   Use of this source code is governed by a BSD-style license that can be
+   found in the LICENSE file.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <EditText android:id="@+id/text"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:inputType="text"
+              android:text="@string/default_text" />
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
+      <Button android:id="@+id/unchanged_button"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/unchanged_button" />
+      <Button android:id="@+id/hidden_button"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/hidden_button" />
+      <Button android:id="@+id/visible_button"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/visible_button" />
+</LinearLayout>
