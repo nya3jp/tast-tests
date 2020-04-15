@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84abb558_b1f2e123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-15T04:00:35Z",
+      "side": 1,
+      "message": "FYI, you may also write this way:\n\nif dev.SupportMUMIMO() !\u003d res[0].SupportMUMIMO {\n  if dev.SupportMUMIMO() {\n    s.Error(\"Device doesn\u0027t support MU-MIMO\")\n  } else {\n    s.Error(\"Device unexpectedly supports MU-MIMO\")\n\n  }\n}",
+      "revId": "f35e3dbafd39fd59e57210b886523d892f8cec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f276f197_beca0c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-15T04:00:35Z",
+      "side": 1,
+      "message": "unexpectedly",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "f35e3dbafd39fd59e57210b886523d892f8cec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
