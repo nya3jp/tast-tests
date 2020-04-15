@@ -93,16 +93,30 @@ var vmBootedInTabletModePre = &preImpl{
 // BootedWithVideoLogging returns a precondition similar to Booted(), but with additional Chrome video logging enabled.
 func BootedWithVideoLogging() testing.Precondition { return bootedWithVideoLoggingPre }
 
+var videoLoggingArgs = []string{
+	"--vmodule=" + strings.Join([]string{
+		"*/media/gpu/chromeos/*=2",
+		"*/media/gpu/vaapi/*=2",
+		"*/media/gpu/v4l2/*=2",
+		"*/components/arc/video_accelerator/*=2"}, ",")}
+
 // bootedWithVideoLoggingPre is returned by BootedWithVideoLogging.
 var bootedWithVideoLoggingPre = &preImpl{
-	name:    "arc_booted_with_video_logging",
-	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
-	extraArgs: []string{
-		"--vmodule=" + strings.Join([]string{
-			"*/media/gpu/chromeos/*=2",
-			"*/media/gpu/vaapi/*=2",
-			"*/media/gpu/v4l2/*=2",
-			"*/components/arc/video_accelerator/*=2"}, ",")},
+	name:      "arc_booted_with_video_logging",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: videoLoggingArgs,
+}
+
+// VMBootedWithVideoLogging returns a precondition similar to  BootedWithVideoLogging(). The only difference from Booted() is
+// that ARC VM, and not the ARC Container, is enabled in this precondition.
+func VMBootedWithVideoLogging() testing.Precondition { return vmBootedWithVideoLoggingPre }
+
+// vmBootedWithVideoLoggingPre is returned by VMBootedWithVideoLogging.
+var vmBootedWithVideoLoggingPre = &preImpl{
+	name:      "arcvm_booted_with_video_logging",
+	timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+	extraArgs: videoLoggingArgs,
+	useARCVM:  true,
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
