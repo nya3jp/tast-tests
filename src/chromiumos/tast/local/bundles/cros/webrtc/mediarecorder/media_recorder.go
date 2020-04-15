@@ -46,11 +46,67 @@ func reportMetric(name, unit string, value float64, direction perf.Direction, p 
 func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, hwAccelEnabled bool) error {
 
 	p := perf.NewValues()
-	hwAccelUsed, err := measureAndReport(ctx, cr, fileSystem, outDir, codec, hwAccelEnabled, p)
+	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to set up CPU benchmark")
+	}
+	defer cleanUpBenchmark(ctx)
+
+	// Reserve time for cleanup at the end of the test.
+	const cleanupTime = 10 * time.Second
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		return errors.Wrap(err, "failed waiting for CPU to become idle")
+	}
+
+	server := httptest.NewServer(http.FileServer(fileSystem))
+	defer server.Close()
+
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return err
 	}
 
+	initHistogram, err := metrics.GetHistogram(ctx, tconn, constants.MediaRecorderVEAUsed)
+	if err != nil {
+		return errors.Wrap(err, "failed to get initial histogram")
+	}
+
+	conn, err := cr.NewConn(ctx, server.URL+"/loopback_media_recorder.html")
+	if err != nil {
+		return errors.Wrap(err, "failed to open recorder page")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	if err := conn.WaitForExpr(ctx, "pageLoaded"); err != nil {
+		return errors.Wrap(err, "Timed out waiting for page loading")
+	}
+
+	// startRecording() a video in given format until stopRecording() is called.
+	if err := conn.Call(ctx, nil, "startRecording", codec); err != nil {
+		return errors.Wrapf(err, "failed to evaluate startRecording(%s)", codec)
+	}
+
+	// While the video recording is in progress, measure CPU usage.
+	cpuUsage := 0.0
+	if cpuUsage, err = measureCPUUsage(ctx, conn); err != nil {
+		return errors.Wrap(err, "failed to measure CPU")
+	}
+
+	// Recorded video will be saved in |videoBuffer| in base64 format.
+	videoBuffer := ""
+	if err := conn.Eval(ctx, "stopRecording()", &videoBuffer); err != nil {
+		return errors.Wrap(err, "failed to stop recording")
+	}
+
+	hwAccelUsed, err := histogram.WasHWAccelUsed(ctx, tconn, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess))
+	if err != nil {
+		return errors.Wrap(err, "failed to get histogram")
+	}
 	if hwAccelEnabled {
 		if !hwAccelUsed {
 			return errors.Wrap(err, "Hw accelerator requested but not used")
@@ -61,111 +117,38 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 		}
 	}
 
-	if err = p.Save(outDir); err != nil {
+	processingTimePerFrame, err := calculateTimePerFrame(ctx, conn, videoBuffer, outDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to calculate the processig time per frame")
+	}
+
+	testing.ContextLogf(ctx, "processing time per frame = %v, cpu usage = %v", processingTimePerFrame, cpuUsage)
+	reportMetric("frame_processing_time", "millisecond", float64(processingTimePerFrame.Nanoseconds()*1000000), perf.SmallerIsBetter, p)
+	reportMetric("cpu_usage", "percent", cpuUsage, perf.SmallerIsBetter, p)
+
+	if err := p.Save(outDir); err != nil {
 		return errors.Wrap(err, "failed to store performance data")
 	}
 	return nil
 }
 
-func measureAndReport(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, hwAccelEnabled bool, p *perf.Values) (hwAccelUsed bool, err error) {
-	processingTimePerFrame, cpuUsage, hwAccelUsed, err := doMeasurePerf(ctx, cr, fileSystem, outDir, codec, !hwAccelEnabled)
-	if err != nil {
-		return hwAccelUsed, errors.Wrap(err, "failed to measure perf")
-	}
-	testing.ContextLogf(ctx, "processing time per frame = %v, cpu usage = %v", processingTimePerFrame, cpuUsage)
-
-	reportMetric("frame_processing_time", "millisecond", float64(processingTimePerFrame.Nanoseconds()*1000000), perf.SmallerIsBetter, p)
-	reportMetric("cpu_usage", "percent", cpuUsage, perf.SmallerIsBetter, p)
-	return hwAccelUsed, nil
-}
-
-// doMeasurePerf measures the frame processing time and CPU usage while recording.
-func doMeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, disableHWAccel bool) (processingTimePerFrame time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
-	// time reserved for cleanup.
-	const cleanupTime = 10 * time.Second
-
-	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
-	if err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to set up benchmark")
-	}
-	defer cleanUpBenchmark(ctx)
-
-	// Reserve time for cleanup at the end of the test.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed waiting for CPU to become idle")
-	}
-
-	server := httptest.NewServer(http.FileServer(fileSystem))
-	defer server.Close()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return 0, 0, false, err
-	}
-
-	initHistogram, err := metrics.GetHistogram(ctx, tconn, constants.MediaRecorderVEAUsed)
-	if err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to get initial histogram")
-	}
-
-	conn, err := cr.NewConn(ctx, server.URL+"/loopback_media_recorder.html")
-	if err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to open recorder page")
-	}
-	defer conn.Close()
-	defer conn.CloseTarget(ctx)
-
-	if err := conn.WaitForExpr(ctx, "pageLoaded"); err != nil {
-		return 0, 0, false, errors.Wrap(err, "Timed out waiting for page loading")
-	}
-
-	// startRecording() will start recording a video in given format. The recording will end when stopRecording() is called.
-	startRecordJS := fmt.Sprintf("startRecording(%q)", codec)
-	if err := conn.EvalPromise(ctx, startRecordJS, nil); err != nil {
-		return 0, 0, false, errors.Wrapf(err, "failed to evaluate %v", startRecordJS)
-	}
-
-	// While the video recording is in progress, measure CPU usage.
-	cpuUsage = 0.0
-	if cpuUsage, err = measureCPUUsage(ctx, conn); err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to measure CPU")
-	}
-
-	// Recorded video will be saved in |videoBuffer| in base64 format.
-	videoBuffer := ""
-	if err := conn.EvalPromise(ctx, "stopRecording()", &videoBuffer); err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to stop recording")
-	}
-
-	hwUsed, err := histogram.WasHWAccelUsed(ctx, tconn, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess))
-	if err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to get histogram")
-	}
-	if disableHWAccel && hwUsed {
-		return 0, 0, false, errors.New("requested SW but got HW result")
-	}
-
+func calculateTimePerFrame(ctx context.Context, conn *chrome.Conn, videoBuffer string, outDir string) (timePerFrame time.Duration, err error) {
 	elapsedTimeMs := 0
 	if err := conn.Eval(ctx, "elapsedTime", &elapsedTimeMs); err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to evaluate elapsedTime")
+		return 0, errors.Wrap(err, "failed to evaluate elapsedTime")
 	}
 
 	videoBytes, err := base64.StdEncoding.DecodeString(videoBuffer)
 	if err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to decode base64 string into byte array")
+		return 0, errors.Wrap(err, "failed to decode base64 string into byte array")
 	}
 
 	frames := 0
 	if frames, err = computeNumFrames(videoBytes, outDir); err != nil {
-		return 0, 0, false, errors.Wrap(err, "failed to compute number of frames")
+		return 0, errors.Wrap(err, "failed to compute number of frames")
 	}
 
-	processingTimePerFrame = time.Duration(elapsedTimeMs/frames) * time.Millisecond
-	return processingTimePerFrame, cpuUsage, hwUsed, nil
+	return time.Duration(elapsedTimeMs/frames) * time.Millisecond, nil
 }
 
 // computeNumFrames computes number of frames in the given MKV video byte array.
