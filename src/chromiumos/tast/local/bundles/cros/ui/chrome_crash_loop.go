@@ -114,7 +114,8 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	// restartTries should match BrowserJob::kRestartTries in browser_job.cc.
 	const restartTries = 5
 	crashLoopModeUsed := false
-	for i := 0; i < restartTries; i++ {
+	crashLoopModeSuccessful := false
+	for i := 0; i < restartTries && !crashLoopModeSuccessful; i++ {
 		s.Log("Killing chrome restart #", i)
 
 		dumps, err := ct.KillAndGetCrashFiles(ctx)
@@ -142,6 +143,8 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 				return strings.Contains(e.Content, testModeSuccessful)
 			}); err != nil {
 				s.Error("Test-successful message not found: ", err)
+			} else {
+				crashLoopModeSuccessful = true
 			}
 		}
 	}
