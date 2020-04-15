@@ -93,9 +93,9 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 	}
 
 	// While the video recording is in progress, measure CPU usage.
-	cpuUsage := 0.0
-	if cpuUsage, err = measureCPUUsage(ctx, conn); err != nil {
-		return errors.Wrap(err, "failed to measure CPU")
+	measurements, err := cpu.MeasureUsage(ctx, measurementDuration)
+	if err != nil {
+		return errors.Wrap(err, "error measuring cpu")
 	}
 
 	// Recorded video will be saved in |videoBuffer| in base64 format.
@@ -123,9 +123,15 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 		return errors.Wrap(err, "failed to calculate the processig time per frame")
 	}
 
-	testing.ContextLogf(ctx, "processing time per frame = %v, cpu usage = %v", processingTimePerFrame, cpuUsage)
 	reportMetric("frame_processing_time", "millisecond", float64(processingTimePerFrame.Nanoseconds()*1000000), perf.SmallerIsBetter, p)
+	cpuUsage := measurements["cpu"]
 	reportMetric("cpu_usage", "percent", cpuUsage, perf.SmallerIsBetter, p)
+	testing.ContextLogf(ctx, "Processing time per frame = %v, cpu usage = %v", processingTimePerFrame, cpuUsage)
+
+	if power, ok := measurements["power"]; ok {
+		reportMetric("power", "W", power, perf.SmallerIsBetter, p)
+		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
+	}
 
 	if err := p.Save(outDir); err != nil {
 		return errors.Wrap(err, "failed to store performance data")
@@ -200,20 +206,6 @@ VideoTrackNumLoop:
 	}
 
 	return frameNum, nil
-}
-
-func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (usage float64, err error) {
-	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
-	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-		return 0, errors.Wrap(ctx.Err(), "failed waiting for CPU usage to stabilize")
-	}
-
-	testing.ContextLogf(ctx, "Sleeping %v to measure CPU usage while playing video", measurementDuration.Round(time.Second))
-	usage, err = cpu.MeasureCPUUsage(ctx, measurementDuration)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to measure CPU usage")
-	}
-	return usage, nil
 }
 
 // VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for |codec|.
