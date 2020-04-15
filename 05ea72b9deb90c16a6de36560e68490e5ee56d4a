@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c40c84c_cf0d01a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-15T21:13:11Z",
+      "side": 1,
+      "message": "nice catch!",
+      "revId": "05ea72b9deb90c16a6de36560e68490e5ee56d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01fbfd63_2171a6a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-15T21:13:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure Stop is really necessary. At least, arc.Booted precondition stops all running activities when it switches to the next test, so it wouldn\u0027t be so problematic so far. +ricardoq for the sanity check.\n(see: https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/arc/pre.go#399)",
+      "revId": "05ea72b9deb90c16a6de36560e68490e5ee56d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
