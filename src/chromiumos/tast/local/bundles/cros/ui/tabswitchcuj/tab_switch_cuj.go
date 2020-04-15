@@ -166,14 +166,14 @@ func Run(ctx context.Context, s *testing.State) {
 		findURLs string
 	}{
 		{
-			"Google News",
-			"https://news.google.com/",
-			`function(url) { return url.host === 'news.google.com' && url.pathname.indexOf('/articles/') == 0; }`,
-		},
-		{
 			"CNN",
 			"https://cnn.com",
 			`function(url) { return url.host === 'www.cnn.com' && url.pathname.match(new RegExp("^/\\d\\d\\d\\d/\\d\\d/\\d\\d/")); }`,
+		},
+		{
+			"Reddit",
+			"https://reddit.com",
+			`function(url) { return url.host === 'www.reddit.com' && url.pathname.match(new RegExp("^/r/[^/]+/comments/[^/]+/")); }`,
 		},
 	} {
 		s.Run(ctx, data.name, func(ctx context.Context, s *testing.State) {
