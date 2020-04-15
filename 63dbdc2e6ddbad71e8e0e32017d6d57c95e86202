@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8895ca78_79b4a3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-15T02:46:09Z",
+      "side": 1,
+      "message": "nit:\nput it as a const, and add comment similar to the one in the commit description.\ne.g:\n\n    // The margin is needed because some devices like Treeya ...\n    const errorMargin \u003d 0.02",
+      "range": {
+        "startLine": 125,
+        "startChar": 52,
+        "endLine": 125,
+        "endChar": 56
+      },
+      "revId": "63dbdc2e6ddbad71e8e0e32017d6d57c95e86202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
