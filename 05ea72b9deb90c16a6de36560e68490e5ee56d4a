@@ -33,6 +33,24 @@
       "revId": "05ea72b9deb90c16a6de36560e68490e5ee56d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05d8c573_f2c1e7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-15T21:51:59Z",
+      "side": 1,
+      "message": "correct. If you are using the ARC precondition, the ARC precondition will close all activities that were launched in the test.\nif you are not using the ARC precondition, then when then the ARC session is closed, it will kill all activities.",
+      "parentUuid": "01fbfd63_2171a6a2",
+      "revId": "05ea72b9deb90c16a6de36560e68490e5ee56d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
