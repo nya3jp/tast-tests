@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bb9d1e2_fde90dc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-15T10:15:57Z",
+      "side": 1,
+      "message": "nit: please put this comment before each \"group\", e.g. before 205 line",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 77
+      },
+      "revId": "5404dc3672b558507f3af3fd19efd3d8256081e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e66d08d_ee9cd161",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-15T10:15:57Z",
+      "side": 1,
+      "message": "same: please move before line 232",
+      "revId": "5404dc3672b558507f3af3fd19efd3d8256081e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
