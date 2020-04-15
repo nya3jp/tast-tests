@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3457f392_2003e6ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-15T22:13:15Z",
+      "side": 1,
+      "message": "Oh yes, the reboot.",
+      "parentUuid": "451d2342_61f0fe90",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 103
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e796f7e_2a32d954",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 2
@@ -141,6 +165,30 @@
       "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20eb2e27_afe08e6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-15T22:13:15Z",
+      "side": 1,
+      "message": "Yes, I missed that this was a remote test and we can\u0027t use the native ReadDir.",
+      "parentUuid": "99a648a7_c8d68ce6",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "4fd2144d2d36da4f2046fffbdc9aaa184c27b4a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
