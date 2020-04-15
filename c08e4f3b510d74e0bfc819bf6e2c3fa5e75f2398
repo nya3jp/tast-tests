@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12c6cd44_5d9d8938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-15T19:26:19Z",
+      "side": 0,
+      "message": "Since this is no longer called, it looks like we\u0027re not sleeping stabilizationDuration anymore. Should we do that?",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd2e8055_6a1deccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-15T19:26:19Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think the error returned by cpu.MeasureUsage() has enough context, so you might still want to use errors.Wrap().",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 12
+      },
+      "revId": "bb7053c64cab25b0e3e01f7b0065a65b68463125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f423f9dc_a346e655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-15T19:26:19Z",
+      "side": 1,
+      "message": "I think this can go away now, right?",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 20
+      },
+      "revId": "bb7053c64cab25b0e3e01f7b0065a65b68463125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
