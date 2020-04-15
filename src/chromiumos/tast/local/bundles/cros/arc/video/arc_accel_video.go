@@ -10,6 +10,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -93,6 +94,22 @@ func arcVideoTestCleanup(ctx context.Context, a *arc.ARC) {
 	}
 }
 
+func runARCVMSetup(s *testing.State) {
+	// Change permissions of ARCVM's /sdcard/ directory from the host side.
+	// TODO(b/148642474): The following workaround should be removed once /sdcard
+	// is properly supported in ARCVM.
+	p, err := filepath.Glob("/home/root/*/android-data/data/media/0")
+	if err != nil {
+		s.Fatal("Failed to list up ARCVM's /sdcard paths: ", err)
+	}
+	if len(p) != 1 {
+		s.Fatalf("Wrong number of ARCVM's /sdcard paths exist; got %d, want 1", len(p))
+	}
+	if err := os.Chmod(p[0], 0777); err != nil {
+		s.Fatalf("Failed to chmod %s: %v", p[0], err)
+	}
+}
+
 func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo string, requireMD5File bool) *c2e2etest.VideoMetadata {
 	a := s.PreValue().(arc.PreData).ARC
 
@@ -131,10 +148,11 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 		pushFiles = append(pushFiles, frameMD5Path)
 	}
 
-	if err := a.Command(ctx, "mkdir", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "mkdir", "-p", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed creating test data dir: ", err)
 	}
-	// Push files to ARC container.
+
+	// Push files to Android
 	for _, pushFile := range pushFiles {
 		err := a.PushFile(ctx, pushFile, arcFilePath)
 		if err != nil {
@@ -294,6 +312,15 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	isARCVM, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check if ARCVM is enabled: ", err)
+	}
+	if isARCVM {
+		// VM-specific setup
+		runARCVMSetup(s)
+	}
 
 	md := runARCVideoTestSetup(ctx, s, testVideo, true)
 
