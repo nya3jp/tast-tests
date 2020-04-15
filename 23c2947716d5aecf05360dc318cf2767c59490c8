@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4d195dce_936fcf17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T21:30:37Z",
+      "side": 1,
+      "message": "Sure. I\u0027m just saying that \"Done\" is usually used to signify \"I followed this suggestion\" and it seems like that\u0027s not what happened, so I was unsure if it was intentionally not followed (fine, but should use \"Ack\") or if it was a forgotten upload.\n\nI also prefer your version, so my suggestion was for the case where your FYI was not applied.",
+      "parentUuid": "2a06789c_237a23b3",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "23c2947716d5aecf05360dc318cf2767c59490c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f8bf2b_8f1016b5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
         "patchSetId": 21
