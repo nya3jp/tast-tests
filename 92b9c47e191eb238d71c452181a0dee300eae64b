@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee7fd2b1_d355cc39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-15T17:46:55Z",
+      "side": 1,
+      "message": "It would be better defining\nfunc Wifi80211ac() Condition {...} in src/platform/tast/src/chromiumos/tast/testing/hwdep/dep.go",
+      "revId": "92b9c47e191eb238d71c452181a0dee300eae64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
