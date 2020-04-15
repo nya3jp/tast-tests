@@ -1,0 +1,237 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package platform
+
+import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
+
+	empty "github.com/golang/protobuf/ptypes/empty"
+
+	"chromiumos/tast/common/perf"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/arc"
+	"chromiumos/tast/services/cros/platform"
+	"chromiumos/tast/services/cros/security"
+	"chromiumos/tast/testing"
+)
+
+const (
+	reconnectDelay = 5 * time.Second
+)
+
+var (
+	iterations      = 10    // The number of boot iterations. Can be overridden by var "platform.BootPerf.iterations".
+	skipRootfsCheck = false // Should we skip rootfs verification? Can be overridden by var "platform.BootPerf.skipRootfsCheck"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         BootPerf,
+		Desc:         "Boot performance test",
+		Contacts:     []string{"chinglinyu@chromium.org"},
+		Attr:         []string{"group:crosbolt"},
+		ServiceDeps:  []string{"tast.cros.arc.PerfBootService", "tast.cros.platform.BootPerfService", "tast.cros.security.BootLockboxService"},
+		SoftwareDeps: []string{"chrome"},
+		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
+		// This test collects boot timing for |iterations| times and requires a longer timeout.
+		Timeout: 15 * time.Minute,
+	})
+}
+
+// assertRootfsVerification asserts rootfs verification is enabled by
+// "checking dm_verity.dev_wait=1" is in /proc/cmdline. Fail the test if rootfs
+// verification is disabled.
+func assertRootfsVerification(ctx context.Context, s *testing.State) {
+	d := s.DUT()
+	cmdline, err := d.Conn().Command("cat", "/proc/cmdline").Output(ctx)
+	if err != nil {
+		s.Fatal("Failed to read kernel cmdline")
+	}
+
+	if !strings.Contains(string(cmdline), "dm_verity.dev_wait=1") {
+		s.Fatal("Rootfs verification is off")
+	}
+}
+
+// waitUntilCPUCoolDown waits until system CPU cools down to stabilize the test.
+func waitUntilCPUCoolDown(ctx context.Context, s *testing.State) {
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	arcPerfBootService := arc.NewPerfBootServiceClient(cl.Conn)
+	// Wait until CPU cools down.
+	if _, err = arcPerfBootService.WaitUntilCPUCoolDown(ctx, &empty.Empty{}); err != nil {
+		// DUT is unable to cool down, probably timed out. Treat this as a non-fatal error and continue the test with a warning.
+		s.Log("Warning: PerfBootService.WaitUntilCPUCoolDown returned an error: ", err)
+	}
+}
+
+// bootPerfOnce runs one iteration of the boot perf test.
+func bootPerfOnce(ctx context.Context, s *testing.State, i int, pv *perf.Values) {
+	s.Logf("Running iteration %d/%d", i+1, iterations)
+
+	waitUntilCPUCoolDown(ctx, s)
+
+	d := s.DUT()
+	if err := d.Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot DUT: ", err)
+	}
+
+	// Wait for |reconnectDelay| duration before reconnecting to the DUT to avoid interfere with early boot stages.
+	if err := testing.Sleep(ctx, reconnectDelay); err != nil {
+		s.Log("Warning: failed in sleep before redialing RPC: ", err)
+	}
+	// Need to reconnect to the gRPC server after rebooting DUT.
+	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
+	// Collect boot metrics through RPC call to BootPerfServiceClient. This call waits until system boot is complete and returns the metrics.
+	metrics, err := bootPerfService.GetBootPerfMetrics(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to get boot perf metrics: ", err)
+	}
+
+	for k, v := range metrics.GetMetrics() {
+		// |unit|: rdbytes or seconds.
+		unit := strings.Split(k, "_")[0]
+		pv.Append(perf.Metric{
+			Name:      k,
+			Unit:      unit,
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, v)
+	}
+
+	// Save raw data for this iteration.
+	savedRaw := filepath.Join(s.OutDir(), fmt.Sprintf("raw.%03d", i+1))
+	if err = os.Mkdir(savedRaw, 0755); err != nil {
+		s.Fatalf("Failed to create path %s", savedRaw)
+	}
+
+	raw, err := bootPerfService.GetBootPerfRawData(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to get boot perf raw data: ", err)
+	}
+
+	for k, v := range raw.GetRawData() {
+		if err = ioutil.WriteFile(filepath.Join(savedRaw, k), v, 0644); err != nil {
+			s.Fatal("Failed to save raw data: ", err)
+		}
+	}
+}
+
+// ensureChromeLogin performs a Chrome login to bypass OOBE if necessary to make
+// sure the DUT will be booted to the login screen.
+func ensureChromeLogin(ctx context.Context, s *testing.State, cl *rpc.Client) error {
+	d := s.DUT()
+	// Check whether OOBE is completed.
+	_, err := d.Conn().Command("ls", "/home/chronos/.oobe_completed").Output(ctx)
+	if err == nil {
+		return nil
+	}
+
+	// Perform a Chrome login to skip OOBE.
+	client := security.NewBootLockboxServiceClient(cl.Conn)
+	if _, err := client.NewChromeLogin(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
+	}
+
+	if _, err := client.CloseChrome(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "failed to close Chrome")
+	}
+
+	// Check that OOBE is completed after Chrome login.
+	_, err = d.Conn().Command("ls", "/home/chronos/.oobe_completed").Output(ctx)
+	if err != nil {
+		return errors.Wrap(err, "OOBE is not completed after Chrome login")
+	}
+
+	return nil
+}
+
+// BootPerf is the function that reboots the client and collect boot perf data.
+func BootPerf(ctx context.Context, s *testing.State) {
+	d := s.DUT()
+
+	// Check whether the runner requests the test to skip rootfs check.
+	if val, ok := s.Var("platform.BootPerf.skipRootfsCheck"); ok {
+		skipRootfsCheck = (strings.ToLower(val) == "true")
+	}
+	if !skipRootfsCheck {
+		// Disabling rootfs verification makes metric "seconds_kernel_to_startup" incorrectly better than normal.
+		// Fail the test if rootfs verification is disabled.
+		assertRootfsVerification(ctx, s)
+	}
+
+	func() {
+		// Connect to the gRPC server on the DUT.
+		cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		if err != nil {
+			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+		}
+		defer cl.Close(ctx)
+
+		// Make sure we don't boot to OOBE.
+		if err = ensureChromeLogin(ctx, s, cl); err != nil {
+			s.Fatal("Failed in Chrome login: ", err)
+		}
+
+		// Enable bootchart before running the boot perf test.
+		bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
+		_, err = bootPerfService.EnableBootchart(ctx, &empty.Empty{})
+		if err != nil {
+			// If we failed in enabling bootchart, log the failure and proceed without bootchart.
+			s.Log("Warning: failed to enable bootchart. Error: ", err)
+		}
+	}()
+
+	// Undo the effect of enabling bootchart. This cleanup can also be performed (becomes a no-op) if bootchart is not enabled.
+	defer func() {
+		// Restore the side effect made in this test by disabling bootchart for subsequent system boots.
+		s.Log("Disable bootchart")
+		cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		if err != nil {
+			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+		}
+		defer cl.Close(ctx)
+
+		bootPerfService := platform.NewBootPerfServiceClient(cl.Conn)
+		_, err = bootPerfService.DisableBootchart(ctx, &empty.Empty{})
+		if err != nil {
+			s.Log("Error in disabling bootchart: ", err)
+		}
+		// Disabling bootchart will take effect on next boot. Since there is no side effect other than "cros_bootchart" in the kernel cmdline, we skip this reboot.
+	}()
+
+	if iter, ok := s.Var("platform.BootPerf.iterations"); ok {
+		if i, err := strconv.Atoi(iter); err == nil {
+			iterations = i
+		}
+	}
+
+	pv := perf.NewValues()
+	for i := 0; i < iterations; i++ {
+		// Run the boot test once.
+		bootPerfOnce(ctx, s, i, pv)
+	}
+	if err := pv.Save(s.OutDir()); err != nil {
+		s.Error("Failed saving perf data: ", err)
+	}
+}
