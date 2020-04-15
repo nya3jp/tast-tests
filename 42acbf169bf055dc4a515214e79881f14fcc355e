@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c7ff8e43_a960dce0",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T20:40:31Z",
+      "side": 1,
+      "message": "configPatterns is fine. I agree with David that it is confusing to shorten like this especially because all of the entries have filepaths in them.",
+      "parentUuid": "0b0f1d48_6666050d",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 12
+      },
+      "revId": "42acbf169bf055dc4a515214e79881f14fcc355e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c089bd68_13f46be1",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 3
