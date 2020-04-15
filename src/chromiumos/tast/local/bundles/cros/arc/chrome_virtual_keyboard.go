@@ -9,10 +9,14 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -34,6 +38,18 @@ func init() {
 			Pre:               arc.VMBootedInTabletMode(),
 		}},
 	})
+}
+
+func getVirtualKeyboardLocation(ctx context.Context, tconn *chrome.TestConn) (coords.Rect, error) {
+	params := chromeui.FindParams{
+		Role:  chromeui.RoleTypeKeyboard,
+		State: map[chromeui.StateType]bool{chromeui.StateTypeInvisible: false},
+	}
+	element, err := chromeui.FindWithTimeout(ctx, tconn, params, 5*time.Second)
+	if err != nil {
+		return coords.Rect{}, errors.Wrap(err, "failed to find the keyboard")
+	}
+	return element.Location, nil
 }
 
 // chromeVirtualKeyboardBasicEditingTest tests basic editing on a EditText on an ARC app by Chrome's virtual keyboard.
@@ -311,6 +327,90 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 	}
 }
 
+func chromeVirtualKeyboardRotationTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".MainActivity"
+
+		fieldID = virtualKeyboardTestAppPkg + ":id/text"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx, tconn)
+
+	field := d.Object(ui.ID(fieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := field.SetText(ctx, ""); err != nil {
+		s.Fatal("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for virtual keyboard to be ready")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+
+	// Chrome OS virtual keyboard is shown and ready. Let's rotate the device.
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display info: ", err)
+	}
+	if len(infos) == 0 {
+		s.Fatal("No display found")
+	}
+	var info *display.Info
+	for i := range infos {
+		if infos[i].IsInternal {
+			info = &infos[i]
+		}
+	}
+	if info == nil {
+		s.Log("No internal display found. Default to the first display")
+		info = &infos[0]
+	}
+
+	// Try all rotations
+	for _, r := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
+		coordsBefore, err := getVirtualKeyboardLocation(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get the virtual keyboard location: ", err)
+		}
+
+		if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, r); err != nil {
+			s.Fatalf("Failed to rotate display to %q: %q", r, err)
+		}
+
+		coordsAfter, err := getVirtualKeyboardLocation(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get the virtual keyboard location: ", err)
+		}
+
+		if coordsBefore == coordsAfter || coordsAfter.Empty() {
+			s.Fatalf("Failed to show the virtual keyboard after rotaton in %d, %q -> %q", r, coordsBefore, coordsAfter)
+		}
+	}
+}
+
 func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	a := p.ARC
@@ -341,5 +441,8 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	// TODO(crbug.com/1081596): Add tests with an IME with composition.
 	s.Run(ctx, "editingOnNull", func(ctx context.Context, s *testing.State) {
 		chromeVirtualKeyboardEditingOnNullTypeTest(ctx, tconn, a, cr, d, s)
+	})
+	s.Run(ctx, "rotation", func(ctx context.Context, s *testing.State) {
+		chromeVirtualKeyboardRotationTest(ctx, tconn, a, cr, d, s)
 	})
 }
