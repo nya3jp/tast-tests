@@ -52,6 +52,24 @@
       "revId": "f63ba410015f444816bb4f903ed9b400b6056a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ba428ab_a28a6dd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-15T08:01:11Z",
+      "side": 1,
+      "message": "Agreed. Can we have it as a subtest of arc.SplitView? I also recognize that current arc.SplitView is not sufficient, and it\u0027s been on my plate, but I haven\u0027t had cycle for it, so I appreciate you\u0027re working on it.\n\nState.Run() can be used to create a subtest:\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/state.go?l\u003d236\u0026rcl\u003d3e808334727c57e9736cf49c60309c7a4f25c935\n\nSample usage: https://cs.corp.google.com/search/?q\u003ds%5C.Run+file:%5Esrc/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/+package:%5Echromeos_public$\u0026type\u003dcs",
+      "parentUuid": "36da3a72_3397c40e",
+      "revId": "f63ba410015f444816bb4f903ed9b400b6056a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
