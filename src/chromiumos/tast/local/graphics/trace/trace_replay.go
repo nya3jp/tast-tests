@@ -10,6 +10,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net"
 	"net/http"
 	"net/url"
@@ -95,8 +96,9 @@ func setTCPPortState(ctx context.Context, port int, open bool) error {
 
 // File server routine. It serves all the artifact requests request from the guest.
 type fileServer struct {
-	CloudStorage *testing.CloudStorage
-	Repository   *comm.RepositoryInfo
+	cloudStorage *testing.CloudStorage // cloudStorage is a client to read files on Google Cloud Storage.
+	repository   *comm.RepositoryInfo  // repository is a struct to communicate between container and proxyServer.
+	outDir       string                // outDir is directory to store the received file.
 }
 
 func validateRequestedFilePath(filePath string) bool {
@@ -104,54 +106,92 @@ func validateRequestedFilePath(filePath string) bool {
 	return path.Join("/", filePath)[1:] == filePath
 }
 
-func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
-	ctx := req.Context()
-	testing.ContextLog(ctx, "[Proxy Server] Serving request: ", req.URL.RawQuery)
-	query, err := url.ParseQuery(req.URL.RawQuery)
-	if err != nil {
-		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to parse request query <%s>: %s", req.URL.RawQuery, err.Error())
-		wr.WriteHeader(http.StatusBadRequest)
-		return
-	}
+// log logs the information to tast log.
+func (s *fileServer) log(ctx context.Context, format string, args ...interface{}) {
+	testing.ContextLogf(ctx, "[Proxy Server] "+format, args...)
+}
 
-	requestedFilePath := query["d"][0]
-	// The requested path is specified relative to the repository root URL to restrict access to arbitrary
-	// files via this request.
-	if !validateRequestedFilePath(requestedFilePath) {
-		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to validate the requested path  <%s>", requestedFilePath)
+// serveDownloadRequest would try to download a file and trasmitted the file via the http response.
+func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseWriter, filePath string) {
+	// The requested path is specified relative to the repository root URL to restrict access to arbitrary files via this request.
+	s.log(ctx, "Validate requested file path: %s", filePath)
+	if !validateRequestedFilePath(filePath) {
+		s.log(ctx, "Error: Unable to validate the requested path %v", filePath)
 		wr.WriteHeader(http.StatusUnauthorized)
 		return
 	}
 
-	requestURL, e := url.Parse(s.Repository.RootURL)
-	if e != nil {
-		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to parse the repository URL <%s>: %s", s.Repository.RootURL, err.Error())
+	s.log(ctx, "Parse repository URL %s", s.repository.RootURL)
+	requestURL, err := url.Parse(s.repository.RootURL)
+	if err != nil {
+		s.log(ctx, "Error: Unable to parse the repository URL: %v", err)
 		wr.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	requestURL.Path = path.Join(requestURL.Path, requestedFilePath)
-	testing.ContextLog(ctx, "[Proxy Server] Downloading: ", requestURL.String())
-	r, err := s.CloudStorage.Open(ctx, requestURL.String())
+	requestURL.Path = path.Join(requestURL.Path, filePath)
+	s.log(ctx, "Downloading: %s", requestURL)
+	r, err := s.cloudStorage.Open(ctx, requestURL.String())
 	if err != nil {
-		testing.ContextLogf(ctx, "[Proxy Server] Error: Unable to open <%v>: %v", requestURL, err)
+		s.log(ctx, "Error: Unable to download: %v", err)
 		wr.WriteHeader(http.StatusNotFound)
 		return
 	}
 	defer r.Close()
 
-	wr.Header().Set("Content-Disposition", "attachment; filename="+path.Base(requestedFilePath))
+	wr.Header().Set("Content-Disposition", "attachment; filename="+path.Base(filePath))
 	wr.WriteHeader(http.StatusOK)
 
 	copied, err := io.Copy(wr, r)
 	if err != nil {
-		testing.ContextLog(ctx, "[Proxy Server] Error: io.Copy() failed: ", err)
+		s.log(ctx, "Error: io.Copy() failed: %v", err)
 	}
-	testing.ContextLogf(ctx, "[Proxy Server] Request served successfully. %d byte(s) copied", copied)
+	s.log(ctx, "%d byte(s) copied", copied)
 }
 
-func startFileServer(ctx context.Context, addr string, cloudStorage *testing.CloudStorage, repository *comm.RepositoryInfo) *http.Server {
-	handler := &fileServer{CloudStorage: cloudStorage, Repository: repository}
+// serveUploadRequest would save the content tramitted via http request and save it to fileName.
+func (s *fileServer) serveUploadRequest(ctx context.Context, wr http.ResponseWriter, fileName, content string) {
+	filePath := path.Join(s.outDir, fileName)
+	if err := ioutil.WriteFile(filePath, []byte(content), 0644); err != nil {
+		s.log(ctx, "Failed to save %v", filePath)
+	}
+	s.log(ctx, "File saved to %v", fileName)
+	wr.WriteHeader(http.StatusOK)
+}
+
+// ServeHTTP implements http.HandlerFunc interface to serve incoming request.
+func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
+	ctx := req.Context()
+	s.log(ctx, "Serving request: %s", req.URL.RawQuery)
+	query, err := url.ParseQuery(req.URL.RawQuery)
+	if err != nil {
+		s.log(ctx, "Error: Unable to parse request query: %s", err.Error())
+		wr.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	for key, val := range query {
+		switch key {
+		case "d":
+			s.serveDownloadRequest(ctx, wr, val[0])
+			break
+		case "upload":
+			temp, ok := query["content"]
+			if ok {
+				content = temp[0]
+			} else {
+				content = ""
+			}
+			s.serveUploadRequest(ctx, wr, val[0], content)
+			break
+		default:
+			s.log(ctx, "Skip request: %v", key)
+		}
+	}
+}
+
+func startFileServer(ctx context.Context, addr, outDir string, cloudStorage *testing.CloudStorage, repository *comm.RepositoryInfo) *http.Server {
+	handler := &fileServer{cloudStorage: cloudStorage, repository: repository, outDir: outDir}
 	testing.ContextLog(ctx, "Starting server at "+addr)
 	server := &http.Server{
 		Addr:    addr,
@@ -225,7 +265,7 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}
 
 	serverAddr := fmt.Sprintf("%s:%d", outboundIP, fileServerPort)
-	server := startFileServer(ctx, serverAddr, cloudStorage, &group.Repository)
+	server := startFileServer(ctx, serverAddr, outDir, cloudStorage, &group.Repository)
 	defer func() {
 		if err := server.Shutdown(ctx); err != nil {
 			testing.ContextLog(ctx, "Unable to shutdown file server: ", err)
