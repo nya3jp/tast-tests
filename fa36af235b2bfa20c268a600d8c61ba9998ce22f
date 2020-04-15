@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4cad20d_89cc5865",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-15T02:42:27Z",
+      "side": 1,
+      "message": "nya@\n\nCould you remind me what only string literals are supports in Vars? And whether or not we can accept `const` in Vars as well?\nThanks.",
+      "parentUuid": "e8b7fc13_9cb3eb0e",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd191b90_8bd16032",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2020-04-10T07:57:26Z",
       "side": 1,
       "message": "In tast-lint VerifyTestingStateParam check, there\u0027s a whitelist for using testing.State, should one add paths there before adding new Preconditions?\nThis step is not written in go/tast-writing, so I would like to make sure (and maybe update the doc :) ).",
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3f70ba_026f4ca3",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-15T02:42:27Z",
+      "side": 1,
+      "message": "good point. Yes, we should update the documentation. The path should be updated.",
+      "parentUuid": "bd191b90_8bd16032",
       "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
