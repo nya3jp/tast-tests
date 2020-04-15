@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dd8e603_b5dc5ba1",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "Are we required to use the same sample rate here as in the cras_test_client invocation?",
+      "range": {
+        "startLine": 21,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5d0873f_c65b7d98",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "I think this should take a time.Duration.",
+      "range": {
+        "startLine": 29,
+        "startChar": 72,
+        "endLine": 29,
+        "endChar": 91
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c8e282_1846eaf4",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "nit: be smaller",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc1a3bf_1a4945c2",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c483226_6f29e4e9",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "can just be\n\n const threshold \u003d -6.0\n\nthough you might want to comment that this is in dB",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c6ed528_87e627df",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "You should check for nil here, otherwise we could get a panic below when indexing into rms.",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33147e95_3630abd6",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "nit: maybe rmsLeft",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6cb7db_18857056",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "nit: and rmsRight",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007a991f_eddcbc57",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "these can probably be combined into one log line, your call",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5044c61c_a7a58eef",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "This seems more vague than it needs to be, maybe \"samples are all zeroes\"",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75b4f1f_06dce461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "nit: remove this blank line",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67952626_66d285b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "This can just be \n\n const duration \u003d 2 * time.Second\n\nand you don\u0027t need to comment it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df5097f_94c7304f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-15T18:26:33Z",
+      "side": 1,
+      "message": "This should probably be a Fatal since the TrimFileFrom and CheckRecordingQuality calls don\u0027t make any sense if we fail to create a wav file.",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
