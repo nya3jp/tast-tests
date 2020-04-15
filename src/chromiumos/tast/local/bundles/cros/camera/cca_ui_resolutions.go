@@ -32,6 +32,11 @@ const (
 	videoResolution                = "video"
 )
 
+// aspectRatioTolerance is the small aspect ratio comparison tolerance for
+// judging the treeya's special resolution 848:480(1.766...) which should be
+// counted as 16:9(1.77...).
+const aspectRatioTolerance = 0.02
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIResolutions,
@@ -122,7 +127,7 @@ func testPhotoResolution(ctx context.Context, app *cca.App, saveDir string) erro
 			if err != nil {
 				return err
 			}
-			if math.Abs(pr.AspectRatio()-or.AspectRatio()) > 0.02 {
+			if math.Abs(pr.AspectRatio()-or.AspectRatio()) > aspectRatioTolerance {
 				return errors.Wrapf(err, "inconsistent preview aspect ratio get %d:%d; want %d:%d", pr.Width, pr.Height, or.Width, or.Height)
 			}
 
