@@ -329,6 +329,30 @@
       "revId": "73307dcf929958295409ffc5ff429f39662a7944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea725fe1_5e595759",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-15T17:22:39Z",
+      "side": 1,
+      "message": "I agreed with Eliot. New() (or NewFoo()) function is something like a constructor in other languages.\nIn most cases, it is a package scope function. In some cases, it is a method of other struct, (such as chrome.Chrome.NewConn).\nWithSomething is also one of the pattern used in golang. E.g., https://golang.org/pkg/context/,\nso I think it is ok.",
+      "parentUuid": "c9aab182_e3df3662",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "73307dcf929958295409ffc5ff429f39662a7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
