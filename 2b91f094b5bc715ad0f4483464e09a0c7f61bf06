@@ -22,6 +22,30 @@
       "revId": "2b91f094b5bc715ad0f4483464e09a0c7f61bf06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf8a5c6_c42c60f5",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-15T04:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0858ca28_639390ad",
+      "range": {
+        "startLine": 450,
+        "startChar": 120,
+        "endLine": 450,
+        "endChar": 122
+      },
+      "revId": "2b91f094b5bc715ad0f4483464e09a0c7f61bf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
