@@ -20,9 +20,16 @@ func init() {
 		Desc:         "Test ARC's smart selections show up in Chrome's right click menu",
 		Contacts:     []string{"bhansknecht@chromium.org", "dhaddock@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Vars:         []string{"arc.SmartSelectionChrome.username", "arc.SmartSelectionChrome.password"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
