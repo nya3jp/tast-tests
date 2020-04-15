@@ -22,6 +22,30 @@
       "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c89c32_20934259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-15T19:00:36Z",
+      "side": 1,
+      "message": "Problem with doing\n a, b :\u003d bla() \nis that it defines new vars |a| and |b|, and we need the |a|\n(in this case |cpuUsage|) further down in l.128. \nThis line is going away in the next CL anyhow :-)",
+      "parentUuid": "fee71407_1b661db6",
+      "range": {
+        "startLine": 97,
+        "startChar": 18,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
