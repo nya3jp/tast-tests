@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6d49aeb_0c55fa26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-15T09:42:17Z",
+      "side": 1,
+      "message": "I guess it\u0027ll be useful to print failure reasons as well. WDYT abot adding such changes in the following CL?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
