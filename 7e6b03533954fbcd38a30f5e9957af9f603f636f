@@ -22,6 +22,30 @@
       "revId": "7e6b03533954fbcd38a30f5e9957af9f603f636f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a957c88_a678a34e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-15T19:01:10Z",
+      "side": 1,
+      "message": "Oops no, it should be checked.",
+      "parentUuid": "c570bbfd_5f406a69",
+      "range": {
+        "startLine": 96,
+        "startChar": 15,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "7e6b03533954fbcd38a30f5e9957af9f603f636f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
