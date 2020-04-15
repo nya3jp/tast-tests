@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d13bf5e5_328b2507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-15T17:58:53Z",
+      "side": 1,
+      "message": "\u003e \"recieved\" is a possible misspelling of \"received\".\n\nPlease fix.",
+      "parentUuid": "b8ac17ba_8c74ea9b",
+      "range": {
+        "startLine": 61,
+        "startChar": 40,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "3bfe3e82170381e196221578955649f60614dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
