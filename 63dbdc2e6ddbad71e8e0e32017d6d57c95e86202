@@ -22,6 +22,30 @@
       "revId": "63dbdc2e6ddbad71e8e0e32017d6d57c95e86202",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9befaa4d_0bf79641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-04-15T07:29:49Z",
+      "side": 1,
+      "message": "Thanks for the comment, will address this in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2150347",
+      "parentUuid": "8895ca78_79b4a3da",
+      "range": {
+        "startLine": 125,
+        "startChar": 52,
+        "endLine": 125,
+        "endChar": 56
+      },
+      "revId": "63dbdc2e6ddbad71e8e0e32017d6d57c95e86202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
