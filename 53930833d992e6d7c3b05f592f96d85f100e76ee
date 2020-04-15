@@ -16,6 +16,24 @@
       "revId": "53930833d992e6d7c3b05f592f96d85f100e76ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21935cce_43e8947d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-15T09:32:31Z",
+      "side": 1,
+      "message": "Done - curious, what is the reason for this? Is it invalid to say \u0027inset xyz by 10 px\u0027 (vs \u0027inset xyz 10px\u0027) ?",
+      "parentUuid": "402f9147_6ebc484f",
+      "revId": "53930833d992e6d7c3b05f592f96d85f100e76ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
