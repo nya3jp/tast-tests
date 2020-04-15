@@ -282,6 +282,30 @@
       "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a547fe34_28888463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-15T03:00:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5f60166_424eea2d",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
