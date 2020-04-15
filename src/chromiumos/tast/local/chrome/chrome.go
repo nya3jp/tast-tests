@@ -729,10 +729,23 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		// This always fails because /home/chronos is a mount point, but all files
 		// under the directory should be removed.
 		os.RemoveAll(chronosDir)
-		if fis, err := ioutil.ReadDir(chronosDir); err != nil {
+		fis, err := ioutil.ReadDir(chronosDir)
+		if err != nil {
 			return err
-		} else if len(fis) > 0 {
-			return errors.Errorf("failed to clear %s: failed to remove %q", chronosDir, fis[0].Name())
+		}
+
+		// /home/chronos/crash can be recreated asynchronously, whenever any
+		// program owned by chronos has an error. Don't complain about it being
+		// recreated under us.
+		// Filtering-in-loop code from https://github.com/golang/go/wiki/SliceTricks#filtering-without-allocating
+		filtered := fis[:0]
+		for _, file := range fis {
+			if file.Name() != "crash" {
+				filtered = append(filtered, file)
+			}
+		}
+		if len(filtered) > 0 {
+			return errors.Errorf("failed to clear %s: failed to remove %q", chronosDir, filtered[0].Name())
 		}
 
 		// Delete policy files to clear the device's ownership state since the account
