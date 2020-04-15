@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "db5b8069_fbcce5c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2020-04-15T16:55:40Z",
+      "side": 1,
+      "message": "Thanks for the clarification. I switched over to use the precondition, which seems to work as required.",
+      "parentUuid": "f53677b5_dad722da",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 19
+      },
+      "revId": "dc189f30155013bf0335d27fca0b0408ea24efab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "365b00af_3d14de92",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 2
