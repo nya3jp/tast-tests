@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
@@ -36,6 +37,7 @@ var unstableVkTests = []vkTestParams{
 	// TODO(b/157432003) Stabilize this test.
 	{"Editing on TYPE_NULL", chromeVirtualKeyboardEditingOnNullTypeTest},
 	{"Floating mode", chromeVirtualKeyboardFloatingTest},
+	{"Rotation", chromeVirtualKeyboardRotationTest},
 }
 
 const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
@@ -437,6 +439,92 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 	if err := waitForRelayout(boundsWithVK); err != nil {
 		s.Fatal("Failed to move up the field by switching to normal mode: ", err)
+	}
+}
+
+func chromeVirtualKeyboardRotationTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".MainActivity"
+
+		fieldID = virtualKeyboardTestAppPkg + ":id/text"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx, tconn)
+
+	field := d.Object(ui.ID(fieldID))
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := field.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := field.SetText(ctx, ""); err != nil {
+		s.Fatal("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for virtual keyboard to be ready")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+
+	// Chrome OS virtual keyboard is shown and ready. Let's rotate the device.
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get display info: ", err)
+	}
+	if len(infos) == 0 {
+		s.Fatal("No display found")
+	}
+	var info *display.Info
+	for i := range infos {
+		if infos[i].IsInternal {
+			info = &infos[i]
+		}
+	}
+	if info == nil {
+		s.Log("No internal display found. Default to the first display")
+		info = &infos[0]
+	}
+
+	// Try all rotations
+	for _, r := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
+		element, err := vkb.VirtualKeyboard(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get the virtual keyboard location: ", err)
+		}
+		coordsBefore := element.Location
+
+		if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, r); err != nil {
+			s.Fatalf("Failed to rotate display to %q: %q", r, err)
+		}
+
+		element, err = vkb.VirtualKeyboard(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get the virtual keyboard location: ", err)
+		}
+
+		coordsAfter := element.Location
+		if coordsBefore == coordsAfter || coordsAfter.Empty() {
+			s.Fatalf("Failed to show the virtual keyboard after rotation in %s, before %q; after %q", r, coordsBefore, coordsAfter)
+		}
 	}
 }
 
