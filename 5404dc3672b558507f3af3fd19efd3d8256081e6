@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1aa34bd1_4a0eadb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-15T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb9d1e2_fde90dc6",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 77
+      },
+      "revId": "5404dc3672b558507f3af3fd19efd3d8256081e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e66d08d_ee9cd161",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
         "patchSetId": 14
@@ -39,6 +63,24 @@
       "revId": "5404dc3672b558507f3af3fd19efd3d8256081e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8d96ba_7720c902",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-15T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e66d08d_ee9cd161",
+      "revId": "5404dc3672b558507f3af3fd19efd3d8256081e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
