@@ -46,6 +46,30 @@
       "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd1ff955_b1d724f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-15T10:53:41Z",
+      "side": 1,
+      "message": "t.Run returns \"Report\" struct and have full access to all it\u0027s field and function (now it\u0027s only FailedTestNames).\n\nTo print failures to have to either\n1. introduce new function in gtest package that will return failures+names\n2. just simply iterate by Report fields.\n\nI prefer (1) because other people also will be interested in such functionality.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/gtest/report.go;l\u003d21",
+      "parentUuid": "cd2abc14_9280c4ad",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
