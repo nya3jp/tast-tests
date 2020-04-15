@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b4863ac7_3966fdcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-15T07:27:30Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the arc_camera3 dep.\n\nmore background: There are two camera stacks and the cros-camera one is the new one guarded by the arc_camera3 USE flag/dep. This test is only for the new one, while some other tests such as the camera app tests are run on both.",
+      "parentUuid": "6724efb1_59a5621a",
+      "revId": "32815dd39b65c8b3781f4754820645761c0a8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdeee17a_5fe06428",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
         "patchSetId": 2
@@ -56,6 +74,48 @@
       "revId": "32815dd39b65c8b3781f4754820645761c0a8663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1041fcc3_348db065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-15T07:27:30Z",
+      "side": 1,
+      "message": "It should be handled by $PATH correctly and we are using the same pattern for other camera tests as well. IMO it\u0027s a bug if it cannot locate the executable by name, and we would like to fail the test in that case.",
+      "parentUuid": "bdeee17a_5fe06428",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "32815dd39b65c8b3781f4754820645761c0a8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de60782a_bb672832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-15T07:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a12579_ee476e0a",
+      "revId": "32815dd39b65c8b3781f4754820645761c0a8663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
