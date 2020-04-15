@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d9e5ddd_21da06e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-15T07:08:30Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "e98b0730_36a54bd2",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f91b7af9_92052324",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f790e1f9_8e35af0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-15T07:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f91b7af9_92052324",
+      "range": {
+        "startLine": 262,
+        "startChar": 42,
+        "endLine": 262,
+        "endChar": 55
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9825558e_c563fcfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-15T07:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b3fb053_9883856e",
+      "range": {
+        "startLine": 28,
+        "startChar": 58,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac15bbcb_69ea9444",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 22
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "bbe7b11f_c26da621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-15T07:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac15bbcb_69ea9444",
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66f1c868_fdd42a6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.MainActivity.json",
         "patchSetId": 22
@@ -99,6 +189,30 @@
       "writtenOn": "2020-04-15T04:59:13Z",
       "side": 1,
       "message": "Oh I previously thought this comes from \u003capplication android:label\u003d\"...\"\u003e. That\u0027s why I requested to keep @string/app_name in the previous round. Sorry for making a confusion.",
+      "range": {
+        "startLine": 2,
+        "startChar": 10,
+        "endLine": 2,
+        "endChar": 25
+      },
+      "revId": "c62676de473fc987a1a8db7c2ec6b504ba081d14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60f5b805_793265f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.MainActivity.json",
+        "patchSetId": 22
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-15T07:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f1c868_fdd42a6c",
       "range": {
         "startLine": 2,
         "startChar": 10,
