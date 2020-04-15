@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "347ca5cd_4fa36a1e",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2020-04-15T14:40:26Z",
+      "side": 1,
+      "message": "Please remove the recorded audio in the beginning to avoid pop noise causing RMS to be large.\n\nImagine a case:\nLarge pop noise, and after that, all zeros.\nWe should catch such issue.\n\nAs for pop noise, we can have a separate test to catch only the beginning of recording.",
+      "revId": "94dc4ce1084b4ea447c06791bd61530df36fe2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
