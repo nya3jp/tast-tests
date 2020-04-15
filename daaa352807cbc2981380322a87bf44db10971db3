@@ -16,6 +16,24 @@
       "revId": "daaa352807cbc2981380322a87bf44db10971db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a43daff_e6f9e2b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-15T06:53:36Z",
+      "side": 1,
+      "message": "Looked a bit deeper into this. Realized that I am using the example service on line - 36, and shouldn\u0027t be doing so. When looked at the example service - https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/chrome_service.go, it is just starting a new instance of Chrome - which makes the boot lockbox non-writable after login and that is what we check next, on line - 129.\n\nBased on the same thinking, I tried to get rid of the login function on line  - 128 altogether, and instead just start a new Chrome instance directly. But, it failed to do so and gives an error that stateful partition is not writable from this code - https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?rcl\u003dd6b57597177e94decd89f16266c39c6d08fbb694\u0026l\u003d333\n\n\nNow, not exactly sure - can it be possibly coz we already have a chrome running in background automatically after REBOOT. Example service can deal with somehow with its code. Not sure if I am thinking correctly here. Thoughts?",
+      "parentUuid": "172364ea_0c92be7b",
+      "revId": "daaa352807cbc2981380322a87bf44db10971db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
