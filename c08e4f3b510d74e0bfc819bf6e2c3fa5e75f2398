@@ -46,6 +46,30 @@
       "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25528960_0c6d2eae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-15T20:21:59Z",
+      "side": 0,
+      "message": "But that sleep is only for collecting the measurements. ToT sleeps two times:\n\n(1) One sleep of duration \u003d |stabilizationDuration| to let the CPU usage stabilize.\n(2) Another sleep of duration \u003d |measurementDuration| to actually measure the CPU usage.\n\nYour CL seems to only do (2).",
+      "parentUuid": "a9e91cf9_527fbca2",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
