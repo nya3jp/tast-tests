@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0c2a232e_5e3d6819",
+        "filename": "src/chromiumos/tast/common/wifi/security/base/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T06:04:50Z",
+      "side": 1,
+      "message": "I think it is ok to have Factory and keep the current usage (use base.Config{} directly in hostapd/config.go).",
+      "parentUuid": "4909a02b_8501cce8",
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "effdd0bb_c8c8c7f8",
         "filename": "src/chromiumos/tast/common/wifi/security/security.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a841a5_91bb79f2",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "effdd0bb_c8c8c7f8",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "785ec955_dbb88bec",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c715ad_c8ac8ee9",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 87
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0606330c_e2ee3f8b",
         "filename": "src/chromiumos/tast/common/wifi/security/security.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fdf3388_214e7342",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0606330c_e2ee3f8b",
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "e5ca5175_80edb53e",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529f74a2_b575df63",
+      "range": {
+        "startLine": 28,
+        "startChar": 30,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "205ac726_3f3f43cc",
         "filename": "src/chromiumos/tast/common/wifi/security/security.go",
         "patchSetId": 1
@@ -125,6 +233,30 @@
       "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d8a278_981d8118",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T06:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "205ac726_3f3f43cc",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "dae7e512d9caa518fbd41d1404f563fb6603883c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
