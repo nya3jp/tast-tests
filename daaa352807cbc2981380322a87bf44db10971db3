@@ -34,6 +34,24 @@
       "revId": "daaa352807cbc2981380322a87bf44db10971db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79eb282d_017b8279",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-15T16:56:06Z",
+      "side": 1,
+      "message": "\u003e instead just start a new Chrome instance directly.\n\nDo you mean going through grpc, since this is remote?  Not sure how you can do that otherwise and see error about stateful partition.",
+      "parentUuid": "7a43daff_e6f9e2b3",
+      "revId": "daaa352807cbc2981380322a87bf44db10971db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
