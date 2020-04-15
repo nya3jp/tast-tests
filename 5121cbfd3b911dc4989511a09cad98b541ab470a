@@ -22,6 +22,30 @@
       "revId": "5121cbfd3b911dc4989511a09cad98b541ab470a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d2b0ff7_d6b2770b",
+        "filename": "android/ArcAccessibilityTest/AndroidManifest.xml",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-15T02:17:20Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "25b0b389_b5902785",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "5121cbfd3b911dc4989511a09cad98b541ab470a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
