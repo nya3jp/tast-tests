@@ -70,6 +70,30 @@
       "revId": "33e2f3a465950488ddd28d1cb985e6dd837d086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a291a51_8b0c758a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-15T18:58:40Z",
+      "side": 1,
+      "message": "I can\u0027t see slide behavior on desks-related UI -- am I missing something?  Anyhow...\n* I\u0027m fine with testing.Sleep. If 500msecs would be more robust, that would be great.\n* there\u0027s ui.EventWatcher and EnsureNoEvents, which might be a bit robust way. For waiting of slide animation, it would be:\n\n  ew, err :\u003d chromeui.NewWatcher(ctx, desksMiniViews[1], chromeui.EventTypeLocationChanged)\n  if err !\u003d nil { ... }\n  defer ew.Release(ctx)\n  if err \u003d testing.Poll(ctx, func(ctx context.Context) error { return ew.EnsureNoEvents(ctx, 100*time.Millisecond) }, \u0026testing.PollOptions{Timeout:time.Second}); err !\u003d nil {\n     ...\n  }\n\nthis way, it finishes the polling when no location change happens within 100 msecs, and it waits up until 1 second. Or you could use WaitForLocationChangeCompleted (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui#WaitForLocationChangeCompleted)",
+      "parentUuid": "97227278_727a7cad",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 5
+      },
+      "revId": "33e2f3a465950488ddd28d1cb985e6dd837d086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
