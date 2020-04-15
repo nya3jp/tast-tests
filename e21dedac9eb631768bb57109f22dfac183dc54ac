@@ -22,6 +22,30 @@
       "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2abc14_9280c4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-15T10:46:37Z",
+      "side": 1,
+      "message": "Hmm could you help elaborate more on the \"failure reasons\"? It seems that FailedTestNames() is the only information we have in report now. Normally we will check the gtest log file if we want to know more details.",
+      "parentUuid": "e6d49aeb_0c55fa26",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
