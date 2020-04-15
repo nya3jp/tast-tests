@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "930b32b4_4b63716f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-15T07:09:26Z",
+      "side": 1,
+      "message": "Please check for error or use the precondition as Shuhei has suggested.",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 14
+      },
+      "revId": "9339e9293972f260ce8689e3430d0229a505f7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
