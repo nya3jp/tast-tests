@@ -22,6 +22,30 @@
       "revId": "4bb715b8f4d997df690f37f259bf106337e4a8e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8161c0aa_51778e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-15T06:11:29Z",
+      "side": 0,
+      "message": "Oops. Fixed.",
+      "parentUuid": "a17eef30_2f1cb5e1",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "4bb715b8f4d997df690f37f259bf106337e4a8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
