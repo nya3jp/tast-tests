@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c463ca6c_9524c328",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T05:26:28Z",
+      "side": 1,
+      "message": "Also moved SSID and SecurityClass.",
+      "parentUuid": "029203a5_439e3a23",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "7db84b9fc0214039a1d79ce19353d17e600cc4c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df6d32fe_4a5f0203",
         "filename": "src/chromiumos/tast/local/shill/service.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7db84b9fc0214039a1d79ce19353d17e600cc4c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "446c1ccf_3f089183",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-15T05:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df6d32fe_4a5f0203",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "7db84b9fc0214039a1d79ce19353d17e600cc4c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
