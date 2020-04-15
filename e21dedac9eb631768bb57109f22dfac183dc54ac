@@ -70,6 +70,30 @@
       "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0510f20f_4b144c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-15T10:54:38Z",
+      "side": 1,
+      "message": "This change will simplify your life, because you will see failures in Tast logs.",
+      "parentUuid": "bd1ff955_b1d724f4",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
