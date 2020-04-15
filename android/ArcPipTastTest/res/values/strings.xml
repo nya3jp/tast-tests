@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2019 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+  <!-- App name -->
+  <string name="app_name" translatable="false">ArcPipTastTest</string>
+  <!-- PipActivity title -->
+  <string name="pip_activity_text" translatable="false">PipActivity</string>
+  <!-- MaPipBaseActivity title -->
+  <string name="mapip_base_activity_text" translatable="false">MaPipBaseActivity</string>
+  <!-- BlankActivity title -->
+  <string name="blank_activity_text" translatable="false">BlankActivity</string>
+  <!-- Enter PIP button text-->
+  <string name="enter_pip_button_text" translatable="false">Enter PIP</string>
+  <!-- Enter PIP button text-->
+  <string name="launch_pip_activity_button_text" translatable="false">Launch PIP activity</string>
+</resources>
