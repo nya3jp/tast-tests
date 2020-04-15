@@ -12,9 +12,9 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/lsbrelease"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -34,12 +34,13 @@ type UtilsService struct {
 
 // Platform gets the name of the DUT platform (coral, samus, drallion, etc).
 func (*UtilsService) Platform(ctx context.Context, req *empty.Empty) (*fwpb.PlatformResponse, error) {
-	p, err := crosconfig.Get(ctx, "/identity", "platform-name")
+	lsbContents, err := lsbrelease.Load()
 	if err != nil {
-		return nil, errors.Wrap(err, "getting platform name from cros-config")
+		return nil, errors.Wrap(err, "loading lsbrelease contents")
 	}
-	if p == "" {
-		return nil, errors.New("got an empty string from cros-config")
+	p, ok := lsbContents[lsbrelease.Board]
+	if !ok {
+		return nil, errors.Errorf("failed to find %s in lsbrelease contents", lsbrelease.Board)
 	}
 	return &fwpb.PlatformResponse{Platform: p}, nil
 }
