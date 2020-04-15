@@ -22,6 +22,30 @@
       "revId": "56bb3c9ef5b419c9ffaf93f1f4d4a0c5fee624d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0985ad4_1ca8eafb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-04-15T12:19:07Z",
+      "side": 1,
+      "message": "That sounds reasonable. Changed this one for table-driven testing only.",
+      "parentUuid": "34db9d0e_14def57c",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "56bb3c9ef5b419c9ffaf93f1f4d4a0c5fee624d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
