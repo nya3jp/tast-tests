@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "38cae2f0_012e582d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-15T17:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54cfacd8_eac608df",
+      "revId": "8caddbec334d6fa74f626ae7826aa1c9319a5a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc9d2698_1ee105c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "8caddbec334d6fa74f626ae7826aa1c9319a5a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee11b03_f79e75fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/change_wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-15T17:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc9d2698_1ee105c1",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 59
+      },
+      "revId": "8caddbec334d6fa74f626ae7826aa1c9319a5a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
