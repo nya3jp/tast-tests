@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f53677b5_dad722da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-15T07:07:23Z",
+      "side": 1,
+      "message": "clearPolicies only runs when tast starts, before any preconditions are executed. It\u0027s safe to use the Chrome precondition.",
+      "parentUuid": "30aecc30_4b69c702",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 19
+      },
+      "revId": "dc189f30155013bf0335d27fca0b0408ea24efab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "365b00af_3d14de92",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 2
