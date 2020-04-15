@@ -94,6 +94,30 @@
       "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb14129_79b4caa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-15T11:19:06Z",
+      "side": 1,
+      "message": "Normally to triage a camera test failure, we will need to see the full gtest.log and likely syslog anyway. Our tests and the camera service would print many extra information that are not included by gtest report.\n\nWe use FailedTestNames() mainly to fingerprint the regressions, such as grouping them visually on Tastboard or annotate it in Testmon config sheet. So I think the current status is good enough for us :)",
+      "parentUuid": "0510f20f_4b144c5b",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "e21dedac9eb631768bb57109f22dfac183dc54ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
