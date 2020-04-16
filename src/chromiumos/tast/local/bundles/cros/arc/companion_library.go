@@ -106,16 +106,6 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkg, mainActivity)
-	if err != nil {
-		s.Fatal("Failed to create new activity: ", err)
-	}
-	defer act.Close()
-
-	if err := act.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed start Settings activity: ", err)
-	}
-
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
@@ -147,8 +137,17 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 		{"Maximize App-controlled Window", testMaximize},
 	} {
 		s.Log("Running ", test.name)
+		act, err := arc.NewActivity(a, pkg, mainActivity)
+		if err != nil {
+			s.Fatal("Failed to create new activity: ", err)
+		}
+		defer act.Close()
+
 		if err := act.Start(ctx, tconn); err != nil {
-			s.Fatal("Failed to start context: ", err)
+			s.Fatal("Failed to start activity: ", err)
+		}
+		if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to wait device idle: ", err)
 		}
 		if err := test.fn(ctx, tconn, act, d); err != nil {
 			path := fmt.Sprintf("%s/screenshot-companionlib-failed-test-%s.png", s.OutDir(), strings.ReplaceAll(test.name, " ", ""))
@@ -158,9 +157,15 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			s.Errorf("%s test failed: %v", test.name, err)
 		}
 		if err := act.Stop(ctx); err != nil {
-			s.Fatal("Failed to stop context: ", err)
+			s.Fatal("Failed to stop activity: ", err)
 		}
 	}
+
+	act, err := arc.NewActivity(a, pkg, mainActivity)
+	if err != nil {
+		s.Fatal("Failed to create new activity: ", err)
+	}
+	defer act.Close()
 
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start context: ", err)
@@ -1075,18 +1080,11 @@ func testWindowState(ctx context.Context, tconn *chrome.TestConn, act *arc.Activ
 		windowStateExp ash.WindowStateType
 		isAppManaged   bool
 	}{
-		{windowStateStr: "Minimize", windowStateExp: ash.WindowStateMinimized, isAppManaged: false},
 		{windowStateStr: "Maximize", windowStateExp: ash.WindowStateMaximized, isAppManaged: false},
 		{windowStateStr: "Normal", windowStateExp: ash.WindowStateNormal, isAppManaged: false},
+		{windowStateStr: "Minimize", windowStateExp: ash.WindowStateMinimized, isAppManaged: false},
 	} {
 		testing.ContextLogf(ctx, "WindowState: Testing windowState=%v, appManaged=%t", test.windowStateStr, test.isAppManaged)
-		// Change the window to normal state first, making sure the UI can be touched by tast test library.
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, act.PackageName(), ash.WMEventNormal); err != nil {
-			return err
-		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, act.PackageName(), ash.WindowStateNormal); err != nil {
-			return err
-		}
 
 		if err := setWindowState(ctx, d, test.windowStateStr, test.isAppManaged); err != nil {
 			return errors.Wrap(err, "error while setting window state")
@@ -1398,7 +1396,7 @@ func setWindowState(ctx context.Context, d *ui.Device, windowStateStr string, is
 // setWindowStateSync returns after the window state changed as expected.
 func setWindowStateSync(ctx context.Context, act *arc.Activity, state arc.WindowState) error {
 	if err := act.SetWindowState(ctx, state); err != nil {
-		return errors.Wrap(err, "could not set window state to normal")
+		return errors.Wrap(err, "could not set window state")
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if currentState, err := act.GetWindowState(ctx); err != nil {
