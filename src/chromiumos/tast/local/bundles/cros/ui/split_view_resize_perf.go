@@ -93,6 +93,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	// the left and right. Windows snap on the top and bottom in portrait-oriented
 	// tablet mode. They snap on the left and right in portrait-oriented clamshell
 	// mode, but there are active (although contentious) proposals to change that.
+	// TODO: Do this part through camera orientation when that is supported.
 	orientation, err := display.GetOrientation(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain the orientation info: ", err)
