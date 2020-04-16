@@ -22,6 +22,30 @@
       "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8e6c8f_1eb91ba1",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:07:03Z",
+      "side": 1,
+      "message": "These two tests are a little different. I added this check here because of some reasons.\n1. cras_record may record samples from any devices, like headphone, usb. For those devices, all zeros are expected.\n2. The cras_record is still flaky. We should not add more function on it before we fix them.\n3. Only this test record audio samples and save them into a file. I think we should do all samples check here.",
+      "parentUuid": "c92db71a_ebe125ec",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
