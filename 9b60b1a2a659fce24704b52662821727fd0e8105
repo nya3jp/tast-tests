@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "beafe7ca_4e3b4ac0",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T16:48:32Z",
+      "side": 1,
+      "message": "Thanks. I added some parameters for this function.",
+      "parentUuid": "2930a2d5_b3173075",
+      "range": {
+        "startLine": 21,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5d0873f_c65b7d98",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 2

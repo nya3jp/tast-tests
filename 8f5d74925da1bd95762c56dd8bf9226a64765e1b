@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "a515333d_65c0a4a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T16:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67bcc7b7_f9faa874",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71f579e4_5451a95a",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
         "patchSetId": 3
