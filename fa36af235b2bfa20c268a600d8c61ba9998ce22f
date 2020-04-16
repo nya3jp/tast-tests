@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6cb01542_a7f4054f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-16T09:07:40Z",
+      "side": 1,
+      "message": "In current tast-lint, there\u0027s a \"verifyVars\" function in declarations.go which asserts every elements to be string ast.BasicLit[1], so constants are not allowed. (ServiceDeps does not have similar check, so the line before this is OK.)\n\nIn the case here, the variable/constant is in another package so I guess it is not very easy to check if it\u0027s a constant... (at least, it will need to parse dependency packages)\n\nAny suggestion?\n\n[1] http://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/cmd/tast-lint/check/declarations.go?l\u003d247",
+      "parentUuid": "ef867e49_7c3c1513",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd191b90_8bd16032",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
