@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c723629_18f9264b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-04-16T18:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e59cb1b_5543a47e",
+      "range": {
+        "startLine": 11,
+        "startChar": 62,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "fda0d52f4a8b52b87745d8342da2f26a9b7bbf13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fef5c3b_e639b073",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "fda0d52f4a8b52b87745d8342da2f26a9b7bbf13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230d2e61_860eaabc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-04-16T18:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fef5c3b_e639b073",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 34
+      },
+      "revId": "fda0d52f4a8b52b87745d8342da2f26a9b7bbf13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
