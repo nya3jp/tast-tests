@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80da087a_fb29f64f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-16T06:57:58Z",
+      "side": 1,
+      "message": "Why we are running this on group:crosbolt instead of mainline?",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4845b331_f8894c4f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-16T06:57:58Z",
+      "side": 1,
+      "message": "How do we know if front/back camera is present on the device? Should we have an extra dep for it?",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39aaca2_584f5682",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_device_back.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-16T06:57:58Z",
+      "side": 1,
+      "message": "Should we use parameterized tests [1] instead of duplicating the test for front and back camera?\n\nref: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32570048_0fa1f30e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_perf_front.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-16T06:57:58Z",
+      "side": 1,
+      "message": "Could you help confirm that the remote performance test would work without any modification?",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7e8263_f5105531",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/hal3_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-16T06:57:58Z",
+      "side": 1,
+      "message": "Should we use CAPITALS_WITH_UNDERSCORES here?\n\nref: https://developers.google.com/protocol-buffers/docs/style#enums",
+      "revId": "439b85ccfee6da82bf01d4dddd7948565a4dd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
