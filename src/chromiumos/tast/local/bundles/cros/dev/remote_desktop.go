@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // Do not poll things too fast to prevent triggering weird UI behaviors. The
@@ -35,7 +36,6 @@ func init() {
 		Func:         RemoteDesktop,
 		Desc:         "Connect to Chrome Remote Desktop for working remotely",
 		Contacts:     []string{"shik@chromium.org", "tast-users@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			// For running manually.
@@ -43,6 +43,19 @@ func init() {
 			// For automated testing.
 			"dev.username", "dev.password",
 		},
+		Params: []testing.Param{{
+			// For running manually.
+			Name: "",
+		}, {
+			// For automated testing.
+			Name:      "test",
+			ExtraAttr: []string{"group:mainline", "informational"},
+			// TODO(b/151111783): This is a speculative fix to limit the number of sessions. It
+			// seems that the test account is throttled by the CRD backend, so the test is failing
+			// with a periodical pattern. The model list are handcrafted to cover various platforms.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("atlas", "careena", "dru", "eve", "kohaku",
+				"krane", "nocturne")),
+		}},
 	})
 }
 
