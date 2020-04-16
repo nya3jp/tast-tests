@@ -56,9 +56,9 @@ const (
 	// userCrashStash is a directory to stash pre-existing crash reports of currently logged in user during crash tests.
 	userCrashStash = "/home/chronos/user/crash.real"
 	// ClobberCrashDir is a directory where crash reports after an FS clobber go.
-	ClobberCrashDir = "/mnt/stateful_partition/unencrypted/preserve/crash"
-	// clobberCrashStash is a directory to stash pre-existing crash reports after an FS clobber. Used in crash tests.
-	clobberCrashStash = "/mnt/stateful_partition/unencrypted/preserve/crash.real"
+	ClobberCrashDir = "/mnt/stateful_partition/reboot_vault/crash"
+	// clobberCrashStash is a directory used to stash pre-existing crash reports after an FS clobber. Used in crash tests.
+	clobberCrashStash = "/mnt/stateful_partition/reboot_vault/crash.real"
 	// userCrashDirs is used for finding the directory name containing a hash for current logged-in user,
 	// in order to compare it with crash reporter log.
 	userCrashDirs = "/home/chronos/u-*/crash"
