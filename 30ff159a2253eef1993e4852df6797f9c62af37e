@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "610d4d2a_48f9a0bd",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T16:32:37Z",
+      "side": 1,
+      "message": "huge nit: Tast",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 52
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ff3375_9c24ec21",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T16:32:37Z",
+      "side": 1,
+      "message": "nit: add link to documentation/source that describes the mdns header format",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1698f77a_41de6862",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T16:32:37Z",
+      "side": 1,
+      "message": "add comment saying that 239.255.255.250 / ff02::c are the fixed ssdp addresses. If possible adding a link to the RFC/documentation/source.",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f5db69_03c18a46",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T16:32:37Z",
+      "side": 1,
+      "message": "just double checking: if mIPv6.isChecked(), will this work?\nIf so, please add comment saying that it works.",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8419dccc_86572837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T16:32:37Z",
+      "side": 1,
+      "message": "replace by `apk` perhaps?",
+      "range": {
+        "startLine": 135,
+        "startChar": 38,
+        "endLine": 135,
+        "endChar": 69
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
