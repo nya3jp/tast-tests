@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "06467b6c_09c8822b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-16T21:29:56Z",
+      "side": 1,
+      "message": "Is there an alternative to sleeping. Like polling for when the cpu usage is stable. If so, please change this or add a todo.",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "0e38e0496311ac6afa5fe6ba6b207cd71ac0b1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9e883f2_6ff60a1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -13,6 +36,30 @@
       "writtenOn": "2020-04-16T18:16:12Z",
       "side": 1,
       "message": "Hmm... Do you know why this was ctx.Err() instead of |err|?",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "0e38e0496311ac6afa5fe6ba6b207cd71ac0b1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c906e14_102e4c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-16T21:29:56Z",
+      "side": 1,
+      "message": "nit: the error returned by testing.Sleep() wraps ctx.Err(). so just use err for clarity.",
+      "parentUuid": "c9e883f2_6ff60a1e",
       "range": {
         "startLine": 96,
         "startChar": 21,
