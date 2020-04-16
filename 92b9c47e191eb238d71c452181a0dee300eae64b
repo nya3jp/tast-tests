@@ -52,6 +52,24 @@
       "revId": "92b9c47e191eb238d71c452181a0dee300eae64b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058451ed_89ed9bfe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-16T16:39:12Z",
+      "side": 1,
+      "message": "Added Wifi80211ac in tast. http://crrev.com/c/2153225",
+      "parentUuid": "529d0d36_6c54a68b",
+      "revId": "92b9c47e191eb238d71c452181a0dee300eae64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
