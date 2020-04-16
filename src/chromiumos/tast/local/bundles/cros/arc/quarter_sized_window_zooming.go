@@ -82,6 +82,16 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the activity to resume: ", err)
 	}
 
+	// Wait for window finishing animating before taking screenshot,
+	// or the line color will be off as expected.
+	windows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the window list: ", err)
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+		s.Fatal("Failed to wait for top window animation: ", err)
+	}
+
 	img, err := screenshot.GrabScreenshot(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to grab screenshot: ", err)
