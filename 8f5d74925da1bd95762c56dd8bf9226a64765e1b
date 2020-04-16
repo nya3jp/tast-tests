@@ -46,6 +46,30 @@
       "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06086075_0a4f98c6",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2020-04-16T05:07:37Z",
+      "side": 1,
+      "message": "I see. Thanks for the explanations.\nInstead of checking if the rms is Inf, is it feasible to check the percentage of zero in the samples or have a min threshold? I can image cases that we record nothing but a few samples of noise.",
+      "parentUuid": "bd8e6c8f_1eb91ba1",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
