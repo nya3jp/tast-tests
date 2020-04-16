@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4cdbae6_4ad2b63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-16T08:59:32Z",
+      "side": 1,
+      "message": "Sure, could we just move this test case into the api_routine.go or still needed in a separate file?",
+      "parentUuid": "1a998e3b_05392eb0",
+      "revId": "56ee97b306ac9de1c8d60ead4b4861c63b06a11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32c8aaba_9f306f72",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
         "patchSetId": 6
