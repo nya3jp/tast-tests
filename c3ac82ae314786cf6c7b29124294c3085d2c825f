@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "927e065c_5d1a9416",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-16T21:50:33Z",
+      "side": 1,
+      "message": "Thanks for catching this. To prevent wpr fails us again, I wonder whether we want to add some sanity check to ensure there are something loaded in tab, say \"document.body.innerHTML.length \u003e 0\".",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "c3ac82ae314786cf6c7b29124294c3085d2c825f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
