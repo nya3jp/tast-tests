@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ba7b4d0_fe45303e",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Right! The default rate in cras_test_client is 48000 bps. We can customize them if needed in the future.",
+      "parentUuid": "3dd8e603_b5dc5ba1",
+      "range": {
+        "startLine": 21,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5d0873f_c65b7d98",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9d6031_8537ecae",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5d0873f_c65b7d98",
+      "range": {
+        "startLine": 29,
+        "startChar": 72,
+        "endLine": 29,
+        "endChar": 91
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b74e2e17_8224dba2",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34c8e282_1846eaf4",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bc1a3bf_1a4945c2",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 2
@@ -85,6 +157,24 @@
       "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89fc90b1_16561f89",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc1a3bf_1a4945c2",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "d75971a6_48442393",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c483226_6f29e4e9",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c6ed528_87e627df",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 2
@@ -125,6 +239,24 @@
       "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b803efd6_81b75f7d",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c6ed528_87e627df",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "78401ac4_2462cc4a",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33147e95_3630abd6",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f6cb7db_18857056",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 2
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "74c7329b_ef6090a8",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f6cb7db_18857056",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "007a991f_eddcbc57",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 2
@@ -185,6 +365,30 @@
       "writtenOn": "2020-04-15T18:26:33Z",
       "side": 1,
       "message": "these can probably be combined into one log line, your call",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c863ff44_268f845f",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Right. However, I prefer to have them in the different line, which is easier to read.",
+      "parentUuid": "007a991f_eddcbc57",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -214,6 +418,24 @@
     },
     {
       "key": {
+        "uuid": "6572a178_45719791",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5044c61c_a7a58eef",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d75b4f1f_06dce461",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
         "patchSetId": 2
@@ -228,6 +450,24 @@
       "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bffbb0_373172c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75b4f1f_06dce461",
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "fb74117c_d3423dbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67952626_66d285b6",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1df5097f_94c7304f",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
         "patchSetId": 2
@@ -274,6 +538,30 @@
       "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abd9ec8_e39a7ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cras_record_quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T04:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df5097f_94c7304f",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
