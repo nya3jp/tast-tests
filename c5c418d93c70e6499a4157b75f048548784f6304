@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "8668b044_89b888e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:42:24Z",
+      "side": 1,
+      "message": "How long will output be? If it could be multiple lines, could you dump it to a file under OutDir?",
+      "parentUuid": "3767f5a6_0f8ec138",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 37
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "823f2178_f6a4c6b6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -294,6 +318,53 @@
         "startChar": 1,
         "endLine": 145,
         "endChar": 87
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6f8598_7ce8ba6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:42:24Z",
+      "side": 1,
+      "message": "nit/style/optional: I rarely see \"exp\" for regexp. How about \"re\"?",
+      "parentUuid": "5ed49146_9b8b37eb",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 87
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd186cb7_cbe477d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:42:24Z",
+      "side": 1,
+      "message": "Ditto for the length of output. If it\u0027d be multiline. Could you dump it to a file?",
+      "range": {
+        "startLine": 149,
+        "startChar": 77,
+        "endLine": 149,
+        "endChar": 80
       },
       "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
