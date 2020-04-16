@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0bcda665_d523c2a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-16T09:10:42Z",
+      "side": 1,
+      "message": "Oops, sorry, it\u0027s not a bug number but a cl number.\ncrrev.com/c/2135674",
+      "parentUuid": "319bb167_a00225ab",
+      "range": {
+        "startLine": 140,
+        "startChar": 46,
+        "endLine": 140,
+        "endChar": 47
+      },
+      "revId": "aba3f1729a9f052077ede1fd313a170d765fa73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c431e32_59b0ff63",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 22
