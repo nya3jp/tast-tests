@@ -2,24 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arc
+package video
 
 import (
 	"context"
-	"time"
 
+	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VideoDecodeAccelVDVDA,
+		Func:         DecodeAccelVDVDA,
 		Desc:         "Verifies hardware decode acceleration using a media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_tests binary (see go/vd-migration)",
 		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		SoftwareDeps: []string{"arc", "chrome", "cros_video_decoder"},
-		Timeout:      4 * time.Minute,
+		SoftwareDeps: []string{"chrome", "cros_video_decoder"},
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               "test-25fps.h264",
@@ -90,8 +88,6 @@ func init() {
 	})
 }
 
-func VideoDecodeAccelVDVDA(ctx context.Context, s *testing.State) {
-	if err := decoding.RunAccelVideoTest(ctx, s.OutDir(), s.DataPath(s.Param().(string)), decoding.VDVDA); err != nil {
-		s.Fatal("test failed: ", err)
-	}
+func DecodeAccelVDVDA(ctx context.Context, s *testing.State) {
+	decode.RunAccelVideoTest(ctx, s, s.Param().(string), decode.VDVDA)
 }
