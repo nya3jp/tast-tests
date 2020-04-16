@@ -100,7 +100,13 @@ func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 	// version in different format.
 	mBuildID := regexp.MustCompile(`(\n|^)ro.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
 	if mBuildID == nil {
-		return nil, errors.Errorf("ro.build.version.incremental is not found in %q", buildPropStr)
+		// On ARCVM R ro.system.build.version.incremental is
+		// empty and each component has its own version; use
+		// the system version.
+		mBuildID = regexp.MustCompile(`(\n|^)ro.system.build.version.incremental=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
+		if mBuildID == nil {
+			return nil, errors.Errorf("ro.system.build.version.incremental is not found in %q", buildPropStr)
+		}
 	}
 
 	desc := buildDescriptor{
