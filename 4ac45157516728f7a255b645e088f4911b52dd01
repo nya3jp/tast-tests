@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "0faa9a53_fd090b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-16T17:06:18Z",
+      "side": 1,
+      "message": "I believe this flag makes sense on clamshell mode and has no effects on tablet-mode. It would be better to have a TODO comment of erasing this.\n\nIf precondition should be used, maybe we could create a testing.Param with Pre:\n  Params: []testing.Param{\n    {\n      Val: true,\n      Pre: arc.BootedInTabletMode(),\n    },\n    {\n      Name: \"clamshell_mode\",\n      Val: false,\n    },\n  },\n\n  ...\n  var cr *chrome.Chrome\n  var a *arc.ARC\n  tabletMode :\u003d s.Param().(bool)\n  if tabletMode {\n    p :\u003d s.PreValue().(arc.PreData)\n    cr \u003d p.Chrome\n    a \u003d p.ARC\n  } else {\n    var err error\n    cr, err \u003d chrome.New(...)\n    ...\n    a, err \u003d arc.New(...)\n    ...\n  }",
+      "parentUuid": "21bf17d5_2190c2ef",
+      "range": {
+        "startLine": 72,
+        "startChar": 67,
+        "endLine": 72,
+        "endChar": 110
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "054ada97_405f9e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-16T17:06:18Z",
+      "side": 1,
+      "message": "Indeed keeping the same code is a safer approach, but if that works, I think it would be nicer to make this a bit more realistic, i.e. doing the gesture to enter into the splitview state as your test scenario does below.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "168538f3_ef666306",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -65,6 +112,29 @@
     },
     {
       "key": {
+        "uuid": "0471c148_2489cdf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-16T17:06:18Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, but this test case intends to:\n1. create an ARC window\n2. enter overview, drag the ARC window to the left (so it\u0027s snapped)\n3. check the other side of the split-screen -- it should be in overview state\n\nThe 1-2 looks very similar to the existing arc.SplitView case, which is:\n1. create two ARC window\n2. make one window to left-snapped\n3. make the other window to right-snapped\n4. check their window states\n5. swap them, check their new window states\n\nSo I am wondering if we can unite the test scenarios more closely: i.e.\n  // (or use of testing.Param as I wrote above):\n  for _, tabletMode :\u003d []bool{false, true} {\n    s.Run(\"not-end-overview\", func(...) {\n      // create an ARC window\n      // enter overview\n      // drag the window to the left-snapped\n      // check the overview state\n    }\n    if tabletMode { // or, can\u0027t we verify this behavior in the new clamshell-mode splitview?\n      s.Run(\"multi-windows-swap\", func(...) {\n        // create another ARC window\n        // check the state -- if it\u0027s not in the overview, enter\n        // drag one window to the left\n        // click the other arc window on the right overview\n        // check their window states\n        // swap\n        // check their new window states\n      }\n    }\n  }",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 22
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88043c09_579be51b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -88,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "9d49edd3_4dc2c802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-16T17:06:18Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "88043c09_579be51b",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96ddecaf_7d85c972",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -99,6 +193,30 @@
       "writtenOn": "2020-04-16T08:10:26Z",
       "side": 1,
       "message": "add a short explanation of what kind of regression it was? also, link to https://crrev.com/c/1893585 might be more useful than the buganizer link.",
+      "range": {
+        "startLine": 217,
+        "startChar": 5,
+        "endLine": 217,
+        "endChar": 58
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5871c5da_0f22bdb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-16T17:06:18Z",
+      "side": 1,
+      "message": "maybe it is safer to just say \u0027b\u0027 rather than some corp address (b/143499564)",
+      "parentUuid": "96ddecaf_7d85c972",
       "range": {
         "startLine": 217,
         "startChar": 5,
