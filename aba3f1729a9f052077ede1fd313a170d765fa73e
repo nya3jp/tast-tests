@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a529bf28_b2ea8404",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-16T06:14:58Z",
+      "side": 1,
+      "message": "We might want to update all the 80211g for security tests as n/ac is mostly used now. [1]\nSame discussion was raised in crbug.com/2135674. I guess we can update this cl later after some conclusion is made there.\n\n[1] UMA: https://uma.googleplex.com/p/chrome/histograms?sid\u003d18c91c83386debf8926665a553d248a3",
+      "range": {
+        "startLine": 140,
+        "startChar": 46,
+        "endLine": 140,
+        "endChar": 47
+      },
+      "revId": "aba3f1729a9f052077ede1fd313a170d765fa73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c431e32_59b0ff63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-16T06:14:58Z",
+      "side": 1,
+      "message": "Maybe we can have a variable like wep40Keys to be the slice? (But it should be declared outside init due to lint check: `testing.AddTest() should be the only top level statement of init()`)\n\nAlso FYI, a related feature request for generating parameter combination: crbug.com/1065846",
+      "revId": "aba3f1729a9f052077ede1fd313a170d765fa73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d9518b_38f4144e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-16T06:14:58Z",
+      "side": 1,
+      "message": "I think in Autotest it does not iterate through DefaultKey parameter (only \"key length\" * \"auth alg\")?",
+      "revId": "aba3f1729a9f052077ede1fd313a170d765fa73e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
