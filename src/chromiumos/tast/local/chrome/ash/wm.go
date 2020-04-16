@@ -474,6 +474,11 @@ func FindFirstWindowInOverview(ctx context.Context, tconn *chrome.TestConn) (*Wi
 // DragToShowOverview shows overview by dragging up, pausing for the gesture to be recognized, then ending the gesture.
 // Note that this action only works in tablet mode.
 func DragToShowOverview(ctx context.Context, width, height input.TouchCoord, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
+	if inTabletMode, err := TabletModeEnabled(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to get tablet-mode status")
+	} else if !inTabletMode {
+		return errors.New("this function does not support clamshell mode")
+	}
 	windows, err := GetAllWindows(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get all windows")
@@ -511,6 +516,43 @@ func DragToShowOverview(ctx context.Context, width, height input.TouchCoord, stw
 	// Now that all windows are done animating, ensure overview is still shown.
 	if err := WaitForOverviewState(ctx, tconn, Shown); err != nil {
 		return errors.Wrap(err, "failed to wait for animation to finish")
+	}
+	return nil
+}
+
+// DragToShowHomescreen shows the homescreen (app-list) by dragging up from the
+// bottom of the screen quickly. Note that this action only works in tablet
+// mode.
+func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
+	if inTabletMode, err := TabletModeEnabled(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to get tablet-mode status")
+	} else if !inTabletMode {
+		return errors.New("this function does not support clamshell mode")
+	}
+	windows, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all windows")
+	}
+	// Do nothing if there are no windows. Homescreen should be there already.
+	if len(windows) == 0 {
+		return nil
+	}
+
+	startX := width / 2
+	startY := height - 1
+	endX := startX
+	endY := height / 2
+
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, 300*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to finish the swipe gesture")
+	}
+	for _, window := range windows {
+		if err := WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			return errors.Wrap(err, "failed to wait for the dragged window to animate")
+		}
 	}
 	return nil
 }
