@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e59cb1b_5543a47e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-16T17:29:09Z",
+      "side": 1,
+      "message": "As in, attempts to kill Chrome in future iterations of the loop, or in future crash tests? (can you clarify commit message please?)",
+      "range": {
+        "startLine": 11,
+        "startChar": 62,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "fda0d52f4a8b52b87745d8342da2f26a9b7bbf13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fef5c3b_e639b073",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-16T17:29:09Z",
+      "side": 1,
+      "message": "nit: can this instead just be `return`? (or `break`?)  The code confused me for a few moments because I was trying to figure out where `crashLoopModeSuccessful` was used after the loop.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 34
+      },
+      "revId": "fda0d52f4a8b52b87745d8342da2f26a9b7bbf13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
