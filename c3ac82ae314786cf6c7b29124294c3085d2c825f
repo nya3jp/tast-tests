@@ -22,6 +22,30 @@
       "revId": "c3ac82ae314786cf6c7b29124294c3085d2c825f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c11b8d_2c7bfd36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-16T21:58:44Z",
+      "side": 1,
+      "message": "well, actually this is a bit more complicated. \u003cbody\u003e isn\u0027t empty, it has a lot of DOM elements -- even textContent isn\u0027t empty (looks mostly javascript code though). But graphically it\u0027s plain white.",
+      "parentUuid": "927e065c_5d1a9416",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "c3ac82ae314786cf6c7b29124294c3085d2c825f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
