@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/testing"
 )
 
 type metricGroup string
@@ -166,6 +167,7 @@ func (r *Recorder) Run(ctx context.Context, tconn *chrome.TestConn, f func() err
 		if hist.TotalCount() == 0 {
 			continue
 		}
+		testing.ContextLog(ctx, hist)
 		record := r.records[hist.Name]
 		record.totalCount += hist.TotalCount()
 		record.sum += hist.Sum

@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
+	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -131,12 +132,56 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
 
+	var pc pointer.Controller
+	var setOverviewModeAndWait func(ctx context.Context) error
+	var openAppList func(ctx context.Context) error
+	if tabletMode {
+		tc, err := pointer.NewTouchController(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create a touch controller")
+		}
+		pc = tc
+		setOverviewModeAndWait = func(ctx context.Context) error {
+			stw := tc.EventWriter()
+			defer stw.Close()
+			tsew := tc.Touchscreen()
+			return ash.DragToShowOverview(ctx, tsew.Width(), tsew.Height(), stw, tconn)
+		}
+		openAppList = func(ctx context.Context) error {
+			stw := tc.EventWriter()
+			defer stw.Close()
+			tsew := tc.Touchscreen()
+			return ash.DragToShowHomescreen(ctx, tsew.Width(), tsew.Height(), stw, tconn)
+		}
+	} else {
+		pc = pointer.NewMouseController(tconn)
+		topRow, err := input.KeyboardTopRowLayout(ctx, kw)
+		if err != nil {
+			s.Fatal("Failed to obtain the top-row layout: ", err)
+		}
+		setOverviewModeAndWait = func(ctx context.Context) error {
+			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
+				return errors.Wrap(err, "failed to hit overview key")
+			}
+			return ash.WaitForOverviewState(ctx, tconn, ash.Shown)
+		}
+		openAppList = func(ctx context.Context) error {
+			return kw.Accel(ctx, "search")
+		}
+	}
+	defer pc.Close()
+
 	// Set up the cuj.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
 	// and overview.
 	configs := []cuj.MetricConfig{
 		cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
+		cuj.NewSmoothnessMetricConfig("Ash.SwipeHomeToOverviewGesture"),
+	}
+	for _, suffix := range []string{"HideLauncherForWindow", "EnterFullscreenAllApps", "EnterFullscreenSearch", "FadeInOverview", "FadeOutOverview"} {
+		configs = append(configs, cuj.NewSmoothnessMetricConfig(
+			"Apps.HomeLauncherTransition.AnimationSmoothness."+suffix))
 	}
 	for _, state := range []string{"Peeking", "Close", "Half"} {
 		configs = append(configs, cuj.NewSmoothnessMetricConfig(
@@ -222,8 +267,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}},
 	} {
 		if err = recorder.Run(ctx, tconn, func() error {
-			if err := kw.Accel(ctx, "search"); err != nil {
-				return errors.Wrap(err, "failed to type the search key")
+			if err := openAppList(ctx); err != nil {
+				return errors.Wrap(err, "failed to open the app-list")
 			}
 			if err := testing.Sleep(ctx, time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
@@ -236,6 +281,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			}
 			if err := kw.Accel(ctx, "enter"); err != nil {
 				return errors.Wrap(err, "failed to type the enter key")
+			}
+			if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+				return errors.Wrap(err, "failed to wait for the location changes")
 			}
 			if err := ash.WaitForVisible(ctx, tconn, app.packageName); err != nil {
 				return errors.Wrapf(err, "failed to wait for the new window of %s", app.packageName)
@@ -289,34 +337,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err = cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
-	var pc pointer.Controller
-	var setOverviewModeAndWait func(ctx context.Context) error
-	if tabletMode {
-		tc, err := pointer.NewTouchController(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to create a touch controller")
-		}
-		pc = tc
-		setOverviewModeAndWait = func(ctx context.Context) error {
-			stw := tc.EventWriter()
-			defer stw.Close()
-			tsew := tc.Touchscreen()
-			return ash.DragToShowOverview(ctx, tsew.Width(), tsew.Height(), stw, tconn)
-		}
-	} else {
-		pc = pointer.NewMouseController(tconn)
-		topRow, err := input.KeyboardTopRowLayout(ctx, kw)
-		if err != nil {
-			s.Fatal("Failed to obtain the top-row layout: ", err)
-		}
-		setOverviewModeAndWait = func(ctx context.Context) error {
-			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
-				return errors.Wrap(err, "failed to hit overview key")
-			}
-			return ash.WaitForOverviewState(ctx, tconn, ash.Shown)
-		}
-	}
-	defer pc.Close()
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {

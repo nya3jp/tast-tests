@@ -514,3 +514,34 @@ func DragToShowOverview(ctx context.Context, width, height input.TouchCoord, stw
 	}
 	return nil
 }
+
+// DragToShowHomescreen shows the homescreen (app-list) by dragging up from the
+// bottom of the screen quickly.
+func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, stw *input.SingleTouchEventWriter, tconn *chrome.TestConn) error {
+	windows, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all windows")
+	}
+	// Do nothing if there are no windows. Homescreen should be there already.
+	if len(windows) == 0 {
+		return nil
+	}
+
+	startX := width / 2
+	startY := height - 1
+	endX := startX
+	endY := height / 2
+
+	if err := stw.Swipe(ctx, startX, startY, endX, endY, 300*time.Millisecond); err != nil {
+		return errors.Wrap(err, "failed to swipe")
+	}
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "failed to finish the swipe gesture")
+	}
+	for _, window := range windows {
+		if err := WaitWindowFinishAnimating(ctx, tconn, window.ID); err != nil {
+			return errors.Wrap(err, "failed to wait for the dragged window to animate")
+		}
+	}
+	return nil
+}
