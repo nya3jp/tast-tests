@@ -11,10 +11,13 @@ import (
 	"io/ioutil"
 	"math"
 	"os"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -333,4 +336,77 @@ func mean(values []int) float64 {
 		sum += float64(v)
 	}
 	return sum / float64(len(values))
+}
+
+// CollectPerformanceCounters gathers the use time for each of a given set of
+// Performance Monitoring Units (PMUs), if available, providing them in a map
+// indexed by the name of the associated Command Streamer (CS): RCS for Renderer/3D,
+// VCS for the Fixed-Function Video (decoding and encoding), and VECS for Video
+// Enhancement CS. The resulting map also provides an accurate hardware elapsed
+// time counter.
+// If the hardware/kernel doesn't provide PMU event monitoring, the returned
+// counters will be nil.
+func CollectPerformanceCounters(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, err error) {
+	var perfCounters = []struct {
+		filePath   string
+		eventName  string
+		outputName string
+	}{
+		{"/sys/devices/i915/events/rcs0-busy", "i915/rcs0-busy/", "rcs"},
+		{"/sys/devices/i915/events/vcs0-busy", "i915/vcs0-busy/", "vcs"},
+		{"/sys/devices/i915/events/vecs0-busy", "i915/vecs0-busy/", "vecs"},
+	}
+
+	var eventsToCollect []string
+	for _, perfCounter := range perfCounters {
+		if _, err := os.Stat(perfCounter.filePath); err == nil {
+			eventsToCollect = append(eventsToCollect, perfCounter.eventName)
+		}
+	}
+
+	if len(eventsToCollect) == 0 {
+		return nil, errors.New("could not find any performance events files")
+	}
+
+	// Run the command e.g. `perf stat -e i915/vcs0-busy/ -- sleep 2`
+	cmd := testexec.CommandContext(ctx,
+		"/usr/bin/perf", "stat", "-e", strings.Join(eventsToCollect, ","), "--", "sleep",
+		strconv.FormatInt(int64(interval/time.Second), 10))
+	perfOutput, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, errors.Wrap(err, "error while measuring perf counters")
+	}
+
+	// A sample three counter output perfOutput could be e.g.:
+	// Performance counter stats for 'system wide':
+	//
+	//      17188646693 ns   i915/rcs0-busy/
+	//      11937916640 ns   i915/vcs0-busy/
+	//      12894570939 ns   i915/vecs0-busy/
+	//
+	//      25.001367738 seconds time elapsed
+	counters = make(map[string]time.Duration)
+
+	regexps := make(map[string]*regexp.Regexp)
+	for _, perfCounter := range perfCounters {
+		regexps[perfCounter.outputName] = regexp.MustCompile(`([0-9]+ ns)\s*` + perfCounter.eventName)
+	}
+	// Add and extra regexp for the overall time elapsed.
+	regexps["total"] = regexp.MustCompile("([0-9]+[.][0-9]+ s)econds time elapsed")
+
+	for _, line := range strings.Split(string(perfOutput), "\n") {
+		for name, r := range regexps {
+			submatch := r.FindStringSubmatch(line)
+			if submatch == nil {
+				continue
+			}
+			// PraseDuration() cannot parse whitespaces in the input string.
+			counters[name], err = time.ParseDuration(strings.Replace(string(submatch[1]), " ", "", -1))
+			if err != nil {
+				return nil, errors.Wrapf(err, "error parsing perf output (%s)", perfOutput)
+			}
+		}
+	}
+
+	return counters, nil
 }
