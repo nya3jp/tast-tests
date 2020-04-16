@@ -70,6 +70,30 @@
       "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64f373e_b587c05f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-16T00:33:44Z",
+      "side": 0,
+      "message": "Sorry, now I get it. \nI think (1) is not necessary because of the cpu.WaitUntilIdle() in l.61,\n(we could move it here) but it\u0027s not necessary to tackle that in this \nCL, so let\u0027s restore it here.",
+      "parentUuid": "25528960_0c6d2eae",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
