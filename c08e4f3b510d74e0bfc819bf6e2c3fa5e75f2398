@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "d289b4cd_d1184955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T07:16:08Z",
+      "side": 1,
+      "message": "nit: cpu benchmark",
+      "range": {
+        "startLine": 52,
+        "startChar": 43,
+        "endLine": 52,
+        "endChar": 44
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f84a702_2d90f304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T07:16:08Z",
+      "side": 1,
+      "message": "Use Eval instead, it handles promises as well.",
+      "range": {
+        "startLine": 91,
+        "startChar": 16,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb7dec6_95201e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T07:16:08Z",
+      "side": 1,
+      "message": "nit: s",
+      "range": {
+        "startLine": 92,
+        "startChar": 48,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fee71407_1b661db6",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 2
@@ -46,6 +115,29 @@
       "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b957411b_9d966696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T07:16:08Z",
+      "side": 1,
+      "message": "Use Eval instead, it handles promises as well.",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "c08e4f3b510d74e0bfc819bf6e2c3fa5e75f2398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
