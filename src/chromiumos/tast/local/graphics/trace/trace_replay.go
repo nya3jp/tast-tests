@@ -310,7 +310,7 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}
 
 	if testResult.Result != comm.TestResultSuccess {
-		return errors.Errorf("replay finished with the error: %s. [%d/%d] tests passed", testResult.Message, len(testResult.Entries)-failedEntries, len(testResult.Entries))
+		return errors.Errorf("%s", testResult.Message)
 	}
 
 	return nil
