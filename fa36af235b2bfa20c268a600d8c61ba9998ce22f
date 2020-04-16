@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ef867e49_7c3c1513",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-16T07:47:45Z",
+      "side": 1,
+      "message": "AFAIK using constants in test metadata is not forbidden.",
+      "parentUuid": "c4cad20d_89cc5865",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd191b90_8bd16032",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
@@ -81,6 +105,24 @@
       "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a01938b_47019db0",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-16T07:47:45Z",
+      "side": 1,
+      "message": "Yes you\u0027re right.",
+      "parentUuid": "dd3f70ba_026f4ca3",
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
