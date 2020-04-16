@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -38,6 +39,8 @@ const (
 
 	// timeSamples specifies number of frame decode time samples to get.
 	timeSamples = 10
+	// Time to measure GPU usage counters.
+	gpuMeasuring = 10 * time.Second
 )
 
 // WebRTC Stats collected on transmission side.
@@ -233,6 +236,51 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 	return nil
 }
 
+// measureGPUCounters measures GPU usage for a period of time into p.
+func measureGPUCounters(ctx context.Context, prefix string, p *perf.Values) error {
+	testing.ContextLog(ctx, "Measuring GPU usage for ", gpuMeasuring)
+	counters, err := graphics.CollectPerformanceCounters(ctx, gpuMeasuring)
+	if err != nil {
+		return errors.Wrap(err, "error collecting graphics performance counters")
+	}
+	if counters == nil {
+		return nil
+	}
+	if counters["total"].Milliseconds() == 0 {
+		return errors.New("total elapsed time counter is zero")
+	}
+
+	if rcs, ok := counters["rcs"]; ok && rcs.Seconds() != 0 {
+		rcsUsage := 100 * rcs.Seconds() / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "RCS usage: %f%%", rcsUsage)
+		p.Set(perf.Metric{
+			Name:      prefix + "rcs_usage",
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, rcsUsage)
+	}
+	if vcs, ok := counters["vcs"]; ok && vcs.Seconds() != 0 {
+		vcsUsage := 100 * vcs.Seconds() / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "VCS usage: %f%%", vcsUsage)
+		p.Set(perf.Metric{
+			Name:      prefix + "vcs_usage",
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, vcsUsage)
+	}
+	if vecs, ok := counters["vecs"]; ok && vecs.Seconds() != 0 {
+		vecsUsage := 100 * vecs.Seconds() / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "VECS usage: %f%%", vecsUsage)
+		p.Set(perf.Metric{
+			Name:      prefix + "vcs_usage",
+			Unit:      "percent",
+			Direction: perf.SmallerIsBetter,
+		}, vecsUsage)
+	}
+
+	return nil
+}
+
 // decodePerf opens a WebRTC Loopback connection and streams while collecting statistics.
 func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, p *perf.Values) {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
@@ -279,6 +327,10 @@ func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profil
 	if err := measureCPU(shortCtx, cr, prefix, p); err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
+	if err := measureGPUCounters(shortCtx, prefix, p); err != nil {
+		s.Fatal("Failed to measure: ", err)
+	}
+
 	testing.ContextLogf(ctx, "Metric: %+v", p)
 }
 
