@@ -517,6 +517,10 @@ func testMountShared(ctx context.Context, s *testing.State, arcMs, adbd, sdcard,
 	ignored["/var/run/arc/sdcard"] = struct{}{}
 	// Ignore unix domain socket for ADB communication.
 	ignored["/var/run/arc/adb"] = struct{}{}
+	// Ignore /data since this is a side-effect of /home/root in
+	// the root mount namespace being marked MS_SHARED.
+	// TODO(crbug.com/1069501): Remove once bug is fixed.
+	ignored["/data"] = struct{}{}
 
 	if len(ignored) > 0 {
 		var paths []string
