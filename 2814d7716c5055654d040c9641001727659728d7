@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c48d75c3_060ce73f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T22:45:26Z",
+      "side": 1,
+      "message": "For safeness, could you recreate the params struct?\n\nparams \u003d ui.FindParams{\n  Name: \"Print preview failed\"\n}",
+      "revId": "2814d7716c5055654d040c9641001727659728d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33e5eda_d8071e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T22:45:26Z",
+      "side": 1,
+      "message": "Clar: can we assume that UI exists immediately after the page is gone? Or, should we wait for a short duration, like 100ms-500ms or so?",
+      "revId": "2814d7716c5055654d040c9641001727659728d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
