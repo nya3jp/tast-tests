@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f15c160_3c6a9696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-16T07:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef179e76_9e12e1e0",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "7173cc5770cf0140cff204e138354e790b408c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cd528d8_cb5a8f63",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "03ccf702_40c603a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-16T07:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cd528d8_cb5a8f63",
+      "range": {
+        "startLine": 62,
+        "startChar": 29,
+        "endLine": 62,
+        "endChar": 50
+      },
+      "revId": "7173cc5770cf0140cff204e138354e790b408c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd66c85_c1533bb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "7173cc5770cf0140cff204e138354e790b408c8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e76d3030_eee1ec56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-16T07:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd66c85_c1533bb8",
+      "range": {
+        "startLine": 66,
+        "startChar": 111,
+        "endLine": 66,
+        "endChar": 124
+      },
+      "revId": "7173cc5770cf0140cff204e138354e790b408c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
