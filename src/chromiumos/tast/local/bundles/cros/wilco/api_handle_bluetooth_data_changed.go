@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bundles/cros/wilco/bt"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
@@ -32,33 +32,6 @@ func init() {
 	})
 }
 
-func validateBluetoothData(msg *dtcpb.HandleBluetoothDataChangedRequest, adapterName, adapterAddress string, enableBluetooth bool) error {
-	if len(msg.Adapters) != 1 {
-		return errors.Errorf("unexpected adapters array size; got %d, want 1", len(msg.Adapters))
-	}
-
-	adapter := msg.Adapters[0]
-	if adapter.AdapterName != adapterName {
-		return errors.Errorf("unexpected adapter name; got %s, want %s", adapter.AdapterName, adapterName)
-	}
-	if adapter.AdapterMacAddress != adapterAddress {
-		return errors.Errorf("unexpected adapter address; got %s, want %s", adapter.AdapterMacAddress, adapterAddress)
-	}
-
-	var want dtcpb.HandleBluetoothDataChangedRequest_AdapterData_CarrierStatus
-	if enableBluetooth {
-		want = dtcpb.HandleBluetoothDataChangedRequest_AdapterData_STATUS_UP
-	} else {
-		want = dtcpb.HandleBluetoothDataChangedRequest_AdapterData_STATUS_DOWN
-	}
-
-	if adapter.CarrierStatus != want {
-		return errors.Errorf("unexpected carrier status; got %s, want %s", adapter.CarrierStatus, want)
-	}
-
-	return nil
-}
-
 func APIHandleBluetoothDataChanged(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
@@ -74,17 +47,6 @@ func APIHandleBluetoothDataChanged(ctx context.Context, s *testing.State) {
 	}
 
 	adapter := adapters[0]
-
-	name, err := adapter.Name(ctx)
-	if err != nil {
-		s.Fatal("Unable to get name property value: ", err)
-	}
-
-	address, err := adapter.Address(ctx)
-	if err != nil {
-		s.Fatal("Unable to get address property value: ", err)
-	}
-
 	powered, err := adapter.Powered(ctx)
 	if err != nil {
 		s.Fatal("Unable to get powered property value: ", err)
@@ -117,7 +79,7 @@ func APIHandleBluetoothDataChanged(ctx context.Context, s *testing.State) {
 					s.Fatal("Unable to receive Bluetooth event: ", err)
 				}
 
-				if err := validateBluetoothData(&msg, name, address, enable); err != nil {
+				if err := bt.ValidateBluetoothData(ctx, &msg, bt.ExpectPowered(enable)); err != nil {
 					s.Logf("Unable to validate Bluetooth data %v: %v", msg, err)
 				} else {
 					break
