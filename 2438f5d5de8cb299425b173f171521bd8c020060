@@ -1,0 +1,763 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aff7497_6f7689aa",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "in go, docstrings, start with the name of the struct/func.\n\ne.g:\n// UHIDCreate2Request replicates the C struct found here: ...",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 52
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4ec280_6eb958cf",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "this comment is not that clear. could you add more info? or rephrase it?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504c9441_36750e14",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: createRequest returns a new UHIDCreateRequest...",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aa22f7a_c0a7137d",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: probably HIDRawDir instead of HidrawDir\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nbut if they are NOT meant to be public (I guess this is the case), then it should be:\nhidRawDir and devicePath",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13886e8_ca381de6",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: Capital T",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e3f253_8a4af196",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "huge nit:\nin go, if you can convert this to one line, it is preferred (this is not always possible, but in this case I guess it should work):\n\nif d.HIDRawNodes, err :\u003d hidRawNodes(ctx, devicepath); err !\u003d nil {\n  return err\n}",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bafd45d2_4315e2a9",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: returns",
+      "range": {
+        "startLine": 38,
+        "startChar": 14,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6b4bbe_3cdc0bbf",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: does it work if you define it as a `const` ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d8171a_209c56e9",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: if this doesn\u0027t change during the loop, move it outside the loop.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7b3743_21b17d83",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "errors should not start with capital letter:\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 63,
+        "startChar": 25,
+        "endLine": 63,
+        "endChar": 27
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f024587_c44e052b",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "whenever possible, in errors, try to add more info, like the device you were trying to create. e.g:\n\n  return \"\", errors.Errorf(\"device %p could not be created\", f.Name()) (not sure whether infoString is better than f.Name)",
+      "range": {
+        "startLine": 63,
+        "startChar": 28,
+        "endLine": 63,
+        "endChar": 80
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b9f06b_bd8f0c45",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "hidRawNodes",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db0079c_23d71815",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "the poll function will do this for you. just remove the \"for true\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bb0eff_f69fbc36",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "... and here you should return an error saying something like: directory not found yet.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06fc806b_9674d752",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "if you are 100% sure that 1 second is enough , leave as it is.\nbut it doesn\u0027t hurt adding a few extra seconds here, just in case.",
+      "range": {
+        "startLine": 85,
+        "startChar": 34,
+        "endLine": 85,
+        "endChar": 45
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c333d95e_6e450183",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: capital A",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "932149b2_963bbda8",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: don\u0027t capitalize returned errors:\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 117,
+        "startChar": 26,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43963655_6c12842d",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit, optional:\nIn go, there is no column-limit.\nDo the line-wrap when it \"makes sense\". If you like it the way it is, leave as it is.\nBut you are not forced to wrap it at the 80-column mark.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 37
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd948bf2_cea360ad",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "(see below: if his func is not public, it should be \"id\")",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 7
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3578195c_9a004162",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "for non \"public\" variables, use just \"id\".\nThe acronym rules ( https://github.com/golang/go/wiki/CodeReviewComments#initialisms ) says something that an acronym should be either all capitalized or all non-capitalized.\n\nIn this case, since it is not public, it should be \"id\"",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249d974a_684b6ec0",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "in go, if you want to return an error, you should not \"overload\" an existing return value.\nJust return an \"error\" type too.",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 56
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebfbfc04_213ddc67",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: hidRawPaths",
+      "range": {
+        "startLine": 146,
+        "startChar": 5,
+        "endLine": 146,
+        "endChar": 16
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dad23e9_54fe04f1",
+        "filename": "src/chromiumos/tast/local/uhid/events.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "ditto above: if this is not meant to be public, then \"uhidEventSize\" (or should it be uHIDEventSize\"... whats the meaning of the \"u\" here?",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c52bfc_f0dbd2ce",
+        "filename": "src/chromiumos/tast/local/uhid/events.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "from where does this value come from? add reference/link to the source",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbea39cb_7bf75eb3",
+        "filename": "src/chromiumos/tast/local/uhid/events.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "ditto above: don\u0027t capitalize errors and, if possible, add what it fails.\nit seems that it failed to read enough bytes. Perhaps printing how many bytes where read.\n\ne.g:\n\"failed to total bytes from %s; got %d, want %d\", ...",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b53c194_09935c79",
+        "filename": "src/chromiumos/tast/local/uhid/events.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "nit: you can just remove the \"will\"... replace it with \"writes\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 14,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d09f577_54f04ba1",
+        "filename": "src/chromiumos/tast/local/uhid/start.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "ditto above: mention why it is a 2? (where is it defined)\nif it is not public, should not start with capital letter.\nand probably it makes sense to move it close to where it is used (L22)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70da6bb0_9262d91d",
+        "filename": "src/chromiumos/tast/local/uhid/start.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "(nothing to do from your side)\nI guess, in this case, it is Ok to start with capital letter.",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7d0018_e41aac38",
+        "filename": "src/chromiumos/tast/local/uhid/start.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "\"start event\" perhaps?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a682c936_2cd54016",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "as in previous comments, add reference of source. from where did you get these constans?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c98a2b_b1240e3b",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "UHIDInput2Request ....",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207a5190_889a2251",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "(ditto above: don\u0027t capitalize errors)... \nand if possible replace \"this\" with something more descriptive... perhaps with Name (assuming it is present)",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b93f5fb1_2d17788b",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-16T00:01:26Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "2438f5d5de8cb299425b173f171521bd8c020060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
