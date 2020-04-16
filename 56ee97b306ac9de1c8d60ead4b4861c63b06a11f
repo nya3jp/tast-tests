@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a998e3b_05392eb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T07:54:47Z",
+      "side": 1,
+      "message": "Just to keep in mind that this test isn\u0027t part of CQ, it must be migrated to remote tests because require device policy. Are you able to help with it so we won\u0027t do the same work twice?",
+      "revId": "56ee97b306ac9de1c8d60ead4b4861c63b06a11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c8aaba_9f306f72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T07:54:47Z",
+      "side": 1,
+      "message": "What about fail/cancelled cases?",
+      "revId": "56ee97b306ac9de1c8d60ead4b4861c63b06a11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
