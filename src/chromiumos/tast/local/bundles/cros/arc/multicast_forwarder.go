@@ -31,7 +31,6 @@ func init() {
 		Contacts:     []string{"jasongustaman@chromium.org", "cros-networking@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcMulticastForwarderTest.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
@@ -132,8 +131,8 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	defer d.Close()
 
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
-		s.Fatal("Failed installing app: ", err)
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
 	}
 
 	s.Log("Starting app")
