@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0da083d7_b447490f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-16T06:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec86734_77c944a0",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "522f0ffe_5fd6ac68",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a799b3f5_16e0d0f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-16T06:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "522f0ffe_5fd6ac68",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "188f17a3_b9f39351",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-07T22:05:32Z",
       "side": 1,
       "message": "Please kill this. We should be able to either forcefully kill processes, or else wait appropriately for them. We really don\u0027t want a 10 second sleep here.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\"Sleeping without polling for a condition is discouraged, since it makes tests flakier (when the sleep duration isn\u0027t long enough) or slower (when the duration is too long).\"\n\nI\u0027m pretty sure we\u0027re in the \"too long\" territory.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 59
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1213ba_98047d93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-16T06:28:26Z",
+      "side": 1,
+      "message": "I add code that kills all the processes inside \"/sbin/minijail0\"",
+      "parentUuid": "188f17a3_b9f39351",
       "range": {
         "startLine": 127,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c15cbbe8_1af627a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-16T06:28:26Z",
+      "side": 1,
+      "message": "I see that xl2tpdPidFile get created when I run the VPN server and it\u0027s used to stop the VPN server later. I am trying to find out what is pppdPidFile is used for and when is it created.",
+      "parentUuid": "7e7fc0ca_3ae9af01",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b279e42c_269e4098",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c81a11_7d1f9354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-16T06:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b279e42c_269e4098",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 54
+      },
+      "revId": "b592c4e8d698a78cd9a6c8655227665813488868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
