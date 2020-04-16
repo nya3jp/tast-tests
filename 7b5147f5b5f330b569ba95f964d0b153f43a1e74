@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7130acc_7e21d265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2020-04-16T18:08:16Z",
+      "side": 1,
+      "message": "There\u0027re two functions named init()?\n\nHow about renaming it and making it return a []string to avoid global variables.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "7b5147f5b5f330b569ba95f964d0b153f43a1e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
