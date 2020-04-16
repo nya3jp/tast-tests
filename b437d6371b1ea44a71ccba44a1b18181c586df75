@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70683db4_d1b74365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup_many_users.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T18:41:46Z",
+      "side": 1,
+      "message": "move to 5 users as discussed",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "b437d6371b1ea44a71ccba44a1b18181c586df75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
