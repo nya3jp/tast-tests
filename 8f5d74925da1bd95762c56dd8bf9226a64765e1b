@@ -94,6 +94,30 @@
       "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e34e67aa_7634dcda",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1325210
+      },
+      "writtenOn": "2020-04-16T07:56:35Z",
+      "side": 1,
+      "message": "I don\u0027t have the example with me. I\u0027m fine with having this version out and fix it later if it happens.",
+      "parentUuid": "1cdd8cdc_61029da5",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
