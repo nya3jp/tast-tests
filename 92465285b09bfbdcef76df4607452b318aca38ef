@@ -46,6 +46,30 @@
       "revId": "92465285b09bfbdcef76df4607452b318aca38ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40f8ba6a_4e95ab09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-16T07:54:04Z",
+      "side": 1,
+      "message": "At least it\u0027s not warned by tast-lint...",
+      "parentUuid": "5759e508_32a85088",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "92465285b09bfbdcef76df4607452b318aca38ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
