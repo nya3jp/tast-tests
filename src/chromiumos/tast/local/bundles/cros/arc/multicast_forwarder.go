@@ -132,8 +132,8 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 	defer d.Close()
 
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
-		s.Fatal("Failed installing app: ", err)
+	if err := a.Install(ctx, arc.APKPath("ArcMulticastForwarderTest.apk")); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
 	}
 
 	s.Log("Starting app")
