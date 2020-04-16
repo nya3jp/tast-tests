@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7eab149_7acc6a23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T07:21:36Z",
+      "side": 1,
+      "message": "Could you use testing.Poll instead to check for a stable frequency?",
+      "revId": "19719db9e42dca034cb028a42e45e9e46d3838ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85b3e505_1e092ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T07:21:36Z",
+      "side": 1,
+      "message": "If the metric is reported is it important to also log here? Same for Processing time per frame.",
+      "revId": "19719db9e42dca034cb028a42e45e9e46d3838ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
