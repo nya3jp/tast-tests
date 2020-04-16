@@ -46,6 +46,30 @@
       "revId": "0d38ac063f13d32c18a8fdb3489f68cf4b13a6ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993e1dca_bd385b0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-16T17:58:25Z",
+      "side": 1,
+      "message": "Let\u0027s take that here:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d827829#c24",
+      "parentUuid": "d511dce7_612c9fc4",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 136
+      },
+      "revId": "0d38ac063f13d32c18a8fdb3489f68cf4b13a6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
