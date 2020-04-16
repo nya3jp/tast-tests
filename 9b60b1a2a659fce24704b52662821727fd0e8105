@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2930a2d5_b3173075",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-16T16:31:07Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we should factor this out, or move the cras_test_client invocation into a helper function in this audio package, to avoid letting users invoke them with mismatched sample rates (or number of channels, as well, I guess).",
+      "parentUuid": "0ba7b4d0_fe45303e",
+      "range": {
+        "startLine": 21,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5d0873f_c65b7d98",
         "filename": "src/chromiumos/tast/local/audio/util.go",
         "patchSetId": 2
@@ -398,6 +422,30 @@
       "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bae8b39_30908529",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-16T16:31:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c863ff44_268f845f",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "9b60b1a2a659fce24704b52662821727fd0e8105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
