@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76d3a0b9_e9b7541a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/disk/cleanup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-16T14:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b736a260_7f846347",
+      "range": {
+        "startLine": 96,
+        "startChar": 50,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "ca72469603c70d3b7cbe47513a676445406591a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
