@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21bf17d5_2190c2ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-16T08:10:26Z",
+      "side": 1,
+      "message": "Is there a reason to use this feature flag over tablet mode? Also, usually a feature flag is remove after after the feature launch, but what is the plan of this flag?\n\nAs a side note, usually it\u0027s more efficient for Tast to use precondition as it can omit the time consumed by initialization.",
+      "range": {
+        "startLine": 72,
+        "startChar": 67,
+        "endLine": 72,
+        "endChar": 110
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "168538f3_ef666306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-16T08:10:26Z",
+      "side": 1,
+      "message": "I remember ensuring landscape should be ideally done by camera orientation, but currently it\u0027s not supported, so let\u0027s just leave a TODO comment to do this through camera orientation.",
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee57d3b_64130453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-16T08:10:26Z",
+      "side": 1,
+      "message": "move this to the inside of the function as it\u0027s closed inside the function",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88043c09_579be51b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-16T08:10:26Z",
+      "side": 1,
+      "message": "we don\u0027t want ARC to be restarted for each subtest, so moving it to the top of the test?",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ddecaf_7d85c972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-16T08:10:26Z",
+      "side": 1,
+      "message": "add a short explanation of what kind of regression it was? also, link to https://crrev.com/c/1893585 might be more useful than the buganizer link.",
+      "range": {
+        "startLine": 217,
+        "startChar": 5,
+        "endLine": 217,
+        "endChar": 58
+      },
+      "revId": "4ac45157516728f7a255b645e088f4911b52dd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
