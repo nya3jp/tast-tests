@@ -70,6 +70,30 @@
       "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cdd8cdc_61029da5",
+        "filename": "src/chromiumos/tast/local/audio/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2020-04-16T05:43:08Z",
+      "side": 1,
+      "message": "Really? Do we have this case? I have removed the first 0.5 seconds to avoid top noise.\nDo you have any example so that I can test it?",
+      "parentUuid": "06086075_0a4f98c6",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "8f5d74925da1bd95762c56dd8bf9226a64765e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
