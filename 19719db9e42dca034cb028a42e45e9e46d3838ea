@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25a166d0_c82db3a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-16T16:03:02Z",
+      "side": 1,
+      "message": "It\u0027d be possible but here I\u0027m just moving the code from l.286-289 LHS\nto keep modifications to a minimum.",
+      "parentUuid": "d7eab149_7acc6a23",
+      "revId": "19719db9e42dca034cb028a42e45e9e46d3838ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85b3e505_1e092ed2",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "19719db9e42dca034cb028a42e45e9e46d3838ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16eaccfa_e05866fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-16T16:03:02Z",
+      "side": 1,
+      "message": "In my experience is good to track in the logs in case of latter debugging\nneeded.",
+      "parentUuid": "85b3e505_1e092ed2",
+      "revId": "19719db9e42dca034cb028a42e45e9e46d3838ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
