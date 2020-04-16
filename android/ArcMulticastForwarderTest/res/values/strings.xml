@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Copyright 2020 The Chromium OS Authors. All rights reserved.
+   Use of this source code is governed by a BSD-style license that can be
+   found in the LICENSE file.
+-->
+
+<resources>
+    <!-- The name of the app [CHAR LIMIT=32] -->
+    <string name="app_name">ArcMulticastForwarderTest</string>
+
+    <!-- The text of the button to send mDNS packet [CHAR LIMIT=16] -->
+    <string name="button_mdns">Query mDNS</string>
+
+    <!-- The text of the button to send SSDP packet [CHAR LIMIT=32] -->
+    <string name="button_ssdp">Query SSDP</string>
+
+    <!-- The text of the checkbox to toggle between IPv4 and IPv6 [CHAR LIMIT=32] -->
+    <string name="checkbox_ipv6">IPv6</string>
+</resources>
