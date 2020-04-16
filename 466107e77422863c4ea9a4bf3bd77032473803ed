@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7be5e00_94f87940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-16T02:38:07Z",
+      "side": 1,
+      "message": "Hi Tast Owners, do you know how can I specify VM board such as betty here? Specifying \"betty\" here does not work. It seems that configfs is not available on betty.\n\nTast log:\n2020/04/16 10:24:41 unknown platform-id: cros_config failed (stderr: \"\"): exit status 1\n2020/04/16 10:24:41 unknown model-id: cros_config failed (stderr: \"\"): exit status 1\n2020/04/16 10:24:41 unknown brand-id: cros_config failed (stderr: \"\"): exit status 1\n2020/04/16 10:24:42 [19:24:41.965] Devserver status: [[http://127.0.0.1:28082 UP]]\n2020/04/16 10:24:42 [19:24:41.965] Found 0 external linked data file(s), need to download 0\n2020/04/16 10:24:42 [19:24:41.986] Waiting for DUT to be ready for testing\n2020/04/16 10:24:42 [19:24:42.025] TPM not available, not waiting for readiness\n2020/04/16 10:24:42 Started test dev.RemoteDesktop.test\n2020/04/16 10:24:42 Skipped test dev.RemoteDesktop.test due to missing dependencies: device.Config does not have ModelId",
+      "revId": "466107e77422863c4ea9a4bf3bd77032473803ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
