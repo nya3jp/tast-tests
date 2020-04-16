@@ -69,6 +69,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx); err != nil {
 		s.Fatal("Failed to start the QuarterSizedWindowZooming activity: ", err)
 	}
+	defer act.Stop(ctx)
 
 	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
 		s.Fatal("Failed to set tablet mode enabled to false: ", err)
@@ -80,6 +81,21 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 
 	if err := act.WaitForResumed(ctx, 4*time.Second); err != nil {
 		s.Fatal("Failed to wait for the activity to resume: ", err)
+	}
+
+	// Wait for window finishing animating before taking screenshot,
+	// or the line color will be off as expected.
+	windows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the window list: ", err)
+	}
+	// Only one Activity is open in ths test, so control the window length to 1 and
+	// the first window is expected.
+	if len(windows) != 1 {
+		s.Fatalf("Failed to get window length: got %d, want 1", len(windows))
+	}
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windows[0].ID); err != nil {
+		s.Fatal("Failed to wait for top window animation: ", err)
 	}
 
 	img, err := screenshot.GrabScreenshot(ctx, cr)
