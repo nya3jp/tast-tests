@@ -50,7 +50,7 @@ func Limits(ctx context.Context, s *testing.State) {
 		{"/proc/sys/kernel/pid_max", ge, 32768},
 		{"/proc/sys/kernel/randomize_va_space", eq, 2},
 		{"/proc/sys/kernel/sched_rt_period_us", eq, 1000000},
-		{"/proc/sys/kernel/sched_rt_runtime_us", eq, 800000},
+		{"/proc/sys/kernel/sched_rt_runtime_us", eq, 850000},
 		{"/proc/sys/kernel/sysrq", eq, 1},
 		{"/proc/sys/kernel/threads-max", ge, 7000}, // MemTotal-kb / 64
 		{"/proc/sys/kernel/yama/ptrace_scope", eq, 1},
