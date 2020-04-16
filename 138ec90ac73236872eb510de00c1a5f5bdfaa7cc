@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b228fb1_77181ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:32:42Z",
+      "side": 1,
+      "message": "Could you move this to L254 to minimize the scope?",
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1aa4f81_0ff19833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:32:42Z",
+      "side": 1,
+      "message": "You don\u0027t need this here.",
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ed3abd_64975acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:32:42Z",
+      "side": 1,
+      "message": "err is nil here (because err defined at L259 is another var).\nIs it expected? If so \"return 0, nil\". Otherwise, could you instantiate an appropriate error?",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 14
+      },
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9452802c_464c37eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:32:42Z",
+      "side": 1,
+      "message": "nit: readAxis() (IIUC, this method reads the axis data, right?)\n\nDitto for below naming.",
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a0df56_37b05086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:32:42Z",
+      "side": 1,
+      "message": "You can inline the return struct.\n\ndata, err :\u003d s.ReadRaw(\"\")\nif err !\u003d nil {\n  ...\n}\nreturn \u0026SensorReading{Data: []float64{reading*s.Scale}}, nil",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 17
+      },
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b7787eb_e77aae77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T14:32:42Z",
+      "side": 1,
+      "message": "Could you remove else?\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 8
+      },
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
