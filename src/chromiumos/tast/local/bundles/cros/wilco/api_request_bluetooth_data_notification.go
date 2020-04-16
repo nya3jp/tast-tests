@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/wilco/bt"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
@@ -51,24 +52,17 @@ func APIRequestBluetoothDataNotification(ctx context.Context, s *testing.State) 
 			s.Fatal("Unable to request notification: ", err)
 		}
 
-		s.Log("Waiting for bluetooth event")
-		msg := dtcpb.HandleBluetoothDataChangedRequest{}
-		if err := rec.WaitForMessage(ctx, &msg); err != nil {
-			s.Fatal("Unable to receive bluetooth event: ", err)
-		}
+		for {
+			s.Log("Waiting for Bluetooth event")
+			msg := dtcpb.HandleBluetoothDataChangedRequest{}
+			if err := rec.WaitForMessage(ctx, &msg); err != nil {
+				s.Fatal("Unable to receive Bluetooth event: ", err)
+			}
 
-		if len(msg.Adapters) == 0 {
-			s.Error("Received empty array of adapters, but expected to have at least one bluetooth adapter")
-		}
-		for _, adapter := range msg.Adapters {
-			if len(adapter.AdapterName) == 0 {
-				s.Error("Received adapter with empty name")
-			}
-			if len(adapter.AdapterMacAddress) == 0 {
-				s.Error("Received adapter with empty MAC address")
-			}
-			if adapter.CarrierStatus == dtcpb.HandleBluetoothDataChangedRequest_AdapterData_STATUS_UNSET {
-				s.Error("Received unset adapter carrier status")
+			if err := bt.ValidateBluetoothData(ctx, &msg); err != nil {
+				s.Logf("Unable to validate Bluetooth data %v: %v", msg, err)
+			} else {
+				break
 			}
 		}
 	}
