@@ -46,9 +46,19 @@ func waitForPrintPreview(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find loading text")
 	}
-	// Wait for the loading text to be removed to indicate print preview is loaded.
+	// Wait for the loading text to be removed to indicate print preview is no
+	// longer loading.
 	if err := ui.WaitUntilGone(ctx, tconn, params, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for loading text to be removed")
+	}
+	// Check if print preview failed.
+	params.Name = "Print preview failed"
+	failed, err := ui.Exists(ctx, tconn, params)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if print preview failed")
+	}
+	if failed {
+		return errors.New("print preview failed")
 	}
 	return nil
 }
@@ -160,6 +170,12 @@ func Print(ctx context.Context, s *testing.State) {
 	const printerName = "DavieV Virtual USB Printer (USB) DavieV Virtual USB Printer (USB)"
 	if err := printpreview.SelectPrinter(ctx, tconn, printerName); err != nil {
 		s.Fatal("Failed to select printer: ", err)
+	}
+
+	// Wait for print preview to load before changing settings.
+	s.Log("Waiting for print preview to load")
+	if err := waitForPrintPreview(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for print preview to load: ", err)
 	}
 
 	s.Log("Changing print settings")
