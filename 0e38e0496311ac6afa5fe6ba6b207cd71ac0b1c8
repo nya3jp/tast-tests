@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e883f2_6ff60a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-16T18:16:12Z",
+      "side": 1,
+      "message": "Hmm... Do you know why this was ctx.Err() instead of |err|?",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "0e38e0496311ac6afa5fe6ba6b207cd71ac0b1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48fc060e_b5965753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-16T18:16:12Z",
+      "side": 1,
+      "message": "nit: s/cpu/CPU usage/",
+      "range": {
+        "startLine": 102,
+        "startChar": 43,
+        "endLine": 102,
+        "endChar": 46
+      },
+      "revId": "0e38e0496311ac6afa5fe6ba6b207cd71ac0b1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
