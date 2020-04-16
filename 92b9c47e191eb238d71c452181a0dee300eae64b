@@ -34,6 +34,24 @@
       "revId": "92b9c47e191eb238d71c452181a0dee300eae64b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529d0d36_6c54a68b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-16T09:18:08Z",
+      "side": 1,
+      "message": "Yes please. :-)\nDefining variation of HWDeps outside of the package is not officially supported to reduce the risk of forward compatibility.\n\nIf you\u0027d like adding another file is fine. Such as, chromiumos/tast/testing/hwdep/wifi.go etc.",
+      "parentUuid": "43c516a0_d40d4e70",
+      "revId": "92b9c47e191eb238d71c452181a0dee300eae64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
