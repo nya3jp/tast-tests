@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb17cc1c_573969a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T09:53:07Z",
+      "side": 1,
+      "message": "nit: gRPC",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "d5270af1ef6035461c06fd8463275fd422b393c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "203d0891_6d4618e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T09:53:07Z",
+      "side": 1,
+      "message": "nit: UI",
+      "range": {
+        "startLine": 116,
+        "startChar": 58,
+        "endLine": 116,
+        "endChar": 60
+      },
+      "revId": "d5270af1ef6035461c06fd8463275fd422b393c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a52cb0f_ed5e01ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_send_message_to_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T09:53:07Z",
+      "side": 1,
+      "message": "nit: looks like there are too many messages and all of them have different name styles. Can we improve this?\n\nFor example, what about\n\nvmRequest / vmResponse  + uiRequest / uiResponse\nthen in test we\u0027ll compare:\n    1. vmRequest vs uiRequest\n    2. vmResponse vs uiResponse.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "d5270af1ef6035461c06fd8463275fd422b393c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a514fc3_a64ef77c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/native.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T09:53:07Z",
+      "side": 1,
+      "message": "nit: maybe just script ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "d5270af1ef6035461c06fd8463275fd422b393c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3520f59a_be4489b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/native.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T09:53:07Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "d5270af1ef6035461c06fd8463275fd422b393c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030465a5_042fd9e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/native.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-16T09:53:07Z",
+      "side": 1,
+      "message": "nit: remove \\t",
+      "revId": "d5270af1ef6035461c06fd8463275fd422b393c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
