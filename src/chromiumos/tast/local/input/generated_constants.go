@@ -9,7 +9,7 @@ package input
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from include/uapi/linux/input-event-codes.h
-// in the Linux kernel repository at revision 4559d8a514331df16f38d611fb10055928546fd8.
+// in the Linux kernel repository at revision c57e2393cf92b00a321296fb0d9631736884484a.
 // Run "go generate" to regenerate it.
 
 //go:generate ../../../../../../tast/tools/go.sh run gen/gen_constants.go gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
