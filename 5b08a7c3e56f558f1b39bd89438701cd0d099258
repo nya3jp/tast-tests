@@ -22,6 +22,30 @@
       "revId": "5b08a7c3e56f558f1b39bd89438701cd0d099258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6616ebab_18a4f6e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quarter_sized_window_zooming.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-17T15:23:08Z",
+      "side": 1,
+      "message": "agreed.\nAnd also I\u0027d add a comment saying why you are grabbing window 0.",
+      "parentUuid": "148dc3b8_f2455f85",
+      "range": {
+        "startLine": 91,
+        "startChar": 53,
+        "endLine": 91,
+        "endChar": 66
+      },
+      "revId": "5b08a7c3e56f558f1b39bd89438701cd0d099258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
