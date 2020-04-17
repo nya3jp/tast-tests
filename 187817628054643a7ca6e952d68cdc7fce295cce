@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "62f6cdbd_8301528e",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T10:59:22Z",
+      "side": 1,
+      "message": "No delays if it\u0027s not necessary. Just wantet do make sure.",
+      "parentUuid": "248e4953_1217f8db",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59816d18_0753c8fb",
         "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
         "patchSetId": 1
@@ -163,6 +181,30 @@
       "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5740b86d_3ba3ea4d",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T10:59:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9584e849_125dfd68",
+      "range": {
+        "startLine": 202,
+        "startChar": 19,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
