@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40b7a082_47f64de7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:10:47Z",
+      "side": 1,
+      "message": "nit: can we be more specific in name? what about sanityCheck / sanityCheckFn ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 8
+      },
+      "revId": "48f4656e1ec418afac47442dfa1a755f9f14de7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e98a81_fba62bb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:10:47Z",
+      "side": 1,
+      "message": "if this used only once, I guess it\u0027s OK and beter to put directly into struct",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 26
+      },
+      "revId": "48f4656e1ec418afac47442dfa1a755f9f14de7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecedeb68_3eefc142",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:10:47Z",
+      "side": 1,
+      "message": "nit: looks like you are joining the same paths all the time, so why not just using directly\n\n/var/cache/diagnostics_disk_read_routine_data/fio-test-file ?",
+      "range": {
+        "startLine": 139,
+        "startChar": 14,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "48f4656e1ec418afac47442dfa1a755f9f14de7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1264a1fd_0310736e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:10:47Z",
+      "side": 1,
+      "message": "if _, err :\u003d os.Stat(testFile); os.IsNotExist(err) {\n ...\n}",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 23
+      },
+      "revId": "48f4656e1ec418afac47442dfa1a755f9f14de7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8632fe39_c8c41380",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:10:47Z",
+      "side": 1,
+      "message": "nit: exist?",
+      "range": {
+        "startLine": 145,
+        "startChar": 43,
+        "endLine": 145,
+        "endChar": 50
+      },
+      "revId": "48f4656e1ec418afac47442dfa1a755f9f14de7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea91e6d_6a66c563",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:10:47Z",
+      "side": 1,
+      "message": "I guess it\u0027s OK to omit sanityCheckFunction if it\u0027s nil which is default Go value",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 28
+      },
+      "revId": "48f4656e1ec418afac47442dfa1a755f9f14de7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
