@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4ac11bc9_cd32e089",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-17T01:58:42Z",
+      "side": 1,
+      "message": "I changed the string SupportHT40SGI to SupportSGI. Also, I am only checking for \"short GI (80 MHz)\". As you said they can be paird, so I think checking for one should be sufficient.",
+      "parentUuid": "15ef98e2_4724dfc2",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9466de28_bc6ea39a",
         "filename": "src/chromiumos/tast/common/network/iw/runner.go",
         "patchSetId": 16
@@ -140,6 +164,30 @@
       "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "402edc3b_19aba7f3",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-17T01:58:42Z",
+      "side": 1,
+      "message": "I checked the lib for iw https://git.kernel.org/pub/scm/linux/kernel/git/jberg/iw.git and \"MU Beamformee\" is a bit flag. This is code is from the lib:\n#define PRINT_VHT_CAPA(_bit, _str) \\\n\tdo { \\\n\t\tif (capa \u0026 BIT(_bit)) \\\n\t\t\tprintf(\"\\t\\t\\t\" _str \"\\n\"); \\\n\t} while (0)\n\n\tPRINT_VHT_CAPA(19, \"MU Beamformer\");\n\tPRINT_VHT_CAPA(20, \"MU Beamformee\");",
+      "parentUuid": "9c873ba9_8549113d",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "b87848e739ea32b1a6a6249dbccb773437979c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
