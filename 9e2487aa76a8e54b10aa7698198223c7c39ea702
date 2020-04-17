@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aad2bbf_31959dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T22:15:17Z",
+      "side": 1,
+      "message": "nit: defer stw.Close()",
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d70d47f_9c722266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T22:15:17Z",
+      "side": 1,
+      "message": "link to the issue (b/NNNN) would be better than CL, I think.",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56f97e1_e64be8b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T22:15:17Z",
+      "side": 1,
+      "message": "Please leave your name or the issue ID (TODO(amusbach) or TODO(crbug.com/NNNN))",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "949c98f8_7ebadf4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T22:15:17Z",
+      "side": 1,
+      "message": "This is slightly different from what I sugggested in the other CL. I\u0027d like to hear tetsui\u0027s opinion, but you really don\u0027t have to change the flag -- assuming the feature flag does not break any behaviors in tablet mode.\n\nIn my understanding, tetsui\u0027s concern was to drop the precondition -- if we share the same precondition, we can keep the same chrome-login and arc, and makes test significantly faster.\nUse of testing.Param is justified if it can use the precondition.\n\nI think this should be:\n* no params, always create chrome.New and a single test verifies both clamshell and tablet mode (like ui.HotseatScrollPerf does: https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go#234)\n* or, use params, one with arc.BootedInTabletMode() precondition for the tablet mode, and the other without any precondition but creating chrome.New / arc.New.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
