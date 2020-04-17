@@ -7,10 +7,12 @@ package ui
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -185,6 +187,11 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		// App should be open until the animation smoothness data is collected for in-app shelf.
 		defer files.Close(ctx)
 
+		// Wait for 1 second to stabilize UI before swiping up.
+		if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+			return nil, err
+		}
+
 		// Swipe up the hotseat.
 		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn); err != nil {
 			return nil, errors.Wrap(err, "failed to test the in-app shelf")
@@ -237,10 +244,12 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	for _, setting := range []struct {
+	type testSetting struct {
 		launcherVisibility launcherState
 		mode               uiMode
-	}{
+	}
+
+	settings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
 			mode:               inClamshellMode,
@@ -249,6 +258,9 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 			launcherVisibility: launcherIsVisible,
 			mode:               inClamshellMode,
 		},
+	}
+
+	tabletSettings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
 			mode:               inTabletMode,
@@ -257,7 +269,14 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 			launcherVisibility: launcherIsVisible,
 			mode:               inTabletMode,
 		},
-	} {
+	}
+
+	// Fetch hotseat scroll animation metrics in tablet mode only where there is internal display.
+	if _, err := display.GetInternalInfo(ctx, tconn); err == nil {
+		settings = append(settings, tabletSettings...)
+	}
+
+	for _, setting := range settings {
 		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.launcherVisibility)
 		if err != nil {
 			s.Fatalf("Failed to run animation with ui mode as %s and launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
