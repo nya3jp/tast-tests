@@ -63,6 +63,11 @@ func (h *APIface) ServerIP() net.IP {
 	return h.subnetIP(254)
 }
 
+// Interface returns the interface the service runs on.
+func (h *APIface) Interface() string {
+	return h.iface
+}
+
 // start starts the service. Make this private as one should start this from Router.
 // After start(), the caller should call h.stop() at the end, and use the shortened ctx
 // (provided b h.reserveForStop()) before h.stop() to reserve time for h.stop() to run.
