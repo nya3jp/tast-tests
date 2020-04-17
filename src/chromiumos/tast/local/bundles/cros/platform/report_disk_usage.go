@@ -106,6 +106,21 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Log the output of |ls|.
+	//
+	// This contains detailed size information about all the files in the
+	// directory, making debugging size regressions easier.
+	logDirLs := func(path string) {
+		cmd := testexec.CommandContext(ctx, "ls", "-Sl", path)
+		out, err := cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Error("ls command failed")
+		} else {
+			s.Log("Output of ls -Sl ", path)
+			s.Log(string(out))
+		}
+	}
+
 	// Find the space used in a directory, in bytes.
 	//
 	// This function uses 'du' to find the size of directories on a live DUT.
@@ -141,6 +156,7 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		if size, err := dirSize(k); err != nil {
 			s.Errorf("Failed to get the size of directory %q: %v", k, err)
 		} else {
+			logDirLs(k)
 			pv.Set(perf.Metric{
 				Name:      v,
 				Unit:      "bytes",
