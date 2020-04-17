@@ -234,6 +234,30 @@
       "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "342863dc_a280bea7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T18:27:10Z",
+      "side": 1,
+      "message": "Right! Thanks!",
+      "parentUuid": "b030bc97_cf9a3c5d",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
