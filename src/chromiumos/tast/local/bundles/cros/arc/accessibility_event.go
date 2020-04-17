@@ -203,24 +203,22 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 				"Tab",
 				ui.FindParams{
 					ClassName: accessibility.SeekBar,
-					Name:      "seekBarDiscrete",
 					Role:      ui.RoleTypeSlider,
 					Attributes: map[string]interface{}{
 						"valueForRange": seekBarDiscreteInitialValue,
 					},
 				},
-				eventLog{"focus", "seekBarDiscrete", appName},
+				eventLog{"focus", "", appName},
 			}, {
 				"-",
 				ui.FindParams{
 					ClassName: accessibility.SeekBar,
-					Name:      "seekBarDiscrete",
 					Role:      ui.RoleTypeSlider,
 					Attributes: map[string]interface{}{
 						"valueForRange": seekBarDiscreteInitialValue - 1,
 					},
 				},
-				eventLog{"valueChanged", "seekBarDiscrete", appName},
+				eventLog{"valueChanged", "", appName},
 			},
 		} {
 			if err := runTestStep(ctx, cvconn, tconn, ew, test, i == 0); err != nil {
