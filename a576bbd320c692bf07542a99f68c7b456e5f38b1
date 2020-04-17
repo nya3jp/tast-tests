@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c14ba38_6c4581c6",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T10:09:20Z",
+      "side": 1,
+      "message": "Nice cleanup.",
+      "range": {
+        "startLine": 111,
+        "startChar": 27,
+        "endLine": 111,
+        "endChar": 41
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b2383b_0c3ac6ca",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T10:09:20Z",
+      "side": 1,
+      "message": "tries to download a file and transmit it via the http response.",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 99
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40135a0_bc2476e3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T10:09:20Z",
+      "side": 1,
+      "message": "Replace with \"saves\".",
+      "range": {
+        "startLine": 152,
+        "startChar": 22,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3721d265_2c5cb1b4",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T10:09:20Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 152,
+        "startChar": 72,
+        "endLine": 152,
+        "endChar": 83
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1bc7f82_a4cfe526",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T10:09:20Z",
+      "side": 1,
+      "message": "Should there be further error handling like a return?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 2
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579219e6_b4adeb77",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T10:09:20Z",
+      "side": 1,
+      "message": "Where are the keys coming from? Can this be changed to \"download\" for consistency?",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 9
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
