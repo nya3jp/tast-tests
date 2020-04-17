@@ -20,6 +20,7 @@ import (
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/fileutil"
+	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -338,6 +339,11 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 	if err != nil {
 		return nil, err
 	}
+	return r.netDevWithPhyID(ctx, phyID, t)
+}
+
+// netDevWithPhyID finds an available interface on phy#phyID and with given type.
+func (r *Router) netDevWithPhyID(ctx context.Context, phyID int, t iw.IfType) (*iw.NetDev, error) {
 	// First check if there's an available interface on target phy.
 	for _, nd := range r.availIfaces {
 		if nd.PhyNum == phyID && nd.IfType == t {
@@ -346,6 +352,24 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 	}
 	// No available interface on phy, create one.
 	return r.createWifiIface(ctx, phyID, t)
+}
+
+// monitorOnInterface finds an available monitor type interface on the same phy as a
+// busy interface with name=iface.
+func (r *Router) monitorOnInterface(ctx context.Context, iface string) (*iw.NetDev, error) {
+	var ndev *iw.NetDev
+	// Find phy ID of iface.
+	for name, nd := range r.busyIfaces {
+		if name == iface {
+			ndev = nd
+			break
+		}
+	}
+	if ndev == nil {
+		return nil, errors.Errorf("cannot find busy interface %s", iface)
+	}
+	phyID := ndev.PhyNum
+	return r.netDevWithPhyID(ctx, phyID, iw.IfTypeMonitor)
 }
 
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
@@ -484,6 +508,43 @@ func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error
 	}
 	r.freeIface(iface)
 	return firstErr
+}
+
+// NewFrameSender creates a frame sender object.
+func (r *Router) NewFrameSender(ctx context.Context, iface string) (ret *framesender.Sender, retErr error) {
+	nd, err := r.monitorOnInterface(ctx, iface)
+	if err != nil {
+		return nil, err
+	}
+	r.setIfaceBusy(nd.IfName)
+	defer func() {
+		if retErr != nil {
+			r.freeIface(nd.IfName)
+		}
+	}()
+
+	if err := r.cloneMAC(ctx, nd.IfName, iface); err != nil {
+		return nil, errors.Wrap(err, "failed to clone MAC")
+	}
+	if err := r.ipr.SetLinkUp(ctx, nd.IfName); err != nil {
+		return nil, err
+	}
+	return framesender.New(r.host, nd.IfName, r.workDir()), nil
+}
+
+// ReserveForCloseFrameSender returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before r.CloseFrameSender() to reserve
+// time for it to run.
+func (r *Router) ReserveForCloseFrameSender(ctx context.Context) (context.Context, context.CancelFunc) {
+	// FrameSender don't need close, but we still need some time for freeing interface.
+	return ctxutil.Shorten(ctx, 2*time.Second)
+}
+
+// CloseFrameSender closes frame sender and releases related resources.
+func (r *Router) CloseFrameSender(ctx context.Context, s *framesender.Sender) error {
+	err := r.ipr.SetLinkDown(ctx, s.Interface())
+	r.freeIface(s.Interface())
+	return err
 }
 
 // workDir returns the directory to place temporary files on router.
@@ -657,6 +718,15 @@ func (r *Router) stopLogCollectors(ctx context.Context) error {
 		}
 	}
 	return firstErr
+}
+
+// cloneMAC clones the MAC address of src to dst.
+func (r *Router) cloneMAC(ctx context.Context, dst, src string) error {
+	mac, err := r.ipr.MAC(ctx, src)
+	if err != nil {
+		return err
+	}
+	return r.ipr.SetMAC(ctx, dst, mac)
 }
 
 // CollectLogs downloads log files from router to OutDir.
