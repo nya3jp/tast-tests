@@ -22,6 +22,30 @@
       "revId": "b437d6371b1ea44a71ccba44a1b18181c586df75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202cd2f2_3918f94d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/automatic_cleanup_many_users.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T13:42:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70683db4_d1b74365",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "b437d6371b1ea44a71ccba44a1b18181c586df75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
