@@ -9,4 +9,7 @@ const (
 	FirstUsername = "fakeuser1@example.com"
 	FirstPassword = "FakePasswordForFakeUser1"
 	PasswordLabel = "PasswordLabel"
+
+	TestFileName    = "TESTFILE"
+	TestFileContent = "TEST_CONTENT"
 )
