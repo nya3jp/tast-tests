@@ -151,6 +151,7 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 // should include in their Data fields.
 func DataFiles() []string {
 	return []string{
+		"loopback_peerconnection.js",
 		"third_party/blackframe.js",
 		"third_party/munge_sdp.js",
 		"third_party/sdp/sdp.js",
