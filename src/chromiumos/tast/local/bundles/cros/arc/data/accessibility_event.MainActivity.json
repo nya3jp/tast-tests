@@ -1,0 +1,136 @@
+[
+    {
+        "Key": "Tab",
+        "Params":
+	{
+            "ClassName": "android.widget.ToggleButton",
+            "Name": "OFF",
+            "Role": "toggleButton",
+            "Attributes":
+            {
+                "checked": "false",
+		"tooltip": "button tooltip"
+            }
+        },
+        "Event": {
+            "type_": "focus",
+	    "targetName_": "OFF",
+	    "rootName_": "Main Activity"
+        }
+    },
+    {
+        "Key": "Search+Space",
+        "Params": {
+            "ClassName": "android.widget.ToggleButton",
+            "Name": "ON",
+            "Role": "toggleButton",
+            "Attributes": {
+                "checked": "true",
+                "tooltip": "button tooltip"
+            }
+        },
+        "Event": {
+            "type_": "checkedStateChanged",
+	    "targetName_": "ON",
+	    "rootName_": "Main Activity"
+        }
+    },
+    {
+        "Key": "Tab",
+        "Params": {
+            "ClassName": "android.widget.CheckBox",
+            "Name": "CheckBox",
+            "Role": "checkBox",
+            "Attributes": {
+                "checked": "false",
+                "tooltip": "checkbox tooltip"
+            }
+        },
+        "Event": {
+            "type_": "focus",
+	    "targetName_": "CheckBox",
+	    "rootName_": "Main Activity"
+        }
+    },
+    {
+        "Key": "Search+Space",
+        "Params": {
+            "ClassName": "android.widget.CheckBox",
+            "Name": "CheckBox",
+            "Role": "checkBox",
+            "Attributes": {
+                "checked": "true",
+                "tooltip": "checkbox tooltip"
+            }
+        },
+        "Event": {
+            "type_": "checkedStateChanged",
+	    "targetName_": "CheckBox",
+	    "rootName_": "Main Activity"
+        }
+    },
+    {
+        "Key": "Tab",
+        "Params": {
+            "ClassName": "android.widget.SeekBar",
+            "Name": "seekBar",
+            "Role": "slider",
+            "Attributes": {
+                "valueForRange": 25
+            }
+        },
+        "Event": {
+            "type_": "focus",
+	    "targetName_": "seekBar",
+	    "rootName_": "Main Activity"
+        }
+    },
+    {
+        "Key": "=",
+        "Params": {
+            "ClassName": "android.widget.SeekBar",
+            "Name": "seekBar",
+            "Role": "slider",
+            "Attributes": {
+                "valueForRange": 26
+            }
+        },
+        "Event": {
+            "type_": "valueChanged",
+	    "targetName_": "seekBar",
+	    "rootName_": "Main Activity"
+        }
+    },
+    {
+        "Key": "Tab",
+        "Params": {
+            "ClassName": "android.widget.SeekBar",
+            "Name": "seekBarDiscrete",
+            "Role": "slider",
+            "Attributes": {
+                "valueForRange": 3
+            }
+        },
+        "Event": {
+            "type_": "focus",
+	    "targetName_": "seekBarDiscrete",
+	    "rootName_": "Main Activity"
+        }
+    },
+    {
+        "Key": "-",
+        "Params": {
+            "ClassName": "android.widget.SeekBar",
+            "Name": "seekBarDiscrete",
+            "Role": "slider",
+            "Attributes": {
+                "valueForRange": 2
+            }
+        },
+        "Event": {
+            "type_": "valueChanged",
+	    "targetName_": "seekBarDiscrete",
+	    "rootName_": "Main Activity"
+        }
+    }
+]

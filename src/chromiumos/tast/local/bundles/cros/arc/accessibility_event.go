@@ -6,6 +6,8 @@ package arc
 
 import (
 	"context"
+	"encoding/json"
+	"os"
 	"reflect"
 	"time"
 
@@ -17,6 +19,8 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+const axEventFilePrefix = "accessibility_event"
 
 // eventLog represents a log of accessibility event.
 // Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/log_types.js
@@ -40,6 +44,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{"accessibility_event.MainActivity.json", "accessibility_event.EditTextActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -96,15 +101,22 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return nil
 }
 
+// readFromJSON eturns the expected set of event logs read from the specific file.
+func readFromJSON(filepath string) ([]testStep, error) {
+	f, err := os.Open(filepath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+
+	var root []testStep
+	err = json.NewDecoder(f).Decode(&root)
+	return root, err
+}
+
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
-	const (
-		appName = "Accessibility Test App"
-
-		seekBarInitialValue         = 25
-		seekBarDiscreteInitialValue = 3
-	)
-
-	accessibility.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter) error {
+	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
+	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		// Set up event stream logging for accessibility events.
 		if err := cvconn.EvalPromise(ctx, `
 			new Promise((resolve, reject) => {
@@ -121,112 +133,24 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "enabling event stream logging failed")
 		}
 
-		for i, test := range []testStep{
-			// Move focus to ToggleButton and toggle it.
-			{
-				"Tab",
-				ui.FindParams{
-					ClassName: accessibility.ToggleButton,
-					Name:      "OFF",
-					Role:      ui.RoleTypeToggleButton,
-					Attributes: map[string]interface{}{
-						"checked": "false",
-						"tooltip": "button tooltip",
-					},
-				},
-				eventLog{"focus", "OFF", appName},
-			}, {
-				"Search+Space",
-				ui.FindParams{
-					ClassName: accessibility.ToggleButton,
-					Name:      "ON",
-					Role:      ui.RoleTypeToggleButton,
-					Attributes: map[string]interface{}{
-						"checked": "true",
-						"tooltip": "button tooltip",
-					},
-				},
-				eventLog{"checkedStateChanged", "ON", appName},
-			},
-			// Move focus to CheckBox and check it.
-			{
-				"Tab",
-				ui.FindParams{
-					ClassName: accessibility.CheckBox,
-					Name:      "CheckBox",
-					Role:      ui.RoleTypeCheckBox,
-					Attributes: map[string]interface{}{
-						"checked": "false",
-						"tooltip": "checkbox tooltip",
-					},
-				},
-				eventLog{"focus", "CheckBox", appName},
-			}, {
-				"Search+Space",
-				ui.FindParams{
-					ClassName: accessibility.CheckBox,
-					Name:      "CheckBox",
-					Role:      ui.RoleTypeCheckBox,
-					Attributes: map[string]interface{}{
-						"checked": "true",
-						"tooltip": "checkbox tooltip",
-					},
-				},
-				eventLog{"checkedStateChanged", "CheckBox", appName},
-			},
-			// Move focus to SeekBar and increment it.
-			{
-				"Tab",
-				ui.FindParams{
-					ClassName: accessibility.SeekBar,
-					Name:      "seekBar",
-					Role:      ui.RoleTypeSlider,
-					Attributes: map[string]interface{}{
-						"valueForRange": seekBarInitialValue,
-					},
-				},
-				eventLog{"focus", "seekBar", appName},
-			}, {
-				"=",
-				ui.FindParams{
-					ClassName: accessibility.SeekBar,
-					Name:      "seekBar",
-					Role:      ui.RoleTypeSlider,
-					Attributes: map[string]interface{}{
-						"valueForRange": seekBarInitialValue + 1,
-					},
-				},
-				eventLog{"valueChanged", "seekBar", appName},
-			},
-			// Move focus to SeekbarDiscrete and decrement it.
-			{
-				"Tab",
-				ui.FindParams{
-					ClassName: accessibility.SeekBar,
-					Name:      "seekBarDiscrete",
-					Role:      ui.RoleTypeSlider,
-					Attributes: map[string]interface{}{
-						"valueForRange": seekBarDiscreteInitialValue,
-					},
-				},
-				eventLog{"focus", "seekBarDiscrete", appName},
-			}, {
-				"-",
-				ui.FindParams{
-					ClassName: accessibility.SeekBar,
-					Name:      "seekBarDiscrete",
-					Role:      ui.RoleTypeSlider,
-					Attributes: map[string]interface{}{
-						"valueForRange": seekBarDiscreteInitialValue - 1,
-					},
-				},
-				eventLog{"valueChanged", "seekBarDiscrete", appName},
-			},
-		} {
+		testSteps, err := readFromJSON(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
+		if err != nil {
+			s.Fatal("Error reading from JSON: ", err)
+		}
+
+		ew, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Error with creating EventWriter from keyboard: ", err)
+		}
+		defer ew.Close()
+
+		for i, test := range testSteps {
 			if err := runTestStep(ctx, cvconn, tconn, ew, test, i == 0); err != nil {
-				return errors.Wrapf(err, "failed to run a test step %v", test)
+				s.Fatalf(err, "failed to run a test step %v", test)
 			}
 		}
 		return nil
-	})
+
+	}
+	accessibility.RunTest(ctx, s, testActivities, testFunc)
 }
