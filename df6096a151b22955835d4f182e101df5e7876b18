@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d8bb01_69d61781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-17T23:22:55Z",
+      "side": 1,
+      "message": "\"+\" + minFileSize ? (Not sure about go formatting actually)\n\nAlso, not to overcomplicate things, but it occurs to me that this is only going to find files and not subdirectories, so e.g. /opt/google/chrome/locales/ (which is a likely cause of size increase) will be omitted.\n\nWe could do something like:\ndu -sk /opt/google/chrome/* | awk \u0027$1 \u003e\u003d 1000\u0027\n\nNot recursive, but that\u0027s probably best anyway.\n\nI\u0027m also not sure whether | will just work in CommandContext or not.",
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
