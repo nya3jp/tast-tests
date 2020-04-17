@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2aaa336d_863d4a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d21163_d96e3ca2",
+      "range": {
+        "startLine": 35,
+        "startChar": 73,
+        "endLine": 35,
+        "endChar": 77
+      },
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e0d3559_667a3198",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
         "patchSetId": 1
@@ -59,6 +83,24 @@
       "writtenOn": "2020-04-17T05:37:43Z",
       "side": 1,
       "message": "Move this below line 101. We only change state there.",
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32012f85_ed16a830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:51:41Z",
+      "side": 1,
+      "message": "we also change state in line 112, 20 times",
+      "parentUuid": "4e0d3559_667a3198",
       "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -79,6 +121,24 @@
       "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5d49aa_482f0ec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T08:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e72afa25_7741910f",
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
