@@ -46,6 +46,30 @@
       "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b91287_586bb9ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T21:30:34Z",
+      "side": 1,
+      "message": "Thanks.  I\u0027ve overseen tetsui\u0027s comment -- sorry for that.\nI am not sure if tetsui is right here; please keep this CL as-is for now and let\u0027s wait for his reply.",
+      "parentUuid": "346e16b7_aca18478",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
