@@ -33,10 +33,9 @@
         android:progress="25" />
 
     <SeekBar
-        android:id="@+id/seekBarDiscrete"
+        android:id="@+id/seekBarNoDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="seekBarDiscrete"
         android:max="10"
         android:progress="3" />
 
