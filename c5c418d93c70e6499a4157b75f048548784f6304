@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "2e20c416_6d2696f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc9d0ed3_c8b2680e",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c812364_18d098aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea052669_d13a5aac",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ea566cf_04adb6f1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b3c149_2febdb50",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea566cf_04adb6f1",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3fd620e1_2f9c164a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c379d580_5cda3fe7",
+      "range": {
+        "startLine": 60,
+        "startChar": 15,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44cf8b41_59b0d0cb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055b716b_2322bda2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44cf8b41_59b0d0cb",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 18
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "b55c1630_20d3a251",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Added checks. If ls found nothing, we would have err !\u003d nil so no need to check for empty string.",
+      "parentUuid": "d050a3ff_36c7e50d",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 54
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3939edb_e779fd11",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1328a9a7_c8fccd6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "I didn\u0027t know that Command() takes \"name\" followed by other arguments, so Command(flashCmd) didn\u0027t work and I added bash to make it work. Also since I want to log the command being run, I couldn\u0027t put the literal in the call to Command.\n\nI changed flashCmd to a string array.",
+      "parentUuid": "c3939edb_e779fd11",
+      "range": {
+        "startLine": 111,
+        "startChar": 22,
+        "endLine": 111,
+        "endChar": 43
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9869cfa1_6bdd26ef",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f79f2ed_4b536acd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9869cfa1_6bdd26ef",
+      "range": {
+        "startLine": 130,
+        "startChar": 23,
+        "endLine": 130,
+        "endChar": 47
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -233,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "4d9657b8_263ec6a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "The output is 5 lines. I\u0027m dumping it to a file.",
+      "parentUuid": "8668b044_89b888e2",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 37
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "823f2178_f6a4c6b6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -253,6 +469,30 @@
       "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68191edd_861225c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "823f2178_f6a4c6b6",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -279,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "f029117f_7dc3c1cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done. Continuing the test is intended, since that gives us more information on the status of the FPMCU.",
+      "parentUuid": "dac3b8d3_b861eb58",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 27
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50d8c6e8_04e350a5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -299,6 +563,30 @@
       "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abd3843_c2a89242",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50d8c6e8_04e350a5",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 50
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -349,6 +637,30 @@
     },
     {
       "key": {
+        "uuid": "c760f352_dfea95cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6f8598_7ce8ba6e",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 87
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd186cb7_cbe477d2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 3
@@ -369,6 +681,30 @@
       "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8582ac0b_28c1f7c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T00:32:03Z",
+      "side": 1,
+      "message": "The output is 2 lines and I think it\u0027s better to just log it since this is a central piece of the test.",
+      "parentUuid": "cd186cb7_cbe477d2",
+      "range": {
+        "startLine": 149,
+        "startChar": 77,
+        "endLine": 149,
+        "endChar": 80
+      },
+      "revId": "c5c418d93c70e6499a4157b75f048548784f6304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
