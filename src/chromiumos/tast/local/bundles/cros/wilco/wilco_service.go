@@ -228,6 +228,42 @@ func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *wpb.Exe
 	return &empty.Empty{}, nil
 }
 
+func (c *WilcoService) TestGetAvailableRoutines(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	request := dtcpb.GetAvailableRoutinesRequest{}
+	response := dtcpb.GetAvailableRoutinesResponse{}
+
+	if err := wilco.DPSLSendMessage(ctx, "GetAvailableRoutines", &request, &response); err != nil {
+		return nil, errors.Wrap(err, "unable to get routines")
+	}
+
+	contains := func(all []dtcpb.DiagnosticRoutine, expected dtcpb.DiagnosticRoutine) bool {
+		for _, e := range all {
+			if expected == e {
+				return true
+			}
+		}
+		return false
+	}
+
+	for _, val := range []dtcpb.DiagnosticRoutine{
+		dtcpb.DiagnosticRoutine_ROUTINE_BATTERY,
+		dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
+		dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
+		dtcpb.DiagnosticRoutine_ROUTINE_SMARTCTL_CHECK,
+		dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
+		dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
+		dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
+		dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
+		dtcpb.DiagnosticRoutine_ROUTINE_NVME_SHORT_SELF_TEST,
+		dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
+	} {
+		if !contains(response.Routines, val) {
+			return nil, errors.Errorf("routine %s missing", val)
+		}
+	}
+	return &empty.Empty{}, nil
+}
+
 func (c *WilcoService) StartDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if c.receiver != nil {
 		return nil, errors.New("DPSL listener already running")
