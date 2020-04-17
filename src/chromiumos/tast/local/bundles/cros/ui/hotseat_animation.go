@@ -51,9 +51,11 @@ func init() {
 func HotseatAnimation(ctx context.Context, s *testing.State) {
 	// TODO(newcomer): please record performance of navigation widget (https://crbug.com/1065405).
 	const (
-		extendedHotseatHistogram = "Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"
-		hiddenHotseatHistogram   = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
-		shownHotseatHistogram    = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
+		extendedHotseatHistogram    = "Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"
+		hiddenHotseatHistogram      = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownHotseatHistogram       = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
+		shownHomeLauncherHistogram  = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"
+		hiddenHomeLauncherHistogram = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"
 	)
 
 	cr := s.PreValue().(*chrome.Chrome)
@@ -208,7 +210,9 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		shownHotseatHistogram,
-		extendedHotseatHistogram)
+		extendedHotseatHistogram,
+		shownHomeLauncherHistogram,
+		hiddenHomeLauncherHistogram)
 	if err != nil {
 		s.Fatal("Failed to get mean histogram from entering/exiting overview: ", err)
 	}
