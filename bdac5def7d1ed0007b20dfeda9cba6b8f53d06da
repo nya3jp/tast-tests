@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65ebab3c_28aab720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-17T00:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bbf387b_86b81a68",
+      "range": {
+        "startLine": 86,
+        "startChar": 27,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "bdac5def7d1ed0007b20dfeda9cba6b8f53d06da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6f0807c_22631ebc",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "bdac5def7d1ed0007b20dfeda9cba6b8f53d06da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822a3500_dde09f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-17T00:20:09Z",
+      "side": 1,
+      "message": "The former? - note that these two lines go away in the next CL anyway.",
+      "parentUuid": "b6f0807c_22631ebc",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "bdac5def7d1ed0007b20dfeda9cba6b8f53d06da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6ad8b683_c5b0dd34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-17T00:20:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f2f95c_e5d5b7a8",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "bdac5def7d1ed0007b20dfeda9cba6b8f53d06da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8173fbac_9a231d0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "bdac5def7d1ed0007b20dfeda9cba6b8f53d06da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90b91208_266470f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-17T00:20:09Z",
+      "side": 1,
+      "message": "\u003e I think you want division not multiplication to convert from nanoseconds to milliseconds.\n\u003e \nThat\u0027d explain the big T next to the milliseconds in the crosbolt graphics ;-)\n\n\u003e That be said, can you just use processingTimePerFrame.Milliseconds()?\n\nOh you\u0027re right I copied this wholesale and didn\u0027t double check it - let\u0027s use\nprocessingTimePerFrame.Milliseconds() directly.",
+      "parentUuid": "8173fbac_9a231d0d",
+      "range": {
+        "startLine": 126,
+        "startChar": 62,
+        "endLine": 126,
+        "endChar": 106
+      },
+      "revId": "bdac5def7d1ed0007b20dfeda9cba6b8f53d06da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
