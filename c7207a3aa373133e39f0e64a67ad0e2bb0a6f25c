@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36c6628_b0d3d951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-17T04:58:27Z",
+      "side": 1,
+      "message": "if hasChromeDump {\n  continue\n}\nand you can reduce the nest?",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "c7207a3aa373133e39f0e64a67ad0e2bb0a6f25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
