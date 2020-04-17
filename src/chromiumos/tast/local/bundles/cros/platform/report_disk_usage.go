@@ -106,6 +106,35 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Log the size of the individual files/directories inside |path|.
+	//
+	// Having the size information of individual files and directories available
+	// will make debugging size regressions easier.
+	//
+	// To reduce the amount of lines printed only the files/directories bigger
+	// than 1M are displayed.
+	logFileSizes := func(path string) {
+		const minFileSize = "1000000" // in bytes
+		duCmd := testexec.CommandContext(ctx, "du",
+			"-a",                       // Print files and directories.
+			"-x",                       // Do not include mounted filesystems.
+			"-B1",                      // Print results in bytes.
+			"--max-depth=3",            // Recurse 3 directories deep.
+			"--threshold", minFileSize, // Don't include objects smaller than this.
+			path,
+		)
+		sortCmd := testexec.CommandContext(ctx, "sort", "-nr")
+
+		out, err := pipeAndGetOutput(duCmd, sortCmd)
+		if err != nil {
+			s.Error("du command failed: ", err)
+			return
+		}
+
+		s.Logf("All files and directories bigger than %s bytes in %q%s%s", minFileSize, path, "\n", string(out))
+		s.Log("")
+	}
+
 	// Find the space used in a directory, in bytes.
 	//
 	// This function uses 'du' to find the size of directories on a live DUT.
@@ -141,6 +170,7 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		if size, err := dirSize(k); err != nil {
 			s.Errorf("Failed to get the size of directory %q: %v", k, err)
 		} else {
+			logFileSizes(k)
 			pv.Set(perf.Metric{
 				Name:      v,
 				Unit:      "bytes",
@@ -148,4 +178,36 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 			}, float64(size))
 		}
 	}
+}
+
+// pipeAndGetOutput executes both commands, and pipes the output of |first|
+// to the input of |second| (so it does "first | second").
+//
+// It returns the output of |second|.
+func pipeAndGetOutput(first, second *testexec.Cmd) ([]byte, error) {
+	var result bytes.Buffer
+	var err error
+
+	second.Stdin, err = first.StdoutPipe()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed piping command")
+	}
+	second.Stdout = &result
+
+	if err := first.Start(); err != nil {
+		return nil, errors.Wrap(err, "failed first.Start")
+	}
+	if err := second.Start(); err != nil {
+		return nil, errors.Wrap(err, "failed second.Start")
+	}
+
+	if err := first.Wait(); err != nil {
+		return nil, errors.Wrap(err, "failed first.Wait")
+	}
+
+	if err := second.Wait(); err != nil {
+		return nil, errors.Wrap(err, "failed second.Wait")
+	}
+
+	return result.Bytes(), nil
 }
