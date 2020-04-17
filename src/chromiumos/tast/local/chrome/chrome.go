@@ -1096,6 +1096,22 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	}
 
 	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
+		// TODO(b/153516375): move the downloads path check into cryptohome.go or remove it once we
+		// know if existence of the path is a good indicator of user home being mounted.
+		userpath, userErr := cryptohome.UserPath(ctx, c.normalizedUser)
+		if userErr != nil {
+			testing.ContextLog(ctx, "Failed to get user path for ", c.normalizedUser)
+			return err
+		}
+
+		if _, userErr := os.Stat(userpath + "/MyFiles/Downloads"); os.IsNotExist(userErr) {
+			testing.ContextLog(ctx, "User download folder doesn't exist")
+		} else if userErr != nil {
+			testing.ContextLog(ctx, "Failed to check user download folder: ", userErr)
+		} else {
+			testing.ContextLog(ctx, "User download folder exists")
+		}
+
 		return err
 	}
 
