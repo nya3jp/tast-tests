@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff8e54d8_5c18e771",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-17T09:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504ae34c_b4a06f44",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe93839_20a4cf21",
         "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2020-04-17T05:55:06Z",
       "side": 1,
       "message": "Would it be useful to add a small delay between requests. Like 50 ms?",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248e4953_1217f8db",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-17T09:38:58Z",
+      "side": 1,
+      "message": "hmmmm. i don\u0027t know. I think it might be useful but the testing IRL doesn\u0027t seem to suggest so.\n\nWhen I test it in bash script, most of (random) recoverable errors don\u0027t care about the delay; this inlcudes the TLS handshake timeout, or sometimes I got some human readable string instead of the challenge.\n\nAnd other things like 502 bad gateway error, the retry doesn\u0027t help.\n\nThat\u0027s why i didn\u0027t add delay. \n\nWDYT?",
+      "parentUuid": "abe93839_20a4cf21",
       "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27214943_746da4ea",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-17T09:38:58Z",
+      "side": 1,
+      "message": "Done. sorry the local test is too careless.",
+      "parentUuid": "59816d18_0753c8fb",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9584e849_125dfd68",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-17T09:38:58Z",
+      "side": 1,
+      "message": "Now a successful |base64.StdEncoding.DecodeString| cleans |lastErr|, right? Sorry i guess the bug pointed out above caused the confusion.",
+      "parentUuid": "197cdb1c_31205088",
+      "range": {
+        "startLine": 202,
+        "startChar": 19,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df584708_e44ebed1",
         "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
         "patchSetId": 1
@@ -96,6 +180,24 @@
       "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce8cb4f_17578701",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-17T09:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df584708_e44ebed1",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
