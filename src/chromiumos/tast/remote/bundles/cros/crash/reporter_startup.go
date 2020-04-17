@@ -6,7 +6,6 @@ package crash
 
 import (
 	"context"
-	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -15,6 +14,7 @@ import (
 
 	commoncrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
 	crashservice "chromiumos/tast/services/cros/crash"
@@ -99,13 +99,14 @@ func ReporterStartup(ctx context.Context, s *testing.State) {
 	// seconds between those steps, and a file from a prior boot will almost
 	// always have been written out much further back in time than our
 	// current boot time.
-	flagInfo, err := fileSystem.Stat(ctx, &baserpc.StatRequest{Name: commoncrash.CrashReporterEnabledPath})
+	fs := dutfs.NewClient(cl.Conn)
+	flagInfo, err := fs.Stat(ctx, commoncrash.CrashReporterEnabledPath)
 	if err != nil {
 		s.Error("Failed to open crash reporter enabled file flag: ", err)
-	} else if !os.FileMode(flagInfo.Mode).IsRegular() {
+	} else if !flagInfo.Mode().IsRegular() {
 		s.Error("Crash reporter enabled file flag is not a regular file: ", commoncrash.CrashReporterEnabledPath)
 	}
-	flagTime := time.Unix(flagInfo.Modified.Seconds, int64(flagInfo.Modified.Nanos))
+	flagTime := flagInfo.ModTime()
 
 	current := time.Now()
 	ut, err := uptime(ctx, fileSystem)
