@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "43a4c10d_d1b874c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/bt/validate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T10:35:07Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "2c1b6ae6_2149591d",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "79f153b097c688c8c1476486719aeb9d8c68be72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efd48359_792cfd19",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/bt/validate.go",
         "patchSetId": 1
@@ -95,6 +119,24 @@
       "side": 1,
       "message": "probably no, I had code that coveres multiple adapter case, but it looks like overengineering for such test.\n\nIn real life you already can have multiple adapters, just plug USB adapter. But in the lab and for testing probably 1 adapter approach is enough.",
       "parentUuid": "efd48359_792cfd19",
+      "revId": "79f153b097c688c8c1476486719aeb9d8c68be72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f1750b0_c7119884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/bt/validate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T10:35:07Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "8d0de188_0247ec80",
       "revId": "79f153b097c688c8c1476486719aeb9d8c68be72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
