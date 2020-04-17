@@ -91,7 +91,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 				[]string{"seekBar", "Slider", "25", "Min 0", "Max 100"},
 			}, {
 				nextKey,
-				[]string{"seekBarDiscrete", "Slider", "3", "Min 0", "Max 10"},
+				[]string{"Slider", "3", "Min 0", "Max 10"},
 			}, {
 				nextKey,
 				[]string{"ANNOUNCE", "Button", "Press Search+Space to activate"},
