@@ -273,6 +273,18 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
 		},
 		{
+			name: "floating_point_accuracy_cancelled",
+			request: dtcpb.RunRoutineRequest{
+				Routine: dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
+				Parameters: &dtcpb.RunRoutineRequest_FloatingPointAccuracyParams{
+					FloatingPointAccuracyParams: &dtcpb.FloatingPointAccuracyRoutineParameters{
+						LengthSeconds: 5,
+					},
+				},
+			},
+			expectedStatus: wilco.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
+		},
+		{
 			name: "nvme_wear_level",
 			request: dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
