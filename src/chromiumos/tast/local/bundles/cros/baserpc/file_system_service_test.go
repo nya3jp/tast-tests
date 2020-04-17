@@ -87,9 +87,8 @@ func TestReadDir(t *testing.T) {
 	}
 
 	_, err = cl.ReadDir(context.Background(), filepath.Join(dir, "no_such_dir"))
-	// TODO(nya): Ensure that ReadDir returns os.ErrNotExist.
-	if err == nil {
-		t.Error("ReadDir unexpectedly succeeded for non-existent directory")
+	if !os.IsNotExist(err) {
+		t.Errorf("ReadDir: %v; want %v", err, os.ErrNotExist)
 	}
 }
 
@@ -127,9 +126,8 @@ func TestStat(t *testing.T) {
 	}
 
 	_, err = cl.Stat(context.Background(), filepath.Join(dir, "no_such_file"))
-	// TODO(nya): Ensure that Stat returns os.ErrNotExist.
-	if err == nil {
-		t.Error("Stat unexpectedly succeeded for non-existent file")
+	if !os.IsNotExist(err) {
+		t.Errorf("Stat: %v; want %v", err, os.ErrNotExist)
 	}
 }
 
@@ -157,8 +155,7 @@ func TestReadFile(t *testing.T) {
 	}
 
 	_, err = cl.ReadFile(context.Background(), filepath.Join(dir, "no_such_file"))
-	// TODO(nya): Ensure that ReadFile returns os.ErrNotExist.
-	if err == nil {
-		t.Error("ReadFile unexpectedly succeeded for non-existent file")
+	if !os.IsNotExist(err) {
+		t.Errorf("ReadFile: %v; want %v", err, os.ErrNotExist)
 	}
 }
