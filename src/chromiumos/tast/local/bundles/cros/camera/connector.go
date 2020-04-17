@@ -6,10 +6,15 @@ package camera
 
 import (
 	"context"
+	"os"
 	"path/filepath"
+	"syscall"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -29,11 +34,36 @@ func init() {
 }
 
 func Connector(ctx context.Context, s *testing.State) {
+	const exec = "cros_camera_connector_test"
+	const socket = "/run/camera/camera3.sock"
+
 	if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
 		s.Fatal("Failed to start cros-camera: ", err)
 	}
 
-	const exec = "cros_camera_connector_test"
+	arcCameraGID, err := sysutil.GetGID("arc-camera")
+	if err != nil {
+		s.Fatal("Failed to get gid of arc-camera: ", err)
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := os.Stat(socket)
+		if err != nil {
+			return err
+		}
+		perm := info.Mode().Perm()
+		if perm != 0660 {
+			return errors.Errorf("perm %04o (want %04o)", perm, 0660)
+		}
+		st := info.Sys().(*syscall.Stat_t)
+		if st.Gid != arcCameraGID {
+			return errors.Errorf("gid %04o (want %04o)", st.Gid, arcCameraGID)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+		s.Fatal("Invalid camera socket: ", err)
+	}
+
 	t := gtest.New(exec, gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")))
 
 	if report, err := t.Run(ctx); err != nil {
