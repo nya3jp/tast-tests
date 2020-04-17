@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e6e3b85_a3188ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T18:46:33Z",
+      "side": 1,
+      "message": "can you set the assignee of this TODO?  either of \"TODO(amusbach)\" or \"TODO(crbug.com/NNNNNN)\" will do.\n\nBy the way, I am not sure how camera orientation is affected here -- would be much appreciated to describe a bit more.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
