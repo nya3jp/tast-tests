@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
@@ -237,10 +238,12 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	for _, setting := range []struct {
+	type testSetting struct {
 		launcherVisibility launcherState
 		mode               uiMode
-	}{
+	}
+
+	settings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
 			mode:               inClamshellMode,
@@ -249,6 +252,9 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 			launcherVisibility: launcherIsVisible,
 			mode:               inClamshellMode,
 		},
+	}
+
+	tabletSettings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
 			mode:               inTabletMode,
@@ -257,7 +263,14 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 			launcherVisibility: launcherIsVisible,
 			mode:               inTabletMode,
 		},
-	} {
+	}
+
+	// Fetch hotseat scroll animation metrics in tablet mode only when having an internal display.
+	if _, err := display.GetInternalInfo(ctx, tconn); err == nil {
+		settings = append(settings, tabletSettings...)
+	}
+
+	for _, setting := range settings {
 		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.launcherVisibility)
 		if err != nil {
 			s.Fatalf("Failed to run animation with ui mode as %s and launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
