@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a90579f8_7fa0f3cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T20:14:34Z",
+      "side": 1,
+      "message": "collect?",
+      "range": {
+        "startLine": 11,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fb33b8_38adaed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T20:14:34Z",
+      "side": 1,
+      "message": "It makes more sense to check the err first then the counter. Do you mind swap the logic here?",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad5cacb8_4212d234",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T20:14:34Z",
+      "side": 1,
+      "message": "We should not parse the result of testexec.Cmd.CombinedOutput. stdout and stderr are interleaved there and parsing it can be a source of flakiness.\n\nIf the message is written to stdout, please use Output instead. If the message is written to stderr:\ncmd :\u003d testexec.CommandContext(...)\nvar stderr bytes.Buffer\ncmd.Stderr \u003d \u0026stderr\nif err :\u003d cmd.Run(...); err !\u003d nil { ... }\nif out :\u003d stderr.String(); strings.HasPrefix(out, \"...\") { ... }\n\nhttps://docs.google.com/document/d/1L2v7x88obwk8hqt-oxt_wOaDXwqJu_CyI26Fa224uog/edit#",
+      "range": {
+        "startLine": 375,
+        "startChar": 24,
+        "endLine": 375,
+        "endChar": 38
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
