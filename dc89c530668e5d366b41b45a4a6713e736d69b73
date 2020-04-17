@@ -22,6 +22,30 @@
       "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346e16b7_aca18478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-17T19:25:19Z",
+      "side": 1,
+      "message": "The code is duplicated in [1] for which Tetsui wrote a code review comment asking for the TODO, but I do not actually understand. Tetsui, please make your own CL similar to the present one, and then I will copy your TODO to [2].\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2151114\n[2] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2153909",
+      "parentUuid": "8e6e3b85_a3188ddd",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
