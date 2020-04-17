@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1daf9229_3eed46c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T11:53:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce83814_753fffdb",
+      "range": {
+        "startLine": 35,
+        "startChar": 79,
+        "endLine": 35,
+        "endChar": 86
+      },
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e0d3559_667a3198",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
         "patchSetId": 1
@@ -122,6 +146,24 @@
       "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ff2150d_0b4ff504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T11:53:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f50c83d_9d973ee8",
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
