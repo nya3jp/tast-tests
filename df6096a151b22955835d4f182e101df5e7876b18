@@ -66,6 +66,48 @@
     },
     {
       "key": {
+        "uuid": "56c60b52_63ef16cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T23:52:55Z",
+      "side": 1,
+      "message": "The spaces around the \u0027+\u0027 are removed by |go fmt report_disk_usage.go|.\n\nPipe doesn\u0027t work in CommandContext, I tried it. Backticks also do not work.",
+      "parentUuid": "b9d8bb01_69d61781",
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332c2bde_b568181a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T23:52:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b8c6120_2408bb2f",
+      "range": {
+        "startLine": 120,
+        "startChar": 39,
+        "endLine": 120,
+        "endChar": 43
+      },
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d10c6313_782ed4e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 4
@@ -77,6 +119,30 @@
       "writtenOn": "2020-04-17T23:38:05Z",
       "side": 1,
       "message": "You might run into problems if the number of files is too large, you\u0027ll end up with \"Argument list too long\".\n\n/opt is pretty big:\n\nlocalhost ~ # find /opt/ -type f -size +1M |wc                      \n    166     166   12999\nlocalhost ~ # \n\n\nAlthough with \u0027-mount\u0027 it\u0027s  much smaller :-)\nlocalhost ~ # find /opt/ -mount -type f -size +1M -print0 |wc \n      0       1    1049\nlocalhost ~ #\n\n\nEither way, find + xargs should avoid the potential issue. Something like:\n\n$ find /opt/ -mount -type f -size +1M -print0 |xargs -0 ls -lS",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000285cd_105a7279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T23:52:55Z",
+      "side": 1,
+      "message": "\u0027-xdev\u0027 really cuts down on the number of files listed, thanks!\n\nUnfortunately pipe doesn\u0027t work in CommandContext() (or at least, I could not get it to work), so I can\u0027t use xargs.\n\nI did worry about too many files, but I can see no way around it without a pipe.",
+      "parentUuid": "d10c6313_782ed4e6",
       "range": {
         "startLine": 130,
         "startChar": 2,
