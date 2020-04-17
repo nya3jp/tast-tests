@@ -1066,11 +1066,13 @@ func (c *Chrome) logIn(ctx context.Context) error {
 
 	switch c.loginMode {
 	case fakeLogin:
+		testing.ContextLog(ctx, "Performing fake login")
 		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
 			c.user, c.pass, c.gaiaID, c.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
+		testing.ContextLog(ctx, "Performing gaia login")
 		if err = c.performGAIALogin(ctx, conn); err != nil {
 			return err
 		}
@@ -1083,6 +1085,20 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	}
 
 	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
+		userpath, userErr := cryptohome.UserPath(ctx, c.normalizedUser)
+		if userErr != nil {
+			testing.ContextLog(ctx, "Failed to get user path for ", c.normalizedUser)
+			return err
+		}
+
+		if _, userErr := os.Stat(userpath + "/MyFiles/Downloads"); os.IsNotExist(userErr) {
+			testing.ContextLog(ctx, "User download folder doesn't exist")
+		} else if userErr != nil {
+			testing.ContextLog(ctx, "Failed to check user download folder: ", userErr)
+		} else {
+			testing.ContextLog(ctx, "User download folder exists")
+		}
+
 		return err
 	}
 
