@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d6e68e0_a0315a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-17T17:24:33Z",
+      "side": 1,
+      "message": "If I read the code correctly, we are just logging the output of the top level directory? We should clarify that. Certainly for /opt/google/chrome that will be useful, probably for others. Have you tested this to ensure none of the directories are (currently) too spammy? We should include the estimate in the CL description.",
+      "revId": "c8722ebc700b5cdd64f2ef0250c1211805c954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7e3b7b_b6ff0cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-17T17:24:33Z",
+      "side": 1,
+      "message": "nit: early exit",
+      "revId": "c8722ebc700b5cdd64f2ef0250c1211805c954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b42a94de_f6326ef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-17T17:24:33Z",
+      "side": 1,
+      "message": "Maybe add an extra newline to separate directories?",
+      "revId": "c8722ebc700b5cdd64f2ef0250c1211805c954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
