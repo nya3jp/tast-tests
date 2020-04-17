@@ -38,6 +38,9 @@ const (
 	// mounter.
 	// Defined in cryptohome/BUILD.gn.
 	mounterExe = "/usr/sbin/cryptohome-namespace-mounter"
+
+	// cryptohomedExe is the full path of the daemon cryptohomed
+	cryptohomedExe = "/usr/sbin/cryptohomed"
 )
 
 // hashRegexp extracts the hash from a cryptohome dir's path.
@@ -101,20 +104,20 @@ func RemoveUserDir(ctx context.Context, user string) error {
 	return nil
 }
 
-// findMounterPID finds the pid of the cryptohome-namespace-mounter process.
-func findMounterPID() (int32, error) {
+// findMounterPID finds the pid of the given mounter process.
+func findMounterPID(mounter string) (int32, error) {
 	procs, err := process.Processes()
 	if err != nil {
 		return -1, errors.Wrap(err, "could not list running processes")
 	}
 
 	for _, proc := range procs {
-		if exe, err := proc.Exe(); err == nil && exe == mounterExe {
+		if exe, err := proc.Exe(); err == nil && exe == mounter {
 			return proc.Pid, nil
 		}
 	}
 
-	// If the cryptohome-namespace-mounter process is not found, don't return an error.
+	// If the mounter process is not found, don't return an error.
 	return -1, nil
 }
 
@@ -143,10 +146,9 @@ func findMountsForPID(pid int32) ([]disk.PartitionStat, error) {
 	return res, nil
 }
 
-// findGuestMounts returns the list of mounts in crypthome-namespace-mounter's
-// mount namespace.
-func findGuestMounts() ([]disk.PartitionStat, error) {
-	mounterPID, err := findMounterPID()
+// findMounts returns the list of mounts in the given mounter's mount namespace.
+func findMounts(mounter string) ([]disk.PartitionStat, error) {
+	mounterPID, err := findMounterPID(mounter)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not list running processes")
 	} else if mounterPID == -1 {
@@ -206,13 +208,11 @@ func validateGuestPartition(p *disk.PartitionStat) error {
 
 // WaitForUserMount waits for user's encrypted home directory to be mounted.
 func WaitForUserMount(ctx context.Context, user string) error {
-	findPartitions := func() ([]disk.PartitionStat, error) {
-		return disk.Partitions(true /* all */)
-	}
+	mounter := cryptohomedExe
 	validatePartition := validatePermanentPartition
 
 	if user == GuestUser {
-		findPartitions = findGuestMounts
+		mounter = mounterExe
 		validatePartition = validateGuestPartition
 	}
 
@@ -228,7 +228,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 	const waitTimeout = 30 * time.Second
 	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, waitTimeout)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		partitions, err := findPartitions()
+		partitions, err := findMounts(mounter)
 		if err != nil {
 			return err
 		}
@@ -325,13 +325,11 @@ func UnmountVault(ctx context.Context, user string) error {
 
 // IsMounted checks if the vault for the user is mounted.
 func IsMounted(ctx context.Context, user string) (bool, error) {
-	findPartitions := func() ([]disk.PartitionStat, error) {
-		return disk.Partitions(true /* all */)
-	}
+	mounter := cryptohomedExe
 	validatePartition := validatePermanentPartition
 
 	if user == GuestUser {
-		findPartitions = findGuestMounts
+		mounter = mounterExe
 		validatePartition = validateGuestPartition
 	}
 
@@ -343,7 +341,7 @@ func IsMounted(ctx context.Context, user string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	partitions, err := findPartitions()
+	partitions, err := findMounts(mounter)
 	if err != nil {
 		return false, err
 	}
