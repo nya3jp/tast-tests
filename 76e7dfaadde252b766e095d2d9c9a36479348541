@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f09de16_326b3e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T06:11:19Z",
+      "side": 1,
+      "message": "Perhaps increase to 15 to be sure?",
+      "range": {
+        "startLine": 199,
+        "startChar": 114,
+        "endLine": 199,
+        "endChar": 115
+      },
+      "revId": "76e7dfaadde252b766e095d2d9c9a36479348541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9963f61_d6934748",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T06:11:19Z",
+      "side": 1,
+      "message": "Don\u0027t add special handling in testRoutineExecution. Perhaps allow for an optional verification function in the test parameters that is currently only used for disk_read_linear.",
+      "revId": "76e7dfaadde252b766e095d2d9c9a36479348541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
