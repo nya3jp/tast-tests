@@ -37,6 +37,7 @@ func init() {
 			},
 			{
 				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Pre:               chrome.LoggedIn(),
 				Val:               true,
 			},
 		},
@@ -50,14 +51,14 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var err error
 	if tabletMode {
-		cr, err = chrome.New(ctx)
+		cr = s.PreValue().(*chrome.Chrome)
 	} else {
 		cr, err = chrome.New(ctx, chrome.ExtraArgs("--enable-features=DragToSnapInClamshellMode"))
+		if err != nil {
+			s.Fatal("Failed to connect to Chrome: ", err)
+		}
+		defer cr.Close(ctx)
 	}
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -121,6 +122,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a single touch writer: ", err)
 	}
+	defer stw.Close()
 
 	// Computing the coordinates for the gesture of resizing, see also the
 	// comments around metrics.Run.
