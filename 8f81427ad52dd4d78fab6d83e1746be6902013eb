@@ -73,6 +73,99 @@
     },
     {
       "key": {
+        "uuid": "ebed0670_a2629163",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T07:53:50Z",
+      "side": 1,
+      "message": "+1\ntitle is confusing",
+      "parentUuid": "9da1762f_67b7ff66",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93743a18_020dc78c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T07:53:50Z",
+      "side": 1,
+      "message": "nit: errors.Wrap(err, \"unable to get routines\")",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 27
+      },
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7418231e_cf12c5b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T07:53:50Z",
+      "side": 1,
+      "message": "nit: routines",
+      "range": {
+        "startLine": 106,
+        "startChar": 43,
+        "endLine": 106,
+        "endChar": 51
+      },
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3d0bf8_2172e07c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T07:53:50Z",
+      "side": 1,
+      "message": "nit: I guess we can omit this",
+      "range": {
+        "startLine": 131,
+        "startChar": 54,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "669647c9_f81aa260",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 1
@@ -84,6 +177,47 @@
       "writtenOn": "2020-04-17T06:06:16Z",
       "side": 1,
       "message": "If you are just calling TestGetAvailableRoutines I would move this to APIRoutine. It does not make sense to perform the setup twice (it\u0027s slow).",
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178ab20f_ec2a8b4f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T07:53:50Z",
+      "side": 1,
+      "message": "Sorry for suggesting you create a separate file, I was sure that we have multiple remote routine tests.\n\nI guess Victor is right here. Unfortunately, remote tests are running too long. I\u0027d like to split tests by functionality, but I guess to speed it make sense to group functionality in one big test for now.",
+      "parentUuid": "669647c9_f81aa260",
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64904d9b_aefd195d",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T07:53:50Z",
+      "side": 1,
+      "message": "nit: please put this method after TestRoutineCancellation method, so we\u0027ll have block of related methods",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 38
+      },
       "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
