@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "f30858af_1f8df8fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T21:37:55Z",
+      "side": 1,
+      "message": "Spelling: collecting?",
+      "range": {
+        "startLine": 247,
+        "startChar": 35,
+        "endLine": 247,
+        "endChar": 37
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1fb33b8_38adaed3",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
         "patchSetId": 3
@@ -40,6 +63,76 @@
         "startLine": 243,
         "startChar": 1,
         "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "063934c2_3b3069c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T21:37:55Z",
+      "side": 1,
+      "message": "I agree that right now the failure handling is not fully consistent.\nMaybe we can silently ignore here the case when a device does not support any of the counters.\nBut right now we are also ignoring all errors.",
+      "parentUuid": "c1fb33b8_38adaed3",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e873f1e_9ccf2dd9",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T21:37:55Z",
+      "side": 1,
+      "message": "Could you just log here if you didn\u0027t find the counter?",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 3
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23306832_14ad650e",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T21:37:55Z",
+      "side": 1,
+      "message": "It seems it is expected that some chipsets/kernels don\u0027t have counters. Maybe just return silently in this case with an empty list?\nIf you log the missing counters above we will see it when searching for them.",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 369,
         "endChar": 2
       },
       "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
@@ -64,6 +157,29 @@
         "startChar": 24,
         "endLine": 375,
         "endChar": 38
+      },
+      "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c2e0f47_22ea7b98",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-04-17T21:37:55Z",
+      "side": 1,
+      "message": "Spelling: Parse",
+      "range": {
+        "startLine": 403,
+        "startChar": 6,
+        "endLine": 403,
+        "endChar": 11
       },
       "revId": "70e291c8d11134371f4a0ab52bbbfde0d8ddc134",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
