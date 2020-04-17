@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "0f50c83d_9d973ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T10:32:52Z",
+      "side": 1,
+      "message": "Still move the defer after the first change, not before.",
+      "parentUuid": "32012f85_ed16a830",
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e72afa25_7741910f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
         "patchSetId": 1
