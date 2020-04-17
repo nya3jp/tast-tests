@@ -1,0 +1,15 @@
+[
+    {
+        "Key": "Tab",
+        "Params":
+        {
+            "ClassName": "android.widget.EditText",
+            "Name": "contentDescription",
+            "Role": "textField"
+        },
+        "Event": {
+            "type_": "focus",
+            "targetName_": "contentDescription"
+        }
+    }
+]
