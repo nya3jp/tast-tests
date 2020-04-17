@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "547857cf_e87e3e2c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "\"returned values\" (to make a noun phrase)?",
+      "range": {
+        "startLine": 401,
+        "startChar": 133,
+        "endLine": 401,
+        "endChar": 141
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d30dff9_3884976a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "just curious: btw, how this would be used...?",
+      "range": {
+        "startLine": 401,
+        "startChar": 281,
+        "endLine": 401,
+        "endChar": 364
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831b3648_f15ebe23",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "err to refer the third value?",
+      "range": {
+        "startLine": 401,
+        "startChar": 172,
+        "endLine": 401,
+        "endChar": 177
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a3917f_914b44bc",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "optional: how about just \"name\"? (This method name is GetObjectAttribute, so it looks obvious that name represents the name of the attribute?)\n\nDitto for setter. name and value, I\u0027d recommend.",
+      "range": {
+        "startLine": 402,
+        "startChar": 79,
+        "endLine": 402,
+        "endChar": 92
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb71ffef_4ca83649",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "nit: to be symmetric with the setter, how about \"value\"?",
+      "range": {
+        "startLine": 402,
+        "startChar": 102,
+        "endLine": 402,
+        "endChar": 108
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac4b3156_2e726877",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "# Sorry I overlooked in the previous iteration.\nCould you use https://golang.org/pkg/strings/#TrimPrefix ?",
+      "range": {
+        "startLine": 423,
+        "startChar": 29,
+        "endLine": 423,
+        "endChar": 48
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce060905_f6c13c2f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "you can pass err to errors.Wrapf, even if err is nil.",
+      "range": {
+        "startLine": 445,
+        "startChar": 3,
+        "endLine": 449,
+        "endChar": 160
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13dd156d_ac660d6a",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "nit/style: success :\u003d strings.Contains(...)",
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eebf34d_822e1e00",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "!success",
+      "range": {
+        "startLine": 518,
+        "startChar": 5,
+        "endLine": 518,
+        "endChar": 38
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
