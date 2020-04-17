@@ -15,11 +15,9 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
+	"google.golang.org/grpc"
 
-	"chromiumos/tast/dut"
-	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
-	"chromiumos/tast/testing"
 )
 
 // ServiceName is the name of the gRPC service this package uses to access remote
@@ -28,26 +26,13 @@ const ServiceName = "tast.cros.baserpc.FileSystem"
 
 // Client provides remote file system operations on DUT.
 type Client struct {
-	cl *rpc.Client
 	fs baserpc.FileSystemClient
 }
 
-// Dial establishes a gRPC connection to the DUT for remote filesystem operations.
-// Tests calling this function must declare "tast.cros.baserpc.FileSystem" service
-// dependency. Close must be called after use to close the gRPC connection.
-func Dial(ctx context.Context, d *dut.DUT, h *testing.RPCHint) (*Client, error) {
-	cl, err := rpc.Dial(ctx, d, h, "cros")
-	if err != nil {
-		return nil, err
-	}
-
-	fs := baserpc.NewFileSystemClient(cl.Conn)
-	return &Client{cl, fs}, nil
-}
-
-// Close closes the underlying gRPC connection.
-func (c *Client) Close(ctx context.Context) error {
-	return c.cl.Close(ctx)
+// NewClient creates Client from an existing gRPC connection. conn must be
+// connected to the cros bundle.
+func NewClient(conn *grpc.ClientConn) *Client {
+	return &Client{fs: baserpc.NewFileSystemClient(conn)}
 }
 
 // ReadDir reads the directory named by dirname and returns a list of directory

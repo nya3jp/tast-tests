@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/remote/dutfs"
+	"chromiumos/tast/rpc"
 	"chromiumos/tast/testing"
 )
 
@@ -22,11 +23,13 @@ func init() {
 }
 
 func RemoteFileSystem(ctx context.Context, s *testing.State) {
-	fs, err := dutfs.Dial(ctx, s.DUT(), s.RPCHint())
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to dial to DUT for remote file system: ", err)
 	}
-	defer fs.Close(ctx)
+	defer cl.Close(ctx)
+
+	fs := dutfs.NewClient(cl.Conn)
 
 	const dir = "/mnt/stateful_partition"
 	fis, err := fs.ReadDir(ctx, dir)
