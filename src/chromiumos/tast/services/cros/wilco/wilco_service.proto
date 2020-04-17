@@ -34,6 +34,8 @@ service WilcoService {
     returns (ExecuteRoutineResponse) {}
   rpc TestRoutineCancellation(ExecuteRoutineRequest)
     returns (google.protobuf.Empty) {}
+  rpc TestGetAvailableRoutines(google.protobuf.Empty)
+    returns (google.protobuf.Empty) {}
 
   rpc StartDPSLListener(google.protobuf.Empty)
     returns (google.protobuf.Empty) {}

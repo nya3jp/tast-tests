@@ -465,6 +465,7 @@ type WilcoServiceClient interface {
 	GetConfigurationData(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetConfigurationDataResponse, error)
 	// SendMessageToUi performs the grpc request from inside the VM
 	SendMessageToUi(ctx context.Context, in *SendMessageToUiRequest, opts ...grpc.CallOption) (*SendMessageToUiResponse, error)
+	TestGetAvailableRoutines(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	TestPerformWebRequest(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 	ExecuteRoutine(ctx context.Context, in *ExecuteRoutineRequest, opts ...grpc.CallOption) (*ExecuteRoutineResponse, error)
 	TestRoutineCancellation(ctx context.Context, in *ExecuteRoutineRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -512,6 +513,15 @@ func (c *wilcoServiceClient) GetConfigurationData(ctx context.Context, in *empty
 func (c *wilcoServiceClient) SendMessageToUi(ctx context.Context, in *SendMessageToUiRequest, opts ...grpc.CallOption) (*SendMessageToUiResponse, error) {
 	out := new(SendMessageToUiResponse)
 	err := c.cc.Invoke(ctx, "/tast.cros.wilco.WilcoService/SendMessageToUi", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wilcoServiceClient) TestGetAvailableRoutines(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.wilco.WilcoService/TestGetAvailableRoutines", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -590,6 +600,7 @@ type WilcoServiceServer interface {
 	GetConfigurationData(context.Context, *empty.Empty) (*GetConfigurationDataResponse, error)
 	// SendMessageToUi performs the grpc request from inside the VM
 	SendMessageToUi(context.Context, *SendMessageToUiRequest) (*SendMessageToUiResponse, error)
+	TestGetAvailableRoutines(context.Context, *empty.Empty) (*empty.Empty, error)
 	TestPerformWebRequest(context.Context, *empty.Empty) (*empty.Empty, error)
 	ExecuteRoutine(context.Context, *ExecuteRoutineRequest) (*ExecuteRoutineResponse, error)
 	TestRoutineCancellation(context.Context, *ExecuteRoutineRequest) (*empty.Empty, error)
@@ -614,6 +625,9 @@ func (*UnimplementedWilcoServiceServer) GetConfigurationData(ctx context.Context
 }
 func (*UnimplementedWilcoServiceServer) SendMessageToUi(ctx context.Context, req *SendMessageToUiRequest) (*SendMessageToUiResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendMessageToUi not implemented")
+}
+func (*UnimplementedWilcoServiceServer) TestGetAvailableRoutines(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestGetAvailableRoutines not implemented")
 }
 func (*UnimplementedWilcoServiceServer) TestPerformWebRequest(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TestPerformWebRequest not implemented")
@@ -709,6 +723,24 @@ func _WilcoService_SendMessageToUi_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WilcoServiceServer).SendMessageToUi(ctx, req.(*SendMessageToUiRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WilcoService_TestGetAvailableRoutines_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WilcoServiceServer).TestGetAvailableRoutines(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.wilco.WilcoService/TestGetAvailableRoutines",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WilcoServiceServer).TestGetAvailableRoutines(ctx, req.(*empty.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -858,6 +890,10 @@ var _WilcoService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendMessageToUi",
 			Handler:    _WilcoService_SendMessageToUi_Handler,
+		},
+		{
+			MethodName: "TestGetAvailableRoutines",
+			Handler:    _WilcoService_TestGetAvailableRoutines_Handler,
 		},
 		{
 			MethodName: "TestPerformWebRequest",

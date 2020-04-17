@@ -82,6 +82,10 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	}
 	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
+	if _, err := wc.TestGetAvailableRoutines(ctx, &empty.Empty{}); err != nil {
+		s.Error("Get available routines test failed: ", err)
+	}
+
 	// testRoutineExecution sends the request in rrRequest, executing the routine,
 	// and checks the result against expectedStatus. Some routines would not get
 	// back to service right away, so shortening test time by cancelling them and
