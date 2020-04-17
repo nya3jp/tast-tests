@@ -413,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "74735a3c_3c6bdc7d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-17T03:45:22Z",
+      "side": 1,
+      "message": "Ah, I see your intention. Then, could you use a custom error type?https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/src/chromiumos/tast/errors/errors.go#28",
+      "parentUuid": "2febc0d3_b1b703ce",
+      "range": {
+        "startLine": 444,
+        "startChar": 18,
+        "endLine": 444,
+        "endChar": 28
+      },
+      "revId": "cbe46e6a3f121c1d0f0e93fca9f5e88b13c0f828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73591266_5681834a",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 10
