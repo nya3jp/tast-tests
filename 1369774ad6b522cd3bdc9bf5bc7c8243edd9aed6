@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72bf11f7_e1c77464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-17T19:59:10Z",
+      "side": 1,
+      "message": "nice. nit: Make \"+1M\" a constant for better documentation and easier tuning (although I\u0027m not quite sure how we do that in go)",
+      "revId": "1369774ad6b522cd3bdc9bf5bc7c8243edd9aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff9cd4e_34d30f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-17T19:59:10Z",
+      "side": 1,
+      "message": "With a constant, this can beL\n\"All files \u003e\u003d %d MB\" or such",
+      "revId": "1369774ad6b522cd3bdc9bf5bc7c8243edd9aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
