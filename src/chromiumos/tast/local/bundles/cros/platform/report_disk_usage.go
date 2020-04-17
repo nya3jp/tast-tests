@@ -106,6 +106,36 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Log the size of the individual files inside |path|.
+	//
+	// Having the size information of individual files available will make
+	// debugging size regressions easier.
+	//
+	// To reduce the amount of lines printed only the files bigger than 1M
+	// are displayed.
+	logFileSizes := func(path string) {
+		// Find all big files
+		cmd := testexec.CommandContext(ctx, "find", path, "-type", "f", "-size", "+1M")
+		out, err := cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Error("find command failed")
+			return
+		}
+
+		// Run |ls -lS| over these files
+		files := strings.Split(strings.Trim(string(out), "\n"), "\n")
+		args := append([]string{"-lS"}, files...)
+		cmd = testexec.CommandContext(ctx, "ls", args...)
+		out, err = cmd.Output(testexec.DumpLogOnError)
+		if err != nil {
+			s.Error("ls command failed")
+			return
+		}
+		s.Log("All big files in ", path)
+		s.Log(string(out))
+		s.Log("")
+	}
+
 	// Find the space used in a directory, in bytes.
 	//
 	// This function uses 'du' to find the size of directories on a live DUT.
@@ -141,6 +171,7 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		if size, err := dirSize(k); err != nil {
 			s.Errorf("Failed to get the size of directory %q: %v", k, err)
 		} else {
+			logFileSizes(k)
 			pv.Set(perf.Metric{
 				Name:      v,
 				Unit:      "bytes",
