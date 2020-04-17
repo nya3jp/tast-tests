@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9b8c6120_2408bb2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-04-17T23:42:15Z",
+      "side": 1,
+      "message": "Huh, the fine manual says that it should probably be \u0027-xdev\u0027 instead of \u0027-mount\u0027 since \u0027-mount\u0027 is just there for compatibility. So, \u0027-xdev\u0027 then :-)",
+      "parentUuid": "9c750630_1c351312",
+      "range": {
+        "startLine": 120,
+        "startChar": 39,
+        "endLine": 120,
+        "endChar": 43
+      },
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d10c6313_782ed4e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 4
