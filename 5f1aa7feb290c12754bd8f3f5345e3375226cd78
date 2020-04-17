@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8092909_a3bf81fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T09:30:03Z",
+      "side": 1,
+      "message": "you can make in as const",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 12
+      },
+      "revId": "5f1aa7feb290c12754bd8f3f5345e3375226cd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e08bdc2a_7477fccc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_routine.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-17T09:30:03Z",
+      "side": 1,
+      "message": "nit: omit, it does nothing, just return the first argument. There is not special type for filepath in Go, it\u0027s just string",
+      "range": {
+        "startLine": 390,
+        "startChar": 16,
+        "endLine": 390,
+        "endChar": 29
+      },
+      "revId": "5f1aa7feb290c12754bd8f3f5345e3375226cd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
