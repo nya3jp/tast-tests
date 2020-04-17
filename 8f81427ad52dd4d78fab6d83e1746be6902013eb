@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d87a743_46379426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T06:06:16Z",
+      "side": 1,
+      "message": "\"group:enrollment\" tests are currently not running as part of the CQ.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "669647c9_f81aa260",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_available_routines.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T06:06:16Z",
+      "side": 1,
+      "message": "If you are just calling TestGetAvailableRoutines I would move this to APIRoutine. It does not make sense to perform the setup twice (it\u0027s slow).",
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
