@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/shutil"
@@ -40,6 +41,19 @@ func WriteToHost(ctx context.Context, hst *ssh.Conn, path string, data []byte) e
 		return errors.Wrap(err, "unable to upload file to host")
 	}
 	return nil
+}
+
+// WriteTmp writes the content to a temp file created by "mktemp $pattern" on host.
+func WriteTmp(ctx context.Context, host *ssh.Conn, pattern string, content []byte) (string, error) {
+	out, err := host.Command("mktemp", pattern).Output(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create temp file on host")
+	}
+	filepath := strings.TrimSpace(string(out))
+	if err := WriteToHost(ctx, host, filepath, content); err != nil {
+		return "", err
+	}
+	return filepath, nil
 }
 
 // WriteToHostDirect writes content directly to a remote path of given host without trying
