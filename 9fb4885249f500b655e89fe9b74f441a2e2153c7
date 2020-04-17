@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08b95f6e_e2cb8da0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T16:50:55Z",
+      "side": 1,
+      "message": "nit: lsbrelease.Board\n(see: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/lsbrelease#pkg-constants)",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a981c01_47afec86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T16:50:55Z",
+      "side": 1,
+      "message": "nit: I noticed that the comment above mentions about nami, but here checks nocturne only. I believe it is intended and this is okay -- nami devices have cros_config? -- but that looks a bit weird to me.",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d6ea18_176ace81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T16:50:55Z",
+      "side": 1,
+      "message": "I would like to hear opinion from hidehiko@ too but, I am not sure this could turn the entire test into an error. This wouldn\u0027t happen usually, but when this happens, it just means it fails to provide some helpful data.\n\nYou could just say s.Log instead of s.Error probably, if so.",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 64
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "800d4e9e_9520825b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T16:50:55Z",
+      "side": 1,
+      "message": "nit: just curious but I guess it would be a bit more helpful to provide the err somewhere? (i.e. testing.ContextLog(ctx, \"Failed to query FPMCU version (error: %v). Trying re-flashing FP firmware\", err)).\n\nIf you expect certain type of errors and printing err wouldn\u0027t be helpful, that\u0027s fine.",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 90
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a238593_9be7fbec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-17T16:50:55Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this else",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
