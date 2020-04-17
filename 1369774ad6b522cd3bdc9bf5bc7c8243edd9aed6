@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1462833_cb03dc33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T22:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bf11f7_e1c77464",
+      "revId": "1369774ad6b522cd3bdc9bf5bc7c8243edd9aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dff9cd4e_34d30f1a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "1369774ad6b522cd3bdc9bf5bc7c8243edd9aed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d86c5d5_d3bf169a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T22:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dff9cd4e_34d30f1a",
+      "revId": "1369774ad6b522cd3bdc9bf5bc7c8243edd9aed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
