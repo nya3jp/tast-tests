@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "94fa671c_d40c46b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T19:29:24Z",
+      "side": 1,
+      "message": "It is definitely very spammy, it outputs about 2k lines.\n\nI\u0027ll see if I can get it to only show files above a certain size.\nAnd I\u0027ll look into making it recursive.",
+      "parentUuid": "1d6e68e0_a0315a41",
+      "revId": "c8722ebc700b5cdd64f2ef0250c1211805c954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da7e3b7b_b6ff0cb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "20c8d062_715d4f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T19:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7e3b7b_b6ff0cb8",
+      "revId": "c8722ebc700b5cdd64f2ef0250c1211805c954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b42a94de_f6326ef7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "c8722ebc700b5cdd64f2ef0250c1211805c954e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1d7deb_3a6cebc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-17T19:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b42a94de_f6326ef7",
+      "revId": "c8722ebc700b5cdd64f2ef0250c1211805c954e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
