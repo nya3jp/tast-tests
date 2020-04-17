@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e78a8cc3_4e9d78db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1356984
+      },
+      "writtenOn": "2020-04-17T06:12:16Z",
+      "side": 1,
+      "message": "Should I just remove the keyword \"CQ\" from the commit message or anything else? Thanks.",
+      "parentUuid": "2d87a743_46379426",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "8f81427ad52dd4d78fab6d83e1746be6902013eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "669647c9_f81aa260",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_available_routines.go",
         "patchSetId": 1
