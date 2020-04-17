@@ -11,12 +11,15 @@ package dutfs
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
+	"golang.org/x/sys/unix"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/services/cros/baserpc"
 )
 
@@ -42,6 +45,9 @@ func (c *Client) ReadDir(ctx context.Context, dirname string) ([]os.FileInfo, er
 	if err != nil {
 		return nil, err
 	}
+	if res.Error != nil {
+		return nil, decodeErr(res.Error)
+	}
 
 	var fis []os.FileInfo
 	for _, pb := range res.Files {
@@ -56,7 +62,10 @@ func (c *Client) Stat(ctx context.Context, name string) (os.FileInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	return fileInfo{res}, nil
+	if res.Error != nil {
+		return nil, decodeErr(res.Error)
+	}
+	return fileInfo{res.Info}, nil
 }
 
 // ReadFile reads the file specified by name and returns its contents.
@@ -64,6 +73,9 @@ func (c *Client) ReadFile(ctx context.Context, name string) ([]byte, error) {
 	res, err := c.fs.ReadFile(ctx, &baserpc.ReadFileRequest{Name: name})
 	if err != nil {
 		return nil, err
+	}
+	if res.Error != nil {
+		return nil, decodeErr(res.Error)
 	}
 	return res.Content, nil
 }
@@ -101,4 +113,37 @@ func (fi fileInfo) IsDir() bool {
 
 func (fi fileInfo) Sys() interface{} {
 	return nil
+}
+
+func decodeErr(err *baserpc.Error) error {
+	if err == nil {
+		return nil
+	}
+
+	switch err := err.Type.(type) {
+	case *baserpc.Error_Errno:
+		return unix.Errno(err.Errno)
+	case *baserpc.Error_Link:
+		return &os.LinkError{
+			Op:  err.Link.Op,
+			Old: err.Link.Old,
+			New: err.Link.New,
+			Err: decodeErr(err.Link.Error),
+		}
+	case *baserpc.Error_Path:
+		return &os.PathError{
+			Op:   err.Path.Op,
+			Path: err.Path.Path,
+			Err:  decodeErr(err.Path.Error),
+		}
+	case *baserpc.Error_Syscall:
+		return &os.SyscallError{
+			Syscall: err.Syscall.Syscall,
+			Err:     decodeErr(err.Syscall.Error),
+		}
+	case *baserpc.Error_Msg:
+		return errors.New(err.Msg)
+	default:
+		panic(fmt.Sprintf("decodeErr: unknown type %T", err))
+	}
 }
