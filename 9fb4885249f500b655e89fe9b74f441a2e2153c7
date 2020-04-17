@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73454240_69c8921d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T18:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b95f6e_e2cb8da0",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a981c01_47afec86",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-17T16:50:55Z",
       "side": 1,
       "message": "nit: I noticed that the comment above mentions about nami, but here checks nocturne only. I believe it is intended and this is okay -- nami devices have cros_config? -- but that looks a bit weird to me.",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdf80cd9_c7c31392",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T18:06:08Z",
+      "side": 1,
+      "message": "Yes this is intended. Nami has cros_config (cros_config would return nami_fp for nami, which is why the earlier comment mentions nami). Nocturne is transitioning to unibuild (with cros_config), and once that\u0027s done we will remove this check and solely rely on getBoardByCrosConfig, but keep the comment that nocturne and nami have \"_fp\" appended.",
+      "parentUuid": "5a981c01_47afec86",
       "range": {
         "startLine": 75,
         "startChar": 3,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "107978bf_9434a2c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T18:06:08Z",
+      "side": 1,
+      "message": "Good point! Done.",
+      "parentUuid": "800d4e9e_9520825b",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 90
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a238593_9be7fbec",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
         "patchSetId": 4
@@ -114,6 +186,30 @@
       "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cbbd60_842f8128",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-17T18:06:08Z",
+      "side": 1,
+      "message": "I tried but s.Errorf doesn\u0027t preempt the test, so if I remove the \"else\", in the case of an error, we will still try to match the known-to-be-useless output, which can be confusing.",
+      "parentUuid": "3a238593_9be7fbec",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "9fb4885249f500b655e89fe9b74f441a2e2153c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
