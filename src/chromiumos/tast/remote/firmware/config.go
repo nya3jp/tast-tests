@@ -29,10 +29,10 @@ const (
 const ConfigDir = "fw-testing-configs"
 
 // defaultName is the name of the JSON file containing default config values.
-// Although the actual filepath contains a .json extension, this variable does not, so that it can be passed into loadConfigJSON.
+// Although the actual filepath contains a .json extension, this variable does not.
 const defaultName = "DEFAULTS"
 
-// configPlatforms is a list of all platforms with JSON files in the fw-testing-configs directory.
+// configPlatforms is a list of all platforms with JSON files in ConfigDir.
 var configPlatforms = []string{
 	defaultName,
 	"arkham",
@@ -143,7 +143,7 @@ var configPlatforms = []string{
 	"zork",
 }
 
-// ConfigDatafiles returns the relative paths from data/ to all config files in fw-testing-configs, as well as to fw-testing-configs itself.
+// ConfigDatafiles returns the relative paths from data/ to all config files in ConfigDir, as well as to ConfigDir itself.
 // It is intended to be used in the Data field of a testing.Test declaration.
 func ConfigDatafiles() []string {
 	var dfs []string
@@ -167,37 +167,38 @@ type Config struct {
 	USBPlug              int              `json:"usb_plug"`
 }
 
-// NewConfig creates a new Config matching the DUT platform.
-// For now, it only returns default values.
-// TODO(b/151469239): Populate with config data matching the DUT platform.
-func NewConfig(configDataDir, platform string) (*Config, error) {
-
-	// loadConfigJSON reads '${s}.json' and loads its contents into a Config struct.
-	loadConfigJSON := func(s string) (*Config, error) {
-		cfgFound := false
-		for _, p := range configPlatforms {
-			if s == p {
-				cfgFound = true
-				break
-			}
+// loadBytes reads '${platform}.json' from configDataDir and returns it as a slice of bytes.
+func loadBytes(configDataDir, platform string) ([]byte, error) {
+	cfgFound := false
+	for _, p := range configPlatforms {
+		if platform == p {
+			cfgFound = true
+			break
 		}
-		if !cfgFound {
-			return nil, errors.Errorf("configPlatforms in remote/firmware/config.go does not contain platform %q", platform)
-		}
-		fp := filepath.Join(configDataDir, fmt.Sprintf("%s.json", s))
-		b, err := ioutil.ReadFile(fp)
-		if err != nil {
-			return nil, errors.Wrapf(err, "reading datafile %s", fp)
-		}
-		var cfg *Config
-		err = json.Unmarshal(b, &cfg)
-		if err != nil {
-			return nil, errors.Wrapf(err, "unmarshaling json %s from datafile %s", b, fp)
-		}
-		return cfg, nil
 	}
+	if !cfgFound {
+		return nil, errors.Errorf("configPlatforms in remote/firmware/config.go does not contain platform %q", platform)
+	}
+	fp := filepath.Join(configDataDir, fmt.Sprintf("%s.json", platform))
+	b, err := ioutil.ReadFile(fp)
+	if err != nil {
+		return nil, errors.Wrapf(err, "reading datafile %s", fp)
+	}
+	return b, nil
+}
 
-	// TODO(b/151469239): Use the platform config to overwrite parent config(s) and default config
-	// TODO(b/151469239): Load model config and overwrite platform config
-	return loadConfigJSON(platform)
+// NewConfig creates a new Config matching the DUT platform.
+// TODO(b/151469239): Use the platform config to overwrite parent config(s) and default config
+// TODO(b/151469239): Load model config and overwrite platform config
+func NewConfig(configDataDir, platform string) (*Config, error) {
+	b, err := loadBytes(configDataDir, platform)
+	if err != nil {
+		return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
+	}
+	var cfg *Config
+	err = json.Unmarshal(b, &cfg)
+	if err != nil {
+		return nil, errors.Wrapf(err, "unmarshaling json bytes %s for platform %s", b, platform)
+	}
+	return cfg, nil
 }
