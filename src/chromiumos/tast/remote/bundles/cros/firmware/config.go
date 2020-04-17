@@ -43,7 +43,7 @@ func Config(ctx context.Context, s *testing.State) {
 		s.Fatal("Error during Platform: ", err)
 	}
 	platform := strings.ToLower(platformResponse.Platform)
-	cfg, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir), platform)
+	cfg, err := firmware.NewConfigFactory(s.DataPath(firmware.ConfigDir)).NewConfig(platform)
 	if err != nil {
 		s.Fatal("Error during NewConfig: ", err)
 	}
