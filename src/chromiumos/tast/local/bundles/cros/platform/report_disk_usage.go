@@ -106,6 +106,57 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Pipe the 2 commands, and return their output.
+	pipeAndGetOutput := func(first, second *testexec.Cmd) ([]byte, error) {
+		var result bytes.Buffer
+		var err error
+
+		second.Stdin, err = first.StdoutPipe()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed piping command")
+		}
+		second.Stdout = &result
+
+		if err := first.Start(); err != nil {
+			return nil, errors.Wrap(err, "failed first.Start")
+		}
+		if err := second.Start(); err != nil {
+			return nil, errors.Wrap(err, "failed second.Start")
+		}
+
+		if err := first.Wait(); err != nil {
+			return nil, errors.Wrap(err, "failed first.Wait")
+		}
+
+		if err := second.Wait(); err != nil {
+			return nil, errors.Wrap(err, "failed second.Wait")
+		}
+
+		return result.Bytes(), nil
+	}
+
+	// Log the size of the individual files inside |path|.
+	//
+	// Having the size information of individual files available will make
+	// debugging size regressions easier.
+	//
+	// To reduce the amount of lines printed only the files bigger than 1M
+	// are displayed.
+	logFileSizes := func(path string) {
+		const minFileSize = "1000000" // in bytes
+		duCmd := testexec.CommandContext(ctx, "du", "-a", "-k", path, "--max-depth", "3", "--threshold", minFileSize)
+		sortCmd := testexec.CommandContext(ctx, "sort", "-nr")
+
+		out, err := pipeAndGetOutput(duCmd, sortCmd)
+		if err != nil {
+			s.Error("du command failed: ", err)
+			return
+		}
+
+		s.Logf("All files bigger than %s bytes in %s%s%s (listed in KB)", minFileSize, path, "\n", string(out))
+		s.Log("")
+	}
+
 	// Find the space used in a directory, in bytes.
 	//
 	// This function uses 'du' to find the size of directories on a live DUT.
@@ -141,6 +192,7 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		if size, err := dirSize(k); err != nil {
 			s.Errorf("Failed to get the size of directory %q: %v", k, err)
 		} else {
+			logFileSizes(k)
 			pv.Set(perf.Metric{
 				Name:      v,
 				Unit:      "bytes",
