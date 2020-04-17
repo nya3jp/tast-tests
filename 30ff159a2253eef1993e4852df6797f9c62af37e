@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "382933c2_ab96544f",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-04-17T02:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610d4d2a_48f9a0bd",
+      "range": {
+        "startLine": 25,
+        "startChar": 51,
+        "endLine": 25,
+        "endChar": 52
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17ff3375_9c24ec21",
         "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40071c76_1f24f4ba",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-04-17T02:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ff3375_9c24ec21",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a1a0637d_4715c0ed",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-04-17T02:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1698f77a_41de6862",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98f5db69_03c18a46",
         "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e7cb3d54_deb1571c",
+        "filename": "android/ArcMulticastForwarderTest/src/org/chromium/arc/testapp/multicast_forwarder/MulticastForwarderActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-04-17T02:41:30Z",
+      "side": 1,
+      "message": "It works, but to avoid confusion, added IPv6 checking too. Done.",
+      "parentUuid": "98f5db69_03c18a46",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8419dccc_86572837",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8832a8b_fef8ce48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2020-04-17T02:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8419dccc_86572837",
+      "range": {
+        "startLine": 135,
+        "startChar": 38,
+        "endLine": 135,
+        "endChar": 69
+      },
+      "revId": "30ff159a2253eef1993e4852df6797f9c62af37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
