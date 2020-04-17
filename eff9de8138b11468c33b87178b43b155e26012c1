@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44d21163_d96e3ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:37:43Z",
+      "side": 1,
+      "message": "nit: adapterName",
+      "range": {
+        "startLine": 35,
+        "startChar": 73,
+        "endLine": 35,
+        "endChar": 77
+      },
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce83814_753fffdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:37:43Z",
+      "side": 1,
+      "message": "nit: adapterAddress",
+      "range": {
+        "startLine": 35,
+        "startChar": 79,
+        "endLine": 35,
+        "endChar": 86
+      },
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e0d3559_667a3198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:37:43Z",
+      "side": 1,
+      "message": "Move this below line 101. We only change state there.",
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72afa25_7741910f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_bluetooth_data_changed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:37:43Z",
+      "side": 1,
+      "message": "minor nit: defer adapter.SetPowered(cleanupCtx, powered)\nIt\u0027s more readable.",
+      "revId": "eff9de8138b11468c33b87178b43b155e26012c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
