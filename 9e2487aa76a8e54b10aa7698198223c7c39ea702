@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "74108e24_48a14f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-17T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aad2bbf_31959dbf",
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d70d47f_9c722266",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29309b79_a15e3223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-17T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d70d47f_9c722266",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "286cd90c_a1417b18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-17T23:39:24Z",
+      "side": 1,
+      "message": "Now I have removed this TODO because it has become self-explanatory.",
+      "parentUuid": "e56f97e1_e64be8b5",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "949c98f8_7ebadf4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66461fdb_b630ef2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-17T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949c98f8_7ebadf4d",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
