@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "504ae34c_b4a06f44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:55:06Z",
+      "side": 1,
+      "message": "nit: don\u0027t use a double negative",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe93839_20a4cf21",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:55:06Z",
+      "side": 1,
+      "message": "Would it be useful to add a small delay between requests. Like 50 ms?",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59816d18_0753c8fb",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:55:06Z",
+      "side": 1,
+      "message": "you are using lastErr above. This seems wrong.",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197cdb1c_31205088",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:55:06Z",
+      "side": 1,
+      "message": "This will fail if any request failed. Perhaps clear lastErr before break.\nOr is this the intended behaviour?",
+      "range": {
+        "startLine": 202,
+        "startChar": 19,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df584708_e44ebed1",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:55:06Z",
+      "side": 1,
+      "message": "nit: add a comment that the request can fail so we retry.",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
