@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a79d8c2a_2cd359de",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-17T19:52:23Z",
+      "side": 1,
+      "message": "It is in line with coding style - not that it\u0027s incredibly readable, but I think any users of this package won\u0027t have problems",
+      "parentUuid": "5d9f03f2_97792167",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "b3b944cab116a48d014b299d4e09f7cb489577fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50e96bcc_d9f04d95",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
         "patchSetId": 35
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "I see other hwsec tests doing the same, at least.",
       "parentUuid": "50e96bcc_d9f04d95",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "b3b944cab116a48d014b299d4e09f7cb489577fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a48448c_a4035395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_rsapss.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-17T19:52:23Z",
+      "side": 1,
+      "message": "yes, \"group:mainline\" and \"informational\" are what make this test run in the lab as part of the tast bvt-cq suite but not block CQ/releases",
+      "parentUuid": "1fadb08b_12ec2508",
       "range": {
         "startLine": 21,
         "startChar": 17,
