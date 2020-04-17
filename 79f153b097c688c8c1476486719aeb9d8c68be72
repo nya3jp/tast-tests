@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84468173_f1e06b0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:45:52Z",
+      "side": 1,
+      "message": "nit: mention you also updated APIRequestBluetoothDataNotification",
+      "revId": "79f153b097c688c8c1476486719aeb9d8c68be72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f676b20d_6fbbe6e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/bt/validate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:45:52Z",
+      "side": 1,
+      "message": "Powered is too generic. Maybe ValidatePowered?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "79f153b097c688c8c1476486719aeb9d8c68be72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd48359_792cfd19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/bt/validate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:45:52Z",
+      "side": 1,
+      "message": "Do we ever want to support machines with more than one adapter?",
+      "revId": "79f153b097c688c8c1476486719aeb9d8c68be72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "936b84d1_6e8b4dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/bt/validate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-17T05:45:52Z",
+      "side": 1,
+      "message": "nit: expectedCarrierStatus",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "79f153b097c688c8c1476486719aeb9d8c68be72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
