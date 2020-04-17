@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "071fa928_6d0045ca",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T22:59:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c14ba38_6c4581c6",
+      "range": {
+        "startLine": 111,
+        "startChar": 27,
+        "endLine": 111,
+        "endChar": 41
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75b2383b_0c3ac6ca",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ca8809_474f169d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T22:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b2383b_0c3ac6ca",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 99
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "e3087407_0c9263df",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T22:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3721d265_2c5cb1b4",
+      "range": {
+        "startLine": 152,
+        "startChar": 72,
+        "endLine": 152,
+        "endChar": 83
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddfe903d_54a98fd5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T22:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f40135a0_bc2476e3",
+      "range": {
+        "startLine": 152,
+        "startChar": 22,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1bc7f82_a4cfe526",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 7
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b663be71_6f4d4537",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T22:59:19Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "d1bc7f82_a4cfe526",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 2
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "579219e6_b4adeb77",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2020-04-17T10:09:20Z",
       "side": 1,
       "message": "Where are the keys coming from? Can this be changed to \"download\" for consistency?",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 9
+      },
+      "revId": "a576bbd320c692bf07542a99f68c7b456e5f38b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351341ce_86c68117",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-17T22:59:19Z",
+      "side": 1,
+      "message": "Those key come from the graphics/trace_replay app.\nIf we decide to change the communication API, it\u0027s better be done on the client(container) side first.",
+      "parentUuid": "579219e6_b4adeb77",
       "range": {
         "startLine": 175,
         "startChar": 8,
