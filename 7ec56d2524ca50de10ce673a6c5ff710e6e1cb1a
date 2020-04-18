@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8c9a99c_6e5ae4e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-04-18T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f689865_8ae42f1a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "7ec56d2524ca50de10ce673a6c5ff710e6e1cb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d06237e_e0ca9c8d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/quarter_sized_window_zooming.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "7ec56d2524ca50de10ce673a6c5ff710e6e1cb1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855828de_60a0c358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quarter_sized_window_zooming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-04-18T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d06237e_e0ca9c8d",
+      "range": {
+        "startLine": 92,
+        "startChar": 33,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "7ec56d2524ca50de10ce673a6c5ff710e6e1cb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
