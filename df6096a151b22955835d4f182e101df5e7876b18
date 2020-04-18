@@ -176,6 +176,30 @@
       "revId": "df6096a151b22955835d4f182e101df5e7876b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f125d0f_6408f83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-18T00:09:20Z",
+      "side": 1,
+      "message": "I found an example of how to pipe commands in go here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/profiler/top.go;l\u003d77?q\u003dfile:top.go\u0026sq\u003dpackage:chromeos_public\n\nI really do think that including subdirectory sizes will be pretty helpful (and conversely, not including them will be misleading/confusing)\n\nThat said, thanks a bunch for working on this, something is better than nothing if you need to move on.",
+      "parentUuid": "40d01526_c6cbabd2",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

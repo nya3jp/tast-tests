@@ -22,6 +22,23 @@
       "revId": "737932a92128fadf381bf49a3e5de346f11bfbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b25047_04a1a550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2020-04-18T00:09:20Z",
+      "side": 1,
+      "message": "Note: locally I get a warning when I place -xdev after -type f.",
+      "revId": "737932a92128fadf381bf49a3e5de346f11bfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
