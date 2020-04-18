@@ -281,8 +281,11 @@ func measureGPUCounters(ctx context.Context, prefix string, p *perf.Values) erro
 	return nil
 }
 
-// decodePerf opens a WebRTC Loopback connection and streams while collecting statistics.
-func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, p *perf.Values) {
+// decodePerf opens a WebRTC Loopback connection and streams while collecting
+// statistics. If videoGridDimension is larger than 1, then the real time <video>
+// is plugged into a videoGridDimension x videoGridDimension grid with copies
+// of videoURL being played, similar to a mosaic video call.
+func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, videoGridDimension int, videoURL string, p *perf.Values) {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
@@ -302,6 +305,12 @@ func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profil
 
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		s.Fatal("Timed out waiting for page loading: ", err)
+	}
+
+	if videoGridDimension > 1 {
+		if err := conn.Call(ctx, nil, "makeVideoGrid", videoGridDimension, videoURL); err != nil {
+			s.Fatal("JS error: ", err)
+		}
 	}
 
 	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q, false, %d, %d)", profile, streamWidth, streamHeight), nil); err != nil {
@@ -336,7 +345,7 @@ func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profil
 
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunDecodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile string, enableHWAccel bool) {
+func RunDecodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile string, enableHWAccel bool, videoGridDimension int, videoGridFilename string) {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -355,8 +364,12 @@ func RunDecodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, pro
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
+	var videoGridURL string
+	if videoGridDimension > 1 {
+		videoGridURL = server.URL + "/" + videoGridFilename
+	}
 	p := perf.NewValues()
-	decodePerf(ctx, s, cr, profile, loopbackURL, enableHWAccel, p)
+	decodePerf(ctx, s, cr, profile, loopbackURL, enableHWAccel, videoGridDimension, videoGridURL, p)
 
 	p.Save(s.OutDir())
 }
