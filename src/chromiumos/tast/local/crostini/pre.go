@@ -125,7 +125,7 @@ var startedTraceVMPre = &preImpl{
 	arch:       vm.DebianBuster,
 	mode:       download,
 	gpuEnabled: true,
-	diskSize:   8 * 1024 * 1024 * 1024,
+	diskSize:   16 * 1024 * 1024 * 1024,
 }
 
 var startedARCEnabledPre = &preImpl{
