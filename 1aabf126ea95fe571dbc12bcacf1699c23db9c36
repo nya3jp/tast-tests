@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f68e5fd9_f16af94f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-18T00:08:35Z",
+      "side": 1,
+      "message": "you can use this now:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2119775",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "1aabf126ea95fe571dbc12bcacf1699c23db9c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10823783_603bc6c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 9
