@@ -107,3 +107,31 @@ function isFrozenVideoFrame(width = 1280, height = 720) {
   isFrozenVideoFrame.previousImageData = imageData;
   return ssimValue > IDENTICAL_FRAME_SSIM_THRESHOLD;
 }
+
+// Transforms the "container" <div> that holds the real time <video> into a
+// |dimension| x |dimension| grid, and fills it with |videoURL| <video>s.
+// Reusing the same URL being played back should not affect the test since each
+// <video> will need to decode and play independently from the others.
+function makeVideoGrid(dimension, videoURL) {
+  // Find the |container| and make it a |dimension| x |dimension| grid; repeat()
+  // allows for automatically ordering sub-grids into |dimension| columns, see
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+  const container = document.getElementById('container');
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(' + dimension + ', 1fr)';
+
+  // Fill the grid with <video>s. Note that there is already one <video> in the
+  // grid for the remote RTCPeerConnection stream feed.
+  const numExtraVideosInGrid = dimension * dimension - 1;
+  for (let i = 0; i < numExtraVideosInGrid; i++) {
+    const video = document.createElement('video');
+    video.src = videoURL;
+    video.style.maxWidth = '100%';
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    const div = document.createElement('div');
+    div.appendChild(video);
+    container.appendChild(div);
+  }
+}
