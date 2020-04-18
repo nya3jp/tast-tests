@@ -224,6 +224,30 @@
       "revId": "df6096a151b22955835d4f182e101df5e7876b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d60084cf_bbcbc509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-04-18T04:01:48Z",
+      "side": 1,
+      "message": "Nice find re:threshold argument! maxdepth of 3 sgtm.\n\nThe Tast owners are the best people to answer your question I think, adding them to the review",
+      "parentUuid": "1bd0c4e5_56a2b54d",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
