@@ -200,6 +200,30 @@
       "revId": "df6096a151b22955835d4f182e101df5e7876b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd0c4e5_56a2b54d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-18T02:40:18Z",
+      "side": 1,
+      "message": "I discovered |du| has a |threshold| argument, so no pipe is required for that.\nI went with maxdepth 3 as I felt that gives a tradeoff between not too many lines of output, but still a bit more information than just maxdepth 1.\n\nI also wanted things sorted so the biggest files were at top,\nso I introduced a |pipeAndGetOutput| method using the example you provided.\n\nQuestion: Are we supposed to make methods like that reusable, and if so, where should they be put?",
+      "parentUuid": "0f125d0f_6408f83b",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
