@@ -17,8 +17,10 @@ import (
 
 // rtcPerfTest is used to describe the config used to run each test case.
 type rtcPerfTest struct {
-	enableHWAccel bool   // Instruct to use hardware or software decoding.
-	profile       string // Codec to try, e.g. VP8, VP9.
+	enableHWAccel      bool   // Instruct to use hardware or software decoding.
+	profile            string // Codec to try, e.g. VP8, VP9.
+	videoGridDimension int    // Number of extra videos, only playback, to add.
+	videoGridFile      string
 }
 
 func init() {
@@ -61,6 +63,18 @@ func init() {
 			Name: "vp9_sw",
 			Val:  rtcPerfTest{enableHWAccel: false, profile: "VP9"},
 			Pre:  pre.ChromeVideoWithFakeWebcamAndSWDecoding(),
+		}, {
+			Name:              "vp8_hw_multi_3x3",
+			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP8", videoGridDimension: 3, videoGridFile: "tulip2-320x180.vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
+		}, {
+			Name:              "vp8_hw_multi_4x4",
+			Val:               rtcPerfTest{enableHWAccel: true, profile: "VP8", videoGridDimension: 4, videoGridFile: "tulip2-320x180.vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			Pre:               pre.ChromeVideoWithFakeWebcam(),
 		}},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
@@ -70,5 +84,5 @@ func init() {
 // RTCPeerConnectionPerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
 func RTCPeerConnectionPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcPerfTest)
-	peerconnection.RunDecodePerf(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.profile, testOpt.enableHWAccel)
+	peerconnection.RunDecodePerf(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.profile, testOpt.enableHWAccel, testOpt.videoGridDimension, testOpt.videoGridFile)
 }

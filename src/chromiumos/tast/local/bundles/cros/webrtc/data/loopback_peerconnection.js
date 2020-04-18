@@ -107,3 +107,26 @@ function isFrozenVideoFrame(width = 1280, height = 720) {
   isFrozenVideoFrame.previousImageData = imageData;
   return ssimValue > IDENTICAL_FRAME_SSIM_THRESHOLD;
 }
+
+// Transforms the "container" <div> that holds the real time <video> into a
+// dimension x dimension grid, and fills it with videoURL <video>s playing.
+function makeVideoGrid(dimension, videoURL) {
+  // Find the |container| and make a dimension x dimension grid.
+  const container = document.getElementById("container");
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(' + dimension + ', 1fr)';
+
+  let i;
+  const numVideosInGrid = dimension * dimension - 1;
+  for (i = 0; i < numVideosInGrid; i++) {
+    let video = document.createElement("video");
+    video.src = videoURL;
+    video.style.maxWidth = '100%';
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    let div = document.createElement("div");
+    div.appendChild(video);
+    container.appendChild(div);
+  }
+}
