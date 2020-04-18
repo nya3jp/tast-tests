@@ -152,6 +152,30 @@
       "revId": "df6096a151b22955835d4f182e101df5e7876b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d01526_c6cbabd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-04-18T00:03:15Z",
+      "side": 1,
+      "message": "Ah, makes sense. Thanks for checking! With -xdev we should still be a long way from hitting the size limit, so that\u0027ll do :-)",
+      "parentUuid": "000285cd_105a7279",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "df6096a151b22955835d4f182e101df5e7876b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

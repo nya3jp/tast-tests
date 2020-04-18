@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca40d4d3_ae1df78f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2020-04-18T00:03:15Z",
+      "side": 1,
+      "message": "Can you put that option before \u0027-type\u0027? It sends a warning to stderr otherwise\n\n\"\nfind: warning: you have specified the -xdev option after a non-option argument -type, but options are not positional (-xdev affects tests specified before it as well as those specified after it).  Please specify options before other arguments.\n\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 66,
+        "endLine": 120,
+        "endChar": 73
+      },
+      "revId": "737932a92128fadf381bf49a3e5de346f11bfbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
