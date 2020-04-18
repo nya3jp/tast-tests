@@ -30,6 +30,51 @@ func init() {
 		Timeout: 5 * time.Minute,
 		// "chrome_internal" is needed for H.264 videos because H.264 is a proprietary codec.
 		Params: []testing.Param{{
+			Name: "h264_144p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "144p_30fps_300frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         []string{"144p_30fps_300frames.h264.mp4"},
+		}, {
+			Name: "h264_240p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "240p_30fps_300frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         []string{"240p_30fps_300frames.h264.mp4"},
+		}, {
+			Name: "h264_360p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "360p_30fps_300frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         []string{"360p_30fps_300frames.h264.mp4"},
+		}, {
+			Name: "h264_480p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "480p_30fps_300frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
+		}, {
+			Name: "h264_720p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.h264.mp4",
+				decoderType: playback.VDA,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
+		}, {
 			Name: "h264_1080p_30fps",
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.h264.mp4",
@@ -62,6 +107,46 @@ func init() {
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264.mp4"},
 		}, {
+			Name: "vp8_144p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "144p_30fps_300frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"144p_30fps_300frames.vp8.webm"},
+		}, {
+			Name: "vp8_240p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "240p_30fps_300frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"240p_30fps_300frames.vp8.webm"},
+		}, {
+			Name: "vp8_360p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "360p_30fps_300frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"360p_30fps_300frames.vp8.webm"},
+		}, {
+			Name: "vp8_480p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "480p_30fps_300frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"480p_30fps_300frames.vp8.webm"},
+		}, {
+			Name: "vp8_720p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.vp8.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"720p_30fps_300frames.vp8.webm"},
+		}, {
 			Name: "vp8_1080p_30fps",
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp8.webm",
@@ -89,6 +174,46 @@ func init() {
 				decoderType: playback.VDA,
 			},
 			ExtraData: []string{"2160p_60fps_600frames.vp8.webm"},
+		}, {
+			Name: "vp9_144p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "144p_30fps_300frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"144p_30fps_300frames.vp9.webm"},
+		}, {
+			Name: "vp9_240p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "240p_30fps_300frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"240p_30fps_300frames.vp9.webm"},
+		}, {
+			Name: "vp9_360p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "360p_30fps_300frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"360p_30fps_300frames.vp9.webm"},
+		}, {
+			Name: "vp9_480p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "480p_30fps_300frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"480p_30fps_300frames.vp9.webm"},
+		}, {
+			Name: "vp9_720p_30fps",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.vp9.webm",
+				decoderType: playback.VDA,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_weekly"},
+			ExtraData: []string{"720p_30fps_300frames.vp9.webm"},
 		}, {
 			Name: "vp9_1080p_30fps",
 			Val: playbackPerfParams{
