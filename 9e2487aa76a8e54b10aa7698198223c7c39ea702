@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "6765dd57_b5b4c691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-18T01:21:36Z",
+      "side": 1,
+      "message": "Hmm, I think this TODO was great... you know, we want to remove chrome.New when the feature is enabled by default.",
+      "parentUuid": "286cd90c_a1417b18",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "9e2487aa76a8e54b10aa7698198223c7c39ea702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "949c98f8_7ebadf4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
