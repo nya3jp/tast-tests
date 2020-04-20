@@ -10,6 +10,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/dut"
@@ -31,7 +33,6 @@ type TestFixture struct {
 	routerHost *ssh.Conn
 	router     *Router
 	wifiClient network.WifiClient
-
 	apID       int
 	curService *network.Service
 	curAP      *APIface
@@ -246,4 +247,21 @@ func (tf *TestFixture) Router() *Router {
 // WifiClient returns the gRPC WifiClient of the DUT.
 func (tf *TestFixture) WifiClient() network.WifiClient {
 	return tf.wifiClient
+}
+
+// DefaultOpenNetworkAP configures the router to provide an 802.11n open network.
+func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, error) {
+	var secConfFac security.ConfigFactory
+	return tf.ConfigureAP(ctx, []hostapd.Option{
+		hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48),
+		hostapd.HTCaps(hostapd.HTCapHT20)}, secConfFac)
+}
+
+// ClientInterface returns the client interface name.
+func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
+	netIf, err := tf.wifiClient.GetInterface(ctx, &empty.Empty{})
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get the WiFi interface name")
+	}
+	return netIf.Name, nil
 }
