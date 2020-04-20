@@ -177,12 +177,13 @@ func TestNewPhy(t *testing.T) {
 			"AP-side u-APSD",
 			"T-DLS",
 		},
-		RxAntenna:      0,
-		TxAntenna:      0,
-		MaxScanSSIDs:   20,
-		SupportVHT:     false,
-		SupportHT2040:  true,
-		SupportHT40SGI: true,
+		RxAntenna:     0,
+		TxAntenna:     0,
+		MaxScanSSIDs:  20,
+		SupportVHT:    false,
+		SupportHT2040: true,
+		SupportSGI:    false,
+		SupportMUMIMO: false,
 	}
 	if !reflect.DeepEqual(l, cmpPhy) {
 		t.Errorf("unexpected result in newPhy: got %v, want %v", l, cmpPhy)
