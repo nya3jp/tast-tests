@@ -22,13 +22,14 @@ import (
 
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
-	dut        *dut.DUT
-	rpc        *rpc.Client
-	routerHost *ssh.Conn
-	router     *Router
-	wifiClient network.WifiClient
-	curService *network.Service
-	curAP      *APIface
+	dut                *dut.DUT
+	rpc                *rpc.Client
+	routerHost         *ssh.Conn
+	router             *Router
+	wifiClient         network.WifiClient
+	curService         *network.Service
+	curAP              *APIface
+	DefaultWiFiOptions []hostapd.Option
 }
 
 // NewTestFixture creates a TestFixture.
