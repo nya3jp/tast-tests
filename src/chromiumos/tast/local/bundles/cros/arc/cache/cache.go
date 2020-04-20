@@ -108,7 +108,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	const (
 		gmsRoot      = "/data/user_de/0/com.google.android.gms"
 		appChimera   = "app_chimera"
-		tmpTarFile   = "/sdcard/Download/temp_gms_caches.tar"
+		tmpTarFile   = "/data/local/tmp/temp_gms_caches.tar"
 		packagesPath = "/data/system/packages_copy.xml"
 		gsfDatabase  = "/data/data/com.google.android.gsf/databases/gservices.db"
 	)
