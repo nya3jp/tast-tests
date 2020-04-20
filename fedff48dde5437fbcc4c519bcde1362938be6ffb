@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cb742e3_9f82c3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "div",
+      "range": {
+        "startLine": 16,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa9bac7b_fe20371b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we need the class attributes here or in the next line. We don\u0027t seem to use them.",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 29
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48298952_33e93f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this is needed either.",
+      "range": {
+        "startLine": 6,
+        "startChar": 27,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df030a2e_e9e87346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "it",
+      "range": {
+        "startLine": 114,
+        "startChar": 34,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136da520_7658deaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: Can this be on the initialization on ln. 123?",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 8
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17536828_42b0cf1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: Add a comment explaining the -1. I assume it\u0027s because there\u0027s already one item in the grid (the default).",
+      "range": {
+        "startLine": 122,
+        "startChar": 48,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693d32bb_01168d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: const?",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "380ed10e_9a3fdf61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "Is it intentional that the default video is not looped while the rest are?",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ce90eb_a25276e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: const?",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 7
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e2e1a2_18f5199e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: This is misleading. As far as this function is concerned, videoGridDimension is always specified. It\u0027s just that it might be 0.",
+      "range": {
+        "startLine": 237,
+        "startChar": 37,
+        "endLine": 237,
+        "endChar": 50
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919fa942_6ce1fa80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "This may or may not be a limitation: it may make the decoder more efficient than it would be in reality due to caching.",
+      "range": {
+        "startLine": 238,
+        "startChar": 71,
+        "endLine": 238,
+        "endChar": 77
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcad0d4a_d666ac9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: s/videocall/video call/.",
+      "range": {
+        "startLine": 239,
+        "startChar": 49,
+        "endLine": 239,
+        "endChar": 58
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57f7aa5_2217ac0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-04-20T14:43:46Z",
+      "side": 1,
+      "message": "nit: I think videoGridDimension x videoGridDimension - 1 is the number of extra videos.",
+      "range": {
+        "startLine": 22,
+        "startChar": 40,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "fedff48dde5437fbcc4c519bcde1362938be6ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
