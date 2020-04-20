@@ -17,6 +17,8 @@ import (
 // DownloadPath is the location of Downloads for the user.
 const DownloadPath = "/home/chronos/user/Downloads/"
 
+const filesAppUITimeout = 15 * time.Second
+
 // TODO(crbug/1046853): Look for way to not rely on names being in English.
 var rootFindParams ui.FindParams = ui.FindParams{
 	Name:      "Files",
@@ -43,6 +45,20 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	// The child folders of My Files in the navigation tree are loaded in
+	// asynchronously meaning any clicks in the navigation tree at startup
+	// may encounter race issues. As Downloads is a fixed child folder of
+	// MyFiles, and these folders appear at the same time, wait for the
+	// Downloads folder to load to indicate that the tree's ui has settled.
+	params := ui.FindParams{
+		Name: "Downloads",
+		Role: ui.RoleTypeTreeItem,
+	}
+	if err := app.WaitUntilDescendantExists(ctx, params, filesAppUITimeout); err != nil {
+		return nil, err
+	}
+
 	return &FilesApp{tconn: tconn, Root: app}, nil
 }
 
@@ -67,7 +83,7 @@ func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 		Name: "Downloads",
 		Role: ui.RoleTypeTreeItem,
 	}
-	downloads, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
+	downloads, err := f.Root.DescendantWithTimeout(ctx, params, filesAppUITimeout)
 	if err != nil {
 		return err
 	}
@@ -81,7 +97,32 @@ func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 		Name: "Files - Downloads",
 		Role: ui.RoleTypeRootWebArea,
 	}
-	return f.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second)
+	return f.Root.WaitUntilDescendantExists(ctx, params, filesAppUITimeout)
+}
+
+// OpenDrive opens the Google Drive folder in the Files App.
+// An error is returned if Drive is not found or does not open.
+func (f *FilesApp) OpenDrive(ctx context.Context) error {
+	// Click Google Drive to open the folder.
+	params := ui.FindParams{
+		Name: "Google Drive",
+		Role: ui.RoleTypeTreeItem,
+	}
+	drive, err := f.Root.DescendantWithTimeout(ctx, params, filesAppUITimeout)
+	if err != nil {
+		return err
+	}
+	defer drive.Release(ctx)
+	if err := drive.LeftClick(ctx); err != nil {
+		return err
+	}
+
+	// Ensure the Files App has switched to the My Drive folder.
+	params = ui.FindParams{
+		Name: "Files - My Drive",
+		Role: ui.RoleTypeRootWebArea,
+	}
+	return f.Root.WaitUntilDescendantExists(ctx, params, filesAppUITimeout)
 }
 
 // file returns a ui.Node that references the specified file.
@@ -119,7 +160,7 @@ func (f *FilesApp) WaitForFile(ctx context.Context, filename string, timeout tim
 
 // SelectFile selects a file by clicking on it.
 func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
-	file, err := f.file(ctx, filename, 15*time.Second)
+	file, err := f.file(ctx, filename, filesAppUITimeout)
 	if err != nil {
 		return err
 	}
@@ -129,7 +170,7 @@ func (f *FilesApp) SelectFile(ctx context.Context, filename string) error {
 
 // OpenQuickView opens the QuickView menu for a file.
 func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
-	file, err := f.file(ctx, filename, 15*time.Second)
+	file, err := f.file(ctx, filename, filesAppUITimeout)
 	if err != nil {
 		return err
 	}
@@ -143,7 +184,7 @@ func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 		Name: "Get info",
 		Role: ui.RoleTypeMenuItem,
 	}
-	getInfo, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
+	getInfo, err := f.Root.DescendantWithTimeout(ctx, params, filesAppUITimeout)
 	if err != nil {
 		return err
 	}
