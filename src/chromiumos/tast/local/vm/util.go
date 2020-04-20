@@ -8,14 +8,8 @@ import (
 	"bufio"
 	"bytes"
 	"context"
-	"fmt"
-	"io"
-	"io/ioutil"
 	"net"
-	"net/http"
 	"os"
-	"path/filepath"
-	"runtime"
 	"strconv"
 	"strings"
 
@@ -37,11 +31,11 @@ const (
 	// TerminaMountDir is a path to the location where we will mount the termina component.
 	TerminaMountDir = "/run/imageloader/cros-termina/99999.0.0"
 
-	terminaComponentDownloadPath     = "/usr/local/cros-termina"
-	terminaComponentStagingURLFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
-	terminaComponentURLFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
-	lsbReleasePath                   = "/etc/lsb-release"
-	milestoneKey                     = "CHROMEOS_RELEASE_CHROME_MILESTONE"
+	// ImageServerURLComponentName is the name of the Chrome component for the image server URL.
+	ImageServerURLComponentName = "cros-crostini-image-server-url"
+
+	lsbReleasePath = "/etc/lsb-release"
+	milestoneKey   = "CHROMEOS_RELEASE_CHROME_MILESTONE"
 )
 
 // ComponentType represents the VM component type.
@@ -54,97 +48,8 @@ const (
 	StagingComponent
 )
 
-// downloadComponent downloads a component with the given version string.
-// Returns the path to the image that holds the component.
-func downloadComponent(ctx context.Context, milestone int, version string) (string, error) {
-	componentDir := filepath.Join(terminaComponentDownloadPath, version)
-	if err := os.MkdirAll(componentDir, 0755); err != nil {
-		return "", err
-	}
-	imagePath := filepath.Join(componentDir, "image.ext4")
-	if _, err := os.Stat(imagePath); err != nil {
-		if !os.IsNotExist(err) {
-			// Something failed other than the image not existing.
-			return "", errors.Wrap(err, "failed to stat image.ext4")
-		}
-	} else {
-		// The image exists, so go ahead and use it.
-		return imagePath, nil
-	}
-
-	// Build the URL for the component, which depends on the DUT's arch.
-	var componentArch string
-	if runtime.GOARCH == "amd64" {
-		componentArch = "intel64"
-	} else {
-		componentArch = "arm32"
-	}
-
-	// Download the files.zip from the component GS bucket.
-	url := fmt.Sprintf(terminaComponentURLFormat, milestone, version, componentArch)
-	testing.ContextLogf(ctx, "Downloading VM component version %s from: %s", version, url)
-	resp, err := http.Get(url)
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusOK {
-		return "", errors.Errorf("component download failed: %s", resp.Status)
-	}
-	filesPath := filepath.Join(componentDir, "files.zip")
-	filesZip, err := os.Create(filesPath)
-	if err != nil {
-		return "", err
-	}
-	if _, err := io.Copy(filesZip, resp.Body); err != nil {
-		filesZip.Close()
-		os.Remove(filesPath)
-		return "", err
-	}
-	filesZip.Close()
-
-	// Extract the zip. We expect an image.ext4 file in the output.
-	unzipCmd := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", componentDir)
-	if err := unzipCmd.Run(); err != nil {
-		unzipCmd.DumpLog(ctx)
-		return "", errors.Wrap(err, "failed to unzip")
-	}
-	return imagePath, nil
-}
-
-// MountArtifactComponent extracts and mounts the VM image from build artifacts.
-func MountArtifactComponent(ctx context.Context, artifactPath string) error {
-	componentDir := filepath.Join(terminaComponentDownloadPath, "artifact")
-	// Remove componentDir if it already exists to make sure we
-	// don't reuse any files from a previous test run.
-	if err := os.RemoveAll(componentDir); err != nil {
-		return err
-	}
-	if err := os.MkdirAll(componentDir, 0755); err != nil {
-		return err
-	}
-
-	// Extract just the VM image from the tarball.
-	cmd := testexec.CommandContext(ctx, "tar", "xvf", artifactPath, "-C", componentDir, "vm_image.zip")
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return errors.Wrap(err, "failed to untar")
-	}
-
-	zipPath := filepath.Join(componentDir, "vm_image.zip")
-	// Extract the zip. We expect an image.ext4 file in the output.
-	unzipCmd := testexec.CommandContext(ctx, "unzip", zipPath, "image.ext4", "-d", componentDir)
-	if err := unzipCmd.Run(); err != nil {
-		unzipCmd.DumpLog(ctx)
-		return errors.Wrap(err, "failed to unzip")
-	}
-
-	imagePath := filepath.Join(componentDir, "image.ext4")
-	return mountComponent(ctx, imagePath)
-}
-
-// mountComponent mounts a component image from the provided image path.
-func mountComponent(ctx context.Context, image string) error {
+// MountComponent mounts a component image from the provided image path.
+func MountComponent(ctx context.Context, image string) error {
 	if err := os.MkdirAll(TerminaMountDir, 0755); err != nil {
 		return err
 	}
@@ -181,44 +86,6 @@ func mountComponentUpdater(ctx context.Context) error {
 	return os.RemoveAll(TerminaMountDir)
 }
 
-// SetUpComponent sets up the VM component according to the specified ComponentType.
-func SetUpComponent(ctx context.Context, c ComponentType) error {
-	if c == ComponentUpdater {
-		return mountComponentUpdater(ctx)
-	}
-
-	milestone, err := getMilestone()
-	if err != nil {
-		return err
-	}
-
-	var url string
-	switch c {
-	case StagingComponent:
-		url = fmt.Sprintf(terminaComponentStagingURLFormat, milestone)
-	}
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusOK {
-		return errors.Errorf("component symlink download failed: %s", resp.Status)
-	}
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return err
-	}
-	version := strings.TrimSpace(string(body))
-
-	imagePath, err := downloadComponent(ctx, milestone, version)
-	if err != nil {
-		return err
-	}
-
-	return mountComponent(ctx, imagePath)
-}
-
 // UnmountComponent unmounts any active VM component.
 func UnmountComponent(ctx context.Context) {
 	if err := unix.Unmount(TerminaMountDir, 0); err != nil {
@@ -227,10 +94,6 @@ func UnmountComponent(ctx context.Context) {
 
 	if err := os.Remove(TerminaMountDir); err != nil {
 		testing.ContextLog(ctx, "Failed to remove component mount directory: ", err)
-	}
-
-	if err := os.RemoveAll(terminaComponentDownloadPath); err != nil {
-		testing.ContextLog(ctx, "Failed to remove component download directory: ", err)
 	}
 }
 

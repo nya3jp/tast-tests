@@ -312,7 +312,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 		return coords.Size{}, err
 	}
 
-	sz, err := crostini.PollWindowSize(ctx, tconn, windowName)
+	sz, err := crostini.PollWindowSize(ctx, tconn, windowName, 10*time.Second)
 	if err != nil {
 		return coords.Size{}, err
 	}
