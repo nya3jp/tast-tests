@@ -22,6 +22,30 @@
       "revId": "1d32cc888eaa3e06d731974922329de75f28b9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e999469_14a9e1ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-20T14:36:17Z",
+      "side": 1,
+      "message": "In this case it doesn\u0027t matter because this JS file doesn\u0027t have direct\ncalls to methods below; IOW JS parser parses as it ingests, so as long\nas the JS files are only function definitions without forward dependencies\nthere should be no problem. This is a somewhat normal JS circumstance as\nlibraries tend to depend on each other and sometimes that relationship\ntree cannot be flattened.\n\nOTOH if any of these JS would immediately call some of these then-undefined \nfunctions (or instantiate objects etc) then we\u0027d have an issue, but the \ncr.NewConn in l.52 of peer_connection.go will then fail.",
+      "parentUuid": "a8892e6d_a47f2bd1",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 39
+      },
+      "revId": "1d32cc888eaa3e06d731974922329de75f28b9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
