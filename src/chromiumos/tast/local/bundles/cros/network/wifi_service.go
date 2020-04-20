@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"net"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -165,4 +166,44 @@ func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SS
 		}
 	}
 	return &empty.Empty{}, nil
+}
+
+// Interface returns the WiFi device interface name (e.g., wlan0).
+func (s *WifiService) Interface(ctx context.Context, e *empty.Empty) (*network.Iface, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+	netIf, err := shill.WifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi interface")
+	}
+	return &network.Iface{
+		Iface: netIf,
+	}, nil
+}
+
+// IPForInterface returns the IP address for the network interface.
+func (s *WifiService) IPForInterface(ctx context.Context, iface *network.Iface) (*network.Addr, error) {
+	ifaceObj, err := net.InterfaceByName(iface.Iface)
+	if err != nil {
+		return nil, err
+	}
+
+	addrs, err := ifaceObj.Addrs()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, a := range addrs {
+		if ipnet, ok := a.(*net.IPNet); ok && ipnet.IP.To4() != nil {
+			return &network.Addr{
+				Ipv4: ipnet.IP.String(),
+			}, nil
+		}
+	}
+
+	return &network.Addr{
+		Ipv4: "",
+	}, nil
 }
