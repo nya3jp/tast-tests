@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f51e08c_45c9aa14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-20T03:26:16Z",
+      "side": 1,
+      "message": "I\u0027d recommend to swap the parameter names for consistency with other tests. E.g.:\n\ndev.RemoteDesktop for continuous run on CI.\ndev.RemoteDesktop.manual for manual testing.\n\nWDYT?\n\n(optional): Or, if the HardwareDeps is the only things, moreover, you may not need params.\nYou can simply declare \"HardwareDeps\" without Params. On manual run, you can tell Tast command to ignore dependencies by passing \"-checktestdeps\u003dfalse\".",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "8b7866167a9ff3f00507d87c8fa859603ed0b09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
