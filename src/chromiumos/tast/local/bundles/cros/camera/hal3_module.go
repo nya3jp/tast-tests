@@ -7,6 +7,7 @@ package camera
 import (
 	"context"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -21,7 +22,15 @@ func init() {
 		// TODO(shik): Once cros_camera_test supports an external camera,
 		// replace caps.BuiltinCamera with caps.BuiltinOrVividCamera.
 		// Same for other HAL3* tests.
-		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{caps.BuiltinCamera},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p", "arc_camera3"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			// ARCVM only has android-sh after booted.
+			Pre: arc.VMBooted(),
+		}},
 	})
 }
 

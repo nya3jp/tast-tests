@@ -19,11 +19,17 @@ func init() {
 		Desc:         "Verifies camera still capture function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{caps.BuiltinCamera},
 		// Default timeout (i.e. 2 minutes) is not enough for some devices in
 		// the test lab, such as Nocturne. The lab might be much darker than
 		// the office, which makes 3A algorithm converge slower.
 		Timeout: 5 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p", "arc_camera3"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
