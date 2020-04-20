@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "19469c90_25c5081b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T10:31:41Z",
+      "side": 1,
+      "message": "Sorry for bad memory. How about adding a comment // Target: \"hostname[:port]\"",
+      "parentUuid": "91e65f71_9c15fd6a",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12bd460c_68265a98",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -304,6 +328,24 @@
       "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65368cbf_66d9c63e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T10:31:41Z",
+      "side": 1,
+      "message": "Indeed it only takes neglectable time to propagate tf.pcapHost and tf.pcap. If some tests it will have its own packet capturer instance, then having tf.pcapHost for the test to get capturer\u0027s hostname is valid.",
+      "parentUuid": "94b6da26_5c81eb15",
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

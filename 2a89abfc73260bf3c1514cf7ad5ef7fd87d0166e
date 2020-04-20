@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6bcffc9_4f8d34eb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T10:31:41Z",
+      "side": 1,
+      "message": "Named return is unnecessary now.",
+      "range": {
+        "startLine": 189,
+        "startChar": 94,
+        "endLine": 189,
+        "endChar": 100
+      },
+      "revId": "2a89abfc73260bf3c1514cf7ad5ef7fd87d0166e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37419b04_632cc2cd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T10:31:41Z",
+      "side": 1,
+      "message": "Let\u0027s not reuse the name of function argument. Rename it as \"pcapOps\".",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 5
+      },
+      "revId": "2a89abfc73260bf3c1514cf7ad5ef7fd87d0166e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
