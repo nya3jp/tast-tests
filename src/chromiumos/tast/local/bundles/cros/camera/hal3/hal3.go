@@ -32,7 +32,7 @@ const (
 	builtInUSBCameraConfigPath = "/etc/camera/camera_characteristics.conf"
 	cameraHALGlobPattern       = "/usr/lib*/camera_hal/*.so"
 	jsonConfigPath             = "/var/cache/camera/test_config.json"
-	mediaProfilePath           = "/vendor/etc/media_profiles.xml"
+	mediaProfilePath           = "/var/cache/camera/media_profiles.xml"
 )
 
 // mediaSettings is used to unmarshal media profile in ARC.
@@ -81,8 +81,11 @@ func IsV1Legacy(ctx context.Context) bool {
 // getRecordingParams gets the recording parameters from the media profile in
 // ARC, which would be used as an argument of cros_camera_test.
 func getRecordingParams(ctx context.Context) (string, error) {
-	arcCmd := shutil.EscapeSlice([]string{"cat", mediaProfilePath})
-	out, err := testexec.CommandContext(ctx, "android-sh", "-c", arcCmd).Output(testexec.DumpLogOnError)
+	err := testexec.CommandContext(ctx, "generate_camera_profile").Run(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	out, err := ioutil.ReadFile(mediaProfilePath)
 	if err != nil {
 		return "", err
 	}
