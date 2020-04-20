@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f93da35b_45606bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2020-04-20T13:07:20Z",
+      "side": 1,
+      "message": "I never noticed that we have a symlink from /system/etc/media_profiles.xml to /vendor/etc/media_profiles.xml in ARC++. I think this should work.",
+      "parentUuid": "ff3b0d57_4e3b80f4",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "f3ab2d30a0154dcef65c30bbd8081b136e4489e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3922950e_7d4c6600",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_recording.go",
         "patchSetId": 1
