@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bfcd031_ed288e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-04-20T10:02:24Z",
+      "side": 1,
+      "message": "nit: \"files\" feels confusing. filesApp or just app (go-style :))",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 6
+      },
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ee1798_ea2057af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-04-20T10:02:24Z",
+      "side": 1,
+      "message": "Extract a constant.",
+      "range": {
+        "startLine": 193,
+        "startChar": 44,
+        "endLine": 193,
+        "endChar": 46
+      },
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90dfa733_cb8d2fa7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-04-20T10:02:24Z",
+      "side": 1,
+      "message": "Do they each load async or all as a single async?",
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6ae477_8b1f3a89",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1237241
+      },
+      "writtenOn": "2020-04-20T10:02:24Z",
+      "side": 1,
+      "message": "While you are here, please extract all those timeouts as a constant too.",
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
