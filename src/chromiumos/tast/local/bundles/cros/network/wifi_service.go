@@ -5,6 +5,7 @@
 package network
 
 import (
+	"bytes"
 	"context"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
@@ -169,4 +171,31 @@ func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SS
 		}
 	}
 	return &empty.Empty{}, nil
+}
+
+// Addresses returns the addresses (MAC, IP) associated with interface.
+func (s *WifiService) Addresses(ctx context.Context, intf *network.NetInterface) (*network.Adds, error) {
+	args := []string{"addr", "show", intf.NetInterface}
+	cmd := testexec.CommandContext(ctx, "ip", args...)
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+	// var exitCode int
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+	/*
+		if exitError, ok := err.(*exec.ExitError); ok {
+			ws := exitError.Sys().(syscall.WaitStatus)
+			exitCode = ws.ExitStatus()
+		}
+	*/
+
+	// testing.ContextLogf(ctx, "command result, stdout: %v stderr: %v exitCode: %v command: %v", stdout.String(), stderr.String(), fmt.Sprintf("%d", exitCode), cmd.String())
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get the addresses of the interface %s", intf.NetInterface)
+	}
+
+	return &network.Adds{
+		Adds: stdout.String(),
+	}, nil
 }

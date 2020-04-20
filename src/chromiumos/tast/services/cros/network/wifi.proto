@@ -18,6 +18,8 @@ service Wifi {
   rpc Disconnect(Service) returns (google.protobuf.Empty) {}
   // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
   rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
+  // Addresses returns the addresses (MAC, IP) associated with interface.
+  rpc Addresses(NetInterface) returns (Adds) {}
 }
 
 message Config {
@@ -31,4 +33,12 @@ message Service {
 
 message SSID {
   string ssid = 1;
+}
+
+message NetInterface {
+  string netInterface = 1;
+}
+
+message Adds {
+  string adds = 1;
 }
