@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "169888c1_0bb08285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-04-20T18:55:59Z",
+      "side": 1,
+      "message": "Is the removal of Wifi entries in the default profile a concern here?\n\nOut of curiosity, are we doing this for multiple test runs? The guest should lose its user profile on shill_logout_user; not quite sure what the non-guest behavior is for chrome.New, but we could just call Remove on the Service object we get at the very end of the test",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc1558e_157442b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-04-20T18:55:59Z",
+      "side": 1,
+      "message": "Is this redundant or is there some weird hidden behavior here?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4efdafab_289eca8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-04-20T18:55:59Z",
+      "side": 1,
+      "message": "nit: \"res\"",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
