@@ -733,19 +733,13 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		if err != nil {
 			return err
 		}
-
-		// /home/chronos/crash can be recreated asynchronously, whenever any
-		// program owned by chronos has an error. Don't complain about it being
-		// recreated under us.
-		// Filtering-in-loop code from https://github.com/golang/go/wiki/SliceTricks#filtering-without-allocating
-		filtered := fis[:0]
-		for _, file := range fis {
-			if file.Name() != "crash" {
-				filtered = append(filtered, file)
+		// Retry cleanup of remaining files. Don't fail if removal reports an error.
+		for _, left := range fis {
+			if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
+				testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
+			} else {
+				testing.ContextLogf(ctx, "Failed to clear %s; %q needed repeated removal", chronosDir, left.Name())
 			}
-		}
-		if len(filtered) > 0 {
-			return errors.Errorf("failed to clear %s: failed to remove %q", chronosDir, filtered[0].Name())
 		}
 
 		// Delete policy files to clear the device's ownership state since the account
