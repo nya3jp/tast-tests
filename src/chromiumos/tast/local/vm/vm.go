@@ -8,14 +8,13 @@ import (
 	"bytes"
 	"context"
 	"os"
-	"path/filepath"
+	"path"
 	"strings"
 
 	"github.com/godbus/dbus"
 
 	spb "chromiumos/system_api/seneschal_proto" // protobufs for seneschal
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -60,32 +59,50 @@ func NewDefaultVM(c *Concierge, enableGPU bool, diskSize uint64) *VM {
 	}
 }
 
-// CreateDefaultVM prepares a VM either the live or staging container versions.
-// The VM setting is based on the given parameters, enableGPU and diskSize.
-// The directory dir may be used to store logs on failure. If the container type
-// is Tarball, then artifactPath must be specified with the path to the tarball
-// containing the termina VM. Otherwise, artifactPath is ignored. If enableGPU
-// is set, VM will try to use hardware gpu if possible.
-func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool, diskSize uint64) (*VM, error) {
-	userPath, err := cryptohome.UserPath(ctx, user)
+// GetRunningVM creates a VM struct for the VM that is currently running.
+func GetRunningVM(ctx context.Context, user string) (*VM, error) {
+	c, err := GetRunningConcierge(ctx, user)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get user Downloads dir")
+		return nil, err
+	}
+	vm := NewDefaultVM(c, false, 0)
+	// Do a dbus call to get VM info.
+	return vm, err
+}
+
+// ExtractContainer extracts and renames container images from the artifact tarball.
+func ExtractContainer(ctx context.Context, user, artifactPath string) (string, error) {
+	if err := os.MkdirAll(containerDownloadPath, 0755); err != nil {
+		return "", errors.Wrap(err, "failed to mkdir for container image")
 	}
 
-	if t.Image == Tarball {
-		// Put the container rootfs and metadata tarballs in a subdirectory of
-		// Downloads for 9P sharing with the guest.
-		containerPath := filepath.Join(userPath, "Downloads/crostini")
-		if err := os.MkdirAll(containerPath, 0755); err != nil {
-			return nil, errors.Wrap(err, "failed to mkdir for container image")
-		}
+	testing.ContextLog(ctx, "Extracting container tarballs")
+	if err := testexec.CommandContext(ctx, "tar", "xvf", artifactPath, "-C", containerDownloadPath, "container_metadata.tar.xz", "container_rootfs.tar.xz").Run(testexec.DumpLogOnError); err != nil {
+		return "", errors.Wrap(err, "failed to untar container image")
+	}
 
-		testing.ContextLog(ctx, "Extracting container tarballs")
-		if err := testexec.CommandContext(ctx, "tar", "xvf", artifactPath, "-C", containerPath, "container_metadata.tar.xz", "container_rootfs.tar.xz").Run(testexec.DumpLogOnError); err != nil {
-			return nil, errors.Wrap(err, "failed to untar container image")
+	renames := map[string]string{
+		"lxd.tar.xz":    "container_metadata.tar.xz",
+		"rootfs.tar.xz": "container_rootfs.tar.xz",
+	}
+	for newName, oldName := range renames {
+		oldName = path.Join(containerDownloadPath, oldName)
+		newName = path.Join(containerDownloadPath, newName)
+		if err := os.Rename(oldName, newName); err != nil {
+			return "", errors.Wrapf(err, "unable to rename %s to %s", oldName, newName)
 		}
 	}
 
+	return containerDownloadPath, nil
+}
+
+// CreateDefaultVM prepares a VM with default settings either the live or
+// staging container versions. The directory dir may be used to store
+// logs on failure. If the container type is Tarball, then artifactPath
+// must be specified with the path to the tarball containing the termina VM.
+// Otherwise, artifactPath is ignored. If enableGPU is set, VM will try to use
+// hardware gpu if possible.
+func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool, diskSize uint64) (*VM, error) {
 	concierge, err := NewConcierge(ctx, user)
 	if err != nil {
 		if stopErr := StopConcierge(ctx); stopErr != nil {

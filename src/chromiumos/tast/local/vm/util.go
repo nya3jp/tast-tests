@@ -14,7 +14,9 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strconv"
 	"strings"
@@ -37,6 +39,10 @@ const (
 	// TerminaMountDir is a path to the location where we will mount the termina component.
 	TerminaMountDir = "/run/imageloader/cros-termina/99999.0.0"
 
+	// ImageServerURLComponentName is the name of the Chrome component for the image server URL.
+	ImageServerURLComponentName = "cros-crostini-image-server-url"
+
+	containerDownloadPath            = "/usr/local/cros-container"
 	terminaComponentDownloadPath     = "/usr/local/cros-termina"
 	terminaComponentStagingURLFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
 	terminaComponentURLFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
@@ -82,26 +88,10 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 
 	// Download the files.zip from the component GS bucket.
 	url := fmt.Sprintf(terminaComponentURLFormat, milestone, version, componentArch)
-	testing.ContextLogf(ctx, "Downloading VM component version %s from: %s", version, url)
-	resp, err := http.Get(url)
-	if err != nil {
-		return "", err
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusOK {
-		return "", errors.Errorf("component download failed: %s", resp.Status)
-	}
 	filesPath := filepath.Join(componentDir, "files.zip")
-	filesZip, err := os.Create(filesPath)
-	if err != nil {
+	if err := downloadToFile(ctx, url, filesPath); err != nil {
 		return "", err
 	}
-	if _, err := io.Copy(filesZip, resp.Body); err != nil {
-		filesZip.Close()
-		os.Remove(filesPath)
-		return "", err
-	}
-	filesZip.Close()
 
 	// Extract the zip. We expect an image.ext4 file in the output.
 	unzipCmd := testexec.CommandContext(ctx, "unzip", filesPath, "image.ext4", "-d", componentDir)
@@ -112,23 +102,23 @@ func downloadComponent(ctx context.Context, milestone int, version string) (stri
 	return imagePath, nil
 }
 
-// MountArtifactComponent extracts and mounts the VM image from build artifacts.
-func MountArtifactComponent(ctx context.Context, artifactPath string) error {
+// ExtractArtifactComponent extracts the VM image from build artifacts.
+func ExtractArtifactComponent(ctx context.Context, artifactPath string) (string, error) {
 	componentDir := filepath.Join(terminaComponentDownloadPath, "artifact")
 	// Remove |componentDir| if it already exists to make sure we
 	// don't reuse any files from a previous test run.
 	if err := os.RemoveAll(componentDir); err != nil {
-		return err
+		return "", err
 	}
 	if err := os.MkdirAll(componentDir, 0755); err != nil {
-		return err
+		return "", err
 	}
 
 	// Extract just the VM image from the tarball.
 	cmd := testexec.CommandContext(ctx, "tar", "xvf", artifactPath, "-C", componentDir, "vm_image.zip")
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
-		return errors.Wrap(err, "failed to untar")
+		return "", errors.Wrap(err, "failed to untar")
 	}
 
 	zipPath := filepath.Join(componentDir, "vm_image.zip")
@@ -136,15 +126,14 @@ func MountArtifactComponent(ctx context.Context, artifactPath string) error {
 	unzipCmd := testexec.CommandContext(ctx, "unzip", zipPath, "image.ext4", "-d", componentDir)
 	if err := unzipCmd.Run(); err != nil {
 		unzipCmd.DumpLog(ctx)
-		return errors.Wrap(err, "failed to unzip")
+		return "", errors.Wrap(err, "failed to unzip")
 	}
 
-	imagePath := filepath.Join(componentDir, "image.ext4")
-	return mountComponent(ctx, imagePath)
+	return filepath.Join(componentDir, "image.ext4"), nil
 }
 
-// mountComponent mounts a component image from the provided image path.
-func mountComponent(ctx context.Context, image string) error {
+// MountComponent mounts a component image from the provided image path.
+func MountComponent(ctx context.Context, image string) error {
 	if err := os.MkdirAll(TerminaMountDir, 0755); err != nil {
 		return err
 	}
@@ -181,42 +170,124 @@ func mountComponentUpdater(ctx context.Context) error {
 	return os.RemoveAll(TerminaMountDir)
 }
 
-// SetUpComponent sets up the VM component according to the specified ComponentType.
-func SetUpComponent(ctx context.Context, c ComponentType) error {
-	if c == ComponentUpdater {
-		return mountComponentUpdater(ctx)
-	}
-
+// DownloadStagingTermina downloads the current staging termina image from Google Storage.
+func DownloadStagingTermina(ctx context.Context) (string, error) {
 	milestone, err := getMilestone()
 	if err != nil {
-		return err
+		return "", err
 	}
 
-	var url string
-	switch c {
-	case StagingComponent:
-		url = fmt.Sprintf(terminaComponentStagingURLFormat, milestone)
+	resp, err := http.Get(fmt.Sprintf(terminaComponentStagingURLFormat, milestone))
+	if err != nil {
+		return "", err
 	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return "", errors.Errorf("component symlink download failed: %s", resp.Status)
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+	version := strings.TrimSpace(string(body))
+
+	return downloadComponent(ctx, milestone, version)
+}
+
+func downloadTo(ctx context.Context, url string, dest io.Writer) error {
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return errors.Errorf("component symlink download failed: %s", resp.Status)
+		return errors.Errorf("download failed: %s", resp.Status)
 	}
-	body, err := ioutil.ReadAll(resp.Body)
+	if _, err := io.Copy(dest, resp.Body); err != nil {
+		return err
+	}
+	return nil
+}
+
+func downloadToFile(ctx context.Context, url, downloadPath string) error {
+	testing.ContextLogf(ctx, "Downloading %s to %s", url, downloadPath)
+	dest, err := os.Create(downloadPath)
 	if err != nil {
 		return err
 	}
-	version := strings.TrimSpace(string(body))
-
-	imagePath, err := downloadComponent(ctx, milestone, version)
-	if err != nil {
+	defer dest.Close()
+	if err := downloadTo(ctx, url, dest); err != nil {
+		os.Remove(downloadPath)
 		return err
 	}
+	return nil
+}
 
-	return mountComponent(ctx, imagePath)
+var imagePathExp = regexp.MustCompile("\"path\"\\:\\s*\"([^\"]*)\"")
+
+// DownloadStagingContainer downloads the current staging container images from Google Storage.
+func DownloadStagingContainer(ctx context.Context, debianVersion ContainerArchType) (string, error) {
+	if err := os.MkdirAll(containerDownloadPath, 0755); err != nil {
+		return "", err
+	}
+	milestone, err := getMilestone()
+	if err != nil {
+		return "", errors.Wrap(err, "error getting milestone")
+	}
+	// Build the URL for the component, which depends on the DUT's arch.
+	var componentArch string
+	if runtime.GOARCH == "amd64" {
+		componentArch = "amd64"
+	} else {
+		componentArch = "arm64"
+	}
+
+	debianVersionString := "buster"
+	if debianVersion == DebianStretch {
+		debianVersionString = "stretch"
+	}
+
+	product := fmt.Sprintf("%s:%s:default", debianVersionString, componentArch)
+	productParts := strings.Split(product, ":")
+	var imagesJSON bytes.Buffer
+	url := fmt.Sprintf("https://storage.googleapis.com/cros-containers/%d/streams/v1/images.json", milestone)
+	if err := downloadTo(ctx, url, &imagesJSON); err != nil {
+		return "", errors.Wrapf(err, "error downloading images.json from %s", url)
+	}
+	allPaths := imagePathExp.FindAllStringSubmatch(string(imagesJSON.String()), -1)
+	paths := map[string]string{}
+	for _, matches := range allPaths {
+		path := matches[1]
+		keep := true
+		for _, part := range productParts {
+			if !strings.Contains(path, part) {
+				keep = false
+				break
+			}
+		}
+		if keep {
+			components := strings.Split(path, "/")
+			filename := components[len(components)-1]
+			if existing, ok := paths[filename]; ok {
+				return "", errors.Errorf("more than one container download file matched given product string %q, please specify a more specific product.  Matched files are %s and %s", product, existing, path)
+			}
+			paths[filename] = path
+		}
+	}
+
+	urlPrefix := fmt.Sprintf("https://storage.googleapis.com/cros-containers/%d/", milestone)
+	for filename, filepath := range paths {
+		if filename == "rootfs.tar.xz" {
+			// rootfs.tar.xz doesn't seem to be used, so don't waste time downloading it.
+			continue
+		}
+		url := urlPrefix + filepath
+		downloadPath := path.Join(containerDownloadPath, filename)
+		if err := downloadToFile(ctx, url, downloadPath); err != nil {
+			return "", errors.Wrapf(err, "error downloading %s from %s to %s", filename, url, downloadPath)
+		}
+	}
+	return containerDownloadPath, nil
 }
 
 // UnmountComponent unmounts any active VM component.
