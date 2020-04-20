@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "db70b9dc_b17bc6a0",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-20T01:57:10Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "62f6cdbd_8301528e",
+      "revId": "187817628054643a7ca6e952d68cdc7fce295cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59816d18_0753c8fb",
         "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
         "patchSetId": 1

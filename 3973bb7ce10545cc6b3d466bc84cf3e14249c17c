@@ -22,6 +22,30 @@
       "revId": "3973bb7ce10545cc6b3d466bc84cf3e14249c17c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a029227_1e0862de",
+        "filename": "src/chromiumos/tast/common/hwsec/attestation_common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-04-20T01:57:10Z",
+      "side": 1,
+      "message": "Done.\n\nTo extend the topic of comment style-- \nSometimes I am confused what verb form I should use. For example like https://cs.corp.google.com/chromeos_public/src/platform2/libbrillo/brillo/file_utils.cc?rcl\u003de8758b54a83d8966634ec393c7a681d3c378f0af\u0026l\u003d66 we use \"Checks\" as the start o the function comment but in the bodies we use normal form, as this comment suggested. Can\u0027t really understand it grammar-wise, but i guess it\u0027s right to use \"retry\" here.",
+      "parentUuid": "241984b1_88ed6aa3",
+      "range": {
+        "startLine": 207,
+        "startChar": 46,
+        "endLine": 207,
+        "endChar": 53
+      },
+      "revId": "3973bb7ce10545cc6b3d466bc84cf3e14249c17c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
