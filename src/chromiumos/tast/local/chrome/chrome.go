@@ -728,11 +728,16 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		const chronosDir = "/home/chronos"
 		// This always fails because /home/chronos is a mount point, but all files
 		// under the directory should be removed.
+		// Retry to make sure cleanup is not flaky.
 		os.RemoveAll(chronosDir)
 		if fis, err := ioutil.ReadDir(chronosDir); err != nil {
 			return err
 		} else if len(fis) > 0 {
-			return errors.Errorf("failed to clear %s: failed to remove %q", chronosDir, fis[0].Name())
+			for _, left := range fis {
+				if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
+					return errors.Wrapf(err, "failed to clear %s; failed to remove %q", chronosDir, left.Name())
+				}
+			}
 		}
 
 		// Delete policy files to clear the device's ownership state since the account
