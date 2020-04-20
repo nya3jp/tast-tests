@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1e22c5c_394f24b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-20T08:08:17Z",
+      "side": 1,
+      "message": "Error messages should not be multi-line because they appear weird in reporting UIs. Can we print the diff to log or file, and emit an error pointing to it? For example:\n\n s.Log(\"Message mismatch (-report +hwVerifier):\")\n s.Log(diff)\n s.Error(\"Message mismatch between report and hwVerifier (see logs for diff)\")",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ff8aab_c8316aaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-20T08:08:17Z",
+      "side": 1,
+      "message": "Could you define a separate function for this reflection work, and return an error from it instead of panicking?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4317e08f_9e4d53b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-20T08:08:17Z",
+      "side": 1,
+      "message": "We should avoid panics even if fieldsMapping is incorrect. Can we report an error in such case?",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 18
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6df9e2_4d680264",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-20T08:08:17Z",
+      "side": 1,
+      "message": "s/: //",
+      "range": {
+        "startLine": 269,
+        "startChar": 52,
+        "endLine": 269,
+        "endChar": 54
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8fa6d8e_60e7ac59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-20T08:08:17Z",
+      "side": 1,
+      "message": "Can we remove this wait and instead call testing.Poll with longer timeout (e.g. 40s)? It is still good to leave the comment about 30s sleep in the init conf.",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 329,
+        "endChar": 30
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecb2fc3d_68376acc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-20T08:08:17Z",
+      "side": 1,
+      "message": "Logging inside testing.Poll is often noisy. Can we just remove it? We print a log line before testing.Poll anyway.",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 38
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
