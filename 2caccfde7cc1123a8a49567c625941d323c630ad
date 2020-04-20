@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97ed3420_9d7a418b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-20T20:23:53Z",
+      "side": 1,
+      "message": "Instead of using NewConfigFactory, can you just create json files for unit testing in another directory and pass that directory to firmwareNewConfig?  That way real tests can keep using firmware.ConfigDir, while unit tests can use its own ConfigDir with whatever it needs.",
+      "revId": "2caccfde7cc1123a8a49567c625941d323c630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
