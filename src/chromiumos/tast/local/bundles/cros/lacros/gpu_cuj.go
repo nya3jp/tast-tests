@@ -262,14 +262,21 @@ func toggleTraySetting(ctx context.Context, tconn *chrome.TestConn, name string)
 	return nil
 }
 
+func waitForWindowWithPredicate(ctx context.Context, ctconn *chrome.TestConn, p func(*ash.Window) bool) (*ash.Window, error) {
+	if err := ash.WaitForCondition(ctx, ctconn, p, pollOptions); err != nil {
+		return nil, err
+	}
+	return ash.FindWindow(ctx, ctconn, p)
+}
+
 func findFirstBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
-	return ash.FindWindow(ctx, ctconn, func(w *ash.Window) bool {
+	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return strings.Contains(w.Title, "about:blank")
 	})
 }
 
 func findFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
-	return ash.FindWindow(ctx, ctconn, func(w *ash.Window) bool {
+	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return !strings.Contains(w.Title, "about:blank")
 	})
 }
