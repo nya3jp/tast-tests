@@ -5,6 +5,7 @@
 package network
 
 import (
+	"bytes"
 	"context"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
@@ -169,4 +171,39 @@ func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SS
 		}
 	}
 	return &empty.Empty{}, nil
+}
+
+// Addresses returns the addresses (MAC, IP) associated with interface.
+func (s *WifiService) Addresses(ctx context.Context, intf *network.NetInterface) (*network.Adds, error) {
+	args := []string{"addr", "show", intf.NetInterface}
+	cmd := testexec.CommandContext(ctx, "ip", args...)
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get the addresses of the interface %s", intf.NetInterface)
+	}
+
+	return &network.Adds{
+		Adds: stdout.String(),
+	}, nil
+}
+
+// WifiInterface returns the wirless device interface name (e.g., wlan0).
+func (s *WifiService) WifiInterface(ctx context.Context, e *empty.Empty) (*network.WifiIface, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	netIf, err := shill.WifiInterface(ctx, manager, 5*time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the wifi interface")
+	}
+
+	return &network.WifiIface{
+		Iface: netIf,
+	}, nil
 }
