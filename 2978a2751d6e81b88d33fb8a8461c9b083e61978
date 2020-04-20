@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a41dd31c_accc8780",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "here and in the rest of the files: add copyright",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56bc31ca_f5f4840e",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "nit: if this const is only used in uhidCreate2Request, then move it to L27.\nconst should be declared close to where they are use to increase readability.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df4a0ef_eac56a13",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "nit, ditto above: move these const close to where they are being used.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1915209_5fce554c",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "nit: returns",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5852f7_269823c8",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "id() (lowercase)\nbut see comment below: perhaps deviceID is a better name.",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 5
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb38901_2fe5bc6c",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "nit:\nhere `id` is a free-function, and in this context it could be confusing because it is not clear what `id` returns besides an ID.\nThis is because ID is a very common thing.\nA more descriptive name, without being too verbose, would be: deviceID().",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e27d43_8416fb6e",
+        "filename": "src/chromiumos/tast/local/uhid/start.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "comment should start with function name",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f79c7c_fcf47c6a",
+        "filename": "src/chromiumos/tast/local/uhid/start.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "what about passing \"d\" as a receiver instead of argument. eg.:\n\n  func (d *UHIDDevice) receiveUHIDStart() {\n  }\n\nin fact, if these are events, might be better to call them \"onStart\".\n\ne.g:\n\n  func (d *UHIDDevice) onStart() {\n  }",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6429e6c_6030c2d6",
+        "filename": "src/chromiumos/tast/local/uhid/start.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "somewhat uneasy here:\n\nI think it should work like a dispatcher:\n\nyou read an event, see what kind of event it is, and then dispatch it.\nSimilar to what the python library is doing:\nhttps://gitlab.freedesktop.org/libevdev/hid-tools/-/blob/master/hidtools/uhid.py#L496\n\n\nPerhaps you can use this golang library to for reading in a non-blocking way the fd:\nhttps://golang.org/pkg/internal/poll/",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d4d3fd_b8ed7d7f",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7db543_3a11e85a",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "return receiveUHIDStart(d)",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 8
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b036bb0f_b1359f0e",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T17:04:00Z",
+      "side": 1,
+      "message": "nit: HID",
+      "range": {
+        "startLine": 120,
+        "startChar": 41,
+        "endLine": 120,
+        "endChar": 44
+      },
+      "revId": "2978a2751d6e81b88d33fb8a8461c9b083e61978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
