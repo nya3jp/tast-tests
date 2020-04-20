@@ -170,3 +170,36 @@ func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SS
 	}
 	return &empty.Empty{}, nil
 }
+
+// Interface returns the wirless device interface name (e.g., wlan0).
+func (s *WifiService) Interface(ctx context.Context, tech *network.Technology) (*network.Iface, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+
+	wifiIfaces := func() ([]string, error) {
+		_, props, err := manager.DevicesByTechnology(ctx, shill.Technology(tech.Technology))
+		if err != nil {
+			return nil, err
+		}
+		var ifaces []string
+		for _, p := range props {
+			if iface, err := p.GetString(shill.DevicePropertyInterface); err == nil {
+				ifaces = append(ifaces, iface)
+			}
+		}
+		return ifaces, nil
+	}
+
+	ifaces, err := wifiIfaces()
+	if err != nil {
+		return nil, err
+	} else if len(ifaces) > 1 {
+		return nil, errors.Errorf("more than one WiFi interface found: %q", ifaces)
+	}
+
+	return &network.Iface{
+		Iface: ifaces[0],
+	}, nil
+}
