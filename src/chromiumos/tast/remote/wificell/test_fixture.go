@@ -31,7 +31,6 @@ type TestFixture struct {
 	routerHost *ssh.Conn
 	router     *Router
 	wifiClient network.WifiClient
-
 	apID       int
 	curService *network.Service
 	curAP      *APIface
@@ -246,4 +245,12 @@ func (tf *TestFixture) Router() *Router {
 // WifiClient returns the gRPC WifiClient of the DUT.
 func (tf *TestFixture) WifiClient() network.WifiClient {
 	return tf.wifiClient
+}
+
+// DefaultOpenNetworkAP configures the router to provide an 802.11n open network.
+func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, error) {
+	var secConfFac security.ConfigFactory
+	return tf.ConfigureAP(ctx, []hostapd.Option{
+		hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48),
+		hostapd.HTCaps(hostapd.HTCapHT20)}, secConfFac)
 }
