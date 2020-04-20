@@ -17,7 +17,7 @@ func init() {
 		Func:         HAL3PortraitMode,
 		Desc:         "Verifies camera portrait mode function with HAL3 interface",
 		Contacts:     []string{"hywu@chromium.org", "chromeos-camera-eng@google.com"},
-		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
 		Data:         []string{portraitModeTestFile},
 		Params: []testing.Param{{
 			Name:      "",

@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Verifies camera still capture function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
 		// Krane needs 4 minutes and 30 seconds for whole dark environment(covering the camera lens).
 		// We also need rooms for preparation time.
 		Timeout: 6 * time.Minute,
