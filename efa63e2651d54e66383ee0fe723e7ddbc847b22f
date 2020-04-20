@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6bbe4de_3625dd94",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2cd521d_ec88040a",
+      "range": {
+        "startLine": 370,
+        "startChar": 48,
+        "endLine": 370,
+        "endChar": 54
+      },
+      "revId": "efa63e2651d54e66383ee0fe723e7ddbc847b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "814c4ecf_db8aacc0",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "98952b42_7b9f0f1c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "814c4ecf_db8aacc0",
+      "range": {
+        "startLine": 375,
+        "startChar": 48,
+        "endLine": 375,
+        "endChar": 56
+      },
+      "revId": "efa63e2651d54e66383ee0fe723e7ddbc847b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a35e8ff4_9877465b",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "efa63e2651d54e66383ee0fe723e7ddbc847b22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c5332fc_e79d79f3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a35e8ff4_9877465b",
+      "range": {
+        "startLine": 380,
+        "startChar": 45,
+        "endLine": 380,
+        "endChar": 52
+      },
+      "revId": "efa63e2651d54e66383ee0fe723e7ddbc847b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
