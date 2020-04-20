@@ -52,6 +52,24 @@
       "revId": "2caccfde7cc1123a8a49567c625941d323c630ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc29c20a_555eeef8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-20T23:16:22Z",
+      "side": 1,
+      "message": "Great find! I think that will work. I\u0027ll upload a new patch set in the next few days.",
+      "parentUuid": "da3a0344_15a40f33",
+      "revId": "2caccfde7cc1123a8a49567c625941d323c630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
