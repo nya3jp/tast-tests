@@ -43,6 +43,19 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	// The folders under My Files in the navigation tree are loaded
+	// asynchronously meaning any clicks in the navigation tree at startup
+	// may encounter race issues. Wait for the Downloads folder to load to
+	// indicate that the tree's ui has settled.
+	params := ui.FindParams{
+		Name: "Downloads",
+		Role: ui.RoleTypeTreeItem,
+	}
+	if err := app.WaitUntilDescendantExists(ctx, params, 15*time.Second); err != nil {
+		return nil, err
+	}
+
 	return &FilesApp{tconn: tconn, Root: app}, nil
 }
 
@@ -79,6 +92,31 @@ func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 	// Ensure the Files App has switched to the Downloads folder.
 	params = ui.FindParams{
 		Name: "Files - Downloads",
+		Role: ui.RoleTypeRootWebArea,
+	}
+	return f.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second)
+}
+
+// OpenDrive opens the Google Drive folder in the Files App.
+// An error is returned if Drive is not found or does not open.
+func (f *FilesApp) OpenDrive(ctx context.Context) error {
+	// Click Google Drive to open the folder.
+	params := ui.FindParams{
+		Name: "Google Drive",
+		Role: ui.RoleTypeTreeItem,
+	}
+	drive, err := f.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
+	if err != nil {
+		return err
+	}
+	defer drive.Release(ctx)
+	if err := drive.LeftClick(ctx); err != nil {
+		return err
+	}
+
+	// Ensure the Files App has switched to the My Drive folder.
+	params = ui.FindParams{
+		Name: "Files - My Drive",
 		Role: ui.RoleTypeRootWebArea,
 	}
 	return f.Root.WaitUntilDescendantExists(ctx, params, 15*time.Second)
