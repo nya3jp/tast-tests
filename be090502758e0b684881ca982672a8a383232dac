@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1117ec9_e3932428",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-20T20:19:23Z",
+      "side": 1,
+      "message": "As for Types, we can rename TypeInfo to Type. I\u0027ll rename.\n\nAs for Groups, I don\u0027t think we\u0027d like to rename it to just group, which is defined below.\nConceptually, GroupInfo is like an input to make a group of constants, but not the group of constants itself.\nDo you have recommendation of styles/names?",
+      "parentUuid": "d79a56e3_de33acd1",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "be090502758e0b684881ca982672a8a383232dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b28a662_8290a6b7",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-20T09:14:56Z",
       "side": 1,
       "message": "nit: Do we need \"Info\" suffix? Same for GroupInfo.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "be090502758e0b684881ca982672a8a383232dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b41ed75_39ca5f39",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-20T20:19:23Z",
+      "side": 1,
+      "message": "I think above reply includes the answer of this.",
+      "parentUuid": "5b28a662_8290a6b7",
       "range": {
         "startLine": 38,
         "startChar": 5,
