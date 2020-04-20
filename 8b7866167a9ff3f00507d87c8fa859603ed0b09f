@@ -22,6 +22,30 @@
       "revId": "8b7866167a9ff3f00507d87c8fa859603ed0b09f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14a8ce15_f0dec663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-20T05:53:56Z",
+      "side": 1,
+      "message": "I agree that would be more consistent with other tests, but for now I don\u0027t want to introduce a breaking change just for a speculative fix. I would like to keep backward compatibility in the COVID-19 period so people don\u0027t need to learn a new way to run the test.\n\nI will keep monitoring the test result, and if it\u0027s really solved the flakiness I will discuss the throttling issue with CRD team to see if they can relax the limit for us, so we don\u0027t need to have two subtests ideally. If it\u0027s not feasible for the CRD team, I can change the test structure as you suggested and update all related docs later.\n\nDoes that sound ok to you?",
+      "parentUuid": "8f51e08c_45c9aa14",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "8b7866167a9ff3f00507d87c8fa859603ed0b09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
