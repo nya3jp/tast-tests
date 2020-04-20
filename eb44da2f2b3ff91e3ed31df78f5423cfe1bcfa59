@@ -94,6 +94,30 @@
       "revId": "eb44da2f2b3ff91e3ed31df78f5423cfe1bcfa59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c60cf3_01067614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quarter_sized_window_zooming.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-04-20T17:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a7dafb_4e8f2a25",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "eb44da2f2b3ff91e3ed31df78f5423cfe1bcfa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
