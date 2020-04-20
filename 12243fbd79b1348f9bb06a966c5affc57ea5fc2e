@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e82c621_e549f14f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-20T16:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88f14a0d_5861cbfe",
+      "revId": "12243fbd79b1348f9bb06a966c5affc57ea5fc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d75f4d2d_0992b4ef",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
         "patchSetId": 3
@@ -62,6 +80,54 @@
       "revId": "12243fbd79b1348f9bb06a966c5affc57ea5fc2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a473bd46_aaff4010",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-20T16:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75f4d2d_0992b4ef",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "12243fbd79b1348f9bb06a966c5affc57ea5fc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1686a12c_b853a725",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-20T16:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae58788e_2e57e74d",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "12243fbd79b1348f9bb06a966c5affc57ea5fc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
