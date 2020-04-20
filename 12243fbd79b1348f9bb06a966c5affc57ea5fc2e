@@ -39,6 +39,29 @@
       "revId": "12243fbd79b1348f9bb06a966c5affc57ea5fc2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae58788e_2e57e74d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T16:09:10Z",
+      "side": 1,
+      "message": "nit:\nAlthough the go guidelines allow this format ( https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures ), in Tast we are using something like:\n\n\"unexpected Platform value; got %s, want %s\"\n\nor if you want to include config, use something like:\n\n\"config +v with unexpected platform value; got %s, want %s\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "12243fbd79b1348f9bb06a966c5affc57ea5fc2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
