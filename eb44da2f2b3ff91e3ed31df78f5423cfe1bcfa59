@@ -70,6 +70,30 @@
       "revId": "eb44da2f2b3ff91e3ed31df78f5423cfe1bcfa59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a7dafb_4e8f2a25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/quarter_sized_window_zooming.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-20T16:02:26Z",
+      "side": 1,
+      "message": "Yes, \"Incorrect\", or even \"Unexpected\" is better in this context.\n\"Failed to get window length\" should be used when trying something like \"getLenght()\" fails. \nBut in this case, the length was fetched correctly, only that it returned an unexpected value.",
+      "parentUuid": "103725cb_39c4f17a",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "eb44da2f2b3ff91e3ed31df78f5423cfe1bcfa59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
