@@ -728,6 +728,7 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		const chronosDir = "/home/chronos"
 		// This always fails because /home/chronos is a mount point, but all files
 		// under the directory should be removed.
+		// Retry to make sure cleanup is not flaky.
 		os.RemoveAll(chronosDir)
 		fis, err := ioutil.ReadDir(chronosDir)
 		if err != nil {
@@ -740,12 +741,16 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 		// Filtering-in-loop code from https://github.com/golang/go/wiki/SliceTricks#filtering-without-allocating
 		filtered := fis[:0]
 		for _, file := range fis {
-			if file.Name() != "crash" {
+			if file.Name() != "crash" && file.Name() != "crash.real" {
 				filtered = append(filtered, file)
 			}
 		}
 		if len(filtered) > 0 {
-			return errors.Errorf("failed to clear %s: failed to remove %q", chronosDir, filtered[0].Name())
+			for _, left := range filtered {
+				if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
+					return errors.Wrapf(err, "failed to clear %s; failed to remove %q", chronosDir, left.Name())
+				}
+			}
 		}
 
 		// Delete policy files to clear the device's ownership state since the account
