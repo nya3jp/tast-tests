@@ -63,7 +63,7 @@ func init() {
 				Timeout:   5 * time.Minute,
 			}, {
 				Name:              "crostini",
-				Pre:               crostini.StartedGPUEnabled(),
+				Pre:               crostini.StartedByArtifact(),
 				Val:               glbenchConfig{environment: envDebian},
 				ExtraAttr:         []string{"group:graphics", "graphics_weekly"},
 				ExtraData:         []string{crostini.ImageArtifact},
@@ -71,7 +71,7 @@ func init() {
 				Timeout:           60 * time.Minute,
 			}, {
 				Name:              "crostini_hasty",
-				Pre:               crostini.StartedGPUEnabled(),
+				Pre:               crostini.StartedByArtifact(),
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
 				ExtraData:         []string{crostini.ImageArtifact},
@@ -80,7 +80,7 @@ func init() {
 				Timeout:           5 * time.Minute,
 			}, {
 				Name:              "crostini_hasty_unstable",
-				Pre:               crostini.StartedGPUEnabled(),
+				Pre:               crostini.StartedByArtifact(),
 				Val:               glbenchConfig{hasty: true, environment: envDebian},
 				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
 				ExtraData:         []string{crostini.ImageArtifact},
