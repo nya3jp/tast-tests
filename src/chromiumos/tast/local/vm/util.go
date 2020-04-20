@@ -10,7 +10,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
@@ -37,11 +36,11 @@ const (
 	// TerminaMountDir is a path to the location where we will mount the termina component.
 	TerminaMountDir = "/run/imageloader/cros-termina/99999.0.0"
 
-	terminaComponentDownloadPath     = "/usr/local/cros-termina"
-	terminaComponentStagingURLFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
-	terminaComponentURLFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
-	lsbReleasePath                   = "/etc/lsb-release"
-	milestoneKey                     = "CHROMEOS_RELEASE_CHROME_MILESTONE"
+	// ImageServerURLComponentName is the name of the Chrome component for the image server URL.
+	ImageServerURLComponentName = "cros-crostini-image-server-url"
+
+	lsbReleasePath = "/etc/lsb-release"
+	milestoneKey   = "CHROMEOS_RELEASE_CHROME_MILESTONE"
 )
 
 // ComponentType represents the VM component type.
@@ -181,44 +180,6 @@ func mountComponentUpdater(ctx context.Context) error {
 	return os.RemoveAll(TerminaMountDir)
 }
 
-// SetUpComponent sets up the VM component according to the specified ComponentType.
-func SetUpComponent(ctx context.Context, c ComponentType) error {
-	if c == ComponentUpdater {
-		return mountComponentUpdater(ctx)
-	}
-
-	milestone, err := getMilestone()
-	if err != nil {
-		return err
-	}
-
-	var url string
-	switch c {
-	case StagingComponent:
-		url = fmt.Sprintf(terminaComponentStagingURLFormat, milestone)
-	}
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != http.StatusOK {
-		return errors.Errorf("component symlink download failed: %s", resp.Status)
-	}
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return err
-	}
-	version := strings.TrimSpace(string(body))
-
-	imagePath, err := downloadComponent(ctx, milestone, version)
-	if err != nil {
-		return err
-	}
-
-	return mountComponent(ctx, imagePath)
-}
-
 // UnmountComponent unmounts any active VM component.
 func UnmountComponent(ctx context.Context) {
 	if err := unix.Unmount(TerminaMountDir, 0); err != nil {
@@ -227,10 +188,6 @@ func UnmountComponent(ctx context.Context) {
 
 	if err := os.Remove(TerminaMountDir); err != nil {
 		testing.ContextLog(ctx, "Failed to remove component mount directory: ", err)
-	}
-
-	if err := os.RemoveAll(terminaComponentDownloadPath); err != nil {
-		testing.ContextLog(ctx, "Failed to remove component download directory: ", err)
 	}
 }
 
