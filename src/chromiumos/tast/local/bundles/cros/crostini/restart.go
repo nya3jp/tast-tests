@@ -45,12 +45,6 @@ func init() {
 			Pre:       crostini.StartedByDownloadBuster(),
 			Timeout:   10 * time.Minute,
 			ExtraAttr: []string{"informational"},
-		}, {
-			Name:              "gpu",
-			Pre:               crostini.StartedGPUEnabledBuster(),
-			ExtraSoftwareDeps: []string{"crosvm_gpu"},
-			Timeout:           10 * time.Minute,
-			ExtraAttr:         []string{"informational"},
 		}},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Vars:         []string{"crostini.Restart.numRestarts"},

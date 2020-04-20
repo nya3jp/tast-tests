@@ -124,6 +124,17 @@ func DefaultContainer(ctx context.Context, vmInstance *VM) (*Container, error) {
 	return newContainer(ctx, vmInstance, DefaultContainerName, testContainerUsername)
 }
 
+// GetRunningContainer returns a Container struct for a currently running container.
+// This is useful when the container was started by some other means, eg the installer.
+// Will return an error if no container is currently running.
+func GetRunningContainer(ctx context.Context, user string) (*Container, error) {
+	vm, err := GetRunningVM(ctx, user)
+	if err != nil {
+		return nil, err
+	}
+	return DefaultContainer(ctx, vm)
+}
+
 // ArchitectureAlias returns the alias subpath of the chosen container
 // architecture, i.e. part of the path used to compute the container's
 // gsutil URL.
