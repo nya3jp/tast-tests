@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Verifies camera frame function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
 		// Default timeout (i.e. 2 minutes) is not enough for some devices to
 		// exercise all resolutions on all cameras. Currently the device that
 		// needs longest timeout is Krane, which supports many resolutions
