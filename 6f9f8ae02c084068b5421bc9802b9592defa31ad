@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69dbbcc7_af05520a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d6a27da_1fd433be",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce8b6787_51883636",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3b9c7b_208a7c4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce8b6787_51883636",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "43eea57e_abe14b0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d3eb01_f03ba115",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4e2edf0_40125e64",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b927bfd1_63a6fa53",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e2edf0_40125e64",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c768e69f_3dfd3fe2",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "678859e0_a01520c8",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "Ah, the grouping is wrong, rpc+wifiClient is dut related. Thanks.",
+      "parentUuid": "c768e69f_3dfd3fe2",
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15e2076c_6dc187c0",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -122,6 +236,30 @@
       "writtenOn": "2020-04-20T06:57:33Z",
       "side": 1,
       "message": "How about just naming it \"routerHostname\"? It is more specific than \"Target\".",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e65f71_9c15fd6a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "As it can be $hostname:$port format, I renamed it as target in crrev.com/c/2107024. Or do you think we can regard the port part as special case?",
+      "parentUuid": "15e2076c_6dc187c0",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -151,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "94b6da26_5c81eb15",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "In some tests, it will start its own capturer and read the output to verify the existence of some packets. Or should we initialize it only when used? But given that we\u0027re going to add precondition for TestFixture. I think it might not save much time after that.",
+      "parentUuid": "12bd460c_68265a98",
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b75e4444_1c58848f",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 4
@@ -165,6 +321,24 @@
       "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be42249a_fd5c8eea",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-20T08:05:15Z",
+      "side": 1,
+      "message": "No, I will not. I think in golang, when error is returned, the value is usually invalid to use, so we shouldn\u0027t use the handle. In StartAPIface, it will handle the tear down on error and only give you (nil, err).\n\n(moved to error handling of StartCapture)",
+      "parentUuid": "b75e4444_1c58848f",
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
