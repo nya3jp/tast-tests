@@ -103,7 +103,7 @@ func DisplayDensity(ctx context.Context, s *testing.State) {
 
 		var sz coords.Size
 		var err error
-		if sz, err = crostini.PollWindowSize(ctx, tconn, windowName); err != nil {
+		if sz, err = crostini.PollWindowSize(ctx, tconn, windowName, 10*time.Second); err != nil {
 			return coords.Size{}, err
 		}
 		s.Logf("Window %q size is %v", windowName, sz)
