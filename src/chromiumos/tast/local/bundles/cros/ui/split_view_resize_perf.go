@@ -45,7 +45,7 @@ func init() {
 
 func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	// Enables DragToSnapInClamshellMode when testing clamshell split view.
-	// TODO: When the feature is fully launched, just use chrome.Pre().
+	// TODO(amusbach): When the feature is fully launched, just use chrome.Pre().
 	tabletMode := s.Param().(bool)
 	var cr *chrome.Chrome
 	var err error
