@@ -6,12 +6,14 @@ package platform
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/sysutil"
@@ -85,6 +87,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	const (
 		mountPointTimeout = 15 * time.Second
 		fuseIoTimeout     = 40 * time.Second
+		filesAppUITimeout = 15 * time.Second
 	)
 
 	user := s.RequiredVar("platform.Drivefs.user")
@@ -161,5 +164,34 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	}
 	if !dir.IsDir() {
 		s.Fatal("Could not find team_drives folder inside ", mountPath, ": ", err)
+	}
+
+	// Create a temporary file inside Drive.
+	tmpfile, err := ioutil.TempFile(drivefsRoot, "drivefs")
+	if err != nil {
+		s.Fatal("Could not create a temporary file inside ", drivefsRoot, ": ", err)
+	}
+	defer os.Remove(tmpfile.Name())
+
+	// Launch Files App and check that Drive is accessible.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Could not create test API connection: ", err)
+	}
+	filesApp, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not launch the Files App: ", err)
+	}
+	defer filesApp.Root.Release(ctx)
+
+	// Navigate to Google Drive via the Files App ui.
+	if err := filesApp.OpenDrive(ctx); err != nil {
+		s.Fatal("Could not open Google Drive folder: ", err)
+	}
+
+	// Check for the temporary file created earlier.
+	basename := path.Base(tmpfile.Name())
+	if err := filesApp.WaitForFile(ctx, basename, 15*time.Second); err != nil {
+		s.Fatal("Could not find test file ", basename, " in Drive: ", err)
 	}
 }
