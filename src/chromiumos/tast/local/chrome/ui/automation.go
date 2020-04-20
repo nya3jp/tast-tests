@@ -184,6 +184,7 @@ func (n *Node) LeftClick(ctx context.Context) error {
 	if n.Location.Empty() {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
+
 	return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.LeftButton)
 }
 
@@ -343,6 +344,16 @@ func (n *Node) Attribute(ctx context.Context, attributeName string) (interface{}
 	var out interface{}
 
 	if err := n.object.Call(ctx, &out, "function(attr){return this[attr]}", attributeName); err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// DebugInfo gets the node as a string.
+func (n *Node) DebugInfo(ctx context.Context) (interface{}, error) {
+	var out string
+
+	if err := n.object.Call(ctx, &out, "function(){return '' + this}"); err != nil {
 		return nil, err
 	}
 	return out, nil

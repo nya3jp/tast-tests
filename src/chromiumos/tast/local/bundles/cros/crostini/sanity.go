@@ -47,13 +47,6 @@ func init() {
 				Timeout:   10 * time.Minute,
 				ExtraAttr: []string{"informational"},
 			},
-			{
-				Name:      "installer",
-				Pre:       crostini.StartedByInstaller(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
-				ExtraAttr: []string{"informational"},
-			},
 		},
 	})
 }

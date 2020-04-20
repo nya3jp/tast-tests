@@ -66,13 +66,13 @@ func MatchScreenshotDominantColor(ctx context.Context, cr *chrome.Chrome, expect
 
 // PollWindowSize returns the the width and the height of the window in pixels
 // with polling to wait for asynchronous rendering on the DUT.
-func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string) (sz coords.Size, err error) {
+func PollWindowSize(ctx context.Context, tconn *chrome.TestConn, name string, timeout time.Duration) (sz coords.Size, err error) {
 	// Allow up to 10 seconds for the target screen to render.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		sz, err = windowSize(ctx, tconn, name)
 		return err
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, &testing.PollOptions{Timeout: timeout})
 	return sz, err
 }
 
@@ -150,7 +150,7 @@ func RunWindowedApp(ctx context.Context, tconn *chrome.TestConn, cont *vm.Contai
 	}
 	defer cmd.Wait(testexec.DumpLogOnError)
 
-	size, err := PollWindowSize(ctx, tconn, windowName)
+	size, err := PollWindowSize(ctx, tconn, windowName, timeout)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to find window %q while running %v", windowName, cmdline)
 	}
