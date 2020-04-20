@@ -7,6 +7,7 @@ package camera
 import (
 	"context"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -18,7 +19,14 @@ func init() {
 		Desc:         "Verifies camera recording function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		SoftwareDeps: []string{caps.BuiltinCamera},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p", "arc_camera3"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
