@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crostini/lxd"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
@@ -235,27 +236,25 @@ var startedARCEnabledPre = &preImpl{
 }
 
 var startedByInstallerPre = &preImpl{
-	name:         "crostini_started_by_installer",
-	timeout:      chrome.LoginTimeout + 7*time.Minute,
-	mode:         artifact,
-	useInstaller: true,
-	diskSize:     vm.DefaultDiskSize,
+	name:     "crostini_started_by_installer",
+	timeout:  chrome.LoginTimeout + 7*time.Minute,
+	mode:     artifact,
+	diskSize: vm.DefaultDiskSize,
 }
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name         string               // Name of this precondition (for logging/uniqueing purposes).
-	timeout      time.Duration        // Timeout for completing the precondition.
-	mode         setupMode            // Where (download/build artifact) the container image comes from.
-	arch         vm.ContainerArchType // Architecture/distribution of the container image.
-	arcEnabled   bool                 // Flag for whether Arc++ should be available (as well as crostini).
-	gpuEnabled   bool                 // Flag for whether the crostini VM should be booted with GPU support.
-	useInstaller bool                 // Flag for whether to run the Crostini installer in chrome (useful for setting up e.g. CrostiniManager).
-	diskSize     uint64               // The targeted size of the VM image in bytes.
-	cr           *chrome.Chrome
-	tconn        *chrome.TestConn
-	cont         *vm.Container
-	keyboard     *input.KeyboardEventWriter
+	name       string               // Name of this precondition (for logging/uniqueing purposes).
+	timeout    time.Duration        // Timeout for completing the precondition.
+	mode       setupMode            // Where (download/build artifact) the container image comes from.
+	arch       vm.ContainerArchType // Architecture/distribution of the container image.
+	arcEnabled bool                 // Flag for whether Arc++ should be available (as well as crostini).
+	gpuEnabled bool                 // Flag for whether the crostini VM should be booted with GPU support.
+	diskSize   uint64               // The targeted size of the VM image in bytes.
+	cr         *chrome.Chrome
+	tconn      *chrome.TestConn
+	cont       *vm.Container
+	keyboard   *input.KeyboardEventWriter
 }
 
 // Interface methods for a testing.Precondition.
@@ -348,49 +347,65 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	if p.useInstaller {
-		s.Logf("Notifying chrome of a pre-existing component %q at %q", vm.TerminaComponentName, vm.TerminaMountDir)
-		if err := p.tconn.Eval(ctx, fmt.Sprintf(
-			`chrome.autotestPrivate.registerComponent("%s", "%s")`,
-			vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
-			s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
-		}
-	} else {
-		s.Log("Enabling Crostini preference setting")
-		if err = vm.EnableCrostini(ctx, p.tconn); err != nil {
-			s.Fatal("Failed to enable Crostini preference setting: ", err)
-		}
-	}
+
+	terminaImage := ""
+	containerDir := ""
 
 	switch p.mode {
 	case download:
-		s.Log("Setting up component ", vm.StagingComponent)
-		if err = vm.SetUpComponent(ctx, vm.StagingComponent); err != nil {
-			s.Fatal("Failed to set up component: ", err)
+		terminaImage, err = vm.DownloadStagingTermina(ctx)
+		if err != nil {
+			s.Fatal("Failed to download staging termina: ", err)
 		}
-		s.Logf("Creating %q container (from download)", vm.ArchitectureAlias(p.arch))
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.StagingImageServer, Arch: p.arch}, "", p.gpuEnabled, p.diskSize); err != nil {
-			s.Fatal("Failed to set up default container (from download): ", err)
+
+		containerDir, err = vm.DownloadStagingContainer(ctx, p.arch)
+		if err != nil {
+			s.Fatal("Failed to download staging container: ", err)
 		}
 	case artifact:
-		s.Log("Setting up component (from artifact)")
 		artifactPath := s.DataPath(ImageArtifact)
-		if err = vm.MountArtifactComponent(ctx, artifactPath); err != nil {
-			s.Fatal("Failed to set up component: ", err)
+		terminaImage, err = vm.ExtractTermina(ctx, artifactPath)
+		if err != nil {
+			s.Fatal("Failed to extract termina: ", err)
 		}
-		s.Log("Creating default container (from artifact)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.ContainerType{Image: vm.Tarball, Arch: p.arch}, artifactPath, p.gpuEnabled, p.diskSize); err != nil {
-			s.Fatal("Failed to set up default container (from artifact): ", err)
+		containerDir, err = vm.ExtractContainer(ctx, p.cr.User(), artifactPath)
+		if err != nil {
+			s.Fatal("Failed to extract container: ", err)
 		}
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
 	}
-	if p.useInstaller {
-		s.Log("Installing crostini")
-		if err := p.tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
-			s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
-		}
+
+	server, err := lxd.NewServer(ctx, containerDir)
+	if err != nil {
+		s.Fatal("Error creating lxd image server: ", err)
 	}
+	addr, err := server.ListenAndServe(ctx)
+	if err != nil {
+		s.Fatal("Error starting lxd image server: ", err)
+	}
+	defer server.Shutdown(ctx)
+
+	s.Log("Installing crostini")
+
+	url := "http://" + addr + "/"
+	if err := p.tconn.Eval(ctx, fmt.Sprintf(
+		`chrome.autotestPrivate.registerComponent(%q, %q)`,
+		vm.ImageServerURLComponentName, url), nil); err != nil {
+		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
+	}
+
+	vm.MountComponent(ctx, terminaImage)
+	if err := p.tconn.Eval(ctx, fmt.Sprintf(
+		`chrome.autotestPrivate.registerComponent(%q, %q)`,
+		vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
+		s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
+	}
+
+	if err := p.tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
+		s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
+	}
+	p.cont, err = vm.GetRunningContainer(ctx, p.cr.User())
 
 	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
 	if err = checkDaemonsRunning(ctx); err != nil {
@@ -413,12 +428,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	}
 
 	ret := p.buildPreData(ctx, s)
-
-	vmDiskSize, err := p.cont.VM.DiskSize()
-	if err != nil {
-		s.Fatal("Failed to query the disk size of the VM: ", err)
-	}
-	s.Logf("VM Disk size: %.1fGB", float64(vmDiskSize)/1024/1024/1024)
 
 	chrome.Lock()
 	vm.Lock()
@@ -460,6 +469,9 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 	// It is always safe to unmount the component, which just posts some
 	// logs if it was never mounted.
 	vm.UnmountComponent(ctx)
+	if err := vm.DeleteImages(); err != nil {
+		s.Log("Error deleting images: ", err)
+	}
 
 	// Nothing special needs to be done to close the test API connection.
 	p.tconn = nil
