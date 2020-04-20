@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "7ba86319_af805bb1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T02:48:24Z",
+      "side": 1,
+      "message": "Same here, \"select\" sounds like the stop word, \"get\", which shall be skipped. Rename it as \"phy\".",
+      "range": {
+        "startLine": 250,
+        "startChar": 17,
+        "endLine": 250,
+        "endChar": 26
+      },
+      "revId": "2a874e881e8f3243ee67efb1e132d8b5cdeaf0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28d50fc_d9dc1c48",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T02:48:24Z",
+      "side": 1,
+      "message": "The name \"Interface\" is vague. It also has name \"Iface\" in use.\n\nHow about renaming \"Interface\" as \"NetDev\"? Also, \"select\" sounds like the stop word, \"get\", which shall be skipped. So how about renaming \"selectInterface\" as \"netDev\" ?",
+      "range": {
+        "startLine": 271,
+        "startChar": 17,
+        "endLine": 271,
+        "endChar": 32
+      },
+      "revId": "2a874e881e8f3243ee67efb1e132d8b5cdeaf0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "789345da_5b97c84d",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 4
@@ -36,6 +82,23 @@
       "writtenOn": "2020-04-20T01:46:27Z",
       "side": 1,
       "message": "Is it possible that someone update iw.IfType defined in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/network/iw/runner.go?l\u003d39 and forget to update map here?\n\nA trivial way is to return (int, error) for calling ifaceTypeToBusyMask(). However, it makes r.busyPhy accessor functions verbose to use. How about adding a comment in iw.IfType definition to remind to update ifaceTypeToBusyMaskMap here?",
+      "revId": "2a874e881e8f3243ee67efb1e132d8b5cdeaf0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cbe53bf_2301dccb",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T02:48:24Z",
+      "side": 1,
+      "message": "// Unseen phyID: not busy.",
       "revId": "2a874e881e8f3243ee67efb1e132d8b5cdeaf0a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
