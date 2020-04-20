@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2cd521d_ec88040a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T02:51:48Z",
+      "side": 1,
+      "message": "the shared",
+      "range": {
+        "startLine": 370,
+        "startChar": 48,
+        "endLine": 370,
+        "endChar": 54
+      },
+      "revId": "efa63e2651d54e66383ee0fe723e7ddbc847b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "814c4ecf_db8aacc0",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T02:51:48Z",
+      "side": 1,
+      "message": "a packet capturer",
+      "range": {
+        "startLine": 375,
+        "startChar": 48,
+        "endLine": 375,
+        "endChar": 56
+      },
+      "revId": "efa63e2651d54e66383ee0fe723e7ddbc847b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a35e8ff4_9877465b",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T02:51:48Z",
+      "side": 1,
+      "message": "releases",
+      "range": {
+        "startLine": 380,
+        "startChar": 45,
+        "endLine": 380,
+        "endChar": 52
+      },
+      "revId": "efa63e2651d54e66383ee0fe723e7ddbc847b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
