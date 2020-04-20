@@ -81,12 +81,15 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable Crostini preference setting: ", err)
 	}
 
-	s.Log("Setting up component ", vm.StagingComponent)
-	err = vm.SetUpComponent(ctx, vm.StagingComponent)
+	s.Log("Setting up termina")
+	imagePath, err := vm.DownloadStagingTermina(ctx)
 	if err != nil {
-		s.Fatal("Failed to set up component: ", err)
+		s.Fatal("Failed to download termina: ", err)
 	}
-
+	err = vm.MountComponent(ctx, imagePath)
+	if err != nil {
+		s.Fatal("Failed to mount termina: ", err)
+	}
 	s.Log("Restarting Concierge")
 	concierge, err := vm.NewConcierge(ctx, cr.User())
 	if err != nil {
