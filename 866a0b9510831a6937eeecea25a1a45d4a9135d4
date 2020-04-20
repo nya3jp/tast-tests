@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd56ca3f_a6a416b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-20T19:43:01Z",
+      "side": 1,
+      "message": "Removed.\n\nWhen running a single test during development, tast leaves the state as test finishes. I added this line so that I don\u0027t have to manually close the youtube page.",
+      "parentUuid": "a9ddf3ce_2914550e",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d5f4c4b_79255fe3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d917979d_b6efe7c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-20T19:43:01Z",
+      "side": 1,
+      "message": "Key \u0027f\u0027 does not work in tablet mode because somehow the virtual keyboard is also considered as internal keyboard and events are ignored. Moreover, youtube could add promote pop-ups (youtube premium etc) that takes focus and eat the \u0027f\u0027 key.\n\nI ended up calling the api directly because clicking the \"fullscreen\" button eventually would do the same. But you are right that we probably should not take the shortcut since this is a CUJ test and we should simulate user.\n\nRevised to tap the fullscreen button in media control bar to enter/exit fullscreen.",
+      "parentUuid": "0d5f4c4b_79255fe3",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 55
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "71fa3dd2_1462ea3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-20T19:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7274eb85_14d14c60",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 51
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1994403b_e032a428",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3dc6d029_80059870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-20T19:43:01Z",
+      "side": 1,
+      "message": "Swipe down to exit fullscreen needs to swipe from outside the screen edge. Swiping from Y\u003d\u003d0 does not work and we fail when startY \u003c 0 [1].\n\nChanged to use tapping fullscreen button to simulate user behavior.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/touch.go;l\u003d309?q\u003dtouch.go\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2F",
+      "parentUuid": "1994403b_e032a428",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5e4a0ca_cc172488",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
         "patchSetId": 1
@@ -108,6 +204,24 @@
       "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29e4b55_72e46ead",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-20T19:43:01Z",
+      "side": 1,
+      "message": "reverted since we simulate user actions rather than calling api.",
+      "parentUuid": "e5e4a0ca_cc172488",
+      "revId": "866a0b9510831a6937eeecea25a1a45d4a9135d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
