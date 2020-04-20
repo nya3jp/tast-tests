@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d6a27da_1fd433be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "Support packet capturer. \n\n// The packet capturer can be in both pcap or router.",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8b6787_51883636",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "Set up the",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d3eb01_f03ba115",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "With a packet capturer, TextFixture can provide over-the-air packets log to facilitate debugging.",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e2edf0_40125e64",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "modify TextFixutre.",
+      "range": {
+        "startLine": 25,
+        "startChar": 46,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c768e69f_3dfd3fe2",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "What does the group (after the blank line) mean? It is okay to group router/pcap related things. But I don\u0027t get it why it also includes rpc and wifiClient.",
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e2076c_6dc187c0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "How about just naming it \"routerHostname\"? It is more specific than \"Target\".",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12bd460c_68265a98",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "If tp.packetCapture is false, do we need to set up tf.pcapHost and tf.pcap?",
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75e4444_1c58848f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T06:57:33Z",
+      "side": 1,
+      "message": "What if tf.router.StartAPInface() returned err is not nil? Would it still run\ntf.router.StopAPIface(ctx, ap) ?\n\nI think we can just do the revert in the error handling of tf.pcap.StartCapture().",
+      "revId": "6f9f8ae02c084068b5421bc9802b9592defa31ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
