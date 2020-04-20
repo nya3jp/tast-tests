@@ -21,10 +21,25 @@ func init() {
 		Contacts: []string{"matterchen@google.com", "cros-containers-dev@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name:      "installer",
-			Pre:       crostini.StartedByInstaller(),
-			Timeout:   10 * time.Minute,
-			ExtraData: []string{crostini.ImageArtifact},
+			Name:              "artifact",
+			Pre:               crostini.StartedByArtifact(),
+			Timeout:           10 * time.Minute,
+			ExtraData:         []string{crostini.ImageArtifact},
+			ExtraHardwareDeps: crostini.CrostiniStable,
+		}, {
+			Name:              "artifact_unstable",
+			Pre:               crostini.StartedByArtifact(),
+			Timeout:           10 * time.Minute,
+			ExtraData:         []string{crostini.ImageArtifact},
+			ExtraHardwareDeps: crostini.CrostiniUnstable,
+		}, {
+			Name:    "download",
+			Pre:     crostini.StartedByDownload(),
+			Timeout: 10 * time.Minute,
+		}, {
+			Name:    "download_buster",
+			Pre:     crostini.StartedByDownloadBuster(),
+			Timeout: 10 * time.Minute,
 		}},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
