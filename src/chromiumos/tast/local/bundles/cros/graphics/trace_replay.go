@@ -19,7 +19,7 @@ func init() {
 		Func:         TraceReplay,
 		Desc:         "Replay glxgears trace file in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com", "tutankhamen@google.com", "ddmail@google.com", "ihf@google.com"},
-		Pre:          crostini.StartedGPUEnabled(),
+		Pre:          crostini.StartedByArtifact(),
 		Data:         []string{crostini.ImageArtifact},
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 		// We assign it to two different group in order to run it against pool:suite and pool:cros_av_analysis.
