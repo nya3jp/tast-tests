@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb8064c6_6eef6850",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T01:46:27Z",
+      "side": 1,
+      "message": "Please update this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 58,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "2a874e881e8f3243ee67efb1e132d8b5cdeaf0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "789345da_5b97c84d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-20T01:46:27Z",
+      "side": 1,
+      "message": "Is it possible that someone update iw.IfType defined in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/network/iw/runner.go?l\u003d39 and forget to update map here?\n\nA trivial way is to return (int, error) for calling ifaceTypeToBusyMask(). However, it makes r.busyPhy accessor functions verbose to use. How about adding a comment in iw.IfType definition to remind to update ifaceTypeToBusyMaskMap here?",
+      "revId": "2a874e881e8f3243ee67efb1e132d8b5cdeaf0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
