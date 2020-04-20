@@ -42,12 +42,6 @@ func init() {
 				Pre:     crostini.StartedByDownloadBuster(),
 				Timeout: 10 * time.Minute,
 			},
-			{
-				Name:      "installer",
-				Pre:       crostini.StartedByInstaller(),
-				Timeout:   7 * time.Minute,
-				ExtraData: []string{crostini.ImageArtifact},
-			},
 		},
 	})
 }
