@@ -32,7 +32,7 @@ const (
 	builtInUSBCameraConfigPath = "/etc/camera/camera_characteristics.conf"
 	cameraHALGlobPattern       = "/usr/lib*/camera_hal/*.so"
 	jsonConfigPath             = "/var/cache/camera/test_config.json"
-	mediaProfilePath           = "/vendor/etc/media_profiles.xml"
+	mediaProfilePath           = "/system/etc/media_profiles.xml"
 )
 
 // mediaSettings is used to unmarshal media profile in ARC.
