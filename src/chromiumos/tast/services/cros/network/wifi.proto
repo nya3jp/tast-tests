@@ -18,6 +18,8 @@ service Wifi {
   rpc Disconnect(Service) returns (google.protobuf.Empty) {}
   // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
   rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
+  // WifiInterface returns the wirless device interface name (e.g., wlan0).
+  rpc WifiInterface(google.protobuf.Empty) returns (WifiIface) {}
 }
 
 message Config {
@@ -31,4 +33,12 @@ message Service {
 
 message SSID {
   string ssid = 1;
+}
+
+message NetInterface {
+  string netInterface = 1;
+}
+
+message WifiIface {
+  string iface = 1;
 }
