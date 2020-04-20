@@ -46,6 +46,30 @@
       "revId": "8b7866167a9ff3f00507d87c8fa859603ed0b09f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3096995_6c9c3865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-20T17:28:33Z",
+      "side": 1,
+      "message": "If it\u0027s critical for you to preserve the manual procedure, that\u0027s fine for me.\nIt\u0027s up to you.\n\nNote that, in this approach, you\u0027re making a \"breaking\" change in CI side.\nIf the watcher is only you, that\u0027s fine. If there\u0027re more people monitoring the test you may need to notify them, too.",
+      "parentUuid": "14a8ce15_f0dec663",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "8b7866167a9ff3f00507d87c8fa859603ed0b09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
