@@ -745,7 +745,13 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 			}
 		}
 		if len(filtered) > 0 {
-			return errors.Errorf("failed to clear %s: failed to remove %q", chronosDir, filtered[0].Name())
+			// Retry to make sure cleanup is not flaky.
+			// Don't fail if removal reports an error.
+			for _, left := range filtered {
+				if err := os.RemoveAll(filepath.Join(chronosDir, left.Name())); err != nil {
+					testing.ContextLogf(ctx, "Failed to clear %s; failed to remove %q: %v", chronosDir, left.Name(), err)
+				}
+			}
 		}
 
 		// Delete policy files to clear the device's ownership state since the account
