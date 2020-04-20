@@ -184,6 +184,7 @@ func (n *Node) LeftClick(ctx context.Context) error {
 	if n.Location.Empty() {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
+
 	return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.LeftButton)
 }
 
