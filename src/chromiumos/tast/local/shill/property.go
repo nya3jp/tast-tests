@@ -218,6 +218,11 @@ func (h *PropertyHolder) GetProperties(ctx context.Context) (*Properties, error)
 	return NewProperties(ctx, h.dbusObject)
 }
 
+// ObjectPath returns the underlying object's D-Bus path.
+func (h *PropertyHolder) ObjectPath() dbus.ObjectPath {
+	return h.dbusObject.obj.Path()
+}
+
 // String return the string of underlying dbusObject.
 func (h *PropertyHolder) String() string {
 	return h.dbusObject.String()
