@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0167542_5aba779f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-21T21:35:52Z",
+      "side": 1,
+      "message": "Done. Changed spaces at L226 to a \u003ctab\u003e",
+      "parentUuid": "8e717ae9_9933eda1",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 10
+      },
+      "revId": "2d128e711536d3594b9e8970ddf4f7d8f88a040b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7f94ff0_fae32fa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2d128e711536d3594b9e8970ddf4f7d8f88a040b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba6fe88_722050e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-21T21:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f94ff0_fae32fa0",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 299,
+        "endChar": 13
+      },
+      "revId": "2d128e711536d3594b9e8970ddf4f7d8f88a040b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
