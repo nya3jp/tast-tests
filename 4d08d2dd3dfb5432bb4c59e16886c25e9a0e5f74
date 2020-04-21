@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65414219_b1852f2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-04-21T10:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e22c5c_394f24b8",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7ff8aab_c8316aaa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f58b7c3b_ab317621",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-04-21T10:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7ff8aab_c8316aaa",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 2
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4317e08f_9e4d53b8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-20T08:08:17Z",
       "side": 1,
       "message": "We should avoid panics even if fieldsMapping is incorrect. Can we report an error in such case?",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 18
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b96dd34_a84fc7d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-04-21T10:24:19Z",
+      "side": 1,
+      "message": "I\u0027ve avoided panics in reflect calls.  Is there any other cases of fieldsMapping that will panic in this function?",
+      "parentUuid": "4317e08f_9e4d53b8",
       "range": {
         "startLine": 212,
         "startChar": 5,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f7d8add3_df5b264b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-04-21T10:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b6df9e2_4d680264",
+      "range": {
+        "startLine": 269,
+        "startChar": 52,
+        "endLine": 269,
+        "endChar": 54
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8fa6d8e_60e7ac59",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
         "patchSetId": 4
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dc73f28f_18bcb018",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-04-21T10:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8fa6d8e_60e7ac59",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 329,
+        "endChar": 30
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecb2fc3d_68376acc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b567524_00d9b86a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-04-21T10:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecb2fc3d_68376acc",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 38
+      },
+      "revId": "4d08d2dd3dfb5432bb4c59e16886c25e9a0e5f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
