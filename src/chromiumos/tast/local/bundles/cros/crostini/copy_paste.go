@@ -202,6 +202,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name: "wayland_to_x11_artifact_unstable",
