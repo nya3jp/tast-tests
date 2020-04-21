@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60c063d2_d4fed248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-21T03:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b228fb1_77181ff7",
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1aa4f81_0ff19833",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9814c4_91bf1b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-21T03:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1aa4f81_0ff19833",
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "23698627_aa346f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-21T03:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ed3abd_64975acd",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 14
+      },
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9452802c_464c37eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4316068c_1a72ba02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-21T03:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9452802c_464c37eb",
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "c8510115_6a49a7e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-21T03:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a0df56_37b05086",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 17
+      },
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b7787eb_e77aae77",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -119,6 +221,30 @@
       "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece9311c_1bded1d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-21T03:17:15Z",
+      "side": 1,
+      "message": "Removing else cannot save an indent since we still have several unimplemented sensor types.",
+      "parentUuid": "3b7787eb_e77aae77",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 8
+      },
+      "revId": "138ec90ac73236872eb510de00c1a5f5bdfaa7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
