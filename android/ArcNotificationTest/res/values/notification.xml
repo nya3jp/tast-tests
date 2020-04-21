@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<resources>
+    <string name="default_title">notification title</string>
+    <string name="default_text">notification text</string>
+    <string name="default_id">123</string>
+    <string name="button_text_send">SEND NOTIFICATION</string>
+    <string name="button_text_remove">REMOVE NOTIFICATION</string>
+</resources>
