@@ -37,7 +37,7 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 		peerIFName                       = "peer99"
 		brIFName                         = "arc_eth99"
 		vethIFName                       = "veth_eth99"
-		networkInitializationPollTimeout = 10 * time.Second // The time to wait for arc-networkd to set up virtual network after physical network changes.
+		networkInitializationPollTimeout = 10 * time.Second // The time to wait for patchpaneld to set up virtual network after physical network changes.
 		configurationPollTimeout         = 1 * time.Second  // The time to wait for remaining configurations after detecting virtual network
 	)
 
@@ -59,7 +59,7 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 	s.Log("Testing multinet behavior on device addition")
 
 	// Create a virtual interface and verify that corresponding data path is set up.
-	// Use a ethernet name template so arc-networkd treats it as an ethernet interface.
+	// Use a ethernet name template so patchpaneld treats it as an ethernet interface.
 	if err := testexec.CommandContext(ctx, "/bin/ip", "netns", "add", testNetnsName).Run(testexec.DumpLogOnError); err != nil {
 		// Ignore failure here for potential netns already exists case. If it's a legitimate failure it will fail at next step.
 		s.Logf("Failed to create test netns %s: %s", testNetnsName, err)
