@@ -481,9 +481,9 @@ func (c *CryptohomeBinary) GetEnrollmentID(ctx context.Context) ([]byte, error) 
 	return c.call(ctx, "--action=get_enrollment_id")
 }
 
-// TPMAttestationDelete calls "cryptohome --action=tpm_attestation_delete".
-func (c *CryptohomeBinary) TPMAttestationDelete(ctx context.Context, username, prefix string) ([]byte, error) {
-	return c.call(ctx, "--action=tpm_attestation_delete", "--user="+username, "--name="+prefix)
+// TPMAttestationDeleteKeys calls "cryptohome --action=tpm_attestation_delete_keys".
+func (c *CryptohomeBinary) TPMAttestationDeleteKeys(ctx context.Context, username, prefix string) ([]byte, error) {
+	return c.call(ctx, "--action=tpm_attestation_delete_keys", "--user="+username, "--prefix="+prefix)
 }
 
 // Pkcs11SystemTokenInfo calls "cryptohome --action=pkcs11_get_system_token_info".
