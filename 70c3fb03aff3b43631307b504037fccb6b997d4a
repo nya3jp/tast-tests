@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3c89c058_e2fbc80f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-21T20:35:14Z",
+      "side": 1,
+      "message": "\u003e Another option could be to FindAnyMatchingService and Remove the Service, if found, prior to attempting to configure a new Service on the user profile.\n\nSo the main difference I can see is that Service Remove() allows for the possibility that another profile also supports the Service:\n\n  \"If another profile supports this service, it will be re-configured there.\"\n\nIs that a realistic scenario? Seems like maybe not? Or I suppose I could rerun FindAnyMatchingService() until it fails, if I really care...",
+      "parentUuid": "e1a992b6_30fb3164",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cc1558e_157442b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
         "patchSetId": 1
