@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "219d5d3e_7bf4214e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-21T17:29:07Z",
+      "side": 1,
+      "message": "This change should be rebased on http://crrev/c/2149745, but the latter is in the middle of a CQ run and I don\u0027t want a full rebase to restart that CQ run. So this needs to be submitted after 2149745, which certainly will happen.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "e95495646c19b8d380b9455444850689d24b6e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0831fbe7_17c271e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/biod/is_running.go",
         "patchSetId": 1
