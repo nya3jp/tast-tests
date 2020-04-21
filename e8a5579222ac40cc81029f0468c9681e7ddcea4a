@@ -71,6 +71,78 @@
     },
     {
       "key": {
+        "uuid": "70a351a8_a233c8c7",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "This is used to give the caller the discretion to log it in case of error.\n\nIt is not merged into part of err because p11_replay is quite a noisy command and its output too long for err.\n\nIt is not logged on the spot in this method because there are many times in our tests that requires this test to fail in a certain way, and in those cases, we want to ignore all the error messages (except the CKR_* error code.) so that it doesn\u0027t pollute the testing log.",
+      "parentUuid": "5d30dff9_3884976a",
+      "range": {
+        "startLine": 401,
+        "startChar": 281,
+        "endLine": 401,
+        "endChar": 364
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14226f8_24eeb4fe",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "831b3648_f15ebe23",
+      "range": {
+        "startLine": 401,
+        "startChar": 172,
+        "endLine": 401,
+        "endChar": 177
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef2192f1_9421333d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "547857cf_e87e3e2c",
+      "range": {
+        "startLine": 401,
+        "startChar": 133,
+        "endLine": 401,
+        "endChar": 141
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0a3917f_914b44bc",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 12
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "0d4d78f4_f785693e",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a3917f_914b44bc",
+      "range": {
+        "startLine": 402,
+        "startChar": 79,
+        "endLine": 402,
+        "endChar": 92
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e065a38a_8b30b742",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb71ffef_4ca83649",
+      "range": {
+        "startLine": 402,
+        "startChar": 102,
+        "endLine": 402,
+        "endChar": 108
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac4b3156_2e726877",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 12
@@ -137,6 +257,30 @@
       "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccfb9437_3dae0322",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac4b3156_2e726877",
+      "range": {
+        "startLine": 423,
+        "startChar": 29,
+        "endLine": 423,
+        "endChar": 48
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ab11a1e5_e0c04a8b",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done. (Note: I\u0027ll probably write another CL that update the documentation on tast/common/errors because it\u0027s behaviour is different from that of the popular github.com/pkg/errors pkg.)",
+      "parentUuid": "ce060905_f6c13c2f",
+      "range": {
+        "startLine": 445,
+        "startChar": 3,
+        "endLine": 449,
+        "endChar": 160
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13dd156d_ac660d6a",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 12
@@ -177,6 +345,24 @@
       "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91a5268_cad2c4fc",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13dd156d_ac660d6a",
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -200,6 +386,30 @@
       "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce72daf4_8c96bd07",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-21T19:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eebf34d_822e1e00",
+      "range": {
+        "startLine": 518,
+        "startChar": 5,
+        "endLine": 518,
+        "endChar": 38
+      },
+      "revId": "e8a5579222ac40cc81029f0468c9681e7ddcea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
