@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<resources>
+    <string name="app_name">ArcClipboardTest</string>
+    <string name="button_copy">Copy</string>
+    <string name="button_enter">Write Text</string>
+    <string name="button_paste">Paste</string>
+    <string name="clip_get_description" translatable="false">getClipDescription() = %1$s</string>
+    <string name="clip_has_clipboard" translatable="false">hasClipboard() = %1$s</string>
+    <string name="disable_observer">Disable Observer</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="enable_observer">Enable Observer</string>
+    <string name="get_description" translatable="false">getClipDescription()</string>
+    <string name="has_clip" translatable="false">hasPrimaryClip()</string>
+    <string name="html_tags_goes_here">HTML tags goes here</string>
+    <string name="observer_ready" translatable="false">Observer ready</string>
+    <string name="test_html_1234" translatable="false"><![CDATA[<p dir=\"ltr\">test <b>HTML</b> 1234</p>]]></string>
+    <string name="test_text_1234" translatable="false">Test Text 1234</string>
+    <string name="write_html">Write HTML</string>
+</resources>

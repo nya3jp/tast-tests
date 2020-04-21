@@ -22,7 +22,6 @@ func init() {
 		Contacts:     []string{"ruanc@chromium.org", "yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcClipboardTest.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
@@ -63,7 +62,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	a := p.ARC
 
 	s.Log("Starting app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
