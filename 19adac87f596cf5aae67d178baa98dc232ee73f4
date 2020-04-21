@@ -16,6 +16,64 @@
       "revId": "19adac87f596cf5aae67d178baa98dc232ee73f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae6ac3e5_ac5b561d",
+        "filename": "android/ArcSurfaceInsetsTest/src/org/chromium/arc/testapp/surfaceinsets/FullScreenDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-21T09:18:49Z",
+      "side": 1,
+      "message": "Looks used in MainActivity?",
+      "parentUuid": "a6956202_cae51975",
+      "revId": "19adac87f596cf5aae67d178baa98dc232ee73f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "339a6961_4a8c798c",
+        "filename": "android/ArcSurfaceInsetsTest/src/org/chromium/arc/testapp/surfaceinsets/FullScreenDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-21T09:18:49Z",
+      "side": 1,
+      "message": "optional/recommendation: Unindent by negating the condition, and cache dialog in a local var.\n\nDialog dialog \u003d getDialog();\nif (dialog \u003d\u003d null) {\n  return;\n}\nWindow w \u003d dialog.getWindow();\n...",
+      "revId": "19adac87f596cf5aae67d178baa98dc232ee73f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd73971e_62fb3d5c",
+        "filename": "android/ArcSurfaceInsetsTest/src/org/chromium/arc/testapp/surfaceinsets/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-21T09:18:49Z",
+      "side": 1,
+      "message": "nit: looks redundant?",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "19adac87f596cf5aae67d178baa98dc232ee73f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
