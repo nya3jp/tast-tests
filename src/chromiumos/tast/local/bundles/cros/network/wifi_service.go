@@ -132,37 +132,22 @@ func (s *WifiService) Disconnect(ctx context.Context, config *network.Service) (
 	return &empty.Empty{}, nil
 }
 
-// DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
-func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SSID) (*empty.Empty, error) {
+// RemoveServiceBySSID removes WiFi service for a given SSID.
+func (s *WifiService) RemoveServiceBySSID(ctx context.Context, ssid *network.SSID) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a manager object")
 	}
-	profiles, err := m.Profiles(ctx)
-	for _, profile := range profiles {
-		props, err := profile.GetProperties(ctx)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to get properties from profile object")
-		}
-		entryIDs, err := props.GetStrings(shill.ProfilePropertyEntries)
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to get property %s from profile object", shill.ProfilePropertyEntries)
-		}
-		for _, entryID := range entryIDs {
-			entry, err := profile.GetEntry(ctx, entryID)
-			if err != nil {
-				return nil, errors.Wrapf(err, "failed to get entry %s", entryID)
-			}
-			if entry[shill.ProfileEntryPropertyName] != ssid.Ssid {
-				continue
-			}
-			if entry[shill.ProfileEntryPropertyType] != shill.TypeWifi {
-				continue
-			}
-			if err := profile.DeleteEntry(ctx, entryID); err != nil {
-				return nil, errors.Wrapf(err, "failed to delete entry %s", entryID)
-			}
-		}
+	service, err := m.FindAnyMatchingService(ctx, map[string]interface{}{
+		shill.ServicePropertyType: shill.TypeWifi,
+		shill.ServicePropertyName: ssid.Ssid,
+	})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find matching service")
+	}
+	testing.ContextLogf(ctx, "Removing service %s", service)
+	if err = service.Remove(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to remove service %s", service)
 	}
 	return &empty.Empty{}, nil
 }
