@@ -79,7 +79,9 @@ type Phy struct {
 	MaxScanSSIDs              int
 	SupportVHT                bool
 	SupportHT2040             bool
-	SupportSGI                bool
+	SupportHT20SGI            bool
+	SupportHT40SGI            bool
+	SupportVHT80SGI           bool
 	SupportMUMIMO             bool
 }
 
@@ -109,7 +111,9 @@ type sectionAttributes struct {
 	phyModes, phyCommands []string
 	supportVHT            bool
 	supportHT2040         bool
-	supportSGI            bool
+	supportHT20SGI        bool
+	supportHT40SGI        bool
+	supportVHT80SGI       bool
 	supportMUMIMO         bool
 }
 
@@ -836,18 +840,20 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 	}
 
 	return &Phy{
-		Name:          name,
-		Bands:         attrs.bands,
-		Modes:         attrs.phyModes,
-		Commands:      attrs.phyCommands,
-		Features:      phyFeatures,
-		RxAntenna:     rxAntenna,
-		TxAntenna:     txAntenna,
-		MaxScanSSIDs:  maxScanSSIDs,
-		SupportVHT:    attrs.supportVHT,
-		SupportHT2040: attrs.supportHT2040,
-		SupportSGI:    attrs.supportSGI,
-		SupportMUMIMO: attrs.supportMUMIMO,
+		Name:            name,
+		Bands:           attrs.bands,
+		Modes:           attrs.phyModes,
+		Commands:        attrs.phyCommands,
+		Features:        phyFeatures,
+		RxAntenna:       rxAntenna,
+		TxAntenna:       txAntenna,
+		MaxScanSSIDs:    maxScanSSIDs,
+		SupportVHT:      attrs.supportVHT,
+		SupportHT2040:   attrs.supportHT2040,
+		SupportHT20SGI:  attrs.supportHT20SGI,
+		SupportHT40SGI:  attrs.supportHT40SGI,
+		SupportVHT80SGI: attrs.supportVHT80SGI,
+		SupportMUMIMO:   attrs.supportMUMIMO,
 	}, nil
 }
 
@@ -982,14 +988,22 @@ func parseBand(attrs *sectionAttributes, sectionName, contents string) error {
 
 func parseThroughput(attrs *sectionAttributes, sectionName, contents string) error {
 	// This parser evaluates the throughput capabilities of the phy.
-	if strings.Contains(contents, "VHT Capabilities") {
-		attrs.supportVHT = true
-	}
+	// HT related.
 	if strings.Contains(contents, "HT20/HT40") {
 		attrs.supportHT2040 = true
 	}
+	if strings.Contains(contents, "RX HT20 SGI") {
+		attrs.supportHT20SGI = true
+	}
+	if strings.Contains(contents, "RX HT40 SGI") {
+		attrs.supportHT40SGI = true
+	}
+	// VHT related.
+	if strings.Contains(contents, "VHT Capabilities") {
+		attrs.supportVHT = true
+	}
 	if strings.Contains(contents, "short GI (80 MHz)") {
-		attrs.supportSGI = true
+		attrs.supportVHT80SGI = true
 	}
 	if strings.Contains(contents, "MU Beamformee") {
 		attrs.supportMUMIMO = true
