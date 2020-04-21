@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "30f20d86_e5da77c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-04-21T08:44:46Z",
+      "side": 1,
+      "message": "Thank you for the explanation.\nI was confused by const in go not being like const int C++.",
+      "parentUuid": "73d072ef_099bb7d1",
+      "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f583866e_7829f46f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 2
@@ -151,6 +169,30 @@
       "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80777bb8_9cae2c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-04-21T08:44:46Z",
+      "side": 1,
+      "message": "Thank you for the explanation.\nThat makes sense.",
+      "parentUuid": "ca08660f_bd6e9bb3",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 148,
+        "endChar": 35
+      },
+      "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
