@@ -22,6 +22,30 @@
       "revId": "80d38c986f0255de061cd211ea5b791f2ff271dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b50110_114c216e",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-21T18:54:05Z",
+      "side": 1,
+      "message": "+1, return-early-on-failure is good",
+      "parentUuid": "5e4ef1b8_0a015314",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "80d38c986f0255de061cd211ea5b791f2ff271dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
