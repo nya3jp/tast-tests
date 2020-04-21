@@ -15,8 +15,121 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 	"chromiumos/tast/timing"
 )
+
+// A list of models that are too flaky for the CQ. Use the standard tast
+// criteria at go/tast-add-test to judge whether it should be on the CQ.
+var modelBlacklist = []string{
+	// Platform auron
+	"auron_paine",
+	"auron_yuna",
+	// Platform banon
+	"banon",
+	// Platform bob
+	"bob",
+	// Platform buddy
+	"buddy",
+	// Platform celes
+	"celes",
+	// Platform coral
+	"astronaut",
+	"babymega",
+	"blacktip360",
+	"blacktiplte",
+	"bruce",
+	"lava",
+	"nasher",
+	"robo360",
+	"whitetip",
+	// Platform cyan
+	"cyan",
+	// Platform edgar
+	"edgar",
+	// Platform elm
+	"elm",
+	// Platform fizz
+	"jax",
+	"teemo",
+	// Platform gandof
+	"gandof",
+	// Platform grunt
+	"aleena",
+	"barla",
+	"careena",
+	"kasumi",
+	"kasumi360",
+	"liara",
+	"treeya",
+	"treeya360",
+	// Platform guado
+	"guado",
+	// Platform hana
+	"hana",
+	// Platform kefka
+	"kefka",
+	// Platform kevin
+	"kevin",
+	// Platform kukui
+	"kodama",
+	"krane",
+	// Platform lulu
+	"lulu",
+	// Platform nocturne
+	"nocturne",
+	// Platform octopus
+	"ampton",
+	"apel",
+	"bloog",
+	"blooglet",
+	"blooguard",
+	"bluebird",
+	"bobba",
+	"bobba360",
+	"casta",
+	"dood",
+	"dorp",
+	"droid",
+	"fleex",
+	"foob",
+	"foob360",
+	"garg",
+	"garg360",
+	"laser14",
+	"lick",
+	"phaser360",
+	"sparky",
+	"sparky360",
+	"vorticon",
+	"vortininja",
+	// Platform reks
+	"reks",
+	// Platform relm
+	"relm",
+	// Platform samus
+	"samus",
+	// Platform sarien
+	"arcada",
+	"sarien",
+	// Platform scarlet
+	"dru",
+	"dumo",
+	// Platform terra
+	"terra",
+	// Platform ultima
+	"ultima",
+	// Platform wizpig
+	"wizpig",
+}
+
+// CrostiniStable is a hardware dependency that only runs a test on models that can run Crostini tests without
+// known flakiness issues.
+var CrostiniStable = hwdep.D(hwdep.SkipOnModel(modelBlacklist...))
+
+// CrostiniUnstable is a hardware dependency that is the inverse of CrostiniStable. It only runs a test on
+// models that are known to be flaky when running Crostini tests.
+var CrostiniUnstable = hwdep.D(hwdep.Model(modelBlacklist...))
 
 // ImageArtifact holds the name of the artifact which will be used to
 // boot crostini. When using the StartedByArtifact precondition, you
