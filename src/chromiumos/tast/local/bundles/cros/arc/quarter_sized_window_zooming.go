@@ -24,7 +24,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
-		Data:         []string{"ArcQuarterSizedWindowZoomingTest.apk"},
 	})
 }
 
@@ -55,7 +54,7 @@ func QuarterSizedWindowZooming(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
 
-	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 

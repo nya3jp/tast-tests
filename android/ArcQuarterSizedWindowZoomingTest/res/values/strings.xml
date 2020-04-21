@@ -1,0 +1,4 @@
+<resources>
+    <!-- App name -->
+    <string name="app_name" translatable="false">QuarterSizedWindowZoomingTest</string>
+</resources>
