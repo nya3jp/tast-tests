@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const workingDir = "/tmp/tast-test/"
@@ -42,6 +43,9 @@ type Router struct {
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
 func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
+	ctx, st := timing.Start(ctx, "NewRouter")
+	defer st.End()
+
 	r := &Router{
 		host:        host,
 		name:        name,
@@ -82,6 +86,9 @@ func (r *Router) removeWifiIfaces(ctx context.Context) error {
 
 // setupWifiPhys fills r.phys and enables their antennas.
 func (r *Router) setupWifiPhys(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "setupWifiPhys")
+	defer st.End()
+
 	if err := r.removeWifiIfaces(ctx); err != nil {
 		return err
 	}
@@ -175,6 +182,9 @@ func (r *Router) configureRNG(ctx context.Context) error {
 
 // initialize prepares initial test AP state (e.g., initializing wiphy/wdev).
 func (r *Router) initialize(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "initialize")
+	defer st.End()
+
 	board, err := hostBoard(ctx, r.host)
 	if err != nil {
 		return err
@@ -193,9 +203,15 @@ func (r *Router) initialize(ctx context.Context) error {
 		return err
 	}
 
-	// Kill remaining hostapd/dnsmasq.
-	hostapd.KillAll(ctx, r.host)
-	dhcp.KillAll(ctx, r.host)
+	killHostapdDhcp := func() {
+		ctx, st := timing.Start(ctx, "killHostapdDhcp")
+		defer st.End()
+
+		// Kill remaining hostapd/dnsmasq.
+		hostapd.KillAll(ctx, r.host)
+		dhcp.KillAll(ctx, r.host)
+	}
+	killHostapdDhcp()
 
 	// TODO(crbug.com/839164): Current CrOS on router haven't got the fix in crrev.com/c/1979112.
 	// Let's keep the truncate and remove it after we have router updated.
@@ -210,10 +226,16 @@ func (r *Router) initialize(ctx context.Context) error {
 		return errors.Wrap(err, "failed to set regulatory domain to US")
 	}
 
-	// Stop upstart job wpasupplicant if available. (ignore the error as it might be stopped already)
-	r.host.Command("stop", "wpasupplicant").Run(ctx)
-	// Stop avahi if available as it just causes unnecessary network traffic.
-	r.host.Command("stop", "avahi").Run(ctx)
+	stopDaemon := func() {
+		ctx, st := timing.Start(ctx, "stopDaemon")
+		defer st.End()
+
+		// Stop upstart job wpasupplicant if available. (ignore the error as it might be stopped already)
+		r.host.Command("stop", "wpasupplicant").Run(ctx)
+		// Stop avahi if available as it just causes unnecessary network traffic.
+		r.host.Command("stop", "avahi").Run(ctx)
+	}
+	stopDaemon()
 
 	// Configure hw_random, see function doc for more details.
 	if err := r.configureRNG(ctx); err != nil {
@@ -225,6 +247,9 @@ func (r *Router) initialize(ctx context.Context) error {
 
 // Close cleans the resource used by Router.
 func (r *Router) Close(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "router.Close")
+	defer st.End()
+
 	var err error
 	// Remove the interfaces that we created.
 	for _, nd := range r.availIfaces {
@@ -271,6 +296,9 @@ func (r *Router) phy(ctx context.Context, channel int, t iw.IfType) (int, error)
 
 // netDev finds an available interface suitable for the given channel and type.
 func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetDev, error) {
+	ctx, st := timing.Start(ctx, "selectInterface")
+	defer st.End()
+
 	phyID, err := r.phy(ctx, channel, t)
 	if err != nil {
 		return nil, err
@@ -289,6 +317,9 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 // phy and re-use or create interface on the phy. Name is used on the path to store logs, config files
 // or related resources. The handle object for the service is returned.
 func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
+	ctx, st := timing.Start(ctx, "router.StartAPIface")
+	defer st.End()
+
 	// Reserve required resources.
 	nd, err := r.netDev(ctx, conf.Channel, iw.IfTypeManaged)
 	if err != nil {
@@ -323,6 +354,9 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 // StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
 // as free to re-use.
 func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
+	ctx, st := timing.Start(ctx, "router.StopAPIface")
+	defer st.End()
+
 	err := h.stop(ctx)
 	// Free resources even if something went wrong in stop.
 	r.freeSubnetIdx(h.subnetIdx)
@@ -332,6 +366,9 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 
 // StartCapture starts a packet capturer.
 func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (ret *pcap.Capturer, retErr error) {
+	ctx, st := timing.Start(ctx, "router.StartCapture")
+	defer st.End()
+
 	freq, err := hostapd.ChannelToFrequency(ch)
 	if err != nil {
 		return nil, err
@@ -380,6 +417,9 @@ func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps 
 
 // StopCapture stops the packet capturer and releases related resources.
 func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error {
+	ctx, st := timing.Start(ctx, "router.StopCapture")
+	defer st.End()
+
 	var firstErr error
 	collectErr := func(err error) {
 		if firstErr != nil {
@@ -415,6 +455,9 @@ func (r *Router) uniqueIfaceName(t iw.IfType) string {
 
 // createWifiIface creates an interface on phy with type=t and returns the name of created interface.
 func (r *Router) createWifiIface(ctx context.Context, phyID int, t iw.IfType) (*iw.NetDev, error) {
+	ctx, st := timing.Start(ctx, "createWifiIface")
+	defer st.End()
+
 	iface := r.uniqueIfaceName(t)
 	phy := r.phys[phyID].Name
 	testing.ContextLogf(ctx, "Creating wdev %s on wiphy %s", iface, phy)
@@ -514,6 +557,9 @@ func (r *Router) freeSubnetIdx(i byte) {
 
 // collectLogs downloads log files from router.
 func (r *Router) collectLogs(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "collectLogs")
+	defer st.End()
+
 	collect := map[string]string{
 		"/var/log/messages": fmt.Sprintf("debug/%s_host_messages", r.name),
 	}
@@ -540,6 +586,9 @@ func (r *Router) collectLogs(ctx context.Context) error {
 // for router setup. If you're trying to identify specific board of DUT, maybe
 // software/hardware dependency is what you want instead of this.
 func hostBoard(ctx context.Context, host *ssh.Conn) (string, error) {
+	ctx, st := timing.Start(ctx, "hostBoard")
+	defer st.End()
+
 	const lsbReleasePath = "/etc/lsb-release"
 	const crosReleaseBoardKey = "CHROMEOS_RELEASE_BOARD"
 
