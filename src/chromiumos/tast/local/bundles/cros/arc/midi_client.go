@@ -26,7 +26,6 @@ func init() {
 		Desc:         "Checks MIDI Apps can send messages to devices",
 		Contacts:     []string{"pmalani@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcMidiClientTest.apk"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -64,7 +63,7 @@ func MIDIClient(ctx context.Context, s *testing.State) {
 	)
 
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
