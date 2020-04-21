@@ -39,6 +39,30 @@
       "revId": "bf1f40835b3de9d487f04c1e6c90b8fbd23259c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed2dc5d_72f3f3d3",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-04-21T12:29:56Z",
+      "side": 1,
+      "message": "This CL is ust replicating the current behavior, I thought it best to make modifications (both additions and removals) in separate changes.",
+      "parentUuid": "a1c4fcb8_08620774",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "bf1f40835b3de9d487f04c1e6c90b8fbd23259c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
