@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NetworkdStability,
-		Desc:         "Checks that arc-networkd isn't respawning across ARC boots",
+		Desc:         "Checks that platformd isn't respawning across ARC boots",
 		Contacts:     []string{"garrick@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
@@ -31,9 +31,9 @@ func init() {
 }
 
 func NetworkdStability(ctx context.Context, s *testing.State) {
-	// Returns the PIDs of the arc-networkd processes.
+	// Returns the PIDs of the patchpaneld processes.
 	getPIDs := func() []int {
-		const binPath = "/usr/bin/arc-networkd"
+		const binPath = "/usr/bin/patchpaneld"
 
 		all, err := process.Processes()
 		if err != nil {
@@ -53,7 +53,7 @@ func NetworkdStability(ctx context.Context, s *testing.State) {
 				s.Errorf("Failed to obtain parent PID for %v: %v", proc.Pid, err)
 				continue
 			}
-			s.Logf("Found arc-networkd process %d with parent %d", proc.Pid, ppid)
+			s.Logf("Found patchpaneld process %d with parent %d", proc.Pid, ppid)
 			if ppid == 1 {
 				if mgr {
 					s.Error("Found multiple manager processes")
@@ -98,11 +98,11 @@ func NetworkdStability(ctx context.Context, s *testing.State) {
 		s.Fatal("arc-network-bridge job failed to start: ", err)
 	}
 
-	// Get the arc-networkd pids before logging in and starting ARC.
+	// Get thepatchpaneld pids before logging in and starting ARC.
 	pids := getPIDs()
 
 	// Ensure the processes are stable across ARC usage.
-	// arc-networkd runs additional external commands when the ARC container is
+	// patchpaneld runs additional external commands when the ARC container is
 	// starting and tearing down, so we need to wait for this complete before
 	// checking the PIDs again (when doARC returns this will be true).
 	doARC()
