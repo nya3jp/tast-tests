@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "234a81f0_2ae55ba5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-21T07:02:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12b5dfa7_7b1da266",
+      "range": {
+        "startLine": 731,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 45
+      },
+      "revId": "6f69e578c469610f89d078fed0527644dc95d4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5985c017_f1d7bee1",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6f69e578c469610f89d078fed0527644dc95d4ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56b469a_d6e86dcc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-21T07:02:32Z",
+      "side": 1,
+      "message": "Thanks for the info. Folder will now be deleted explicitly.",
+      "parentUuid": "5985c017_f1d7bee1",
+      "range": {
+        "startLine": 744,
+        "startChar": 32,
+        "endLine": 744,
+        "endChar": 58
+      },
+      "revId": "6f69e578c469610f89d078fed0527644dc95d4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
