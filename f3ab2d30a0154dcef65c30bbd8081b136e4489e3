@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f568836c_1bf1ca12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-21T01:55:49Z",
+      "side": 1,
+      "message": "Maybe we can use \"arc\" as the dep which covers both ARC++ and ARCVM, run generate_camera_profile in tast, and get the recording params from /mnt/stateful_partition/encrypted/var/cache/camera/media_profiles.xml.\n\nNote that inker@ is also adding a remote test for running HAL3 on camera box, which is already duplicating a test to 3 tests (local and camera box with front/back camera). I would prefer not to double the combination if possible.\n\n+inker@ to confirm generate_camera_profile is available on all boards with ARC, and check the camera box plan.\n\nref: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "parentUuid": "31f34ae5_d2263a46",
+      "revId": "f3ab2d30a0154dcef65c30bbd8081b136e4489e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff3b0d57_4e3b80f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 1
