@@ -102,8 +102,14 @@ func TestParseScanResults(t *testing.T) {
 }
 
 func TestNewPhy(t *testing.T) {
-	const phyString = `Wiphy 3`
-	const testStr = `	max # scan SSIDs: 20
+	testcases := []struct {
+		header  string
+		section string
+		expect  *Phy
+	}{
+		{
+			header: `Wiphy 3`,
+			section: `	max # scan SSIDs: 20
 	max scan IEs length: 425 bytes
 	max # sched scan SSIDs: 20
 	max # match sets: 11
@@ -145,48 +151,181 @@ func TestNewPhy(t *testing.T) {
 			* 2412 MHz [1] (22.0 dBm)
 	Supported commands:
 		 * connect
-		 * disconnect`
-	l, err := newPhy(phyString, testStr)
-	if err != nil {
-		t.Fatal("newPhy failed: ", err)
-	}
-	cmpPhy := &Phy{
-		Name: "3",
-		Bands: []Band{
-			{
-				Num: 1,
-				FrequencyFlags: map[int][]string{
-					2412: nil,
+		 * disconnect`,
+			expect: &Phy{
+				Name: "3",
+				Bands: []Band{
+					{
+						Num: 1,
+						FrequencyFlags: map[int][]string{
+							2412: nil,
+						},
+						MCSIndices: []int{
+							0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+						},
+					},
 				},
-				MCSIndices: []int{
-					0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+				Modes: []string{
+					"IBSS",
+					"managed",
+					"monitor",
 				},
+				Commands: []string{
+					"connect",
+					"disconnect",
+				},
+				Features: []string{
+					"RSN-IBSS",
+					"AP-side u-APSD",
+					"T-DLS",
+				},
+				RxAntenna:       0,
+				TxAntenna:       0,
+				MaxScanSSIDs:    20,
+				SupportVHT:      false,
+				SupportHT2040:   true,
+				SupportHT20SGI:  true,
+				SupportHT40SGI:  true,
+				SupportVHT80SGI: false,
+				SupportMUMIMO:   false,
 			},
 		},
-		Modes: []string{
-			"IBSS",
-			"managed",
-			"monitor",
+		{
+			header: `Wiphy phy0`,
+			section: `	wiphy index: 0
+	max # scan SSIDs: 16
+	max scan IEs length: 195 bytes
+	max # sched scan SSIDs: 0
+	max # match sets: 0
+	max # scan plans: 1
+	max scan plan interval: -1
+	max scan plan iterations: 0
+	Retry short limit: 7
+	Retry long limit: 4
+	Coverage class: 0 (up to 0m)
+	Device supports RSN-IBSS.
+	Device supports AP-side u-APSD.
+	Supported Ciphers:
+		* WEP40 (00-0f-ac:1)
+		* WEP104 (00-0f-ac:5)
+		* TKIP (00-0f-ac:2)
+		* CCMP-128 (00-0f-ac:4)
+		* CMAC (00-0f-ac:6)
+		* CMAC-256 (00-0f-ac:13)
+		* GMAC-128 (00-0f-ac:11)
+		* GMAC-256 (00-0f-ac:12)
+	Available Antennas: TX 0x3 RX 0x3
+	Configured Antennas: TX 0x3 RX 0x3
+	Supported interface modes:
+		 * managed
+		 * AP
+		 * monitor
+	Band 2:
+		Capabilities: 0x19ef
+			RX LDPC
+			HT20/HT40
+			SM Power Save disabled
+			RX HT20 SGI
+			RX HT40 SGI
+			TX STBC
+			RX STBC 1-stream
+			Max AMSDU length: 7935 bytes
+			DSSS/CCK HT40
+		Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
+		Minimum RX AMPDU time spacing: 8 usec (0x06)
+		HT TX/RX MCS rate indexes supported: 0-15
+		VHT Capabilities (0x339071b2):
+			Max MPDU length: 11454
+			Supported Channel Width: neither 160 nor 80+80
+			RX LDPC
+			short GI (80 MHz)
+			TX STBC
+			SU Beamformee
+			MU Beamformee
+			RX antenna pattern consistency
+			TX antenna pattern consistency
+		VHT RX MCS set:
+			1 streams: MCS 0-9
+			2 streams: MCS 0-9
+			3 streams: not supported
+			4 streams: not supported
+			5 streams: not supported
+			6 streams: not supported
+			7 streams: not supported
+			8 streams: not supported
+		VHT RX highest supported: 0 Mbps
+		VHT TX MCS set:
+			1 streams: MCS 0-9
+			2 streams: MCS 0-9
+			3 streams: not supported
+			4 streams: not supported
+			5 streams: not supported
+			6 streams: not supported
+			7 streams: not supported
+			8 streams: not supported
+		VHT TX highest supported: 0 Mbps
+		Bitrates (non-HT):
+			* 6.0 Mbps
+			* 9.0 Mbps
+			* 12.0 Mbps
+			* 18.0 Mbps
+			* 24.0 Mbps
+			* 36.0 Mbps
+			* 48.0 Mbps
+			* 54.0 Mbps
+		Frequencies:
+			* 5180 MHz [36] (23.0 dBm)
+	Supported commands:
+		 * new_interface
+		 * set_interface
+			`,
+			expect: &Phy{
+				Name: "phy0",
+				Bands: []Band{
+					{
+						Num: 2,
+						FrequencyFlags: map[int][]string{
+							5180: nil,
+						},
+						MCSIndices: []int{
+							0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+						},
+					},
+				},
+				Modes: []string{
+					"managed",
+					"AP",
+					"monitor",
+				},
+				Commands: []string{
+					"new_interface",
+					"set_interface",
+				},
+				Features: []string{
+					"RSN-IBSS",
+					"AP-side u-APSD",
+				},
+				RxAntenna:       3,
+				TxAntenna:       3,
+				MaxScanSSIDs:    16,
+				SupportVHT:      true,
+				SupportHT2040:   true,
+				SupportHT20SGI:  true,
+				SupportHT40SGI:  true,
+				SupportVHT80SGI: true,
+				SupportMUMIMO:   true,
+			},
 		},
-		Commands: []string{
-			"connect",
-			"disconnect",
-		},
-		Features: []string{
-			"RSN-IBSS",
-			"AP-side u-APSD",
-			"T-DLS",
-		},
-		RxAntenna:     0,
-		TxAntenna:     0,
-		MaxScanSSIDs:  20,
-		SupportVHT:    false,
-		SupportHT2040: true,
-		SupportSGI:    false,
-		SupportMUMIMO: false,
 	}
-	if !reflect.DeepEqual(l, cmpPhy) {
-		t.Errorf("unexpected result in newPhy: got %v, want %v", l, cmpPhy)
+	for i, tc := range testcases {
+		l, err := newPhy(tc.header, tc.section)
+		if err != nil {
+			t.Errorf("testcase #%d: newPhy failed: %v", i, err)
+			continue
+		}
+		if !reflect.DeepEqual(l, tc.expect) {
+			t.Errorf("testcase #%d: unexpected result in newPhy: got %v, want %v", i, l, tc.expect)
+		}
 	}
 }
 
