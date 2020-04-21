@@ -436,6 +436,22 @@ func TestConfigFormat(t *testing.T) {
 				"ssid2": `P"\xf2\xe3\x00\xd4\xc5\xb6"`,
 			},
 		},
+		// Check spectrum management.
+		{
+			conf: &Config{
+				Ssid:               "ssid",
+				Mode:               Mode80211b,
+				Channel:            1,
+				SpectrumManagement: true,
+				SecurityConfig:     &base.Config{},
+			},
+			verify: map[string]string{
+				"country_code":           "US",
+				"ieee80211d":             "1",
+				"local_pwr_constraint":   "0",
+				"spectrum_mgmt_required": "1",
+			},
+		},
 	}
 
 	for i, tc := range testcases {
