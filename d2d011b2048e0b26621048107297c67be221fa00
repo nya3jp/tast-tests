@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c00bb8d_4a9caf3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_event.EditTextActivity.json",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-21T05:41:04Z",
+      "side": 1,
+      "message": "Do you have any plan to add more steps for this activity in the follow up CL? \n\nI think typing some characters in the field, similar to crrev/c/1813097, is good.",
+      "revId": "d2d011b2048e0b26621048107297c67be221fa00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
