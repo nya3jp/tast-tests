@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc8faf35_0aaeff08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-04-21T06:16:51Z",
+      "side": 1,
+      "message": "Please describe what you did.",
+      "revId": "c9940c182d8841a74f803a9cc1628542dae8de52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
