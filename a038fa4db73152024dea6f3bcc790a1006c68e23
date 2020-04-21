@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8756eb1f_19eedb64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/boot_lockbox_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-21T16:26:12Z",
+      "side": 1,
+      "message": "nit: I\u0027d avoid abbreviation like this",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "a038fa4db73152024dea6f3bcc790a1006c68e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d42cd5_aebedc15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-21T16:26:12Z",
+      "side": 1,
+      "message": "\"New\" feels like to create a new boot lockbox service, while it creates a new Chrome.  How about \"NewChromeLogin\" (exposes more information) or just \"Login\"?  I prefer the former or the like since we manipulate Chrome heavily in this test.",
+      "range": {
+        "startLine": 36,
+        "startChar": 21,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "a038fa4db73152024dea6f3bcc790a1006c68e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86202645_1fd5c4ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-21T16:26:12Z",
+      "side": 1,
+      "message": "Similarly, \"CloseChrome\"?  Not sure if this really needs to be exposed to the client though.",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "a038fa4db73152024dea6f3bcc790a1006c68e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3a13b6_8510fcee",
+        "filename": "src/chromiumos/tast/services/cros/security/boot_lockbox_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-04-21T16:26:12Z",
+      "side": 1,
+      "message": "nit: whitespace?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 2
+      },
+      "revId": "a038fa4db73152024dea6f3bcc790a1006c68e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
