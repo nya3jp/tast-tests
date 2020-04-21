@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6956202_cae51975",
+        "filename": "android/ArcSurfaceInsetsTest/src/org/chromium/arc/testapp/surfaceinsets/FullScreenDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-21T08:30:26Z",
+      "side": 1,
+      "message": "nit: Would you delete this TAG? I think I added this previously and this exists on android repo, but it\u0027s not used at all.",
+      "revId": "19adac87f596cf5aae67d178baa98dc232ee73f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
