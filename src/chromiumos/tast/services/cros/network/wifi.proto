@@ -16,8 +16,8 @@ service Wifi {
   rpc Connect(Config) returns (Service) {}
   // Disconnect attempts to disconnect from a service.
   rpc Disconnect(Service) returns (google.protobuf.Empty) {}
-  // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
-  rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
+  // RemoveServiceBySSID removes WiFi service for a given SSID.
+  rpc RemoveServiceBySSID(SSID) returns (google.protobuf.Empty) {}
 }
 
 message Config {
