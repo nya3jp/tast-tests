@@ -86,9 +86,14 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 		s.Error("Device doesn't support all required throughput options: HT20, HT40, VHT80")
 	}
 	// Check short guard interval support.
-	if !res[0].SupportSGI {
-		s.Error("Device doesn't support short guard interval")
+	if !res[0].SupportHT20SGI {
+		s.Error("Device doesn't support HT20 short guard interval")
 	}
+	if !res[0].SupportHT40SGI {
+		s.Error("Device doesn't support HT40 short guard interval")
+	}
+	// TODO(crbug.com/1024554): Add 80MHz SGI check.
+
 	// Check MU-MIMO support. Older generations don't support MU-MIMO.
 	if dev.SupportMUMIMO() != res[0].SupportMUMIMO {
 		if dev.SupportMUMIMO() {
