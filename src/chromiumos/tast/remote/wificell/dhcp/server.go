@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -48,6 +49,9 @@ type Server struct {
 // name is the identifier used for log filenames in OutDir.
 // ipStart, ipEnd specifies the leasable range for this dhcp server to offer.
 func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, ipStart, ipEnd net.IP) (*Server, error) {
+	ctx, st := timing.Start(ctx, "dhcp.StartServer")
+	defer st.End()
+
 	s := &Server{
 		host:    host,
 		name:    name,
@@ -138,6 +142,9 @@ func (d *Server) start(ctx context.Context) (err error) {
 
 // Close stops the dhcp server and cleans up related resources.
 func (d *Server) Close(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "dhcp.Close")
+	defer st.End()
+
 	testing.ContextLog(ctx, "Stopping dnsmasq")
 	if d.cmd != nil {
 		d.cmd.Abort()
