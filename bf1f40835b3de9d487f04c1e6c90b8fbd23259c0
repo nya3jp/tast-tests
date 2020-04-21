@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a18776ef_58568136",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-21T12:39:37Z",
+      "side": 1,
+      "message": "bump",
+      "parentUuid": "8f629123_59b09e99",
+      "revId": "bf1f40835b3de9d487f04c1e6c90b8fbd23259c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1c4fcb8_08620774",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
