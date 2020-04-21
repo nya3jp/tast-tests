@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d98c7c76_5c4d8539",
+        "filename": "android/ArcQuarterSizedWindowZoomingTest/src/org/chromium/arc/testapp/quartersizedwindowzoomingtest/StripeView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2020-04-21T17:55:52Z",
+      "side": 1,
+      "message": "I think it should be \u003c ? (I know this is direct copy and this was bothering me.)",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "2df66e9e3d389cdc9491e3c5cd17ffa58d738e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
