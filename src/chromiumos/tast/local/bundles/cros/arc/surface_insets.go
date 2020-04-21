@@ -23,7 +23,6 @@ func init() {
 		Contacts:     []string{"hirokisato@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcSurfaceInsetsTestApp.apk"},
 		// TODO(yusukes): Change the timeout back to 4 min when we revert arc.go's BootTimeout to 120s.
 		Timeout: 5 * time.Minute,
 	})
@@ -31,7 +30,7 @@ func init() {
 
 func SurfaceInsets(ctx context.Context, s *testing.State) {
 	const (
-		apk = "ArcSurfaceInsetsTestApp.apk"
+		apk = "ArcSurfaceInsetsTest.apk"
 		pkg = "org.chromium.arc.testapp.surfaceinsets"
 		cls = ".MainActivity"
 	)
@@ -70,7 +69,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
