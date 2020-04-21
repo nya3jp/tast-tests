@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec50db37_3997b81a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-21T23:18:02Z",
+      "side": 1,
+      "message": "I\u0027d make this graphics_nightly since every test run is just about 1\u0027 in total.",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 83
+      },
+      "revId": "3ec68e9b3345de2f62fbab79cd1723c84ad08d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9fa979a_0ffa27ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-21T23:18:02Z",
+      "side": 1,
+      "message": "I\u0027m not sure if adding in the new tests\n ExtraAttr:         []string{\"group:graphics\", \"graphics_video\", \"graphics_weekly\"},\nis going to overwrite the \"group:crosbolt\" of the overarching Attr,\nor append to it or...",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "3ec68e9b3345de2f62fbab79cd1723c84ad08d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
