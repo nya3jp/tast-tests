@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0831fbe7_17c271e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/is_running.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-21T17:26:53Z",
+      "side": 1,
+      "message": "Tom, this is adapted from https://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/d00c6a9b1e066ab04a56759cc1399fb10ad09156/src/chromiumos/tast/local/cryptohome/cryptohome.go#441, and feels a bit like overkill, because I never saw biod in zombie state.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "e95495646c19b8d380b9455444850689d24b6e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
