@@ -53,8 +53,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		searchIconID         = "com.android.vending:id/search_bar"
 		playStorePackageName = "com.android.vending"
 		gmailPackageName     = "com.google.android.gm"
-		calendarPackageName  = "com.google.android.calendar"
-		youtubePackageName   = "com.google.android.youtube"
 		timeout              = 10 * time.Second
 	)
 
@@ -111,14 +109,14 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	// Install android apps for the everyday works: Gmail and Google Calendar.
-	// Skipping youtube app since there's a trouble of installing it.
-	// TODO(mukai): fix the problem of installing youtube.
+	// Install android apps for the everyday works: Gmail.
+	// Google Calendar and youtube are not installed to reduce the flakiness
+	// around the app installation.
 	pkgs, err := a.InstalledPackages(ctx)
 	if err != nil {
 		s.Fatal("Failed to list the installed packages: ", err)
 	}
-	for _, pkgName := range []string{gmailPackageName, calendarPackageName, youtubePackageName} {
+	for _, pkgName := range []string{gmailPackageName} {
 		if _, ok := pkgs[pkgName]; ok {
 			s.Logf("%s is already installed", pkgName)
 			continue
@@ -129,16 +127,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Close the play-store app window through ctrl-w.
-	if err := kw.Accel(ctx, "ctrl+w"); err != nil {
-		s.Fatal("Failed to close the play store app: ", err)
-	}
-
 	if err = cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait for idle-ness: ", err)
 	}
-
-	numWindows := 0
 
 	// Set up the cuj.Recorder: this test will measure the combinations of
 	// animation smoothness for window-cycles (alt-tab selection), launcher,
@@ -229,66 +220,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			}
 			return errors.New("too many dialog popups")
 		}},
-		{"calendar", calendarPackageName, func() error {
-			const (
-				nextArrowID       = "com.google.android.calendar:id/next_arrow_touch"
-				rightArrowID      = "com.google.android.calendar:id/right_arrow"
-				permissionAllowID = "com.android.packageinstaller:id/permission_allow_button"
-				maxPermissions    = 10
-				maxSplashes       = 10
-			)
-			gotIt := d.Object(ui.TextMatches("GOT IT|Got it"))
-			nextArrow := d.Object(ui.ID(nextArrowID))
-			rightArrow := d.Object(ui.ID(rightArrowID))
-			gotItFound := false
-			for i := 0; i < maxSplashes; i++ {
-				if err := gotIt.WaitForExists(ctx, timeout); err == nil {
-					gotItFound = true
-					break
-				}
-				nextButton := nextArrow
-				if err := nextArrow.Exists(ctx); err != nil {
-					if err := rightArrow.Exists(ctx); err != nil {
-						return errors.Wrap(err, "no buttons exist to skip the splash screen")
-					}
-					nextButton = rightArrow
-				}
-				if err := nextButton.Click(ctx); err != nil {
-					return errors.Wrap(err, "failed to click the button to skip splash screen")
-				}
-			}
-			if !gotItFound {
-				return errors.Wrap(err, `failed to click "GOT IT" button; too many splashes?`)
-			}
-			if err := gotIt.Click(ctx); err != nil {
-				return errors.Wrap(err, `failed to click "GOT IT" button`)
-			}
-			// Google calendar will ask some permissions, here allows them by clicking
-			// 'OK' button.
-			permissionAllow := d.Object(ui.ID(permissionAllowID))
-			for i := 0; i < maxPermissions; i++ {
-				if err := permissionAllow.WaitForExists(ctx, timeout); err != nil {
-					// No more permission dialogs.
-					return nil
-				}
-				if err := permissionAllow.Click(ctx); err != nil {
-					return errors.Wrap(err, "failed to click the permission allow button")
-				}
-			}
-			return errors.New("too many permission dialogs")
-		}},
-		{"youtube", youtubePackageName, func() error {
-			// It may show the advertizement of Youtube-TV. Skipping.
-			noThanksButton := d.Object(ui.TextMatches("NO THANKS"))
-			if err := noThanksButton.WaitForExists(ctx, timeout); err != nil {
-				// Button not found; nothing needs to be done.
-				return nil
-			}
-			if err := noThanksButton.Click(ctx); err != nil {
-				return errors.Wrap(err, "failed to click the NO THANKS button")
-			}
-			return nil
-		}},
 	} {
 		if err = recorder.Run(ctx, tconn, func() error {
 			if err := kw.Accel(ctx, "search"); err != nil {
@@ -313,7 +244,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			if err = app.skipSplash(); err != nil {
 				return errors.Wrap(err, "failed to skip the splash screen of the app")
 			}
-			numWindows++
 			// Waits some time to stabilize the result of launcher animations.
 			return testing.Sleep(ctx, timeout)
 		}); err != nil {
@@ -324,10 +254,12 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Here adds browser windows:
 	// 1. webGL aquarium -- adding considerable load on graphics.
 	// 2. chromium issue tracker -- considerable amount of elements.
+	// 3. youtube -- the substitute of youtube app.
 	browserWindows := map[int]bool{}
 	for _, url := range []string{
 		"https://webglsamples.org/aquarium/aquarium.html",
 		"https://bugs.chromium.org/p/chromium/issues/list",
+		"https://youtube.com/",
 	} {
 		conn, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
 		if err != nil {
@@ -353,7 +285,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
-	numWindows += len(browserWindows)
 
 	if err = cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait for idle-ness: ", err)
@@ -387,8 +318,12 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the list of windows: ", err)
+	}
 	s.Log("Switching the focused window through the overview mode")
-	for i := 0; i < numWindows; i++ {
+	for i := 0; i < len(ws); i++ {
 		if err := recorder.Run(ctx, tconn, func() error {
 			if err := setOverviewModeAndWait(ctx); err != nil {
 				return errors.Wrap(err, "failed to enter into the overview mode")
@@ -444,7 +379,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Switching the focused window through alt-tab")
-	for i := 0; i < numWindows; i++ {
+	for i := 0; i < len(ws); i++ {
 		if err := recorder.Run(ctx, tconn, func() error {
 			// Press alt -> hit tabs for the number of windows to choose the last used
 			// window -> release alt.
@@ -455,7 +390,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
 				return errors.Wrap(err, "failed to wait")
 			}
-			for j := 0; j < numWindows-1; j++ {
+			for j := 0; j < len(ws)-1; j++ {
 				if err := kw.Accel(ctx, "Tab"); err != nil {
 					return errors.Wrap(err, "failed to type tab")
 				}
