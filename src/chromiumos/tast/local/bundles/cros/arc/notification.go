@@ -28,7 +28,6 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcNotificationTest.apk"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
@@ -75,7 +74,7 @@ func Notification(ctx context.Context, s *testing.State) {
 	pollOpts := &testing.PollOptions{Timeout: 5 * time.Second}
 
 	s.Logf("Installing %s", apk)
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 		s.Fatalf("Failed to install %s: %v", apk, err)
 	}
 

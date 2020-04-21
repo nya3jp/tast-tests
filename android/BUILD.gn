@@ -17,6 +17,7 @@ group("all") {
     "ArcKeyboardTest:ArcKeyboardTest",
     "ArcKeyCharacterMapTest:ArcKeyCharacterMapTest",
     "ArcMidiClientTest:ArcMidiClientTest",
+    "ArcNotificationTest:ArcNotificationTest",
     "ArcPerAppDensityTest:ArcPerAppDensityTest",
     "ArcPrintTest:ArcPrintTest",
     "ArcQuarterSizedWindowZoomingTest:ArcQuarterSizedWindowZoomingTest",
