@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // TestFixture sets up the context for a basic WiFi test.
@@ -35,6 +36,9 @@ type TestFixture struct {
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
 func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (ret *TestFixture, retErr error) {
+	ctx, st := timing.Start(ctx, "NewTestFixture")
+	defer st.End()
+
 	tf := &TestFixture{}
 	defer func() {
 		if retErr != nil {
@@ -81,6 +85,9 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 
 // Close closes the connections created by TestFixture.
 func (tf *TestFixture) Close(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "tf.Close")
+	defer st.End()
+
 	var retErr error
 	if tf.router != nil {
 		if err := tf.router.Close(ctx); err != nil {
@@ -102,6 +109,9 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 
 // ConfigureAP configures the router to provide a WiFi service with the options specified.
 func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (*APIface, error) {
+	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
+	defer st.End()
+
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
 		return nil, err
@@ -111,11 +121,17 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (
 
 // DeconfigAP stops the WiFi service on router.
 func (tf *TestFixture) DeconfigAP(ctx context.Context, h *APIface) error {
+	ctx, st := timing.Start(ctx, "tf.DeconfigAP")
+	defer st.End()
+
 	return tf.router.StopAPIface(ctx, h)
 }
 
 // ConnectWifi asks the DUT to connect to the given WiFi service.
 func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
+	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
+	defer st.End()
+
 	config := &network.Config{
 		Ssid:   h.Config().Ssid,
 		Hidden: h.Config().Hidden,
@@ -131,6 +147,9 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 
 // DisconnectWifi asks the DUT to disconnect from current WiFi service and removes the configuration.
 func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "tf.DisconnectWifi")
+	defer st.End()
+
 	var err error
 	if _, err2 := tf.wifiClient.Disconnect(ctx, tf.curService); err2 != nil {
 		err = errors.Wrap(err2, "failed to disconnect")
@@ -142,6 +161,9 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 
 // PingFromDUT tests the connectivity between DUT and router through currently connected WiFi service.
 func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) error {
+	ctx, st := timing.Start(ctx, "tf.PingFromDUT")
+	defer st.End()
+
 	if tf.curAP == nil {
 		return errors.New("not connected")
 	}
@@ -160,6 +182,9 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) err
 // AssertNoDisconnect runs the given routine and verifies that no disconnection event
 // is captured in the same duration.
 func (tf *TestFixture) AssertNoDisconnect(ctx context.Context, f func(context.Context) error) error {
+	ctx, st := timing.Start(ctx, "tf.AssertNoDisconnect")
+	defer st.End()
+
 	el, err := iw.NewEventLogger(ctx, tf.dut)
 	if err != nil {
 		return errors.Wrap(err, "failed to start iw.EventLogger")

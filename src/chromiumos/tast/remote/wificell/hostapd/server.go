@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -46,13 +47,26 @@ type Server struct {
 // StartServer creates a new Server object and runs hostapd on iface of the given host with settings
 // specified in config. workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
-func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (*Server, error) {
-	s := &Server{
+func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (s *Server, err error) {
+	ctx, st := timing.Start(ctx, "hostapd.StartServer")
+	defer st.End()
+
+	s = &Server{
 		host:    host,
 		name:    name,
 		iface:   iface,
 		workDir: workDir,
 		conf:    config,
+	}
+	// Cleanup on error.
+	defer func() {
+		if err != nil {
+			s.Close(ctx)
+		}
+	}()
+
+	if err := s.initConfig(ctx); err != nil {
+		return nil, err
 	}
 	if err := s.start(ctx); err != nil {
 		return nil, err
@@ -86,14 +100,10 @@ func (s *Server) stderrFilename() string {
 	return s.filename("stderr")
 }
 
-// start spawns a hostapd daemon and waits until it is ready.
-func (s *Server) start(ctx context.Context) (err error) {
-	// Cleanup on error.
-	defer func() {
-		if err != nil {
-			s.Close(ctx)
-		}
-	}()
+// initConfig writes a hostapd config file.
+func (s *Server) initConfig(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "initConfig")
+	defer st.End()
 
 	conf, err := s.conf.Format(s.iface, s.ctrlPath())
 	if err != nil {
@@ -102,11 +112,18 @@ func (s *Server) start(ctx context.Context) (err error) {
 	if err := fileutil.WriteToHost(ctx, s.host, s.confPath(), []byte(conf)); err != nil {
 		return errors.Wrap(err, "failed to write config")
 	}
+	return nil
+}
+
+// start spawns a hostapd daemon and waits until it is ready.
+func (s *Server) start(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "start")
+	defer st.End()
 
 	testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
 	cmd := s.host.Command(hostapdCmd, "-dd", "-t", s.confPath())
-
 	// Prepare stdout/stderr log files.
+	var err error
 	s.stderrFile, err = fileutil.PrepareOutDirFile(ctx, s.stderrFilename())
 	if err != nil {
 		return errors.Wrap(err, "failed to open stderr log of hostapd")
@@ -145,8 +162,18 @@ func (s *Server) start(ctx context.Context) (err error) {
 	}
 	s.cmd = cmd
 
-	// Wait for hostapd to get ready.
-	if err := readyWriter.Wait(ctx); err != nil {
+	waitReady := func() error {
+		ctx, st := timing.Start(ctx, "waitReady")
+		defer st.End()
+
+		// Wait for hostapd to get ready.
+		if err := readyWriter.Wait(ctx); err != nil {
+			return err
+		}
+		return nil
+	}
+
+	if err := waitReady(); err != nil {
 		return err
 	}
 
@@ -156,6 +183,9 @@ func (s *Server) start(ctx context.Context) (err error) {
 
 // Close stops hostapd and cleans up related resources.
 func (s *Server) Close(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "hostapd.Close")
+	defer st.End()
+
 	testing.ContextLog(ctx, "Stopping hostapd")
 	if s.cmd != nil {
 		s.cmd.Abort()
