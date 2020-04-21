@@ -25,14 +25,14 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
 				Name:              "artifact_unstable",
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
