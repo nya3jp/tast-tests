@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4d123b6_72e4be66",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-04-21T18:40:54Z",
+      "side": 1,
+      "message": "Do you mind add auron_yuna/guado as they both seems flaky in stainless as well?",
+      "revId": "a831e0b70a8cdc19d335ac533556a3221518c50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
