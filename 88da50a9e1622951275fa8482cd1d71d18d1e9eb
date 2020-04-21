@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "23502f2c_ce99cc4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-04-21T08:32:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9b246e0_3b50ae3f",
+      "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aac793af_72ed85b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f47153_5a3e3c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-04-21T08:32:16Z",
+      "side": 1,
+      "message": "Done\nShow by an example",
+      "parentUuid": "aac793af_72ed85b4",
+      "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "73d072ef_099bb7d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-04-21T08:32:16Z",
+      "side": 1,
+      "message": "`base` is not const now and therefore also `metaFileName` cannot be const.\nOf course we can embed `strings.Replace(exampleApp, \".\", \"_\", -1)` as a string literal, rather I want to write the string `com.android.vending` only once. (Is this decision right?)",
+      "parentUuid": "18a878bb_c2acb468",
+      "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f583866e_7829f46f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 2
@@ -64,6 +118,30 @@
       "writtenOn": "2020-04-21T07:35:04Z",
       "side": 1,
       "message": "Probably better to replace metaFileName with base + crash.MetadataExt to be consistent with other arguments.",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 148,
+        "endChar": 35
+      },
+      "revId": "88da50a9e1622951275fa8482cd1d71d18d1e9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca08660f_bd6e9bb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-04-21T08:32:16Z",
+      "side": 1,
+      "message": "I agree it\u0027s better for consistency, but `metaFileName` is used latter and we cannot fix this.",
+      "parentUuid": "f583866e_7829f46f",
       "range": {
         "startLine": 148,
         "startChar": 23,
