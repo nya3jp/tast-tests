@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bec27a99_742714f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-21T08:48:52Z",
+      "side": 1,
+      "message": "Could you close tmpfile immediately?",
+      "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bcda7de_b85dc341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-21T08:48:52Z",
+      "side": 1,
+      "message": "filesApp.Close(...) instead?",
+      "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73b0ca2_2366c6dc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-21T08:48:52Z",
+      "side": 1,
+      "message": "nit: This is already in filesapp package. Considering that go prefers shorter name by using surrounding context, could you remove the prefix?",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
