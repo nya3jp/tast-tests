@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<resources>
+    <!-- DO NOT TRANSLATE -->
+    <string name="app_name">ArcSurfaceInsetsTestApp</string>
+    <!-- DO NOT TRANSLATE -->
+    <string name="hello_main">Hello World.</string>
+    <!-- DO NOT TRANSLATE -->
+    <string name="hello_dialog">Hello World.</string>
+</resources>
