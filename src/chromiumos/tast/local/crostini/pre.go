@@ -211,7 +211,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	}
 
 	var err error
-	if p.cr, err = chrome.New(ctx, opt); err != nil {
+	if p.cr, err = chrome.New(ctx, opt, chrome.ExtraArgs("--vmodule=crostini*=1")); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
