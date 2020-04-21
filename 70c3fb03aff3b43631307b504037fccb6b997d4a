@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "250a90ba_a5d607aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-21T19:02:14Z",
+      "side": 1,
+      "message": "\u003e Is the removal of Wifi entries in the default profile a concern here?\n\nAs written, I\u0027m clearly not concerned :) What we really want is to not mistakenly treat previously-existing entries as the entries we just configured, at line 121 and 149.\n\nGenerally, we don\u0027t really mind clobbering network profiles in tests. We\u0027re willing to go even as far as totally deleting the default profile in several other tests. I\u0027m not sure if that\u0027s a _good_ thing in all cases (it prevents people from running tests over a WiFi uplink, for one), but it is a thing we do, to keep things as hermetic as possible.\n\nIf we wanted to be more precise in our profile clobbering, we\u0027d probably need to define some better parameters for that. For example, \"tests will only use {profile,service,etc.} names that look like XXXX\", so we know what to clean up and what to leave alone.\n\n\u003e Out of curiosity, are we doing this for multiple test runs?\n\nYes.\n\n\u003e The guest should lose its user profile on shill_logout_user; not quite sure what the non-guest behavior is for chrome.New,\n\nYou\u0027re right about Guest. Not sure for non-Guest, but if it\u0027s really behaving like a real user profile, it may retain profile entries from other tests.\n\n\u003e but we could just call Remove on the Service object we get at the very end of the test\n\nWe could, but regardless, we have to assume that other tests may not have finished their cleanup:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\n\"If a test requires the system to be in a particular state before it runs, it should include code that tries to get the system into that state if it isn‘t there already. Previous tests may have aborted mid-run; it’s not safe to make assumptions that they undid all temporary changes that they made.\"\n\n---\n\nIf we want to pare this down, one option could be to just delete matching SSIDs -- essentially extract the DeleteEntriesForSSID() logic from wifi_service.go. Maybe that\u0027s a reasonable thing to do anyway.",
+      "parentUuid": "169888c1_0bb08285",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cc1558e_157442b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-20T18:55:59Z",
       "side": 1,
       "message": "Is this redundant or is there some weird hidden behavior here?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a386a7_385cf285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-21T19:02:14Z",
+      "side": 1,
+      "message": "I\u0027ll admit, I was just leaning on C\u0026P from other tests here...and I believe those had other good reasons for splitting the \"stop\" and \"(re)start\", whereas I do not.\n\nI\u0027ll drop this one.",
+      "parentUuid": "6cc1558e_157442b0",
       "range": {
         "startLine": 136,
         "startChar": 0,
