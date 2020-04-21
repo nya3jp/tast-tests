@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Checks that we are not shipping 32-bit Android on a 64-bit Kernel unintentionally",
 		Contacts:     []string{"arc-core@google.com", "vraheja@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
