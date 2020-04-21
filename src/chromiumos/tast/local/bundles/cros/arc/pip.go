@@ -59,7 +59,6 @@ func init() {
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"tablet_mode", "chrome"},
-		Data:         []string{"ArcPipTastTest.apk"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -93,7 +92,7 @@ func PIP(ctx context.Context, s *testing.State) {
 
 	const apkName = "ArcPipTastTest.apk"
 	s.Log("Installing ", apkName)
-	if err := a.Install(ctx, s.DataPath(apkName)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
 
