@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6248644d_eb0b1bc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-04-21T05:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bfcd031_ed288e9e",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 6
+      },
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36ee1798_ea2057af",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3ed1326a_f0cf836d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-04-21T05:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36ee1798_ea2057af",
+      "range": {
+        "startLine": 193,
+        "startChar": 44,
+        "endLine": 193,
+        "endChar": 46
+      },
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90dfa733_cb8d2fa7",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 4
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "bc45f681_e036e388",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-04-21T05:48:23Z",
+      "side": 1,
+      "message": "Single async. Made it more clear in the comment.",
+      "parentUuid": "90dfa733_cb8d2fa7",
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c6ae477_8b1f3a89",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783599f3_e8ac4654",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-04-21T05:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6ae477_8b1f3a89",
+      "revId": "a20f9ac515d1d5804efec6e2df0c551b0c004da7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
