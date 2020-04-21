@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -21,12 +22,27 @@ func init() {
 		Contacts:     []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
+		Params: []testing.Param{
+			{
+				// Verifies basic capabilities.
+				Name: "",
+				Val:  basicCheck,
+			},
+			{
+				// Verifies 802.11ac capabilities.
+				Name:              "80211ac",
+				Val:               acCaps,
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
+			},
+		},
 	})
 }
 
-func WifiCaps(ctx context.Context, s *testing.State) {
+// basicCheck is the test body of checking basic WiFi capabilities.
+func basicCheck(ctx context.Context, s *testing.State) {
 	iwr := iw.NewRunner()
-	// Get WiFi interface:
+	// Get WiFi interface.
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
@@ -80,10 +96,8 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	if !supported5 {
 		s.Error("Device doesn't support 5ghz bands")
 	}
-	// TODO(crbug.com/1024554): Add back 802.11ac check after devices without it (e.g. monroe) reach their EOL.
-	// Check throughput support.
 	if !res[0].SupportHT2040 {
-		s.Error("Device doesn't support all required throughput options: HT20, HT40, VHT80")
+		s.Error("Device doesn't support all required throughput options: HT20, HT40")
 	}
 	// Check short guard interval support.
 	if !res[0].SupportHT20SGI {
@@ -92,9 +106,10 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	if !res[0].SupportHT40SGI {
 		s.Error("Device doesn't support HT40 short guard interval")
 	}
-	// TODO(crbug.com/1024554): Add 80MHz SGI check.
 
 	// Check MU-MIMO support. Older generations don't support MU-MIMO.
+	// TODO(crbug.com/1024554): Move to acCaps after it is critical or merge
+	// the two after monroe EOL.
 	if dev.SupportMUMIMO() != res[0].SupportMUMIMO {
 		if dev.SupportMUMIMO() {
 			// New chips require MU-MIMO.
@@ -104,4 +119,23 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 			s.Error("Device unexpectedly supports MU-MIMO")
 		}
 	}
+}
+
+func acCaps(ctx context.Context, s *testing.State) {
+	iwr := iw.NewRunner()
+	res, err := iwr.ListPhys(ctx)
+	if err != nil {
+		s.Fatal("ListPhys failed: ", err)
+	}
+	if !res[0].SupportVHT {
+		s.Error("Device doesn't support VHT")
+	}
+	if !res[0].SupportVHT80SGI {
+		s.Error("Device doesn't support VHT80 short guard interval")
+	}
+}
+
+func WifiCaps(ctx context.Context, s *testing.State) {
+	f := s.Param().(func(context.Context, *testing.State))
+	f(ctx, s)
 }
