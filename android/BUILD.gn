@@ -18,5 +18,6 @@ group("all") {
     "ArcPerAppDensityTest:ArcPerAppDensityTest",
     "ArcPrintTest:ArcPrintTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
+    "ArcSurfaceInsetsTest:ArcSurfaceInsetsTest",
   ]
 }
