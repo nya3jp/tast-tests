@@ -464,6 +464,22 @@ func TestConfigFormat(t *testing.T) {
 				"ieee80211w": "1",
 			},
 		},
+		// Check spectrum management.
+		{
+			conf: &Config{
+				Ssid:               "ssid",
+				Mode:               Mode80211b,
+				Channel:            1,
+				SpectrumManagement: true,
+				SecurityConfig:     &base.Config{},
+			},
+			verify: map[string]string{
+				"country_code":           "US",
+				"ieee80211d":             "1",
+				"local_pwr_constraint":   "0",
+				"spectrum_mgmt_required": "1",
+			},
+		},
 	}
 
 	for i, tc := range testcases {
