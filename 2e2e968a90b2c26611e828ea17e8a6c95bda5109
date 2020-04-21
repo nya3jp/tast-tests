@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1f7f0f4_9bd52111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-21T03:17:31Z",
+      "side": 1,
+      "message": "ListPhys is run in both basicCheck and acCaps. We may reduce this by precondition but on my krane DUT acCaps only takes 0.1 second. So I guess it\u0027s OK to duplicate the call if not more sub-tests?",
+      "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
