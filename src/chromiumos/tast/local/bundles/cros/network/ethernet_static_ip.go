@@ -133,13 +133,9 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Find the Ethernet service and set the static IP.
 	s.Log("Setting static IP")
-	servicePath, err := manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 5*time.Second)
+	service, err := manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 5*time.Second)
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
-	}
-	service, err := shill.NewService(ctx, servicePath)
-	if err != nil {
-		s.Fatal("Failed creating shill service proxy: ", err)
 	}
 	if err = service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: testIP1}); err != nil {
 		s.Fatal("Failed to set property: ", err)

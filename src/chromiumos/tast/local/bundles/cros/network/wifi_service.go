@@ -61,9 +61,9 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 
 	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
 	testing.ContextLog(ctx, "Finding service with props: ", props)
-	var servicePath dbus.ObjectPath
+	var service *shill.Service
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		servicePath, err = m.FindMatchingService(ctx, props)
+		service, err = m.FindMatchingService(ctx, props)
 		if err == nil {
 			return nil
 		}
@@ -79,11 +79,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 		return nil, err
 	}
 
-	testing.ContextLog(ctx, "Connecting to service with path: ", servicePath)
-	service, err := shill.NewService(ctx, servicePath)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create service object")
-	}
+	testing.ContextLog(ctx, "Connecting to service: ", service)
 
 	// Spawn watcher before connect.
 	pw, err := service.CreateWatcher(ctx)
@@ -106,7 +102,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}
 
 	return &network.Service{
-		Path: string(servicePath),
+		Path: string(service.ObjectPath()),
 	}, nil
 }
 
