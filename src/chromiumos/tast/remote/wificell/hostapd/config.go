@@ -163,6 +163,13 @@ func SecurityConfig(conf security.Config) Option {
 	}
 }
 
+// SpectrumManagement returns an Option which enables spectrum management in hostapd config.
+func SpectrumManagement() Option {
+	return func(c *Config) {
+		c.SpectrumManagement = true
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -184,15 +191,16 @@ func NewConfig(ops ...Option) (*Config, error) {
 
 // Config is the configuration to start hostapd on a router.
 type Config struct {
-	Ssid             string
-	Mode             ModeEnum
-	Channel          int
-	HTCaps           HTCap
-	VHTCaps          []VHTCap
-	VHTCenterChannel int
-	VHTChWidth       VHTChWidthEnum
-	Hidden           bool
-	SecurityConfig   security.Config
+	Ssid               string
+	Mode               ModeEnum
+	Channel            int
+	HTCaps             HTCap
+	VHTCaps            []VHTCap
+	VHTCenterChannel   int
+	VHTChWidth         VHTChWidthEnum
+	Hidden             bool
+	SpectrumManagement bool
+	SecurityConfig     security.Config
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -256,6 +264,12 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	}
 	if c.Hidden {
 		configure("ignore_broadcast_ssid", "1")
+	}
+	if c.SpectrumManagement {
+		configure("country_code", "US")          // Required for ieee80211d
+		configure("ieee80211d", "1")             // Required for local_pwr_constraint
+		configure("local_pwr_constraint", "0")   // No local constraint
+		configure("spectrum_mgmt_required", "1") // Requires local_pwr_constraint
 	}
 
 	securityConf, err := c.SecurityConfig.HostapdConfig()
