@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abe4ae52_01fa4282",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-04-21T03:47:38Z",
+      "side": 0,
+      "message": "I didn\u0027t find a way to mark this as disabled other than deleting.\n\nI think marking informational will do nothing as it\u0027s not mentioned here:\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.arc-data-collector?type\u003dcs\u0026g\u003d0",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "1105262584087ae8f184b68e9c2adcf97025b252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
