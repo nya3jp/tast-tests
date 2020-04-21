@@ -27,7 +27,6 @@ func init() {
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{crashingAPKName},
 		Params: []testing.Param{{
 			Name:              "mock_consent",
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -143,7 +142,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	// Android N devices are gone.
 	// The app was introduced because Android N doesn't support 'am crash'.
 	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(crashingAPKName)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(crashingAPKName)); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
 
