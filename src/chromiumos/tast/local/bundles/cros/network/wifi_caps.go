@@ -26,7 +26,7 @@ func init() {
 
 func WifiCaps(ctx context.Context, s *testing.State) {
 	iwr := iw.NewRunner()
-	// Get WiFi interface:
+	// Get WiFi interface.
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
@@ -80,10 +80,8 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	if !supported5 {
 		s.Error("Device doesn't support 5ghz bands")
 	}
-	// TODO(crbug.com/1024554): Add back 802.11ac check after devices without it (e.g. monroe) reach their EOL.
-	// Check throughput support.
 	if !res[0].SupportHT2040 {
-		s.Error("Device doesn't support all required throughput options: HT20, HT40, VHT80")
+		s.Error("Device doesn't support all required throughput options: HT20, HT40")
 	}
 	// Check short guard interval support.
 	if !res[0].SupportHT20SGI {
@@ -92,9 +90,10 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 	if !res[0].SupportHT40SGI {
 		s.Error("Device doesn't support HT40 short guard interval")
 	}
-	// TODO(crbug.com/1024554): Add 80MHz SGI check.
 
 	// Check MU-MIMO support. Older generations don't support MU-MIMO.
+	// TODO(crbug.com/1024554): Move to acCaps after it is critical or merge
+	// the two after monroe EOL.
 	if dev.SupportMUMIMO() != res[0].SupportMUMIMO {
 		if dev.SupportMUMIMO() {
 			// New chips require MU-MIMO.
