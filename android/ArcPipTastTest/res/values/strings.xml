@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<resources>
+  <!-- App name -->
+  <string name="app_name" translatable="false">ArcPipTastTest</string>
+  <!-- PipActivity title -->
+  <string name="pip_activity_text" translatable="false">PipActivity</string>
+  <!-- MaPipBaseActivity title -->
+  <string name="mapip_base_activity_text" translatable="false">MaPipBaseActivity</string>
+  <!-- BlankActivity title -->
+  <string name="blank_activity_text" translatable="false">BlankActivity</string>
+  <!-- Enter PIP button text-->
+  <string name="enter_pip_button_text" translatable="false">Enter PIP</string>
+  <!-- Enter PIP button text-->
+  <string name="launch_pip_activity_button_text" translatable="false">Launch PIP activity</string>
+</resources>
