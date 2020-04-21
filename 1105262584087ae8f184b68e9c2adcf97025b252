@@ -46,6 +46,30 @@
       "revId": "1105262584087ae8f184b68e9c2adcf97025b252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cedda11_918ea284",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2020-04-21T04:42:47Z",
+      "side": 0,
+      "message": "we don\u0027t care about android_vm_p anymore.",
+      "parentUuid": "59c0f230_64b251dc",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "1105262584087ae8f184b68e9c2adcf97025b252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
