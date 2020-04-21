@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "284b98c1_0cda3325",
+        "filename": "android/ArcPipTastTest/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-21T22:19:44Z",
+      "side": 1,
+      "message": "nit: Probably Ok to use 29 (API Level for Android 10), but to be safe (unless you have tested it) I\"d use 28 (API Level fro Android P)",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "c810c2bc901e91e27bf65ca3842a16b85ad2534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
