@@ -20,6 +20,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
@@ -144,7 +146,7 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 	return nil
 }
 
-func calculateTimePerFrame(ctx context.Context, conn *chrome.Conn, videoBuffer string, outDir string) (timePerFrame time.Duration, err error) {
+func calculateTimePerFrame(ctx context.Context, conn *chrome.Conn, videoBuffer, outDir string) (timePerFrame time.Duration, err error) {
 	elapsedTimeMs := 0
 	if err := conn.Eval(ctx, "elapsedTime", &elapsedTimeMs); err != nil {
 		return 0, errors.Wrap(err, "failed to evaluate elapsedTime")
@@ -221,6 +223,23 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.St
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	// Real webcams on tablets might come out rotated in the lab and make the
+	// resolution too large for the hardware encoder, see crbug.com/1071979. Set
+	// the device in landscape mode to match the expected video call orientation.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		dispInfo, err := display.GetInternalInfo(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get internal display info: ", err)
+		}
+		if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, display.Rotate90); err != nil {
+			s.Fatal("Failed to rotate display: ", err)
+		}
 	}
 
 	initHistogram, err := metrics.GetHistogram(ctx, tconn, constants.MediaRecorderVEAUsed)
