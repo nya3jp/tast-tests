@@ -84,6 +84,7 @@ func CheckAndroidVersion(ctx context.Context, s *testing.State) {
 		"kukui":             struct{}{},
 		"lars":              struct{}{},
 		"lulu":              struct{}{},
+		"novato":            struct{}{},
 		"paine":             struct{}{},
 		"poppy":             struct{}{},
 		"pyro":              struct{}{},
