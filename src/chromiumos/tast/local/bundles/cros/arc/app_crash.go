@@ -18,8 +18,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const crashingAPKName = "ArcAppCrashTest.apk"
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppCrash,
@@ -120,10 +118,6 @@ func validateBuildProp(ctx context.Context, meta string, bp *buildProp) (bool, e
 }
 
 func AppCrash(ctx context.Context, s *testing.State) {
-	const (
-		pkg = "org.chromium.arc.testapp.appcrash"
-		cls = ".MainActivity"
-	)
 	a := s.PreValue().(arc.PreData).ARC
 	cr := s.PreValue().(arc.PreData).Chrome
 
@@ -138,18 +132,15 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
-	// TODO(kansho): Use 'am crash' instead of the crashing app after all
-	// Android N devices are gone.
-	// The app was introduced because Android N doesn't support 'am crash'.
-	s.Log("Installing app")
-	if err := a.Install(ctx, arc.APKPath(crashingAPKName)); err != nil {
-		s.Fatal("Failed to install app: ", err)
+	s.Log("Starting app")
+	const exampleApp = "com.android.vending"
+	if err := a.Command(ctx, "am", "start", "-W", exampleApp).Run(); err != nil {
+		s.Fatal("Failed to run an app to be crashed: ", err)
 	}
 
-	// The app will crash by itself right after it starts.
-	s.Log("Starting app")
-	if err := a.Command(ctx, "am", "start", pkg+"/"+cls).Run(); err != nil {
-		s.Fatal("Failed to run a crashing app: ", err)
+	s.Log("Making crash")
+	if err := a.Command(ctx, "am", "crash", exampleApp).Run(); err != nil {
+		s.Fatal("Failed to crash: ", err)
 	}
 
 	s.Log("Getting crash dir path")
@@ -161,8 +152,9 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	crashDir := filepath.Join(path, "/crash")
 
 	s.Log("Waiting for crash files to become present")
-	const base = `org_chromium_arc_testapp_appcrash.\d{8}.\d{6}.\d+`
-	const metaFileName = base + crash.MetadataExt
+	// Wait files like com_android_vending_foo_bar.20200420.204845.664107.log in crashDir
+	base := strings.Replace(exampleApp, ".", "_", -1) + `(?:_[[:alnum:]]+)*.\d{8}.\d{6}.\d+`
+	metaFileName := base + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, nil, []string{
 		base + crash.LogExt, metaFileName, base + crash.InfoExt,
 	})
