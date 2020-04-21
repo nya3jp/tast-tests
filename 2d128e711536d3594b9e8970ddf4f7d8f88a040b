@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e717ae9_9933eda1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-21T21:21:03Z",
+      "side": 1,
+      "message": "nit: please clean up the indents",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 10
+      },
+      "revId": "2d128e711536d3594b9e8970ddf4f7d8f88a040b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f94ff0_fae32fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-21T21:21:03Z",
+      "side": 1,
+      "message": "is it okay to return nil here? Unless there\u0027s a code path of expecting fullscreen already, I think it is safer to return an error.",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 299,
+        "endChar": 13
+      },
+      "revId": "2d128e711536d3594b9e8970ddf4f7d8f88a040b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
