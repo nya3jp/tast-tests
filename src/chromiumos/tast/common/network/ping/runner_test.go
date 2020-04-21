@@ -80,6 +80,14 @@ rtt min/avg/max/mdev = 1.717/2.451/2.826/0.520 ms`,
 rtt min/avg/max/mdev = 0.638/0.645/0.653/0.026 ms`,
 			expect: &Result{Sent: 2, Received: 2, Loss: 0, MinLatency: 0.638, AvgLatency: 0.645, MaxLatency: 0.653, DevLatency: .026},
 		},
+		// Output of no reply received.
+		{
+			input: `PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
+
+--- 192.168.0.1 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2007ms`,
+			expect: &Result{Sent: 3, Received: 0, Loss: 100, MinLatency: 0, AvgLatency: 0, MaxLatency: 0, DevLatency: 0},
+		},
 	}
 	for i := range testcases {
 		output, err := parseOutput(testcases[i].input)
