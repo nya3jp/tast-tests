@@ -27,6 +27,7 @@ type EventType int
 // EventType enums.
 const (
 	EventTypeDisconnect EventType = iota
+	EventTypeChanSwitch
 	EventTypeUnknown
 )
 
@@ -164,6 +165,9 @@ func detectEventType(ev *Event) EventType {
 	}
 	if ev.Message == "Previous authentication no longer valid" {
 		return EventTypeDisconnect
+	}
+	if strings.Contains(ev.Message, "ch_switch_started_notify") {
+		return EventTypeChanSwitch
 	}
 	return EventTypeUnknown
 }
