@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f688013d_37baaa93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/mount_combinations.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-21T19:51:25Z",
+      "side": 1,
+      "message": "since err was already declared in this scope on L46 it probably doesn\u0027t matter, but using :\u003d here would be consistent with the surrounding blocks",
+      "parentUuid": "589aab81_abd9dcc9",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "336db0b88ca772307a7255cb33f3161f85a71ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ed9de7b_6278b583",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/mount_combinations.go",
         "patchSetId": 10
