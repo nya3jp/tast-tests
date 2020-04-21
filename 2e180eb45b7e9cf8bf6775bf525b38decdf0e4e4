@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0eaa3ded_048542f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-21T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d33894_095f3bb7",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebf0f6e7_28fa153a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "46356f59_04162ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-21T03:48:04Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be a connection between windows and shelf apps that would let us use app id here. I guess in a way it makes sense since there\u0027s a one-to-many relationship between shelf icons and windows. What I\u0027ve tried to do instead is use the Window\u0027s ID field. This field starts at -10000 for the first window launched, and decreases with subsequent windows. I\u0027ve restructured the test to use this ID instead of window titles. It requires making a stronger assumption about the window ordering in the cycle menu, but completely avoids using hard coded title strings.",
+      "parentUuid": "cb782d70_f489c822",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd4c7d66_3e93c1fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
         "patchSetId": 1
@@ -116,6 +164,30 @@
       "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bd2b6c6_59ccf0b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-21T03:48:04Z",
+      "side": 1,
+      "message": "I don\u0027t really know the context here, why would it fail on the Chromium builders? Are the window titles different there? Just curious, so I know what to avoid for future tests.\n\nIn any case, I changed the test to use the Window struct\u0027s ID field instead. Let me know what you think of the new way.",
+      "parentUuid": "cd4c7d66_3e93c1fb",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "b1994410_a43900bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-21T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f692d7b4_59e0c16b",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1260ddf_0eb4138b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
         "patchSetId": 1
@@ -165,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "034794b8_ebbd9faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-21T03:48:04Z",
+      "side": 1,
+      "message": "Ahh okay, I was wondering about that. I\u0027ll keep it in mind!",
+      "parentUuid": "e1260ddf_0eb4138b",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 4
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74dce503_ebc83306",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
         "patchSetId": 1
@@ -185,6 +305,30 @@
       "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be5f91f_587185c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_forward_backward.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-21T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74dce503_ebc83306",
+      "range": {
+        "startLine": 126,
+        "startChar": 22,
+        "endLine": 126,
+        "endChar": 41
+      },
+      "revId": "2e180eb45b7e9cf8bf6775bf525b38decdf0e4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
