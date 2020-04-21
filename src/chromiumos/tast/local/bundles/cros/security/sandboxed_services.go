@@ -124,8 +124,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"trunksd", "trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
 		{"imageloader", "root", "root", 0}, // uses NNP/seccomp but sometimes seen before sandboxing: https://crbug.com/936703#c16
 		{"imageloader", "imageloaderd", "imageloaderd", mntNSNoPivotRoot | restrictCaps | noNewPrivs | seccomp},
-		{"arc-networkd", "root", "root", noNewPrivs},
-		{"arc-networkd", "arc-networkd", "arc-networkd", restrictCaps},
+		{"patchpaneld", "root", "root", noNewPrivs},
+		{"patchpaneld", "arc-networkd", "arc-networkd", restrictCaps},
 
 		// These processes run as root in the ARC container.
 		{"app_process", "android-root", "android-root", pidNS | mntNS},
