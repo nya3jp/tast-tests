@@ -24,23 +24,31 @@ func init() {
 		Desc:         "Runs the Android VTS module VtsHalKeymasterV3_0Target",
 		Contacts:     []string{"edman@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
-		// TODO(edmanp): Download only one file for the current architecture.
-		Data: []string{
-			"VtsHalKeymasterV3_0TargetTest_arm",
-			"VtsHalKeymasterV3_0TargetTest_arm64",
-			"VtsHalKeymasterV3_0TargetTest_x86",
-			"VtsHalKeymasterV3_0TargetTest_x86_64",
-		},
-		Pre:     arc.Booted(),
-		Timeout: 5 * time.Minute,
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(edmanp): Download only one file for the current architecture.
+			ExtraData: []string{
+				"VtsHalKeymasterV3_0TargetTest_arm",
+				"VtsHalKeymasterV3_0TargetTest_arm64",
+				"VtsHalKeymasterV3_0TargetTest_x86",
+				"VtsHalKeymasterV3_0TargetTest_x86_64",
+			},
+			Pre: arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraData:         []string{"VtsHalKeymasterV3_0TargetTest_rvc_bertha_x86_64"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
 func VTSKeymaster(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 
-	testExecName, err := vtsTestExecName(ctx, a)
+	testExecName, err := vtsTestExecName(ctx, a, isARCVM(s.SoftwareDeps()))
 	if err != nil {
 		s.Fatal("Error finding test binary name: ", err)
 	}
@@ -82,15 +90,27 @@ func VTSKeymaster(ctx context.Context, s *testing.State) {
 	}
 }
 
+// isARCVM returns true if the test software dependencies include "android_vm".
+func isARCVM(softwareDeps []string) bool {
+	for _, dep := range softwareDeps {
+		if dep == "android_vm" {
+			return true
+		}
+	}
+	return false
+}
+
 // vtsTestExecName returns the test binary name to be used for the current architecture.
-func vtsTestExecName(ctx context.Context, a *arc.ARC) (string, error) {
+func vtsTestExecName(ctx context.Context, a *arc.ARC, isARCVM bool) (string, error) {
 	output, err := a.Command(ctx, "uname", "-m").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to determine container architecture")
 	}
 
 	arch := strings.TrimSpace(string(output))
-	if arch == "armv7l" || arch == "armv8l" {
+	if isARCVM && arch == "x86_64" {
+		return "VtsHalKeymasterV3_0TargetTest_rvc_bertha_x86_64", nil
+	} else if arch == "armv7l" || arch == "armv8l" {
 		return "VtsHalKeymasterV3_0TargetTest_arm", nil
 	} else if arch == "aarch64" {
 		return "VtsHalKeymasterV3_0TargetTest_arm64", nil
