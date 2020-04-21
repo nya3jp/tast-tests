@@ -34,6 +34,24 @@
       "revId": "d2d011b2048e0b26621048107297c67be221fa00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e20375f2_59f34d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_event.EditTextActivity.json",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-21T06:40:16Z",
+      "side": 1,
+      "message": "can you file a bug for this, or add a comment on b/146844194?",
+      "parentUuid": "3dc6a7ec_e32f2ccd",
+      "revId": "d2d011b2048e0b26621048107297c67be221fa00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
