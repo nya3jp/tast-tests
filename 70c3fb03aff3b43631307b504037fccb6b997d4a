@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e1a992b6_30fb3164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-04-21T19:17:02Z",
+      "side": 1,
+      "message": "Gotcha, ty for the overview. I was definitely missing the case where a previous run aborts.\n\n\u003e one option could be to just delete matching SSIDs\n\nThat SGTM. Another option could be to FindAnyMatchingService and Remove the Service, if found, prior to attempting to configure a new Service on the user profile.",
+      "parentUuid": "250a90ba_a5d607aa",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cc1558e_157442b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
         "patchSetId": 1
