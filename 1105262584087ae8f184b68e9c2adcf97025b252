@@ -22,6 +22,30 @@
       "revId": "1105262584087ae8f184b68e9c2adcf97025b252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c0f230_64b251dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-04-21T04:21:12Z",
+      "side": 0,
+      "message": "It is executed in PFQ using different filter, so critical/informational does not apply\n\nWhat if change to android_vm_p?",
+      "parentUuid": "abe4ae52_01fa4282",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "1105262584087ae8f184b68e9c2adcf97025b252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
