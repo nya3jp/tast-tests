@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a40a6e2_a518fee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-21T07:26:35Z",
+      "side": 1,
+      "message": "I would prefer moving it to acCaps in this CL (also remove dev assignment block line 57-61). briannorris@ and nya@, WDYT?",
+      "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1f7f0f4_9bd52111",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
         "patchSetId": 2
@@ -16,6 +33,24 @@
       "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9a042e_9a91c331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-21T07:26:35Z",
+      "side": 1,
+      "message": "This is totally fine IMO.",
+      "parentUuid": "b1f7f0f4_9bd52111",
+      "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
