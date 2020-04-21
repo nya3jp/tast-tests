@@ -50,6 +50,12 @@ const (
 
 	// BlankURL is the URL corresponding to the about:blank page.
 	BlankURL = "about:blank"
+
+	// OobeGaiaPrimaryButtonClickScript is a javascript statement to click
+	// on the primary action button on the Gaia screen. With the
+	// GaiaActionButtons feature enabled - Gaia does not show the "Next"
+	// button. It is shown on the OOBE side instead.
+	OobeGaiaPrimaryButtonClickScript = "document.getElementById('gaia-signin').$$('#primary-action-button').click();"
 )
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
@@ -631,6 +637,8 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
+	} else {
+		args = append(args, "--enable-features=GaiaActionButtons")
 	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
@@ -1165,16 +1173,22 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	defer gaiaConn.Close()
 
 	testing.ContextLog(ctx, "Performing GAIA login")
-	if err := insertGAIAField(ctx, gaiaConn, "identifierId", "identifierNext", c.user); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "identifierId", c.user); err != nil {
 		return errors.Wrap(err, "failed to fill username field")
 	}
-	if err := insertGAIAField(ctx, gaiaConn, "password", "passwordNext", c.pass); err != nil {
+	if err := oobeConn.Exec(ctx, OobeGaiaPrimaryButtonClickScript); err != nil {
+		return errors.Wrap(err, "failed to click on the primary action button")
+	}
+	if err := insertGAIAField(ctx, gaiaConn, "password", c.pass); err != nil {
 		return errors.Wrap(err, "failed to fill password field")
+	}
+	if err := oobeConn.Exec(ctx, OobeGaiaPrimaryButtonClickScript); err != nil {
+		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
 	// Perform Unicorn login if parent user given.
 	if c.parentUser != "" {
-		if err := c.performUnicornParentLogin(ctx, gaiaConn); err != nil {
+		if err := c.performUnicornParentLogin(ctx, oobeConn, gaiaConn); err != nil {
 			return err
 		}
 	}
@@ -1183,13 +1197,11 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 }
 
 // insertGAIAField fills a field of the GAIA login form and clicks next.
-func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID, nextID, value string) error {
-	// Ensure that the elements exist.
-	for _, id := range []string{inputID, nextID} {
-		if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
-			"document.getElementById(%[1]q)", id)); err != nil {
-			return errors.Wrapf(err, "failed to wait for %q element", id)
-		}
+func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID, value string) error {
+	// Ensure that the input exists.
+	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
+		"document.getElementById(%[1]q)", inputID)); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q element", inputID)
 	}
 	// Ensure the input field is empty.
 	// This confirms that we are not using the field before it is cleared.
@@ -1215,8 +1227,7 @@ func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID, nextID, value
 				field = field.getElementsByTagName('INPUT')[0];
 			}
 			field.value = %q;
-			document.getElementById(%q).click();
-		})()`, inputID, value, nextID)
+		})()`, inputID, value)
 	if err := gaiaConn.Exec(ctx, script); err != nil {
 		return errors.Wrapf(err, "failed to use %q element", inputID)
 	}
@@ -1226,7 +1237,7 @@ func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID, nextID, value
 // performUnicornParentLogin Logs in a parent account and accepts Unicorn permissions.
 // This function is heavily based on NavigateUnicornLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
-func (c *Chrome) performUnicornParentLogin(ctx context.Context, gaiaConn *Conn) error {
+func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaConn *Conn) error {
 	normalizedParentUser, err := session.NormalizeEmail(c.parentUser, false)
 	if err != nil {
 		return errors.Wrapf(err, "failed to normalize email %q", c.user)
@@ -1290,14 +1301,17 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, gaiaConn *Conn) 
 	}
 
 	testing.ContextLog(ctx, "Typing parent password")
-	if err := insertGAIAField(ctx, gaiaConn, "password", "passwordNext", c.parentPass); err != nil {
+	if err := insertGAIAField(ctx, gaiaConn, "password", c.parentPass); err != nil {
 		return err
+	}
+	if err := oobeConn.Exec(ctx, OobeGaiaPrimaryButtonClickScript); err != nil {
+		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
 	testing.ContextLog(ctx, "Accepting Unicorn permissions")
-	clickYesQuery := fmt.Sprintf(clickButtonQuery, "Yes")
+	clickAgreeQuery := fmt.Sprintf(clickButtonQuery, "agree")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return gaiaConn.Exec(ctx, clickYesQuery)
+		return gaiaConn.Exec(ctx, clickAgreeQuery)
 	}, loginPollOpts); err != nil {
 		return errors.Wrap(c.chromeErr(err), "failed to accept Unicorn permissions")
 	}
