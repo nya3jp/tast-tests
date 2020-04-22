@@ -11,8 +11,10 @@ import (
 
 	"golang.org/x/sys/unix"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -164,6 +166,39 @@ type preImpl struct {
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
+func expectDaemonRunning(ctx context.Context, name string) error {
+	goal, state, pid, err := upstart.JobStatus(ctx, name)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get status of job %q: ", name)
+	}
+	if goal != upstart.StartGoal {
+		return errors.Errorf("job %q has goal %q, expected %q", name, goal, upstart.StartGoal)
+	}
+	if state != upstart.RunningState {
+		return errors.Errorf("job %q has state %q, expected %q", name, state, upstart.RunningState)
+	}
+	if pid == 0 {
+		return errors.Errorf("job %q has pid of 0, expected non-zero value", name)
+	}
+	return nil
+}
+
+func checkDaemonsRunning(ctx context.Context) error {
+	if err := expectDaemonRunning(ctx, "vm_concierge"); err != nil {
+		return err
+	}
+	if err := expectDaemonRunning(ctx, "vm_cicerone"); err != nil {
+		return err
+	}
+	if err := expectDaemonRunning(ctx, "seneschal"); err != nil {
+		return err
+	}
+	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
+		return err
+	}
+	return nil
+}
+
 // Called by tast before each test is run. We use this method to initialize
 // the precondition data, or return early if the precondition is already
 // active.
@@ -260,6 +295,12 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
 		}
 	}
+
+	// The VM should now be running, check that all the host daemons are also running to catch any errors in our init scripts etc.
+	if err = checkDaemonsRunning(ctx); err != nil {
+		s.Fatal("VM host daemons in an unexpected state: ", err)
+	}
+
 	if p.keyboard, err = input.Keyboard(ctx); err != nil {
 		s.Fatal("Failed to create keyboard device: ", err)
 	}
