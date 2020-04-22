@@ -46,6 +46,30 @@
       "revId": "d7fbacc1a0424cd5950263dadb1ed8b9fb2096a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "808220ac_45577f94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-22T17:19:02Z",
+      "side": 1,
+      "message": "Thanks, let\u0027s keep the discussion there. While I am not yet persuaded, keeping this would be okay if tetsui@ is fine.",
+      "parentUuid": "7bd436e0_03108a43",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 8
+      },
+      "revId": "d7fbacc1a0424cd5950263dadb1ed8b9fb2096a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
