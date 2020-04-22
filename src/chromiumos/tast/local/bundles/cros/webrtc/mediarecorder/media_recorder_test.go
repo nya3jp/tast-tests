@@ -6,6 +6,7 @@ package mediarecorder
 
 import (
 	"io/ioutil"
+	"os"
 	"testing"
 
 	"chromiumos/tast/testutil"
@@ -19,7 +20,11 @@ func TestComputeNumFrames(t *testing.T) {
 	if err != nil {
 		t.Error(err, "failed to read video file")
 	}
-	frameNum, err := computeNumFrames(videoBytes, testutil.TempDir(t))
+
+	tempDir := testutil.TempDir(t)
+	defer os.RemoveAll(tempDir)
+
+	frameNum, err := computeNumFrames(videoBytes, tempDir)
 	if err != nil {
 		t.Error(err, "failed to compute number of frames")
 	}
