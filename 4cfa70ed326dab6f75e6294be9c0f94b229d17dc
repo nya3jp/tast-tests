@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f2945ca_6c8ccbfd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-22T08:18:21Z",
+      "side": 1,
+      "message": "Given that we no longer abort on removal failures, I think we don\u0027t need to specially treat the crash directory.",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 3
+      },
+      "revId": "4cfa70ed326dab6f75e6294be9c0f94b229d17dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55600c6a_e79c76c4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-22T08:18:21Z",
+      "side": 1,
+      "message": "I think we want to report these files even if we succeed to remove them at the second attempt.\n\nHow about something like:\n\n - Remove all files under /home/chronos\n - For each file still existing in /home/chronos:\n   - Attempt to remove the file again\n   - Log that we failed to remove the file, as well as the result of the second attempt",
+      "range": {
+        "startLine": 748,
+        "startChar": 3,
+        "endLine": 754,
+        "endChar": 4
+      },
+      "revId": "4cfa70ed326dab6f75e6294be9c0f94b229d17dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
