@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "349b4ecc_69c23d51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-22T17:33:23Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c53dd0c5be5dbfa4b28c17a52908f2500914dd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb351b5_0fb3e8d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-22T17:33:23Z",
+      "side": 1,
+      "message": "Do we also need \"shill-wifi\"?",
+      "revId": "c53dd0c5be5dbfa4b28c17a52908f2500914dd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
