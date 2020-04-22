@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d914b8f_70c0c8ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-22T01:45:32Z",
+      "side": 1,
+      "message": "If we want to abort the test by Fatal for this case, I think this line could be moved to the caller (replacing line 144) and then testing.State param can be dropped from login().",
+      "revId": "a973ac96248c95198643a684189c527df8a20f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1740c7_dc35368e",
+        "filename": "src/chromiumos/tast/services/cros/security/boot_lockbox_service.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-22T01:45:32Z",
+      "side": 1,
+      "message": "nit: add a space, for consistency w/ other lines",
+      "range": {
+        "startLine": 20,
+        "startChar": 69,
+        "endLine": 20,
+        "endChar": 75
+      },
+      "revId": "a973ac96248c95198643a684189c527df8a20f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
