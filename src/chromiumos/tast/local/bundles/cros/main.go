@@ -23,6 +23,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/dbus"
 	_ "chromiumos/tast/local/bundles/cros/debugd"
 	_ "chromiumos/tast/local/bundles/cros/dev"
+	_ "chromiumos/tast/local/bundles/cros/ds3"
 	_ "chromiumos/tast/local/bundles/cros/example"
 	_ "chromiumos/tast/local/bundles/cros/factory"
 	_ "chromiumos/tast/local/bundles/cros/firmware"
