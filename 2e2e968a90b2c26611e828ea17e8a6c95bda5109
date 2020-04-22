@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11e506d0_f6600a1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-22T08:59:03Z",
+      "side": 1,
+      "message": "Hmm, removing this check from this function would decrease the feature test coverage in CQ, right? Then it seems to make sense to defer moving this check until the other test becomes critical.",
+      "parentUuid": "5a40a6e2_a518fee8",
+      "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1f7f0f4_9bd52111",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
         "patchSetId": 2
@@ -51,6 +69,47 @@
       "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b821fd24_748ce0e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-22T08:59:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "4c9a042e_9a91c331",
+      "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6028b7b_d5840e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-22T08:59:03Z",
+      "side": 1,
+      "message": "When a test function just dispatches to another function, it\u0027s less useful to parameterize a test... What do you think about having a separate test, e.g. network.WifiCaps80211AC?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 10
+      },
+      "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
