@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7970e486_7f0053ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-22T09:24:33Z",
+      "side": 1,
+      "message": "Do you need this data also for \"container\"? Tast will copy all these data files, but you will use only one of them.\n\nAt least now, you can add VtsHalKeymasterV3_0TargetTest_rvc_bertha_x86_64 only for \"vm\" param",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f61414_bd88789f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-22T09:24:33Z",
+      "side": 1,
+      "message": "nit: not needed since you already have Attr. ExtraAttr will extend Attr.",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 63
+      },
+      "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1bedd9a_92eeedfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
         "patchSetId": 2
