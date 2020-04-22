@@ -137,7 +137,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 	fc := chrome.ExtraArgs()
 	if p.forceComposition {
-		fc = chrome.ExtraArgs("--enable-hardware-overlays=\"\"", "--tint-gl-composited-content")
+		fc = chrome.ExtraArgs("--enable-hardware-overlays=\"\"")
 	}
 
 	var err error
