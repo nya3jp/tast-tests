@@ -12,8 +12,10 @@ import (
 	"os"
 	"path"
 	"sync"
+	"time"
 
 	"chromiumos/tast/common/network/daemonutil"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -47,8 +49,11 @@ type Server struct {
 // StartServer creates a new Server object and runs hostapd on iface of the given host with settings
 // specified in config. workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
-func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (server *Server, err error) {
-	ctx, st := timing.Start(ctx, "hostapd.StartServer")
+// The caller should call s.Close() to perform clean-up. And the returned shortened context is used to
+// reserve time for s.Close() to run.
+func StartServer(fullCtx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (
+	server *Server, shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
+	fullCtx, st := timing.Start(fullCtx, "hostapd.StartServer")
 	defer st.End()
 
 	s := &Server{
@@ -58,21 +63,26 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 		workDir: workDir,
 		conf:    config,
 	}
+
+	// Shorten ctx to reserve time for s.Close() to run.
+	sCtx, sCtxCancel := ctxutil.Shorten(fullCtx, 2*time.Second)
+
 	// Clean up on error.
 	defer func() {
-		if err != nil {
+		if retErr != nil {
+			sCtxCancel()
 			// Close the Server instance created above, not the returned one as it might be nil.
-			s.Close(ctx)
+			s.Close(fullCtx)
 		}
 	}()
 
-	if err := s.initConfig(ctx); err != nil {
-		return nil, err
+	if err := s.initConfig(sCtx); err != nil {
+		return nil, nil, nil, err
 	}
-	if err := s.start(ctx); err != nil {
-		return nil, err
+	if err := s.start(sCtx); err != nil {
+		return nil, nil, nil, err
 	}
-	return s, nil
+	return s, sCtx, sCtxCancel, nil
 }
 
 // filename returns a filename for s to store different type of information.

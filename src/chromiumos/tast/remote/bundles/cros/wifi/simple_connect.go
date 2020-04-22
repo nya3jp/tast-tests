@@ -131,38 +131,40 @@ func init() {
 	})
 }
 
-func SimpleConnect(ctx context.Context, s *testing.State) {
+func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(ctx, s.DUT(), s.RPCHint(), router)
+	tf, shortCtx, shortCtxCancel, err := wificell.NewTestFixture(fullCtx, s.DUT(), s.RPCHint(), router)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
 	defer func() {
-		if err := tf.Close(ctx); err != nil {
+		shortCtxCancel()
+		if err := tf.Close(fullCtx); err != nil {
 			s.Log("Failed to tear down test fixture, err: ", err)
 		}
 	}()
 
-	testOnce := func(ctx context.Context, s *testing.State, options []hostapd.Option) {
-		ap, err := tf.ConfigureAP(ctx, options...)
+	testOnce := func(fullCtx context.Context, s *testing.State, options []hostapd.Option) {
+		ap, sCtx, sCtxCancel, err := tf.ConfigureAP(fullCtx, options...)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
 		}
 		defer func() {
-			if err := tf.DeconfigAP(ctx, ap); err != nil {
+			sCtxCancel()
+			if err := tf.DeconfigAP(fullCtx, ap); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
 		}()
 		s.Log("AP setup done")
 
-		if err := tf.ConnectWifi(ctx, ap); err != nil {
+		if err := tf.ConnectWifi(sCtx, ap); err != nil {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
 		defer func() {
-			if err := tf.DisconnectWifi(ctx); err != nil {
+			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.SSID{Ssid: ap.Config().Ssid}); err != nil {
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, &network.SSID{Ssid: ap.Config().Ssid}); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
 		}()
@@ -172,7 +174,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			return tf.PingFromDUT(ctx)
 		}
 
-		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
+		if err := tf.AssertNoDisconnect(sCtx, ping); err != nil {
 			s.Fatal("Failed to ping from DUT, err: ", err)
 		}
 		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.
@@ -186,7 +188,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		subtest := func(ctx context.Context, s *testing.State) {
 			testOnce(ctx, s, tc.apOptions)
 		}
-		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
+		if !s.Run(shortCtx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
 			return
 		}

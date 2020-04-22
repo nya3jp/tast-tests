@@ -12,7 +12,9 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -48,7 +50,10 @@ type Server struct {
 // workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
 // ipStart, ipEnd specifies the leasable range for this dhcp server to offer.
-func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, ipStart, ipEnd net.IP) (*Server, error) {
+// The caller should call d.Close() to perform clean-up. And the returned shortened context is used to
+// reserve time for d.Close() to run.
+func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, ipStart, ipEnd net.IP) (
+	*Server, context.Context, context.CancelFunc, error) {
 	ctx, st := timing.Start(ctx, "dhcp.StartServer")
 	defer st.End()
 
@@ -60,10 +65,11 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 		ipStart: ipStart,
 		ipEnd:   ipEnd,
 	}
-	if err := s.start(ctx); err != nil {
-		return nil, err
+	shortCtx, shortCtxCancel, err := s.start(ctx)
+	if err != nil {
+		return nil, nil, nil, err
 	}
-	return s, nil
+	return s, shortCtx, shortCtxCancel, nil
 }
 
 // filename returns the filename for this instance to store different type of information.
@@ -93,11 +99,14 @@ func (d *Server) stderrFilename() string {
 }
 
 // start spawns dnsmasq daemon.
-func (d *Server) start(ctx context.Context) (err error) {
-	// Clean up on error.
+func (d *Server) start(fullCtx context.Context) (
+	shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
+	// Shorten ctx to reserve time for d.Close() to run.
+	ctx, cancel := ctxutil.Shorten(fullCtx, 2*time.Second)
 	defer func() {
-		if err != nil {
-			d.Close(ctx)
+		if retErr != nil {
+			cancel()
+			d.Close(fullCtx)
 		}
 	}()
 
@@ -109,8 +118,9 @@ func (d *Server) start(ctx context.Context) (err error) {
 		"interface=%s",
 		"dhcp-leasefile=%s",
 	}, "\n"), d.ipStart.String(), d.ipEnd.String(), d.iface, d.leasePath())
-	if err := fileutil.WriteToHost(ctx, d.host, d.confPath(), []byte(conf)); err != nil {
-		return errors.Wrap(err, "failed to write config")
+	err := fileutil.WriteToHost(ctx, d.host, d.confPath(), []byte(conf))
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to write config")
 	}
 
 	testing.ContextLogf(ctx, "Starting dnsmasq %s on interface %s", d.name, d.iface)
@@ -123,21 +133,21 @@ func (d *Server) start(ctx context.Context) (err error) {
 	// Prepare stdout/stderr log files.
 	d.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, d.stdoutFilename())
 	if err != nil {
-		return errors.Wrap(err, "failed to open stdout log of dnsmasq")
+		return nil, nil, errors.Wrap(err, "failed to open stdout log of dnsmasq")
 	}
 	cmd.Stdout = d.stdoutFile
 	d.stderrFile, err = fileutil.PrepareOutDirFile(ctx, d.stderrFilename())
 	if err != nil {
-		return errors.Wrap(err, "failed to open stdout log of dnsmasq")
+		return nil, nil, errors.Wrap(err, "failed to open stdout log of dnsmasq")
 	}
 	cmd.Stderr = d.stderrFile
 
 	if err := cmd.Start(ctx); err != nil {
-		return errors.Wrap(err, "failed to start dnsmasq")
+		return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 	}
 	d.cmd = cmd
 
-	return nil
+	return ctx, cancel, nil
 }
 
 // Close stops the dhcp server and cleans up related resources.

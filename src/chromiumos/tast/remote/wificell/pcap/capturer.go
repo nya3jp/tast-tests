@@ -49,10 +49,17 @@ type Capturer struct {
 	wg         sync.WaitGroup
 }
 
-const tcpdumpCmd = "tcpdump"
+const (
+	tcpdumpCmd               = "tcpdump"
+	durationForCoolDown      = 2 * time.Second // Extra time to capture when Close() is called.
+	durationForInternalClose = 2 * time.Second
+)
 
 // StartCapturer creates and starts a Capturer.
-func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, opts ...Option) (*Capturer, error) {
+// The caller should call c.Close() to perform clean-up. And the returned shortened context is used to
+// reserve time for d.Close() to run.
+func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, opts ...Option) (
+	*Capturer, context.Context, context.CancelFunc, error) {
 	c := &Capturer{
 		host:    host,
 		name:    name,
@@ -63,22 +70,27 @@ func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir str
 		opt(c)
 	}
 
-	if err := c.start(ctx); err != nil {
-		return nil, err
+	shortCtx, shortCtxCancel, err := c.start(ctx)
+	if err != nil {
+		return nil, nil, nil, err
 	}
-	return c, nil
+	return c, shortCtx, shortCtxCancel, nil
 }
 
-func (c *Capturer) start(ctx context.Context) (err error) {
+func (c *Capturer) start(fullCtx context.Context) (
+	shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
+	// Shorten context to reserve time to run c.close().
+	// Note that it shortens ctx again at the end of start() to reserve time to capture for a longer time
+	// when c.Close() is called. We only need to call ctxCancel of the first shortened context because the
+	// shorten context's Done channel is closed when the parent context's Done channel is closed.
+	ctx, ctxCancel := ctxutil.Shorten(fullCtx, durationForInternalClose)
 	// Clean up on error.
-	defer func(ctx context.Context) {
-		if err != nil {
-			c.close(ctx)
+	defer func() {
+		if retErr != nil {
+			ctxCancel()
+			c.close(fullCtx)
 		}
-	}(ctx)
-
-	ctx, shortenCancel := ctxutil.Shorten(ctx, 2*time.Second)
-	defer shortenCancel()
+	}()
 
 	testing.ContextLogf(ctx, "Starting capturer on %s", c.iface)
 
@@ -88,19 +100,20 @@ func (c *Capturer) start(ctx context.Context) (err error) {
 	}
 
 	cmd := c.host.Command(tcpdumpCmd, args...)
+	var err error
 	c.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, c.filename("stdout"))
 	if err != nil {
-		return errors.Wrap(err, "failed to open stdout log of tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to open stdout log of tcpdump")
 	}
 	cmd.Stdout = c.stdoutFile
 
 	c.stderrFile, err = fileutil.PrepareOutDirFile(ctx, c.filename("stderr"))
 	if err != nil {
-		return errors.Wrap(err, "failed to open stderr log of tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to open stderr log of tcpdump")
 	}
 	stderrPipe, err := cmd.StderrPipe()
 	if err != nil {
-		return errors.Wrap(err, "failed to obtain StderrPipe of tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to obtain StderrPipe of tcpdump")
 	}
 	readyFunc := func(buf []byte) (bool, error) {
 		return bytes.Contains(buf, []byte("listening on")), nil
@@ -116,18 +129,20 @@ func (c *Capturer) start(ctx context.Context) (err error) {
 	}()
 
 	if err := cmd.Start(ctx); err != nil {
-		return errors.Wrap(err, "failed to start tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to start tcpdump")
 	}
 	c.cmd = cmd
 
 	testing.ContextLog(ctx, "Waiting for tcpdump to be ready")
-	readyCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
-	defer cancel()
+	readyCtx, readyCtxCancel := context.WithTimeout(ctx, 15*time.Second)
+	defer readyCtxCancel()
 	if err := readyWriter.Wait(readyCtx); err != nil {
-		return err
+		return nil, nil, err
 	}
 
-	return nil
+	// Reserve time to capture for a longer time when c.Close() is called.
+	sCtx, _ := ctxutil.Shorten(ctx, durationForCoolDown)
+	return sCtx, ctxCancel, nil
 }
 
 // close kills the process, tries to download the packet file if available and
@@ -159,7 +174,7 @@ func (c *Capturer) Close(ctx context.Context) error {
 	// process so that it can properly catch all packets.
 	// Investigation of the timeout can be found in crrev.com/c/288814.
 	// TODO(b/154787243): Find a better way to wait for pcap to be done.
-	testing.Sleep(ctx, 2*time.Second)
+	testing.Sleep(ctx, durationForCoolDown)
 	return c.close(ctx)
 }
 
