@@ -61,9 +61,24 @@ const (
 	chromeTypeLacros = "lacros"
 )
 
-type gpuCUJTestParams struct {
-	url      string
-	testType testType
+type page struct {
+	name string
+	url  string // TODO: Replace this with WPR.
+}
+
+var pageSet = []page{
+	{
+		name: "aquarium", // WebGL Aquarium
+		url:  "https://webglsamples.org/aquarium/aquarium.html",
+	},
+	{
+		name: "poster", // Poster Circle
+		url:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
+	},
+	{
+		name: "maps", // Google Maps
+		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
+	},
 }
 
 func init() {
@@ -75,103 +90,45 @@ func init() {
 		Timeout:      60 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
-			Name: "aquarium_composited",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeMaximized,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
+			Name: "maximized",
+			Val:  testTypeMaximized,
+			Pre:  launcher.StartedByData(),
 		}, {
-			Name: "aquarium_threedot",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeThreeDot,
-			},
-			Pre: launcher.StartedByData(),
+			Name: "maximized_composited",
+			Val:  testTypeMaximized,
+			Pre:  launcher.StartedByDataForceComposition(),
 		}, {
-			Name: "aquarium_resize",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeResize,
-			},
-			Pre: launcher.StartedByData(),
+			Name: "threedot",
+			Val:  testTypeThreeDot,
+			Pre:  launcher.StartedByData(),
 		}, {
-			Name: "aquarium_moveocclusion",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeMoveOcclusion,
-			},
-			Pre: launcher.StartedByData(),
+			Name: "threedot_composited",
+			Val:  testTypeThreeDot,
+			Pre:  launcher.StartedByDataForceComposition(),
 		}, {
-			Name: "aquarium_moveocclusion_composited",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeMoveOcclusion,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
+			Name: "resize",
+			Val:  testTypeResize,
+			Pre:  launcher.StartedByData(),
 		}, {
-			Name: "aquarium_moveocclusion_withcroswindow",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeMoveOcclusionWithCrosWindow,
-			},
-			Pre: launcher.StartedByData(),
+			Name: "resize_composited",
+			Val:  testTypeResize,
+			Pre:  launcher.StartedByDataForceComposition(),
 		}, {
-			Name: "aquarium_moveocclusion_withcroswindow_composited",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeMoveOcclusionWithCrosWindow,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
+			Name: "moveocclusion",
+			Val:  testTypeMoveOcclusion,
+			Pre:  launcher.StartedByData(),
 		}, {
-			Name: "aquarium",
-			Val: gpuCUJTestParams{
-				url:      "https://webglsamples.org/aquarium/aquarium.html",
-				testType: testTypeMaximized,
-			},
-			Pre: launcher.StartedByData(),
+			Name: "moveocclusion_composited",
+			Val:  testTypeMoveOcclusion,
+			Pre:  launcher.StartedByDataForceComposition(),
 		}, {
-			Name: "poster_composited",
-			Val: gpuCUJTestParams{
-				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-				testType: testTypeMaximized,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
+			Name: "moveocclusion_withcroswindow",
+			Val:  testTypeMoveOcclusionWithCrosWindow,
+			Pre:  launcher.StartedByData(),
 		}, {
-			Name: "poster_threedot",
-			Val: gpuCUJTestParams{
-				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-				testType: testTypeThreeDot,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "poster_resize",
-			Val: gpuCUJTestParams{
-				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-				testType: testTypeResize,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "poster_moveocclusion",
-			Val: gpuCUJTestParams{
-				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-				testType: testTypeMoveOcclusion,
-			},
-			Pre: launcher.StartedByData(),
-		}, {
-			Name: "poster_moveocclusion_composited",
-			Val: gpuCUJTestParams{
-				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-				testType: testTypeMoveOcclusion,
-			},
-			Pre: launcher.StartedByDataForceComposition(),
-		}, {
-			Name: "poster",
-			Val: gpuCUJTestParams{
-				url:      "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
-				testType: testTypeMaximized,
-			},
-			Pre: launcher.StartedByData(),
+			Name: "moveocclusion_withcroswindow_composited",
+			Val:  testTypeMoveOcclusionWithCrosWindow,
+			Pre:  launcher.StartedByDataForceComposition(),
 		}},
 	})
 }
@@ -352,7 +309,7 @@ var histogramMap = map[string]struct {
 	},
 }
 
-func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, perfFn func() error, testType string) error {
+func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvocation, perfFn func() error) error {
 	var keys []string
 	for k := range histogramMap {
 		keys = append(keys, k)
@@ -374,6 +331,10 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 		return errors.Wrap(err, "failed to compute RAPL diffs")
 	}
 
+	// Store metrics in the form: Scenario.PageSet.UMA metric name.statistic.{chromeos, lacros}.
+	// For example, maximized.Compositing.Display.DrawToSwapUs.mean.chromeos. In crosbolt, for each
+	// scenario (e.g. three-dot menu), we can then easily compare between chromeos and lacros
+	// for the same metric, in the same scenario.
 	for _, h := range histograms {
 		testing.ContextLog(ctx, "Histogram: ", h)
 		hinfo, ok := histogramMap[h.Name]
@@ -388,8 +349,8 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 			}
 			testing.ContextLog(ctx, "Mean: ", mean)
 
-			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.%s", h.Name, testType),
+			invoc.pv.Set(perf.Metric{
+				Name:      fmt.Sprintf("%s.%s.mean.%s", invoc.page.name, h.Name, string(invoc.crt)),
 				Unit:      hinfo.unit,
 				Direction: hinfo.direction,
 			}, mean)
@@ -400,27 +361,34 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, 
 	nongpuPower := totalPower - raplv.Uncore
 	testing.ContextLogf(ctx, "Total power: %.2f; GPU power: %.2f; Non-GPU power: %.2f",
 		totalPower, raplv.Uncore, nongpuPower)
-	pv.Set(perf.Metric{
-		Name:      fmt.Sprintf("total_power.%s", testType),
+	invoc.pv.Set(perf.Metric{
+		Name:      fmt.Sprintf("%s.total_power.value.%s", invoc.page.name, string(invoc.crt)),
 		Unit:      "joules",
 		Direction: perf.SmallerIsBetter,
 	}, raplv.Package0+raplv.Psys)
-	pv.Set(perf.Metric{
-		Name:      fmt.Sprintf("nongpu_power.%s", testType),
+	invoc.pv.Set(perf.Metric{
+		Name:      fmt.Sprintf("%s.nongpu_power.value.%s", invoc.page.name, string(invoc.crt)),
 		Unit:      "joules",
 		Direction: perf.SmallerIsBetter,
 	}, raplv.Package0+raplv.Psys-raplv.Uncore)
-	pv.Set(perf.Metric{
-		Name:      fmt.Sprintf("gpu_power.%s", testType),
+	invoc.pv.Set(perf.Metric{
+		Name:      fmt.Sprintf("%s.gpu_power.value.%s", invoc.page.name, string(invoc.crt)),
 		Unit:      "joules",
 		Direction: perf.SmallerIsBetter,
 	}, raplv.Uncore)
 	return nil
 }
 
+type testInvocation struct {
+	pv       *perf.Values
+	scenario testType
+	page     page
+	crt      chromeType
+}
+
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and Linux chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or Linux chrome).
-func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJTestParams, crt chromeType, tconn *chrome.TestConn) error {
+func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, invoc *testInvocation) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
@@ -437,10 +405,9 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 	}
 
 	perfFn := func() error {
-		testing.Sleep(ctx, testDuration)
-		return nil
+		return testing.Sleep(ctx, testDuration)
 	}
-	if p.testType == testTypeResize {
+	if invoc.scenario == testTypeResize {
 		// Restore window.
 		if err := setWindowState(ctx, ctconn, w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
@@ -463,7 +430,7 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 			}
 			return nil
 		}
-	} else if p.testType == testTypeMoveOcclusion || p.testType == testTypeMoveOcclusionWithCrosWindow {
+	} else if invoc.scenario == testTypeMoveOcclusion || invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
 		wb, err := findFirstBlankWindow(ctx, ctconn)
 		if err != nil {
 			return err
@@ -507,9 +474,9 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 
 	// Open the threedot menu if indicated.
 	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for linux chrome, which causes this code to fail.
-	if p.testType == testTypeThreeDot {
+	if invoc.scenario == testTypeThreeDot {
 		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
-		if crt == chromeTypeLacros {
+		if invoc.crt == chromeTypeLacros {
 			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, ctconn, w.ID, n) }
 		}
 		if err := toggleThreeDotMenu(ctx, tconn, clickFn); err != nil {
@@ -518,11 +485,10 @@ func runTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJ
 		defer toggleThreeDotMenu(ctx, tconn, clickFn)
 	}
 
-	testName := fmt.Sprintf("%s.%s", string(p.testType), string(crt))
-	return runHistogram(ctx, tconn, pv, perfFn, testName)
+	return runHistogram(ctx, tconn, invoc, perfFn)
 }
 
-func runLacrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJTestParams) error {
+func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
 	// Launch linux-chrome with about:blank loaded first - we don't want to include startup cost.
 	l, err := launcher.LaunchLinuxChrome(ctx, pd)
 	if err != nil {
@@ -540,7 +506,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p 
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	connURL, err := l.NewConn(ctx, p.url)
+	connURL, err := l.NewConn(ctx, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open new tab")
 	}
@@ -553,7 +519,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p 
 	}
 
 	// Setup extra window for multi-window tests.
-	if p.testType == testTypeMoveOcclusion {
+	if invoc.scenario == testTypeMoveOcclusion {
 		connBlank, err := l.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
@@ -561,7 +527,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p 
 		defer connBlank.Close()
 		defer connBlank.CloseTarget(ctx)
 
-	} else if p.testType == testTypeMoveOcclusionWithCrosWindow {
+	} else if invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
 		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
@@ -570,10 +536,10 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p 
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, pd, pv, p, chromeTypeLacros, ltconn)
+	return runTest(ctx, ltconn, pd, invoc)
 }
 
-func runCrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gpuCUJTestParams) error {
+func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
@@ -584,7 +550,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gp
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
-	connURL, err := pd.Chrome.NewConn(ctx, p.url)
+	connURL, err := pd.Chrome.NewConn(ctx, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to open new tab")
 	}
@@ -592,7 +558,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gp
 	defer connURL.CloseTarget(ctx)
 
 	// Setup extra window for multi-window tests.
-	if p.testType == testTypeMoveOcclusion || p.testType == testTypeMoveOcclusionWithCrosWindow {
+	if invoc.scenario == testTypeMoveOcclusion || invoc.scenario == testTypeMoveOcclusionWithCrosWindow {
 		connBlank, err := pd.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
@@ -601,7 +567,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gp
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, pd, pv, p, chromeTypeChromeOS, ctconn)
+	return runTest(ctx, ctconn, pd, invoc)
 }
 
 func GpuCUJ(ctx context.Context, s *testing.State) {
@@ -619,14 +585,25 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	p := s.Param().(gpuCUJTestParams)
 	pv := perf.NewValues()
-	if err := runLacrosTest(ctx, s.PreValue().(launcher.PreData), pv, p); err != nil {
-		s.Fatal("Failed to run lacros test: ", err)
-	}
+	for _, page := range pageSet {
+		if err := runLacrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
+			pv:       pv,
+			scenario: s.Param().(testType),
+			page:     page,
+			crt:      chromeTypeLacros,
+		}); err != nil {
+			s.Fatal("Failed to run lacros test: ", err)
+		}
 
-	if err := runCrosTest(ctx, s.PreValue().(launcher.PreData), pv, p); err != nil {
-		s.Fatal("Failed to run cros test: ", err)
+		if err := runCrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
+			pv:       pv,
+			scenario: s.Param().(testType),
+			page:     page,
+			crt:      chromeTypeChromeOS,
+		}); err != nil {
+			s.Fatal("Failed to run cros test: ", err)
+		}
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
