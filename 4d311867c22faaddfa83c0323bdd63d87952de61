@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e22a840d_501c5787",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:32:55Z",
+      "side": 1,
+      "message": "I don\u0027t think \"shorten\" is the right approach -- tcpdump\u0027s readyWriter is expected to succeed within a fixed amount of time (just a few seconds). If it\u0027s going to fail, we want to know in just a few seconds, but with Shorten, we\u0027re going to fail on the order of minutes (\u003ctest timeout\u003e - 5 seconds).\n\nWe should provide a fixed timeout down at line 122, I think. (context.WithTimeout(ctx, 5.time.Second), for example.)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "4d311867c22faaddfa83c0323bdd63d87952de61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6dd2328_992dce0d",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:32:55Z",
+      "side": 1,
+      "message": "this is sort of a strange variable name. I had to look at the callers to figure out why this was doing what it\u0027s doing. Maybe a short comment would help, or maybe there\u0027s some better name for it.",
+      "range": {
+        "startLine": 130,
+        "startChar": 46,
+        "endLine": 130,
+        "endChar": 56
+      },
+      "revId": "4d311867c22faaddfa83c0323bdd63d87952de61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

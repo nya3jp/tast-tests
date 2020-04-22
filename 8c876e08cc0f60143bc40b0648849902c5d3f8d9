@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4b4a26d2_d99d65ac",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:32:55Z",
+      "side": 1,
+      "message": "As noted on the updated version, I don\u0027t think Shorten is the right solution.",
+      "parentUuid": "5c34be84_117aa96f",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "8c876e08cc0f60143bc40b0648849902c5d3f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "149774b3_2de463a1",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
         "patchSetId": 17
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "I originally want to have this discussion in another cl later, but after a few more thoughts, I think the interface might be modified much if the we introduce other mechanisms. So let\u0027s see if tast-owners have some suggestion on this in this cl.\n\n(add the same sleep as in Autotest)",
       "parentUuid": "149774b3_2de463a1",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 67
+      },
+      "revId": "8c876e08cc0f60143bc40b0648849902c5d3f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a0825a8_607630a9",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:32:55Z",
+      "side": 1,
+      "message": "Sounds OK to me.",
+      "parentUuid": "4751291d_35624d9b",
       "range": {
         "startLine": 127,
         "startChar": 0,
