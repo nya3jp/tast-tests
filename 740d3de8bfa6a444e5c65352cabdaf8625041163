@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "54663af3_7a71cf35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-04-22T02:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec27a99_742714f7",
+      "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bcda7de_b85dc341",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-21T08:48:52Z",
       "side": 1,
       "message": "filesApp.Close(...) instead?",
+      "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc28366_9d4dc8e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-04-22T02:14:49Z",
+      "side": 1,
+      "message": "This way the screenshot taken of a failed test is useful. A similar thing is done in the files app smoke test. I\u0027ll add a comment about this.",
+      "parentUuid": "2bcda7de_b85dc341",
       "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +92,30 @@
       "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5762623_e5841a26",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2020-04-22T02:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73b0ca2_2366c6dc",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
