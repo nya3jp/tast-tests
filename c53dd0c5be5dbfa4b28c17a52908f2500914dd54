@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e5ab75b_0f800caf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:39:50Z",
+      "side": 1,
+      "message": "Either works.",
+      "parentUuid": "349b4ecc_69c23d51",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "c53dd0c5be5dbfa4b28c17a52908f2500914dd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfb351b5_0fb3e8d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "c53dd0c5be5dbfa4b28c17a52908f2500914dd54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0fab659_114c2efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:39:50Z",
+      "side": 1,
+      "message": "Yes, we do. Thanks for noticing.",
+      "parentUuid": "cfb351b5_0fb3e8d8",
+      "revId": "c53dd0c5be5dbfa4b28c17a52908f2500914dd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
