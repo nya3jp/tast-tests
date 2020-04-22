@@ -91,6 +91,16 @@ func (state launcherState) String() string {
 	}
 }
 
+// overviewState specifies whether overview should be shown or hidden.
+type overviewState int
+
+const (
+	overviewModeShown overviewState = iota
+	overviewModeHidden
+)
+
+// ADD String() FUNCITON HERE AND ENSURE OVERVIEW HISTOGRAM EXISTS: BEFORE LANDING
+
 func scrollToEnd(ctx context.Context, tconn *chrome.TestConn, d direction) error {
 	var scrollCount int
 
@@ -162,9 +172,10 @@ func shelfAnimationHistogramName(mode uiMode, state launcherState) string {
 	return strings.Join(comps, ".")
 }
 
-func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, mode uiMode, launcherVisbility launcherState) ([]*metrics.Histogram, error) {
+func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, mode uiMode, launcherVisbility launcherState, overivewVisibility overviewState) ([]*metrics.Histogram, error) {
 	isInTabletMode := mode == inTabletMode
 	isLauncherVisible := launcherVisbility == launcherIsVisible
+	isOverviewVisible := overivewVisibility == overviewModeShown
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isInTabletMode)
 	if err != nil {
@@ -175,6 +186,13 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 	launcherTargetState := ash.Closed
 	if isLauncherVisible {
 		launcherTargetState = ash.FullscreenAllApps
+	}
+
+	if isOverviewVisible {
+		// Enter overview mode
+		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			return nil, errors.Wrap(err, "failed to enter into the overview mode")
+		}
 	}
 
 	if isInTabletMode && !isLauncherVisible {
@@ -217,6 +235,13 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		return nil, errors.Wrap(err, "failed to run scroll animation or get histograms")
 	}
 
+	if isOverviewVisible {
+		// Exit overview mode
+		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			return nil, errors.Wrap(err, "failed to exit from the overview mode")
+		}
+	}
+
 	return histograms, nil
 }
 
@@ -234,16 +259,24 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 
 	type testSetting struct {
 		launcherVisibility launcherState
+		overivewVisibility overviewState
 		mode               uiMode
 	}
 
 	settings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
+			overivewVisibility: overviewModeHidden,
+			mode:               inClamshellMode,
+		},
+		{
+			launcherVisibility: launcherIsHidden,
+			overivewVisibility: overviewModeShown,
 			mode:               inClamshellMode,
 		},
 		{
 			launcherVisibility: launcherIsVisible,
+			overivewVisibility: overviewModeHidden,
 			mode:               inClamshellMode,
 		},
 	}
@@ -251,10 +284,17 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	tabletSettings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
+			overivewVisibility: overviewModeHidden,
+			mode:               inTabletMode,
+		},
+		{
+			launcherVisibility: launcherIsHidden,
+			overivewVisibility: overviewModeShown,
 			mode:               inTabletMode,
 		},
 		{
 			launcherVisibility: launcherIsVisible,
+			overivewVisibility: overviewModeHidden,
 			mode:               inTabletMode,
 		},
 	}
@@ -265,9 +305,9 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	}
 
 	for _, setting := range settings {
-		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.launcherVisibility)
+		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.launcherVisibility, setting.overivewVisibility)
 		if err != nil {
-			s.Fatalf("Failed to run animation with ui mode as %s and launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
+			s.Fatalf("Failed to run animation with ui mode as %s, launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
 		}
 
 		if err := metrics.SaveHistogramsMeanValue(ctx, pv, histograms, perf.Metric{
@@ -276,7 +316,6 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		}); err != nil {
 			s.Fatal("Failed to save metrics data: ", err)
 		}
-
 		if err := pv.Save(s.OutDir()); err != nil {
 			s.Fatal("Failed to save performance data in file: ", err)
 		}
