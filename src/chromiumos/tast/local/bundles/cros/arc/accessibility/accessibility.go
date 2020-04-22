@@ -9,6 +9,7 @@ package accessibility
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"path/filepath"
 	"strings"
 	"time"
@@ -177,6 +178,15 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to get current focus")
+	}
+	return nil
+}
+
+// DumpDiff dumps the diff to the specified file.
+func DumpDiff(s *testing.State, diff, diffFileName string) error {
+	diffFilePath := filepath.Join(s.OutDir(), diffFileName)
+	if err := ioutil.WriteFile(diffFilePath, []byte(diff), 0644); err != nil {
+		return errors.Wrap(err, "failed to write diff to the file")
 	}
 	return nil
 }
