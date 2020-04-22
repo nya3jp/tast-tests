@@ -22,6 +22,30 @@
       "revId": "3f238c59af094c372967b89fbfeec0e19733b630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bae49fa_1eccf3c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-22T04:28:42Z",
+      "side": 1,
+      "message": "It\u0027s possible, but the best way I came up with so far is a bit roundabout and nasty looking IMO. It does avoid the hardcoded IDs, though, which is a plus. Does this new way seem good to you?",
+      "parentUuid": "f2230b81_b41a03c1",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "3f238c59af094c372967b89fbfeec0e19733b630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
