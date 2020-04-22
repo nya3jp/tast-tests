@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0031c141_f7656de2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-22T17:22:58Z",
+      "side": 1,
+      "message": "I can do that after Hack Week.",
+      "parentUuid": "77de6a8d_8d70b024",
+      "revId": "196c0cbb86d5afce36021a79eee544a09637f7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93dc818d_16f96797",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "196c0cbb86d5afce36021a79eee544a09637f7bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2da56c_6b3d3745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-04-22T17:22:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93dc818d_16f96797",
+      "revId": "196c0cbb86d5afce36021a79eee544a09637f7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
