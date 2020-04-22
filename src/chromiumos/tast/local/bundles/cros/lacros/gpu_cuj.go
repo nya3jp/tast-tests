@@ -290,36 +290,181 @@ func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
 	return nil
 }
 
-var histogramMap = map[string]struct {
+var metricMap = map[string]struct {
 	unit      string
 	direction perf.Direction
+	uma       bool
 }{
 	"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Universal": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
+		uma:       true,
 	},
 	"Graphics.Smoothness.PercentDroppedFrames.MainThread.Universal": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
+		uma:       true,
 	},
 	"Graphics.Smoothness.PercentDroppedFrames.SlowerThread.Universal": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
+		uma:       true,
 	},
 	"Graphics.Smoothness.PercentDroppedFrames.AllSequences": {
 		unit:      "percent",
 		direction: perf.SmallerIsBetter,
+		uma:       true,
 	},
 	"Compositing.Display.DrawToSwapUs": {
 		unit:      "ms",
 		direction: perf.SmallerIsBetter,
+		uma:       true,
 	},
+	"total_power": {
+		unit:      "joules",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
+	"gpu_power": {
+		unit:      "joules",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
+	"nongpu_power": {
+		unit:      "joules",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
+}
+
+type statType string
+
+const (
+	meanStat  = "mean"
+	valueStat = "value"
+)
+
+type statBucketKey struct {
+	metric string
+	stat   statType
+	crt    chromeType
+}
+
+type metricsRecorder struct {
+	buckets map[statBucketKey][]float64
+}
+
+func (m *metricsRecorder) record(ctx context.Context, invoc *testInvocation, key statBucketKey, value float64) error {
+	minfo, ok := metricMap[key.metric]
+	if !ok {
+		return errors.Errorf("failed to lookup metric info: %s", key.metric)
+	}
+
+	name := fmt.Sprintf("%s.%s.%s.%s", invoc.page.name, key.metric, string(key.stat), string(key.crt))
+	testing.ContextLog(ctx, name, ": ", value, " ", minfo.unit)
+
+	invoc.pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      minfo.unit,
+		Direction: minfo.direction,
+	}, value)
+	m.buckets[key] = append(m.buckets[key], value)
+	return nil
+}
+
+func (m *metricsRecorder) recordHistogram(ctx context.Context, invoc *testInvocation, h *metrics.Histogram) error {
+	// Ignore empty histograms. It's hard to define what the mean should be in this case.
+	if h.TotalCount() == 0 {
+		return nil
+	}
+
+	mean, err := h.Mean()
+	if err != nil {
+		return errors.Wrapf(err, "failed to get mean for histogram: %s", h.Name)
+	}
+
+	testing.ContextLog(ctx, h)
+
+	return m.record(ctx, invoc, statBucketKey{
+		metric: h.Name,
+		stat:   meanStat,
+		crt:    invoc.crt,
+	}, mean)
+}
+
+func (m *metricsRecorder) recordValue(ctx context.Context, invoc *testInvocation, name string, value float64) error {
+	return m.record(ctx, invoc, statBucketKey{
+		metric: name,
+		stat:   valueStat,
+		crt:    invoc.crt,
+	}, value)
+}
+
+func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values) error {
+	// Collect means and standard deviations for each bucket. Each bucket contains results from several different pages.
+	// We define the population as the set of all pages (another option would be to define the population as the
+	// metric itself). For histograms (meanStat), we take a single sample which contains the means for each page.
+	// For single values (valueStat), we take as single sample which just consists of those values.
+	// We estimate the following quantities:
+	// page_mean:
+	//   Meaning: The mean for all pages. (e.g. mean of histogram means)
+	//   Estimator: sample mean
+	// page_stddev:
+	//   Meaning: Variance over all pages. (e.g. variance of histogram means)
+	//   Estimator: unbiased sample variance
+	// N.B. we report standard deviation not variance so even though we use Bessel's correction the standard deviation
+	// is still biased.
+	// TODO: Consider extending this to also provide data where the population is the metric itself.
+	//   e.g. metric_stddev, metric_mean - statistics on the metric overall not per-page.
+	var logs []string
+	for k, bucket := range m.buckets {
+		minfo, ok := metricMap[k.metric]
+		if !ok {
+			return errors.Errorf("failed to lookup metric info: %s", k.metric)
+		}
+
+		var sum float64
+		for _, value := range bucket {
+			sum += value
+		}
+		n := float64(len(bucket))
+		mean := sum / n
+		var variance float64
+		for _, value := range bucket {
+			variance += (value - mean) * (value - mean)
+		}
+		variance /= float64(len(bucket) - 1) // Bessel's correction.
+		stddev := math.Sqrt(variance)
+
+		m := perf.Metric{
+			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_mean", string(k.crt)),
+			Unit:      minfo.unit,
+			Direction: minfo.direction,
+		}
+		s := perf.Metric{
+			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_stddev", string(k.crt)),
+			Unit:      minfo.unit,
+			Direction: perf.SmallerIsBetter, // In general, it's better if standard deviation is less.
+		}
+		logs = append(logs, fmt.Sprint(m.Name, ": ", mean, " ", m.Unit), fmt.Sprint(s.Name, ": ", stddev, " ", s.Unit))
+		pv.Set(m, mean)
+		pv.Set(s, stddev)
+	}
+
+	// Print logs in order.
+	sort.Strings(logs)
+	for _, log := range logs {
+		testing.ContextLog(ctx, log)
+	}
+	return nil
 }
 
 func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvocation, perfFn func() error) error {
 	var keys []string
-	for k := range histogramMap {
-		keys = append(keys, k)
+	for k, v := range metricMap {
+		if v.uma {
+			keys = append(keys, k)
+		}
 	}
 	sort.Strings(keys)
 
@@ -343,54 +488,34 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 	// scenario (e.g. three-dot menu), we can then easily compare between chromeos and lacros
 	// for the same metric, in the same scenario.
 	for _, h := range histograms {
-		testing.ContextLog(ctx, "Histogram: ", h)
-		hinfo, ok := histogramMap[h.Name]
-		if !ok {
-			return errors.Wrapf(err, "failed to lookup histogram info: %s", h.Name)
-		}
-
-		if h.TotalCount() != 0 {
-			mean, err := h.Mean()
-			if err != nil {
-				return errors.Wrapf(err, "failed to get mean for histogram: %s", h.Name)
-			}
-			testing.ContextLog(ctx, "Mean: ", mean)
-
-			invoc.pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.%s.mean.%s", invoc.page.name, h.Name, string(invoc.crt)),
-				Unit:      hinfo.unit,
-				Direction: hinfo.direction,
-			}, mean)
+		if err := invoc.metrics.recordHistogram(ctx, invoc, h); err != nil {
+			return err
 		}
 	}
 
 	totalPower := raplv.Package0 + raplv.Psys
 	nongpuPower := totalPower - raplv.Uncore
-	testing.ContextLogf(ctx, "Total power: %.2f; GPU power: %.2f; Non-GPU power: %.2f",
-		totalPower, raplv.Uncore, nongpuPower)
-	invoc.pv.Set(perf.Metric{
-		Name:      fmt.Sprintf("%s.total_power.value.%s", invoc.page.name, string(invoc.crt)),
-		Unit:      "joules",
-		Direction: perf.SmallerIsBetter,
-	}, raplv.Package0+raplv.Psys)
-	invoc.pv.Set(perf.Metric{
-		Name:      fmt.Sprintf("%s.nongpu_power.value.%s", invoc.page.name, string(invoc.crt)),
-		Unit:      "joules",
-		Direction: perf.SmallerIsBetter,
-	}, raplv.Package0+raplv.Psys-raplv.Uncore)
-	invoc.pv.Set(perf.Metric{
-		Name:      fmt.Sprintf("%s.gpu_power.value.%s", invoc.page.name, string(invoc.crt)),
-		Unit:      "joules",
-		Direction: perf.SmallerIsBetter,
-	}, raplv.Uncore)
+	if err := invoc.metrics.recordValue(ctx, invoc, "total_power", totalPower); err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "nongpu_power", nongpuPower); err != nil {
+		return err
+	}
+	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore); err != nil {
+		return err
+	}
 	return nil
 }
 
+// testInvocation describes a particular test run. A test run involves running a particular scenario
+// (e.g. moveocclusion) with a particular type of Chrome (ChromeOS or Lacros) on a particular page.
+// This structure holds the necessary data to do this.
 type testInvocation struct {
 	pv       *perf.Values
 	scenario testType
 	page     page
 	crt      chromeType
+	metrics  *metricsRecorder
 }
 
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and Linux chrome.
@@ -593,12 +718,14 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	}()
 
 	pv := perf.NewValues()
+	m := metricsRecorder{buckets: make(map[statBucketKey][]float64)}
 	for _, page := range pageSet {
 		if err := runLacrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
 			pv:       pv,
 			scenario: s.Param().(testType),
 			page:     page,
 			crt:      chromeTypeLacros,
+			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run lacros test: ", err)
 		}
@@ -608,9 +735,14 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 			scenario: s.Param().(testType),
 			page:     page,
 			crt:      chromeTypeChromeOS,
+			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run cros test: ", err)
 		}
+	}
+
+	if err := m.computeStatistics(ctx, pv); err != nil {
+		s.Fatal("Could not compute derived statistics: ", err)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
