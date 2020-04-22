@@ -70,6 +70,24 @@
       "revId": "2caccfde7cc1123a8a49567c625941d323c630ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ac1b21_b52c419e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-22T17:33:46Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion, Andrew. I think it\u0027s much clearer this way.",
+      "parentUuid": "cc29c20a_555eeef8",
+      "revId": "2caccfde7cc1123a8a49567c625941d323c630ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
