@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77de6a8d_8d70b024",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-22T06:11:43Z",
+      "side": 1,
+      "message": "Do you have a plan to make this catch https://crbug.com/1031313 as well? It\u0027s another recent split view regression.",
+      "revId": "196c0cbb86d5afce36021a79eee544a09637f7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93dc818d_16f96797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-22T06:11:43Z",
+      "side": 1,
+      "message": "can you file a crbug for this, and make it blocked by the feature bug?",
+      "revId": "196c0cbb86d5afce36021a79eee544a09637f7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
