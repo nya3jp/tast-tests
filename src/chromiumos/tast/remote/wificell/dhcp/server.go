@@ -12,7 +12,9 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -47,6 +49,8 @@ type Server struct {
 // workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
 // ipStart, ipEnd specifies the leasable range for this dhcp server to offer.
+// Note that after StartServer() and get Server instance, d, the caller should defer d.Close(ctx) and
+// use d.ReserveForClose(ctx) to reserve time for the deferred call.
 func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, ipStart, ipEnd net.IP) (*Server, error) {
 	s := &Server{
 		host:    host,
@@ -89,13 +93,15 @@ func (d *Server) stderrFilename() string {
 }
 
 // start spawns dnsmasq daemon.
-func (d *Server) start(ctx context.Context) (err error) {
-	// Clean up on error.
+func (d *Server) start(ctxFull context.Context) (err error) {
 	defer func() {
 		if err != nil {
-			d.Close(ctx)
+			d.Close(ctxFull)
 		}
 	}()
+
+	ctx, cancel := d.ReserveForClose(ctxFull)
+	defer cancel()
 
 	conf := fmt.Sprintf(strings.Join([]string{
 		"port=0", // Disables DNS server.
@@ -134,6 +140,11 @@ func (d *Server) start(ctx context.Context) (err error) {
 	d.cmd = cmd
 
 	return nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for d.Close() to run.
+func (d *Server) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 2*time.Second)
 }
 
 // Close stops the dhcp server and cleans up related resources.

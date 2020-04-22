@@ -8,7 +8,9 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -58,15 +60,17 @@ func (h *APIface) ServerIP() net.IP {
 }
 
 // start the service. Make this private as one should start this from Router.
-func (h *APIface) start(ctx context.Context) (retErr error) {
+func (h *APIface) start(ctxFull context.Context) (retErr error) {
 	defer func() {
-		if retErr == nil {
-			return
-		}
-		if err := h.stop(ctx); err != nil {
-			testing.ContextLogf(ctx, "Failed to stop HostAPHandle, err=%s", err.Error())
+		if retErr != nil {
+			if err := h.stop(ctxFull); err != nil {
+				testing.ContextLogf(ctxFull, "Failed to stop HostAPHandle, err=%s", err.Error())
+			}
 		}
 	}()
+
+	ctx, cancel := h.reserveForStop(ctxFull)
+	defer cancel()
 
 	if err := h.configureIface(ctx); err != nil {
 		return errors.Wrap(err, "failed to setup interface")
@@ -85,6 +89,30 @@ func (h *APIface) start(ctx context.Context) (retErr error) {
 	h.dhcpd = ds
 
 	return nil
+}
+
+// reserveForStop returns a shorter ctx and cancel function for h.stop() to run.
+func (h *APIface) reserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
+	var c1, c2, c3 context.CancelFunc
+	// Reserve for h.tearDownIface()
+	ctx, c1 = ctxutil.Shorten(ctx, time.Second)
+	if h.hostapd != nil {
+		ctx, c2 = h.hostapd.ReserveForClose(ctx)
+	}
+	if h.dhcpd != nil {
+		ctx, c3 = h.dhcpd.ReserveForClose(ctx)
+	}
+	return ctx, func() {
+		if c3 != nil {
+			c3()
+		}
+		if c2 != nil {
+			c2()
+		}
+		if c1 != nil {
+			c1()
+		}
+	}
 }
 
 // stop the service. Make this private as one should stop it from Router.
