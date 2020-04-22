@@ -11,8 +11,10 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -41,6 +43,8 @@ type Router struct {
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
+// Note that after getting a router, r, the caller should defer r.Close() and
+// use r.ReserveForClose() to reserve time for calling the deferred call.
 func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
 	r := &Router{
 		host:        host,
@@ -52,12 +56,19 @@ func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error
 		busyIfaces:  make(map[string]*iw.NetDev),
 		iwr:         remote_iw.NewRunner(host),
 	}
-	if err := r.initialize(ctx); err != nil {
+
+	shortCtx, cancel := r.ReserveForClose(ctx)
+	defer cancel()
+	if err := r.initialize(shortCtx); err != nil {
 		r.Close(ctx)
 		return nil, err
 	}
-
 	return r, nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for r.Close().
+func (r *Router) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // removeWifiIface removes iface with iw command.
@@ -288,6 +299,8 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
 // phy and re-use or create interface on the phy. Name is used on the path to store logs, config files
 // or related resources. The handle object for the service is returned.
+// Note that after getting an APIface, h, the caller should defer h.StopAPIfaceClose() and use
+// h.ReserveForStopAPIface() to reserve time for calling h.StopAPIface()
 func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
 	// Reserve required resources.
 	nd, err := r.netDev(ctx, conf.Channel, iw.IfTypeManaged)
@@ -311,13 +324,20 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 		subnetIdx: idx,
 		config:    conf,
 	}
-	if err := h.start(ctx); err != nil {
-		// Release resources.
-		r.freeSubnetIdx(idx)
-		r.freeIface(iface)
+
+	shortCtx, cancel := r.ReserveForStopAPIface(ctx, h)
+	defer cancel()
+
+	if err := h.start(shortCtx); err != nil {
+		r.StopAPIface(ctx, h)
 		return nil, err
 	}
 	return h, nil
+}
+
+// ReserveForStopAPIface returns a shorter ctx and cancel function for r.StopAPIface() to run.
+func (r *Router) ReserveForStopAPIface(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
+	return h.reserveForStop(ctx)
 }
 
 // StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
@@ -331,6 +351,8 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 }
 
 // StartCapture starts a packet capturer.
+// Note that after getting a capturer, c, the caller should defer r.StopCapture(ctx, c) and
+// use r.ReserveForStopCapture(ctx, c) to reserve time for calling the deferred call.
 func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (ret *pcap.Capturer, retErr error) {
 	freq, err := hostapd.ChannelToFrequency(ch)
 	if err != nil {
@@ -376,6 +398,11 @@ func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps 
 		return nil, errors.Wrap(err, "failed to start a packet capturer")
 	}
 	return c, nil
+}
+
+// ReserveForStopCapture returns a shorter ctx and cancel function for r.StopCapture() to run.
+func (r *Router) ReserveForStopCapture(ctx context.Context, capturer *pcap.Capturer) (context.Context, context.CancelFunc) {
+	return capturer.ReserveForClose(ctx)
 }
 
 // StopCapture stops the packet capturer and releases related resources.

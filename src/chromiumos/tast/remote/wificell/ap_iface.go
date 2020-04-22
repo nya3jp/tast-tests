@@ -8,7 +8,9 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -58,15 +60,17 @@ func (h *APIface) ServerIP() net.IP {
 }
 
 // start the service. Make this private as one should start this from Router.
-func (h *APIface) start(ctx context.Context) (retErr error) {
+func (h *APIface) start(fullCtx context.Context) (retErr error) {
 	defer func() {
-		if retErr == nil {
-			return
-		}
-		if err := h.stop(ctx); err != nil {
-			testing.ContextLogf(ctx, "Failed to stop HostAPHandle, err=%s", err.Error())
+		if retErr != nil {
+			if err := h.stop(fullCtx); err != nil {
+				testing.ContextLogf(fullCtx, "Failed to stop HostAPHandle, err=%s", err.Error())
+			}
 		}
 	}()
+
+	ctx, cancel := h.reserveForStop(fullCtx)
+	defer cancel()
 
 	if err := h.configureIface(ctx); err != nil {
 		return errors.Wrap(err, "failed to setup interface")
@@ -85,6 +89,22 @@ func (h *APIface) start(ctx context.Context) (retErr error) {
 	h.dhcpd = ds
 
 	return nil
+}
+
+// reserveForStop returns a shorter ctx and cancel function for h.stop() to run.
+func (h *APIface) reserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
+	// Reserve for h.tearDownIface()
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	if h.hostapd != nil {
+		// We only need to call cancel of the first shorten context because the shorten context's
+		// Done channel is closed when the parent context's Done channel is closed.
+		// https://golang.org/pkg/context/#WithDeadline.
+		ctx, _ = h.hostapd.ReserveForClose(ctx)
+	}
+	if h.dhcpd != nil {
+		ctx, _ = h.dhcpd.ReserveForClose(ctx)
+	}
+	return ctx, cancel
 }
 
 // stop the service. Make this private as one should stop it from Router.

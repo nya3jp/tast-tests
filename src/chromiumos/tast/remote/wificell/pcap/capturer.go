@@ -49,9 +49,15 @@ type Capturer struct {
 	wg         sync.WaitGroup
 }
 
-const tcpdumpCmd = "tcpdump"
+const (
+	tcpdumpCmd               = "tcpdump"
+	durationForClose         = 4 * time.Second
+	durationForInternalClose = 2 * time.Second
+)
 
 // StartCapturer creates and starts a Capturer.
+// Note that after getting a capturer, c, the caller should defer c.Close(ctx) and
+// use c.ReserveForClose(ctx) to reserve time for calling the deferred call.
 func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, opts ...Option) (*Capturer, error) {
 	c := &Capturer{
 		host:    host,
@@ -69,16 +75,17 @@ func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir str
 	return c, nil
 }
 
-func (c *Capturer) start(ctx context.Context) (err error) {
+func (c *Capturer) start(fullCtx context.Context) (err error) {
 	// Clean up on error.
-	defer func(ctx context.Context) {
+	defer func() {
 		if err != nil {
-			c.close(ctx)
+			c.close(fullCtx)
 		}
-	}(ctx)
+	}()
 
-	ctx, shortenCancel := ctxutil.Shorten(ctx, 2*time.Second)
-	defer shortenCancel()
+	// Reserve time for the above deferred call.
+	ctx, ctxCancel := ctxutil.Shorten(fullCtx, durationForInternalClose)
+	defer ctxCancel()
 
 	testing.ContextLogf(ctx, "Starting capturer on %s", c.iface)
 
@@ -121,8 +128,8 @@ func (c *Capturer) start(ctx context.Context) (err error) {
 	c.cmd = cmd
 
 	testing.ContextLog(ctx, "Waiting for tcpdump to be ready")
-	readyCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
-	defer cancel()
+	readyCtx, readyCtxCancel := context.WithTimeout(ctx, 15*time.Second)
+	defer readyCtxCancel()
 	if err := readyWriter.Wait(readyCtx); err != nil {
 		return err
 	}
@@ -151,6 +158,11 @@ func (c *Capturer) close(ctx context.Context) error {
 		c.stderrFile.Close()
 	}
 	return err
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for c.Close() to run.
+func (c *Capturer) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, durationForClose)
 }
 
 // Close terminates the capturer and downloads the pcap file from host to OutDir.

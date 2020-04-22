@@ -12,8 +12,10 @@ import (
 	"os"
 	"path"
 	"sync"
+	"time"
 
 	"chromiumos/tast/common/network/daemonutil"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -46,6 +48,8 @@ type Server struct {
 // StartServer creates a new Server object and runs hostapd on iface of the given host with settings
 // specified in config. workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
+// Note that after StartServer() and get Server instance, s, the caller should defer s.Close(ctx) and
+// use s.ReserveForClose(ctx) to reserve time for the deferred call.
 func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (*Server, error) {
 	s := &Server{
 		host:    host,
@@ -87,13 +91,15 @@ func (s *Server) stderrFilename() string {
 }
 
 // start spawns a hostapd daemon and waits until it is ready.
-func (s *Server) start(ctx context.Context) (err error) {
-	// Cleanup on error.
+func (s *Server) start(fullCtx context.Context) (err error) {
 	defer func() {
 		if err != nil {
-			s.Close(ctx)
+			s.Close(fullCtx)
 		}
 	}()
+
+	ctx, cancel := s.ReserveForClose(fullCtx)
+	defer cancel()
 
 	conf, err := s.conf.Format(s.iface, s.ctrlPath())
 	if err != nil {
@@ -152,6 +158,11 @@ func (s *Server) start(ctx context.Context) (err error) {
 
 	testing.ContextLog(ctx, "hostapd started")
 	return nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for s.Close() to run.
+func (s *Server) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 2*time.Second)
 }
 
 // Close stops hostapd and cleans up related resources.
