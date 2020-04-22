@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aacbb8c6_21c938af",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-22T22:27:19Z",
+      "side": 1,
+      "message": "Skip this loop and check if configDataDir !\u003d ConfigDir, alternatively, only do this check if ReadFile errors out later to get a better error message. This will allow more flexibility for code using NewConfig. Sorry I know I originally suggested this check but I think it needs to be tweaked to simplify unit testing.",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975bfb83_c858e927",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-22T22:27:19Z",
+      "side": 1,
+      "message": "setupMockData should just be as simple as copying DEFAULT.json over and serializing mockData to a tempdir, No need to mess with configPlatforms (see above).  I don\u0027t think you need a unit test for setupMockData itself since the checks for the files being created successfully will be done in setupMockData itself.",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99621d45_93ef3af9",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-22T22:27:19Z",
+      "side": 1,
+      "message": "nit, can just defer this directly.",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08aee53_f16650a0",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-22T22:27:19Z",
+      "side": 1,
+      "message": "nit, I think having this test is overkill.",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61279449_cb8c8633",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-22T22:27:19Z",
+      "side": 1,
+      "message": "nit, mockConfigDir would be a more informative name.",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
