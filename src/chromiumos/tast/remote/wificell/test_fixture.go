@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -34,21 +35,41 @@ type TestFixture struct {
 	curAP      *APIface
 }
 
-// NewTestFixture creates a TestFixture.
+// NewTestFixture creates a TestFixture with a shortCtx.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
-func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (ret *TestFixture, retErr error) {
+// TestFixture user shall call tf.Close() to perform clean-up. And shortCtx is used to reserve time for the
+// clean-up function to run. For example:
+// func SomeTest(fullCtx context.Context, s *testing.State) {
+//   tf, ctx, ctxCancel, err := NewTestFixture(fullCtx, ...)
+//   if err != nil {
+//     s.Fatal("Failed to create TestFixture: ", err)
+//   }
+//   defer tf.Close(fullCtx)
+//   defer ctxCancel()
+//   // The rest of the code run things with ctx...
+// }
+func NewTestFixture(fullCtx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (
+	ret *TestFixture, shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
 	tf := &TestFixture{}
+	// Shorten fullCtx for cleaning up tf.rpc and tf.routerHost.
+	// The context will be shortened again when obtaining a Router.
+	// We only need to call cancel of the first shortened context because the shorten context's Done
+	// channel is closed when the parent context's Done channel is closed.
+	sCtx, sCtxCancel := ctxutil.Shorten(fullCtx, 5*time.Second)
+
 	defer func() {
 		if retErr != nil {
-			tf.Close(ctx)
+			sCtxCancel()
+			tf.Close(fullCtx)
 		}
 	}()
+
 	var err error
 	tf.dut = dut
-	tf.rpc, err = rpc.Dial(ctx, dut, rpcHint, "cros")
+	tf.rpc, err = rpc.Dial(sCtx, dut, rpcHint, "cros")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect rpc")
+		return nil, nil, nil, errors.Wrap(err, "failed to connect rpc")
 	}
 	tf.wifiClient = network.NewWifiClient(tf.rpc.Conn)
 
@@ -58,28 +79,29 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
 
 	if routerTarget == "" {
-		tf.routerHost, err = dut.DefaultWifiRouterHost(ctx)
+		tf.routerHost, err = dut.DefaultWifiRouterHost(sCtx)
 	} else {
 		var sopt ssh.Options
 		ssh.ParseTarget(routerTarget, &sopt)
 		sopt.KeyDir = dut.KeyDir()
 		sopt.KeyFile = dut.KeyFile()
 		sopt.ConnectTimeout = 10 * time.Second
-		tf.routerHost, err = ssh.New(ctx, &sopt)
+		tf.routerHost, err = ssh.New(sCtx, &sopt)
 	}
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to the router")
+		return nil, nil, nil, errors.Wrap(err, "failed to connect to the router")
 	}
-	tf.router, err = NewRouter(ctx, tf.routerHost, "router")
+	r, sCtx1, _, err := NewRouter(sCtx, tf.routerHost, "router")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create a router object")
+		return nil, nil, nil, errors.Wrap(err, "failed to create a router object")
 	}
+	tf.router = r
 
 	// TODO(crbug.com/1034875): set up pcap, attenuator.
 
 	// Seed the random as we have some randomization. e.g. default SSID.
 	rand.Seed(time.Now().UnixNano())
-	return tf, nil
+	return tf, sCtx1, sCtxCancel, nil
 }
 
 // Close closes the connections created by TestFixture.
@@ -87,7 +109,7 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	var retErr error
 	if tf.router != nil {
 		if err := tf.router.Close(ctx); err != nil {
-			retErr = errors.Wrapf(retErr, "failed to close rotuer: %s", err.Error())
+			retErr = errors.Wrapf(retErr, "failed to close router: %s", err.Error())
 		}
 	}
 	if tf.routerHost != nil {
@@ -111,12 +133,25 @@ func (tf *TestFixture) getUniqueAPName() string {
 	return id
 }
 
-// ConfigureAP configures the router to provide a WiFi service with the options specified.
-func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (*APIface, error) {
+// ConfigureAP configures the router and returns an APIface object with a shortened context.
+// It configures the router to provide a WiFi service with the options specified.
+// The caller should call tf.DeconfigAP() to perform clean-up. And the shortened context is used to
+// reserve time for the clean-up function to run. For example:
+//   tf, tfCtx, tfCtxCancel, err := NewTestFixture(fullCtx, ...)
+//   ...
+//   ap, apCtx, apCtxCancel, err := tf.ConfigureAP(tfCtx, ...)
+//   if err != nil {
+//     return err
+//   }
+//   defer ap.DecofnigAP(tfCtx)
+//   defer apCtxCancel()
+//   // The rest of the code run things with apCtxc...
+func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (
+	*APIface, context.Context, context.CancelFunc, error) {
 	name := tf.getUniqueAPName()
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 	return tf.router.StartAPIface(ctx, name, config)
 }
