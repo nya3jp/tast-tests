@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ba4e8f0_ba660c6f",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-22T16:44:35Z",
+      "side": 1,
+      "message": "nit: the \": \" is unnecessary -- errors.Wrap will take care of that (cf. https://chromium.googlesource.com/chromiumos/platform/tast.git/+/refs/heads/master/src/chromiumos/tast/errors/errors.go#63)",
+      "range": {
+        "startLine": 172,
+        "startChar": 58,
+        "endLine": 172,
+        "endChar": 60
+      },
+      "revId": "aa60cb8ce822ffbbaab25a9604e50ef6775f3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
