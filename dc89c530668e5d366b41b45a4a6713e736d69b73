@@ -118,6 +118,30 @@
       "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b69e5f_d1a16d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-22T17:12:46Z",
+      "side": 1,
+      "message": "Regarding this test, it uses autotestPrivate.setTabletModeEnabled. This is slightly different but comes with the same conclusion; it does not use accelerometer data for the screen orientation. Camera unfortunately does not help here.\n\nThe point of this code is to resolve the potential mismatch between the touchscreen\u0027s orientation and the UI\u0027s orientation.",
+      "parentUuid": "f2eda407_afdf9c13",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
