@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -147,8 +148,9 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
 			diffFileName := axTreeDiffFilePrefix + currentActivity.Name + ".txt"
 			diffFilePath := filepath.Join(s.OutDir(), diffFileName)
+			diffString := fmt.Sprintf("(-want +got):\n%s", diff)
 			// When the accessibility tree is different, dump the diff and the obtained tree.
-			if err := ioutil.WriteFile(diffFilePath, []byte(diff), 0644); err != nil {
+			if err := ioutil.WriteFile(diffFilePath, []byte(diffString), 0644); err != nil {
 				return errors.Wrap(err, "accessibility tree did not match; failed to write diff to the file")
 			}
 			if err := dumpTree(appRoot, actualFilePath); err != nil {
