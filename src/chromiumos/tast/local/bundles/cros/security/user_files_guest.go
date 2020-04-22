@@ -68,6 +68,7 @@ func UserFilesGuest(ctx context.Context, s *testing.State) {
 
 	// Guest sessions can be mounted in a non-root mount namespace
 	// so the test needs to perform checks in that same namespace.
+	s.Log("Attempting to open Chrome mount namespace at ", nsPath)
 	chromeNsFd, err := unix.Open(nsPath, unix.O_CLOEXEC, unix.O_RDWR)
 	if err != nil {
 		s.Fatal("Opening Chrome mount namespace failed: ", err)
@@ -91,7 +92,7 @@ func UserFilesGuest(ctx context.Context, s *testing.State) {
 	defer unix.Setns(rootNsFd, unix.CLONE_NEWNS)
 
 	if err := unix.Setns(chromeNsFd, unix.CLONE_NEWNS); err != nil {
-		s.Fatal("Entering Chrome mount namespace failed: ", err)
+		s.Fatalf("Entering Chrome mount namespace at %s failed: %v", nsPath, err)
 	}
 
 	userfiles.Check(ctx, s, cr.User())
