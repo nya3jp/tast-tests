@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64fcfe36_40533dac",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T06:27:47Z",
+      "side": 1,
+      "message": "Should we also shorten ctx inside NewTestFixture for this Close?\n\nIf so, then maybe other components which need context in Close may also need this pattern? e.g. Router, APIface, hostapd.Server...",
+      "revId": "a665d3233fff171dfd409cfc4ba0f97a6bad29e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
