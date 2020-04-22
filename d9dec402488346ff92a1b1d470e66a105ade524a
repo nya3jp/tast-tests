@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6efef98e_53d6255c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-22T19:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58ffb92f_6d34c08e",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 24
+      },
+      "revId": "d9dec402488346ff92a1b1d470e66a105ade524a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5b29210_c56683c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-22T02:42:51Z",
       "side": 1,
       "message": "just a comment; I am not familiar with the display rotation definition in tablets. rotate90 for tablet-landscape sounded not obvious, but I could see same code in our codebase.",
+      "range": {
+        "startLine": 240,
+        "startChar": 68,
+        "endLine": 240,
+        "endChar": 84
+      },
+      "revId": "d9dec402488346ff92a1b1d470e66a105ade524a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54fa5c30_e35038cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-22T19:18:43Z",
+      "side": 1,
+      "message": "It is indeed confusing and unfortunate (90 degrees could mean anything); the \nalternative would be to specify \"landscape\", but the associated API is only\nwired as a getter in [1], and the API itself [2] only works on my scarlet if\nthe page is full screen :-( -- I spent a few hours on this.\n\nAs an alternative I documented what\u0027s happening and why we don\u0027t use those APIs,\nand basically implemented the Spec algorithm. where the rotation is infered from\nthe values of window.screen.{height,width} [3]\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/chrome/display/display.go;l\u003d225?q\u003dscreen.orientation\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fchrome%2Fdisplay%2F\n[2] https://www.w3.org/TR/screen-orientation/#screenorientation-interface\n[3] https://w3c.github.io/screen-orientation/#dfn-landscape-primary",
+      "parentUuid": "b5b29210_c56683c0",
       "range": {
         "startLine": 240,
         "startChar": 68,
