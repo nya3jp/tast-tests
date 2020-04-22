@@ -8,7 +8,9 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -57,37 +59,41 @@ func (h *APIface) ServerIP() net.IP {
 	return h.subnetIP(254)
 }
 
-// start the service. Make this private as one should start this from Router.
-func (h *APIface) start(ctx context.Context) (retErr error) {
+// start starts the service. Make this private as one should start this from Router.
+func (h *APIface) start(fullCtx context.Context) (shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
+	// Shorten ctx for revert h.configureIface()
+	// Note that it shortens ctx three times. We only need to call cancel of the first shortened context
+	// because the shorten context's Done channel is closed when the parent context's Done channel is closed.
+	sCtx, sCtxCancel := ctxutil.Shorten(fullCtx, time.Second)
 	defer func() {
-		if retErr == nil {
-			return
-		}
-		if err := h.stop(ctx); err != nil {
-			testing.ContextLogf(ctx, "Failed to stop HostAPHandle, err=%s", err.Error())
+		if retErr != nil {
+			sCtxCancel()
+			if err := h.stop(fullCtx); err != nil {
+				testing.ContextLogf(fullCtx, "Failed to stop HostAPHandle, err=%s", err.Error())
+			}
 		}
 	}()
 
-	if err := h.configureIface(ctx); err != nil {
-		return errors.Wrap(err, "failed to setup interface")
+	if err := h.configureIface(sCtx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to setup interface")
 	}
 
-	hs, err := hostapd.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.config)
+	hs, sCtx1, _, err := hostapd.StartServer(sCtx, h.host, h.name, h.iface, h.workDir, h.config)
 	if err != nil {
-		return errors.Wrap(err, "failed to start hostapd")
+		return nil, nil, errors.Wrap(err, "failed to start hostapd")
 	}
 	h.hostapd = hs
 
-	ds, err := dhcp.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.subnetIP(1), h.subnetIP(128))
+	ds, sCtx2, _, err := dhcp.StartServer(sCtx1, h.host, h.name, h.iface, h.workDir, h.subnetIP(1), h.subnetIP(128))
 	if err != nil {
-		return errors.Wrap(err, "failed to start dhcp server")
+		return nil, nil, errors.Wrap(err, "failed to start dhcp server")
 	}
 	h.dhcpd = ds
 
-	return nil
+	return sCtx2, sCtxCancel, nil
 }
 
-// stop the service. Make this private as one should stop it from Router.
+// stop stops the service. Make this private as one should stop it from Router.
 func (h *APIface) stop(ctx context.Context) error {
 	var retErr error
 	if h.dhcpd != nil {

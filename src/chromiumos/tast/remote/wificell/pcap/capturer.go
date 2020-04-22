@@ -49,10 +49,18 @@ type Capturer struct {
 	wg         sync.WaitGroup
 }
 
-const tcpdumpCmd = "tcpdump"
+const (
+	tcpdumpCmd               = "tcpdump"
+	durationForCoolDown      = 2 * time.Second // Extra time to caputure when Close() is called.
+	durationForInternalClose = 2 * time.Second
+	durationForClose         = durationForInternalClose + durationForCoolDown
+)
 
 // StartCapturer creates and starts a Capturer.
-func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, opts ...Option) (*Capturer, error) {
+// Note that after getting a capturer, c, the caller should defer c.Close(ctx) and
+// use c.ReserveForClose(ctx) to reserve time for calling the deferred call.
+func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, opts ...Option) (
+	*Capturer, context.Context, context.CancelFunc, error) {
 	c := &Capturer{
 		host:    host,
 		name:    name,
@@ -63,22 +71,25 @@ func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir str
 		opt(c)
 	}
 
-	if err := c.start(ctx); err != nil {
-		return nil, err
+	shortCtx, shortCtxCancel, err := c.start(ctx)
+	if err != nil {
+		return nil, nil, nil, err
 	}
-	return c, nil
+	return c, shortCtx, shortCtxCancel, nil
 }
 
-func (c *Capturer) start(ctx context.Context) (err error) {
-	// Clean up on error.
-	defer func(ctx context.Context) {
-		if err != nil {
-			c.close(ctx)
-		}
-	}(ctx)
+func (c *Capturer) start(fullCtx context.Context) (
+	shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
+	// Reserve time for the above deferred call.
+	ctx, ctxCancel := ctxutil.Shorten(fullCtx, durationForInternalClose)
 
-	ctx, shortenCancel := ctxutil.Shorten(ctx, 2*time.Second)
-	defer shortenCancel()
+	// Clean up on error.
+	defer func() {
+		if retErr != nil {
+			c.close(fullCtx)
+			ctxCancel()
+		}
+	}()
 
 	testing.ContextLogf(ctx, "Starting capturer on %s", c.iface)
 
@@ -88,19 +99,20 @@ func (c *Capturer) start(ctx context.Context) (err error) {
 	}
 
 	cmd := c.host.Command(tcpdumpCmd, args...)
+	var err error
 	c.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, c.filename("stdout"))
 	if err != nil {
-		return errors.Wrap(err, "failed to open stdout log of tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to open stdout log of tcpdump")
 	}
 	cmd.Stdout = c.stdoutFile
 
 	c.stderrFile, err = fileutil.PrepareOutDirFile(ctx, c.filename("stderr"))
 	if err != nil {
-		return errors.Wrap(err, "failed to open stderr log of tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to open stderr log of tcpdump")
 	}
 	stderrPipe, err := cmd.StderrPipe()
 	if err != nil {
-		return errors.Wrap(err, "failed to obtain StderrPipe of tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to obtain StderrPipe of tcpdump")
 	}
 	readyFunc := func(buf []byte) (bool, error) {
 		return bytes.Contains(buf, []byte("listening on")), nil
@@ -116,18 +128,19 @@ func (c *Capturer) start(ctx context.Context) (err error) {
 	}()
 
 	if err := cmd.Start(ctx); err != nil {
-		return errors.Wrap(err, "failed to start tcpdump")
+		return nil, nil, errors.Wrap(err, "failed to start tcpdump")
 	}
 	c.cmd = cmd
 
 	testing.ContextLog(ctx, "Waiting for tcpdump to be ready")
-	readyCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
-	defer cancel()
+	readyCtx, readyCtxCancel := context.WithTimeout(ctx, 15*time.Second)
+	defer readyCtxCancel()
 	if err := readyWriter.Wait(readyCtx); err != nil {
-		return err
+		return nil, nil, err
 	}
+	sCtx, _ := ctxutil.Shorten(ctx, durationForCoolDown)
 
-	return nil
+	return sCtx, ctxCancel, nil
 }
 
 // close kills the process, tries to download the packet file if available and
@@ -151,6 +164,11 @@ func (c *Capturer) close(ctx context.Context) error {
 		c.stderrFile.Close()
 	}
 	return err
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for c.Close() to run.
+func (c *Capturer) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, durationForClose)
 }
 
 // Close terminates the capturer and downloads the pcap file from host to OutDir.

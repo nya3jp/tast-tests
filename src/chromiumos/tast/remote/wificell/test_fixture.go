@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -34,21 +35,37 @@ type TestFixture struct {
 	curAP      *APIface
 }
 
-// NewTestFixture creates a TestFixture.
+// NewTestFixture creates a TestFixture with a shortCtx.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
-func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (ret *TestFixture, retErr error) {
+// shortCtx is used to reserve time for clean-up method, tf.Close() to run. For example:
+// func SomeTest(fullCtx context.Context, s *testing.State) {
+//   tf, ctx, ctxCancel, err := NewTestFixture(fullCtx, ...)
+//   if err != nil {
+//     s.Fatal("Failed to create TestFixture: ", err)
+//   }
+//   defer ctxCancel()
+//   defer tf.Close(fullCtx)
+//   // The rest of the code run things with ctx...
+// }
+func NewTestFixture(fullCtx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (
+	ret *TestFixture, shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
 	tf := &TestFixture{}
+	// Shorten fullCtx for tf.Close() in case of error.
+	ctx, ctxCancel := ctxutil.Shorten(fullCtx, 10*time.Second)
+
 	defer func() {
 		if retErr != nil {
-			tf.Close(ctx)
+			ctxCancel()
+			tf.Close(fullCtx)
 		}
 	}()
+
 	var err error
 	tf.dut = dut
 	tf.rpc, err = rpc.Dial(ctx, dut, rpcHint, "cros")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect rpc")
+		return nil, nil, nil, errors.Wrap(err, "failed to connect rpc")
 	}
 	tf.wifiClient = network.NewWifiClient(tf.rpc.Conn)
 
@@ -68,18 +85,18 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 		tf.routerHost, err = ssh.New(ctx, &sopt)
 	}
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to the router")
+		return nil, nil, nil, errors.Wrap(err, "failed to connect to the router")
 	}
 	tf.router, err = NewRouter(ctx, tf.routerHost, "router")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create a router object")
+		return nil, nil, nil, errors.Wrap(err, "failed to create a router object")
 	}
 
 	// TODO(crbug.com/1034875): set up pcap, attenuator.
 
 	// Seed the random as we have some randomization. e.g. default SSID.
 	rand.Seed(time.Now().UnixNano())
-	return tf, nil
+	return tf, ctx, ctxCancel, nil
 }
 
 // Close closes the connections created by TestFixture.
@@ -87,7 +104,7 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	var retErr error
 	if tf.router != nil {
 		if err := tf.router.Close(ctx); err != nil {
-			retErr = errors.Wrapf(retErr, "failed to close rotuer: %s", err.Error())
+			retErr = errors.Wrapf(retErr, "failed to close router: %s", err.Error())
 		}
 	}
 	if tf.routerHost != nil {
@@ -112,11 +129,25 @@ func (tf *TestFixture) getUniqueAPName() string {
 }
 
 // ConfigureAP configures the router to provide a WiFi service with the options specified.
-func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (*APIface, error) {
+// Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
+// run things with returned shortCtx:
+// func Foo(fullCtx context.Context, ...) {
+//   tf, tfCtx, tfCtxCancel, err := NewTestFixture(fullCtx, ...)
+//   ...
+//   ap, apCtx, apCtxCancel, err := tf.ConfigureAP(tfCtx, ...)
+//   if err != nil {
+//     return err
+//   }
+//   defer apCtxCancel()
+//   defer ap.DecofnigAP(tfCtx)
+//   // The rest of the code run things with apCtxc...
+// }
+func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (
+	*APIface, context.Context, context.CancelFunc, error) {
 	name := tf.getUniqueAPName()
 	config, err := hostapd.NewConfig(ops...)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 	return tf.router.StartAPIface(ctx, name, config)
 }

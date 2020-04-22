@@ -131,25 +131,27 @@ func init() {
 	})
 }
 
-func SimpleConnect(ctx context.Context, s *testing.State) {
+func SimpleConnect(fullCtx context.Context, s *testing.State) {
 	router, _ := s.Var("router")
-	tf, err := wificell.NewTestFixture(ctx, s.DUT(), s.RPCHint(), router)
+	tf, ctx, cancel, err := wificell.NewTestFixture(fullCtx, s.DUT(), s.RPCHint(), router)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
 	defer func() {
-		if err := tf.Close(ctx); err != nil {
+		if err := tf.Close(fullCtx); err != nil {
 			s.Log("Failed to tear down test fixture, err: ", err)
+			cancel()
 		}
 	}()
 
-	testOnce := func(ctx context.Context, s *testing.State, options []hostapd.Option) {
-		ap, err := tf.ConfigureAP(ctx, options...)
+	testOnce := func(fullCtx context.Context, s *testing.State, options []hostapd.Option) {
+		ap, ctx, cancel, err := tf.ConfigureAP(fullCtx, options...)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
 		}
+		defer cancel()
 		defer func() {
-			if err := tf.DeconfigAP(ctx, ap); err != nil {
+			if err := tf.DeconfigAP(fullCtx, ap); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
 		}()
@@ -159,10 +161,10 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
 		defer func() {
-			if err := tf.DisconnectWifi(ctx); err != nil {
+			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.SSID{Ssid: ap.Config().Ssid}); err != nil {
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, &network.SSID{Ssid: ap.Config().Ssid}); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
 		}()

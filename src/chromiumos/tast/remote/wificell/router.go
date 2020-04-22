@@ -11,8 +11,10 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -41,6 +43,8 @@ type Router struct {
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
+// Note that after getting a router, r, the caller should defer r.Close() and
+// use r.ReserveForClose() to reserve time for calling the deferred call.
 func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
 	r := &Router{
 		host:        host,
@@ -52,12 +56,19 @@ func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error
 		busyIfaces:  make(map[string]*iw.NetDev),
 		iwr:         remote_iw.NewRunner(host),
 	}
-	if err := r.initialize(ctx); err != nil {
+
+	shortCtx, cancel := r.ReserveForClose(ctx)
+	defer cancel()
+	if err := r.initialize(shortCtx); err != nil {
 		r.Close(ctx)
 		return nil, err
 	}
-
 	return r, nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for r.Close().
+func (r *Router) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // removeWifiIface removes iface with iw command.
@@ -291,11 +302,14 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
 // phy and re-use or create interface on the phy. Name is used on the path to store logs, config files
 // or related resources. The handle object for the service is returned.
-func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
+// Note that after getting an APIface, h, the caller should defer h.StopAPIfaceClose() and use
+// h.ReserveForStopAPIface() to reserve time for calling h.StopAPIface()
+func (r *Router) StartAPIface(fullCtx context.Context, name string, conf *hostapd.Config) (
+	*APIface, context.Context, context.CancelFunc, error) {
 	// Reserve required resources.
-	nd, err := r.netDev(ctx, conf.Channel, iw.IfTypeManaged)
+	nd, err := r.netDev(fullCtx, conf.Channel, iw.IfTypeManaged)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 	iface := nd.IfName
 	r.setIfaceBusy(iface)
@@ -303,7 +317,7 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 	idx, err := r.reserveSubnetIdx()
 	if err != nil {
 		r.freeIface(iface)
-		return nil, err
+		return nil, nil, nil, err
 	}
 
 	h := &APIface{
@@ -314,13 +328,13 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 		subnetIdx: idx,
 		config:    conf,
 	}
-	if err := h.start(ctx); err != nil {
-		// Release resources.
-		r.freeSubnetIdx(idx)
-		r.freeIface(iface)
-		return nil, err
+
+	shortCtx, shortCtxCancel, err := h.start(fullCtx)
+	if err != nil {
+		r.StopAPIface(fullCtx, h)
+		return nil, nil, nil, err
 	}
-	return h, nil
+	return h, shortCtx, shortCtxCancel, nil
 }
 
 // StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
@@ -334,15 +348,28 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 }
 
 // StartCapture starts a packet capturer.
-func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (ret *pcap.Capturer, retErr error) {
+// Note that after getting a capturer, c, the caller should defer r.StopCapture(ctx, c) and
+// use r.ReserveForStopCapture(ctx, c) to reserve time for calling the deferred call.
+func (r *Router) StartCapture(fullCtx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (
+	ret *pcap.Capturer, shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
 	freq, err := hostapd.ChannelToFrequency(ch)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 
-	nd, err := r.netDev(ctx, ch, iw.IfTypeMonitor)
+	// Shorten ctx to reserve time for running defer func() handling retErr != nil cases.
+	// Note that it shortens ctx twice. We only need to call cancel of the first shortened context
+	// because the shorten context's Done channel is closed when the parent context's Done channel is closed.
+	sCtx, sCtxCancel := ctxutil.Shorten(fullCtx, time.Second)
+	defer func() {
+		if retErr != nil {
+			sCtxCancel()
+		}
+	}()
+
+	nd, err := r.netDev(sCtx, ch, iw.IfTypeMonitor)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 	iface := nd.IfName
 	shared := r.isPhyBusyAny(nd.PhyNum)
@@ -354,31 +381,31 @@ func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps 
 		}
 	}()
 
-	if err := r.host.Command("ip", "link", "set", iface, "up").Run(ctx); err != nil {
-		return nil, errors.Wrapf(err, "failed to set %s up", iface)
+	if err := r.host.Command("ip", "link", "set", iface, "up").Run(sCtx); err != nil {
+		return nil, nil, nil, errors.Wrapf(err, "failed to set %s up", iface)
 	}
 	defer func() {
 		if retErr != nil {
-			if err := r.host.Command("ip", "link", "set", iface, "down").Run(ctx); err != nil {
-				testing.ContextLogf(ctx, "Failed to set %s down, err=%s", iface, err.Error())
+			if err := r.host.Command("ip", "link", "set", iface, "down").Run(fullCtx); err != nil {
+				testing.ContextLogf(fullCtx, "Failed to set %s down, err=%s", iface, err.Error())
 			}
 		}
 	}()
 
 	if !shared {
 		// The interface is not shared, set up frequency and bandwidth.
-		if err := r.iwr.SetFreq(ctx, iface, freq, freqOps...); err != nil {
-			return nil, errors.Wrapf(err, "failed to set frequency for interface %s", iface)
+		if err := r.iwr.SetFreq(sCtx, iface, freq, freqOps...); err != nil {
+			return nil, nil, nil, errors.Wrapf(err, "failed to set frequency for interface %s", iface)
 		}
 	} else {
-		testing.ContextLogf(ctx, "Skip configuring of the shared interface %s", iface)
+		testing.ContextLogf(sCtx, "Skip configuring of the shared interface %s", iface)
 	}
 
-	c, err := pcap.StartCapturer(ctx, r.host, name, iface, r.workDir(), pcapOps...)
+	c, sCtx2, _, err := pcap.StartCapturer(sCtx, r.host, name, iface, r.workDir(), pcapOps...)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to start a packet capturer")
+		return nil, nil, nil, errors.Wrap(err, "failed to start a packet capturer")
 	}
-	return c, nil
+	return c, sCtx2, sCtxCancel, nil
 }
 
 // StopCapture stops the packet capturer and releases related resources.

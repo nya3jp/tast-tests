@@ -12,8 +12,10 @@ import (
 	"os"
 	"path"
 	"sync"
+	"time"
 
 	"chromiumos/tast/common/network/daemonutil"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -46,7 +48,10 @@ type Server struct {
 // StartServer creates a new Server object and runs hostapd on iface of the given host with settings
 // specified in config. workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
-func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (*Server, error) {
+// Note that after StartServer() and get Server instance, s, the caller should defer s.Close(ctx) and
+// use s.ReserveForClose(ctx) to reserve time for the deferred call.
+func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (
+	*Server, context.Context, context.CancelFunc, error) {
 	s := &Server{
 		host:    host,
 		name:    name,
@@ -54,10 +59,11 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 		workDir: workDir,
 		conf:    config,
 	}
-	if err := s.start(ctx); err != nil {
-		return nil, err
+	shortCtx, shortCtxCancel, err := s.start(ctx)
+	if err != nil {
+		return nil, nil, nil, err
 	}
-	return s, nil
+	return s, shortCtx, shortCtxCancel, nil
 }
 
 // filename returns a filename for s to store different type of information.
@@ -87,20 +93,24 @@ func (s *Server) stderrFilename() string {
 }
 
 // start spawns a hostapd daemon and waits until it is ready.
-func (s *Server) start(ctx context.Context) (err error) {
-	// Cleanup on error.
+func (s *Server) start(fullCtx context.Context) (
+	shortCtx context.Context, shortCtxCancel context.CancelFunc, retErr error) {
+
+	// Shorten ctx to reserve time for d.Close() to run.
+	ctx, cancel := ctxutil.Shorten(fullCtx, 2*time.Second)
 	defer func() {
-		if err != nil {
-			s.Close(ctx)
+		if retErr != nil {
+			s.Close(fullCtx)
+			cancel()
 		}
 	}()
 
 	conf, err := s.conf.Format(s.iface, s.ctrlPath())
 	if err != nil {
-		return err
+		return nil, nil, err
 	}
 	if err := fileutil.WriteToHost(ctx, s.host, s.confPath(), []byte(conf)); err != nil {
-		return errors.Wrap(err, "failed to write config")
+		return nil, nil, errors.Wrap(err, "failed to write config")
 	}
 
 	testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
@@ -109,18 +119,18 @@ func (s *Server) start(ctx context.Context) (err error) {
 	// Prepare stdout/stderr log files.
 	s.stderrFile, err = fileutil.PrepareOutDirFile(ctx, s.stderrFilename())
 	if err != nil {
-		return errors.Wrap(err, "failed to open stderr log of hostapd")
+		return nil, nil, errors.Wrap(err, "failed to open stderr log of hostapd")
 	}
 	cmd.Stderr = s.stderrFile
 
 	s.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, s.stdoutFilename())
 	if err != nil {
-		return errors.Wrap(err, "failed to open stdout log of hostapd")
+		return nil, nil, errors.Wrap(err, "failed to open stdout log of hostapd")
 	}
 
 	stdoutPipe, err := cmd.StdoutPipe()
 	if err != nil {
-		return errors.Wrap(err, "failed to obtain StdoutPipe of hostapd")
+		return nil, nil, errors.Wrap(err, "failed to obtain StdoutPipe of hostapd")
 	}
 	readyFunc := func(buf []byte) (bool, error) {
 		if bytes.Contains(buf, []byte("Interface initialization failed")) {
@@ -141,17 +151,17 @@ func (s *Server) start(ctx context.Context) (err error) {
 	}()
 
 	if err := cmd.Start(ctx); err != nil {
-		return errors.Wrap(err, "failed to start hostapd")
+		return nil, nil, errors.Wrap(err, "failed to start hostapd")
 	}
 	s.cmd = cmd
 
 	// Wait for hostapd to get ready.
 	if err := readyWriter.Wait(ctx); err != nil {
-		return err
+		return nil, nil, err
 	}
 
 	testing.ContextLog(ctx, "hostapd started")
-	return nil
+	return ctx, cancel, nil
 }
 
 // Close stops hostapd and cleans up related resources.
