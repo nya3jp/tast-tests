@@ -16,6 +16,24 @@
       "revId": "5751f9f76d40f5d59f7e5148b2cf81e968aa4aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7369eb34_404acfff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1345272
+      },
+      "writtenOn": "2020-04-22T16:23:28Z",
+      "side": 1,
+      "message": "I agree that would be a lot better, but when I tried that I ran into this error:\n   Tast requires exactly one symbol (test function or service type) to be exported in an entry file\n\nNow when trying to reproduce that error I learned that that error is only thrown when the function name is Capitalized, so I\u0027ve moved this to a lower-case file-scoped function.",
+      "parentUuid": "bb698318_7ecdc5c3",
+      "revId": "5751f9f76d40f5d59f7e5148b2cf81e968aa4aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
