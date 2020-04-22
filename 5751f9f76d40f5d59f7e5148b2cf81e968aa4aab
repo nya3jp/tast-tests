@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb698318_7ecdc5c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-22T02:01:57Z",
+      "side": 1,
+      "message": "Can this function be a normal file-scoped function, as it looks ctx is the only variable it needs?",
+      "revId": "5751f9f76d40f5d59f7e5148b2cf81e968aa4aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
