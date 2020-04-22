@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf4dcc8_7d7dadfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-22T20:47:23Z",
+      "side": 1,
+      "message": "\"adb pull /proc/1/mountinfo\" raises the \"Permission denied\" error for ARCVM R user images, whereas \"adb pull /proc/self/mountinfo\" and \"adb shell cat /proc/1/mountinfo\" succeed.\nHere I have chosen to read from \"/proc/self/mountinfo\" (which makes use of \"adb pull /proc/self/mountinfo\") since it suffices for the current purpose of checking the mount information of binfmt_misc.",
+      "range": {
+        "startLine": 109,
+        "startChar": 30,
+        "endLine": 109,
+        "endChar": 34
+      },
+      "revId": "0362d2af976a7ac54c16c4ad05d6ffc0f83f3864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
