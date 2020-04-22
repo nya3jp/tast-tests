@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e3266ec6_35729d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/drivefs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-22T16:51:54Z",
+      "side": 1,
+      "message": "Got it. Thank you for explanation.",
+      "parentUuid": "3bc28366_9d4dc8e8",
+      "revId": "740d3de8bfa6a444e5c65352cabdaf8625041163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b73b0ca2_2366c6dc",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 6
