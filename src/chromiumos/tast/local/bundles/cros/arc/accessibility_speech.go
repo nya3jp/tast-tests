@@ -119,7 +119,11 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 					return testing.PollBreak(err)
 				}
 				if diff := cmp.Diff(testStep.wantLogs, gotLogs); diff != "" {
-					return errors.Errorf("speech log was not as expected, diff is %q", diff)
+					diffFileName := "accessibility_speech_diff.txt"
+					if err := accessibility.DumpDiff(s, diff, diffFileName); err != nil {
+						return errors.Wrap(err, "speech log was not as expected, failed to dump diff")
+					}
+					return errors.Errorf("speech was not as expected, dumped diff to %s", diffFileName)
 				}
 				return nil
 			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
