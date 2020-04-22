@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c52b3158_a889e719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-22T22:23:52Z",
+      "side": 1,
+      "message": "nit: do we want to log this?",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "818facf4c7ca4b59f2d502a9456dde7705d9c43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
