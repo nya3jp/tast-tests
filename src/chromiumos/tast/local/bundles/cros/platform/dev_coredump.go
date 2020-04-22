@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DevCoredump,
 		Desc:         "Verify device coredumps are handled as expected",
-		Contacts:     []string{"mwiitala@google.com", "cros-telemetry@google.com"},
+		Contacts:     []string{"briannorris@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
 	})
@@ -53,13 +53,13 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 	s.Log("Triggering a devcoredump by restarting wifi firmware")
 
 	// Use the find command to get the full path to the fw_restart file.
-	path, err := testexec.CommandContext(ctx, "find", iwlwifiDir, "-name", "fw_restart").Output()
+	path, err := testexec.CommandContext(ctx, "find", iwlwifiDir, "-name", "fw_restart").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to find fw_restart file: ", err)
 	}
 
 	// Trigger a wifi fw restart by echoing 1 into the fw_restart file.
-	err = testexec.CommandContext(ctx, "sh", "-c", string("echo 1 > "+string(path))).Run()
+	err = testexec.CommandContext(ctx, "sh", "-c", string("echo 1 > "+string(path))).Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to trigger device coredump: ", err)
 	}
