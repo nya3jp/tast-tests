@@ -61,8 +61,6 @@ func NewDeviceFromRecording(ctx context.Context, file *os.File) (*Device, error)
 				return nil, errors.Wrapf(err, parsingError, i)
 			}
 			copy(data.Descriptor[:], descriptor[:])
-		} else if !(strings.HasPrefix(line, "#") && !strings.HasPrefix(line, "E: ")) {
-			return nil, errors.Errorf("invalid hid recording prefix. Line: %d", i)
 		}
 	}
 	d := &Device{Data: data}
