@@ -11,8 +11,10 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -42,6 +44,8 @@ type Router struct {
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
+// After getting a Server instance, d, the caller should call r.Close() at the end, and use the
+// shortened ctx (provided by d.ReserveForClose()) before r.Close() to reserve time for it to run.
 func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
 	ctx, st := timing.Start(ctx, "NewRouter")
 	defer st.End()
@@ -56,12 +60,20 @@ func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error
 		busyIfaces:  make(map[string]*iw.NetDev),
 		iwr:         remote_iw.NewRunner(host),
 	}
-	if err := r.initialize(ctx); err != nil {
+
+	shortCtx, cancel := r.ReserveForClose(ctx)
+	defer cancel()
+	if err := r.initialize(shortCtx); err != nil {
 		r.Close(ctx)
 		return nil, err
 	}
-
 	return r, nil
+}
+
+// ReserveForClose returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before r.Close() to reserve time for it to run.
+func (r *Router) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // removeWifiIface removes iface with iw command.
@@ -319,6 +331,9 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
 // phy and re-use or create interface on the phy. Name is used on the path to store logs, config files
 // or related resources. The handle object for the service is returned.
+// After getting an APIface instance, h, the caller should call h.StopAPIfaceClose() at the end,
+// and use the shortened ctx (provided by h.ReserveForStopAPIface()) before h.StopAPIfaceClose()
+// to reserve time for it to run.
 func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
 	ctx, st := timing.Start(ctx, "router.StartAPIface")
 	defer st.End()
@@ -345,13 +360,20 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 		subnetIdx: idx,
 		config:    conf,
 	}
+
+	// Note that we don't need to reserve time for clean up as h.start() reserves time to clean
+	// up itself and the rest of cleaning up in r.StopAPIface() does not limited by ctx.
 	if err := h.start(ctx); err != nil {
-		// Release resources.
-		r.freeSubnetIdx(idx)
-		r.freeIface(iface)
+		r.StopAPIface(ctx, h)
 		return nil, err
 	}
 	return h, nil
+}
+
+// ReserveForStopAPIface returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before r.StopAPIface() to reserve time for it to run.
+func (r *Router) ReserveForStopAPIface(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
+	return h.reserveForStop(ctx)
 }
 
 // StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
@@ -368,6 +390,9 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 }
 
 // StartCapture starts a packet capturer.
+// After getting a Capturer instance, c, the caller should call r.StopCapture(ctx, c) at the end,
+// and use the shortened ctx (provided by r.ReserveForStopCapture(ctx, c)) before r.StopCapture()
+// to reserve time for it to run.
 func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (ret *pcap.Capturer, retErr error) {
 	ctx, st := timing.Start(ctx, "router.StartCapture")
 	defer st.End()
@@ -416,6 +441,12 @@ func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps 
 		return nil, errors.Wrap(err, "failed to start a packet capturer")
 	}
 	return c, nil
+}
+
+// ReserveForStopCapture returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before r.StopCapture() to reserve time for it to run.
+func (r *Router) ReserveForStopCapture(ctx context.Context, capturer *pcap.Capturer) (context.Context, context.CancelFunc) {
+	return capturer.ReserveForClose(ctx)
 }
 
 // StopCapture stops the packet capturer and releases related resources.
