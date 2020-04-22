@@ -55,8 +55,8 @@ const (
 	// edges of the screen intefering with drag-move and drag-resize of windows.
 	insetSlopDP int = 40
 
-	// chromeTypeCros indicates we are using the ChromeOS system's Chrome browser
-	chromeTypeCros = "cros"
+	// chromeTypeChromeOS indicates we are using the ChromeOS system's Chrome browser
+	chromeTypeChromeOS = "chromeos"
 	// chromeTypeLacros indicates we are using Linux Chrome
 	chromeTypeLacros = "lacros"
 )
@@ -601,7 +601,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, pv *perf.Values, p gp
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, pd, pv, p, chromeTypeCros, ctconn)
+	return runTest(ctx, pd, pv, p, chromeTypeChromeOS, ctconn)
 }
 
 func GpuCUJ(ctx context.Context, s *testing.State) {
