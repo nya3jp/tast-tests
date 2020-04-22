@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58ffb92f_6d34c08e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-22T02:42:51Z",
+      "side": 1,
+      "message": "huge nit: is it the height (or the vertical resolution) that is too large?",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 24
+      },
+      "revId": "d9dec402488346ff92a1b1d470e66a105ade524a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b29210_c56683c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-04-22T02:42:51Z",
+      "side": 1,
+      "message": "just a comment; I am not familiar with the display rotation definition in tablets. rotate90 for tablet-landscape sounded not obvious, but I could see same code in our codebase.",
+      "range": {
+        "startLine": 240,
+        "startChar": 68,
+        "endLine": 240,
+        "endChar": 84
+      },
+      "revId": "d9dec402488346ff92a1b1d470e66a105ade524a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
