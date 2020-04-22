@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "5a25b7c6_5e35c59e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T00:32:08Z",
+      "side": 1,
+      "message": "I went with FindAnyMatchingService, one time. We can revisit if we ever find that we\u0027re getting a colliding service in multiple profiles.",
+      "parentUuid": "3c89c058_e2fbc80f",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cc1558e_157442b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
         "patchSetId": 1
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "80cbf7a3_3d067771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T00:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a386a7_385cf285",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4efdafab_289eca8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
         "patchSetId": 1
@@ -164,6 +212,30 @@
       "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64c21c9_0a93a900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T00:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4efdafab_289eca8f",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "70c3fb03aff3b43631307b504037fccb6b997d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
