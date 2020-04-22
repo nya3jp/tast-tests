@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2963bde0_427f200f",
+        "filename": "android/ArcNotificationTest/src/org/chromium/arc/testapp/NotificationActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-22T05:21:49Z",
+      "side": 1,
+      "message": "I\u0027d rather not have logging here as it is a normal case that the activity is started without intent.",
+      "revId": "8cc527b87f74ccf8dadca0f33be2a4f8d99a4a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
