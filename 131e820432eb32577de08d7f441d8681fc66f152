@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9142a0a6_2b498a52",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T18:44:55Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think we want to do this for *all* errors. We really only want it for cases where the pcap address was both\n(a) not specified directly (i.e., it\u0027s only implied by DefaultWifiPcapHost) and\n(b) not a valid host\n\nNotably, I don\u0027t think we want to do this just because \u003cfoo\u003e-pcap is down for some reason (e.g., fails ping / SSH).\n\nFor (a): I think we should just move this up to line 126/127\nFor (b): Is there any way to determine that DefaultWifiPcapHost() failed hostname lookup?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 51
+      },
+      "revId": "131e820432eb32577de08d7f441d8681fc66f152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eb40d0b_656f94b1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T18:44:55Z",
+      "side": 1,
+      "message": "could be \u0027defer\u0027d above, to avoid error-prone repetition?\n\n  defer func() {\n    if retErr !\u003d nil {\n      tf.router.StopAPIface(ctx, ap)\n    }\n  }()",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "131e820432eb32577de08d7f441d8681fc66f152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c739a6b_07aa6559",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T18:44:55Z",
+      "side": 1,
+      "message": "similar to previous CLs: I think I\u0027ve seen reviewers suggest not wrapping unrelated errors together this way, as it makes for confusing results. It was deemed better to just log one and wrap/return the other.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 78
+      },
+      "revId": "131e820432eb32577de08d7f441d8681fc66f152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
