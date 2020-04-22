@@ -119,7 +119,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 					return testing.PollBreak(err)
 				}
 				if diff := cmp.Diff(testStep.wantLogs, gotLogs); diff != "" {
-					return errors.Errorf("speech log was not as expected, diff is %q", diff)
+					return errors.Errorf("speech log was not as expected, (-want +got):%s", diff)
 				}
 				return nil
 			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
