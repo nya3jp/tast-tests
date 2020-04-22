@@ -12,8 +12,10 @@ import (
 	"os"
 	"path"
 	"sync"
+	"time"
 
 	"chromiumos/tast/common/network/daemonutil"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -88,12 +90,15 @@ func (s *Server) stderrFilename() string {
 
 // start spawns a hostapd daemon and waits until it is ready.
 func (s *Server) start(ctx context.Context) (err error) {
-	// Cleanup on error.
-	defer func() {
+	// Use passing-in ctx to perform clean-up on error.
+	defer func(ctx context.Context) {
 		if err != nil {
 			s.Close(ctx)
 		}
-	}()
+	}(ctx)
+
+	ctx, cancel := s.ReserveForClose(ctx)
+	defer cancel()
 
 	conf, err := s.conf.Format(s.iface, s.ctrlPath())
 	if err != nil {
@@ -152,6 +157,11 @@ func (s *Server) start(ctx context.Context) (err error) {
 
 	testing.ContextLog(ctx, "hostapd started")
 	return nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for s.Close() to run.
+func (s *Server) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 2*time.Second)
 }
 
 // Close stops hostapd and cleans up related resources.

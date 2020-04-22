@@ -129,23 +129,33 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
-	defer func() {
+
+	// Use passing-in ctx to perform clean-up on error.
+	defer func(ctx context.Context) {
 		if err := tf.Close(ctx); err != nil {
 			s.Log("Failed to tear down test fixture, err: ", err)
 		}
-	}()
+	}(ctx)
+
+	ctx, cancel := tf.ReserveForClose(ctx)
+	defer cancel()
 
 	testOnce := func(ctx context.Context, s *testing.State, options []hostapd.Option) {
 		ap, err := tf.ConfigureAP(ctx, options...)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
 		}
-		defer func() {
+
+		// Use passing-in ctx to perform tf.DeconfigAP().
+		defer func(ctx context.Context) {
 			if err := tf.DeconfigAP(ctx, ap); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
-		}()
+		}(ctx)
 		s.Log("AP setup done")
+
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
+		defer cancel()
 
 		if err := tf.ConnectWifi(ctx, ap); err != nil {
 			s.Fatal("Failed to connect to WiFi, err: ", err)

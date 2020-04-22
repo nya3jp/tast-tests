@@ -9,6 +9,7 @@ import (
 	"math/rand"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
@@ -34,13 +35,26 @@ type TestFixture struct {
 // NewTestFixture creates a TestFixture.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
+// After the caller gets the TestFixture instance, it should reserve time for Close() the TestFixture:
+//   tf, err := NewTestFixture(ctx, ...)
+//   if err != nil {...}
+//   defer tf.Close(ctx)
+//   ctx, cancel := tf.ReserveForClose(ctx)
+//   defer cancel()
+//   ...
 func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (ret *TestFixture, retErr error) {
 	tf := &TestFixture{}
-	defer func() {
+
+	// Use passing-in ctx to perform clean-up on error.
+	defer func(ctx context.Context) {
 		if retErr != nil {
 			tf.Close(ctx)
 		}
-	}()
+	}(ctx)
+
+	ctx, cancel := tf.ReserveForClose(ctx)
+	defer cancel()
+
 	var err error
 	tf.dut = dut
 	tf.rpc, err = rpc.Dial(ctx, dut, rpcHint, "cros")
@@ -79,12 +93,17 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 	return tf, nil
 }
 
+// ReserveForClose returns a shorter ctx and cancel function for tf.Close().
+func (tf *TestFixture) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 10*time.Second)
+}
+
 // Close closes the connections created by TestFixture.
 func (tf *TestFixture) Close(ctx context.Context) error {
 	var retErr error
 	if tf.router != nil {
 		if err := tf.router.Close(ctx); err != nil {
-			retErr = errors.Wrapf(retErr, "failed to close rotuer: %s", err.Error())
+			retErr = errors.Wrapf(retErr, "failed to close router: %s", err.Error())
 		}
 	}
 	if tf.routerHost != nil {
@@ -107,6 +126,14 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops ...hostapd.Option) (
 		return nil, err
 	}
 	return tf.router.StartAPIface(ctx, config)
+}
+
+// ReserveForDeconfigAP returns a shorter ctx and cancel function for tf.DeconfigAP().
+func (tf *TestFixture) ReserveForDeconfigAP(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
+	if tf.router == nil {
+		return ctx, func() {}
+	}
+	return tf.router.ReserveForStopAPIface(ctx, h)
 }
 
 // DeconfigAP stops the WiFi service on router.

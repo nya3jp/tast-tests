@@ -12,7 +12,9 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -90,12 +92,15 @@ func (d *Server) stderrFilename() string {
 
 // start spawns dnsmasq daemon.
 func (d *Server) start(ctx context.Context) (err error) {
-	// Clean up on error.
-	defer func() {
+	// Use passing-in ctx to perform clean-up on error.
+	defer func(ctx context.Context) {
 		if err != nil {
 			d.Close(ctx)
 		}
-	}()
+	}(ctx)
+
+	ctx, cancel := d.ReserveForClose(ctx)
+	defer cancel()
 
 	conf := fmt.Sprintf(strings.Join([]string{
 		"port=0", // Disables DNS server.
@@ -134,6 +139,11 @@ func (d *Server) start(ctx context.Context) (err error) {
 	d.cmd = cmd
 
 	return nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for d.Close() to run.
+func (d *Server) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 2*time.Second)
 }
 
 // Close stops the dhcp server and cleans up related resources.

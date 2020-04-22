@@ -11,8 +11,10 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -50,12 +52,19 @@ func NewRouter(ctx context.Context, host *ssh.Conn) (*Router, error) {
 		busyIfaces:  make(map[string]*iw.NetDev),
 		iwr:         remote_iw.NewRunner(host),
 	}
-	if err := r.initialize(ctx); err != nil {
+
+	shortCtx, cancel := r.ReserveForClose(ctx)
+	defer cancel()
+	if err := r.initialize(shortCtx); err != nil {
 		r.Close(ctx)
 		return nil, err
 	}
-
 	return r, nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for r.Close().
+func (r *Router) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // removeWifiIface removes iface with iw command.
@@ -301,7 +310,7 @@ func (r *Router) getUniqueServiceName() string {
 
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
 // phy and re-use or create interface on the phy. The handle object for the service is returned.
-func (r *Router) StartAPIface(ctx context.Context, conf *hostapd.Config) (*APIface, error) {
+func (r *Router) StartAPIface(ctx context.Context, conf *hostapd.Config) (apIface *APIface, retErr error) {
 	// Reserve required resources.
 	name := r.getUniqueServiceName()
 	iface, err := r.selectInterface(ctx, conf.Channel, iw.IfTypeManaged)
@@ -324,19 +333,32 @@ func (r *Router) StartAPIface(ctx context.Context, conf *hostapd.Config) (*APIfa
 		subnetIdx: idx,
 		config:    conf,
 	}
-	if err := h.start(ctx); err != nil {
-		// Release resources.
-		r.freeSubnetIdx(idx)
-		r.freeIface(iface)
+
+	shortCtx, cancel := r.ReserveForStopAPIface(ctx, h)
+	defer cancel()
+
+	if err := h.start(shortCtx); err != nil {
+		r.StopAPIface(ctx, h)
 		return nil, err
 	}
 	return h, nil
 }
 
+// ReserveForStopAPIface returns a shorter ctx and cancel function for r.StopAPIface() to run.
+func (r *Router) ReserveForStopAPIface(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
+	if h == nil {
+		return ctxutil.Shorten(ctx, time.Second)
+	}
+	return h.reserveForStop(ctx)
+}
+
 // StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
 // as free to re-use.
 func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
-	err := h.stop(ctx)
+	var err error
+	if h != nil {
+		err = h.stop(ctx)
+	}
 	// Free resources even if something went wrong in stop.
 	r.freeSubnetIdx(h.subnetIdx)
 	r.freeIface(h.iface)
