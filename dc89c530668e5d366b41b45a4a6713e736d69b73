@@ -70,6 +70,30 @@
       "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64797582_f58b8873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-22T03:13:02Z",
+      "side": 1,
+      "message": "It originally comes from https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2064097/4/src/chromiumos/tast/local/bundles/cros/arc/soft_input_mode.go#104 so it\u0027s Ricardo\u0027s suggestion.\n\nI think the point is that GetOrientation does not give physically which is up, and camera orientation is the only reliable way to get that.",
+      "parentUuid": "95b91287_586bb9ca",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
