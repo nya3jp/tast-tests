@@ -29,7 +29,6 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "",
 			ExtraSoftwareDeps: []string{"factory_toolkit"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "all",
 			ExtraAttr: []string{"informational"},
