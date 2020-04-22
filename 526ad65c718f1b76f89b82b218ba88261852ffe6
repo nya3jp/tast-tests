@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1bedd9a_92eeedfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-22T06:50:05Z",
+      "side": 1,
+      "message": "You can determine the SoftwareDeps when running the test. You can skip adding a parameter by matching against android_p and android_vm.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/state.go;l\u003d278",
+      "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
