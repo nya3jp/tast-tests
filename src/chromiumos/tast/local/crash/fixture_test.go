@@ -414,6 +414,7 @@ func TestSetUpAndTearDownCrashTestWithOldStash(t *testing.T) {
 
 func TestMoveAllCrashesTo(t *testing.T) {
 	tmpDir := testutil.TempDir(t)
+	defer os.RemoveAll(tmpDir)
 	nonExistent := filepath.Join(tmpDir, "non_existent")
 	dst1 := filepath.Join(tmpDir, "dstdir1")
 	if err := moveAllCrashesTo(nonExistent, dst1); !os.IsNotExist(err) {
