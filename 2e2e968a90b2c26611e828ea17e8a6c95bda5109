@@ -110,6 +110,30 @@
       "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ea581de_4c1b639b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T09:47:08Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. As they don\u0027t really share anything, I think it is good to have a separate test.",
+      "parentUuid": "c6028b7b_d5840e18",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 10
+      },
+      "revId": "2e2e968a90b2c26611e828ea17e8a6c95bda5109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
