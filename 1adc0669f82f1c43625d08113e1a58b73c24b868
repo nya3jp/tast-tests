@@ -33,6 +33,132 @@
       "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa151e8_73c2fcf9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T03:27:09Z",
+      "side": 1,
+      "message": "With the discussion in crbug.com/827829#c24, maybe we should use ac + 40MHz channel width? (but then the test should exclude monroe...)",
+      "range": {
+        "startLine": 46,
+        "startChar": 42,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806c9bba_fc1b998a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T03:27:09Z",
+      "side": 1,
+      "message": "I guess you can use Channel(1) directly and skip the FrequencyToChannel?",
+      "range": {
+        "startLine": 46,
+        "startChar": 63,
+        "endLine": 46,
+        "endChar": 81
+      },
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e5d989_af3ac9c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T03:27:09Z",
+      "side": 1,
+      "message": "I think network_WiFi_DisconnectClearsIP does not assert this? This is the port of assert_no_disconnects but not part of assert_ping_from_dut so SimpleConnect has it.",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d4021b_7f6072a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T03:27:09Z",
+      "side": 1,
+      "message": "I guess you don\u0027t fatal here in order to clean up profile entries even when DisconnectWifi failed as TestFixture does not yet clean them up for you. (fyi, my cl for this: crrev.com/c/2119776) But then it will print \"successfully disconnected\" even when error...\n\nMaybe check s.HasError() and early exit before line93?",
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b1efc2_e0746528",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T03:27:09Z",
+      "side": 1,
+      "message": "Use Interval in PollOptions instead?",
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52f9cba2_31a12740",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T03:27:09Z",
+      "side": 1,
+      "message": "In the original version, I think it\u0027s 10 attempt * 1s interval?",
+      "range": {
+        "startLine": 107,
+        "startChar": 34,
+        "endLine": 107,
+        "endChar": 37
+      },
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
