@@ -11,8 +11,10 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -52,12 +54,19 @@ func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error
 		busyIfaces:  make(map[string]*iw.NetDev),
 		iwr:         remote_iw.NewRunner(host),
 	}
-	if err := r.initialize(ctx); err != nil {
+
+	shortCtx, cancel := r.ReserveForClose(ctx)
+	defer cancel()
+	if err := r.initialize(shortCtx); err != nil {
 		r.Close(ctx)
 		return nil, err
 	}
-
 	return r, nil
+}
+
+// ReserveForClose returns a shorter ctx and cancel function for r.Close().
+func (r *Router) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // removeWifiIface removes iface with iw command.
@@ -311,13 +320,20 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 		subnetIdx: idx,
 		config:    conf,
 	}
-	if err := h.start(ctx); err != nil {
-		// Release resources.
-		r.freeSubnetIdx(idx)
-		r.freeIface(iface)
+
+	shortCtx, cancel := r.ReserveForStopAPIface(ctx, h)
+	defer cancel()
+
+	if err := h.start(shortCtx); err != nil {
+		r.StopAPIface(ctx, h)
 		return nil, err
 	}
 	return h, nil
+}
+
+// ReserveForStopAPIface returns a shorter ctx and cancel function for r.StopAPIface() to run.
+func (r *Router) ReserveForStopAPIface(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
+	return h.reserveForStop(ctx)
 }
 
 // StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
