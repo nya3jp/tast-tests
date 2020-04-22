@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "b7d77725_527c3a3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-22T09:54:01Z",
+      "side": 1,
+      "message": "The test is exercising the camera stack lower than ARC level, and should work even if ARCVM failed to boot. \n\nDo we run other non-ARC related critical tests on ARCVM boards? If so, I think HAL3 should be classified as such too.",
+      "parentUuid": "bf3ac076_1fe519cd",
+      "revId": "f3ab2d30a0154dcef65c30bbd8081b136e4489e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff3b0d57_4e3b80f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 1
