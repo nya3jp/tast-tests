@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b60cb848_05642bde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-22T18:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b811a9c3_d978d005",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "979d52df_eac66bbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ba705efa_33856cc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-22T18:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979d52df_eac66bbc",
+      "range": {
+        "startLine": 39,
+        "startChar": 71,
+        "endLine": 39,
+        "endChar": 74
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a1e3c8_874e0114",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-13T07:44:08Z",
       "side": 1,
       "message": "does it also create a session?\nDoes it mean it wait until a session is created by polling the status of the IPC file?",
+      "range": {
+        "startLine": 40,
+        "startChar": 95,
+        "endLine": 40,
+        "endChar": 122
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ad01b4_00f726e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-22T18:33:37Z",
+      "side": 1,
+      "message": "Yes, both --check_... and --use_... create a session.\n\n--check_... will wait for --use_... to finish creating its session by poll the IPC file, then --check_... will create its own session.\n\nComments updated to reflect that.",
+      "parentUuid": "d3a1e3c8_874e0114",
       "range": {
         "startLine": 40,
         "startChar": 95,
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "81d522f8_3a6a6a2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-22T18:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5707c8e_36f6a76e",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "931ebd07_18340027",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
         "patchSetId": 3
@@ -161,6 +257,30 @@
       "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9f7773_3c9f35ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-22T18:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "931ebd07_18340027",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 3
+      },
+      "revId": "d886b21f81e18070c0a31c7a8f0b20b328804bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
