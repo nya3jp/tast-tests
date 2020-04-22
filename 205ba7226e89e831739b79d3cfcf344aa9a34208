@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3d0b960_e9754016",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T01:59:42Z",
+      "side": 1,
+      "message": "I can\u0027t really tell whether a map or just a switch/case would make more sense. *shrug*",
+      "range": {
+        "startLine": 370,
+        "startChar": 8,
+        "endLine": 370,
+        "endChar": 30
+      },
+      "revId": "205ba7226e89e831739b79d3cfcf344aa9a34208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
