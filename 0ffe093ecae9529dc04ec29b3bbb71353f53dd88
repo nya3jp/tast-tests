@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca234877_40b7fc32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-22T13:32:43Z",
+      "side": 1,
+      "message": "minor nit: don\u0027t forward testing.State, pass the SoftwareDeps.",
+      "revId": "0ffe093ecae9529dc04ec29b3bbb71353f53dd88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
