@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a5d4a5f_0a1ddf47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2020-04-22T13:14:33Z",
+      "side": 1,
+      "message": "Done, thanks",
+      "parentUuid": "7970e486_7f0053ce",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40f61414_bd88789f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4948391_8e1f9ba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2020-04-22T13:14:33Z",
+      "side": 1,
+      "message": "Done, sorry I missed this",
+      "parentUuid": "40f61414_bd88789f",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 63
+      },
+      "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -80,6 +128,24 @@
       "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38cf5ef_9268a39b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2020-04-22T13:14:33Z",
+      "side": 1,
+      "message": "Done, removed the redundancy",
+      "parentUuid": "17b892df_7c90e921",
+      "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
