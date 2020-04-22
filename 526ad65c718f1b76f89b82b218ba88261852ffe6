@@ -16,6 +16,24 @@
       "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b892df_7c90e921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-22T09:22:39Z",
+      "side": 1,
+      "message": "As discussed offline with Oleh my comment is a bit unclear.\n\nYou can remove the isBertha flag as it is redundant. Query SoftwareDeps and change the behaviour of the test based on that. Check for the presence of android_vm instead of the flag.\n\nisBertha :\u003dfalse\nfor _, dep :\u003d range s.SoftwareDeps() {\n  if dep \u003d\u003d \"android_vm\" {\n     isBertha \u003d true\n   }\n}\n\nFeel free to chose which method you like best.",
+      "parentUuid": "e1bedd9a_92eeedfa",
+      "revId": "526ad65c718f1b76f89b82b218ba88261852ffe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
