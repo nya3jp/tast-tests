@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1b82c3c_dab0646c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T07:03:27Z",
+      "side": 1,
+      "message": "Hmm..., I\u0027m worried that \u0027s\u0027 now seems to be overriden by the \"return nil, err\"?\nMaybe use another name for the named return *Server and do not access it?",
+      "revId": "8b089cfca59f454b6802054f078eda12e10f1a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
