@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b965baed_819fa83a",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:46:46Z",
+      "side": 1,
+      "message": "frequency",
+      "range": {
+        "startLine": 366,
+        "startChar": 41,
+        "endLine": 366,
+        "endChar": 50
+      },
+      "revId": "067e79c1ce71a7a7074299e0bec1bc7cdcb03ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e699b070_b2fccaa7",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T17:46:46Z",
+      "side": 1,
+      "message": "I\u0027ve been told on other reviews that wrapping unrelated errors together like this makes for confusing results. The suggested alternative was to just log one of them and return/wrap the other. It makes for a little more awkward code, I think, but I do believe the logging ends up clearer that way.",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 79
+      },
+      "revId": "067e79c1ce71a7a7074299e0bec1bc7cdcb03ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
