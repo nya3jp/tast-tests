@@ -98,8 +98,8 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 	f.Close()
 
 	const (
-		logFileRegex  = `selinux_violation_cros\.\d{8}\.\d{6}\.0\.log`
-		metaFileRegex = `selinux_violation_cros\.\d{8}\.\d{6}\.0\.meta`
+		logFileRegex  = `selinux_violation_cros\.\d{8}\.\d{6}\.\d+\.log`
+		metaFileRegex = `selinux_violation_cros\.\d{8}\.\d{6}\.\d+\.meta`
 	)
 	expectedRegexes := []string{logFileRegex, metaFileRegex}
 
