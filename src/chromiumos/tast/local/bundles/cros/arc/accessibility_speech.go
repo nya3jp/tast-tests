@@ -6,6 +6,8 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
@@ -113,16 +115,28 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 			if err := ew.Accel(ctx, testStep.key); err != nil {
 				return errors.Wrapf(err, "accel(%s) returned error", testStep.key)
 			}
+
+			diff := ""
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				gotLogs, err := speechLog(ctx, cvconn)
 				if err != nil {
 					return testing.PollBreak(err)
 				}
-				if diff := cmp.Diff(testStep.wantLogs, gotLogs); diff != "" {
-					return errors.Errorf("speech log was not as expected, diff is %q", diff)
+
+				if diff = cmp.Diff(testStep.wantLogs, gotLogs); diff != "" {
+					return errors.New("speech log was not as expected")
 				}
 				return nil
 			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+				if diff != "" {
+					// Write diff to file, if diff is observed after polling.
+					diffFileName := "accessibility_speech_diff.txt"
+					diffFilePath := filepath.Join(s.OutDir(), diffFileName)
+					if writeFileErr := ioutil.WriteFile(diffFilePath, []byte("(-want +got):\n"+diff), 0644); writeFileErr != nil {
+						return errors.Wrap(errors.Wrap(err, writeFileErr.Error()), "failed to write diff to the file")
+					}
+					return errors.Wrapf(err, "dumped diff to:%s", diffFileName)
+				}
 				return errors.Wrap(err, "failed to check speech log")
 			}
 		}

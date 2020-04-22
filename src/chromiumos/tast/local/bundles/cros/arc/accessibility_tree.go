@@ -148,7 +148,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			diffFileName := axTreeDiffFilePrefix + currentActivity.Name + ".txt"
 			diffFilePath := filepath.Join(s.OutDir(), diffFileName)
 			// When the accessibility tree is different, dump the diff and the obtained tree.
-			if err := ioutil.WriteFile(diffFilePath, []byte(diff), 0644); err != nil {
+			if err := ioutil.WriteFile(diffFilePath, []byte("(-want +got):\n"+diff), 0644); err != nil {
 				return errors.Wrap(err, "accessibility tree did not match; failed to write diff to the file")
 			}
 			if err := dumpTree(appRoot, actualFilePath); err != nil {
