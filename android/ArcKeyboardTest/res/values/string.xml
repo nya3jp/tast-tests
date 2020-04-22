@@ -9,4 +9,5 @@
     <string name="focus_switch_button">Focus switch</string>
     <string name="hide_and_focus_switch_button">Hide and focus switch</string>
     <string name="hide_button">Hide keyboard</string>
+    <string name="type_null_text">TYPE_NULL</string>
 </resources>
