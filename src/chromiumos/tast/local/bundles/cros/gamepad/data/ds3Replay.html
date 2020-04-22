@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head><title>ds3 replay test</title></head>
+<body>
+<script>
+let buttonMappings;
+let scriptReady = false;
+let gamepadDisconnected = false;
+let requestId;
+let gamepadIndex = -1;
+let buttonHistory = [];
+
+window.addEventListener("gamepadconnected", function(e) {
+  gamepadIndex = e.gamepad.index;
+  requestId = window.requestAnimationFrame(queryGamepad) ;
+});
+
+window.addEventListener("gamepaddisconnected", function(e) {
+  gamepadDisconnected = true;
+  window.cancelAnimationFrame(requestId);
+  console.log(gamepadDisconnected);
+});
+
+function queryGamepad(timestamp) {
+  pressedButtons =
+    navigator.getGamepads()[gamepadIndex].buttons
+      .map((v, i) =>
+        {
+          return {
+            name: buttonMappings[i],
+            pressed: v.pressed,
+            touched: v.touched
+          };
+        })
+      .filter(b => b.pressed || b.touched)
+      .map(b => b.name);
+  if (pressedButtons.length > 0) {
+    buttonHistory.push(pressedButtons[0]);
+  }
+  requestId = window.requestAnimationFrame(queryGamepad);
+}
+
+function pressedButton(buttons) {
+  let button = buttons.filter(v => v.pressed).map((v, i) =>
+    buttonMappings[i]);
+  if (button.length === 0) {
+    return -1;
+  }
+  return button[0];
+}
+
+function setMappings(mappings) {
+  buttonMappings = mappings;
+  return true;
+}
+
+function getResults() {
+  return buttonHistory.filter((v, i, a) => a.indexOf(v) === i);
+}
+
+scriptReady = true;
+</script>
