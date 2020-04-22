@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff606b67_6b3624c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T02:38:17Z",
+      "side": 1,
+      "message": "I think this function can be replaced with the dut.Conn().Command(...)? if you want to extract information from ip command output.\n\nOr if you prefer local code on DUT via gRPC, I guess you can use net package [1] instead and gather the related information into the output message. (I think MAC, IPv4, subnet mask, IPv6 are all available.) Then the caller can directly access the information from the response object without further parsing.\n\n[1] https://golang.org/pkg/net/",
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e8984a4_38958d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-22T02:38:17Z",
+      "side": 1,
+      "message": "I guess DevicesByTechnology is more lightweight? If you don\u0027t expect to wait for the interface showing up. (I think in current usage this function is called after WiFi connected, so the interface should already be there.)",
+      "revId": "1adc0669f82f1c43625d08113e1a58b73c24b868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
