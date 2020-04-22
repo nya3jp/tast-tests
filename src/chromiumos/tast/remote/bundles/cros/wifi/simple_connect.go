@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/network"
@@ -134,6 +135,8 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			s.Log("Failed to tear down test fixture, err: ", err)
 		}
 	}()
+	shortCtx, shortCtxCancel := ctxutil.Shorten(ctx, wificell.TextFixtureCloseTime)
+	defer shortCtxCancel()
 
 	testOnce := func(ctx context.Context, s *testing.State, options []hostapd.Option) {
 		ap, err := tf.ConfigureAP(ctx, options...)
@@ -178,7 +181,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		subtest := func(ctx context.Context, s *testing.State) {
 			testOnce(ctx, s, tc.apOptions)
 		}
-		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
+		if !s.Run(shortCtx, fmt.Sprintf("Testcase #%d", i), subtest) {
 			// Stop if any sub-test failed.
 			return
 		}

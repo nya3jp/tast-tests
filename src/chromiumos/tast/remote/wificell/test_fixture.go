@@ -34,6 +34,13 @@ type TestFixture struct {
 // NewTestFixture creates a TestFixture.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
+// After the caller gets the TestFixture instance, it should reserve time for Close() the TestFixture:
+//   tf, err := NewTestFixture(ctx, ...)
+//   if err != nil {...}
+//   defer tf.Close(ctx)
+//   ctx, ctxCancel := ctxutil.Shorten(ctx, TextFixtureCloseTime)
+//   defer ctxCancel()
+//   ...
 func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, routerTarget string) (ret *TestFixture, retErr error) {
 	tf := &TestFixture{}
 	defer func() {
@@ -79,12 +86,15 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 	return tf, nil
 }
 
+// TextFixtureCloseTime means the time needed for tf.Close() to run.
+const TextFixtureCloseTime = 10 * time.Second
+
 // Close closes the connections created by TestFixture.
 func (tf *TestFixture) Close(ctx context.Context) error {
 	var retErr error
 	if tf.router != nil {
 		if err := tf.router.Close(ctx); err != nil {
-			retErr = errors.Wrapf(retErr, "failed to close rotuer: %s", err.Error())
+			retErr = errors.Wrapf(retErr, "failed to close router: %s", err.Error())
 		}
 	}
 	if tf.routerHost != nil {
