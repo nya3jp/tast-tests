@@ -256,7 +256,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Failed to run animation with ui mode as %s and launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
 		}
-
+		// Test change.
 		if err := metrics.SaveHistogramsMeanValue(ctx, pv, histograms, perf.Metric{
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
