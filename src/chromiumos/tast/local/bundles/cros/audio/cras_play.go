@@ -30,7 +30,7 @@ func init() {
 func CrasPlay(ctx context.Context, s *testing.State) {
 	const (
 		duration         = 1 // second
-		getDeviceTimeout = 1 * time.Second
+		getDeviceTimeout = 3 * time.Second
 	)
 
 	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {

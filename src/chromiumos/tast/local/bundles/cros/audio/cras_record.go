@@ -30,7 +30,7 @@ func init() {
 func CrasRecord(ctx context.Context, s *testing.State) {
 	const (
 		duration         = 1 // second
-		getDeviceTimeout = 1 * time.Second
+		getDeviceTimeout = 3 * time.Second
 	)
 
 	var devName string
