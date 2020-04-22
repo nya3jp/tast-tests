@@ -162,7 +162,7 @@ func shelfAnimationHistogramName(mode uiMode, state launcherState) string {
 	return strings.Join(comps, ".")
 }
 
-func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, mode uiMode, launcherVisbility launcherState) ([]*metrics.Histogram, error) {
+func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, mode uiMode, launcherVisbility launcherState, isOverviewVisibile bool) ([]*metrics.Histogram, error) {
 	isInTabletMode := mode == inTabletMode
 	isLauncherVisible := launcherVisbility == launcherIsVisible
 
@@ -177,7 +177,12 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		launcherTargetState = ash.FullscreenAllApps
 	}
 
-	if isInTabletMode && !isLauncherVisible {
+	if isOverviewVisibile {
+		// Enter overview mode.
+		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			return nil, errors.Wrap(err, "failed to enter into the overview mode")
+		}
+	} else if isInTabletMode && !isLauncherVisible {
 		// Hide launcher by launching the file app.
 		files, err := filesapp.Launch(ctx, tconn)
 		if err != nil {
@@ -217,6 +222,13 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		return nil, errors.Wrap(err, "failed to run scroll animation or get histograms")
 	}
 
+	if isOverviewVisibile {
+		// Exit overview mode
+		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			return nil, errors.Wrap(err, "failed to exit from the overview mode")
+		}
+	}
+
 	return histograms, nil
 }
 
@@ -234,16 +246,24 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 
 	type testSetting struct {
 		launcherVisibility launcherState
+		overivewVisibility bool
 		mode               uiMode
 	}
 
 	settings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
+			overivewVisibility: false,
+			mode:               inClamshellMode,
+		},
+		{
+			launcherVisibility: launcherIsHidden,
+			overivewVisibility: true,
 			mode:               inClamshellMode,
 		},
 		{
 			launcherVisibility: launcherIsVisible,
+			overivewVisibility: false,
 			mode:               inClamshellMode,
 		},
 	}
@@ -251,10 +271,17 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	tabletSettings := []testSetting{
 		{
 			launcherVisibility: launcherIsHidden,
+			overivewVisibility: false,
+			mode:               inTabletMode,
+		},
+		{
+			launcherVisibility: launcherIsHidden,
+			overivewVisibility: true,
 			mode:               inTabletMode,
 		},
 		{
 			launcherVisibility: launcherIsVisible,
+			overivewVisibility: false,
 			mode:               inTabletMode,
 		},
 	}
@@ -265,20 +292,31 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	}
 
 	for _, setting := range settings {
-		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.launcherVisibility)
+		histograms, err := fetchShelfScrollSmoothnessHistogram(ctx, cr, tconn, setting.mode, setting.launcherVisibility, setting.overivewVisibility)
 		if err != nil {
-			s.Fatalf("Failed to run animation with ui mode as %s and launcher visibility as %s: %v", setting.mode, setting.launcherVisibility, err)
+			s.Fatalf("Failed to run animation with ui mode as %s, launcher visibility as %s, overview visibility as %t: %v", setting.mode, setting.launcherVisibility, setting.overivewVisibility, err)
 		}
 
-		if err := metrics.SaveHistogramsMeanValue(ctx, pv, histograms, perf.Metric{
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}); err != nil {
-			s.Fatal("Failed to save metrics data: ", err)
-		}
+		// Save metrics data for scrolling the shelf.
+		for _, h := range histograms {
+			mean, err := h.Mean()
+			if err != nil {
+				s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
+			}
 
-		if err := pv.Save(s.OutDir()); err != nil {
-			s.Fatal("Failed to save performance data in file: ", err)
+			if setting.overivewVisibility {
+				h.Name = h.Name + ".OverviewShown"
+			}
+
+			pv.Set(perf.Metric{
+				Name:      h.Name,
+				Unit:      "percent",
+				Direction: perf.BiggerIsBetter,
+			}, mean)
 		}
+	}
+
+	if err := pv.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed to save performance data in file: ", err)
 	}
 }
