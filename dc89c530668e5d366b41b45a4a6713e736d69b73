@@ -94,6 +94,30 @@
       "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2eda407_afdf9c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-22T17:08:38Z",
+      "side": 1,
+      "message": "Thanks for the reply, but I am not persuaded yet. arc.BootedInTabletMode() uses --force-tablet-mode\u003dtouch_view, this does not use accelerometer (https://source.chromium.org/chromium/chromium/src/+/master:ash/wm/tablet_mode/tablet_mode_controller.cc;l\u003d215?q\u003dforce-tablet-mode), therefore the physical condition of the device does not affect at all.",
+      "parentUuid": "64797582_f58b8873",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "dc89c530668e5d366b41b45a4a6713e736d69b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
