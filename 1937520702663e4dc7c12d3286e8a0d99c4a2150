@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e24f54a_192770d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_user_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-22T23:03:12Z",
+      "side": 1,
+      "message": "nit: %d,",
+      "range": {
+        "startLine": 87,
+        "startChar": 47,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "1937520702663e4dc7c12d3286e8a0d99c4a2150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
