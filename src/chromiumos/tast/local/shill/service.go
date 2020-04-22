@@ -110,3 +110,8 @@ func (s *Service) Connect(ctx context.Context) error {
 func (s *Service) Disconnect(ctx context.Context) error {
 	return s.dbusObject.Call(ctx, "Disconnect").Err
 }
+
+// Remove calls the Remove method on the service.
+func (s *Service) Remove(ctx context.Context) error {
+	return s.dbusObject.Call(ctx, "Remove").Err
+}
