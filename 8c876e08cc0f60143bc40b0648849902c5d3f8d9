@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b3b438a_5a0f398f",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T02:20:22Z",
+      "side": 1,
+      "message": "is this being used anywhere? I don\u0027t see any \u0027wg.Wait()\u0027 calls.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "8c876e08cc0f60143bc40b0648849902c5d3f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4298b965_2661f221",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T02:20:22Z",
+      "side": 1,
+      "message": "does this need a shorter timeout? I don\u0027t think we want to wait for the entirety of a test if this is going to fail.\n\nSame probably applies to hostapd/server.go too.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "8c876e08cc0f60143bc40b0648849902c5d3f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149774b3_2de463a1",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-22T02:20:22Z",
+      "side": 1,
+      "message": "did we decide we\u0027ll just go with a TODO, even though this is going to be very inaccurate right now? We can\u0027t rely on the capturer to reliably do anything useful without this.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 67
+      },
+      "revId": "8c876e08cc0f60143bc40b0648849902c5d3f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
