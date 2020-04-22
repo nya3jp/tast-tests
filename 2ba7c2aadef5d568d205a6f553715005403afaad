@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63181689_ea57fffd",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-04-22T16:18:16Z",
+      "side": 1,
+      "message": "https://i.redd.it/owxgn9su4f511.jpg\n:P",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 49
+      },
+      "revId": "2ba7c2aadef5d568d205a6f553715005403afaad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
