@@ -16,6 +16,24 @@
       "revId": "fa980c217d8cc77c565dda58dde69dee0d353b75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a561a0_abd94288",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-22T06:53:39Z",
+      "side": 1,
+      "message": "The reason I move out the initConfig() from start() is because initConfig() is to prepare config for hostapd to run. The original version\u0027s timing would look like:\n[t1, \"hostapd.StartServer\", [\n  [t2, \"start\", [\n    [t3, \"initConfig\"],\n    [t4, \"waitReady\"]]]]]\n\nMove out:\n[t1, \"hostapd.StartServer\", [\n  [t2, \"initConfig\"],\n  [t3, \"start\", [\n    [t4, \"waitReady\"]]]]]\n\nAlso, move s.Close() to StartServer().",
+      "parentUuid": "5303fae0_db57e1e8",
+      "revId": "fa980c217d8cc77c565dda58dde69dee0d353b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
