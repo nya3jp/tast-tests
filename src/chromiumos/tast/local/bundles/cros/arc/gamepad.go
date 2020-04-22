@@ -118,13 +118,13 @@ func verifyGamepadDeviceInfo(s *testing.State, gp *input.GamepadEventWriter, d *
 	return
 }
 
-type keyEvent struct {
+type gamepadKeyEvent struct {
 	Action   string `json:"action"`
 	KeyCode  string `json:"key_code"`
 	DeviceID int    `json:"device_id"`
 }
 
-type motionEvent struct {
+type gamepadMotionEvent struct {
 	Action string             `json:"action"`
 	Axes   map[string]float64 `json:"axes"`
 }
@@ -143,28 +143,28 @@ func getInputDevices(ctx context.Context, d *ui.Device) ([]inputDevice, error) {
 	return devices, nil
 }
 
-func getKeyEvents(ctx context.Context, d *ui.Device) ([]keyEvent, error) {
+func getGamepadKeyEvents(ctx context.Context, d *ui.Device) ([]gamepadKeyEvent, error) {
 	view := d.Object(ui.ID("org.chromium.arc.testapp.gamepad:id/key_events"))
 	text, err := view.GetText(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	var events []keyEvent
+	var events []gamepadKeyEvent
 	if err := json.Unmarshal([]byte(text), &events); err != nil {
 		return nil, err
 	}
 	return events, nil
 }
 
-func getMotionEvent(ctx context.Context, d *ui.Device) (*motionEvent, error) {
+func getGamepadMotionEvent(ctx context.Context, d *ui.Device) (*gamepadMotionEvent, error) {
 	view := d.Object(ui.ID("org.chromium.arc.testapp.gamepad:id/motion_event"))
 	text, err := view.GetText(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	var event motionEvent
+	var event gamepadMotionEvent
 	if err := json.Unmarshal([]byte(text), &event); err != nil {
 		return nil, err
 	}
@@ -173,7 +173,7 @@ func getMotionEvent(ctx context.Context, d *ui.Device) (*motionEvent, error) {
 
 func waitForGamepadAxis(ctx context.Context, d *ui.Device, axis string, expected float64) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if event, err := getMotionEvent(ctx, d); err != nil {
+		if event, err := getGamepadMotionEvent(ctx, d); err != nil {
 			return err
 		} else if val, ok := event.Axes[axis]; !ok || val != expected {
 			return errors.Errorf("unexpected %s value: got %f; want %f", axis, val, expected)
@@ -252,17 +252,17 @@ func Gamepad(ctx context.Context, s *testing.State) {
 		AxisX          = "AXIS_X"
 	)
 
-	expectedEvents := []keyEvent{
+	expectedEvents := []gamepadKeyEvent{
 		{Action: ActionDown, KeyCode: KeycodeButtonA},
 		{Action: ActionUp, KeyCode: KeycodeButtonA},
 		{Action: ActionDown, KeyCode: KeycodeButtonX},
 		{Action: ActionUp, KeyCode: KeycodeButtonX}}
 
 	s.Log("Checking the generated gamepad events")
-	var actualEvents []keyEvent
+	var actualEvents []gamepadKeyEvent
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		if actualEvents, err = getKeyEvents(ctx, d); err != nil {
+		if actualEvents, err = getGamepadKeyEvents(ctx, d); err != nil {
 			return err
 		} else if len(actualEvents) != len(expectedEvents) {
 			return errors.Errorf("unexpected number of gamepad events: got %d; want %d",
