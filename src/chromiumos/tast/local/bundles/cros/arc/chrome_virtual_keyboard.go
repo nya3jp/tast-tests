@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -14,6 +15,8 @@ import (
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
+
+const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -37,14 +40,13 @@ func init() {
 func chromeVirtualKeyboardBasicEditingTest(
 	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
 	const (
-		pkg          = "org.chromium.arc.testapp.keyboard"
 		activityName = ".MainActivity"
 
-		fieldID = "org.chromium.arc.testapp.keyboard:id/text"
+		fieldID = virtualKeyboardTestAppPkg + ":id/text"
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, pkg, activityName)
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
@@ -119,18 +121,17 @@ func chromeVirtualKeyboardBasicEditingTest(
 func chromeVirtualKeyboardFocusChangeTest(
 	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
 	const (
-		pkg          = "org.chromium.arc.testapp.keyboard"
 		activityName = ".FocusChangeTestActivity"
 
-		buttonID1 = pkg + ":id/focus_switch_button"
-		buttonID2 = pkg + ":id/hide_and_focus_switch_button"
-		buttonID3 = pkg + ":id/hide_button"
-		fieldID1  = pkg + ":id/text1"
-		fieldID2  = pkg + ":id/text2"
+		buttonID1 = virtualKeyboardTestAppPkg + ":id/focus_switch_button"
+		buttonID2 = virtualKeyboardTestAppPkg + ":id/hide_and_focus_switch_button"
+		buttonID3 = virtualKeyboardTestAppPkg + ":id/hide_button"
+		fieldID1  = virtualKeyboardTestAppPkg + ":id/text1"
+		fieldID2  = virtualKeyboardTestAppPkg + ":id/text2"
 	)
 	defer vkb.HideVirtualKeyboard(ctx, tconn)
 
-	act, err := arc.NewActivity(a, pkg, activityName)
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
 	if err != nil {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
@@ -233,6 +234,95 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 }
 
+// chromeVirtualKeyboardEditingOnNullTypeTest tests the virtual keyboard behavior on an EditText with InputType.TYPE_NULL
+// The virtual keyboard should send a key event instead of inserting text through InputConnection on such an EditText.
+func chromeVirtualKeyboardEditingOnNullTypeTest(
+	ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, cr *chrome.Chrome, d *ui.Device, s *testing.State) {
+	const (
+		activityName = ".NullEditTextActivity"
+
+		editTextID         = virtualKeyboardTestAppPkg + ":id/text"
+		lastKeyDownLabelID = virtualKeyboardTestAppPkg + ":id/last_key_down"
+		lastKeyUpLabelID   = virtualKeyboardTestAppPkg + ":id/last_key_up"
+	)
+	defer vkb.HideVirtualKeyboard(ctx, tconn)
+
+	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
+	if err != nil {
+		s.Fatalf("Failed to create a new activity %q", activityName)
+	}
+	defer act.Close()
+
+	if err := act.Start(ctx, tconn); err != nil {
+		s.Fatalf("Failed to start the activity %q", activityName)
+	}
+	defer act.Stop(ctx)
+
+	editText := d.Object(ui.ID(editTextID))
+	if err := editText.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to find field: ", err)
+	}
+	if err := editText.Click(ctx); err != nil {
+		s.Fatal("Failed to click field: ", err)
+	}
+	if err := editText.SetText(ctx, ""); err != nil {
+		s.Log("Failed to empty field: ", err)
+	}
+
+	if err := d.Object(ui.ID(editTextID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to focus a text field: ", err)
+	}
+
+	s.Log("Waiting for virtual keyboard to be ready")
+	if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+	}
+	if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+	}
+
+	kconn, err := vkb.UIConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Creating connection to virtual keyboard UI failed: ", err)
+	}
+	defer kconn.Close()
+
+	keyDownLabel := d.Object(ui.ID(lastKeyDownLabelID))
+	keyUpLabel := d.Object(ui.ID(lastKeyUpLabelID))
+	for _, key := range []struct {
+		Key      string
+		Expected int
+	}{
+		{"a", 29},         // AKEYCODE_A
+		{"b", 30},         // AKEYCODE_B
+		{"c", 31},         // AKEYCODE_C
+		{"backspace", 67}, // AKEYCODE_DEL
+		{"enter", 66},     // AKEYCODE_ENTER
+	} {
+		if err := vkb.TapKey(ctx, kconn, key.Key); err != nil {
+			s.Fatalf("Failed to tap %q: %v", key.Key, err)
+		}
+
+		// Check the input field after each keystroke.
+		expectedText := fmt.Sprintf("key down: keyCode=%d", key.Expected)
+		if err := d.Object(ui.ID(lastKeyDownLabelID), ui.Text(expectedText)).WaitForExists(ctx, 30*time.Second); err != nil {
+			if actual, err := keyDownLabel.GetText(ctx); err != nil {
+				s.Fatal("Failed to get text: ", err)
+			} else {
+				s.Fatalf("Got input %q from field. Expected %q", actual, expectedText)
+			}
+		}
+		expectedText = fmt.Sprintf("key up: keyCode=%d", key.Expected)
+		if err := d.Object(ui.ID(lastKeyUpLabelID), ui.Text(expectedText)).WaitForExists(ctx, 30*time.Second); err != nil {
+			if actual, err := keyUpLabel.GetText(ctx); err != nil {
+				s.Fatal("Failed to get text: ", err)
+			} else {
+				s.Fatalf("Got input %q from field. Expected %q", actual, expectedText)
+			}
+		}
+	}
+}
+
 func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	p := s.PreValue().(arc.PreData)
 	a := p.ARC
@@ -259,5 +349,9 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 	})
 	s.Run(ctx, "focusChange", func(ctx context.Context, s *testing.State) {
 		chromeVirtualKeyboardFocusChangeTest(ctx, tconn, a, cr, d, s)
+	})
+	// TODO(crbug.com/1081596): Add tests with an IME with composition.
+	s.Run(ctx, "editingOnNull", func(ctx context.Context, s *testing.State) {
+		chromeVirtualKeyboardEditingOnNullTypeTest(ctx, tconn, a, cr, d, s)
 	})
 }
