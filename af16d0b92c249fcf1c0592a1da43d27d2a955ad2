@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "8f5fb896_64d51c80",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-23T17:53:21Z",
+      "side": 1,
+      "message": "Oh right, use mock data for default is better.",
+      "parentUuid": "9294e04d_1601e6d5",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99621d45_93ef3af9",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 9
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "ee55046c_d37f8146",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-23T17:53:21Z",
+      "side": 1,
+      "message": "To make this more integrated with setupMockData as a framework, can return a deferrable function that does the cleanup instead of the tempdir path.",
+      "parentUuid": "62e5d695_9468911e",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b08aee53_f16650a0",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 9
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "I was thinking that this test would be a helpful way to establish that the unit-test framework works OK, so that we can know immediately that other failures come from logic and not from read/write mishaps. At a minimum, I found it quite helpful when writing the tests, and I suspect that it would continue to be useful when modifying tests later.\n\nWith that extra context, do you still feel that it is overkill? I could instead move lines 78-83 into setupMockData so that we can verify the contents are written correctly.",
       "parentUuid": "b08aee53_f16650a0",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6111b2b_9c033048",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-23T17:53:21Z",
+      "side": 1,
+      "message": "I think there\u0027s a big overlap between TestMockData and coverage provided by TestLoadBytes+TestNewConfig.  But I also see your point about testing the framework.  One thing that would make the framework more general is to pass mocked file and json contents as arguments so that different tests can use different sets of mocked files.  Then it will be appropriate to have a test for this framework.",
+      "parentUuid": "94bb6946_364bf285",
       "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
