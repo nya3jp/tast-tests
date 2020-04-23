@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d47b51_32636d87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-23T15:57:30Z",
+      "side": 1,
+      "message": "this reduces the flakiness, but there still seem a timing issue in a following scenario for example.\n\n1) qeuryP2pServices is called.\n2) ctx.Err() is checked. Let\u0027s assume it\u0027s not expired at this moment.\n3) Here ctx is expired, before L42.\n4) Take the Deadline(), and it succeeds.\n5) at L43, ctxTimeout will be negative, because time.Now(), which indicates the this timing, is expected to be bigger than Deadline, which indicates the step 3) timing.\n6) at L44, L45, timeout is set to negative value.\n7) Then, QueryParam.Timeout, which eventually passed to time.After() in mdns library, and causes set to max timeout.\n\nI think the fix would be;\n\nif timeout \u003c 0 {\n  return nil, errors.New(\"timeout must be positive: ...\", ...)  // nice to be documented.\n}\nif dl, ok :\u003d ctx.Deadline(); ok {\n  ...\n  if timeout \u003c 0 {\n    return nil, errors.Wrap(ctx.Err(), \"the context is already expired\")\n  }\n}",
+      "revId": "e2d2c70650ede4497539b5f313b12669daa4d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
