@@ -19,10 +19,8 @@ import (
 // when it received a query. This struct contains the only fields which are used in
 // the tests.
 type QueryResponse struct {
-	// Fallback contains text messages used as the "fallback" for HTML card rendering.
-	// Generally the fallback text is similar to transcribed TTS, e.g. "It's exactly 6
-	// o'clock." or "Turning bluetooth off.".
-	Fallback string `json:"htmlFallback"`
+	// Contains the HTML string of the response.
+	HTML string `json:"htmlResponse"`
 }
 
 // QueryStatus contains a subset of the status of an interaction with Assistant started
@@ -31,8 +29,6 @@ type QueryResponse struct {
 //
 // TODO(meilinw): Add a reference for the struct after the API change landed (crrev.com/c/1552293).
 type QueryStatus struct {
-	// TODO(meilinw): Remove this entry once we replace with new autotest private API.
-	Fallback      string `json:"htmlFallback"`
 	QueryResponse `json:"queryResponse"`
 }
 
