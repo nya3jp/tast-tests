@@ -141,7 +141,9 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 	if pcap, _ := s.Var("pcap"); pcap != "" {
 		ops = append(ops, wificell.TFPcap(pcap))
 	}
-	tf, err := wificell.NewTestFixture(ctx, s.DUT(), s.RPCHint(), ops...)
+	// As we are not in precondition, we have ctx as both method context and
+	// daemon context.
+	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), ops...)
 	if err != nil {
 		s.Fatal("Failed to set up test fixture: ", err)
 	}
