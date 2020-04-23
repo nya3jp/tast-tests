@@ -16,6 +16,24 @@
       "revId": "1f2da06d512c7e309fcbc0291c7d6b5f8081e8e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc9de02_dd01f87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2020-04-23T09:00:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "dcc6054b_600cda6e",
+      "revId": "1f2da06d512c7e309fcbc0291c7d6b5f8081e8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
