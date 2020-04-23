@@ -81,6 +81,11 @@ var pageSet = []page{
 	},
 }
 
+type gpuCUJTestParams struct {
+	testType testType
+	rot90    bool // Whether to rotate the screen 90 or not.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GpuCUJ,
@@ -91,44 +96,109 @@ func init() {
 		Data:         []string{launcher.DataArtifact},
 		Params: []testing.Param{{
 			Name: "maximized",
-			Val:  testTypeMaximized,
-			Pre:  launcher.StartedByData(),
+			Val: gpuCUJTestParams{
+				testType: testTypeMaximized,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "maximized_rot90",
+			Val: gpuCUJTestParams{
+				testType: testTypeMaximized,
+				rot90:    true,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "maximized_composited",
-			Val:  testTypeMaximized,
-			Pre:  launcher.StartedByDataForceComposition(),
+			Val: gpuCUJTestParams{
+				testType: testTypeMaximized,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
 		}, {
 			Name: "threedot",
-			Val:  testTypeThreeDot,
-			Pre:  launcher.StartedByData(),
+			Val: gpuCUJTestParams{
+				testType: testTypeThreeDot,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "threedot_rot90",
+			Val: gpuCUJTestParams{
+				testType: testTypeThreeDot,
+				rot90:    true,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "threedot_composited",
-			Val:  testTypeThreeDot,
-			Pre:  launcher.StartedByDataForceComposition(),
+			Val: gpuCUJTestParams{
+				testType: testTypeThreeDot,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
 		}, {
 			Name: "resize",
-			Val:  testTypeResize,
-			Pre:  launcher.StartedByData(),
+			Val: gpuCUJTestParams{
+				testType: testTypeResize,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "resize_rot90",
+			Val: gpuCUJTestParams{
+				testType: testTypeResize,
+				rot90:    true,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "resize_composited",
-			Val:  testTypeResize,
-			Pre:  launcher.StartedByDataForceComposition(),
+			Val: gpuCUJTestParams{
+				testType: testTypeResize,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
 		}, {
 			Name: "moveocclusion",
-			Val:  testTypeMoveOcclusion,
-			Pre:  launcher.StartedByData(),
+			Val: gpuCUJTestParams{
+				testType: testTypeMoveOcclusion,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "moveocclusion_rot90",
+			Val: gpuCUJTestParams{
+				testType: testTypeMoveOcclusion,
+				rot90:    true,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "moveocclusion_composited",
-			Val:  testTypeMoveOcclusion,
-			Pre:  launcher.StartedByDataForceComposition(),
+			Val: gpuCUJTestParams{
+				testType: testTypeMoveOcclusion,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
 		}, {
 			Name: "moveocclusion_withcroswindow",
-			Val:  testTypeMoveOcclusionWithCrosWindow,
-			Pre:  launcher.StartedByData(),
+			Val: gpuCUJTestParams{
+				testType: testTypeMoveOcclusionWithCrosWindow,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByData(),
+		}, {
+			Name: "moveocclusion_withcroswindow_rot90",
+			Val: gpuCUJTestParams{
+				testType: testTypeMoveOcclusionWithCrosWindow,
+				rot90:    true,
+			},
+			Pre: launcher.StartedByData(),
 		}, {
 			Name: "moveocclusion_withcroswindow_composited",
-			Val:  testTypeMoveOcclusionWithCrosWindow,
-			Pre:  launcher.StartedByDataForceComposition(),
+			Val: gpuCUJTestParams{
+				testType: testTypeMoveOcclusionWithCrosWindow,
+				rot90:    false,
+			},
+			Pre: launcher.StartedByDataForceComposition(),
 		}},
 	})
 }
@@ -717,12 +787,36 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	params := s.Param().(gpuCUJTestParams)
+
+	if params.rot90 {
+		infos, err := display.GetInfo(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get display info: ", err)
+		}
+
+		if len(infos) != 1 {
+			s.Fatal("Failed to find unique display")
+		}
+
+		rot := 90
+		if err := display.SetDisplayProperties(ctx, tconn, infos[0].ID, display.DisplayProperties{Rotation: &rot}); err != nil {
+			s.Fatal("Failed to rotate display: ", err)
+		}
+		// Restore the initial rotation.
+		defer func() {
+			if err := display.SetDisplayProperties(ctx, tconn, infos[0].ID, display.DisplayProperties{Rotation: &infos[0].Rotation}); err != nil {
+				s.Fatal("Failed to restore the initial display rotation: ", err)
+			}
+		}()
+	}
+
 	pv := perf.NewValues()
 	m := metricsRecorder{buckets: make(map[statBucketKey][]float64)}
 	for _, page := range pageSet {
 		if err := runLacrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
 			pv:       pv,
-			scenario: s.Param().(testType),
+			scenario: params.testType,
 			page:     page,
 			crt:      chromeTypeLacros,
 			metrics:  &m,
@@ -732,7 +826,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 
 		if err := runCrosTest(ctx, s.PreValue().(launcher.PreData), &testInvocation{
 			pv:       pv,
-			scenario: s.Param().(testType),
+			scenario: params.testType,
 			page:     page,
 			crt:      chromeTypeChromeOS,
 			metrics:  &m,
