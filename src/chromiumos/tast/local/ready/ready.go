@@ -105,6 +105,7 @@ func Wait(ctx context.Context, log func(string)) error {
 				if err := ensureTPMInitialized(ctx, log); err != nil {
 					log(fmt.Sprintf("Failed ensuring that TPM is initialized: %v", err))
 				}
+				checkEnterpriseOwned(ctx, log)
 			} else {
 				log("TPM not available, not waiting for readiness")
 			}
@@ -307,15 +308,15 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 // If the removing policies did not encounter any errors the file should not exist.
 const ClearPoliciesLogLocation = "/tmp/ready-clearPolicies.err"
 
-func clearPoliciesAppendError(msg string) error {
-	f, err := os.OpenFile(ClearPoliciesLogLocation, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+func errorLogAppendError(path, msg string) error {
+	f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		return errors.Wrapf(err, "failed to open error log %q", ClearPoliciesLogLocation)
+		return errors.Wrapf(err, "failed to open error log %q", path)
 	}
 	defer f.Close()
 
 	if _, err := f.WriteString(msg + "\n"); err != nil {
-		return errors.Wrapf(err, "failed to append to error log %q", ClearPoliciesLogLocation)
+		return errors.Wrapf(err, "failed to append %q to error log %q", msg, path)
 	}
 
 	return nil
@@ -338,7 +339,7 @@ func clearPolicies(log func(string)) {
 		if err := os.RemoveAll(path); err != nil {
 			msg := fmt.Sprintf("Failed to remove %q: %v", path, err)
 			log(msg)
-			if err := clearPoliciesAppendError(msg); err != nil {
+			if err := errorLogAppendError(ClearPoliciesLogLocation, msg); err != nil {
 				log(err.Error())
 			}
 		}
@@ -347,4 +348,41 @@ func clearPolicies(log func(string)) {
 	// Services that cache policies (like Chromium) are not restarted here.
 	// Tests that depend on the state of those services should perform the restart.
 	// Chromium related tests already restart Chromium and session_manager which will reload policies.
+}
+
+// EnterpriseOwnedLogLocation is the location of the error log for checkEnterpriseOwned.
+// If the the DUT is not enterprise owned the file should not exist.
+const EnterpriseOwnedLogLocation = "/tmp/ready-enterpriseOwned.err"
+
+var trueRegex = regexp.MustCompile(`(?m)^\s*[Tt]rue\s*$`)
+
+func checkEnterpriseOwned(ctx context.Context, log func(string)) {
+	isEnterpriseOwned := func(ctx context.Context) (bool, error) {
+		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=install_attributes_get", "--name=enterprise.owned").Output()
+		if err != nil {
+			return false, err
+		}
+
+		owned := trueRegex.Match(out)
+		return owned, nil
+	}
+
+	// Clear error log for this function.
+	if err := os.RemoveAll(EnterpriseOwnedLogLocation); err != nil {
+		log(fmt.Sprintf("Failed to remove error log %q: %v", EnterpriseOwnedLogLocation, err))
+	}
+
+	owned, err := isEnterpriseOwned(ctx)
+	if err != nil {
+		log(fmt.Sprintf("Failed to check if device is enterprise enrolled: %v", err))
+		return
+	}
+
+	if owned {
+		if err := errorLogAppendError(EnterpriseOwnedLogLocation, "Device is enterprise owned"); err != nil {
+			log(err.Error())
+		}
+		log("Device is enterprise owned, please clear ownership before running tests.")
+		log("To clear ownership you can powerwash (Ctrl + Alt + Shift + r at the login screen).")
+	}
 }
