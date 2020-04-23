@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "7060d9b4_23593edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-23T16:48:50Z",
+      "side": 1,
+      "message": "Exec is deprecated: please use Eval (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#Conn.Exec)",
+      "range": {
+        "startLine": 198,
+        "startChar": 13,
+        "endLine": 198,
+        "endChar": 29
+      },
+      "revId": "c0a4351899a5cb03443e3ba387b546ad8d3c31ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3417f85d_d15f032b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 1
