@@ -30,3 +30,7 @@ cros deploy --root=/usr/local ${DUT_IP} tast-local-apks-cros
 ```
 
 Then you can run normal tast run command.
+
+## Finding the built APKs
+If needed they can be found under
+`/build/$BOARD/usr/libexec/tast/apks/local/cros`
