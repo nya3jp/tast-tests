@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bc10836_3a7ead32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T07:55:22Z",
+      "side": 1,
+      "message": "nit: as we compare this string with empty \"\" value inside poll, how about initializing this by `diff :\u003d \"\"`?",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 18
+      },
+      "revId": "5be492c0dd8a31b195b00330e932732b0375c513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e08cd6fb_528efd6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T07:55:22Z",
+      "side": 1,
+      "message": "nit: can you simply concatenate them by \u0027+\u0027?",
+      "range": {
+        "startLine": 135,
+        "startChar": 19,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "5be492c0dd8a31b195b00330e932732b0375c513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c8a07a4_7a50caa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T07:55:22Z",
+      "side": 1,
+      "message": "doesn\u0027t this make the error string duplicated \"speech log was not as expected\"?",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 92
+      },
+      "revId": "5be492c0dd8a31b195b00330e932732b0375c513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
