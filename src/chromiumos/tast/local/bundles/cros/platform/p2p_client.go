@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     P2PClient,
 		Desc:     "Tests that Chromium OS can download files from local network peers with p2p-client",
-		Contacts: []string{"nya@chromium.org"},
+		Contacts: []string{"ahassani@google.com"},
 		Attr:     []string{"group:mainline"},
 	})
 }

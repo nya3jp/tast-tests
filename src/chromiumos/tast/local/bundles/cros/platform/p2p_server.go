@@ -29,7 +29,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     P2PServer,
 		Desc:     "Tests that Chromium OS can serve files to local network peers with p2p-server",
-		Contacts: []string{"nya@chromium.org"},
+		Contacts: []string{"ahassani@google.com"},
 		Attr:     []string{"group:mainline"},
 	})
 }
