@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58389d39_2c6b8469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/helpers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-23T17:37:21Z",
+      "side": 1,
+      "message": "If this is always going to be for the same test file, you don\u0027t need to take in fileName as a parameter, you can just read the util.TestFileName constant. Same for the below functions.\n\nIf it is not always going to be the same TestFile/TestContent, you might want to change name of the functions to something like:\nGetUserFilePath\nWriteUserFile\nDoesUserFileExist",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "62dd2d506f370f5fc49478e5385e2d83b4e1a7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
