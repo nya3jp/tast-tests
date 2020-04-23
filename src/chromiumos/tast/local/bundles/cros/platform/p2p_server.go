@@ -42,6 +42,12 @@ func queryP2PServices(ctx context.Context, timeout time.Duration) ([]*mdns.Servi
 			timeout = ctxTimeout
 		}
 	}
+	if timeout <= 0 {
+		// Avoid calling mdns.Query with non-positive timeouts. In particular,
+		// we should avoid the zero timeout because it is considered by
+		// mdns.Query as the default timeout (1 second).
+		return nil, ctx.Err()
+	}
 
 	ch := make(chan *mdns.ServiceEntry)
 	var err error
