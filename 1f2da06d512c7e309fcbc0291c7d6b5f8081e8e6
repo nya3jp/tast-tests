@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcc6054b_600cda6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/native_bridge.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-23T07:59:42Z",
+      "side": 1,
+      "message": "nit/style:\n\nconst (\n  houdiniLib \u003d \"libhoudini.so\"\n  ndkTranslationLib \u003d \"lbndk_translation.so\"\n)",
+      "revId": "1f2da06d512c7e309fcbc0291c7d6b5f8081e8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
