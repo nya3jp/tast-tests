@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ee22e99b_50b3d196",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T22:06:56Z",
+      "side": 1,
+      "message": "Removed -- LMK if you object.",
+      "parentUuid": "bc581ffc_36cf1dd8",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975bfb83_c858e927",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 9
@@ -143,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "2f7cc16f_a4bb71e1",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T22:06:56Z",
+      "side": 1,
+      "message": "We still need to return the tempdir path, because we need to pass it into NewConfig, etc. We could have it return a deferrable function as well, but considering it\u0027s just one line, I don\u0027t think that\u0027s necessary right now. We can keep it in mind if this gets much more complicated.",
+      "parentUuid": "ee55046c_d37f8146",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b08aee53_f16650a0",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 9
@@ -196,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "5ecf912a_bcc69828",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T22:06:56Z",
+      "side": 1,
+      "message": "I wrote up a draft of passing in JSON as an argument, but I think it wound up more confusing, so I removed it. But, while doing so, I convinced myself that TestLoadBytes will take care of everything that TestMockData wants to test. So, removed.",
+      "parentUuid": "d6111b2b_9c033048",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61279449_cb8c8633",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 9
@@ -210,6 +264,24 @@
       "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd3f834_f5ca9dfc",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T22:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61279449_cb8c8633",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
