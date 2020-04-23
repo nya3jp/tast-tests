@@ -22,6 +22,144 @@
       "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1773e8a5_6093a19f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-23T07:09:09Z",
+      "side": 1,
+      "message": "How come you do this on each iteration instead of just calling GetAllWindows at the end when all the apps are launched?",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b36338_106a74c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-23T07:09:09Z",
+      "side": 1,
+      "message": "could add a log saying which direction you are going to help debugging later",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 60
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460ec19b_265fe931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-23T07:09:09Z",
+      "side": 1,
+      "message": "Is there gonna be a race condition here? Doesn\u0027t this window appear and disappear quickly? Or does holding down alt keep it open?",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 124
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fa5467_cbbcdbe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-23T07:09:09Z",
+      "side": 1,
+      "message": "Could add a log line above or below this saying \"Open apps match apps in cycle window\" or whatever.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 36
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723c6c0c_407183ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-23T07:09:09Z",
+      "side": 1,
+      "message": "what\u0027s this for?",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 5
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c44cb10_d7349b12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-23T07:09:09Z",
+      "side": 1,
+      "message": "what is this doing?",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
