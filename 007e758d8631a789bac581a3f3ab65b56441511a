@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d7c4251_8e65602d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-23T19:44:43Z",
+      "side": 1,
+      "message": "shillProps",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "007e758d8631a789bac581a3f3ab65b56441511a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7776e12_60b30445",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-23T19:44:43Z",
+      "side": 1,
+      "message": "\"shillProps\", or \"props\" here as there\u0027s no ambiguation and Golang prefers shorter variable name.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 11
+      },
+      "revId": "007e758d8631a789bac581a3f3ab65b56441511a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b586e0_ca3fa258",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-23T19:44:43Z",
+      "side": 1,
+      "message": "shillPropsEnc or propsEnc",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 14
+      },
+      "revId": "007e758d8631a789bac581a3f3ab65b56441511a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
