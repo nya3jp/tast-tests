@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4244fede_c4f79c0e",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-04-23T18:07:47Z",
+      "side": 1,
+      "message": "super nit: it might be cleaner and easier for future readers to understand if you avoid bit manipulation. A clearer solution may be a map of structs. Or a map of maps of bools.\n\nex:\nStruct busyIfs {\n  Managed bool\n  Monitor bool\n}\nbusyPhy     map[int]busyIfs\n\nor:\nbusyPhy     map[int]map[iw.IfType]bool",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 45
+      },
+      "revId": "94ce97c7df9c023994e18e550625f09530bf3db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
