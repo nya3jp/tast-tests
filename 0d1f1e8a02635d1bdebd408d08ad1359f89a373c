@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6e24af3_58150dc1",
+        "filename": "android/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-23T07:34:56Z",
+      "side": 1,
+      "message": "Just in case, could you mention this is the path in chroot?\n(optional): how about adding install paths in DUT?",
+      "revId": "0d1f1e8a02635d1bdebd408d08ad1359f89a373c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
