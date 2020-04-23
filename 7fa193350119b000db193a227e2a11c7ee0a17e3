@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5610393d_9e462942",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T00:39:48Z",
+      "side": 1,
+      "message": "nit: I cannot access this link. I think you have to remove \"s\" from https.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "7fa193350119b000db193a227e2a11c7ee0a17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb487f86_c51eefee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T00:39:48Z",
+      "side": 1,
+      "message": "Just curious, I thought the maximum line width is 72 according to https://chromium.googlesource.com/chromium/src/+/refs/heads/master/docs/contributing.md#uploading-a-change-for-review.\nYour depending changes seems following this rule too.\n\nWhy you format this to 50 chars?",
+      "revId": "7fa193350119b000db193a227e2a11c7ee0a17e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
