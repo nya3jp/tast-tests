@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2554b48f_5aa79bc3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-23T07:47:52Z",
+      "side": 1,
+      "message": "Sorry I missed this reply...\n\nI think it\u0027s rather tast-lint\u0027s limitation that we can\u0027t use references in Vars. For now, could you use a literal here so that tast-lint doesn\u0027t complain every time we make changes to this file? I filed crbug.com/1073791 to consider if this is a reasonable limitation.",
+      "parentUuid": "6cb01542_a7f4054f",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd191b90_8bd16032",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
