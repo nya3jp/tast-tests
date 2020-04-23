@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d8b1f8e0_53583c71",
+        "filename": "src/chromiumos/tast/local/genutil/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-23T06:14:07Z",
+      "side": 1,
+      "message": "Per offline chat, changed to Spec.",
+      "parentUuid": "c1117ec9_e3932428",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "be090502758e0b684881ca982672a8a383232dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b28a662_8290a6b7",
         "filename": "src/chromiumos/tast/local/genutil/util.go",
         "patchSetId": 2
