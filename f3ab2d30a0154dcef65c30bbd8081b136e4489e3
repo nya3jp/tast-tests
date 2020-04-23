@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "c2b84597_2e4ef247",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-23T05:14:06Z",
+      "side": 1,
+      "message": "I see, thanks for clarification.",
+      "parentUuid": "b7d77725_527c3a3e",
+      "revId": "f3ab2d30a0154dcef65c30bbd8081b136e4489e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff3b0d57_4e3b80f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 1
