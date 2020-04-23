@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "fcaeea26_08b91a44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-04-23T07:15:38Z",
+      "side": 1,
+      "message": "android_both didn\u0027t work well (and was removed) for two reasons:\n\n- it didn\u0027t support dual boot boards like eve. on such a board, android_both only ran the test with container.\n- it was unclear which container and VM versions the android_both dep supports. Although we only support P container and R vm today, at that time we had many (N,P,Q,R,S container and P,R vm). We ended up too many android_*_both variants and the situation was not managable.\n\nanyway, if this test doesn\u0027t really care about underlying ARC architecture, using \"arc\" dep is what we should do.",
+      "parentUuid": "aa127878_9cd5571e",
+      "revId": "f3ab2d30a0154dcef65c30bbd8081b136e4489e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff3b0d57_4e3b80f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 1
