@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "f8301b6d_4a818743",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-23T08:21:05Z",
+      "side": 1,
+      "message": "OK, thanks for your suggestion. :)",
+      "parentUuid": "2554b48f_5aa79bc3",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fa36af235b2bfa20c268a600d8c61ba9998ce22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd191b90_8bd16032",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 1
