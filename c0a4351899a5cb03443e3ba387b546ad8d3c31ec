@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89fe5379_613ad5ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-23T04:11:30Z",
+      "side": 1,
+      "message": "nit: %q?",
+      "range": {
+        "startLine": 197,
+        "startChar": 16,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "c0a4351899a5cb03443e3ba387b546ad8d3c31ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3417f85d_d15f032b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-23T04:11:30Z",
+      "side": 1,
+      "message": "Hmm is the following scenario possible because there is only one background page and the state is shared between multiple CCA instance?\n\n1. Launch normal CCA, set test mode ON\n2. Launch intent CCA, set test mode ON again (no-op)\n3. Close intent CCA, set test mode OFF\n4. Do something in normal CCA such as taking a photo, GA is still sent unexpectedly",
+      "revId": "c0a4351899a5cb03443e3ba387b546ad8d3c31ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
