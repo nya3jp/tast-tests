@@ -105,6 +105,7 @@ func Wait(ctx context.Context, log func(string)) error {
 				if err := ensureTPMInitialized(ctx, log); err != nil {
 					log(fmt.Sprintf("Failed ensuring that TPM is initialized: %v", err))
 				}
+				checkEnterpriseOwned(ctx, log)
 			} else {
 				log("TPM not available, not waiting for readiness")
 			}
@@ -347,4 +348,29 @@ func clearPolicies(log func(string)) {
 	// Services that cache policies (like Chromium) are not restarted here.
 	// Tests that depend on the state of those services should perform the restart.
 	// Chromium related tests already restart Chromium and session_manager which will reload policies.
+}
+
+var trueRegex = regexp.MustCompile(`(?m)^\s*[Tt]rue\s*$`)
+
+func checkEnterpriseOwned(ctx context.Context, log func(string)) {
+	isEnterpriseOwned := func(ctx context.Context) (bool, error) {
+		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=install_attributes_get", "--name=enterprise.owned").Output()
+		if err != nil {
+			return false, err
+		}
+
+		owned := trueRegex.Match(out)
+		return owned, nil
+	}
+
+	owned, err := isEnterpriseOwned(ctx)
+	if err != nil {
+		log(fmt.Sprintf("Failed to check if device is enterprise enrolled: %v", err))
+		return
+	}
+
+	if owned {
+		log("Device is enterprise owned, please clear ownership before running tests.")
+		log("To clear ownership you can powerwash (Ctrl + Alt + Shift + r at the login screen).")
+	}
 }
