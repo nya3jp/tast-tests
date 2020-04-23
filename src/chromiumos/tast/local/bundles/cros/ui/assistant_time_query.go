@@ -6,6 +6,8 @@ package ui
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -54,16 +56,16 @@ func AssistantTimeQuery(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying the time query response")
-	fallback := queryStatus.QueryResponse.Fallback
-	if fallback == "" {
-		s.Fatal("No response sent back from Assistant")
+	html := queryStatus.QueryResponse.HTML
+	if html == "" {
+		s.Fatal("No HTML response sent back from Assistant")
 	}
 
 	now := time.Now().UTC()
 	// Truncates the sec and nsec to be consistent with the format of assistant time response
 	// and reduce the time error in interpretation.
 	now = time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), 0, 0, now.Location())
-	results, err := parseTimeNearNow(fallback, now)
+	results, err := parseTimeNearNow(s, html, now)
 	if err != nil {
 		s.Fatal("Failed to parse Assistant time response: ", err)
 	}
@@ -87,14 +89,16 @@ func AssistantTimeQuery(ctx context.Context, s *testing.State) {
 	s.Fatal("Assistant time response doesn't match the current time")
 }
 
-// parseTimeNearNow extracts the numeric components in the fallback string to construct a time
-// object based on now time. For this particular query, a typical fallback text will have format:
-// "It is (HH/H):MM AM/PM in the Coordinated Universal Time zone." in English locale.
-func parseTimeNearNow(fallback string, now time.Time) ([]time.Time, error) {
+// parseTimeNearNow extracts the numeric components in the HTML string to construct a time
+// object based on now time. A typical time result will have a format like: "6:25 PM".
+func parseTimeNearNow(s *testing.State, html string, now time.Time) ([]time.Time, error) {
 	re := regexp.MustCompile(`(\d{1,2})(:\d\d)? ([AaPp][Mm])?`)
-	matches := re.FindStringSubmatch(fallback)
+	matches := re.FindStringSubmatch(html)
 	if matches == nil {
-		return nil, errors.Errorf("fallback %s doesn't contain any well-formatted time results", fallback)
+		if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "time_query_html_response.txt"), []byte(html), 0644); err != nil {
+			s.Errorf("Failed to write output to %s: %v", filepath.Join(s.OutDir(), "time_query_html_response.txt"), err)
+		}
+		return nil, errors.New("the HTML string doesn't contain any well-formatted time results")
 	}
 
 	// Parses hours and minutes from the time string.
@@ -125,7 +129,7 @@ func parseTimeNearNow(fallback string, now time.Time) ([]time.Time, error) {
 		}
 		results = append(results, interpretTimeNearNow(now, hrs, min))
 	} else {
-		// If there is no "AM" or "PM" substring found in the fallback string, then:
+		// If there is no "AM" or "PM" substring found in the HTML string, then:
 		// (1) The Assistant time is still in 12-hour clock, but with AM/PM displayed in a different
 		// language. This could happen if the test device uses a non-English system locale, or
 		// (2) The Assistant time is in 24-hour format, as we observed that both the 12-hour and
@@ -142,8 +146,8 @@ func parseTimeNearNow(fallback string, now time.Time) ([]time.Time, error) {
 	return results, nil
 }
 
-// interpretTimeNearNow chooses the interpretation closest to the now time because the fallback
-// string only contains HH:MM.
+// interpretTimeNearNow chooses the interpretation closest to the now time because the Assistant
+// time result only contains HH:MM.
 func interpretTimeNearNow(now time.Time, hrs, min int) time.Time {
 	t := time.Date(now.Year(), now.Month(), now.Day(), hrs, min, 0, 0, now.Location())
 	if diff := t.Sub(now); diff > 12*time.Hour {
