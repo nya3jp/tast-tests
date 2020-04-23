@@ -22,6 +22,30 @@
       "revId": "aa60cb8ce822ffbbaab25a9604e50ef6775f3d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e0f31c_c5632506",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-04-23T03:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba4e8f0_ba660c6f",
+      "range": {
+        "startLine": 172,
+        "startChar": 58,
+        "endLine": 172,
+        "endChar": 60
+      },
+      "revId": "aa60cb8ce822ffbbaab25a9604e50ef6775f3d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
