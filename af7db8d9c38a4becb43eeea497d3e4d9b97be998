@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40456dba_abaea8bb",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-23T07:46:23Z",
+      "side": 1,
+      "message": "nit: please drop this suffix, since it is added in the message consturction of the error automatically.",
+      "range": {
+        "startLine": 464,
+        "startChar": 80,
+        "endLine": 464,
+        "endChar": 82
+      },
+      "revId": "af7db8d9c38a4becb43eeea497d3e4d9b97be998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
