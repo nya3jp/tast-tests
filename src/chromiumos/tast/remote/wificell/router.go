@@ -8,7 +8,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"path"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -28,29 +28,31 @@ const workingDir = "/tmp/tast-test/"
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
-	host        *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
-	name        string
-	board       string
-	busySubnet  map[byte]struct{}
-	phys        map[int]*iw.Phy            // map from phy idx to iw.Phy.
-	busyPhy     map[int]map[iw.IfType]bool // map from phy idx to the map of business of interface types.
-	availIfaces map[string]*iw.NetDev      // map from interface name to iw.NetDev.
-	busyIfaces  map[string]*iw.NetDev      // map from interface name to iw.NetDev.
-	ifaceID     int
-	iwr         *iw.Runner
+	host         *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
+	name         string
+	board        string
+	busySubnet   map[byte]struct{}
+	phys         map[int]*iw.Phy            // map from phy idx to iw.Phy.
+	busyPhy      map[int]map[iw.IfType]bool // map from phy idx to the map of business of interface types.
+	availIfaces  map[string]*iw.NetDev      // map from interface name to iw.NetDev.
+	busyIfaces   map[string]*iw.NetDev      // map from interface name to iw.NetDev.
+	ifaceID      int
+	iwr          *iw.Runner
+	logTailHints map[string]string // map from log path to the hint of start of log (usually timestamp) to collect.
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
 func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
 	r := &Router{
-		host:        host,
-		name:        name,
-		busySubnet:  make(map[byte]struct{}),
-		phys:        make(map[int]*iw.Phy),
-		busyPhy:     make(map[int]map[iw.IfType]bool),
-		availIfaces: make(map[string]*iw.NetDev),
-		busyIfaces:  make(map[string]*iw.NetDev),
-		iwr:         remote_iw.NewRunner(host),
+		host:         host,
+		name:         name,
+		busySubnet:   make(map[byte]struct{}),
+		phys:         make(map[int]*iw.Phy),
+		busyPhy:      make(map[int]map[iw.IfType]bool),
+		availIfaces:  make(map[string]*iw.NetDev),
+		busyIfaces:   make(map[string]*iw.NetDev),
+		iwr:          remote_iw.NewRunner(host),
+		logTailHints: make(map[string]string),
 	}
 	if err := r.initialize(ctx); err != nil {
 		r.Close(ctx)
@@ -175,6 +177,7 @@ func (r *Router) configureRNG(ctx context.Context) error {
 
 // initialize prepares initial test AP state (e.g., initializing wiphy/wdev).
 func (r *Router) initialize(ctx context.Context) error {
+	r.updateLogTail(ctx)
 	board, err := hostBoard(ctx, r.host)
 	if err != nil {
 		return err
@@ -238,7 +241,9 @@ func (r *Router) Close(ctx context.Context) error {
 			err = errors.Wrapf(err, "failed to remove interfaces, err=%s", err2.Error())
 		}
 	}
-	if err2 := r.collectLogs(ctx); err2 != nil {
+	// Collect closing log to facilitate debugging for error occurs in
+	// r.initialize() or after r.CollectLogs().
+	if err2 := r.collectLogs(ctx, ".close"); err2 != nil {
 		err = errors.Wrapf(err, "failed to collect logs, err=%s", err2.Error())
 	}
 	if err2 := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err2 != nil {
@@ -512,27 +517,70 @@ func (r *Router) freeSubnetIdx(i byte) {
 	delete(r.busySubnet, i)
 }
 
-// collectLogs downloads log files from router.
-func (r *Router) collectLogs(ctx context.Context) error {
-	collect := map[string]string{
-		"/var/log/messages": fmt.Sprintf("debug/%s_host_messages", r.name),
+var logsToCollect = []string{
+	"/var/log/messages",
+}
+
+// updateLogTail saves the last timestamp of log files to collect which will
+// be used as pattern to search in collectLog.
+func (r *Router) updateLogTail(ctx context.Context) {
+	for _, src := range logsToCollect {
+		line, err := r.host.Command("tail", "-1", src).Output(ctx)
+		if err != nil {
+			testing.ContextLogf(ctx, "Fail to get tail of %s on router", src)
+			continue
+		}
+		timestamp := ""
+		tokens := strings.Fields(string(line))
+		if len(tokens) > 0 {
+			timestamp = tokens[0]
+		}
+		r.logTailHints[src] = timestamp
 	}
-	// TODO(crbug.com/1034875): Trim logs before creation of this object.
-	outdir, ok := testing.ContextOutDir(ctx)
+}
+
+// collectLogs downloads log files from router to $OutDir/debug with suffix appended to
+// the filenames.
+func (r *Router) collectLogs(ctx context.Context, suffix string) error {
+	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
 		return errors.New("OutDir not supported")
 	}
-	for s, d := range collect {
-		dst := path.Join(outdir, d)
-		basedir := path.Dir(dst)
-		if err := os.MkdirAll(basedir, 0755); err != nil {
-			return errors.Wrapf(err, "failed to mkdir %s", basedir)
+
+	baseDir := filepath.Join(outDir, "debug", r.name)
+	if err := os.MkdirAll(baseDir, 0755); err != nil {
+		return errors.Wrapf(err, "failed to mkdir %s", baseDir)
+	}
+
+	for _, src := range logsToCollect {
+		dst := filepath.Join(baseDir, filepath.Base(src)+suffix)
+		tail := r.logTailHints[src]
+		if tail == "" {
+			// No tail hint, simple download.
+			if err := linuxssh.GetFile(ctx, r.host, src, dst); err != nil {
+				return errors.Wrapf(err, "failed to download %s to %s", src, dst)
+			}
+			continue
 		}
-		if err := linuxssh.GetFile(ctx, r.host, s, dst); err != nil {
-			return errors.Wrapf(err, "failed to download %s to %s", s, dst)
+		// Trim logs before tail.
+		exp := fmt.Sprintf("/%s/,$p", tail)
+		cmd := r.host.Command("sed", "-n", "-e", exp, src)
+		f, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE, 0644)
+		if err != nil {
+			return errors.Wrapf(err, "cannot open file %q", dst)
+		}
+		cmd.Stdout = f
+		if err := cmd.Run(ctx); err != nil {
+			return errors.Wrapf(err, "failed to extract log %q", src)
 		}
 	}
+	r.updateLogTail(ctx)
 	return nil
+}
+
+// CollectLogs downloads log files from router to OutDir.
+func (r *Router) CollectLogs(ctx context.Context) error {
+	return r.collectLogs(ctx, "")
 }
 
 // hostBoard returns the board information on a chromeos host.
