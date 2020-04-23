@@ -36,6 +36,9 @@ func init() {
 
 // queryP2PServices queries P2P services available on the virtual network.
 func queryP2PServices(ctx context.Context, timeout time.Duration) ([]*mdns.ServiceEntry, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
 	if dl, ok := ctx.Deadline(); ok {
 		ctxTimeout := dl.Sub(time.Now())
 		if ctxTimeout < timeout {
