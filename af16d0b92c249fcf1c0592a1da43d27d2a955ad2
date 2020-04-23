@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bc581ffc_36cf1dd8",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T17:00:22Z",
+      "side": 1,
+      "message": "I\u0027m thinking about it, and it seems as if the purpose for this check is to let us know whether the datafile can be found in configDataDir. But we can check that more directly, as in this pattern: https://stackoverflow.com/q/12518876\n\nThe other potential value here is that it would tell us if we\u0027re trying to use a datafile that isn\u0027t registered by the test\u0027s datafiles. But based on behavior I\u0027ve described in the following thread, that seems to not be an issue: https://groups.google.com/a/chromium.org/g/tast-users/c/xpbMQGnbzUM/m/YdNFsspDAwAJ\nOr, if it is an issue, then I would expect Tast to throw a descriptive error complaining that the datafile is not registered.\n\nSo, it seems to me that we can remove this check altogether, and perhaps replace it with a check for the datafile\u0027s existence. Or is there another reason to keep it that I\u0027m not aware of?",
+      "parentUuid": "aacbb8c6_21c938af",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975bfb83_c858e927",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-22T22:27:19Z",
       "side": 1,
       "message": "setupMockData should just be as simple as copying DEFAULT.json over and serializing mockData to a tempdir, No need to mess with configPlatforms (see above).  I don\u0027t think you need a unit test for setupMockData itself since the checks for the files being created successfully will be done in setupMockData itself.",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9294e04d_1601e6d5",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T17:00:22Z",
+      "side": 1,
+      "message": "\u003e copying DEFAULT.json over\n\nDo you mean copying the real DEFAULT.json from fw-testing-configs/? I don\u0027t think I agree with that -- mock data is more reliable, and allows us to include only what information is useful.\n\n\u003e No need to mess with configPlatforms\n\nI agree, it would be good to remove that requirement. More discussion below your comment in config.go.\n\n\u003e I don\u0027t think you need a unit test for setupMockData itself\n\nMoving this discussion to your comment on line 52",
+      "parentUuid": "975bfb83_c858e927",
       "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "62e5d695_9468911e",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T17:00:22Z",
+      "side": 1,
+      "message": "Will make that change alongside the other changes that we\u0027re currently discussing",
+      "parentUuid": "99621d45_93ef3af9",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b08aee53_f16650a0",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 9
@@ -64,6 +118,24 @@
       "writtenOn": "2020-04-22T22:27:19Z",
       "side": 1,
       "message": "nit, I think having this test is overkill.",
+      "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94bb6946_364bf285",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-23T17:00:22Z",
+      "side": 1,
+      "message": "I was thinking that this test would be a helpful way to establish that the unit-test framework works OK, so that we can know immediately that other failures come from logic and not from read/write mishaps. At a minimum, I found it quite helpful when writing the tests, and I suspect that it would continue to be useful when modifying tests later.\n\nWith that extra context, do you still feel that it is overkill? I could instead move lines 78-83 into setupMockData so that we can verify the contents are written correctly.",
+      "parentUuid": "b08aee53_f16650a0",
       "revId": "af16d0b92c249fcf1c0592a1da43d27d2a955ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
