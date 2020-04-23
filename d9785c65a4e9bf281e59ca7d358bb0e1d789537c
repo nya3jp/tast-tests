@@ -1,0 +1,533 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1df56458_c712dc69",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "huge nit: \"...replicates the C struct...\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f6ec65_5be0a719",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "huge nit: HID",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00292d1_b1f38bca",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "double check: currently these are all public variables. should that be the case?",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c32c5f_04a9b965",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "if this const is only used in L32, move it inside there.\nalso, the name could be confused with part of the struct.\n\nperhaps: uhidCreate2RequestType ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6685fc_191a6ff2",
+        "filename": "src/chromiumos/tast/local/uhid/create.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "nit: consistency: (d* DeviceData)\n\nYou are passing a pointer in other files. And also makes sense to pass a pointer here.\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-type",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b227ca_9d0af54a",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "nit: if deviceDirectoy is only used inside \"devicePath\", move it inside that func",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb43e28_675bc266",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "ditto: move it inside the hidRawNodes if it is only used there.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 26
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b49709_ff0255cf",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "nit: consistency\n\nin create.go, you are using the \"d\" receive, and here you are using \"data\". All of them should use the same name for the receiver.\n\n\"d\" is fine. \"data\" seems to long for Golang, at least in this context.\nFor for \"DeviceData\" I think \"dd\" is better since you are using \"d\" for device on other files.",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a378617_7009965c",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "what about using regular expression for this? ( https://golang.org/pkg/regexp/ )\nalternative: use string.Field ( https://golang.org/pkg/strings/#Fields )",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e12234_8766f808",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "ditto above: here perhaps using a string.Filed sounds simpler?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3279228_5bebb941",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "and probably here a regexp should be better.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1644e923_6a4446bd",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "ditto above: string.Fields?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 43
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3bd4c1d_7d5cbf47",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "huge nit: end sentence with a period (.)\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 6,
+        "startChar": 7,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95937a2_80f645b8",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "nit: avoid redundant comments.\n\nIn this case \"can by used by users of this library\" it doesn\u0027t add much to the doc.\nIt seems that it should start with something like:\n\n// GetReportRequest represents ...",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da5eb6a_92ed72ea",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "just double checking: What does the \"Get\" mean here?\n\ncould it be renamed to \"ReportRequest\" ? or perhaps \"RequestGetReport\" ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ca9a80_c98cf0e4",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b1b408_f5ae247b",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "hidraw are two words, so it should named: \"hidRaw...\"",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 7
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62ecba3_c447b865",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "huge nit: the doc is fine, but it is Ok remove the \"introductory\" words.\n\ne.g:\n// Input2Request replicates (or represents... choose your favorite) the C struct found here:...",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 59
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e99d58e3_fd5f1caf",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "huge nit: comments should be complete sentences.\nstart with capital letter, end with period.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 26
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d36e5f2_9bb773e3",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "is this blocking? if so add comment (and it should fixed later, but before landing it)",
+      "range": {
+        "startLine": 308,
+        "startChar": 11,
+        "endLine": 308,
+        "endChar": 27
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b413ee_27e99499",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "use: got ; want order. e.g:\n\n\"unexpected number of bytes of UHID event; got %d, want %d\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 313,
+        "startChar": 29,
+        "endLine": 313,
+        "endChar": 63
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ecd923_5f8d687f",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "nit: be",
+      "range": {
+        "startLine": 336,
+        "startChar": 17,
+        "endLine": 336,
+        "endChar": 19
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40937b04_cf7fbe7a",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-23T15:47:15Z",
+      "side": 1,
+      "message": "not sure whether testing.Poll() is doing anything here.\n\nif binary.Read() blocks, then it won\u0027t get aborted if the timeout is reached.\nUsually the operations that are inside testing.Poll() shouldn\u0027t block, otherwise testing.Poll() won\u0027t work as expected.\n\nfor the prototype, I think it is fine to remove the testing.Poll().\nFor the final version, let\u0027s discuss it offline.",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 62
+      },
+      "revId": "d9785c65a4e9bf281e59ca7d358bb0e1d789537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
