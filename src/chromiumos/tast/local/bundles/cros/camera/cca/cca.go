@@ -182,6 +182,22 @@ func isMatchCCAPrefix(t *target.Info) bool {
 	return strings.HasPrefix(t.URL, ccaURLPrefix)
 }
 
+// setTestMode sets test mode flag in CCA background page.
+func setTestMode(ctx context.Context, cr *chrome.Chrome, isTestMode bool) error {
+	action := "SET_TEST_MODE_OFF"
+	if isTestMode {
+		action = "SET_TEST_MODE_ON"
+	}
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	code := fmt.Sprintf(`
+		tast.promisify(chrome.runtime.sendMessage)(
+			%q, {action: '%s'}, null);`, ID, action)
+	return tconn.Exec(ctx, code)
+}
+
 // Init launches a CCA instance by |appLauncher|, evaluates the helper script
 // within it and waits until its AppWindow interactable. The scriptPath should
 // be the data path to the helper script cca_ui.js. The returned App instance
@@ -199,6 +215,10 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
+		return nil, err
+	}
+
+	if err := setTestMode(ctx, cr, true); err != nil {
 		return nil, err
 	}
 
@@ -322,6 +342,13 @@ func (a *App) Close(ctx context.Context) error {
 		firstErr = errors.Wrap(err, "failed to Conn.Close()")
 	}
 	a.conn = nil
+	if err := setTestMode(ctx, a.cr, false); err != nil {
+		if firstErr == nil {
+			firstErr = errors.Wrap(err, "failed to clear test mode flag")
+		} else {
+			testing.ContextLog(ctx, "Failed to clear test mode flag: ", err)
+		}
+	}
 	testing.ContextLog(ctx, "CCA closed")
 	return firstErr
 }
