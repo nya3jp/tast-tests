@@ -35,16 +35,18 @@ func init() {
 }
 
 // queryP2PServices queries P2P services available on the virtual network.
+// It waits responses for the specified timeout. It returns with an error
+// immediately if ctx is canceled.
 func queryP2PServices(ctx context.Context, timeout time.Duration) ([]*mdns.ServiceEntry, error) {
-	if dl, ok := ctx.Deadline(); ok {
-		ctxTimeout := dl.Sub(time.Now())
-		if ctxTimeout < timeout {
-			timeout = ctxTimeout
-		}
+	if timeout <= 0 {
+		// Avoid calling mdns.Query with a non-positive timeout. In particular,
+		// we should avoid the zero timeout because it is considered by
+		// mdns.Query as the default timeout (1 second).
+		timeout = time.Nanosecond
 	}
 
 	ch := make(chan *mdns.ServiceEntry)
-	var err error
+	var qerr error
 	go func() {
 		defer close(ch)
 		params := &mdns.QueryParam{
@@ -53,25 +55,39 @@ func queryP2PServices(ctx context.Context, timeout time.Duration) ([]*mdns.Servi
 			Service: p2p.ServiceType,
 			Entries: ch,
 		}
-		err = mdns.Query(params)
+		qerr = mdns.Query(params)
 	}()
 
 	// nameSuffix is the name suffix of expected mDNS services.
 	nameSuffix := fmt.Sprintf(".%s.local.", p2p.ServiceType)
 
 	var srvs []*mdns.ServiceEntry
-	for srv := range ch {
-		// While we query the cros_p2p service, it is possible that peers
-		// advertise unrelated services, so we have to filter out them.
-		if !strings.HasSuffix(srv.Name, nameSuffix) {
-			continue
+	for {
+		select {
+		case <-ctx.Done():
+			// We can't cancel the mdns.Query call. Keep it running, and
+			// make sure to read the channel until the call finish.
+			go func() {
+				for range ch {
+				}
+			}()
+			return nil, ctx.Err()
+
+		case srv, ok := <-ch:
+			if !ok {
+				return srvs, qerr
+			}
+			// While we query the cros_p2p service, it is possible that peers
+			// advertise unrelated services, so we have to filter out them.
+			if !strings.HasSuffix(srv.Name, nameSuffix) {
+				continue
+			}
+			if srv.Addr.String() != p2p.IsolatedNSIP {
+				continue
+			}
+			srvs = append(srvs, srv)
 		}
-		if srv.Addr.String() != p2p.IsolatedNSIP {
-			continue
-		}
-		srvs = append(srvs, srv)
 	}
-	return srvs, err
 }
 
 // waitP2PService waits for a P2P service on the virtual network to be ready.
