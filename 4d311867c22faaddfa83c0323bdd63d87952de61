@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f23f495_b5869493",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-23T07:00:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e22a840d_501c5787",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "4d311867c22faaddfa83c0323bdd63d87952de61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6dd2328_992dce0d",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "4d311867c22faaddfa83c0323bdd63d87952de61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b2d7671_3d46664e",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-23T07:00:09Z",
+      "side": 1,
+      "message": "Refined a little bit. I think we can have the sleep/wait in Close for now. So the meaning of close is only cleaning all up while Close is doing the termination of capturer (which needs to wait for the result done).",
+      "parentUuid": "a6dd2328_992dce0d",
+      "range": {
+        "startLine": 130,
+        "startChar": 46,
+        "endLine": 130,
+        "endChar": 56
+      },
+      "revId": "4d311867c22faaddfa83c0323bdd63d87952de61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d2160ee3_2e1f7a46",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-23T07:00:09Z",
+      "side": 1,
+      "message": "Resolved, together with the one in updated version.",
+      "parentUuid": "4b4a26d2_d99d65ac",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "8c876e08cc0f60143bc40b0648849902c5d3f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "149774b3_2de463a1",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
         "patchSetId": 17
