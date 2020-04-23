@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6ac0fab1_80251009",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/security/boot_lockbox.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-23T02:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d914b8f_70c0c8ad",
+      "revId": "a973ac96248c95198643a684189c527df8a20f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b1740c7_dc35368e",
         "filename": "src/chromiumos/tast/services/cros/security/boot_lockbox_service.proto",
         "patchSetId": 13
@@ -39,6 +57,30 @@
       "revId": "a973ac96248c95198643a684189c527df8a20f7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba44b70f_c607a00e",
+        "filename": "src/chromiumos/tast/services/cros/security/boot_lockbox_service.proto",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2020-04-23T02:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1740c7_dc35368e",
+      "range": {
+        "startLine": 20,
+        "startChar": 69,
+        "endLine": 20,
+        "endChar": 75
+      },
+      "revId": "a973ac96248c95198643a684189c527df8a20f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
