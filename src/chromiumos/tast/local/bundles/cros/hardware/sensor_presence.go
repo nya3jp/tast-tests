@@ -53,9 +53,11 @@ func SensorPresence(ctx context.Context, s *testing.State) {
 		{crosconfig.HasBaseAccelerometer, iio.Accel, iio.Base},
 		{crosconfig.HasBaseGyroscope, iio.Gyro, iio.Base},
 		{crosconfig.HasBaseMagnetometer, iio.Mag, iio.Base},
+		{crosconfig.HasBaseLightSensor, iio.Light, iio.Base},
 		{crosconfig.HasLidAccelerometer, iio.Accel, iio.Lid},
 		{crosconfig.HasLidGyroscope, iio.Gyro, iio.Lid},
 		{crosconfig.HasLidMagnetometer, iio.Mag, iio.Lid},
+		{crosconfig.HasLidLightSensor, iio.Light, iio.Lid},
 	} {
 		val, err := crosconfig.CheckHardwareProperty(ctx, tc.prop)
 

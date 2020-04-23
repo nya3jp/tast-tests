@@ -28,6 +28,9 @@ const (
 	// HasBaseMagnetometer is a bool property describing whether the DUT has an
 	// magnetometer in its base.
 	HasBaseMagnetometer HardwareProperty = "has-base-magnetometer"
+	// HasBaseLightSensor is a bool property describing whether the DUT has an
+	// light sensor in its base.
+	HasBaseLightSensor HardwareProperty = "has-base-light-sensor"
 	// HasLidAccelerometer is a bool property describing whether the DUT has an
 	// accelerometer in its lid.
 	HasLidAccelerometer HardwareProperty = "has-lid-accelerometer"
@@ -37,6 +40,9 @@ const (
 	// HasLidMagnetometer is a bool property describing whether the DUT has an
 	// magnetometer in its lid.
 	HasLidMagnetometer HardwareProperty = "has-lid-magnetometer"
+	// HasLidLightSensor is a bool property describing whether the DUT has an
+	// light sensor in its lid.
+	HasLidLightSensor HardwareProperty = "has-lid-light-sensor"
 )
 
 // runGet is an injection point for testing.
