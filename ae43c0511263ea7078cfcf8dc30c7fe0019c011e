@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fae3baa_c1392283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T04:24:40Z",
+      "side": 1,
+      "message": "THB, I don\u0027t think this belongs to \"accessibility\" because this function doesn\u0027t have any accessibility specific logic. This just calling ioutil.WriteFile.\nI prefer to call ioutil.WriteFile from each test.\n\nDo you have any reason to have this function here?",
+      "range": {
+        "startLine": 186,
+        "startChar": 5,
+        "endLine": 186,
+        "endChar": 13
+      },
+      "revId": "ae43c0511263ea7078cfcf8dc30c7fe0019c011e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31cee6a_ed065bb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T04:24:40Z",
+      "side": 1,
+      "message": "nit: As you mentioned in the first comment, follow convention for diff printing, I think prepending \"(-want +got):\" is useful.",
+      "range": {
+        "startLine": 188,
+        "startChar": 49,
+        "endLine": 188,
+        "endChar": 53
+      },
+      "revId": "ae43c0511263ea7078cfcf8dc30c7fe0019c011e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "856b5576_5abf0292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-23T04:24:40Z",
+      "side": 1,
+      "message": "I don\u0027t think invoking file IO inside polling is a good idea.\nHow about writing the diff outside of polling?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 88
+      },
+      "revId": "ae43c0511263ea7078cfcf8dc30c7fe0019c011e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
