@@ -35,7 +35,7 @@ func init() {
 					},
 				},
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: trace.HwDepsStable,
 			},
 			{
 				Name: "glxgears_unstable",
@@ -47,12 +47,13 @@ func init() {
 					},
 				},
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: trace.HwDepsUnstable,
 			},
 		},
 	})
 }
 
+// TraceReplay replays a graphics trace inside a crostini container.
 func TraceReplay(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	config := s.Param().(comm.TestGroupConfig)
