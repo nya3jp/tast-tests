@@ -16,6 +16,24 @@
       "revId": "1fb099afa1a649058aefdbdaf5ad418c1066dd2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22413669_bf4f12a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_embedded_ui_open_and_close_animation_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-04-23T22:27:02Z",
+      "side": 1,
+      "message": "Sure, sorry about this. Done :)",
+      "parentUuid": "5c6558fa_caa3478b",
+      "revId": "1fb099afa1a649058aefdbdaf5ad418c1066dd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
