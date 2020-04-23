@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b735c71_83b78c55",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-23T07:08:48Z",
+      "side": 1,
+      "message": "(a) Done\n(b) It will result in a wrapped *net.DNSError, so we may check it with errors.As.",
+      "parentUuid": "9142a0a6_2b498a52",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 51
+      },
+      "revId": "131e820432eb32577de08d7f441d8681fc66f152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2eb40d0b_656f94b1",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ffe8ff05_666f7fa7",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-23T07:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb40d0b_656f94b1",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 33
+      },
+      "revId": "131e820432eb32577de08d7f441d8681fc66f152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c739a6b_07aa6559",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-22T18:44:55Z",
       "side": 1,
       "message": "similar to previous CLs: I think I\u0027ve seen reviewers suggest not wrapping unrelated errors together this way, as it makes for confusing results. It was deemed better to just log one and wrap/return the other.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 78
+      },
+      "revId": "131e820432eb32577de08d7f441d8681fc66f152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c82960f_d743d06f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-23T07:08:48Z",
+      "side": 1,
+      "message": "Use the same refinement as in previous CL. (if this pattern is acceptable, I guess I can have it applied to other components)",
+      "parentUuid": "7c739a6b_07aa6559",
       "range": {
         "startLine": 229,
         "startChar": 0,
