@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f03b53c_491232b0",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-24T15:29:11Z",
+      "side": 1,
+      "message": "How about packetPathOnDUT to be more explicit this is testing device. The word \"host\" is overloaded and sometimes ambiguous...",
+      "range": {
+        "startLine": 174,
+        "startChar": 31,
+        "endLine": 174,
+        "endChar": 35
+      },
+      "revId": "7300caf0da9de4352fbe0b66e6a6b4756a6d6df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3ae2cb_068c76cf",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-24T15:29:11Z",
+      "side": 1,
+      "message": "could you use filepath instead?",
+      "revId": "7300caf0da9de4352fbe0b66e6a6b4756a6d6df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
