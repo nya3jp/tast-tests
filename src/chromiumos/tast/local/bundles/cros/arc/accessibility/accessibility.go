@@ -80,6 +80,16 @@ func focusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return ui.NewNode(ctx, tconn, obj)
 }
 
+// IsChromeVoxCommand returns whether or not the current key should be interpreted as a command to ChromeVox.
+func IsChromeVoxCommand(key string) bool {
+	for _, command := range []string{"-", "=", "Search+Space", "Tab"} {
+		if key == command {
+			return true
+		}
+	}
+	return false
+}
+
 // IsEnabledAndroid checks if accessibility is enabled in Android.
 func IsEnabledAndroid(ctx context.Context, a *arc.ARC) (bool, error) {
 	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled").Output(testexec.DumpLogOnError)
