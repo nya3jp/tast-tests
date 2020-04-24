@@ -33,6 +33,10 @@ const (
 	removeKeyExSuccessMessage              = "Key removed."
 	migrateKeyExSucessMessage              = "Key migration succeeded."
 	updateKeyExSuccessMessage              = "Key updated."
+	// MountFlagEphemeral is the flag passed to MountVault's extraFlags parameter when you want the vault to be ephemeral.
+	MountFlagEphemeral = "--ensure_ephemeral"
+	// MountFlagEcryptfs is the flag passed to MountVault's extraFlags parameter when you want the vault to use ecryptfs.
+	MountFlagEcryptfs = "--ecryptfs"
 )
 
 func getLastLine(s string) string {
@@ -377,8 +381,9 @@ func (u *UtilityCryptohomeBinary) UnmountAll(ctx context.Context) error {
 }
 
 // MountVault mounts the vault for username; creates a new vault if no vault yet if create is true. error is nil if the operation completed successfully.
-func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, password, label string, create bool) error {
-	if _, err := u.binary.MountEx(ctx, username, password, create, label); err != nil {
+// For extraFlags, please see MountFlag* series of constants (ex: MountFlagEphemeral)
+func (u *UtilityCryptohomeBinary) MountVault(ctx context.Context, username, password, label string, create bool, extraFlags []string) error {
+	if _, err := u.binary.MountEx(ctx, username, password, create, label, extraFlags); err != nil {
 		return errors.Wrap(err, "failed to mount")
 	}
 	return nil

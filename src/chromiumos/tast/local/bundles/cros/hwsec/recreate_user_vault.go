@@ -66,7 +66,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 
 	s.Log("Phase 1: mounts vault for the test user")
 
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, []string{} /* extraFlags */); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 	// Cleanup the newly created vault.
@@ -97,7 +97,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err = cryptohome.CheckService(ctx); err != nil {
 		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, false, []string{} /* extraFlags */); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
 	}
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
@@ -126,7 +126,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
 	}
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, []string{} /* extraFlags */); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
