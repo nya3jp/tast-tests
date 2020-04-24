@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93dc86f5_e3508775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T09:53:41Z",
+      "side": 1,
+      "message": "Need to check errors. Same for other tests.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d9ba18f_ede708b8",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T09:53:41Z",
+      "side": 1,
+      "message": "I think we have to update unit tests.",
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef24ebfb_e0f15872",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T09:53:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we want to unexport this method. cwd@ WDYT?",
+      "range": {
+        "startLine": 126,
+        "startChar": 19,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f57822f_b8db1262",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T09:53:41Z",
+      "side": 1,
+      "message": "style: I recommend removing punctuations like ` or | because godoc doesn\u0027t recognize them.",
+      "range": {
+        "startLine": 135,
+        "startChar": 44,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b430a3f3_29313c09",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T09:53:41Z",
+      "side": 1,
+      "message": "Do we have an immediate use case of this function? If not, how about unexporting it, or inlining it to CaptureTimePeriod?",
+      "range": {
+        "startLine": 136,
+        "startChar": 19,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8480c31f_1520a472",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T09:53:41Z",
+      "side": 1,
+      "message": "In order for this to work, CaptureWhile has to guarantee that the condition function is called exactly once per interval.",
+      "range": {
+        "startLine": 156,
+        "startChar": 31,
+        "endLine": 156,
+        "endChar": 44
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f44db37_1b418608",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T09:53:41Z",
+      "side": 1,
+      "message": "huge nit: maybe iterations \u003c\u003d numIterations?",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
