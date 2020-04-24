@@ -35,7 +35,7 @@ service WilcoService {
   rpc TestRoutineCancellation(ExecuteRoutineRequest)
     returns (google.protobuf.Empty) {}
 
-  rpc StartDPSLListener(google.protobuf.Empty)
+  rpc StartDPSLListener(StartDPSLListenerRequest)
     returns (google.protobuf.Empty) {}
   rpc StopDPSLListener(google.protobuf.Empty)
     returns (google.protobuf.Empty) {}
@@ -81,6 +81,10 @@ enum DiagnosticRoutineStatus {
 
 message ExecuteRoutineResponse {
   DiagnosticRoutineStatus status = 1;
+}
+
+message StartDPSLListenerRequest {
+  string handle_message_from_ui_response = 1;
 }
 
 message WaitForHandleMessageFromUiResponse {
