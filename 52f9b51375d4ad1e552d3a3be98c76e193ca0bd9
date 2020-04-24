@@ -52,6 +52,24 @@
       "revId": "52f9b51375d4ad1e552d3a3be98c76e193ca0bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc7ff997_9927231c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T17:06:40Z",
+      "side": 1,
+      "message": "It\u0027s intentional. I know it might waste some time if timeout is longer than ctx\u0027s remaining time, but I don\u0027t think it\u0027s a big deal and don\u0027t very much worth putting special case logic.\n\nIf you have any alternative proposal please let me know.",
+      "parentUuid": "9e52a3d2_6290db8c",
+      "revId": "52f9b51375d4ad1e552d3a3be98c76e193ca0bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
