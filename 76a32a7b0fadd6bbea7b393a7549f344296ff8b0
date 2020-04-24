@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0600612a_20dd0ae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T22:37:22Z",
+      "side": 1,
+      "message": "optional:\nyou can get the internal ID and do the operation on the internal ID (assuming that is what you need):\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/display/display.go",
+      "range": {
+        "startLine": 795,
+        "startChar": 2,
+        "endLine": 797,
+        "endChar": 3
+      },
+      "revId": "76a32a7b0fadd6bbea7b393a7549f344296ff8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
