@@ -198,6 +198,7 @@ func (s *Server) Start(ctx context.Context) (retErr error) {
 
 	logPath := filepath.Join(s.OutDir, "hostapd.log")
 	s.cmd = testexec.CommandContext(ctx, "hostapd", "-dd", "-t", "-f", logPath, confPath)
+	s.cmd.Env = append(os.Environ(), "OPENSSL_CONF=/etc/ssl/openssl.cnf.compat")
 	if err := s.cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start hostapd")
 	}
