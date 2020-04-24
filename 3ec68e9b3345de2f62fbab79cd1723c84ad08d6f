@@ -93,6 +93,30 @@
       "revId": "3ec68e9b3345de2f62fbab79cd1723c84ad08d6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36a27b82_5a877725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-24T15:12:43Z",
+      "side": 1,
+      "message": "Let\u0027s start with nightly and if it becomes too much we\u0027ll move them.\nSince none of the other reviewers shouted I think there\u0027s no strong\nopinions :-)",
+      "parentUuid": "982f3a99_d30433e6",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "3ec68e9b3345de2f62fbab79cd1723c84ad08d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
