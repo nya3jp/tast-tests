@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -136,16 +135,37 @@ func GetShelfAlignment(ctx context.Context, tconn *chrome.TestConn, displayID st
 	return a, nil
 }
 
+// ShelfItemType represents the type of a shelf item.
+type ShelfItemType string
+
+// As defined in ShelfItemType in autotest_private.idl.
+const (
+	ShelfItemTypeApp       ShelfItemType = "App"
+	ShelfItemTypePinnedApp ShelfItemType = "PinnedApp"
+	ShelfItemTypeShortcut  ShelfItemType = "BrowserShortcut"
+	ShelfItemTypeDialog    ShelfItemType = "Dialog"
+)
+
+// ShelfItemStatus repsents the type of the current status of a shelf item.
+type ShelfItemStatus string
+
+// As defined in ShelfItemStatus in autotest_private.idl.
+const (
+	ShelfItemClosed    ShelfItemStatus = "Closed"
+	ShelfItemRunning   ShelfItemStatus = "Running"
+	ShelfItemAttention ShelfItemStatus = "Attention"
+)
+
 // ShelfItem corresponds to the "ShelfItem" defined in autotest_private.idl.
 type ShelfItem struct {
-	AppID           string `json:"appId"`
-	LaunchID        string `json:"launchId"`
-	Title           string `json:"title"`
-	Type            string `json:"type"`
-	Status          string `json:"status"`
-	ShowsToolTip    bool   `json:"showsTooltip"`
-	PinnedByPolicy  bool   `json:"pinnedByPolicy"`
-	HasNotification bool   `json:"hasNotification"`
+	AppID           string          `json:"appId"`
+	LaunchID        string          `json:"launchId"`
+	Title           string          `json:"title"`
+	Type            string          `json:"type"`
+	Status          ShelfItemStatus `json:"status"`
+	ShowsToolTip    bool            `json:"showsTooltip"`
+	PinnedByPolicy  bool            `json:"pinnedByPolicy"`
+	HasNotification bool            `json:"hasNotification"`
 }
 
 // ShelfState corresponds to the "ShelfState" defined in autotest_private.idl
@@ -414,62 +434,32 @@ func WaitForHotseatAnimatingToIdealState(ctx context.Context, tc *chrome.TestCon
 }
 
 // SwipeUpHotseatAndWaitForCompletion swipes the hotseat up, changing the hotseat state from hidden to extended. The function does not end until the hotseat animation completes.
-func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tc *chrome.TestConn) error {
-	const errorMsg = "failed to swipe up the hotseat"
-
+func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tconn *chrome.TestConn, stw *input.SingleTouchEventWriter, tcc *input.TouchCoordConverter) error {
 	// Hotseat should be hidden before gesture swipe.
-	if err := WaitForHotseatAnimatingToIdealState(ctx, tc, ShelfHidden); err != nil {
-		return errors.Wrap(err, errorMsg)
+	if err := WaitForHotseatAnimatingToIdealState(ctx, tconn, ShelfHidden); err != nil {
+		return errors.Wrap(err, "failed to wait for the hotseat to be hidden")
 	}
 
-	info, err := FetchHotseatInfo(ctx, tc)
+	info, err := FetchHotseatInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, errorMsg)
-	}
-
-	// Obtain the suitable touch screen writer.
-	tsw, err := input.Touchscreen(ctx)
-	if err != nil {
-		return errors.Wrap(err, errorMsg)
-	}
-	defer tsw.Close()
-	orientation, err := display.GetOrientation(ctx, tc)
-	if err != nil {
-		return errors.Wrap(err, errorMsg)
-	}
-	tsw.SetRotation(-orientation.Angle)
-
-	// Obtain the coordinate converter from the touch screen writer.
-	displayInfo, err := display.GetInternalInfo(ctx, tc)
-	if err != nil {
-		return errors.Wrap(err, errorMsg)
-	}
-	tcc := tsw.NewTouchCoordConverter(displayInfo.Bounds.Size())
-	if err != nil {
-		return errors.Wrap(err, errorMsg)
+		return errors.Wrap(err, "failed to obtain the hotseat info")
 	}
 
 	// Convert the gesture locations from screen coordinates to touch screen coordinates.
 	startX, startY := tcc.ConvertLocation(info.SwipeUp.SwipeStartLocation)
 	endX, endY := tcc.ConvertLocation(info.SwipeUp.SwipeEndLocation)
 
-	stw, err := tsw.NewSingleTouchWriter()
-	if err != nil {
-		return errors.Wrap(err, errorMsg)
-	}
-	defer stw.Close()
-
 	if err := stw.Swipe(ctx, startX, startY, endX, endY, 200*time.Millisecond); err != nil {
-		return errors.Wrap(err, errorMsg)
+		return errors.Wrap(err, "failed to swipe")
 	}
 
 	if err := stw.End(); err != nil {
-		return errors.Wrap(err, errorMsg)
+		return errors.Wrap(err, "failed to finish the gesture")
 	}
 
 	// Hotseat should be extended after gesture swipe.
-	if err := WaitForHotseatAnimatingToIdealState(ctx, tc, ShelfExtended); err != nil {
-		return errors.Wrap(err, errorMsg)
+	if err := WaitForHotseatAnimatingToIdealState(ctx, tconn, ShelfExtended); err != nil {
+		return errors.Wrap(err, "failed to wait for the hoteat to be extended")
 	}
 
 	return nil
@@ -477,8 +467,6 @@ func SwipeUpHotseatAndWaitForCompletion(ctx context.Context, tc *chrome.TestConn
 
 // EnterShelfOverflow pins enough shelf icons to enter overflow mode.
 func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
-	const errorMsg = "fail to enter shelf overflow"
-
 	// Number of pinned apps in each round of loop.
 	const batchNumber = 10
 
@@ -487,13 +475,13 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 
 	installedApps, err := ChromeApps(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, errorMsg)
+		return errors.Wrap(err, "failed to obtain the list of the installed apps")
 	}
 
 	for {
 		info, err := FetchScrollableShelfInfoForState(ctx, tconn, &ShelfState{})
 		if err != nil {
-			return errors.Wrap(err, errorMsg)
+			return errors.Wrap(err, "failed to get the scrollable shelf info")
 		}
 
 		if info.IsOverflow {
@@ -502,12 +490,12 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 
 		sum += batchNumber
 		if sum > len(installedApps) {
-			return errors.Errorf("%s: got %d apps, want at least %d apps", errorMsg, len(installedApps), sum)
+			return errors.Errorf("got %d apps, want at least %d apps", len(installedApps), sum)
 		}
 
 		for _, app := range installedApps[sum-batchNumber : sum] {
 			if err := PinApp(ctx, tconn, app.AppID); err != nil {
-				return errors.Wrap(err, errorMsg)
+				return errors.Wrapf(err, "failed to pin app %s", app.AppID)
 			}
 		}
 	}

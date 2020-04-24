@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/faillog"
+	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -205,8 +206,14 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		// App should be open until the animation smoothness data is collected for in-app shelf.
 		defer files.Close(ctx)
 
+		tc, err := pointer.NewTouchController(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create the touch controller")
+		}
+		defer tc.Close()
+
 		// Swipe up the hotseat.
-		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn); err != nil {
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
 			return nil, errors.Wrap(err, "failed to test the in-app shelf")
 		}
 	} else if !isInTabletMode && isLauncherVisible {
