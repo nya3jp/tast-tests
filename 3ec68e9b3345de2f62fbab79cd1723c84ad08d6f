@@ -45,6 +45,54 @@
       "revId": "3ec68e9b3345de2f62fbab79cd1723c84ad08d6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982f3a99_d30433e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2020-04-24T06:33:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure -- who would know?",
+      "parentUuid": "b9fa979a_0ffa27ed",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "3ec68e9b3345de2f62fbab79cd1723c84ad08d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "defa139b_66b51722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2020-04-24T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec50db37_3997b81a",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 83
+      },
+      "revId": "3ec68e9b3345de2f62fbab79cd1723c84ad08d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
