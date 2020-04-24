@@ -141,6 +141,15 @@ func NewValues() *Values {
 	return &Values{values: make(map[Metric][]float64)}
 }
 
+// Merge merges all data points of vs into this Values structure.
+func (p *Values) Merge(vs ...*Values) {
+	for _, val := range vs {
+		for k, v := range val.values {
+			p.Append(k, v...)
+		}
+	}
+}
+
 // Append appends performance metrics values. It can be called only for multi-valued
 // performance metrics.
 func (p *Values) Append(s Metric, vs ...float64) {
