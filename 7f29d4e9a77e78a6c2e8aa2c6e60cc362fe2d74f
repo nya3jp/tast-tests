@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b184220_3036da13",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-24T02:21:59Z",
+      "side": 1,
+      "message": "maybe only assign this once, if \u0027lastError \u003d\u003d nil\u0027?",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 15
+      },
+      "revId": "7f29d4e9a77e78a6c2e8aa2c6e60cc362fe2d74f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
