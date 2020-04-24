@@ -16,6 +16,24 @@
       "revId": "0d1f1e8a02635d1bdebd408d08ad1359f89a373c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e0fe8a_fb20cd2b",
+        "filename": "android/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-04-24T02:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6e24af3_58150dc1",
+      "revId": "0d1f1e8a02635d1bdebd408d08ad1359f89a373c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
