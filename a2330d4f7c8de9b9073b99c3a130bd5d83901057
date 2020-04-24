@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "037ba612_2cd5cc5c",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-24T07:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2867e82b_dd7aa052",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 24
+      },
+      "revId": "a2330d4f7c8de9b9073b99c3a130bd5d83901057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "385fc771_ae5f5b7e",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 9
@@ -39,6 +63,24 @@
       "revId": "a2330d4f7c8de9b9073b99c3a130bd5d83901057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce75a043_6faa4704",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-24T07:52:53Z",
+      "side": 1,
+      "message": "Each Cipher is one of the strings: TKIP, CCMP, CCMP-256, GCMP, GCMP-256.\nSee the accepted cipher suites in https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf.",
+      "parentUuid": "385fc771_ae5f5b7e",
+      "revId": "a2330d4f7c8de9b9073b99c3a130bd5d83901057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
