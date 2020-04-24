@@ -46,6 +46,30 @@
       "revId": "b641c8cc137b499203875d1d0ba8397cccbb5410",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74ecf07a_88de3abc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-24T06:49:56Z",
+      "side": 1,
+      "message": "In arc.SettingsBridge, I handled a similar situation:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go;l\u003d114?q\u003darc.settingsbridge%20package:%5Echromeos_public$\u0026type\u003dcs",
+      "parentUuid": "6a73a0da_529f83c3",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 65
+      },
+      "revId": "b641c8cc137b499203875d1d0ba8397cccbb5410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
