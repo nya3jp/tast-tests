@@ -96,7 +96,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	// Okay to call it even if the vault doesn't exist.
 	resetVault()
 
-	if err := utility.MountVault(ctx, username, "testpass", "dummy_label", true /* create */); err != nil {
+	if err := utility.MountVault(ctx, username, "testpass", "dummy_label", true /* create */, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 

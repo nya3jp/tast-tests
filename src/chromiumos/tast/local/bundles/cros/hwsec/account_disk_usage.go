@@ -36,7 +36,7 @@ func init() {
 // Caller of this assumes the responsibility of umounting/cleaning up the vault regardless of whether the function returned an error.
 func setupVault(ctx context.Context, s *testing.State, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
 	// Now create the vault.
-	if err := utility.MountVault(ctx, username, password, label, true); err != nil {
+	if err := utility.MountVault(ctx, username, password, label, true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to create user vault for testing")
 	}
 	// Note: Caller of this method is responsible for cleaning up the
