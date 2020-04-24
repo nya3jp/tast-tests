@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e46a6bf2_df2e529d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-24T10:52:07Z",
+      "side": 1,
+      "message": "Oh yes, totally forgot..",
+      "parentUuid": "93dc86f5_e3508775",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9ba18f_ede708b8",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 1
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "a119fca8_4710e9fb",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-24T10:52:07Z",
+      "side": 1,
+      "message": "The idea here is that the API should enforce that power metrics are gathered correctly, i.e., fixed time intervals between data points. If this function is exported, the API could be used incorrectly.\n\nThat being said, there are some metrics that we gather only once per test, e.g., frame drop ratio in the preview perf test. But those are not captured through `Timeline`.",
+      "parentUuid": "ef24ebfb_e0f15872",
+      "range": {
+        "startLine": 126,
+        "startChar": 19,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f57822f_b8db1262",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 1
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "345db1d6_bacf86d2",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-24T10:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f57822f_b8db1262",
+      "range": {
+        "startLine": 135,
+        "startChar": 44,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b430a3f3_29313c09",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 1
@@ -99,6 +171,30 @@
       "writtenOn": "2020-04-24T09:53:41Z",
       "side": 1,
       "message": "Do we have an immediate use case of this function? If not, how about unexporting it, or inlining it to CaptureTimePeriod?",
+      "range": {
+        "startLine": 136,
+        "startChar": 19,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bf06d0_57d20d8f",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-24T10:52:07Z",
+      "side": 1,
+      "message": "We have two kind of tests:\na) Tests that sample metrics until an app is done executing.\nb) Tests that sample for fixed time period. The test closes the app afterwards.\n\nCaptureWhile is for (a), CaptureTimePeriod is for (b). Looking through the unit tests, I actually couldn\u0027t find any tests of type (a). Maybe they are still in review, Charles do you remember which test we needed (a) for?",
+      "parentUuid": "b430a3f3_29313c09",
       "range": {
         "startLine": 136,
         "startChar": 19,
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "264196ef_fac42e28",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-24T10:52:07Z",
+      "side": 1,
+      "message": "Added comment to CaptureWhile that this is guaranteed.",
+      "parentUuid": "8480c31f_1520a472",
+      "range": {
+        "startLine": 156,
+        "startChar": 31,
+        "endLine": 156,
+        "endChar": 44
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f44db37_1b418608",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 1
@@ -154,6 +274,30 @@
       "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de25770_d98157a7",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-24T10:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f44db37_1b418608",
+      "range": {
+        "startLine": 158,
+        "startChar": 20,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
