@@ -22,6 +22,30 @@
       "revId": "62dd2d506f370f5fc49478e5385e2d83b4e1a7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e018632_e07fcffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/helpers.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-24T12:50:04Z",
+      "side": 1,
+      "message": "I want to leave the possibility to have multiple test file. Currently no tests needs to have multiple files.\n\nIf you still feel that I should only add the fileName field only when I need them, I\u0027ll remove them.",
+      "parentUuid": "58389d39_2c6b8469",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "62dd2d506f370f5fc49478e5385e2d83b4e1a7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
