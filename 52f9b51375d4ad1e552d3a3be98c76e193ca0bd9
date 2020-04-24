@@ -16,6 +16,24 @@
       "revId": "52f9b51375d4ad1e552d3a3be98c76e193ca0bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2d135c_ff5d8c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T05:10:15Z",
+      "side": 1,
+      "message": "Thanks, your questions made me think more carefully about this function...\n\nTo answer your questions:\n\n1) We always want to return an error, regardless of whether we get responses or not.\n2) I don\u0027t have 100% preference, but in general I want to treat negative timeouts as the zero timeout.\n\nThis is because \"timeout\" is to allow some time to peer services to respond.\n\nAlso I noticed that this patchset does not support context cancellation (instead of context deadline).\n\nSo I decided to check ctx.Done() while reading responses.",
+      "parentUuid": "9ffb9be2_236b2330",
+      "revId": "52f9b51375d4ad1e552d3a3be98c76e193ca0bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
