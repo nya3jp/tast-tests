@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d070edcd_6c775bd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-24T11:10:08Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93dc86f5_e3508775",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 1
@@ -49,6 +72,23 @@
     },
     {
       "key": {
+        "uuid": "3fe9f451_625bb217",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-24T11:10:08Z",
+      "side": 1,
+      "message": "this looks not related to CL description",
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d9ba18f_ede708b8",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 1
@@ -78,6 +118,24 @@
       "side": 1,
       "message": "How do you run this test?",
       "parentUuid": "4d9ba18f_ede708b8",
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2b89c8_2f02e68a",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-24T11:10:08Z",
+      "side": 1,
+      "message": "I guess /mnt/host/source/src/platform/tast/fast_build.sh -T -v",
+      "parentUuid": "d5561fd7_1eb3ba36",
       "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
