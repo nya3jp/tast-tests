@@ -236,6 +236,24 @@
     },
     {
       "key": {
+        "uuid": "ada479ee_d15f2ec2",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-24T23:58:19Z",
+      "side": 1,
+      "message": "I changed it to Interface and added technology, to be able to get the interface for other technologies.",
+      "parentUuid": "43ef264f_0bb81919",
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f2b8dbf_1476c445",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 6
