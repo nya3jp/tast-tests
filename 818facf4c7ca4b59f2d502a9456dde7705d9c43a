@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39dcb6d4_06b5135b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-24T04:39:50Z",
+      "side": 1,
+      "message": "optional.",
+      "parentUuid": "e63f0afb_1ee7a627",
+      "range": {
+        "startLine": 50,
+        "startChar": 63,
+        "endLine": 50,
+        "endChar": 73
+      },
+      "revId": "818facf4c7ca4b59f2d502a9456dde7705d9c43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c52b3158_a889e719",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
         "patchSetId": 5
