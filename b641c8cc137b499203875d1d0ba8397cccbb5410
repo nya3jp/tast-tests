@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c19376a_a0866cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-04-24T00:30:35Z",
+      "side": 1,
+      "message": "Oops, I\u0027m sorry I didn\u0027t notice in the previous rounds, but this hides the error while polling. I think we want to see both error generated while Poll() and while WriteFile().",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 65
+      },
+      "revId": "b641c8cc137b499203875d1d0ba8397cccbb5410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
