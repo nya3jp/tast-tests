@@ -408,11 +408,12 @@ func (c *CryptohomeBinary) IsMounted(ctx context.Context) ([]byte, error) {
 }
 
 // MountEx calls "cryptohome --action=mount_ex".
-func (c *CryptohomeBinary) MountEx(ctx context.Context, username, password string, doesCreate bool, label string) ([]byte, error) {
+func (c *CryptohomeBinary) MountEx(ctx context.Context, username, password string, doesCreate bool, label string, extraFlags []string) ([]byte, error) {
 	args := []string{"--action=mount_ex", "--user=" + username, "--password=" + password, "--key_label=" + label}
 	if doesCreate {
 		args = append(args, "--create")
 	}
+	args = append(args, extraFlags...)
 	return c.call(ctx, args...)
 }
 
