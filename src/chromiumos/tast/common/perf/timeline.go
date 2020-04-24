@@ -6,6 +6,7 @@ package perf
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/perf"
 )
@@ -26,14 +27,23 @@ type TimelineDatasource = perf.TimelineDatasource
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline = perf.Timeline
 
-// NewTimeline creates a Timeline from a slice of TimelineDatasource, calling
-// all the Setup methods.
-func NewTimeline(ctx context.Context, sources ...TimelineDatasource) (*Timeline, error) {
-	return perf.NewTimeline(ctx, sources...)
+// NewTimelineOptions holds all optional parameters of NewTimeline.
+type NewTimelineOptions = perf.NewTimelineOptions
+
+// NewTimelineOption sets an optional parameter of NewTimeline.
+type NewTimelineOption = perf.NewTimelineOption
+
+// Interval sets the interval between two subsequent metric snapshots.
+func Interval(interval time.Duration) NewTimelineOption {
+	return perf.Interval(interval)
 }
 
-// NewTimelineWithPrefix creates a Timeline from a slice of TimelineDatasources,
-// all created metrics will be prefixed with the passed prefix.
-func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
-	return perf.NewTimelineWithPrefix(ctx, prefix, sources...)
+// Prefix sets prepends all metric names with a given string.
+func Prefix(prefix string) NewTimelineOption {
+	return perf.Prefix(prefix)
+}
+
+// NewTimeline creates a Timeline from a slice of TimelineDatasources. Metric names may be prefixed and callers can specify the time interval between two subsequent snapshots. This method calls the Setup method of each data source.
+func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...NewTimelineOption) (*Timeline, error) {
+	return perf.NewTimeline(ctx, sources, setters...)
 }
