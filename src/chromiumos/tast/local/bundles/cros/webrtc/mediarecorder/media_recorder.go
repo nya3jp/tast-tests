@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/histogram"
@@ -42,6 +43,62 @@ func reportMetric(name, unit string, value float64, direction perf.Direction, p 
 		Unit:      unit,
 		Direction: direction,
 	}, value)
+}
+
+// measureCPU measures CPU usage for a period of time t after a short period for stabilization s and writes CPU usage to perf.Values.
+func measureCPU(ctx context.Context, s, t time.Duration, p *perf.Values) error {
+	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", s)
+	if err := testing.Sleep(ctx, s); err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "Measuring CPU and Power usage for ", t)
+	measurements, err := cpu.MeasureUsage(ctx, t)
+	if err != nil {
+		return err
+	}
+	cpuUsage := measurements["cpu"]
+	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
+	reportMetric("cpu_usage", "percent", cpuUsage, perf.SmallerIsBetter, p)
+
+	if power, ok := measurements["power"]; ok {
+		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
+		reportMetric("pkg_power_usage", "W", power, perf.SmallerIsBetter, p)
+	}
+
+	return nil
+}
+
+// measureGPUCounters measures GPU usage for a period of time t into p.
+func measureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) error {
+	testing.ContextLog(ctx, "Measuring GPU usage for ", t)
+	counters, err := graphics.CollectPerformanceCounters(ctx, t)
+	if err != nil {
+		return errors.Wrap(err, "error collecting graphics performance counters")
+	}
+	if counters == nil {
+		return nil
+	}
+	if counters["total"].Milliseconds() == 0 {
+		return errors.New("total elapsed time counter is zero")
+	}
+
+	if rcs, ok := counters["rcs"]; ok && rcs.Seconds() != 0 {
+		rcsUsage := 100 * rcs.Seconds() / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "RCS usage: %f%%", rcsUsage)
+		reportMetric("rcs_usage", "percent", rcsUsage, perf.SmallerIsBetter, p)
+	}
+	if vcs, ok := counters["vcs"]; ok && vcs.Seconds() != 0 {
+		vcsUsage := 100 * vcs.Seconds() / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "VCS usage: %f%%", vcsUsage)
+		reportMetric("vcs_usage", "percent", vcsUsage, perf.SmallerIsBetter, p)
+	}
+	if vecs, ok := counters["vecs"]; ok && vecs.Seconds() != 0 {
+		vecsUsage := 100 * vecs.Seconds() / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "VECS usage: %f%%", vecsUsage)
+		reportMetric("vecs_usage", "percent", vecsUsage, perf.SmallerIsBetter, p)
+	}
+
+	return nil
 }
 
 // MeasurePerf measures the frame processing time and CPU usage while recording and report the results.
@@ -93,16 +150,11 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 		return errors.Wrapf(err, "failed to evaluate startRecording(%s)", codec)
 	}
 
-	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
-	// TODO(mcasas): Remove testing.Sleep() and use testing.Poll() instead.
-	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-		return errors.Wrap(err, "failed waiting for CPU usage to stabilize")
+	if err := measureCPU(ctx, stabilizationDuration, measurementDuration, p); err != nil {
+		return errors.Wrap(err, "error measuring CPU usage/power consumption")
 	}
-
-	// While the video recording is in progress, measure CPU usage.
-	measurements, err := cpu.MeasureUsage(ctx, measurementDuration)
-	if err != nil {
-		return errors.Wrap(err, "error measuring cpu")
+	if err := measureGPUCounters(ctx, measurementDuration, p); err != nil {
+		return errors.Wrap(err, "error measuring GPU usage")
 	}
 
 	// Recorded video will be saved in |videoBuffer| in base64 format.
@@ -129,16 +181,7 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 	if err != nil {
 		return errors.Wrap(err, "failed to calculate the processig time per frame")
 	}
-
 	reportMetric("frame_processing_time", "millisecond", float64(processingTimePerFrame.Milliseconds()), perf.SmallerIsBetter, p)
-	cpuUsage := measurements["cpu"]
-	reportMetric("cpu_usage", "percent", cpuUsage, perf.SmallerIsBetter, p)
-	testing.ContextLogf(ctx, "Processing time per frame = %v, cpu usage = %v", processingTimePerFrame, cpuUsage)
-
-	if power, ok := measurements["power"]; ok {
-		reportMetric("power", "W", power, perf.SmallerIsBetter, p)
-		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
-	}
 
 	if err := p.Save(outDir); err != nil {
 		return errors.Wrap(err, "failed to store performance data")
