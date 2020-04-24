@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7443347d_264f61f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-24T07:39:54Z",
+      "side": 1,
+      "message": "This means in the reverse order than you opened them right?",
+      "range": {
+        "startLine": 86,
+        "startChar": 50,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "7b36d3b7333380742103748d68b9de577581bab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66416f71_82668c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-04-24T07:39:54Z",
+      "side": 1,
+      "message": "basic go question: why wrap this code in a func() ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 7
+      },
+      "revId": "7b36d3b7333380742103748d68b9de577581bab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
