@@ -158,6 +158,7 @@ func ConfigDatafiles() []string {
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
 	Platform             string           `json:"platform"`
+	Parent               string           `json:"parent"`
 	ModeSwitcherType     ModeSwitcherType `json:"mode_switcher_type"`
 	PowerButtonDevSwitch bool             `json:"power_button_dev_switch"`
 	RecButtonDevSwitch   bool             `json:"rec_button_dev_switch"`
@@ -177,18 +178,51 @@ func loadBytes(configDataDir, platform string) ([]byte, error) {
 	return b, nil
 }
 
-// NewConfig creates a new Config matching the DUT platform.
-// TODO(b/154500336): Use the platform config to overwrite parent config(s) and default config
-// TODO(b/154500336): Load model config and overwrite platform config
-func NewConfig(configDataDir, platform string) (*Config, error) {
-	b, err := loadBytes(configDataDir, platform)
-	if err != nil {
-		return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
-	}
+// parentFromBytes finds the name of the parent platform referenced by a config's JSON bytes.
+func parentFromBytes(b []byte) (string, error) {
 	var cfg *Config
-	err = json.Unmarshal(b, &cfg)
+	err := json.Unmarshal(b, &cfg)
 	if err != nil {
-		return nil, errors.Wrapf(err, "unmarshaling json bytes %s for platform %s", b, platform)
+		return "", errors.Wrapf(err, "unmarshaling json bytes %s", b)
 	}
-	return cfg, nil
+	if cfg.Parent != "" {
+		return cfg.Parent, nil
+	} else if cfg.Platform != "" {
+		// No parent specified, so inherit from the default config.
+		return defaultName, nil
+	} else {
+		// This is the default config.
+		return "", nil
+	}
+}
+
+// NewConfig creates a new Config matching the DUT platform.
+// TODO(b/154500336): Load model config and overwrite platform config
+func NewConfig(configDataDir, platform string) (cfg *Config, err error) {
+	// unmarshalOntoCfg populates cfg with the JSON bytes in b.
+	// By deferring multiple times, we can unmarshal bytes in the opposite order that they are encountered..
+	unmarshalOntoCfg := func(b []byte) {
+		// No-op if NewConfig is already returning with an error.
+		if err != nil {
+			return
+		}
+		err = json.Unmarshal(b, &cfg)
+		if err != nil {
+			err = errors.Wrapf(err, "unmarshaling json bytes %s onto config %+v", b, cfg)
+		}
+	}
+
+	// Unmarshal JSON bytes in reverse order via defer. That way, the least significant config (defaults) gets loaded first, then overwritten by the (grand*)parent config, and eventually the platform itself.
+	for platform != "" {
+		b, err := loadBytes(configDataDir, platform)
+		if err != nil {
+			return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
+		}
+		defer unmarshalOntoCfg(b)
+		platform, err = parentFromBytes(b)
+		if err != nil {
+			return nil, errors.Wrapf(err, "determining parent platform from bytes %s", b)
+		}
+	}
+	return
 }
