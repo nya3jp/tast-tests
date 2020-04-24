@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "173796bc_2ea0dbe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T18:54:48Z",
+      "side": 1,
+      "message": "Right. There\u0027s a weird thing though where the order can change based on how the window loads and how long it takes. In this test, Settings should open last and be on top, but I observed sometimes that Files will come to the top when it finishes loading completely. The polling above seems to do a good job of making sure everything has stopped moving around.",
+      "parentUuid": "7443347d_264f61f9",
+      "range": {
+        "startLine": 86,
+        "startChar": 50,
+        "endLine": 86,
+        "endChar": 61
+      },
+      "revId": "7b36d3b7333380742103748d68b9de577581bab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66416f71_82668c9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "7b36d3b7333380742103748d68b9de577581bab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3ab288a_a8b7f2ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T18:54:48Z",
+      "side": 1,
+      "message": "This is so I can get defer the keyboard.AccelRelease and get it to fire at the right time. It\u0027ll be called when we exit from func. It needs to be deferred anyways to clean up if the test fails, but I also want to release it intentionally to end cycling. This way accomplishes both.",
+      "parentUuid": "66416f71_82668c9d",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 7
+      },
+      "revId": "7b36d3b7333380742103748d68b9de577581bab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
