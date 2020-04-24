@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "879db0b1_804e3346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-04-24T02:14:33Z",
+      "side": 1,
+      "message": "sgtm. Done!",
+      "parentUuid": "030a50cb_c2f3b04f",
+      "range": {
+        "startLine": 238,
+        "startChar": 48,
+        "endLine": 238,
+        "endChar": 69
+      },
+      "revId": "3022f641deb694127bbf336f7544f92ece28e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51048058_37849dc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "67d3268f_00b46e27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-04-24T02:14:33Z",
+      "side": 1,
+      "message": "Done. I feel like the new name is too long to avoid conflict, but don\u0027t have any other good name.",
+      "parentUuid": "51048058_37849dc5",
+      "revId": "3022f641deb694127bbf336f7544f92ece28e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3405a9e1_acc728b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "3022f641deb694127bbf336f7544f92ece28e9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf604d1_bffe7e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-04-24T02:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3405a9e1_acc728b6",
+      "revId": "3022f641deb694127bbf336f7544f92ece28e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "3022f641deb694127bbf336f7544f92ece28e9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24387cb_9347ad62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-04-24T02:14:33Z",
+      "side": 1,
+      "message": "Done! This idiom is cool.",
+      "parentUuid": "840796ab_f24a10cd",
+      "range": {
+        "startLine": 300,
+        "startChar": 21,
+        "endLine": 300,
+        "endChar": 25
+      },
+      "revId": "3022f641deb694127bbf336f7544f92ece28e9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
