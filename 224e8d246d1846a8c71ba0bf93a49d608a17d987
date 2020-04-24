@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "714f37ef_1a8d043a",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-24T03:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7c2f77_643725c3",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "224e8d246d1846a8c71ba0bf93a49d608a17d987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c33ef5d_1bb0d735",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 9
@@ -36,6 +60,24 @@
       "writtenOn": "2020-04-23T20:20:09Z",
       "side": 1,
       "message": "If we move out option related code to options.go, would it be easier to read? That is, every security protocol package has config.go and options.go. Users can read options.go to know how many Option decorators is available.",
+      "revId": "224e8d246d1846a8c71ba0bf93a49d608a17d987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c486954a_2faf47cc",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-24T03:49:18Z",
+      "side": 1,
+      "message": "Good idea. Yenlin@ WDYT?",
+      "parentUuid": "6c33ef5d_1bb0d735",
       "revId": "224e8d246d1846a8c71ba0bf93a49d608a17d987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -62,6 +104,30 @@
       "revId": "224e8d246d1846a8c71ba0bf93a49d608a17d987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1141d206_8255234b",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-24T03:49:18Z",
+      "side": 1,
+      "message": "This reminds me that it should be able to set multiple algs.",
+      "parentUuid": "b4d47164_c1a28eaf",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 13
+      },
+      "revId": "224e8d246d1846a8c71ba0bf93a49d608a17d987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
