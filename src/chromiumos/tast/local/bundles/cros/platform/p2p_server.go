@@ -31,6 +31,13 @@ func init() {
 		Desc:     "Tests that Chromium OS can serve files to local network peers with p2p-server",
 		Contacts: []string{"nya@chromium.org"},
 		Attr:     []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"p2p_stable"},
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"p2p_unstable"},
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
