@@ -108,7 +108,6 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	const (
 		gmsRoot      = "/data/user_de/0/com.google.android.gms"
 		appChimera   = "app_chimera"
-		tmpTarFile   = "/sdcard/Download/temp_gms_caches.tar"
 		packagesPath = "/data/system/packages_copy.xml"
 		gsfDatabase  = "/data/data/com.google.android.gsf/databases/gservices.db"
 	)
@@ -132,20 +131,23 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	// Use agnostic way by archiving content to tar to the public space using bootstrap
 	// command 'android-sh' which has enough permissions to do this.
 	// TODO(b/148832630): get rid of BootstrapCommand.
-	testing.ContextLogf(ctx, "Compressing GMS Core caches to %q", tmpTarFile)
+	testing.ContextLog(ctx, "Compressing GMS Core caches")
 	out, err := arc.BootstrapCommand(
-		ctx, "/system/bin/tar", "-cvpf", tmpTarFile, "-C", gmsRoot, appChimera).Output(testexec.DumpLogOnError)
-	// Cleanup temp tar in any case.
-	defer arc.BootstrapCommand(ctx, "/system/bin/rm", "-f", tmpTarFile).Run()
+		ctx, "/system/bin/tar", "-cp", "-C", gmsRoot, appChimera).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return errors.Wrapf(err, "compression: %s failed: %q", chimeraPath, string(out))
+	}
+	// Sanity check.
+	if len(out) < 100 {
+		return errors.Wrapf("GMS Core caches look too small, did something go wrong?")
 	}
 
 	// Pull archive to the host and unpack it.
 	targetTar := filepath.Join(outputDir, GMSCoreCacheArchive)
 	testing.ContextLogf(ctx, "Pulling GMS Core caches to %q", targetTar)
-	if err := a.PullFile(ctx, tmpTarFile, targetTar); err != nil {
-		return errors.Wrapf(err, "failed to pull %q from Android to %q", tmpTarFile, targetTar)
+
+	if err := ioutil.WriteFile(targetTar, out, 0644); err != nil {
+		return errors.Wrapf(err, "failed to write %q", targetTar)
 	}
 
 	// Use BootstrapCommand to avoid permission limitation accessing chimera path via adb.

@@ -49,11 +49,14 @@ func init() {
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
 			"tast.cros.arc.GmsCoreCacheService"},
 		Timeout: 10 * time.Minute,
-		// TODO(b/154164168): reenable for ARCVM
 		Params: []testing.Param{{
 			Name:              "",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               false,
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               true,
 		}},
 		Vars: []string{
 			"arc.DataCollector.UreadaheadService_username",
