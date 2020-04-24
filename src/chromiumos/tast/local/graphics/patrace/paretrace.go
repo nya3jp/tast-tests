@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/local/testexec"
@@ -107,16 +106,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	}
 	defer d.Close()
 
-	perfValues := perf.NewValues()
-	defer func() {
-		if err := perfValues.Save(s.OutDir()); err != nil {
-			s.Error("Cannot save perf data: ", err)
-		}
-	}()
-	metrics, err := perf.NewTimeline(
-		ctx,
-		power.TestMetrics()...,
-	)
+	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(tPowerSnapshotInterval))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
@@ -148,38 +138,37 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	}
 
 	exp := regexp.MustCompile(`paretrace32\s*:.*=+\sStart\stimer.*=+`)
-	if err := graphics.WaitForExpInLogcat(ctx, a, exp, ctxutil.MaxTimeout); err != nil {
-		s.Fatal("WaitForExpInLogcat failed: ", err)
+	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp), ctxutil.MaxTimeout); err != nil {
+		s.Fatal("WaitForLogcat failed: ", err)
 	}
-
-	s.Log("Start timer")
 
 	if err := metrics.Start(ctx); err != nil {
 		s.Fatal("Failed to start metrics: ", err)
 	}
 
-	exp = regexp.MustCompile(`paretrace32\s*:.*=+\sEnd\stimer.*=+`)
-	for {
-		err := graphics.WaitForExpInLogcat(ctx, a, exp, tPowerSnapshotInterval)
-
-		if snapErr := metrics.Snapshot(ctx, perfValues); snapErr != nil {
-			s.Fatal("Failed to snapshot metrics: ", snapErr)
-		}
-
-		if err == nil {
-			break
-		}
+	if err := metrics.StartRecording(ctx); err != nil {
+		s.Fatal("Failed to start recording: ", err)
 	}
 
-	s.Log("End timer")
+	exp = regexp.MustCompile(`paretrace32\s*:.*=+\sEnd\stimer.*=+`)
+	if err := a.WaitForLogcat(ctx, arc.RegexpPred(exp), ctxutil.MaxTimeout); err != nil {
+		s.Fatal("WaitForLogcat failed: ", err)
+	}
+
+	perfValues, err := metrics.StopRecording()
+	if err != nil {
+		s.Fatal("Error while recording power metrics: ", err)
+	}
+
+	defer func() {
+		if err := perfValues.Save(s.OutDir()); err != nil {
+			s.Error("Cannot save perf data: ", err)
+		}
+	}()
 
 	// Wait for app cleanup
 	if err := act.WaitForFinished(ctx, ctxutil.MaxTimeout); err != nil {
 		s.Fatal("waitForFinished failed: ", err)
-	}
-
-	if err := metrics.Snapshot(ctx, perfValues); err != nil {
-		s.Fatal("Failed to snapshot metrics: ", err)
 	}
 
 	if err := setPerf(ctx, a, perfValues, resultPath); err != nil {
