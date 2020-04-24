@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c73dc46_aa505399",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T22:30:24Z",
+      "side": 1,
+      "message": "nit: if this is used only inside this package (not public), make it private and move it close to where it is used: L42.\n\nnit2: no need to use \"(\" when there is only one const",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "bfea03727c65009139b27d2ecb94f932e028d55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb1692e9_897ce573",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T22:30:24Z",
+      "side": 1,
+      "message": "just double checking: what happen if VarRouter is not present? is it Ok to use it anyway? or should it report an error?\nIf so, add comment saying that.",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "bfea03727c65009139b27d2ecb94f932e028d55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
