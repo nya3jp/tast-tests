@@ -22,6 +22,30 @@
       "revId": "94ce97c7df9c023994e18e550625f09530bf3db2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e49db54_b80b1712",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T02:14:35Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Use map of maps of bools.",
+      "parentUuid": "4244fede_c4f79c0e",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 45
+      },
+      "revId": "94ce97c7df9c023994e18e550625f09530bf3db2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
