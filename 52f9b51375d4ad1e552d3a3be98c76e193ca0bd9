@@ -34,6 +34,24 @@
       "revId": "52f9b51375d4ad1e552d3a3be98c76e193ca0bd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e52a3d2_6290db8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-24T15:32:56Z",
+      "side": 1,
+      "message": "\u003e 1) We always want to return an error, regardless of whether we get responses or not.\n\nBecause mdns.Query() blocks \"timeout\" duration always (unless it fails to start),\nif timeout is bigger than remaining ctx\u0027s timeout, it will be (almost) always return an error after ctx\u0027s timeout. (note, because of async implementation, I think there\u0027s some small amount of chance that it may return a list of found results, though. Anyways, it looks fragile behavior to me).\n\nIs it intentional behavior? \"Waiting timeout duration\" looks just redundant to me...?",
+      "parentUuid": "1c2d135c_ff5d8c62",
+      "revId": "52f9b51375d4ad1e552d3a3be98c76e193ca0bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
