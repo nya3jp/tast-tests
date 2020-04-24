@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ffb9be2_236b2330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-24T02:07:53Z",
+      "side": 1,
+      "message": "Could you explain what you\u0027d like to do in the following scenarios?\n\n1) When the context actually expires during query.\n  1-1) What if some results are found.\n  1-2) What if no result is found.\n2) When the given timeout is non-positive value.\n\ndo you want to return an error? Or, success with empty result?\nIt looks a bit complicated to me. Could you mention what\u0027s the expected behavior in the document?",
+      "revId": "52f9b51375d4ad1e552d3a3be98c76e193ca0bd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
