@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b498059_5472a925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_ec_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-24T16:59:02Z",
+      "side": 1,
+      "message": "that\u0027s a bit unclear what does nil mean. I\u0027d vote to use functional option pattern: https://github.com/tmrts/go-patterns/blob/master/idiom/functional-options.md\n\nWDYT?",
+      "range": {
+        "startLine": 38,
+        "startChar": 45,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "e494182944bf78ae8388e3fba39eb678424d33d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0abaa2_9448a7a5",
+        "filename": "src/chromiumos/tast/local/wilco/dpsl_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-24T16:59:02Z",
+      "side": 1,
+      "message": "nit: string",
+      "range": {
+        "startLine": 96,
+        "startChar": 58,
+        "endLine": 96,
+        "endChar": 64
+      },
+      "revId": "e494182944bf78ae8388e3fba39eb678424d33d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
