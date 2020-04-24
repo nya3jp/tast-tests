@@ -18,13 +18,28 @@ import (
 
 var mockData = map[string][]byte{
 	defaultName: []byte(`{
-		"platform": "DEFAULTS",
+		"platform": null,
 		"parent": null,
-		"firmware_screen": 1
+		"firmware_screen": 1,
+		"delay_reboot_to_ping": 1,
+		"confirm_screen": 1,
+		"usb_plug": 1
 	}`),
 	"myplatform": []byte(`{
 		"platform": "myplatform",
+		"parent": "myparent",
 		"firmware_screen": 2
+	}`),
+	"myparent": []byte(`{
+		"platform": "myparent",
+		"parent": "mygrandparent",
+		"confirm_screen": 3,
+		"firmware_screen": 3
+	}`),
+	"mygrandparent": []byte(`{
+		"platform": "mygrandparent",
+		"usb_plug": 4,
+		"confirm_screen": 4
 	}`),
 }
 
@@ -56,6 +71,7 @@ func TestLoadBytes(t *testing.T) {
 	}
 }
 
+// TestNewConfig verifies that we can create a new Config object with proper inheritance.
 func TestNewConfig(t *testing.T) {
 	mockConfigDir, err := setupMockData(t)
 	defer os.RemoveAll(mockConfigDir)
@@ -69,7 +85,20 @@ func TestNewConfig(t *testing.T) {
 	if cfg.Platform != "myplatform" {
 		t.Errorf(`unexpected Platform value; got %q, want "myplatform"`, cfg.Platform)
 	}
+	// Platform and parents do not set values; inherit defaults.
+	if cfg.DelayRebootToPing != 1 {
+		t.Errorf("unexpected DelayRebootToPing value; got %d, want 1", cfg.DelayRebootToPing)
+	}
+	// Platform overwrites defaults (even though parent also sets the value)
 	if cfg.FirmwareScreen != 2 {
 		t.Errorf("unexpected FirmwareScreen value; got %d, want 2", cfg.FirmwareScreen)
+	}
+	// Platform inherits from parent (even though grandparent also sets the value)
+	if cfg.ConfirmScreen != 3 {
+		t.Errorf("unexpected ConfirmScreen value; got %d, want 1", cfg.ConfirmScreen)
+	}
+	// Platform inherits from grandparent
+	if cfg.USBPlug != 4 {
+		t.Errorf("unexpected USBPlug value; got %d, want 1", cfg.USBPlug)
 	}
 }
