@@ -137,7 +137,7 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart the VM without processes: ", err)
 	}
 
-	if _, err := wc.StartDPSLListener(ctx, &empty.Empty{}); err != nil {
+	if _, err := wc.StartDPSLListener(ctx, &wilco.StartDPSLListenerRequest{}); err != nil {
 		s.Fatal("Failed to create listener: ", err)
 	}
 	defer wc.StopDPSLListener(ctx, &empty.Empty{})
