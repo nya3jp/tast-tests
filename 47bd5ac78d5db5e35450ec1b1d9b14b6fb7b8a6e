@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee508ff1_a314af42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T07:42:12Z",
+      "side": 1,
+      "message": "I think this should be: {Timeout: 10*time.Second, Interval:1*time.Second} ? (And remove the Sleep line96)",
+      "range": {
+        "startLine": 100,
+        "startChar": 25,
+        "endLine": 100,
+        "endChar": 51
+      },
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487aa498_760d42eb",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T07:42:12Z",
+      "side": 1,
+      "message": "I think this don\u0027t really need the whole TestFixture? maybe only *dut.DUT?",
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8155a38_c99bc023",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T07:42:12Z",
+      "side": 1,
+      "message": "Not sure if it is worth to have an ip.Runner tool wrapping the related command line execution/parsing? (like iw.Runner, but might be remote only as we have net package in local tests?)",
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58306737_d2f281df",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T07:42:12Z",
+      "side": 1,
+      "message": "I think you can just dut.Command(\"ip\", \"addr\", \"show\", c.name) here?",
+      "range": {
+        "startLine": 62,
+        "startChar": 52,
+        "endLine": 62,
+        "endChar": 65
+      },
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ab8b2a_821d3818",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T07:42:12Z",
+      "side": 1,
+      "message": "Not sure if it will be simpler to gather the three (MAC, IPv4, IPv6) and return them in a single function. e.g.\n\n  type AddrInfo struct {\n    MAC net.HardwareAddr\n    IPv4 *net.IPNet\n    IPv6 *net.IPNet\n  }\n\n  func Addresses(ctx) (AddrInfo, error) {...}\n\nSo that when needing multiple fields, it doesn\u0027t have to parse multiple times.\n(Or some other types like string if it\u0027s more convenient)",
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28e0f30_75336f94",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T07:42:12Z",
+      "side": 1,
+      "message": "I would probably go for only \"Interface\" as the service name is already Wifi.\nDean@, WDYT?",
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2b8dbf_1476c445",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-24T07:42:12Z",
+      "side": 1,
+      "message": "This is not used anymore.",
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
