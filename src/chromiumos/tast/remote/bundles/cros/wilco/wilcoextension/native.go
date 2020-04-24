@@ -54,6 +54,39 @@ func (n *NativeMessaging) SendMessage(ctx context.Context, message interface{}) 
 	return nil
 }
 
+// SendMessageAndGetReply sends a message over the native messaging port.
+// It waits for the response to arrive and saves it in the response parameter.
+func (n *NativeMessaging) SendMessageAndGetReply(ctx context.Context, message, response interface{}) error {
+	marshaled, err := json.Marshal(&message)
+	if err != nil {
+		return errors.Wrapf(err, "failed to marshall %v", message)
+	}
+
+	script := fmt.Sprintf(`new Promise(function(resolve, reject) {
+		chrome.runtime.sendNativeMessage('com.google.wilco_dtc', %s, function(response) {
+			if (!response) {
+				reject('No response')
+			} else {
+				resolve(response)
+			}
+		})
+	})`, string(marshaled))
+
+	res, err := n.pc.EvalInExtension(ctx, &ps.EvalInExtensionRequest{
+		ExtensionId: ID,
+		Expression:  script,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to send native message")
+	}
+
+	if err := json.Unmarshal(res.Result, response); err != nil {
+		return errors.Wrap(err, "failed to unmarshal response")
+	}
+
+	return nil
+}
+
 // StartListener starts receiving messages from the native messaging port.
 func (n *NativeMessaging) StartListener(ctx context.Context) error {
 	script := `

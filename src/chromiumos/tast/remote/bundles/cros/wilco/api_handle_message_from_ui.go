@@ -100,7 +100,22 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 		s.Fatal("Failed to restart the VM without processes: ", err)
 	}
 
-	if _, err := wc.StartDPSLListener(ctx, &empty.Empty{}); err != nil {
+	type testMsg struct {
+		Test int
+	}
+
+	vmResponse := testMsg{
+		Test: 5,
+	}
+
+	marshaled, err := json.Marshal(vmResponse)
+	if err != nil {
+		s.Fatal("Failed to marshal message: ", err)
+	}
+
+	if _, err := wc.StartDPSLListener(ctx, &wilco.StartDPSLListenerRequest{
+		HandleMessageFromUiResponse: string(marshaled),
+	}); err != nil {
 		s.Fatal("Failed to create listener: ", err)
 	}
 	defer wc.StopDPSLListener(ctx, &empty.Empty{})
@@ -110,16 +125,20 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 		s.Fatal("Failed to start native messaging: ", err)
 	}
 
-	type testMsg struct {
-		Test int
-	}
-
-	sendMsg := testMsg{
+	uiRequest := testMsg{
 		Test: 5,
 	}
 
-	if err := nm.SendMessage(ctx, &sendMsg); err != nil {
+	s.Log("Sending message from extension")
+	sendMessageCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+	var uiResponse testMsg
+	if err := nm.SendMessageAndGetReply(sendMessageCtx, &uiRequest, &uiResponse); err != nil {
 		s.Fatal("Failed to send message using extension: ", err)
+	}
+
+	if uiResponse != vmResponse {
+		s.Errorf("Unexpected response received: got %v; want %v", uiResponse, vmResponse)
 	}
 
 	s.Log("Waiting for HandleMessageFromUi")
@@ -131,12 +150,12 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 		s.Error("Did not recieve HandleMessageFromUi event: ", err)
 	}
 
-	var recvMsg testMsg
-	if err := json.Unmarshal([]byte(msg.JsonMessage), &recvMsg); err != nil {
+	var vmRequest testMsg
+	if err := json.Unmarshal([]byte(msg.JsonMessage), &vmRequest); err != nil {
 		s.Fatalf("Failed to unmarshall %q: %v", msg.JsonMessage, err)
 	}
 
-	if sendMsg != recvMsg {
-		s.Errorf("Unexpected message received: got %v; want %v", recvMsg, sendMsg)
+	if uiRequest != vmRequest {
+		s.Errorf("Unexpected message received: got %v; want %v", vmRequest, uiRequest)
 	}
 }
