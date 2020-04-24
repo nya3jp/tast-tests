@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Timeline datasources provide periodic performance metrics collected at the
@@ -66,25 +67,52 @@ func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline struct {
-	sources []TimelineDatasource
+	sources         []TimelineDatasource
+	interval        time.Duration
+	cancelRecording context.CancelFunc
+	recordingValues *Values
+	recordingStatus chan error
 }
 
-// NewTimeline creates a Timeline from a slice of TimelineDatasource, calling
-// all the Setup methods.
-func NewTimeline(ctx context.Context, sources ...TimelineDatasource) (*Timeline, error) {
-	return NewTimelineWithPrefix(ctx, "", sources...)
+// newTimelineOptions holds all optional parameters of NewTimeline.
+type newTimelineOptions struct {
+	// A prefix that is added to all metric names.
+	Prefix string
+	// The time duration between two subsequent metric snapshots. Default value is 10 seconds.
+	Interval time.Duration
 }
 
-// NewTimelineWithPrefix creates a Timeline from a slice of TimelineDatasources,
-// all created metrics will be prefixed with the passed prefix.
-func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
+// NewTimelineOption sets an optional parameter of NewTimeline.
+type newTimelineOption func(*newTimelineOptions)
+
+// Interval sets the interval between two subsequent metric snapshots.
+func Interval(interval time.Duration) newTimelineOption {
+	return func(args *newTimelineOptions) {
+		args.Interval = interval
+	}
+}
+
+// Prefix sets prepends all metric names with a given string.
+func Prefix(prefix string) newTimelineOption {
+	return func(args *newTimelineOptions) {
+		args.Prefix = prefix
+	}
+}
+
+// NewTimeline creates a Timeline from a slice of TimelineDatasources. Metric names may be prefixed and callers can specify the time interval between two subsequent snapshots. This method calls the Setup method of each data source.
+func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...newTimelineOption) (*Timeline, error) {
+	args := newTimelineOptions{Interval: 10 * time.Second}
+	for _, setter := range setters {
+		setter(&args)
+	}
+
 	ss := append(sources, &timestampSource{})
 	for _, s := range ss {
-		if err := s.Setup(ctx, prefix); err != nil {
+		if err := s.Setup(ctx, args.Prefix); err != nil {
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}
-	return &Timeline{sources: ss}, nil
+	return &Timeline{sources: ss, interval: args.Interval}, nil
 }
 
 // Start starts metric collection on all datasources.
@@ -97,12 +125,58 @@ func (t *Timeline) Start(ctx context.Context) error {
 	return nil
 }
 
-// Snapshot takes a snapshot of all metrics.
-func (t *Timeline) Snapshot(ctx context.Context, v *Values) error {
+// snapshot takes a snapshot of all metrics.
+func (t *Timeline) snapshot(ctx context.Context, v *Values) error {
 	for _, s := range t.sources {
 		if err := s.Snapshot(ctx, v); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// StartRecording starts capturing metrics in a goroutine. The sampling interval is specified as a parameter of NewTimeline. StartRecording may not be called twice, unless StopRecording is called in-between.
+func (t *Timeline) StartRecording(ctx context.Context) error {
+	if t.recordingStatus != nil {
+		return errors.New("already recording")
+	}
+
+	ctx, t.cancelRecording = context.WithCancel(ctx)
+	t.recordingValues = NewValues()
+	t.recordingStatus = make(chan error)
+
+	go func() {
+		for {
+			if err := testing.Sleep(ctx, t.interval); err != nil {
+				t.recordingStatus <- nil
+				return
+			}
+
+			if err := t.snapshot(ctx, t.recordingValues); err != nil {
+				t.recordingStatus <- err
+				return
+			}
+		}
+	}()
+
+	return nil
+}
+
+// StopRecording stops capturing metrics and returns the captured metrics.
+func (t *Timeline) StopRecording() (*Values, error) {
+	if t.recordingStatus == nil {
+		return nil, errors.New("not recording yet")
+	}
+
+	t.cancelRecording()
+	err := <-t.recordingStatus
+	if err != nil {
+		return nil, err
+	}
+
+	result := t.recordingValues
+	t.recordingValues = nil
+	t.recordingStatus = nil
+
+	return result, nil
 }
