@@ -126,7 +126,7 @@ func init() {
 				InputMode:   encoding.SharedMemory},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         []string{encode.Bear192P.Name},
-			ExtraAttr:         []string{"group:mainline", "group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 		}, {
 			Name: "vp8_360p_i420",
 			Val: encoding.TestOptions{
