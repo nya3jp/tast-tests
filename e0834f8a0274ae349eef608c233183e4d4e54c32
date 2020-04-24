@@ -22,6 +22,30 @@
       "revId": "e0834f8a0274ae349eef608c233183e4d4e54c32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d75ec88_bdc9a615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-24T21:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42ed8440_94dda314",
+      "range": {
+        "startLine": 102,
+        "startChar": 45,
+        "endLine": 102,
+        "endChar": 54
+      },
+      "revId": "e0834f8a0274ae349eef608c233183e4d4e54c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
