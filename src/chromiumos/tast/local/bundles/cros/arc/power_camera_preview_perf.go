@@ -111,8 +111,6 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Setup failed: ", err)
 	}
 
-	p := perf.NewValues()
-
 	const (
 		// TODO(springerm): Make iteration count an optional command line parameter.
 		iterationCount            = 30
@@ -142,7 +140,7 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	numDroppedFramesMetric := perf.Metric{Name: resolution + "_num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
 	frameDropRatioMetric := perf.Metric{Name: resolution + "_frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
 
-	powerMetrics, err := perf.NewTimelineWithPrefix(ctx, resolution+"_", power.TestMetrics()...)
+	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration), perf.Prefix(resolution+"_"))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
@@ -163,14 +161,17 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Keep camera running and record power usage.
-	for i := 0; i < iterationCount; i++ {
-		if err := testing.Sleep(ctx, iterationDuration); err != nil {
-			s.Fatal("Failed to sleep between metric snapshots: ", err)
-		}
-		s.Logf("Iteration %d snapshot", i)
-		if err := powerMetrics.Snapshot(ctx, p); err != nil {
-			s.Fatal("Failed to snapshot metrics: ", err)
-		}
+	if err := powerMetrics.StartRecording(ctx); err != nil {
+		s.Fatal("Failed to start recording: ", err)
+	}
+
+	if err := testing.Sleep(ctx, iterationCount*iterationDuration); err != nil {
+		s.Fatal("Failed to sleep sleep: ", err)
+	}
+
+	p, err := powerMetrics.StopRecording()
+	if err != nil {
+		s.Fatal("Error while recording power metrics: ", err)
 	}
 
 	droppedFrames := 0
