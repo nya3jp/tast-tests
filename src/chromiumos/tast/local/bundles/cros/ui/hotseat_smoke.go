@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/ui"
@@ -58,8 +59,13 @@ func HotseatSmoke(ctx context.Context, s *testing.State) {
 		if err := conns.Close(); err != nil {
 			s.Error("Failed to close the connection to a browser window")
 		}
+		tc, err := pointer.NewTouchController(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create the touch controller: ", err)
+		}
+		defer tc.Close()
 
-		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn); err != nil {
+		if err := ash.SwipeUpHotseatAndWaitForCompletion(ctx, tconn, tc.EventWriter(), tc.TouchCoordConverter()); err != nil {
 			s.Fatal("Failed to swipe up the hotseat: ", err)
 		}
 	}
