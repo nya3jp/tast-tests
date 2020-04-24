@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "584041dd_8c9d92b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-04-24T23:13:17Z",
+      "side": 1,
+      "message": "I remember seeing in dri.go checking the moving average for stability: out of curiosity, why do we opt for a simple sleep here? Do we generally know that CPU usage stabilizes within a set amount of time that doesn\u0027t change [much]?",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "00db3f65f27da10b5c8262e66ab067232c6639b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da9cb95_a844fd41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-04-24T23:13:17Z",
+      "side": 1,
+      "message": "Do we want/need to confirm that \"total\" is a key in counters?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "00db3f65f27da10b5c8262e66ab067232c6639b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
