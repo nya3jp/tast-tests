@@ -159,6 +159,7 @@ func ConfigDatafiles() []string {
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
 	Platform             string           `json:"platform"`
+	Parent               string           `json:"parent"`
 	ModeSwitcherType     ModeSwitcherType `json:"mode_switcher_type"`
 	PowerButtonDevSwitch bool             `json:"power_button_dev_switch"`
 	RecButtonDevSwitch   bool             `json:"rec_button_dev_switch"`
@@ -178,20 +179,49 @@ func loadBytes(configDataDir, platform string) ([]byte, error) {
 	return b, nil
 }
 
+// parentFromBytes finds the name of the parent platform referenced by a config's JSON bytes.
+func parentFromBytes(b []byte) (string, error) {
+	var cfg Config
+	if err := json.Unmarshal(b, &cfg); err != nil {
+		return "", errors.Wrapf(err, "unmarshaling json bytes %s", b)
+	}
+	if cfg.Parent == "" && cfg.Platform != "" {
+		return defaultName, nil
+	}
+	return cfg.Parent, nil
+}
+
 // NewConfig creates a new Config matching the DUT platform.
-// TODO(b/154500336): Use the platform config to overwrite parent config(s) and default config
 // TODO(b/154500336): Load model config and overwrite platform config
 func NewConfig(configDataDir, platform string) (*Config, error) {
 	// Remove hyphenated suffixes: ex. "samus-kernelnext" becomes "samus"
-	platform = strings.Split(platform, "-")[0]
-	b, err := loadBytes(configDataDir, platform)
-	if err != nil {
-		return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
+	platform = strings.SplitN(platform, "-", 2)[0]
+
+	// Load JSON bytes in order from most specific (platform) to most general (DEFAULTS).
+	type platformBytes struct {
+		name string
+		b    []byte
 	}
-	var cfg *Config
-	err = json.Unmarshal(b, &cfg)
-	if err != nil {
-		return nil, errors.Wrapf(err, "unmarshaling json bytes %s for platform %s", b, platform)
+	var inherits []platformBytes
+	for platform != "" {
+		b, err := loadBytes(configDataDir, platform)
+		if err != nil {
+			return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
+		}
+		inherits = append(inherits, platformBytes{name: platform, b: b})
+		parent, err := parentFromBytes(b)
+		if err != nil {
+			return nil, errors.Wrapf(err, "determining parent from bytes for %s", platform)
+		}
+		platform = parent
 	}
-	return cfg, nil
+
+	// Unmarshal JSON bytes in order from most general (DEFAULTS) to most specific (platform).
+	var cfg Config
+	for i := len(inherits) - 1; i >= 0; i-- {
+		if err := json.Unmarshal(inherits[i].b, &cfg); err != nil {
+			return nil, errors.Wrapf(err, "failed to unmarshal config for %q", inherits[i].name)
+		}
+	}
+	return &cfg, nil
 }
