@@ -251,13 +251,22 @@ func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *wpb.Exe
 	return &empty.Empty{}, nil
 }
 
-func (c *WilcoService) StartDPSLListener(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (c *WilcoService) StartDPSLListener(ctx context.Context, req *wpb.StartDPSLListenerRequest) (*empty.Empty, error) {
 	if c.receiver != nil {
 		return nil, errors.New("DPSL listener already running")
 	}
 
 	ctx, cancel := context.WithCancel(context.Background()) // NOLINT
-	rec, err := wilco.NewDPSLMessageReceiver(ctx)
+
+	var response *dtcpb.HandleMessageFromUiResponse
+
+	if len(req.HandleMessageFromUiResponse) > 0 {
+		response = &dtcpb.HandleMessageFromUiResponse{
+			ResponseJsonMessage: req.HandleMessageFromUiResponse,
+		}
+	}
+
+	rec, err := wilco.NewDPSLMessageReceiver(ctx, response)
 	if err != nil {
 		cancel()
 		return nil, errors.Wrap(err, "failed to create dpsl message listener")

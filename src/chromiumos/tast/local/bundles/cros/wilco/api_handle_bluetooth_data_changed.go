@@ -59,7 +59,7 @@ func APIHandleBluetoothDataChanged(ctx context.Context, s *testing.State) {
 	// Put Bluetooth adapter to the same state as it was before test run.
 	defer adapter.SetPowered(cleanupCtx, powered)
 
-	rec, err := wilco.NewDPSLMessageReceiver(ctx)
+	rec, err := wilco.NewDPSLMessageReceiver(ctx, nil)
 	if err != nil {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}

@@ -35,7 +35,7 @@ func APIHandleECNotification(ctx context.Context, s *testing.State) {
 		expectedRequestType = 19
 	)
 
-	rec, err := wilco.NewDPSLMessageReceiver(ctx)
+	rec, err := wilco.NewDPSLMessageReceiver(ctx, nil)
 	if err != nil {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}
