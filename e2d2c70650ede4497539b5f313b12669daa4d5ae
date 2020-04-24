@@ -16,6 +16,24 @@
       "revId": "e2d2c70650ede4497539b5f313b12669daa4d5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81549c78_aad8c2e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/p2p_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-24T01:27:37Z",
+      "side": 1,
+      "message": "Thanks, I think you\u0027re making a good point, though I have some corrections.\n\nI believe time.After doesn\u0027t wait indefinitely when negative timeout is set. If I read the code correctly it treats negative timeouts just like zero timeout.\nhttps://github.com/golang/go/blob/master/src/time/sleep.go#L28\nhttps://play.golang.org/p/kz-0FfAapAW\n\nIn general it makes sense to me to treat negative timeouts just like zero timeout considering continuity of the function behavior. Thus I\u0027m not in favor of your suggested solution.\n\nHowever, if QueryParam.Timeout is exactly zero, it is defaulted to 1 second. This is indeed a problem.\nhttps://github.com/hashicorp/mdns/blob/master/client.go#L41\n\nSo I modified the code to catch these cases.",
+      "parentUuid": "45d47b51_32636d87",
+      "revId": "e2d2c70650ede4497539b5f313b12669daa4d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
