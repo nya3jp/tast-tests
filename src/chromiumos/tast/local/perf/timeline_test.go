@@ -7,8 +7,10 @@ package perf
 import (
 	"context"
 	"testing"
+	"time"
 
 	"chromiumos/tast/errors"
+	tasttesting "chromiumos/tast/testing"
 )
 
 type testTimelineDatasource struct {
@@ -54,7 +56,7 @@ func TestTimeline(t *testing.T) {
 	d1 := &testTimelineDatasource{}
 	d2 := &testTimelineDatasource{}
 
-	tl, err := NewTimeline(ctx, d1, d2)
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d1, d2}, Interval(200*time.Millisecond))
 	if err != nil {
 		t.Error("Failed to create Timeline: ", err)
 	}
@@ -69,17 +71,37 @@ func TestTimeline(t *testing.T) {
 		t.Error("Failed to call start on both datasources")
 	}
 
-	if err := tl.Snapshot(ctx, p); err != nil {
-		t.Error("Failed to snapshot timeline: ", err)
+	// First round of recording.
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
 	}
-	if d1.snapshotCount != 1 || d2.snapshotCount != 1 {
+
+	tasttesting.Sleep(ctx, 450*time.Millisecond)
+
+	if v, err := tl.StopRecording(); err != nil {
+		t.Error("Error while recording: ", err)
+	} else {
+		p.Merge(v)
+	}
+
+	if d1.snapshotCount != 2 || d2.snapshotCount != 2 {
 		t.Error("Wrong number of snapshots collected")
 	}
 
-	if err := tl.Snapshot(ctx, p); err != nil {
-		t.Error("Failed to snapshot timeline: ", err)
+	// Second round of recording.
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
 	}
-	if d1.snapshotCount != 2 || d2.snapshotCount != 2 {
+
+	tasttesting.Sleep(ctx, 650*time.Millisecond)
+
+	if v, err := tl.StopRecording(); err != nil {
+		t.Error("Error while recording: ", err)
+	} else {
+		p.Merge(v)
+	}
+
+	if d1.snapshotCount != 5 || d2.snapshotCount != 5 {
 		t.Error("Wrong number of snapshots collected")
 	}
 
@@ -92,25 +114,56 @@ func TestTimeline(t *testing.T) {
 	if timestamps == nil {
 		t.Fatal("Could not find timestamps metric")
 	}
-	if len(timestamps) != 2 {
-		t.Fatalf("Wrong number of timestamps logged, got %d, expected 2", len(timestamps))
+	if len(timestamps) != 5 {
+		t.Fatalf("Wrong number of timestamps logged, got %d, expected 5", len(timestamps))
 	}
-	if timestamps[0] > timestamps[1] {
-		t.Error("Timestamps logged in wrong order")
+	for i := 0; i < len(timestamps)-1; i++ {
+		if timestamps[i] > timestamps[i+1] {
+			t.Errorf("Timestamps logged in wrong order, expected %f < %f", timestamps[i], timestamps[i+1])
+		}
 	}
 }
 
-func TestTimelineNoStart(t *testing.T) {
-	p := NewValues()
+func TestTimelineStartRecordingTwice(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	tl, err := NewTimeline(ctx)
+	d := &testTimelineDatasource{}
+
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d}, Interval(200*time.Millisecond))
 	if err != nil {
 		t.Error("Failed to create Timeline: ", err)
 	}
 
-	if err := tl.Snapshot(ctx, p); err == nil {
+	if err := tl.Start(ctx); err != nil {
+		t.Error("Failed to start timeline: ", err)
+	}
+
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
+	}
+
+	if err := tl.StartRecording(ctx); err == nil {
+		t.Error("StartRecording should have failed")
+	}
+}
+
+func TestTimelineNoStart(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	tl, err := NewTimeline(ctx, []TimelineDatasource{}, Interval(1*time.Millisecond))
+	if err != nil {
+		t.Error("Failed to create Timeline: ", err)
+	}
+
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
+	}
+
+	tasttesting.Sleep(ctx, 50*time.Millisecond)
+
+	if _, err := tl.StopRecording(); err == nil {
 		t.Error("Snapshot should have failed without calling Start first")
 	}
 }
@@ -121,7 +174,7 @@ func TestTimelineSetupFail(t *testing.T) {
 
 	d := &testTimelineDatasource{errSetup: true}
 
-	if _, err := NewTimeline(ctx, d); err == nil {
+	if _, err := NewTimeline(ctx, []TimelineDatasource{d}); err == nil {
 		t.Error("NewTimeline should have failed because of setup failure")
 	}
 }
@@ -132,7 +185,7 @@ func TestTimelineStartFail(t *testing.T) {
 
 	d := &testTimelineDatasource{errStart: true}
 
-	tl, err := NewTimeline(ctx, d)
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d})
 	if err != nil {
 		t.Error("Failed to create Timeline: ", err)
 	}
@@ -143,13 +196,12 @@ func TestTimelineStartFail(t *testing.T) {
 }
 
 func TestTimelineSnapshotFail(t *testing.T) {
-	p := NewValues()
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
 	d := &testTimelineDatasource{errSnapshot: true}
 
-	tl, err := NewTimeline(ctx, d)
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d}, Interval(1*time.Millisecond))
 	if err != nil {
 		t.Error("Failed to create Timeline: ", err)
 	}
@@ -158,7 +210,13 @@ func TestTimelineSnapshotFail(t *testing.T) {
 		t.Error("Failed to start timeline: ", err)
 	}
 
-	if err := tl.Snapshot(ctx, p); err == nil {
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
+	}
+
+	tasttesting.Sleep(ctx, 50*time.Millisecond)
+
+	if _, err := tl.StopRecording(); err == nil {
 		t.Error("Snapshot should have failed")
 	}
 }

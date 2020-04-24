@@ -6,7 +6,6 @@
 package graphics
 
 import (
-	"bufio"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -20,7 +19,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -325,43 +323,10 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 }
 
 // WaitForExpInLogcat waits for a regexp to appear in the logcat with timeout.
+// DEPRECATED: This will be removed as soon as tests in tast-tests-private are updated to the new API.
 func WaitForExpInLogcat(ctx context.Context, a *arc.ARC, exp *regexp.Regexp, timeout time.Duration) error {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
-	cmd := a.Command(ctx, "logcat")
-
-	pipe, err := cmd.StdoutPipe()
-	if err != nil {
-		return errors.Wrap(err, "failed to open StdoutPipe")
-	}
-	defer pipe.Close()
-
-	if err := cmd.Start(); err != nil {
-		return errors.Wrapf(err, "failed to start %s", shutil.EscapeSlice(cmd.Args))
-	}
-	defer func() {
-		cmd.Kill()
-		cmd.Wait()
-	}()
-
-	done := make(chan struct{})
-
-	go func() {
-		scanner := bufio.NewScanner(pipe)
-		for scanner.Scan() {
-			l := scanner.Text()
-			if exp.MatchString(l) {
-				close(done)
-				return
-			}
-		}
-	}()
-
-	select {
-	case <-done:
-		return nil
-	case <-ctx.Done():
-		return errors.Wrapf(ctx.Err(), "cannot match regexp %s in logcat before timeout(%s)", exp, timeout)
-	}
+	return a.WaitForLogcat(ctx, arc.RegexpPred(exp))
 }
