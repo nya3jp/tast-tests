@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae75aae_fc1d073f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-24T17:29:09Z",
+      "side": 1,
+      "message": "should we be fataling here?",
+      "revId": "530e577915b723aa56561cc3068589efed69efca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0984de0e_574274eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-04-24T17:29:09Z",
+      "side": 1,
+      "message": "If you add more sub-tests here it might be reasonable to convert this to a table-driven test. (Not something to worry about now necessarily.)",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 3
+      },
+      "revId": "530e577915b723aa56561cc3068589efed69efca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
