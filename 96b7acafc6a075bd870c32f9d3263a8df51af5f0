@@ -22,6 +22,30 @@
       "revId": "96b7acafc6a075bd870c32f9d3263a8df51af5f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38563156_c6acbf10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-04-24T22:41:25Z",
+      "side": 1,
+      "message": "sees existing* pending_clean_shutdown file. \n\nMainly because I was wondering how this worked without first creating pending_shutdown_file before realizing it should already be there on every boot.",
+      "parentUuid": "7c97ab72_a40edff1",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 59
+      },
+      "revId": "96b7acafc6a075bd870c32f9d3263a8df51af5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
