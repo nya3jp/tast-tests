@@ -11,5 +11,18 @@
             "type_": "focus",
             "targetName_": "contentDescription"
         }
+    },
+    {
+        "Key": "a",
+        "Params":
+        {
+            "ClassName": "android.widget.EditText",
+            "Name": "contentDescription",
+            "Role": "textField"
+        },
+        "Event": {
+            "type_": "textChanged",
+            "targetName_": "contentDescription"
+        }
     }
 ]
