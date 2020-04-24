@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e63f0afb_1ee7a627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-24T04:37:55Z",
+      "side": 1,
+      "message": "How about just using UnixNano() here instead of creating rand? Given rand is deterministic, the chance of the rand value collision is higher or equals to the chance of using the same unixnano.",
+      "range": {
+        "startLine": 50,
+        "startChar": 63,
+        "endLine": 50,
+        "endChar": 73
+      },
+      "revId": "818facf4c7ca4b59f2d502a9456dde7705d9c43a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c52b3158_a889e719",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_close_all_sessions.go",
         "patchSetId": 5
