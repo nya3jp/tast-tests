@@ -188,7 +188,7 @@ func Print(ctx context.Context, s *testing.State) {
 	}
 
 	// Set custom page selection.
-	if err = printpreview.SetPages(ctx, tconn, "2-5,10-15,36,49-50"); err != nil {
+	if err = printpreview.SetPages(ctx, tconn, "2-3,5,7-10"); err != nil {
 		s.Fatal("Failed to select pages: ", err)
 	}
 

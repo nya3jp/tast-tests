@@ -27,7 +27,7 @@ import java.io.IOException;
 class TestPrintDocumentAdapter extends PrintDocumentAdapter {
     private static final String LOG_TAG = TestPrintDocumentAdapter.class.getSimpleName();
 
-    private final int PAGE_COUNT = 50;
+    private final int PAGE_COUNT = 10;
 
     private final Context mContext;
     private PrintAttributes mPrintAttributes;
