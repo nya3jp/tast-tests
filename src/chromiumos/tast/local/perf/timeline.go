@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Timeline datasources provide periodic performance metrics collected at the
@@ -66,25 +67,49 @@ func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline struct {
-	sources []TimelineDatasource
+	sources  []TimelineDatasource
+	interval time.Duration
 }
 
-// NewTimeline creates a Timeline from a slice of TimelineDatasource, calling
-// all the Setup methods.
-func NewTimeline(ctx context.Context, sources ...TimelineDatasource) (*Timeline, error) {
-	return NewTimelineWithPrefix(ctx, "", sources...)
+// newTimelineOptions holds all optional parameters of NewTimeline.
+type newTimelineOptions struct {
+	// A prefix that is added to all metric names.
+	Prefix string
+	// The time duration between two subsequent metric snapshots. Default value is 10 seconds.
+	Interval time.Duration
 }
 
-// NewTimelineWithPrefix creates a Timeline from a slice of TimelineDatasources,
-// all created metrics will be prefixed with the passed prefix.
-func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
+// NewTimelineOption sets an optional parameter of NewTimeline.
+type NewTimelineOption func(*newTimelineOptions)
+
+// Interval sets the interval between two subsequent metric snapshots.
+func Interval(interval time.Duration) NewTimelineOption {
+	return func(args *newTimelineOptions) {
+		args.Interval = interval
+	}
+}
+
+// Prefix sets prepends all metric names with a given string.
+func Prefix(prefix string) NewTimelineOption {
+	return func(args *newTimelineOptions) {
+		args.Prefix = prefix
+	}
+}
+
+// NewTimeline creates a Timeline from a slice of TimelineDatasources. Metric names may be prefixed and callers can specify the time interval between two subsequent snapshots. This method calls the Setup method of each data source.
+func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...NewTimelineOption) (*Timeline, error) {
+	args := newTimelineOptions{"", 10 * time.Second}
+	for _, setter := range setters {
+		setter(&args)
+	}
+
 	ss := append(sources, &timestampSource{})
 	for _, s := range ss {
-		if err := s.Setup(ctx, prefix); err != nil {
+		if err := s.Setup(ctx, args.Prefix); err != nil {
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}
-	return &Timeline{sources: ss}, nil
+	return &Timeline{sources: ss, interval: args.Interval}, nil
 }
 
 // Start starts metric collection on all datasources.
@@ -97,12 +122,39 @@ func (t *Timeline) Start(ctx context.Context) error {
 	return nil
 }
 
-// Snapshot takes a snapshot of all metrics.
-func (t *Timeline) Snapshot(ctx context.Context, v *Values) error {
+// snapshot takes a snapshot of all metrics.
+func (t *Timeline) snapshot(ctx context.Context, v *Values) error {
 	for _, s := range t.sources {
 		if err := s.Snapshot(ctx, v); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// CaptureWhile captures metrics as long as condition returns true. The capture interval can be set as a parameter of NewTimeline. This method blocks until condition returns false. condition is guaranteed to be executed once per interval.
+func (t *Timeline) CaptureWhile(ctx context.Context, v *Values, condition func() bool) error {
+	for condition() {
+		if err := testing.Sleep(ctx, t.interval); err != nil {
+			return err
+		}
+
+		if err := t.snapshot(ctx, v); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// CaptureTimePeriod captures metrics for duration seconds. The capture interval can be set as a parameter of NewTimeline. This method blocks for at most duration seconds.
+func (t *Timeline) CaptureTimePeriod(ctx context.Context, v *Values, duration time.Duration) error {
+	iterations := 0
+	// This method will capture for sightly less than duration seconds if this does not divide evenly:
+	numIterations := int(duration / t.interval)
+
+	return t.CaptureWhile(ctx, v, func() bool {
+		iterations = iterations + 1
+		return iterations <= numIterations
+	})
 }

@@ -142,7 +142,7 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	numDroppedFramesMetric := perf.Metric{Name: resolution + "_num_dropped_frames", Unit: "frames", Direction: perf.SmallerIsBetter}
 	frameDropRatioMetric := perf.Metric{Name: resolution + "_frame_drop_ratio", Unit: "ratio", Direction: perf.SmallerIsBetter}
 
-	powerMetrics, err := perf.NewTimelineWithPrefix(ctx, resolution+"_", power.TestMetrics()...)
+	powerMetrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration), perf.Prefix(resolution+"_"))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
@@ -163,14 +163,8 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Keep camera running and record power usage.
-	for i := 0; i < iterationCount; i++ {
-		if err := testing.Sleep(ctx, iterationDuration); err != nil {
-			s.Fatal("Failed to sleep between metric snapshots: ", err)
-		}
-		s.Logf("Iteration %d snapshot", i)
-		if err := powerMetrics.Snapshot(ctx, p); err != nil {
-			s.Fatal("Failed to snapshot metrics: ", err)
-		}
+	if err := powerMetrics.CaptureTimePeriod(ctx, p, iterationCount*iterationDuration); err != nil {
+		s.Fatal("Failed to capture power metrics: ", err)
 	}
 
 	droppedFrames := 0
