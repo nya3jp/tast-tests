@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e26b8237_966165a6",
+        "filename": "android/ArcMotionInputTest/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "huge nit:\nSDK 29 is Android 10 (probably safe, assuming target_sdk 10 is installed).\nBut to be \"safer\" you ca use \"28\" which is Android P.",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "048b78cd_001eeee1",
+        "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "nit: it is preferred to return the \"success\" value and the end (easier to read).\n\nIn this case it seems that you can declare \"final JSONObject eventOjb \u003d new ...\" outside the try/catch and return eventObj.toString() at the very end.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb641a23_7cec0cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "what about running this test also in container as well?\nunless you are coding vm-only test, it is good to run them both on container and VM.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b724816d_b731bb86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "huge nit: end sentences with period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\nAnd add link to source code where MotionEvent.java is(AOSP if available, last resort internal repo).",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff258c91_190ee843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "it should start with the name of the type. e.g:\n\n// motionEvent represents ...",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 14
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5281275_ff1bb3b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "APK, PKG, CLS\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88e5016_0f3a804c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "add docstrings for all non-trivial functions.\n\n// readMotionEvent returns (or whatever it does)...",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b14861_493e379d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "nit: use \"got (empty), want %s\"",
+      "range": {
+        "startLine": 127,
+        "startChar": 48,
+        "endLine": 127,
+        "endChar": 62
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a0e048_6fb07764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "nit, here and below:\nwant (instead of wanted)",
+      "range": {
+        "startLine": 129,
+        "startChar": 56,
+        "endLine": 129,
+        "endChar": 62
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f01fe7a_ef4f3081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "define this epsilons as constants with decriptive name. e.g:\n\n\nconst (\n  coordsEpsison \u003d 1  // (choose the name that you prefer...)\n  pressureEpsilon \u003d 1e-5\n)",
+      "range": {
+        "startLine": 132,
+        "startChar": 52,
+        "endLine": 132,
+        "endChar": 54
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0963a4f_c4d0b78d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "just wondering whether this will fail in ChromeBoxes (probably will), and if so, whether we have any in PFQ... if so, your test cannot be promoted to PFQ.\n\nnot sure whether we have a \"hardware dependency\" to require to have at least one display.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "094711c7_369b9a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "nit: better to remove the commented code, but leave the TODO... perhaps changing a bit the message.",
+      "range": {
+        "startLine": 250,
+        "startChar": 86,
+        "endLine": 255,
+        "endChar": 6
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914a27ad_b91eca1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "document these types too",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 33
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5808af77_d13f101c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "it is recommented to remove \"get\" (\"stop\" words) as prefix:\ngo/gocomments#getters",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 23
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7421687_a628f673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "nit: PX ?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 279,
+        "startChar": 21,
+        "endLine": 279,
+        "endChar": 23
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ae8361_8ef745d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "nit, optional:\n\ncoords.NewPoint(...)",
+      "range": {
+        "startLine": 286,
+        "startChar": 8,
+        "endLine": 286,
+        "endChar": 20
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2d3d7ba_365678f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-24T23:17:28Z",
+      "side": 1,
+      "message": "nit: Dp -\u003e DP\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 305,
+        "startChar": 6,
+        "endLine": 305,
+        "endChar": 8
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
