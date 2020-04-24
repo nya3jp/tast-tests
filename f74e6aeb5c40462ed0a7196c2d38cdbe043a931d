@@ -45,6 +45,54 @@
       "revId": "f74e6aeb5c40462ed0a7196c2d38cdbe043a931d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ad62e6_61784487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/not_enterprise_owned.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-24T10:49:13Z",
+      "side": 1,
+      "message": "NotEnterpriseOwned makes more sense.",
+      "parentUuid": "a49f92ec_2fc4f972",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "f74e6aeb5c40462ed0a7196c2d38cdbe043a931d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d2752cd_0b30f568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/not_enterprise_owned.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-24T10:49:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d6f5406_9dd9d675",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "f74e6aeb5c40462ed0a7196c2d38cdbe043a931d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
