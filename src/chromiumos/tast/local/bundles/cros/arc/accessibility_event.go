@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"os"
 	"reflect"
 	"time"
@@ -65,10 +66,18 @@ func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog eventLog, c
 		return errors.Wrap(err, "failed to get event logs")
 	}
 
+	// Filter out event logs from unrelated windows.
+	i := 0
+	for _, log := range logs {
+		if log.RootName == expectedLog.RootName {
+			logs[i] = log
+			i++
+		}
+	}
+	logs = logs[:i]
 	if checkOnlyLatest && len(logs) > 1 {
 		logs = logs[len(logs)-1:]
 	}
-
 	if len(logs) != 1 || !reflect.DeepEqual(logs[0], expectedLog) {
 		return errors.Errorf("event output is not as expected: got %q; want %q", logs, expectedLog)
 	}
@@ -114,6 +123,31 @@ func getTestSteps(filepath string) ([]testStep, error) {
 	return steps, err
 }
 
+func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, testSteps []testStep) error {
+	events := make(map[string]bool)
+	var eventStreamFilters string
+	for _, test := range testSteps {
+		currentEvent := test.Event.EventType
+		if _, ok := events[currentEvent]; !ok {
+			events[currentEvent] = true
+			eventStreamFilters += "EventStreamLogger.instance.notifyEventStreamFilterChanged('" + currentEvent + "', true);"
+		}
+	}
+	eventStreamString := fmt.Sprintf(`
+			new Promise((resolve, reject) => {
+				chrome.automation.getDesktop((desktop) => {
+					EventStreamLogger.instance = new EventStreamLogger(desktop);
+					EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);
+					%s
+					resolve();
+				});
+			})`, eventStreamFilters)
+	if err := cvconn.Eval(ctx, eventStreamString, nil); err != nil {
+		return errors.Wrap(err, "enabling event stream logging failed")
+	}
+	return nil
+}
+
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
 
@@ -124,25 +158,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
-		// Set up event stream logging for accessibility events.
-		if err := cvconn.EvalPromise(ctx, `
-			new Promise((resolve, reject) => {
-				chrome.automation.getDesktop((desktop) => {
-					EventStreamLogger.instance = new EventStreamLogger(desktop);
-					EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);
-					EventStreamLogger.instance.notifyEventStreamFilterChanged('focus', true);
-					EventStreamLogger.instance.notifyEventStreamFilterChanged('checkedStateChanged', true);
-					EventStreamLogger.instance.notifyEventStreamFilterChanged('valueChanged', true);
-
-					resolve();
-				});
-			})`, nil); err != nil {
-			return errors.Wrap(err, "enabling event stream logging failed")
-		}
-
 		testSteps, err := getTestSteps(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
 		if err != nil {
 			return errors.Wrap(err, "error reading from JSON")
+		}
+		if err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name, testSteps); err != nil {
+			return err
 		}
 		for i, test := range testSteps {
 			test.Event.RootName = currentActivity.Title
