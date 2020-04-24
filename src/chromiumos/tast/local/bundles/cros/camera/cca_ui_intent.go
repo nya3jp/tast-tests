@@ -96,9 +96,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "ArcCameraIntentTest.apk"},
+		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.Booted(),
 			Val: []testCase{{
 				Name: "take photo (no extra)",
 				IntentOptions: intentOptions{
@@ -180,6 +180,60 @@ func init() {
 					TestBehavior: captureCancelAndAlive,
 				},
 			}},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: []testCase{{
+				Name: "take photo (no extra)",
+				IntentOptions: intentOptions{
+					Action:       takePhotoAction,
+					URI:          "",
+					Mode:         cca.Photo,
+					TestBehavior: captureConfirmAndDone,
+				},
+			}, {
+				Name: "launch camera on photo mode",
+				IntentOptions: intentOptions{
+					Action:       launchOnPhotoModeAction,
+					URI:          "",
+					Mode:         cca.Photo,
+					TestBehavior: captureAndAlive,
+					ResultInfo: resultInfo{
+						FilePattern: cca.PhotoPattern,
+					},
+				},
+			}, {
+				Name: "launch camera on video mode",
+				IntentOptions: intentOptions{
+					Action:       launchOnVideoModeAction,
+					URI:          "",
+					Mode:         cca.Video,
+					TestBehavior: captureAndAlive,
+					ResultInfo: resultInfo{
+						FilePattern: cca.VideoPattern,
+					},
+				},
+			}, {
+				Name: "close app",
+				IntentOptions: intentOptions{
+					Action:       takePhotoAction,
+					URI:          "",
+					Mode:         cca.Photo,
+					TestBehavior: closeApp,
+				},
+			}, {
+				Name: "cancel when review",
+				IntentOptions: intentOptions{
+					Action:       takePhotoAction,
+					URI:          "",
+					Mode:         cca.Photo,
+					TestBehavior: captureCancelAndAlive,
+				},
+			}},
+			// TODO(b/153317294): Enable "take photo (has extra)" and
+			// "record video (has extras)" once Downloads sharing works in ARCVM.
+			// TODO(b/153317294): Enable "record video (no extras)" once sdcard
+			// sharing works.
 		}},
 	})
 }
