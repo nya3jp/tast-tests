@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2867e82b_dd7aa052",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-24T07:30:41Z",
+      "side": 1,
+      "message": "concatCiphers",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 24
+      },
+      "revId": "a2330d4f7c8de9b9073b99c3a130bd5d83901057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385fc771_ae5f5b7e",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-24T07:30:41Z",
+      "side": 1,
+      "message": "Just curious, are cipher able to convert to string? Is it okay for hex64 cipher?",
+      "revId": "a2330d4f7c8de9b9073b99c3a130bd5d83901057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
