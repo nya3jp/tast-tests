@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c648fc48_d37e0b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T04:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab174d91_337fde64",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1773e8a5_6093a19f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff32ccb1_6b3e3cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T04:12:31Z",
+      "side": 1,
+      "message": "I tried that when working on the last patchset but was still having problems with the window order not being finalized. I think I figured it out, though. We need to wait for the number of windows to be what we expect, since the windows for the apps might not be there yet after calling apps.Launch. This new way seems to work, so hopefully it\u0027s clearer now.",
+      "parentUuid": "1773e8a5_6093a19f",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3e11c345_4ad2eb22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T04:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1b36338_106a74c1",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 60
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "460ec19b_265fe931",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e6c36a_ed01c8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T04:12:31Z",
+      "side": 1,
+      "message": "Holding down alt keeps it open, and we won\u0027t release it until the end of this func() block",
+      "parentUuid": "460ec19b_265fe931",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 124
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f64e060c_d752c318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T04:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4fa5467_cbbcdbe4",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 36
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "723c6c0c_407183ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "bc263409_921acd48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T04:12:31Z",
+      "side": 1,
+      "message": "This is to press tab the full number of times for that cycle. The way I made the test was to try pressing Tab 1-4 times to make sure it cycles around properly. Each of the outer loop is one cycle operation, where we hold Alt and press Tab i+1 times. We press tab once at the beginning of the loop to open the cycle window, and then we finish the tab presses here.",
+      "parentUuid": "723c6c0c_407183ad",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 5
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c44cb10_d7349b12",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2020-04-23T07:09:09Z",
       "side": 1,
       "message": "what is this doing?",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "bfcbb54e01127e915b42ece44b2c810b5a0b19d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c428282_55f6f790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-04-24T04:12:31Z",
+      "side": 1,
+      "message": "This is rearranging the slice to match the current window ordering. The cycle window is ordered by most recent, so the target window should be moved to the front after alt+tabbing to it. This  is doing the same action.\n\nThis slice keeps track of the expected window order, so in the next iteration the order in the cycle window should match this. That way I can figure out if Alt+Tab is going to the right window. I added some more comments to explain in more detail what the test is doing.",
+      "parentUuid": "6c44cb10_d7349b12",
       "range": {
         "startLine": 163,
         "startChar": 3,
