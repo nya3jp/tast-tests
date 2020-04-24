@@ -153,6 +153,11 @@ func (tc *TouchController) EventWriter() *input.SingleTouchEventWriter {
 	return tc.stw
 }
 
+// TouchCoordConverter returns the current TouchCoordConverter for this controller.
+func (tc *TouchController) TouchCoordConverter() *input.TouchCoordConverter {
+	return tc.tcc
+}
+
 // Press implements Controller.Press.
 func (tc *TouchController) Press(ctx context.Context, location coords.Point) error {
 	x, y := tc.tcc.ConvertLocation(location)
