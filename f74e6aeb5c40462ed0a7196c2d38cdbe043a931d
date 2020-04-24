@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a49f92ec_2fc4f972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/enterprise_owned.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-24T09:54:56Z",
+      "side": 1,
+      "message": "EnterpriseNotOwned?",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "f74e6aeb5c40462ed0a7196c2d38cdbe043a931d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d6f5406_9dd9d675",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/enterprise_owned.go",
         "patchSetId": 3
