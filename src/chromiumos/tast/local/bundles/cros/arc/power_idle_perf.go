@@ -47,6 +47,11 @@ func init() {
 }
 
 func PowerIdlePerf(ctx context.Context, s *testing.State) {
+	const (
+		iterationCount    = 30
+		iterationDuration = 10 * time.Second
+	)
+
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
 	cleanupCtx := ctx
@@ -75,10 +80,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	}
 
 	p := perf.NewValues()
-	metrics, err := perf.NewTimeline(
-		ctx,
-		power.TestMetrics()...,
-	)
+	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
@@ -91,18 +93,8 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	if err := metrics.Start(ctx); err != nil {
 		s.Fatal("Failed to start metrics: ", err)
 	}
-	const (
-		iterationCount    = 30
-		iterationDuration = 10 * time.Second
-	)
-	for i := 0; i < iterationCount; i++ {
-		if err := testing.Sleep(ctx, iterationDuration); err != nil {
-			s.Fatal("Failed to sleep between metric snapshots: ", err)
-		}
-		s.Logf("Iteration %d snapshot", i)
-		if err := metrics.Snapshot(ctx, p); err != nil {
-			s.Fatal("Failed to snapshot metrics: ", err)
-		}
+	if err := metrics.CaptureTimePeriod(ctx, p, iterationCount*iterationDuration); err != nil {
+		s.Fatal("Failed to capture power metrics: ", err)
 	}
 
 	if err := p.Save(s.OutDir()); err != nil {
