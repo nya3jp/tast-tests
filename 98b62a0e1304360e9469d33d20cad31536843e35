@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53379c94_f69069b5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-04-24T18:53:21Z",
+      "side": 1,
+      "message": "nit: This only works in clamshell mode, right? In tablet mode, the gesture is the same as DragToShowOverview to show overview. Let\u0027s document it like DragToShowOverview.\n\nAnd do we want to add sanity check of tablet/clamshell mode to ensure the method is called on the proper setup?",
+      "revId": "98b62a0e1304360e9469d33d20cad31536843e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
