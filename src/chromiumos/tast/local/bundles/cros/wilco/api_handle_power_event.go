@@ -43,7 +43,7 @@ func APIHandlePowerEvent(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	rec, err := wilco.NewDPSLMessageReceiver(ctx)
+	rec, err := wilco.NewDPSLMessageReceiver(ctx, nil)
 	if err != nil {
 		s.Fatal("Unable to create DPSL Message Receiver: ", err)
 	}

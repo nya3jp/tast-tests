@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
+	dtcpb "chromiumos/wilco_dtc"
 )
 
 // dpslMsg is the message format used by the sending and listening DPSL
@@ -82,9 +83,22 @@ type DPSLMessageReceiver struct {
 // listening for DPSL messages. It will return a DPSLMessageReceiver struct that
 // decodes and buffers the JSON. It will immediately start consuming messages
 // from the stdout of the dpsl test listener.
-func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
+// response is set as the --ui_response_body flag, making the listener reply
+// with that value to HandleMessageFromUi requests.
+func NewDPSLMessageReceiver(ctx context.Context, response *dtcpb.HandleMessageFromUiResponse) (*DPSLMessageReceiver, error) {
 	rec := DPSLMessageReceiver{}
-	rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener")
+
+	if response != nil {
+		m := jsonpb.Marshaler{}
+		body, err := m.MarshalToString(response)
+		if err != nil {
+			_, md := descriptor.ForMessage(response)
+			return nil, errors.Wrapf(err, "unable to marshal %v to String", md.GetName())
+		}
+		rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener", "--ui_response_body="+body)
+	} else {
+		rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener")
+	}
 
 	buferr, err := rec.cmd.StderrPipe()
 	if err != nil {
