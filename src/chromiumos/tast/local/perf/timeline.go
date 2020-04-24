@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Timeline datasources provide periodic performance metrics collected at the
@@ -66,25 +67,49 @@ func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline struct {
-	sources []TimelineDatasource
+	sources  []TimelineDatasource
+	interval time.Duration
 }
 
-// NewTimeline creates a Timeline from a slice of TimelineDatasource, calling
-// all the Setup methods.
-func NewTimeline(ctx context.Context, sources ...TimelineDatasource) (*Timeline, error) {
-	return NewTimelineWithPrefix(ctx, "", sources...)
+// newTimelineOptions holds all optional parameters of NewTimeline.
+type newTimelineOptions struct {
+	// A prefix that is added to all metric names.
+	Prefix string
+	// The time duration between two subsequent metric snapshots. Default value is 10 seconds.
+	Interval time.Duration
 }
 
-// NewTimelineWithPrefix creates a Timeline from a slice of TimelineDatasources,
-// all created metrics will be prefixed with the passed prefix.
-func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
+// NewTimelineOption sets an optional parameter of NewTimeline.
+type newTimelineOption func(*newTimelineOptions)
+
+// Interval sets the interval between two subsequent metric snapshots.
+func Interval(interval time.Duration) newTimelineOption {
+	return func(args *newTimelineOptions) {
+		args.Interval = interval
+	}
+}
+
+// Prefix sets prepends all metric names with a given string.
+func Prefix(prefix string) newTimelineOption {
+	return func(args *newTimelineOptions) {
+		args.Prefix = prefix
+	}
+}
+
+// NewTimeline creates a Timeline from a slice of TimelineDatasources. Metric names may be prefixed and callers can specify the time interval between two subsequent snapshots. This method calls the Setup method of each data source.
+func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...newTimelineOption) (*Timeline, error) {
+	args := newTimelineOptions{Interval: 10 * time.Second}
+	for _, setter := range setters {
+		setter(&args)
+	}
+
 	ss := append(sources, &timestampSource{})
 	for _, s := range ss {
-		if err := s.Setup(ctx, prefix); err != nil {
+		if err := s.Setup(ctx, args.Prefix); err != nil {
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}
-	return &Timeline{sources: ss}, nil
+	return &Timeline{sources: ss, interval: args.Interval}, nil
 }
 
 // Start starts metric collection on all datasources.
@@ -97,12 +122,53 @@ func (t *Timeline) Start(ctx context.Context) error {
 	return nil
 }
 
-// Snapshot takes a snapshot of all metrics.
-func (t *Timeline) Snapshot(ctx context.Context, v *Values) error {
+// snapshot takes a snapshot of all metrics.
+func (t *Timeline) snapshot(ctx context.Context, v *Values) error {
 	for _, s := range t.sources {
 		if err := s.Snapshot(ctx, v); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// CaptureWhile captures metrics as long as condition returns true. The capture interval can be set as a parameter of NewTimeline. This method blocks until condition returns false. condition is guaranteed to be executed once per interval.
+func (t *Timeline) CaptureWhile(ctx context.Context, v *Values, condition func(int) (bool, error)) error {
+	for i := 0; ; i++ {
+		shouldContinue, err := condition(i)
+		if err != nil {
+			return err
+		}
+
+		if !shouldContinue {
+			return nil
+		}
+
+		if err := testing.Sleep(ctx, t.interval); err != nil {
+			return err
+		}
+
+		if err := t.snapshot(ctx, v); err != nil {
+			return err
+		}
+	}
+}
+
+// WaitForChannel returns a condition function to be used with CaptureWhile. This function returns true until a value is read from c. A nil value indicates success. An error value indicates that something went wrong.
+func WaitForChannel(c chan error) func(int) (bool, error) {
+	return func(_ int) (bool, error) {
+		select {
+		case err := <-c:
+			return false, err
+		default:
+			return true, nil
+		}
+	}
+}
+
+// WaitForCounter returns a condition function to be used with CaptureWhile. This function returns true for the first numIterations many times it called and false afterwards.
+func WaitForCounter(numIterations int) func(int) (bool, error) {
+	return func(i int) (bool, error) {
+		return i < numIterations, nil
+	}
 }

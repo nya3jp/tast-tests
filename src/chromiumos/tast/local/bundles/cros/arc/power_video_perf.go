@@ -49,7 +49,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Pre:               arc.Booted(),
 		}},
-		Timeout: 45 * time.Minute,
+		Timeout: 15 * time.Minute,
 	})
 }
 
@@ -124,10 +124,7 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 	}
 
 	p := perf.NewValues()
-	metrics, err := perf.NewTimeline(
-		ctx,
-		power.TestMetrics()...,
-	)
+	metrics, err := perf.NewTimeline(ctx, power.TestMetrics(), perf.Interval(iterationDuration))
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
 	}
@@ -143,14 +140,8 @@ func PowerVideoPerf(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting measurement")
-	for i := 0; i < iterationCount; i++ {
-		if err := testing.Sleep(ctx, iterationDuration); err != nil {
-			s.Fatal("Failed to sleep between metric snapshots: ", err)
-		}
-		s.Logf("Iteration %d snapshot", i)
-		if err := metrics.Snapshot(ctx, p); err != nil {
-			s.Fatal("Failed to snapshot metrics: ", err)
-		}
+	if err := metrics.CaptureWhile(ctx, p, perf.WaitForCounter(iterationCount)); err != nil {
+		s.Fatal("Failed to capture power metrics: ", err)
 	}
 
 	if err := p.Save(s.OutDir()); err != nil {
