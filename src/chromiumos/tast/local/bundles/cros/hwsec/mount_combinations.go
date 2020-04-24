@@ -70,11 +70,11 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 	}
 
 	// Create 2 users for testing.
-	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true); err != nil {
+	if err := utility.MountVault(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create first user vault: ", err)
 	}
 	defer cleanupVault(ctx, s, utility, util.FirstUsername)
-	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, true); err != nil {
+	if err := utility.MountVault(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create second user vault: ", err)
 	}
 	defer cleanupVault(ctx, s, utility, util.SecondUsername)
@@ -101,12 +101,12 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 
 	for _, c := range TestCombinations {
 		// Mount the first user.
-		if err := utility.MountVault(ctx, util.FirstUsername, c.password1, c.label1, false); err != nil {
+		if err := utility.MountVault(ctx, util.FirstUsername, c.password1, c.label1, false, hwsec.NewVaultConfig()); err != nil {
 			s.Fatal("Failed to mount first user vault: ", err)
 		}
 
 		// Mount the second user.
-		if err := utility.MountVault(ctx, util.SecondUsername, c.password2, c.label2, false); err != nil {
+		if err := utility.MountVault(ctx, util.SecondUsername, c.password2, c.label2, false, hwsec.NewVaultConfig()); err != nil {
 			s.Fatal("Failed to mount second user vault: ", err)
 		}
 
