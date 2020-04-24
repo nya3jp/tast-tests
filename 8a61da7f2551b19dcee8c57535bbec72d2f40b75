@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "049e6ee8_32a09a90",
+        "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-24T19:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1dc39a_21ffb6ae",
+      "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "445a70a8_ccf6fcbb",
         "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36dbf11_6e4077b2",
+        "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-24T19:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "445a70a8_ccf6fcbb",
+      "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "58d6c169_d402bd68",
+        "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-24T19:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f829621c_7a835d65",
+      "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e93c8c9_5861e5b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 2
@@ -64,6 +118,30 @@
       "writtenOn": "2020-04-24T11:30:34Z",
       "side": 1,
       "message": "if it\u0027s VM only, maybe we don\u0027t need params?\n\n    Attr: []string{\"group:mainline\", \"informational\"},\n    SoftwaredDeps: []string{\"chrome\", \"android_vm\"},\n    Pre: arc.VMBooted()",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345ae6ef_62d63a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-24T19:02:33Z",
+      "side": 1,
+      "message": "I\u0027ve only tested it on vm, but this could be extended for P if needed. There might be different WM behavior in P, so some assertions may be different.\n\nDo you think we need a test like this in P?",
+      "parentUuid": "5e93c8c9_5861e5b9",
       "range": {
         "startLine": 29,
         "startChar": 2,
