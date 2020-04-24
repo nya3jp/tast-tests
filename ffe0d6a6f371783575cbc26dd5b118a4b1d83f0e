@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19c4bf07_777fb8d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-04-24T21:01:37Z",
+      "side": 1,
+      "message": "Note: This small snippet of code is split off into its own function because the next CL expands on this, and having a function in this CL will reduce the chance of merge conflict.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 101
+      },
+      "revId": "ffe0d6a6f371783575cbc26dd5b118a4b1d83f0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
