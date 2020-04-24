@@ -99,6 +99,25 @@ func TestSetMultiple(t *testing.T) {
 	saveAndCompare(t, p, "testdata/TestSetMultiple.json")
 }
 
+func TestMergeValues(t *testing.T) {
+	metric1 := Metric{Name: "metric1", Unit: "unit", Direction: SmallerIsBetter, Multiple: true}
+	metric2 := Metric{Name: "metric2", Unit: "unit", Direction: BiggerIsBetter, Multiple: true}
+	metric3 := Metric{Name: "metric3", Unit: "unit", Direction: BiggerIsBetter, Multiple: false}
+	p1 := NewValues()
+	p2 := NewValues()
+	p3 := NewValues()
+
+	p1.Set(metric1, 3, 2, 3)
+	p2.Set(metric1, 1, 9, 6)
+	p2.Set(metric2, 2, 0)
+	p3.Set(metric1, 1, 9, 9, 0)
+	p3.Set(metric2, 0, 7, 2, 8)
+	p3.Set(metric3, 1000)
+	p1.Merge(p2, p3)
+
+	saveAndCompare(t, p1, "testdata/TestMergeValues.json")
+}
+
 func TestAppendSinglePanic(t *testing.T) {
 	metric := Metric{Name: "metric", Unit: "unit", Direction: SmallerIsBetter}
 	p := NewValues()

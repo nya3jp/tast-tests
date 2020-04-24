@@ -1,0 +1,44 @@
+{
+  "metric1": {
+    "summary": {
+      "units": "unit",
+      "improvement_direction": "down",
+      "type": "list_of_scalar_values",
+      "values": [
+        3,
+        2,
+        3,
+        1,
+        9,
+        6,
+        1,
+        9,
+        9,
+        0
+      ]
+    }
+  },
+  "metric2": {
+    "summary": {
+      "units": "unit",
+      "improvement_direction": "up",
+      "type": "list_of_scalar_values",
+      "values": [
+        2,
+        0,
+        0,
+        7,
+        2,
+        8
+      ]
+    }
+  },
+  "metric3": {
+    "summary": {
+      "units": "unit",
+      "improvement_direction": "up",
+      "type": "scalar",
+      "value": 1000
+    }
+  }
+}
