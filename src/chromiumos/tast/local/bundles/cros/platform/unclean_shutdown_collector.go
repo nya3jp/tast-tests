@@ -11,6 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -52,8 +54,14 @@ func getUncleanShutdownCount(ctx context.Context) (uint64, error) {
 }
 
 func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
-
-	const uncleanShutdownDetectedFile = "/run/metrics/external/crash-reporter/unclean-shutdown-detected"
+	const (
+		pendingShutdownFile         = "/var/lib/crash_reporter/pending_clean_shutdown"
+		uncleanShutdownDetectedFile = "/run/metrics/external/crash-reporter/unclean-shutdown-detected"
+	)
+	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest(ctx)
 
 	oldUnclean, err := getUncleanShutdownCount(ctx)
 	if err != nil {
@@ -62,42 +70,51 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 
 	s.Log("Current unclean count: ", oldUnclean)
 
-	// Create uncleanShutdownDetectedFile to simulate an unclean shutdown.
-	_, err = os.Stat(uncleanShutdownDetectedFile)
-	if os.IsNotExist(err) {
-		var f, err = os.Create(uncleanShutdownDetectedFile)
-		if err != nil {
-			s.Fatal("Failed to fake an unclean shutdown: ", err)
+	if err := upstart.StopJob(ctx, "metrics_daemon"); err != nil {
+		s.Fatal("Failed to stop metrics_daemon: ", err)
+	}
+	defer func() {
+		if err := upstart.EnsureJobRunning(ctx, "metrics_daemon"); err != nil {
+			s.Error("Failed to re-start metrics_daemon: ", err)
 		}
+	}()
 
-		f.Close()
+	// crash_reporter sees the existing pending_clean_shutdown file (which
+	// is created on boot), creates the unclean shutdown file, and then
+	// ensures that the pending_clean_shutdown file exists.
+	if err := testexec.CommandContext(ctx, "/sbin/crash_reporter", "--boot_collect").Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Could not run crash reporter: ", err)
 	}
 
-	if err := upstart.RestartJob(ctx, "metrics_daemon"); err != nil {
+	if _, err = os.Stat(uncleanShutdownDetectedFile); err != nil {
+		s.Fatal("unclean_shutdown_collector failed to create unclean shutdown file: ", err)
+	}
+	if _, err = os.Stat(pendingShutdownFile); err != nil {
+		s.Fatal("crash_reporter failed to re-create pending shutdown file: ", err)
+	}
+
+	if err := upstart.StartJob(ctx, "metrics_daemon"); err != nil {
 		s.Fatal("Upstart couldn't restart metrics_daemon: ", err)
 	}
 
-	// Wait for uncleanShutdownDetectedFile to be consumed by metrics daemon
+	// Wait for unclean shutdown count to be updated.
 	if err := testing.Poll(ctx, func(c context.Context) error {
-		// Check if file exists
-		_, err := os.Stat(uncleanShutdownDetectedFile)
-		if os.IsNotExist(err) {
-			return nil
-		}
+		newUnclean, err := getUncleanShutdownCount(ctx)
 		if err != nil {
-			return err
+			return testing.PollBreak(errors.Wrap(err, "could not get unclean shutdown count"))
 		}
-		return errors.New("Unclean shutdown file is still there")
+
+		if newUnclean != oldUnclean+1 {
+			return errors.Errorf("Did not see unclean shutdown. Got %d but expected %d", newUnclean, oldUnclean+1)
+		}
+		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Could not wait for unclean shutdown to be detected: ", err)
+		s.Error("Unclean shutdown was logged incorrectly: ", err)
 	}
 
-	newUnclean, err := getUncleanShutdownCount(ctx)
-	if err != nil {
-		s.Fatal("Could not get unclean shutdown count: ", err)
-	}
-
-	if newUnclean != oldUnclean+1 {
-		s.Fatalf("Unclean shutdown was logged incorrectly. Got %d but expected %d", newUnclean, oldUnclean+1)
+	// Also ensure that uncleanShutdownDetectedFile is deleted so that
+	// metrics_daemon doesn't repeatedly consume it.
+	if _, err := os.Stat(uncleanShutdownDetectedFile); !os.IsNotExist(err) {
+		s.Error("Unclean shutdown file was not removed: ", err)
 	}
 }
