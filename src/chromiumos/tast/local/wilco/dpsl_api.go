@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
+	dtcpb "chromiumos/wilco_dtc"
 )
 
 // dpslMsg is the message format used by the sending and listening DPSL
@@ -72,19 +73,45 @@ func DPSLSendMessage(ctx context.Context, msgName string, in, out descriptor.Mes
 // DPSLMessageReceiver contains the necessary components to run the DPSL
 // listening utility and parse its output.
 type DPSLMessageReceiver struct {
-	msgs chan dpslMsgResult
-	stop chan struct{}
-	cmd  *testexec.Cmd
-	dec  *json.Decoder
+	msgs     chan dpslMsgResult
+	stop     chan struct{}
+	cmd      *testexec.Cmd
+	dec      *json.Decoder
+	response *dtcpb.HandleMessageFromUiResponse
+}
+
+type option func(*DPSLMessageReceiver)
+
+// WithHandleMessageFromUiResponse sets the --ui_response_body flag, making
+// the listener reply with that value to HandleMessageFromUi requests.
+func WithHandleMessageFromUiResponse(response *dtcpb.HandleMessageFromUiResponse) option { // NOLINT
+	return func(rec *DPSLMessageReceiver) {
+		rec.response = response
+	}
 }
 
 // NewDPSLMessageReceiver will start a utility inside of the Wilco VM
 // listening for DPSL messages. It will return a DPSLMessageReceiver struct that
 // decodes and buffers the JSON. It will immediately start consuming messages
 // from the stdout of the dpsl test listener.
-func NewDPSLMessageReceiver(ctx context.Context) (*DPSLMessageReceiver, error) {
+func NewDPSLMessageReceiver(ctx context.Context, opts ...option) (*DPSLMessageReceiver, error) {
 	rec := DPSLMessageReceiver{}
-	rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener")
+
+	for _, opt := range opts {
+		opt(&rec)
+	}
+
+	if rec.response != nil {
+		m := jsonpb.Marshaler{}
+		body, err := m.MarshalToString(rec.response)
+		if err != nil {
+			_, md := descriptor.ForMessage(rec.response)
+			return nil, errors.Wrapf(err, "unable to marshal %v to String", md.GetName())
+		}
+		rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener", "--ui_response_body="+body)
+	} else {
+		rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener")
+	}
 
 	buferr, err := rec.cmd.StderrPipe()
 	if err != nil {
