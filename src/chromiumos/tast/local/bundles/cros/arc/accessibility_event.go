@@ -82,8 +82,25 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	}
 
 	// Send a key event.
-	if err := ew.Accel(ctx, test.Key); err != nil {
-		return errors.Wrapf(err, "Accel(%s) returned error", test.Key)
+	if accessibility.IsChromeVoxCommand(test.Key) {
+		if err := ew.Accel(ctx, test.Key); err != nil {
+			return errors.Wrapf(err, "Accel(%s) returned error", test.Key)
+		}
+	} else {
+		// Enable textChanged event logging.
+		if err := cvconn.EvalPromise(ctx, `
+			new Promise((resolve, reject) => {
+				chrome.automation.getDesktop((desktop) => {
+					EventStreamLogger.instance = new EventStreamLogger(desktop);
+					EventStreamLogger.instance.notifyEventStreamFilterChanged('textChanged', true);
+					resolve();
+				});
+			})`, nil); err != nil {
+			return errors.Wrap(err, "enabling event stream logging failed")
+		}
+		if err := ew.Type(ctx, test.Key); err != nil {
+			return errors.Wrapf(err, "Type(%s) returned error", test.Key)
+		}
 	}
 
 	// Wait for the focused element to match the expected.
@@ -133,8 +150,8 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 					EventStreamLogger.instance.notifyEventStreamFilterChanged('focus', true);
 					EventStreamLogger.instance.notifyEventStreamFilterChanged('checkedStateChanged', true);
 					EventStreamLogger.instance.notifyEventStreamFilterChanged('valueChanged', true);
-
 					resolve();
+
 				});
 			})`, nil); err != nil {
 			return errors.Wrap(err, "enabling event stream logging failed")
