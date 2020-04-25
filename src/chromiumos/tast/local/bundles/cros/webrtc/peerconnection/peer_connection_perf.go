@@ -272,7 +272,7 @@ func measureGPUCounters(ctx context.Context, prefix string, p *perf.Values) erro
 		vecsUsage := 100 * vecs.Seconds() / counters["total"].Seconds()
 		testing.ContextLogf(ctx, "VECS usage: %f%%", vecsUsage)
 		p.Set(perf.Metric{
-			Name:      prefix + "vcs_usage",
+			Name:      prefix + "vecs_usage",
 			Unit:      "percent",
 			Direction: perf.SmallerIsBetter,
 		}, vecsUsage)
