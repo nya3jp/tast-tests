@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6583398d_5e1f2214",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T06:54:00Z",
+      "side": 1,
+      "message": "Remember to reserve time for c.close().\n\ndefer func(ctx context.Context) {\n  ...\n}(ctx)\n\nctx, shortenCancel :\u003d ctxutil.Shorten(ctx, 2 * time.Second)\ndefer shortenCancel()",
+      "revId": "7300caf0da9de4352fbe0b66e6a6b4756a6d6df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f03b53c_491232b0",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
         "patchSetId": 22
