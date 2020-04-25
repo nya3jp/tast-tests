@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a704e26_e720f21b",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T06:40:15Z",
+      "side": 1,
+      "message": "Maybe shorten as:\n\nif m, ok :\u003d r.busyPhy[phyID]; ok {\n  for _, b :\u003d range m {\n    if b {\n      return true\n    }\n  }\n}\nreturn false",
+      "revId": "8d3306b0f2dbd61e09474c6c5b650143a9c536de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e819861_ba5fe7a3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T06:40:15Z",
+      "side": 1,
+      "message": "Just curious why you perfer map[iw.IFType]bool more than Struct busyIfs as Brendan suggested?",
+      "revId": "8d3306b0f2dbd61e09474c6c5b650143a9c536de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
