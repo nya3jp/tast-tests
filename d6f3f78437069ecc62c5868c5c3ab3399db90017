@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8414ff56_5ffda797",
+        "filename": "android/ArcMotionInputTest/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e26b8237_966165a6",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048b78cd_001eeee1",
         "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "25f8176a_d04caee2",
+        "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048b78cd_001eeee1",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb641a23_7cec0cc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-24T23:17:28Z",
       "side": 1,
       "message": "what about running this test also in container as well?\nunless you are coding vm-only test, it is good to run them both on container and VM.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be312a84_038c2fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "I\u0027m open to adding these tests for container P as well. But the WM behavior for P may be different, and I haven\u0027t tried it on P yet.\n\nI also want to see if tetsui@ has any thoughts about adding this for P.",
+      "parentUuid": "eb641a23_7cec0cc1",
       "range": {
         "startLine": 29,
         "startChar": 2,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "dba09575_2ed18008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b724816d_b731bb86",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff258c91_190ee843",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7c127c_843abec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff258c91_190ee843",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 14
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "ff3a5d41_d2c02e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5281275_ff1bb3b4",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a88e5016_0f3a804c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -160,6 +304,30 @@
       "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33381af1_a89a0382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a88e5016_0f3a804c",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "adafbe13_65972cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01b14861_493e379d",
+      "range": {
+        "startLine": 127,
+        "startChar": 48,
+        "endLine": 127,
+        "endChar": 62
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2a0e048_6fb07764",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -206,6 +398,30 @@
       "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ac1f79_a5503e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a0e048_6fb07764",
+      "range": {
+        "startLine": 129,
+        "startChar": 56,
+        "endLine": 129,
+        "endChar": 62
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "1169b796_a01592e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f01fe7a_ef4f3081",
+      "range": {
+        "startLine": 132,
+        "startChar": 52,
+        "endLine": 132,
+        "endChar": 54
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0963a4f_c4d0b78d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -243,6 +483,30 @@
       "writtenOn": "2020-04-24T23:17:28Z",
       "side": 1,
       "message": "just wondering whether this will fail in ChromeBoxes (probably will), and if so, whether we have any in PFQ... if so, your test cannot be promoted to PFQ.\n\nnot sure whether we have a \"hardware dependency\" to require to have at least one display.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b32405a_d3be07e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "By the nature of motion input events, a display is required. I\u0027ll try to follow up on this...",
+      "parentUuid": "b0963a4f_c4d0b78d",
       "range": {
         "startLine": 186,
         "startChar": 2,
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "fb8a4736_493b3b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "094711c7_369b9a2d",
+      "range": {
+        "startLine": 250,
+        "startChar": 86,
+        "endLine": 255,
+        "endChar": 6
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "914a27ad_b91eca1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -298,6 +586,30 @@
       "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3388908_110989b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "914a27ad_b91eca1d",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 33
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +659,54 @@
     },
     {
       "key": {
+        "uuid": "da0c43e4_13aa3cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5808af77_d13f101c",
+      "range": {
+        "startLine": 279,
+        "startChar": 5,
+        "endLine": 279,
+        "endChar": 23
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b1804d_b64df59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "a7421687_a628f673",
+      "range": {
+        "startLine": 279,
+        "startChar": 21,
+        "endLine": 279,
+        "endChar": 23
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ae8361_8ef745d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "98476ee6_29149d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ae8361_8ef745d7",
+      "range": {
+        "startLine": 286,
+        "startChar": 8,
+        "endLine": 286,
+        "endChar": 20
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2d3d7ba_365678f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
@@ -390,6 +774,30 @@
       "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69ebbc7_0030c402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-25T03:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2d3d7ba_365678f6",
+      "range": {
+        "startLine": 305,
+        "startChar": 6,
+        "endLine": 305,
+        "endChar": 8
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
