@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8c9f0806_ff3e9d4f",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-25T16:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a704e26_e720f21b",
+      "revId": "8d3306b0f2dbd61e09474c6c5b650143a9c536de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e819861_ba5fe7a3",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-25T06:40:15Z",
       "side": 1,
       "message": "Just curious why you perfer map[iw.IFType]bool more than Struct busyIfs as Brendan suggested?",
+      "revId": "8d3306b0f2dbd61e09474c6c5b650143a9c536de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09e962e_88882f7c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-25T16:00:11Z",
+      "side": 1,
+      "message": "My thought was:\nIf we are adding a new IfType and its behavior is the same as the existing type, we don\u0027t need to change the codes here with map of map.\nIf we\u0027re using map of Struct, we\u0027ll have to add a field and update maybe two switch-case (one for getter and one for setter) which I think is more prone to error. (With some trick of pointer, I guess we may share the switch case for getter and setter but it might also reduce some readability.)",
+      "parentUuid": "5e819861_ba5fe7a3",
       "revId": "8d3306b0f2dbd61e09474c6c5b650143a9c536de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
