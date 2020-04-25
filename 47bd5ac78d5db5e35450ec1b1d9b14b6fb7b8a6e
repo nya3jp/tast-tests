@@ -254,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "6f75a838_39e75f57",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T03:54:49Z",
+      "side": 1,
+      "message": "wifi.Interface(shill.TechnologyEthernet) looks weird. If we want a generic network interface getter, we should define it in service Network or service Shill.\n\nFor now, how about just having \n// Interface returns the WiFi device interface name (e.g., wlan0).\nrpc Interface(google.protobuf.Empty) returns (Iface) {}",
+      "parentUuid": "ada479ee_d15f2ec2",
+      "revId": "47bd5ac78d5db5e35450ec1b1d9b14b6fb7b8a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f2b8dbf_1476c445",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 6
