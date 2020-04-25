@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e018bf96_72da7ffa",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T10:47:33Z",
+      "side": 1,
+      "message": "It would be nice to comment what the key and value means.",
+      "revId": "b3dbf45642009cc1ea0c22377762fa9147b36b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9215f057_a295d73d",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T10:47:33Z",
+      "side": 1,
+      "message": "// Collect closing log to facilitate debugging for error occurs in r.initialize() or after r.CollectLogs().",
+      "revId": "b3dbf45642009cc1ea0c22377762fa9147b36b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7dbc330_4330796e",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T10:47:33Z",
+      "side": 1,
+      "message": "Maybe just use the extracted line as tail?",
+      "revId": "b3dbf45642009cc1ea0c22377762fa9147b36b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb1549c_6ac232c1",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T10:47:33Z",
+      "side": 1,
+      "message": "Isn\u0027t tokens[0] already a string?",
+      "range": {
+        "startLine": 434,
+        "startChar": 20,
+        "endLine": 434,
+        "endChar": 26
+      },
+      "revId": "b3dbf45642009cc1ea0c22377762fa9147b36b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c2a18c4_550cc056",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T10:47:33Z",
+      "side": 1,
+      "message": "outDir",
+      "range": {
+        "startLine": 441,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 7
+      },
+      "revId": "b3dbf45642009cc1ea0c22377762fa9147b36b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68038454_8d3574a5",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-25T10:47:33Z",
+      "side": 1,
+      "message": "baseDir\n\nOr maybe we can override outDir here as it is the only out directory for the Router object.",
+      "revId": "b3dbf45642009cc1ea0c22377762fa9147b36b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
