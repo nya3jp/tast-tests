@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ed11113_13f6b292",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-25T16:00:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6583398d_5e1f2214",
+      "revId": "7300caf0da9de4352fbe0b66e6a6b4756a6d6df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f03b53c_491232b0",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
         "patchSetId": 22
@@ -30,6 +48,30 @@
       "writtenOn": "2020-04-24T15:29:11Z",
       "side": 1,
       "message": "How about packetPathOnDUT to be more explicit this is testing device. The word \"host\" is overloaded and sometimes ambiguous...",
+      "range": {
+        "startLine": 174,
+        "startChar": 31,
+        "endLine": 174,
+        "endChar": 35
+      },
+      "revId": "7300caf0da9de4352fbe0b66e6a6b4756a6d6df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d1e4b4_589d1e47",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-25T16:00:48Z",
+      "side": 1,
+      "message": "Hmm... c.host is usually a companion router but the object can also be used for DUT.\nMaybe packetPathOnRemote?",
+      "parentUuid": "5f03b53c_491232b0",
       "range": {
         "startLine": 174,
         "startChar": 31,
@@ -56,6 +98,24 @@
       "revId": "7300caf0da9de4352fbe0b66e6a6b4756a6d6df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44865d20_14b98d3d",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-25T16:00:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c3ae2cb_068c76cf",
+      "revId": "7300caf0da9de4352fbe0b66e6a6b4756a6d6df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
