@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2cc70bb_3db4ac65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-26T07:28:47Z",
+      "side": 1,
+      "message": "Don\u0027t we have to set diff \u003d \"\" here?\nprevious diff may remain if testing.PollBreak(err) is returned in the current iteration.",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 5
+      },
+      "revId": "adf762e2789cb32092c924b1ddadaa084e1dfe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0eb5a1_29cf409f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-26T07:28:47Z",
+      "side": 1,
+      "message": "nit: colon is not needed.\n\u0027:\u0027 is usually used to separate errors.",
+      "range": {
+        "startLine": 138,
+        "startChar": 45,
+        "endLine": 138,
+        "endChar": 46
+      },
+      "revId": "adf762e2789cb32092c924b1ddadaa084e1dfe92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
