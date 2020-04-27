@@ -82,7 +82,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	}
 	defer pc.Close()
 
-	if conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, 2); err != nil {
+	if conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 2); err != nil {
 		s.Fatal("Failed to create windows: ", err)
 	} else {
 		// unnecessary to use the connections; simply close now.
