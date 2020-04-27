@@ -40,7 +40,7 @@ func init() {
 				command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:toolkit_gtk3_demo.py",
 			},
-			ExtraSoftwareDeps: []string{"crostini_stable"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
 		}, {
 			Name:      "gtk3_wayland_unstable",
 			ExtraData: []string{"toolkit_gtk3_demo.py"},
@@ -50,7 +50,7 @@ func init() {
 				command: []string{"env", "GDK_BACKEND=wayland", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:toolkit_gtk3_demo.py",
 			},
-			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "gtk3_x11",
@@ -61,7 +61,7 @@ func init() {
 				command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 			},
-			ExtraSoftwareDeps: []string{"crostini_stable"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
 		}, {
 			Name:      "gtk3_x11_unstable",
 			ExtraData: []string{"toolkit_gtk3_demo.py"},
@@ -71,7 +71,7 @@ func init() {
 				command: []string{"env", "GDK_BACKEND=x11", "python3", "toolkit_gtk3_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Toolkit_gtk3_demo.py",
 			},
-			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "qt5",
@@ -82,7 +82,7 @@ func init() {
 				command: []string{"python3", "toolkit_qt5_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 			},
-			ExtraSoftwareDeps: []string{"crostini_stable"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
 		}, {
 			Name:      "qt5_unstable",
 			ExtraData: []string{"toolkit_qt5_demo.py"},
@@ -92,7 +92,7 @@ func init() {
 				command: []string{"python3", "toolkit_qt5_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.toolkit_qt5_demo.py",
 			},
-			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "tkinter",
@@ -103,7 +103,7 @@ func init() {
 				command: []string{"python3", "toolkit_tkinter_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 			},
-			ExtraSoftwareDeps: []string{"crostini_stable"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
 		}, {
 			Name:      "tkinter_unstable",
 			ExtraData: []string{"toolkit_tkinter_demo.py"},
@@ -113,7 +113,7 @@ func init() {
 				command: []string{"python3", "toolkit_tkinter_demo.py"},
 				appID:   "crostini:org.chromium.termina.wmclass.Tkinter_demo",
 			},
-			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}},
 		Timeout:      7 * time.Minute,
