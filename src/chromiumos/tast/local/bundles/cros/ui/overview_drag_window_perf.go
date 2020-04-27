@@ -309,7 +309,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 	currentWindows := 0
 	// Run the test cases with different number of browser windows.
 	for _, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to open windows: ", err)
 		}

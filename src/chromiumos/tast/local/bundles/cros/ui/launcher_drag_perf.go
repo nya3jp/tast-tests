@@ -116,7 +116,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	currentWindows := 0
 	// Run the dragging gesture for different numbers of browser windows (0 or 2).
 	for _, windows := range []int{0, 2} {
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}

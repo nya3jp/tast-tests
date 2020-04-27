@@ -39,7 +39,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 	}
 
 	const numWindows = 8
-	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
+	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
 	if err != nil {
 		s.Fatal("Failed to create windows: ", err)
 	}

@@ -108,7 +108,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	// Collect metrics data from hiding hotseat by window creation.
 	histogramGroup, err := metrics.Run(ctx, tconn, func() error {
 		const numWindows = 1
-		conns, err := ash.CreateWindows(ctx, cr, "", numWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cr, "", numWindows)
 		if err != nil {
 			return errors.Wrap(err, "failed to open browser windows: ")
 		}
