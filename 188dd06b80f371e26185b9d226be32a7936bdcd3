@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68816b92_ffb0f7a1",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "nit:\ninstead of \"this device\" you can say \"corresponding to device d\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 47,
+        "endLine": 21,
+        "endChar": 62
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c85e43_363a5083",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "this function, besides err, is not returning anything",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1051ff4_712418b2",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "huge nit: start with capital letter.",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa5977bf_7de942cf",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "huge nit: HID",
+      "range": {
+        "startLine": 23,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6f6bde0_f9915e6b",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622d2472_0902c7c4",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "nit:\nperhaps using path.Join() ?\nhttps://golang.org/pkg/path/#Join",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc4d767_de47bce0",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "nit, ditto above: path.Join() ?\nhttps://golang.org/pkg/path/#Join",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3545a7d2_9011d2c4",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "ditto: use path.Join() perhaps ?\n\nhttps://golang.org/pkg/path/#Join",
+      "range": {
+        "startLine": 166,
+        "startChar": 11,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6545d7b_9ec7d089",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "nit: use MustCompile() instead",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90146b03_b0ca3fa8",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "if you are looking for 3 groups of digits, you can use `(\\d+)\\s+(\\d+)\\s+(\\d+)`\nit is a good practice to add comment saying what you are looking for.",
+      "range": {
+        "startLine": 25,
+        "startChar": 30,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebbbd91_086c2509",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "use the got / want format. something like:\n\"unexpected descriptor length; got %d, want %d\"",
+      "range": {
+        "startLine": 63,
+        "startChar": 50,
+        "endLine": 63,
+        "endChar": 77
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c2d621_03e8a3aa",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "nit: use MustCompile()\nand a comment saying what you are trying to match.",
+      "range": {
+        "startLine": 86,
+        "startChar": 22,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dadf7ea_8c7a5cc0",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "you can try with:\n`(\\d+)\\.(\\d+)`",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93594352_89f68528",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "ditto above: use got,want",
+      "range": {
+        "startLine": 117,
+        "startChar": 26,
+        "endLine": 117,
+        "endChar": 82
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec96f82_98a0435b",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-27T23:32:13Z",
+      "side": 1,
+      "message": "nit: it might be a good idea to inline the ReadEvent().\n\nIf you want ReadEvent to be public, then you will need a non-blocking version.\nAs it is now, nobody should call ReadEvent directly because it might block.",
+      "range": {
+        "startLine": 382,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 26
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
