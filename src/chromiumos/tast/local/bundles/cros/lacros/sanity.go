@@ -9,7 +9,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/lacros/launcher"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
