@@ -12,6 +12,7 @@ import (
 	"os"
 	"strings"
 	"syscall"
+	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/shirou/gopsutil/process"
@@ -19,6 +20,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/testexec"
@@ -142,6 +144,13 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*LinuxChrome, error) {
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch linux-chrome")
+	}
+
+	// Wait for a window that matches what a lacros window looks like.
+	if err := ash.WaitForCondition(ctx, p.TestAPIConn, func(w *ash.Window) bool {
+		return w.IsVisible && w.Title == "about:blank - Google Chrome" && w.Name == "ExoShellSurface"
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for linux-chrome window to be visible")
 	}
 
 	debuggingPortPath := userDataDir + "/DevToolsActivePort"
