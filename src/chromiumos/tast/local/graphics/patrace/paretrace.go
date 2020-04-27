@@ -11,7 +11,6 @@ import (
 	"encoding/json"
 	"path/filepath"
 	"regexp"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -22,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -32,7 +30,6 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	const (
 		pkgName                = "com.arm.pa.paretrace"
 		activityName           = ".Activities.RetraceActivity"
-		permissionButtonID     = "com.android.permissioncontroller:id/continue_button"
 		tPowerSnapshotInterval = 5 * time.Second
 	)
 
@@ -74,11 +71,10 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 
 	s.Log("Pushing trace file")
 
-	out, err := a.Command(ctx, "mktemp", "-d", "-p", "/sdcard").Output(testexec.DumpLogOnError)
+	tmpDir, err := a.TempDir(ctx)
 	if err != nil {
 		s.Fatal("Failed to create temp dir: ", err)
 	}
-	tmpDir := strings.TrimSpace(string(out))
 	defer a.RemoveAll(ctx, tmpDir)
 
 	s.Log("Temp dir: ", tmpDir)
@@ -90,7 +86,7 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 		s.Fatal("Failed to push the trace file: ", err)
 	}
 
-	if err := a.Install(ctx, s.DataPath(apkFile)); err != nil {
+	if err := a.Install(ctx, s.DataPath(apkFile), arc.InstallOptionGrantPermissions); err != nil {
 		s.Fatalf("Failed to install %s: %v", s.DataPath(apkFile), err)
 	}
 
@@ -122,19 +118,13 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 		s.Fatal("Failed to get SDK version: ", err)
 	}
 	if sdkVer >= arc.SDKQ {
-		// Give paretrace access to "Files and media". Only needed in Q+
-		permissionButton := d.Object(ui.ID(permissionButtonID))
-		// Permission dialog will only prompt once in a session
-		if permissionButton.WaitForExists(ctx, 5*time.Second); err == nil {
-			permissionButton.Click(ctx)
-
-			// "This app was built for an older version of Android and may not work properly"
-			versionOkButton := d.Object(ui.Text("OK"), ui.PackageName("android"))
-			if err := versionOkButton.WaitForExists(ctx, 5*time.Second); err != nil {
-				s.Fatal("Failed to start: ", err)
-			}
-			versionOkButton.Click(ctx)
+		// "This app was built for an older version of Android and may not work properly"
+		// This button confirms it.
+		versionOkButton := d.Object(ui.Text("OK"), ui.PackageName("android"))
+		if err := versionOkButton.WaitForExists(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to find \"This app was built for an older version of Android and may not work properly\" dialog: ", err)
 		}
+		versionOkButton.Click(ctx)
 	}
 
 	exp := regexp.MustCompile(`paretrace32\s*:.*=+\sStart\stimer.*=+`)
