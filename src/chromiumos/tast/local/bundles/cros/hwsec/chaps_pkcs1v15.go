@@ -6,11 +6,13 @@ package hwsec
 
 import (
 	"context"
-	"fmt"
+	"time"
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/pkcs11"
 	"chromiumos/tast/common/pkcs11/pkcs11test"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	libhwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -50,11 +52,7 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 	if err := pkcs11test.CleanupScratchpad(ctx, r, scratchpadPath); err != nil {
 		s.Fatal("Failed to clean scratchpad before the start of test: ", err)
 	}
-	for _, objID := range []string{"aaaaaa", "bbbbbb", "cccccc"} {
-		if err := pkcs11Util.ClearObjectsOfAllType(ctx, 0, objID); err != nil {
-			s.Fatal("Failed to clear object store before the start of test: ", err)
-		}
-	}
+	util.CleanupKeysBeforeTest(ctx, pkcs11Util, utility)
 
 	// Prepare the scratchpad.
 	f1, f2, err := pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath)
@@ -64,66 +62,25 @@ func ChapsPKCS1V15(ctx context.Context, s *testing.State) {
 	// Remove all keys/certs, if any at the end. i.e. Cleanup after ourselves.
 	defer pkcs11test.CleanupScratchpad(ctx, r, scratchpadPath)
 
-	// Create the software-generated, then imported key.
-	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, "", "testkey1", "aaaaaa", false, true)
+	// Create the various keys.
+	keys, err := util.CreateKeysForTesting(ctx, r, pkcs11Util, utility, scratchpadPath)
 	if err != nil {
-		s.Fatal("Failed to create software key: ", err)
+		s.Fatal("Failed to create keys for testing: ", err)
 	}
 	defer func() {
-		if err := pkcs11Util.DestroyKey(ctx, importedKey); err != nil {
-			s.Error("Failed to clean up software key: ", err)
+		if err := util.CleanupTestingKeys(ctx, keys, pkcs11Util, utility); err != nil {
+			s.Error("Failed to cleanup testing keys: ", err)
 		}
 	}()
-
-	// Create the software-generated, then imported as software-backed key.
-	softwareKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, "", "testkey2", "bbbbbb", true, true)
-	if err != nil {
-		s.Fatal("Failed to create software key: ", err)
-	}
-	defer func() {
-		if err := pkcs11Util.DestroyKey(ctx, softwareKey); err != nil {
-			s.Error("Failed to clean up software key: ", err)
-		}
-	}()
-
-	// Create the TPM generated key.
-	generatedKey, err := pkcs11Util.CreateRsaGeneratedKey(ctx, scratchpadPath, "", "testkey3", "cccccc")
-	if err != nil {
-		s.Fatal("Failed to create generated key: ", err)
-	}
-	defer func() {
-		if err := pkcs11Util.DestroyKey(ctx, generatedKey); err != nil {
-			s.Error("Failed to clean up generated key: ", err)
-		}
-	}()
-
-	keys := []*pkcs11.KeyInfo{importedKey, softwareKey, generatedKey}
-
-	// Create a copy of software key for every key.
-	var copiedKeys []*pkcs11.KeyInfo
-	for i, k := range keys {
-		// Note: C0B1%02X format is just to avoid collision with other key ID. C0B1 => closest "hexspeak" for copy.
-		copiedKey, _, err := pkcs11Util.CreateKeyCopy(ctx, k, fmt.Sprintf("C0B1%02X", i), map[string]string{})
-		if err != nil {
-			s.Fatal("Failed to copy key: ", err)
-		}
-		copiedKeys = append(copiedKeys, copiedKey)
-	}
-	defer func() {
-		for _, k := range copiedKeys {
-			if err := pkcs11Util.DestroyKey(ctx, k); err != nil {
-				s.Error("Failed to clean up copied key: ", err)
-			}
-		}
-	}()
-
-	keys = append(keys, copiedKeys...)
+	// Give the cleanup 10 seconds to finish.
+	shortenedCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Test the various keys.
 	for _, k := range keys {
 		// Test the various mechanisms.
 		for _, m := range []pkcs11.MechanismInfo{pkcs11.SHA1RSAPKCS, pkcs11.SHA256RSAPKCS} {
-			if err := pkcs11test.SignAndVerify(ctx, pkcs11Util, k, f1, f2, &m); err != nil {
+			if err := pkcs11test.SignAndVerify(shortenedCtx, pkcs11Util, k, f1, f2, &m); err != nil {
 				s.Error("SignAndVerify failed: ", err)
 			}
 		}
