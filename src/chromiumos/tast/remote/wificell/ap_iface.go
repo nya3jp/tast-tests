@@ -37,8 +37,9 @@ type APIface struct {
 }
 
 // Config returns the config of hostapd.
-func (h *APIface) Config() hostapd.Config {
-	return *h.config
+// NOTE: Caller should not modify the returned object.
+func (h *APIface) Config() *hostapd.Config {
+	return h.config
 }
 
 // subnetIP returns 192.168.$subnetIdx.$suffix IP.
