@@ -115,7 +115,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}

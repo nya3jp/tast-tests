@@ -70,7 +70,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	// - the window system status; clamshell mode with maximized windows or
 	//   tablet mode.
 	for _, windows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, windows-currentWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows)
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}

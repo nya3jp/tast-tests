@@ -51,7 +51,7 @@ func HotseatSmoke(ctx context.Context, s *testing.State) {
 	// Verify that hotseat is hidden after activating a window. Then it should be extended after gesture swipe.
 	{
 		const numWindows = 1
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
 		if err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
 		}
