@@ -29,6 +29,7 @@ func fioFiles() []string {
 }
 
 func init() {
+	// tast linter requires AddTest be the only statement in an init function.
 	testing.AddTest(&testing.Test{
 		Func:         DiskIOPerf,
 		Desc:         "Tests Crostini Disk IO Performance",
@@ -41,11 +42,11 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
 				Name:              "artifact_unstable",
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 			},
 		},
 	})
