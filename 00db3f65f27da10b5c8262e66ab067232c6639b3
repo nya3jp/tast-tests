@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "834b56ab_120a2bcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-27T15:02:18Z",
+      "side": 1,
+      "message": "\u003e I remember seeing in dri.go checking the moving average for stability: out of curiosity, why do we opt for a simple sleep here? \n\u003e Do we generally know that CPU usage stabilizes within a set amount of time that doesn\u0027t change [much]?\n\nCouple of things :-)\n- The reason for \"just sleep\" here if that this ToT does it like that\nand this CL wasn\u0027t targeted at fixing that.\n- Indeed, dri.go has indeed code to wait for a moving average to settle, \n  for the graphics memory object count. \n- cpu.go OTOH has code to wait for the moving average to get as close as \n  posible to zero [1], not to a stable value X.\n\nSo my guess is that either the CPU consumption jumps about too much or the\noriginal test author decided that it wasn\u0027t imperative to wait for a settled\nvalue before starting the measurement ¯\\_(ツ)_/¯\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/cpu/cpu.go;l\u003d165",
+      "parentUuid": "584041dd_8c9d92b6",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "00db3f65f27da10b5c8262e66ab067232c6639b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7da9cb95_a844fd41",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "00db3f65f27da10b5c8262e66ab067232c6639b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faee836b_5d85f572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-04-27T15:02:18Z",
+      "side": 1,
+      "message": "I think we don\u0027t because go will return the (typed) 0 if the key is not present,\ni.e. if conters[\"total\"] is not present, we\u0027d get a zeroed time.Duration which \nwill verify the \u003d\u003d and we\u0027ll error out. The error message will not be entirely \ninformational but OTOH CollectPerformanceCounters() should guarantee \"total\" is\npresent if it didn\u0027t return an error and |counters| is not nil.",
+      "parentUuid": "7da9cb95_a844fd41",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "00db3f65f27da10b5c8262e66ab067232c6639b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
