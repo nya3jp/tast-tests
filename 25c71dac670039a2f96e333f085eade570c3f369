@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "6053bc26_8eddfcd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-27T17:27:23Z",
+      "side": 1,
+      "message": "Ah, you misunderstood my comment. I mean TestFixture (tf) can have a function to return a []hostapd.Option to set up an AP for tests rely on an open network. Well, maybe a default open network AP factory like:\n\nIn test_fixture.go:\n\nfunc (tf *TestFixture) DefaultOpenNetworkAP(ctx) (ap, err) {\n  return tf.ConfigureAP(ctx, []hostapd.Option{\n    hostapd.Mode(hostapd.Mode80211nPure), hostapd.Channel(48), \n    hostapd.HTCaps(hostapd.HTCapHT20)})\n}",
+      "parentUuid": "de1d631d_bd835243",
+      "revId": "25c71dac670039a2f96e333f085eade570c3f369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68baf0ba_ebd80e5b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 8
