@@ -234,7 +234,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 	for _, testCase := range testCases {
 		s.Run(ctx, testCase.name, func(ctx context.Context, s *testing.State) {
-			conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, testCase.numWindows-currentWindows)
+			conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, testCase.numWindows-currentWindows)
 			if err != nil {
 				s.Fatal("Failed to open windows: ", err)
 			}
