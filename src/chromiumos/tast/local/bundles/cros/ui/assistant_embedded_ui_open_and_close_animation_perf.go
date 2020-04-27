@@ -113,7 +113,7 @@ func AssistantEmbeddedUIOpenAndCloseAnimationPerf(ctx context.Context, s *testin
 		// Increases the number of browser windows opened in the background by 1
 		// until we reach the target.
 		if openedWindows < maxNumOfWindows {
-			conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, 1)
+			conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1)
 			if err != nil {
 				s.Fatal("Failed to create a new browser window: ", err)
 			}

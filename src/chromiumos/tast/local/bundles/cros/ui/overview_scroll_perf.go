@@ -68,7 +68,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 
 	// Use a total of 16 windows for this test, so that scrolling can happen.
 	const numWindows = 16
-	conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows)
+	conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows)
 	if err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}

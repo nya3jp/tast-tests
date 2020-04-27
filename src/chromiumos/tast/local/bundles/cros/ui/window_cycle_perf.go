@@ -55,7 +55,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 	for _, numWindows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, cr, ui.PerftestURL, numWindows-numExistingWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows-numExistingWindows)
 		if err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
 		}
