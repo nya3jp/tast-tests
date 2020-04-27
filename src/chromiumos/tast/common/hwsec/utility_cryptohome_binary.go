@@ -84,7 +84,6 @@ func (u *UtilityCryptohomeBinary) GetDAInfo(ctx context.Context) (info *DAInfo, 
 	}
 	if !strings.Contains(msg, getTPMStatusSuccessMessage) {
 		return &DAInfo{}, errors.Wrapf(err, "calling TPMMoreStatus failed with unexpected output %q", msg)
-		return
 	}
 
 	// Now try to parse everything.
