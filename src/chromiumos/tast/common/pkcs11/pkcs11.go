@@ -156,7 +156,7 @@ func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, userna
 	}
 
 	// Import the private key into chaps.
-	args := []string{"--import", "--path=" + result.privKeyPath, "--type=privkey", "--id=" + result.objID}
+	args := []string{"--import", "--slot=" + strconv.Itoa(slot), "--path=" + result.privKeyPath, "--type=privkey", "--id=" + result.objID}
 	if forceSoftwareBacked {
 		args = append(args, "--force_software")
 	}
@@ -165,7 +165,7 @@ func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, userna
 	}
 
 	// Import the certificate into chaps.
-	if _, err := p.runner.Run(ctx, "p11_replay", "--import", "--path="+result.certPath, "--type=cert", "--id="+result.objID); err != nil {
+	if _, err := p.runner.Run(ctx, "p11_replay", "--import", "--slot="+strconv.Itoa(slot), "--path="+result.certPath, "--type=cert", "--id="+result.objID); err != nil {
 		return nil, errors.Wrap(err, "failed to import certificate into chaps")
 	}
 
