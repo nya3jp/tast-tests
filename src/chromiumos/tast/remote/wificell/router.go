@@ -27,7 +27,7 @@ const workingDir = "/tmp/tast-test/"
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
-	host        *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
+	host        *ssh.Conn
 	board       string
 	busySubnet  map[byte]struct{}
 	phys        map[int]*iw.Phy       // map from phy idx to iw.Phy.
