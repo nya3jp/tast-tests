@@ -43,19 +43,14 @@ var ModelBlacklist = []string{
 	"bruce",
 	"lava",
 	"nasher",
-	"robo360",
-	"whitetip",
 	// Platform cyan
 	"cyan",
-	// Platform edgar
-	"edgar",
 	// Platform elm
 	"elm",
 	// Platform fiss-moblab
 	"wukong",
 	// Platform fizz
 	"jax",
-	"teemo",
 	// Platform gandof
 	"gandof",
 	// Platform grunt
@@ -63,8 +58,6 @@ var ModelBlacklist = []string{
 	"barla",
 	"careena",
 	"kasumi",
-	"kasumi360",
-	"liara",
 	"treeya",
 	"treeya360",
 	// Platform guado
@@ -76,7 +69,6 @@ var ModelBlacklist = []string{
 	// Platform kevin
 	"kevin",
 	// Platform kukui
-	"kodama",
 	"krane",
 	// Platform lulu
 	"lulu",
@@ -86,36 +78,27 @@ var ModelBlacklist = []string{
 	"ampton",
 	"apel",
 	"bloog",
-	"blooglet",
 	"blooguard",
 	"bluebird",
 	"bobba",
 	"bobba360",
 	"casta",
-	"dood",
-	"dorp",
 	"droid",
 	"fleex",
 	"foob",
 	"foob360",
 	"garg",
-	"garg360",
 	"laser14",
-	"lick",
 	"phaser360",
 	"sparky",
-	"sparky360",
 	"vorticon",
 	"vortininja",
-	// Platform reks
-	"reks",
 	// Platform relm
 	"relm",
 	// Platform samus
 	"samus",
 	// Platform sarien
 	"arcada",
-	"sarien",
 	// Platform scarlet
 	"dru",
 	"dumo",
@@ -123,8 +106,6 @@ var ModelBlacklist = []string{
 	"terra",
 	// Platform ultima
 	"ultima",
-	// Platform wizpig
-	"wizpig",
 }
 
 // CrostiniStable is a hardware dependency that only runs a test on models that can run Crostini tests without
