@@ -536,3 +536,82 @@ func TestFreqOptions(t *testing.T) {
 		}
 	}
 }
+
+func TestPerfDesc(t *testing.T) {
+	testcases := []struct {
+		conf   *Config
+		expect string
+	}{
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211b,
+				Channel: 1,
+			},
+			expect: "ch001_mode11b",
+		},
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nPure,
+				Channel: 3,
+			},
+			expect: "ch003_modeHT20",
+		},
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nPure,
+				Channel: 1,
+				HTCaps:  HTCapHT40,
+			},
+			expect: "ch001_modeHT40p",
+		},
+		{
+			conf: &Config{
+				Ssid:    "ssid",
+				Mode:    Mode80211nMixed,
+				Channel: 5,
+				HTCaps:  HTCapHT40 | HTCapSGI40,
+			},
+			expect: "ch005_modeHT40m",
+		},
+		{
+			conf: &Config{
+				Ssid:       "ssid",
+				Mode:       Mode80211acMixed,
+				Channel:    157,
+				HTCaps:     HTCapHT40Plus,
+				VHTChWidth: VHTChWidth20Or40,
+			},
+			expect: "ch157_modeVHT40",
+		},
+		{
+			conf: &Config{
+				Ssid:       "ssid",
+				Mode:       Mode80211acMixed,
+				Channel:    157,
+				HTCaps:     HTCapHT40Plus,
+				VHTChWidth: VHTChWidth80,
+			},
+			expect: "ch157_modeVHT80",
+		},
+		{
+			conf: &Config{
+				Ssid:       "ssid",
+				Mode:       Mode80211acMixed,
+				Channel:    108,
+				HTCaps:     HTCapHT40Plus,
+				VHTChWidth: VHTChWidth160,
+			},
+			expect: "ch108_modeVHT160",
+		},
+	}
+
+	for i, tc := range testcases {
+		desc := tc.conf.PerfDesc()
+		if desc != tc.expect {
+			t.Errorf("testcase #%d failed, got %s, want %s", i, desc, tc.expect)
+		}
+	}
+}
