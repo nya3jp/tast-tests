@@ -52,6 +52,8 @@ func createKeysForTestingForUser(ctx context.Context, username string, pkcs11Uti
 	}
 	keys = append(keys, generatedKey)
 
+	// Note: If anymore keys are added here, please add its ID to the list below in CleanupKeysBeforeTest() as well.
+
 	// Create a copy of software key for every key.
 	for i, k := range keys {
 		// Note: C0B1%02X format is just to avoid collision with other key ID. C0B1 => closest "hexspeak" for copy.
@@ -94,4 +96,17 @@ func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util 
 	}
 
 	return retErr
+}
+
+// CleanupKeysBeforeTest is a helper method that resets the system back to a state that is consistent for the test. This ensures that no stray remnants of key is left on the system.
+// Note that this doesn't return anything because there's no guarantee if there's anything to remove/cleanup before the test runs.
+// Usually this is called at the start of the test.
+func CleanupKeysBeforeTest(ctx context.Context, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) {
+	// For system token, we'll remove them one by one.
+	keyIDs := []string{"111111", "222222", "333333", "C0B100", "C0B101", "C0B102"}
+	for _, i := range keyIDs {
+		if err := pkcs11Util.ClearObjectsOfAllType(ctx, 0, i); err != nil {
+			testing.ContextLogf(ctx, "Failed to remove key ID %q: %q", i, err)
+		}
+	}
 }
