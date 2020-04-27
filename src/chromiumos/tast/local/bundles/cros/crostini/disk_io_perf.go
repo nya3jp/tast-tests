@@ -20,32 +20,33 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func fioFiles() []string {
-	var res []string
+var diskIOPerfDataFiles = []string{crostini.ImageArtifact}
+
+func init() {
 	for _, job := range fioJobs {
-		res = append(res, job.fileName)
+		diskIOPerfDataFiles = append(diskIOPerfDataFiles, job.fileName)
 	}
-	return res
 }
 
 func init() {
+	// tast linter requires AddTest be the only statement in an init function.
 	testing.AddTest(&testing.Test{
 		Func:         DiskIOPerf,
 		Desc:         "Tests Crostini Disk IO Performance",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      30 * time.Minute,
-		Data:         append([]string{crostini.ImageArtifact}, fioFiles()...),
+		Data:         diskIOPerfDataFiles,
 		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
 				Name:              "artifact_unstable",
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 			},
 		},
 	})

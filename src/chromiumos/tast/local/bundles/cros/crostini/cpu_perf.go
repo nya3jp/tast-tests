@@ -37,11 +37,11 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "artifact",
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
 				Name:              "artifact_unstable",
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 			},
 		},
 	})

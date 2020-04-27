@@ -29,7 +29,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				Val:               "llvmpipe",
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
 				Name:              "artifact_sw_unstable",
@@ -37,7 +37,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				Val:               "llvmpipe",
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
@@ -46,7 +46,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				Val:               "virgl",
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
 				Name:              "artifact_gpu_unstable",
@@ -54,7 +54,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
 				Val:               "virgl",
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
