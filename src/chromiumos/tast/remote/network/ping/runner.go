@@ -12,7 +12,7 @@ import (
 	"strconv"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/network/commander"
+	"chromiumos/tast/ssh"
 )
 
 const (
@@ -87,11 +87,11 @@ func SourceIface(iface string) Option {
 
 // Runner is the object used for run ping command.
 type Runner struct {
-	host commander.Commander
+	host *ssh.Conn
 }
 
 // NewRunner creates a ping Runner on the given dut.
-func NewRunner(host commander.Commander) *Runner {
+func NewRunner(host *ssh.Conn) *Runner {
 	return &Runner{host: host}
 }
 

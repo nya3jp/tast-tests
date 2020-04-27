@@ -9,14 +9,14 @@ import (
 	"context"
 
 	"chromiumos/tast/common/network/iw"
-	"chromiumos/tast/remote/network/commander"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
 // remoteCmdRunner implements iw.CmdRunner interface.
 type remoteCmdRunner struct {
-	host commander.Commander
+	host *ssh.Conn
 }
 
 var _ iw.CmdRunner = (*remoteCmdRunner)(nil)
@@ -40,7 +40,7 @@ func (r *remoteCmdRunner) Output(ctx context.Context, cmd string, args ...string
 type Runner = iw.Runner
 
 // NewRunner creates a iw runner for remote execution.
-func NewRunner(host commander.Commander) *Runner {
+func NewRunner(host *ssh.Conn) *Runner {
 	return iw.NewRunner(&remoteCmdRunner{
 		host: host,
 	})

@@ -364,7 +364,7 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) err
 	if tf.curAP == nil {
 		return errors.New("not connected")
 	}
-	pr := ping.NewRunner(tf.dut)
+	pr := ping.NewRunner(tf.dut.Conn())
 	res, err := pr.Ping(ctx, tf.curAP.ServerIP().String(), opts...)
 	if err != nil {
 		return err
