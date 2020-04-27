@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9373840a_94d71df2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-04-27T04:36:09Z",
+      "side": 1,
+      "message": "\u003e \"swith\" is a possible misspelling of \"switch\".\n\nPlease fix.",
+      "parentUuid": "ca9c31d5_dfec5d51",
+      "range": {
+        "startLine": 15,
+        "startChar": 37,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5f2d90_6a0c780e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-04-27T04:36:09Z",
+      "side": 1,
+      "message": "Did you mean to delete the deps from this test?",
+      "range": {
+        "startLine": 181,
+        "startChar": 3,
+        "endLine": 181,
+        "endChar": 5
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d72576_b8c78cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-04-27T04:36:09Z",
+      "side": 1,
+      "message": "Do you have two init() functions here?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
