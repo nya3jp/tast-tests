@@ -15,8 +15,8 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/lacros/launcher"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -128,19 +128,19 @@ func measureProcesses(ctx context.Context, path string) (int, int, error) {
 	return j + k, p, nil
 }
 
-// measureBothChrome measures the current memory usage of both linux-chrome and
+// measureBothChrome measures the current memory usage of both lacros-chrome and
 // chromeos-chrome. Returns (pmf, pss) in bytes.
 func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	// As a rule of thumb, we wait 60 seconds before taking any
 	// measurements. This gives time for previous operations to finish and
-	// the system to quiesce. In particular, both linux-chrome and
+	// the system to quiesce. In particular, both lacros-chrome and
 	// chromeos-chrome will sometimes spawn/keep around unnecessary
 	// processes, but most will go away after 60 seconds.
 	testing.Sleep(ctx, 60*time.Second)
 
 	pmf, pss, err := measureProcesses(ctx, launcher.BinaryPath)
 	if err != nil {
-		s.Fatal("Failed to measure memory of linux-chrome: ", err)
+		s.Fatal("Failed to measure memory of lacros-chrome: ", err)
 	}
 	chromeosChromePath := "/opt/google/chrome"
 	pmf1, pss1, err := measureProcesses(ctx, chromeosChromePath)
@@ -151,10 +151,10 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 }
 
 // Memory is a basic test for lacros memory usage. It measures the PMF and PSS
-// overhead for linux-chrome with a single about:blank tab. It also makes the
+// overhead for lacros-chrome with a single about:blank tab. It also makes the
 // same measurements for chromeos-chrome. This estimate is not perfect. For
 // example, this test does not measure the size of the chromeos-chrome test API
-// extension, but it does include the extension for linux-chrome.
+// extension, but it does include the extension for lacros-chrome.
 // Furthermore, this test does not have fine control over chromeos-chrome,
 // which may choose to spawn/kill utility or renderer processes for its own
 // purposes. My running the same code 10 times, outliers become obvious.
@@ -162,31 +162,31 @@ func Memory(ctx context.Context, s *testing.State) {
 	params := s.Param().(testParams)
 	url := params.url
 	for i := 0; i < 10; i++ {
-		// Measure memory before launching linux-chrome.
+		// Measure memory before launching lacros-chrome.
 		pmf1, pss1 := measureBothChrome(ctx, s)
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
-		l, err := launcher.LaunchLinuxChrome(ctx, s.PreValue().(launcher.PreData))
+		l, err := launcher.LaunchLacrosChrome(ctx, s.PreValue().(launcher.PreData))
 		if err != nil {
-			s.Fatal("Failed to launch linux-chrome: ", err)
+			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
 
 		if params.mode == openTabMode {
-			if err := openTabsLinux(ctx, l, params.numTabs); err != nil {
-				s.Fatal("Failed to oepn linux-chrome tabs: ", err)
+			if err := openTabsLacros(ctx, l, params.numTabs); err != nil {
+				s.Fatal("Failed to oepn lacros-chrome tabs: ", err)
 			}
 		} else {
-			if err := navigateSingleTabToURLLinux(ctx, url, l); err != nil {
-				s.Fatal("Failed to open a linux tab: ", err)
+			if err := navigateSingleTabToURLLacros(ctx, url, l); err != nil {
+				s.Fatal("Failed to open a lacros tab: ", err)
 			}
 		}
 
-		// Measure memory after launching linux-chrome.
+		// Measure memory after launching lacros-chrome.
 		pmf2, pss2 := measureBothChrome(ctx, s)
-		testing.ContextLogf(ctx, "linux-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf2-pmf1)/1024/1024, (pss2-pss1)/1024/1024)
+		testing.ContextLogf(ctx, "lacros-chrome RssAnon + VmSwap (MB): %v. Pss (MB): %v ", (pmf2-pmf1)/1024/1024, (pss2-pss1)/1024/1024)
 
-		// Close linux-chrome
+		// Close lacros-chrome
 		l.Close(ctx)
 
 		// Measure memory before launching chromeos-chrome.
@@ -233,10 +233,10 @@ func Memory(ctx context.Context, s *testing.State) {
 	}
 }
 
-// navigateSingleTabToURLLinux assumes that there's a freshly launched instance
-// of linux-chrome, with a single tab open to about:blank. This function
+// navigateSingleTabToURLLacros assumes that there's a freshly launched instance
+// of lacros-chrome, with a single tab open to about:blank. This function
 // creates a new tab, navigates it to the url, and closes the original tab.
-func navigateSingleTabToURLLinux(ctx context.Context, url string, l *launcher.LinuxChrome) error {
+func navigateSingleTabToURLLacros(ctx context.Context, url string, l *launcher.LacrosChrome) error {
 	// Open a new tab and navigate to url.
 	newTab, err := l.Devsess.CreateTarget(ctx, url)
 	if err != nil {
@@ -259,9 +259,9 @@ func navigateSingleTabToURLLinux(ctx context.Context, url string, l *launcher.Li
 	return nil
 }
 
-// openTabsLinux assumes that linux-chrome has been freshly launched,
+// openTabsLacros assumes that lacros-chrome has been freshly launched,
 // with a single tab opened to about:blank.
-func openTabsLinux(ctx context.Context, l *launcher.LinuxChrome, numTabs int) error {
+func openTabsLacros(ctx context.Context, l *launcher.LacrosChrome, numTabs int) error {
 	for i := 0; i < numTabs-1; i++ {
 		// Open a new tab and navigate to about blank
 		if _, err := l.Devsess.CreateTarget(ctx, "about:blank"); err != nil {

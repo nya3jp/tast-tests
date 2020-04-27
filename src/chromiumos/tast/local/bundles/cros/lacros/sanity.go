@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package lacros tests linux-chrome running on ChromeOS.
+// Package lacros tests lacros-chrome running on ChromeOS.
 package lacros
 
 import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/lacros/launcher"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -26,9 +26,9 @@ func init() {
 }
 
 func Sanity(ctx context.Context, s *testing.State) {
-	l, err := launcher.LaunchLinuxChrome(ctx, s.PreValue().(launcher.PreData))
+	l, err := launcher.LaunchLacrosChrome(ctx, s.PreValue().(launcher.PreData))
 	if err != nil {
-		s.Fatal("Failed to launch linux-chrome")
+		s.Fatal("Failed to launch lacros-chrome")
 	}
 	defer l.Close(ctx)
 
