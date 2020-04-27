@@ -22,6 +22,30 @@
       "revId": "71b78c0c2010dc2c66ca5ee4ae756fa030443af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ff1570_ce2c5cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-27T01:51:37Z",
+      "side": 1,
+      "message": "Hmm I am not familiar with the arc-r variant. It should be installed automatically on eve. Is there anything special rule for ARC R?",
+      "parentUuid": "bae56b30_8e533edf",
+      "range": {
+        "startLine": 56,
+        "startChar": 43,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "71b78c0c2010dc2c66ca5ee4ae756fa030443af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
