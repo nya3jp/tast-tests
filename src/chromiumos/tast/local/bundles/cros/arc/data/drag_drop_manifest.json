@@ -1,0 +1,12 @@
+{
+  "name": "DragDrop Controller",
+  "description": "For testing DragDrop between ChromeOS and Android",
+  "manifest_version": 2,
+  "version": "0.1",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": ["alwaysOnTopWindows"]
+}
