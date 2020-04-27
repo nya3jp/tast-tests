@@ -16,6 +16,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// importedKeyID is the Key ID of the hardware backed key that is generated in software then imported.
+	importedKeyID = "111111"
+	// softwareKeyID is the Key ID of the software backed key.
+	softwareKeyID = "222222"
+	// generatedKeyID is the Key ID of the hardware backed key that is generated in the TPM.
+	generatedKeyID = "333333"
+)
+
+// allKeyIDs returns the list of Key IDs that should be covered by the test. noncopiedKeyIDs is the list of key IDs that are not copied with C_CopyObject(). copiedKeyIDs is the list of key IDs that is created through C_CopyObject(). The length of these two arrays should be equal.
+func allKeyIDs() (noncopiedKeyIDs, copiedKeyIDs []string) {
+	noncopiedKeyIDs = []string{importedKeyID, softwareKeyID, generatedKeyID}
+	for i := range noncopiedKeyIDs {
+		// Note: C0B1%02X format is just to avoid collision with other key ID. C0B1 => closest "hexspeak" for copy.
+		copiedKeyIDs = append(copiedKeyIDs, fmt.Sprintf("C0B1%02X", i))
+	}
+	return noncopiedKeyIDs, copiedKeyIDs
+}
+
 // createKeysForTestingForUser creases all the possible keys that we should test that belong to the given username (reside in the slot that is associated with the user).
 // Specify empty string for username to specify system token slot.
 func createKeysForTestingForUser(ctx context.Context, username string, pkcs11Util *pkcs11.Chaps, scratchpadPath string) (keys []*pkcs11.KeyInfo, retErr error) {
@@ -32,30 +51,35 @@ func createKeysForTestingForUser(ctx context.Context, username string, pkcs11Uti
 	}()
 
 	// Create the software-generated, then imported key.
-	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, "testkey1", "111111", false, true)
+	importedKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, "testkey1", importedKeyID, false, true)
 	if err != nil {
 		return keys, errors.Wrap(err, "failed to create software key")
 	}
 	keys = append(keys, importedKey)
 
 	// Create the software-generated, then imported as software-backed key.
-	softwareKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, "testkey2", "222222", true, true)
+	softwareKey, err := pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, "testkey2", softwareKeyID, true, true)
 	if err != nil {
 		return keys, errors.Wrap(err, "failed to create software key")
 	}
 	keys = append(keys, softwareKey)
 
 	// Create the TPM generated key.
-	generatedKey, err := pkcs11Util.CreateRsaGeneratedKey(ctx, scratchpadPath, username, "testkey3", "333333")
+	generatedKey, err := pkcs11Util.CreateRsaGeneratedKey(ctx, scratchpadPath, username, "testkey3", generatedKeyID)
 	if err != nil {
 		return keys, errors.Wrap(err, "failed to create generated key")
 	}
 	keys = append(keys, generatedKey)
 
+	// Note: If anymore keys are added here, please add its ID to the list above in allKeyIDs() as well
+	noncopiedKeyIDs, copiedKeyIDs := allKeyIDs()
+	if len(copiedKeyIDs) != len(keys) || len(noncopiedKeyIDs) != len(keys) {
+		panic("Key ID constants are out of sync.")
+	}
+
 	// Create a copy of software key for every key.
 	for i, k := range keys {
-		// Note: C0B1%02X format is just to avoid collision with other key ID. C0B1 => closest "hexspeak" for copy.
-		copiedKey, _, err := pkcs11Util.CreateKeyCopy(ctx, k, fmt.Sprintf("C0B1%02X", i), map[string]string{})
+		copiedKey, _, err := pkcs11Util.CreateKeyCopy(ctx, k, copiedKeyIDs[i], map[string]string{})
 		if err != nil {
 			return keys, errors.Wrap(err, "failed to copy key")
 		}
@@ -94,4 +118,18 @@ func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util 
 	}
 
 	return retErr
+}
+
+// CleanupKeysBeforeTest is a helper method that resets the system back to a state that is consistent for the test. This ensures that no stray remnants of key is left on the system.
+// Note that this doesn't return anything because there's no guarantee if there's anything to remove/cleanup before the test runs.
+// Usually this is called at the start of the test.
+func CleanupKeysBeforeTest(ctx context.Context, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) {
+	// For system token, we'll remove them one by one.
+	noncopiedKeyIDs, copiedKeyIDs := allKeyIDs()
+	keyIDs := append(noncopiedKeyIDs, copiedKeyIDs...)
+	for _, keyID := range keyIDs {
+		if err := pkcs11Util.ClearObjectsOfAllType(ctx, 0, keyID); err != nil {
+			testing.ContextLogf(ctx, "Failed to remove key ID %q: %q", keyID, err)
+		}
+	}
 }
