@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// DataArtifact holds the name of the tarball which contains the linux-chrome
+// DataArtifact holds the name of the tarball which contains the lacros-chrome
 // binary. When using the StartedByData precondition, you must list this as one
 // of the data dependencies of your test.
 const DataArtifact string = "lacros_binary.tar"
@@ -46,7 +46,7 @@ const (
 	download setupMode = iota
 )
 
-// LacrosTestPath is the file path at which all linux-chrome related test
+// LacrosTestPath is the file path at which all lacros-chrome related test
 // artifacts are stored.
 const LacrosTestPath = "/mnt/stateful_partition/lacros_test_artifacts"
 
@@ -79,11 +79,11 @@ type preImpl struct {
 func (p *preImpl) String() string         { return p.name }
 func (p *preImpl) Timeout() time.Duration { return p.timeout }
 
-// prepareLinuxChromeBinary ensures that linux-chrome binary is available on
+// prepareLacrosChromeBinary ensures that lacros-chrome binary is available on
 // disk and ready to launch. Does not launch the binary.
-func (p *preImpl) prepareLinuxChromeBinary(ctx context.Context, s *testing.State) error {
+func (p *preImpl) prepareLacrosChromeBinary(ctx context.Context, s *testing.State) error {
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
-	// TODO(hidehiko): Set up Tast test extension for linux-chrome.
+	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	c := &chrome.Chrome{}
 	if err := c.PrepareExtensions(ctx); err != nil {
 		return err
@@ -150,8 +150,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 	switch p.mode {
 	case download:
-		if err := p.prepareLinuxChromeBinary(ctx, s); err != nil {
-			s.Fatal("Failed to download and prepare linux-chrome, err")
+		if err := p.prepareLacrosChromeBinary(ctx, s); err != nil {
+			s.Fatal("Failed to download and prepare lacros-chrome, err")
 		}
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
