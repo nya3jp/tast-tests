@@ -15,7 +15,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/lacros/launcher"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -24,13 +23,14 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
 type testType string
-type chromeType string
 
 const (
 	// Simple test of performance with a maximized window opening various web content.
@@ -54,11 +54,6 @@ const (
 	// insetSlopDP indicates how much to inset the work area (display area) to avoid window snapping to the
 	// edges of the screen intefering with drag-move and drag-resize of windows.
 	insetSlopDP int = 40
-
-	// chromeTypeChromeOS indicates we are using the ChromeOS system's Chrome browser
-	chromeTypeChromeOS = "chromeos"
-	// chromeTypeLacros indicates we are using Linux Chrome
-	chromeTypeLacros = "lacros"
 )
 
 type page struct {
@@ -349,17 +344,6 @@ func setWindowBounds(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 	return nil
 }
 
-func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
-	targets, err := ds.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
-	if err != nil {
-		return errors.Wrap(err, "failed to query for about:blank pages")
-	}
-	for _, info := range targets {
-		ds.CloseTarget(ctx, info.TargetID)
-	}
-	return nil
-}
-
 var metricMap = map[string]struct {
 	unit      string
 	direction perf.Direction
@@ -417,7 +401,7 @@ const (
 type statBucketKey struct {
 	metric string
 	stat   statType
-	crt    chromeType
+	crt    lacros.ChromeType
 }
 
 type metricsRecorder struct {
@@ -584,7 +568,7 @@ type testInvocation struct {
 	pv       *perf.Values
 	scenario testType
 	page     page
-	crt      chromeType
+	crt      lacros.ChromeType
 	metrics  *metricsRecorder
 }
 
@@ -678,7 +662,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for linux chrome, which causes this code to fail.
 	if invoc.scenario == testTypeThreeDot {
 		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
-		if invoc.crt == chromeTypeLacros {
+		if invoc.crt == lacros.ChromeTypeLacros {
 			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, ctconn, w.ID, n) }
 		}
 		if err := toggleThreeDotMenu(ctx, tconn, clickFn); err != nil {
@@ -716,7 +700,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	defer connURL.CloseTarget(ctx)
 
 	// Close the initial "about:blank" tab present at startup.
-	if err := closeAboutBlank(ctx, l.Devsess); err != nil {
+	if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
 	}
 
@@ -818,7 +802,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 			pv:       pv,
 			scenario: params.testType,
 			page:     page,
-			crt:      chromeTypeLacros,
+			crt:      lacros.ChromeTypeLacros,
 			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run lacros test: ", err)
@@ -828,7 +812,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 			pv:       pv,
 			scenario: params.testType,
 			page:     page,
-			crt:      chromeTypeChromeOS,
+			crt:      lacros.ChromeTypeChromeOS,
 			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run cros test: ", err)
