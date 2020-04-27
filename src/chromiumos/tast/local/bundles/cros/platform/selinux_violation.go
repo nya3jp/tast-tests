@@ -11,11 +11,13 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -78,6 +80,10 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 
 	// Restart anomaly detector to clear its --testonly-send-all flag at the end of execution.
 	defer crash.RestartAnomalyDetector(ctx)
+
+	if err := upstart.WaitForJobStatus(ctx, "auditd", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
+		s.Fatal("Failed waiting for auditd to start: ", err)
+	}
 
 	// Generate an audit event by creating a file inside markerDirectory
 	s.Log("Generating audit event")
