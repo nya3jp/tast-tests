@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bf684cf_012a1f07",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2020-04-27T06:28:21Z",
+      "side": 1,
+      "message": "Jorge, is there an existing OOP mounter bug for us to add a TODO here? I think this can be later removed once the OOP mounter is ready for normal user mounts.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "c123e992e2e9df2e2c52b791afc32a99c769bebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
