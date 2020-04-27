@@ -28,14 +28,14 @@ func init() {
 			Timeout:           7 * time.Minute,
 			ExtraData:         []string{crostini.ImageArtifact},
 			Val:               crostini.WaylandDemoConfig(),
-			ExtraSoftwareDeps: []string{"crostini_stable"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
 		}, {
 			Name:              "wayland_artifact_unstable",
 			Pre:               crostini.StartedByArtifact(),
 			Timeout:           7 * time.Minute,
 			ExtraData:         []string{crostini.ImageArtifact},
 			Val:               crostini.WaylandDemoConfig(),
-			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "wayland_download_buster",
@@ -49,14 +49,14 @@ func init() {
 			Timeout:           7 * time.Minute,
 			ExtraData:         []string{crostini.ImageArtifact},
 			Val:               crostini.X11DemoConfig(),
-			ExtraSoftwareDeps: []string{"crostini_stable"},
+			ExtraHardwareDeps: crostini.CrostiniStable,
 		}, {
 			Name:              "x11_artifact_unstable",
 			Pre:               crostini.StartedByArtifact(),
 			Timeout:           7 * time.Minute,
 			ExtraData:         []string{crostini.ImageArtifact},
 			Val:               crostini.X11DemoConfig(),
-			ExtraSoftwareDeps: []string{"crostini_unstable"},
+			ExtraHardwareDeps: crostini.CrostiniUnstable,
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:      "x11_download_buster",
