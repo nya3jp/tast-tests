@@ -1,0 +1,360 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6668915_36ed3f1d",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "this looks useless, you already have context\n\ncaller should be responsible on providing correct context",
+      "range": {
+        "startLine": 18,
+        "startChar": 73,
+        "endLine": 18,
+        "endChar": 94
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc289b5_7f4a19fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "you already provided iterationDuration, you probably want to provide only iterationCount",
+      "range": {
+        "startLine": 117,
+        "startChar": 60,
+        "endLine": 117,
+        "endChar": 77
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e2ba71_057a2651",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "looks equivalent to 0. I\u0027d like to avoid such things",
+      "range": {
+        "startLine": 147,
+        "startChar": 47,
+        "endLine": 147,
+        "endChar": 65
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de29f2b_6e4ec40c",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "I am not sure we want to have arc dependency here\n\ninstead, we can put \"condition\" function into arc package",
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "632ecb4f_12ac4d54",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "nit: newTimelineOption if you don\u0027t expose this type to other packages",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9104a91e_deaf52c9",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "I guess you may want to make this as option as well.\n\nfor example:\n\ntl, err :\u003d NewTimeline(ctx, Datasource(d1, d2), Interval(iteationDuration))",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4e2169_9766d984",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "nit: {Interval: 10 * time.Second}",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a64d43a8_db428b79",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "I guess it\u0027s recommended to use testing.Poll instead",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fddf9b_18f79808",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "why seconds?",
+      "range": {
+        "startLine": 159,
+        "startChar": 51,
+        "endLine": 159,
+        "endChar": 58
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c232a7_ff96c745",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "Maybe instead introducing new function we can introduce just a condition function?",
+      "range": {
+        "startLine": 160,
+        "startChar": 19,
+        "endLine": 160,
+        "endChar": 36
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ef440a_2f3fff93",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "it\u0027s better to directly provide numIterations instead",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 14
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad47d3db_4028ef99",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "this is very unexpected",
+      "range": {
+        "startLine": 173,
+        "startChar": 61,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70704f27_57a56e73",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "looks like this function is not tested, but probably it\u0027s hard in such architecture",
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ada6771_8947e3fd",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "i\u0027d like to avoid arc dependency by making other functions more general",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1335c297_3875ee8c",
+        "filename": "src/chromiumos/tast/local/perf/timeline_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "Why do you check only 2 first values?",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6dd9fa0_bedcfacc",
+        "filename": "src/chromiumos/tast/local/perf/timeline_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T13:21:55Z",
+      "side": 1,
+      "message": "Can you log values as well?",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 43
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
