@@ -33,7 +33,6 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 	const (
 		pkgName                = "com.arm.pa.paretrace"
 		activityName           = ".Activities.RetraceActivity"
-		permissionButtonID     = "com.android.permissioncontroller:id/continue_button"
 		tPowerSnapshotInterval = 5 * time.Second
 	)
 
@@ -132,19 +131,12 @@ func RunTrace(ctx context.Context, s *testing.State, apkFile, traceFile string) 
 		s.Fatal("Failed to get SDK version: ", err)
 	}
 	if sdkVer >= arc.SDKQ {
-		// Give paretrace access to "Files and media". Only needed in Q+
-		permissionButton := d.Object(ui.ID(permissionButtonID))
-		// Permission dialog will only prompt once in a session
-		if permissionButton.WaitForExists(ctx, 5*time.Second); err == nil {
-			permissionButton.Click(ctx)
-
-			// "This app was built for an older version of Android and may not work properly"
-			versionOkButton := d.Object(ui.Text("OK"), ui.PackageName("android"))
-			if err := versionOkButton.WaitForExists(ctx, 5*time.Second); err != nil {
-				s.Fatal("Failed to start: ", err)
-			}
-			versionOkButton.Click(ctx)
+		// "This app was built for an older version of Android and may not work properly"
+		versionOkButton := d.Object(ui.Text("OK"), ui.PackageName("android"))
+		if err := versionOkButton.WaitForExists(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to start: ", err)
 		}
+		versionOkButton.Click(ctx)
 	}
 
 	exp := regexp.MustCompile(`paretrace32\s*:.*=+\sStart\stimer.*=+`)
