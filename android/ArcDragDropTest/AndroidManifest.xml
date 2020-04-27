@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.chromium.arc.testapp.dragdrop">
+    <application android:allowBackup="false" android:label="@string/app_name">
+        <!-- Activity which invokes DragDropActivity with dynamically calculated size in device
+             pixels. -->
+        <activity android:name=".StartupActivity" android:theme="@android:style/Theme.NoDisplay"
+                  android:exported="true">
+        </activity>
+        <activity android:name=".DragDropActivity" android:launchMode="singleTask">
+            <meta-data android:name="WindowManagerPreference:AppControlled"
+                       android:value="true"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
