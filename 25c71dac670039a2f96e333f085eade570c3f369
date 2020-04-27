@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "c15ab502_148e8130",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-27T20:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6053bc26_8eddfcd3",
+      "revId": "25c71dac670039a2f96e333f085eade570c3f369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68baf0ba_ebd80e5b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 8
@@ -616,6 +634,30 @@
       "revId": "25c71dac670039a2f96e333f085eade570c3f369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9613e90_bcedea93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-27T20:08:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bfc713a3_591868c1",
+      "range": {
+        "startLine": 82,
+        "startChar": 31,
+        "endLine": 82,
+        "endChar": 51
+      },
+      "revId": "25c71dac670039a2f96e333f085eade570c3f369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
