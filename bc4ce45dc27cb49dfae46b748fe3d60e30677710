@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "3b1a8e17_9af5241f",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-27T08:25:27Z",
+      "side": 1,
+      "message": "What Matthias said, we need to stop letting tests control when snapshot is called in order for us to be compatible with the power team\u0027s power_log.json results format. It requires a regular snapshot interval.",
+      "parentUuid": "a119fca8_4710e9fb",
+      "range": {
+        "startLine": 126,
+        "startChar": 19,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f57822f_b8db1262",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 1
@@ -280,6 +304,30 @@
       "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c4730c_945e4592",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-27T08:25:27Z",
+      "side": 1,
+      "message": "I think Woody\u0027s GFXBench tests wait for the app to tell them when they\u0027re done.\n\nhttps://cs.corp.google.com/chromeos_internal/src/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/graphics/gfxbench.go?q\u003dgfxbench+lang:go+file:tast\u0026fromv2\u003dtrue\u0026l\u003d256",
+      "parentUuid": "77bf06d0_57d20d8f",
+      "range": {
+        "startLine": 136,
+        "startChar": 19,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "bc4ce45dc27cb49dfae46b748fe3d60e30677710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
