@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18fb119b_334bf39d",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-27T02:52:50Z",
+      "side": 1,
+      "message": "As this is only used once, move the literal inline. (And add it back when Vars can accept constants)",
+      "parentUuid": "7c73dc46_aa505399",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "bfea03727c65009139b27d2ecb94f932e028d55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb1692e9_897ce573",
         "filename": "src/chromiumos/tast/remote/wificell/pre.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "bfea03727c65009139b27d2ecb94f932e028d55e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1ba7f4_0f5c678b",
+        "filename": "src/chromiumos/tast/remote/wificell/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-27T02:52:50Z",
+      "side": 1,
+      "message": "When empty, TestFixture will fall back to the default router. Comment added.",
+      "parentUuid": "cb1692e9_897ce573",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "bfea03727c65009139b27d2ecb94f932e028d55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
