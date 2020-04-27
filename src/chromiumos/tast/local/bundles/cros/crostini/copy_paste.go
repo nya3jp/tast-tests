@@ -175,10 +175,9 @@ func init() {
 					Copy:  waylandCopyConfig,
 					Paste: waylandPasteConfig,
 				},
-				Pre:               crostini.StartedByArtifact(),
-				Timeout:           7 * time.Minute,
-				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				Pre:       crostini.StartedByArtifact(),
+				Timeout:   7 * time.Minute,
+				ExtraData: []string{crostini.ImageArtifact},
 			},
 			{
 				Name: "wayland_to_wayland_artifact_unstable",
@@ -189,7 +188,7 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
@@ -201,7 +200,7 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 			},
 			{
 				Name: "wayland_to_x11_artifact_unstable",
@@ -212,7 +211,7 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
@@ -224,7 +223,7 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
@@ -236,7 +235,7 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
@@ -248,7 +247,7 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_stable"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
 				ExtraAttr:         []string{"informational"},
 			},
 			{
@@ -260,7 +259,7 @@ func init() {
 				Pre:               crostini.StartedByArtifact(),
 				Timeout:           7 * time.Minute,
 				ExtraData:         []string{crostini.ImageArtifact},
-				ExtraSoftwareDeps: []string{"crostini_unstable"},
+				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				ExtraAttr:         []string{"informational"},
 			},
 		},
