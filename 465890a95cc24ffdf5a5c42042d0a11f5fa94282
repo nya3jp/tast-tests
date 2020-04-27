@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a854d7_ea2c2072",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_handle_message_from_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-27T10:16:35Z",
+      "side": 1,
+      "message": "nit: uiRequest",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "465890a95cc24ffdf5a5c42042d0a11f5fa94282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
