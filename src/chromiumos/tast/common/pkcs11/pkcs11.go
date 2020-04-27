@@ -104,6 +104,11 @@ type KeyInfo struct {
 	// NOTE: If any reference type is added in the future, modify CreateKeyCopy to deep copy.
 }
 
+// DumpKeyInfo converts the information in the key into a human readable string for debugging purpose.
+func (p *Chaps) DumpKeyInfo(k *KeyInfo) string {
+	return fmt.Sprintf("Slot %d, ID %q, PubKey %q", k.slot, k.objID, k.pubKeyPath)
+}
+
 // CreateRSASoftwareKey create a key and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in /tmp/$keyname.key.
 func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, username, keyname, objID string, forceSoftwareBacked, checkSoftwareBacked bool) (*KeyInfo, error) {
 	// Get the corresponding slot.
