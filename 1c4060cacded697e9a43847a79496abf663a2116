@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aa5a45b1_02ed4069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-04-27T06:07:02Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "2a5f2d90_6a0c780e",
+      "range": {
+        "startLine": 181,
+        "startChar": 3,
+        "endLine": 181,
+        "endChar": 5
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38d72576_b8c78cf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2020-04-27T04:36:09Z",
       "side": 1,
       "message": "Do you have two init() functions here?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8eb85b3_ea987308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-04-27T06:07:02Z",
+      "side": 1,
+      "message": "Yes, there is a repo lint test that AddTest should be the only thing in an init function.  I split the previously existing code into a second function to work around the lint check.  I added a comment for this.\n\nI assume this is a new lint check, otherwise this wouldn\u0027t have been able to be submitted first.\n\nThe go language spec gaurantees that these are executed in source declaration order.",
+      "parentUuid": "38d72576_b8c78cf6",
       "range": {
         "startLine": 25,
         "startChar": 0,
