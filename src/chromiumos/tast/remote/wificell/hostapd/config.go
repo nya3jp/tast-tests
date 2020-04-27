@@ -276,6 +276,38 @@ func (c *Config) PcapFreqOptions() ([]iw.SetFreqOption, error) {
 	return []iw.SetFreqOption{iw.SetFreqChWidth(iw.ChWidthNOHT)}, nil
 }
 
+// PerfDesc returns a string description of this config.
+// Useful for reporting perf metrics.
+func (c *Config) PerfDesc() string {
+	var mode, width string
+	if c.is80211ac() {
+		mode = "VHT"
+		switch c.VHTChWidth {
+		case VHTChWidth80:
+			width = "80"
+		case VHTChWidth160:
+			width = "160"
+		case VHTChWidth80Plus80:
+			width = "80+80"
+		default:
+			width = "40"
+		}
+	} else if c.is80211n() {
+		mode = "HT"
+		switch c.htMode() {
+		case HTCapHT40Minus:
+			width = "40m"
+		case HTCapHT40Plus:
+			width = "40p"
+		default:
+			width = "20"
+		}
+	} else {
+		mode = "11" + string(c.Mode)
+	}
+	return fmt.Sprintf("ch%03d_mode%s%s", c.Channel, mode, width)
+}
+
 // validate validates the Config, c.
 func (c *Config) validate() error {
 	if c.Ssid == "" || len(c.Ssid) > 32 {
