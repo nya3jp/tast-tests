@@ -8,13 +8,13 @@ package iw
 import (
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/remote/network/cmd"
-	"chromiumos/tast/remote/network/commander"
+	"chromiumos/tast/ssh"
 )
 
 // Runner is an alias for common iw Runner but only for remote execution.
 type Runner = iw.Runner
 
 // NewRunner creates a iw runner for remote execution.
-func NewRunner(host commander.Commander) *Runner {
+func NewRunner(host *ssh.Conn) *Runner {
 	return iw.NewRunner(&cmd.RemoteCmdRunner{Host: host})
 }

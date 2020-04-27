@@ -34,7 +34,7 @@ func KillAll(ctx context.Context, host *ssh.Conn) error {
 
 // Server controls a DHCP server on AP router.
 type Server struct {
-	host    *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
+	host    *ssh.Conn
 	name    string
 	iface   string
 	workDir string
