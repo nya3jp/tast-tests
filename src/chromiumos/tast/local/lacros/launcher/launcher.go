@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package launcher implements a library used to setup and launch linux-chrome.
+// Package launcher implements a library used to setup and launch lacros-chrome.
 package launcher
 
 import (
@@ -27,28 +27,28 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// BinaryPath is the root directory for linux-chrome related binaries.
+// BinaryPath is the root directory for lacros-chrome related binaries.
 const BinaryPath = LacrosTestPath + "/lacros_binary"
 
-// LinuxChrome contains all state associated with a linux-chrome instance
+// LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
-type LinuxChrome struct {
-	Devsess     *cdputil.Session // Debugging session for linux-chrome
-	cmd         *testexec.Cmd    // The command context used to start linux-chrome.
+type LacrosChrome struct {
+	Devsess     *cdputil.Session // Debugging session for lacros-chrome
+	cmd         *testexec.Cmd    // The command context used to start lacros-chrome.
 	logMaster   *jslog.Master    // collects JS console output
 	testExtID   string           // ID for test extension exposing APIs
 	testExtConn *chrome.Conn     // connection to test extension exposing APIs
 }
 
-// Close kills a launched instance of linux-chrome.
-func (l *LinuxChrome) Close(ctx context.Context) error {
+// Close kills a launched instance of lacros-chrome.
+func (l *LacrosChrome) Close(ctx context.Context) error {
 	if l.Devsess != nil {
 		l.Devsess.Close(ctx)
 		l.Devsess = nil
 	}
 	if l.cmd != nil {
 		if err := l.cmd.Cmd.Process.Kill(); err != nil {
-			testing.ContextLog(ctx, "Failed to kill linux-chrome: ", err)
+			testing.ContextLog(ctx, "Failed to kill lacros-chrome: ", err)
 		}
 		l.cmd.Cmd.Wait()
 		l.cmd = nil
@@ -61,7 +61,7 @@ func (l *LinuxChrome) Close(ctx context.Context) error {
 		l.testExtConn.Close()
 		l.testExtConn = nil
 	}
-	killLinuxChrome(ctx)
+	killLacrosChrome(ctx)
 	return nil
 }
 
@@ -90,13 +90,13 @@ func PidsFromPath(ctx context.Context, path string) ([]int, error) {
 	return pids, nil
 }
 
-// killLinuxChrome kills all binaries whose executable contains the base path
-// to linux-chrome.
-func killLinuxChrome(ctx context.Context) {
-	// Kills all instances of linux-chrome and other related executables.
+// killLacrosChrome kills all binaries whose executable contains the base path
+// to lacros-chrome.
+func killLacrosChrome(ctx context.Context) {
+	// Kills all instances of lacros-chrome and other related executables.
 	pids, err := PidsFromPath(ctx, BinaryPath)
 	if err != nil {
-		testing.ContextLog(ctx, "Error finding pids for linux-chrome: ", err)
+		testing.ContextLog(ctx, "Error finding pids for lacros-chrome: ", err)
 	}
 	for _, pid := range pids {
 		// We ignore errors, since it's possible the process has
@@ -105,21 +105,21 @@ func killLinuxChrome(ctx context.Context) {
 	}
 }
 
-// LaunchLinuxChrome launches a fresh instance of linux-chrome.
-func LaunchLinuxChrome(ctx context.Context, p PreData) (*LinuxChrome, error) {
-	killLinuxChrome(ctx)
+// LaunchLacrosChrome launches a fresh instance of lacros-chrome.
+func LaunchLacrosChrome(ctx context.Context, p PreData) (*LacrosChrome, error) {
+	killLacrosChrome(ctx)
 
 	// Create a new temporary directory for user data dir. We don't bother
 	// clearing it on shutdown, since it's a subdirectory of the binary
 	// path, which is cleared by pre.go. We need to use a new temporary
 	// directory for each invocation so that successive calls to
-	// LaunchLinuxChrome don't interfere with each other.
+	// LaunchLacrosChrome don't interfere with each other.
 	userDataDir, err := ioutil.TempDir(BinaryPath, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create temp dir")
 	}
 
-	l := &LinuxChrome{testExtID: p.Chrome.TestExtID()}
+	l := &LacrosChrome{testExtID: p.Chrome.TestExtID()}
 	args := []string{
 		"--ozone-platform=wayland",                                  // Use wayland to connect to exo wayland server.
 		"--no-sandbox",                                              // Disable sandbox for now
@@ -143,14 +143,14 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*LinuxChrome, error) {
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
 	if err := l.cmd.Cmd.Start(); err != nil {
-		return nil, errors.Wrap(err, "failed to launch linux-chrome")
+		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
 
 	// Wait for a window that matches what a lacros window looks like.
 	if err := ash.WaitForCondition(ctx, p.TestAPIConn, func(w *ash.Window) bool {
 		return w.IsVisible && w.Title == "about:blank - Google Chrome" && w.Name == "ExoShellSurface"
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for linux-chrome window to be visible")
+		return nil, errors.Wrap(err, "failed to wait for lacros-chrome window to be visible")
 	}
 
 	debuggingPortPath := userDataDir + "/DevToolsActivePort"
@@ -166,7 +166,7 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*LinuxChrome, error) {
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm.
-func (l *LinuxChrome) NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error) {
+func (l *LacrosChrome) NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error) {
 	t, err := l.Devsess.WaitForTarget(ctx, tm)
 	if err != nil {
 		return nil, err
@@ -179,7 +179,7 @@ func (l *LinuxChrome) NewConnForTarget(ctx context.Context, tm chrome.TargetMatc
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
 // been finished when this function returns.
-func (l *LinuxChrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error) {
+func (l *LacrosChrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error) {
 	if url == "" {
 		testing.ContextLog(ctx, "Creating new blank page")
 	} else {
@@ -193,7 +193,7 @@ func (l *LinuxChrome) NewConn(ctx context.Context, url string, opts ...cdputil.C
 	return l.newConnInternal(ctx, targetID, url)
 }
 
-func (l *LinuxChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
+func (l *LacrosChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
 	conn, err := chrome.NewConn(ctx, l.Devsess, id, l.logMaster, url, func(err error) error { return err })
 	if err != nil {
 		return nil, err
@@ -211,7 +211,7 @@ func (l *LinuxChrome) newConnInternal(ctx context.Context, id target.ID, url str
 }
 
 // TestAPIConn returns a new chrome.TestConn instance for the lacros browser.
-func (l *LinuxChrome) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
+func (l *LacrosChrome) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
 	if l.testExtConn != nil {
 		return &chrome.TestConn{Conn: l.testExtConn}, nil
 	}

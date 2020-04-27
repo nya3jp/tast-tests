@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package lacros tests linux-chrome running on ChromeOS.
+// Package lacros tests lacros-chrome running on ChromeOS.
 package lacros
 
 import (
@@ -15,7 +15,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/lacros/launcher"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -24,13 +23,14 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
 type testType string
-type chromeType string
 
 const (
 	// Simple test of performance with a maximized window opening various web content.
@@ -54,11 +54,6 @@ const (
 	// insetSlopDP indicates how much to inset the work area (display area) to avoid window snapping to the
 	// edges of the screen intefering with drag-move and drag-resize of windows.
 	insetSlopDP int = 40
-
-	// chromeTypeChromeOS indicates we are using the ChromeOS system's Chrome browser
-	chromeTypeChromeOS = "chromeos"
-	// chromeTypeLacros indicates we are using Linux Chrome
-	chromeTypeLacros = "lacros"
 )
 
 type page struct {
@@ -203,11 +198,11 @@ func init() {
 	})
 }
 
-// This test deals with both ChromeOS chrome and Linux chrome. In order to reduce confusion,
+// This test deals with both ChromeOS chrome and lacros chrome. In order to reduce confusion,
 // we adopt the following naming convention for chrome.TestConn objects:
 //   ctconn: chrome.TestConn to ChromeOS chrome.
-//   ltconn: chrome.TestConn to Linux chrome.
-//   tconn: chrome.TestConn to either ChromeOS or Linux chrome, i.e. both are usable.
+//   ltconn: chrome.TestConn to lacros chrome.
+//   tconn: chrome.TestConn to either ChromeOS or lacros chrome, i.e. both are usable.
 
 var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
@@ -230,7 +225,7 @@ func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 		return err
 	}
 	// Compute the node coordinates in cros-chrome root window coordinate space by
-	// adding the top left coordinate of the linux-chrome window in cros-chrome root window coorindates.
+	// adding the top left coordinate of the lacros-chrome window in cros-chrome root window coorindates.
 	return ash.MouseClick(ctx, ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), ash.LeftButton)
 }
 
@@ -349,17 +344,6 @@ func setWindowBounds(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 	return nil
 }
 
-func closeAboutBlank(ctx context.Context, ds *cdputil.Session) error {
-	targets, err := ds.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
-	if err != nil {
-		return errors.Wrap(err, "failed to query for about:blank pages")
-	}
-	for _, info := range targets {
-		ds.CloseTarget(ctx, info.TargetID)
-	}
-	return nil
-}
-
 var metricMap = map[string]struct {
 	unit      string
 	direction perf.Direction
@@ -417,7 +401,7 @@ const (
 type statBucketKey struct {
 	metric string
 	stat   statType
-	crt    chromeType
+	crt    lacros.ChromeType
 }
 
 type metricsRecorder struct {
@@ -584,12 +568,12 @@ type testInvocation struct {
 	pv       *perf.Values
 	scenario testType
 	page     page
-	crt      chromeType
+	crt      lacros.ChromeType
 	metrics  *metricsRecorder
 }
 
-// runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and Linux chrome.
-// tconn is a test connection to the current browser being used (either ChromeOS or Linux chrome).
+// runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
+// tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
 func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, invoc *testInvocation) error {
 	ctconn, err := pd.Chrome.TestAPIConn(ctx)
 	if err != nil {
@@ -675,10 +659,10 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 	}
 
 	// Open the threedot menu if indicated.
-	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for linux chrome, which causes this code to fail.
+	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for lacros chrome, which causes this code to fail.
 	if invoc.scenario == testTypeThreeDot {
 		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
-		if invoc.crt == chromeTypeLacros {
+		if invoc.crt == lacros.ChromeTypeLacros {
 			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, ctconn, w.ID, n) }
 		}
 		if err := toggleThreeDotMenu(ctx, tconn, clickFn); err != nil {
@@ -691,10 +675,10 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 }
 
 func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
-	// Launch linux-chrome with about:blank loaded first - we don't want to include startup cost.
-	l, err := launcher.LaunchLinuxChrome(ctx, pd)
+	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
+	l, err := launcher.LaunchLacrosChrome(ctx, pd)
 	if err != nil {
-		return errors.Wrap(err, "failed to launch linux-chrome")
+		return errors.Wrap(err, "failed to launch lacros-chrome")
 	}
 	defer l.Close(ctx)
 
@@ -716,7 +700,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	defer connURL.CloseTarget(ctx)
 
 	// Close the initial "about:blank" tab present at startup.
-	if err := closeAboutBlank(ctx, l.Devsess); err != nil {
+	if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
 	}
 
@@ -818,7 +802,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 			pv:       pv,
 			scenario: params.testType,
 			page:     page,
-			crt:      chromeTypeLacros,
+			crt:      lacros.ChromeTypeLacros,
 			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run lacros test: ", err)
@@ -828,7 +812,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 			pv:       pv,
 			scenario: params.testType,
 			page:     page,
-			crt:      chromeTypeChromeOS,
+			crt:      lacros.ChromeTypeChromeOS,
 			metrics:  &m,
 		}); err != nil {
 			s.Fatal("Failed to run cros test: ", err)

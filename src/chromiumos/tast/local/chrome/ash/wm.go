@@ -399,12 +399,17 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 	return nil, errors.New("failed to find window")
 }
 
+// ConnSource is an interface which allows new chrome.Conn connections to be created.
+type ConnSource interface {
+	NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error)
+}
+
 // CreateWindows create n browser windows with specified URL and wait for them to become visible.
 // It will fail and return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller
 // wants to measure the performance of Chrome. This should be used for a
 // preparation, before the measurement happens.
-func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, url string, n int) (chrome.Conns, error) {
+func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) (chrome.Conns, error) {
 	prevvis := 0
 	if err := ForEachWindow(ctx, tconn, func(w *Window) error {
 		if w.IsVisible {
@@ -420,7 +425,7 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrom
 	var mu sync.Mutex
 	for i := 0; i < n; i++ {
 		g.Go(func() error {
-			conn, err := cr.NewConn(dctx, url, cdputil.WithNewWindow())
+			conn, err := cs.NewConn(dctx, url, cdputil.WithNewWindow())
 			if err != nil {
 				return err
 			}
