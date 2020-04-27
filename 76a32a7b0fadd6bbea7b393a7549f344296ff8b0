@@ -22,6 +22,30 @@
       "revId": "76a32a7b0fadd6bbea7b393a7549f344296ff8b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63b96d4c_5d1546b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-27T13:17:35Z",
+      "side": 1,
+      "message": "Thanks~! I considered this but the test should technically be able to run even if it\u0027s not the internal display.",
+      "parentUuid": "0600612a_20dd0ae8",
+      "range": {
+        "startLine": 795,
+        "startChar": 2,
+        "endLine": 797,
+        "endChar": 3
+      },
+      "revId": "76a32a7b0fadd6bbea7b393a7549f344296ff8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
