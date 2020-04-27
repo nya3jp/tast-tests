@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcb51090_43e00e2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-04-27T15:03:28Z",
+      "side": 1,
+      "message": "nit: Do we really need this check? If needed, proper check should be reading tar and making sure structure is correct.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "f26e22e3a0e360b8895394c909798c29479225a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a972f0d_1a8b130d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-04-27T15:03:28Z",
+      "side": 1,
+      "message": "nit: I think pulling might not be the best verb here. Maybe Saving or just drop it. L 150 would be enough.",
+      "range": {
+        "startLine": 147,
+        "startChar": 27,
+        "endLine": 147,
+        "endChar": 50
+      },
+      "revId": "f26e22e3a0e360b8895394c909798c29479225a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
