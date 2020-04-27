@@ -11,8 +11,8 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/common/network/cmd"
-	"chromiumos/tast/remote/network/commander"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +20,7 @@ const logName = "cmdOutput.txt"
 
 // RemoteCmdRunner is the object used for running remote commands.
 type RemoteCmdRunner struct {
-	Host commander.Commander
+	Host *ssh.Conn
 }
 
 var _ cmd.Runner = (*RemoteCmdRunner)(nil)
