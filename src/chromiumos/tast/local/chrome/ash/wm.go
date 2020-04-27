@@ -185,6 +185,8 @@ type Window struct {
 	FrameMode                  FrameMode           `json:"FrameMode"`
 }
 
+var defaultPollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
+
 // SetWindowState requests changing the state of the window to the requested
 // event type and returns the updated state.
 func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEventType) (WindowStateType, error) {
@@ -259,7 +261,7 @@ func WaitForARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgNa
 			return errors.Errorf("window isn't in expected state yet; got: %s, want: %s", state, actual)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, defaultPollOptions)
 }
 
 // WaitForVisible waits for a window to be visible on the Chrome side. Visibility is defined to be the corresponding
@@ -267,7 +269,7 @@ func WaitForARCAppWindowState(ctx context.Context, tconn *chrome.TestConn, pkgNa
 func WaitForVisible(ctx context.Context, tconn *chrome.TestConn, pkgName string) error {
 	return WaitForCondition(ctx, tconn, func(window *Window) bool {
 		return window.ARCPackageName == pkgName && window.IsVisible
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, defaultPollOptions)
 }
 
 // WaitWindowFinishAnimating waits for a window with a given ID to finish animating on the Chrome side.
@@ -365,6 +367,21 @@ func GetWindow(ctx context.Context, tconn *chrome.TestConn, windowID int) (*Wind
 	return nil, errors.Errorf("failed to find the window with ID %d", windowID)
 }
 
+// ForEachWindow runs a specified function on each window. If the given function returns an error, it is returned
+// and f won't be called for following windows.
+func ForEachWindow(ctx context.Context, tconn *chrome.TestConn, f func(window *Window) error) error {
+	ws, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the window list")
+	}
+	for _, window := range ws {
+		if err := f(window); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 // FindWindow returns the Chrome window with which the given predicate returns true.
 // If there are multiple, this returns the first found window.
 func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool) (*Window, error) {
@@ -380,18 +397,28 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 	return nil, errors.New("failed to find window")
 }
 
-// CreateWindows create n browser windows with specified URL. It will fail and
-// return an error if at least one request fails to fulfill. Note that this will
+// CreateWindows create n browser windows with specified URL and wait for them to become visible.
+// It will fail and return an error if at least one request fails to fulfill. Note that this will
 // parallelize the requests to create windows, which may be bad if the caller
 // wants to measure the performance of Chrome. This should be used for a
 // preparation, before the measurement happens.
-func CreateWindows(ctx context.Context, cr *chrome.Chrome, url string, n int) (chrome.Conns, error) {
-	g, ctx := errgroup.WithContext(ctx)
+func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, url string, n int) (chrome.Conns, error) {
+	prevvis := 0
+	if err := ForEachWindow(ctx, tconn, func(w *Window) error {
+		if w.IsVisible {
+			prevvis++
+		}
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+
+	g, dctx := errgroup.WithContext(ctx)
 	conns := chrome.Conns(make([]*chrome.Conn, 0, n))
 	var mu sync.Mutex
 	for i := 0; i < n; i++ {
 		g.Go(func() error {
-			conn, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
+			conn, err := cr.NewConn(dctx, url, cdputil.WithNewWindow())
 			if err != nil {
 				return err
 			}
@@ -405,6 +432,29 @@ func CreateWindows(ctx context.Context, cr *chrome.Chrome, url string, n int) (c
 		conns.Close()
 		return nil, err
 	}
+
+	// N.B. This assumes that no existing windows will be closed during the duration of this function (CreateWindows).
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		nowvis := 0
+		if err := ForEachWindow(ctx, tconn, func(w *Window) error {
+			if w.IsVisible {
+				nowvis++
+			}
+			return nil
+		}); err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if nowvis-prevvis != n {
+			return errors.Errorf("failed to create %d visible windows - went from %d => %d visible windows, creating %d",
+				n, prevvis, nowvis, nowvis-prevvis)
+		}
+		return nil
+	}, defaultPollOptions); err != nil {
+		conns.Close()
+		return nil, err
+	}
+
 	return conns, nil
 }
 
