@@ -36,24 +36,17 @@ var modelBlacklist = []string{
 	// Platform celes
 	"celes",
 	// Platform coral
-	"astronaut",
 	"babymega",
 	"blacktip360",
-	"blacktiplte",
 	"bruce",
 	"lava",
 	"nasher",
-	"robo360",
-	"whitetip",
 	// Platform cyan
 	"cyan",
-	// Platform edgar
-	"edgar",
 	// Platform elm
 	"elm",
 	// Platform fizz
 	"jax",
-	"teemo",
 	// Platform gandof
 	"gandof",
 	// Platform grunt
@@ -61,8 +54,6 @@ var modelBlacklist = []string{
 	"barla",
 	"careena",
 	"kasumi",
-	"kasumi360",
-	"liara",
 	"treeya",
 	"treeya360",
 	// Platform guado
@@ -74,55 +65,34 @@ var modelBlacklist = []string{
 	// Platform kevin
 	"kevin",
 	// Platform kukui
-	"kodama",
 	"krane",
 	// Platform lulu
 	"lulu",
 	// Platform nocturne
 	"nocturne",
 	// Platform octopus
-	"ampton",
 	"apel",
 	"bloog",
-	"blooglet",
 	"blooguard",
 	"bluebird",
 	"bobba",
-	"bobba360",
 	"casta",
-	"dood",
-	"dorp",
 	"droid",
 	"fleex",
 	"foob",
-	"foob360",
 	"garg",
-	"garg360",
 	"laser14",
-	"lick",
-	"phaser360",
 	"sparky",
-	"sparky360",
 	"vorticon",
 	"vortininja",
-	// Platform reks
-	"reks",
 	// Platform relm
 	"relm",
-	// Platform samus
-	"samus",
 	// Platform sarien
 	"arcada",
-	"sarien",
-	// Platform scarlet
-	"dru",
-	"dumo",
 	// Platform terra
 	"terra",
 	// Platform ultima
 	"ultima",
-	// Platform wizpig
-	"wizpig",
 }
 
 // CrostiniStable is a hardware dependency that only runs a test on models that can run Crostini tests without
@@ -240,7 +210,7 @@ var startedTraceVMPre = &preImpl{
 	arch:       vm.DebianBuster,
 	mode:       download,
 	gpuEnabled: true,
-	diskSize:   16 * 1024 * 1024 * 1024,  // graphics.TraceReplay relies on at least 16GB size.
+	diskSize:   16 * 1024 * 1024 * 1024, // graphics.TraceReplay relies on at least 16GB size.
 }
 
 var startedARCEnabledPre = &preImpl{
