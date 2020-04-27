@@ -90,7 +90,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{cmdline, ".*/usr/share/cros/init/activate_date.sh.*", "cros_activate_date", zeroProcs, ""},
 				{cmdline, "/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
 				{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs, ""}, // Only when browser exists
-				{exe, "/sbin/auditd", "cros_auditd", oneProc, ""},                 // auditd must be running on SELinux boards
+				{exe, "/opt/google/easy_unlock/easy_unlock", "cros_easy_unlock", zeroProcs, ""},
+				{exe, "/sbin/auditd", "cros_auditd", oneProc, ""}, // auditd must be running on SELinux boards
 				{exe, "/sbin/debugd", "cros_debugd", zeroProcs, ""},
 				{exe, "/sbin/init", "cros_init", oneProc, ""},
 				{exe, "/sbin/minijail0", "(minijail|.*_minijail0|cros_.*_minijail)", zeroProcs, ""},
