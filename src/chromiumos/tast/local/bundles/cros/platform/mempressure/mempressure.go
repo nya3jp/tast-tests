@@ -279,7 +279,7 @@ func (t *tab) wiggle(ctx context.Context) error {
 func (t *tab) pin(ctx context.Context) error {
 	return t.tconn.EvalPromise(
 		ctx,
-		fmt.Sprintf("tast.promisify(chrome.tabs.update(%d, {pinned: true})", t.id),
+		fmt.Sprintf("tast.promisify(chrome.tabs.update)(%d, {pinned: true})", t.id),
 		nil,
 	)
 }
