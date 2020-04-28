@@ -6,6 +6,8 @@ package power
 
 import (
 	"context"
+	"io/ioutil"
+	"path"
 	"regexp"
 	"strconv"
 	"strings"
@@ -122,16 +124,62 @@ func NewBatteryState(ctx context.Context) (*BatteryState, error) {
 	}, nil
 }
 
+// GetSystemPowerFromSysfs returns system power consumption in Watt.
+// If there are no batteries support reporting voltage_now and current_now,
+// the return value is 0., otherwise sum of power consumption of each battery.
+func GetSystemPowerFromSysfs() (float64, error) {
+	systemPower := 0.
+	const sysFsPowerSupplyPath = "/sys/class/power_supply"
+	files, err := ioutil.ReadDir(sysFsPowerSupplyPath)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed to read %v: %v", sysFsPowerSupplyPath, err)
+	}
+	readLine := func(devPath, name string) (string, error) {
+		strBytes, err := ioutil.ReadFile(path.Join(devPath, name))
+		if err != nil {
+			return "", err
+		}
+		return strings.TrimSuffix(string(strBytes), "\n"), nil
+	}
+	readFloat64 := func(devPath, name string) (float64, error) {
+		str, err := readLine(devPath, name)
+		if err != nil {
+			return 0., err
+		}
+		return strconv.ParseFloat(str, 64)
+	}
+	for _, file := range files {
+		devPath := path.Join(sysFsPowerSupplyPath, file.Name())
+		supplyType, err := readLine(devPath, "type")
+		if err != nil || !strings.HasPrefix(supplyType, "Battery") {
+			continue
+		}
+		supplyVoltage, err := readFloat64(devPath, "voltage_now")
+		if err != nil {
+			continue
+		}
+		supplyCurrent, err := readFloat64(devPath, "current_now")
+		if err != nil {
+			continue
+		}
+		// voltage_now and current_now reports their value in micro unit
+		// so adjust this to match with Watt.
+		systemPower += supplyVoltage * supplyCurrent * 1e-12
+	}
+	return systemPower, nil
+}
+
 // BatteryMetrics hold the results of once call to ectool and enough
 // information to compute battery drain over time.
 type BatteryMetrics struct {
-	voltageMetric perf.Metric
-	currentMetric perf.Metric
-	powerMetric   perf.Metric
-	energyMetric  perf.Metric
-	lowSys        float64
-	lowMargin     float64
-	prevState     *BatteryState
+	systemPowerMetric perf.Metric
+	voltageMetric     perf.Metric
+	currentMetric     perf.Metric
+	powerMetric       perf.Metric
+	energyMetric      perf.Metric
+	lowSys            float64
+	lowMargin         float64
+	prevState         *BatteryState
 }
 
 var _ perf.TimelineDatasource = &BatteryMetrics{}
@@ -154,6 +202,7 @@ func (b *BatteryMetrics) Setup(ctx context.Context, prefix string) error {
 		return err
 	}
 	b.lowSys = low
+	b.systemPowerMetric = perf.Metric{Name: prefix + "system_power", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
 	b.voltageMetric = perf.Metric{Name: prefix + "ectool_battery_voltage", Unit: "mV", Direction: perf.SmallerIsBetter, Multiple: true}
 	b.currentMetric = perf.Metric{Name: prefix + "ectool_battery_current", Unit: "mA", Direction: perf.SmallerIsBetter, Multiple: true}
 	b.powerMetric = perf.Metric{Name: prefix + "ectool_battery_power", Unit: "mW", Direction: perf.SmallerIsBetter, Multiple: true}
@@ -175,6 +224,11 @@ func (b *BatteryMetrics) Start(ctx context.Context) error {
 // Snapshot takes a snapshot of battery metrics. It also checks that the
 // battery is not too low for the test to continue.
 func (b *BatteryMetrics) Snapshot(ctx context.Context, values *perf.Values) error {
+	power, err := GetSystemPowerFromSysfs()
+	if err != nil {
+		return err
+	}
+	values.Append(b.systemPowerMetric, power)
 	state, err := NewBatteryState(ctx)
 	if err != nil {
 		return err
