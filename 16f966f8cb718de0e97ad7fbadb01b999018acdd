@@ -134,6 +134,30 @@
     },
     {
       "key": {
+        "uuid": "ed79ba74_56bba6f9",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-28T00:50:02Z",
+      "side": 1,
+      "message": "I like this a lot, since it makes it easy to append multiple sets of datasources. Without this you need to do an append() at the call-site, and it\u0027s a bit awkward.",
+      "parentUuid": "9104a91e_deaf52c9",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e4e2169_9766d984",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -249,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "21b75323_464c8e25",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-28T00:50:02Z",
+      "side": 1,
+      "message": "Yes, can we have CaptureWhile provide the iteration count to the callback?",
+      "parentUuid": "f7ef440a_2f3fff93",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 14
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad47d3db_4028ef99",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -300,6 +348,30 @@
       "writtenOn": "2020-04-27T13:21:55Z",
       "side": 1,
       "message": "i\u0027d like to avoid arc dependency by making other functions more general",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c7ce984_9bccce2d",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-04-28T00:50:02Z",
+      "side": 1,
+      "message": "Yes, can we have a version of CaptureUntil that takes a `chan bool` (`chan error`?) instead of a callback to signal completion? Then we can put this logcat scanning code in some test helpers.",
+      "parentUuid": "1ada6771_8947e3fd",
       "range": {
         "startLine": 171,
         "startChar": 1,
