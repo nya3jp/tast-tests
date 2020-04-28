@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/switch_1080p_720p_240frames_20190425.h264",
+  "size": 451224,
+  "sha256sum": "080879aeddb67e901e074fb2e2cd0e2af7fa2b92f810f8271d9d12c12c7aeab5"
+}
