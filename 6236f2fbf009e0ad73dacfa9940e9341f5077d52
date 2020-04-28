@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef14dc60_aba1db2a",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-28T04:44:10Z",
+      "side": 1,
+      "message": "\u003e \"Conenct\" is a possible misspelling of \"Connect\".\n\nFixed.",
+      "parentUuid": "dd4b2aa9_7ef9de44",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 10
+      },
+      "revId": "6236f2fbf009e0ad73dacfa9940e9341f5077d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d4c4064_3a25f79a",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-28T04:44:10Z",
+      "side": 1,
+      "message": "\u003e \"Conenct\" is a possible misspelling of \"Connect\".\n\nFixed.",
+      "parentUuid": "3db131fa_1a2db612",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "6236f2fbf009e0ad73dacfa9940e9341f5077d52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
