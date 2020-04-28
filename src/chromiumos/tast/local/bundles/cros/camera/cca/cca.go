@@ -155,6 +155,20 @@ var (
 		"#videoresolutionsettings input", "#view-video-resolution-settings input"}}
 )
 
+type errorLevel string
+
+const (
+	errorLevelWarning errorLevel = "WARNING"
+	errorLevelError              = "ERROR"
+)
+
+type errorInfo struct {
+	ErrorType string     `json:"type"`
+	Level     errorLevel `json:"level"`
+	Stack     string     `json:"stack"`
+	Time      int64      `json:"time"`
+}
+
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
 	conn        *chrome.Conn
@@ -202,10 +216,26 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		return nil, err
 	}
 
-	prepareCCA := fmt.Sprintf(`
-		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
-			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ID)
-	if err := tconn.Exec(ctx, prepareCCA); err != nil {
+	if err := tconn.Call(ctx, nil, `
+		(id) => {
+		  let resolveConnect;
+		  const errors = [];
+		  window.CCATestConnection = {
+		    connect: new Promise((resolve) => { resolveConnect = resolve; }),
+		    errors,
+		  };
+		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
+		  port.onMessage.addListener((msg) => {
+		    switch(msg.name) {
+		      case 'connect':
+		        resolveConnect(msg.windowUrl);
+		        return;
+		      case 'error':
+		        errors.push(msg.errorInfo);
+		        return;
+		    }
+		  });
+		}`, ID); err != nil {
 		return nil, err
 	}
 
@@ -214,7 +244,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	var windowURL string
-	if err := tconn.EvalPromise(ctx, `CCAReady`, &windowURL); err != nil {
+	if err := tconn.Eval(ctx, `window.CCATestConnection.connect`, &windowURL); err != nil {
 		return nil, err
 	}
 	// The expected windowURL is returned as:
@@ -298,6 +328,58 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir st
 // InstanceExists checks if there is any running CCA instance.
 func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	return cr.IsTargetAvailable(ctx, isMatchCCAPrefix)
+}
+
+// CheckJSError checks javascript error emitted by CCA error callback.
+func (a *App) CheckJSError(ctx context.Context, logDir string) error {
+	var errorInfos []errorInfo
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+	if err := tconn.Eval(ctx, "window.CCATestConnection.errors", &errorInfos); err != nil {
+		return err
+	}
+
+	jsErrors := make([]errorInfo, 0)
+	jsWarnings := make([]errorInfo, 0)
+	for _, err := range errorInfos {
+		if err.Level == errorLevelWarning {
+			jsWarnings = append(jsWarnings, err)
+		} else if err.Level == errorLevelError {
+			jsErrors = append(jsErrors, err)
+		} else {
+			return errors.Errorf("unknown error level: %v", err.Level)
+		}
+	}
+
+	writeLogFile := func(lv errorLevel, errs []errorInfo) error {
+		filename := fmt.Sprintf("CCA_JS_%v.log", lv)
+		logPath := filepath.Join(logDir, filename)
+		f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+		if err != nil {
+			return err
+		}
+		defer f.Close()
+		for _, err := range errs {
+			t := time.Unix(0, err.Time*1e6).Format("2006/01/02 15:04:05 [15:04:05.000]")
+			f.WriteString(fmt.Sprintf("%v %v:\n", t, err.ErrorType))
+			f.WriteString(err.Stack + "\n")
+		}
+		return nil
+	}
+
+	if err := writeLogFile(errorLevelWarning, jsWarnings); err != nil {
+		return err
+	}
+	if err := writeLogFile(errorLevelError, jsErrors); err != nil {
+		return err
+	}
+	if len(jsErrors) > 0 {
+		return errors.Errorf("there are %d errors, first error: %v: %v",
+			len(jsErrors), jsErrors[0].Level, jsErrors[0].ErrorType)
+	}
+	return nil
 }
 
 // Close closes the App and the associated connection.
