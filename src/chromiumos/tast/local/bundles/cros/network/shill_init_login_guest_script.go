@@ -81,14 +81,6 @@ func testLoginGuest(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.AssureIsDir(shillscript.GuestShillUserLogDir); err != nil {
-		return err
-	}
-
-	if err := shillscript.AssureIsLinkTo("/run/shill/log", shillscript.GuestShillUserLogDir); err != nil {
-		return err
-	}
-
 	profiles, err := shillscript.GetProfileList(ctx)
 	if err != nil {
 		return err

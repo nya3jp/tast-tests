@@ -77,9 +77,6 @@ func testLoginMultiProfile(ctx context.Context, env *shillscript.TestEnv) error 
 		if files[0].Name() != "chronos" {
 			return errors.Errorf("found unexpected profile link in the directory %s: got %v, want chronos", shillscript.ShillUserProfilesDir, files[0].Name())
 		}
-		if err := shillscript.AssureIsLinkTo("/run/shill/log", env.UserCryptohomeLogDir); err != nil {
-			return err
-		}
 	}
 
 	profiles, err := shillscript.GetProfileList(ctx)
