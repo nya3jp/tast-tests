@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "5bb03ad8_d65eb329",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2020-04-28T02:11:44Z",
+      "side": 1,
+      "message": "The use of 0 as a timeout has been deprecated.\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1062899",
+      "parentUuid": "e6e2ba71_057a2651",
+      "range": {
+        "startLine": 147,
+        "startChar": 47,
+        "endLine": 147,
+        "endChar": 65
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8de29f2b_6e4ec40c",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
