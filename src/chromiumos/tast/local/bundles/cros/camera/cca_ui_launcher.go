@@ -43,6 +43,12 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
 	}
+	defer app.Close(ctx)
+	defer (func() {
+		if err := app.CheckErrorEvents(ctx); err != nil {
+			s.Error("Failed with javascript errors events: ", err)
+		}
+	})()
 
 	// When firing the launch event as the app is currently showing, the app should minimize.
 	if err := launcher.SearchAndLaunch(ctx, tconn, "camera"); err != nil {
