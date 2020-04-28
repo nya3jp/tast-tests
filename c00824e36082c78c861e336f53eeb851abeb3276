@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46b097cd_5ea16169",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-28T04:43:03Z",
+      "side": 1,
+      "message": "\u003e \"orignal\" is a possible misspelling of \"original\".\n\nFixed.",
+      "parentUuid": "2f738e59_aa324a6e",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "c00824e36082c78c861e336f53eeb851abeb3276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
