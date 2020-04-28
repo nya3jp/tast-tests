@@ -22,6 +22,30 @@
       "revId": "6b427d309d9fda5c916bfc6f0b295536562517fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12d27fec_d5d22cc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-28T08:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe14371_931c7014",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 0
+      },
+      "revId": "6b427d309d9fda5c916bfc6f0b295536562517fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
