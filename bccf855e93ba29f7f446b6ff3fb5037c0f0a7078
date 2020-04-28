@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "403acdc7_671f54ff",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-28T06:57:31Z",
+      "side": 1,
+      "message": "Since this is a support package shared among all ARC tests, we want every utility here to be generally useful for ARC tests. Expectation is a bit different from the graphics package.\n\nWith the current signature, callers are enforced to use regexp matching rather than any other way of matching. For example, it is very difficult to wait for an message \"dropped N frames\" where N is an integer larger than 3 with regexp.\n\nI recommend taking a simple predicate function instead to allow flexible customization.\n\n func WaitLogcat(ctx context.Context, a *ARC, timeout time.Duration, pred func(line string) bool) error",
+      "range": {
+        "startLine": 18,
+        "startChar": 53,
+        "endLine": 18,
+        "endChar": 71
+      },
+      "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f862aa_3347adb2",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-28T06:57:31Z",
+      "side": 1,
+      "message": "I recommend moving this defer statement to the beginning of the anonymouss goroutine function below. Then we can say that pipe is initially owned by the current goroutine, but the ownership is transferred to the new goroutine. pipe won\u0027t be accessed concurrently from two goroutines.\n\nNote that pipe is automatically closed if Start fails.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a855787_23b45958",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-28T06:57:31Z",
+      "side": 1,
+      "message": "I recommend moving this close call to the beginning of the goroutine with defer. It is important particularly if we update this function to accept a predicate function rather than a regexp because we can make sure the channel is closed even if the predicate function panics.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706fa231_87aede44",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-28T06:57:31Z",
+      "side": 1,
+      "message": "In a bad case, the logcat process starts but crashes during execution (e.g. when ARC system crashes). In that case this function returns no error at this moment. We have to distinguish the \"found\" case and the \"EOF\" case.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b101c17a_e473e766",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-28T06:57:31Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to add this function to the support package because its signature is too specific to a use case. I\u0027d rather ask callers to implement this by themselves.",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29dd66f1_f121eb70",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-28T06:57:31Z",
+      "side": 1,
+      "message": "This is getting more and more complex as you already said. :(\n\nAlso I\u0027m afraid that the signature of WaitForChannel implicitly encourages test authors to do their primary work (e.g. waiting for logcat messages) on a separate goroutine, not on the main goroutine (where the test main function is called). But it is in many cases inconvenient to do the work off the main goroutine, especially considering that setup/cleanup of tests are done on the main goroutine in most cases.\n\nStepping back a bit, I think goals of this change are:\n\n- Snapshots are recorded in a regular interval\n- Callers can use flexible conditions when to stop recording\n\nIf so, how about just adding Start/Stop methods to Timeline instead of CaptureWhile?\n\nFor example:\n\n // StartRecording starts a goroutine that takes snapshots at a regular interval.\n func (t *Timeline) StartRecording(ctx context.Context) error\n // StopRecording stops a goroutine started by StartRecording.\n func (t *Timeline) StopRecording(ctx context.Context) (*perf.Values, error)\n\n(I\u0027m not sure naming of these methods are okay, especially considering that there\u0027s already \"Start\" method)\n\nThen users don\u0027t need to deal with channels/goroutines explicitly.\n\nNote that in this case I would make StopRecording to return a new perf.Values, instead of making StartRecording to take *perf.Values, to avoid possible concurrent writes to perf.Values. Then we also have to add a method to perf.Values merging two Values, e.g.\n\n // SetAll sets all values in o to v.\n func (v *Values) SetAll(o *perf.Values)",
+      "range": {
+        "startLine": 136,
+        "startChar": 19,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
