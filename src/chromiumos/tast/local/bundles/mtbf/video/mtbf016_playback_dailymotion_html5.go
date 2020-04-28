@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/mtbferrors"
+	"chromiumos/tast/local/bundles/mtbf/video/common"
 	"chromiumos/tast/local/bundles/mtbf/video/dailymotion"
 	"chromiumos/tast/local/chrome"
 	mtbfchrome "chromiumos/tast/local/mtbf/chrome"
@@ -23,14 +23,16 @@ func init() {
 		Contacts:     []string{"xliu@cienet.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline", "informational"},
+		Vars:         []string{"video.dailymotionVideo"},
 		Pre:          chrome.LoginReuse(),
+		Timeout:      5 * time.Minute,
 	})
 }
 
 // MTBF016PlaybackDailymotionHTML5 test Dailymotion video in different resolution and fullscreen/ expand/ shrink functionality
 func MTBF016PlaybackDailymotionHTML5(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	url := "https://www.dailymotion.com/video/x7mi4l2?playlist=x6huns" // Dailymotion video without AD
+	url := common.GetVar(ctx, s, "video.dailymotionVideo")
 
 	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, url)
 	if mtbferr != nil {
@@ -42,7 +44,13 @@ func MTBF016PlaybackDailymotionHTML5(ctx context.Context, s *testing.State) {
 
 	s.Log("Toggle fullscreen mode")
 	dailymotion.ToggleFullScreen(ctx, conn)
-	testing.Sleep(ctx, 10*time.Second)
+
+	// Wait for video to toggle full screen...
+	if mtbferr := dailymotion.WaitForReadyState(ctx, conn); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
+	}
+	testing.Sleep(ctx, 5*time.Second)
 	if mtbferr := dailymotion.IsPlaying(ctx, conn, 3*time.Second); mtbferr != nil {
 		debug.TakeScreenshot(ctx)
 		s.Fatal(mtbferr)
@@ -57,11 +65,12 @@ func MTBF016PlaybackDailymotionHTML5(ctx context.Context, s *testing.State) {
 		"144p",
 	} {
 		s.Log("Change video quality to ", quality)
-		if err := dailymotion.ChangeQuality(ctx, conn, dailymotion.Quality[quality]); err != nil {
+		if mtbferr := dailymotion.ChangeQuality(ctx, conn, dailymotion.Quality[quality]); mtbferr != nil {
 			debug.TakeScreenshot(ctx)
-			s.Error(mtbferrors.New(mtbferrors.VideoChgQuality, err, quality))
+			s.Fatal(mtbferr)
 		}
 		s.Log("Verify video is currently playing")
+		testing.Sleep(ctx, 3*time.Second)
 		if mtbferr := dailymotion.IsPlaying(ctx, conn, 3*time.Second); mtbferr != nil {
 			debug.TakeScreenshot(ctx)
 			s.Fatal(mtbferr)
@@ -69,21 +78,26 @@ func MTBF016PlaybackDailymotionHTML5(ctx context.Context, s *testing.State) {
 	}
 
 	dailymotion.ToggleFullScreen(ctx, conn)
-	testing.Sleep(ctx, 10*time.Second)
-	if mtbferr := dailymotion.IsPlaying(ctx, conn, 3*time.Second); mtbferr != nil {
+	// Wait for video to toggle full screen...
+	if mtbferr := dailymotion.WaitForReadyState(ctx, conn); mtbferr != nil {
 		debug.TakeScreenshot(ctx)
 		s.Fatal(mtbferr)
 	}
 
 	s.Log("Pause/ resume video")
-	if err := dailymotion.PauseAndResume(ctx, conn); err != nil {
+	if mtbferr := dailymotion.PauseAndResume(ctx, conn); mtbferr != nil {
 		debug.TakeScreenshot(ctx)
-		s.Fatal(mtbferrors.New(mtbferrors.VideoPauseResume, err))
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Random seeking")
-	if err := dailymotion.RandomSeek(ctx, conn, 5); err != nil {
+	if mtbferr := dailymotion.RandomSeek(ctx, conn, 5); mtbferr != nil {
 		debug.TakeScreenshot(ctx)
-		s.Fatal(mtbferrors.New(mtbferrors.VideoSeek, err))
+		s.Fatal(mtbferr)
+	}
+
+	if mtbferr := dailymotion.IsPlaying(ctx, conn, 3*time.Second); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
 }

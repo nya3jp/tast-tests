@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/mtbf/audio"
+	"chromiumos/tast/local/mtbf/debug"
 	mtbfFilesapp "chromiumos/tast/local/mtbf/ui/filesapp"
 	"chromiumos/tast/local/ui/filesapp"
 	"chromiumos/tast/testing"
@@ -60,36 +61,47 @@ func MTBF021PlayGSMMSHEAACLCAAC(ctx context.Context, s *testing.State) {
 
 	// Start to play.
 	if mtbferr := audio.PlayFromDownloadsFolder(ctx, files, s.DataPath(audioFile), audioFile); mtbferr != nil {
-		s.Error(mtbferr)
+		s.Fatal(mtbferr)
 	}
 	defer audio.ClickButton(ctx, tconn, "Close")
 	s.Logf("Play %s", audioFile)
 	if err := files.WaitForElement(ctx, filesapp.RoleRootWebArea, "Audio Player", time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
 		s.Fatal(mtbferrors.New(mtbferrors.ChromeOpenAudioPlayer, err))
 	}
-	if err := audio.IsPlaying(ctx, tconn, 3*time.Second); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.AudioPlayPause, err))
+	testing.Sleep(ctx, time.Second)
+	if mtbferr := audio.IsPlaying(ctx, tconn, 3*time.Second); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
 
 	s.Logf("Pause %s", audioFile)
 	if err := files.WaitForElement(ctx, "button", "Pause", time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
 		s.Fatal(mtbferrors.New(mtbferrors.AudioWaitPauseButton, err))
 	}
-	if err := audio.Pause(ctx, tconn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.AudioClickPauseButton, err))
+	if mtbferr := audio.Pause(ctx, tconn); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
-	if err := audio.IsPausing(ctx, tconn, 3*time.Second); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.AudioPlayPause, err))
+	testing.Sleep(ctx, time.Second)
+	if mtbferr := audio.IsPausing(ctx, tconn, 3*time.Second); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
 	s.Logf("Play %s", audioFile)
 	if err := files.WaitForElement(ctx, "button", "Play", time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
 		s.Fatal(mtbferrors.New(mtbferrors.AudioWaitPlayButton, err))
 	}
-	if err := audio.Play(ctx, tconn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.AudioClickPlayButton, err))
+	if mtbferr := audio.Play(ctx, tconn); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
-	if err := audio.IsPlaying(ctx, tconn, 3*time.Second); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.AudioPlayPause, err))
+	testing.Sleep(ctx, time.Second)
+	if mtbferr := audio.IsPlaying(ctx, tconn, 3*time.Second); mtbferr != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferr)
 	}
 
 	testing.Sleep(ctx, 3*time.Second)

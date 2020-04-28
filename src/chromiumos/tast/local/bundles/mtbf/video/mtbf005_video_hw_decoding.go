@@ -62,22 +62,22 @@ func MTBF005VideoHWDecoding(ctx context.Context, s *testing.State) {
 	s.Log("Access chrome://histogram/Media.G URL")
 	histURL := "chrome://histograms/Media.G"
 
-	connHist, err := mtbfchrome.NewConn(ctx, cr, histURL)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	connHist, mtbferr := mtbfchrome.NewConn(ctx, cr, histURL)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer connHist.Close()
 	defer connHist.CloseTarget(ctx)
 
-	cntBefore, err := getHistogramCount(ctx, cr, videoHistName)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	cntBefore, mtbferr := getHistogramCount(ctx, cr, videoHistName)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Link to video URL")
-	connVideo, err := mtbfchrome.NewConn(ctx, cr, url)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	connVideo, mtbferr := mtbfchrome.NewConn(ctx, cr, url)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer connVideo.Close()
 	defer connVideo.CloseTarget(ctx)
@@ -95,13 +95,13 @@ func MTBF005VideoHWDecoding(ctx context.Context, s *testing.State) {
 		s.Fatal(mtbferrors.New(mtbferrors.ChromeExeJs, err, "window.location.reload()"))
 	}
 
-	cntAfter, err := getHistogramCount(ctx, cr, videoHistName)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	cntAfter, mtbferr := getHistogramCount(ctx, cr, videoHistName)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	if *cntAfter <= *cntBefore {
-		s.Error(mtbferrors.New(mtbferrors.VideoHistNotGrow, nil, videoHistName, *cntBefore, *cntAfter))
+		s.Fatal(mtbferrors.New(mtbferrors.VideoHistNotGrow, nil, videoHistName, *cntBefore, *cntAfter))
 	}
 
 	kb, err := input.Keyboard(ctx)

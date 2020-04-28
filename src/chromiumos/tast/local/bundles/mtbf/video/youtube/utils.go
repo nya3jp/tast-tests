@@ -51,25 +51,31 @@ func tryToSkipAds(ctx context.Context, conn *chrome.Conn) error {
 // PlayVideo triggers VideoPlayer.play().
 func PlayVideo(ctx context.Context, conn *chrome.Conn) error {
 	tryToSkipAds(ctx, conn)
-	return dom.PlayElement(ctx, conn, VideoPlayer)
+	if err := dom.PlayElement(ctx, conn, VideoPlayer); err != nil {
+		return mtbferrors.New(mtbferrors.ChromeExeJs, err, "OpenAndPlayVideo")
+	}
+	return nil
 }
 
 // PauseVideo triggers VideoPlayer.pause().
 func PauseVideo(ctx context.Context, conn *chrome.Conn) error {
 	tryToSkipAds(ctx, conn)
-	return dom.PauseElement(ctx, conn, VideoPlayer)
+	if err := dom.PauseElement(ctx, conn, VideoPlayer); err != nil {
+		return mtbferrors.New(mtbferrors.VideoPauseFailed, err, "Youtube")
+	}
+	return nil
 }
 
 // ToggleFullScreen simulates keyboard input "F".
 func ToggleFullScreen(ctx context.Context, conn *chrome.Conn) error {
 	dom.WaitForElementBeingVisible(ctx, conn, VideoPlayer)
 	if err := conn.Exec(ctx, dom.Query(VideoPlayer)+".focus()"); err != nil {
-		return err
+		return mtbferrors.New(mtbferrors.VideoEnterFullSc, err)
 	}
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return err
+		return mtbferrors.New(mtbferrors.VideoEnterFullSc, err)
 	}
 	defer kb.Close()
 
@@ -100,7 +106,7 @@ func ChangeQuality(ctx context.Context, conn *chrome.Conn, quality string) (err 
 	tryToSkipAds(ctx, conn)
 
 	if err := OpenVideoSettings(ctx, conn); err != nil {
-		return err
+		return mtbferrors.New(mtbferrors.VideoOpenSettings, err)
 	}
 	testing.Sleep(ctx, 1*time.Second)
 	const (
@@ -108,7 +114,7 @@ func ChangeQuality(ctx context.Context, conn *chrome.Conn, quality string) (err 
 		buttonArrowFunction = "node => node.querySelector('.ytp-menuitem-label').innerText === 'Quality'"
 	)
 	if err := dom.WaitAndClick(ctx, conn, dom.AdvanceFindQuery(buttonSelector, buttonArrowFunction)); err != nil {
-		return err
+		return mtbferrors.New(mtbferrors.VideoWaitAndClick, err, buttonSelector)
 	}
 
 	// Wait for animation.
@@ -118,9 +124,12 @@ func ChangeQuality(ctx context.Context, conn *chrome.Conn, quality string) (err 
 		qualityArrowFunction = "item => item.innerText.match(/%s/)"
 	)
 	if err := dom.WaitAndClick(ctx, conn, dom.AdvanceFindQuery(qualitySelector, fmt.Sprintf(qualityArrowFunction, quality))); err != nil {
-		return err
+		return mtbferrors.New(mtbferrors.VideoWaitAndClick, err, qualitySelector)
 	}
-
+	// Wait for video to change quality...
+	if err := WaitForReadyState(ctx, conn); err != nil {
+		return mtbferrors.New(mtbferrors.VideoReadyStatePoll, err)
+	}
 	return nil
 }
 
@@ -130,7 +139,7 @@ func OpenStatsForNerds(ctx context.Context, conn *chrome.Conn) (err error) {
 
 	const videoPlayerContainer = "#movie_player"
 	if err = dom.RightClickElement(ctx, conn, videoPlayerContainer); err != nil {
-		return
+		return mtbferrors.New(mtbferrors.VideoStatsNerd, err)
 	}
 
 	const (
@@ -138,7 +147,7 @@ func OpenStatsForNerds(ctx context.Context, conn *chrome.Conn) (err error) {
 		arrowFunction = "node => node.querySelector('.ytp-menuitem-label').innerText === 'Stats for nerds'"
 	)
 	if err = dom.WaitAndClick(ctx, conn, dom.AdvanceFindQuery(selector, arrowFunction)); err != nil {
-		return
+		return mtbferrors.New(mtbferrors.VideoStatsNerd, err)
 	}
 
 	return nil
@@ -181,6 +190,20 @@ func getResolutionByText(ctx context.Context, conn *chrome.Conn, text string) (v
 	return
 }
 
+// getFramePerSecondFromStatsForNerds will return frame per second by executing javascript.
+func getFramePerSecondFromStatsForNerds(ctx context.Context, conn *chrome.Conn) (fps int, err error) {
+	const (
+		javascript    = "parseInt(%s.querySelector('span').innerText.match(/\\d*x\\d*@\\d*/)[0].split('@')[1])"
+		selector      = "#movie_player > div.html5-video-info-panel > div > div"
+		arrowFunction = "node => node.innerText.indexOf('Optimal Res') >= 0"
+	)
+	err = conn.Eval(ctx, fmt.Sprintf(javascript, dom.AdvanceFindQuery(selector, arrowFunction)), &fps)
+	if err != nil {
+		return 0, mtbferrors.New(mtbferrors.VideoFailFramesPerSeconds, err)
+	}
+	return
+}
+
 // GetViewportFromStatsForNerds will return current video view pixel.
 func GetViewportFromStatsForNerds(ctx context.Context, conn *chrome.Conn) (videoFrame VideoFrame, err error) {
 	tryToSkipAds(ctx, conn)
@@ -190,19 +213,23 @@ func GetViewportFromStatsForNerds(ctx context.Context, conn *chrome.Conn) (video
 // GetCurrentResolutionFromStatsForNerds will return current video resolution.
 func GetCurrentResolutionFromStatsForNerds(ctx context.Context, conn *chrome.Conn) (videoFrame VideoFrame, err error) {
 	tryToSkipAds(ctx, conn)
-	return getResolutionByText(ctx, conn, "Optimal Res")
+	videoFrame, err = getResolutionByText(ctx, conn, "Optimal Res")
+	if err != nil {
+		return videoFrame, mtbferrors.New(mtbferrors.VideoGetRatio, err)
+	}
+	return videoFrame, nil
 }
 
 // OpenAndPlayVideo opens a new connection and plays video.
 func OpenAndPlayVideo(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
-	conn, err := mtbfchrome.NewConn(ctx, cr, url)
-	if err != nil {
-		return nil, err
+	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, url)
+	if mtbferr != nil {
+		return nil, mtbferr
 	}
 
 	testing.Sleep(ctx, 3*time.Second)
-	if err := PlayVideo(ctx, conn); err != nil {
-		return nil, mtbferrors.New(mtbferrors.ChromeExeJs, err, "OpenAndPlayVideo")
+	if mtbferr := PlayVideo(ctx, conn); mtbferr != nil {
+		return nil, mtbferr
 	}
 
 	return conn, nil
@@ -221,6 +248,14 @@ func OpenAndPlayMultipleVideosInTabs(ctx context.Context, cr *chrome.Chrome, url
 	}
 
 	return conns, nil
+}
+
+// WaitForReadyState wait for ready state
+func WaitForReadyState(ctx context.Context, conn *chrome.Conn) error {
+	if err := dom.WaitForReadyState(ctx, conn, VideoPlayer, 10*time.Second, 100*time.Millisecond); err != nil {
+		return mtbferrors.New(mtbferrors.VideoReadyStatePoll, err)
+	}
+	return nil
 }
 
 // Add1SecondForURL adds a start play time for one second of youtube url.

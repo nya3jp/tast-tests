@@ -7,8 +7,10 @@ package dom
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // WaitForDocumentReady waits for the ready state of the document.
@@ -86,7 +88,32 @@ func PauseElement(ctx context.Context, conn *chrome.Conn, selector string) error
 // GetElementCurrentTime returns currentTime on media element.
 func GetElementCurrentTime(ctx context.Context, conn *chrome.Conn, selector string) (time float64, err error) {
 	err = conn.Eval(ctx, Query(selector)+".currentTime", &time)
-	return
+	return time, err
+}
+
+// WaitForReadyState does wait video ready state then return.
+func WaitForReadyState(ctx context.Context, conn *chrome.Conn, selector string, timeout time.Duration, interval time.Duration) error {
+	queryCode := fmt.Sprintf("new Promise((resolve, reject) => { let video = document.querySelector(%q); resolve(video.readyState === 4 && video.buffered.length > 0); });", selector)
+
+	// Wait for element to appear.
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		var pageReady bool
+		err := conn.EvalPromise(ctx, queryCode, &pageReady)
+		if err != nil {
+			return err
+		}
+		if pageReady {
+			return nil
+		}
+		return err
+	}, &testing.PollOptions{
+		Timeout:  timeout,
+		Interval: interval,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // ElementReadyState returns media element ready state.
@@ -97,7 +124,7 @@ func GetElementCurrentTime(ctx context.Context, conn *chrome.Conn, selector stri
 // HAVE_ENOUGH_DATA 	4 	Enough data is available and the download rate is high enough that the media can be played through to the end without interruption.
 func ElementReadyState(ctx context.Context, conn *chrome.Conn, selector string) (readyState int, err error) {
 	err = conn.Eval(ctx, Query(selector)+".readyState", &readyState)
-	return
+	return readyState, err
 }
 
 // ElementNetworkState returns medial element network state.
@@ -107,7 +134,7 @@ func ElementReadyState(ctx context.Context, conn *chrome.Conn, selector string) 
 // NETWORK_NO_SOURCE 	3 	No HTMLMediaElement src found.
 func ElementNetworkState(ctx context.Context, conn *chrome.Conn, selector string) (networkState int, err error) {
 	err = conn.Eval(ctx, Query(selector)+".networkState", &networkState)
-	return
+	return networkState, err
 }
 
 // FastJumpElement does a fast jump to specific time from current time.
@@ -116,7 +143,7 @@ func FastJumpElement(ctx context.Context, conn *chrome.Conn, selector string, ju
 }
 
 // FastForwardTime is the time media element fast forward in seconds.
-const FastForwardTime = 10
+const FastForwardTime = 5
 
 // FastForwardElement does a fast forward on a media element by 10 secs.
 func FastForwardElement(ctx context.Context, conn *chrome.Conn, selector string) error {
@@ -124,7 +151,7 @@ func FastForwardElement(ctx context.Context, conn *chrome.Conn, selector string)
 }
 
 // FastRewindTime is the time media element fast rewind in seconds.
-const FastRewindTime = -10
+const FastRewindTime = -5
 
 // FastRewindElement does a fast rewind on a media element by 10 secs.
 func FastRewindElement(ctx context.Context, conn *chrome.Conn, selector string) error {

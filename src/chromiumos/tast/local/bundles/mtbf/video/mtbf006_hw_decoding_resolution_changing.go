@@ -58,9 +58,9 @@ func MTBF006HWDecodingResolutionChanging(ctx context.Context, s *testing.State) 
 	testing.Sleep(ctx, 5*time.Second) // Sleep to make sure last login stable.
 	cr := s.PreValue().(*chrome.Chrome)
 
-	histogramConn, err := mtbfchrome.NewConn(ctx, cr, histogramURL)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	histogramConn, mtbferr := mtbfchrome.NewConn(ctx, cr, histogramURL)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer histogramConn.Close()
 	defer histogramConn.CloseTarget(ctx)
@@ -71,9 +71,9 @@ func MTBF006HWDecodingResolutionChanging(ctx context.Context, s *testing.State) 
 	s.Logf("[%v] Histogram.Buckets[0].Count: %d", histogramName, firstBucketCount)
 
 	url := s.Param().(string)
-	conn, err := mtbfchrome.NewConn(ctx, cr, url)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, url)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn.Close()
 	testing.Sleep(ctx, 5*time.Second)
@@ -81,7 +81,7 @@ func MTBF006HWDecodingResolutionChanging(ctx context.Context, s *testing.State) 
 	histogramConn.Eval(ctx, "window.location.reload()", nil)
 	histogram = getHistogram(ctx, s, cr, histogramName)
 	if count := getFirstBucketCountFrom(histogram); count != (firstBucketCount + 1) {
-		s.Error(mtbferrors.New(mtbferrors.VideoHist, err,
+		s.Fatal(mtbferrors.New(mtbferrors.VideoHist, mtbferr,
 			fmt.Sprintf("first bucket count should be increased by 1: %d -> %d(%d)",
 				firstBucketCount, count, firstBucketCount+1)))
 	} else {

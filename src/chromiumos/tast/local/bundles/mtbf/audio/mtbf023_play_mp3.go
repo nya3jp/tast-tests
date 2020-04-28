@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/mtbf/audio"
+	"chromiumos/tast/local/mtbf/debug"
 	mtbfFilesapp "chromiumos/tast/local/mtbf/ui/filesapp"
 	"chromiumos/tast/local/ui/filesapp"
 	"chromiumos/tast/testing"
@@ -28,6 +29,7 @@ func init() {
 	})
 }
 
+// MTBF023PlayMp3 play mp3 files from file app, pause and resume.
 func MTBF023PlayMp3(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	s.Log("Preparing mp3 to play")
@@ -49,23 +51,40 @@ func MTBF023PlayMp3(ctx context.Context, s *testing.State) {
 	defer filesapp.Close(ctx, tconn)
 
 	if mtbferr := audio.PlayFromDownloadsFolder(ctx, files, s.DataPath(audioFile), audioFile); mtbferr != nil {
-		s.Error(mtbferr)
+		s.Fatal(mtbferr)
 	}
 	defer audio.ClickButton(ctx, tconn, "Close")
 
 	testing.Sleep(ctx, 5*time.Second)
 
 	s.Log("Pause and play mp3")
-	if mtbferr = audio.Pause(ctx, tconn); mtbferr != nil {
-		s.Error(mtbferr)
+
+	s.Logf("Pause %s", audioFile)
+	if err := files.WaitForElement(ctx, "button", "Pause", time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferrors.New(mtbferrors.AudioWaitPauseButton, err))
 	}
 
-	testing.Sleep(ctx, 3*time.Second)
-	if mtbferr = audio.Play(ctx, tconn); mtbferr != nil {
-		s.Error(mtbferr)
+	if mtbferr = audio.Pause(ctx, tconn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
-	if err = audio.IsPlaying(ctx, tconn, 5*time.Second); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.AudioPlayPause, err))
+	testing.Sleep(ctx, time.Second)
+	s.Log("Verify audio player is paused")
+	if mtbferr := audio.IsPausing(ctx, tconn, 3*time.Second); mtbferr != nil {
+		s.Fatal(mtbferr)
+	}
+	s.Logf("Play %s", audioFile)
+	if err := files.WaitForElement(ctx, "button", "Play", time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
+		s.Fatal(mtbferrors.New(mtbferrors.AudioWaitPlayButton, err))
+	}
+	if mtbferr = audio.Play(ctx, tconn); mtbferr != nil {
+		s.Fatal(mtbferr)
+	}
+	testing.Sleep(ctx, time.Second)
+	s.Log("Verify audio player is playing")
+	if mtbferr = audio.IsPlaying(ctx, tconn, 5*time.Second); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	testing.Sleep(ctx, 10*time.Second)

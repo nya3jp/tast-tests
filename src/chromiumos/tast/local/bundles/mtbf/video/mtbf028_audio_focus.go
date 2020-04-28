@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mtbferrors"
+	"chromiumos/tast/local/bundles/mtbf/video/common"
 	"chromiumos/tast/local/bundles/mtbf/video/youtube"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/mtbf/audio"
@@ -24,9 +25,10 @@ func init() {
 		Desc:         "Plays youtube video and then plays m4a files",
 		Contacts:     []string{"xliu@cienet.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		Pre:          chrome.LoginReuse(),
 		SoftwareDeps: []string{"chrome", "chrome_internal", "cros_video_decoder"},
 		Data:         []string{"audio.m4a"},
+		Vars:         []string{"video.youtubeVideo"},
+		Pre:          chrome.LoginReuse(),
 	})
 }
 
@@ -35,11 +37,11 @@ func init() {
 // Start Youtube video playing again. Verify audio file pauses.
 func MTBF028AudioFocus(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	const videoURL = "https://www.youtube.com/watch?v=txTqtm58AqM"
+	videoURL := common.GetVar(ctx, s, "video.youtubeVideo")
 	s.Log("Starting to jump to youtube url")
-	conn, err := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(videoURL))
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(videoURL))
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
@@ -73,20 +75,20 @@ func MTBF028AudioFocus(ctx context.Context, s *testing.State) {
 	testing.Sleep(ctx, 5*time.Second)
 
 	s.Log("Verify youtube has been paused")
-	if err := youtube.IsPausing(ctx, conn, 3*time.Second); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoYTPause, err))
+	if mtbferr := youtube.IsPausing(ctx, conn, 3*time.Second); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	testing.Sleep(ctx, 5*time.Second)
 
 	s.Log("Play youtube and verify audio player paused")
-	if err := youtube.PlayVideo(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoNotPlay, nil, videoURL))
+	if mtbferr := youtube.PlayVideo(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Verify m4a has been paused")
-	if mtbferr = audio.IsPausing(ctx, tconn, 3*time.Second); mtbferr != nil {
-		s.Error(mtbferr)
+	if mtbferr := audio.IsPausing(ctx, tconn, 3*time.Second); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	testing.Sleep(ctx, 10*time.Second)
