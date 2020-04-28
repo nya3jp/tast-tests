@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feba7a60_b7963576",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-28T04:43:31Z",
+      "side": 1,
+      "message": "\u003e \"reprensent\" is a possible misspelling of \"represent\".\n\nFixed.",
+      "parentUuid": "f6509d96_db73845d",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "c6189bc2f6a6d1c935ba54227aa32ddf8899f706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
