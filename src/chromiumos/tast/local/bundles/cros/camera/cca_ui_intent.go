@@ -213,8 +213,9 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		})
 	}
 
+	testing.ContextLog(ctx, "Starting instances coexistanece test")
 	if err := checkInstancesCoexistence(ctx, s, cr, a); err != nil {
-		s.Error("Failed for instance coexistence test: ", err)
+		s.Error("Failed for instances coexistence test: ", err)
 	}
 
 	// TODO(b/139650048): We may want more complicated test. For example, capture,
@@ -425,6 +426,11 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 	}
 	defer regularApp.Close(ctx)
 
+	// Switch to video mode to check if the mode remains the same after resuming.
+	if err := regularApp.SwitchMode(ctx, cca.Video); err != nil {
+		return errors.Wrap(err, "failed to switch mode")
+	}
+
 	// Launch camera intent.
 	intentApp, err := launchIntent(ctx, s, cr, a, intentOptions{
 		Action:       takePhotoAction,
@@ -452,6 +458,10 @@ func checkInstancesCoexistence(ctx context.Context, s *testing.State, cr *chrome
 		return errors.Wrap(err, "regular app instance does not resume after closing intent instance")
 	}
 
+	// Check if the regular CCA still lands on video mode.
+	if err := checkLandingMode(ctx, regularApp, cca.Video); err != nil {
+		return err
+	}
 	return nil
 }
 
