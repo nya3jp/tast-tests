@@ -6,6 +6,7 @@ package cache
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -15,8 +16,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -90,6 +93,7 @@ func OpenSession(ctx context.Context, packagesMode PackagesMode, gmsCoreMode GMS
 	}
 	args = append(args, extraArgs...)
 
+	// Signs in as chrome.DefaultUser.
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to login to Chrome")
@@ -108,12 +112,21 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	const (
 		gmsRoot      = "/data/user_de/0/com.google.android.gms"
 		appChimera   = "app_chimera"
-		tmpTarFile   = "/sdcard/Download/temp_gms_caches.tar"
 		packagesPath = "/data/system/packages_copy.xml"
 		gsfDatabase  = "/data/data/com.google.android.gsf/databases/gservices.db"
 	)
 
-	chimeraPath := filepath.Join(gmsRoot, appChimera)
+	// Cryptohome dir for the current user. (OpenSession signs in as chrome.DefaultUser.)
+	rootCryptDir, err := cryptohome.SystemPath(chrome.DefaultUser)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the cryptohome directory for the user")
+	}
+
+	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
+	androidDataDir := filepath.Join(rootCryptDir, "android-data")
+
+	gmsRootUnderHome := filepath.Join(androidDataDir, gmsRoot)
+	chimeraPath := filepath.Join(gmsRootUnderHome, appChimera)
 	for _, e := range []struct {
 		filename string
 		cond     pathCondition
@@ -123,55 +136,95 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		{"stored_modulesets.pb", pathMustExist},
 		{"current_modules_init.pb", pathMustNotExist},
 	} {
-		if err := waitForAndroidPath(ctx, a, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
+		if err := waitForPath(ctx, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
 			return err
 		}
 	}
 
-	// app_chimera is accessible via ADB in userdebug/eng but not in user builds.
-	// Use agnostic way by archiving content to tar to the public space using bootstrap
-	// command 'android-sh' which has enough permissions to do this.
-	// TODO(b/148832630): get rid of BootstrapCommand.
-	testing.ContextLogf(ctx, "Compressing GMS Core caches to %q", tmpTarFile)
-	out, err := arc.BootstrapCommand(
-		ctx, "/system/bin/tar", "-cvpf", tmpTarFile, "-C", gmsRoot, appChimera).Output(testexec.DumpLogOnError)
-	// Cleanup temp tar in any case.
-	defer arc.BootstrapCommand(ctx, "/system/bin/rm", "-f", tmpTarFile).Run()
-	if err != nil {
-		return errors.Wrapf(err, "compression: %s failed: %q", chimeraPath, string(out))
-	}
-
-	// Pull archive to the host and unpack it.
 	targetTar := filepath.Join(outputDir, GMSCoreCacheArchive)
-	testing.ContextLogf(ctx, "Pulling GMS Core caches to %q", targetTar)
-	if err := a.PullFile(ctx, tmpTarFile, targetTar); err != nil {
-		return errors.Wrapf(err, "failed to pull %q from Android to %q", tmpTarFile, targetTar)
+
+	testing.ContextLogf(ctx, "Compressing GMS Core caches to %q", targetTar)
+	if err := testexec.CommandContext(ctx, "tar", "-cvpf", targetTar, "-C", gmsRootUnderHome, appChimera).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to compress GMS Core caches")
 	}
 
-	// Use BootstrapCommand to avoid permission limitation accessing chimera path via adb.
-	layoutPath := filepath.Join(outputDir, LayoutTxt)
-	testing.ContextLogf(ctx, "Capturing GMS Core caches layout to %q", layoutPath)
-	out, err = arc.BootstrapCommand(
-		ctx, "/system/bin/find", "-L", chimeraPath, "-exec", "stat", "-Lc", "%n:%a:%b", "{}", "+").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return errors.Wrapf(err, "failed to gather app_chimera file attributes: %q", string(out))
-	}
+	testing.ContextLogf(ctx, "Collecting stat results for files under %q", chimeraPath)
 
-	lines := strings.Split(string(out), "\n")
-	sort.Strings(lines)
-	layout := strings.Join(lines, "\n")
-	if err := ioutil.WriteFile(layoutPath, []byte(layout), 0644); err != nil {
+	// statResult holds data obtained by stat command.
+	type statResult struct {
+		path         string
+		accessRights string // Obtained by "stat -c %a"
+		numBlocks    string // Obtained by "stat -c %b"
+	}
+	var statResults []statResult
+	filepath.Walk(chimeraPath, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		// Strip "/home/root/${USER_HASH}/android-data" prefix from the path.
+		androidPath := strings.Replace(path, androidDataDir, "", 1)
+
+		info, err = os.Lstat(path)
+		if err != nil {
+			return errors.Wrapf(err, "failed to stat %q", path)
+		}
+		if info.Mode()&os.ModeSymlink == os.ModeSymlink {
+			// File is a symbolic link.
+			realPath, err := os.Readlink(path)
+			if err != nil {
+				return errors.Wrapf(err, "failed to get real path for %q", path)
+			}
+			if !strings.HasPrefix(realPath, "/data/") {
+				// File is a symbolic link to a file outside of /data/
+				// and it is not exposed on CrOS file system.
+				// Run stat command on Android file system via adb shell.
+				out, err := a.Command(
+					ctx, "stat", "-c", "%a:%b", realPath).Output(testexec.DumpLogOnError)
+				statVals := strings.Split(strings.TrimSpace(string(out)), ":")
+				if err != nil || len(statVals) != 2 {
+					return errors.Wrapf(err, "failed to stat %q : %q", realPath, string(out))
+				}
+				statResults = append(statResults,
+					statResult{path: androidPath, accessRights: statVals[0], numBlocks: statVals[1]})
+				return nil
+			}
+		}
+
+		// File is not a symbolic link, or a symbolic link to a file under /data/,
+		// which is exposed on CrOS file system. Run stat command on CrOS.
+		out, err := testexec.CommandContext(ctx, "stat", "-c", "%a:%b", path).Output()
+		statVals := strings.Split(strings.TrimSpace(string(out)), ":")
+		if err != nil || len(statVals) != 2 {
+			return errors.Wrapf(err, "failed to stat %q : %q", path, string(out))
+		}
+		statResults = append(statResults,
+			statResult{path: androidPath, accessRights: statVals[0], numBlocks: statVals[1]})
+		return nil
+	})
+
+	testing.ContextLogf(ctx, "Generating %q from collected stat results", LayoutTxt)
+	var layoutLines []string
+	for _, r := range statResults {
+		layoutLines = append(layoutLines, fmt.Sprintf("%s:%s:%s", r.path, r.accessRights, r.numBlocks))
+	}
+	sort.Strings(layoutLines)
+	layout := strings.Join(layoutLines, "\n")
+	if err := ioutil.WriteFile(filepath.Join(outputDir, LayoutTxt), []byte(layout), 0644); err != nil {
 		return errors.Wrapf(err, "failed to generate %q for %q", LayoutTxt, chimeraPath)
 	}
 
 	// Packages cache
+	src := filepath.Join(androidDataDir, packagesPath)
 	packagesPathLocal := filepath.Join(outputDir, PackagesCacheXML)
-	if err := pullARCFile(ctx, packagesPath, packagesPathLocal); err != nil {
+	if err := fsutil.CopyFile(src, packagesPathLocal); err != nil {
 		return err
 	}
 
 	// GSF cache
-	if err := pullARCFile(ctx, gsfDatabase, filepath.Join(outputDir, GSFCache)); err != nil {
+	src = filepath.Join(androidDataDir, gsfDatabase)
+	dst := filepath.Join(outputDir, GSFCache)
+	if err := fsutil.CopyFile(src, dst); err != nil {
 		return err
 	}
 
@@ -186,7 +239,6 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		return errors.Wrapf(err, "failed to parse %q", packagesPathLocal)
 	}
 
-	// Use BootstrapCommand to avoid permission limitation accessing chimera path via adb.
 	manifestPath := filepath.Join(outputDir, GMSCoreManifest)
 	testing.ContextLogf(ctx, "Capturing GMS Core manifest for %q to %q", gmsCorePath[1], GMSCoreManifest)
 	// stat -c "%n %s" "$0" gives name and file size in bytes
@@ -194,7 +246,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	// sha256sum -b "$0" gives sha256 check sum
 	// tr \"\n\" \" \" to remove new line ending and have 3 commands outputs in one line.
 	const perFileCmd = `stat -c "%n %s" "$0" | tr "\n" " "  && date +%s%N -r "$0" | cut -b1-13 | tr "\n" " "  && sha256sum -b "$0"`
-	out, err = arc.BootstrapCommand(
+	out, err := a.Command(
 		ctx, "/system/bin/find", "-L", gmsCorePath[1], "-type", "f", "-exec", "sh", "-c", perFileCmd, "{}", ";").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return errors.Wrapf(err, "failed to create GMS Core manifiest: %q", string(out))
@@ -207,40 +259,24 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	return nil
 }
 
-// pullARCFile pulls src file from Android to dst using cat. src is absolute Android path.
-func pullARCFile(ctx context.Context, src, dst string) error {
-	testing.ContextLogf(ctx, "Pulling %q to %q", src, dst)
-	dstFile, err := os.Create(dst)
-	if err != nil {
-		return errors.Wrapf(err, "failed to create output: %q", dst)
-	}
-	defer dstFile.Close()
-
-	// adb pull would fail due to permissions limitation. Use bootstrapped cat to copy it.
-	cmd := arc.BootstrapCommand(ctx, "/system/bin/cat", src)
-	cmd.Stdout = dstFile
-	if err = cmd.Run(); err != nil {
-		return errors.Wrapf(err, "failed to pull %q from Android", src)
-	}
-	return nil
-}
-
-// waitForAndroidPath waits up to 1 minute or ctx deadline for the specified path to exist or not
+// waitForPath waits up to 1 minute or ctx deadline for the specified path to exist or not
 // exist depending on pathCondition c.
-func waitForAndroidPath(ctx context.Context, a *arc.ARC, path string, c pathCondition) error {
-	testing.ContextLogf(ctx, "Waiting for Android path %q", path)
+func waitForPath(ctx context.Context, path string, c pathCondition) error {
+	testing.ContextLogf(ctx, "Waiting for path %q", path)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var comm *testexec.Cmd
-		var msg string
-		if c == pathMustExist {
-			comm = a.Command(ctx, "test", "-e", path)
-			msg = "does not exist"
-		} else {
-			comm = a.Command(ctx, "test", "!", "-e", path)
-			msg = "exists"
+		_, err := os.Stat(path)
+		if err != nil && !os.IsNotExist(err) {
+			return testing.PollBreak(errors.Wrapf(err, "failed to stat %s", path))
 		}
-		if err := comm.Run(); err != nil {
-			return errors.Wrapf(err, "path %s still %s", path, msg)
+		exists := err == nil
+		if c == pathMustExist {
+			if !exists {
+				return errors.Wrapf(err, "path %s still does not exist", path)
+			}
+		} else {
+			if exists {
+				return errors.Wrapf(err, "path %s still exists", path)
+			}
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
