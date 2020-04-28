@@ -30,37 +30,37 @@ func MTBF063WifiEnable(ctx context.Context, s *testing.State) {
 	ctx, st := timing.Start(ctx, "mtbf063_wifi_enable")
 	cr := s.PreValue().(*chrome.Chrome)
 	defer st.End()
-	wifiConn, err := wifi.NewConn(ctx, cr, true, "", "")
+	wifiConn, mtbferr := wifi.NewConn(ctx, cr, true, "", "", "", "")
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	defer wifiConn.Close()
 	wifiConn.EnterWifiPage()
 
-	if wifiStatus, err := wifiConn.DisableWifi(); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if wifiStatus, mtbferr := wifiConn.DisableWifi(); mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if wifiStatus != "Off" {
-		s.Fatal("MTBF failed: ", mtbferrors.New(mtbferrors.WIFIEnableF, nil))
+		s.Fatal(mtbferrors.New(mtbferrors.WIFIEnableF, nil))
 	}
 
-	if wifiListDisplayed, err := wifiConn.CheckWifiListDisplayed(); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if wifiListDisplayed, mtbferr := wifiConn.CheckWifiListDisplayed(); mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if wifiListDisplayed {
-		s.Fatal("MTBF failed: ", mtbferrors.New(mtbferrors.WIFIDisableF, nil))
+		s.Fatal(mtbferrors.New(mtbferrors.WIFIDisableF, nil))
 
 	}
 
-	if wifiStatus, err := wifiConn.EnableWifi(); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if wifiStatus, mtbferr := wifiConn.EnableWifi(); mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if wifiStatus == "Off" {
-		s.Fatal("MTBF failed: ", mtbferrors.New(mtbferrors.WIFIEnableF, nil))
+		s.Fatal(mtbferrors.New(mtbferrors.WIFIEnableF, nil))
 	}
 
-	if wifiListDisplayed, err := wifiConn.CheckWifiListDisplayed(); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if wifiListDisplayed, mtbferr := wifiConn.CheckWifiListDisplayed(); mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if !wifiListDisplayed {
-		s.Fatal("MTBF failed: ", mtbferrors.New(mtbferrors.WIFIEnableF, nil))
+		s.Fatal(mtbferrors.New(mtbferrors.WIFIEnableF, nil))
 	}
 }

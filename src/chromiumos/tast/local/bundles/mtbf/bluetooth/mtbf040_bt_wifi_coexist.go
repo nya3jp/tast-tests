@@ -36,21 +36,21 @@ func MTBF040BTWifiCoexist(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	defer st.End()
 	var btConn *btconn.BtConn
-	wifiConn, err := wifi.NewConn(ctx, cr, true, "", "")
+	wifiConn, mtbferr := wifi.NewConn(ctx, cr, true, "", "", "", "")
 	a2dpDevName := utils.GetVar(ctx, s, "bt.a2dp.deviceName")
 	hidDevName := utils.GetVar(ctx, s, "bt.hid.deviceName")
 	s.Logf("MTBF040 a2dp, hid BT device names: %v, %v", a2dpDevName, hidDevName)
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	defer wifiConn.Close()
 
-	btConn, err = btconn.New(ctx, s, cr, wifiConn.CdpConn())
+	btConn, mtbferr = btconn.New(ctx, s, cr, wifiConn.CdpConn())
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	defer btConn.Close()
@@ -95,31 +95,54 @@ func MTBF040BTWifiCoexist(ctx context.Context, s *testing.State) {
 	enableBt(ctx, s, btConn, a2dpDevAddr, a2dpDevAddr)
 	s.Log("4.3 Verification: Make sure we can turn on BT and device scan works")
 	checkBtWorking(ctx, s)
+
+	testing.Sleep(ctx, time.Second*10)
+
+	btConsole, err := btconn.NewBtConsole(ctx, s)
+	if err != nil {
+		s.Fatal("MTBF failed: ", err)
+	}
+	defer btConsole.Close()
+
+	if connected, err := btConsole.IsConnected(a2dpDevAddr); err != nil {
+		s.Fatal("MTBF failed: ", err)
+	} else if !connected {
+		s.Fatal(mtbferrors.New(mtbferrors.BTConnectFailed, nil, a2dpDevAddr))
+	}
+
+	//info, err := btConsole.GetDeviceInfo(a2dpDevAddr)
+	//if err != nil {
+	//	s.Fatal("MTBF failed", err)
+	//}
+	//
+	//if strings.Contains(info, "Connected: no") {
+	//	s.Fatal(mtbferrors.New(mtbferrors.BTConnectFailed, nil, a2dpDevAddr))
+	//}
 }
 
 // disableBt disables Bluetooth functionality.
 func disableBt(s *testing.State, btConn *btconn.BtConn) {
 	s.Log("Try to disable BT")
-	err := btConn.SwitchOff()
+	mtbferr := btConn.SwitchOff()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 }
 
 // enableBt enables Bluetooth functionality and checks reconnecting BT devices.
 func enableBt(ctx context.Context, s *testing.State, btConn *btconn.BtConn, btDevAddr ...string) {
 	s.Log("Try to enable BT")
-	err := btConn.SwitchOn()
+	mtbferr := btConn.SwitchOn()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	btConsole, err := btconn.NewBtConsole(ctx, s)
+	btConsole, mtbferr := btconn.NewBtConsole(ctx, s)
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	defer btConsole.Close()
@@ -132,8 +155,8 @@ func enableBt(ctx context.Context, s *testing.State, btConn *btconn.BtConn, btDe
 			continue
 		}
 
-		if err = btConsole.Connect(devAddr); err != nil {
-			s.Fatal("MTBF failed: ", err)
+		if mtbferr = btConsole.Connect(devAddr); mtbferr != nil {
+			s.Fatal(mtbferr)
 		}
 	}
 }
@@ -141,10 +164,10 @@ func enableBt(ctx context.Context, s *testing.State, btConn *btconn.BtConn, btDe
 // disableWifi disables Wifi
 func disableWifi(s *testing.State, wifiConn *wifi.Conn) {
 	s.Log("Try to disable WiFi")
-	wifiStatus, err := wifiConn.DisableWifi()
+	wifiStatus, mtbferr := wifiConn.DisableWifi()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Wifi status after disabled: ", wifiStatus)
@@ -153,10 +176,10 @@ func disableWifi(s *testing.State, wifiConn *wifi.Conn) {
 // enableWifi enables Wifi
 func enableWifi(s *testing.State, wifiConn *wifi.Conn) {
 	s.Log("Try to enable WiFi")
-	wifiStatus, err := wifiConn.EnableWifi()
+	wifiStatus, mtbferr := wifiConn.EnableWifi()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Wifi status after enabled: ", wifiStatus)
@@ -164,21 +187,21 @@ func enableWifi(s *testing.State, wifiConn *wifi.Conn) {
 
 // getDeviceAddr retrieves Bt connection addresses for A2DP and HID
 func getDeviceAddr(ctx context.Context, s *testing.State, btConn *btconn.BtConn, a2dpDevName string, hidDevName string) (string, string) {
-	var err error
+	var mtbferr error
 	var a2dpAddr, hidAddr string
 
-	a2dpAddr, err = btConn.GetAddress(a2dpDevName)
+	a2dpAddr, mtbferr = btConn.GetAddress(a2dpDevName)
 
-	if err != nil {
+	if mtbferr != nil {
 		s.Log("Failed to get BT address for a2dp device: ", a2dpDevName)
-		s.Fatal("MTBF failed: ", err)
+		s.Fatal(mtbferr)
 	}
 
-	hidAddr, err = btConn.GetAddress(hidDevName)
+	hidAddr, mtbferr = btConn.GetAddress(hidDevName)
 
-	if err != nil {
+	if mtbferr != nil {
 		s.Log("Failed to get BT address for hid device: ", hidDevName)
-		s.Fatal("MTBF failed: ", err)
+		s.Fatal(mtbferr)
 	}
 
 	return a2dpAddr, hidAddr
@@ -186,16 +209,16 @@ func getDeviceAddr(ctx context.Context, s *testing.State, btConn *btconn.BtConn,
 
 // checkBtWorking checks if Bluetooth is working
 func checkBtWorking(ctx context.Context, s *testing.State) {
-	btConsole, err := btconn.NewBtConsole(ctx, s)
+	btConsole, mtbferr := btconn.NewBtConsole(ctx, s)
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	defer btConsole.Close()
 
-	if scanning, err := btConsole.CheckScanning(true); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if scanning, mtbferr := btConsole.CheckScanning(true); mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if !scanning {
 		s.Fatal(mtbferrors.New(mtbferrors.BTScan, nil))
 	}
@@ -204,24 +227,24 @@ func checkBtWorking(ctx context.Context, s *testing.State) {
 // checkWifiWorking checks if Wifi is working
 func checkWifiWorking(ctx context.Context, s *testing.State, wifiConn *wifi.Conn) {
 	var wifiListOk bool
-	err := wifiConn.EnterWifiPage()
+	mtbferr := wifiConn.EnterWifiPage()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	wifiListOk, err = wifiConn.CheckWifiListDisplayed()
+	wifiListOk, mtbferr = wifiConn.CheckWifiListDisplayed()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if !wifiListOk {
 		s.Fatal(mtbferrors.New(mtbferrors.WIFIAPlist, nil))
 	}
 
-	err = wifiConn.LeaveWifiPage()
+	mtbferr = wifiConn.LeaveWifiPage()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("WiFi is working")

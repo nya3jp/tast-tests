@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/bundles/mtbf/camera/cca"
-	"chromiumos/tast/local/bundles/mtbf/camera/common"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/vm"
@@ -39,7 +38,6 @@ func MTBF043SwitchCamera(ctx context.Context, s *testing.State) {
 	defer app.Close(ctx)
 
 	if err := app.WaitForVideoActive(ctx); err != nil {
-		common.Relogin(ctx, s)
 		s.Fatal(mtbferrors.New(mtbferrors.CmrInact, err))
 	}
 	s.Log("Preview started")

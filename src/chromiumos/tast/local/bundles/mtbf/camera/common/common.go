@@ -5,14 +5,10 @@
 package common
 
 import (
-	"context"
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 
-	"chromiumos/tast/common/mtbferrors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -52,16 +48,4 @@ func removeFilesByExtension(s *testing.State, prefix string, extension string) {
 			}
 		}
 	}
-}
-
-// Relogin chrome.
-func Relogin(ctx context.Context, s *testing.State) {
-	s.Log("Start to relogin")
-	testing.Sleep(ctx, 5*time.Second) // Sleep to make sure last login stable
-	_, err := chrome.NewForLoginReuse(ctx, s)
-	if err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.ChromeInit, err))
-	}
-
-	testing.Sleep(ctx, 5*time.Second)
 }

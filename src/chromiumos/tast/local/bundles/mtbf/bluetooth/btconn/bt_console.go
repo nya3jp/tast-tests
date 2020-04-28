@@ -39,10 +39,11 @@ const hspInfo = `UUID: Headset                   (00001108-0000-1000-8000-00805f
 
 // BtConsole represents the CDP connection to a bt_console page
 type BtConsole struct {
-	ctx  context.Context
-	conn *chrome.Conn
-	s    *testing.State
-	kb   *input.KeyboardEventWriter
+	ctx   context.Context
+	conn  *chrome.Conn
+	tconn *chrome.Conn
+	s     *testing.State
+	kb    *input.KeyboardEventWriter
 }
 
 // NewBtConsole creates a bluetooth console to control bluetooth devices
@@ -55,7 +56,14 @@ func NewBtConsole(ctx context.Context, s *testing.State) (*BtConsole, error) {
 		return nil, mtbferrors.New(mtbferrors.OSOpenCrosh, err)
 	}
 
+	tconn, err := cr.TestAPIConn(ctx)
+
+	if err != nil {
+		return nil, mtbferrors.New(mtbferrors.OSOpenCrosh, err)
+	}
+
 	c.conn = conn
+	c.tconn = tconn
 
 	kb, err := input.Keyboard(c.ctx)
 	if err != nil {
@@ -83,6 +91,8 @@ func NewBtConsole(ctx context.Context, s *testing.State) (*BtConsole, error) {
 
 // Close terminates bluetooth console
 func (c *BtConsole) Close() {
+	defer c.tconn.Close()
+	defer c.tconn.CloseTarget(c.ctx)
 	defer c.conn.Close()
 	defer c.conn.CloseTarget(c.ctx)
 	defer c.kb.Close()
@@ -93,12 +103,22 @@ func (c *BtConsole) scanOn() error {
 		return mtbferrors.New(mtbferrors.BTCnslCmd, err, "scan on")
 	}
 
+	//testing.Sleep(c.ctx, 1*time.Second)
+	//result, err := c.getTermTxt()
+	//if err != nil {
+	//	return err
+	//}
+
+	//if strings.Contains(result, "org.bluez.Error.NotReady") {
+	//	return mtbferrors.New(mtbferrors.BTServiceNotReady, nil)
+	//}
+
 	return nil
 }
 
 // IsA2dp checks bluetooth device type is A2DP or not
 func (c *BtConsole) IsA2dp(btAddress string) (bool, error) {
-	info, err := c.getDeviceInfo(btAddress)
+	info, err := c.GetDeviceInfo(btAddress)
 
 	if err != nil {
 		return false, err
@@ -109,7 +129,7 @@ func (c *BtConsole) IsA2dp(btAddress string) (bool, error) {
 
 // IsHsp checks bluttooth device type is HSP or not
 func (c *BtConsole) IsHsp(btAddress string) (bool, error) {
-	info, err := c.getDeviceInfo(btAddress)
+	info, err := c.GetDeviceInfo(btAddress)
 
 	if err != nil {
 		return false, err
@@ -118,7 +138,8 @@ func (c *BtConsole) IsHsp(btAddress string) (bool, error) {
 	return strings.Contains(info, hspInfo), nil
 }
 
-func (c *BtConsole) getDeviceInfo(address string) (string, error) {
+// GetDeviceInfo gets device information
+func (c *BtConsole) GetDeviceInfo(address string) (string, error) {
 	cmd := fmt.Sprintf("info %v", address)
 
 	if err := c.sendCommand(cmd); err != nil {
@@ -127,6 +148,27 @@ func (c *BtConsole) getDeviceInfo(address string) (string, error) {
 
 	testing.Sleep(c.ctx, 1*time.Second)
 	return c.getTermTxt()
+}
+
+// IsConnected check if the address is connected
+func (c *BtConsole) IsConnected(address string) (bool, error) {
+	js := fmt.Sprintf(`
+		new Promise(function(resolve, reject) {
+			chrome.bluetooth.getDevice(%q, function(info) {
+				if (info != null) {
+					resolve(info.connected);
+				} else {
+					reject(false);
+				}
+			});
+		})
+	`, address)
+
+	connected := false
+	if err := c.tconn.EvalPromise(c.ctx, js, &connected); err != nil {
+		return false, mtbferrors.New(mtbferrors.ChromeExeJs, err, js)
+	}
+	return connected, nil
 }
 
 func (c *BtConsole) scanOff() error {
@@ -233,6 +275,9 @@ func (c *BtConsole) CheckScanning(on bool) (bool, error) {
 	}
 
 	if on {
+		if strings.Contains(termTxt, "org.bluez.Error.NotReady") {
+			return false, mtbferrors.New(mtbferrors.BTServiceNotReady, nil)
+		}
 		return strings.Contains(termTxt, "Discovery started"), nil
 	}
 	return strings.Contains(termTxt, "Failed to start discovery"), nil

@@ -40,7 +40,6 @@ func MTBF044TakeSinglePicture(ctx context.Context, s *testing.State) {
 	defer common.RemoveJPGFiles(s)
 
 	if err := app.WaitForVideoActive(ctx); err != nil {
-		common.Relogin(ctx, s)
 		s.Fatal(mtbferrors.New(mtbferrors.CmrInact, err))
 	}
 

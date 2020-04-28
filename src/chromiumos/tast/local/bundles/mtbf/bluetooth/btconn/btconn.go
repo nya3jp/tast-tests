@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -192,7 +192,8 @@ func (c *BtConn) waitForBtStatus(on bool) error {
 
 		return err
 	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: jsTimeout}); err != nil {
-		return mtbferrors.New(mtbferrors.BTWaitStatus, err, targetStatus)
+		c.s.Log("Polling failed and got error: ", err)
+		return err
 	}
 
 	return nil

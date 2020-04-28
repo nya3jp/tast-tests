@@ -7,17 +7,11 @@ package wifi
 import (
 	"context"
 
-	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/bundles/mtbf/wifi/common"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/mtbf/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
-)
-
-const (
-	wifi80211nSsid = "wifi.802.11n.ssid"
-	wifi80211nPwd  = "wifi.802.11n.pwd"
 )
 
 func init() {
@@ -28,40 +22,41 @@ func init() {
 		Pre:          chrome.LoginReuse(),
 		Attr:         []string{"group:mainline"},
 		Contacts:     []string{"xliu@cienet.com"},
-		Vars:         []string{"wifi.802.11n.ssid", "wifi.802.11n.pwd", "dut.id", "detach.status.server"},
+		Vars: []string{
+			"wifi.802.11n.ssid",
+			"wifi.802.11n.pwd",
+			"dut.id",
+			"detach.status.server",
+			"allion.api.server",
+			"allion.deviceId"},
 	})
 }
 
 // MTBF062WifiConnect case verifies that the device can connect to a 802.11n router
 func MTBF062WifiConnect(ctx context.Context, s *testing.State) {
 	ctx, st := timing.Start(ctx, "mtbf062_test_wifi_connection_802.11n")
+	caseName := "wifi.MTBF062WifiConnect"
 	dutID := common.GetVar(ctx, s, "dut.id")
 	detachStatusSvr := common.GetVar(ctx, s, "detach.status.server")
-	common.InformStatusServlet(ctx, s, detachStatusSvr, "start", dutID)
-	defer common.InformStatusServlet(ctx, s, detachStatusSvr, "end", dutID)
-
+	allionServerURL := common.GetVar(ctx, s, "allion.api.server")
+	deviceID := common.GetVar(ctx, s, "allion.deviceId")
+	wifiSsid := common.GetVar(ctx, s, "wifi.802.11n.ssid")
+	wifiPwd := common.GetVar(ctx, s, "wifi.802.11n.pwd")
+	s.Logf("MTBF062WifiConnect - allionServerURL=%v, deviceID=%v ssid=%v", allionServerURL, deviceID, wifiSsid)
+	common.InformStatusServlet(ctx, s, detachStatusSvr, "start", dutID, caseName)
+	defer common.InformStatusServlet(ctx, s, detachStatusSvr, "end", dutID, caseName)
 	cr := s.PreValue().(*chrome.Chrome)
 	defer st.End()
-	wifiSsid, ok := s.Var(wifi80211nSsid)
-
-	if !ok {
-		s.Fatal("MTBF failed: ", mtbferrors.New(mtbferrors.OSVarRead, nil, wifi80211nSsid))
-	}
-
-	wifiPwd, ok := s.Var(wifi80211nPwd)
-
-	if !ok {
-		s.Fatal("MTBF failed: ", mtbferrors.New(mtbferrors.OSVarRead, nil, wifi80211nPwd))
-	}
-
 	s.Log("MTBF062WifiConnect - 802.11.n ssid: ", wifiSsid)
+	wifiConn, mtbferr := wifi.NewConn(ctx, cr, true, wifiSsid, wifiPwd, allionServerURL, deviceID)
 
-	wifiConn, err := wifi.NewConn(ctx, cr, true, wifiSsid, wifiPwd)
-
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	defer wifiConn.Close()
-	wifiConn.TestConnected()
+
+	if mtbferr := wifiConn.TestConnected(); mtbferr != nil {
+		s.Fatal(mtbferr)
+	}
 }

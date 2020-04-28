@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/chrome"
@@ -41,19 +42,25 @@ func MTBF019EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 
 	// Execute the test binary.
 	const exec = "jpeg_encode_accelerator_unittest"
-	if report, err := gtest.New(
+
+	test := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")),
 		gtest.ExtraArgs(
 			logging.ChromeVmoduleFlag(),
 			fmt.Sprintf("--yuv_filenames=%s:640x368", s.DataPath("bali_640x368_P420.yuv"))),
 		gtest.UID(int(sysutil.ChronosUID)),
-	).Run(ctx); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
-		if report != nil {
-			for _, name := range report.FailedTestNames() {
-				s.Error(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
+	)
+	const loopTimes int = 20
+	for i := 0; i < loopTimes; i++ {
+		if report, err := test.Run(ctx); err != nil {
+			s.Fatal(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
+			if report != nil {
+				for _, name := range report.FailedTestNames() {
+					s.Fatal(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
+				}
 			}
 		}
+		testing.Sleep(ctx, time.Second)
 	}
 }
