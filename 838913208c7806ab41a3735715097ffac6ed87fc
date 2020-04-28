@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b73f0a7_9e24e865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-28T16:27:19Z",
+      "side": 1,
+      "message": "nit: looks like measureStreamingPerformance is only called from measureUIBehaviors, and through app.RunThroughCameras it already got the \u0027facing\u0027 parameter already. Why not simply passing the facing parameter to measureStreamingPerformance function rather than getting here again?",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 34
+      },
+      "revId": "838913208c7806ab41a3735715097ffac6ed87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fd0049_c8cfdcbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-28T16:27:19Z",
+      "side": 1,
+      "message": "I feel like it is slightly better to set the basename (for isRecording) and then formatting, i.e.\n\n  var CPUMetricNameBase string\n  if isRecording {\n    CPUMetricNameBase \u003d \"cpu-usage-recording\"\n  } else {\n    CPUMetricNameBase \u003d \"cpu-usage-preview\"\n  }\n  perfValues.SEt(perf.Metric{\n    Name: fmt.Sprintf(\"%s-facing-%s\", CPUMetricNameBase, facing),\n    ...\n\nThis way, the format for the metric name is uniformly set.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "838913208c7806ab41a3735715097ffac6ed87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
