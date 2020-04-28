@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79ceb015_646853d1",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-28T08:16:27Z",
+      "side": 1,
+      "message": "nit: not related to CL. Please move into a separate CL.",
+      "revId": "38bd86ec3891c2283cb8b9e7f8671d3afec5ddf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
