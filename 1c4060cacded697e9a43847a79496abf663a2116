@@ -237,6 +237,30 @@
       "revId": "1c4060cacded697e9a43847a79496abf663a2116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17594136_1b61d214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-28T03:11:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure which change lands first, but feel free to disable linter and get your job done.",
+      "parentUuid": "eb4b088a_5d7f979a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
