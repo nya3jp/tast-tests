@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "145be93b_71029891",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-28T23:14:56Z",
+      "side": 1,
+      "message": "I love that idea. Done.",
+      "parentUuid": "4e991bdf_61d0a0c4",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "392f843f_f6a9571c",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7150d28_043424a2",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-28T23:14:56Z",
+      "side": 1,
+      "message": "Done. Used 1 for default and 4 for myPlatform, because we\u0027ll need to add another layer past myPlatform for models.",
+      "parentUuid": "392f843f_f6a9571c",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c0168e03_95962157",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-28T23:14:56Z",
+      "side": 1,
+      "message": "Yes: delay_reboot_to_ping. See lines 88-91 of this PS.",
+      "parentUuid": "e28693ba_4020b666",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c67d6ab_24c5e314",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67974103_a2d9a5df",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-28T23:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c67d6ab_24c5e314",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "fc4895d3_47087da4",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-28T23:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "057d486b_d90ef803",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2efe50e_3bac2673",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8eed0e_889ec8ba",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-28T23:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2efe50e_3bac2673",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
