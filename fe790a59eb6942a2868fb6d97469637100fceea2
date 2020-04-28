@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "22b564d4_2447640d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-28T16:02:12Z",
+      "side": 1,
+      "message": "Hope this could shed some light about the mysteric camera app icon missing bug as well...lol",
+      "revId": "fe790a59eb6942a2868fb6d97469637100fceea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448616b9_4eae2114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-28T16:02:12Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this?",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "fe790a59eb6942a2868fb6d97469637100fceea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c9f478e_f39cf256",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
         "patchSetId": 1
