@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a8dc908_b92da5d4",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "The context that is passed into this function is the testing context. It has already has a timeout of about 10 minutes, after which the entire unit test will be aborted. We need a different (shorter) timeout here.\n\nIf I understand `context` correctly, by chaining `WithTimeout` calls, I can build a sequence (potentially tree) of (sub)contexts, each with its own timeout, which will fire at different times. (Assuming each chained timeout is shorter than the one of its parent context.)\n\nJust to clarify: Do you suggest that the caller should set up a context with the correct timeout (i.e., removing the `timeout` parameter from this function)? This would take 2 extra lines of code per call site. (For calling `WithTimeout` and \"defer cancel()\".) So I would still need the same code, just multiple times at different locations.",
+      "parentUuid": "e6668915_36ed3f1d",
+      "range": {
+        "startLine": 18,
+        "startChar": 73,
+        "endLine": 18,
+        "endChar": 94
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fc289b5_7f4a19fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81211e2_cf8364b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc289b5_7f4a19fe",
+      "range": {
+        "startLine": 117,
+        "startChar": 60,
+        "endLine": 117,
+        "endChar": 77
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "bb805fdb_77b51f12",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Using `ctxutil.MaxTimeout` everywhere instead of `0` now. This simplifies `WaitForExpInLogcat` at bit.",
+      "parentUuid": "e6e2ba71_057a2651",
+      "range": {
+        "startLine": 147,
+        "startChar": 47,
+        "endLine": 147,
+        "endChar": 65
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8de29f2b_6e4ec40c",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -109,6 +181,24 @@
       "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e67558_0efa75c6",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de29f2b_6e4ec40c",
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -132,6 +222,30 @@
       "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a89f15d5_d37203a7",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632ecb4f_12ac4d54",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -182,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "497e46b4_20132901",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "If this option is passed via `NewTimelineOptions...`, the API would suggest that `Datasource` is an optional parameter, while it is in fact a required one.",
+      "parentUuid": "ed79ba74_56bba6f9",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e4e2169_9766d984",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -202,6 +340,30 @@
       "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9005ec62_4473aa79",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e4e2169_9766d984",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -228,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "d16a2b3e_cf5cb014",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "I played around with testing.Poll a little bit. It doesn\u0027t really fit here.\n\nWe can\u0027t pass the iteration count as an argument and would have to wrap everything in a second anonymous function.\n\nAlso, there\u0027s no good way of throwing an error from within the poll condition function. That function would have to snapshot metrics (which is already a bit of an abuse of the API), and if that fails, we should abort the test. But testing.Poll will continue polling until the condition function returns nil.",
+      "parentUuid": "a64d43a8_db428b79",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9fddf9b_18f79808",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -251,6 +437,30 @@
     },
     {
       "key": {
+        "uuid": "08a4fe22_7a7fdeb1",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9fddf9b_18f79808",
+      "range": {
+        "startLine": 159,
+        "startChar": 51,
+        "endLine": 159,
+        "endChar": 58
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07c232a7_ff96c745",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -271,6 +481,30 @@
       "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b374d5e_c361e1e1",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c232a7_ff96c745",
+      "range": {
+        "startLine": 160,
+        "startChar": 19,
+        "endLine": 160,
+        "endChar": 36
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -321,6 +555,30 @@
     },
     {
       "key": {
+        "uuid": "93b88f70_fa6962b6",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b75323_464c8e25",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 14
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad47d3db_4028ef99",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -344,6 +602,30 @@
     },
     {
       "key": {
+        "uuid": "34f89da1_0b254156",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done. Using `ctxutil.MaxTimeout`.",
+      "parentUuid": "ad47d3db_4028ef99",
+      "range": {
+        "startLine": 173,
+        "startChar": 61,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70704f27_57a56e73",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 4
@@ -358,6 +640,24 @@
       "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3795910_01a7e7f4",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "The logcat part is still not tested, but I added a test for `WaitForChannel` part.",
+      "parentUuid": "70704f27_57a56e73",
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -408,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "5ad0fbf3_4f4463d7",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "New API: CaptureWhile(WaitForChannel(channel)). The channel is created by a helper function in arc/logcat.go.\n\nIt is still a `chan error`, so that we can throw an error. (E.g., if there was a timeout waiting for logcat.)",
+      "parentUuid": "1c7ce984_9bccce2d",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1335c297_3875ee8c",
         "filename": "src/chromiumos/tast/local/perf/timeline_test.go",
         "patchSetId": 4
@@ -431,6 +755,30 @@
     },
     {
       "key": {
+        "uuid": "25a7b437_e5dbbb45",
+        "filename": "src/chromiumos/tast/local/perf/timeline_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1335c297_3875ee8c",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6dd9fa0_bedcfacc",
         "filename": "src/chromiumos/tast/local/perf/timeline_test.go",
         "patchSetId": 4
@@ -451,6 +799,30 @@
       "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93e6826_0368c496",
+        "filename": "src/chromiumos/tast/local/perf/timeline_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T04:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6dd9fa0_bedcfacc",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 43
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
