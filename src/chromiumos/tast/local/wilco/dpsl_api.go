@@ -45,7 +45,7 @@ func DPSLSendMessage(ctx context.Context, msgName string, in, out descriptor.Mes
 	body, err := m.MarshalToString(in)
 	if err != nil {
 		_, md := descriptor.ForMessage(in)
-		return errors.Wrapf(err, "unable to marshal %v to String", md.GetName())
+		return errors.Wrapf(err, "unable to marshal %v to string", md.GetName())
 	}
 
 	cmd := vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_requester",
@@ -106,7 +106,7 @@ func NewDPSLMessageReceiver(ctx context.Context, opts ...option) (*DPSLMessageRe
 		body, err := m.MarshalToString(rec.response)
 		if err != nil {
 			_, md := descriptor.ForMessage(rec.response)
-			return nil, errors.Wrapf(err, "unable to marshal %v to String", md.GetName())
+			return nil, errors.Wrapf(err, "unable to marshal %v to string", md.GetName())
 		}
 		rec.cmd = vm.CreateVSHCommand(ctx, WilcoVMCID, "diagnostics_dpsl_test_listener", "--ui_response_body="+body)
 	} else {
