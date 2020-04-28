@@ -39,7 +39,7 @@ type MeasurementOptions struct {
 }
 
 // MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions) error {
+func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string, options MeasurementOptions) (retErr error) {
 	// Time reserved for cleanup.
 	const cleanupTime = 10 * time.Second
 
@@ -76,6 +76,15 @@ func MeasurePerformance(ctx context.Context, cr *chrome.Chrome, scripts []string
 	}
 	defer perfEvents.Release(ctx)
 	defer app.Close(ctx)
+	defer (func() {
+		if err := app.CheckJSError(ctx, options.OutputDir); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed with javascript errors: ", err)
+			} else {
+				retErr = errors.Wrap(err, "failed with javascript errors")
+			}
+		}
+	})()
 
 	if options.ShouldMeasureUIBehaviors {
 		if err := measureUIBehaviors(ctx, cr, app, options.PerfValues); err != nil {
