@@ -75,14 +75,6 @@ func testLogin(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.AssureIsDir(env.UserCryptohomeLogDir); err != nil {
-		return err
-	}
-
-	if err := shillscript.AssureIsLinkTo("/run/shill/log", env.UserCryptohomeLogDir); err != nil {
-		return err
-	}
-
 	profiles, err := shillscript.GetProfileList(ctx)
 	if err != nil {
 		return err

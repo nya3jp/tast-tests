@@ -43,10 +43,6 @@ func testLogout(ctx context.Context, env *shillscript.TestEnv) error {
 		return errors.Wrapf(err, "failed creating the directory: %s", shillscript.GuestShillUserProfileDir)
 	}
 
-	if err := os.MkdirAll(shillscript.GuestShillUserLogDir, 0777); err != nil {
-		return errors.Wrapf(err, "failed creating the directory: %s", shillscript.GuestShillUserLogDir)
-	}
-
 	if err := shillscript.Touch("/run/state/logged-in"); err != nil {
 		return err
 	}
@@ -79,10 +75,6 @@ func testLogout(ctx context.Context, env *shillscript.TestEnv) error {
 	}
 
 	if err := shillscript.AssureNotExists(shillscript.GuestShillUserProfileDir); err != nil {
-		return err
-	}
-
-	if err := shillscript.AssureNotExists(shillscript.GuestShillUserLogDir); err != nil {
 		return err
 	}
 

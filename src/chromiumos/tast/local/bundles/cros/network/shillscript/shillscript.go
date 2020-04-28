@@ -33,7 +33,6 @@ const (
 	ShillUserProfilesDir       = "/run/shill/user_profiles"
 	ShillUserProfileChronosDir = "/run/shill/user_profiles/chronos"
 	GuestShillUserProfileDir   = "/run/shill/guest_user_profile/shill"
-	GuestShillUserLogDir       = "/run/shill/guest_user_profile/shill_logs"
 	ChronosProfileName         = "~chronos/shill"
 	ExpectedProfileName        = "/profile/chronos/shill"
 	DbusMonitorTimeout         = 5 * time.Second
@@ -45,11 +44,10 @@ const (
 
 // TestEnv struct has the variables that are used by the functions below.
 type TestEnv struct {
-	RootCryptohomeDir    string
-	UserCryptohomeLogDir string
-	ShillUserProfileDir  string
-	ShillUserProfile     string
-	CreatedDirectories   []string
+	RootCryptohomeDir   string
+	ShillUserProfileDir string
+	ShillUserProfile    string
+	CreatedDirectories  []string
 }
 
 // testFuncType takes a context.Context, TestEnv struct, and return an error.
@@ -92,9 +90,6 @@ func setUp(ctx context.Context, env *TestEnv) error {
 	}
 
 	env.RootCryptohomeDir = rootCryptDir
-
-	// Deduce the directory for memory log storage.
-	env.UserCryptohomeLogDir = filepath.Join(env.RootCryptohomeDir, "shill_logs")
 
 	// Just in case this hash actually exists, add these to the list of to-be-removed directories.
 	env.CreatedDirectories = append(env.CreatedDirectories, env.RootCryptohomeDir)
