@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35f8dca4_1ddf3c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/selinux_violation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-28T06:03:09Z",
+      "side": 1,
+      "message": "nit: Add a TODO to remove these once the underlying issue is fixed.",
+      "revId": "865e9f7248d7685c623eadb781ea14dc62b8e9a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
