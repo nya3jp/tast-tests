@@ -33,8 +33,13 @@ func init() {
 			Pre:               crash.ChromePreWithVerboseConsent(),
 			Val:               crash.RealConsent,
 		}, {
-			Name: "mock_consent",
-			Val:  crash.MockConsent,
+			Name:              "mock_consent",
+			Val:               crash.MockConsent,
+			ExtraSoftwareDeps: []string{"crash_selinux_stable"},
+		}, {
+			Name:              "mock_consent_unstable",
+			Val:               crash.MockConsent,
+			ExtraSoftwareDeps: []string{"crash_selinux_unstable"},
 		}},
 	})
 }
