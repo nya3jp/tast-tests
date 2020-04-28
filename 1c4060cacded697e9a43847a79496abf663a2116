@@ -213,6 +213,30 @@
       "revId": "1c4060cacded697e9a43847a79496abf663a2116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4b088a_5d7f979a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-04-28T03:10:39Z",
+      "side": 1,
+      "message": "I already made a change to this file to fix the linter error and got +2 from Cheng-Yu.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2139911",
+      "parentUuid": "62f9fed8_6cd37fa2",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
