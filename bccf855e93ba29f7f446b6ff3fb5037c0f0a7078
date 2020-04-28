@@ -137,6 +137,30 @@
       "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c1b363_570447d4",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-28T13:34:04Z",
+      "side": 1,
+      "message": "I switched to this API. It is less complex.",
+      "parentUuid": "29dd66f1_f121eb70",
+      "range": {
+        "startLine": 136,
+        "startChar": 19,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "bccf855e93ba29f7f446b6ff3fb5037c0f0a7078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
