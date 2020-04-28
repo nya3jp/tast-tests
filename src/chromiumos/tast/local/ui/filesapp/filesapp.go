@@ -27,7 +27,7 @@ const (
 	RoleStaticText = "staticText"
 
 	// expectedWindowName is the expected webroot window name of the Files App on launch.
-	expectedWindowName = "Files - My files"
+	expectedWindowName = "Files - *"
 )
 
 // FilesApp represents an instance of the Files App.
@@ -44,8 +44,8 @@ func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
 		return nil, err
 	}
 	// Wait for the Files App to be open.
-	if err := f.WaitForElement(ctx, RoleRootWebArea, expectedWindowName, time.Minute); err != nil {
-		return nil, errors.Wrapf(err, "failed to find element {role: %q, name: %q}", RoleRootWebArea, expectedWindowName)
+	if err := f.WaitForElementRegex(ctx, RoleRootWebArea, expectedWindowName, time.Minute); err != nil {
+		return nil, errors.Wrapf(err, "failed to find element {role: %q, name: /%s/}", RoleRootWebArea, expectedWindowName)
 	}
 	return f, nil
 }
@@ -66,6 +66,8 @@ func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 	if err := f.WaitForElement(ctx, RoleStaticText, "Downloads", 10*time.Second); err != nil {
 		return err
 	}
+	// sleep to make sure the the UI is stable before clicking
+	testing.Sleep(ctx, 2*time.Second)
 	// Click Downloads to open the folder.
 	if err := f.ClickElement(ctx, RoleStaticText, "Downloads"); err != nil {
 		return err
@@ -103,6 +105,35 @@ func (f *FilesApp) WaitForElement(ctx context.Context, role string, name string,
 				timeout = setTimeout(()=> {
 					clearInterval(interval);
 					reject('timed out waiting for node {role: %[1]q, name: %[2]q}');
+				}, %[3]d);
+			});
+		})()`, role, name, int64(timeout/time.Millisecond))
+
+	if err := f.tconn.EvalPromise(ctx, findQuery, nil); err != nil {
+		f.logRoleDebugInfo(ctx, role)
+		return err
+	}
+	return nil
+}
+
+// WaitForElementRegex waits for an element to exist. Element name is given in Regex string
+// If the timeout is reached, an error is returned.
+func (f *FilesApp) WaitForElementRegex(ctx context.Context, role string, name string, timeout time.Duration) error {
+	findQuery := fmt.Sprintf(
+		`(async () => {
+			const root = await tast.promisify(chrome.automation.getDesktop)();
+			await new Promise((resolve, reject) => {
+				let timeout;
+				const interval = setInterval(() => {
+					if (!!root.find({attributes: {role: %[1]q, name: /%[2]s/}})) {
+						clearInterval(interval);
+						clearTimeout(timeout)
+						resolve();
+					}
+				}, 10);
+				timeout = setTimeout(()=> {
+					clearInterval(interval);
+					reject('timed out waiting for node {role: %[1]q, name: /%[2]s/}');
 				}, %[3]d);
 			});
 		})()`, role, name, int64(timeout/time.Millisecond))
