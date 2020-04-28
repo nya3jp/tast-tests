@@ -155,12 +155,27 @@ var (
 		"#videoresolutionsettings input", "#view-video-resolution-settings input"}}
 )
 
+type errorLevel string
+
+const (
+	errorLevelWarning errorLevel = "WARNING"
+	errorLevelError              = "ERROR"
+	errorLevelFatal              = "FATAL"
+)
+
+type errorEvent struct {
+	ErrorType string     `json:"type"`
+	Level     errorLevel `json:"level"`
+	Stack     string     `json:"stack"`
+}
+
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
 	conn        *chrome.Conn
 	cr          *chrome.Chrome
 	scriptPaths []string
-	outDir      string // Output directory to save the execution result
+	outDir      string           // Output directory to save the execution result
+	errorEvents *chrome.JSObject // Error events reported from CCA javascript
 }
 
 // Resolution represents dimension of video or photo.
@@ -206,6 +221,20 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
 			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ID)
 	if err := tconn.Exec(ctx, prepareCCA); err != nil {
+		return nil, err
+	}
+
+	// Sets error callback.
+	errorEvents := &chrome.JSObject{}
+	if err := tconn.Call(ctx, errorEvents, `
+		(id) => {
+		  const errorEvents = [];
+		  const port = chrome.runtime.connect(id, {name: 'SET_ERROR_CONNECTION'});
+		  port.onMessage.addListener((event) => {
+		    errorEvents.push(event);
+		  });
+		  return errorEvents;
+		}`, ID); err != nil {
 		return nil, err
 	}
 
@@ -267,7 +296,7 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 	testing.ContextLog(ctx, "CCA launched")
 
-	app := &App{conn, cr, scriptPaths, outDir}
+	app := &App{conn, cr, scriptPaths, outDir, errorEvents}
 	waitForWindowReady := func() error {
 		if err := app.WaitForVideoActive(ctx); err != nil {
 			return err
@@ -300,12 +329,36 @@ func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
 	return cr.IsTargetAvailable(ctx, isMatchCCAPrefix)
 }
 
+// CheckErrorEvents checks error emitted by CCA error callback.
+func (a *App) CheckErrorEvents(ctx context.Context) error {
+	var events []errorEvent
+	if err := a.errorEvents.Call(ctx, &events, "function() { return this; }"); err != nil {
+		return err
+	}
+
+	errMsg := ""
+	for _, event := range events {
+		msg := fmt.Sprintf("%v: %v\n%v", event.Level, event.ErrorType, event.Stack)
+		if event.Level == errorLevelWarning {
+			testing.ContextLog(ctx, msg)
+		} else {
+			errMsg = errMsg + "\n" + msg
+		}
+	}
+	if len(errMsg) != 0 {
+		return errors.New(errMsg)
+	}
+	return nil
+}
+
 // Close closes the App and the associated connection.
 func (a *App) Close(ctx context.Context) error {
 	if a.conn == nil {
 		// It's already closed. Do nothing.
 		return nil
 	}
+
+	a.errorEvents.Release(ctx)
 
 	// TODO(b/144747002): Some tests (e.g. CCUIIntent) might trigger auto closing of CCA before
 	// calling Close(). We should handle it gracefully to get the coverage report for them.
