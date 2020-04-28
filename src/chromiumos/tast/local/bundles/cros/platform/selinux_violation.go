@@ -35,6 +35,12 @@ func init() {
 		}, {
 			Name: "mock_consent",
 			Val:  crash.MockConsent,
+			// TODO(b/155009503): Remove this and `mock_consent_unstable` when bug is resolved.
+			ExtraSoftwareDeps: []string{"crash_selinux_stable"},
+		}, {
+			Name:              "mock_consent_unstable",
+			Val:               crash.MockConsent,
+			ExtraSoftwareDeps: []string{"crash_selinux_unstable"},
 		}},
 	})
 }
