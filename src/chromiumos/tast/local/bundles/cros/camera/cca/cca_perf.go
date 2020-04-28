@@ -161,12 +161,17 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 		}
 	}
 
+	facing, err := app.GetFacing(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get facing")
+	}
+
 	testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
 	var CPUMetricName string
 	if isRecording {
-		CPUMetricName = "cpu_usage_recording"
+		CPUMetricName = fmt.Sprintf("%s-facing-%s", "cpu-usage-recording", facing)
 	} else {
-		CPUMetricName = "cpu_usage_preview"
+		CPUMetricName = fmt.Sprintf("%s-facing-%s", "cpu-usage-preview", facing)
 	}
 	perfValues.Set(perf.Metric{
 		Name:      CPUMetricName,
