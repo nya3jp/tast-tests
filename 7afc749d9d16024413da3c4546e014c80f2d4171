@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58de589c_edeb8c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-28T16:48:28Z",
+      "side": 1,
+      "message": "optional: similar to L209, do you want to run as a sub test? (i.e. run inside s.Run()?)",
+      "revId": "7afc749d9d16024413da3c4546e014c80f2d4171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7751ffb_d2619381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-28T16:48:28Z",
+      "side": 1,
+      "message": "optional: I\u0027d recommend to wrap the error similar to other return lines in this function to annotate more context to make debugging easier in case of failure.",
+      "revId": "7afc749d9d16024413da3c4546e014c80f2d4171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
