@@ -7,7 +7,6 @@ package cache
 import (
 	"context"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -17,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -108,12 +108,20 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	const (
 		gmsRoot      = "/data/user_de/0/com.google.android.gms"
 		appChimera   = "app_chimera"
-		tmpTarFile   = "/sdcard/Download/temp_gms_caches.tar"
 		packagesPath = "/data/system/packages_copy.xml"
 		gsfDatabase  = "/data/data/com.google.android.gsf/databases/gservices.db"
 	)
 
-	chimeraPath := filepath.Join(gmsRoot, appChimera)
+	rootCryptDir, err := cryptohome.SystemPath(chrome.DefaultUser)
+	if err != nil {
+		return errors.Wrap(err, "failed getting the cryptohome directory for the user")
+	}
+
+	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
+	androidDataDir := filepath.Join(rootCryptDir, "android-data")
+	gmsRootUnderHome := filepath.Join(androidDataDir, gmsRoot)
+
+	chimeraPath := filepath.Join(gmsRootUnderHome, appChimera)
 	for _, e := range []struct {
 		filename string
 		cond     pathCondition
@@ -123,39 +131,24 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 		{"stored_modulesets.pb", pathMustExist},
 		{"current_modules_init.pb", pathMustNotExist},
 	} {
-		if err := waitForAndroidPath(ctx, a, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
+		if err := waitForPath(ctx, filepath.Join(chimeraPath, e.filename), e.cond); err != nil {
 			return err
 		}
 	}
 
-	// app_chimera is accessible via ADB in userdebug/eng but not in user builds.
-	// Use agnostic way by archiving content to tar to the public space using bootstrap
-	// command 'android-sh' which has enough permissions to do this.
-	// TODO(b/148832630): get rid of BootstrapCommand.
-	testing.ContextLogf(ctx, "Compressing GMS Core caches to %q", tmpTarFile)
-	out, err := arc.BootstrapCommand(
-		ctx, "/system/bin/tar", "-cvpf", tmpTarFile, "-C", gmsRoot, appChimera).Output(testexec.DumpLogOnError)
-	// Cleanup temp tar in any case.
-	defer arc.BootstrapCommand(ctx, "/system/bin/rm", "-f", tmpTarFile).Run()
-	if err != nil {
-		return errors.Wrapf(err, "compression: %s failed: %q", chimeraPath, string(out))
-	}
-
-	// Pull archive to the host and unpack it.
 	targetTar := filepath.Join(outputDir, GMSCoreCacheArchive)
-	testing.ContextLogf(ctx, "Pulling GMS Core caches to %q", targetTar)
-	if err := a.PullFile(ctx, tmpTarFile, targetTar); err != nil {
-		return errors.Wrapf(err, "failed to pull %q from Android to %q", tmpTarFile, targetTar)
+
+	testing.ContextLogf(ctx, "Compressing GMS Core caches to %q", targetTar)
+	cmd := testexec.CommandContext(ctx, "/bin/tar", "-cvpf", targetTar, "-C", gmsRootUnderHome, appChimera)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to compress GMS Core caches")
 	}
 
-	// Use BootstrapCommand to avoid permission limitation accessing chimera path via adb.
 	layoutPath := filepath.Join(outputDir, LayoutTxt)
 	testing.ContextLogf(ctx, "Capturing GMS Core caches layout to %q", layoutPath)
-	out, err = arc.BootstrapCommand(
-		ctx, "/system/bin/find", "-L", chimeraPath, "-exec", "stat", "-Lc", "%n:%a:%b", "{}", "+").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return errors.Wrapf(err, "failed to gather app_chimera file attributes: %q", string(out))
-	}
+
+	out, err := testexec.CommandContext(ctx, "/usr/bin/find", "-L", chimeraPath, "-exec", "stat", "-Lc", "%n:%a:%b", "{}", "+").Output()
 
 	lines := strings.Split(string(out), "\n")
 	sort.Strings(lines)
@@ -165,13 +158,16 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	}
 
 	// Packages cache
+	src := filepath.Join(androidDataDir, packagesPath)
 	packagesPathLocal := filepath.Join(outputDir, PackagesCacheXML)
-	if err := pullARCFile(ctx, packagesPath, packagesPathLocal); err != nil {
+	if err := testexec.CommandContext(ctx, "/bin/cp", src, packagesPathLocal).Run(); err != nil {
 		return err
 	}
 
 	// GSF cache
-	if err := pullARCFile(ctx, gsfDatabase, filepath.Join(outputDir, GSFCache)); err != nil {
+	src = filepath.Join(androidDataDir, gsfDatabase)
+	dst := filepath.Join(outputDir, GSFCache)
+	if err := testexec.CommandContext(ctx, "/bin/cp", src, dst).Run(); err != nil {
 		return err
 	}
 
@@ -207,36 +203,18 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	return nil
 }
 
-// pullARCFile pulls src file from Android to dst using cat. src is absolute Android path.
-func pullARCFile(ctx context.Context, src, dst string) error {
-	testing.ContextLogf(ctx, "Pulling %q to %q", src, dst)
-	dstFile, err := os.Create(dst)
-	if err != nil {
-		return errors.Wrapf(err, "failed to create output: %q", dst)
-	}
-	defer dstFile.Close()
-
-	// adb pull would fail due to permissions limitation. Use bootstrapped cat to copy it.
-	cmd := arc.BootstrapCommand(ctx, "/system/bin/cat", src)
-	cmd.Stdout = dstFile
-	if err = cmd.Run(); err != nil {
-		return errors.Wrapf(err, "failed to pull %q from Android", src)
-	}
-	return nil
-}
-
-// waitForAndroidPath waits up to 1 minute or ctx deadline for the specified path to exist or not
+// waitForPath waits up to 1 minute or ctx deadline for the specified path to exist or not
 // exist depending on pathCondition c.
-func waitForAndroidPath(ctx context.Context, a *arc.ARC, path string, c pathCondition) error {
-	testing.ContextLogf(ctx, "Waiting for Android path %q", path)
+func waitForPath(ctx context.Context, path string, c pathCondition) error {
+	testing.ContextLogf(ctx, "Waiting for path %q", path)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var comm *testexec.Cmd
 		var msg string
 		if c == pathMustExist {
-			comm = a.Command(ctx, "test", "-e", path)
+			comm = testexec.CommandContext(ctx, "test", "-e", path)
 			msg = "does not exist"
 		} else {
-			comm = a.Command(ctx, "test", "!", "-e", path)
+			comm = testexec.CommandContext(ctx, "test", "!", "-e", path)
 			msg = "exists"
 		}
 		if err := comm.Run(); err != nil {
