@@ -20,7 +20,7 @@ func IsPlaying(ctx context.Context, conn *chrome.Conn, timeout time.Duration) (e
 		return
 	}
 	if err = testing.Sleep(ctx, timeout); err != nil {
-		return
+		return mtbferrors.New(mtbferrors.ChromeSleep, err)
 	}
 	if currentTime, err = GetAudioPlayingTime(ctx, conn); err != nil {
 		return
@@ -39,13 +39,13 @@ func IsPausing(ctx context.Context, conn *chrome.Conn, timeout time.Duration) (e
 		return
 	}
 	if err = testing.Sleep(ctx, timeout); err != nil {
-		return
+		return mtbferrors.New(mtbferrors.ChromeSleep, err)
 	}
 	if currentTime, err = GetAudioPlayingTime(ctx, conn); err != nil {
 		return
 	}
 	if currentTime > previousTime {
-		return mtbferrors.New(mtbferrors.AudioPause, nil, currentTime, previousTime, timeout.Seconds())
+		return mtbferrors.New(mtbferrors.AudioPause, nil, timeout.Seconds(), currentTime, previousTime)
 	}
 
 	return nil

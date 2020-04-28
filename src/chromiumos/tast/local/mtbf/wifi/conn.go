@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/allion"
 	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -99,21 +100,26 @@ type Conn struct {
 	wifiGUID     string
 	ethernetGUID string
 	cdpConn      *chrome.Conn
+	allionSvrURL string
+	deviceID     string
 }
 
-// Close closes the WiFi setting page
+// Close closes the WiFi setting page.
 func (c *Conn) Close() {
 	testing.ContextLog(c.ctx, "WifiConn Close() called")
 	defer c.cdpConn.Close()
 	defer c.cdpConn.CloseTarget(c.ctx)
 }
 
-// NewConn creates a Conn object and open WiFi setting page
-func NewConn(ctx context.Context, cr *chrome.Chrome, enableWifi bool, apName string, wifiPwd string) (*Conn, error) {
-	c := &Conn{ctx: ctx,
-		cr:         cr,
-		wifiApName: apName,
-		wifiApPwd:  wifiPwd,
+// NewConn creates a Conn object and open WiFi setting page.
+func NewConn(ctx context.Context, cr *chrome.Chrome, enableWifi bool, apName string, wifiPwd string, allionSvrURL string, deviceID string) (*Conn, error) {
+	c := &Conn{
+		ctx:          ctx,
+		cr:           cr,
+		wifiApName:   apName,
+		wifiApPwd:    wifiPwd,
+		allionSvrURL: allionSvrURL,
+		deviceID:     deviceID,
 	}
 	var err error
 
@@ -148,7 +154,7 @@ func NewConn(ctx context.Context, cr *chrome.Chrome, enableWifi bool, apName str
 	return c, nil
 }
 
-// ConnectToAp connects to the WiFi AP
+// ConnectToAp connects to the WiFi AP.
 func (c *Conn) ConnectToAp() error {
 	testing.ContextLog(c.ctx, "ConnectToAp() called")
 	if wifiStatus, err := c.getWifiStatus(); err != nil {
@@ -284,7 +290,7 @@ func (c *Conn) connectToWifiAp() error {
 	return nil
 }
 
-// TestConnected tests if the WiFi AP can be connected and the internet can be accessed
+// TestConnected tests if the WiFi AP can be connected and the internet can be accessed.
 func (c *Conn) TestConnected() error {
 	var wifiConnStatus string
 	var err error
@@ -300,12 +306,19 @@ func (c *Conn) TestConnected() error {
 		c.forgetNic(c.wifiGUID)
 	}
 
-	c.connectToWifiAp()
+	err = c.connectToWifiAp()
+	if err != nil {
+		testing.ContextLog(ctx, "Cannot connect wifi: ", err)
+		return err
+	}
+
 	testing.ContextLog(ctx, "Ethernet GUID: ", c.ethernetGUID)
-	c.DisconnectEthernet()
+	allionAPI := allion.NewRestAPI(ctx, c.allionSvrURL)
+	//c.DisconnectEthernet()
+	allionAPI.DisableEthernet(c.deviceID)
 
 	// defer() is not called if s.Fatal() is called. Why??
-	defer c.ConnectEthernet()
+	defer allionAPI.EnableEthernetWithRetry(c.deviceID, 3)
 	netOk, err = c.checkNetwork()
 
 	if err != nil {
@@ -321,14 +334,14 @@ func (c *Conn) TestConnected() error {
 	return nil
 }
 
-// DisconnectEthernet disconnects from ethernet
+// DisconnectEthernet disconnects from ethernet.
 func (c *Conn) DisconnectEthernet() {
 	testing.ContextLog(c.ctx, "Disconnect ethernet")
 	//commented out for debugging
 	//c.disconnectNic(c.ethernetGUID)
 }
 
-// ConnectEthernet connects to ethernent
+// ConnectEthernet connects to ethernent.
 func (c *Conn) ConnectEthernet() {
 	testing.ContextLog(c.ctx, "Connect ethernet")
 	//commented out for debugging
@@ -383,7 +396,7 @@ func checkWifiEnabled(ctx context.Context, conn *chrome.Conn) error {
 	return nil
 }
 
-// CheckWifi check if WiFi is enabled or disabled
+// CheckWifi check if WiFi is enabled or disabled.
 func (c *Conn) CheckWifi(shouldEnabled bool) (string, error) {
 	if shouldEnabled {
 		return pollWifiStatus(c.ctx, c.cdpConn)
@@ -461,7 +474,7 @@ func (c *Conn) clickWifi() error {
 	return nil
 }
 
-// EnterWifiPage enters WiFi setting page
+// EnterWifiPage enters WiFi setting page.
 func (c *Conn) EnterWifiPage() error {
 	testing.ContextLog(c.ctx, "EnterWifiPage(). enterWifiPageJs: ", enterWifiPageJs)
 	testing.Sleep(c.ctx, 3*time.Second)
@@ -474,7 +487,7 @@ func (c *Conn) EnterWifiPage() error {
 	return nil
 }
 
-// LeaveWifiPage leaves WiFi setting page
+// LeaveWifiPage leaves WiFi setting page.
 func (c *Conn) LeaveWifiPage() error {
 	testing.ContextLog(c.ctx, "LeaveWifiPage(). backJs: ", backJs)
 
@@ -485,7 +498,7 @@ func (c *Conn) LeaveWifiPage() error {
 	return nil
 }
 
-// DisableWifi disables WiFi network
+// DisableWifi disables WiFi network.
 func (c *Conn) DisableWifi() (string, error) {
 	testing.ContextLog(c.ctx, "DisableWifi() entered")
 	wifiStatus, err := getWifiSettingStatus(c.ctx, c.cdpConn)
@@ -509,7 +522,7 @@ func (c *Conn) DisableWifi() (string, error) {
 	return wifiStatus, nil
 }
 
-// EnableWifi enables WiFi network
+// EnableWifi enables WiFi network.
 func (c *Conn) EnableWifi() (string, error) {
 	testing.ContextLog(c.ctx, "EnableWifi() entered")
 	wifiStatus, err := getWifiSettingStatus(c.ctx, c.cdpConn)
@@ -589,7 +602,8 @@ func (c *Conn) pollWifiStatus() (string, error) {
 
 		return err
 	}, &testing.PollOptions{Interval: 3 * time.Second, Timeout: jsTimeout}); err != nil {
-		return "", mtbferrors.New(mtbferrors.WIFIGetStat, err, c.wifiApName)
+		testing.ContextLogf(c.ctx, "pollWifiStatus() WiFi failed. ssid=%v err=%v", c.wifiApName, err)
+		return "", err
 	}
 
 	testing.ContextLog(c.ctx, "pollWifiStatus() - myWifi.connectionState: "+wifiStatus)
@@ -634,6 +648,41 @@ func (c *Conn) getWifiStatus() (string, error) {
 	conn.Eval(ctx, "myWifi.ConnectionState", &wifiStatus)
 	testing.ContextLog(ctx, "wifiStatus: ", wifiStatus)
 	return wifiStatus, nil
+}
+
+// ForgetAllWiFiAP forget all WiFi settings.
+func (c *Conn) ForgetAllWiFiAP() error {
+	jsForgetAllWiFi := `
+		var allForgot = false;
+
+		function forgetWiFiAP(nic) {
+			//console.log("Diconnect and forget: ", nic)
+			chrome.networkingPrivate.startDisconnect(nic.GUID);
+			chrome.networkingPrivate.forgetNetwork(nic.GUID);
+		}
+
+		chrome.networkingPrivate.getNetworks({"networkType":"WiFi", "configured":true},
+			function (networks) {
+				myNic = networks.forEach(forgetWiFiAP);
+				allForgot = true;
+			}
+		)
+	`
+
+	testing.ContextLog(c.ctx, "jsForgetAllWiFi: ", jsForgetAllWiFi)
+
+	if err := c.cdpConn.Exec(c.ctx, jsForgetAllWiFi); err != nil {
+		testing.ContextLog(c.ctx, "Failed to call jsForgetAllWiFi: ", err)
+		return mtbferrors.New(mtbferrors.WIFIForgetAll, err)
+	}
+
+	if err := c.cdpConn.WaitForExprWithTimeout(c.ctx, " allForgot = true ", jsTimeout); err != nil {
+		return (mtbferrors.New(mtbferrors.WIFIForgetAll, err))
+	}
+
+	// Sleep 5 seconds to ensure all WiFi AP are fogotten
+	testing.Sleep(c.ctx, 5*time.Second)
+	return nil
 }
 
 func (c *Conn) getNicGUID(isWifi bool) (string, error) {
@@ -715,24 +764,13 @@ func (c *Conn) forgetNic(guid string) error {
 	return nil
 }
 
-//func (c *WifiConn) connectNic(guid string) {
-//	jsConnect := `chrome.networkingPrivate.startConnect("%v")`
-//	jsConnect = fmt.Sprintf(jsConnect, guid)
-//
-//	testing.ContextLog(c.ctx, "jsConnect: ", jsConnect)
-//
-//	if err := c.cdpConn.Exec(c.ctx, jsConnect); err != nil {
-//		c.s.Fatal(mtbferrors.New(mtbferrors.WIFIFatal, err, c.wifiApName))
-//	}
-//}
-
 func (c *Conn) checkNetwork() (bool, error) {
-	youtubeURL := "https://www.youtube.com"
+	testURL := "https://www.google.com"
 
-	testing.ContextLog(c.ctx, "Go to youtube URL: ", youtubeURL)
-	conn, err := mtbfchrome.NewConn(c.ctx, c.cr, youtubeURL)
+	testing.ContextLog(c.ctx, "Go to test URL: ", testURL)
+	conn, err := mtbfchrome.NewConn(c.ctx, c.cr, testURL)
 	if err != nil {
-		testing.ContextLog(c.ctx, "Can't open chrom: ", err)
+		testing.ContextLog(c.ctx, "Can't open chrome: ", err)
 		return false, err
 	}
 
@@ -740,8 +778,8 @@ func (c *Conn) checkNetwork() (bool, error) {
 	defer conn.CloseTarget(c.ctx)
 
 	if err := conn.WaitForExprWithTimeout(c.ctx, "document.readyState === 'complete'", jsTimeout); err != nil {
-		testing.ContextLog(c.ctx, "Youtube dom document is not ready")
-		return false, nil
+		testing.ContextLog(c.ctx, "Testing URL dom document is not ready")
+		return false, err
 	}
 
 	return true, nil
