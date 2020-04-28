@@ -102,11 +102,11 @@ func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, perfVa
 	}
 
 	return app.RunThroughCameras(ctx, func(facing Facing) error {
-		if err := measureStreamingPerformance(ctx, cr, app, perfValues, false /* isRecording */); err != nil {
+		if err := measureStreamingPerformance(ctx, cr, app, perfValues, facing, false /* isRecording */); err != nil {
 			return errors.Wrap(err, "failed to measure preview performance")
 		}
 
-		if err := measureStreamingPerformance(ctx, cr, app, perfValues, true /* isRecording */); err != nil {
+		if err := measureStreamingPerformance(ctx, cr, app, perfValues, facing, true /* isRecording */); err != nil {
 			return errors.Wrap(err, "failed to measure performance for recording video")
 		}
 
@@ -119,7 +119,7 @@ func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, perfVa
 }
 
 // measureStreamingPerformance measures the CPU usage when streaming.
-func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *App, perfValues *perf.Values, isRecording bool) error {
+func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *App, perfValues *perf.Values, facing Facing, isRecording bool) error {
 	// Duration of the interval during which CPU usage will be measured.
 	const measureDuration = 20 * time.Second
 
@@ -162,14 +162,14 @@ func measureStreamingPerformance(ctx context.Context, cr *chrome.Chrome, app *Ap
 	}
 
 	testing.ContextLog(ctx, "Measured cpu usage: ", cpuUsage)
-	var CPUMetricName string
+	var CPUMetricNameBase string
 	if isRecording {
-		CPUMetricName = "cpu_usage_recording"
+		CPUMetricNameBase = "cpu_usage_recording"
 	} else {
-		CPUMetricName = "cpu_usage_preview"
+		CPUMetricNameBase = "cpu_usage_preview"
 	}
 	perfValues.Set(perf.Metric{
-		Name:      CPUMetricName,
+		Name:      fmt.Sprintf("%s-facing-%s", CPUMetricNameBase, facing),
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsage)
