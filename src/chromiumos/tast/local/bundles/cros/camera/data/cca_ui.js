@@ -87,6 +87,10 @@ window.Tast = class {
     return video && video.srcObject && video.srcObject.active;
   }
 
+  static isMinimized() {
+    return chrome.app.window.current().isMinimized();
+  }
+
   static async restoreWindow() {
     await changeWindowState(
         (w) => !w.isMaximized() && !w.isMinimized() && !w.isFullscreen(),

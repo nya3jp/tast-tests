@@ -365,6 +365,13 @@ func (a *App) checkVideoState(ctx context.Context, active bool, duration time.Du
 	return nil
 }
 
+// IsWindowMinimized returns true if the current app window is minimized.
+func (a *App) IsWindowMinimized(ctx context.Context) (bool, error) {
+	var isMinimized bool
+	err := a.conn.Eval(ctx, "Tast.isMinimized()", &isMinimized)
+	return isMinimized, err
+}
+
 // WaitForVideoActive waits for the video to become active for 1 second.
 func (a *App) WaitForVideoActive(ctx context.Context) error {
 	return a.checkVideoState(ctx, true, time.Second)
