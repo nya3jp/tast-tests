@@ -189,6 +189,30 @@
       "revId": "1c4060cacded697e9a43847a79496abf663a2116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f9fed8_6cd37fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/disk_io_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-28T01:59:53Z",
+      "side": 1,
+      "message": "+1 to disable lint, rather than working around with two init.\n\nCC: oka@, who may have better alternative.",
+      "parentUuid": "5c3cbd28_b94a0c59",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "1c4060cacded697e9a43847a79496abf663a2116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
