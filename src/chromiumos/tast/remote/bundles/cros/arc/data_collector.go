@@ -243,7 +243,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
-	genUreadaheadPack()
+	if false {
+		genUreadaheadPack() // DO NOT SUBMIT
+	}
 
 	genGmsCoreCache := func() {
 		service := arc.NewGmsCoreCacheServiceClient(cl.Conn)
