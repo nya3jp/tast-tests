@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e991bdf_61d0a0c4",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-28T00:13:11Z",
+      "side": 1,
+      "message": "Lumping things together, can simplify to something like this:\nfunc doLoad(cfg *Config) {\n  for b \u003d loadBytes(...);; {\n    defer json.Unmarshal(b, cfg)\n    json.Unmarshal(b, \u0026tmpCfg)\n    p \u003d getParent(\u0026tmpCfg)\n    if p !\u003d \"\" {\n      b \u003d loadBytes(...)\n    } else {\n      break\n    }\n  }\n}",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "392f843f_f6a9571c",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-28T00:13:11Z",
+      "side": 1,
+      "message": "nit, might want to declare and use constants such as default_value :\u003d 1, parent_value :\u003d 2, etc... to make tests easier to understand.  Also it seems logical for values from default down to myplatform to be 1, 2, 3, 4 or 4, 3, 2, 1 instead of 1, 4, 3, 2.",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e28693ba_4020b666",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-28T00:13:11Z",
+      "side": 1,
+      "message": "Is there a test for key in myplatform that is only in default?",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c67d6ab_24c5e314",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-28T00:13:11Z",
+      "side": 1,
+      "message": "Need a test for mygrandparent? (since it doesn\u0027t have a parent)",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057d486b_d90ef803",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-28T00:13:11Z",
+      "side": 1,
+      "message": "wrong want value, see nit above to avoid this.",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2efe50e_3bac2673",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-28T00:13:11Z",
+      "side": 1,
+      "message": "ditto wrong want value.",
+      "revId": "98709dfd44159e079540ac576558f9a9e50b4949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
