@@ -33,6 +33,11 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer app.Close(ctx)
+	defer (func() {
+		if err := app.CheckErrorEvents(ctx); err != nil {
+			s.Error("Failed with javascript errors events: ", err)
+		}
+	})()
 
 	if err := app.CheckVisible(ctx, cca.MirrorButton, true); err != nil {
 		s.Error("Failed to check mirroring button visibility state: ", err)

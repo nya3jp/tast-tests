@@ -36,6 +36,11 @@ func CCAUIExpert(ctx context.Context, s *testing.State) {
 	defer app.Close(ctx)
 	defer app.RemoveCacheData(ctx,
 		[]string{"expert", "showMetadata", "saveMetadata"})
+	defer (func() {
+		if err := app.CheckErrorEvents(ctx); err != nil {
+			s.Error("Failed with javascript errors events: ", err)
+		}
+	})()
 
 	for i, action := range []struct {
 		Name    string
