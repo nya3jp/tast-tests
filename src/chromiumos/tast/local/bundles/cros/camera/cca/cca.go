@@ -82,7 +82,10 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
-	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
+	// BackgroundURL is the URL of CCA background page.
+	BackgroundURL = fmt.Sprintf("chrome-extension://%s/views/background.html", ID)
+
+	ccaURLPrefix = fmt.Sprintf("chrome-extension://%s/views/main.html", ID)
 )
 
 // Orientation is the screen orientation from JavaScript window.screen.orientation.type.
@@ -220,12 +223,16 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	if err := tconn.Call(ctx, nil, `
 		(id) => {
 		  let resolveConnect;
+		  let resolveClose;
 		  const errors = [];
+		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
+
 		  window.CCATestConnection = {
 		    connect: new Promise((resolve) => { resolveConnect = resolve; }),
 		    errors,
+		    close: new Promise((resolve) => { resolveClose = resolve; }),
+		    onReady: () => port.postMessage({name: 'ready'}),
 		  };
-		  const port = chrome.runtime.connect(id, {name: 'SET_TEST_CONNECTION'});
 		  port.onMessage.addListener((msg) => {
 		    switch(msg.name) {
 		      case 'connect':
@@ -233,6 +240,9 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 		        return;
 		      case 'error':
 		        errors.push(msg.errorInfo);
+		        return;
+		      case 'close':
+		        resolveClose();
 		        return;
 		    }
 		  });
@@ -266,6 +276,10 @@ func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, outDir s
 	}
 
 	conn.StartProfiling(ctx)
+
+	if err := tconn.Eval(ctx, `window.CCATestConnection.onReady()`, nil); err != nil {
+		return nil, err
+	}
 
 	// Let CCA perform some one-time initialization after launched.  Otherwise
 	// the first CheckVideoActive() might timed out because it's still
@@ -392,12 +406,11 @@ func (a *App) Close(ctx context.Context) error {
 
 	// TODO(b/144747002): Some tests (e.g. CCUIIntent) might trigger auto closing of CCA before
 	// calling Close(). We should handle it gracefully to get the coverage report for them.
-	err := a.OutputCodeCoverage(ctx)
-	if err != nil {
-		return err
+	var firstErr error
+	if err := outputCodeCoverage(ctx, a.conn, a.outDir); err != nil {
+		firstErr = err
 	}
 
-	var firstErr error
 	if err := a.conn.CloseTarget(ctx); err != nil {
 		firstErr = errors.Wrap(err, "failed to CloseTarget()")
 	}
@@ -405,7 +418,21 @@ func (a *App) Close(ctx context.Context) error {
 		firstErr = errors.Wrap(err, "failed to Conn.Close()")
 	}
 	a.conn = nil
-	testing.ContextLog(ctx, "CCA closed")
+
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		firstErr = errors.Wrap(err, "failed to get test api when closing")
+	}
+
+	if err := tconn.Eval(ctx, "window.CCATestConnection.close", nil); err != nil {
+		firstErr = errors.Wrap(err, "failed to wait for the closing of foreground page")
+	}
+
+	if firstErr != nil {
+		testing.ContextLogf(ctx, "Close CCA with error: %s", firstErr)
+	} else {
+		testing.ContextLog(ctx, "CCA closed")
+	}
 	return firstErr
 }
 
@@ -1135,10 +1162,10 @@ func (a *App) CheckMojoConnection(ctx context.Context) error {
 	return a.conn.EvalPromise(ctx, code, nil)
 }
 
-// OutputCodeCoverage stops the profiling and output the code coverage information to the output
+// outputCodeCoverage stops the profiling and output the code coverage information to the output
 // directory.
-func (a *App) OutputCodeCoverage(ctx context.Context) error {
-	reply, err := a.conn.StopProfiling(ctx)
+func outputCodeCoverage(ctx context.Context, conn *chrome.Conn, outDir string) error {
+	reply, err := conn.StopProfiling(ctx)
 	if err != nil {
 		return err
 	}
@@ -1148,7 +1175,7 @@ func (a *App) OutputCodeCoverage(ctx context.Context) error {
 		return err
 	}
 
-	coverageDirPath := filepath.Join(a.outDir, fmt.Sprintf("coverage"))
+	coverageDirPath := filepath.Join(outDir, fmt.Sprintf("coverage"))
 	if _, err := os.Stat(coverageDirPath); os.IsNotExist(err) {
 		if err := os.MkdirAll(coverageDirPath, 0755); err != nil {
 			return err
