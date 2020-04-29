@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cd82e8d_77ed1d01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-29T13:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47086dc8_8af3686e",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "33e936d9d87836207d95291e3a2fe57fa9f9226e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09746b6d_50e96511",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "33e936d9d87836207d95291e3a2fe57fa9f9226e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4cca23_d0539d01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-29T13:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09746b6d_50e96511",
+      "revId": "33e936d9d87836207d95291e3a2fe57fa9f9226e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
