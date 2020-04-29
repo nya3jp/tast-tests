@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1580f0_310e13a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T19:08:37Z",
+      "side": 1,
+      "message": "it seems that only \"srcTouchscreen\" is being used. remove the unused ones.\n\nIn tast, the guideline is add code/data that is currently being used.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b1ff38_d627606f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T19:08:37Z",
+      "side": 1,
+      "message": "nit: you can remote this part.\nusually in Tast, if the function returns an error you don\u0027t document it since it is implied.",
+      "range": {
+        "startLine": 103,
+        "startChar": 59,
+        "endLine": 104,
+        "endChar": 46
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61dc1301_58ed1ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T19:08:37Z",
+      "side": 1,
+      "message": "nit: add break",
+      "range": {
+        "startLine": 219,
+        "startChar": 4,
+        "endLine": 219,
+        "endChar": 32
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e16b251_6311b0f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T19:08:37Z",
+      "side": 1,
+      "message": "sleep is discouraged, specially to wait for a state.\n\nbetter to wait for the the expected state in a testing.Poll. similar to your exectMotionEvent.\n\nanother example: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go;l\u003d314",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 268,
+        "endChar": 3
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "40560407_d852c1d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T19:08:37Z",
+      "side": 1,
+      "message": "ok. so, you decide not to add a P-container test, then you can skip the Params.\nPromote all the \"Params\" to root.",
+      "parentUuid": "be312a84_038c2fd3",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b724816d_b731bb86",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
