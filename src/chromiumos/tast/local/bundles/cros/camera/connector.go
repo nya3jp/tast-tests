@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/sysutil"
@@ -29,13 +30,22 @@ func init() {
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"arc_camera3", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"arc_camera3", "chrome", caps.BuiltinOrVividCamera},
 	})
 }
 
 func Connector(ctx context.Context, s *testing.State) {
 	const exec = "cros_camera_connector_test"
 	const socket = "/run/camera/camera3.sock"
+
+	// TODO(b/151270948): Temporarily disable ARC when running this test.
+	// The cros-camera service would kill itself when running the test if
+	// arc_setup.cc is triggered at that time, which will fail the test.
+	cr, err := chrome.New(ctx, chrome.ARCDisabled())
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
 		s.Fatal("Failed to start cros-camera: ", err)
