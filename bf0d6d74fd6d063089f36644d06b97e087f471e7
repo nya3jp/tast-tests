@@ -25,6 +25,75 @@
     },
     {
       "key": {
+        "uuid": "47b47b5d_d799f903",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "I find it a confusing to have a large function definition inside an `if` assignment, as looking at the indentation I\u0027d wrongly assume that the function body was the `if` body instead. Maybe split this out into its own statement?",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403d2d21_64734855",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "Maybe use `path.Join` here, in case `path` doesn\u0027t end with a slash.",
+      "range": {
+        "startLine": 107,
+        "startChar": 36,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe970202_1228de1f",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "Similarly, `path.Join`.",
+      "range": {
+        "startLine": 113,
+        "startChar": 31,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2ee4c0e_8f786120",
         "filename": "src/chromiumos/tast/local/uhid/parse.go",
         "patchSetId": 24
@@ -64,6 +133,109 @@
         "startChar": 2,
         "endLine": 34,
         "endChar": 12
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b989745a_6b31a396",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "This looks very similar to `parseData`; any chance they can be merged? (or most of the logic from this replaced with a call to `parseData`?)",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b05985a5_e8987eeb",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "Any reason for the different approach here compared to `parseInfo`?",
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3ba64a_8b058d5a",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "Comment is incomplete.",
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b113a8_7b8a6663",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "Nit: new sentence?",
+      "range": {
+        "startLine": 200,
+        "startChar": 23,
+        "endLine": 200,
+        "endChar": 25
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7cf641_21f32800",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "I don\u0027t know Go that well, but do these types of methods really need to check if the object they\u0027re called on is nil?",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 15
       },
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -140,6 +312,29 @@
     },
     {
       "key": {
+        "uuid": "bf620fe8_9db42bfc",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "In the vein of improving error messages, it would help massively to include the current line number and file name in any error message raised within this loop (and similarly in `Recorded`). That could make debugging malformed recordings much quicker. For example, just here the error could be \"foo-recording.txt:46: malformed timestamp\".",
+      "range": {
+        "startLine": 281,
+        "startChar": 10,
+        "endLine": 281,
+        "endChar": 13
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e83815c5_22699e8f",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 24
@@ -156,6 +351,29 @@
         "startChar": 5,
         "endLine": 285,
         "endChar": 44
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f476a915_d98c671c",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-29T23:54:29Z",
+      "side": 1,
+      "message": "Nit: I\u0027d say this is an implementation detail that doesn\u0027t need to be a docstring.",
+      "range": {
+        "startLine": 299,
+        "startChar": 10,
+        "endLine": 299,
+        "endChar": 59
       },
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
