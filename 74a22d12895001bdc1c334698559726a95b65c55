@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac99e689_fc11526c",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:18:14Z",
+      "side": 1,
+      "message": "Are we actually getting anything from base.Config? My reading says no. So does it still make sense to use composition? I\u0027m not sure.\n\nSame questions for \u0027wep.Config\u0027.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc3b0bfb_c82f7a41",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:18:14Z",
+      "side": 1,
+      "message": "\u0027Ciphers\u0027 and \u0027Ciphers2\u0027 sounds like a really non-descriptive name at first (think: \"var\", \"var1\", \"var2\"), but then I re-read and noticed it means \"WPA Ciphers\" and \"WPA2 Ciphers\". Because this is all the context of a \u0027wpa\u0027 package... I guess that\u0027s OK? I feel like there could still be some clarity improvements though.\n\nMaybe it deserves the \"WPA\" repetition still. e.g., \"WPACiphers\", \"WPA2Ciphers\"?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85dcc4c9_4289f6bc",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:18:14Z",
+      "side": 1,
+      "message": "this should show up in \u0027validate\u0027 in addition (or instead)",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 63
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10953c14_73c859b7",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:18:14Z",
+      "side": 1,
+      "message": "the magic number shows up a few places. Probably should be a \u0027const\u0027 somewhere.",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 20
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
