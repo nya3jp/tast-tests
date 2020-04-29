@@ -34,6 +34,24 @@
       "revId": "38bd86ec3891c2283cb8b9e7f8671d3afec5ddf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f83a353_73c38166",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-29T11:19:50Z",
+      "side": 1,
+      "message": "We have a linter in the CQ and when you submit CL. Also, formating rules may change over time. It\u0027s hard to say now how we get this there. But anyway, this is definitely we can improve.",
+      "parentUuid": "baaff4c7_3ace9344",
+      "revId": "38bd86ec3891c2283cb8b9e7f8671d3afec5ddf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
