@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4296556f_8c3ca522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-04-29T21:54:35Z",
+      "side": 1,
+      "message": "Is the only error possible on os.Stat the IsNotExist error? If there are other errors, probably should handle them as well.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "0ef0deda92823dc81f4eefb7690a4a72696e1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
