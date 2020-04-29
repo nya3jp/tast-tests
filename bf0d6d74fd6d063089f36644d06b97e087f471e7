@@ -2,6 +2,167 @@
   "comments": [
     {
       "key": {
+        "uuid": "601c0057_b8cf3878",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:17:51Z",
+      "side": 1,
+      "message": "the filename should be \"device_nodes.go\" instead of \"deviceNodes.go\"\n\nI wonder why the linter didn\u0027t catch it?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ee4c0e_8f786120",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:17:51Z",
+      "side": 1,
+      "message": "huge nit: replace \u0027.\u0027 with \u0027:\u0027",
+      "range": {
+        "startLine": 30,
+        "startChar": 55,
+        "endLine": 30,
+        "endChar": 56
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c8a30d_7cd5dc0e",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:17:51Z",
+      "side": 1,
+      "message": "see comment below about returning errors.\nperhaps might be better to return: \n   return errors.Wrap(err, \"failed to parse bus\")",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53af4907_ff8960c8",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:17:51Z",
+      "side": 1,
+      "message": "is this protocol documented somewhere?\nIf so add reference... perhaps to the file in hidtools that generates it?",
+      "range": {
+        "startLine": 240,
+        "startChar": 30,
+        "endLine": 240,
+        "endChar": 34
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "371236c5_408a708f",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:17:51Z",
+      "side": 1,
+      "message": "in these error, try to be more descriptive.\n\neither parseInfo should return a useful error, or here... I\u0027d go with adding more descriptive errros in parse.go\n\nrule of thumb:\n - reporting good errors is very important. tests fail all the time. reading a good error will save time to engineers.\n - just don\u0027t return \"return err\" if the error does not contain useful info",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 19
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6737b45_e3058580",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:17:51Z",
+      "side": 1,
+      "message": "I think it would be better to move the replay/record functionality to a new file. easier to read the file.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 33
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83815c5_22699e8f",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:17:51Z",
+      "side": 1,
+      "message": "nit: end with period. start with capital letter.",
+      "range": {
+        "startLine": 285,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 44
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7abc5acc_3f0ac9fe",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 24
