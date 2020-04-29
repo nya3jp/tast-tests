@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "714fae5e_a3577f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-29T21:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd93f321_f66e66bc",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "878017fe_8a4b605a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8e2ad83e_39c9cb91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-29T21:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "878017fe_8a4b605a",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 77
+      },
+      "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8566e712_919e1616",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-28T20:50:54Z",
       "side": 1,
       "message": "This is unnecessary\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/1799392",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e0de00_ab5e147e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-29T21:01:35Z",
+      "side": 1,
+      "message": "The VPN fails to connect and I get the following err if I remove this part:\n:Error at vpn_connect.go:150: Failed connecting to VPN server: VPN connection failed\n:Waiting for Chrome to write its debugging port to /home/chronos/DevToolsActivePort\n:Failed to take screenshot by Chrome API: failed to create a new Chrome Devtools Protocol session: failed to query browser\u0027s HTTP endpoint: could not resolve IP for 127.0.0.1",
+      "parentUuid": "8566e712_919e1616",
       "range": {
         "startLine": 196,
         "startChar": 2,
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "1bdec4a3_c9fa46f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-29T21:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fc8bdbb_f4749c1b",
+      "range": {
+        "startLine": 264,
+        "startChar": 48,
+        "endLine": 264,
+        "endChar": 60
+      },
+      "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f04a892b_153f156c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-29T21:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad0ba5a2_a359533c",
+      "range": {
+        "startLine": 264,
+        "startChar": 35,
+        "endLine": 264,
+        "endChar": 41
+      },
+      "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc3252fa_8e01d7be",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 11
@@ -137,6 +257,30 @@
       "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea919bd_304c45bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-04-29T21:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3252fa_8e01d7be",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 43
+      },
+      "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
