@@ -22,12 +22,12 @@ func TestOptions(t *testing.T) {
 		QOS(QOSVI),
 	}
 	expected := &config{
-		BindAddress: true,
-		Count:       3,
-		Interval:    0.5,
-		Size:        100,
-		SourceIface: "eth0",
-		QOS:         QOSVI,
+		bindAddress: true,
+		count:       3,
+		interval:    0.5,
+		size:        100,
+		sourceIface: "eth0",
+		qos:         QOSVI,
 	}
 	for _, opt := range opts {
 		opt(cfg)
@@ -37,16 +37,16 @@ func TestOptions(t *testing.T) {
 	}
 }
 
-func TestCfgToArgs(t *testing.T) {
+func TestCmdArgs(t *testing.T) {
 	// The interval float parameter will display up to 6 decimal places
 	expected := []string{"-B", "-c", "7", "-s", "3", "-i", "0.123456", "-I", "wlan0", "-Q", "0x10", "1.2.3.4"}
-	cfg := &config{BindAddress: true, Count: 7, Size: 3, Interval: 0.123456, SourceIface: "wlan0", QOS: QOSVO}
-	args, err := cfgToArgs("1.2.3.4", cfg)
+	cfg := &config{bindAddress: true, count: 7, size: 3, interval: 0.123456, sourceIface: "wlan0", qos: QOSVO}
+	args, err := cfg.cmdArgs("1.2.3.4")
 	if err != nil {
 		t.Error(err.Error())
 	}
 	if !reflect.DeepEqual(args, expected) {
-		t.Errorf("cfgToArgs: outputs differ. Got %v, expected %v", args, expected)
+		t.Errorf("cmdArgs: outputs differ. Got %v, expected %v", args, expected)
 	}
 }
 
