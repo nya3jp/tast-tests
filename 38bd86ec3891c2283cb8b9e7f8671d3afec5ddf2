@@ -52,6 +52,24 @@
       "revId": "38bd86ec3891c2283cb8b9e7f8671d3afec5ddf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "598afa5f_76813232",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-29T11:24:53Z",
+      "side": 1,
+      "message": "I verified: now you are not allowed to upload bad formatted code.\n\nWe\u0027ll discuss whether we can format all tast codebase.",
+      "parentUuid": "2f83a353_73c38166",
+      "revId": "38bd86ec3891c2283cb8b9e7f8671d3afec5ddf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
