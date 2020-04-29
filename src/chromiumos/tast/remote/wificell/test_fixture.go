@@ -13,13 +13,14 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
-	"chromiumos/tast/remote/network/ping"
+	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/rpc"
@@ -385,7 +386,7 @@ func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) err
 	if tf.curAP == nil {
 		return errors.New("not connected")
 	}
-	pr := ping.NewRunner(tf.dut)
+	pr := remoteping.NewRunner(tf.dut)
 	res, err := pr.Ping(ctx, tf.curAP.ServerIP().String(), opts...)
 	if err != nil {
 		return err
