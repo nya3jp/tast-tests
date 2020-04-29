@@ -6,10 +6,3 @@
 package shill
 
 const dbusService = "org.chromium.flimflam"
-
-// Property names defined in dbus-constants.h .
-const (
-	// IPConfig property names.
-	IPConfigPropertyAddress     = "Address"
-	IPConfigPropertyNameServers = "NameServers"
-)
