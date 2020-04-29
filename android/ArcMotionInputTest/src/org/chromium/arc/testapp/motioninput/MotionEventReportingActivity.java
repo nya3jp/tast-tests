@@ -22,9 +22,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends Activity {
+/**
+ * MotionEventReportingActivity is an Activity that reports all of the {@link MotionEvent}s that it
+ * receives by writing it to a JSON Object in a {@link TextView} inside the Activity.
+ */
+public class MotionEventReportingActivity extends Activity {
 
-    public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String TAG = MotionEventReportingActivity.class.getSimpleName();
 
     public static final String ACTION_CLEAR_EVENTS =
             "org.chromium.arc.testapp.motioninput.ACTION_CLEAR_EVENTS";
