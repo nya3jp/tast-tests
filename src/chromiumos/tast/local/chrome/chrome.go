@@ -1049,15 +1049,18 @@ func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
 }
 
 // enterpriseOOBELogin will complete the oobe login after Enrollment completes.
-func (c *Chrome) enterpriseOOBELogin(ctx context.Context, conn *Conn) error {
+func (c *Chrome) enterpriseOOBELogin(ctx context.Context) error {
 	if err := c.waitForEnrollmentLoginScreen(ctx); err != nil {
 		return errors.Wrap(c.chromeErr(err), "could not enroll")
 	}
 
-	testing.ContextLog(ctx, "Waiting for OOBE to be ready")
-	if err := conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return err
+	// Reconnect to OOBE to log in after enrollment.
+	// See crrev.com/c/2144279 for details.
+	conn, err := c.WaitForOOBEConnection(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to reconnect to OOBE after enrollment")
 	}
+	defer conn.Close()
 
 	testing.ContextLog(ctx, "Performing login after enrollment")
 	// Now login like "normal".
@@ -1095,7 +1098,7 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	}
 
 	if c.enroll {
-		if err := c.enterpriseOOBELogin(ctx, conn); err != nil {
+		if err := c.enterpriseOOBELogin(ctx); err != nil {
 			return err
 		}
 	}
