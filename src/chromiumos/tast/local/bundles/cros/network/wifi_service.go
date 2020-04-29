@@ -140,7 +140,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 			shill.ServicePropertyWiFiHiddenSSID: request.Hidden,
 			shill.ServicePropertySecurityClass:  request.Security,
 		}
-		if err := m.ConfigureService(ctx, props); err != nil {
+		if _, err := m.ConfigureService(ctx, props); err != nil {
 			return nil, errors.Wrap(err, "failed to configure a hidden SSID")
 		}
 	}
