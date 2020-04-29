@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f61aca7_d9f86856",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-29T03:58:36Z",
+      "side": 1,
+      "message": "you should make this a method on the DensityChange struct since you pass in the contents of that struct as args anyway.\n\nfunc (dc *DensityChange) \u003cshorter name here\u003e(ctx, cr, ew, a) error ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "0dd177b241ef768cec292d1991cf562000d895ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ce218b_6bde2760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-29T03:58:36Z",
+      "side": 1,
+      "message": "If this is a method you can call it something like \"Execute\" or \"Verify\" - something shorter",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "0dd177b241ef768cec292d1991cf562000d895ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c928ddd0_094225b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-29T03:58:36Z",
+      "side": 1,
+      "message": "Check doesn\u0027t seem like the right verb here - it\u0027s quite vague.  What about Count?",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "0dd177b241ef768cec292d1991cf562000d895ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "235b3d1c_17c10174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-04-29T03:58:36Z",
+      "side": 1,
+      "message": "it is ok to implement a function like this for multiple tests which share the same code (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages).  But you\u0027ve only got one test here, and that test file still has a fair amount of logic.  The f argument in particular is confusing to follow.\n\nI think this package might work better as a more generic library which lives in tast/local/arc, not tast/local/bundles/cros/arc - or if not moved, then at least structured more as a library.  By not tying the logic so strongly to a single test format you\u0027d have more options when writing future tests.\n\nThis package could have a function which returns the physical density and another function which takes in a slice of activity names and a slice of DensityChange and executes each combination.\n\nThat leaves the initialization of arc/chrome and the looping over the desired activities back in the main test file.",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "0dd177b241ef768cec292d1991cf562000d895ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
