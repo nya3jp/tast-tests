@@ -82,9 +82,9 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 // NewTestFixture creates a TestFixture.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
-func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, ops ...TFOption) (ret *TestFixture, retErr error) {
+func NewTestFixture(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, ops ...TFOption) (ret *TestFixture, retErr error) {
 	tf := &TestFixture{
-		dut:       dut,
+		dut:       d,
 		capturers: make(map[*APIface]*pcap.Capturer),
 	}
 	for _, op := range ops {
@@ -123,6 +123,9 @@ func NewTestFixture(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint,
 
 	// errInvalidHost checks if the error is a wrapped "no such host" error.
 	errInvalidHost := func(err error) bool {
+		if err == dut.ErrCompanionHostname {
+			return true
+		}
 		var dnsErr *net.DNSError
 		if errors.As(err, &dnsErr) && dnsErr.IsNotFound {
 			return true
