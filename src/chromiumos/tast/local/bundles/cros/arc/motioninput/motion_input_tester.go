@@ -48,8 +48,9 @@ const (
 	Y        Axis = "AXIS_Y"
 	Pressure Axis = "AXIS_PRESSURE"
 
-	Touchscreen Source = "touchscreen"
-	Mouse       Source = "mouse"
+	Touchscreen   Source = "touchscreen"
+	Mouse         Source = "mouse"
+	MouseRelative Source = "mouse_relative"
 )
 
 // MotionEvent represents a MotionEvent that was received by the Android application.
@@ -68,9 +69,11 @@ type ActivityCLS string
 
 // Constants for the test application ArcMotionInputTest.apk.
 const (
-	APK             = "ArcMotionInputTest.apk"
-	PKG             = "org.chromium.arc.testapp.motioninput"
-	CLS ActivityCLS = ".MainActivity"
+	APK = "ArcMotionInputTest.apk"
+	PKG = "org.chromium.arc.testapp.motioninput"
+
+	EventReportingActivityCLS ActivityCLS = ".MotionEventReportingActivity"
+	PointerCaptureActivityCLS ActivityCLS = ".PointerCaptureActivity"
 
 	intentActionClearEvents = PKG + ".ACTION_CLEAR_EVENTS"
 )
@@ -174,9 +177,9 @@ const (
 	DefaultAxisEpsilon = 1e-5
 )
 
-// SinglePointerMatcher returns a motionEventMatcher that matches a motionEvent with a single
-// pointer that has the following axes: axisX, axisY, and axisPressure.
-func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) Matcher {
+// ActionSourceMatcher returns a motionEventMatcher that matches a motionEvent with the provided
+// action and source.
+func ActionSourceMatcher(a Action, s Source) Matcher {
 	return func(event *MotionEvent) error {
 		sourceMatches := false
 		for _, v := range event.Sources {
@@ -185,6 +188,19 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 				break
 			}
 		}
+		if !sourceMatches {
+			return errors.Errorf("source does not match: got %v; want %s", event.Sources, s)
+		} else if event.Action != a {
+			return errors.Errorf("action does not match: got %s; want: %s", event.Action, a)
+		}
+		return nil
+	}
+}
+
+// SinglePointerMatcher returns a motionEventMatcher that matches a motionEvent with a single
+// pointer that has the following axes: axisX, axisY, and axisPressure.
+func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) Matcher {
+	return func(event *MotionEvent) error {
 		axisMatcher := func(axis Axis, expected, epsilon float64) error {
 			v := event.PointerAxes[0][axis]
 			if math.Abs(v-expected) > epsilon {
@@ -192,10 +208,8 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 			}
 			return nil
 		}
-		if !sourceMatches {
-			return errors.Errorf("source does not match: got %v; want %s", event.Sources, s)
-		} else if event.Action != a {
-			return errors.Errorf("action does not match: got %s; want: %s", event.Action, a)
+		if err := ActionSourceMatcher(a, s)(event); err != nil {
+			return err
 		} else if pointerCount := len(event.PointerAxes); pointerCount != 1 {
 			return errors.Errorf("pointer count does not match: got: %d; want: %d", pointerCount, 1)
 		} else if err := axisMatcher(X, float64(p.X), CoordinateAxisEpsilon); err != nil {
