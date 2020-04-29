@@ -22,6 +22,30 @@
       "revId": "8f7fa11830e8d28df6941355b17d46fe34ee2e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d8f4e99_4a14ec08",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-29T15:05:49Z",
+      "side": 0,
+      "message": "WaitForOOBEConnection already logs.",
+      "parentUuid": "eb19e4ed_bc03b60d",
+      "range": {
+        "startLine": 1057,
+        "startChar": 1,
+        "endLine": 1057,
+        "endChar": 56
+      },
+      "revId": "8f7fa11830e8d28df6941355b17d46fe34ee2e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
