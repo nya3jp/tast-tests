@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
@@ -21,7 +22,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
-	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 )
