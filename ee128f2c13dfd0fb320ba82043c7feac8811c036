@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35cccbcd_9d9242c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps_80211ac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:48:08Z",
+      "side": 1,
+      "message": "By the way, I would be fine to tentatively add kip and monroe into the skip list for 802.11ac, right? Even if we know that some do and some don\u0027t support it, I don\u0027t think we really care that much about precisely verifying all the latest features on such old devices, do we?",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
