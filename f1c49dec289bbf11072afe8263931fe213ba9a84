@@ -22,6 +22,30 @@
       "revId": "f1c49dec289bbf11072afe8263931fe213ba9a84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10e1811_a3e38062",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T22:03:38Z",
+      "side": 1,
+      "message": "I see one possible reason: we have properties we want to configure early (e.g., for \"discovery\") and others we want to configure later (for \"configuration\"). If we want to make that distinction here, we should probably be clear about why.",
+      "parentUuid": "33553915_86997236",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "f1c49dec289bbf11072afe8263931fe213ba9a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
