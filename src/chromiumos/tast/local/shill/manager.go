@@ -200,9 +200,13 @@ func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
 	return devs, nil
 }
 
-// ConfigureService configures a service with the given properties.
-func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) error {
-	return m.dbusObject.Call(ctx, "ConfigureService", props).Err
+// ConfigureService configures a service with the given properties and returns its path.
+func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
+	var service dbus.ObjectPath
+	if err := m.dbusObject.Call(ctx, "ConfigureService", props).Store(&service); err != nil {
+		return "", errors.Wrap(err, "failed to configure service")
+	}
+	return service, nil
 }
 
 // ConfigureServiceForProfile configures a service at the given profile path.
