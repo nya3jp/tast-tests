@@ -73,11 +73,11 @@ func RunTests(ctx context.Context, s *testing.State) {
 		s.Fatalf("Couldn't decode results from %v: %v", rf.Name(), err)
 	}
 	expResults := []testResult{
-		testResult{"meta.LocalFiles", nil},
-		testResult{"meta.LocalPanic", []testError{testError{"Panic: intentionally panicking"}}},
-		testResult{"meta.LocalVars", nil},
-		testResult{"meta.RemoteFiles", nil},
-		testResult{"meta.RemoteVars", nil},
+		{"meta.LocalFiles", nil},
+		{"meta.LocalPanic", []testError{{"Panic: intentionally panicking"}}},
+		{"meta.LocalVars", nil},
+		{"meta.RemoteFiles", nil},
+		{"meta.RemoteVars", nil},
 	}
 	if !reflect.DeepEqual(results, expResults) {
 		s.Errorf("Got results %+v; want %+v", results, expResults)

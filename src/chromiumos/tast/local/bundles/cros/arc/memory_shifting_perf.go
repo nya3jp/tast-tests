@@ -84,7 +84,7 @@ func MemoryShiftingPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to allocate Android memory: ", err)
 		}
 		// Use the last 10 attempts to get stable results.
-		arcMean := mean(arcAllocated[len(arcAllocated)-10 : len(arcAllocated)])
+		arcMean := mean(arcAllocated[len(arcAllocated)-10:])
 		arcMin = math.Min(arcMin, arcMean)
 		arcMax = math.Max(arcMax, arcMean)
 		if err := a.FreeAll(ctx); err != nil {
@@ -102,7 +102,7 @@ func MemoryShiftingPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to allocate ChromeOS memory: ", err)
 		}
 		// Use the last 10 attempts to get stable results.
-		crosMean := mean(crosAllocated[len(crosAllocated)-10 : len(crosAllocated)])
+		crosMean := mean(crosAllocated[len(crosAllocated)-10:])
 		crosMin = math.Min(crosMin, crosMean)
 		crosMax = math.Max(crosMax, crosMean)
 		if _, err := c.FreeAll(); err != nil {

@@ -87,7 +87,7 @@ func TestParseScanResults(t *testing.T) {
 		t.Fatal("parseScanResults failed: ", err)
 	}
 	cmpBSS := []*BSSData{
-		&BSSData{
+		{
 			BSS:       "00:11:22:33:44:55",
 			Frequency: 2447,
 			SSID:      "my_wpa2_network",
@@ -212,7 +212,7 @@ func TestParseHiddenScanResults(t *testing.T) {
 		t.Fatal("parseScanResults failed: ", err)
 	}
 	cmpBSS := []*BSSData{
-		&BSSData{
+		{
 			BSS:       "00:11:22:33:44:55",
 			Frequency: 2412,
 			SSID:      "",
@@ -252,9 +252,9 @@ func TestParseFrequencyFlags(t *testing.T) {
                         * 5210 MHz [42] (23.0 dBm) (passive scan, radar detection)
 	`
 	expected := map[int][]string{
-		5040: []string{"disabled"},
+		5040: {"disabled"},
 		5190: nil,
-		5210: []string{"passive scan", "radar detection"},
+		5210: {"passive scan", "radar detection"},
 	}
 	ret, err := parseFrequencyFlags(content)
 	if err != nil {
@@ -290,17 +290,17 @@ phy#0
 		type managed
 `,
 			expected: []*NetDev{
-				&NetDev{
+				{
 					PhyNum: 1,
 					IfName: "managed0",
 					IfType: "managed",
 				},
-				&NetDev{
+				{
 					PhyNum: 1,
 					IfName: "monitor0",
 					IfType: "monitor",
 				},
-				&NetDev{
+				{
 					PhyNum: 0,
 					IfName: "managed2",
 					IfType: "managed",
@@ -318,7 +318,7 @@ phy#0
 		txpower 23.00 dBm
 `,
 			expected: []*NetDev{
-				&NetDev{
+				{
 					PhyNum: 0,
 					IfName: "wlan0",
 					IfType: "managed",

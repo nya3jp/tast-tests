@@ -240,7 +240,7 @@ var startedTraceVMPre = &preImpl{
 	arch:       vm.DebianBuster,
 	mode:       download,
 	gpuEnabled: true,
-	diskSize:   16 * 1024 * 1024 * 1024,  // graphics.TraceReplay relies on at least 16GB size.
+	diskSize:   16 * 1024 * 1024 * 1024, // graphics.TraceReplay relies on at least 16GB size. 12
 }
 
 var startedARCEnabledPre = &preImpl{
