@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "89f4ddb9_5e10f99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917a8be3_7b59ad8c",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b51ca31c_90996fe1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_manifest.json",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66b861ef_d20dd227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b51ca31c_90996fe1",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "06c27795_f56fe7db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_service-worker.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b8c5261_a7374397",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c373b5e_b47a583d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a00e37bb_ae791a3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c373b5e_b47a583d",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "85e89280_5105cf9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d88aba0e_faee2959",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c824b7fd_f340691b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 1
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "a74e475f_bf28ea7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Copying of the file is not necessary anymore.",
+      "parentUuid": "c824b7fd_f340691b",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d65056b9_b6d77f14",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 1
@@ -130,6 +250,24 @@
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19b7c41_4a62c9a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Copying of the file is not necessary anymore, so the error doesn\u0027t exist anymore.",
+      "parentUuid": "d65056b9_b6d77f14",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "1083dc62_e8e548c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15edd3b8_bae60c07",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c81e6d5c_e3c38c36",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 1
@@ -170,6 +332,24 @@
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec80ad8_e56a2a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c81e6d5c_e3c38c36",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "a8a2d779_b2560fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a20201e_4f95288b",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 68
+      },
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30df33c0_1d0c07fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 1
@@ -219,6 +423,30 @@
     },
     {
       "key": {
+        "uuid": "2062d5d7_f82dec47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30df33c0_1d0c07fa",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "916bc517_fa90e271",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 1
@@ -233,6 +461,24 @@
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5030c462_adc5a9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916bc517_fa90e271",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -253,6 +499,24 @@
     },
     {
       "key": {
+        "uuid": "557baeee_c13833fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc54a753_8903f44b",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f632229_0f769f60",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 1
@@ -267,6 +531,24 @@
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f5ad20_2d8eda6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f632229_0f769f60",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -290,6 +572,30 @@
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ccce52_6a860436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-29T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b42af4ce_d88b250c",
+      "range": {
+        "startLine": 106,
+        "startChar": 30,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
