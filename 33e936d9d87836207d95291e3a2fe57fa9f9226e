@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47086dc8_8af3686e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-29T11:30:46Z",
+      "side": 1,
+      "message": "Also add BUG\u003db:151270948",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "33e936d9d87836207d95291e3a2fe57fa9f9226e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09746b6d_50e96511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-29T11:30:46Z",
+      "side": 1,
+      "message": "nit: also pass NoLogin to skip login if not required",
+      "revId": "33e936d9d87836207d95291e3a2fe57fa9f9226e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
