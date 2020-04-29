@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/network/cmd"
 	"chromiumos/tast/errors"
 )
 
@@ -125,19 +126,13 @@ type TimedScanData struct {
 	BSSList []*BSSData
 }
 
-// CmdRunner is the shared interface for local/remote command execution used by iw.
-type CmdRunner interface {
-	Run(ctx context.Context, cmd string, args ...string) error
-	Output(ctx context.Context, cmd string, args ...string) ([]byte, error)
-}
-
 // Runner is the object contains iw utilities.
 type Runner struct {
-	cmd CmdRunner
+	cmd cmd.Runner
 }
 
 // NewRunner creates a new iw command utility runner.
-func NewRunner(c CmdRunner) *Runner {
+func NewRunner(c cmd.Runner) *Runner {
 	return &Runner{cmd: c}
 }
 
