@@ -1,0 +1,6 @@
+{
+  "url":
+  "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcShelfIconTest_20200511.apk",
+  "size": 1701290,
+  "sha256sum": "d3667cba26debbf43ab2042d087b18f818ab0fb40108f298929fcd976119e925"
+}
