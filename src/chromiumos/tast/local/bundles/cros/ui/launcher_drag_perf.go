@@ -58,6 +58,14 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	// When the device is tablet-mode by default, entering into clamshell mode may
+	// cause a lot of location change events which may not finish timely. So wait
+	// here to ensure that the following test scenarios work as expected. See also
+	// https://crbug.com/1076520.
+	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for the location changes: ", err)
+	}
+
 	var primaryBounds coords.Rect
 	var primaryWorkArea coords.Rect
 	infos, err := display.GetInfo(ctx, tconn)
