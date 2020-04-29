@@ -16,6 +16,24 @@
       "revId": "38bd86ec3891c2283cb8b9e7f8671d3afec5ddf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baaff4c7_3ace9344",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-04-29T02:03:32Z",
+      "side": 1,
+      "message": "this is a gofmt change, I cannot save the file in my editor without this coming back in.  Perhaps you should have a gofmt lint check on all tast code to prevent things like this from being committed?",
+      "parentUuid": "79ceb015_646853d1",
+      "revId": "38bd86ec3891c2283cb8b9e7f8671d3afec5ddf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
