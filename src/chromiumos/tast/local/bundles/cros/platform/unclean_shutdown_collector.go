@@ -57,6 +57,7 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 	const (
 		pendingShutdownFile         = "/var/lib/crash_reporter/pending_clean_shutdown"
 		uncleanShutdownDetectedFile = "/run/metrics/external/crash-reporter/unclean-shutdown-detected"
+		suspendFile                 = "/var/lib/power_manager/powerd_suspended"
 	)
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
@@ -78,6 +79,18 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 			s.Error("Failed to re-start metrics_daemon: ", err)
 		}
 	}()
+
+	// Stash the suspend file so that crash_reporter doesn't see it and
+	// assume the unclean shutdown happened while suspended.
+	if _, err := os.Rename(suspendFile, suspendFile+".bak"); err != nil && !os.IsNotExist(err) {
+		s.Fatal("Failed to stash suspendFile: ", err)
+	} else if err == nil {
+		defer func() {
+			if err := os.Rename(suspendFile+".bak", suspendFile); err != nil {
+				s.Error("Failed to restore suspendFile: ", err)
+			}
+		}()
+	}
 
 	// crash_reporter sees the existing pending_clean_shutdown file (which
 	// is created on boot), creates the unclean shutdown file, and then
