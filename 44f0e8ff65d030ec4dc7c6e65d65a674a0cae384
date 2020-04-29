@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f771d9d4_d684869b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-29T00:16:27Z",
+      "side": 1,
+      "message": "Are 100 dummy applications necessary for this test?\nIt seems not to me. If not necessary, please use chrome.LoggedIn().",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4edf04c7_c843e92e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-29T00:16:27Z",
+      "side": 1,
+      "message": "Please add\n  defer ui.WaitForLocationChangeCompleted(ctx, tconn)",
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c0f3cf_f7c14057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-29T00:16:27Z",
+      "side": 1,
+      "message": "looks like this doesn\u0027t have to be declared; you can simply use obj.LeftClick(ctx)",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4219811_b40318a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-29T00:16:27Z",
+      "side": 1,
+      "message": "this is fine but I don\u0027t think you need to define suffixes -- you can directly put the string constant of full metrics name.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c12120_a064afab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-29T00:16:27Z",
+      "side": 1,
+      "message": "it would be great if you can avoid testing.Sleep.\nOne idea is to use ui.EventWatcher (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui#EventWatcher) and wait for all of LocationChanged events are arrived.  See also WaitForLocationChangeCompleted().",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 4
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e96a0f0_6f17d279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-29T00:16:27Z",
+      "side": 1,
+      "message": "I\u0027d like to have a linebreak after this comma; that way the metrics are aligned.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03b8e6eb_1acef470",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-29T00:16:27Z",
+      "side": 1,
+      "message": "looks like this can be done through ui package and input package?  input.Keyboard() Accel() https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input#KeyboardEventWriter.Accel and ui.WaitUntilExists() https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ui#WaitUntilExists",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
