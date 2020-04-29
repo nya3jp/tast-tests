@@ -22,6 +22,30 @@
       "revId": "0ef0deda92823dc81f4eefb7690a4a72696e1244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be27a23f_d1619f86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-04-29T22:24:14Z",
+      "side": 1,
+      "message": "I\u0027m handling them in the first case (there\u0027s a \"!\" before the os.IsNotExist call, so I believe that the only error case we ignore is if the stat succeeds and the file doesn\u0027t exist).",
+      "parentUuid": "4296556f_8c3ca522",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "0ef0deda92823dc81f4eefb7690a4a72696e1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
