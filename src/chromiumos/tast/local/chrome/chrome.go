@@ -1054,9 +1054,11 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context, conn *Conn) error {
 		return errors.Wrap(c.chromeErr(err), "could not enroll")
 	}
 
-	testing.ContextLog(ctx, "Waiting for OOBE to be ready")
-	if err := conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return err
+	// Reconnect to OOBE after enrollment.
+	// crrev.com/c/2144279 switches to a Views-based login after enrollment completes.
+	conn, err := c.WaitForOOBEConnection(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to reconnect to OOBE after enrollment")
 	}
 
 	testing.ContextLog(ctx, "Performing login after enrollment")
