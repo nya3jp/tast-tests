@@ -1,0 +1,319 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac7e9b01_42567432",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "Why not s.Fatal here? to perform clean-up?",
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f5f8588_2e6a656b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "In addition to the previous s.Error() in line 74, what other error do you expect?",
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237306a7_87ae50c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "Merge log in line 83 and line 86:\ns.Log(\"Disconnected. Wait for the IP address to be cleared\")\n\nAlso, we may add \ns.Logf(\"Connected with IP address: %s. Disconnecting...\", addr.IPv4)\nbefore tf.DisconnectWifi().",
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac35146_dd33a937",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "a network interface.",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20fa6e47_ebe8f25e",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "host\n\n// as it can also used in other devices which have \"ip\" command.",
+      "range": {
+        "startLine": 38,
+        "startChar": 47,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c037f57_059d81d9",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "ip command",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83fb0be_ee48c6a4",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "runs an ip command and returns its output.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f138a6_f5245273",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "Remove the extra space.",
+      "range": {
+        "startLine": 63,
+        "startChar": 55,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99d46bc_18be8706",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "provides methods to access properties of test client (DUT)\u0027s network interface.",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b7e3b3f_01a90ad9",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "// Network interface name.",
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d81fe88_02ace8bb",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "// Gate of the client.",
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ef31f1_9fcdbc9c",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "ClientIface",
+      "range": {
+        "startLine": 23,
+        "startChar": 32,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e835703_5ef40594",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "Can be omitted as ClientIface\u0027s comment already describe what it is.",
+      "range": {
+        "startLine": 23,
+        "startChar": 44,
+        "endLine": 23,
+        "endChar": 111
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50281f7b_38492eab",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "the interface.",
+      "range": {
+        "startLine": 32,
+        "startChar": 61,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f37526c_c23cbd48",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T06:01:35Z",
+      "side": 1,
+      "message": "802.11n open network\n\n// Note we plan to have DefaultProtectedNetworkAP().",
+      "range": {
+        "startLine": 203,
+        "startChar": 59,
+        "endLine": 203,
+        "endChar": 96
+      },
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
