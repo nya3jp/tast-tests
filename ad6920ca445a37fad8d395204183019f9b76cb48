@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "917a8be3_7b59ad8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_index.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-04-29T12:10:03Z",
+      "side": 1,
+      "message": "Mixed indentation with spaces and tabs. Can it be only spaces?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b51ca31c_90996fe1",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_manifest.json",
         "patchSetId": 1
@@ -47,6 +70,29 @@
       "writtenOn": "2020-04-29T10:24:35Z",
       "side": 1,
       "message": "Use full sentence: Get ... .\nSame for all other comments.",
+      "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d88aba0e_faee2959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2020-04-29T12:10:03Z",
+      "side": 1,
+      "message": "It seems like the length of the filename. As you use this filename in multiple places, you should put into a string and use its length instead of 37.",
+      "range": {
+        "startLine": 45,
+        "startChar": 27,
+        "endLine": 45,
+        "endChar": 29
+      },
       "revId": "ad6920ca445a37fad8d395204183019f9b76cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
