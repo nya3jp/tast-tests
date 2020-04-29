@@ -49,8 +49,9 @@ const (
 	AxisY        Axis = "AXIS_Y"
 	AxisPressure Axis = "AXIS_PRESSURE"
 
-	SourceTouchscreen Source = "touchscreen"
-	SourceMouse       Source = "mouse"
+	SourceTouchscreen   Source = "touchscreen"
+	SourceMouse         Source = "mouse"
+	SourceMouseRelative Source = "mouse_relative"
 )
 
 // MotionEvent represents a MotionEvent that was received by the Android application.
@@ -70,9 +71,11 @@ type MotionEvent struct {
 
 // Constants for the test application ArcMotionInputTest.apk.
 const (
-	APK      = "ArcMotionInputTest.apk"
-	Package  = "org.chromium.arc.testapp.motioninput"
-	Activity = ".MainActivity"
+	APK     = "ArcMotionInputTest.apk"
+	Package = "org.chromium.arc.testapp.motioninput"
+
+	EventReportingActivity = ".MotionEventReportingActivity"
+	PointerCaptureActivity = ".PointerCaptureActivity"
 
 	intentActionClearEvents = Package + ".ACTION_CLEAR_EVENTS"
 )
@@ -105,6 +108,18 @@ func (t *Tester) ExpectMotionEvents(ctx context.Context, matchers ...Matcher) er
 		events, err := t.readMotionEvents(ctx)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to read motion event"))
+		}
+
+		// TODO(b/156655077): Remove filtering of batched events after the bug is fixed.
+		//  We filter out batched events because in some cases, we observe extraneous events that
+		//  are automatically generated in the input pipeline. Since the extraneous events are
+		//  generated immediately after real events, they are batched, so we skip batched events.
+		for i := 0; i < len(events); {
+			if events[i].Batched {
+				events = append(events[:i], events[i+1:]...)
+				continue
+			}
+			i++
 		}
 
 		if len(events) != len(matchers) {
@@ -163,9 +178,9 @@ func (t *Tester) ExpectEventsAndClear(ctx context.Context, matchers ...Matcher) 
 	return nil
 }
 
-// SinglePointerMatcher returns a motionEventMatcher that matches a motionEvent with a single
-// pointer that has the following axes: axisX, axisY, and axisPressure.
-func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) Matcher {
+// ActionSourceMatcher returns a motionEventMatcher that matches a motionEvent with the provided
+// action and source.
+func ActionSourceMatcher(a Action, s Source) Matcher {
 	return func(event *MotionEvent) error {
 		sourceMatches := false
 		for _, v := range event.Sources {
@@ -179,6 +194,17 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 		}
 		if event.Action != a {
 			return errors.Errorf("action does not match: got %s; want: %s", event.Action, a)
+		}
+		return nil
+	}
+}
+
+// SinglePointerMatcher returns a motionEventMatcher that matches a motionEvent with a single
+// pointer that has the following axes: axisX, axisY, and axisPressure.
+func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) Matcher {
+	return func(event *MotionEvent) error {
+		if err := ActionSourceMatcher(a, s)(event); err != nil {
+			return err
 		}
 		if pointerCount := len(event.PointerAxes); pointerCount != 1 {
 			return errors.Errorf("pointer count does not match: got: %d; want: %d", pointerCount, 1)

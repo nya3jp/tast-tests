@@ -112,7 +112,7 @@ func MotionInput(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed installing %s: %v", motioninput.APK, err)
 		}
 
-		act, err := arc.NewActivity(a, motioninput.Package, string(motioninput.Activity))
+		act, err := arc.NewActivity(a, motioninput.Package, motioninput.EventReportingActivity)
 		if err != nil {
 			s.Fatal("Failed to create an activity: ", err)
 		}
