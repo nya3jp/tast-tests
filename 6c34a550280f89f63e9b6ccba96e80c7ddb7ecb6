@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "36ea10a4_40c4d7f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T10:09:04Z",
+      "side": 1,
+      "message": "Since we put DeleteEntriesForSSID in defer func, we can call s.Fatal() here. \n\nAlso, when disconnect WiFi is failed, it makes no sense running waitIPGone.",
+      "parentUuid": "4197dec9_0d10443b",
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f5f8588_2e6a656b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 11
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I think only the one above (line 74). @yenlinlai suggested to have it, maybe he has different answer.",
       "parentUuid": "4f5f8588_2e6a656b",
+      "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "314a129b_ce068e9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-29T10:09:04Z",
+      "side": 1,
+      "message": "Per duscussion, After line 51, tf.ConnectWifi(), call\n\ndefer func() {\n  if _, err :\u003d tf.WifiClient().DeleteEntriesForSSID(...){...}\n}()",
+      "parentUuid": "7f2d3c62_edc3c764",
       "revId": "6c34a550280f89f63e9b6ccba96e80c7ddb7ecb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
