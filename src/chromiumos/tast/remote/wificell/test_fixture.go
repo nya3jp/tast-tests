@@ -93,12 +93,12 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 //   ctx, cancel := tf.ReserveForClose(ctx)
 //   defer cancel()
 //   ...
-func NewTestFixture(fullCtx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, ops ...TFOption) (ret *TestFixture, retErr error) {
+func NewTestFixture(fullCtx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, ops ...TFOption) (ret *TestFixture, retErr error) {
 	fullCtx, st := timing.Start(fullCtx, "NewTestFixture")
 	defer st.End()
 
 	tf := &TestFixture{
-		dut:       dut,
+		dut:       d,
 		capturers: make(map[*APIface]*pcap.Capturer),
 	}
 	for _, op := range ops {
@@ -141,6 +141,9 @@ func NewTestFixture(fullCtx context.Context, dut *dut.DUT, rpcHint *testing.RPCH
 
 	// errInvalidHost checks if the error is a wrapped "no such host" error.
 	errInvalidHost := func(err error) bool {
+		if err == dut.ErrCompanionHostname {
+			return true
+		}
 		var dnsErr *net.DNSError
 		if errors.As(err, &dnsErr) && dnsErr.IsNotFound {
 			return true
