@@ -58,10 +58,10 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return &Manager{PropertyHolder: ph}, nil
 }
 
-// findMatchingService returns a Service who has the expected properties.
+// findMatchingService returns the path of a service who has the expected properties.
 // It first obtains a list of services (including hidden ones if complete is set).
 // Then for each service, checks if it has the given props.
-func (m *Manager) findMatchingService(ctx context.Context, expectProps map[string]interface{}, complete bool) (*Service, error) {
+func (m *Manager) findMatchingService(ctx context.Context, expectProps map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
 	serviceListName := ManagerPropertyServices
 	if complete {
 		serviceListName = ManagerPropertyServiceCompleteList
@@ -69,17 +69,17 @@ func (m *Manager) findMatchingService(ctx context.Context, expectProps map[strin
 
 	mProps, err := m.GetProperties(ctx)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	servicePaths, err := mProps.GetObjectPaths(serviceListName)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 ForServicePaths:
 	for _, path := range servicePaths {
 		service, err := NewService(ctx, path)
 		if err != nil {
-			return nil, err
+			return "", err
 		}
 		serviceProps, err := service.GetProperties(ctx)
 		if err != nil {
@@ -87,7 +87,7 @@ ForServicePaths:
 				// This error is forgivable as a service may disappear anytime.
 				continue
 			}
-			return nil, err
+			return "", err
 		}
 
 		for key, val1 := range expectProps {
@@ -95,46 +95,46 @@ ForServicePaths:
 				continue ForServicePaths
 			}
 		}
-		return service, nil
+		return path, nil
 	}
-	return nil, errors.New("unable to find matching service")
+	return "", errors.New("unable to find matching service")
 }
 
-// FindMatchingService returns a Service who has the expected properties.
-func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {
+// FindMatchingService returns the path of a service who has the expect properties.
+func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[string]interface{}) (dbus.ObjectPath, error) {
 	return m.findMatchingService(ctx, expectProps, false)
 }
 
-// FindAnyMatchingService returns a service who has the expected properties.
+// FindAnyMatchingService returns the path of a service who has the expect properties.
 // It checks all services include hidden one.
-func (m *Manager) FindAnyMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {
+func (m *Manager) FindAnyMatchingService(ctx context.Context, expectProps map[string]interface{}) (dbus.ObjectPath, error) {
 	return m.findMatchingService(ctx, expectProps, true)
 }
 
-// waitForServiceProperties returns a Service who has the expected properties.
+// waitForServiceProperties returns the path of a service who has the expect properties.
 // It also checks hidden services if complete is set.
-// If there's no matching service, it polls until timeout is reached.
-func (m *Manager) waitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration, complete bool) (*Service, error) {
-	var service *Service
+// If there's no match service, it polls until timeout is reached.
+func (m *Manager) waitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration, complete bool) (dbus.ObjectPath, error) {
+	var path dbus.ObjectPath
 	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
-		service, e = m.findMatchingService(ctx, expectProps, complete)
+		path, e = m.findMatchingService(ctx, expectProps, complete)
 		return e
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return nil, err
+		return "", err
 	}
-	return service, nil
+	return path, nil
 }
 
-// WaitForServiceProperties returns a Service who has the expected properties.
-// If there's no matching service, it polls until timeout is reached.
-func (m *Manager) WaitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (*Service, error) {
+// WaitForServiceProperties returns the path of a service who has the expect properties.
+// If there's no match service, it polls until timeout is reached.
+func (m *Manager) WaitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (dbus.ObjectPath, error) {
 	return m.waitForServiceProperties(ctx, expectProps, timeout, false)
 }
 
-// WaitForAnyServiceProperties returns a Service who has the expected properties.
-// It checks all services, including hidden ones.
-// If there's no matching service, it polls until timeout is reached.
-func (m *Manager) WaitForAnyServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (*Service, error) {
+// WaitForAnyServiceProperties returns the path of a service who has the expect properties.
+// It checks all services include hidden one.
+// If there's no match service, it polls until timeout is reached.
+func (m *Manager) WaitForAnyServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (dbus.ObjectPath, error) {
 	return m.waitForServiceProperties(ctx, expectProps, timeout, true)
 }
 
@@ -198,9 +198,13 @@ func (m *Manager) Devices(ctx context.Context) ([]*Device, error) {
 	return devs, nil
 }
 
-// ConfigureService configures a service with the given properties.
-func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) error {
-	return m.dbusObject.Call(ctx, "ConfigureService", props).Err
+// ConfigureService configures a service with the given properties and returns the it's path.
+func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
+	var service dbus.ObjectPath
+	if err := m.dbusObject.Call(ctx, "ConfigureService", props).Store(&service); err != nil {
+		return "", errors.Wrap(err, "failed to configure service")
+	}
+	return service, nil
 }
 
 // ConfigureServiceForProfile configures a service at the given profile path.
