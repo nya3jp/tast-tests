@@ -496,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "0647eff0_65270643",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T19:13:06Z",
+      "side": 1,
+      "message": "I don\u0027t know what happened to my original message (I cannot understand it). Discussed it off-line.",
+      "parentUuid": "59690063_e36206a5",
+      "range": {
+        "startLine": 25,
+        "startChar": 30,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ebbbd91_086c2509",
         "filename": "src/chromiumos/tast/local/uhid/parse.go",
         "patchSetId": 23
