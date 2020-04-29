@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60bf63ea_2063d32e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-29T14:34:19Z",
+      "side": 1,
+      "message": "Due to documentations:\n\nThe caller must close the returned connection.",
+      "range": {
+        "startLine": 1059,
+        "startChar": 16,
+        "endLine": 1059,
+        "endChar": 37
+      },
+      "revId": "c5bc56338b2d794985df3babc74635a8dd0f19be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3789c6_13c0a64b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-29T14:34:19Z",
+      "side": 1,
+      "message": "if you create new connection, why do you need to pass conn as a funciton argument?",
+      "range": {
+        "startLine": 1059,
+        "startChar": 1,
+        "endLine": 1059,
+        "endChar": 5
+      },
+      "revId": "c5bc56338b2d794985df3babc74635a8dd0f19be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
