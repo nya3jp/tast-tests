@@ -245,6 +245,11 @@ func UnpackedExtension(dir string) Option {
 	return func(c *Chrome) { c.extDirs = append(c.extDirs, dir) }
 }
 
+// LoadLoginExtension load login extension.
+func LoadLoginExtension(key string) Option {
+	return func(c *Chrome) { c.testLoginExtKey = key }
+}
+
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
@@ -271,6 +276,11 @@ type Chrome struct {
 	testExtID   string   // ID for test extension exposing APIs
 	testExtDir  string   // dir containing test extension
 	testExtConn *Conn    // connection to test extension exposing APIs
+
+	testLoginExtKey  string
+	testLoginExtID   string
+	testLoginExtDir  string
+	testLoginExtConn *Conn
 
 	watcher   *browserWatcher // tries to catch Chrome restarts
 	logMaster *jslog.Master   // collects JS console output
@@ -561,12 +571,21 @@ func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "prepare_extensions")
 	defer st.End()
 
+	if len(c.testLoginExtKey) > 0 {
+		var err error
+		if c.testLoginExtDir, err = ioutil.TempDir("", "tast_test_login_api_extension."); err != nil {
+			return err
+		}
+		if c.testLoginExtID, err = writeTestExtensionKey(c.testLoginExtDir, c.testLoginExtKey); err != nil {
+			return err
+		}
+	}
 	// Write the built-in test extension.
 	var err error
 	if c.testExtDir, err = ioutil.TempDir("", "tast_test_api_extension."); err != nil {
 		return err
 	}
-	if c.testExtID, err = writeTestExtension(c.testExtDir); err != nil {
+	if c.testExtID, err = writeTestExtensionD(c.testExtDir); err != nil {
 		return err
 	}
 	c.extDirs = append(c.extDirs, c.testExtDir)
@@ -574,7 +593,11 @@ func (c *Chrome) PrepareExtensions(ctx context.Context) error {
 	// Chrome hangs with a nonsensical "Extension error: Failed to load extension
 	// from: . Manifest file is missing or unreadable." error if an extension directory
 	// is owned by another user.
-	for _, dir := range c.extDirs {
+	dirsToChown := c.extDirs
+	if len(c.testLoginExtDir) > 0 {
+		dirsToChown = append(dirsToChown, c.testLoginExtDir)
+	}
+	for _, dir := range dirsToChown {
 		manifest := filepath.Join(dir, "manifest.json")
 		if _, err = os.Stat(manifest); err != nil {
 			return errors.Wrap(err, "missing extension manifest")
@@ -634,6 +657,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
+	}
+	if len(c.testLoginExtDir) > 0 {
+		args = append(args, "--load-signin-profile-test-extension="+c.testLoginExtDir)
 	}
 	if c.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
@@ -834,29 +860,39 @@ type TestConn struct {
 // ctx's deadline is reached. The caller should not close the returned
 // connection; it will be closed automatically by Close.
 func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
-	if c.testExtConn != nil {
-		return &TestConn{c.testExtConn}, nil
+	return c.BuildTestAPIConn(ctx, c.testExtConn, c.testExtID)
+}
+
+// TestLoginAPIConn test login api conn.
+func (c *Chrome) TestLoginAPIConn(ctx context.Context) (*TestConn, error) {
+	return c.BuildTestAPIConn(ctx, c.testLoginExtConn, c.testLoginExtID)
+}
+
+// BuildTestAPIConn build test api conn.
+func (c *Chrome) BuildTestAPIConn(ctx context.Context, extConn *Conn, extID string) (*TestConn, error) {
+	if extConn != nil {
+		return &TestConn{extConn}, nil
 	}
 
-	bgURL := ExtensionBackgroundPageURL(c.testExtID)
+	bgURL := ExtensionBackgroundPageURL(extID)
 	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
 	var err error
-	if c.testExtConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
+	if extConn, err = c.NewConnForTarget(ctx, MatchTargetURL(bgURL)); err != nil {
 		return nil, err
 	}
-	c.testExtConn.locked = true
+	extConn.locked = true
 
 	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
-	if err := c.testExtConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+	if err := extConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
 		return nil, errors.Wrap(err, "test API extension is unavailable")
 	}
 
-	if err := c.testExtConn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
+	if err := extConn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
 		return nil, errors.Wrap(err, "failed to initialize test API events")
 	}
 
 	testing.ContextLog(ctx, "Test API extension is ready")
-	return &TestConn{c.testExtConn}, nil
+	return &TestConn{extConn}, nil
 }
 
 // Responded performs basic checks to verify that Chrome has not crashed.

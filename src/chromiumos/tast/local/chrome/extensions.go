@@ -8,6 +8,7 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -17,6 +18,9 @@ import (
 
 // TestExtensionID is an extension ID for the test extension.
 const TestExtensionID = "behllobkkfkfnphdnhnkndlbkcpglgmj"
+
+// LoginTestExtensionID is id.
+const LoginTestExtensionID = "mecfefiddjlmabpeilblgegnbioikfmp"
 
 // readKeyFromExtensionManifest returns the decoded public key from an
 // extension manifest located at path. An error is returned if the manifest
@@ -67,20 +71,25 @@ func ComputeExtensionID(dir string) (string, error) {
 // APIs, needed for performing various tasks without interacting with the UI
 // (e.g. enabling the ARC Play Store). The extension's ID is returned.
 func writeTestExtension(dir string) (id string, err error) {
+	return writeTestExtensionKey(dir, "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDuUZGKCDbff6IRaxa4Pue7PPkxwPaNhGT3JEqppEsNWFjM80imEdqMbf3lrWqEfaHgaNku7nlpwPO1mu3/4Hr+XdNa5MhfnOnuPee4hyTLwOs3Vzz81wpbdzUxZSi2OmqMyI5oTaBYICfNHLwcuc65N5dbt6WKGeKgTpp4v7j7zwIDAQAB")
+}
+
+// writeTestExtensionKey write test extension key.
+func writeTestExtensionKey(dir, key string) (id string, err error) {
 	if err = os.MkdirAll(dir, 0755); err != nil {
 		return "", err
 	}
 
 	const (
 		// Based on Autotest's client/common_lib/cros/autotest_private_ext/manifest.json and
-		// client/cros/multimedia/multimedia_test_extension/manifest.json. It appears to be
-		// the case that this key must be present in the manifest in order for the extension's
-		// autotestPrivate permission request to be granted.
-		manifest = `{
-  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDuUZGKCDbff6IRaxa4Pue7PPkxwPaNhGT3JEqppEsNWFjM80imEdqMbf3lrWqEfaHgaNku7nlpwPO1mu3/4Hr+XdNa5MhfnOnuPee4hyTLwOs3Vzz81wpbdzUxZSi2OmqMyI5oTaBYICfNHLwcuc65N5dbt6WKGeKgTpp4v7j7zwIDAQAB",
+		// client/cros/multimedia/multimedia_test_extension/manifest.json. Key must be
+		// present in the manifest to generate stable extension id.
+		manifestFmt = `{
+  "key": %q,
   "description": "Permits access to various APIs by tests",
   "name": "Test API extension",
   "background": { "scripts": ["background.js"] },
+  "incognito": "split",
   "manifest_version": 2,
   "version": "0.1",
   "permissions": [
@@ -132,7 +141,7 @@ tast.promisify = function(f) {
 	)
 
 	for _, f := range []struct{ name, data string }{
-		{"manifest.json", manifest},
+		{"manifest.json", fmt.Sprintf(manifestFmt, key)},
 		{"background.js", background},
 	} {
 		if err = ioutil.WriteFile(filepath.Join(dir, f.name), []byte(f.data), 0644); err != nil {
@@ -143,8 +152,8 @@ tast.promisify = function(f) {
 	if err != nil {
 		return "", err
 	}
-	if id != TestExtensionID {
-		return "", errors.Errorf("unexpected extension ID: got %q; want %q", id, TestExtensionID)
+	if id != TestExtensionID && id != LoginTestExtensionID {
+		return "", errors.Errorf("unexpected extension ID: got %q; want %q or %q", id, TestExtensionID, LoginTestExtensionID)
 	}
 	return id, nil
 }
