@@ -86,9 +86,6 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not run crash reporter: ", err)
 	}
 
-	if _, err = os.Stat(uncleanShutdownDetectedFile); err != nil {
-		s.Fatal("unclean_shutdown_collector failed to create unclean shutdown file: ", err)
-	}
 	if _, err = os.Stat(pendingShutdownFile); err != nil {
 		s.Fatal("crash_reporter failed to re-create pending shutdown file: ", err)
 	}
