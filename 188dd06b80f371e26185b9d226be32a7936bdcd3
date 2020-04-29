@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "59690063_e36206a5",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:06:54Z",
+      "side": 1,
+      "message": "yes, moving the comment from the func description to above the regexp SGTM.\n\nregarding the regexp,  delete the \"is format valid?\" to the regular expression (assuming it is feasible).\nAnd the add code to parse the results. The code is easier to read that way.\n\nIn your case, you should use FindStringSubmatch instead of FindAllString.\nOn possible way to implement it this one: https://play.golang.org/p/qKw4BqPFvtj",
+      "parentUuid": "2ab6faa8_6d6b6c11",
+      "range": {
+        "startLine": 25,
+        "startChar": 30,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "188dd06b80f371e26185b9d226be32a7936bdcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ebbbd91_086c2509",
         "filename": "src/chromiumos/tast/local/uhid/parse.go",
         "patchSetId": 23

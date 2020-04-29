@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7abc5acc_3f0ac9fe",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:06:54Z",
+      "side": 1,
+      "message": "add docstring",
+      "range": {
+        "startLine": 420,
+        "startChar": 17,
+        "endLine": 420,
+        "endChar": 29
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c83d022_57c6b3db",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-29T18:06:54Z",
+      "side": 1,
+      "message": "docstring",
+      "range": {
+        "startLine": 427,
+        "startChar": 17,
+        "endLine": 427,
+        "endChar": 35
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
