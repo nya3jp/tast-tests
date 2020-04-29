@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33553915_86997236",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T21:48:57Z",
+      "side": 1,
+      "message": "is there a reason this is separate from ShillServiceProperties? Seems like it should just be part of the property map, and I don\u0027t currently see you using it in any special way that wouldn\u0027t be suitable for ShillServiceProperties.\n\n(And instead, it currently seems like you\u0027re not including this output in your unit tests.)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "f1c49dec289bbf11072afe8263931fe213ba9a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
