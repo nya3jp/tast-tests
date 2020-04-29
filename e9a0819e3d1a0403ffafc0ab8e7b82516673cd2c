@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40d08d44_18d9b471",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-29T18:20:01Z",
+      "side": 1,
+      "message": "nit, it may be clearer if the checks are structured like (assuming default config has no parent):\nif this is a top level config {\n  return defaultName\nelse {\n  return cfg.Parent\n}\nThen can get rid of some of the explanatory comments too.",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787b68d2_6f3020bb",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-29T18:20:01Z",
+      "side": 1,
+      "message": "Can move the defer inside an else here since no need to keep deferring if there\u0027s an error.  If you do this, then can also get rid of the error checks in unmarshalOntoCfg, so might as well just use json.Unmarshal directly.",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558cbbf0_cf960c8f",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-29T18:20:01Z",
+      "side": 1,
+      "message": "nit, it may be easier to see which keys are assigned for a platform by filling in the key names rather than the values.",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
