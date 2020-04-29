@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7931b46b_6eb03a6c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-29T14:46:34Z",
+      "side": 1,
+      "message": "nit: What about smth like:\n\n// Create new connection since OOBE creates a new window.\n// More details: crrev.com/c/2144279\n\n\nIt\u0027s a bit unclear what is \"Views-based\" if you don\u0027t work with it :)",
+      "range": {
+        "startLine": 1057,
+        "startChar": 0,
+        "endLine": 1059,
+        "endChar": 0
+      },
+      "revId": "5aa138e9aed0b676a1357ef3c0076d8f80dec431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
