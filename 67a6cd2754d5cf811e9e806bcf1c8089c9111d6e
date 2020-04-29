@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b78bdfc1_4014da41",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:03:12Z",
+      "side": 1,
+      "message": "Is there a good reason we have separate \u0027base\u0027, \u0027wep\u0027, and (next) \u0027wpa\u0027 packages, rather than just different types within the same package? Seems like we could have OpenConfig, WEPConfig, WPAConfig, etc., types just as easily. I don\u0027t think we\u0027re trying to hide much between these packages/types, are we?\n\nThis separation is probably fine too I guess. I\u0027m just wondering why the split.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5f4bbf_eba07a35",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:03:12Z",
+      "side": 1,
+      "message": "As is (with no comments) I\u0027m a little confused about the purpose of blueprint. In its current usage, wouldn\u0027t it be a little clear to remove this state, and just keep the []Option slice here? And then Option could operate on a local Config constructed in Gen(). We\u0027d also change the type to:\n\n  type Option func(*Config)\n\ninstead of\n\n  type Option func(*ConfigFactory)\n\nOr if you do need this to stay as a \u0027blueprint\u0027 object, it\u0027d be nice to leave a comment about why. Same for the WPA package.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7ca355_c815b2fe",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-29T23:03:12Z",
+      "side": 1,
+      "message": "Please document these magic numbers somehow. Maybe borrow some variant of the comments from Autotest. (Same with formatKey().)",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 18
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
