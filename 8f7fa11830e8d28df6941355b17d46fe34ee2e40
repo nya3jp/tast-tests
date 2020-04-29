@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb19e4ed_bc03b60d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-29T14:49:51Z",
+      "side": 0,
+      "message": "I guess you wanna save this log, isn\u0027t it?",
+      "range": {
+        "startLine": 1057,
+        "startChar": 1,
+        "endLine": 1057,
+        "endChar": 56
+      },
+      "revId": "8f7fa11830e8d28df6941355b17d46fe34ee2e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
