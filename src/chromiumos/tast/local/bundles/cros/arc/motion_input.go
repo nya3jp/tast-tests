@@ -112,7 +112,7 @@ func MotionInput(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed installing %s: %v", motioninput.APK, err)
 		}
 
-		act, err := arc.NewActivity(a, motioninput.PKG, string(motioninput.CLS))
+		act, err := arc.NewActivity(a, motioninput.PKG, string(motioninput.EventReportingActivityCLS))
 		if err != nil {
 			s.Fatal("Failed to create an activity: ", err)
 		}
@@ -152,7 +152,7 @@ func MotionInput(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get ARC app window info: ", err)
 		}
 
-		test.tester = motioninput.NewTester(a, d, motioninput.CLS, act)
+		test.tester = motioninput.NewTester(a, d, motioninput.EventReportingActivityCLS, act)
 
 		subtest(ctx, s, test)
 	}
