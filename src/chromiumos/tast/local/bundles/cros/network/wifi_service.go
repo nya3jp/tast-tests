@@ -49,7 +49,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 			shill.ServicePropertySSID:           config.Ssid,
 			shill.ServicePropertyWiFiHiddenSSID: config.Hidden,
 		}
-		if err := m.ConfigureService(ctx, props); err != nil {
+		if _, err := m.ConfigureService(ctx, props); err != nil {
 			return nil, errors.Wrap(err, "failed to configure a hidden SSID")
 		}
 	}
@@ -61,9 +61,9 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 
 	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
 	testing.ContextLog(ctx, "Finding service with props: ", props)
-	var service *shill.Service
+	var servicePath dbus.ObjectPath
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		service, err = m.FindMatchingService(ctx, props)
+		servicePath, err = m.FindMatchingService(ctx, props)
 		if err == nil {
 			return nil
 		}
@@ -79,7 +79,11 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 		return nil, err
 	}
 
-	testing.ContextLog(ctx, "Connecting to service: ", service)
+	testing.ContextLog(ctx, "Connecting to service with path: ", servicePath)
+	service, err := shill.NewService(ctx, servicePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
 
 	// Spawn watcher before connect.
 	pw, err := service.CreateWatcher(ctx)
@@ -102,7 +106,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}
 
 	return &network.Service{
-		Path: string(service.ObjectPath()),
+		Path: string(servicePath),
 	}, nil
 }
 
