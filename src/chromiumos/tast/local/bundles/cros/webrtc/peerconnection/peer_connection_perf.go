@@ -68,7 +68,7 @@ type rxMeas struct {
 }
 
 // measureCPU measures CPU usage for a period of time after a short period for stabilization and writes CPU usage to perf.Values.
-func measureCPU(ctx context.Context, cr *chrome.Chrome, prefix string, p *perf.Values) error {
+func measureCPU(ctx context.Context, cr *chrome.Chrome, p *perf.Values) error {
 	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", cpuStabilization)
 	if err := testing.Sleep(ctx, cpuStabilization); err != nil {
 		return err
@@ -81,7 +81,7 @@ func measureCPU(ctx context.Context, cr *chrome.Chrome, prefix string, p *perf.V
 	cpuUsage := measurements["cpu"]
 	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
 	p.Set(perf.Metric{
-		Name:      prefix + "cpu_usage",
+		Name:      "cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsage)
@@ -89,7 +89,7 @@ func measureCPU(ctx context.Context, cr *chrome.Chrome, prefix string, p *perf.V
 	if power, ok := measurements["power"]; ok {
 		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
 		p.Set(perf.Metric{
-			Name:      prefix + "pkg_power_usage",
+			Name:      "pkg_power_usage",
 			Unit:      "W",
 			Direction: perf.SmallerIsBetter,
 		}, power)
@@ -120,7 +120,7 @@ func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, par
 
 // measureRTCStats parses the WebRTC Tx and Rx Stats, and stores them into p.
 // See https://www.w3.org/TR/webrtc-stats/#stats-dictionaries for more info.
-func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, prefix string, p *perf.Values) error {
+func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p *perf.Values) error {
 	parseStatsJS :=
 		`new Promise(function(resolve, reject) {
 			const rtcKeys = [%v];
@@ -196,7 +196,7 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 	}
 
 	framesPerSecond := perf.Metric{
-		Name:      prefix + "tx.frames_per_second",
+		Name:      "tx.frames_per_second",
 		Unit:      "fps",
 		Direction: perf.BiggerIsBetter,
 		Multiple:  true,
@@ -206,7 +206,7 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 	}
 
 	encodeTime := perf.Metric{
-		Name:      prefix + "tx.encode_time",
+		Name:      "tx.encode_time",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 		Multiple:  true,
@@ -220,7 +220,7 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 	}
 
 	decodeTime := perf.Metric{
-		Name:      prefix + "rx.decode_time",
+		Name:      "rx.decode_time",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 		Multiple:  true,
@@ -237,7 +237,7 @@ func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p
 }
 
 // measureGPUCounters measures GPU usage for a period of time into p.
-func measureGPUCounters(ctx context.Context, prefix string, p *perf.Values) error {
+func measureGPUCounters(ctx context.Context, p *perf.Values) error {
 	testing.ContextLog(ctx, "Measuring GPU usage for ", gpuMeasuring)
 	counters, err := graphics.CollectPerformanceCounters(ctx, gpuMeasuring)
 	if err != nil {
@@ -254,7 +254,7 @@ func measureGPUCounters(ctx context.Context, prefix string, p *perf.Values) erro
 		rcsUsage := 100 * rcs.Seconds() / counters["total"].Seconds()
 		testing.ContextLogf(ctx, "RCS usage: %f%%", rcsUsage)
 		p.Set(perf.Metric{
-			Name:      prefix + "rcs_usage",
+			Name:      "rcs_usage",
 			Unit:      "percent",
 			Direction: perf.SmallerIsBetter,
 		}, rcsUsage)
@@ -263,7 +263,7 @@ func measureGPUCounters(ctx context.Context, prefix string, p *perf.Values) erro
 		vcsUsage := 100 * vcs.Seconds() / counters["total"].Seconds()
 		testing.ContextLogf(ctx, "VCS usage: %f%%", vcsUsage)
 		p.Set(perf.Metric{
-			Name:      prefix + "vcs_usage",
+			Name:      "vcs_usage",
 			Unit:      "percent",
 			Direction: perf.SmallerIsBetter,
 		}, vcsUsage)
@@ -272,7 +272,7 @@ func measureGPUCounters(ctx context.Context, prefix string, p *perf.Values) erro
 		vecsUsage := 100 * vecs.Seconds() / counters["total"].Seconds()
 		testing.ContextLogf(ctx, "VECS usage: %f%%", vecsUsage)
 		p.Set(perf.Metric{
-			Name:      prefix + "vecs_usage",
+			Name:      "vecs_usage",
 			Unit:      "percent",
 			Direction: perf.SmallerIsBetter,
 		}, vecsUsage)
@@ -317,26 +317,24 @@ func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profil
 		s.Fatal("Error establishing connection: ", err)
 	}
 
-	prefix := "sw."
 	hwAccelUsed := checkForCodecImplementation(ctx, s, conn, Decoding, false /*isSimulcast*/) == nil
 	if enableHWAccel {
 		if !hwAccelUsed {
 			s.Fatal("Error: HW accelerator wasn't used")
 		}
-		prefix = "hw."
 	} else {
 		if hwAccelUsed {
 			s.Fatal("Error: SW accelerator wasn't used")
 		}
 	}
 
-	if err := measureRTCStats(shortCtx, s, conn, prefix, p); err != nil {
+	if err := measureRTCStats(shortCtx, s, conn, p); err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
-	if err := measureCPU(shortCtx, cr, prefix, p); err != nil {
+	if err := measureCPU(shortCtx, cr, p); err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
-	if err := measureGPUCounters(shortCtx, prefix, p); err != nil {
+	if err := measureGPUCounters(shortCtx, p); err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
 
