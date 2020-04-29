@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6342f490_651a0347",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-29T22:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1580f0_310e13a4",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55b1ff38_d627606f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d9b5db_79d86bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-29T22:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55b1ff38_d627606f",
+      "range": {
+        "startLine": 103,
+        "startChar": 59,
+        "endLine": 104,
+        "endChar": 46
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "28b6a458_45cbebef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-29T22:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61dc1301_58ed1ff6",
+      "range": {
+        "startLine": 219,
+        "startChar": 4,
+        "endLine": 219,
+        "endChar": 32
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e16b251_6311b0f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f9d294_e812cfcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-29T22:07:18Z",
+      "side": 1,
+      "message": "Looks like d.WaitForIdle was what I was looking for.",
+      "parentUuid": "1e16b251_6311b0f7",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 268,
+        "endChar": 3
+      },
+      "revId": "617a13a5d63cb9859fb024e84d1b35dd1e8ab25b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
