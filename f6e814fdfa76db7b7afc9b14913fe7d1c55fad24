@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a59f456_21368bef",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2020-04-29T14:15:03Z",
+      "side": 1,
+      "message": "could you please put the reasoning here? Maybe also link crrev.com/c/2144279 ?",
+      "range": {
+        "startLine": 1057,
+        "startChar": 0,
+        "endLine": 1057,
+        "endChar": 39
+      },
+      "revId": "f6e814fdfa76db7b7afc9b14913fe7d1c55fad24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
