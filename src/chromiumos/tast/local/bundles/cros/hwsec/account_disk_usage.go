@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/wifi"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	hwseclocal "chromiumos/tast/local/hwsec"
@@ -137,6 +138,8 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create UtilityCryptohomeBinary: ", err)
 	}
+
+	wifi.ResetTPMStore(ctx, utility)
 
 	// Cleanup before we start.
 	if err := utility.UnmountAll(ctx); err != nil {
