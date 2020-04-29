@@ -1005,6 +1005,7 @@ func (c *Chrome) fullUserDomain() (string, error) {
 // and the Enrollment login screen to appear. If the login screen does not appear
 // the testing.Poll will timeout.
 func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
+	testing.ContextLog(ctx, "Waiting for enrollment to complete")
 	fullDomain, err := c.fullUserDomain()
 	if err != nil {
 		return errors.Wrap(err, "no valid full user domain found")
@@ -1023,7 +1024,6 @@ func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
 			return errors.Wrap(err, "no Enrollment webview targets")
 		}
 		for _, gaiaTarget := range gaiaTargets {
-			testing.ContextLog(ctx, "Enrollment apps url: ", string(gaiaTarget.URL))
 			webViewConn, err := c.NewConnForTarget(ctx, MatchTargetURL(gaiaTarget.URL))
 			if err != nil {
 				// If an error occurs during connection, continue to try.
@@ -1054,10 +1054,12 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context, conn *Conn) error {
 		return errors.Wrap(c.chromeErr(err), "could not enroll")
 	}
 
+	testing.ContextLog(ctx, "Waiting for OOBE to be ready")
 	if err := conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
 		return err
 	}
 
+	testing.ContextLog(ctx, "Performing login after enrollment")
 	// Now login like "normal".
 	if err := conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)",
 		c.user, c.pass, c.gaiaID)); err != nil {
