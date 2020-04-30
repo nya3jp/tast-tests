@@ -22,6 +22,29 @@
       "revId": "e255252d88c6666d10a7a341f8689a9e3114bbd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31463b0e_b3cfc43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2020-04-30T06:40:06Z",
+      "side": 1,
+      "message": "How about using ReplaceAll instead of strings.Replace?",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 24
+      },
+      "revId": "e255252d88c6666d10a7a341f8689a9e3114bbd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
