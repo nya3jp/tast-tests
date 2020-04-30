@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ba7dce9_29a6aec9",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T10:49:07Z",
+      "side": 1,
+      "message": "just to don\u0027t lose in old thread: please remove this one",
+      "range": {
+        "startLine": 25,
+        "startChar": 71,
+        "endLine": 25,
+        "endChar": 94
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11f0613_d2624b49",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T10:49:07Z",
+      "side": 1,
+      "message": "pipe won\u0027t be closed if you return here",
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "221a9526_8589bf63",
         "filename": "src/chromiumos/tast/local/arc/logcat.go",
         "patchSetId": 11
@@ -48,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "64d62c14_c3758ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T10:49:07Z",
+      "side": 1,
+      "message": "nya@ do you think it\u0027s safe enough?\n\nin the worst case if we panic between start and stop there will be goroutine running in the background for pretty long time.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e6e04e9_0cb3abca",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 11
@@ -87,6 +150,46 @@
         "startChar": 5,
         "endLine": 155,
         "endChar": 11
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b47342_7678a509",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T10:49:07Z",
+      "side": 1,
+      "message": "this function is not thread safe and you may call it from different goroutines",
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e52b340_fad6597a",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T10:49:07Z",
+      "side": 1,
+      "message": "same: make(chan error, 2)",
+      "range": {
+        "startLine": 155,
+        "startChar": 21,
+        "endLine": 155,
+        "endChar": 37
       },
       "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
