@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4ac3b84a_893400aa",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T16:45:55Z",
+      "side": 1,
+      "message": "That\u0027s just 2 lines of code to make shorter timeout.",
+      "parentUuid": "37fea4d8_2b5e3661",
+      "range": {
+        "startLine": 25,
+        "startChar": 71,
+        "endLine": 25,
+        "endChar": 94
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a11f0613_d2624b49",
         "filename": "src/chromiumos/tast/local/arc/logcat.go",
         "patchSetId": 11
@@ -178,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "d8e36606_734a7ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T16:45:55Z",
+      "side": 1,
+      "message": "It\u0027s better to don\u0027t put unrelated changes to CL.\n\nFor example, if it will be too short and CQ will break, it\u0027s easier for sherriff just to revert one-line CL. \n\nIt\u0027ll be complicated to revert one CL and don\u0027t break smth else that depends on that CL.",
+      "parentUuid": "c79f70cc_e5199ad5",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64d62c14_c3758ffb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 11
@@ -222,6 +270,30 @@
       "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5aba5df_d747fda1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T16:45:55Z",
+      "side": 1,
+      "message": "Hmm... you are right here.\n\nI was trying to reproduce this scenario, but looks like I did something wrong and didn\u0027t fully understand context cancellation. Thanks for clarifying!",
+      "parentUuid": "4127ab3b_bd220654",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -348,6 +420,24 @@
       "side": 1,
       "message": "This function will be deleted in a subsequent CL. There is a test in tast-test-private (gfxbench.go) that I have to change, so I have to keep the old API around for a bit. Otherwise, I would break that test.\n\nWhat I will do is:\n1. Submit this CL with old and new API.\n2. Submit CL in tast-tests-private that changes from old API to new API.\n3. Submit CL that removed this Snapshot function.\n\ngfxbench.go is the only test that\u0027s still calling Snapshot. All other tests no longer call Snapshot. Only the goroutine started by StartRecording() will do snapshots. This goroutine cannot be started multiple times, so there will be no thread safety problem.",
       "parentUuid": "84b47342_7678a509",
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2f67fe0_dbf4682a",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T16:45:55Z",
+      "side": 1,
+      "message": "Ack, thanks!",
+      "parentUuid": "d55f20f4_061b6601",
       "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

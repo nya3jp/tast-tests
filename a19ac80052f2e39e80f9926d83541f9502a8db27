@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92d77f43_ae5451ca",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T16:45:55Z",
+      "side": 1,
+      "message": "looks like you didn\u0027t upload changes for this channel",
+      "range": {
+        "startLine": 155,
+        "startChar": 21,
+        "endLine": 155,
+        "endChar": 37
+      },
+      "revId": "a19ac80052f2e39e80f9926d83541f9502a8db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffd1c15_5ff04f20",
+        "filename": "src/chromiumos/tast/local/perf/timeline_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T16:45:55Z",
+      "side": 1,
+      "message": "nit: len(timestamps)-1 looks safer if you wanna change size of timestamps.",
+      "range": {
+        "startLine": 120,
+        "startChar": 17,
+        "endLine": 120,
+        "endChar": 18
+      },
+      "revId": "a19ac80052f2e39e80f9926d83541f9502a8db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

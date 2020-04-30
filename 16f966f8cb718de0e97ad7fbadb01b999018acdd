@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "e2201f60_78a74a0c",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T16:45:55Z",
+      "side": 1,
+      "message": "Context package in Go was created to deal with deadlines, so we should use it in the first place.\n\nYou want to have interface of a funcion that takes context and timeout. It\u0027s very easy to misues. For example, it\u0027s not obvious what it does if I pass 0 as a timeout: does it stops immediately or runs infinitely. You may implement as it runs infinitely, but someone else will implement another function with the same interface, but if you pass 0, it stops immediately.\n\nEach time to use such function you need to check it\u0027s implementation, it\u0027s not how you want to spend your time.\n\n\nYes, caller will need to waste 2 lines of code if they don\u0027t wanna wait there for too long. Anyway, it\u0027s much obvious and hard to misuse.\n\nAlso, if caller doesn\u0027t care about timeout at all, they need to use hacks like 0 or ctxutil.MaxTimeout, or peek some random number.",
+      "parentUuid": "36e185f3_110358b7",
+      "range": {
+        "startLine": 18,
+        "startChar": 73,
+        "endLine": 18,
+        "endChar": 94
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fc289b5_7f4a19fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 4
