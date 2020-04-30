@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 
 	"google.golang.org/grpc"
 
@@ -45,7 +46,21 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 		}
 	}()
 
-	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreDisabled, nil, targetDir)
+	var packagesMode cache.PackagesMode
+	if request.PackagesCacheEnabled {
+		packagesMode = cache.PackagesCopy
+	} else {
+		packagesMode = cache.PackagesSkipCopy
+	}
+
+	var gmsCoreMode cache.GMSCoreMode
+	if request.GmsCoreEnabled {
+		gmsCoreMode = cache.GMSCoreEnabled
+	} else {
+		gmsCoreMode = cache.GMSCoreDisabled
+	}
+
+	cr, a, err := cache.OpenSession(ctx, packagesMode, gmsCoreMode, nil, targetDir)
 	if err != nil {
 		os.RemoveAll(targetDir)
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
@@ -59,12 +74,20 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
 	}
 
+	src := filepath.Join("/system/etc", cache.PackagesCacheXML)
+	dst := filepath.Join(targetDir, cache.GeneratedPackagesCacheXML)
+	if err := a.PullFile(ctx, src, dst); err != nil {
+		testing.ContextLog(ctx, "Could not pull file from Android, this may mean that pre-generated packages cache was not installed when building the image")
+		return nil, errors.Wrapf(err, "failed to pull %s from Android: ", cache.GeneratedPackagesCacheXML)
+	}
+
 	response := arcpb.GmsCoreCacheResponse{
-		TargetDir:           targetDir,
-		PackagesCacheName:   cache.PackagesCacheXML,
-		GmsCoreCacheName:    cache.GMSCoreCacheArchive,
-		GmsCoreManifestName: cache.GMSCoreManifest,
-		GsfCacheName:        cache.GSFCache,
+		TargetDir:                  targetDir,
+		PackagesCacheName:          cache.PackagesCacheXML,
+		GmsCoreCacheName:           cache.GMSCoreCacheArchive,
+		GmsCoreManifestName:        cache.GMSCoreManifest,
+		GsfCacheName:               cache.GSFCache,
+		GeneratedPackagesCacheName: cache.GeneratedPackagesCacheXML,
 	}
 	return &response, nil
 }
