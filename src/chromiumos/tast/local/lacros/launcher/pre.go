@@ -37,6 +37,16 @@ type PreData struct {
 // lacros.DataArtifact as a data dependency.
 func StartedByData() testing.Precondition { return startedByDataPre }
 
+// StartedByDataWithChromeOSOptions is the same as StartedByData but allows passing of Options to Chrome.
+func StartedByDataWithChromeOSOptions(suffix string, opts ...chrome.Option) testing.Precondition {
+	return &preImpl{
+		name:    "lacros_started_by_artifact_" + suffix,
+		timeout: chrome.LoginTimeout + 7*time.Minute,
+		mode:    download,
+		opts:    opts,
+	}
+}
+
 // StartedByDataForceComposition is the same as StartedByData but forces composition for ChromeOS-chrome.
 func StartedByDataForceComposition() testing.Precondition { return startedByDataForceCompositionPre }
 
@@ -51,28 +61,28 @@ const (
 const LacrosTestPath = "/mnt/stateful_partition/lacros_test_artifacts"
 
 var startedByDataPre = &preImpl{
-	name:             "lacros_started_by_artifact",
-	timeout:          chrome.LoginTimeout + 7*time.Minute,
-	mode:             download,
-	forceComposition: false,
+	name:    "lacros_started_by_artifact",
+	timeout: chrome.LoginTimeout + 7*time.Minute,
+	mode:    download,
+	opts:    nil,
 }
 
 var startedByDataForceCompositionPre = &preImpl{
-	name:             "lacros_started_by_artifact_force_composition",
-	timeout:          chrome.LoginTimeout + 7*time.Minute,
-	mode:             download,
-	forceComposition: true,
+	name:    "lacros_started_by_artifact_force_composition",
+	timeout: chrome.LoginTimeout + 7*time.Minute,
+	mode:    download,
+	opts:    []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, // Force composition.
 }
 
 // Implementation of lacros's precondition.
 type preImpl struct {
-	name             string           // Name of this precondition (for logging/uniqueing purposes).
-	timeout          time.Duration    // Timeout for completing the precondition.
-	mode             setupMode        // Where (download/build artifact) the container image comes from.
-	forceComposition bool             // Whether composition should be forced on CrOS-chrome or not.
-	cr               *chrome.Chrome   // Connection to CrOS-chrome.
-	tconn            *chrome.TestConn // Test-connection for CrOS-chrome.
-	prepared         bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	name     string           // Name of this precondition (for logging/uniqueing purposes).
+	timeout  time.Duration    // Timeout for completing the precondition.
+	mode     setupMode        // Where (download/build artifact) the container image comes from.
+	cr       *chrome.Chrome   // Connection to CrOS-chrome.
+	tconn    *chrome.TestConn // Test-connection for CrOS-chrome.
+	prepared bool             // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	opts     []chrome.Option  // Options to be run for CrOS-chrome.
 }
 
 // Interface methods for a testing.Precondition.
@@ -135,13 +145,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 	}()
 
-	fc := chrome.ExtraArgs()
-	if p.forceComposition {
-		fc = chrome.ExtraArgs("--enable-hardware-overlays=\"\"")
-	}
-
 	var err error
-	if p.cr, err = chrome.New(ctx, fc); err != nil {
+	if p.cr, err = chrome.New(ctx, p.opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {

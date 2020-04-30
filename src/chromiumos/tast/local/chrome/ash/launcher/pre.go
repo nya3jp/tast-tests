@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ash
+package launcher
 
 import (
 	"context"
@@ -13,6 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -30,9 +32,10 @@ type preImpl struct {
 	prepared   bool
 }
 
-var dummyApps100Pre = newPrecondition("dummy_apps", 100)
+var dummyApps100PreChromeOS = newPrecondition("dummy_apps", 100, lacros.ChromeTypeChromeOS)
+var dummyApps100PreLacros = newPrecondition("dummy_apps", 100, lacros.ChromeTypeLacros)
 
-func newPrecondition(name string, numApps int) *preImpl {
+func newPrecondition(name string, numApps int, crt lacros.ChromeType) *preImpl {
 	name = fmt.Sprintf("%s_%d", name, numApps)
 	tmpDir, err := ioutil.TempDir("", name)
 	if err != nil {
@@ -42,15 +45,24 @@ func newPrecondition(name string, numApps int) *preImpl {
 	for i := 0; i < numApps; i++ {
 		opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpDir, fmt.Sprintf("dummy_%d", i))))
 	}
-	crPre := chrome.NewPrecondition(name, opts...)
+	var crPre testing.Precondition
+	if crt == lacros.ChromeTypeLacros {
+		crPre = launcher.StartedByDataWithChromeOSOptions(name, opts...)
+
+	} else {
+		crPre = chrome.NewPrecondition(name, opts...)
+	}
 	return &preImpl{crPre: crPre, numApps: numApps, extDirBase: tmpDir, prepared: false}
 }
 
 // LoggedInWith100DummyApps returns the precondition that Chrome is already
 // logged in and 100 dummy applications (extensions) are installed. PreValue for
 // the test with this precondition is an instance of *chrome.Chrome.
-func LoggedInWith100DummyApps() testing.Precondition {
-	return dummyApps100Pre
+func LoggedInWith100DummyApps(crt lacros.ChromeType) testing.Precondition {
+	if crt == lacros.ChromeTypeLacros {
+		return dummyApps100PreLacros
+	}
+	return dummyApps100PreChromeOS
 }
 
 func (p *preImpl) String() string         { return p.crPre.String() }

@@ -14,11 +14,13 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ash/launcher"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -31,7 +33,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "andrewxu@chromium.org", "cros-launcher-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          ash.LoggedInWith100DummyApps(),
+		Pre:          launcher.LoggedInWith100DummyApps(lacros.ChromeTypeChromeOS),
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
@@ -129,7 +131,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the launcher state change.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
+	if err := launcher.WaitForLauncherState(ctx, tconn, launcher.FullscreenAllApps); err != nil {
 		s.Fatal("Failed to wait: ", err)
 	}
 

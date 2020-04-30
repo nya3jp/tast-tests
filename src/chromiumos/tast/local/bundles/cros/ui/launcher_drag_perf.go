@@ -14,10 +14,12 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ash/launcher"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -30,7 +32,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          ash.LoggedInWith100DummyApps(),
+		Pre:          launcher.LoggedInWith100DummyApps(lacros.ChromeTypeChromeOS),
 		Timeout:      3 * time.Minute,
 	})
 }
@@ -136,14 +138,14 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 			if err := ash.MouseDrag(ctx, tconn, bottom, top, time.Second); err != nil {
 				return errors.Wrap(err, "failed to drag from the bottom to top")
 			}
-			if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
+			if err := launcher.WaitForLauncherState(ctx, tconn, launcher.FullscreenAllApps); err != nil {
 				return errors.Wrap(err, "failed to switch the state to 'FullscreenAllApps'")
 			}
 			// Drag from the top to the bottom; this should close the app-list.
 			if err := ash.MouseDrag(ctx, tconn, top, bottom, time.Second); err != nil {
 				return errors.Wrap(err, "failed to drag from the top to bottom")
 			}
-			if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			if err := launcher.WaitForLauncherState(ctx, tconn, launcher.Closed); err != nil {
 				return errors.Wrap(err, "failed to switch the state to 'Closed'")
 			}
 			return nil

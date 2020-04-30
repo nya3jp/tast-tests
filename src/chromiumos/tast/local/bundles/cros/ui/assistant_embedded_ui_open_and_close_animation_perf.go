@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ash/launcher"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
@@ -40,7 +41,7 @@ func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to open the embedded UI")
 	}
 
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Peeking); err != nil {
+	if err := launcher.WaitForLauncherState(ctx, tconn, launcher.Peeking); err != nil {
 		return errors.Wrap(err, "failed to switch the state to 'Peeking'")
 	}
 
@@ -49,7 +50,7 @@ func openAndCloseEmbeddedUI(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to close the embedded UI")
 	}
 
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+	if err := launcher.WaitForLauncherState(ctx, tconn, launcher.Closed); err != nil {
 		return errors.Wrap(err, "failed to switch the state to 'Closed'")
 	}
 

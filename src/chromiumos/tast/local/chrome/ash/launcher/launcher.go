@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ash
+// Package launcher implements a library used to setup and launch Chrome for Ash testing purposes.
+package launcher
 
 import (
 	"context"
@@ -15,17 +16,17 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
-// LauncherState represents the launcher (a.k.a AppList) state.
-type LauncherState string
+// State represents the launcher (a.k.a AppList) state.
+type State string
 
-// LauncherState as defined in
+// State as defined in
 // https://cs.chromium.org/chromium/src/ash/public/cpp/app_list/app_list_types.h
 const (
-	Peeking           LauncherState = "Peeking"
-	FullscreenAllApps LauncherState = "FullscreenAllApps"
-	FullscreenSearch  LauncherState = "FullscreenSearch"
-	Half              LauncherState = "Half"
-	Closed            LauncherState = "Closed"
+	Peeking           State = "Peeking"
+	FullscreenAllApps State = "FullscreenAllApps"
+	FullscreenSearch  State = "FullscreenSearch"
+	Half              State = "Half"
+	Closed            State = "Closed"
 )
 
 // Accelerator represents the accelerator key to trigger certain actions.
@@ -37,8 +38,8 @@ const (
 	AccelShiftSearch Accelerator = "{keyCode: 'search', shift: true, control: false, alt: false, search: false, pressed: true}"
 )
 
-// WaitForLauncherState waits until the launcher state becomes state.
-func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state LauncherState) error {
+// WaitForLauncherState waits until the launcher state becomes |state|.
+func WaitForLauncherState(ctx context.Context, tconn *chrome.TestConn, state State) error {
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.waitForLauncherState)('%s')`, state)
 	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
