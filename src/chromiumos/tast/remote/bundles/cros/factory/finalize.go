@@ -64,7 +64,7 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 		}
 
 		return errors.New("wipe have not finished yet")
-	}, &testing.PollOptions{Interval: time.Second, Timeout: 2 * time.Minute}); err != nil {
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
 		s.Fatal("Failed to wait wiping finished: ", err)
 	}
 }
