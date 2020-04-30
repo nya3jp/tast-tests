@@ -19,8 +19,8 @@ func TestSelectedMode(t *testing.T) {
 			"multi",
 			&Info{
 				Modes: []*DisplayMode{
-					&DisplayMode{Width: 640, Height: 480, IsNative: true, IsSelected: false},
-					&DisplayMode{Width: 320, Height: 240, DeviceScaleFactor: 2.0, IsNative: false, IsSelected: true},
+					{Width: 640, Height: 480, IsNative: true, IsSelected: false},
+					{Width: 320, Height: 240, DeviceScaleFactor: 2.0, IsNative: false, IsSelected: true},
 				},
 			},
 			1,
@@ -29,8 +29,8 @@ func TestSelectedMode(t *testing.T) {
 			"error-no-selected",
 			&Info{
 				Modes: []*DisplayMode{
-					&DisplayMode{Width: 640, Height: 480, IsNative: true, IsSelected: false},
-					&DisplayMode{Width: 320, Height: 240, DeviceScaleFactor: 2.0, IsNative: false, IsSelected: false},
+					{Width: 640, Height: 480, IsNative: true, IsSelected: false},
+					{Width: 320, Height: 240, DeviceScaleFactor: 2.0, IsNative: false, IsSelected: false},
 				},
 			},
 			-1,
@@ -71,7 +71,7 @@ func TestEffectiveDeviceScaleFactor(t *testing.T) {
 			&Info{
 				DisplayZoomFactor: 1.0,
 				Modes: []*DisplayMode{
-					&DisplayMode{DeviceScaleFactor: 1.0, IsSelected: true},
+					{DeviceScaleFactor: 1.0, IsSelected: true},
 				},
 			},
 			true, 1.0,
@@ -81,7 +81,7 @@ func TestEffectiveDeviceScaleFactor(t *testing.T) {
 			&Info{
 				DisplayZoomFactor: 1.2,
 				Modes: []*DisplayMode{
-					&DisplayMode{DeviceScaleFactor: 1.0, IsSelected: true},
+					{DeviceScaleFactor: 1.0, IsSelected: true},
 				},
 			},
 			true, 1.2,
@@ -91,7 +91,7 @@ func TestEffectiveDeviceScaleFactor(t *testing.T) {
 			&Info{
 				DisplayZoomFactor: 1.0,
 				Modes: []*DisplayMode{
-					&DisplayMode{DeviceScaleFactor: 2.0, IsSelected: true},
+					{DeviceScaleFactor: 2.0, IsSelected: true},
 				},
 			},
 			true, 2.0,
@@ -101,7 +101,7 @@ func TestEffectiveDeviceScaleFactor(t *testing.T) {
 			&Info{
 				DisplayZoomFactor: 1.2,
 				Modes: []*DisplayMode{
-					&DisplayMode{DeviceScaleFactor: 2.0, IsSelected: true},
+					{DeviceScaleFactor: 2.0, IsSelected: true},
 				},
 			},
 			true, 2.4,
@@ -118,7 +118,7 @@ func TestEffectiveDeviceScaleFactor(t *testing.T) {
 			&Info{
 				DisplayZoomFactor: 1.0,
 				Modes: []*DisplayMode{
-					&DisplayMode{DeviceScaleFactor: 2.0, IsSelected: false},
+					{DeviceScaleFactor: 2.0, IsSelected: false},
 				},
 			},
 			false, 1.0,

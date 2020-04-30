@@ -65,7 +65,7 @@ func init() {
 	// Matches a leading line of e.g. "ui start/running, process 3182" or "boot-splash stop/waiting".
 	statusRegexp = regexp.MustCompile(`(?m)^[^ ]+ ([-a-z]+)/([-a-z]+)(?:, process (\d+))?$`)
 
-	allGoals = map[Goal]struct{}{StartGoal: struct{}{}, StopGoal: struct{}{}}
+	allGoals = map[Goal]struct{}{StartGoal: {}, StopGoal: {}}
 
 	allStates = make(map[State]struct{})
 	for _, s := range []State{WaitingState, StartingState, SecurityState, PreStartState, SpawnedState,

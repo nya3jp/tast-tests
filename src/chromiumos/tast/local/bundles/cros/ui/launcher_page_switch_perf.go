@@ -33,11 +33,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Pre:          ash.LoggedInWith100DummyApps(),
 		Params: []testing.Param{
-			testing.Param{
+			{
 				Name: "clamshell_mode",
 				Val:  false,
 			},
-			testing.Param{
+			{
 				Name:              "tablet_mode",
 				Val:               true,
 				ExtraSoftwareDeps: []string{"tablet_mode"},
