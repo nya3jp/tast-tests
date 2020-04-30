@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1c418fe_d143d4df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_index.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "No and the manifest link is also not needed. The final html became so small that I decided to provide it as a string from the code so there is no file handling involved anymore.",
+      "parentUuid": "59c4b9e9_c63c38d1",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "769ed2da_b3a42ec4",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7fd9e97_13d67836",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "769ed2da_b3a42ec4",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1d5f7977_eef8eb81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "The html file became finally so small that I decided to serve it from a string in the code as that way there is no file handling at all involved.",
+      "parentUuid": "65e1c07f_57975908",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78ad6702_1ccfa9c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "733255d7_6a02223c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Not needed anymore.",
+      "parentUuid": "78ad6702_1ccfa9c5",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13ba6863_ec4d428d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 2
@@ -84,6 +156,24 @@
       "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a864387_57ef9419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ba6863_ec4d428d",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "211d196a_ced16a22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ba638a5_de3e9fcc",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6984c323_eed487ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 2
@@ -124,6 +238,24 @@
       "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c4a370a_1311d55c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6984c323_eed487ca",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "909cfe6e_ffbc06e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef11eb52_f829c681",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "842c8dc4_b3c07167",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 2
@@ -158,6 +308,24 @@
       "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8ffc7d_6ad497e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "842c8dc4_b3c07167",
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +349,30 @@
       "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ac7963_7157b2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T08:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eac4358_6696109b",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "d0b9a5fd72637778b4aa287757a526c3561fd07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
