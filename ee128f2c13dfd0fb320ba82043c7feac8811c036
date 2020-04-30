@@ -94,6 +94,30 @@
       "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed0380b_876b3575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps_80211ac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T05:33:10Z",
+      "side": 1,
+      "message": "As it\u0027s in tast repo, I have the change in another cl: crrev.com/c/2174007.",
+      "parentUuid": "11b7d8d0_9b156275",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
