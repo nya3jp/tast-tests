@@ -70,6 +70,30 @@
       "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b7d8d0_9b156275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps_80211ac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T02:13:06Z",
+      "side": 1,
+      "message": "Sure, will discuss on $BUG.\n\nYenlin, please also skip \"kip\" and \"guado\" in Wifi80211ac() in src/platform/tast/src/chromiumos/tast/testing/hwdep/dep.go",
+      "parentUuid": "a16ecb84_4e1564c7",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
