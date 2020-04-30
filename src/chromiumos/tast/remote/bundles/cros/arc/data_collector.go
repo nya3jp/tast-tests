@@ -268,11 +268,16 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	genGmsCoreCache := func() {
 		service := arc.NewGmsCoreCacheServiceClient(cl.Conn)
 
+		request := arcpb.GmsCoreCacheRequest{
+			PackagesCacheEnabled: true,
+			GmsCoreEnabled:       false,
+		}
+
 		// Shorten the total context by 5 seconds to allow for cleanup.
 		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
-		response, err := service.Generate(shortCtx, &arcpb.GmsCoreCacheRequest{VmEnabled: vmEnabled})
+		response, err := service.Generate(shortCtx, &request)
 		if err != nil {
 			s.Fatal("GmsCoreCacheService.Generate returned an error: ", err)
 		}
