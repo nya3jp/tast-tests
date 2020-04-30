@@ -32,4 +32,6 @@ message GmsCoreCacheResponse {
   string gms_core_manifest_name = 4;
   // Name of GSF cache.
   string gsf_cache_name = 5;
+  // Path to generated packages cache.
+  string generated_packages_cache_path = 6;
 }

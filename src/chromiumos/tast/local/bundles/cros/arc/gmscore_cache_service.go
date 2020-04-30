@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 
 	"google.golang.org/grpc"
 
@@ -74,12 +75,23 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
 	}
 
+	generatedCacheDir := filepath.Join(targetDir, "generated")
+	if err := os.Mkdir(generatedCacheDir, 0755); err != nil {
+		return nil, errors.Wrapf(err, "could not make target subdirectory: %s", generatedCacheDir)
+	}
+
+	generatedPackagesCache := filepath.Join(generatedCacheDir, cache.PackagesCacheXML)
+	if err := a.PullFile(ctx, filepath.Join("/system/etc", cache.PackagesCacheXML), generatedPackagesCache); err != nil {
+		return nil, errors.Wrapf(err, "could not pull %s from Android, this may mean that pre-generated packages cache was not installed when building the image: ", generatedPackagesCache)
+	}
+
 	response := arcpb.GmsCoreCacheResponse{
-		TargetDir:           targetDir,
-		PackagesCacheName:   cache.PackagesCacheXML,
-		GmsCoreCacheName:    cache.GMSCoreCacheArchive,
-		GmsCoreManifestName: cache.GMSCoreManifest,
-		GsfCacheName:        cache.GSFCache,
+		TargetDir:                  targetDir,
+		PackagesCacheName:          cache.PackagesCacheXML,
+		GmsCoreCacheName:           cache.GMSCoreCacheArchive,
+		GmsCoreManifestName:        cache.GMSCoreManifest,
+		GsfCacheName:               cache.GSFCache,
+		GeneratedPackagesCachePath: generatedPackagesCache,
 	}
 	return &response, nil
 }

@@ -90,10 +90,12 @@ type GmsCoreCacheResponse struct {
 	//Name of GMS Core manifest file.
 	GmsCoreManifestName string `protobuf:"bytes,4,opt,name=gms_core_manifest_name,json=gmsCoreManifestName,proto3" json:"gms_core_manifest_name,omitempty"`
 	// Name of GSF cache.
-	GsfCacheName         string   `protobuf:"bytes,5,opt,name=gsf_cache_name,json=gsfCacheName,proto3" json:"gsf_cache_name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	GsfCacheName string `protobuf:"bytes,5,opt,name=gsf_cache_name,json=gsfCacheName,proto3" json:"gsf_cache_name,omitempty"`
+	// Path to generated packages cache.
+	GeneratedPackagesCachePath string   `protobuf:"bytes,6,opt,name=generated_packages_cache_path,json=generatedPackagesCachePath,proto3" json:"generated_packages_cache_path,omitempty"`
+	XXX_NoUnkeyedLiteral       struct{} `json:"-"`
+	XXX_unrecognized           []byte   `json:"-"`
+	XXX_sizecache              int32    `json:"-"`
 }
 
 func (m *GmsCoreCacheResponse) Reset()         { *m = GmsCoreCacheResponse{} }
@@ -152,6 +154,13 @@ func (m *GmsCoreCacheResponse) GetGmsCoreManifestName() string {
 func (m *GmsCoreCacheResponse) GetGsfCacheName() string {
 	if m != nil {
 		return m.GsfCacheName
+	}
+	return ""
+}
+
+func (m *GmsCoreCacheResponse) GetGeneratedPackagesCachePath() string {
+	if m != nil {
+		return m.GeneratedPackagesCachePath
 	}
 	return ""
 }
