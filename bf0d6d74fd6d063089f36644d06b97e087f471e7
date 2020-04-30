@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1da9d184_9b8edb0e",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "601c0057_b8cf3878",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47b47b5d_d799f903",
         "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
         "patchSetId": 24
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-29T23:54:29Z",
       "side": 1,
       "message": "I find it a confusing to have a large function definition inside an `if` assignment, as looking at the indentation I\u0027d wrongly assume that the function body was the `if` body instead. Maybe split this out into its own statement?",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9633bb96_f1c34f62",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "I agree and moved it into it\u0027s own statement. However, searching for testing.Poll in code search shows it is mostly used in this way so maybe that is the preferred way https://source.chromium.org/search?q\u003dtesting.Poll%5C(\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F. I\u0027ll change it for now but would defer to Ricardo on how it\u0027s usually done.",
+      "parentUuid": "47b47b5d_d799f903",
       "range": {
         "startLine": 78,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "519ab095_768fbb19",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "403d2d21_64734855",
+      "range": {
+        "startLine": 107,
+        "startChar": 36,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe970202_1228de1f",
         "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
         "patchSetId": 24
@@ -91,6 +163,30 @@
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a1b4c0_8f33a1f9",
+        "filename": "src/chromiumos/tast/local/uhid/deviceNodes.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe970202_1228de1f",
+      "range": {
+        "startLine": 113,
+        "startChar": 31,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "b49ce69f_29b5a973",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "You are absolutely right, they were almost line by line the same function, can\u0027t believe I didn\u0027t notice it before.",
+      "parentUuid": "b989745a_6b31a396",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b05985a5_e8987eeb",
         "filename": "src/chromiumos/tast/local/uhid/parse.go",
         "patchSetId": 24
@@ -174,6 +294,24 @@
       "writtenOn": "2020-04-29T23:54:29Z",
       "side": 1,
       "message": "Any reason for the different approach here compared to `parseInfo`?",
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b3ae9e_3730da44",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "parseInfo receives a fixed length string containing a fixed number of elements, making it representable with a regex. My new patch contains a more represenative regex rather than the current one that just looks for numbers.",
+      "parentUuid": "b05985a5_e8987eeb",
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -194,6 +332,24 @@
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33320c15_6aa212ce",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3ba64a_8b058d5a",
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "199adf36_b3916834",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4b113a8_7b8a6663",
+      "range": {
+        "startLine": 200,
+        "startChar": 23,
+        "endLine": 200,
+        "endChar": 25
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be7cf641_21f32800",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 24
@@ -231,6 +411,30 @@
       "writtenOn": "2020-04-29T23:54:29Z",
       "side": 1,
       "message": "I don\u0027t know Go that well, but do these types of methods really need to check if the object they\u0027re called on is nil?",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ecc3c6_509bb6b8",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "There are situations in which the object being nil can be a problem. For example: https://play.golang.org/p/ddFSsKCjLw_o. I don\u0027t know if this is one of those situations though. As far as I understand it, from the point of view of the function, its receiver (the argument at the left of its name) is just another argument so it is perfectly possible that it might be nil.",
+      "parentUuid": "be7cf641_21f32800",
       "range": {
         "startLine": 203,
         "startChar": 4,
@@ -266,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "be9119da_36d92316",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53af4907_ff8960c8",
+      "range": {
+        "startLine": 240,
+        "startChar": 30,
+        "endLine": 240,
+        "endChar": 34
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "371236c5_408a708f",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 24
@@ -286,6 +514,30 @@
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc57835_1826dae1",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371236c5_408a708f",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 19
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "8002d793_d2e0d3d0",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6737b45_e3058580",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 33
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf620fe8_9db42bfc",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 24
@@ -323,6 +599,30 @@
       "writtenOn": "2020-04-29T23:54:29Z",
       "side": 1,
       "message": "In the vein of improving error messages, it would help massively to include the current line number and file name in any error message raised within this loop (and similarly in `Recorded`). That could make debugging malformed recordings much quicker. For example, just here the error could be \"foo-recording.txt:46: malformed timestamp\".",
+      "range": {
+        "startLine": 281,
+        "startChar": 10,
+        "endLine": 281,
+        "endChar": 13
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea14d4ba_06e54b14",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "When logging with testing.State.Fatal it prints out the stack trace with the corresponding line numbers. Even if it didn\u0027t, I believe manually writing the line number in the error messages would quickly become unmaintainable, given that whenever someone adds or removes a line they would have to update every error message.",
+      "parentUuid": "bf620fe8_9db42bfc",
       "range": {
         "startLine": 281,
         "startChar": 10,
@@ -358,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "c7a99510_b9d91d7b",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83815c5_22699e8f",
+      "range": {
+        "startLine": 285,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 44
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f476a915_d98c671c",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 24
@@ -378,6 +702,30 @@
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db0eff4_4c98744c",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f476a915_d98c671c",
+      "range": {
+        "startLine": 299,
+        "startChar": 10,
+        "endLine": 299,
+        "endChar": 59
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -404,6 +752,30 @@
     },
     {
       "key": {
+        "uuid": "de17d5cc_ae63eee3",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7abc5acc_3f0ac9fe",
+      "range": {
+        "startLine": 420,
+        "startChar": 17,
+        "endLine": 420,
+        "endChar": 29
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c83d022_57c6b3db",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 24
@@ -424,6 +796,30 @@
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ad1092_ef78593b",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-04-30T08:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c83d022_57c6b3db",
+      "range": {
+        "startLine": 427,
+        "startChar": 17,
+        "endLine": 427,
+        "endChar": 35
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
