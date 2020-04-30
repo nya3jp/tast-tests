@@ -1,0 +1,41 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.arc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/arc";
+
+// CacheValidationService provides RPC methods
+// to be used by CacheValidation remote test.
+service CacheValidationService {
+  // Looks up buildID and generates gs:// URL for jar
+  rpc GetJarURL (Args) returns (Url) {}
+  // Get test result.
+  rpc GetResult (Args) returns (Result) {}
+  // Removes temp files from device
+  rpc RemoveTempFiles (TempDir) returns (google.protobuf.Empty) {}
+}
+
+message Args {
+  repeated string extraArgs = 1;
+}
+
+message TempDir {
+  string tempDir = 1;
+}
+
+message Result {
+  string tempDir = 1;
+  string packagesWithCache = 2;
+  string packagesWithoutCache = 3; 
+  string generatedPackagesCache = 4;
+}
+
+message Url {
+  string url = 1;
+}

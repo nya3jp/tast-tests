@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. perf_boot_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. cache_validation_service.proto
 
 package arc
 
