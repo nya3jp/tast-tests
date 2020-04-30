@@ -340,6 +340,30 @@
       "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40b023da_6d98d819",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-30T17:05:59Z",
+      "side": 1,
+      "message": "No, I don\u0027t mean to have it here. You can create a package under chrome/ui in that case (chrome/ui/system_tray package, as chrome/ui/launcher).\n\nBasically I\u0027m hesitant to the use of autotestPrivate.activateAccelerator as far as possible. It exists for some reasons, and sometimes it\u0027s great (for example, the assitant key does not always exist).  But if it\u0027s possible, input package should be the best option.",
+      "parentUuid": "c7448778_398149c9",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
