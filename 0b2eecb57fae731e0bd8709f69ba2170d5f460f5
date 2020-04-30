@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f08cb23_aa6cd4b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-30T08:34:15Z",
+      "side": 1,
+      "message": "Please remove these commented-out imports.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "0b2eecb57fae731e0bd8709f69ba2170d5f460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae26dba3_cecdb27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-30T08:34:15Z",
+      "side": 1,
+      "message": "Could you add a team alias as well?",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "0b2eecb57fae731e0bd8709f69ba2170d5f460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f356eb_f7c0289e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-30T08:34:15Z",
+      "side": 1,
+      "message": "Do you mean user?",
+      "range": {
+        "startLine": 91,
+        "startChar": 56,
+        "endLine": 91,
+        "endChar": 61
+      },
+      "revId": "0b2eecb57fae731e0bd8709f69ba2170d5f460f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
