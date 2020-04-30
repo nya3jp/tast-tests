@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "37ee42ca_217165c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-04-30T09:35:04Z",
+      "side": 1,
+      "message": "I would just call os.Rename and check if it returns an error with os.IsNotExist(err) to avoid TOCTOU issues.",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "0ef0deda92823dc81f4eefb7690a4a72696e1244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4296556f_8c3ca522",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 4
