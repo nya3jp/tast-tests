@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73a7ed87_d7f578f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-30T16:49:46Z",
+      "side": 1,
+      "message": "nit: this would be a completely personal preference, but I would make this return a cleanup function (func(ctx)) rather than LinuxChrome itself, and so ChromeTypeChromeOS will return func(ctx) {} while Lacros returns func(ctx) { l.Close(ctx) }.  That way you don\u0027t have to declare CloseLinuxChrome function.",
+      "range": {
+        "startLine": 21,
+        "startChar": 88,
+        "endLine": 21,
+        "endChar": 109
+      },
+      "revId": "331d0d13225e448aaf4c5e5a3dd02318bd1295f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
