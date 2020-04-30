@@ -22,6 +22,30 @@
       "revId": "36e6ab313fc971859c2aa939a3bcd05d8b57a779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a250c6_7eea5f9c",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T10:14:55Z",
+      "side": 1,
+      "message": "Thank you. I didn\u0027t aware that.",
+      "parentUuid": "1aca6f81_b1f6bfec",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "36e6ab313fc971859c2aa939a3bcd05d8b57a779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
