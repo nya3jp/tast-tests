@@ -854,6 +854,11 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*TestConn, error) {
 		return nil, errors.Wrap(err, "test API extension is unavailable")
 	}
 
+	// Wait for tast API to be available.
+	if err := c.testExtConn.WaitForExpr(ctx, `typeof tast != 'undefined'`); err != nil {
+		return nil, errors.Wrap(err, "tast API is unavailable")
+	}
+
 	if err := c.testExtConn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
 		return nil, errors.Wrap(err, "failed to initialize test API events")
 	}
