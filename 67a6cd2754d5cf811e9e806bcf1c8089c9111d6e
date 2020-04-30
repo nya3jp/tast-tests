@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99e1c596_6d577a48",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T02:47:12Z",
+      "side": 1,
+      "message": "Because if we put all (open, wpa, wep, 11x...) configs in security, we have to prefix security type name on struct and constants: e.g.\nWEPConfig, WEPConfigFactory, WEPAuthAlgoOpen, WEPAuthAlgoShared, ...\n\nAnd from the caller side it needs to type longer:\nsecConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),\nvs\nsecConfFac: security.NewWEPConfigFactory(wep40Keys(), security.WEPDefaultKey(2), security.WEPAuthAlgs(security.WEPAuthAlgoOpen)),",
+      "parentUuid": "b78bdfc1_4014da41",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a5f4bbf_eba07a35",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 11
