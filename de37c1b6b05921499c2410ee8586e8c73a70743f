@@ -16,6 +16,24 @@
       "revId": "de37c1b6b05921499c2410ee8586e8c73a70743f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d22ef0cb_a8643fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_still_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2020-04-30T02:27:01Z",
+      "side": 1,
+      "message": "I\u0027ve tested it. in whole dark case, it needs about 4 minutes and 30 seconds.",
+      "parentUuid": "fbcd8d44_056291c8",
+      "revId": "de37c1b6b05921499c2410ee8586e8c73a70743f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
