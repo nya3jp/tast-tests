@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a10c01a_7b3228b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T02:11:14Z",
+      "side": 1,
+      "message": "are you avoiding using shill.WifiInterface() because of the timeout? I think that may actually be important here, because this could be the first thing used after a previous test that restarted Shill, and therefore we may have to wait a short amount of time for Shill to enumerate the device.\n\nI suppose that race is pretty unlikely, since we have to dial in (SSH) first.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea566346_de5a8ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T02:11:14Z",
+      "side": 1,
+      "message": "I wonder, do we actually need to do this? Any tests that want Chrome up should be specifying that, no? I guess this isn\u0027t a big deal after doing the Precondition refactor, but otherwise, it\u0027s pretty wasteful in between tests.\n\nMight want to get Tast owners\u0027 thoughts on that, not just trusting me.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f326099_47a4ab45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T02:11:14Z",
+      "side": 1,
+      "message": "rather than re-connect a NewManager, you could pass \u0027m\u0027 into this, and probably several other methods? Or not, if it doesn\u0027t really make things cleaner.",
+      "range": {
+        "startLine": 227,
+        "startChar": 22,
+        "endLine": 227,
+        "endChar": 35
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073d3f65_0f1097ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T02:11:14Z",
+      "side": 1,
+      "message": "I guess I can rebase my CL after this?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2159862",
+      "range": {
+        "startLine": 269,
+        "startChar": 22,
+        "endLine": 269,
+        "endChar": 42
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a982b8_f4a5ddb0",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T02:11:14Z",
+      "side": 1,
+      "message": "the asymmetry is a bit confusing; apparently, we don\u0027t actually need to clean up from InitTestState(), because you\u0027re not always calling this (esp. with the Precondition refactor)?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
