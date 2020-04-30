@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37fea4d8_2b5e3661",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "I think we want to keep this one. Some tests specify a timeout after which we stop scanning logcat.\n\nE.g., gfxbench.go (in tast-tests-private) waits for GFXBench to load. We wait for 1 minute. If it hasn\u0027t loaded after 1 minute, it probably crashed. Without a timeout, we would wait until the entire test times out, which is much longer.",
+      "parentUuid": "4ba7dce9_29a6aec9",
+      "range": {
+        "startLine": 25,
+        "startChar": 71,
+        "endLine": 25,
+        "endChar": 94
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11f0613_d2624b49",
         "filename": "src/chromiumos/tast/local/arc/logcat.go",
         "patchSetId": 11
@@ -39,6 +63,24 @@
       "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1f1dab_36a6528d",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11f0613_d2624b49",
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "aec3cf0e_0c4121bb",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "221a9526_8589bf63",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b8c8474_d423a480",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 11
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "c79f70cc_e5199ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "This should have been 15 min from the get go. The test itself runs for 5 minutes, add another 5 min warm up in the worst case, even 10 should be fine. Made it 15 min, just to be one the safe side.",
+      "parentUuid": "6b8c8474_d423a480",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d62c14_c3758ffb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 11
@@ -99,6 +189,30 @@
       "writtenOn": "2020-04-30T10:49:07Z",
       "side": 1,
       "message": "nya@ do you think it\u0027s safe enough?\n\nin the worst case if we panic between start and stop there will be goroutine running in the background for pretty long time.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4127ab3b_bd220654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, but if we panic in-between start and stop, we would abort this function, which triggers \"defer cancel()\" in Line 60. This would make the goroutine started by StartRecording() return pretty much immediately, because the sleep statement in the goroutine will wake up again and return with an error.",
+      "parentUuid": "64d62c14_c3758ffb",
       "range": {
         "startLine": 116,
         "startChar": 0,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "041687bf_a69b31c0",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6e04e9_0cb3abca",
+      "range": {
+        "startLine": 152,
+        "startChar": 17,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d906b9b_fe6e9d66",
         "filename": "src/chromiumos/tast/local/perf/perf.go",
         "patchSetId": 11
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "43f0cabc_72c1e390",
+        "filename": "src/chromiumos/tast/local/perf/perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "Changed as follows: Single-valued values are set if they are not yet set. If such a metric is already set, this function panics, so that we do not silently overwrite a value. I cannot think of a case in which this would be desired.",
+      "parentUuid": "5d906b9b_fe6e9d66",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84b47342_7678a509",
         "filename": "src/chromiumos/tast/local/perf/timeline.go",
         "patchSetId": 11
@@ -171,6 +333,24 @@
       "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55f20f4_061b6601",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "This function will be deleted in a subsequent CL. There is a test in tast-test-private (gfxbench.go) that I have to change, so I have to keep the old API around for a bit. Otherwise, I would break that test.\n\nWhat I will do is:\n1. Submit this CL with old and new API.\n2. Submit CL in tast-tests-private that changes from old API to new API.\n3. Submit CL that removed this Snapshot function.\n\ngfxbench.go is the only test that\u0027s still calling Snapshot. All other tests no longer call Snapshot. Only the goroutine started by StartRecording() will do snapshots. This goroutine cannot be started multiple times, so there will be no thread safety problem.",
+      "parentUuid": "84b47342_7678a509",
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -194,6 +374,30 @@
       "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09fd88c8_971cb9b8",
+        "filename": "src/chromiumos/tast/local/perf/timeline.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-04-30T11:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e52b340_fad6597a",
+      "range": {
+        "startLine": 155,
+        "startChar": 21,
+        "endLine": 155,
+        "endChar": 37
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
