@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07279cf3_1c6dde19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T12:23:38Z",
+      "side": 1,
+      "message": "Don\u0027t copy the files, just list them in Data and in the test use s.DataFileSystem(). Seems to be a cleaner solution.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast/src/chromiumos/tast/testing/state.go;l\u003d200\n\nIf it does not work still list the files in Data explicitly and copy them using a for in the test body. Make a link for index.html if required.",
+      "revId": "71a9f2f7efd146a94f96a6f683e4bd0d37e4d88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9491cf91_fdb98ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T12:23:38Z",
+      "side": 1,
+      "message": "Finish comments with a .",
+      "revId": "71a9f2f7efd146a94f96a6f683e4bd0d37e4d88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9012e966_ae0e7b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T12:23:38Z",
+      "side": 1,
+      "message": "nit: newline above",
+      "revId": "71a9f2f7efd146a94f96a6f683e4bd0d37e4d88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ae66f9_6fbeb195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T12:23:38Z",
+      "side": 1,
+      "message": "Reformat like the other policy tests. Use multiple lines.",
+      "revId": "71a9f2f7efd146a94f96a6f683e4bd0d37e4d88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
