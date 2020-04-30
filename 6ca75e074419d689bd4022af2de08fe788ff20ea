@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "367cde0d_6a8ae569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T23:52:50Z",
+      "side": 1,
+      "message": "Ah, right. Well, I think all the current cases are only looking for the name, b/c there\u0027s not much (as local tests) that they can *really* do with the WiFi device in Shill.",
+      "parentUuid": "7b4bd214_85352adb",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea566346_de5a8ee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 14
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I slightly prefer having the expected default status restored. But in pre-conditoion of chrome, it looks like it will restart ui there and we\u0027ll waste time for one start/stop.\n\nLet\u0027s see if tast-owners have suggestion.",
       "parentUuid": "ea566346_de5a8ee8",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24b92a74_0eff10bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T23:52:50Z",
+      "side": 1,
+      "message": "\u003e Let\u0027s see if tast-owners have suggestion.\n\nSGTM.",
+      "parentUuid": "4f185722_e2f2902a",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -167,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "b8e89071_355fcd83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T23:52:50Z",
+      "side": 1,
+      "message": "@Dean: hmm, that\u0027s interesting. I didn\u0027t think too hard, but it did seem like there might be room for keeping closer to the Shill API for some of these -- like funneling around Service identifiers instead of operating only on SSID or similar. Maybe there\u0027s room for improvement there.",
+      "parentUuid": "2b2416f4_664ada67",
+      "range": {
+        "startLine": 227,
+        "startChar": 22,
+        "endLine": 227,
+        "endChar": 35
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "073d3f65_0f1097ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 14
@@ -214,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "b01650aa_5164449d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T23:52:50Z",
+      "side": 1,
+      "message": "*mark resolved*",
+      "parentUuid": "4e0b7b63_4828b08d",
+      "range": {
+        "startLine": 269,
+        "startChar": 22,
+        "endLine": 269,
+        "endChar": 42
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9a982b8_f4a5ddb0",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 14
@@ -258,6 +354,30 @@
       "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6bc1c51_a369bd16",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T23:52:50Z",
+      "side": 1,
+      "message": "Yeah, I think the coding is correct, it just isn\u0027t super clear to me in the API / comments. The latest is a little better.",
+      "parentUuid": "1c79f1ab_0226c4c7",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
