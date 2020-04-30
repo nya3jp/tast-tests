@@ -188,14 +188,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	testing.ContextLog(ctx, "Setting up ADB connection")
 	ch = make(chan error, 1)
 	go func() {
-		if vm {
-			// No need to set up ADB auth since test ADB key is pre-installed on VM.
-			ch <- setUpADBForVM(ctx)
-		} else {
-			// Need to set up ADB auth for container.
-			// TODO(b/151797813): Pre-install test ADB key into ARC container as well.
-			ch <- setUpADBAuthForContainer(ctx)
-		}
+		ch <- setUpADBAuth(ctx)
 	}()
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
