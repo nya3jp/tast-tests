@@ -51,11 +51,17 @@ func init() {
 func HotseatAnimation(ctx context.Context, s *testing.State) {
 	// TODO(newcomer): please record performance of navigation widget (https://crbug.com/1065405).
 	const (
-		extendedHotseatHistogram    = "Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"
-		hiddenHotseatHistogram      = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
-		shownHotseatHistogram       = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
-		shownHomeLauncherHistogram  = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"
-		hiddenHomeLauncherHistogram = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"
+		extendedHotseatHistogram                      = "Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"
+		extendedHotseatWidgetHistogram                = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToExtendedHotseat"
+		extendedHotseatTranslucentBackgroundHistogram = "Ash.HotseatWidgetAnimation.TranslucentBackground.TransitionToExtendedHotseat"
+		hiddenHotseatHistogram                        = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
+		hiddenHotseatWidgetHistogram                  = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToHiddenHotseat"
+		hiddenHotseatTranslucentBackgroundHistogram   = "Ash.HotseatWidgetAnimation.TranslucentBackground.TransitionToHiddenHotseat"
+		shownHotseatHistogram                         = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
+		shownHotseatWidgetHistogram                   = "Ash.HotseatWidgetAnimation.Widget.AnimationSmoothness.TransitionToShownHotseat"
+		shownHotseatTranslucentBackgroundHistogram    = "Ash.HotseatWidgetAnimation.TranlucentBackground.TransitionToShownHotseat"
+		shownHomeLauncherHistogram                    = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"
+		hiddenHomeLauncherHistogram                   = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"
 	)
 
 	cr := s.PreValue().(*chrome.Chrome)
@@ -210,8 +216,14 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		return nil
 	},
 		shownHotseatHistogram,
+		shownHotseatWidgetHistogram,
+		shownHotseatTranslucentBackgroundHistogram,
 		extendedHotseatHistogram,
+		extendedHotseatWidgetHistogram,
+		extendedHotseatTranslucentBackgroundHistogram,
 		shownHomeLauncherHistogram,
+		shownHotseatWidgetHistogram,
+		shownHotseatTranslucentBackgroundHistogram,
 		hiddenHomeLauncherHistogram)
 	if err != nil {
 		s.Fatal("Failed to get mean histogram from entering/exiting overview: ", err)
