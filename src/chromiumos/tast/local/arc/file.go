@@ -5,7 +5,6 @@
 package arc
 
 import (
-	"bytes"
 	"context"
 	"io/ioutil"
 	"os"
@@ -121,13 +120,6 @@ func (a *ARC) FileSize(ctx context.Context, filename string) (int64, error) {
 	}
 
 	return fileSize, nil
-}
-
-// directWriteFile writes to a file in Android file system with android-sh.
-func directWriteFile(ctx context.Context, filename string, data []byte) error {
-	cmd := BootstrapCommand(ctx, "/system/bin/sh", "-c", "cat > \"$1\"", "-", filename)
-	cmd.Stdin = bytes.NewBuffer(data)
-	return cmd.Run()
 }
 
 // TempDir creates a temporary directory under ARCTmpDirPath in Android,
