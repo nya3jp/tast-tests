@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5c2c4ed_d098291a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T01:04:53Z",
+      "side": 1,
+      "message": "I recall it was recommended to just use a different name, like \u0027fullCtx\u0027, for the rare few times where you want to use it (e.g., for tf.Close()). Then the shortened context can own the \u0027ctx\u0027 name, and you don\u0027t have to bind \u0027ctx\u0027 the way you\u0027re doing below.\n\nSame elsewhere, I think.",
+      "range": {
+        "startLine": 126,
+        "startChar": 19,
+        "endLine": 126,
+        "endChar": 22
+      },
+      "revId": "6d39a669b4e3642a46b4f7a0d732efff5e125314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca854810_d816ff0b",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T01:04:53Z",
+      "side": 1,
+      "message": "does this really happen anywhere? That seems like a bug in the caller",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 14
+      },
+      "revId": "6d39a669b4e3642a46b4f7a0d732efff5e125314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
