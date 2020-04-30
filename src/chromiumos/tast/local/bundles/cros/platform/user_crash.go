@@ -721,6 +721,15 @@ func UserCrash(ctx context.Context, s *testing.State) {
 		defer cr.Close(ctx)
 	}
 
+	if err := upstart.StopJob(ctx, "anomaly-detector"); err != nil {
+		s.Fatal("Failed to stop anomaly detector")
+	}
+	defer func() {
+		if err := upstart.EnsureJobRunning(ctx, "anomaly-detector"); err != nil {
+			s.Fatal("Failed to restart anomaly detector")
+		}
+	}()
+
 	f := s.Param().(userCrashParams).testFunc
 	if err := crash.RunCrashTest(ctx, cr, s, f, true, consentType); err != nil {
 		s.Error("Test failed: ", err)
