@@ -100,5 +100,7 @@ func init() {
 // specified, verifies it uses accelerated encoding / decoding.
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcTest)
-	peerconnection.RunRTCPeerConnection(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.codec, testOpt.profile, testOpt.simulcast)
+	if err := peerconnection.RunRTCPeerConnection(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.codec, testOpt.profile, testOpt.simulcast); err != nil {
+		s.Error("Failed to run RunRTCPeerConnection: ", err)
+	}
 }

@@ -120,7 +120,7 @@ func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, par
 
 // measureRTCStats parses the WebRTC Tx and Rx Stats, and stores them into p.
 // See https://www.w3.org/TR/webrtc-stats/#stats-dictionaries for more info.
-func measureRTCStats(ctx context.Context, s *testing.State, conn *chrome.Conn, p *perf.Values) error {
+func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) error {
 	parseStatsJS :=
 		`new Promise(function(resolve, reject) {
 			const rtcKeys = [%v];
@@ -285,9 +285,9 @@ func measureGPUCounters(ctx context.Context, p *perf.Values) error {
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
 // of videoURL being played, similar to a mosaic video call.
-func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, videoGridDimension int, videoURL string, p *perf.Values) {
+func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, enableHWAccel bool, videoGridDimension int, videoURL string, p *perf.Values) error {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
+		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 
 	// Reserve one second for closing tab.
@@ -298,63 +298,63 @@ func decodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profil
 	// To stop it, we defer conn.CloseTarget() to close the tab.
 	conn, err := cr.NewConn(shortCtx, loopbackURL)
 	if err != nil {
-		s.Fatalf("Failed to open %s: %v", loopbackURL, err)
+		return errors.Wrapf(err, "failed to open %s", loopbackURL)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		s.Fatal("Timed out waiting for page loading: ", err)
+		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
 	if videoGridDimension > 1 {
 		if err := conn.Call(ctx, nil, "makeVideoGrid", videoGridDimension, videoURL); err != nil {
-			s.Fatal("JS error: ", err)
+			return errors.Wrap(err, "javascript error")
 		}
 	}
 
 	if err := conn.EvalPromise(ctx, fmt.Sprintf("start(%q, false, %d, %d)", profile, streamWidth, streamHeight), nil); err != nil {
-		s.Fatal("Error establishing connection: ", err)
+		return errors.Wrap(err, "establishing connection")
 	}
 
-	hwAccelUsed := checkForCodecImplementation(ctx, s, conn, Decoding, false /*isSimulcast*/) == nil
+	hwAccelUsed := checkForCodecImplementation(ctx, conn, Decoding, false /*isSimulcast*/) == nil
 	if enableHWAccel {
 		if !hwAccelUsed {
-			s.Fatal("Error: HW accelerator wasn't used")
+			return errors.New("hardware encoding accelerator wasn't used")
 		}
 	} else {
 		if hwAccelUsed {
-			s.Fatal("Error: SW accelerator wasn't used")
+			return errors.New("software encoding wasn't used")
 		}
 	}
 
-	if err := measureRTCStats(shortCtx, s, conn, p); err != nil {
-		s.Fatal("Failed to measure: ", err)
+	if err := measureRTCStats(shortCtx, conn, p); err != nil {
+		return errors.Wrap(err, "failed to measure")
 	}
 	if err := measureCPU(shortCtx, cr, p); err != nil {
-		s.Fatal("Failed to measure: ", err)
+		return errors.Wrap(err, "failed to measure")
 	}
 	if err := measureGPUCounters(shortCtx, p); err != nil {
-		s.Fatal("Failed to measure: ", err)
+		return errors.Wrap(err, "failed to measure")
 	}
 
 	testing.ContextLogf(ctx, "Metric: %+v", p)
+	return nil
 }
 
 // RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunDecodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, profile string, enableHWAccel bool, videoGridDimension int, videoGridFilename string) {
+func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, profile string, enableHWAccel bool, videoGridDimension int, videoGridFilename string) error {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 	loopbackURL := server.URL + "/" + LoopbackFile
 
-	s.Log("Setting up for CPU benchmarking")
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
-		s.Fatal("Failed to set up CPU benchmark mode: ", err)
+		return errors.Wrap(err, "failed to set up CPU benchmark")
 	}
 	defer cleanUpBenchmark(ctx)
 
@@ -367,7 +367,10 @@ func RunDecodePerf(ctx context.Context, s *testing.State, cr *chrome.Chrome, pro
 		videoGridURL = server.URL + "/" + videoGridFilename
 	}
 	p := perf.NewValues()
-	decodePerf(ctx, s, cr, profile, loopbackURL, enableHWAccel, videoGridDimension, videoGridURL, p)
+	if err := decodePerf(ctx, cr, profile, loopbackURL, enableHWAccel, videoGridDimension, videoGridURL, p); err != nil {
+		return err
+	}
 
-	p.Save(s.OutDir())
+	p.Save(outDir)
+	return nil
 }

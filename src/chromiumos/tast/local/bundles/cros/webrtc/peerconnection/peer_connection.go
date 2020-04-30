@@ -39,43 +39,44 @@ const (
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // CodecType codec is hardware accelerated if profile is not DontCare.
-func RunRTCPeerConnection(ctx context.Context, s *testing.State, cr *chrome.Chrome, codecType CodecType, profile string, simulcast bool) {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, codecType CodecType, profile string, simulcast bool) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
+		return errors.Wrap(err, "failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
 	conn, err := cr.NewConn(ctx, server.URL+"/"+LoopbackFile)
 	if err != nil {
-		s.Fatal("Failed to open video page: ", err)
+		return errors.Wrap(err, "failed to open video page")
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		s.Fatal("Timed out waiting for page loading: ", err)
+		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
 	if err := conn.Call(ctx, nil, "start", profile, simulcast); err != nil {
-		s.Fatal("Error establishing connection: ", err)
+		return errors.Wrap(err, "error establishing connection")
 	}
 
 	if codecType != DontCare {
-		if err := checkForCodecImplementation(ctx, s, conn, codecType, simulcast); err != nil {
-			s.Fatal("checkForCodecImplementation() failed: ", err)
+		if err := checkForCodecImplementation(ctx, conn, codecType, simulcast); err != nil {
+			return errors.Wrap(err, "checkForCodecImplementation() failed")
 		}
 	}
+	return nil
 }
 
 // checkForCodecImplementation parses the RTCPeerConnection and verifies that it
 // is using hardware acceleration for codecType. This method uses the
 // RTCPeerConnection getStats() API [1].
 // [1] https://w3c.github.io/webrtc-pc/#statistics-model
-func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *chrome.Conn, codecType CodecType, isSimulcast bool) error {
+func checkForCodecImplementation(ctx context.Context, conn *chrome.Conn, codecType CodecType, isSimulcast bool) error {
 	// See [1] and [2] for the statNames to use here. The values are browser
 	// specific, for Chrome, "ExternalDecoder" and "{V4L2,Vaapi, etc.}VideoEncodeAccelerator"
 	// means that WebRTC is using hardware acceleration and anything else
@@ -135,7 +136,7 @@ func checkForCodecImplementation(ctx context.Context, s *testing.State, conn *ch
 	if err != nil {
 		return err
 	}
-	s.Logf("%s: %s", statName, implementation)
+	testing.ContextLogf(ctx, "%s: %s", statName, implementation)
 
 	if !strings.Contains(implementation, expectedImplementation) {
 		return errors.Errorf("expected implementation not found, got %v, looking for %v", implementation, expectedImplementation)
