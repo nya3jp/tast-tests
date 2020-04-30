@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaadba4_fc7de92c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-30T20:20:49Z",
+      "side": 1,
+      "message": "Do we still need to wait for 1 second?  Why?  IIRC, EnsureTabletModeEnabled (autotestPrivate.setTabletModeEnabled) waits for all the transition animations.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "26d11c840f2e5941c57ad7db9f1c47c0f6f3b8f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
