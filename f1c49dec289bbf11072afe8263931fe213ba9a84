@@ -46,6 +46,30 @@
       "revId": "f1c49dec289bbf11072afe8263931fe213ba9a84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bd19e7a_39075805",
+        "filename": "src/chromiumos/tast/common/wifi/security/security.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T06:52:13Z",
+      "side": 1,
+      "message": "Exactly. SecurityClass is a readonly property used for specifying a WiFi service. On the other hand, ShillServiceProperties provides the properties that should be set to the specific WiFi service. They can\u0027t be merged since setting a readonly property would cause a failure. Comment is updated.",
+      "parentUuid": "b10e1811_a3e38062",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "f1c49dec289bbf11072afe8263931fe213ba9a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
