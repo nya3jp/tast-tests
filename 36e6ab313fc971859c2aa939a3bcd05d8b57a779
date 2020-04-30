@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aca6f81_b1f6bfec",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T09:48:33Z",
+      "side": 1,
+      "message": "I think maybe you can just use c1 here? as it will close the context and also its children.\n\nQuote: \"The returned context\u0027s Done channel is closed when the deadline expires, when the returned cancel function is called, or when the parent context\u0027s Done channel is closed, whichever happens first.\" from https://golang.org/pkg/context/#WithDeadline.",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "36e6ab313fc971859c2aa939a3bcd05d8b57a779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
