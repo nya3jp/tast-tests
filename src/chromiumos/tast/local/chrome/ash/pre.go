@@ -16,8 +16,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const resetTimeout = 15 * time.Second
-
 type preconditionImpl interface {
 	Prepare(ctx context.Context, s *testing.State) interface{}
 	Close(ctx context.Context, s *testing.State)
@@ -30,9 +28,11 @@ type preImpl struct {
 	prepared   bool
 }
 
-var dummyApps100Pre = newPrecondition("dummy_apps", 100)
+var dummyApps100Pre = NewDummyAppPrecondition("dummy_apps", 100, chrome.NewPrecondition)
 
-func newPrecondition(name string, numApps int) *preImpl {
+// NewDummyAppPrecondition creates a Precondition with numApps number of dummy apps, wrapping the Precondition
+// created by innerPre.
+func NewDummyAppPrecondition(name string, numApps int, innerPre func(name string, opts ...chrome.Option) testing.Precondition) *preImpl {
 	name = fmt.Sprintf("%s_%d", name, numApps)
 	tmpDir, err := ioutil.TempDir("", name)
 	if err != nil {
@@ -42,7 +42,7 @@ func newPrecondition(name string, numApps int) *preImpl {
 	for i := 0; i < numApps; i++ {
 		opts = append(opts, chrome.UnpackedExtension(filepath.Join(tmpDir, fmt.Sprintf("dummy_%d", i))))
 	}
-	crPre := chrome.NewPrecondition(name, opts...)
+	crPre := innerPre(name, opts...)
 	return &preImpl{crPre: crPre, numApps: numApps, extDirBase: tmpDir, prepared: false}
 }
 
