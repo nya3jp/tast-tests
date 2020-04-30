@@ -20,10 +20,9 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
-		// Default timeout (i.e. 2 minutes) is not enough for some devices in
-		// the test lab, such as Nocturne. The lab might be much darker than
-		// the office, which makes 3A algorithm converge slower.
-		Timeout: 5 * time.Minute,
+		// Krane needs 4 minutes and 30 seconds for whole dark environment(convering the camera lens).
+		// We also need rooms for preparation time.
+		Timeout: 6 * time.Minute,
 	})
 }
 
