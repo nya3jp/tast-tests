@@ -45,6 +45,30 @@
       "revId": "502a80aa90455523712c939309c6e4debc00a723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66eb1c7d_b651f898",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T08:32:53Z",
+      "side": 1,
+      "message": "😞\n\nI was trying to verify whether I\u0027ll get error when will try to submig invalid formatted code. Forgot to remove.\n\nThanks for verifying!",
+      "parentUuid": "5f784363_1cbeeb02",
+      "range": {
+        "startLine": 243,
+        "startChar": 91,
+        "endLine": 243,
+        "endChar": 94
+      },
+      "revId": "502a80aa90455523712c939309c6e4debc00a723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
