@@ -285,7 +285,7 @@ func GetProfileList(ctx context.Context) ([]*shill.Profile, error) {
 	}
 	// Refresh the in-memory profile list.
 	if _, err := manager.GetProperties(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed refreshing the in-memeory profile list")
+		return nil, errors.Wrap(err, "failed refreshing the in-memory profile list")
 	}
 	// Get current profiles.
 	profiles, err := manager.Profiles(ctx)
