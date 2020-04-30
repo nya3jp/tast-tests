@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "27f48868_62654612",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T02:40:18Z",
+      "side": 1,
+      "message": "\u003e I\u0027m adding the case in crrev.com/c/2172561. PTAL.\n\nDone.",
+      "parentUuid": "af10fe5c_2353ce42",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 51
+      },
+      "revId": "131e820432eb32577de08d7f441d8681fc66f152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eb40d0b_656f94b1",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
