@@ -175,6 +175,30 @@
       "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0aa9dc8b_268e28e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-04-30T19:36:40Z",
+      "side": 1,
+      "message": "I\u0027ll try to work on that next. Having it for R will be the first step.",
+      "parentUuid": "032b47d4_d86a6f95",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
