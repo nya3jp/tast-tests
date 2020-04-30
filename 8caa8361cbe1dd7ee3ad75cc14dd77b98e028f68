@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c82fb60c_a30291e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-30T21:53:42Z",
+      "side": 1,
+      "message": "important: \nuidevice.waitForIdle() might not do what you need.\n\nwe had a similar function called arc.WaitForIdle() which we deprecate it because it was confusing.\n\nIf you want really need is wait until certain state is reached, I recommend to do a testing.Poll(... wait until you get the state that you need...)",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 3
+      },
+      "revId": "8caa8361cbe1dd7ee3ad75cc14dd77b98e028f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
