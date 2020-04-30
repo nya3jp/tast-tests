@@ -7,7 +7,6 @@ package wificell
 import (
 	"context"
 	"fmt"
-	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -18,9 +17,9 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -28,31 +27,31 @@ const workingDir = "/tmp/tast-test/"
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
-	host         *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
-	name         string
-	board        string
-	busySubnet   map[byte]struct{}
-	phys         map[int]*iw.Phy            // map from phy idx to iw.Phy.
-	busyPhy      map[int]map[iw.IfType]bool // map from phy idx to the map of business of interface types.
-	availIfaces  map[string]*iw.NetDev      // map from interface name to iw.NetDev.
-	busyIfaces   map[string]*iw.NetDev      // map from interface name to iw.NetDev.
-	ifaceID      int
-	iwr          *iw.Runner
-	logTailHints map[string]string // map from log path to the hint of start of log (usually timestamp) to collect.
+	host          *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
+	name          string
+	board         string
+	busySubnet    map[byte]struct{}
+	phys          map[int]*iw.Phy            // map from phy idx to iw.Phy.
+	busyPhy       map[int]map[iw.IfType]bool // map from phy idx to the map of business of interface types.
+	availIfaces   map[string]*iw.NetDev      // map from interface name to iw.NetDev.
+	busyIfaces    map[string]*iw.NetDev      // map from interface name to iw.NetDev.
+	ifaceID       int
+	iwr           *iw.Runner
+	logCollectors map[string]*log.Collector // map from log path to its collector.
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
 func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
 	r := &Router{
-		host:         host,
-		name:         name,
-		busySubnet:   make(map[byte]struct{}),
-		phys:         make(map[int]*iw.Phy),
-		busyPhy:      make(map[int]map[iw.IfType]bool),
-		availIfaces:  make(map[string]*iw.NetDev),
-		busyIfaces:   make(map[string]*iw.NetDev),
-		iwr:          remote_iw.NewRunner(host),
-		logTailHints: make(map[string]string),
+		host:          host,
+		name:          name,
+		busySubnet:    make(map[byte]struct{}),
+		phys:          make(map[int]*iw.Phy),
+		busyPhy:       make(map[int]map[iw.IfType]bool),
+		availIfaces:   make(map[string]*iw.NetDev),
+		busyIfaces:    make(map[string]*iw.NetDev),
+		iwr:           remote_iw.NewRunner(host),
+		logCollectors: make(map[string]*log.Collector),
 	}
 	if err := r.initialize(ctx); err != nil {
 		r.Close(ctx)
@@ -177,7 +176,6 @@ func (r *Router) configureRNG(ctx context.Context) error {
 
 // initialize prepares initial test AP state (e.g., initializing wiphy/wdev).
 func (r *Router) initialize(ctx context.Context) error {
-	r.updateLogTail(ctx)
 	board, err := hostBoard(ctx, r.host)
 	if err != nil {
 		return err
@@ -190,6 +188,10 @@ func (r *Router) initialize(ctx context.Context) error {
 	}
 	if err := r.host.Command("mkdir", "-p", r.workDir()).Run(ctx); err != nil {
 		return errors.Wrapf(err, "failed to create workdir %q", r.workDir())
+	}
+
+	if err := r.startLogCollectors(ctx); err != nil {
+		return errors.Wrap(err, "failed to start loggers")
 	}
 
 	if err := r.setupWifiPhys(ctx); err != nil {
@@ -228,28 +230,39 @@ func (r *Router) initialize(ctx context.Context) error {
 
 // Close cleans the resource used by Router.
 func (r *Router) Close(ctx context.Context) error {
-	var err error
+	var firstErr error
+
+	collectErr := func(err error) {
+		testing.ContextLog(ctx, "error closing router: ", err)
+		if firstErr != nil {
+			firstErr = err
+		}
+	}
+
 	// Remove the interfaces that we created.
 	for _, nd := range r.availIfaces {
-		if err2 := r.removeWifiIface(ctx, nd.IfName); err2 != nil {
-			err = errors.Wrapf(err, "failed to remove interfaces, err=%s", err2.Error())
+		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
+			collectErr(errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 	for _, nd := range r.busyIfaces {
 		testing.ContextLogf(ctx, "iface %s not yet freed", nd.IfName)
-		if err2 := r.removeWifiIface(ctx, nd.IfName); err2 != nil {
-			err = errors.Wrapf(err, "failed to remove interfaces, err=%s", err2.Error())
+		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
+			collectErr(errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 	// Collect closing log to facilitate debugging for error occurs in
 	// r.initialize() or after r.CollectLogs().
-	if err2 := r.collectLogs(ctx, ".close"); err2 != nil {
-		err = errors.Wrapf(err, "failed to collect logs, err=%s", err2.Error())
+	if err := r.collectLogs(ctx, ".close"); err != nil {
+		collectErr(errors.Wrap(err, "failed to collect logs"))
 	}
-	if err2 := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err2 != nil {
-		err = errors.Wrapf(err, "failed to remove working dir, err=%s", err2.Error())
+	if err := r.stopLogCollectors(ctx); err != nil {
+		collectErr(errors.Wrap(err, "failed to stop loggers"))
 	}
-	return err
+	if err := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err != nil {
+		collectErr(errors.Wrap(err, "failed to remove working dir"))
+	}
+	return firstErr
 }
 
 // phy finds an suitable phy for the given channel and target interface type t.
@@ -517,61 +530,64 @@ func (r *Router) freeSubnetIdx(i byte) {
 	delete(r.busySubnet, i)
 }
 
+// logsToCollect is the list of files on router to collect.
 var logsToCollect = []string{
 	"/var/log/messages",
 }
 
-// updateLogTail saves the last timestamp of log files to collect which will
-// be used as pattern to search in collectLog.
-func (r *Router) updateLogTail(ctx context.Context) {
-	for _, src := range logsToCollect {
-		line, err := r.host.Command("tail", "-1", src).Output(ctx)
+// startLogCollectors starts log collector
+func (r *Router) startLogCollectors(ctx context.Context) error {
+	for _, p := range logsToCollect {
+		logger, err := log.StartCollector(ctx, r.host, p)
 		if err != nil {
-			testing.ContextLogf(ctx, "Fail to get tail of %s on router", src)
-			continue
+			return errors.Wrap(err, "failed to start log collector")
 		}
-		tokens := strings.Fields(string(line))
-		r.logTailHints[src] = tokens[0]
+		r.logCollectors[p] = logger
 	}
+	return nil
 }
 
-// collectLogs downloads log files from router to $OutDir/debug with suffix appended to
-// the filenames.
+// collectLogs downloads log files from router to $OutDir/debug/$r.name with suffix
+// appended to the filenames.
 func (r *Router) collectLogs(ctx context.Context, suffix string) error {
-	outDir, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		return errors.New("OutDir not supported")
-	}
-
-	baseDir := filepath.Join(outDir, "debug", r.name)
-	if err := os.MkdirAll(baseDir, 0755); err != nil {
-		return errors.Wrapf(err, "failed to mkdir %s", baseDir)
-	}
+	baseDir := filepath.Join("debug", r.name)
 
 	for _, src := range logsToCollect {
 		dst := filepath.Join(baseDir, filepath.Base(src)+suffix)
-		tail := r.logTailHints[src]
-		if tail == "" {
-			// No tail hint, simple download.
-			if err := linuxssh.GetFile(ctx, r.host, src, dst); err != nil {
-				return errors.Wrapf(err, "failed to download %s to %s", src, dst)
-			}
+		collector := r.logCollectors[src]
+		if collector == nil {
+			testing.ContextLogf(ctx, "No log collector for %s found", src)
 			continue
 		}
-		// Trim logs before tail.
-		exp := fmt.Sprintf("/%s/,$p", tail)
-		cmd := r.host.Command("sed", "-n", "-e", exp, src)
-		f, err := os.OpenFile(dst, os.O_WRONLY|os.O_CREATE, 0644)
+		f, err := fileutil.PrepareOutDirFile(ctx, dst)
 		if err != nil {
-			return errors.Wrapf(err, "cannot open file %q", dst)
+			testing.ContextLogf(ctx, "Failed to collect %q, err: %v", src, err)
+			continue
 		}
-		cmd.Stdout = f
-		if err := cmd.Run(ctx); err != nil {
-			return errors.Wrapf(err, "failed to extract log %q", src)
+		if err := collector.Dump(f); err != nil {
+			testing.ContextLogf(ctx, "Failed to dump %q logs, err: %v", src, err)
+			continue
+
 		}
 	}
-	r.updateLogTail(ctx)
 	return nil
+}
+
+// stopLogCollectors closes all log collectors spawned.
+func (r *Router) stopLogCollectors(ctx context.Context) error {
+	var firstErr error
+	collectErr := func(err error) {
+		testing.ContextLog(ctx, "error closing log collector: ", err)
+		if firstErr != nil {
+			firstErr = err
+		}
+	}
+	for _, c := range r.logCollectors {
+		if err := c.Close(ctx); err != nil {
+			collectErr(err)
+		}
+	}
+	return firstErr
 }
 
 // CollectLogs downloads log files from router to OutDir.
