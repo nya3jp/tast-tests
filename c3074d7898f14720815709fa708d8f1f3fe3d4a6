@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6e1f6b2_c7cdf280",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T23:02:56Z",
+      "side": 1,
+      "message": "you could call this \u0027ctxFull\u0027 so you don\u0027t have to remember to use \u0027ctxShort\u0027 for the \"normal\" flow.\n\nAlso, you\u0027re a little inconsistent on \u0027ctxFull\u0027 vs. \u0027fullCtx\u0027.",
+      "range": {
+        "startLine": 149,
+        "startChar": 18,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
