@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad6c87b5_a271adf5",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T12:49:01Z",
+      "side": 1,
+      "message": "The install_client_credentials and install_router_credentials method will be added to Config interface while porting EAPConfig from Autotest. For wep, wpa, and base, they will just be noops and we can implentment only once.",
+      "parentUuid": "ac99e689_fc11526c",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc3b0bfb_c82f7a41",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "74a22d12895001bdc1c334698559726a95b65c55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc7f212_91668d81",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T12:49:01Z",
+      "side": 1,
+      "message": "Changed: Ciphers -\u003e WPACiphers, Ciphers2 -\u003e WPA2Ciphers.",
+      "parentUuid": "cc3b0bfb_c82f7a41",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7f361e13_873708e5",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T12:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85dcc4c9_4289f6bc",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 63
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10953c14_73c859b7",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "74a22d12895001bdc1c334698559726a95b65c55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84023299_b2b9c656",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T12:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10953c14_73c859b7",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 20
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
