@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a915c35f_6a9d6f54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-30T22:03:19Z",
+      "side": 1,
+      "message": "Do we have other \u0027CollapseButton\u0027 in the screen?  If not, you can just say\n  collapseButton, err :\u003d ui.Find(ctx, ui.FindParams{ClassName: \"CollapseButton\"})\n  ...\n\nIf you want to keep the current structure;\n- don\u0027t forget to have \"defer root.Release(ctx)\"\n- check err for finding systemTray (if err \u003d nil { s.Fatal(...) })\n- don\u0027t forget to have \"defer systemTray.Realse(ctx)\"\n\nthese are cumbersome, so I\u0027d recommend to simply stick with ui.Find / ui.Wait... methods.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 94
+      },
+      "revId": "23866ee352dc9e2556cf53576a1eb47c3c51bd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df340d3_b6a85c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-30T22:03:19Z",
+      "side": 1,
+      "message": "defer collapseButton.Release(ctx)",
+      "revId": "23866ee352dc9e2556cf53576a1eb47c3c51bd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
