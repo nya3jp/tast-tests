@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a0ea501_5fbf9847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T05:56:51Z",
+      "side": 1,
+      "message": "Will this log if the key is not present? It may be too verbose.",
+      "revId": "89e61a071a7aacb95beab0d59577bcb4fb902ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
