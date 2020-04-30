@@ -6,6 +6,7 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
 	"path"
 	"path/filepath"
 	"strings"
@@ -119,6 +120,11 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 		if err := d.GetFile(cleanupCtx, "/run/crash-reporter-early-init.log",
 			filepath.Join(s.OutDir(), "crash-reporter-early-init.log")); err != nil {
 			s.Log("Failed to get early-init log")
+		}
+		if out, err := d.Command("/bin/ls", "-l", "/var/spool/crash/", "/run/crash_reporter/").CombinedOutput(ctx); err != nil {
+			s.Log("Failed to list crash state dirs: ", err)
+		} else if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "crash_state_dirs.txt"), out, 0644); err != nil {
+			s.Log("Failed to save crash file listing to outDir: ", err)
 		}
 		s.Fatal("Failed to find crash files: ", err.Error())
 	}
