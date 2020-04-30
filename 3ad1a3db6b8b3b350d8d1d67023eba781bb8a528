@@ -22,6 +22,30 @@
       "revId": "3ad1a3db6b8b3b350d8d1d67023eba781bb8a528",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d993139_e66d698e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T02:54:37Z",
+      "side": 1,
+      "message": "From my previous results, NewTestFixture + Close (which includes stop/start ui) takes around 2~3 seconds. (~2s on the first Prepare, and ~1s on Close)\nThe others seem to come from the interface reuse but I didn\u0027t do a precise timing on this. I\u0027ll add some more timing track for on these steps.",
+      "parentUuid": "93b5065e_ff6be8e0",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 63
+      },
+      "revId": "3ad1a3db6b8b3b350d8d1d67023eba781bb8a528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
