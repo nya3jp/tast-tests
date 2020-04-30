@@ -25,12 +25,14 @@ var (
 
 	// ARCCloseAPK starts Remote Test ARC++ System Error.
 	ARCCloseAPK = MTBFErrCode{1900, `Failed to close APK: %s`}
-
 	// OSRemoteTest starts remote Test OS Error.
 	OSRemoteTest = MTBFErrCode{1100, `Remote Test OS Error 100`}
-
 	// NotifyDetachSvr error definition for detach mode.
 	NotifyDetachSvr = MTBFErrCode{1101, `Cannot notify detach status server. URL=%v`}
+	// OSNoArcDeviceID error definition.
+	OSNoArcDeviceID = MTBFErrCode{1102, `Cannot find DUT Arc device ID`}
+	// OSCreateNodeClient error definition.
+	OSCreateNodeClient = MTBFErrCode{1103, `Failed on create node client`}
 
 	// OSTestParam error definition.
 	OSTestParam = MTBFErrCode{1149, `Remote Test OS Error parameter: %s`}
@@ -333,6 +335,8 @@ var (
 	VideoSubCaseArg = MTBFErrCode{4317, `%s`}
 	// VideoUnknownArg err definition.
 	VideoUnknownArg = MTBFErrCode{4318, `Has a unknown argument from previous subcase`}
+	// VideoAppRtcRoomName err definition
+	VideoAppRtcRoomName = MTBFErrCode{4319, `Failed on generate a room name`}
 
 	// WIFIFatal starts Local Test Wifi Fatal.
 	WIFIFatal = MTBFErrCode{4650, `WiFi fatal error! AP Name=%s`}
@@ -427,6 +431,8 @@ var (
 	CatsQueryFailure = MTBFErrCode{6002, `Failed to query the device info`}
 	// CatsNoNodeIP error definition.
 	CatsNoNodeIP = MTBFErrCode{6003, `NODE IP is empty`}
+	// CatsNoNodeGrpcPort error definition.
+	CatsNoNodeGrpcPort = MTBFErrCode{6003, `NODE gRPC port is empty`}
 	// CatsNoDUTID error definition.
 	CatsNoDUTID = MTBFErrCode{6004, `Device ID is empty`}
 	// CatsNoCaseName error definition.
@@ -453,6 +459,8 @@ var (
 	CatsErr6015 = MTBFErrCode{6015, `gRPC connection failed`}
 	// CatsErr6016 error definition.
 	CatsErr6016 = MTBFErrCode{6016, `Get DUT information failed`}
+	// CatsNoNodePort error definition.
+	CatsNoNodePort = MTBFErrCode{6017, `NODE port is empty`}
 	// CatsErr6099 error definition.
 	CatsErr6099 = MTBFErrCode{6099, `Unknown Error`}
 
@@ -462,7 +470,111 @@ var (
 	// Don't define beyond this number.
 
 	// Err7000 - Err7999 are reserved for CATS testing scripts.
+
+	// EnterCameraApp error definition.
+	EnterCameraApp = MTBFErrCode{7001, `Fail to enter "Camera" app`}
+	// VoiceRecordApp error definition.
+	VoiceRecordApp = MTBFErrCode{7001, `Fail to enter "Voice Recorder" app`}
+	// HangoutsApp error definition.
+	HangoutsApp = MTBFErrCode{7001, `Fail to enter "Hangouts`}
+	// CompHangoutsApp error definition.
+	CompHangoutsApp = MTBFErrCode{7001, `Fail to enter "Hangouts" app on companion phone`}
+	// YoutubeApp error definition.
+	YoutubeApp = MTBFErrCode{7001, `Fail to enter Youtube app. The Youtube app is not in main page`}
+	// GoogleNewsApp error definition.
+	GoogleNewsApp = MTBFErrCode{7001, `Fail to enter News app`}
+	// EnterAppMainPage error definition.
+	EnterAppMainPage = MTBFErrCode{7001, `Fail to enter app's main page. Should login or allow related permission. App's package name is %s`}
+	// NoConversation error definition.
+	NoConversation = MTBFErrCode{7002, `Should exist at least one conversation in Hangouts app on companion phone`}
+	// FoundVideoFile error definition.
+	FoundVideoFile = MTBFErrCode{7002, `Can't find the target video file`}
+	// CannotFindTargetFile error definition.
+	CannotFindTargetFile = MTBFErrCode{7002, `Can't find the target audio file`}
+	// SetUpGoogleNewsEnv error definition.
+	SetUpGoogleNewsEnv = MTBFErrCode{7002, `Please set up env. Save a video on News app`}
+	// FoundSearchBox error definition.
+	FoundSearchBox = MTBFErrCode{7004, `Can't find search box or url bar to input url`}
+	// VideoResolutionNotExpected error definition.
+	VideoResolutionNotExpected = MTBFErrCode{7004, `The resolution of video played in Facebook app is not changed as expected`}
+	// VerifyResolution error definition.
+	VerifyResolution = MTBFErrCode{7004, `Can't verify the resolution change by comparing player page sizes. Can't find the player size before or after settings full screen`}
+	// VerifyYoutubeResolution error definition.
+	VerifyYoutubeResolution = MTBFErrCode{7004, `The resolution of video played in youtube app is not changed as expected`}
+	// VerifyYoutubeSeek error definition.
+	VerifyYoutubeSeek = MTBFErrCode{7004, `The video is not playing from the seek position`}
+	// GetDUTResolution error definition.
+	GetDUTResolution = MTBFErrCode{7004, `Can't get the resolution of target dut`}
+	// VLCKeepStop error definition.
+	VLCKeepStop = MTBFErrCode{7005, `VLC keeps stopping occur`}
+	// CameraAppCrash error definition.
+	CameraAppCrash = MTBFErrCode{7005, `Camera app has crashed`}
+	// GCACamera error definition.
+	GCACamera = MTBFErrCode{7007, `Fail to enter GCA camera page`}
+	// GoogleNewsCrash error definition.
+	GoogleNewsCrash = MTBFErrCode{7008, `Video can't play normally. Google News app may have crashed. Please restart dut to recover`}
+	// SendHangoutsMessage error definition.
+	SendHangoutsMessage = MTBFErrCode{7009, `The message is not sent successfully. Maybe companion phone connect timeout for network issue`}
+	// WithoutJoinButton error definition.
+	WithoutJoinButton = MTBFErrCode{7009, `Can't wait join appears for 60s. Maybe the network connection is too weak`}
+	// YoutubeTitle error definition.
+	YoutubeTitle = MTBFErrCode{7009, `The video title doesn't appear on UI. Maybe youtube connect timeout for network issue`}
+	// LostResolutionConfig error definition.
+	LostResolutionConfig = MTBFErrCode{7010, `Please set default coordinate for target app in resources/case_var/coordinate.xml case var file`}
+	// VLCAppNotPause error definition.
+	VLCAppNotPause = MTBFErrCode{7011, `The music in VLC app is not pause after playing audio using ChromeOS built in media player`}
+	// GoogleMusicNotPlay error definition.
+	GoogleMusicNotPlay = MTBFErrCode{7012, `The music in Google Music app is still not playing. Please check the dut behavior`}
+	// SpotifyNotPlay error definition.
+	SpotifyNotPlay = MTBFErrCode{7012, `The music in Spotify app is not playing. Please check whether is affected by ad`}
+	// YoutubeMusicNotPlay error definition.
+	YoutubeMusicNotPlay = MTBFErrCode{7012, `The music is not playing`}
+	// FacebookVideoNotPlay error definition.
+	FacebookVideoNotPlay = MTBFErrCode{7013, `The video in Facebook app is not playing. Maybe the UI element disappears too fast. Can also check whether save a video to "For Later" collection in FaceBook app`}
+	// GoogleNewsVideoNotPlay error definition.
+	GoogleNewsVideoNotPlay = MTBFErrCode{7013, `The video in News app is not playing. Maybe the UI element disappears too fast`}
+	// CannotPlayFacebookVideo error definition.
+	CannotPlayFacebookVideo = MTBFErrCode{7013, `Can't play video in facebook`}
+	// CannotPlayYoutubeVideo error definition.
+	CannotPlayYoutubeVideo = MTBFErrCode{7013, `The video in Youtube app is not playing. Maybe the UI element disappears too fast`}
+	// YoutubeNotPlay error definition.
+	YoutubeNotPlay = MTBFErrCode{7014, `The video in Youtube app is not playing after the notification center appears. May be affected by notification center. Or just the UI element disappears too fast`}
+	// DisableWifi error definition.
+	DisableWifi = MTBFErrCode{7015, `Set wifi to False fail`}
+	// EnableWifi error definition.
+	EnableWifi = MTBFErrCode{7015, `Set wifi to True fail`}
+	// VLCAppNotPlay error definition.
+	VLCAppNotPlay = MTBFErrCode{7016, `The music in VLC app is not playing`}
+	// EnterContactPage error definition.
+	EnterContactPage = MTBFErrCode{7017, `Fail to enter to contact page. Please check whether the contact name configured in properties file is same as actual google account name. Contact name is: %s.`}
+	// EnterConversationPage error definition.
+	EnterConversationPage = MTBFErrCode{7017, `Fail to enter conversation page`}
+	// CanootJoinCall error definition.
+	CanootJoinCall = MTBFErrCode{7017, `Can't join to target video call. Maybe former call doesn't end or the video call is full`}
+	// StartRecord error definition.
+	StartRecord = MTBFErrCode{7018, `Fail to start record`}
+	// CannotVerifyRecord error definition.
+	CannotVerifyRecord = MTBFErrCode{7018, `Can't get the needed info to verify 'Recorded audio can play to the full recording length'.`}
+	// RecordTimeNotMatch error definition.
+	RecordTimeNotMatch = MTBFErrCode{7018, `The play time is not same as total record time`}
+	// RecordedAudioNotPlay error definition.
+	RecordedAudioNotPlay = MTBFErrCode{7018, `The recorded audio in Voice Recorder app is not playing`}
+	// CannotGetRecordedFile error definition.
+	CannotGetRecordedFile = MTBFErrCode{7018, `Can't get the recorded audio file name in Voice Recorder app`}
+	// VideoSwitchButton error definition.
+	VideoSwitchButton = MTBFErrCode{7019, `Can not found "Video Switch" Button. Maybe dut CPU/Memory usage is too high`}
+	// PhotoButton error definition.
+	PhotoButton = MTBFErrCode{7019, `Can not found "Photo Switch" Button. Maybe dut CPU/Memory usage is too high`}
+	// WithoutResolution error definition.
+	WithoutResolution = MTBFErrCode{7019, `Can't find the resolution of the picture`}
+	// EnterGallery error definition.
+	EnterGallery = MTBFErrCode{7019, `Fail to enter gallery. Maybe app crashed or can't find any captured frame or recorded video`}
+	// StartRecordVideo error definition.
+	StartRecordVideo = MTBFErrCode{7019, `Fail to start recording video`}
 )
+
+// CatsErrBaseID The base error ID for CATS Node.
+const CatsErrBaseID = 10000
 
 // CatsErrCode The error for CATS Node.
 type CatsErrCode struct {

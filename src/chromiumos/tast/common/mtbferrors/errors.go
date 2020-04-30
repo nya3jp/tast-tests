@@ -52,7 +52,7 @@ func NewCatsNodeErr(errCode CatsErrCode, cause error, args ...interface{}) *MTBF
 			code = CatsErr6013.code
 			errFmt = CatsErr6013.format
 		} else {
-			code = origCode
+			code = origCode + CatsErrBaseID
 		}
 	}
 
