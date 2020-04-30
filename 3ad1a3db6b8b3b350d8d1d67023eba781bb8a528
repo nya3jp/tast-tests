@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93b5065e_ff6be8e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T02:26:05Z",
+      "side": 1,
+      "message": "Do you have a rough estimate of what is that saved from? Note that on one of the earlier CLs, it wasn\u0027t clear you *really* need to re-start the UI job when you\u0027re done (which I\u0027m guessing is a significant chunk of time?) -- it depends on\n(a) whether we want to be nice to the user afterward (e.g., not leaving them a black screen) and\n(b) tests that require Chrome always start it back up correctly (I believe they do?)\n\nAnyway, this is more of a curiosity than a requirement. Any savings is likely a good thing, as long as it doesn\u0027t have other large downsides.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 63
+      },
+      "revId": "3ad1a3db6b8b3b350d8d1d67023eba781bb8a528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
