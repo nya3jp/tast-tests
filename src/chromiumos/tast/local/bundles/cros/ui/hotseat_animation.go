@@ -12,9 +12,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ash/launcher"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -31,7 +33,7 @@ func init() {
 		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "andrewxu@chromium.org", "cros-shelf-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		Pre:          ash.LoggedInWith100DummyApps(),
+		Pre:          launcher.LoggedInWith100DummyApps(lacros.ChromeTypeChromeOS),
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Name: "non_overflow_shelf",
@@ -200,7 +202,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		if err := stw.End(); err != nil {
 			return errors.Wrap(err, "failed to finish the swipe gesture")
 		}
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
+		if err := launcher.WaitForLauncherState(ctx, tconn, launcher.FullscreenAllApps); err != nil {
 			return errors.Wrap(err, "home launcher failed to show")
 		}
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {

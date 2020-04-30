@@ -13,10 +13,12 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ash/launcher"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          ash.LoggedInWith100DummyApps(),
+		Pre:          launcher.LoggedInWith100DummyApps(lacros.ChromeTypeChromeOS),
 	})
 }
 
@@ -171,9 +173,9 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 	}
 	defer cleanup(ctx)
 
-	launcherTargetState := ash.Closed
+	launcherTargetState := launcher.Closed
 	if isLauncherVisible {
-		launcherTargetState = ash.FullscreenAllApps
+		launcherTargetState = launcher.FullscreenAllApps
 	}
 
 	if isInTabletMode && !isLauncherVisible {
@@ -192,11 +194,11 @@ func fetchShelfScrollSmoothnessHistogram(ctx context.Context, cr *chrome.Chrome,
 		}
 	} else if !isInTabletMode && isLauncherVisible {
 		// Show launcher fullscreen.
-		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelShiftSearch); err != nil {
+		if err := launcher.TriggerLauncherStateChange(ctx, tconn, launcher.AccelShiftSearch); err != nil {
 			return nil, errors.Wrap(err, "failed to switch to fullscreen")
 		}
 		// Verify the launcher's state.
-		if err := ash.WaitForLauncherState(ctx, tconn, launcherTargetState); err != nil {
+		if err := launcher.WaitForLauncherState(ctx, tconn, launcherTargetState); err != nil {
 			return nil, errors.Wrapf(err, "failed to switch the state to %s", launcherTargetState)
 		}
 	}
