@@ -55,7 +55,7 @@ func Finalize(fullCtx context.Context, s *testing.State) {
 			return errors.Wrap(err, "fail to access log")
 		}
 
-		if strings.Contains(string(out), "ERROR:root:wipe_init failed") {
+		if strings.Contains(string(out), "wipe_init failed") {
 			return testing.PollBreak(errors.New("wipe_init failed"))
 		}
 
