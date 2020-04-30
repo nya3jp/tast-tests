@@ -367,20 +367,6 @@ func GetWindow(ctx context.Context, tconn *chrome.TestConn, windowID int) (*Wind
 	return nil, errors.Errorf("failed to find the window with ID %d", windowID)
 }
 
-// ForEachWindow runs a specified function on each window. If the given function returns an error, it is returned.
-func ForEachWindow(ctx context.Context, tconn *chrome.TestConn, f func(window *Window) error) error {
-	ws, err := GetAllWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get the window list")
-	}
-	for _, window := range ws {
-		if err := f(window); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 // FindWindow returns the Chrome window with which the given predicate returns true.
 // If there are multiple, this returns the first found window.
 func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool) (*Window, error) {
@@ -407,14 +393,15 @@ type ConnSource interface {
 // wants to measure the performance of Chrome. This should be used for a
 // preparation, before the measurement happens.
 func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) (chrome.Conns, error) {
+	prevws, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
 	prevvis := 0
-	if err := ForEachWindow(ctx, tconn, func(w *Window) error {
+	for _, w := range prevws {
 		if w.IsVisible {
 			prevvis++
 		}
-		return nil
-	}); err != nil {
-		return nil, err
 	}
 
 	g, dctx := errgroup.WithContext(ctx)
@@ -438,14 +425,15 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		nowws, err := GetAllWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
 		nowvis := 0
-		if err := ForEachWindow(ctx, tconn, func(w *Window) error {
+		for _, w := range nowws {
 			if w.IsVisible {
 				nowvis++
 			}
-			return nil
-		}); err != nil {
-			return testing.PollBreak(err)
 		}
 
 		if nowvis-prevvis != n {
@@ -456,6 +444,28 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 	}, defaultPollOptions); err != nil {
 		conns.Close()
 		return nil, err
+	}
+
+	// Ensure created windows are maximized (necessary for Lacros windows).
+	ws, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		conns.Close()
+		return nil, err
+	}
+	for _, w := range ws {
+		found := false
+		for _, ow := range prevws {
+			if w.ID == ow.ID {
+				found = true
+				break
+			}
+		}
+		if !found && w.State != WindowStateMaximized {
+			if _, err := SetWindowState(ctx, tconn, w.ID, WMEventMaximize); err != nil {
+				conns.Close()
+				return nil, err
+			}
+		}
 	}
 
 	return conns, nil
