@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8553dcb3_038829a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-04-30T18:13:59Z",
+      "side": 1,
+      "message": "Can you summarize the old and new path formats here so we can understand what is the latest path format without looking at the code?",
+      "revId": "333c3eb3a35fcf2013b36674412d0cf950810f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
