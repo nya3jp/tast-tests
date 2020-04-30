@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -181,6 +182,12 @@ func setUpTestCrashReporter(ctx context.Context) error {
 	if err := crash.ReplaceCrashFilterIn("none"); err != nil {
 		return errors.Wrap(err, "failed after initializing crash reporter")
 	}
+	// Similarly, stop anomaly_detector from running to prevent it from
+	// generating spurious crashes.
+	if err := upstart.StopJob(ctx, "anomaly-detector"); err != nil {
+		return errors.Wrap(err, "failed to stop anomaly detector")
+	}
+
 	// Set the test status flag to make crash reporter.
 	if err := crash.SetCrashTestInProgress(); err != nil {
 		return errors.Wrap(err, "failed after initializing crash reporter")
@@ -189,10 +196,14 @@ func setUpTestCrashReporter(ctx context.Context) error {
 }
 
 // teardownTestCrashReporter handles resetting some test-specific persistent changes to the system made by setUpTestCrashReporter.
-func teardownTestCrashReporter() error {
+func teardownTestCrashReporter(ctx context.Context) error {
 	if err := crash.DisableCrashFiltering(); err != nil {
 		return errors.Wrap(err, "failed while tearing down crash reporter")
 	}
+	if err := upstart.EnsureJobRunning(ctx, "anomaly-detector"); err != nil {
+		return errors.Wrap(err, "failed to restart anomaly detector")
+	}
+
 	if err := crash.UnsetCrashTestInProgress(); err != nil {
 		return errors.Wrap(err, "failed while tearing down crash reporter")
 	}
@@ -608,7 +619,7 @@ func RunCrashTest(ctx context.Context, cr *chrome.Chrome, s *testing.State, test
 		if err := setUpTestCrashReporter(ctx); err != nil {
 			return err
 		}
-		defer teardownTestCrashReporter()
+		defer teardownTestCrashReporter(ctx)
 	}
 
 	// Ignore process-not-found error.
