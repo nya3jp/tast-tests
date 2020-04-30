@@ -86,8 +86,10 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 
 // NewTestFixture creates a TestFixture.
 // The TestFixture contains a gRPC connection to the DUT and a SSH connection to the router.
+// The method takes two context: ctx and daemonCtx, the first one is the context for the operation and
+// daemonCtx is for the spawned daemons.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
-func NewTestFixture(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, ops ...TFOption) (ret *TestFixture, retErr error) {
+func NewTestFixture(ctx, daemonCtx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, ops ...TFOption) (ret *TestFixture, retErr error) {
 	tf := &TestFixture{
 		dut:       d,
 		capturers: make(map[*APIface]*pcap.Capturer),
@@ -121,7 +123,7 @@ func NewTestFixture(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, o
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the router")
 	}
-	tf.router, err = NewRouter(ctx, tf.routerHost, "router")
+	tf.router, err = NewRouter(ctx, daemonCtx, tf.routerHost, "router")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a router object")
 	}
@@ -158,7 +160,7 @@ func NewTestFixture(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, o
 	if tf.pcapHost == tf.routerHost {
 		tf.pcap = tf.router
 	} else {
-		tf.pcap, err = NewRouter(ctx, tf.pcapHost, "pcap")
+		tf.pcap, err = NewRouter(ctx, daemonCtx, tf.pcapHost, "pcap")
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create a router object for pcap")
 		}

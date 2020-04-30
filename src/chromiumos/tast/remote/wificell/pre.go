@@ -45,7 +45,7 @@ func (p *testFixturePreImpl) Prepare(ctx context.Context, s *testing.State) inte
 		if pcap, _ := s.Var("pcap"); pcap != "" {
 			ops = append(ops, TFPcap(pcap))
 		}
-		tf, err := NewTestFixture(ctx, s.DUT(), s.RPCHint(), ops...)
+		tf, err := NewTestFixture(ctx, s.PreCtx(), s.DUT(), s.RPCHint(), ops...)
 		if err != nil {
 			s.Fatal("Failed to set up test fixture: ", err)
 		}
