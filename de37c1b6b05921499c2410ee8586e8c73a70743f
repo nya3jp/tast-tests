@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbcd8d44_056291c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_still_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-30T02:25:17Z",
+      "side": 1,
+      "message": "nit: Could you help test it with lens covered to simulate a dark lab environment?",
+      "revId": "de37c1b6b05921499c2410ee8586e8c73a70743f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
