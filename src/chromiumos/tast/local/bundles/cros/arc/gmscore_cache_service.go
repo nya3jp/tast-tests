@@ -8,6 +8,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 
 	"google.golang.org/grpc"
 
@@ -50,7 +51,17 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 		extraArgs = append(extraArgs, "--enable-arcvm")
 	}
 
-	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreDisabled, extraArgs, targetDir)
+	packagesCopy := cache.PackagesSkipCopy
+	if request.PackagesCopy {
+		packagesCopy = cache.PackagesCopy
+	}
+
+	gmsCoreEnabled := cache.GMSCoreDisabled
+	if request.GmsCoreEnabled {
+		gmsCoreEnabled = cache.GMSCoreEnabled
+	}
+
+	cr, a, err := cache.OpenSession(ctx, packagesCopy, gmsCoreEnabled, extraArgs, targetDir)
 	if err != nil {
 		os.RemoveAll(targetDir)
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
@@ -64,12 +75,23 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
 	}
 
+	generatedCacheDir := filepath.Join(targetDir, "generated")
+	if err := os.Mkdir(generatedCacheDir, 0755); err != nil {
+		return nil, errors.Wrapf(err, "could not make target subdirectory: %s", generatedCacheDir)
+	}
+
+	generatedPackagesCache := filepath.Join(generatedCacheDir, cache.PackagesCacheXML)
+	if err := a.PullFile(ctx, filepath.Join("/system/etc", cache.PackagesCacheXML), generatedPackagesCache); err != nil {
+		return nil, errors.Wrapf(err, "could not pull %s from Android, this may mean that pre-generated packages cache was not installed when building the image: ", generatedPackagesCache)
+	}
+
 	response := arcpb.GmsCoreCacheResponse{
-		TargetDir:           targetDir,
-		PackagesCacheName:   cache.PackagesCacheXML,
-		GmsCoreCacheName:    cache.GMSCoreCacheArchive,
-		GmsCoreManifestName: cache.GMSCoreManifest,
-		GsfCacheName:        cache.GSFCache,
+		TargetDir:                  targetDir,
+		PackagesCacheName:          cache.PackagesCacheXML,
+		GmsCoreCacheName:           cache.GMSCoreCacheArchive,
+		GmsCoreManifestName:        cache.GMSCoreManifest,
+		GsfCacheName:               cache.GSFCache,
+		GeneratedPackagesCachePath: generatedPackagesCache,
 	}
 	return &response, nil
 }
