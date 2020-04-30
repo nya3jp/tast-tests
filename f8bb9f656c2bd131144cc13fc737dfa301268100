@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4934c014_84b883af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-04-30T08:12:19Z",
+      "side": 1,
+      "message": "arc-storage@ may be better.",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d649c9c_1fc6c8b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-04-30T08:12:19Z",
+      "side": 1,
+      "message": "Please close the connection.\nExample: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/5230dbf1a935d976df7e29b7efa260af72d302dc/src/chromiumos/tast/local/bundles/cros/platform/cros_runtime_probe_battery.go#94",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eae9cb0_37dd7ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-04-30T08:12:19Z",
+      "side": 1,
+      "message": "This is incorrect.\nThe FUSE file system won\u0027t be unmounted unless the FD in the method call reply is closed.",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8efccee8_28e27979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-04-30T08:12:19Z",
+      "side": 1,
+      "message": "Please store the FD in a variable and close it.\n\nvar fd dbus.UnixFD\nerr :\u003d obj.Call(...).Store(\u0026fd)",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
