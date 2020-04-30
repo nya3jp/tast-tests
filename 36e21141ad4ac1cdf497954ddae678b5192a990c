@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71b7656e_722439f1",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-04-30T17:01:01Z",
+      "side": 1,
+      "message": "This does not specify the \"opts\" value defined above; so I am afraid that the launcher won\u0027t have any of additional app icons. Please find the right way to provide them in Lacros.\n\nThese additional app icons are essential to this precondition; this precondition was created because of them (graphical performance of launcher, app-list, shelf, hotseat are highly affected by the number of icons, pages, etc).",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "36e21141ad4ac1cdf497954ddae678b5192a990c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
