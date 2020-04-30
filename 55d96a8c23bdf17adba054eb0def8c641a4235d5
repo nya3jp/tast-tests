@@ -22,6 +22,30 @@
       "revId": "55d96a8c23bdf17adba054eb0def8c641a4235d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198148ae_ea11ec0c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T07:32:34Z",
+      "side": 1,
+      "message": "I think it\u0027s better to check because we provide a option to set this field.",
+      "parentUuid": "25df15a3_f8f6e649",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 2
+      },
+      "revId": "55d96a8c23bdf17adba054eb0def8c641a4235d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
