@@ -38,12 +38,12 @@ const (
 // TEST_RESULT_FILTER list in
 // autotest/files/client/site_tests/graphics_dEQP/graphics_dEQP.py.
 var nonFailOutcomes = map[string]struct{}{
-	"pass":                 struct{}{},
-	"notsupported":         struct{}{},
-	"internalerror":        struct{}{},
-	"qualitywarning":       struct{}{},
-	"compatibilitywarning": struct{}{},
-	"skipped":              struct{}{},
+	"pass":                 {},
+	"notsupported":         {},
+	"internalerror":        {},
+	"qualitywarning":       {},
+	"compatibilitywarning": {},
+	"skipped":              {},
 }
 
 // handleBeginResult handles a line starting with #beginTestCaseResult.

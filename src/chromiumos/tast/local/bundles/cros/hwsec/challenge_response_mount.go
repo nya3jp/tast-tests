@@ -225,7 +225,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 				Type:  &keyType,
 				Label: &localKeyLabel,
 				ChallengeResponseKey: []*cpb.ChallengePublicKeyInfo{
-					&cpb.ChallengePublicKeyInfo{
+					{
 						PublicKeySpkiDer: pubKeySPKIDER,
 						SignatureAlgorithm: []cpb.ChallengeSignatureAlgorithm{
 							keyAlg,
