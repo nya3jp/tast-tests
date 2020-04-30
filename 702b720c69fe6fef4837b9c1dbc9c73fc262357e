@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "cbbda5e5_b2202516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_index.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-30T16:51:33Z",
+      "side": 1,
+      "message": "this looks doing nothing...?\nIf necessary, could you comment?",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "702b720c69fe6fef4837b9c1dbc9c73fc262357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe0b50f_ea750b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_service-worker.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-30T16:51:33Z",
+      "side": 1,
+      "message": "Adding empty event listener looks like no-op conceptually.\nCould you add the comment about your intention?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "702b720c69fe6fef4837b9c1dbc9c73fc262357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c31a0bd_6d54147d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-30T16:51:33Z",
+      "side": 1,
+      "message": "Could you move this to L66 to minimize the scope?\nAlso\n\nconst name \u003d \"Test PWA\"\n\nto be a constant?",
+      "revId": "702b720c69fe6fef4837b9c1dbc9c73fc262357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15b4b584_1db180c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 6
@@ -76,6 +139,30 @@
       "writtenOn": "2020-04-30T15:58:14Z",
       "side": 1,
       "message": "minor nit: Failed to",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 29
+      },
+      "revId": "702b720c69fe6fef4837b9c1dbc9c73fc262357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "673a224c_65cd4895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-04-30T16:51:33Z",
+      "side": 1,
+      "message": "more minor nit: \"failed to\" (starting from a small letter)",
+      "parentUuid": "854ab809_1f8b4713",
       "range": {
         "startLine": 80,
         "startChar": 22,
