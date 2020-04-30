@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "503c459c_9fbe0859",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-04-30T10:04:41Z",
+      "side": 1,
+      "message": "Looks like it\u0027s just SSH flakiness.",
+      "parentUuid": "b2889643_c5fedba9",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "502a80aa90455523712c939309c6e4debc00a723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f784363_1cbeeb02",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
