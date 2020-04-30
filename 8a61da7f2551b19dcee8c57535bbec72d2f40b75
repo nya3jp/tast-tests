@@ -151,6 +151,30 @@
       "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "032b47d4_d86a6f95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-04-30T09:08:51Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027d be nice to enable it on P as well (I think we can do that in another CL). By doing so, we can tell whether there are unintended differences in behavior between P and R.",
+      "parentUuid": "345ae6ef_62d63a59",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "8a61da7f2551b19dcee8c57535bbec72d2f40b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
