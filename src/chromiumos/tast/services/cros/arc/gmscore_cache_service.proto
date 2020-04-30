@@ -15,8 +15,10 @@ service GmsCoreCacheService {
 }
 
 message GmsCoreCacheRequest {
-  // Specify which build is requested.
-  bool vm_enabled = 1;
+  // If set, PackagesCopy is requested. Otherwise, requests PackageSkipCopy.
+  bool packages_cache_enabled = 1;
+  // If set, GMSCoreEnabled is requested. Otherwise, requests GMSCoreDisabled.
+  bool gms_core_enabled = 2;
 }
 
 message GmsCoreCacheResponse {
@@ -30,4 +32,6 @@ message GmsCoreCacheResponse {
   string gms_core_manifest_name = 4;
   // Name of GSF cache.
   string gsf_cache_name = 5;
+  // Name of generated packages cache.
+  string generated_packages_cache_name = 6;
 }
