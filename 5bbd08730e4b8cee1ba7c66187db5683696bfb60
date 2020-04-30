@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d8ea6c47_464b6a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T12:12:03Z",
+      "side": 1,
+      "message": "Changed to a http file server which serves a temporary directory.",
+      "parentUuid": "207cf5f3_f16d4c81",
+      "revId": "5bbd08730e4b8cee1ba7c66187db5683696bfb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91646067_1b310b83",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5bbd08730e4b8cee1ba7c66187db5683696bfb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf09431_db39df76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-04-30T12:12:03Z",
+      "side": 1,
+      "message": "Is an error, should be \"Test PWA\"",
+      "parentUuid": "91646067_1b310b83",
+      "revId": "5bbd08730e4b8cee1ba7c66187db5683696bfb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
