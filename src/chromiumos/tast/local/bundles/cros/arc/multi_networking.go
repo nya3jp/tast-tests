@@ -115,8 +115,8 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 
 	// Log out to ensure the container is down.
 	upstart.RestartJob(ctx, "ui")
-	if err := upstart.WaitForJobStatus(ctx, "arc-network-bridge", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
-		s.Fatal("arc-network-bridge job failed to start: ", err)
+	if err := upstart.WaitForJobStatus(ctx, "patchpanel", upstart.StartGoal, upstart.RunningState, upstart.RejectWrongGoal, 30*time.Second); err != nil {
+		s.Fatal("patchpanel job failed to start: ", err)
 	}
 	// Restart ARC.
 	startARC()
