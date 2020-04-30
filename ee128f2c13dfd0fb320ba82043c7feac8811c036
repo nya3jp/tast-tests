@@ -46,6 +46,30 @@
       "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a16ecb84_4e1564c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps_80211ac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-04-30T01:31:15Z",
+      "side": 1,
+      "message": "Yes, my suggestion is mostly a hack. I just figured 802.11ac for old boards wasn\u0027t worth expending much effort. Long term, yes, we want to do all these sorts of things via HardwareDeps. https://crbug.com/1070299 is kinda blocked right now though, IIUC.\n\nAnyway, this probably isn\u0027t the appropriate place for that discussion. Would $BUG be the right place?",
+      "parentUuid": "17f71786_9d74838c",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
