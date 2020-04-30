@@ -147,10 +147,22 @@ func LaunchLinuxChrome(ctx context.Context, p PreData) (*LinuxChrome, error) {
 	}
 
 	// Wait for a window that matches what a lacros window looks like.
-	if err := ash.WaitForCondition(ctx, p.TestAPIConn, func(w *ash.Window) bool {
+	pred := func(w *ash.Window) bool {
 		return w.IsVisible && w.Title == "about:blank - Google Chrome" && w.Name == "ExoShellSurface"
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}
+	if err := ash.WaitForCondition(ctx, p.TestAPIConn, pred, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for linux-chrome window to be visible")
+	}
+
+	w, err := ash.FindWindow(ctx, p.TestAPIConn, pred)
+	if err != nil {
+		return nil, err
+	}
+	testing.ContextLog(ctx, "WINDOW: ", w)
+
+	// Maximize window to be consistent with initial state for ChromeOS-chrome windows.
+	if _, err := ash.SetWindowState(ctx, p.TestAPIConn, w.ID, ash.WMEventMaximize); err != nil {
+		return nil, err
 	}
 
 	debuggingPortPath := userDataDir + "/DevToolsActivePort"
