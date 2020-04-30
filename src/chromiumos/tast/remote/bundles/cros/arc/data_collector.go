@@ -12,7 +12,6 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -29,10 +28,10 @@ type buildDescriptor struct {
 	official bool
 	// ab/buildID
 	buildID string
-	// build flavor e.g. cheets_x86_64-user, bertha_x86_64-userdebug
-	flavor string
-	// sdk version e.g. 25, 29 ...
-	sdkVersion uint8
+	// build type e.g. user, userdebug
+	buildType string
+	// cpu abi e.g. x86_64, x86, arm
+	cpuAbi string
 }
 
 func init() {
@@ -79,18 +78,14 @@ func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 	}
 	buildPropStr := string(buildProp)
 
-	mFlavor := regexp.MustCompile(`(\n|^)ro.build.flavor=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mFlavor == nil {
-		return nil, errors.Errorf("ro.build.flavor is not found in %q", buildPropStr)
+	mCPUAbi := regexp.MustCompile(`(\n|^)ro.product.cpu.abi=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	if mCPUAbi == nil {
+		return nil, errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
 	}
 
-	mSdkVersion := regexp.MustCompile(`(\n|^)ro.build.version.sdk=(\d+)(\n|$)`).FindStringSubmatch(buildPropStr)
-	if mSdkVersion == nil {
-		return nil, errors.Errorf("ro.build.version.sdk is not found in %q", buildPropStr)
-	}
-	sdkVersion, err := strconv.ParseUint(mSdkVersion[2], 10, 8)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to parse ro.build.version.sdk")
+	mBuildType := regexp.MustCompile(`(\n|^)ro.build.type=(.+)(\n|$)`).FindStringSubmatch(buildPropStr)
+	if mBuildType == nil {
+		return nil, errors.Errorf("ro.product.cpu.abi is not found in %q", buildPropStr)
 	}
 
 	// Note, this should work on official builds only. Custom built Android image contains the
@@ -101,10 +96,10 @@ func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 	}
 
 	desc := buildDescriptor{
-		official:   regexp.MustCompile(`^\d+$`).MatchString(mBuildID[2]),
-		buildID:    mBuildID[2],
-		flavor:     mFlavor[2],
-		sdkVersion: uint8(sdkVersion),
+		official:  regexp.MustCompile(`^\d+$`).MatchString(mBuildID[2]),
+		buildID:   mBuildID[2],
+		buildType: mBuildType[2],
+		cpuAbi:    mCPUAbi[2],
 	}
 
 	return &desc, nil
@@ -115,13 +110,13 @@ func getBuildDescriptorRemotely(ctx context.Context, dut *dut.DUT, vmEnabled boo
 func DataCollector(ctx context.Context, s *testing.State) {
 	const (
 		// Base path for uploaded resources.
-		runtimeArtefactsRoot = "gs://chromeos-arc-images/runtime_artefacts"
+		runtimeArtifactsRoot = "gs://chromeos-arc-images/runtime_artifacts"
 
 		// ureadahed packs bucket
-		ureadAheadPacks = "ureadahead_packs"
+		ureadAheadPack = "ureadahead_pack"
 
 		// GMS Core caches bucket
-		gmsCoreCaches = "gms_core_caches"
+		gmsCoreCache = "gms_core_cache"
 
 		// Name of the pack in case of initial boot.
 		initialPack = "initial_pack"
@@ -139,32 +134,8 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	remoteURL := func(bucket, version, dst string) string {
-		return fmt.Sprintf("%s/%s/%s/%s", runtimeArtefactsRoot, bucket, version, dst)
-	}
-
-	// upload gets file from the target device and uploads it to the server.
-	upload := func(ctx context.Context, dut *dut.DUT, src, bucket, version, dst string) error {
-		temp, err := ioutil.TempFile("", filepath.Base(src))
-		if err != nil {
-			return errors.Wrapf(err, "failed to create temp file for %q", src)
-		}
-		defer os.Remove(temp.Name())
-
-		if err := dut.GetFile(ctx, src, temp.Name()); err != nil {
-			return errors.Wrapf(err, "failed to get %q from the device", src)
-		}
-
-		gsURL := remoteURL(bucket, version, dst)
-
-		// Use gsutil command to upload the file to the server.
-		testing.ContextLogf(ctx, "Uploading %q to the server", gsURL)
-		if out, err := exec.Command("gsutil", "copy", temp.Name(), gsURL).CombinedOutput(); err != nil {
-			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
-		}
-
-		testing.ContextLogf(ctx, "Uploaded %q to the server", gsURL)
-		return nil
+	remoteURL := func(bucket, version string) string {
+		return fmt.Sprintf("%s/%s_%s.tar", runtimeArtifactsRoot, bucket, version)
 	}
 
 	vmEnabled := s.Param().(bool)
@@ -174,10 +145,47 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get ARC build desc: ", err)
 	}
 
-	genUreadaheadPack := func() {
-		v := fmt.Sprintf("%s_%d_%s", desc.flavor, desc.sdkVersion, desc.buildID)
-		s.Logf("Detected version: %s", v)
+	v := fmt.Sprintf("%s_%s_%s", desc.cpuAbi, desc.buildType, desc.buildID)
+	s.Logf("Detected version: %s", v)
 
+	// Checks if generated resources need to be uploaded to the server.
+	needUpload := func(bucket string) bool {
+		if !desc.official {
+			s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
+			return false
+		}
+
+		gsURL := remoteURL(bucket, v)
+		if err := exec.Command("gsutil", "stat", gsURL).Run(); err != nil {
+			return true
+		}
+
+		// This test is scheduled to run once per build id and ARCH. So race should never happen.
+		s.Logf("%q exists and won't be uploaded to the server", gsURL)
+		return false
+	}
+
+	upload := func(ctx context.Context, src, bucket string) error {
+		gsURL := remoteURL(bucket, v)
+
+		// Use gsutil command to upload the file to the server.
+		testing.ContextLogf(ctx, "Uploading %q to the server", gsURL)
+		if out, err := exec.Command("gsutil", "copy", src, gsURL).CombinedOutput(); err != nil {
+			return errors.Wrapf(err, "failed to upload ARC ureadahead pack to the server %q", out)
+		}
+
+		testing.ContextLogf(ctx, "Uploaded %q to the server", gsURL)
+		return nil
+	}
+
+	tempDir, err := ioutil.TempDir("", "data_collector")
+	if err != nil {
+		s.Fatal("Failed to create temp dir: ", err)
+	}
+	os.Chmod(tempDir, 0744)
+	defer os.RemoveAll(tempDir)
+
+	genUreadaheadPack := func() {
 		service := arc.NewUreadaheadPackServiceClient(cl.Conn)
 		// First boot is needed to be initial boot with removing all user data.
 		request := arcpb.UreadaheadPackRequest{
@@ -186,27 +194,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			Password:    s.RequiredVar("arc.DataCollector.UreadaheadService_password"),
 			VmEnabled:   vmEnabled,
 		}
-
-		// Checks if generated packs need to be uploaded to the server.
-		needUpload := func() bool {
-			if !desc.official {
-				s.Logf("Version: %s is not official version and generated ureadahead packs won't be uploaded to the server", v)
-				return false
-			}
-
-			packs := []string{initialPack, provisionedPack}
-			for _, pack := range packs {
-				gsURL := remoteURL(ureadAheadPacks, v, pack)
-				if err := exec.Command("gsutil", "stat", gsURL).Run(); err != nil {
-					return true
-				}
-			}
-			// This test is scheduled to run once per build id and ARCH. So race should never happen.
-			s.Logf("Version: %s has all packs uploaded and generated ureadahead packs won't be uploaded to the server", v)
-			return false
-		}
-
-		needUploadPacks := needUpload()
 
 		// Shorten the total context by 5 seconds to allow for cleanup.
 		shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -224,10 +211,13 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatal("UreadaheadPackService.Generate returned an error for initial boot pass: ", err)
 		}
 
-		if needUploadPacks {
-			if err = upload(shortCtx, d, response.PackPath, ureadAheadPacks, v, initialPack); err != nil {
-				s.Fatal("Failed to upload initial boot pack: ", err)
-			}
+		targetDir := filepath.Join(tempDir, ureadAheadPack)
+		if err = os.Mkdir(targetDir, 0744); err != nil {
+			s.Fatalf("Failed to create %q: %v", targetDir, err)
+		}
+
+		if err = d.GetFile(shortCtx, response.PackPath, filepath.Join(targetDir, initialPack)); err != nil {
+			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
 		}
 
 		// Now pass provisioned boot and capture results.
@@ -237,10 +227,18 @@ func DataCollector(ctx context.Context, s *testing.State) {
 			s.Fatal("UreadaheadPackService.Generate returned an error for second boot pass: ", err)
 		}
 
-		if needUploadPacks {
-			if err = upload(shortCtx, d, response.PackPath, ureadAheadPacks, v, provisionedPack); err != nil {
-				s.Fatal("Failed to upload provisioned boot pack: ", err)
-			}
+		if err = d.GetFile(shortCtx, response.PackPath, filepath.Join(targetDir, provisionedPack)); err != nil {
+			s.Fatalf("Failed to get %q from the device: %v", response.PackPath, err)
+		}
+
+		targetTar := filepath.Join(targetDir, v+".tar")
+		testing.ContextLogf(shortCtx, "Compressing ureadahead packs to %q", targetTar)
+		if err = exec.Command("tar", "-cvpf", targetTar, "-C", targetDir, ".").Run(); err != nil {
+			s.Fatalf("Failed to compress %q: %v", targetDir, err)
+		}
+
+		if needUpload(ureadAheadPack) {
+			upload(shortCtx, targetTar, ureadAheadPack)
 		}
 	}
 	genUreadaheadPack()
@@ -258,45 +256,25 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		}
 		defer d.Command("rm", "-rf", response.TargetDir).Output(ctx)
 
-		packages, err := d.Command("cat", filepath.Join(response.TargetDir, response.PackagesCacheName)).Output(ctx)
-		if err != nil {
-			s.Fatal("Failed to read packages_cache.xml: ", err)
+		targetDir := filepath.Join(tempDir, gmsCoreCache)
+		if err = os.Mkdir(targetDir, 0744); err != nil {
+			s.Fatalf("Failed to create %q: %v", targetDir, err)
 		}
 
-		gmsCoreVersion := regexp.MustCompile(`<package name=\"com\.google\.android\.gms\".+version=\"(\d+)\".+>`).FindStringSubmatch(string(packages))
-		if gmsCoreVersion == nil {
-			s.Fatal("Failed to parse GMS Core version from packages_cache.xml")
-		}
-
-		v := fmt.Sprintf("%s_%d_%s", desc.flavor, desc.sdkVersion, gmsCoreVersion[1])
-		s.Logf("Detected GMS core version: %s", v)
-
-		// Checks if generated GMS Core caches need to be uploaded to the server.
 		resources := []string{response.GmsCoreCacheName, response.GmsCoreManifestName, response.GsfCacheName}
-		needUpload := func() bool {
-			for _, resource := range resources {
-				gsURL := remoteURL(gmsCoreCaches, v, resource)
-				if err := exec.Command("gsutil", "stat", gsURL).Run(); err != nil {
-					return true
-				}
+		for _, resource := range resources {
+			if err = d.GetFile(shortCtx, filepath.Join(response.TargetDir, resource), filepath.Join(targetDir, resource)); err != nil {
+				s.Fatalf("Failed to get %q from the device: %v", resource, err)
 			}
-
-			s.Logf("GMS Core: %s has all resources uploaded and generated caches won't be uploaded to the server", v)
-			return false
+		}
+		targetTar := filepath.Join(targetDir, v+".tar")
+		testing.ContextLogf(shortCtx, "Compressing gms core caches to %q", targetTar)
+		if err = exec.Command("tar", "-cvpf", targetTar, "-C", targetDir, ".").Run(); err != nil {
+			s.Fatalf("Failed to compress %q: %v", targetDir, err)
 		}
 
-		if needUpload() {
-			for _, resource := range resources {
-				if err = upload(
-					shortCtx,
-					d,
-					filepath.Join(response.TargetDir, resource),
-					gmsCoreCaches,
-					v,
-					resource); err != nil {
-					s.Fatalf("Failed to upload %q: %v", resource, err)
-				}
-			}
+		if needUpload(gmsCoreCache) {
+			upload(shortCtx, targetTar, gmsCoreCache)
 		}
 	}
 	genGmsCoreCache()
