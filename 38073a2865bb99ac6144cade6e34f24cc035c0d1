@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bb38d57_088567c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T05:53:58Z",
+      "side": 1,
+      "message": "nit: maybe ForUser?",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6da1d0_8f442fa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T05:53:58Z",
+      "side": 1,
+      "message": "nit: document this",
+      "range": {
+        "startLine": 68,
+        "startChar": 139,
+        "endLine": 68,
+        "endChar": 153
+      },
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84b2a18_91f0d5be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T05:53:58Z",
+      "side": 1,
+      "message": "nit: use go to create dir since it\u0027s a local test",
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
