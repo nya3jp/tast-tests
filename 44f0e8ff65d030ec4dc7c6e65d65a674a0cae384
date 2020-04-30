@@ -364,6 +364,30 @@
       "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2fb47b_7f5be7d0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/system_tray.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333747
+      },
+      "writtenOn": "2020-04-30T21:09:42Z",
+      "side": 1,
+      "message": "I removed this file and just opening tray in system_tray_perf.",
+      "parentUuid": "40b023da_6d98d819",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "44f0e8ff65d030ec4dc7c6e65d65a674a0cae384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
