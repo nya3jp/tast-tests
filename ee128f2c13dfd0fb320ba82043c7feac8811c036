@@ -22,6 +22,30 @@
       "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f71786_9d74838c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps_80211ac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T01:21:14Z",
+      "side": 1,
+      "message": "Using board/module to decide if a DUT supports 80211ac is imprecise given the fact that AC7260 has two modules, one supports 11ac and one doesn\u0027t.\n\nFrom the Stainless result, we found that in addition to kip, guado may also have the mixed AC7260 WiFi module issue.\n\nWe can put both kip and guado in 80211ac testing blacklist as short term solution.\n\nHowever, in the long run, we may move wlan_device_info.go to hwdeps and use that to decide if a DUT supports 80211ac by probing which WiFi module the DUT has. What do you think?\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2020-04-24\u0026last_date\u003d2020-04-30\u0026test\u003dWifiCaps\u0026build\u003dR84\u0026status\u003dFAIL\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wlan/wlan_device_info.go",
+      "parentUuid": "35cccbcd_9d9242c8",
+      "range": {
+        "startLine": 22,
+        "startChar": 30,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "ee128f2c13dfd0fb320ba82043c7feac8811c036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
