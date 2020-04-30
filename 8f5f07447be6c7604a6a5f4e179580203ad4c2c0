@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "010269aa_dc05780c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T06:04:14Z",
+      "side": 1,
+      "message": "Did the tests previously mount/unmount the user? I would move mount/unmount in separate functions as it\u0027s not obvious CreateKeysForTesting will do this.\n\nDoes the user need to be mounted during the test?",
+      "revId": "8f5f07447be6c7604a6a5f4e179580203ad4c2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d394ee53_b4f9ee80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-04-30T06:04:14Z",
+      "side": 1,
+      "message": "nit: use go to create dir",
+      "revId": "8f5f07447be6c7604a6a5f4e179580203ad4c2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
