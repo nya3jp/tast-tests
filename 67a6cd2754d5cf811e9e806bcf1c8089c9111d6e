@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6d491a8f_0448c0ea",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T09:48:42Z",
+      "side": 1,
+      "message": "Indeed, currently both wep and wpa are not so complex so it seems that we could just keep the []Option here.\n\nThis architecture aims at dealing with the types that are derived from EAPConfig -- they accepts many options that we would like to be applied to blueprint directly, and also lots of options that should be passed back to EAPConfig. In this case we would like the options to be type of `func(*ConfigFactory)`, so the former kind of options can set the field of Config through blueprint; and the latter can append the corresponding Option to a field of ConfigFactory for the later construct of EAPConfig.\n\nDo you think we should uniform the all security type to blueprint style, or keep the simple type with simple []Option? I prefer uniforming them all, but keeping it simple is also fine to me.",
+      "parentUuid": "9a5f4bbf_eba07a35",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba7ca355_c815b2fe",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 11
@@ -116,6 +140,30 @@
       "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7856a9e6_d26d37be",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-04-30T09:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7ca355_c815b2fe",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 18
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
