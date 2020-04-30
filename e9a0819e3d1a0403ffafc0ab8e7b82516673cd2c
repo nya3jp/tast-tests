@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "492b0719_61904d9f",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-30T23:03:10Z",
+      "side": 1,
+      "message": "Right, so it\u0027d be:\nif cfg.Platform !\u003d \"\" \u0026\u0026 cfg.Parent \u003d\u003d \"\" {\n    # Top level platform inherits from defaultName\n    return defaultName, nil\n} else {\n    # Child or default inherits from parent as specified\n    return cfg.Parent, nil\n}\n\nAlternatively, we could set parent to DEFAULT in DEFAULT.json and update to return \"\", nil if cfg.Platform \u003d\u003d \"\" else cfg.Parent.  But this will require code changes in autotest as well.\n\nOn a somewhat unrelated note, I just noticed that Platform and Parent fields are nullable json fields, but Config has them defined as string not string pointer.  This means that it will be impossible to determine if one of these has been set to null or \"\" just by using Config.  I think logically we can treat these the same but still nil seems a better way of defining non-existence than empty string.",
+      "parentUuid": "3938788f_beca2a20",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "787b68d2_6f3020bb",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I think we would still need to wrap json.Unmarshal in a function. Otherwise, if json.Unmarshal returns an error, NewConfig would not be able to catch/wrap/return that error.\n\nWith that in mind, if we kept unmarshalOntoCfg but removed the error checks we would have:\n\n    unmarshalOntoCfg :\u003d func(b []byte) {\n        err \u003d json.Unmarshal(b, \u0026cfg)\n        if err !\u003d nil {\n            err \u003d errors.Wrapf(err, \"unmarshaling json bytes %s onto config %+v\", b, cfg)\n        }\n    }\n\nThis could also mask errors. Consider the following circumstance:\n\n1. We load the Coral config with no error. We defer unmarshalOntoCfg(coralBytes).\n2. We load the Reef (coral\u0027s parent) config. An error occurs during parentFromBytes, and we return a descriptive error.\n3. The deferred unmarshalOntoCfg(coralBytes) runs. In the first line, `err \u003d json.Unmarshal(b, \u0026cfg)`, err is set to nil.\n4. The defer stack completed, NewConfig returns with err \u003d\u003d nil, despite that an error occurred.",
       "parentUuid": "787b68d2_6f3020bb",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0a62c6_819a265a",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-30T23:03:10Z",
+      "side": 1,
+      "message": "json.Unmarshal would have errorred out at parentFromBytes so the second json.Unmarshal shouldn\u0027t error out if parentFromBytes didn\u0027t error out.\n\nRemoving both error checks means err doesn\u0027t even need to be set, thus not overwriting any previously set err.  So then this is just like using json.Unmarshal directly.",
+      "parentUuid": "b7f1717d_3ee39953",
       "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +140,24 @@
       "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d777bf_7ee0a213",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-04-30T23:03:10Z",
+      "side": 1,
+      "message": "Yea I meant using %q: 1, ... .  But I do see it could get out of sync with defaultValue etc..., so this lgtm.",
+      "parentUuid": "bb03ddc3_a4ad4299",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
