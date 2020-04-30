@@ -283,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "434894b7_985cb2b8",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-30T18:08:48Z",
+      "side": 1,
+      "message": "(Marking resolved)",
+      "parentUuid": "b49ce69f_29b5a973",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b05985a5_e8987eeb",
         "filename": "src/chromiumos/tast/local/uhid/parse.go",
         "patchSetId": 24
@@ -315,6 +339,24 @@
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1fcc90_ce0ddac4",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-30T18:08:48Z",
+      "side": 1,
+      "message": "OK, yes, with the new regex this makes more sense.",
+      "parentUuid": "08b3ae9e_3730da44",
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -444,6 +486,30 @@
       "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b64c331_4ba0b264",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-30T18:08:48Z",
+      "side": 1,
+      "message": "OK, best to be safe then.",
+      "parentUuid": "67ecc3c6_509bb6b8",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -623,6 +689,30 @@
       "side": 1,
       "message": "When logging with testing.State.Fatal it prints out the stack trace with the corresponding line numbers. Even if it didn\u0027t, I believe manually writing the line number in the error messages would quickly become unmaintainable, given that whenever someone adds or removes a line they would have to update every error message.",
       "parentUuid": "bf620fe8_9db42bfc",
+      "range": {
+        "startLine": 281,
+        "startChar": 10,
+        "endLine": 281,
+        "endChar": 13
+      },
+      "revId": "bf0d6d74fd6d063089f36644d06b97e087f471e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1548a6_5b8ed8ae",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-30T18:08:48Z",
+      "side": 1,
+      "message": "Ah, I mean the line number in the recording file that\u0027s being parsed.",
+      "parentUuid": "ea14d4ba_06e54b14",
       "range": {
         "startLine": 281,
         "startChar": 10,
