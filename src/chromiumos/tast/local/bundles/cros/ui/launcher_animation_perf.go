@@ -140,6 +140,14 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to create browser windows: ", err)
 		}
+		// Maximize all windows to ensure a consistent state.
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			_, err := ash.SetWindowState(ctx, tconn, w.ID, ash.WMEventMaximize)
+			return err
+		}); err != nil {
+			s.Fatal("Failed to maximize windows: ", err)
+		}
+
 		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
 			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
