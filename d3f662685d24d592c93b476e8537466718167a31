@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b098ae4b_14afed7c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-30T06:55:18Z",
+      "side": 1,
+      "message": "I had the function return error instead of boolean, lmk if that\u0027s not okay.",
+      "parentUuid": "434458f1_09cc3a74",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 0
+      },
+      "revId": "d3f662685d24d592c93b476e8537466718167a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b99e76a_93d31295",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d3f662685d24d592c93b476e8537466718167a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd820ceb_8ce031a9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-04-30T06:55:18Z",
+      "side": 1,
+      "message": "Yes, thanks~!",
+      "parentUuid": "1b99e76a_93d31295",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 13
+      },
+      "revId": "d3f662685d24d592c93b476e8537466718167a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
