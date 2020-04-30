@@ -34,6 +34,24 @@
       "revId": "de37c1b6b05921499c2410ee8586e8c73a70743f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "277ced53_22a1e5b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_still_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-04-30T02:49:42Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "d22ef0cb_a8643fd3",
+      "revId": "de37c1b6b05921499c2410ee8586e8c73a70743f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
