@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdba3421_a5bef189",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T09:36:36Z",
+      "side": 1,
+      "message": "SGTM. Thus we don\u0027t have to comment why we need to bind ctx in defer func().",
+      "parentUuid": "c5c2c4ed_d098291a",
+      "range": {
+        "startLine": 126,
+        "startChar": 19,
+        "endLine": 126,
+        "endChar": 22
+      },
+      "revId": "6d39a669b4e3642a46b4f7a0d732efff5e125314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca854810_d816ff0b",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "6d39a669b4e3642a46b4f7a0d732efff5e125314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc8ce870_0a5d444f",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T09:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca854810_d816ff0b",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 14
+      },
+      "revId": "6d39a669b4e3642a46b4f7a0d732efff5e125314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
