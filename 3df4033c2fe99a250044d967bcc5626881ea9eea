@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d47ac83_f38523c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-30T21:56:57Z",
+      "side": 1,
+      "message": "huge nit: Does \"Security;\" with the semi-colon is a special tag? If not, I would use \":\".\n\nand end sentence with period (.)\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 343,
+        "startChar": 13,
+        "endLine": 343,
+        "endChar": 14
+      },
+      "revId": "3df4033c2fe99a250044d967bcc5626881ea9eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771a2a16_523fd5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-30T21:56:57Z",
+      "side": 1,
+      "message": "ditto: \":\" perhaps ?",
+      "range": {
+        "startLine": 346,
+        "startChar": 13,
+        "endLine": 346,
+        "endChar": 14
+      },
+      "revId": "3df4033c2fe99a250044d967bcc5626881ea9eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c87e29_e965e9e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-04-30T21:56:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 350,
+        "startChar": 14,
+        "endLine": 350,
+        "endChar": 15
+      },
+      "revId": "3df4033c2fe99a250044d967bcc5626881ea9eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
