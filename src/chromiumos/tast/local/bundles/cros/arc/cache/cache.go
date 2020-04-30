@@ -61,6 +61,9 @@ const (
 	LayoutTxt = "layout.txt"
 	// PackagesCacheXML defines the name of packages cache file name.
 	PackagesCacheXML = "packages_cache.xml"
+	// GeneratedPackagesCacheXML defines the name of pregenerated packages cache file name.
+	// Used to rename the cache file retrieved from /system/etc.
+	GeneratedPackagesCacheXML = "generated_packages_cache.xml"
 	// GMSCoreCacheArchive defines the GMS Core cache tar file name.
 	GMSCoreCacheArchive = "gms_core_cache.tar"
 	// GMSCoreManifest defines the GMS Core manifest file that lists GMS Core release files
