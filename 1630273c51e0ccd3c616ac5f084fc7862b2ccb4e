@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37434635_71163104",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T18:23:12Z",
+      "side": 1,
+      "message": "The reason why we don\u0027t just implement Config.String() as we only use partial config to compose a metric name to keep its length reasonable.",
+      "revId": "1630273c51e0ccd3c616ac5f084fc7862b2ccb4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad76b379_143a82d7",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-04-30T18:23:12Z",
+      "side": 1,
+      "message": "Delete it.",
+      "range": {
+        "startLine": 279,
+        "startChar": 22,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "1630273c51e0ccd3c616ac5f084fc7862b2ccb4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
