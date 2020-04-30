@@ -77,36 +77,36 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 	// are missing or have no capabilities, but if they exist and have capabilities, they
 	// must exactly match the ones specified here.
 	capsBaseline := map[string]fscaps.Caps{
-		"/bin/arping": fscaps.Caps{Effective: fscaps.NET_RAW, Permitted: fscaps.NET_RAW},
-		"/bin/ping":   fscaps.Caps{Effective: fscaps.NET_RAW, Permitted: fscaps.NET_RAW},
-		"/bin/ping6":  fscaps.Caps{Effective: fscaps.NET_RAW, Permitted: fscaps.NET_RAW},
-		"/opt/google/containers/android/rootfs/root/system/bin/logd": fscaps.Caps{
+		"/bin/arping": {Effective: fscaps.NET_RAW, Permitted: fscaps.NET_RAW},
+		"/bin/ping":   {Effective: fscaps.NET_RAW, Permitted: fscaps.NET_RAW},
+		"/bin/ping6":  {Effective: fscaps.NET_RAW, Permitted: fscaps.NET_RAW},
+		"/opt/google/containers/android/rootfs/root/system/bin/logd": {
 			Effective: fscaps.SETGID | fscaps.AUDIT_CONTROL,
 			Permitted: fscaps.SETGID | fscaps.AUDIT_CONTROL,
 		},
-		"/opt/google/containers/android/rootfs/root/system/bin/run-as": fscaps.Caps{
+		"/opt/google/containers/android/rootfs/root/system/bin/run-as": {
 			Effective: fscaps.SETGID | fscaps.SETUID,
 			Permitted: fscaps.SETGID | fscaps.SETUID,
 		},
-		"/opt/google/containers/android/rootfs/root/system/bin/simpleperf_app_runner": fscaps.Caps{
+		"/opt/google/containers/android/rootfs/root/system/bin/simpleperf_app_runner": {
 			Effective: fscaps.SETGID | fscaps.SETUID,
 			Permitted: fscaps.SETGID | fscaps.SETUID,
 		},
-		"/opt/google/containers/android/rootfs/root/system/bin/surfaceflinger": fscaps.Caps{
+		"/opt/google/containers/android/rootfs/root/system/bin/surfaceflinger": {
 			Effective: fscaps.SYS_NICE,
 			Permitted: fscaps.SYS_NICE,
 		},
-		"/opt/google/containers/android/rootfs/root/system/bin/webview_zygote32": fscaps.Caps{
+		"/opt/google/containers/android/rootfs/root/system/bin/webview_zygote32": {
 			Effective: fscaps.SETGID | fscaps.SETUID | fscaps.SETPCAP,
 			Permitted: fscaps.SETGID | fscaps.SETUID | fscaps.SETPCAP,
 		},
-		"/sbin/unix_chkpwd":   fscaps.Caps{Effective: fscaps.DAC_OVERRIDE, Permitted: fscaps.DAC_OVERRIDE},
-		"/usr/bin/fusermount": fscaps.Caps{Effective: fscaps.SYS_ADMIN, Permitted: fscaps.SYS_ADMIN},
-		"/usr/sbin/dnsmasq": fscaps.Caps{
+		"/sbin/unix_chkpwd":   {Effective: fscaps.DAC_OVERRIDE, Permitted: fscaps.DAC_OVERRIDE},
+		"/usr/bin/fusermount": {Effective: fscaps.SYS_ADMIN, Permitted: fscaps.SYS_ADMIN},
+		"/usr/sbin/dnsmasq": {
 			Effective:   fscaps.NET_ADMIN | fscaps.NET_BIND_SERVICE | fscaps.NET_RAW,
 			Inheritable: fscaps.NET_ADMIN | fscaps.NET_BIND_SERVICE | fscaps.NET_RAW,
 		},
-		"/usr/sbin/hostapd": fscaps.Caps{
+		"/usr/sbin/hostapd": {
 			Effective:   fscaps.NET_ADMIN | fscaps.NET_RAW,
 			Inheritable: fscaps.NET_ADMIN | fscaps.NET_RAW,
 		},

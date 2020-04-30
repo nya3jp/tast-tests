@@ -75,14 +75,14 @@ func APIHandleMessageFromUI(ctx context.Context, s *testing.State) { // NOLINT
 
 	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
 		PolicyJson: pJSON,
-		Extensions: []*ps.Extension{&ps.Extension{
+		Extensions: []*ps.Extension{{
 			Id: wilcoextension.ID,
 			Files: []*ps.ExtensionFile{
-				&ps.ExtensionFile{
+				{
 					Name:     "manifest.json",
 					Contents: []byte(wilcoextension.Manifest),
 				},
-				&ps.ExtensionFile{
+				{
 					Name:     "background.js",
 					Contents: []byte{},
 				},

@@ -66,7 +66,7 @@ const (
 )
 
 var vaImageTestFiles = map[string][]string{
-	"jpeg": []string{
+	"jpeg": {
 		"pixel-1280x720.jpg",
 		"pixel-1280x720-grayscale.jpg",
 		"pixel-1280x720-yuv420.jpg",
@@ -75,7 +75,7 @@ var vaImageTestFiles = map[string][]string{
 		"pixel-41x22-yuv420.jpg",
 		"pixel-41x23-yuv420.jpg",
 	},
-	"webp": []string{
+	"webp": {
 		"BlackAndWhite_criss-cross_pattern_2015x2015.webp",
 		"RGB_noise_2015x2015.webp",
 		"RGB_noise_large_pixels_115x115.webp",

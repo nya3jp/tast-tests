@@ -37,7 +37,7 @@ func init() {
 		SoftwareDeps: []string{"vm_host"},
 		Timeout:      15 * time.Minute,
 		Params: []testing.Param{
-			testing.Param{
+			{
 				Name:      "block_boot",
 				ExtraData: []string{"fio_boot.job"},
 				Val: param{
@@ -45,7 +45,7 @@ func init() {
 					job:  "fio_boot.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_boot",
 				ExtraData: []string{"fio_boot.job"},
 				Val: param{
@@ -53,7 +53,7 @@ func init() {
 					job:  "fio_boot.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_boot",
 				ExtraData: []string{"fio_boot.job"},
 				Val: param{
@@ -61,7 +61,7 @@ func init() {
 					job:  "fio_boot.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "block_login",
 				ExtraData: []string{"fio_login.job"},
 				Val: param{
@@ -69,7 +69,7 @@ func init() {
 					job:  "fio_login.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_login",
 				ExtraData: []string{"fio_login.job"},
 				Val: param{
@@ -77,7 +77,7 @@ func init() {
 					job:  "fio_login.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_login",
 				ExtraData: []string{"fio_login.job"},
 				Val: param{
@@ -85,7 +85,7 @@ func init() {
 					job:  "fio_login.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "block_surfing",
 				ExtraData: []string{"fio_surfing.job"},
 				Val: param{
@@ -93,7 +93,7 @@ func init() {
 					job:  "fio_surfing.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_surfing",
 				ExtraData: []string{"fio_surfing.job"},
 				Val: param{
@@ -101,7 +101,7 @@ func init() {
 					job:  "fio_surfing.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_surfing",
 				ExtraData: []string{"fio_surfing.job"},
 				Val: param{
@@ -109,7 +109,7 @@ func init() {
 					job:  "fio_surfing.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "block_randread",
 				ExtraData: []string{"fio_rand_read.job"},
 				Val: param{
@@ -117,7 +117,7 @@ func init() {
 					job:  "fio_rand_read.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_randread",
 				ExtraData: []string{"fio_rand_read.job"},
 				Val: param{
@@ -125,7 +125,7 @@ func init() {
 					job:  "fio_rand_read.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_randread",
 				ExtraData: []string{"fio_rand_read.job"},
 				Val: param{
@@ -133,7 +133,7 @@ func init() {
 					job:  "fio_rand_read.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "block_seqread",
 				ExtraData: []string{"fio_seq_read.job"},
 				Val: param{
@@ -141,7 +141,7 @@ func init() {
 					job:  "fio_seq_read.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_seqread",
 				ExtraData: []string{"fio_seq_read.job"},
 				Val: param{
@@ -149,7 +149,7 @@ func init() {
 					job:  "fio_seq_read.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_seqread",
 				ExtraData: []string{"fio_seq_read.job"},
 				Val: param{
@@ -157,7 +157,7 @@ func init() {
 					job:  "fio_seq_read.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "block_seqwrite",
 				ExtraData: []string{"fio_seq_write.job"},
 				Val: param{
@@ -165,7 +165,7 @@ func init() {
 					job:  "fio_seq_write.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_seqwrite",
 				ExtraData: []string{"fio_seq_write.job"},
 				Val: param{
@@ -173,7 +173,7 @@ func init() {
 					job:  "fio_seq_write.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_seqwrite",
 				ExtraData: []string{"fio_seq_write.job"},
 				Val: param{
@@ -181,7 +181,7 @@ func init() {
 					job:  "fio_seq_write.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "block_randwrite",
 				ExtraData: []string{"fio_rand_write.job"},
 				Val: param{
@@ -189,7 +189,7 @@ func init() {
 					job:  "fio_rand_write.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_randwrite",
 				ExtraData: []string{"fio_rand_write.job"},
 				Val: param{
@@ -197,7 +197,7 @@ func init() {
 					job:  "fio_rand_write.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_randwrite",
 				ExtraData: []string{"fio_rand_write.job"},
 				Val: param{
@@ -205,7 +205,7 @@ func init() {
 					job:  "fio_rand_write.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "block_stress_rw",
 				ExtraData: []string{"fio_stress_rw.job"},
 				Val: param{
@@ -213,7 +213,7 @@ func init() {
 					job:  "fio_stress_rw.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "virtiofs_stress_rw",
 				ExtraData: []string{"fio_stress_rw.job"},
 				Val: param{
@@ -221,7 +221,7 @@ func init() {
 					job:  "fio_stress_rw.job",
 				},
 			},
-			testing.Param{
+			{
 				Name:      "p9_stress_rw",
 				ExtraData: []string{"fio_stress_rw.job"},
 				Val: param{
