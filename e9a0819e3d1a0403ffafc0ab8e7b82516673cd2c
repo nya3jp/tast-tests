@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3938788f_beca2a20",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-30T20:53:52Z",
+      "side": 1,
+      "message": "I\u0027m afraid I don\u0027t understand this suggestion. The default config is a top-level config as well, but should return \"\" as its parent. Wouldn\u0027t we still need all 3 conditions to catch that? And, how would you determine that this is a top-level config, other than by checking whether cfg.Parent !\u003d \"\"?",
+      "parentUuid": "40d08d44_18d9b471",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "787b68d2_6f3020bb",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b7f1717d_3ee39953",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-30T20:53:52Z",
+      "side": 1,
+      "message": "I think we would still need to wrap json.Unmarshal in a function. Otherwise, if json.Unmarshal returns an error, NewConfig would not be able to catch/wrap/return that error.\n\nWith that in mind, if we kept unmarshalOntoCfg but removed the error checks we would have:\n\n    unmarshalOntoCfg :\u003d func(b []byte) {\n        err \u003d json.Unmarshal(b, \u0026cfg)\n        if err !\u003d nil {\n            err \u003d errors.Wrapf(err, \"unmarshaling json bytes %s onto config %+v\", b, cfg)\n        }\n    }\n\nThis could also mask errors. Consider the following circumstance:\n\n1. We load the Coral config with no error. We defer unmarshalOntoCfg(coralBytes).\n2. We load the Reef (coral\u0027s parent) config. An error occurs during parentFromBytes, and we return a descriptive error.\n3. The deferred unmarshalOntoCfg(coralBytes) runs. In the first line, `err \u003d json.Unmarshal(b, \u0026cfg)`, err is set to nil.\n4. The defer stack completed, NewConfig returns with err \u003d\u003d nil, despite that an error occurred.",
+      "parentUuid": "787b68d2_6f3020bb",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "558cbbf0_cf960c8f",
         "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2020-04-29T18:20:01Z",
       "side": 1,
       "message": "nit, it may be easier to see which keys are assigned for a platform by filling in the key names rather than the values.",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb03ddc3_a4ad4299",
+        "filename": "src/chromiumos/tast/remote/firmware/config_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-04-30T20:53:52Z",
+      "side": 1,
+      "message": "As in the following?\n\n    var mockData \u003d map[string][]byte{\n        defaultName: []byte(fmt.Sprintf(`{\n            \"platform\": null,\n            \"parent\": null,\n            %q: %d,\n            %q: %d,\n            %q: %d,\n            %q: %d\n        }`, firmwareScreen, defaultValue, delayRebootToPing, defaultValue, confirmScreen, defaultValue, usbPlug, defaultValue)),\n        ...\n    }\n\nPersonally, I find that harder to skim. We could optionally replace the `%d` interpolations with `1` directly, but that defeats the point of having the defaultValue constant.\n\nWe could also have a function to create new a new []byte based on a list of field names. But I think that that would be *too* much abstraction for a unit test, and is not worth its maintenance cost.\n\nIMO, reading down the list of field names, as they currently appear, is less painful than these alternatives.",
+      "parentUuid": "558cbbf0_cf960c8f",
       "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
