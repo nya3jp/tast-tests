@@ -46,6 +46,30 @@
       "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f96995d_4456aabe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-04-30T04:10:07Z",
+      "side": 1,
+      "message": "IMO, since \u0027CCAReady\u0027 is already used as a global term to store the |windowURL|, it is acceptable to do similar thing by wrapping |errorEvents| and the |windowURL| into \u0027CCAReady\u0027 (But change to another name, e.g. CCATestBridge).\nTherefore, you can retrieve the JSObject of errorEvents by returning |CCATestBridge.errorEvents| through tconn.Call() and get |windowURL| by evaluating |CCATestBridge.windowUrl| through tconn.Eval(). WDYT?",
+      "parentUuid": "9566d715_160d66ea",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
