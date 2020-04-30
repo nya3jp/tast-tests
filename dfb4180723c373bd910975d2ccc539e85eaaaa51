@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c401030_e6056197",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T02:27:58Z",
+      "side": 1,
+      "message": "I think you are also adding some functionality in this commit? I guess it is easier to review in a separate commit if it\u0027s not so trivial. Or please describe what is added in the commit message.",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbdc7a4_8343423c",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T02:27:58Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think this is a good pattern. I think it should be possible to extract the error on the caller side? e.g.\n\n  isExitCode :\u003d func(err error, code int) {\n    var exitErr *exec.ExitError\n    if ok :\u003d errors.As(err, \u0026exitErr); ok{\n      return exitError.Sys().(syscall.WaitStatus).ExitStatus() \u003d\u003d code\n    }\n    return false\n  }\n\n  if _, err :\u003d pr.Ping(ctx, \"2001:db8::1\", ...); !isExitCode(err, 2) {\n    s.Fatal(...)\n  }",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19cf9244_8f8377b0",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T02:27:58Z",
+      "side": 1,
+      "message": "I think this interface and its implementations are duplicating the ones in iw. Maybe it\u0027s time to extract it, like, to {local, remote, common}/network/cmdrunner?",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f59c6084_c904799f",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T02:27:58Z",
+      "side": 1,
+      "message": "I think this needs shutil.Escape? Also I guess strings.Join or strings.Builder is more efficient than \u0027+\u0027.",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 36
+      },
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
