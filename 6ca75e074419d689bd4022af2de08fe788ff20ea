@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b4bd214_85352adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T10:03:40Z",
+      "side": 1,
+      "message": "Ah, thanks for pointing this out. I guess I forgot the shill restart case when writing.\n\nbtw, it becomes kind of awkward here that WifiInterface only gives interface name. Maybe I should read all the usages and see if there are some refinements to be done here.",
+      "parentUuid": "3a10c01a_7b3228b1",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea566346_de5a8ee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-30T02:11:14Z",
       "side": 1,
       "message": "I wonder, do we actually need to do this? Any tests that want Chrome up should be specifying that, no? I guess this isn\u0027t a big deal after doing the Precondition refactor, but otherwise, it\u0027s pretty wasteful in between tests.\n\nMight want to get Tast owners\u0027 thoughts on that, not just trusting me.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f185722_e2f2902a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T10:03:40Z",
+      "side": 1,
+      "message": "I slightly prefer having the expected default status restored. But in pre-conditoion of chrome, it looks like it will restart ui there and we\u0027ll waste time for one start/stop.\n\nLet\u0027s see if tast-owners have suggestion.",
+      "parentUuid": "ea566346_de5a8ee8",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "701979c0_2efc5f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T10:03:40Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Done.",
+      "parentUuid": "0f326099_47a4ab45",
+      "range": {
+        "startLine": 227,
+        "startChar": 22,
+        "endLine": 227,
+        "endChar": 35
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "073d3f65_0f1097ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
         "patchSetId": 14
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4e0b7b63_4828b08d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T10:03:40Z",
+      "side": 1,
+      "message": "I think it\u0027s OK. Thanks!",
+      "parentUuid": "073d3f65_0f1097ea",
+      "range": {
+        "startLine": 269,
+        "startChar": 22,
+        "endLine": 269,
+        "endChar": 42
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9a982b8_f4a5ddb0",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 14
@@ -105,6 +201,30 @@
       "writtenOn": "2020-04-30T02:11:14Z",
       "side": 1,
       "message": "the asymmetry is a bit confusing; apparently, we don\u0027t actually need to clean up from InitTestState(), because you\u0027re not always calling this (esp. with the Precondition refactor)?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "6ca75e074419d689bd4022af2de08fe788ff20ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c79f1ab_0226c4c7",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-04-30T10:03:40Z",
+      "side": 1,
+      "message": "The design is somehow for fitting behavior of Precondition:\n  Pre.Prepare()\n  Test1\n  Pre.Prepare()\n  Test2\n  Pre.Close()\n\nMay it\u0027s better to rename InitTestState as ReinitTestState and also set up profiles in InitDUT? So the calls will be like InitDUT -\u003e Test (-\u003e ReinitTestState -\u003e Test)* -\u003e TearDown. WDYT?",
+      "parentUuid": "c9a982b8_f4a5ddb0",
       "range": {
         "startLine": 21,
         "startChar": 0,
