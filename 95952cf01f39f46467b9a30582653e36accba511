@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4a94300_10b95ca2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-01T22:21:17Z",
+      "side": 1,
+      "message": "Both /run/crash_reporter/ (a directory) and /run/crash-reporter-early-init.log (a logfile) exist. Added a trailing / to clarify intent.",
+      "parentUuid": "6a82f361_92a68be2",
+      "range": {
+        "startLine": 124,
+        "startChar": 71,
+        "endLine": 124,
+        "endChar": 85
+      },
+      "revId": "95952cf01f39f46467b9a30582653e36accba511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ff9706f_0728ea44",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "95952cf01f39f46467b9a30582653e36accba511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498fbe63_ec127883",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-01T22:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff9706f_0728ea44",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "95952cf01f39f46467b9a30582653e36accba511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
