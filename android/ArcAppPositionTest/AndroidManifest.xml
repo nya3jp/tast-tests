@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.chromium.arc.testapp.appposition">
+
+    <application
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        <uses-library
+            android:name="com.google.android.chromeos"
+            android:required="false" />
+
+        <activity
+            android:name=".BackgroundActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="sensor"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:taskAffinity="org.chromium.arc.test.app.appposition.background">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="sensor"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:taskAffinity="org.chromium.arc.test.app.appposition.main">
+            <meta-data android:name="WindowManagerPreference:AppControlled"
+                       android:value="true" />
+        </activity>
+    </application>
+
+</manifest>

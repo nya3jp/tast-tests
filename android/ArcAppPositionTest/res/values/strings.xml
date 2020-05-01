@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<resources>
+    <!-- Application name. Test application, it's OK not to translate. [CHAR_LIMIT=NONE] -->
+    <string name="app_name">ArcAppPositionTestApp</string>
+</resources>
