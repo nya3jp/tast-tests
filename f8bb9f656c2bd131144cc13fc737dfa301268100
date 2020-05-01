@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d73bd023_c9227cce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-01T08:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4934c014_84b883af",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d649c9c_1fc6c8b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c77d5a19_58997e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-01T08:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d649c9c_1fc6c8b4",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "efc65504_326bab52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-01T08:10:24Z",
+      "side": 1,
+      "message": "I removed the comment.",
+      "parentUuid": "1eae9cb0_37dd7ac5",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8efccee8_28e27979",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2020-04-30T08:12:19Z",
       "side": 1,
       "message": "Please store the FD in a variable and close it.\n\nvar fd dbus.UnixFD\nerr :\u003d obj.Call(...).Store(\u0026fd)",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "433cd30d_9957b2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-01T08:10:24Z",
+      "side": 1,
+      "message": "I couldn\u0027t find the way to close dbus.UnixFD in godbus features. Is this implementation proper?",
+      "parentUuid": "8efccee8_28e27979",
       "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
