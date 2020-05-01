@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "7dc383a3_fdbfc495",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-01T07:21:52Z",
+      "side": 1,
+      "message": "We still have the logcat timeout. I just set it up in the test now. (See CL that I sent out in tast-tests-private.) So we don\u0027t have to wait until the entire test times out. I guess it is a matter of coding style where to set up the timeout.",
+      "parentUuid": "b79cb0d9_2cdeac81",
+      "range": {
+        "startLine": 18,
+        "startChar": 73,
+        "endLine": 18,
+        "endChar": 94
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc289b5_7f4a19fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 4
