@@ -135,12 +135,6 @@ func (t *Timeline) snapshot(ctx context.Context, v *Values) error {
 	return nil
 }
 
-// Snapshot takes a snapshot of all metrics.
-// DEPRECATED: This will be removed as soon as tests in tast-tests-private are updated to the new API.
-func (t *Timeline) Snapshot(ctx context.Context, v *Values) error {
-	return t.snapshot(ctx, v)
-}
-
 // StartRecording starts capturing metrics in a goroutine. The sampling interval is specified as a parameter of NewTimeline. StartRecording may not be called twice, unless StopRecording is called in-between.
 func (t *Timeline) StartRecording(ctx context.Context) error {
 	if t.recordingStatus != nil {
@@ -185,10 +179,4 @@ func (t *Timeline) StopRecording() (*Values, error) {
 	t.recordingStatus = nil
 
 	return result, nil
-}
-
-// NewTimelineWithPrefix creates a new Timeline with a prefix.
-// DEPRECATED: This will be removed as soon as tests in tast-tests-private are updated to the new API.
-func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
-	return NewTimeline(ctx, sources, Prefix(prefix))
 }
