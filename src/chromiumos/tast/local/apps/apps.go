@@ -9,7 +9,10 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/testing"
 )
 
 // App is used to represent a ChromeOS app.
@@ -56,8 +59,28 @@ var Canvas = App{
 	Name: "Chrome Canvas",
 }
 
+// WhatsNew has details about the What's New app.
+var WhatsNew = App{
+	ID:   "lddhblppcjmenljhdleiahjighahdcje",
+	Name: "What's New",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		capps, err := ash.ChromeApps(ctx, tconn)
+		if err != nil {
+			testing.PollBreak(err)
+		}
+		for _, capp := range capps {
+			if capp.AppID == appID {
+				return nil
+			}
+		}
+		return errors.New("App not yet found in available Chrome apps")
+	}, nil); err != nil {
+		return err
+	}
 	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.launchApp)(%q)", appID)
 	return tconn.EvalPromise(ctx, query, nil)
 }
