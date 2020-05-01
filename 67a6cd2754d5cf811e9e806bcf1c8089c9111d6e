@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "72ebb22e_059f3ada",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-01T05:52:17Z",
+      "side": 1,
+      "message": "After the discussion, I would lean toward Brian\u0027s side. As WEP, WPA, EAP, etc., can have different implementation detail, let\u0027s keep WEP and WPA implementation as simple as possible.",
+      "parentUuid": "d49ab21f_b52c3008",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba7ca355_c815b2fe",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 11
