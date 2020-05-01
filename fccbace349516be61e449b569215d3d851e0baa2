@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "298e1ee3_3a4240eb",
+        "filename": "src/chromiumos/tast/local/uhid/device_nodes.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T18:13:28Z",
+      "side": 1,
+      "message": "move it to uhid.go perhaps?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "fccbace349516be61e449b569215d3d851e0baa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e6bda05_ffdbeff8",
+        "filename": "src/chromiumos/tast/local/uhid/device_nodes.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T18:13:28Z",
+      "side": 1,
+      "message": "move it to uhid.go perhaps?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 1
+      },
+      "revId": "fccbace349516be61e449b569215d3d851e0baa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afb1a9d_464802d2",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T18:13:28Z",
+      "side": 1,
+      "message": "I guess Destroy must be called after creating a uhid device.\nif that is the case, I think it is worth renaming to Close().\n\nthere is a pattern in go that you usually do the cleanup in Close() and you will see a lot of code that does:\n\n    d, err :\u003d NewSomething().\n    if err !\u003d nil {\n       ...\n    }\n    defer d.Close()",
+      "range": {
+        "startLine": 198,
+        "startChar": 17,
+        "endLine": 198,
+        "endChar": 24
+      },
+      "revId": "fccbace349516be61e449b569215d3d851e0baa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3916a18a_fe018b8d",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T18:13:28Z",
+      "side": 1,
+      "message": "nit: order\n\nput first all functions associated with the *Device receiver.\nAnd after that put together the ones belonging to *DeviceData",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 1
+      },
+      "revId": "fccbace349516be61e449b569215d3d851e0baa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
