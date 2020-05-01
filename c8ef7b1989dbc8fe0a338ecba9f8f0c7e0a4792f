@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dd0dc94_8a5cbcb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/data/ds3Replay.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "(Throughout the file) Please end statements with semicolons.",
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a902c1ca_c20a4d0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/data/ds3Replay.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "Nit: since this doesn\u0027t get reassigned, use `const` instead. (I\u0027m not normally bothered, but the style guide says this: https://google.github.io/styleguide/jsguide.html#features-use-const-and-let )",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 3
+      },
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a26bdd_71f09645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/data/ds3Replay.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "This is a local variable, right? So it needs a `const` or `let` (`const` in this case).",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef0b718_4cd9867c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "Huh, I didn\u0027t know this group existed, and it looks like membership is invitation-only. (I\u0027m not a member.) Did you mean chromeos-tango@ instead?",
+      "range": {
+        "startLine": 35,
+        "startChar": 49,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682b211c_c7a5c9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "Why the two replays?",
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7028ed12_3e273d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "Looks like this is unused.",
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a43f89_a49d28d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "Nit: Can we use `len(rands)` instead, so the constant is only in one place?",
+      "range": {
+        "startLine": 157,
+        "startChar": 17,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524e3304_b2ab7557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T22:14:15Z",
+      "side": 1,
+      "message": "Nit: unnecessary cast?",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 17
+      },
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
