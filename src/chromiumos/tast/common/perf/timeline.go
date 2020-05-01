@@ -47,9 +47,3 @@ func Prefix(prefix string) NewTimelineOption {
 func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...NewTimelineOption) (*Timeline, error) {
 	return perf.NewTimeline(ctx, sources, setters...)
 }
-
-// NewTimelineWithPrefix creates a new Timeline with a prefix.
-// DEPRECATED: This will be removed as soon as tests in tast-tests-private are updated to the new API.
-func NewTimelineWithPrefix(ctx context.Context, prefix string, sources ...TimelineDatasource) (*Timeline, error) {
-	return perf.NewTimeline(ctx, sources, perf.Prefix(prefix))
-}
