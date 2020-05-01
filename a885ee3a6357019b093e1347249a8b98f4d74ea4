@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c308759c_ec779b2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-05-01T01:46:44Z",
+      "side": 1,
+      "message": "syscall is deprecated. Could you use unix package instead?\nhttps://pkg.go.dev/golang.org/x/sys@v0.0.0-20200430202703-d923437fa56d/unix?tab\u003ddoc#Errno",
+      "revId": "a885ee3a6357019b093e1347249a8b98f4d74ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc1967d_d1f8f2fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-05-01T01:46:44Z",
+      "side": 1,
+      "message": "Could you check os.IsPermission too?",
+      "revId": "a885ee3a6357019b093e1347249a8b98f4d74ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
