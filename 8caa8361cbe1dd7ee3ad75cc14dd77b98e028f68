@@ -22,6 +22,30 @@
       "revId": "8caa8361cbe1dd7ee3ad75cc14dd77b98e028f68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c2e7a6_275851fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-01T20:09:05Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure that WaitForIdle will ensure that the Android side is ready to receive input events. We would use Instrumentation.waitForIdleSync for Android instrumentation tests.\n\nAs for the Chrome side, the ash.WaitForVisible should do the trick. I was thinking of using a polling check to ensure the window has focus, but that\u0027s an unnecessary restriction, because we don\u0027t need focus for LocatedEvents. We just need to make sure no other window is blocking the Android app\u0027s window, and I\u0027m not sure if there\u0027s a better way (or a need) to check that beyond using ash.WaitForVisible.",
+      "parentUuid": "c82fb60c_a30291e6",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 3
+      },
+      "revId": "8caa8361cbe1dd7ee3ad75cc14dd77b98e028f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

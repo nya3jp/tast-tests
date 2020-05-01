@@ -567,6 +567,30 @@
     },
     {
       "key": {
+        "uuid": "1b43d643_1ec5eaa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-01T20:09:05Z",
+      "side": 1,
+      "message": "I based this off of input_compat.go, and since it\u0027s also running with Attr \"informational\", we should be good for now.",
+      "parentUuid": "1b32405a_d3be07e0",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "d6f3f78437069ecc62c5868c5c3ab3399db90017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "094711c7_369b9a2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
         "patchSetId": 3
