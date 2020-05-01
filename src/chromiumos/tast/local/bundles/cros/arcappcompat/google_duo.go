@@ -92,6 +92,7 @@ func GoogleDuo(ctx context.Context, s *testing.State) {
 	defer d.Close()
 
 	testSet := s.Param().(testutil.TestParams)
+
 	// Run the different test cases.
 	for idx, test := range testSet.Tests {
 		// Run subtests.
@@ -102,12 +103,12 @@ func GoogleDuo(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to create new app activity: ", err)
 			}
 			s.Log("Created new app activity")
-
 			defer act.Close()
+			// Launch the activity.
 			if err := act.Start(ctx, tconn); err != nil {
 				s.Fatal("Failed start app: ", err)
 			}
-			s.Log("App launched successfully")
+			s.Log("App relaunched successfully")
 
 			defer act.Stop(ctx)
 
@@ -132,61 +133,97 @@ func GoogleDuo(ctx context.Context, s *testing.State) {
 func launchAppForGoogleDuo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 
 	const (
-		giveAccessButtonID   = "com.google.android.apps.tachyon:id/welcome_give_access_button"
-		videoMessageButtonID = "com.google.android.apps.tachyon:id/button_text"
-		skipButtonClassName  = "android.widget.TextView"
-		skipButtonText       = "Skip"
-		allowButtonText      = "ALLOW"
-		addPhoneNumberText   = "Add number"
+		addPhoneNumberText      = "Add number"
+		agreeButtonText         = "Agree"
+		allowButtonText         = "ALLOW"
+		giveAccessButtonText    = "Give access"
+		searchContactsText      = "Search contacts or dial"
+		videoMsgButtonClassName = "android.widget.TextView"
+		videoMsgButtonText      = "Send a video message"
 	)
-	// Click on give access button to access video calling.
-	giveAccessButton := d.Object(ui.ID(giveAccessButtonID))
+
+	if currentAppPkg := testutil.CurrentAppPackage(ctx, s, d); currentAppPkg != appPkgName {
+		s.Log("currentAppPkg: ", currentAppPkg)
+	}
+
+	// Click on give access button.
+	giveAccessButton := d.Object(ui.Text(giveAccessButtonText))
 	if err := giveAccessButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Give Access Button doesn't exists: ", err)
 	} else if err := giveAccessButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on giveAccessButton: ", err)
 	}
 
-	// Click on skip button2 to access video calling.
-	skipButton := d.Object(ui.ClassName(skipButtonClassName), ui.Text(skipButtonText))
-	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("SkipButton doesn't exists: ", err)
-	} else if err := skipButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on skipButton: ", err)
-	}
-
-	// Click on allow button to access your contacts.
+	// Keep clicking allow button until add number button exists.
 	allowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
-	}
-
-	// Click on allow button to access your pictures and record video.
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
-	}
-	// Click on allow button to access record audio.
-	if err := allowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("Allow Button doesn't exists: ", err)
-	} else if err := allowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on allowButton: ", err)
-	}
-
-	// Check for add your phone number
 	addPhoneNumberButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(addPhoneNumberText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := addPhoneNumberButton.Exists(ctx); err != nil {
+			s.Log("Click on allow button")
+			allowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+		s.Log("addPhoneNumberButton doesn't exists: ", err)
+	} else {
+		s.Log("addPhoneNumberButton does exists and press back")
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_BACK: ", err)
+		}
+	}
+
+	// Click on agree button.
+	agreeButton := d.Object(ui.Text(agreeButtonText))
+	if err := agreeButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("agreeButton doesn't exists: ", err)
+	} else if err := agreeButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on agreeButton: ", err)
+	}
+
+	// Click on give access button.
+	giveAccessButton = d.Object(ui.Text(giveAccessButtonText))
+	if err := giveAccessButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Give Access Button doesn't exists: ", err)
+	} else if err := giveAccessButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on giveAccessButton: ", err)
+	}
+	// Keep clicking allow button until add number button exists.
+	allowButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(allowButtonText))
+	addPhoneNumberButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(addPhoneNumberText))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := addPhoneNumberButton.Exists(ctx); err != nil {
+			s.Log("Click on allow button")
+			allowButton.Click(ctx)
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+		s.Log("addPhoneNumberButton doesn't exists: ", err)
+	} else {
+		s.Log("addPhoneNumberButton does exists and press back")
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_BACK: ", err)
+		}
+	}
+
+	// Check for add your phone number.
+	addPhoneNumberButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(addPhoneNumberText))
 	if err := addPhoneNumberButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("AddPhoneNumberButton doesn't exists: ", err)
 	} else if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
 		s.Log("Failed to enter KEYCODE_BACK: ", err)
 	}
 
-	// Check for video message button in home page.
-	videoMessageButton := d.Object(ui.ID(videoMessageButtonID))
-	if err := videoMessageButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("VideoMessageButton doesn't exists: ", err)
+	// Check for search contacts.
+	checkForSearchContacts := d.Object(ui.Text(searchContactsText))
+	if err := checkForSearchContacts.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("CheckForSearchContacts doesn't exists: ", err)
+	}
+
+	// Check for video message button.
+	videoMessageButton := d.Object(ui.ClassName(videoMsgButtonClassName), ui.Text(videoMsgButtonText))
+	if err := videoMessageButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("VideoMessageButton doesn't exists: ", err)
 	}
 }
