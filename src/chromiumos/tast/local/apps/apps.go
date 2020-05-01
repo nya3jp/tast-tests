@@ -50,6 +50,12 @@ var WallpaperPicker = App{
 	Name: "Wallpaper Picker",
 }
 
+// WhatsNew has details about the What's New app.
+var WhatsNew = App{
+	ID:   "lddhblppcjmenljhdleiahjighahdcje",
+	Name: "What's New",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.launchApp)(%q)", appID)
