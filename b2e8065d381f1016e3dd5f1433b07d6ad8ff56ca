@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b03f75bd_a8edcf2e",
+        "filename": "src/chromiumos/tast/local/uhid/device_nodes.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T23:31:05Z",
+      "side": 1,
+      "message": "would you prefer we change the function names from hidRaw to hidraw as well? I would be in favor of that. It gets even iffier when you consider public functions given this: https://github.com/golang/go/wiki/CodeReviewComments#initialisms. Should they be HIDraw, Hidraw or HIDRaw?",
+      "parentUuid": "e5ecdf69_12822507",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a5c9949_a3f9e1fb",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
