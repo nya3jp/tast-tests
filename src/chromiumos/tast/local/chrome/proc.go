@@ -15,7 +15,13 @@ import (
 // ExecPath contains the path to the Chrome executable.
 const ExecPath = "/opt/google/chrome/chrome"
 
-// GetPIDs returns all PIDs corresponding to Chrome processes.
+// crashpadExecPath contains the path to crashpad's binary. Though it is not
+// the same executable as Chrome, it is spawned from Chrome and we consider as
+// one of the Chrome processes.
+const crashpadExecPath = "/opt/google/chrome/crashpad_handler"
+
+// GetPIDs returns all PIDs corresponding to Chrome processes (including
+// crashpad's handler).
 func GetPIDs() ([]int, error) {
 	all, err := process.Pids()
 	if err != nil {
@@ -27,7 +33,7 @@ func GetPIDs() ([]int, error) {
 		if proc, err := process.NewProcess(pid); err != nil {
 			// Assume that the process exited.
 			continue
-		} else if exe, err := proc.Exe(); err == nil && exe == ExecPath {
+		} else if exe, err := proc.Exe(); err == nil && (exe == ExecPath || exe == crashpadExecPath) {
 			pids = append(pids, int(pid))
 		}
 	}
@@ -46,6 +52,11 @@ func GetRootPID() (int, error) {
 		// If we see errors, assume that the process exited.
 		proc, err := process.NewProcess(int32(pid))
 		if err != nil {
+			continue
+		}
+
+		// crashpad is never the root browser process.
+		if exe, err := proc.Exe(); err != nil || exe == crashpadExecPath {
 			continue
 		}
 
