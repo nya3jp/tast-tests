@@ -43,7 +43,8 @@ func init() {
 			"khmel@chromium.org", // Original author.
 			"arc-performance@google.com",
 		},
-		Attr: []string{"group:arc-data-collector"},
+		// TODO(crbug.com/1077329): Temporarly disabling test.
+		// Attr: []string{"group:arc-data-collector"},
 		// TODO(b/150012956): Stop using 'arc' here and use ExtraSoftwareDeps instead.
 		SoftwareDeps: []string{"arc", "chrome"},
 		ServiceDeps: []string{"tast.cros.arc.UreadaheadPackService",
