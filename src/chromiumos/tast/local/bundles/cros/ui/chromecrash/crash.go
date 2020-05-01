@@ -46,6 +46,9 @@ const (
 	// chromeConfPath is the path to the Chrome config file. Extra entries in that
 	// file occasionally mess up Chrome crash tests.
 	chromeConfPath = "/etc/chrome_dev.conf"
+
+	// crashReporterExecPath is the path to the crash_reporter executable.
+	crashReporterExecPath = "/sbin/crash_reporter"
 )
 
 // CrashHandler indicates which crash handler the test wants Chrome to use:
@@ -141,6 +144,26 @@ func (cfType CrashFileType) String() string {
 	default:
 		return "Unknown CrashFileType " + strconv.Itoa(int(cfType))
 	}
+}
+
+// anyCrashReportersExist returns true if any crash_reporter processes are
+// currently running, false otherwise.
+func anyCrashReportersExist() (bool, error) {
+	all, err := process.Pids()
+	if err != nil {
+		return false, err
+	}
+
+	for _, pid := range all {
+		if proc, err := process.NewProcess(pid); err != nil {
+			// Assume that the process exited.
+			continue
+		} else if exe, err := proc.Exe(); err == nil && exe == crashReporterExecPath {
+			return true, nil
+		}
+	}
+
+	return false, nil
 }
 
 // CrashTester maintains state between different parts of the Chrome crash tests.
@@ -496,18 +519,19 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs, oldFiles []stri
 // .meta file. We can't wait for a file to be created because ChromeCrashLoop
 // doesn't create files at all on one of its kills.
 func killBrowser(ctx context.Context) error {
-	pids, err := getChromePIDs(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to find Chrome process IDs")
-	}
 	preSleepTime := time.Now()
 
-	// Sleep briefly after Chrome starts so it has time to set up breakpad.
-	// (Also needed for https://crbug.com/906690)
+	// Sleep briefly after Chrome starts so it has time to set up breakpad or
+	// crashpad. (Also needed for https://crbug.com/906690)
 	const delay = 3 * time.Second
 	testing.ContextLogf(ctx, "Sleeping %v to wait for Chrome to stabilize", delay)
 	if err := testing.Sleep(ctx, delay); err != nil {
 		return errors.Wrap(err, "timed out while waiting for Chrome startup")
+	}
+
+	pids, err := getChromePIDs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to find Chrome process IDs")
 	}
 
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
@@ -524,7 +548,9 @@ func killBrowser(ctx context.Context) error {
 
 	// Wait for all the processes to die (not just the root one). This avoids
 	// messing up other killNonBrowser tests that might try to kill an orphaned
-	// process.
+	// process. It also ensures that crashpad_handler has exited; this is
+	// important since crashpad_handler can survive the root Chrome process and
+	// still be in the middle of spawning crash_reporter.
 	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(pids))
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if anyPIDsExist(pids, preSleepTime) {
@@ -536,6 +562,25 @@ func killBrowser(ctx context.Context) error {
 		return errors.Wrap(err, "Chrome didn't exit")
 	}
 	testing.ContextLog(ctx, "All Chrome processes exited")
+
+	// Now wait for any running crash_reporter processes to exit. It's possible
+	// for crashpad_handler to exit before crash_reporter is finished, and if
+	// crash_reporter is still running, the meta file might not exist yet.
+	// Fortunately, crash_reporter never takes too long to run.
+	testing.ContextLog(ctx, "Waiting for all crash_reporters to exit")
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		if stillRunning, err := anyCrashReportersExist(); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "error scanning for crash_reporter"))
+		} else if stillRunning {
+			return errors.New("crash_reporter still running")
+		}
+		return nil
+	}, nil)
+	if err != nil {
+		return errors.Wrap(err, "crash_reporter didn't exit")
+	}
+	testing.ContextLog(ctx, "All crash_reporter processes exited")
+
 	return nil
 }
 
