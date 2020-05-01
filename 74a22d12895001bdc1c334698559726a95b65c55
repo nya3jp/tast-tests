@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "60e68b8b_63003ac0",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-01T05:51:02Z",
+      "side": 1,
+      "message": "It should depend on how many no-op methods from Config interface should be defined in WEP and WPA. Say if it is just a few (\u003c\u003d 3), I think it is fine. However, if it is more, embedding base.Config can safe some no-op definitions.\n\nRight now all methods in Config interface are required. At this stage reviewers cannot see the benefit embedding base.Config. Do you have a draft in mind how many methods Config interface would add for EAP family?",
+      "parentUuid": "2f762d8f_d869b8b8",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc3b0bfb_c82f7a41",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 10
