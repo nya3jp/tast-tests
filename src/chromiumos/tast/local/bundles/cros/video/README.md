@@ -62,6 +62,16 @@ the current ones. To run all VD video decoder performance tests run:
 
     tast run $HOST video.DecodeAccelVDPerf.*
 
+## Video decoder sanity checks
+
+These tests use the [video_decode_accelerator_tests] to decode a video stream
+with unsupported features. This is done by playing VP9 profile1-3 videos while
+the decoder is incorrectly configured for profile0. The tests verify whether a
+decoder is able to handle unexpected errors gracefully. To run all sanity checks
+use:
+
+    tast run $HOST video.DecodeAccelSanity.*
+
 ## Video encoder tests
 
 These tests run the [video_encode_accelerator_unittest] to test encoding raw
@@ -82,47 +92,46 @@ Tests are available for various codecs and resolutions. To run all tests use:
 
     tast run $HOST video.EncodeAccelPerf.*
 
-## Video play tests
+## Play Tests (`video.Play`)
 
-The video play tests verify whether video playback works by playing a video in
+The video Play tests verify whether video playback works by playing a video in
 the Chrome browser. These tests exercise the full Chrome stack, as opposed to
-the video decoder tests that only verify the video decoder implementations. This
-test has multiple variants.
+others that might only exercise the video decoder implementations. This test has
+multiple variants, specified by the test case name parts.
 
-The _video.Play.*_ tests without the 'hw' or 'sw' suffix check whether video
-playback works by any means possible, fallback on a software video decoder is
-allowed if hardware video decoding fails. Tests are available using H.264, VP8
-and VP9 videos.
+- Every test case has a codec part, e.g. `h264` or `av1`.
 
-The tests with the 'hw' suffix are similar to the normal video play tests.
-However these tests will only pass if hardware video decoding was successful.
-Fallback on a software video decoder is not allowed. Conversely, the tests with
-the 'sw' suffix force and verify the usage of a software video decoder, such as
-libvpx or ffmpeg.
+- Tests without any specific further suffix verify whether video playback works
+by any means possible: fallback on a software video decoder is allowed if
+hardware video decoding fails. These are the vanilla variants/cases.
 
-The tests with the 'hw_mse' suffix are similar to the previous tests, but the
-videos are played using the MSE (Media Source Extensions protocol).
+- Tests with the a further `hw` suffix verify that hardware video decoding was
+used if expected (as per the SoC capabilities). Fallback on a software video
+decoder is not allowed. Conversely, the tests with a `sw` suffix force and
+verify the usage of a software video decoder, such as libvpx or ffmpeg.
+
+- Tests with a further `mse` suffix use MSE (Media Source Extensions protocol)
+for video playback, as opposed to any others that use a simple file URL.
+
+- Tests with an `alt` suffix employ an alternative hardware video decoding
+implementation.
+
+- Tests with a `guest` suffix are the vanilla variants with a guest ChromeOS
+login.
 
 To run these tests use:
 
     tast run $HOST video.Play.*
 
-Additionally there are variants of these tests with 'VD' in their names present.
-These test the new video decoder implementations, which are set to replace the
-current ones. To run all VD video play tests run:
-
-    tast run $HOST video.PlayVD.*
-
-## Video playback performance tests
+### Play Performance Tests (`video.PlaybackPerf`)
 
 The video playback performance tests measure video decoder performance by
 playing a video in the Chrome browser. These tests exercise the full Chrome
-stack, as opposed to the video decoder performance tests that only measure the
-performance of the actual video decoder implementations. Both software and
-hardware video decoder performance is measured. If hardware decoding is not
-supported for the video stream only software performance will be reported.
-Various metrics are collected such as CPU usage and the number of dropped
-frames.
+stack, as opposed to others that might only measure the performance of the
+actual video decoder implementations. Both software and hardware video decoder
+performance is measured. If hardware decoding is not supported for the video
+stream only software performance will be reported. Various metrics are collected
+such as CPU usage and the number of dropped frames.
 
 Tests are available for various codecs and resolutions, both in 30 and 60fps
 variants. To run all tests use:
@@ -135,33 +144,24 @@ current ones. To run all VD video playback performance tests run:
 
     tast run $HOST video.PlaybackVDPerf.*
 
-## Video decoder sanity checks
+## Seek Tests (`video.Seek`)
 
-These tests use the [video_decode_accelerator_tests] to decode a video stream
-with unsupported features. This is done by playing VP9 profile1-3 videos while
-the decoder is incorrectly configured for profile0. The tests verify whether a
-decoder is able to handle unexpected errors gracefully. To run all sanity checks
-use:
+These tests verify seeking in videos: Seeks are issued while playing a video in
+Chrome, waiting for the `onseeked` event to be received. These tests come in
+variants with the same taxonomy as described in the [Play
+Tests](#videoplay-tests) Section, and in addition:
 
-    tast run $HOST video.DecodeAccelSanity.*
+- Tests with a `stress` suffix issue a much larger amount of seeks, and have a
+much larger timeout.
 
-## Video seek tests
+- Tests with a `switch` suffix utilize a resolution-changing video as input, to
+introduce further stress in the video decoder implementations.
 
-These tests check whether seeking in a video works as expected. This is done by
-playing a video in the Chrome browser while rapidly jumping between different
-points in the video stream. Tests are available for H.264, VP8 and VP9 videos.
-In addition there are variants of these tests present that verify seeking in
-resolution-changing videos. To run all video seek tests run:
+To run all video seek tests run:
 
     tast run $HOST video.Seek.*
 
-Additionally there are also variants of these tests with 'VD' in their names.
-These test the new video decoder implementations, which are set to replace the
-current ones. To run all VD video seek tests use:
-
-    tast run $HOST video.SeekVD.*
-
-## Resolution ladder sequence creation
+### Resolution Ladder Sequence Creation
 
 The `smpte_bars_resolution_ladder.*` videos are generated using a combination of
 gstreamer and ffmpeg scripts, concretely for VP8, VP9 and H.264 (AVC1),
@@ -209,5 +209,3 @@ The line for VP8 and VP9 is similar, without the `-bsf:v`.
 [video_decode_accelerator_perf_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_perf_tests.cc
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
 [video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
-[c2_e2e_test]: https://googleplex-android.googlesource.com/platform/external/v4l2_codec2/+/refs/heads/pi-arc/tests/c2_e2e_test/
-[MediaCodec]: https://developer.android.com/reference/android/media/MediaCodec
