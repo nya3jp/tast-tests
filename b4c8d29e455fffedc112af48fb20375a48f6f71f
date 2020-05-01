@@ -69,6 +69,30 @@
       "revId": "b4c8d29e455fffedc112af48fb20375a48f6f71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2dc799_fbb59bda",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-01T18:37:21Z",
+      "side": 1,
+      "message": "Interesting that Golang has such presubmit check. Well, the check tell us not to name variables with package name as prefix (I think avoiding it as postfix should also apply). To address Brian\u0027s concern, how about adding a comment:\n\nCiphers []Cipher // Ciphers used for WPA.\nCiphers2 []Cipher // ciphers used for WPA2.",
+      "parentUuid": "aceb69b7_33cb3574",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "b4c8d29e455fffedc112af48fb20375a48f6f71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
