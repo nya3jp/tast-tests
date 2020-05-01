@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "482fa180_b571a1ef",
+        "filename": "src/chromiumos/tast/services/cros/arc/cache_validation_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-01T03:47:53Z",
+      "side": 1,
+      "message": "you should be able to determine build id and other properties on remote side, no need to call service, this is redundant. please refer remote data_collector.go as en example.",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "11a11843cb8d05b2ba3cd8e1e3ddee1ea076642a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
