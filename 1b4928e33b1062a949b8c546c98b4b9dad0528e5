@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d51b1dd_118a652d",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-01T20:51:52Z",
+      "side": 1,
+      "message": "nit, while this will work, moving this defer to the else block of parentFromBytes error check will save 1 Unmarshal attempt if there\u0027s an error.  It will also be more readable since it\u0027s then guaranteed that the deferred Unmarshal will not error out.",
+      "revId": "1b4928e33b1062a949b8c546c98b4b9dad0528e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
