@@ -157,6 +157,24 @@
       "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b78737a_d4914b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-01T09:09:23Z",
+      "side": 1,
+      "message": "Thank you for the explanation.",
+      "parentUuid": "b9d113dd_d5387f43",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
