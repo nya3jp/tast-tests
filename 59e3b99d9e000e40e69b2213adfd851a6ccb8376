@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc6d2ea0_a30d6952",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-01T06:33:57Z",
+      "side": 1,
+      "message": "i\u0027ll first need to convert a11ySpeech to read from Json.",
+      "parentUuid": "4008018b_016c58c1",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "59e3b99d9e000e40e69b2213adfd851a6ccb8376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69573b65_701a1fa9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 3
@@ -69,6 +93,30 @@
       "revId": "59e3b99d9e000e40e69b2213adfd851a6ccb8376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f5ed0c_258c172e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-01T06:33:57Z",
+      "side": 1,
+      "message": "thanks, I agree, I think parsing the logs in go is best.",
+      "parentUuid": "c48ce4a8_f4ffbfca",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "59e3b99d9e000e40e69b2213adfd851a6ccb8376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
