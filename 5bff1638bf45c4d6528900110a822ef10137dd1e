@@ -22,6 +22,29 @@
       "revId": "5bff1638bf45c4d6528900110a822ef10137dd1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a24b83_97c35d48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-01T00:11:27Z",
+      "side": 1,
+      "message": "are you sure we need a new name for each test? The docs aren\u0027t very clear to me about \"name\" vs. \"variant\", and whether metrics should be uniquely namespaced, or if they get namespaced by (e.g.) test.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 19
+      },
+      "revId": "5bff1638bf45c4d6528900110a822ef10137dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
