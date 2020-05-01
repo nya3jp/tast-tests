@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e368945_d53f4731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2020-05-01T01:14:37Z",
+      "side": 1,
+      "message": "Why don\u0027t you check other attribute?",
+      "revId": "e254961c985ee60495e546e6abb3ec950281bf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
