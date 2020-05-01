@@ -133,7 +133,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	defer crash.TearDownCrashTest(ctx)
 
 	s.Log("Starting app")
-	const exampleApp = "com.android.vending"
+	const exampleApp = "com.android.settings"
 	if err := a.Command(ctx, "am", "start", "-W", exampleApp).Run(); err != nil {
 		s.Fatal("Failed to run an app to be crashed: ", err)
 	}
