@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d49ab21f_b52c3008",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-01T00:26:38Z",
+      "side": 1,
+      "message": "Perhaps I\u0027m not being imaginative enough, but I don\u0027t really know without seeing what EAPConfig and derivatives look like. It seems a little odd to me to make one type/struct more complex just because another similar type has additional requirements. You could even stick with \u0027type Option (*ConfigFactory)\u0027, if you want to keep that consistent.\n\nThis is also OK, but I feel like this field needs a comment if it does.",
+      "parentUuid": "6d491a8f_0448c0ea",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "67a6cd2754d5cf811e9e806bcf1c8089c9111d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba7ca355_c815b2fe",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 11
