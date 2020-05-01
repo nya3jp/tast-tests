@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72a0b0de_81f9fcc2",
+        "filename": "src/chromiumos/tast/local/uhid/device_nodes.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T21:55:40Z",
+      "side": 1,
+      "message": "nit, optional: probably hidRaw ? (",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5c9949_a3f9e1fb",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T21:55:40Z",
+      "side": 1,
+      "message": "sorry I missed these ones before:\n\ntwo things: on Go, Uppercase means \"public\". lowercase means \"private\".\n\nRule-of-thumb: \n  - it is better to do everything private first, and them make them public as needed.\n    in this case, the error messages shouldn\u0027t be public.\n\n\nbut I think the error message shouldn\u0027t be a constant.\nIn practice, I think it makes sense to reuse the messages.\n\nBut in this case the are not used that much. I think you can \"inline\" them.\n(In Tast, I haven\u0027t seen error messages defines as const... but if you had, please, LMK).",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61831432_f54c5917",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T21:55:40Z",
+      "side": 1,
+      "message": "ditto above: \nnit: the pattern is \"got; want\"  (and not \"got; wanted\")\n\n\n(side note, to take into account in the future: group consts by type.. in this case all error messages should be together)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 73
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50a1f35_1f84dfd8",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T21:55:40Z",
+      "side": 1,
+      "message": "I think you already mentioned this in some of the previous review (sorry I\u0027m asking the same question).\ndouble-check that all these must be public.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49de57a1_b6869294",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T21:55:40Z",
+      "side": 1,
+      "message": "ditto: please, double-check that they must be public.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 5
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3785c6e_8c3d5d9e",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-01T21:55:40Z",
+      "side": 1,
+      "message": "ditto above: double check if here and below what should be public and what private.\n\ndoes \"Data\", \"File\" and \"EventHandlers\" should be public?\n\njust in case: files that belong to the same package (in this case \"package uhid\") can access private members.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 5
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
