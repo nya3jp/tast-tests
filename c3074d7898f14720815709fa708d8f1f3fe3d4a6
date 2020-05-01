@@ -22,6 +22,53 @@
       "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a5202a_3c9a80ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-01T21:52:46Z",
+      "side": 1,
+      "message": "+1\nIt is good idea to try and be consistent between ctx, fullCtx, shortenedCtx, etc. Any name is probably fine, but try to be consistent across all files unless there is a reason not to.",
+      "parentUuid": "b6e1f6b2_c7cdf280",
+      "range": {
+        "startLine": 149,
+        "startChar": 18,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f81afd1c_cd52eb18",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-01T21:52:46Z",
+      "side": 1,
+      "message": "Totally optional, but you might find it leads to a cleaner api if you make your new methods simply return the shortened context.\n\nThis does have the one disadvantage that the caller can\u0027t use a separate context for New and Close, but that is very rarely an issue. Also, the caller can still manually reserve for close if they have a special use case.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 140
+      },
+      "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
