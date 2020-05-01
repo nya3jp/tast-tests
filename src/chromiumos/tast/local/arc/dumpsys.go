@@ -56,54 +56,6 @@ type ActivityInfo struct {
 
 const (
 	/*
-		Regular Expression for parsing the output of dumpsys in N.
-
-		Looking for:
-		Task id #2
-		mFullscreen=false
-		mBounds=Rect(0, 0 - 2400, 1600)
-		mMinWidth=-1
-		mMinHeight=-1
-		mLastNonFullscreenBounds=Rect(0, 0 - 2400, 1600)
-		* TaskRecord{cecb288 #2 A=com.android.settings U=0 StackId=2 sz=1}
-			userId=0 effectiveUid=1000 mCallingUid=2000 mUserSetupComplete=true mCallingPackage=null
-			affinity=com.android.settings
-			intent={act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=com.android.settings/.Settings}
-			origActivity=com.android.settings/.Settings
-			realActivity=com.android.settings/.Settings
-			autoRemoveRecents=false isPersistable=true numFullscreen=1 taskType=0 mTaskToReturnTo=1
-			rootWasReset=false mNeverRelinquishIdentity=true mReuseTask=false mLockTaskAuth=LOCK_TASK_AUTH_PINNABLE
-			Activities=[ActivityRecord{388b75e u0 com.android.settings/.Settings t2}]
-			askedCompatMode=false inRecents=true isAvailable=true
-			lastThumbnail=null lastThumbnailFile=/data/system_ce/0/recent_images/2_task_thumbnail.png
-			stackId=2
-			hasBeenVisible=true mResizeMode=RESIZE_MODE_RESIZEABLE isResizeable=true firstActiveTime=1568651434414 lastActiveTime=1568651434414 (inactive for 0s)
-			Arc Window State:
-			mWindowState=WINDOW_STATE_MAXIMIZED mRestoreBounds=Rect(0, 0 - 0, 0)
-			* Hist #0: ActivityRecord{388b75e u0 com.android.settings/.Settings t2}
-				packageName=com.android.settings processName=com.android.settings
-				[...] Abbreviated to save space
-				state=RESUMED stopped=false delayedResume=false finishing=false
-				keysPaused=false inHistory=true visible=true sleeping=false idle=true mStartingWindowState=STARTING_WINDOW_SHOWN
-	*/
-	regStrN string = `(?m)` + // Enable multiline.
-		`^\s+Task id #(\d+)` + // Grab task id (group 1).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mBounds=(?:(null)|Rect\((-?\d+),\s*(-?\d+)\s*-\s*(\d+),\s*(\d+)\))` + // Grab bounds or null bounds (groups 2-6).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*TaskRecord{.*StackId=(\d+)\s+sz=(\d*)}.*$` + // Grab stack Id (group 7) and stack size (group 8).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 9) and activity name (group 10).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 11).
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mWindowState=(\S+).*$` + // Window state (group 12)
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
-		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 13).
-
-	/*
 		Regular Expression for parsing the output of dumpsys in P.
 
 		Looking for:
@@ -156,7 +108,6 @@ const (
 )
 
 var (
-	regExpN              = regexp.MustCompile(regStrN)
 	regExpP              = regexp.MustCompile(regStrP)
 	regExpForActivitiesP = regexp.MustCompile(regStrForActivitiesP)
 )
