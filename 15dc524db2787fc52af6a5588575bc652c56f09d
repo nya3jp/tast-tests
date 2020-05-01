@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69654549_00560d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T07:10:46Z",
+      "side": 1,
+      "message": "(though I think we don\u0027t need this function) these key combinations other than Search+Space are not \"ChromeVox commands\". These key events are not handled by ChromeVox, and go through an usual key event path into Android container, and consumed by the app or android framework.",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 66
+      },
+      "revId": "15dc524db2787fc52af6a5588575bc652c56f09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6373ee99_70b271a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T07:10:46Z",
+      "side": 1,
+      "message": "I think we can just reuse log slice in this case as I showed in the previous review comment, because we don\u0027t need to keep an old slice.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 36
+      },
+      "revId": "15dc524db2787fc52af6a5588575bc652c56f09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba10a62_424b99c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T07:10:46Z",
+      "side": 1,
+      "message": "Couldn\u0027t you use Accel here? (I think we can)",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 100,
+        "endChar": 19
+      },
+      "revId": "15dc524db2787fc52af6a5588575bc652c56f09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cadf21_d49a1d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T07:10:46Z",
+      "side": 1,
+      "message": "I think we should avoid this kind of if-statements considering we\u0027re planning to add more activities.\n\nAfter reading testSteps from a JSON file, we can extract a set of event types. How about using this set to generate the JS script?",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 35
+      },
+      "revId": "15dc524db2787fc52af6a5588575bc652c56f09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca817a9d_f0a9347f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T07:10:46Z",
+      "side": 1,
+      "message": "I think newly adding code should avoid using deprecated API. Use Eval instead.",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 29
+      },
+      "revId": "15dc524db2787fc52af6a5588575bc652c56f09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a1e201_44347b22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T07:10:46Z",
+      "side": 1,
+      "message": "please return an error instead of ending test here. (btw, I think it\u0027s okay just returning err in this case because wrapping gives no additional information.)",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "15dc524db2787fc52af6a5588575bc652c56f09d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
