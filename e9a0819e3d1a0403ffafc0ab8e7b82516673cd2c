@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ccd0d116_a8bb8629",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-01T19:33:28Z",
+      "side": 1,
+      "message": "Done, but did not address the pointer note (which is also a good suggestion).",
+      "parentUuid": "492b0719_61904d9f",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "787b68d2_6f3020bb",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -105,6 +123,24 @@
       "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56f653b_b4ba57ca",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-01T19:33:28Z",
+      "side": 1,
+      "message": "Well, that\u0027s convenient. Well spotted! Done.",
+      "parentUuid": "8d0a62c6_819a265a",
+      "revId": "e9a0819e3d1a0403ffafc0ab8e7b82516673cd2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
