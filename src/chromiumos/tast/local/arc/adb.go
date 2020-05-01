@@ -157,13 +157,35 @@ func connectADB(ctx context.Context) error {
 	return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
 }
 
+// InstallOption defines possible options to pass to "adb install".
+type InstallOption string
+
+// ADB install options listed in "adb help".
+const (
+	InstallOptionLockApp               InstallOption = "-l"
+	InstallOptionReplaceApp            InstallOption = "-r"
+	InstallOptionAllowTestPackage      InstallOption = "-t"
+	InstallOptionSDCard                InstallOption = "-s"
+	InstallOptionAllowVersionDowngrade InstallOption = "-d"
+	InstallOptionGrantPermissions      InstallOption = "-g"
+	InstallOptionEphemeralInstall      InstallOption = "--instant"
+)
+
 // Install installs an APK file to the Android system.
-func (a *ARC) Install(ctx context.Context, path string) error {
+// By default, it uses InstallOptionReplaceApp and InstallOptionAllowVersionDowngrade.
+func (a *ARC) Install(ctx context.Context, path string, installOptions ...InstallOption) error {
 	if err := a.Command(ctx, "settings", "put", "global", "verifier_verify_adb_installs", "0").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed disabling verifier_verify_adb_installs")
 	}
 
-	out, err := adbCommand(ctx, "install", "-r", "-d", path).Output(testexec.DumpLogOnError)
+	installOptions = append(installOptions, InstallOptionReplaceApp)
+	installOptions = append(installOptions, InstallOptionAllowVersionDowngrade)
+	commandArgs := []string{"install"}
+	for _, installOption := range installOptions {
+		commandArgs = append(commandArgs, string(installOption))
+	}
+	commandArgs = append(commandArgs, path)
+	out, err := adbCommand(ctx, commandArgs...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return err
 	}
