@@ -30,6 +30,7 @@ import (
 const (
 	FakeUser                   = "not-a-real-user@chromium.org"
 	CryptohomePathCommand      = "/usr/sbin/cryptohome-path"
+	DaemonStoreBase            = "/run/daemon-store/shill"
 	ShillUserProfilesDir       = "/run/shill/user_profiles"
 	ShillUserProfileChronosDir = "/run/shill/user_profiles/chronos"
 	GuestShillUserProfileDir   = "/run/shill/guest_user_profile/shill"
@@ -44,7 +45,6 @@ const (
 
 // TestEnv struct has the variables that are used by the functions below.
 type TestEnv struct {
-	RootCryptohomeDir   string
 	ShillUserProfileDir string
 	ShillUserProfile    string
 	CreatedDirectories  []string
@@ -84,21 +84,23 @@ func setUp(ctx context.Context, env *TestEnv) error {
 		return errors.Wrap(err, "failed stopping shill")
 	}
 
-	rootCryptDir, err := cryptohome.SystemPath(FakeUser)
+	userHash, err := cryptohome.UserHash(ctx, FakeUser)
 	if err != nil {
-		return errors.Wrap(err, "failed getting the cryptohome directory for the fake user")
+		return errors.Wrap(err, "failed getting the user hash for the fake user")
 	}
 
-	env.RootCryptohomeDir = rootCryptDir
+	env.ShillUserProfileDir = filepath.Join(DaemonStoreBase, userHash)
 
-	// Just in case this hash actually exists, add these to the list of to-be-removed directories.
-	env.CreatedDirectories = append(env.CreatedDirectories, env.RootCryptohomeDir)
+	// 'shill_logout_user' cannot delete the user profile, otherwise users would lose
+	// all their networks. However, this test asserts that the profile is created (not just pushed),
+	// so in order to allow the test to pass more than once per boot, remove the user profile
+	// directory.
+	env.CreatedDirectories = append(env.CreatedDirectories, env.ShillUserProfileDir)
 
 	if err := eraseState(ctx, env); err != nil {
 		testing.ContextLog(ctx, errors.Wrap(err, "failed erasing the system state"))
 	}
 
-	env.ShillUserProfileDir = filepath.Join(env.RootCryptohomeDir, "shill")
 	env.ShillUserProfile = filepath.Join(env.ShillUserProfileDir, "shill.profile")
 
 	return nil
@@ -243,8 +245,8 @@ func eraseState(ctx context.Context, env *TestEnv) error {
 			testing.ContextLogf(ctx, "Failed removing %s while removing the system state", dir)
 		}
 	}
-	if err := os.Mkdir(env.RootCryptohomeDir, 0777); err != nil {
-		return errors.Wrapf(err, "failed making the directory after removing the system state: %s", env.RootCryptohomeDir)
+	if err := os.Mkdir(env.ShillUserProfileDir, 0700); err != nil {
+		return errors.Wrapf(err, "failed making the directory after removing the system state: %s", env.ShillUserProfileDir)
 	}
 	return nil
 }
