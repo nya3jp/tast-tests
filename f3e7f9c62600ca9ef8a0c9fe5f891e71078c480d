@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2607eb72_16ac7bcb",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-01T06:59:05Z",
+      "side": 1,
+      "message": "nit\u0026optional: IMHO the goal of this function is setting up ADB auth (restarting is only a mean), so I personally prefer the original name i.e. setUpADBAuth.",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 33
+      },
+      "revId": "f3e7f9c62600ca9ef8a0c9fe5f891e71078c480d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
