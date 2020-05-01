@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4baff9a_8cae29e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-05-01T00:27:47Z",
+      "side": 1,
+      "message": "That\u0027s what the rest of the file does, so I chose to follow existing style.\n\nAnd the sentence is already ended with a period.",
+      "parentUuid": "2d47ac83_f38523c3",
+      "range": {
+        "startLine": 343,
+        "startChar": 13,
+        "endLine": 343,
+        "endChar": 14
+      },
+      "revId": "3df4033c2fe99a250044d967bcc5626881ea9eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "771a2a16_523fd5bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "be8ba0da_b3f61bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-05-01T00:27:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "771a2a16_523fd5bd",
+      "range": {
+        "startLine": 346,
+        "startChar": 13,
+        "endLine": 346,
+        "endChar": 14
+      },
+      "revId": "3df4033c2fe99a250044d967bcc5626881ea9eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0c87e29_e965e9e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "3df4033c2fe99a250044d967bcc5626881ea9eea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5f777b_2cc02dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-05-01T00:27:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0c87e29_e965e9e8",
+      "range": {
+        "startLine": 350,
+        "startChar": 14,
+        "endLine": 350,
+        "endChar": 15
+      },
+      "revId": "3df4033c2fe99a250044d967bcc5626881ea9eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
