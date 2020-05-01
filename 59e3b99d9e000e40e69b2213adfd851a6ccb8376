@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4008018b_016c58c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T02:55:51Z",
+      "side": 1,
+      "message": "can you add a speech test too?",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "59e3b99d9e000e40e69b2213adfd851a6ccb8376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69573b65_701a1fa9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2020-05-01T02:39:17Z",
       "side": 1,
       "message": "@hiroki, if you have any suggestions.\nIf we enable textChanged with other eventStreamLogger filters, we get unwanted events (\"textChanged\")from \"ChromeVox Panel\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "59e3b99d9e000e40e69b2213adfd851a6ccb8376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c48ce4a8_f4ffbfca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-01T02:55:51Z",
+      "side": 1,
+      "message": "I would instead filter out logs by RootName property.\nFor example, in verifyLog function, we currently use all the result of injected js.\nHere, after getting the returned slice of js, I would do like below:\n\n// Fitler out event logs from unrelated windows\ni :\u003d 0\nfor _, log :\u003d range logs {\n  if log.RootName \u003d\u003d currentActivity.Title {\n    logs[i] \u003d log\n    i++\n  }\n}\n\nlogs \u003d logs[:i]\n\n.. continue verify log\n\n\nAnother option is filtering array in the injecting js (e,g, `getLogsOfType(LogStore.LogType.EVENT).filter(log \u003d\u003e log.rootName_ \u003d\u003d activityTitle)`).\nBut tast is written in go, I prefer to filter out in tast golang side.",
+      "parentUuid": "69573b65_701a1fa9",
       "range": {
         "startLine": 90,
         "startChar": 2,
