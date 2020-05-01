@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"runtime"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -166,13 +167,20 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		return size, nil
 	}
 
-	for k, v := range metrics {
+	// Go through the metrics in the same order every time.
+	keys := make([]string, 0, len(metrics))
+	for k := range metrics {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, k := range keys {
 		if size, err := dirSize(k); err != nil {
 			s.Errorf("Failed to get the size of directory %q: %v", k, err)
 		} else {
 			logFileSizes(k)
 			pv.Set(perf.Metric{
-				Name:      v,
+				Name:      metrics[k],
 				Unit:      "bytes",
 				Direction: perf.SmallerIsBetter,
 			}, float64(size))
