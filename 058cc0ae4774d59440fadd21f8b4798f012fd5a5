@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f8ca8a4_8be44766",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T21:32:54Z",
+      "side": 1,
+      "message": "I think we could deduplicate this check if we move the comment check further up, something like this:\n\n    for ... {\n        if strings.HasPrefix(line, \"#\") {\n            continue\n        }\n        if len(line) \u003c 4 {\n            return nil, errors.Errorf(emptyFieldError, i)\n        }\n        ...\n    }\n\nWe don\u0027t get to include the name of the empty field this way, but I think that\u0027s OK given that the line number is included in the error message.",
+      "revId": "058cc0ae4774d59440fadd21f8b4798f012fd5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c104077f_c0009505",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T21:32:54Z",
+      "side": 1,
+      "message": "How about a constant for timestamp length? Then we\u0027d have `if len(line) \u003c TIMESTAMP_LEN + 2` and `line \u003d line[TIMESTAMP_LEN + 1:]`, which are a bit more self-explanatory.",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "058cc0ae4774d59440fadd21f8b4798f012fd5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
