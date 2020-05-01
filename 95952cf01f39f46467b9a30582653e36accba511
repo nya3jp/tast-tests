@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a82f361_92a68be2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-01T21:59:56Z",
+      "side": 1,
+      "message": "is this a folder or prefix? I just see that above there is /run/crash-reporter-early-init.log",
+      "range": {
+        "startLine": 124,
+        "startChar": 71,
+        "endLine": 124,
+        "endChar": 85
+      },
+      "revId": "95952cf01f39f46467b9a30582653e36accba511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff9706f_0728ea44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/early_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-01T21:59:56Z",
+      "side": 1,
+      "message": "nit: merge into single line else if {}",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "95952cf01f39f46467b9a30582653e36accba511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
