@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69573b65_701a1fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-01T02:39:17Z",
+      "side": 1,
+      "message": "@hiroki, if you have any suggestions.\nIf we enable textChanged with other eventStreamLogger filters, we get unwanted events (\"textChanged\")from \"ChromeVox Panel\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "59e3b99d9e000e40e69b2213adfd851a6ccb8376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
