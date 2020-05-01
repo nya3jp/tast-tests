@@ -132,6 +132,24 @@
     },
     {
       "key": {
+        "uuid": "7f4baeed_ee679083",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-01T07:12:53Z",
+      "side": 1,
+      "message": "Actually it is closed on Start failures, though it is undocumented. It is okay to Close it twice though.",
+      "parentUuid": "5f1f1dab_36a6528d",
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "221a9526_8589bf63",
         "filename": "src/chromiumos/tast/local/arc/logcat.go",
         "patchSetId": 11
@@ -333,6 +351,30 @@
       "side": 1,
       "message": "Hmm... you are right here.\n\nI was trying to reproduce this scenario, but looks like I did something wrong and didn\u0027t fully understand context cancellation. Thanks for clarifying!",
       "parentUuid": "4127ab3b_bd220654",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20841449_8482830b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-01T07:12:53Z",
+      "side": 1,
+      "message": "Yes, the context given to the test main function is canceled on the completion of the test.",
+      "parentUuid": "d5aba5df_d747fda1",
       "range": {
         "startLine": 116,
         "startChar": 0,

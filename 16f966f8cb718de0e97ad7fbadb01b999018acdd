@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "b79cb0d9_2cdeac81",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-01T07:12:53Z",
+      "side": 1,
+      "message": "No action required\n\nActually I\u0027m still not sure which way is good, really...\n\nOleh\u0027s points are all valid, but on the other hand, I often see that a function with the default timeout (i.e. test timeout) while the operation should take up to a few seconds. With such implementations, when it doesn\u0027t work well, we waste long time before a failure is reported.",
+      "parentUuid": "8bd040a1_8a60f4b5",
+      "range": {
+        "startLine": 18,
+        "startChar": 73,
+        "endLine": 18,
+        "endChar": 94
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc289b5_7f4a19fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 4
