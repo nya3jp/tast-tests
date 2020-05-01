@@ -139,6 +139,24 @@
       "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d113dd_d5387f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appfuse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2020-05-01T08:52:37Z",
+      "side": 1,
+      "message": "lgtm.\n\nNormally, when making a syscall, we need to check the errno and retry the syscall if it\u0027s EINTR.\nHowever, for close() we shouldn\u0027t retry because it can result in double-close. crbug.com/269623\nSo this code looks good.\n\nIf you don\u0027t feel comfortable directly making a syscall, you can use os.NewFile() instead.\n  f :\u003d os.NewFile(fd, \"\")\n  defer f.Close()",
+      "parentUuid": "433cd30d_9957b2b9",
+      "revId": "f8bb9f656c2bd131144cc13fc737dfa301268100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
