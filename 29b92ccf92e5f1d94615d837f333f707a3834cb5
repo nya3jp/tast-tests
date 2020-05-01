@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00adfd75_247bf386",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-01T22:24:54Z",
+      "side": 1,
+      "message": "Only used locally for now. Is there plan for it to be used in other ways? I see a few other limited uses in Autotest, but it\u0027s not clear we need exactly the same package structure in Tast. And in general, language/library packages are preferred in Tast where possible, IIUC.",
+      "range": {
+        "startLine": 44,
+        "startChar": 17,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fbc49d0_f9ce0367",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-01T22:24:54Z",
+      "side": 1,
+      "message": "seems like something that could be replaced by unit tests.\n\nOr, this entire package could be replaced by https://godoc.org/net, right? You\u0027d just have to stick it under a gRPC service.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
