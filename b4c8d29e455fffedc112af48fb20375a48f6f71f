@@ -45,6 +45,30 @@
       "revId": "b4c8d29e455fffedc112af48fb20375a48f6f71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aceb69b7_33cb3574",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-01T06:05:13Z",
+      "side": 1,
+      "message": "The linter will abort the upload since it would become wpa.WPACiphers. Should I ignore it?",
+      "parentUuid": "3cb7635d_ad6dcb97",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "b4c8d29e455fffedc112af48fb20375a48f6f71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

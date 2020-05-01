@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "b1c334d4_4f7026aa",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-01T06:05:13Z",
+      "side": 1,
+      "message": "There will be only two no-op methods in WPA and WEP. I will remove the embedding of base.Config of them.",
+      "parentUuid": "60e68b8b_63003ac0",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc3b0bfb_c82f7a41",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 10
