@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d65422a_1a3bdfb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 29
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-01T21:34:05Z",
+      "side": 1,
+      "message": "Nit: we usually put `BUG\u003d` just before the `TEST\u003d` line. I\u0027m not sure whether it\u0027s necessary to do it that way, but it looks a little odd putting it first.",
+      "revId": "38c2b0c75984119be2e2a364a53f2c9d5f6b18b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
