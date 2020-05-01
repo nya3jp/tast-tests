@@ -22,6 +22,30 @@
       "revId": "26d11c840f2e5941c57ad7db9f1c47c0f6f3b8f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf46ae87_309cd4c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-01T01:06:01Z",
+      "side": 1,
+      "message": "It is quite interesting that with the patch 9, I can reproduce exactly the same failure on my test device (Kodama). It is weird: waiting for 2 seconds can cause test failure. Still investigating it. Remove this code block already.",
+      "parentUuid": "7aaadba4_fc7de92c",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "26d11c840f2e5941c57ad7db9f1c47c0f6f3b8f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
