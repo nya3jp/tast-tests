@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dafb454_15506ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/whats_new_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-01T16:58:15Z",
+      "side": 1,
+      "message": "In the long term, this definitely needs to be fixed elsewhere or abstracted away. Probably need to add something to launching chrome that ensures all apps are ready, just like it waits for autotestPrivate to be ready. Otherwise, this will need to be in every test with certain apps.\n\nOne simple solution might just be to modify launch app to wait for the AppID to exist.\n\nIf you don\u0027t find a simple fix for this, can you file a bug for it.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "cd8b1b20cb74eda15fd0127392a7fe7946bac08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
