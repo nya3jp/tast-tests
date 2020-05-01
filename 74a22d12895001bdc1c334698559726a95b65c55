@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2f762d8f_d869b8b8",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-01T00:37:23Z",
+      "side": 1,
+      "message": "Right, so it seems like we could just drop this composition. It\u0027s fair to have independent implementations of the same interface, IMO; they don\u0027t all have to \"inherit\" from each other.",
+      "parentUuid": "ad6c87b5_a271adf5",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "74a22d12895001bdc1c334698559726a95b65c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc3b0bfb_c82f7a41",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 10
