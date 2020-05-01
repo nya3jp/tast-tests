@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d1a3b334_a68e1feb",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-01T01:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ac3b84a_893400aa",
+      "range": {
+        "startLine": 25,
+        "startChar": 71,
+        "endLine": 25,
+        "endChar": 94
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11f0613_d2624b49",
         "filename": "src/chromiumos/tast/local/arc/logcat.go",
         "patchSetId": 11
@@ -223,6 +247,30 @@
       "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1eece4a_fa981515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-01T01:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e36606_734a7ab3",
+      "range": {
+        "startLine": 40,
+        "startChar": 11,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "5ca8e4500f12f767d00582a96708768ed3494cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "8bd040a1_8a60f4b5",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-01T01:27:45Z",
+      "side": 1,
+      "message": "Thank you for clarifying. This makes sense to me now.",
+      "parentUuid": "e2201f60_78a74a0c",
+      "range": {
+        "startLine": 18,
+        "startChar": 73,
+        "endLine": 18,
+        "endChar": 94
+      },
+      "revId": "16f966f8cb718de0e97ad7fbadb01b999018acdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc289b5_7f4a19fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_camera_gca_preview_perf.go",
         "patchSetId": 4
