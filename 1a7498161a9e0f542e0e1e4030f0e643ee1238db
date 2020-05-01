@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d66b558_b35abc78",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "\u003e If it success, it will always have the groups that you mentioned: 3.\n\nIn this case FindStringSubmatch returns 4 elements. The whole string because it matches the regex and each of the submatches indicated between parentheses. In the example you gave earlier (https://play.golang.org/p/qKw4BqPFvtj), for example, FindStringSubmatch returns 4 elements.\n\nHowever, I do agree with the rest of the assesment, I will check for a FindStringSbumatch failure.",
+      "parentUuid": "e42d62d2_8a23f5c0",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2f94a74_182258a9",
         "filename": "src/chromiumos/tast/local/uhid/parse.go",
         "patchSetId": 25
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "93242680_ac58a54c",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "Yes, yes it does. I\u0027ll correct it.",
+      "parentUuid": "b22618e2_417ec1d9",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbd39d39_244564f9",
         "filename": "src/chromiumos/tast/local/uhid/parse.go",
         "patchSetId": 25
@@ -91,6 +139,30 @@
       "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9239280_0125f765",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd39d39_244564f9",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +212,54 @@
     },
     {
       "key": {
+        "uuid": "628d4cea_9ffe8798",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecb535dd_ea2f9aad",
+      "range": {
+        "startLine": 84,
+        "startChar": 32,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e03fea1_b0eedf92",
+        "filename": "src/chromiumos/tast/local/uhid/parse.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "I dont\u0027t follow. Isn\u0027t that what I\u0027m doing on line 92?",
+      "parentUuid": "e753bf73_01d5924a",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d413926d_f69de9f9",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 25
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "a86482cf_b2e28e27",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d413926d_f69de9f9",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc76adaa_0d1c1255",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 25
@@ -174,6 +318,30 @@
       "writtenOn": "2020-04-30T22:58:42Z",
       "side": 1,
       "message": "} else {\n   ...log error for unknown prefix...\n}",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e3329a_18f16d05",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "I don\u0027t really think this is necessary. There are a lot of cases to take into account other than the ones one is parsing at all times. If people want to put gibberish in their hid recordings we can just ignore it. As long as the necessary info exists in the file any extra lines can be safely ignored.",
+      "parentUuid": "bc76adaa_0d1c1255",
       "range": {
         "startLine": 44,
         "startChar": 2,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "b760ddc2_d8693ef8",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82383b21_d79106a2",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35dfae8d_fae741b9",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 25
@@ -220,6 +412,30 @@
       "writtenOn": "2020-04-30T22:58:42Z",
       "side": 1,
       "message": "nit:\n\nUsually we follow the \"return-early\" on error pattern to make code easier to read.\n\nBut in this case I wouldn\u0027t return early:\n  - the previous one is not an error\n  - consistency with Recorded func.\n\nso I would do:\n \n    } else if strings.HasPrefix(line, \"E:  \") {\n    } else {\n       ...log error for unknown prefix...\n    }",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83136a81_2cc56392",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "ditto above.\n\nThe recording file and the file containing the device info are the same so I would have to have a huge if statement discarding all cases for the prefixes I:, P:, R: and # and possibly empty lines.",
+      "parentUuid": "35dfae8d_fae741b9",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -252,6 +468,30 @@
       "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b585b710_e1231b7f",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-01T02:29:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c0903a_3ede319f",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "1a7498161a9e0f542e0e1e4030f0e643ee1238db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
