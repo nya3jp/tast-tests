@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94536a91_65e56c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-01T00:02:29Z",
+      "side": 1,
+      "message": "can we also watch Service \u0027State\u0027 property, to understand \u0027association\u0027 vs. \u0027configuration\u0027? These are also useful differences to report in error codes, so test status knows the difference between \"association failed\" and \"configuration\" failed?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 86
+      },
+      "revId": "5bff1638bf45c4d6528900110a822ef10137dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
