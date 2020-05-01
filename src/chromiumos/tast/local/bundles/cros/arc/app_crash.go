@@ -133,7 +133,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	defer crash.TearDownCrashTest(ctx)
 
 	s.Log("Starting app")
-	const exampleApp = "com.android.vending"
+	const exampleApp = "com.android.settings"
 	if err := a.Command(ctx, "am", "start", "-W", exampleApp).Run(); err != nil {
 		s.Fatal("Failed to run an app to be crashed: ", err)
 	}
@@ -152,7 +152,7 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	crashDir := filepath.Join(path, "/crash")
 
 	s.Log("Waiting for crash files to become present")
-	// Wait files like com_android_vending_foo_bar.20200420.204845.664107.log in crashDir
+	// Wait files like com_android_settings_foo_bar.20200420.204845.664107.log in crashDir
 	base := strings.Replace(exampleApp, ".", "_", -1) + `(?:_[[:alnum:]]+)*.\d{8}.\d{6}.\d+`
 	metaFileName := base + crash.MetadataExt
 	files, err := crash.WaitForCrashFiles(ctx, []string{crashDir}, nil, []string{
