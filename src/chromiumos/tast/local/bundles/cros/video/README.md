@@ -1,10 +1,9 @@
 # Video Test Overview
 
-The Tast video tests can be used to validate various video decoder and encoder
-implementations. A wide range of test scenarios are available to validate both
-correctness and performance. Some tests operate directly on top of the decoder
-and encoder implementations, while other tests operate on the entire Chrome
-stack.
+The Tast video tests are used to validate various video related functionality. A
+wide range of test scenarios are available to validate both correctness and
+performance. Some tests operate directly on top of the decoder and encoder
+implementations, while other tests operate on the entire Chrome stack.
 
 To get a list of all available video tests run:
 
@@ -14,12 +13,38 @@ All video tests can be found in the [tast video folder].
 
 [TOC]
 
-## Capability check test
+## Capabilities and Capability Test
 
-This test checks whether a device reports the correct set of capabilities (e.g.
-VP9 support). It can be run by executing:
+Tast can prevent running tests on SoCs without a particular functionality (see
+[Test Dependencies], and the Video tests make extensive use of this for gating
+tests on hardware capabilities e.g. presence of video decoding for a given
+codec. These capabilities are specified per-chipset (potentially with per-board
+and per-device overlays) in files like e.g. [15-chipset-cml-capabilities.yaml].
+These files are ingested in Go via the [`caps` package], so that test cases can
+use them as preconditions in their `SoftwareDeps`.
+
+For example: Intel Broadwell has support for hardware accelerated H.264 decoding
+but not VP8. Therefore, the Broadwell associated capabilities file
+[15-chipset-bdw-capabilities.yaml] has a number of `hw_dec_h264_*` entries and
+no `hw_dec_vp8_*` entries. Tast ingests these capabilities file(s) and provides
+them for tests with the name correspondence defined in the mentioned [`caps`
+package]. Any test (case) with a `caps.HWDecodeH264` listed in its
+`SoftwareDeps`, for example [`Play.h264_hw`], will thus run on Broadwell
+devices, whereas those with `caps.HWDecodeVP8` listed will not, for example
+[`Play.vp8_hw`].
+
+Googlers can refer to go/crosvideocodec for more information about the hardware
+supported video features.
+
+The Capability test verifies that the capabilities provided by the YAML file(s)
+are indeed detected by the hardware via the command line utility
+`avtest_label_detect` that is installed in all test/dev images. This test can be
+run by executing:
 
     tast run $HOST video.Capability
+
+New boards being brought up will need to add capabilities files in the
+appropriate locations for the Video Tast tests to run properly.
 
 ## Video decoder test
 
@@ -62,6 +87,16 @@ the current ones. To run all VD video decoder performance tests run:
 
     tast run $HOST video.DecodeAccelVDPerf.*
 
+## Video decoder sanity checks
+
+These tests use the [video_decode_accelerator_tests] to decode a video stream
+with unsupported features. This is done by playing VP9 profile1-3 videos while
+the decoder is incorrectly configured for profile0. The tests verify whether a
+decoder is able to handle unexpected errors gracefully. To run all sanity checks
+use:
+
+    tast run $HOST video.DecodeAccelSanity.*
+
 ## Video encoder tests
 
 These tests run the [video_encode_accelerator_unittest] to test encoding raw
@@ -82,47 +117,52 @@ Tests are available for various codecs and resolutions. To run all tests use:
 
     tast run $HOST video.EncodeAccelPerf.*
 
-## Video play tests
+## Play Tests (`video.Play`)
 
-The video play tests verify whether video playback works by playing a video in
-the Chrome browser. These tests exercise the full Chrome stack, as opposed to
-the video decoder tests that only verify the video decoder implementations. This
-test has multiple variants.
+The Play test verifies whether video playback works by playing a video in the
+Chrome browser. This test exercises the full Chrome stack, as opposed to others
+that might only exercise the video decoder implementations. This test has
+multiple variants, specified by the test case name parts. Every test case has a
+codec part, e.g. `h264` or `av1` followed by none, one or several identifiers
+(e.g. `hw` or `mse`).
 
-The _video.Play.*_ tests without the 'hw' or 'sw' suffix check whether video
-playback works by any means possible, fallback on a software video decoder is
-allowed if hardware video decoding fails. Tests are available using H.264, VP8
-and VP9 videos.
+- Cases without any identifier besides the codec name verify whether video
+playback works by any means possible: fallback on a software video decoder is
+allowed if hardware video decoding fails. These are basically the vanilla
+variants/cases.
 
-The tests with the 'hw' suffix are similar to the normal video play tests.
-However these tests will only pass if hardware video decoding was successful.
-Fallback on a software video decoder is not allowed. Conversely, the tests with
-the 'sw' suffix force and verify the usage of a software video decoder, such as
+- Tests with a `guest` identifier use a guest ChromeOS login, versus those
+without the identifier that use the normal test user login. Guest logins have a
+different Chrome flag management.
+
+- Tests with a `hw` identifier verify that hardware video decoding was used when
+expected, as per the SoC capabilities (see
+[Capabilities and Capability Test](#capabilities-and-capability-test)
+Section), with fallback on a software
+video decoder being treated as an error. Conversely, the tests with a `sw`
+identifier force and verify the usage of a software video decoder, such as
 libvpx or ffmpeg.
 
-The tests with the 'hw_mse' suffix are similar to the previous tests, but the
-videos are played using the MSE (Media Source Extensions protocol).
+- Tests with an `mse` identifer use MSE (Media Source Extensions protocol) for
+video playback, as opposed to those without the identifer that use a simple file
+URL.
+
+- Tests with the `alt` identifer employ an alternative hardware video decoding
+implementation (see go/vd-migration).
 
 To run these tests use:
 
     tast run $HOST video.Play.*
 
-Additionally there are variants of these tests with 'VD' in their names present.
-These test the new video decoder implementations, which are set to replace the
-current ones. To run all VD video play tests run:
-
-    tast run $HOST video.PlayVD.*
-
-## Video playback performance tests
+### Play Performance Tests (`video.PlaybackPerf`)
 
 The video playback performance tests measure video decoder performance by
 playing a video in the Chrome browser. These tests exercise the full Chrome
-stack, as opposed to the video decoder performance tests that only measure the
-performance of the actual video decoder implementations. Both software and
-hardware video decoder performance is measured. If hardware decoding is not
-supported for the video stream only software performance will be reported.
-Various metrics are collected such as CPU usage and the number of dropped
-frames.
+stack, as opposed to others that might only measure the performance of the
+actual video decoder implementations. Both software and hardware video decoder
+performance is measured. If hardware decoding is not supported for the video
+stream only software performance will be reported. Various metrics are collected
+such as CPU usage and the number of dropped frames.
 
 Tests are available for various codecs and resolutions, both in 30 and 60fps
 variants. To run all tests use:
@@ -135,33 +175,24 @@ current ones. To run all VD video playback performance tests run:
 
     tast run $HOST video.PlaybackVDPerf.*
 
-## Video decoder sanity checks
+## Seek Tests (`video.Seek`)
 
-These tests use the [video_decode_accelerator_tests] to decode a video stream
-with unsupported features. This is done by playing VP9 profile1-3 videos while
-the decoder is incorrectly configured for profile0. The tests verify whether a
-decoder is able to handle unexpected errors gracefully. To run all sanity checks
-use:
+These tests verify seeking in videos: Seeks are issued while playing a video in
+Chrome, waiting for the `onseeked` event to be received. These tests come in
+variants with the same taxonomy as described in the
+[Play Tests](#videoplay-tests) Section, and in addition:
 
-    tast run $HOST video.DecodeAccelSanity.*
+- Tests with a `stress` suffix issue a much larger amount of seeks, and have a
+much larger timeout.
 
-## Video seek tests
+- Tests with a `switch` suffix utilize a resolution-changing video as input, to
+introduce further stress in the video decoder implementations.
 
-These tests check whether seeking in a video works as expected. This is done by
-playing a video in the Chrome browser while rapidly jumping between different
-points in the video stream. Tests are available for H.264, VP8 and VP9 videos.
-In addition there are variants of these tests present that verify seeking in
-resolution-changing videos. To run all video seek tests run:
+To run all video seek tests run:
 
     tast run $HOST video.Seek.*
 
-Additionally there are also variants of these tests with 'VD' in their names.
-These test the new video decoder implementations, which are set to replace the
-current ones. To run all VD video seek tests use:
-
-    tast run $HOST video.SeekVD.*
-
-## Resolution ladder sequence creation
+### Resolution Ladder Sequence Creation
 
 The `smpte_bars_resolution_ladder.*` videos are generated using a combination of
 gstreamer and ffmpeg scripts, concretely for VP8, VP9 and H.264 (AVC1),
@@ -203,11 +234,16 @@ which is then used for `ffmpeg`, for example for the MPEG-4 output:
 The line for VP8 and VP9 is similar, without the `-bsf:v`.
 
 
+[15-chipset-bdw-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-bdw/chromeos-base/autotest-capability-chipset-bdw/files/15-chipset-bdw-capabilities.yaml?q=15-chipset-bdw-capabilities.yaml
+[15-chipset-cml-capabilities.yaml]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/overlays/chipset-cml/chromeos-base/autotest-capability-chipset-cml/files/15-chipset-cml-capabilities.yaml?q=15-chipset-cml-capabilities.yaml
+[`autotest-capability`]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/master/chromeos-base/autotest-capability-default/
+[`caps` package]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/media/caps/caps.go
 [tast video folder]: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/video/
 [video_decode_accelerator_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc
 [video decoder tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_test_usage.md
 [video_decode_accelerator_perf_tests]: https://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_perf_tests.cc
 [video decoder performance tests usage documentation]: https://chromium.googlesource.com/chromium/src/+/master/docs/media/gpu/video_decoder_perf_test_usage.md
 [video_encode_accelerator_unittest]: https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc
-[c2_e2e_test]: https://googleplex-android.googlesource.com/platform/external/v4l2_codec2/+/refs/heads/pi-arc/tests/c2_e2e_test/
-[MediaCodec]: https://developer.android.com/reference/android/media/MediaCodec
+[`Play.h264_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=92?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
+[`Play.vp8_hw`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play.go;l=99?q=h264_hw&ss=chromiumos%2Fchromiumos%2Fcodesearch
+[Test Dependencies]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md
