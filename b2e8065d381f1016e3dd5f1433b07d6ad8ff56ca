@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "f2d64146_3c8796e4",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-02T01:09:00Z",
+      "side": 1,
+      "message": "although it is possible to reuse an error message as an error code, it is a good practice to decouple them.\n\nAs an example, it is faster and take less space to store an integer than a string.\nAdditionally, the error could have its own type. And you can do a `switch()` on the type (if needed) and the compiler will tell whether your handling or the possible cases.\n\nSo, if you want to have different error codes, Go has the \"iota\". See this example where a new type is defined and how it creates enums using \"iota\":\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d112?q\u003diota\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "parentUuid": "b762311b_47111eb5",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61831432_f54c5917",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
@@ -286,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "bbd2edc3_b9135e07",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-02T01:09:00Z",
+      "side": 1,
+      "message": "Ok. let\u0027s keep the public.\nBut could you do the following then:\n\n- similar to the previous comment, define a type and put them together in one const group (\"iota\" won\u0027t work here). e.g:\n\ntype UHIDEventType uint32\nconst (\n  Destroy UHIDEventType \u003d 1\n  Start \u003d 2\n  Open \u003d 4\n  ...\n)\n\n(sorry I should have suggested this before).",
+      "parentUuid": "7714a77c_5054fa1f",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49de57a1_b6869294",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
@@ -321,6 +369,30 @@
       "side": 1,
       "message": "The user would probably be interested in using the variables here for manipulation of the device. For example, in the ds3 test the uniq needs to be accessed in order to reply to certain get report requests by the kernel. While as of right now many of these don\u0027t need to be used they are mundane and common enough that they will probably be accessed often.\n\nIf we\u0027re sticking with the rule of \"only make public if necessary\" then only the Uniq field needs to be public. It is my opinion, however, that they should all be public. I will leave the final word to you though.",
       "parentUuid": "49de57a1_b6869294",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 5
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac28b62c_c17b9593",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-02T01:09:00Z",
+      "side": 1,
+      "message": "What you could do, is to add getters as needed.\n\nIf you make it public, the semantic-wise, kind-of-mean \"do what ever you want with this type\": change/edit its value\".\n\nIf the consumers of these type are not supposed to change the name, but only read it, then adding a getter is a good option.\n\nIn fact, it is better to return a string than a []byte... easier to handle.\n\ne.g:\n\n// getters in Go don\u0027t use the \"Get\" prefix.\nfunc (dd* DeviceData) Name() string {\n   return dd.name\n}",
+      "parentUuid": "1c420421_df794f4a",
       "range": {
         "startLine": 137,
         "startChar": 1,
@@ -373,6 +445,29 @@
         "startChar": 1,
         "endLine": 151,
         "endChar": 5
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd4eb8bb_2525d74e",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-02T01:09:00Z",
+      "side": 1,
+      "message": "(sorry, missed it in my previous review):\n\nnit, optional:\nprobably `string` is better here than []byte?\nalthough internally you are storing everything as []byte, I guess for the user it makes sense to deal with strings?\n\nYou know better how this API is being used... but my feeling is that strings are better here.",
+      "range": {
+        "startLine": 174,
+        "startChar": 15,
+        "endLine": 174,
+        "endChar": 38
       },
       "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
