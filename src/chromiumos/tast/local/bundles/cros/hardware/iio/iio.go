@@ -114,6 +114,31 @@ var readingNames = map[SensorName]string{
 	Mag:   "magn",
 }
 
+// TriggerType defines the trigger supported by chromeos. sysfs trigger, and ring
+// trigger for <= 3.18 kernels.
+type TriggerType string
+
+// Trigger : device that can be used to trigger events.
+type Trigger struct {
+	Type TriggerType
+	Name string
+}
+
+var iioTriggerRegexp = regexp.MustCompile(`^trigger[0-9]+$`)
+
+// Known type of triggers.
+const (
+	SysfsTrigger TriggerType = "sysfs"
+	RingTrigger  TriggerType = "cros-ec-ring-"
+)
+
+var triggerTypes = map[TriggerType]struct{}{
+	SysfsTrigger: {},
+	RingTrigger:  {},
+}
+
+var iioTriggerTypeRegexp = regexp.MustCompile("^(.*)trig.*$")
+
 const iioBasePath = "sys/bus/iio/devices"
 
 var basePath = "/"
@@ -248,6 +273,57 @@ func parseSensor(devName string) (*Sensor, error) {
 	sensor.MaxFrequency = maxFreq
 
 	return &sensor, nil
+}
+
+// GetTriggers enumerates triggers that are exposed by the kernel.
+func GetTriggers() ([]*Trigger, error) {
+	var ret []*Trigger
+
+	fullpath := filepath.Join(basePath, iioBasePath)
+
+	// Some systems will not have any iio devices; this case should not be an error.
+	if _, err := os.Stat(fullpath); os.IsNotExist(err) {
+		return ret, nil
+	}
+
+	files, err := ioutil.ReadDir(fullpath)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, file := range files {
+		trigger, err := parseTrigger(file.Name())
+		if err == nil {
+			ret = append(ret, trigger)
+		}
+	}
+
+	return ret, nil
+}
+
+// parseTrigger reads the sysfs directory at iioBasePath/devName and returns a
+// Trigger if supported..
+func parseTrigger(devName string) (*Trigger, error) {
+	if !iioTriggerRegexp.MatchString(devName) {
+		return nil, errors.New("not a trigger")
+	}
+
+	rawName, err := (&Device{devName}).ReadAttr("name")
+	if err != nil {
+		return nil, errors.Wrap(err, "trigger has no name")
+	}
+
+	rawType := iioTriggerTypeRegexp.FindStringSubmatch(rawName)
+	if rawType == nil {
+		return nil, errors.Errorf("trigger name not understood %s", rawName)
+	}
+
+	trigType := TriggerType(rawType[1])
+	if _, ok := triggerTypes[trigType]; !ok {
+		return nil, errors.Errorf("unknown trigger type %q", trigType)
+	}
+
+	return &Trigger{trigType, rawName}, nil
 }
 
 // Read returns the current readings of the sensor.
