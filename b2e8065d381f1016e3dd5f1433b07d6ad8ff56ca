@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "bee1c265_3b4df877",
+        "filename": "src/chromiumos/tast/local/uhid/device_nodes.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-02T00:09:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66b2aa64_27ea4713",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a5c9949_a3f9e1fb",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
