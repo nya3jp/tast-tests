@@ -1,3 +1,7 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 package iio
 
 import (
@@ -60,6 +64,33 @@ func (s *Sensor) NewBuffer() (*Buffer, error) {
 	_, err := s.ReadAttr("buffer/enable")
 	if err != nil {
 		return nil, errors.Wrap(err, "sensor does not have a buffer")
+	}
+
+	// On 3.18, ring needs a trigger. It is usually set by Android, but it has
+	// to be set if Android never ran.
+	// On 4.4 and after, ring does not need a trigger, current_trigger does not exist.
+	curr, err := s.ReadAttr("trigger/current_trigger")
+	if err != nil && !errors.Is(err, os.ErrNotExist) {
+		return nil, errors.Wrap(err, "current_trigger exists but not readable")
+	}
+	if err == nil && curr == "" {
+		triggers, err := GetTriggers()
+		if err != nil {
+			return nil, errors.Wrap(err, "Unable to list triggers")
+		}
+		found := false
+		for _, t := range triggers {
+			if t.Type == RingTrigger {
+				if err := s.WriteAttr("trigger/current_trigger", t.Name); err != nil {
+					return nil, errors.Wrap(err, "Error updating trigger")
+				}
+				found = true
+				break
+			}
+		}
+		if !found {
+			return nil, errors.New("Unable to set the trigger properly")
+		}
 	}
 
 	// Get all channels
