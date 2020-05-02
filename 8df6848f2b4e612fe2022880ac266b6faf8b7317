@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c832ff5_388a8456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-02T00:12:14Z",
+      "side": 1,
+      "message": "\u003e Would it be straightforward to make each point an orthogonal option, like how is done in the hw/sw point? I think the use of the word \"further\" is a little confusing to me, because it\u0027s not obvious what precisely it allows to chain.\n\u003e \n\u003e `mse` and `alt` may or may not be orthogonal; the separate points imply they are, but the wording for `guest` implies mutexclusivity with them (is that actually the case, or is it just that we haven\u0027t *instantiated* e.g. guest_hw_mse tests)?\n\nHmm thanks for the comments, it\u0027s great to have a fresh set of eyes!\nI rewrote this section to make it more evident that, beside the codec,\nall other suffixes (I change to call them \"identifiers\") are indeed \northogonal and could be piled up, but we don\u0027t necessarily do (it\u0027d be\ngreat if Tast could do such cartesian product for us, but it doesn\u0027t).\nSo there could be e.g. h2264, h264_mse, h264_alt and h264_alt_mse (or\nh264_mse_alt?), we just don\u0027t have all the combinations.",
+      "parentUuid": "3411d9c1_e2520a00",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 56
+      },
+      "revId": "8df6848f2b4e612fe2022880ac266b6faf8b7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "112eedb9_6de8eb49",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
         "patchSetId": 1
@@ -114,6 +138,30 @@
       "revId": "8df6848f2b4e612fe2022880ac266b6faf8b7317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a066c659_03cd7c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-02T00:12:14Z",
+      "side": 1,
+      "message": "Yeah this has been a bit hard to understand in the past, so let me refer to the\nSection with the Capability test and say some more there.",
+      "parentUuid": "67000893_58b5f899",
+      "range": {
+        "startLine": 109,
+        "startChar": 18,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "8df6848f2b4e612fe2022880ac266b6faf8b7317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
