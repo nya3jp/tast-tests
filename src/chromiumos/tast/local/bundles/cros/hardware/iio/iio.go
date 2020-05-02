@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// Device is a object we can read and write attributes from.
+type Device struct {
+	Path string
+}
+
 // SensorName is the kind of sensor which is reported by the EC and exposed by
 // the kernel in /sys/bus/iio/devices/iio:device*/name. The name is in the form
 // cros-ec-*.
@@ -30,12 +35,12 @@ type SensorLocation string
 type Sensor struct {
 	Name          SensorName
 	Location      SensorLocation
-	Path          string
 	ID            uint
 	Scale         float64
 	MinFrequency  int
 	MaxFrequency  int
 	OldSysfsStyle bool
+	Device
 }
 
 // SensorReading is one reading from a sensor.
@@ -279,22 +284,22 @@ func (s *Sensor) Read() (*SensorReading, error) {
 }
 
 // WriteAttr writes value to the sensor's attr file.
-func (s *Sensor) WriteAttr(attr, value string) error {
-	err := ioutil.WriteFile(filepath.Join(basePath, iioBasePath, s.Path, attr),
+func (d *Device) WriteAttr(attr, value string) error {
+	err := ioutil.WriteFile(filepath.Join(basePath, iioBasePath, d.Path, attr),
 		[]byte(value), os.ModePerm)
 
 	if err != nil {
-		return errors.Wrapf(err, "error writing attribute %q of %v", attr, s.Path)
+		return errors.Wrapf(err, "error writing attribute %q of %v", attr, d.Path)
 	}
 
 	return nil
 }
 
 // ReadAttr reads the sensor's attr file and returns the value.
-func (s *Sensor) ReadAttr(attr string) (string, error) {
-	a, err := ioutil.ReadFile(filepath.Join(basePath, iioBasePath, s.Path, attr))
+func (d *Device) ReadAttr(attr string) (string, error) {
+	a, err := ioutil.ReadFile(filepath.Join(basePath, iioBasePath, d.Path, attr))
 	if err != nil {
-		return "", errors.Wrapf(err, "error reading attribute %q of %v", attr, s.Path)
+		return "", errors.Wrapf(err, "error reading attribute %q of %v", attr, d.Path)
 	}
 	return strings.TrimSpace(string(a)), nil
 }
