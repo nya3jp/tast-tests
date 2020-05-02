@@ -57,7 +57,7 @@ func FocusOnFilesApp(ctx context.Context, conn *chrome.Conn, files *filesapp.Fil
 	return isFocus, nil
 }
 
-// LogFilesUnderCurrentFolder logs all files under a folder.
+// LogFilesUnderCurrentFolder gets files under current folder.
 func LogFilesUnderCurrentFolder(ctx context.Context, conn *chrome.Conn) (string, *mtbferrors.MTBFError) {
 	script := fmt.Sprintf(
 		`new Promise((resolve, reject) => {

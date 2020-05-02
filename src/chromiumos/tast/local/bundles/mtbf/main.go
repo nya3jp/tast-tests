@@ -14,6 +14,8 @@ import (
 	_ "chromiumos/tast/local/bundles/mtbf/bluetooth"
 	_ "chromiumos/tast/local/bundles/mtbf/camera"
 	_ "chromiumos/tast/local/bundles/mtbf/cats"
+	_ "chromiumos/tast/local/bundles/mtbf/svcutil"
+	_ "chromiumos/tast/local/bundles/mtbf/ui"
 	_ "chromiumos/tast/local/bundles/mtbf/video"
 	_ "chromiumos/tast/local/bundles/mtbf/wifi"
 )

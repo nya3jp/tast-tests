@@ -14,6 +14,7 @@ import (
 
 	// These packages register their tests via init functions.
 	_ "chromiumos/tast/remote/bundles/mtbf/meta"
+	_ "chromiumos/tast/remote/bundles/mtbf/ui"
 )
 
 func main() {

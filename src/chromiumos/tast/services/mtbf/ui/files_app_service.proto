@@ -1,0 +1,27 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.mtbf.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/ui";
+
+// Files App allows basic remote operations.
+service FilesAppService {
+
+  // GetAllFiles get all files under the folder
+  rpc GetAllFiles (FoldersRequest)
+      returns (FilesResponse) {}
+}
+
+message FoldersRequest {
+  repeated string folders = 1;
+}
+
+message FilesResponse {
+  repeated string files = 1;
+}
