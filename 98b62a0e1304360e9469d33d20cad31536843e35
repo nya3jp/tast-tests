@@ -16,6 +16,24 @@
       "revId": "98b62a0e1304360e9469d33d20cad31536843e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df2e507e_2bddc3ce",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-02T00:50:46Z",
+      "side": 1,
+      "message": "this is for tablet-mode only, but you\u0027re correct. Done both comments and checks.",
+      "parentUuid": "53379c94_f69069b5",
+      "revId": "98b62a0e1304360e9469d33d20cad31536843e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
