@@ -47,6 +47,28 @@ func TestGetSensors(t *testing.T) {
 	}
 }
 
+func TestGetTriggers(t *testing.T) {
+	defer setupTestFiles(t, map[string]string{
+		"trigger0/name": "cros-ec-ring-trigger0",
+		"trigger1/name": "hrtimer0",
+		"trigger2/name": "sysfstrig0",
+	})()
+
+	triggers, err := GetTriggers()
+	if err != nil {
+		t.Fatal("Error getting triggers: ", err)
+	}
+
+	expected := []*Trigger{
+		{RingTrigger, "cros-ec-ring-trigger0"},
+		{SysfsTrigger, "sysfstrig0"},
+	}
+
+	if !reflect.DeepEqual(expected, triggers) {
+		t.Errorf("Expected triggers %v but got %v", expected, triggers)
+	}
+}
+
 func TestNoDeviceDir(t *testing.T) {
 	defer setupTestFiles(t, map[string]string{})()
 
