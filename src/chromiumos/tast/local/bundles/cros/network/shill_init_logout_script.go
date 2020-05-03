@@ -6,7 +6,6 @@ package network
 
 import (
 	"context"
-	"os"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/shillscript"
@@ -16,10 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillInitLogoutScript,
-		Desc:     "Test that shill init logout script perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ShillInitLogoutScript,
+		Desc:         "Test that shill init logout script perform as expected",
+		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -35,18 +35,6 @@ func testLogout(ctx context.Context, env *shillscript.TestEnv) error {
 		return errors.Wrap(err, "failed starting shill")
 	}
 
-	if err := os.MkdirAll(shillscript.ShillUserProfilesDir, 0777); err != nil {
-		return errors.Wrapf(err, "failed creating the directory: %s", shillscript.ShillUserProfilesDir)
-	}
-
-	if err := os.MkdirAll(shillscript.GuestShillUserProfileDir, 0777); err != nil {
-		return errors.Wrapf(err, "failed creating the directory: %s", shillscript.GuestShillUserProfileDir)
-	}
-
-	if err := shillscript.Touch("/run/state/logged-in"); err != nil {
-		return err
-	}
-
 	timeoutCtx, cancel := context.WithTimeout(ctx, shillscript.DbusMonitorTimeout)
 	defer cancel()
 
@@ -55,9 +43,10 @@ func testLogout(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.Logout(ctx); err != nil {
+	// Emulate logout.
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		_, _ = stop()
-		return errors.Wrap(err, "failed logging out")
+		return errors.Wrap(err, "Chrome logout failed")
 	}
 
 	calledMethods, err := stop()
@@ -71,10 +60,6 @@ func testLogout(ctx context.Context, env *shillscript.TestEnv) error {
 	}
 
 	if err := shillscript.AssureNotExists(shillscript.ShillUserProfilesDir); err != nil {
-		return err
-	}
-
-	if err := shillscript.AssureNotExists(shillscript.GuestShillUserProfileDir); err != nil {
 		return err
 	}
 

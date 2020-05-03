@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/shillscript"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -17,10 +18,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillInitScriptsLoginProfileExists,
-		Desc:     "Test that shill init scripts perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ShillInitScriptsLoginProfileExists,
+		Desc:         "Test that shill init scripts perform as expected",
+		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -38,7 +40,12 @@ func testLoginProfileExists(ctx context.Context, env *shillscript.TestEnv) error
 		return errors.Wrap(err, "failed starting shill")
 	}
 
-	if err := os.Mkdir(env.ShillUserProfileDir, 0700); err != nil {
+	cr, err := chrome.New(ctx, chrome.NoLogin())
+	if err != nil {
+		return errors.Wrap(err, "failed to restart the chrome ui")
+	}
+
+	if err := os.MkdirAll(env.ShillUserProfileDir, 0700); err != nil {
 		return errors.Wrapf(err, "failed creating the directory: %s", env.ShillUserProfileDir)
 	}
 
@@ -79,10 +86,11 @@ func testLoginProfileExists(ctx context.Context, env *shillscript.TestEnv) error
 		return err
 	}
 
-	if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
+	if err := cr.LoginUser(ctx); err != nil {
 		_, _ = stop()
-		return errors.Wrap(err, "failed logging in")
+		return errors.Wrap(err, "failed to login by chrome")
 	}
+	defer cr.Close(ctx)
 
 	calledMethods, err := stop()
 	if err != nil {
