@@ -10,16 +10,18 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/shillscript"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillInitScriptsLoginMultiProfile,
-		Desc:     "Test that shill init login script perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ShillInitScriptsLoginMultiProfile,
+		Desc:         "Test that shill init login script perform as expected",
+		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -39,9 +41,11 @@ func testLoginMultiProfile(ctx context.Context, env *shillscript.TestEnv) error 
 	}
 
 	// First logged-in user should create a profile (tested above).
-	if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
-		return errors.Wrap(err, "failed logging in")
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
 	}
+	cr.Close(ctx)
 
 	for i := 0; i < 5; i++ {
 		timeoutCtx, cancel := context.WithTimeout(ctx, shillscript.DbusMonitorTimeout)
@@ -52,9 +56,9 @@ func testLoginMultiProfile(ctx context.Context, env *shillscript.TestEnv) error 
 			return err
 		}
 
-		if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
-			_, _ = stop()
-			return errors.Wrap(err, "failed logging in")
+		if err := login(ctx, shillscript.FakeUser); err != nil {
+			stop()
+			return errors.Wrap(err, "Chrome failed to log in")
 		}
 
 		calledMethods, err := stop()
@@ -88,5 +92,14 @@ func testLoginMultiProfile(ctx context.Context, env *shillscript.TestEnv) error 
 		return errors.Wrapf(err, "found unexpected number of profiles in the profile stack: got %d, want 2", len(profiles))
 	}
 
+	return nil
+}
+
+// login simulates the login process.
+func login(ctx context.Context, user string) error {
+	chromeUser := "CHROMEOS_USER=" + user
+	if err := upstart.StartJob(ctx, "shill-start-user-session", chromeUser); err != nil {
+		return err
+	}
 	return nil
 }
