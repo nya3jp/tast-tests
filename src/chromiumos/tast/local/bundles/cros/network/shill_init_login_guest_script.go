@@ -9,16 +9,18 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/shillscript"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillInitLoginGuestScript,
-		Desc:     "Test that shill init login guest script perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ShillInitLoginGuestScript,
+		Desc:         "Test that shill init login guest script perform as expected",
+		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -32,11 +34,15 @@ func ShillInitLoginGuestScript(ctx context.Context, s *testing.State) {
 // Login should create a temporary profile directory in /run,
 // instead of using one within the root directory for normal users.
 func testLoginGuest(ctx context.Context, env *shillscript.TestEnv) error {
-	// Simulate guest login.
-	// For guest login, session-manager passes an empty CHROMEOS_USER arg.
 	if err := upstart.StartJob(ctx, "shill"); err != nil {
 		return errors.Wrap(err, "failed starting shill")
 	}
+
+	cr, err := chrome.New(ctx, chrome.DeferLogin(), chrome.GuestLogin())
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
+	}
+	defer cr.Close(ctx)
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, shillscript.DbusMonitorTimeout)
 	defer cancel()
@@ -46,9 +52,9 @@ func testLoginGuest(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.Login(ctx, shillscript.GuestUser); err != nil {
-		_, _ = stop()
-		return errors.Wrap(err, "failed logging in")
+	if err := cr.ContinueLogin(ctx); err != nil {
+		stop()
+		return errors.Wrap(err, "Chrome failed to log in")
 	}
 
 	calledMethods, err := stop()

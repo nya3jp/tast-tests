@@ -9,16 +9,18 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/shillscript"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillInitLoginScript,
-		Desc:     "Test that shill init login script perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ShillInitLoginScript,
+		Desc:         "Test that shill init login script perform as expected",
+		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -36,6 +38,12 @@ func testLogin(ctx context.Context, env *shillscript.TestEnv) error {
 		return errors.Wrap(err, "failed starting shill")
 	}
 
+	cr, err := chrome.New(ctx, chrome.DeferLogin())
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
+	}
+	defer cr.Close(ctx)
+
 	timeoutCtx, cancel := context.WithTimeout(ctx, shillscript.DbusMonitorTimeout)
 	defer cancel()
 
@@ -44,9 +52,9 @@ func testLogin(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
-		_, _ = stop()
-		return errors.Wrap(err, "failed logging in")
+	if err := cr.ContinueLogin(ctx); err != nil {
+		stop()
+		return errors.Wrap(err, "Chrome failed to log in")
 	}
 
 	calledMethods, err := stop()

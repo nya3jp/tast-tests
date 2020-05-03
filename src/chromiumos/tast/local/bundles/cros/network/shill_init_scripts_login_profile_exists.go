@@ -6,21 +6,21 @@ package network
 
 import (
 	"context"
-	"os"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/shillscript"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillInitScriptsLoginProfileExists,
-		Desc:     "Test that shill init scripts perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ShillInitScriptsLoginProfileExists,
+		Desc:         "Test that shill init scripts perform as expected",
+		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -38,38 +38,17 @@ func testLoginProfileExists(ctx context.Context, env *shillscript.TestEnv) error
 		return errors.Wrap(err, "failed starting shill")
 	}
 
-	if err := os.Mkdir(env.ShillUserProfileDir, 0700); err != nil {
-		return errors.Wrapf(err, "failed creating the directory: %s", env.ShillUserProfileDir)
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		return errors.Wrap(err, "Chrome failed to log in")
 	}
+	cr.Close(ctx)
 
-	if err := testexec.CommandContext(ctx, "chown", "shill:shill", env.ShillUserProfileDir).Run(); err != nil {
-		return errors.Wrapf(err, "failed changing the owner of the directory %s to shill", shillscript.ShillUserProfilesDir)
+	cr2, err := chrome.New(ctx, chrome.DeferLogin(), chrome.KeepState())
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome")
 	}
-
-	if err := os.Mkdir(shillscript.ShillUserProfilesDir, 0700); err != nil {
-		return errors.Wrapf(err, "failed creating the directory: %s", shillscript.ShillUserProfilesDir)
-	}
-
-	if err := testexec.CommandContext(ctx, "chown", "shill:shill", shillscript.ShillUserProfilesDir).Run(); err != nil {
-		return errors.Wrapf(err, "failed changing the owner of the directory %s to shill", shillscript.ShillUserProfilesDir)
-	}
-
-	if err := os.Symlink(env.ShillUserProfileDir, shillscript.ShillUserProfileChronosDir); err != nil {
-		return errors.Wrapf(err, "failed to symlink %s to %s", env.ShillUserProfileDir, shillscript.ShillUserProfileChronosDir)
-	}
-
-	if err := shillscript.CreateProfile(ctx, shillscript.ChronosProfileName); err != nil {
-		return err
-	}
-
-	// When CreateProfile(), it also creates a symlink for chronos@
-	// (shillscript.ShillUserProfileChronosDir). When the symlink presents,
-	// it means there is an active network profile. Because shill shouldn't
-	// load multiple network profiles, shill skips login script if the symlink
-	// exists. We have to remove the symlink to mimic a wait-for-login scenario.
-	if err := os.RemoveAll(shillscript.ShillUserProfileChronosDir); err != nil {
-		return errors.Wrapf(err, "failed removing %s", shillscript.ShillUserProfileChronosDir)
-	}
+	defer cr2.Close(ctx)
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, shillscript.DbusMonitorTimeout)
 	defer cancel()
@@ -79,9 +58,9 @@ func testLoginProfileExists(ctx context.Context, env *shillscript.TestEnv) error
 		return err
 	}
 
-	if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
-		_, _ = stop()
-		return errors.Wrap(err, "failed logging in")
+	if err := cr2.ContinueLogin(ctx); err != nil {
+		stop()
+		return errors.Wrap(err, "Chrome failed to log in")
 	}
 
 	calledMethods, err := stop()
