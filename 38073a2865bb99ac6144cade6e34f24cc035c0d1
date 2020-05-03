@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d40ae5c2_ce76f2b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:51:23Z",
+      "side": 1,
+      "message": "This utility is designed to enumerate all keys that should be tested, so if a key is created by this utility, the test should test that he key works as expected.",
+      "parentUuid": "362d3a24_1212f711",
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bb38d57_088567c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7763ed45_abd4a09f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bb38d57_088567c8",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b6c1b3e_ce15c05d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743a7c78_1ac3cc4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6c1b3e_ce15c05d",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +177,54 @@
     },
     {
       "key": {
+        "uuid": "ecfd3751_7787dc80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:51:23Z",
+      "side": 1,
+      "message": "It is a temporary directory that should be created in /tmp. However, currently the tests create it themselves then pass the path in.\n\nIf it\u0027s better to create/prepare the scratchpad in this utility then I\u0027ll create another CL for that.",
+      "parentUuid": "1cd9c10f_bddb5f80",
+      "range": {
+        "startLine": 68,
+        "startChar": 139,
+        "endLine": 68,
+        "endChar": 153
+      },
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb1baef5_21e7b032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c6da1d0_8f442fa8",
+      "range": {
+        "startLine": 68,
+        "startChar": 139,
+        "endLine": 68,
+        "endChar": 153
+      },
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f84b2a18_91f0d5be",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 1
@@ -125,6 +239,24 @@
       "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8873c639_d7daa3f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f84b2a18_91f0d5be",
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
