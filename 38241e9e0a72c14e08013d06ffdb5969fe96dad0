@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8ba5e08_0df1289c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-03T02:02:53Z",
+      "side": 1,
+      "message": "@google.com probably prefered",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "38241e9e0a72c14e08013d06ffdb5969fe96dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8778c7c2_f82ec274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-03T02:02:53Z",
+      "side": 1,
+      "message": "A bit more background about why this is important may be nice here.",
+      "revId": "38241e9e0a72c14e08013d06ffdb5969fe96dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9499dc6_8884d77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-03T02:02:53Z",
+      "side": 1,
+      "message": "Does this only capture the current boot?",
+      "revId": "38241e9e0a72c14e08013d06ffdb5969fe96dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7af42d0_a544115b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-03T02:02:53Z",
+      "side": 1,
+      "message": "I\u0027m also a bit worried about us changing our mind about which logging infrastructure we use in the future (and journalctl not working...)",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "38241e9e0a72c14e08013d06ffdb5969fe96dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e9f80ac_dbae2626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-03T02:02:53Z",
+      "side": 1,
+      "message": "You don\u0027t need the else. s.Fatal aborts the test. (I think)",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "38241e9e0a72c14e08013d06ffdb5969fe96dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
