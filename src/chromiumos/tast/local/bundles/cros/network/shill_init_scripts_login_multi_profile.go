@@ -10,16 +10,18 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/shillscript"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ShillInitScriptsLoginMultiProfile,
-		Desc:     "Test that shill init login script perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         ShillInitScriptsLoginMultiProfile,
+		Desc:         "Test that shill init login script perform as expected",
+		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
@@ -39,9 +41,11 @@ func testLoginMultiProfile(ctx context.Context, env *shillscript.TestEnv) error 
 	}
 
 	// First logged-in user should create a profile (tested above).
-	if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
-		return errors.Wrap(err, "failed logging in")
+	cr, err := chrome.New(ctx, chrome.KeepState())
+	if err != nil {
+		return errors.Wrap(err, "failed to starting chrome ui")
 	}
+	cr.Close(ctx)
 
 	for i := 0; i < 5; i++ {
 		timeoutCtx, cancel := context.WithTimeout(ctx, shillscript.DbusMonitorTimeout)
@@ -54,7 +58,7 @@ func testLoginMultiProfile(ctx context.Context, env *shillscript.TestEnv) error 
 
 		if err := shillscript.Login(ctx, shillscript.FakeUser); err != nil {
 			_, _ = stop()
-			return errors.Wrap(err, "failed logging in")
+			return errors.Wrap(err, "failed to login by chrome")
 		}
 
 		calledMethods, err := stop()
