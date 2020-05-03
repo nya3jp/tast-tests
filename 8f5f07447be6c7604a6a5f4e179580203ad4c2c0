@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8da73cd7_56266cc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:52:17Z",
+      "side": 1,
+      "message": "The test doesn\u0027t Mount/Unmount previously. However, to test a user token, a mount/unmount is required. Documentation is added on this.",
+      "parentUuid": "010269aa_dc05780c",
+      "revId": "8f5f07447be6c7604a6a5f4e179580203ad4c2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d394ee53_b4f9ee80",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "8f5f07447be6c7604a6a5f4e179580203ad4c2c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc6efe80_193cecdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-03T21:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d394ee53_b4f9ee80",
+      "revId": "8f5f07447be6c7604a6a5f4e179580203ad4c2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
