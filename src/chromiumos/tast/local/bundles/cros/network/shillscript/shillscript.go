@@ -18,6 +18,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/network"
@@ -26,18 +27,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// FakeUser is used by the login function.
+// The FakeUser/GuestUser are used to simulate a regular/guest user login.
 const (
-	FakeUser                   = "not-a-real-user@chromium.org"
+	FakeUser                   = chrome.DefaultUser
 	GuestUser                  = cryptohome.GuestUser
 	CryptohomePathCommand      = "/usr/sbin/cryptohome-path"
 	DaemonStoreBase            = "/run/daemon-store/shill"
 	ShillUserProfilesDir       = "/run/shill/user_profiles"
 	ShillUserProfileChronosDir = "/run/shill/user_profiles/chronos"
-	GuestShillUserProfileDir   = "/run/shill/guest_user_profile/shill"
 	ChronosProfileName         = "~chronos/shill"
 	ExpectedProfileName        = "/profile/chronos/shill"
-	DbusMonitorTimeout         = 5 * time.Second
+	DbusMonitorTimeout         = 30 * time.Second
 	CreateUserProfile          = "CreateProfile"
 	InsertUserProfile          = "InsertUserProfile"
 	PopAllUserProfiles         = "PopAllUserProfiles"
@@ -46,9 +46,11 @@ const (
 
 // TestEnv struct has the variables that are used by the functions below.
 type TestEnv struct {
-	ShillUserProfileDir string
-	ShillUserProfile    string
-	CreatedDirectories  []string
+	ShillUserProfileDir  string
+	ShillUserProfile     string
+	ShillGuestProfileDir string
+	ShillGuestProfile    string
+	CreatedDirectories   []string
 }
 
 // testFuncType takes a context.Context, TestEnv struct, and return an error.
@@ -99,19 +101,27 @@ func setUp(ctx context.Context, env *TestEnv, isGuest bool) error {
 		return errors.Wrapf(err, "failed getting the user hash for the %s user", userType)
 	}
 
+	guestHash, err := cryptohome.UserHash(ctx, GuestUser)
+	if err != nil {
+		return errors.Wrap(err, "failed getting the user hash for the guest user")
+	}
+
 	env.ShillUserProfileDir = filepath.Join(DaemonStoreBase, userHash)
+	env.ShillGuestProfileDir = filepath.Join(DaemonStoreBase, guestHash)
 
 	// 'shill_logout_user' cannot delete the user profile, otherwise users would lose
 	// all their networks. However, some tests assert that the profile is created (not just pushed),
 	// so in order to allow those tests to pass more than once per boot, remove the user profile
 	// directory.
 	env.CreatedDirectories = append(env.CreatedDirectories, env.ShillUserProfileDir)
+	env.CreatedDirectories = append(env.CreatedDirectories, env.ShillGuestProfileDir)
 
 	if err := eraseState(ctx, env); err != nil {
 		testing.ContextLog(ctx, errors.Wrap(err, "failed erasing the system state"))
 	}
 
 	env.ShillUserProfile = filepath.Join(env.ShillUserProfileDir, "shill.profile")
+	env.ShillGuestProfile = filepath.Join(env.ShillGuestProfileDir, "shill.profile")
 
 	return nil
 }
@@ -267,14 +277,6 @@ func Login(ctx context.Context, user string) error {
 	return nil
 }
 
-// Logout simulates the logout process.
-func Logout(ctx context.Context) error {
-	if err := upstart.StartJob(ctx, "shill-stop-user-session"); err != nil {
-		return err
-	}
-	return nil
-}
-
 // CreateShillUserProfile creates a fake user profile with contents.
 func CreateShillUserProfile(contents string, env *TestEnv) error {
 	if err := os.Mkdir(env.ShillUserProfileDir, os.ModePerm); err != nil {
@@ -310,8 +312,8 @@ func CreateProfile(ctx context.Context, profileName string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed creating shill manager object")
 	}
-	if _, err := manager.CreateProfile(ctx, ChronosProfileName); err != nil {
-		return errors.Wrapf(err, "failed creating profile: %v", ChronosProfileName)
+	if _, err := manager.CreateProfile(ctx, profileName); err != nil {
+		return errors.Wrapf(err, "failed creating profile: %v", profileName)
 	}
 	return nil
 }
