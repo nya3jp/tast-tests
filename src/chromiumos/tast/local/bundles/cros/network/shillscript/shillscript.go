@@ -18,6 +18,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/network"
@@ -26,18 +27,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// FakeUser is used by the login function.
+// The FakeUser/GuestUser are used to simulate a regular/guest user login.
 const (
-	FakeUser                   = "not-a-real-user@chromium.org"
+	FakeUser                   = chrome.DefaultUser
 	GuestUser                  = cryptohome.GuestUser
 	CryptohomePathCommand      = "/usr/sbin/cryptohome-path"
 	DaemonStoreBase            = "/run/daemon-store/shill"
 	ShillUserProfilesDir       = "/run/shill/user_profiles"
 	ShillUserProfileChronosDir = "/run/shill/user_profiles/chronos"
-	GuestShillUserProfileDir   = "/run/shill/guest_user_profile/shill"
 	ChronosProfileName         = "~chronos/shill"
 	ExpectedProfileName        = "/profile/chronos/shill"
-	DbusMonitorTimeout         = 5 * time.Second
+	DbusMonitorTimeout         = 30 * time.Second
 	CreateUserProfile          = "CreateProfile"
 	InsertUserProfile          = "InsertUserProfile"
 	PopAllUserProfiles         = "PopAllUserProfiles"
@@ -258,23 +258,6 @@ func eraseState(ctx context.Context, env *TestEnv) error {
 	return nil
 }
 
-// Login simulates the login process.
-func Login(ctx context.Context, user string) error {
-	chromeUser := "CHROMEOS_USER=" + user
-	if err := upstart.StartJob(ctx, "shill-start-user-session", chromeUser); err != nil {
-		return err
-	}
-	return nil
-}
-
-// Logout simulates the logout process.
-func Logout(ctx context.Context) error {
-	if err := upstart.StartJob(ctx, "shill-stop-user-session"); err != nil {
-		return err
-	}
-	return nil
-}
-
 // CreateShillUserProfile creates a fake user profile with contents.
 func CreateShillUserProfile(contents string, env *TestEnv) error {
 	if err := os.Mkdir(env.ShillUserProfileDir, os.ModePerm); err != nil {
@@ -310,8 +293,8 @@ func CreateProfile(ctx context.Context, profileName string) error {
 	if err != nil {
 		return errors.Wrap(err, "failed creating shill manager object")
 	}
-	if _, err := manager.CreateProfile(ctx, ChronosProfileName); err != nil {
-		return errors.Wrapf(err, "failed creating profile: %v", ChronosProfileName)
+	if _, err := manager.CreateProfile(ctx, profileName); err != nil {
+		return errors.Wrapf(err, "failed creating profile: %v", profileName)
 	}
 	return nil
 }
