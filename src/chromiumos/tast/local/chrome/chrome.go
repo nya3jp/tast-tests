@@ -1106,6 +1106,63 @@ func (c *Chrome) enterpriseOOBELogin(ctx context.Context) error {
 	return nil
 }
 
+// LoginUser logs in as a fake user to a Chrome instance.
+// It waits for the login process to complete before returning.
+func (c *Chrome) LoginUser(ctx context.Context) error {
+	c.loginMode = fakeLogin
+	c.normalizedUser = c.user
+	// Perform an early high-level check of cryptohomed to avoid
+	// less-descriptive errors later if it's broken.
+	if err := cryptohome.CheckService(ctx); err != nil {
+		// Log problems in cryptohomed's dependencies.
+		for _, e := range cryptohome.CheckDeps(ctx) {
+			testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
+		}
+		return err
+	}
+
+	if !c.keepState {
+		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
+			return err
+		}
+	}
+
+	if err := c.logIn(ctx); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// LoginGuest logs in as a guest user to a Chrome instance.
+// It waits for the login process to complete before returning.
+func (c *Chrome) LoginGuest(ctx context.Context) error {
+	c.loginMode = guestLogin
+	c.user = cryptohome.GuestUser
+	c.normalizedUser = c.user
+	// Perform an early high-level check of cryptohomed to avoid
+	// less-descriptive errors later if it's broken.
+	if err := cryptohome.CheckService(ctx); err != nil {
+		// Log problems in cryptohomed's dependencies.
+		for _, e := range cryptohome.CheckDeps(ctx) {
+			testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
+		}
+		return err
+	}
+
+	if !c.keepState {
+		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
+			return err
+		}
+	}
+
+	if err := c.logInAsGuest(ctx); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // logIn logs in to a freshly-restarted Chrome instance.
 // It waits for the login process to complete before returning.
 func (c *Chrome) logIn(ctx context.Context) error {
