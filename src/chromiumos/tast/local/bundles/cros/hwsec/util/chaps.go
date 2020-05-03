@@ -91,13 +91,53 @@ func createKeysForTestingForUser(ctx context.Context, username string, pkcs11Uti
 
 // CreateKeysForTesting creates the set of keys that we want to cover in our tests.
 // scratchpadPath is a temporary location allocated by the test to place materials related to the keys.
+// Note that a user may be created and its vault mounted in this method.
 func CreateKeysForTesting(ctx context.Context, r hwsec.CmdRunner, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary, scratchpadPath string) (keys []*pkcs11.KeyInfo, retErr error) {
+	// Mount the vault of the user, so that we can test user keys as well.
+	if err := cryptohomeUtil.MountVault(ctx, FirstUsername, FirstPassword, PasswordLabel, true); err != nil {
+		return keys, errors.Wrap(err, "failed to mount vault")
+	}
+	defer func() {
+		// If this method failed, we'll need to cleanup the vault.
+		if retErr != nil {
+			if _, err := cryptohomeUtil.Unmount(ctx, FirstUsername); err != nil {
+				testing.ContextLog(ctx, "Failed to unmount when CreateKeysForTesting failed: ", err)
+			}
+			if _, err := cryptohomeUtil.RemoveVault(ctx, FirstUsername); err != nil {
+				testing.ContextLog(ctx, "Failed to remove vault when CreateKeysForTesting failed: ", err)
+			}
+		}
+	}()
+
+	// Cleanup the keys if it failed halfway.
+	defer func() {
+		if retErr != nil {
+			for _, k := range keys {
+				if err := pkcs11Util.DestroyKey(ctx, k); err != nil {
+					testing.ContextLogf(ctx, "Failed to destroy key %s during cleanup when CreateKeysForTesting failed: %q", pkcs11Util.DumpKeyInfo(k), err)
+				}
+			}
+			keys = nil
+		}
+	}()
+
+	// Create the keys for the user.
+	userScratchpadPath := path.Join(scratchpadPath, "user")
+	if err := os.MkdirAll(userScratchpadPath, 0755); err != nil {
+		return keys, errors.Wrap(err, "failed to create scratchpad for user keys")
+	}
+	retKeys, err := createKeysForTestingForUser(ctx, FirstUsername, pkcs11Util, userScratchpadPath)
+	if err != nil {
+		return keys, errors.Wrap(err, "failed to create user key")
+	}
+	keys = append(keys, retKeys...)
+
 	// Create the system keys.
 	systemScratchpadPath := path.Join(scratchpadPath, "system")
 	if err := os.MkdirAll(systemScratchpadPath, 0755); err != nil {
 		return keys, errors.Wrap(err, "failed to create scratchpad for system keys")
 	}
-	retKeys, err := createKeysForTestingForUser(ctx, "", pkcs11Util, scratchpadPath)
+	retKeys, err = createKeysForTestingForUser(ctx, "", pkcs11Util, scratchpadPath)
 	if err != nil {
 		return keys, errors.Wrap(err, "failed to create system key")
 	}
@@ -117,6 +157,15 @@ func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util 
 		}
 	}
 
+	if _, err := cryptohomeUtil.Unmount(ctx, FirstUsername); err != nil {
+		testing.ContextLog(ctx, "Failed to unmount in CleanupTestingKeys: ", err)
+		retErr = errors.Wrap(err, "failed to unmount in CleanupTestingKeys")
+	}
+	if _, err := cryptohomeUtil.RemoveVault(ctx, FirstUsername); err != nil {
+		testing.ContextLog(ctx, "Failed to remove vault in CleanupTestingKeys: ", err)
+		retErr = errors.Wrap(err, "failed to remove vault in CleanupTestingKeys")
+	}
+
 	return retErr
 }
 
@@ -124,6 +173,14 @@ func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util 
 // Note that this doesn't return anything because there's no guarantee if there's anything to remove/cleanup before the test runs.
 // Usually this is called at the start of the test.
 func CleanupKeysBeforeTest(ctx context.Context, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) {
+	// We simply remove the user vault to ensure user token is clean.
+	if _, err := cryptohomeUtil.Unmount(ctx, FirstUsername); err != nil {
+		testing.ContextLog(ctx, "Failed to unmount in CleanupKeysBeforeTest: ", err)
+	}
+	if _, err := cryptohomeUtil.RemoveVault(ctx, FirstUsername); err != nil {
+		testing.ContextLog(ctx, "Failed to remove vault in CleanupKeysBeforeTest: ", err)
+	}
+
 	// For system token, we'll remove them one by one.
 	noncopiedKeyIDs, copiedKeyIDs := allKeyIDs()
 	keyIDs := append(noncopiedKeyIDs, copiedKeyIDs...)
