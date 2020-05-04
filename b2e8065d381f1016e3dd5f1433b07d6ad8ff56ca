@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "d7ea7303_34f17a39",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-04T22:43:11Z",
+      "side": 1,
+      "message": "We discussed this offline and we came to the solution of returning both a status code and an error to signal that no event was read without returning an error.\n\nI still have doubts about how I handled the status codes on the Dispatch method so feel free to give me more feedback on that.",
+      "parentUuid": "f2d64146_3c8796e4",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61831432_f54c5917",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
@@ -334,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "4e6744a0_e1261bef",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-04T22:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbd2edc3_b9135e07",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49de57a1_b6869294",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
@@ -405,6 +453,30 @@
     },
     {
       "key": {
+        "uuid": "8b7aff78_7aa31dd3",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-04T22:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac28b62c_c17b9593",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 5
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3785c6e_8c3d5d9e",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
@@ -452,6 +524,30 @@
     },
     {
       "key": {
+        "uuid": "e3a5be17_b6c15e39",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-04T22:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aed3453_4099197d",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 5
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd4eb8bb_2525d74e",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 30
@@ -472,6 +568,30 @@
       "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b436c4_6b98a368",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-04T22:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd4eb8bb_2525d74e",
+      "range": {
+        "startLine": 174,
+        "startChar": 15,
+        "endLine": 174,
+        "endChar": 38
+      },
+      "revId": "b2e8065d381f1016e3dd5f1433b07d6ad8ff56ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
