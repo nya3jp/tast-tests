@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e9032ff_fc98eca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1383204
+      },
+      "writtenOn": "2020-05-04T02:17:17Z",
+      "side": 1,
+      "message": "\u003e \"Verfy\" is a possible misspelling of \"Verify\".\n\nPlease fix.",
+      "parentUuid": "fae07707_9e79c3a8",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
