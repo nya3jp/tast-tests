@@ -117,6 +117,30 @@
       "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b466fba0_e331e397",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-04T19:29:17Z",
+      "side": 1,
+      "message": "\u003e I\u0027m going to apply the approach Brendan proposed. Any concerns?\n\nMy vote is: *shrug*\n(I guess that qualifies as \"no concern\"?)",
+      "parentUuid": "ba305d82_812b986e",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 140
+      },
+      "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
