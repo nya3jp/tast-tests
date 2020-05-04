@@ -91,6 +91,30 @@
       "revId": "9e6988bfa50883831d2a963f6b8b5d44b744646e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "747720ac_da500061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps_80211ac.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-04T16:17:08Z",
+      "side": 1,
+      "message": "I copied the log from existing wifi_caps.go and router.go.\nHow about: \"Expect at least one wireless phy; found nothing\"?\nAlso update error log in wifi_caps.go and router.go.",
+      "parentUuid": "08011f6c_73ced162",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 38
+      },
+      "revId": "9e6988bfa50883831d2a963f6b8b5d44b744646e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
