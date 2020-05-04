@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49a09c49_adf6d19c",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-04T18:38:54Z",
+      "side": 1,
+      "message": "technically, the current function doesn\u0027t really care if it finds no wiphy -- the for loop below will just have no work to do.\n\nBut in spirit, the calling functions probably *do* care; we really can\u0027t do anything with this Router if it\u0027s in such a bad state that it has no wiphy at all.\n\nMaybe that means this is the right check, but in the wrong place?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "bb05ddbfc6856d67b5c7ac45cbe9424ed44d62b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
