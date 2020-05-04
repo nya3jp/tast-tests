@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d83c95a7_7afd6f5b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T22:14:35Z",
+      "side": 1,
+      "message": "I\u0027m mostly worried that people will assume the timeout they pass into this function is a timeout for the whole function, when it could potentially be quite a bit longer than that. If you\u0027re not worried about that, then that seems OK, but we should probably leave a comment to that effect.\n\nSince these all take contexts already they could set up inner contexts using something like\n\n innerCtx :\u003d context.WithTimeout(ctx, timeout)\n // pass innerCtx to search/FindWithTimeout/DescendantWithTimeout etc.\n\nand then innerCtx can time out and cancel the operation if it takes too long, perhaps.",
+      "parentUuid": "0ac433d1_3d3e0011",
+      "range": {
+        "startLine": 80,
+        "startChar": 86,
+        "endLine": 80,
+        "endChar": 107
+      },
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fff61d4_d50de3bb",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 3
