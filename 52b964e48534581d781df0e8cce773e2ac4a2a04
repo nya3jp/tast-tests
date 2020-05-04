@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b4551b03_72bf6758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T04:24:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5ae6eed_723374a7",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd0d9f5b_c61d42f5",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 1
@@ -292,6 +316,24 @@
       "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33d9d55_66e4cf0a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T04:24:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "106ad7e9_06547b4d",
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
