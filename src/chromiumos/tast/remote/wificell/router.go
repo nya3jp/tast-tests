@@ -89,6 +89,9 @@ func (r *Router) setupWifiPhys(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to list phys")
 	}
+	if len(wiphys) == 0 {
+		return errors.New("ListPhys returned no device")
+	}
 	// isWhirlwindAuxPhy returns true if p is Whirlwind's 1x1 auxiliary radio.
 	isWhirlwindAuxPhy := func(p *iw.Phy) bool {
 		return r.board == "whirlwind" && (p.RxAntenna < 2 || p.TxAntenna < 2)

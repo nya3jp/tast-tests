@@ -29,6 +29,9 @@ func WifiCaps80211ac(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("ListPhys failed: ", err)
 	}
+	if len(res) == 0 {
+		s.Fatal("ListPhys returned no device")
+	}
 	if !res[0].SupportVHT {
 		s.Error("Device doesn't support VHT")
 	}
