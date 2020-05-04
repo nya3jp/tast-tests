@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8267fa42_84cebd6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T03:35:49Z",
+      "side": 1,
+      "message": "maybe start the commit message with \"canvas:\"\n\nSee other commits to the tast-tests repository, eg https://chromium.googlesource.com/chromiumos/platform/tast-tests/+log/7ce64a041e67b86a4d4b5241c1dbd78af3563132..771f90fdc7b37235c2b2529298850ec5dc7644a5?n\u003d10000",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e9032ff_fc98eca6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
         "patchSetId": 1
@@ -20,6 +43,126 @@
         "endLine": 34,
         "endChar": 21
       },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d419a7_6d8f726d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T03:35:49Z",
+      "side": 1,
+      "message": "Can you use the chrome.loggedin precondition instead?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#preconditions",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd0d9f5b_c61d42f5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T03:35:49Z",
+      "side": 1,
+      "message": "Either document that the launcher should already be open, or call OpenLauncher from here.",
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa61629_1e8aa230",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T03:35:49Z",
+      "side": 1,
+      "message": "Does this need to be public?  You are not using it from the other module.",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39328ab2_81cf305f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T03:35:49Z",
+      "side": 1,
+      "message": "Either document that the launcher should be open or make sure it is opened as part of this call flow.",
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a235ba16_5a0c08f0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T03:35:49Z",
+      "side": 1,
+      "message": "I feel like the AndAssert is not needed here, there is no \"assert\" statement and assert is not common in Go anyway.  I think if I asked it to search for an app and it returned an error because the app doesn\u0027t exist that is reasonable and doesn\u0027t need to be in the name.",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e25194_36abf26c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T03:35:49Z",
+      "side": 1,
+      "message": "(out of interest)\n1. Why did you change from the enter to the ui search?\n2. Why do you need a 2 step search for the app node?  can you not just do a ui.Find directly?",
       "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
