@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89ee326c_54244d33",
+        "filename": "tools/repeat-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-04T17:26:26Z",
+      "side": 1,
+      "message": "Can you name the file repeat-test.sh so that dev knows it is a shell script at first glance?",
+      "revId": "61b0808bf255fdf5d1cfecaeb2b98eda6681e2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
