@@ -45,6 +45,30 @@
       "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e0c132_1dc22da4",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-04T05:00:49Z",
+      "side": 1,
+      "message": "Just add a side note:\nI see some related usage of ip command in router setup in Autotest, e.g. clone_mac_address or ensure_unique_mac (but not yet used in Tast port). So we might still want ip runner package in the future, I guess.\n\nBut for the usage here (i.e. on DUT), I think both are OK to me.\n\nSo... if you\u0027re moving to gRPC, maybe you can still keep it in another cl and see if anyone needs it? (e.g. I\u0027m looking at FrameSender recently, and might need it to ensure the monitor interface has same MAC as the one of hostapd)",
+      "parentUuid": "3fbc49d0_f9ce0367",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
