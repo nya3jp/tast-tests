@@ -64,40 +64,65 @@ type motionEvent struct {
 }
 
 const (
-	motionInputTestAPK = "ArcMotionInputTest.apk"
-	motionInputTestPKG = "org.chromium.arc.testapp.motioninput"
-	motionInputTestCLS = ".MainActivity"
+	motionInputTestAPK               = "ArcMotionInputTest.apk"
+	motionInputTestPKG               = "org.chromium.arc.testapp.motioninput"
+	motionInputTestCLS               = ".MainActivity"
+	motionInputTestActionClearEvents = motionInputTestPKG + ".ACTION_CLEAR_EVENTS"
 )
 
-// readMotionEvent unmarshalls the JSON string in the TextView representing a MotionEvent
-// received by ArcMotionInputTest.apk, and returns it as a motionEvent.
-func readMotionEvent(ctx context.Context, d *ui.Device) (*motionEvent, error) {
+// readMotionEvents unmarshalls the JSON string in the TextView representing the MotionEvents
+// received by ArcMotionInputTest.apk, and returns it as a slice of motionEvent.
+func readMotionEvents(ctx context.Context, d *ui.Device) ([]motionEvent, error) {
 	view := d.Object(ui.ID(motionInputTestPKG + ":id/motion_event"))
 	text, err := view.GetText(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	var event motionEvent
-	if err := json.Unmarshal([]byte(text), &event); err != nil {
+	var events []motionEvent
+	if err := json.Unmarshal([]byte(text), &events); err != nil {
 		return nil, err
 	}
-	return &event, nil
+	return events, nil
 }
 
 // motionEventMatcher represents a matcher for motionEvent.
 type motionEventMatcher func(*motionEvent) error
 
-// expectMotionEvent polls readMotionEvent repeatedly until it receives a motionEvent that
-// successfully matches the provided motionEventMatcher, or until it times out.
-func expectMotionEvent(ctx context.Context, d *ui.Device, match motionEventMatcher) error {
+// expectMotionEvents polls readMotionEvents repeatedly until it receives motionEvents that
+// successfully match all of the provided motionEventMatchers in order, or until it times out.
+func expectMotionEvents(ctx context.Context, d *ui.Device, matchers ...motionEventMatcher) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		event, err := readMotionEvent(ctx, d)
+		events, err := readMotionEvents(ctx, d)
 		if err != nil {
-			return err
+			return testing.PollBreak(errors.Wrap(err, "failed to read motion event"))
 		}
-		return match(event)
+
+		if len(events) != len(matchers) {
+			return errors.Errorf("did not receive the exact number of events as expected; got: %d, want: %d", len(events), len(matchers))
+		}
+
+		for i := 0; i < len(matchers); i++ {
+			if err := matchers[i](&events[i]); err != nil {
+				return err
+			}
+		}
+		return nil
 	}, nil)
+}
+
+// clearMotionEvents tells the test application to clear the events that it is currently reporting,
+// and verifies that no events are reported. This is done by sending an intent with the appropriate
+// action to Android, which is subsequently picked up by the MotionInputTest application and handled
+// appropriately.
+func clearMotionEvents(ctx context.Context, a *arc.ARC, d *ui.Device) error {
+	if err := a.SendIntentCommand(ctx, motionInputTestActionClearEvents, "").Run(); err != nil {
+		return errors.Wrap(err, "failed to send the clear events intent")
+	}
+	if err := expectMotionEvents(ctx, d); err != nil {
+		return errors.Wrap(err, "failed to verify that the reported MotionEvents were cleared")
+	}
+	return nil
 }
 
 const (
@@ -172,6 +197,7 @@ func MotionInput(ctx context.Context, s *testing.State) {
 	runSubtest := func(ctx context.Context, s *testing.State, params *motionInputSubtestParams) {
 
 		test := motionInputSubtestState{}
+		test.a = a
 		test.params = params
 
 		deviceMode := "clamshell"
@@ -312,6 +338,7 @@ func (params *motionInputSubtestParams) isCaptionVisible() bool {
 // motionInputSubtestState holds various values that represent the test state for each sub-test.
 // It is created for convenience to reduce the number of function parameters.
 type motionInputSubtestState struct {
+	a           *arc.ARC
 	displayInfo *display.Info
 	scale       float64
 	w           *ash.Window
@@ -331,11 +358,24 @@ func (test *motionInputSubtestState) expectedPoint(p coords.Point) coords.Point 
 	return coords.NewPoint(int(float64(p.X-insetLeft)*test.scale), int(float64(p.Y-insetTop)*test.scale))
 }
 
+// expectEventsAndClear is a convenience function that verifies expected events and clears the
+// events to be ready for the next assertions.
+func (test *motionInputSubtestState) expectEventsAndClear(ctx context.Context, matchers ...motionEventMatcher) error {
+	if err := expectMotionEvents(ctx, test.d, matchers...); err != nil {
+		return errors.Wrap(err, "failed to verify expected events")
+	}
+	if err := clearMotionEvents(ctx, test.a, test.d); err != nil {
+		return errors.Wrap(err, "failed to clear events")
+	}
+	return nil
+}
+
 // verifyTouchscreen tests the behavior of events injected from a uinput touchscreen device. It
 // injects a down event, followed by several move events, and finally an up event with a single
 // touch pointer.
 func verifyTouchscreen(ctx context.Context, s *testing.State, test motionInputSubtestState) {
-	s.Log("Creating Touchscreen input device")
+	s.Log("Verifying Touchscreen")
+
 	tew, err := input.Touchscreen(ctx)
 	if err != nil {
 		s.Fatal("Failed to create touchscreen: ", err)
@@ -358,8 +398,8 @@ func verifyTouchscreen(ctx context.Context, s *testing.State, test motionInputSu
 	if err := stw.Move(x, y); err != nil {
 		s.Fatalf("Could not inject move at (%d, %d)", x, y)
 	}
-	if err := expectMotionEvent(ctx, test.d, singleTouchMatcher(actionDown, expected)); err != nil {
-		s.Fatal("Could not verify expected event: ", err)
+	if err := test.expectEventsAndClear(ctx, singleTouchMatcher(actionDown, expected)); err != nil {
+		s.Fatal("Failed to expect events and clear: ", err)
 	}
 
 	for i := 0; i < 5; i++ {
@@ -372,8 +412,8 @@ func verifyTouchscreen(ctx context.Context, s *testing.State, test motionInputSu
 		if err := stw.Move(x, y); err != nil {
 			s.Fatalf("Could not inject move at (%d, %d): %v", x, y, err)
 		}
-		if err := expectMotionEvent(ctx, test.d, singleTouchMatcher(actionMove, expected)); err != nil {
-			s.Fatal("Could not verify expected event: ", err)
+		if err := test.expectEventsAndClear(ctx, singleTouchMatcher(actionMove, expected)); err != nil {
+			s.Fatal("Failed to expect events and clear: ", err)
 		}
 	}
 
@@ -382,7 +422,7 @@ func verifyTouchscreen(ctx context.Context, s *testing.State, test motionInputSu
 	if err := stw.End(); err != nil {
 		s.Fatalf("Could not inject end at (%d, %d)", x, y)
 	}
-	if err := expectMotionEvent(ctx, test.d, singleTouchMatcher(actionUp, expected)); err != nil {
-		s.Fatal("Could not verify expected event: ", err)
+	if err := test.expectEventsAndClear(ctx, singleTouchMatcher(actionUp, expected)); err != nil {
+		s.Fatal("Failed to expect events and clear: ", err)
 	}
 }
