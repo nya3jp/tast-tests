@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b405f50_19aafa6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-05-04T22:12:17Z",
+      "side": 1,
+      "message": "crbug/994040",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2626ef57_973b2770",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2020-05-04T22:12:17Z",
+      "side": 1,
+      "message": "here and in fileHandler it seems like we want to return an error\n\ni see they are handed to http.ServeMux.HandleFunc(), how does the server handle errors like this?",
+      "range": {
+        "startLine": 215,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 116
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
