@@ -69,6 +69,30 @@
       "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82671825_1bc6c648",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-04T17:16:20Z",
+      "side": 1,
+      "message": "\u003e I see some related usage of ip command in router setup in Autotest, e.g. clone_mac_address or ensure_unique_mac (but not yet used in Tast port). So we might still want ip runner package in the future, I guess.\n\nBoth of those are checking the output of \u0027ip link ...\u0027 commands, not \u0027ip addr\u0027. So even if they are eventually needed, they\u0027re parsing a totally different set of output, and therefore not really relevant to this CL.",
+      "parentUuid": "43e0c132_1dc22da4",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
