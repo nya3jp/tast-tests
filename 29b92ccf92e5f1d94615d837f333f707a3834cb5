@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8bf89b7_d2143c0d",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-04T21:46:08Z",
+      "side": 1,
+      "message": "I moved everything to the gRPC call \"IPForInterface\"",
+      "parentUuid": "00adfd75_247bf386",
+      "range": {
+        "startLine": 44,
+        "startChar": 17,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fbc49d0_f9ce0367",
         "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
         "patchSetId": 13
@@ -93,6 +117,30 @@
       "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de68cfb2_e3ae5ee0",
+        "filename": "src/chromiumos/tast/remote/network/ip/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-04T21:46:08Z",
+      "side": 1,
+      "message": "I moved everything to the gRPC call \"IPForInterface\"",
+      "parentUuid": "82671825_1bc6c648",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "29b92ccf92e5f1d94615d837f333f707a3834cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
