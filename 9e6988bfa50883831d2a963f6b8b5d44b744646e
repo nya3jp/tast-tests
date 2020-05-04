@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fa13dd9_faf4213c",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T09:55:34Z",
+      "side": 1,
+      "message": "nit: I guess you can just omit this",
+      "range": {
+        "startLine": 201,
+        "startChar": 27,
+        "endLine": 201,
+        "endChar": 32
+      },
+      "revId": "9e6988bfa50883831d2a963f6b8b5d44b744646e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f230b98c_7b2a3bc2",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T09:55:34Z",
+      "side": 1,
+      "message": "nit: maybe \"an empty array\"? You return 2 values and each can be nil, it\u0027s better to clarify what is nil.",
+      "range": {
+        "startLine": 201,
+        "startChar": 24,
+        "endLine": 201,
+        "endChar": 27
+      },
+      "revId": "9e6988bfa50883831d2a963f6b8b5d44b744646e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1301e3_75bf3930",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T09:55:34Z",
+      "side": 1,
+      "message": "nit: must",
+      "range": {
+        "startLine": 202,
+        "startChar": 10,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "9e6988bfa50883831d2a963f6b8b5d44b744646e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08011f6c_73ced162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps_80211ac.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T09:55:34Z",
+      "side": 1,
+      "message": "nit: Maybe \"No phys devices\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 38
+      },
+      "revId": "9e6988bfa50883831d2a963f6b8b5d44b744646e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
