@@ -312,6 +312,16 @@ func RemoveVault(ctx context.Context, user string) error {
 	return nil
 }
 
+// RemoveByHash removes an user by his hash.
+func RemoveByHash(ctx context.Context, obfuscated string) error {
+	testing.ContextLog(ctx, "Removing ", obfuscated)
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=remove_by_hash", "--force", "--hash="+obfuscated)
+	if err := cmd.Run(); err != nil {
+		return errors.Wrapf(err, "failed to remove user %s", obfuscated)
+	}
+	return nil
+}
+
 // UnmountAll unmounts all user vaults
 func UnmountAll(ctx context.Context) error {
 	testing.ContextLog(ctx, "Unmounting all user vaults")

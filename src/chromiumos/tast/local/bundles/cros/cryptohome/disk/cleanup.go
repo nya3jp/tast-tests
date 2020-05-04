@@ -7,8 +7,10 @@ package disk
 import (
 	"context"
 	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -70,11 +72,32 @@ func ForceAutomaticCleanup(ctx context.Context) error {
 	return nil
 }
 
+var obfuscatedRegex = regexp.MustCompile(`^[A-Za-z0-9]{40}$`)
+
 // CleanupExistingUsers cleans up existing users so they don't affect the test by:
+// 1. Remove all existing users (except the owner).
 // 1. Create a temporary user that takes up the remaining free space.
 // 2. Unmount all users.
-// 3. Repeatedly trigger cleanup to clear all other users.
+// 3. Repeatedly trigger cleanup to clear all the caches of the owner.
 func CleanupExistingUsers(ctx context.Context) error {
+	testing.ContextLog(ctx, "Cleaning up existing users")
+
+	entries, err := ioutil.ReadDir("/home/.shadow/")
+	if err != nil {
+		return errors.Wrap(err, "failed to list /home/.shadow/")
+	}
+	for _, entry := range entries {
+		obfuscated := entry.Name()
+
+		if !obfuscatedRegex.MatchString(obfuscated) {
+			continue
+		}
+
+		if err := cryptohome.RemoveByHash(ctx, obfuscated); err != nil {
+			testing.ContextLogf(ctx, "Failed to remove user %s: %v", obfuscated, err)
+		}
+	}
+
 	const (
 		temporaryUser = "cleanup-removal-user"
 		password      = "1234"
@@ -85,8 +108,6 @@ func CleanupExistingUsers(ctx context.Context) error {
 		"Deleting Android Cache",
 		"Freeing disk space by deleting user",
 	}
-
-	testing.ContextLog(ctx, "Cleaning up existing users")
 
 	// Unmount all users.
 	if err := cryptohome.UnmountAll(ctx); err != nil {
