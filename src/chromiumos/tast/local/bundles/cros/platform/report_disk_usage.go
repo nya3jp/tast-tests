@@ -119,7 +119,7 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 		duCmd := testexec.CommandContext(ctx, "du",
 			"-a",                       // Print files and directories.
 			"-x",                       // Do not include mounted filesystems.
-			"-B1",                      // Print results in bytes.
+			"-b",                       // Print results in bytes.
 			"--max-depth=3",            // Recurse 3 directories deep.
 			"--threshold", minFileSize, // Don't include objects smaller than this.
 			path,
