@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f449d7c_5bac7240",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-04T06:12:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8705d1d_7a69dfbb",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "47589b2d59c7a70427c658b05f3a3322465acb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe7241e5_9f266bf3",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 15
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "(Marking resolved, as I don\u0027t think there\u0027s anything to do here. I was just noting my understanding.)",
       "parentUuid": "fe7241e5_9f266bf3",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "47589b2d59c7a70427c658b05f3a3322465acb9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee7e14b5_5702ad80",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-04T06:12:38Z",
+      "side": 1,
+      "message": "Yes, this is not used yet and will be used in precondition.",
+      "parentUuid": "1667dd3e_b5f6d2a2",
       "range": {
         "startLine": 19,
         "startChar": 6,
