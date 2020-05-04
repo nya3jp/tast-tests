@@ -37,6 +37,30 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         []string{video.Bear192P.Name},
+		}, {
+			Name: "h264_360p_i420",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      video.Tulip360P,
+				PixelFormat: videotype.I420},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+			ExtraData:         []string{video.Tulip360P.Name},
+		}, {
+			Name: "h264_720p_i420",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      video.Tulip720P,
+				PixelFormat: videotype.I420},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+			ExtraData:         []string{video.Tulip720P.Name},
+		}, {
+			Name: "h264_1080p_i420",
+			Val: encoding.TestOptions{
+				Profile:     videotype.H264Prof,
+				Params:      video.Crowd1080P,
+				PixelFormat: videotype.I420},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+			ExtraData:         []string{video.Crowd1080P.Name},
 		}},
 	})
 }
