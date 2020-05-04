@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3ff57d3_13d538d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T10:29:07Z",
+      "side": 1,
+      "message": "You can use ProcessesWithContext instead:\nhttps://github.com/shirou/gopsutil/blob/master/process/process_linux.go#L1239",
+      "range": {
+        "startLine": 152,
+        "startChar": 13,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "6af58c995a712fa16d6b1750b934ecb490ff743d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03373861_1f7681dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T10:29:07Z",
+      "side": 1,
+      "message": "nit: to be 100% sure, you can check whether err is ErrorProcessNotRunning.",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 37
+      },
+      "revId": "6af58c995a712fa16d6b1750b934ecb490ff743d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256dfc71_5b05bd84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T10:29:07Z",
+      "side": 1,
+      "message": "nit: all ?",
+      "range": {
+        "startLine": 566,
+        "startChar": 17,
+        "endLine": 566,
+        "endChar": 20
+      },
+      "revId": "6af58c995a712fa16d6b1750b934ecb490ff743d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf42ce00_a7260a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T10:29:07Z",
+      "side": 1,
+      "message": "nit: WDYT about \"crashReporterRunning\" name?",
+      "range": {
+        "startLine": 572,
+        "startChar": 26,
+        "endLine": 572,
+        "endChar": 48
+      },
+      "revId": "6af58c995a712fa16d6b1750b934ecb490ff743d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88866d54_9ad62145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-04T10:29:07Z",
+      "side": 1,
+      "message": "nit: remove. Usually we log smth before long running operation: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "6af58c995a712fa16d6b1750b934ecb490ff743d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
