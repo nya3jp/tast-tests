@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9fa9eff5_ad46aae5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T23:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b405f50_19aafa6e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2626ef57_973b2770",
         "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d94415_6a1b2de5",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-04T23:50:08Z",
+      "side": 1,
+      "message": "This is a http handler method, they are required to return void.  Generally you either log your error, write it into the response to the HTTP client, or both.  In theory you could panic as well, but that would take down the entire test suite.\n\nIn this case, sending it back to LXD doesn\u0027t get us very good logging, so we just log to tast directly.\n\nbecause the response doesn\u0027t match the checksum LXD fails and the test aborts immediately anyway.",
+      "parentUuid": "2626ef57_973b2770",
+      "range": {
+        "startLine": 215,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 116
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
