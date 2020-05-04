@@ -124,6 +124,48 @@
     },
     {
       "key": {
+        "uuid": "b9929a87_55b296ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-04T05:47:39Z",
+      "side": 1,
+      "message": "Yes we want only the current boot, great if this is what it does.",
+      "parentUuid": "80725dcc_f91bd5c7",
+      "revId": "38241e9e0a72c14e08013d06ffdb5969fe96dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e4b8e9_c01791b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-04T05:47:39Z",
+      "side": 1,
+      "message": "Oh, that\u0027s ok if there are precedents.",
+      "parentUuid": "1ba2f3c7_0dc2d363",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "38241e9e0a72c14e08013d06ffdb5969fe96dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e9f80ac_dbae2626",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
         "patchSetId": 1
