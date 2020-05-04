@@ -50,7 +50,7 @@ func WifiCaps(ctx context.Context, s *testing.State) {
 		s.Fatal("ListPhys failed: ", err)
 	}
 	if len(res) == 0 {
-		s.Fatal("ListPhys returned no device")
+		s.Fatal("Expect at least one wireless phy; found nothing")
 	}
 
 	staSupported := false
