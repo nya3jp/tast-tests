@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "903cb18a_b914c2f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-04T08:50:59Z",
+      "side": 1,
+      "message": "Good point. After code search, I found the usage of fullCtx and shortCtx. No usage of ctxFull / ctxShort / shortenedCtx. Fix the CL by using fullCtx and shortCtx.",
+      "parentUuid": "56a5202a_3c9a80ce",
+      "range": {
+        "startLine": 149,
+        "startChar": 18,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f81afd1c_cd52eb18",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2020-05-01T21:52:46Z",
       "side": 1,
       "message": "Totally optional, but you might find it leads to a cleaner api if you make your new methods simply return the shortened context.\n\nThis does have the one disadvantage that the caller can\u0027t use a separate context for New and Close, but that is very rarely an issue. Also, the caller can still manually reserve for close if they have a special use case.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 140
+      },
+      "revId": "c3074d7898f14720815709fa708d8f1f3fe3d4a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba305d82_812b986e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-04T08:50:59Z",
+      "side": 1,
+      "message": "The approach makes New() returns a four-element tuple. However, it saves one line and a public method:\n\ntf, shortCtx, shortCtxCancel, err :\u003d NewTestFixture(ctx, ...)\nBut it can make the above example as:\n  tf, shortCtx, cancel, err :\u003d NewTestFixture(ctx, ...)\n  if err !\u003d nil {...}\n  defer tf.Close(ctx)\n  defer cancel()\n  // Use shortCtx for test body.\n\nThe approach should be able to use in a Precondition: https://crrev.com/c/2142664/8/src/chromiumos/tast/remote/wificell/pre.go\nas caller of tf.Close() can still pass a different context.\n\nI also think if we can store the original ctx in TestFixture struct and use it for Close(). But it loses the flexibility that Close() may run on other context.\n\nI\u0027m going to apply the approach Brendan proposed. Any concerns?",
+      "parentUuid": "f81afd1c_cd52eb18",
       "range": {
         "startLine": 41,
         "startChar": 0,
