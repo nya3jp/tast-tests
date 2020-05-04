@@ -41,6 +41,7 @@ func init() {
 			Name:              "mock_consent_unstable",
 			Val:               crash.MockConsent,
 			ExtraSoftwareDeps: []string{"crash_selinux_unstable"},
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
