@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f02ae9bd_5a554253",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-04T08:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62be488_77c4cb51",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "b4c8d29e455fffedc112af48fb20375a48f6f71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cb7635d_ad6dcb97",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 11
@@ -93,6 +117,30 @@
       "revId": "b4c8d29e455fffedc112af48fb20375a48f6f71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3135fb_a5b2d5fd",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-04T08:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe2dc799_fbb59bda",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "b4c8d29e455fffedc112af48fb20375a48f6f71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
