@@ -43,30 +43,50 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Error during CurrentBootMode: ", err)
 	}
 	if currentBootModeResponse.BootMode != fwpb.BootMode_BOOT_MODE_NORMAL {
-		s.Fatalf("CurrentBootMode returned BootMode %s; want %s", currentBootModeResponse.BootMode, fwpb.BootMode_BOOT_MODE_NORMAL)
+		s.Errorf("CurrentBootMode returned BootMode %s; want %s", currentBootModeResponse.BootMode, fwpb.BootMode_BOOT_MODE_NORMAL)
 	}
 	normalMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeNormal)
 	if err != nil {
-		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
+		s.Fatal("Failed calling CheckBootMode RPC wrapper: ", err)
 	}
 	if !normalMode {
 		s.Error("DUT was not in Normal mode at start of test")
 	}
 	devMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeDev)
 	if err != nil {
-		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
+		s.Fatal("Failed calling CheckBootMode RPC wrapper: ", err)
 	}
 	if devMode {
 		s.Error("DUT was thought to be in Dev mode at start of test")
 	}
 	recMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeRecovery)
 	if err != nil {
-		s.Error("Failed calling CheckBootMode RPC wrapper: ", err)
+		s.Fatal("Failed calling CheckBootMode RPC wrapper: ", err)
 	}
 	if recMode {
 		s.Error("DUT was thought to be in Rec mode at start of test")
 	}
 
-	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
-	// switch into each mode, and check whether we are in the expected state.
+	// Boot from Normal > Normal mode
+	d := s.DUT()
+	if err := firmware.RebootToMode(ctx, d, utils, fwCommon.BootModeNormal); err != nil {
+		s.Fatal("Error during Normal>Normal transition: ", err)
+	}
+
+	// Reconnect to the RPC server after rebooting.
+	cl, err = rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Fatal("Failed to reconnect to the RPC: ", err)
+	}
+	defer cl.Close(ctx)
+	utils = fwpb.NewUtilsServiceClient(cl.Conn)
+
+	// Verify that we booted into the new mode correctly
+	currentBootModeResponse, err = utils.CurrentBootMode(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Error during CurrentBootMode: ", err)
+	}
+	if currentBootModeResponse.BootMode != fwpb.BootMode_BOOT_MODE_NORMAL {
+		s.Fatalf("After booting Normal>Normal, CurrentBootMode returned BootMode %s; want %s", currentBootModeResponse.BootMode, fwpb.BootMode_BOOT_MODE_NORMAL)
+	}
 }
