@@ -16,6 +16,20 @@ var Bear192P = encoding.StreamParams{
 	Bitrate: 200000,
 }
 
+// Tulip360P is the test parameters of video_encode_accelerator_unittest for the raw data obtained by decoding "tulip2-640x360.webm".
+var Tulip360P = encoding.StreamParams{
+	Name:    "tulip2-640x360.vp9.webm",
+	Size:    coords.NewSize(640, 360),
+	Bitrate: 500000,
+}
+
+// Tulip720P is the test parameters of video_encode_accelerator_unittest for the raw data obtained by decoding "tulip2-1280x720.webm".
+var Tulip720P = encoding.StreamParams{
+	Name:    "tulip2-1280x720.vp9.webm",
+	Size:    coords.NewSize(1280, 720),
+	Bitrate: 1200000,
+}
+
 // Crowd1080P is the test parameters of video_encode_accelerator_unittest for the raw data obtained by decoding "crowd1920x1080.webm".
 var Crowd1080P = encoding.StreamParams{
 	Name:    "crowd-1920x1080.vp9.webm",
