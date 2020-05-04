@@ -176,7 +176,9 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		return bounds, nil
 	}
 
-	getStableYtElemBounds := func(sel string) (coords.Rect, error) {
+	// Returns bounds of the element when the element does not change its bounds
+	// and is at the top (a tap/click should reach it).
+	getTappableYtElemBounds := func(sel string) (coords.Rect, error) {
 		var bounds coords.Rect
 
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -186,6 +188,26 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 				bounds = newBounds
 				return errors.New("bounds are changing")
 			}
+
+			if bounds.Width == 0 || bounds.Height == 0 {
+				return errors.Errorf("bad bound for selector %q", sel)
+			}
+
+			var atTop bool
+			if err := ytConn.Eval(ctx, fmt.Sprintf(
+				`(function() {
+						var sel = document.querySelector(%q);
+						var el = document.elementFromPoint(%d, %d);
+						return sel.contains(el);
+					})()`,
+				sel, bounds.CenterPoint().X, bounds.CenterPoint().Y),
+				&atTop); err != nil {
+				return errors.Wrapf(err, "failed to check at top of selector %q", sel)
+			}
+			if !atTop {
+				return errors.Errorf("selector %q is not at top", sel)
+			}
+
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return coords.Rect{}, err
@@ -195,27 +217,9 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	tapYtElem := func(sel string) error {
-		bounds, err := getStableYtElemBounds(sel)
+		bounds, err := getTappableYtElemBounds(sel)
 		if err != nil {
 			return err
-		}
-		if bounds.Width == 0 || bounds.Height == 0 {
-			return errors.Errorf("bad bound for selector %q", sel)
-		}
-
-		var atTop bool
-		if err := ytConn.Eval(ctx, fmt.Sprintf(
-			`(function() {
-					var sel = document.querySelector(%q);
-					var el = document.elementFromPoint(%d, %d);
-					return sel.contains(el);
-				})()`,
-			sel, bounds.CenterPoint().X, bounds.CenterPoint().Y),
-			&atTop); err != nil {
-			return errors.Wrapf(err, "failed to check at top of selector %q", sel)
-		}
-		if !atTop {
-			return errors.Errorf("selector %q is not at top", sel)
 		}
 
 		all, err := chromeui.FindAll(ctx, tconn,
