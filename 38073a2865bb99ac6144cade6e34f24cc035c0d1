@@ -257,6 +257,24 @@
       "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef3bb682_621d695d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-04T06:50:51Z",
+      "side": 1,
+      "message": "If you need to generate the entire path (as mkdir -p does) use MkdirAll",
+      "parentUuid": "8873c639_d7daa3f5",
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
