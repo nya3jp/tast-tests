@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceebc453_90104976",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "nit: tast-tests",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a299a72c_597e9ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Change to lowercase since it\u0027ll be appended to another error.",
+      "range": {
+        "startLine": 47,
+        "startChar": 24,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee390b1a_dca7b599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Change to lowercase since it\u0027ll be appended to another error.",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6600a01e_1eec3333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Maybe \"a nonempty string.\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 34
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e2135d6_6c2e70f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "If you change this to \"\u003c\u003d\" and then added \"or i \u003d\u003d len(lines)\" to the check below, I think you could get rid of the extra call to verifyLogicalCPU() outside the loop.",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96f6b06a_9d350f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Change this to lowercase. Same below.",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f104593d_4cfd7019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Maybe change to \"Check for error values.\" Reasonable might appear too vague to future readers.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 36
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9190f856_cb10260e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "It might be worth changing to len(want).",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c55dc55_7014d8a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Change to:\n\nif maxClockSpeed, err :\u003d strconv.Atoi(vals[0]); err !\u003d nil {\n    return errors.Wrapf(err, \"failed to convert %q to integer\", want[0])\n} else if maxClockSpeed \u003c 0 {\n    return errors.Errorf(\"invalid %s: %v\", want[0], maxClockSpeed)\n}\n\nSame below.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b6744d_05e78651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Change to lowercase. Same below in this function.",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 33
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2bf6d2_105aead0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Maybe change to \"each C-state value.\"",
+      "range": {
+        "startLine": 162,
+        "startChar": 11,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c426db5f_37d097c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "It would be nice if we could import and use the csv package for this instead of splitting lines ourselves. It might not be practical though with the format of the output.",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 34
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4289a29d_33df4520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Change to:\n\nif i, err :\u003d strconv.Atoi(vals[1]); err !\u003d nil {\n    return errors.Wrap(err, \"failed to convert time_in_state_since_last_boot_us to integer\")\n} else if i \u003c 0 {\n    return errors.New(\"invalid time_in_state_since_last_boot_us\")\n}",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 3
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b29d5330_44bd2a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "If you replace this with:\n\nlines :\u003d strings.Split(strings.TrimRight(string(b), \"\\n\"), \"\\n\")\n\nyou won\u0027t have to trim each line later and won\u0027t have to worry about an empty line at the end.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc40aef_8ee5cc89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "nit: Remove empty line so it\u0027s clear that the comment corresponds to the check on len(lines).",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44cf0ae1_97183c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Should be able to remove this per the comment above.",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 29
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ddeee86_59996adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Maybe change to \"valid\" since reasonable sounds vague.",
+      "range": {
+        "startLine": 221,
+        "startChar": 34,
+        "endLine": 221,
+        "endChar": 44
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e94d5f9_6edbaf91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Change to:\n\nif numThreads, err :\u003d strconv.Atoi(vals[0]); err !\u003d nil {\n    s.Error(\"Failed to convert num_total_threads to integer: \", err)\n} else if numThreads \u003c\u003d 0 {\n    s.Error(\"Invalid num_total_threads\")\n}",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf9a46c8_88f96ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Maybe \"the output for each physical CPU.\"",
+      "range": {
+        "startLine": 238,
+        "startChar": 11,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48f9d771_b01224b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "Can you add a comment to indicate that this is the first line where we see \"Physical CPU:?\" It took me a while to figure out how the loop below worked.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 11
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8bf1bd_c9fc2b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-04T22:16:20Z",
+      "side": 1,
+      "message": "If you changed this to \"\u003c\u003d\" and then changed the check below to include \"or i \u003d\u003d len(lines)\", then I think you could get rid of the extra call to verifyPhysicalCpu() outside the loop.",
+      "range": {
+        "startLine": 240,
+        "startChar": 15,
+        "endLine": 240,
+        "endChar": 16
+      },
+      "revId": "1d96167f62969866079c360b5bbeb8c1e2a802df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
