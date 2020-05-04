@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a873cd9f_746606c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T21:12:48Z",
+      "side": 1,
+      "message": "nit: space after //",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 3
+      },
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528b2dd9_a4fd0211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T21:12:48Z",
+      "side": 1,
+      "message": "use s.Fatalf here",
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5dcc575_32a30c02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T21:12:48Z",
+      "side": 1,
+      "message": "use s.Fatalf here",
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7870e162_8936586e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T21:12:48Z",
+      "side": 1,
+      "message": "nit: \"for appName and waits for it to appear\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 32,
+        "endLine": 79,
+        "endChar": 69
+      },
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21128db8_5dac4786",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T21:12:48Z",
+      "side": 1,
+      "message": "We pass in a duration here, but search() and ui.FindWithTimeout() ignore it and uses their own timeouts, which might be confusing for users since the timeout passed here only applies to one sub-operation and not the whole function call. Is this OK?",
+      "range": {
+        "startLine": 80,
+        "startChar": 86,
+        "endLine": 80,
+        "endChar": 107
+      },
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fff61d4_d50de3bb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T21:12:48Z",
+      "side": 1,
+      "message": "use errors.Wrapf here",
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1936930c_877ff6e1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-04T21:12:48Z",
+      "side": 1,
+      "message": "use errors.Wrapf here",
+      "revId": "e44bbe8f147e84cf95f05c0ac1f7b75dff6145ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
