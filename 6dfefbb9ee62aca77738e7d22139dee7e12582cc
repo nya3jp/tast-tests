@@ -22,6 +22,30 @@
       "revId": "6dfefbb9ee62aca77738e7d22139dee7e12582cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c860d6_a4a616be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-04T15:23:03Z",
+      "side": 1,
+      "message": "I was planning on extending this paragraph in a subsequent CL, maybe linking\nto some code search that shows those collections? playback.go is notoriously\nobscure, passing around structs/dictionaries everywhere :-(",
+      "parentUuid": "312da06d_f1a6f460",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 50
+      },
+      "revId": "6dfefbb9ee62aca77738e7d22139dee7e12582cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
