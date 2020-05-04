@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312da06d_f1a6f460",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-05-04T11:00:09Z",
+      "side": 1,
+      "message": "Just a thought: what do you think of linking to where there are more details on the specific metrics collected? I found https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go;l\u003d154 but wonder if it would be too brittle a reference (helper function being refactored away, etc.).",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 50
+      },
+      "revId": "6dfefbb9ee62aca77738e7d22139dee7e12582cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
