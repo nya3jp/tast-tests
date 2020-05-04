@@ -46,6 +46,30 @@
       "revId": "6dfefbb9ee62aca77738e7d22139dee7e12582cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc0c3d0a_8fe1c164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-05-04T18:16:12Z",
+      "side": 1,
+      "message": "Ah OK, sounds good!",
+      "parentUuid": "63c860d6_a4a616be",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 50
+      },
+      "revId": "6dfefbb9ee62aca77738e7d22139dee7e12582cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
