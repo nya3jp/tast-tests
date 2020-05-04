@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d85fd0b5_8bde9485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "you only call this function once, so creating a named variable for it seems unnecessarily hard to follow.  Move the function body in line here",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 14
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a47b97ca_2bc33002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "it\u0027s confusing to have this function defined within the test, since you don\u0027t need it to be a function closure (you\u0027d only have to pass in p, img, and root).  Unless the function signature would be particularly ugly, or if it\u0027s for grouping purposes, I recommend you define functions outside of the test body.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 17
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66398ae_44c87aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "put errors in got -\u003e expected order\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77dd64be_54d517d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "What about if these are in a different order than you expect, or if there is an additional app/group in the list?",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffec0f4_73f4ffd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "sleeps are generally frowned upon in tests when you\u0027re waiting for something of unknown duration to finish.  Consider using a polling function wrapped around calling colorsMatch().  Then if the animation hasn\u0027t quite finished when you first check you have more attempts, and if it happens very fast you don\u0027t have a long wait.  (Not that half of a second is a huge wait time, but it\u0027s a matter of principle!)",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151eed17_e5de9b08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "menuItems?  something else more descriptive?  the combination of buttons, params, and items is making things harder to follow",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 7
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ab3b9a_cc1d4789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "len(items) and log the contents before calling s.Fatal?  Otherwise the error reads \"Did not find 3 entries but \u003cnot a number\u003e\"",
+      "range": {
+        "startLine": 149,
+        "startChar": 43,
+        "endLine": 149,
+        "endChar": 48
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06be647e_78e5737f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "reorder this error",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82abf05e_ae104714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "reorder this error",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a206898_04b42d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "reorder this error",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7925f542_120f728f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "reusing \"point\" here makes this harder to read.  Consider something like:\ntopLeftPt :\u003d ...\noffsetPt :\u003d coords.NewPoint(iconOffset + ...)\nsamplePt :\u003d AdjustRes(coords.Add(topLeftPt, offsetPt))",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2898baf3_a45d02d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-04T05:40:51Z",
+      "side": 1,
+      "message": "is there something to check that the context menu actually got closed?",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
