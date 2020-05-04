@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80295d3b_d9470a1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-04T17:22:28Z",
+      "side": 1,
+      "message": "Yeah, this part is also weird about this test -- it\u0027s trying to somewhere in between a unit test and an integration test, where in the former, one might try to \"mock out\" any of the cryptohome (and daemon-store) behaviors.\n\nBut that\u0027s hard to keep up with properly (and probably doesn\u0027t make for as useful of a test altogether), especially as cryptohome:daemon integration gets refactored and improved.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "d6a18c90b9e3b49c60a2301aadf3eb56719412ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
