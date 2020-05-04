@@ -50,6 +50,12 @@ var WallpaperPicker = App{
 	Name: "Wallpaper Picker",
 }
 
+// Canvas has details about the Chrome Canvas app.
+var Canvas = App{
+	ID:   "ieailfmhaghpphfffooibmlghaeopach",
+	Name: "Chrome Canvas",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	query := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.launchApp)(%q)", appID)
