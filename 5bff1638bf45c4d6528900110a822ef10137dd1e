@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2133a722_8ed97071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-04T03:43:17Z",
+      "side": 1,
+      "message": "I\u0027ll add the state list for association/configuration back in next patchset.",
+      "parentUuid": "94536a91_65e56c83",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 86
+      },
+      "revId": "5bff1638bf45c4d6528900110a822ef10137dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8a24b83_97c35d48",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-01T00:11:27Z",
       "side": 1,
       "message": "are you sure we need a new name for each test? The docs aren\u0027t very clear to me about \"name\" vs. \"variant\", and whether metrics should be uniquely namespaced, or if they get namespaced by (e.g.) test.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 19
+      },
+      "revId": "5bff1638bf45c4d6528900110a822ef10137dd1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd2cd59_46d5891b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-04T03:43:17Z",
+      "side": 1,
+      "message": "The result is generated per test so it\u0027ll be namespaced as: testname/metric_name.variant_name.\n\nFor the usage here, as we\u0027ll have multiple testcases (e.g. different channels in 80211a test), so we may want like SimpleConnect.80211a/{ch48,ch64}.{Discovery,Connection}. Another way to do this is simply add a name field in simpleConnectTestcase and use it here.",
+      "parentUuid": "f8a24b83_97c35d48",
       "range": {
         "startLine": 180,
         "startChar": 0,
