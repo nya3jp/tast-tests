@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "43a460e5_477735cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-04T04:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9032ff_fc98eca6",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39d419a7_6d8f726d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2020-05-04T03:35:49Z",
       "side": 1,
       "message": "Can you use the chrome.loggedin precondition instead?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#preconditions",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ae6eed_723374a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-04T04:12:37Z",
+      "side": 1,
+      "message": "This might not help in this case. This test also covers automatic installation after user login.",
+      "parentUuid": "39d419a7_6d8f726d",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -89,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "ec3ad0da_42c9de05",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-04T04:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd0d9f5b_c61d42f5",
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfa61629_1e8aa230",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 1
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "61bde03d_0bbc12d1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-04T04:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa61629_1e8aa230",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39328ab2_81cf305f",
         "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
         "patchSetId": 1
@@ -126,6 +216,24 @@
       "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b729a00b_08a42d41",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-04T04:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39328ab2_81cf305f",
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +271,24 @@
       "writtenOn": "2020-05-04T03:35:49Z",
       "side": 1,
       "message": "(out of interest)\n1. Why did you change from the enter to the ui search?\n2. Why do you need a 2 step search for the app node?  can you not just do a ui.Find directly?",
+      "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106ad7e9_06547b4d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-04T04:12:37Z",
+      "side": 1,
+      "message": "1. Enter can be used for search anything. If no native installed app found. It will launch browser to search for first suggestion online.\n\n2. Canvas is installed after user login. It can be a significant delay here. When search finished, it needs to wait for App installed and shown in the result.",
+      "parentUuid": "25e25194_36abf26c",
       "revId": "52b964e48534581d781df0e8cce773e2ac4a2a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
