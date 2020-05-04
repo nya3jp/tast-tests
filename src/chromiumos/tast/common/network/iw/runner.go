@@ -198,6 +198,8 @@ func parseInterfaces(iwOut string) ([]*NetDev, error) {
 }
 
 // ListPhys returns a list of Phy struct for each phy on the DUT.
+// Note that it returns nil, nil when "iw list" command returns nothing.
+// Client should check []*Phy's lenght before accessing it.
 func (r *Runner) ListPhys(ctx context.Context) ([]*Phy, error) {
 	out, err := r.cmd.Output(ctx, "iw", "list")
 	if err != nil {
