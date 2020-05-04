@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8000d8aa_6d36825b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/data/ds3Replay.html",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-04T23:46:20Z",
+      "side": 1,
+      "message": "Nit: missing semicolon here, and need a trailing comma on the line above.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "5b3272d0f4643dec859419c32d5fab4a237648b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

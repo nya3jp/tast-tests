@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "8ea486bc_4b390fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-04T23:46:20Z",
+      "side": 1,
+      "message": "(Don\u0027t forget to check the \"Resolved\" box when you fix a comment.)",
+      "parentUuid": "c874faf9_47264cbf",
+      "range": {
+        "startLine": 35,
+        "startChar": 49,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "682b211c_c7a5c9c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
         "patchSetId": 6
@@ -339,6 +363,30 @@
       "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de6728f5_6820c6ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ds3/ds3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-04T23:46:20Z",
+      "side": 1,
+      "message": "Looks like you missed this one.",
+      "parentUuid": "75b744ec_b6fe5d74",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 17
+      },
+      "revId": "c8ef7b1989dbc8fe0a338ecba9f8f0c7e0a4792f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
