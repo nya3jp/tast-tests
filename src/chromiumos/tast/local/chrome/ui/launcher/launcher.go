@@ -15,11 +15,27 @@ import (
 	"chromiumos/tast/local/input"
 )
 
+const defaultTimeout = 15 * time.Second
+
 // SearchAndLaunch searches a query in the launcher and executes it.
 func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) error {
-	const defaultTimeout = 15 * time.Second
+	if err := OpenLauncher(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open launcher")
+	}
 
-	// Open the launcher.
+	appNode, err := SearchAppAndAssert(ctx, tconn, query, defaultTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to find app")
+	}
+
+	if err := appNode.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch app")
+	}
+	return nil
+}
+
+// OpenLauncher opens the launcher.
+func OpenLauncher(ctx context.Context, tconn *chrome.TestConn) error {
 	params := ui.FindParams{
 		Name: "Launcher",
 		Role: ui.RoleTypeButton,
@@ -32,7 +48,10 @@ func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) 
 	if err := launcherButton.LeftClick(ctx); err != nil {
 		return errors.Wrap(err, "failed to click launcher button")
 	}
+	return nil
+}
 
+func search(ctx context.Context, tconn *chrome.TestConn, query string) error {
 	// Click the search box.
 	searchBox, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchBoxView"}, defaultTimeout)
 	if err != nil {
@@ -50,12 +69,27 @@ func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) 
 	}
 	defer kb.Close()
 
-	// Search for the app.
+	// Search for anything by typing query string.
 	if err := kb.Type(ctx, query); err != nil {
 		return errors.Wrapf(err, "failed to type %q", query)
 	}
-	if err := kb.Accel(ctx, "Enter"); err != nil {
-		return errors.Wrap(err, "failed to type Enter key")
-	}
 	return nil
+}
+
+// SearchAndWaitForApp searches with APP name and wait for it appears. Launcher should be opened already.
+func SearchAndWaitForApp(ctx context.Context, tconn *chrome.TestConn, appName string, timeout time.Duration) (*ui.Node, error) {
+	if err := search(ctx, tconn, appName); err != nil {
+		return nil, errors.Wrap(err, "failed to search app: "+appName)
+	}
+
+	searchResultView, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{ClassName: "SearchResultPageView"}, time.Second)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find Search Result Container")
+	}
+
+	appNode, err := searchResultView.DescendantWithTimeout(ctx, ui.FindParams{Name: appName + ", Installed App"}, timeout)
+	if err != nil {
+		return nil, errors.Wrap(err, appName+" app does not exist in search result")
+	}
+	return appNode, err
 }
