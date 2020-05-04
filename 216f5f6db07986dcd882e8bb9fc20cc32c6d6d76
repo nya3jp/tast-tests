@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e199ffe_e0643453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_index.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-04T08:38:18Z",
+      "side": 1,
+      "message": "nit: );",
+      "range": {
+        "startLine": 12,
+        "startChar": 88,
+        "endLine": 12,
+        "endChar": 89
+      },
+      "revId": "216f5f6db07986dcd882e8bb9fc20cc32c6d6d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
