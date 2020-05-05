@@ -299,6 +299,24 @@
       "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48de83d9_565a0971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-05T20:18:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3bb682_621d695d",
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
