@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -28,18 +30,79 @@ func init() {
 		},
 		SoftwareDeps: []string{"tpm2"},
 		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{"testcert.p12"},
 		Timeout:      3 * time.Minute,
 	})
 }
 
-// setupVault will setup a user and its vault.
+// setUpVaultAndUserAsOwner will setup a user and its vault, and setup the policy to make the user the owner of the device.
 // Caller of this assumes the responsibility of umounting/cleaning up the vault regardless of whether the function returned an error.
-func setupVault(ctx context.Context, s *testing.State, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
+func setUpVaultAndUserAsOwner(ctx context.Context, certpath, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
+	// We need the policy/ownership related stuff because we want to set the owner, so that we can create ephemeral mount.
+	privKey, err := session.ExtractPrivKey(certpath)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse PKCS #12 file")
+	}
+
+	if err := session.SetUpDevice(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset device ownership")
+	}
+
+	// Setup the owner policy.
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create session_manager binding")
+	}
+	if err := session.PrepareChromeForPolicyTesting(ctx, sm); err != nil {
+		return errors.Wrap(err, "failed to prepare Chrome for testing")
+	}
+
+	// Pre-configure some owner settings, including initial key.
+	settings := ownership.BuildTestSettings(username)
+	if err := session.StoreSettings(ctx, sm, username, privKey, nil, settings); err != nil {
+		return errors.Wrap(err, "failed to store settings")
+	}
+
+	// Start a new session, which will trigger the re-taking of ownership.
+	wp, err := sm.WatchPropertyChangeComplete(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to start watching PropertyChangeComplete signal")
+	}
+	defer wp.Close(ctx)
+	ws, err := sm.WatchSetOwnerKeyComplete(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to start watching SetOwnerKeyComplete signal")
+	}
+	defer ws.Close(ctx)
+
 	// Now create the vault.
 	if err := utility.MountVault(ctx, username, password, label, true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to create user vault for testing")
 	}
 	// Note: Caller of this method is responsible for cleaning up the
+
+	if err = sm.StartSession(ctx, username, ""); err != nil {
+		return errors.Wrapf(err, "failed to start new session for %s", username)
+	}
+
+	select {
+	case <-wp.Signals:
+	case <-ws.Signals:
+	case <-ctx.Done():
+		return errors.Wrap(ctx.Err(), "timed out waiting for PropertyChangeComplete or SetOwnerKeyComplete signal")
+	}
+
+	return nil
+}
+
+// setUpEphemeralVaultAndUser will setup the vault and user of the specified username, password and label, as an ephemeral user/mount.
+// Caller of this assumes the responsibility of umounting/cleaning up the vault regardless of whether the function returned an error.
+func setUpEphemeralVaultAndUser(ctx context.Context, username, password, label string, utility *hwsec.UtilityCryptohomeBinary) error {
+	config := hwsec.NewVaultConfig()
+	config.Ephemeral = true
+	if err := utility.MountVault(ctx, username, password, label, true, config); err != nil {
+		return errors.Wrap(err, "failed to create ephemeral user vault for testing")
+	}
 
 	return nil
 }
@@ -145,15 +208,19 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 	if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
 		s.Log("Fails to remove vault before test starts: ", err)
 	}
+	if _, err := utility.RemoveVault(ctx, util.SecondUsername); err != nil {
+		s.Log("Fails to remove vault before test starts: ", err)
+	}
 
-	err = setupVault(ctx, s, util.FirstUsername, util.FirstPassword, util.PasswordLabel, utility)
+	// Set up the first user as the owner and test the dircrypto mount.
+	err = setUpVaultAndUserAsOwner(ctx, s.DataPath("testcert.p12"), util.FirstUsername, util.FirstPassword, util.PasswordLabel, utility)
 	defer func() {
 		// Remember to logout and delete vault.
 		if err := utility.UnmountAll(ctx); err != nil {
 			s.Fatal("Failed to logout during cleanup: ", err)
 		}
 		if _, err := utility.RemoveVault(ctx, util.FirstUsername); err != nil {
-			s.Error("Failed to cleanup after the test: ", err)
+			s.Error("Failed to cleanup first user after the test: ", err)
 		}
 	}()
 	if err != nil {
@@ -161,4 +228,23 @@ func AccountDiskUsage(ctx context.Context, s *testing.State) {
 	}
 
 	testAccountUsage(ctx, s, cmdRunner, util.FirstUsername, utility)
+
+	// Set up the second user as ephemeral mount and test the ephemeral mount.
+	// Note: This need to be second because ephemeral mount is only possible after owner is established.
+	err = setUpEphemeralVaultAndUser(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, utility)
+	defer func() {
+		// Remember to logout and delete vault.
+		if err := utility.UnmountAll(ctx); err != nil {
+			s.Fatal("Failed to logout during cleanup: ", err)
+		}
+		// Yeah, it's ephemeral but we are going to clean it anyway just to be safe.
+		if _, err := utility.RemoveVault(ctx, util.SecondUsername); err != nil {
+			s.Error("Failed to cleanup second user after the test: ", err)
+		}
+	}()
+	if err != nil {
+		s.Fatal("Failed to setup vault and user for second user: ", err)
+	}
+
+	testAccountUsage(ctx, s, cmdRunner, util.SecondUsername, utility)
 }
