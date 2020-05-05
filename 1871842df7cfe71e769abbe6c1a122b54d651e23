@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea3ef03_638671c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:28:48Z",
+      "side": 1,
+      "message": "nit: \nadd your ldap or bug in the TODO.",
+      "range": {
+        "startLine": 464,
+        "startChar": 4,
+        "endLine": 464,
+        "endChar": 8
+      },
+      "revId": "1871842df7cfe71e769abbe6c1a122b54d651e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f04d2c6_962997d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:28:48Z",
+      "side": 1,
+      "message": "ditto above.",
+      "range": {
+        "startLine": 470,
+        "startChar": 4,
+        "endLine": 470,
+        "endChar": 8
+      },
+      "revId": "1871842df7cfe71e769abbe6c1a122b54d651e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a20ca7_671dcfcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:28:48Z",
+      "side": 1,
+      "message": "nit: remove \"1*\"",
+      "range": {
+        "startLine": 472,
+        "startChar": 30,
+        "endLine": 472,
+        "endChar": 32
+      },
+      "revId": "1871842df7cfe71e769abbe6c1a122b54d651e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7841ef2_2d255f85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:28:48Z",
+      "side": 1,
+      "message": "failed to sleep could be caused by a timeout in the context, meaning that the test run out of time.\nit is not safe to ignore the error.",
+      "range": {
+        "startLine": 473,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 43
+      },
+      "revId": "1871842df7cfe71e769abbe6c1a122b54d651e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3e235f_7dda4581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:28:48Z",
+      "side": 1,
+      "message": "what\u0027s the meaning of \"5\" ?\ncould you move it to a const with a descriptive name?",
+      "range": {
+        "startLine": 501,
+        "startChar": 8,
+        "endLine": 501,
+        "endChar": 10
+      },
+      "revId": "1871842df7cfe71e769abbe6c1a122b54d651e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b8d59bf_1b089800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:28:48Z",
+      "side": 1,
+      "message": "nit: \nI didn\u0027t understand this err message.\nDoes this sound better: \"Failed to release mouse button\" ?\n\nalso, include the \"err\" at the end.",
+      "range": {
+        "startLine": 515,
+        "startChar": 11,
+        "endLine": 515,
+        "endChar": 44
+      },
+      "revId": "1871842df7cfe71e769abbe6c1a122b54d651e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
