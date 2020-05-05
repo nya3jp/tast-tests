@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -98,7 +99,11 @@ func init() {
 	})
 }
 
-func HostapHwsim(ctx context.Context, s *testing.State) {
+func HostapHwsim(fullCtx context.Context, s *testing.State) {
+	// Save a few seconds for cleanup.
+	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second*5)
+	defer cancel()
+
 	// Arguments passed to the run-all wrapper script. Useful args:
 	//   --vm: tell the test wrapper we're launching directly within a VM.
 	//     Among other things, this means we take care of our own logs (and
@@ -152,7 +157,7 @@ func HostapHwsim(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		// Reset to original prohibition list.
-		if err := m.SetProperty(ctx, shill.ManagerPropertyProhibitedTechnologies, origProhibited); err != nil {
+		if err := m.SetProperty(fullCtx, shill.ManagerPropertyProhibitedTechnologies, origProhibited); err != nil {
 			s.Error("Could not reset shill prohibited technologies: ", err)
 		}
 	}()
@@ -162,7 +167,7 @@ func HostapHwsim(ctx context.Context, s *testing.State) {
 	if err := upstart.StopJob(ctx, "wpasupplicant"); err != nil {
 		s.Fatal("Failed to stop wpasupplicant: ", err)
 	}
-	defer upstart.StartJob(ctx, "wpasupplicant")
+	defer upstart.StartJob(fullCtx, "wpasupplicant")
 
 	s.Log("Running hwsim tests, args: ", runArgs)
 	// Hwsim tests like to run from their own directory.
