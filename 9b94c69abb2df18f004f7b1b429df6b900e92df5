@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "107eeb6c_5fa2e44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-05T23:52:09Z",
+      "side": 1,
+      "message": "how about a short initial sleep and then the poll?  The main danger of a sleep is the case where you don\u0027t sleep long enough (since sleeping for too long is wasteful but doesn\u0027t actually break things).  You would expect most devices to pass on the first poll cycle, but if there were some extenuating circumstances causing a delay the test would still proceed.",
+      "parentUuid": "c6e5d95d_db871f8f",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "151eed17_e5de9b08",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 2
