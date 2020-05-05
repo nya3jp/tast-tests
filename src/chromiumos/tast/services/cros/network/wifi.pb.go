@@ -6,12 +6,13 @@ package network
 import (
 	context "context"
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -250,12 +251,52 @@ func (m *SSID) GetSsid() string {
 	return ""
 }
 
+type ServiceInfo struct {
+	Hidden               bool     `protobuf:"varint,1,opt,name=hidden,proto3" json:"hidden,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ServiceInfo) Reset()         { *m = ServiceInfo{} }
+func (m *ServiceInfo) String() string { return proto.CompactTextString(m) }
+func (*ServiceInfo) ProtoMessage()    {}
+func (*ServiceInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_14343df069b9efbf, []int{3}
+}
+
+func (m *ServiceInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ServiceInfo.Unmarshal(m, b)
+}
+func (m *ServiceInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ServiceInfo.Marshal(b, m, deterministic)
+}
+func (m *ServiceInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ServiceInfo.Merge(m, src)
+}
+func (m *ServiceInfo) XXX_Size() int {
+	return xxx_messageInfo_ServiceInfo.Size(m)
+}
+func (m *ServiceInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_ServiceInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ServiceInfo proto.InternalMessageInfo
+
+func (m *ServiceInfo) GetHidden() bool {
+	if m != nil {
+		return m.Hidden
+	}
+	return false
+}
+
 func init() {
 	proto.RegisterType((*Config)(nil), "tast.cros.network.Config")
 	proto.RegisterMapType((map[string]*ShillVal)(nil), "tast.cros.network.Config.ShillpropsEntry")
 	proto.RegisterType((*ShillVal)(nil), "tast.cros.network.ShillVal")
 	proto.RegisterType((*Service)(nil), "tast.cros.network.Service")
 	proto.RegisterType((*SSID)(nil), "tast.cros.network.SSID")
+	proto.RegisterType((*ServiceInfo)(nil), "tast.cros.network.ServiceInfo")
 }
 
 func init() { proto.RegisterFile("wifi.proto", fileDescriptor_14343df069b9efbf) }
@@ -307,6 +348,8 @@ type WifiClient interface {
 	Disconnect(ctx context.Context, in *Service, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
 	DeleteEntriesForSSID(ctx context.Context, in *SSID, opts ...grpc.CallOption) (*empty.Empty, error)
+	// QueryService queries shill service information.
+	QueryService(ctx context.Context, in *Service, opts ...grpc.CallOption) (*ServiceInfo, error)
 }
 
 type wifiClient struct {
@@ -344,6 +387,15 @@ func (c *wifiClient) DeleteEntriesForSSID(ctx context.Context, in *SSID, opts ..
 	return out, nil
 }
 
+func (c *wifiClient) QueryService(ctx context.Context, in *Service, opts ...grpc.CallOption) (*ServiceInfo, error) {
+	out := new(ServiceInfo)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.Wifi/QueryService", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WifiServer is the server API for Wifi service.
 type WifiServer interface {
 	// Connect attempts to connect WiFi network.
@@ -352,6 +404,8 @@ type WifiServer interface {
 	Disconnect(context.Context, *Service) (*empty.Empty, error)
 	// DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
 	DeleteEntriesForSSID(context.Context, *SSID) (*empty.Empty, error)
+	// QueryService queries shill service information.
+	QueryService(context.Context, *Service) (*ServiceInfo, error)
 }
 
 // UnimplementedWifiServer can be embedded to have forward compatible implementations.
@@ -366,6 +420,9 @@ func (*UnimplementedWifiServer) Disconnect(ctx context.Context, req *Service) (*
 }
 func (*UnimplementedWifiServer) DeleteEntriesForSSID(ctx context.Context, req *SSID) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntriesForSSID not implemented")
+}
+func (*UnimplementedWifiServer) QueryService(ctx context.Context, req *Service) (*ServiceInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryService not implemented")
 }
 
 func RegisterWifiServer(s *grpc.Server, srv WifiServer) {
@@ -426,6 +483,24 @@ func _Wifi_DeleteEntriesForSSID_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Wifi_QueryService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Service)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WifiServer).QueryService(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.network.Wifi/QueryService",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WifiServer).QueryService(ctx, req.(*Service))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Wifi_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.network.Wifi",
 	HandlerType: (*WifiServer)(nil),
@@ -441,6 +516,10 @@ var _Wifi_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteEntriesForSSID",
 			Handler:    _Wifi_DeleteEntriesForSSID_Handler,
+		},
+		{
+			MethodName: "QueryService",
+			Handler:    _Wifi_QueryService_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
