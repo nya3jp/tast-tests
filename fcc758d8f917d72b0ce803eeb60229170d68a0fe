@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acc1b2e9_600f6b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-05T21:16:40Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t catch this earlier. Change this to:\n\nif err :\u003d verifyLogicalCPU(lines[start : i-1]); err !\u003d nil {\n    return errors.Wrap(err, \"failed to verify logical CPU\")\n}\nstart \u003d i",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "fcc758d8f917d72b0ce803eeb60229170d68a0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54056fc_b7b8b037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-05T21:16:40Z",
+      "side": 1,
+      "message": "It\u0027s unfortunate that we\u0027ll have to fail without getting to check other other lines, but I think the only way to solve it would be to pass *testing.State all the way down to this function and then use s.Errorf() to log the error and continue.\n\nSince it\u0027s unlikely we want to do that, can you remove the \"continue\" part?",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 11
+      },
+      "revId": "fcc758d8f917d72b0ce803eeb60229170d68a0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55695ab1_e4b8eea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-05T21:16:40Z",
+      "side": 1,
+      "message": "nit: Maybe change to \"top-level?\"",
+      "range": {
+        "startLine": 204,
+        "startChar": 15,
+        "endLine": 204,
+        "endChar": 22
+      },
+      "revId": "fcc758d8f917d72b0ce803eeb60229170d68a0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
