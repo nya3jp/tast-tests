@@ -13,6 +13,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -118,6 +120,23 @@ func parseStatus(job, out string) (goal Goal, state State, pid int, err error) {
 	}
 
 	return goal, state, pid, nil
+}
+
+// CheckJob checks the named upstart job and returns an error if it isn't running or
+// has a process in the zombie state.
+func CheckJob(ctx context.Context, job string) error {
+	if goal, state, pid, err := JobStatus(ctx, job); err != nil {
+		return errors.Wrapf(err, "failed to get %v status", job)
+	} else if goal != StartGoal || state != RunningState {
+		return errors.Errorf("%v not running (%v/%v)", job, goal, state)
+	} else if proc, err := process.NewProcess(int32(pid)); err != nil {
+		return errors.Wrapf(err, "failed to check %v process %d", job, pid)
+	} else if status, err := proc.Status(); err != nil {
+		return errors.Wrapf(err, "failed to get %v process %d status", job, pid)
+	} else if status == "Z" {
+		return errors.Errorf("%v process %d is a zombie", job, pid)
+	}
+	return nil
 }
 
 // JobExists returns true if the supplied job exists (i.e. it has a config file known by Upstart).
