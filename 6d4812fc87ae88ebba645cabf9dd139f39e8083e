@@ -142,6 +142,30 @@
       "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c92982_4e16a320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-05T05:40:57Z",
+      "side": 1,
+      "message": "OK, I got your point is to combine two port into one. Agree, that this benefit is good enough to  consider using |CCATestBridge|. Will try it out in another PS.",
+      "parentUuid": "4ac728ae_cbe80721",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
