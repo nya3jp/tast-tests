@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1e3d084_fa0bd4db",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "It is not clear to me what would be the right way to build a Config struct.\nIt seems that a config is assumed to be generated through ConfigFactory.Gen(), and if so, I don\u0027t think those fields can be exposed. If all of those field names start with lower cases, the user can\u0027t build their own Config by themself, enforcing to build through Gen() method.\n\nAlso, since ConfigFactory.Gen() return security.Config interface, I think you really don\u0027t have to expose Config type itself. Maybe just naming the type as \"config\" in lowercase would be fine.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf0aae04_32502e7b",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "FYI: You can keep this if you want but this is not necessary: since ConfigFactory.Gen() has return type (security.Config, error) while it returns (*Config, error), the type check is done there.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37918dc3_640cb375",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "Please move these lines at the end of the files or above -- I want the code to be organized like:\n  type Config ...\n  // Config methods and others\n  // ...\n  type ConfigFactory ...\n  // ConfigFactory methods and others\n  // ...\n\nThat would be a bit more readable.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f727abd8_07df2c80",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "It is not clear to me why a map is used for this method. Is this really a good choice?",
+      "range": {
+        "startLine": 112,
+        "startChar": 34,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd181c7_468b9d4f",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "Does the user code accesses to the content of the returned map?  If so, maybe better to define constants, like wpa.WPA, wpa.WpaKeyMgmt, wpa.WpaPsk etc?",
+      "range": {
+        "startLine": 113,
+        "startChar": 26,
+        "endLine": 113,
+        "endChar": 31
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3804e98_f4af5aeb",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "Why validatePSK here?  Should it validate entirely, or omitting it assuming it is already validated?",
+      "range": {
+        "startLine": 126,
+        "startChar": 13,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d2289d_46767e2a",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "This does not check c.Mode has other bits (i.e. c.Mode \u003d ModeEnum(11) is valid). Is that expected?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6954311b_62829a61",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:51:34Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary as a function. Why not be a part of TestGet() function itself?",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
