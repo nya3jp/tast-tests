@@ -118,6 +118,30 @@
       "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac728ae_cbe80721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-05T05:17:19Z",
+      "side": 1,
+      "message": "In this way, we move the complexity into javascript(i.e. introduced new complex and undocumented object |CCATestBridge|) for the only benefit of merging the two javascript call. I prefer current PS over this one. Or any other better way to handle this?",
+      "parentUuid": "1d103c3a_4f072e85",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
