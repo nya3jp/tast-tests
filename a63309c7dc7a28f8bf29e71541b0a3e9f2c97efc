@@ -93,6 +93,98 @@
       "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6c70126_314fad7a",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-05-05T00:55:18Z",
+      "side": 1,
+      "message": "nit: file",
+      "range": {
+        "startLine": 215,
+        "startChar": 51,
+        "endLine": 215,
+        "endChar": 55
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a23785_81e93735",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-05-05T00:55:18Z",
+      "side": 1,
+      "message": "Huh? Cicerone uses vsock, which has a port space unrelated to tcp or udp",
+      "range": {
+        "startLine": 269,
+        "startChar": 11,
+        "endLine": 269,
+        "endChar": 72
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f08c1bcf_57e80bed",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-05-05T00:55:18Z",
+      "side": 1,
+      "message": "Does anything stop this from running past the context expiry?",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 13
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cddc387_962d99c8",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2020-05-05T00:55:18Z",
+      "side": 1,
+      "message": "Remove this flag, since it\u0027s no longer used",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 140
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
