@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42e53e90_088531a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-05-05T18:58:42Z",
+      "side": 1,
+      "message": "Why not \"defer cancel()\" after L127? If we could, then we don\u0027t need L129.",
+      "revId": "ed650a7e17a1f2e0104f5c4111bca7aa250929a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
