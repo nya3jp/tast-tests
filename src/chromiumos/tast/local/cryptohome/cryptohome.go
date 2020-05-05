@@ -386,7 +386,7 @@ func MountGuest(ctx context.Context) error {
 // If an error is returned, CheckDeps can be called to return additional
 // information pointing to the cause of the problem.
 func CheckService(ctx context.Context) error {
-	if err := checkJob(ctx, "cryptohomed"); err != nil {
+	if err := upstart.CheckJob(ctx, "cryptohomed"); err != nil {
 		return err
 	}
 
@@ -422,7 +422,7 @@ func CheckDeps(ctx context.Context) (errs []error) {
 			// TPM 1.2 systems use the trousers library rather than a daemon.
 		case "2.0":
 			for _, job := range []string{"attestationd", "tpm_managerd", "trunksd"} {
-				if err := checkJob(ctx, job); err != nil {
+				if err := upstart.CheckJob(ctx, job); err != nil {
 					errs = append(errs, err)
 				}
 			}
@@ -430,26 +430,9 @@ func CheckDeps(ctx context.Context) (errs []error) {
 	}
 
 	// chapsd should be running unconditionally.
-	if err := checkJob(ctx, "chapsd"); err != nil {
+	if err := upstart.CheckJob(ctx, "chapsd"); err != nil {
 		errs = append(errs, err)
 	}
 
 	return errs
-}
-
-// checkJob checks the named upstart job and returns an error if it isn't running or
-// has a process in the zombie state.
-func checkJob(ctx context.Context, job string) error {
-	if goal, state, pid, err := upstart.JobStatus(ctx, job); err != nil {
-		return errors.Wrapf(err, "failed to get %v status", job)
-	} else if goal != upstart.StartGoal || state != upstart.RunningState {
-		return errors.Errorf("%v not running (%v/%v)", job, goal, state)
-	} else if proc, err := process.NewProcess(int32(pid)); err != nil {
-		return errors.Wrapf(err, "failed to check %v process %d", job, pid)
-	} else if status, err := proc.Status(); err != nil {
-		return errors.Wrapf(err, "failed to get %v process %d status", job, pid)
-	} else if status == "Z" {
-		return errors.Errorf("%v process %d is a zombie", job, pid)
-	}
-	return nil
 }
