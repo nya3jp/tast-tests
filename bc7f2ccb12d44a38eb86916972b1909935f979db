@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f28fde3_8aafff02",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T16:43:41Z",
+      "side": 1,
+      "message": "\"start\" is pretty ambiguous, should we make it \"hostapd.start\" or something?",
+      "range": {
+        "startLine": 121,
+        "startChar": 31,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "bc7f2ccb12d44a38eb86916972b1909935f979db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0431835b_4661df4c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T16:43:41Z",
+      "side": 1,
+      "message": "Won\u0027t this timer be roughly the same as the one on line L121? Is this going to spam the results?",
+      "revId": "bc7f2ccb12d44a38eb86916972b1909935f979db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
