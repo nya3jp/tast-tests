@@ -23,11 +23,13 @@ const (
 
 // Manager property names.
 const (
-	ManagerPropertyActiveProfile       = "ActiveProfile"
-	ManagerPropertyDevices             = "Devices"
-	ManagerPropertyProfiles            = "Profiles"
-	ManagerPropertyServices            = "Services"
-	ManagerPropertyServiceCompleteList = "ServiceCompleteList"
+	ManagerPropertyActiveProfile          = "ActiveProfile"
+	ManagerPropertyDevices                = "Devices"
+	ManagerPropertyEnabledTechnologies    = "EnabledTechnologies"
+	ManagerPropertyProfiles               = "Profiles"
+	ManagerPropertyProhibitedTechnologies = "ProhibitedTechnologies"
+	ManagerPropertyServices               = "Services"
+	ManagerPropertyServiceCompleteList    = "ServiceCompleteList"
 )
 
 // Manager wraps a Manager D-Bus object in shill.
