@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fb8bcac_332cb578",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-05-05T03:54:56Z",
+      "side": 1,
+      "message": "I don\u0027t see any reason to make this function as a fileServer member, moreover, I don\u0027t think we need it at all. I mean, it\u0027s little bit confusing when different classes use different logging API. If you want, you can make a log wrapper with different prefixes for different class, but at least there will be unified way to log.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "998e83264688cc308e53f5325b3720f6197f4822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
