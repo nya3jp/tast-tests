@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ca73bae_9f6ae1c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d85fd0b5_8bde9485",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 14
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47b97ca_2bc33002",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1e3668c6_64afd5c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a47b97ca_2bc33002",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 17
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c66398ae_44c87aa4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf71a9c_bd71a542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66398ae_44c87aa4",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "84c6609f_51b991a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "|buttons| only contains UI nodes with the name \"ArcShelfIconTest\", so only the testing app\nwill show up. Additional groups will be caught by the |len(buttons)| check above.\n\nThe order is fixed, since it depends on the order in which the windows are created. I\u0027ll add a comment to make clear that the order is also being tested.",
+      "parentUuid": "77dd64be_54d517d3",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ffec0f4_73f4ffd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 2
@@ -99,6 +189,24 @@
       "writtenOn": "2020-05-04T05:40:51Z",
       "side": 1,
       "message": "sleeps are generally frowned upon in tests when you\u0027re waiting for something of unknown duration to finish.  Consider using a polling function wrapped around calling colorsMatch().  Then if the animation hasn\u0027t quite finished when you first check you have more attempts, and if it happens very fast you don\u0027t have a long wait.  (Not that half of a second is a huge wait time, but it\u0027s a matter of principle!)",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6e5d95d_db871f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Yes, I was also unhappy with the sleep, but I couldn\u0027t find any shelf properties that would tell me when this specific animation is done. I didn\u0027t think of using the colors, thanks!\n---\nOk, now that I have written it, I\u0027m not sure that this is better. The first polling always fails, and the second is after at least 400ms, even with the polling interval set to 50ms. (I guess the screenshot takes a while, it is being written to a temp file and read again.) So it does not save time, it makes the code more complex and triples the amount of screenshots taken.\n\nAlso, if the test actually fails because the icons are not shown at all or have the wrong color, the error message is just a timeout at a random point during the polling function. I added some logging to make clear what goes on. In a successful test, the \"Waiting for animation...\" log only shows up once per context menu.",
+      "parentUuid": "3ffec0f4_73f4ffd2",
       "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -125,6 +233,30 @@
       "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e188da2_69c8f6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151eed17_e5de9b08",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 7
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +300,48 @@
     },
     {
       "key": {
+        "uuid": "5b71f54c_0048bcd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06be647e_78e5737f",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4b9601b_083fdd0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ab3b9a_cc1d4789",
+      "range": {
+        "startLine": 149,
+        "startChar": 43,
+        "endLine": 149,
+        "endChar": 48
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82abf05e_ae104714",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 2
@@ -185,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "6cc572e7_b96d9536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82abf05e_ae104714",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a206898_04b42d1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 2
@@ -199,6 +391,24 @@
       "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12d01331_f47c7b5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a206898_04b42d1f",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "eda70b8e_c425128f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7925f542_120f728f",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2898baf3_a45d02d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 2
@@ -239,6 +473,24 @@
       "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da66aa26_ab3211f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-05T14:56:11Z",
+      "side": 1,
+      "message": "Not really, we could take screenshots again, but I think this is fine. During the for loop, the next polling takes care of this, after the for loop, all testing app windows will be closed anyways via |defer|.",
+      "parentUuid": "2898baf3_a45d02d2",
+      "revId": "9b94c69abb2df18f004f7b1b429df6b900e92df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
