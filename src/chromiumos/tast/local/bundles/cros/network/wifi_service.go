@@ -132,6 +132,36 @@ func (s *WifiService) Disconnect(ctx context.Context, config *network.Service) (
 	return &empty.Empty{}, nil
 }
 
+// IsSSIDHidden returns true if the SSID is hidden and false otherwise.
+// This is the implementation of network.Wifi/IsSSIDHidden gRPC.
+func (s *WifiService) IsSSIDHidden(ctx context.Context, ssid *network.SSID) (*network.IsHidden, error) {
+	properties := map[string]interface{}{
+		shill.ServicePropertyType: shill.TypeWifi,
+		shill.ServicePropertyName: ssid.Ssid,
+	}
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+	service, err := manager.FindMatchingService(ctx, properties)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+	serviceProperties, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	}
+
+	isHidden, err := serviceProperties.GetBool(shill.ServicePropertyWiFiHiddenSSID)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get the boolian value of the property %s", shill.ServicePropertyWiFiHiddenSSID)
+	}
+
+	return &network.IsHidden{
+		Hidden: isHidden,
+	}, nil
+}
+
 // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
 func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SSID) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
