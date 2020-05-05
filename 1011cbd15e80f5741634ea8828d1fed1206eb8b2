@@ -16,6 +16,24 @@
       "revId": "1011cbd15e80f5741634ea8828d1fed1206eb8b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ee44b1_836083f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:56:25Z",
+      "side": 1,
+      "message": "This CL adds the second field of simpleConnectTestcase so that the subtest definition becomes even longer:\n\nVal: []simpleConnectTestcase{\n\t{[]hostapd.Option{hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48)}},\n}\n\u003d\u003e \nVal: []simpleConnectTestcase{\n\t{apOpts: []hostapd.Option{hostapd.Mode(hostapd.Mode80211a), hostapd.Channel(48)}},\n}\n\nSo I suggested chharry@ to make a short alias, \"ap\", for hostapd package to make the subtest configuration easier to read.\n\nSure we can move out this change before the CL. WDYT?",
+      "parentUuid": "27349dc4_b9df912f",
+      "revId": "1011cbd15e80f5741634ea8828d1fed1206eb8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
