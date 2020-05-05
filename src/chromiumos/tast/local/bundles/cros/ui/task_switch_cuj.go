@@ -31,7 +31,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Timeout:      20 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Vars: []string{
 			"mute",
 			"ui.TaskSwitchCUJ.username",
@@ -88,22 +88,24 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	arcSetupCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+	defer cancel()
 	// Optin to Play Store.
 	s.Log("Opting into Play Store")
-	if err := optin.Perform(ctx, cr, tconn); err != nil {
+	if err := optin.Perform(arcSetupCtx, cr, tconn); err != nil {
 		s.Fatal("Failed to optin to Play Store: ", err)
 	}
 	s.Log("Waiting for Playstore shown")
-	if err := ash.WaitForVisible(ctx, tconn, playStorePackageName); err != nil {
+	if err := ash.WaitForVisible(arcSetupCtx, tconn, playStorePackageName); err != nil {
 		s.Fatal("Failed to wait for the playstore: ", err)
 	}
 
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := arc.New(arcSetupCtx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close()
-	d, err := ui.NewDevice(ctx, a)
+	d, err := ui.NewDevice(arcSetupCtx, a)
 	if err != nil {
 		s.Fatal("Failed to initialize UI Automator: ", err)
 	}
@@ -122,9 +124,12 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			continue
 		}
 		s.Log("Installing ", pkgName)
-		if err = playstore.InstallApp(ctx, a, d, pkgName); err != nil {
+		installCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+		if err = playstore.InstallApp(installCtx, a, d, pkgName); err != nil {
+			cancel()
 			s.Fatalf("Failed to install %s: %v", pkgName, err)
 		}
+		cancel()
 	}
 
 	if err = cpu.WaitUntilIdle(ctx); err != nil {
@@ -201,9 +206,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	for _, app := range []struct {
 		query       string
 		packageName string
-		skipSplash  func() error
+		skipSplash  func(ctx context.Context) error
 	}{
-		{"gmail", gmailPackageName, func() error {
+		{"gmail", gmailPackageName, func(ctx context.Context) error {
 			const (
 				dialogID            = "com.google.android.gm:id/customPanel"
 				dismissID           = "com.google.android.gm:id/gm_dismiss_button"
@@ -262,30 +267,32 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}},
 	} {
 		if err = recorder.Run(ctx, tconn, func() error {
-			if err := openAppList(ctx); err != nil {
+			launchCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
+			defer cancel()
+			if err := openAppList(launchCtx); err != nil {
 				return errors.Wrap(err, "failed to open the app-list")
 			}
-			if err := testing.Sleep(ctx, time.Second); err != nil {
+			if err := testing.Sleep(launchCtx, time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
-			if err := kw.Type(ctx, app.query); err != nil {
+			if err := kw.Type(launchCtx, app.query); err != nil {
 				return errors.Wrap(err, "failed to type the query")
 			}
-			if err := testing.Sleep(ctx, time.Second); err != nil {
+			if err := testing.Sleep(launchCtx, time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
-			if err := kw.Accel(ctx, "enter"); err != nil {
+			if err := kw.Accel(launchCtx, "enter"); err != nil {
 				return errors.Wrap(err, "failed to type the enter key")
 			}
-			if err := ash.WaitForVisible(ctx, tconn, app.packageName); err != nil {
+			if err := ash.WaitForVisible(launchCtx, tconn, app.packageName); err != nil {
 				return errors.Wrapf(err, "failed to wait for the new window of %s", app.packageName)
 			}
 			s.Log("Skipping the splash screen of ", app.query)
-			if err = app.skipSplash(); err != nil {
+			if err = app.skipSplash(launchCtx); err != nil {
 				return errors.Wrap(err, "failed to skip the splash screen of the app")
 			}
 			// Waits some time to stabilize the result of launcher animations.
-			return testing.Sleep(ctx, timeout)
+			return testing.Sleep(launchCtx, timeout)
 		}); err != nil {
 			s.Fatalf("Failed to launch %s: %v", app.query, err)
 		}
