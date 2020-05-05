@@ -20,15 +20,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// DeviceInfoSet is used to determine when the get report requests by
+// KernelCommunicationDone is used to determine when the get report requests by
 // the kernel are done.
-var DeviceInfoSet = false
+var KernelCommunicationDone = false
 
 // Gamepad runs a javascript test for the given device. It compares
 // the buttons listed in expectedButtons with the ones produced by the
 // recording.
 func Gamepad(ctx context.Context, s *testing.State, d *uhid.Device, replayPath, buttonMappings string, expectedButtons []string) {
-	for !DeviceInfoSet {
+	for !KernelCommunicationDone {
 		status, err := d.Dispatch(ctx)
 		if err != nil {
 			s.Fatal("Failed during kernel communication: ", err)
@@ -58,7 +58,10 @@ func Gamepad(ctx context.Context, s *testing.State, d *uhid.Device, replayPath, 
 	if err := replayDevice(ctx, d, replayPath); err != nil {
 		s.Fatal("Replay failed: ", err)
 	}
-	d.Close()
+	if err := d.Close(); err != nil {
+		s.Fatal("Failed to destroy controller: ", err)
+	}
+	s.Log("Destroyed device")
 
 	if err, ok := <-js; ok {
 		s.Fatal("JavaScript test failed: ", err)
@@ -102,7 +105,7 @@ func prepareScript(ctx context.Context, server *httptest.Server, mappings string
 		return nil, err
 	}
 
-	conn, err := cr.NewConn(ctx, path.Join(server.URL, "ds3Replay.html"))
+	conn, err := cr.NewConn(ctx, path.Join(server.URL, "replay.html"))
 	if err != nil {
 		return nil, err
 	}
@@ -137,6 +140,7 @@ func runJavascriptTest(ctx context.Context, conn *chrome.Conn, expected []string
 	}
 
 	if err := compareButtonSequence(expected, actual); err != nil {
+		testing.ContextLogf(ctx, "Button sequence comparison failed: got %+q, wanted %+q", actual, expected)
 		c <- err
 		return
 	}
