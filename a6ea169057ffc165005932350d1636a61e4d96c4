@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "4f0f1387_896fd4a8",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T23:41:27Z",
+      "side": 1,
+      "message": "I don\u0027t think we need \"Enum\" in the type name here.",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406fcf4d_1c641098",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T23:41:27Z",
+      "side": 1,
+      "message": "ditto re: Enum in the type name",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1e3d084_fa0bd4db",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
