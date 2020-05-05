@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "561eb157_8ffda98c",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:25:36Z",
+      "side": 1,
+      "message": "This check is not necessary; ListenAndServe always returns non-nil error as noted in https://golang.org/pkg/net/http/#Server.ListenAndServe",
+      "range": {
+        "startLine": 278,
+        "startChar": 39,
+        "endLine": 278,
+        "endChar": 49
+      },
+      "revId": "725619c9ffc3541df7a47e3e3976bf92939ddca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f0290dc_ddd70a9e",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:25:36Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be a comparison of err.Error(), but the comparison with http.ErrServerClosed. That\u0027s the error to be returned. cf. example of https://golang.org/pkg/net/http/#Server.Shutdown.",
+      "range": {
+        "startLine": 279,
+        "startChar": 6,
+        "endLine": 279,
+        "endChar": 53
+      },
+      "revId": "725619c9ffc3541df7a47e3e3976bf92939ddca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fac65123_37da2b5c",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:25:36Z",
+      "side": 1,
+      "message": "very nitpicking style comment: you don\u0027t need a paranthesis for func\n  go func() {\n     ...\n  }()\nthis is fine and normal.",
+      "range": {
+        "startLine": 276,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 3
+      },
+      "revId": "725619c9ffc3541df7a47e3e3976bf92939ddca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

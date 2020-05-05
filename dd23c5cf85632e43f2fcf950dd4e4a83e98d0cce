@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f136aaaf_1557f6f6",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:25:36Z",
+      "side": 1,
+      "message": "sure, but I guess usually the error details would be included in the status code and the response body of http.FileServer usually.",
+      "parentUuid": "9a249eb3_249f35e3",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8ed21d1_f8e79f0e",
         "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
         "patchSetId": 7
