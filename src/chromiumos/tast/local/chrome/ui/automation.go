@@ -119,13 +119,14 @@ func (params *FindParams) rawBytes() ([]byte, error) {
 // As defined in chromium/src/extensions/common/api/automation.idl
 // Exported fields are sorted in alphabetical order.
 type Node struct {
-	object    *chrome.JSObject
-	tconn     *chrome.TestConn
-	ClassName string             `json:"className,omitempty"`
-	Location  coords.Rect        `json:"location,omitempty"`
-	Name      string             `json:"name,omitempty"`
-	Role      RoleType           `json:"role,omitempty"`
-	State     map[StateType]bool `json:"state,omitempty"`
+	object         *chrome.JSObject
+	tconn          *chrome.TestConn
+	ClassName      string             `json:"className,omitempty"`
+	HTMLAttributes map[string]string  `json:"htmlAttributes,omitempty"`
+	Location       coords.Rect        `json:"location,omitempty"`
+	Name           string             `json:"name,omitempty"`
+	Role           RoleType           `json:"role,omitempty"`
+	State          map[StateType]bool `json:"state,omitempty"`
 }
 
 // NodeSlice is a slice of pointers to nodes. It is used for releaseing a group of nodes.
@@ -158,6 +159,7 @@ func (n *Node) Update(ctx context.Context) error {
 		return {
 			checked: this.checked,
 			className: this.className,
+			htmlAttributes: this.htmlAttributes,
 			location: this.location,
 			name: this.name,
 			role: this.role,
