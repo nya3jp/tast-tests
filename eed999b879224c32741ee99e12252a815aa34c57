@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b4cb379_a8315aff",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720196df_b5f6f976",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7358a228_9f249116",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 34
@@ -45,6 +69,30 @@
       "revId": "eed999b879224c32741ee99e12252a815aa34c57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "817d4e1a_c005db14",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7358a228_9f249116",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "24067a5d_be44a8b1",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4174cf2a_2a04f63c",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fa46aa4_28f70134",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 34
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "74e98277_5182f226",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fa46aa4_28f70134",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 2
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afe533d5_d1c7fa32",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 34
@@ -105,6 +201,30 @@
       "writtenOn": "2020-05-05T00:44:10Z",
       "side": 1,
       "message": "and here you can put the guard:\n  if d.file !\u003d nil {\n  }",
+      "range": {
+        "startLine": 240,
+        "startChar": 11,
+        "endLine": 240,
+        "endChar": 26
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e9bf13_d12bdad5",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "I put the guard around both file.Close and d.WriteEvent because if file is nil WriteEvent will fail.",
+      "parentUuid": "afe533d5_d1c7fa32",
       "range": {
         "startLine": 240,
         "startChar": 11,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5b9ba2ae_1a76f3a9",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e139c271_7c9186a7",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 19
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f3a209f_acf5f782",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 34
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "5632890d_70d312a8",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3a209f_acf5f782",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 15
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bdc03e4_7f72f696",
         "filename": "src/chromiumos/tast/local/uhid/uhid.go",
         "patchSetId": 34
@@ -183,6 +351,30 @@
       "revId": "eed999b879224c32741ee99e12252a815aa34c57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26908509_a049be64",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-05T01:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bdc03e4_7f72f696",
+      "range": {
+        "startLine": 356,
+        "startChar": 10,
+        "endLine": 356,
+        "endChar": 21
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
