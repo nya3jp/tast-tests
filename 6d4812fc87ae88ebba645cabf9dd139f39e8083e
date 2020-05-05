@@ -94,6 +94,30 @@
       "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d103c3a_4f072e85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-05T03:00:56Z",
+      "side": 1,
+      "message": "I mean you can use a field under window just like the way we use |CCAReady| and store them on Javascript side.\n\nFor example, you can construct the port something like:\n\n(id) \u003d\u003e {\n  window.CCATestBridge \u003d {windowUrl: new Promise(), errorEvents: []};\n  const port \u003d chrome.runtime.connect(id, {name: \u0027SET_TEST_CONNECTION\u0027});\n  port.onMessage.addListener((message) \u003d\u003e {\n    if (message.type \u003d\u003d\u003d \u0027error\u0027) {\n      window.CCATestBridge.errorEvents.push(message.event);\n    } else if (message.type \u003d\u003d\u003d \u0027launch\u0027) {\n      window.CCATestBridge.windowUrl.resolve(message.url);\n    }\n  });\n}\n\nThen you can change to evaluate |CCATestBridge.windowUrl| rather than |CCAReady|\nand get error events by returning |window.CCATestBridge.errorEvents| rather than |this|.",
+      "parentUuid": "725e532f_69d06ac8",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
