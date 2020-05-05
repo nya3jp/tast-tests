@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03fc1283_67bff44f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-05T19:02:29Z",
+      "side": 1,
+      "message": "Idea to promote it to CQ. May be it similar to PFQ in your context.",
+      "parentUuid": "b2430365_ca324f05",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "34d761f396086e3e11c114c27159a0ce3827a5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ee6af79_e8667865",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
         "patchSetId": 4
