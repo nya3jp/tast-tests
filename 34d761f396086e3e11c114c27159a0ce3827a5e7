@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2430365_ca324f05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T18:25:56Z",
+      "side": 1,
+      "message": "nit: you can remove this message.\n\nall test are supposed to be promoted to PFQ. And they can only be promoted to critical after passing 20 times in a row. as described here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "34d761f396086e3e11c114c27159a0ce3827a5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
