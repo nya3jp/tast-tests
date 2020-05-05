@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac9f595_a8b5f64b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-05T06:44:53Z",
+      "side": 1,
+      "message": "an extra space here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e03e7240_55d137f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-05T06:44:53Z",
+      "side": 1,
+      "message": "wifi.SimpleConnect ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88166fa_d3ca3ab9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-05T06:44:53Z",
+      "side": 1,
+      "message": "I think the package name is wifi?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1655ce_5ebb63e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-05T06:44:53Z",
+      "side": 1,
+      "message": "use \"got ... want ...\" message instead? and err seems irrelevant here?",
+      "range": {
+        "startLine": 186,
+        "startChar": 11,
+        "endLine": 186,
+        "endChar": 77
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac11c84_433bea63",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-05T06:44:53Z",
+      "side": 1,
+      "message": "maybe \"if the network with ssid is a hidden network in shill\"? (also other function comments)\n\nI think the function can not handle the case of un-configured hidden SSID.",
+      "range": {
+        "startLine": 155,
+        "startChar": 33,
+        "endLine": 155,
+        "endChar": 54
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3dfc32_34c96086",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-05T06:44:53Z",
+      "side": 1,
+      "message": "looks like an extra empty line? (and also line23?)",
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

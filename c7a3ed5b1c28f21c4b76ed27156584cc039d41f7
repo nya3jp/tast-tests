@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "876ed755_339d652d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-05T06:44:53Z",
+      "side": 1,
+      "message": "\u003e \"retruns\" is a possible misspelling of \"returns\".\n\nFixed.",
+      "parentUuid": "7ba12260_62c42f49",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 27
+      },
+      "revId": "c7a3ed5b1c28f21c4b76ed27156584cc039d41f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
