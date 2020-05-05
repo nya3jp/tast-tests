@@ -81,6 +81,47 @@
       "revId": "bc7f2ccb12d44a38eb86916972b1909935f979db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4312d4c4_5c6a6eb3",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:28:27Z",
+      "side": 1,
+      "message": "Sure, and in other contexts I see where that might be useful, but all we are doing above is setting up stuff with fileutil and doing some stuff with goroutines. I\u0027m not sure there\u0027s much that can be usefully debugged in that sense.",
+      "parentUuid": "1db0f68b_174ac329",
+      "revId": "bc7f2ccb12d44a38eb86916972b1909935f979db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0beeeba_017ec010",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:28:27Z",
+      "side": 1,
+      "message": "netDev?",
+      "range": {
+        "startLine": 299,
+        "startChar": 31,
+        "endLine": 299,
+        "endChar": 46
+      },
+      "revId": "bc7f2ccb12d44a38eb86916972b1909935f979db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
