@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0e97933_84ab5856",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T23:39:02Z",
+      "side": 1,
+      "message": "Just curious -- are there any other users of NewTestFixture that use different values for the contexts here?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 75
+      },
+      "revId": "d3cb281a7219bc330a4f6cb427e6623b3a99b73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37be232c_7d379be9",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T23:39:02Z",
+      "side": 1,
+      "message": "Maybe I\u0027m hallucinating but I feel like I\u0027ve seen this sort of thing in a few places lately. Might be worth extracting some error-handling tools into the tast errors package.",
+      "revId": "d3cb281a7219bc330a4f6cb427e6623b3a99b73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b0b7a2_7c96b1ff",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T23:39:02Z",
+      "side": 1,
+      "message": "The distinction between \"daemon context\" and \"method context\" was already used by the calling function, right? I don\u0027t know if it does any good to point this out here.\n\n(Plus, I think this same comment exists in the calling function as well.)",
+      "range": {
+        "startLine": 547,
+        "startChar": 9,
+        "endLine": 547,
+        "endChar": 23
+      },
+      "revId": "d3cb281a7219bc330a4f6cb427e6623b3a99b73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
