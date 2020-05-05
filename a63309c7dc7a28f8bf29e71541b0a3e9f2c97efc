@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2e894515_5bcef94e",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-05T04:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c70126_314fad7a",
+      "range": {
+        "startLine": 215,
+        "startChar": 51,
+        "endLine": 215,
+        "endChar": 55
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6a23785_81e93735",
         "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
         "patchSetId": 6
@@ -139,6 +163,30 @@
       "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3cac401_45265f9a",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-05T04:23:25Z",
+      "side": 1,
+      "message": "https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform2/vm_tools/init/vm_cicerone.conf;l\u003d28?q\u003d8889%20iptables\n\nThis exists for now, if you want to change it we will need to extend the test to set an exception up itself.",
+      "parentUuid": "c6a23785_81e93735",
+      "range": {
+        "startLine": 269,
+        "startChar": 11,
+        "endLine": 269,
+        "endChar": 72
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9187a8e3_a8e55d5b",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-05T04:23:25Z",
+      "side": 1,
+      "message": "no, but as long as the precondition is closed (which I believe it normally is in context expiry) then it will be shut down.\n\nThis is pretty light weight, not sure if extra logic to shut it down in the rare case the precondition is not closed. (note that all of Crostini would continue to run in this case too.)",
+      "parentUuid": "f08c1bcf_57e80bed",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 13
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cddc387_962d99c8",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 6
@@ -185,6 +257,30 @@
       "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "949a970f_9b42bfd2",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-05T04:23:25Z",
+      "side": 1,
+      "message": "Done.  Will remove the startedByInstallerPre in a follow up cl as it may change a number of other files and this change is big enough already.",
+      "parentUuid": "2cddc387_962d99c8",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 140
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
