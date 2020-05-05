@@ -46,6 +46,30 @@
       "revId": "bb05ddbfc6856d67b5c7ac45cbe9424ed44d62b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8983adf3_e10ed0e3",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-05T02:27:23Z",
+      "side": 1,
+      "message": "\u003e But we can still raise error earlier here to save some debugging effort if something this bad happens, shall we?\n\nSure, that\u0027s fine. I guess I was just saying, there\u0027s a different reason for this check than for the others. But it\u0027s still probably a good idea.\n\nMarking resolved.",
+      "parentUuid": "b2c44c54_99c9fd8f",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "bb05ddbfc6856d67b5c7ac45cbe9424ed44d62b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
