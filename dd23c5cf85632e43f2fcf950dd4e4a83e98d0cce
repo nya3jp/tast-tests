@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "659d40e7_8c7a784d",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T01:11:56Z",
+      "side": 1,
+      "message": "This could be done by http.FileServer?",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ed21d1_f8e79f0e",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T01:11:56Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary; it will return 404 already.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 3
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8f5431_4f8b878d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T01:11:56Z",
+      "side": 1,
+      "message": "nit: %q would be better (cf. https://play.golang.org/p/XLkQz0ZIUO_K)",
+      "range": {
+        "startLine": 395,
+        "startChar": 44,
+        "endLine": 395,
+        "endChar": 48
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a53278_f8be9675",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T01:11:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 402,
+        "startChar": 44,
+        "endLine": 402,
+        "endChar": 48
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb57207_a75318f8",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T01:11:56Z",
+      "side": 1,
+      "message": "Please use backquotes:\n  `\"path\"\\\\:\\\\s*\"([^\"]*)\"`\nit would be slightly more readable, I think (cf. https://golang.org/ref/spec#String_literals)",
+      "range": {
+        "startLine": 120,
+        "startChar": 38,
+        "endLine": 120,
+        "endChar": 67
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f793bac_86e2a0e8",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T01:11:56Z",
+      "side": 1,
+      "message": "this regexp.Compile should be done before downloadTo",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6d885f_092ea4d9",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T01:11:56Z",
+      "side": 1,
+      "message": "String() returns a string. Doesn\u0027t need a cast.",
+      "range": {
+        "startLine": 154,
+        "startChar": 42,
+        "endLine": 154,
+        "endChar": 48
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
