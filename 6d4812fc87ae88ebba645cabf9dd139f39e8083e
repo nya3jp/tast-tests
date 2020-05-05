@@ -166,6 +166,30 @@
       "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0837f078_57746905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-05T05:49:20Z",
+      "side": 1,
+      "message": "IMO, it is something like the mojo interface. We usually have a mojo interface that deal with the communication between two components. When there is a new requirement, we usually consider extending the exist interface first rather than creating a new one.\n\nTBH, there are already three types of interfaces (launch, perf, error) between these 2 components. And it seems to be quite common that we want to communicate things between tests and CCA. Given that, I think we still need to have a general interface sooner or later.\n\nIf you concern about the timeline, I think maybe we can leave a TODO here instead. And we can fix it before the birth of the 4th interface.",
+      "parentUuid": "4ac728ae_cbe80721",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
