@@ -48,7 +48,7 @@ func V4L2(ctx context.Context, s *testing.State) {
 		defer setHWTimestamps(origVal)
 	}
 
-	testList, err := getTestList()
+	testList, err := getTestList(ctx)
 	if err != nil {
 		s.Fatal("Failed to get test list: ", err)
 	}
@@ -102,6 +102,26 @@ func pathExist(path string) (bool, error) {
 	return true, nil
 }
 
+func isV1Legacy(ctx context.Context) bool {
+	// For unibuild, we can determine if a device is v1 legacy by checking
+	// 'legacy-usb' under path '/camera' in cros_config.
+	c := testexec.CommandContext(ctx, "cros_config", "/camera", "legacy-usb")
+	out, err := c.Output()
+	if err == nil && string(out) == "true" {
+		return true
+	}
+
+	// For non-unibuild, we can check if 'v1device' presents in the config file
+	// '/etc/camera/camera_chracteristics.conf'.
+	path := "/etc/camera/camera_characteristics.conf"
+	if config, err := ioutil.ReadFile(path); err == nil {
+		if strings.Contains(string(config), "v1device") {
+			return true
+		}
+	}
+	return false
+}
+
 func setHWTimestamps(newValue string) (oldValue string, err error) {
 	b, err := ioutil.ReadFile(hwTimestampsPath)
 	if err != nil {
@@ -115,23 +135,13 @@ func setHWTimestamps(newValue string) (oldValue string, err error) {
 	return oldValue, err
 }
 
-func getTestList() (string, error) {
-	const (
-		v1Path = "/usr/bin/arc_camera_service"
-		v3Path = "/usr/bin/cros_camera_service"
-	)
-
-	hasV1, err := pathExist(v1Path)
+func getTestList(ctx context.Context) (string, error) {
+	hasV3, err := pathExist("/usr/bin/cros_camera_service")
 	if err != nil {
 		return "", err
 	}
 
-	hasV3, err := pathExist(v3Path)
-	if err != nil {
-		return "", err
-	}
-
-	if hasV3 && !hasV1 {
+	if hasV3 && !isV1Legacy(ctx) {
 		return "halv3", nil
 	}
 
