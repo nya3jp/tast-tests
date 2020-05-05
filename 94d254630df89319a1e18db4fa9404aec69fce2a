@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e950f605_9e72eada",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-05T18:08:57Z",
+      "side": 1,
+      "message": "In my view, the line numbers in error messages are essential, so unless the scanner can keep track of what line we\u0027re on itself, we need `i`.",
+      "parentUuid": "d8eb22f4_36079522",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69c474d1_742adaf9",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
