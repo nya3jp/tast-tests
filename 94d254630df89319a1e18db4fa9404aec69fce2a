@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "15539180_9bf6a098",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T22:10:12Z",
+      "side": 1,
+      "message": "perhaps I misunderstood something:\n\n- if the goal is to log the line-of-code (in the .go file), then the traceback will have the info (no need to add file-name, line-of-code). The only thing needed is to return is an \"error\".\n- if the goal is to log the line read by the scanner, then `testing.ContextLogf(ctx, \"%s\", line)` should do it.\n\nIn both cases, traceback and logs, appear on the report. example:\n\nhttps://00e9e64bac7080fe842ef088cf52aaf95c78be53a4736c1dca-apidata.googleusercontent.com/download/storage/v1/b/chromeos-autotest-results/o/swarming-4bfe37229dc5bc10%2Fautoserv_test%2Ftast%2Fresults%2Ftests%2Farc.WindowManagerCUJ%2Flog.txt?qk\u003dAD5uMEuvoG5qqDwm5ra5O0ilPIcHCexREsn8wG_dm7jDAn_aeH5xrw5skXm91_4u4nysFjy3CvLwNhX6J4_dMHHp3tBo_qqwkuudLaMkHNJ6cGjBn5LO2RQMfWNtC839mNgDoy6mTKg5xigAB0gLRx11-GWk0rHQhl8oDlOK_e2zx-yvVZfvDJuebmcMHqfPpgv3JX_h417O-uDR-5srcGkVwe56w10ww6edU1DvdqLDL3uUHxlAY6oH3g4hago2DpWLHlNYEiZIXtLdnewijSgs2fzszJH7J-_CiGtncBH0z679WsDb-S4yycnWJmfzOWIiRt0mPLw72cmyCEBKmLhrzJskcc3OKHVfPF4AgVXgXfimNICQGf6prtddwY5MxsAfZxxXWXOwsz1_QZBzwLlglhkBoWuu55rIZjq59S-SBWQAgLE8JhBhEOgSkJexH4Elihp-coithKjhhXWKtF5BYB4jkK5uFvV9N8v92zFICWXIRqIVnT5vDXFJOYfQX7pYdY0ek07WQ-afwqZ8-jstG3KRw6GyMe7y_zf070MV8wRm3bupG3W5vaM9YUNXAEp8nStcuoz__cq6t21JwCngdHsHBM0wBajc6BuzL1OGpNcfhiIFFsEON4jqRgeeCZTZF_rv4L1CPAWPcDg-j0zKP2hBTuCpNYRY9SpPlGUIVVfVEv83WP-AQafxMpJy_h_eKM9QzQ1UE3tH0vvw8iCCIOsCNnOfa47hKlSQzzCmoHuIjT8B5ZohQ7WVvX1Sks_BB0IJliS67D_ccdDkHnVPhnpdOaTwNMGp61wAIzuVGM1XJtw_EUomJAxohkMe6GwNLQ0uXiqqOVN1DlraqDt1eNuCP045UoBOjr3z1zTaxqZjy4AbIU1AJ-CJ1ySQ3WqpQswN35BXW_Q71tAR3mtqemAh4JMXnBMVZlefnODJBlItDPOhAJ0\u0026isca\u003d1\n\n\nlmk if I missed something. thanks.",
+      "parentUuid": "17975ca3_0171c60b",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69c474d1_742adaf9",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
