@@ -70,6 +70,30 @@
       "revId": "67735fdde28c0601ca0fcae066ba940549748d41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae91177_b08056fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-05T23:59:14Z",
+      "side": 1,
+      "message": "Thanks for pointing me in the right direction! I wanted to check some way besides the UI but wasn\u0027t sure how, but I was able to follow those examples and come up with something. Let me know if it seems like a good enough check.\n\nI also added checking the ubertray button for Bluetooth as well. I didn\u0027t add the Wifi one for now, since it won\u0027t show up if the DUT is using a wired connection.\n\nRegarding Wifi, I was able to check the status by looking at the output of ifconfig. Does that seem OK?",
+      "parentUuid": "da16bd9f_ae265098",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "67735fdde28c0601ca0fcae066ba940549748d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
