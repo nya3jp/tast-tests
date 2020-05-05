@@ -152,6 +152,19 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	return err
 }
 
+// IsSSIDHiddenWifi returns true if the SSID is hidden and false otherwise.
+func (tf *TestFixture) IsSSIDHiddenWifi(ctx context.Context, ssid string) (bool, error) {
+	netSSID := &network.SSID{
+		Ssid: ssid,
+	}
+	isHidden, err := tf.wifiClient.IsSSIDHidden(ctx, netSSID)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get the WiFi service property")
+	}
+
+	return isHidden.Hidden, nil
+}
+
 // PingFromDUT tests the connectivity between DUT and router through currently connected WiFi service.
 func (tf *TestFixture) PingFromDUT(ctx context.Context, opts ...ping.Option) error {
 	if tf.curAP == nil {
