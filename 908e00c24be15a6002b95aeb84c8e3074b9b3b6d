@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c954444f_5edc5d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "Shall we return all IPv4 addresses of the interface?",
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfc1117c_3ba1f5ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "How about\n\nvar ret network.Addr\nfor ... {\n  if ... {\n    ret.Ipv4 \u003d append(ret.Ipv4, ipnet.IP.String())\n  }\n}\nreturn ret",
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22ca240_1e4bc62b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "Note that https://crrev.com/c/2142664 shall be merged soon.",
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ed971b_46398d2d",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "Do you foresee if any recent Tast port use this? If not, let\u0027s move the logic into disconnect_clears_ip.go.",
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2978e8aa_a7ad530b",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "How about\n\nfunc (c *ClientIface)IPV4Addrs(ctx) ([]string, error)",
+      "range": {
+        "startLine": 32,
+        "startChar": 22,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1456eb58_1e1f3e1f",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "I feel a bit sad that we have to name the protocol buffer a different name from rpc getter method. However, use \"Interface\" as rpc method name and \"Iface\" as protocol buffer name definitely brings confusion.\n\nI came out two approaches:\n1. use the stop word, Get, in rpc getter:\nrpc GetInterface(google.protobuf.Empty) returns (Iface) {}\nmessage Interface {\n  string name \u003d 1;\n}\n\n2. use xxxRequest / xxxResponse for request/response of a rpc method:\nrpc Interface(google.protobuf.Empty) returns (InterfaceResponse) {}\nmessage InterfaceResponse {\n  string name \u003d 1;\n}\n\nnya@, what do you think?",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3430fc7_3f2541c1",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "I would prefer rename it as \"name\", just like net.Interface.\n\nhttps://golang.org/pkg/net/#Interface",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b651af5_67a308d3",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-05T16:50:19Z",
+      "side": 1,
+      "message": "An interface may bind multiple addresses. How about\n\nmessage Addrs {\n  repeated string ipv4 \u003d 1;\n}\n\nNote that I plan to use \"ipv4s\", but the proto compiler converts it to Ipv4S, not Ipv4s...",
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
