@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94a8d343_3199c253",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:32:21Z",
+      "side": 1,
+      "message": "huge nit: end sentence with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 467,
+        "startChar": 24,
+        "endLine": 467,
+        "endChar": 25
+      },
+      "revId": "66254a637e5165702ecffeb69af03e73f0dd7536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
