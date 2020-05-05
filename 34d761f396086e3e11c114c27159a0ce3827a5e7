@@ -69,6 +69,30 @@
       "revId": "34d761f396086e3e11c114c27159a0ce3827a5e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f42db3_9a6a3c48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-05T19:04:44Z",
+      "side": 1,
+      "message": "Done, I personally don\u0027t like long lines.",
+      "parentUuid": "0ee6af79_e8667865",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "34d761f396086e3e11c114c27159a0ce3827a5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
