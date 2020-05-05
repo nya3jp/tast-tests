@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "274868b5_b36fe79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-05-05T07:22:13Z",
+      "side": 1,
+      "message": "Similarly to the other test, I\u0027m not sure we get any extra value from checking the UI for these things when we could call some API to tell us if wifi/bluetooth is enabled or disabled. It will make the test less flaky and easier to read probably too.\n\nIf you want to add a check for the icons in ubertray being selected/deselected at the end that should be fine as an additional check",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "67735fdde28c0601ca0fcae066ba940549748d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
