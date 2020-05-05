@@ -22,6 +22,29 @@
       "revId": "34d761f396086e3e11c114c27159a0ce3827a5e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee6af79_e8667865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T19:02:15Z",
+      "side": 1,
+      "message": "nit/YMMV: You might not need to line break this, as the golang line length style guide is pretty lax, and I don\u0027t know if it would be a much different length than the line on L45 anyway",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "34d761f396086e3e11c114c27159a0ce3827a5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
