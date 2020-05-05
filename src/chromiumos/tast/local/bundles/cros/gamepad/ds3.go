@@ -2,16 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package gamepad contains test to check the correct functioning of
-// some controller mappings.
 package gamepad
 
 import (
-	"bytes"
 	"context"
-	"encoding/binary"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/gamepad/dualshock"
 	"chromiumos/tast/local/bundles/cros/gamepad/jstest"
 	"chromiumos/tast/local/uhid"
 	"chromiumos/tast/testing"
@@ -19,7 +16,6 @@ import (
 
 const (
 	ds3HidRecording = "ds3.hid"
-	uniq            = "01:23:45:67:89:AB"
 
 	macAddressRequest      = 0xf2
 	operationalModeRequest = 0xf5
@@ -31,7 +27,7 @@ func init() {
 		Desc:         "Checks that the DS3 mappings are what we expect",
 		Contacts:     []string{"jtguitar@google.com", "chromeos-tango@google.com", "hcutts@chromium.org", "ricardoq@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ds3.hid", "ds3Replay.html"},
+		Data:         []string{"ds3.hid", "replay.html"},
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -42,8 +38,8 @@ func DS3(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create DS3: ", err)
 	}
 	s.Log("Created controller")
-	d.SetUniq(uniq)
-	d.EventHandlers[uhid.GetReport] = getReport
+	d.SetUniq(dualshock.Uniq)
+	d.EventHandlers[uhid.GetReport] = getReportDS3
 	expectedButtons := []string{
 		"triangle",
 		"circle",
@@ -82,36 +78,23 @@ func DS3(ctx context.Context, s *testing.State) {
 	jstest.Gamepad(ctx, s, d, s.DataPath(ds3HidRecording), buttonMappings, expectedButtons)
 }
 
-// getReport handles getReport requests by the kernel.
-func getReport(ctx context.Context, d *uhid.Device, buf []byte) error {
-	reader := bytes.NewReader(buf)
-	event := uhid.GetReportRequest{}
-	if err := binary.Read(reader, binary.LittleEndian, &event); err != nil {
-		return err
-	}
-	data := processRNum(d, event.RNum)
-	reply := uhid.GetReportReplyRequest{
-		RequestType: uhid.GetReportReply,
-		ID:          event.ID,
-		Err:         0,
-		DataSize:    uint16(len(data)),
-	}
-	copy(reply.Data[:], data[:])
-	return d.WriteEvent(reply)
+// getReportDS3 handles getReport requests by the kernel.
+func getReportDS3(ctx context.Context, d *uhid.Device, buf []byte) error {
+	return dualshock.GetReport(processRNumDS3, d, buf)
 }
 
-// processRNum returns the data that will be written in the get report
+// processRNumDS3 returns the data that will be written in the get report
 // reply depending on the rnum that was sent.
-func processRNum(d *uhid.Device, rnum uint8) []byte {
+func processRNumDS3(d *uhid.Device, rnum uint8) []byte {
 	if rnum == macAddressRequest {
-		// this is a hardcoded array based on the uniq constant defined
-		// above
+		// this is a hardcoded array based on the Uniq constant defined
+		// in the dualshock package.
 		return []byte{0xf2, 0xff, 0xff, 0x00, 0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0x00, 0x03, 0x40, 0x80, 0x18, 0x01, 0x8a}
 	} else if rnum == operationalModeRequest {
 
 		// getReportRequests by the kernel are done after an operational
 		// mode request. We end the communication here.
-		jstest.DeviceInfoSet = true
+		jstest.KernelCommunicationDone = true
 		return []byte{0x01, 0x00, 0x18, 0x5e, 0x0f, 0x71, 0xa4, 0xbb}
 	}
 	return []byte{}
