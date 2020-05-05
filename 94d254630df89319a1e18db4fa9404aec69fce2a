@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc607b23_d86d38fa",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "huge nit: the -\u003e The",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8eb22f4_36079522",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "is \"i\" needed ?\nYou an simplify the entire parsing by doing:\n\n    for scanner.Scan() {\n      line :\u003d scanner.Text()\n\n      // if the prefix is the same for all lines you can add some pre-parsing here.\n\n      if len(line) \u003c 4 {\n         // report error\n      }\n      prefix, data \u003d line[:4], line[4:]\n      switch prefix {\n         // on golang, you can switch on strings:\n         // https://tour.golang.org/flowcontrol/9\n         case \"D:  \":\n         case \"I:  \":\n      }\n    }\n \n    // and check for possible err\n    if err :\u003d scanner.Err(); err !\u003d nil {\n      return error.Wrap(err, \"failure to parse file\")\n    }",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69c474d1_742adaf9",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "nit: here and below:\ndon\u0027t create multiple sentences in error strings since they are concatenated and could be confusing.\n\ne.g:\n\"multi device recording not supported (line %d)\"\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 31,
+        "startChar": 70,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6f53f9_6456f728",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "nit: no need to use format string for \"name\". \nnit: you can replace it with got;want.\n\ne.g:\n\n\"unexpected length in Name entry; got %d, want \u003e\u003d 4\", len(line)",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 70
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa9a8bb_84c106b9",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 39,
+        "startChar": 31,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e5be56_0bec22fb",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ab724a_97e56eba",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "ditto: see previvous comments about using period / starting with capital letter in error strings",
+      "range": {
+        "startLine": 76,
+        "startChar": 25,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece90960_e42a78cf",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "IIRC I mentioned about not doing a \"if not ... { continue }\" since it is difficult to read (since you have a previous \"if prefix \u003d\u003d d\".\n\nin any case, I\u0027ll recommend using the switch mentioned above.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d92d2a74_db7c4b96",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "ditto: see previvous comments about using period / starting with capital letter in error strings",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 54
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83204047_3939fa95",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "I wouldn\u0027t couple deviceData into this function.\nit seems that the \"parseXXX\" functions just parse something and return it.\n\nin this case I\u0027d do something like:\n\n    // it can return uint64 if you prefer\n    func parseInfo(ling string) bus, vendorID, productID int, error {\n    }",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8176b0bd_60aa856c",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "nit:\n\nif len(info) \u003d\u003d 0 {\n}",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff7678db_6b00808f",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "nit: \"info\"... but if you want to capitalize Info, then do:\n\n\"unexpected number of elements in Info line; got %d, want: 3\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 121,
+        "endChar": 28
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d60205_16d50be1",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "want",
+      "range": {
+        "startLine": 121,
+        "startChar": 88,
+        "endLine": 121,
+        "endChar": 94
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfce4b09_6568bd16",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "is this still used? can you do the regexp without it?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5be8288_4abeb72b",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T16:49:52Z",
+      "side": 1,
+      "message": "nit: we -\u003e We",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 6
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
