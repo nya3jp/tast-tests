@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "b4ad9958_3b2805c5",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T17:25:36Z",
+      "side": 1,
+      "message": "While this is not a big deal, it indeed looks a bit weird to me too; when a context is given to ListenAndServe, a normal Go programmer would think that the server will shutdown after the context expires/is canceled.\n\nSince this context is for logging purpose, an idea is to use testing.Logger (you can create a logger through testing.ContextLogger (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#ContextLogger).\n\n\nOr implement the logic of context\u0027s deadline and so Shutdown will cancel the context like:\n  type Server {\n    server *http.Server\n    cancel context.CancelFunc\n  }\n\n  ..\n\n  func (s *Server) ListenAndServe(ctx context.Context) {\n    var serverCtx context.Context\n    serverCtx, s.cancel \u003d context.WithCancel(ctx)\n    go func() {\n      \u003c- serverCtx.Done()\n      s.server.Shutdown(ctx)\n    }()\n    go func() {\n      ...\n      if err :\u003d s.server.ListenAndServe(); ... {\n      }\n    }()\n    ...\n  }\n\n  func (s *Server) Shutdown() {\n    if s.cancel \u003d\u003d nil {\n      return\n    }\n    s.cancel()\n    s.cancel \u003d nil\n  }\n\n(but the code would be a bit more complicated to handle errors properly).",
+      "parentUuid": "9187a8e3_a8e55d5b",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 13
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cddc387_962d99c8",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 6
