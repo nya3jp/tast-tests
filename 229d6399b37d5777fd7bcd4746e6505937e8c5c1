@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ace6282_6015b456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-05T15:44:11Z",
+      "side": 1,
+      "message": "I don\u0027t see that something is booting here. Could you please verify func name and description?",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "229d6399b37d5777fd7bcd4746e6505937e8c5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99545bef_c2d4ab1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-05T15:44:11Z",
+      "side": 1,
+      "message": "I think in go it is preferred to use it as deferred call at L44, after resolving the tarPath",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "229d6399b37d5777fd7bcd4746e6505937e8c5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644d5c44_86e8be00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-05T15:44:11Z",
+      "side": 1,
+      "message": "abstract args should be avoided to pass. Please specify params explicitly.\nPlease see https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go;l\u003d50?q\u003dgmscore_\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F\nas an example.",
+      "range": {
+        "startLine": 55,
+        "startChar": 75,
+        "endLine": 55,
+        "endChar": 79
+      },
+      "revId": "229d6399b37d5777fd7bcd4746e6505937e8c5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e1c6b6_230aefc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache_validation_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-05T15:44:11Z",
+      "side": 1,
+      "message": "I think you may simplify the logic by letting service to pass only one run with required flags. \ncache.PackagesCopy and cache.PackagesSkipCopy. In fact, you duplicate the logic in this service. IIUC you should have logic in remote tast and call this service twice to collect the data and then analyze the data on remote (host) side.",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "229d6399b37d5777fd7bcd4746e6505937e8c5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
