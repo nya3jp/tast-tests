@@ -16,6 +16,24 @@
       "revId": "ed650a7e17a1f2e0104f5c4111bca7aa250929a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43f33ca_8e988021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-05T21:11:14Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to keep context when it becomes unnecessary -- defer is called when the current function returns; in this case it\u0027s entire TaskSwitchCUJ. Also too many defer could hurt the runtime performance (though defer performance has been improved recently). But maybe that\u0027s okay.\n\nFor arcSetupCtx above, I was simply dull so it was defer, but I think that\u0027s not great. Uploaded a new patchset to introduce an inline function to make sure arcSetupCtx to be closed timely.\n\nIn this code path, I\u0027m afraid that inline-function + defer is too complicated and cancelling on every code path would be easy.",
+      "parentUuid": "42e53e90_088531a9",
+      "revId": "ed650a7e17a1f2e0104f5c4111bca7aa250929a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
