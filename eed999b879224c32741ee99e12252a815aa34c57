@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "720196df_b5f6f976",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "nit: \nas discussed off-online, please make all of them public now.\ndestroy, create2, input2",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7358a228_9f249116",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "nit: StatusOK\n\nI\u0027ve seen both \"Ok\" and \"OK\" in the code, but according to the doc:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nit should be OK, since OK short of Okay.\n\nand net/http uses StatusOK: https://golang.org/pkg/net/http/",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4174cf2a_2a04f63c",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "(sorry: missed this one before): it is safe to assume that d !\u003d nil... you can remove this check (here and in the rest)",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 15
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa46aa4_28f70134",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "(missed it before)\n\nd \u003d\u003d nil: can be removed see above\nd.file \u003d\u003d nil: it is possible that d.file\u003d\u003dnil.\n\nSee this case:\n\n  d, err :\u003d NewDeivce(name, descriptor)\n  if err !\u003d nil {\n    return err\n  }\n  defer d.Close()   // file has not been initialized yet.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 2
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe533d5_d1c7fa32",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "and here you can put the guard:\n  if d.file !\u003d nil {\n  }",
+      "range": {
+        "startLine": 240,
+        "startChar": 11,
+        "endLine": 240,
+        "endChar": 26
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e139c271_7c9186a7",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "nit, optional:\nfine to leave them as it is, but if you remove them it is fine too. I think you are not supposed to re-use the device after you close it.\nIf you can re-use, then probably you should some comments saying that.",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 19
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3a209f_acf5f782",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "ditto above (here and below)",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 15
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdc03e4_7f72f696",
+        "filename": "src/chromiumos/tast/local/uhid/uhid.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T00:44:10Z",
+      "side": 1,
+      "message": "nit:\nno need to define a StatusError since err !\u003d nil.\nIt is safe to return StatusOK here.\n\n\nAlso it is consistent with:\n   return StatusOk, d.processEvent(...)  // you are returning StatusOk regardless of \"error\" which is fine.\n\nIn Go, if you return an error (value, err :\u003d func()), if err !\u003d nil, you can safely assume that value is invalid.",
+      "range": {
+        "startLine": 356,
+        "startChar": 10,
+        "endLine": 356,
+        "endChar": 21
+      },
+      "revId": "eed999b879224c32741ee99e12252a815aa34c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
