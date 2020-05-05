@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc93c2f_dac58df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-05T23:52:09Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused about the steps here.  For each group, you click on the button, wait for the animation to finish by checking the first icon color, then check the group button icon and all the icons inside it?  Why not put the checking of all the icons in the polling function too?  Then you don\u0027t take multiple screenshots.  If the animation hasn\u0027t loaded, you\u0027ll return an error on the very first color comparison anyway.",
+      "revId": "8b818246fe7d4d4616a6ad65e217d78602ac7766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57a8e76_1cc929da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-05T23:52:09Z",
+      "side": 1,
+      "message": "since the polling function will return the last error it got, you should return info about the icon colors here instead.  You\u0027ll get this error back tacked onto the \"Failed to wait for ...\" error below, so as-is it duplicates info.",
+      "revId": "8b818246fe7d4d4616a6ad65e217d78602ac7766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cd09e22_f2b249f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-05T23:52:09Z",
+      "side": 1,
+      "message": "add some comment explaining why 3",
+      "revId": "8b818246fe7d4d4616a6ad65e217d78602ac7766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74471bc_b932d9aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-05T23:52:09Z",
+      "side": 1,
+      "message": "nit: as",
+      "range": {
+        "startLine": 191,
+        "startChar": 36,
+        "endLine": 191,
+        "endChar": 41
+      },
+      "revId": "8b818246fe7d4d4616a6ad65e217d78602ac7766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
