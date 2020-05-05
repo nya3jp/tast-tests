@@ -132,6 +132,40 @@ func (s *WifiService) Disconnect(ctx context.Context, config *network.Service) (
 	return &empty.Empty{}, nil
 }
 
+// QuerySSID queries if a WiFi service associated with SSID exists on shill; if so, checks if it's a hidden SSID.
+// This is the implementation of network.Wifi/QuerySSID gRPC.
+func (s *WifiService) QuerySSID(ctx context.Context, ssid *network.SSID) (*network.SSIDStatus, error) {
+	properties := map[string]interface{}{
+		shill.ServicePropertyType: shill.TypeWifi,
+		shill.ServicePropertyName: ssid.Ssid,
+	}
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	var ret network.SSIDStatus
+	service, err := manager.FindMatchingService(ctx, properties)
+	if err != nil {
+		return &ret, nil
+	}
+	ret.Exist = true
+
+	serviceProperties, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	}
+
+	isHidden, err := serviceProperties.GetBool(shill.ServicePropertyWiFiHiddenSSID)
+	if err != nil {
+		return nil, err
+	}
+
+	ret.Hidden = isHidden
+	return &ret, nil
+}
+
 // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
 func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SSID) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)

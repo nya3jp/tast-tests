@@ -175,6 +175,21 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
 			s.Fatal("Failed to ping from DUT, err: ", err)
 		}
+
+		s.Log("Checking the status of the SSID in the DUT")
+		ssidStatus, err := tf.QuerySSID(ctx, ap.Config().Ssid)
+		if err != nil {
+			s.Fatal("Failed to get the status of the SSID from DUT, err: ", err)
+		}
+
+		if !ssidStatus.Exist {
+			s.Fatal("Failed to find a WiFi service associated with the SSID", ap.Config().Ssid)
+		}
+
+		if ssidStatus.Hidden != ap.Config().Hidden {
+			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", ssidStatus.Hidden, ap.Config().Hidden)
+		}
+
 		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.
 		// TODO(crbug.com/1034875): Maybe some more check on the WiFi capabilities to
 		// verify we really have the settings as expected. (ref: crrev.com/c/1995105)

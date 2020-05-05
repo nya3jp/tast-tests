@@ -21,6 +21,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// SSIDStatus contains the status of the DUT SSID.
+type SSIDStatus struct {
+	Exist  bool
+	Hidden bool
+}
+
 // TestFixture sets up the context for a basic WiFi test.
 type TestFixture struct {
 	dut        *dut.DUT
@@ -150,6 +156,19 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	tf.curService = nil
 	tf.curAP = nil
 	return err
+}
+
+// QuerySSID queries if a WiFi service associated with SSID exists on shill; if so, checks if it's a hidden SSID.
+func (tf *TestFixture) QuerySSID(ctx context.Context, ssid string) (*SSIDStatus, error) {
+	netSSID := &network.SSID{
+		Ssid: ssid,
+	}
+	ssidStatus, err := tf.wifiClient.QuerySSID(ctx, netSSID)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the WiFi service property")
+	}
+
+	return &SSIDStatus{Exist: ssidStatus.Exist, Hidden: ssidStatus.Hidden}, nil
 }
 
 // PingFromDUT tests the connectivity between DUT and router through currently connected WiFi service.

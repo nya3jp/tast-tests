@@ -18,6 +18,8 @@ service Wifi {
   rpc Disconnect(Service) returns (google.protobuf.Empty) {}
   // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
   rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
+  // QuerySSID queries if a WiFi service associated with SSID exists on shill; if so, checks if it's a hidden SSID.
+  rpc QuerySSID(SSID) returns (SSIDStatus) {}
 }
 
 message Config {
@@ -32,3 +34,9 @@ message Service {
 message SSID {
   string ssid = 1;
 }
+
+message SSIDStatus {
+  bool exist = 1;
+  bool hidden = 2;
+}
+
