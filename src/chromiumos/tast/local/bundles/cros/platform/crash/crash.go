@@ -19,7 +19,6 @@ import (
 	"syscall"
 	"time"
 
-	commoncrash "chromiumos/tast/common/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
@@ -172,9 +171,6 @@ func setUpTestCrashReporter(ctx context.Context) error {
 	// Remove the test status flag to catch real error while initializing and setting up crash reporter.
 	if err := crash.UnsetCrashTestInProgress(); err != nil {
 		return errors.Wrap(err, "failed before initializing crash reporter")
-	}
-	if err := testexec.CommandContext(ctx, commoncrash.CrashReporterPath, "--init").Run(); err != nil {
-		return errors.Wrap(err, "failed to initialize crash reporter")
 	}
 	// Completely disable crash_reporter from generating crash dumps
 	// while any tests are running, otherwise a crashy system can make
