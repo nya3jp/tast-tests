@@ -220,7 +220,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return errors.Wrap(err, "failed to end the swipe")
 				}
 				if _, err := ash.FindFirstWindowInOverview(ctx, tconn); err == nil {
-					return errors.Wrap(err, "failed to arrange clamshell split view with empty overview grid")
+					return errors.New("failed to arrange clamshell split view with empty overview grid")
 				}
 				return nil
 			}},
