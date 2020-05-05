@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "9029cdce_08d1e56d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-05T00:47:55Z",
+      "side": 1,
+      "message": "Either way is probably fine. Might be simpler on the caller if done here.",
+      "parentUuid": "ecfd3751_7787dc80",
+      "range": {
+        "startLine": 68,
+        "startChar": 139,
+        "endLine": 68,
+        "endChar": 153
+      },
+      "revId": "38073a2865bb99ac6144cade6e34f24cc035c0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f84b2a18_91f0d5be",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 1
