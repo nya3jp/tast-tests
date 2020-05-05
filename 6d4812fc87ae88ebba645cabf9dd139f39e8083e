@@ -70,6 +70,30 @@
       "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "725e532f_69d06ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-05T01:52:50Z",
+      "side": 1,
+      "message": "I try to send the callback together with |message| but only the JSONable field(not include callback) can be passed to CCA. Is this what you mean here? Or any other suggestion.",
+      "parentUuid": "4f96995d_4456aabe",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "6d4812fc87ae88ebba645cabf9dd139f39e8083e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
