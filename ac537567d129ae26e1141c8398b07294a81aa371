@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "969457b9_324df1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motion_input.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-05T17:19:33Z",
+      "side": 1,
+      "message": "optional: assuming this is \"fatal\" error, you can return:\n\n    return testing.PollBreak(err)\n\n\nPollBreak will stop the polling.",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "ac537567d129ae26e1141c8398b07294a81aa371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
