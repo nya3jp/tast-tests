@@ -145,6 +145,28 @@ func (s *WifiService) Disconnect(ctx context.Context, config *network.Service) (
 	return &empty.Empty{}, nil
 }
 
+// QueryService queries shill service information.
+// This is the implementation of network.Wifi/QueryService gRPC.
+func (s *WifiService) QueryService(ctx context.Context, ser *network.QueryServiceRequest) (*network.QueryServiceResponse, error) {
+	service, err := shill.NewService(ctx, dbus.ObjectPath(ser.Path))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create service object")
+	}
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service properties")
+	}
+
+	hidden, err := props.GetBool(shill.ServicePropertyWiFiHiddenSSID)
+	if err != nil {
+		return nil, err
+	}
+
+	return &network.QueryServiceResponse{
+		Hidden: hidden,
+	}, nil
+}
+
 // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
 func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SSID) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
