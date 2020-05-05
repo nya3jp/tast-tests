@@ -126,6 +126,7 @@ type Node struct {
 	Name      string             `json:"name,omitempty"`
 	Role      RoleType           `json:"role,omitempty"`
 	State     map[StateType]bool `json:"state,omitempty"`
+	Value     string             `json:"value,omitempty"`
 }
 
 // NodeSlice is a slice of pointers to nodes. It is used for releaseing a group of nodes.
@@ -163,6 +164,7 @@ func (n *Node) Update(ctx context.Context) error {
 			role: this.role,
 			state: this.state,
 			tooltip: this.tooltip,
+			value: this.value,
 			valueForRange: this.valueForRange,
 		}
 	}`)
