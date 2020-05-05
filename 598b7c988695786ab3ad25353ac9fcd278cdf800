@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35a40f85_065adb89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:24:55Z",
+      "side": 1,
+      "message": "This err is dropped, but if this is a precondition for tests that might cause issues if it doesn\u0027t succeed, it might be reasonable not to drop it.",
+      "revId": "598b7c988695786ab3ad25353ac9fcd278cdf800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f88021f5_6a00cd6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:24:55Z",
+      "side": 1,
+      "message": "I think this can just be\n\n \"Failed to stop ui:\", err",
+      "range": {
+        "startLine": 43,
+        "startChar": 27,
+        "endLine": 43,
+        "endChar": 76
+      },
+      "revId": "598b7c988695786ab3ad25353ac9fcd278cdf800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7d40cb_5ec5f117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:24:55Z",
+      "side": 1,
+      "message": "nit: just \"err\" should be fine here, right?",
+      "range": {
+        "startLine": 109,
+        "startChar": 60,
+        "endLine": 109,
+        "endChar": 71
+      },
+      "revId": "598b7c988695786ab3ad25353ac9fcd278cdf800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f5cf234_3ff2ffdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:24:55Z",
+      "side": 1,
+      "message": "ditto re: just \"err\"",
+      "range": {
+        "startLine": 112,
+        "startChar": 64,
+        "endLine": 112,
+        "endChar": 75
+      },
+      "revId": "598b7c988695786ab3ad25353ac9fcd278cdf800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b12973_00c404f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:24:55Z",
+      "side": 1,
+      "message": "this err is intentionally dropped, right?",
+      "revId": "598b7c988695786ab3ad25353ac9fcd278cdf800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c4a130_9fe8f7e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-05T18:24:55Z",
+      "side": 1,
+      "message": "ditto:\n\n \"Failed to start ui:\", err",
+      "range": {
+        "startLine": 115,
+        "startChar": 27,
+        "endLine": 115,
+        "endChar": 51
+      },
+      "revId": "598b7c988695786ab3ad25353ac9fcd278cdf800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
