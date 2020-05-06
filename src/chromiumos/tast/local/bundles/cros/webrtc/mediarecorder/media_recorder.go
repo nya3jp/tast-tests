@@ -259,13 +259,13 @@ VideoTrackNumLoop:
 }
 
 // VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for codec.
-func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.State, cr *chrome.Chrome, codec videotype.Codec) {
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, codec videotype.Codec) error {
+	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+		return errors.Wrap(err, "failed to connect to test API")
 	}
 
 	// Real webcams on tablets might capture a rotated feed and make one of the
@@ -273,12 +273,12 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.St
 	// the device in landscape mode to match the expected video call orientation.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+		return errors.Wrap(err, "failed to get tablet mode")
 	}
 	if tabletModeEnabled {
 		dispInfo, err := display.GetInternalInfo(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to get internal display info: ", err)
+			return errors.Wrap(err, "failed to get internal display info")
 		}
 		// Ideally we'd use screen.orientation.lock("landscape"), but that needs the
 		// content to be in full screen (requestFullscreen()), which needs a user
@@ -287,10 +287,10 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.St
 		// https://w3c.github.io/screen-orientation/#dfn-landscape-primary
 		var width, height int64
 		if err := tconn.Eval(ctx, "window.screen.width", &width); err != nil {
-			s.Fatal("Failed to retrieve screen width: ", err)
+			return errors.Wrap(err, "failed to retrieve screen width")
 		}
 		if err := tconn.Eval(ctx, "window.screen.height", &height); err != nil {
-			s.Fatal("Failed to retrieve screen height: ", err)
+			return errors.Wrap(err, "failed to retrieve screen height")
 		}
 		rotation := display.Rotate0
 		if height > width {
@@ -298,34 +298,35 @@ func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.St
 		}
 
 		if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rotation); err != nil {
-			s.Fatal("Failed to rotate display: ", err)
+			return errors.Wrap(err, "failed to rotate display")
 		}
 	}
 
 	initHistogram, err := metrics.GetHistogram(ctx, tconn, constants.MediaRecorderVEAUsed)
 	if err != nil {
-		s.Fatal("Failed to get initial histogram: ", err)
+		return errors.Wrap(err, "failed to get initial histogram")
 	}
 
 	conn, err := cr.NewConn(ctx, server.URL+"/loopback_media_recorder.html")
 	if err != nil {
-		s.Fatal("Failed to open recorder page: ", err)
+		return errors.Wrap(err, "failed to open recorder page")
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(ctx, "pageLoaded"); err != nil {
-		s.Fatal("Timed out waiting for page loading: ", err)
+		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
 	startRecordJS := fmt.Sprintf("startRecordingForResult(%q)", codec)
 	if err := conn.EvalPromise(ctx, startRecordJS, nil); err != nil {
-		s.Fatalf("Failed to evaluate %v: %v", startRecordJS, err)
+		return errors.Wrapf(err, "failed to evaluate %v", startRecordJS)
 	}
 
 	if hwUsed, err := histogram.WasHWAccelUsed(ctx, tconn, initHistogram, constants.MediaRecorderVEAUsed, int64(constants.MediaRecorderVEAUsedSuccess)); err != nil {
-		s.Fatal("Failed to verify histogram: ", err)
+		return errors.Wrap(err, "failed to verify histogram")
 	} else if !hwUsed {
-		s.Error("HW accel was not used")
+		return errors.Wrap(err, "hardware accelerator was not used")
 	}
+	return nil
 }

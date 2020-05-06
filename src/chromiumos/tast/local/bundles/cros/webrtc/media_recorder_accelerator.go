@@ -58,5 +58,7 @@ func init() {
 
 // MediaRecorderAccelerator verifies that a video encode accelerator was used.
 func MediaRecorderAccelerator(ctx context.Context, s *testing.State) {
-	mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s, s.PreValue().(*chrome.Chrome), s.Param().(videotype.Codec))
+	if err := mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s.PreValue().(*chrome.Chrome), s.DataFileSystem(), s.Param().(videotype.Codec)); err != nil {
+		s.Error("Failed to run VerifyMediaRecorderUsesEncodeAccelerator: ", err)
+	}
 }
