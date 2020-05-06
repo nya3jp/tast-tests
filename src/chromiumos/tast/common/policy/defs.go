@@ -6989,7 +6989,18 @@ func (p *ArcEnabled) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type ArcPolicy struct {
 	Stat Status
-	Val  string
+	Val  *ArcPolicyValue
+}
+
+type Application struct {
+	PackageName             string `json:"packageName"`
+	InstallType             string `json:"installType"`
+	DefaultPermissionPolicy string `json:"defaultPermissionPolicy"`
+	ManagedConfiguration    string `json:"managedConfiguration"`
+}
+
+type ArcPolicyValue struct {
+	Applications []Application `json:"applications"`
 }
 
 func (p *ArcPolicy) Name() string          { return "ArcPolicy" }
@@ -7002,10 +7013,15 @@ func (p *ArcPolicy) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as string", m)
 	}
-	return v, nil
+	var value ArcPolicyValue
+	if err := json.Unmarshal([]byte(v), &value); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as ArcPolicyValue", m)
+	}
+
+	return value, nil
 }
 func (p *ArcPolicy) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
+	v, ok := iface.(*ArcPolicyValue)
 	if !ok {
 		return ok
 	}
