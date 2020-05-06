@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fae1a506_5fdc4b36",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T09:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72539441_b24bc1f3",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18cb757d_a7b4124e",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 14
@@ -36,6 +60,24 @@
       "writtenOn": "2020-05-05T18:57:23Z",
       "side": 1,
       "message": "Since AuthAlgs is a bitset it might be helpful to extract some functions to work with it, so we\u0027re not sprinkling bit operations everywhere. This might make it easier to read if we\u0027re not working with the constants declared here, or if someone isn\u0027t totally familiar with the definition. (For example, the AuthAlgs function you wrote in wep/options already collects several AuthAlgs and does the bitwise-OR itself.)",
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d041e4aa_a260c054",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T09:15:53Z",
+      "side": 1,
+      "message": "I guess AuthAlgs() is adequate. Users select and pass the algs they need to AuthAlgs(). To setup AuthAlgs, it is the only step in either Autotest or Tast.",
+      "parentUuid": "18cb757d_a7b4124e",
       "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f782ea21_af987d75",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T09:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa2c980_f09e5282",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beebaca8_1b193adb",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 14
@@ -85,6 +151,30 @@
       "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "875bf9cb_0f6c7528",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T09:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beebaca8_1b193adb",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "50835a54_30361a7e",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T09:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c237f2_263ec123",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "306d5b31_5ad76303",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 14
@@ -122,6 +236,30 @@
       "writtenOn": "2020-05-05T18:57:23Z",
       "side": 1,
       "message": "nit: spaces around this?",
+      "range": {
+        "startLine": 123,
+        "startChar": 14,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad238f8_0a7eedeb",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T09:15:53Z",
+      "side": 1,
+      "message": "Linter won\u0027t accept it and will abort the upload.",
+      "parentUuid": "306d5b31_5ad76303",
       "range": {
         "startLine": 123,
         "startChar": 14,
