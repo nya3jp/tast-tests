@@ -42,6 +42,9 @@ type chromeCrashReporterMetricsParams struct {
 	// wait on. As a side effect of the way we force a miss in the "miss" test,
 	// we expect breakpad dmp files instead of the normal .meta files.
 	crashFileType chromecrash.CrashFileType
+	// killCrashpad: If killCrashpad is true, kill crashpad_handler after starting
+	// chrome but before killing the GPU process.
+	killCrashpad bool
 	// expectMissing tells the test if we expect the missedCrashHistogramBucket
 	// to get an event. This is the main point of the test -- "miss" expects an
 	// event in the missedCrashHistogramBucket and "success" does not.
@@ -56,9 +59,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			// The miss test currently only works for breakpad. TODO(crbug/1036582):
-			// Add crashpad variant.
-			Name:              "miss",
+			Name:              "miss_breakpad",
 			ExtraSoftwareDeps: []string{"breakpad"},
 			Val: chromeCrashReporterMetricsParams{
 				handler: chromecrash.Breakpad,
@@ -69,6 +70,17 @@ func init() {
 				// BREAKPAD_DUMP_LOCATION environmental variables)
 				chromeOptions: nil,
 				crashFileType: chromecrash.BreakpadDmp,
+				killCrashpad:  false,
+				expectMissing: true,
+			},
+		}, {
+			Name:              "miss_crashpad",
+			ExtraSoftwareDeps: []string{"crashpad"},
+			Val: chromeCrashReporterMetricsParams{
+				handler:       chromecrash.Crashpad,
+				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
+				crashFileType: chromecrash.NoCrashFile,
+				killCrashpad:  true,
 				expectMissing: true,
 			},
 		}, {
@@ -78,6 +90,7 @@ func init() {
 				handler:       chromecrash.Breakpad,
 				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
 				crashFileType: chromecrash.MetaFile,
+				killCrashpad:  false,
 				expectMissing: false,
 			},
 		}, {
@@ -87,6 +100,7 @@ func init() {
 				handler:       chromecrash.Crashpad,
 				chromeOptions: []chrome.Option{chrome.CrashNormalMode()},
 				crashFileType: chromecrash.MetaFile,
+				killCrashpad:  false,
 				expectMissing: false,
 			},
 		}},
@@ -128,6 +142,12 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 	}
 	defer crash.TearDownCrashTest(ctx)
 
+	if params.killCrashpad {
+		if err := chromecrash.KillCrashpad(ctx); err != nil {
+			s.Fatal("Could not kill crashpad: ", err)
+		}
+	}
+
 	if err = crash.RestartAnomalyDetector(ctx); err != nil {
 		s.Fatal("Could not restart anomaly detector: ", err)
 	}
@@ -144,7 +164,7 @@ func ChromeCrashReporterMetrics(ctx context.Context, s *testing.State) {
 
 	if dumps, err := ct.KillAndGetCrashFiles(ctx); err != nil {
 		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
-	} else if len(dumps) == 0 {
+	} else if len(dumps) == 0 && params.crashFileType != chromecrash.NoCrashFile {
 		s.Error("No minidumps written after logged-in Chrome crash")
 	}
 

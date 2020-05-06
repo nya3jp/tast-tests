@@ -52,6 +52,9 @@ const (
 
 	// crashReporterExecPath is the path to the crash_reporter executable.
 	crashReporterExecPath = "/sbin/crash_reporter"
+
+	// crashpadExecPath is the path to the crashpad binary.
+	crashpadExecPath = "/opt/google/chrome/crashpad_handler"
 )
 
 // CrashHandler indicates which crash handler the test wants Chrome to use:
@@ -134,6 +137,12 @@ const (
 	// crashpad. We only see these when we are skipping crash_reporter and having
 	// breakpad / crashpad dump directly.
 	BreakpadDmp
+	// NoCrashFile indicates that we don't expect to see any crash files from the
+	// kill. Note that this means KillAndGetCrashFiles() may not wait for anything
+	// after sending a signal to the target process; the target process will
+	// often not be completely finished crashing after KillAndGetCrashFiles()
+	// returns.
+	NoCrashFile
 )
 
 // String returns a string naming the given CrashFileType, suitable for displaying
@@ -144,6 +153,8 @@ func (cfType CrashFileType) String() string {
 		return "MetaFile"
 	case BreakpadDmp:
 		return "BreakpadDmp"
+	case NoCrashFile:
+		return "NoCrashFile"
 	default:
 		return "Unknown CrashFileType " + strconv.Itoa(int(cfType))
 	}
@@ -186,7 +197,7 @@ func NewCrashTester(ptype ProcessType, waitFor CrashFileType) (*CrashTester, err
 	if ptype < Browser || ptype > Broker {
 		return nil, errors.Errorf("ptype out of range: %v", ptype)
 	}
-	if waitFor < MetaFile || waitFor > BreakpadDmp {
+	if waitFor < MetaFile || waitFor > NoCrashFile {
 		return nil, errors.Errorf("waitFor out of range: %v", waitFor)
 	}
 
@@ -509,6 +520,8 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs, oldFiles []stri
 		if err = waitForBreakpadDmpFile(ctx, int(toKill.Pid), dirs, oldFiles); err != nil {
 			return errors.Wrap(err, "failed waiting for target to write crash dmp files")
 		}
+	case NoCrashFile:
+		return nil
 	default:
 		return errors.New("unexpected CrashFileType " + string(ct.waitFor))
 	}
@@ -623,4 +636,34 @@ func (ct *CrashTester) KillAndGetCrashFiles(ctx context.Context) ([]string, erro
 	deleteFiles(ctx, newCrashFiles)
 
 	return newCrashFiles, nil
+}
+
+// KillCrashpad kills all crashpad_handler processes running in the system. It
+// returns when there are no more crashpad_handler processes running.
+func KillCrashpad(ctx context.Context) error {
+	testing.ContextLog(ctx, "Hunting and killing crashpad_handler proceesses")
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		all, err := process.ProcessesWithContext(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "could not get list of processes"))
+		}
+
+		foundCrashpadProcess := false
+		for _, process := range all {
+			if exe, err := process.Exe(); err == nil && exe == crashpadExecPath {
+				foundCrashpadProcess = true
+				if err = syscall.Kill(int(process.Pid), syscall.SIGKILL); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to kill crashpad_handler process"))
+				}
+			}
+			// else ignore the error. If a process exited, or we otherwise can't
+			// get its executable path, we want to keep going and looking for
+			// crashpad_handler processes.
+		}
+
+		if foundCrashpadProcess {
+			return errors.New("Some crashpad_handler processes still alive")
+		}
+		return nil
+	}, nil)
 }
