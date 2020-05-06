@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06eebd59_65245fb6",
+        "filename": "src/chromiumos/tast/services/cros/arc/gmscore_cache_service.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-06T20:34:24Z",
+      "side": 1,
+      "message": "please add comments for newly added fields",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "050182f3b556038d4e903f279f715c186465bd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
