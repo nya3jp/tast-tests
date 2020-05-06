@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f128e43_0929a27b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "Nit: Go doesn\u0027t prescribe a maximum line length. This is stylistic, but I find it helpful to break long comments at semantically meaningful places (usually periods or commas). I\u0027m not sure whether this is aligned with any formal guidance, though.\n\nMight also be helpful to break the parenthetical from the next line into its own sentence.",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f4db5b_1f1d7a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "Does this ever change, such as by board or by architecture?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 11
+      },
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5482ca_77f3ba7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "Nit: As above, I recommend linebreaks at semantically meaningful places.",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf71fd2_8d8b7f6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "Define variables as close as possible to where they are used. So, this should be moved to around line 51.\n\nBut also... do you really need a WaitGroup for just one goroutine? I think you can eliminate this.",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52c7589_a7489c3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "I think it would be helpful to describe what\u0027s going on here: that you\u0027re setting up an goroutine to read and log servo keypresses, so that below you can send keypresses and have them logged.",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc9d130_86ee23fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "Nit: I recommend either removing this line to keep the output uncluttered, or adding more information about which RPC you are sending.",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc273236_802f9749",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "I recommend making this a constant, so that it is easier to change on the fly, and so that we can easily reference it later if we want to read from it.",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d2b4bd_4e78710d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "As in my other comments, I recommend changing linebreaks to semantically meaningful places.",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3bd495_b0b27249",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-06T15:32:35Z",
+      "side": 1,
+      "message": "Is there any way that you can verify the results and pass/fail the test? Perhaps wait 2 seconds, and then check raw_evdev_events.txt for the expected contents?",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
