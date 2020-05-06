@@ -233,3 +233,32 @@ func PoliciesFromDUT(ctx context.Context, tconn *chrome.TestConn) (*DUTPolicies,
 
 	return &dps, nil
 }
+
+// PolicyFromDUT uses the passed in TestAPIConn to call autotestPrivate's
+// getAllEnterprisePolicies function.
+// It returns an unmarshalled value for the passed policy.Policy converted to string.
+func PolicyFromDUT(ctx context.Context, tconn *chrome.TestConn, expected policy.Policy) (string, error) {
+	dps, err := PoliciesFromDUT(ctx, tconn)
+	if err != nil {
+		return "", err
+	}
+
+	actual, ok := dps.Chrome[expected.Name()]
+	if !ok {
+		return "", errors.New("ArcPolicy is unset")
+	}
+
+	// Flag any set policies with an error value, e.g. schema violations.
+	if actual.Error != "" {
+		return "", errors.Errorf("ArcPolicy error: %s", actual.Error)
+	}
+
+	// Policy value.
+	actualValue, err := expected.UnmarshalAs(actual.ValueJSON)
+	if err != nil {
+		return "", err
+	}
+
+	valueStr := fmt.Sprintf("%v", actualValue)
+	return valueStr, nil
+}
