@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506a37dc_d7d5ce5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "wifi.SimpleConnect.*",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1d17a9_e2746a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "How about QuerySSID? Also see comment in grpc.\n\n// QuerySSID queries if the SSID service exists in shill; if so, query if it a hidden SSID.",
+      "range": {
+        "startLine": 137,
+        "startChar": 22,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf758656_d7b95047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "var ret network.SSIDStatus\nservice, err :\u003d ...\nif err !\u003d nil {\n  return ret, nil \n}\nret.Exist \u003d true",
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa79d8f5_1cbf731c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "boolean\n\nAlso, the error message GetBool() returns is similar. How about just return it?",
+      "range": {
+        "startLine": 157,
+        "startChar": 51,
+        "endLine": 157,
+        "endChar": 58
+      },
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb70acaa_c031c553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "ret.Hidden \u003d true\nreturn ret, nil",
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c673bd7_381bbc76",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "Correspond to grpc change:\n\ntype SSIDStatus struct {\n  Exist bool\n  Hidden bool\n}\nfunc (tf *TestFixture) QuerySSID(ctx context.Context, ssid string) (SSIDStatus, error) {...}",
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2614bf4_586cdca2",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "How about\n// QuerySSID queries if the a WiFi service associated with SSID exists in shill; if so, checks if it a hidden SSID.\nrpc QuerySSID(SSID) returns (SSIDStatus) {}",
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb6c853_27e123f3",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T07:47:15Z",
+      "side": 1,
+      "message": "message SSIDStatus {\n  bool exist \u003d 1;\n  bool hidden \u003d 2;\n}",
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
