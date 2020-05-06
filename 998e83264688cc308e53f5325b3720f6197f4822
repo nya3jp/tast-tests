@@ -22,6 +22,30 @@
       "revId": "998e83264688cc308e53f5325b3720f6197f4822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c19f3d_d8051486",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-06T23:26:02Z",
+      "side": 1,
+      "message": "Yeah, personally I like unified logger \u003c- I assume you are referring tast framework to support prefix assignment when called from different class?\nHowever, I think another benefits for this function is that we can save logs to other file (instead of mix our logs with tast log, we save our own log file, trace_replay.log). How does that sounds to you?",
+      "parentUuid": "7fb8bcac_332cb578",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "998e83264688cc308e53f5325b3720f6197f4822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
