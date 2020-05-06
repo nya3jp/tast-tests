@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "26206bac_5ed55375",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-06T18:29:11Z",
+      "side": 1,
+      "message": "Very odd that it enforces that here when that makes it inconsistent with formatting on e.g. L120, and most other binary operators. But I guess there\u0027s not a lot to do there.",
+      "parentUuid": "1ad238f8_0a7eedeb",
+      "range": {
+        "startLine": 123,
+        "startChar": 14,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e763fde2_79318898",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config_test.go",
         "patchSetId": 14
