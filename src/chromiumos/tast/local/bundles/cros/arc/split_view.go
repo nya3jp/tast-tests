@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type splitViewTestParams struct {
+	tabletMode            bool
+	startFromHomeLauncher bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SplitView,
@@ -29,12 +34,17 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
-				Val:  false,
+				Val:  splitViewTestParams{tabletMode: false, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_mode",
 				ExtraSoftwareDeps: []string{"tablet_mode"},
-				Val:               true,
+				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
+			},
+			{
+				Name:              "tablet_home_launcher",
+				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
 			},
 		},
 	})
@@ -42,18 +52,12 @@ func init() {
 
 // dragToSnapFirstOverviewWindow finds the first window in overview, and drags
 // to snap it. This function assumes that overview is already active.
-func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, targetX input.TouchCoord) error {
+func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, targetX input.TouchCoord) error {
 	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the internal display info")
 	}
 	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
-
-	stw, err := tew.NewSingleTouchWriter()
-	if err != nil {
-		return errors.Wrap(err, "failed to create a single touch writer")
-	}
-	defer stw.Close()
 
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
@@ -76,22 +80,17 @@ func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, 
 	return nil
 }
 
-// waitUntilStateChange waits for window state changes on both Ash and ARC
-// sides. If left is not nil, it is expected to become left snapped.
-// Likewise, if right is not nil, it is expected to become right snapped.
-func waitUntilStateChange(ctx context.Context, tconn *chrome.TestConn, left, right *arc.Activity) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		for _, test := range []struct {
-			act      *arc.Activity
-			ashState ash.WindowStateType
-			arcState arc.WindowState
-		}{
-			{left, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped},
-			{right, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped}} {
-			if test.act == nil {
-				continue
-			}
+type windowStateExpectations []struct {
+	act      *arc.Activity
+	ashState ash.WindowStateType
+	arcState arc.WindowState
+}
 
+// waitForWindowStates waits for specified ARC apps to reach specified window
+// states on both the Ash side and the ARC side.
+func waitForWindowStates(ctx context.Context, tconn *chrome.TestConn, expectations windowStateExpectations) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		for _, test := range expectations {
 			if actual, err := ash.GetARCAppWindowState(ctx, tconn, test.act.PackageName()); err != nil {
 				return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
 			} else if actual != test.ashState {
@@ -130,10 +129,10 @@ func SplitView(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 
-	tabletMode := s.Param().(bool)
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	params := s.Param().(splitViewTestParams)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, params.tabletMode)
 	if err != nil {
-		s.Fatalf("Failed to ensure tablet-mode status to %t: %v", tabletMode, err)
+		s.Fatalf("Failed to ensure tablet-mode status to %t: %v", params.tabletMode, err)
 	}
 	defer cleanup(ctx)
 
@@ -179,31 +178,63 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 	defer leftAct.Close()
 
+	if err := waitForWindowStates(ctx, tconn,
+		windowStateExpectations{
+			{leftAct, ash.WindowStateMaximized, arc.WindowStateMaximized},
+			{rightAct, ash.WindowStateMaximized, arc.WindowStateMaximized},
+		}); err != nil {
+		s.Fatal("Failed to wait until window state change: ", err)
+	}
+
+	stw, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		s.Fatal("Failed to create a single touch writer: ", err)
+	}
+	defer stw.Close()
+
+	if params.startFromHomeLauncher {
+		if err := ash.DragToShowHomescreen(ctx, tew.Width(), tew.Height(), stw, tconn); err != nil {
+			s.Fatal("Failed to drag to show home launcher: ", err)
+		}
+		if err := waitForWindowStates(ctx, tconn,
+			windowStateExpectations{
+				{leftAct, ash.WindowStateMinimized, arc.WindowStateMinimized},
+				{rightAct, ash.WindowStateMinimized, arc.WindowStateMinimized},
+			}); err != nil {
+			// If you see this error, check if https://crbug.com/1109250 has been reintroduced.
+			s.Fatal("Failed to wait until window state change: ", err)
+		}
+	}
+
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enter overview: ", err)
 	}
 
 	// Snap activities to left and right.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, 0); err != nil {
+	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, 0); err != nil {
 		s.Fatal("Failed to drag window from overview and snap left: ", err)
 	}
-	if err := waitUntilStateChange(ctx, tconn, leftAct, nil); err != nil {
+	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{leftAct, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped}}); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
 	}
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, tew.Width()-1); err != nil {
+	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, tew.Width()-1); err != nil {
 		s.Fatal("Failed to drag window from overview and snap right: ", err)
 	}
-	if err := waitUntilStateChange(ctx, tconn, nil, rightAct); err != nil {
+	if err := waitForWindowStates(ctx, tconn, windowStateExpectations{{rightAct, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped}}); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
 	}
 
-	if tabletMode {
+	if params.tabletMode {
 		// Swap the left activity and the right activity.
 		if err := ash.SwapWindowsInSplitView(ctx, tconn); err != nil {
 			s.Fatal("Failed to swap windows in split view: ", err)
 		}
 		leftAct, rightAct = rightAct, leftAct
-		if err := waitUntilStateChange(ctx, tconn, leftAct, rightAct); err != nil {
+		if err := waitForWindowStates(ctx, tconn,
+			windowStateExpectations{
+				{leftAct, ash.WindowStateLeftSnapped, arc.WindowStatePrimarySnapped},
+				{rightAct, ash.WindowStateRightSnapped, arc.WindowStateSecondarySnapped},
+			}); err != nil {
 			s.Fatal("Failed to wait until window state change: ", err)
 		}
 	}
