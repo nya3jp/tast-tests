@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fe7167de_82e94f49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-06T20:13:23Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "107d3659_84bfff14",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 75
+      },
+      "revId": "d3cb281a7219bc330a4f6cb427e6623b3a99b73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37be232c_7d379be9",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 9
@@ -99,6 +123,24 @@
       "revId": "d3cb281a7219bc330a4f6cb427e6623b3a99b73c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4363940e_180770d4",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-06T20:13:23Z",
+      "side": 1,
+      "message": "Sounds good for now.",
+      "parentUuid": "95b930eb_beea11d6",
+      "revId": "d3cb281a7219bc330a4f6cb427e6623b3a99b73c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
