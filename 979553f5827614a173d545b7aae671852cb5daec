@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "808d30eb_44d861bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-06T01:19:21Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "2e009d21_4afd81b5",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 79
+      },
+      "revId": "979553f5827614a173d545b7aae671852cb5daec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3f6cedd_7eba0b13",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_settings.go",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c8b03cbd_bdad3cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-06T01:19:21Z",
+      "side": 1,
+      "message": "Error message:\n\"Error: Assistant response timeout.\"\n\nThe first return value (QueryStatus):\n\"{ {}}\"\n\nI haven\u0027t looked at it too deeply, but from this comment: https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.h;l\u003d598;\nMaybe it\u0027s timing out since the response is empty in this case?",
+      "parentUuid": "a7d85f7c_48902260",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 86
+      },
+      "revId": "979553f5827614a173d545b7aae671852cb5daec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7ead0a_64814f9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_settings.go",
         "patchSetId": 1
@@ -116,6 +164,30 @@
       "revId": "979553f5827614a173d545b7aae671852cb5daec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8280a99e_b57d95c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-06T01:19:21Z",
+      "side": 1,
+      "message": "I think so, I\u0027ll create the Settings module in a separate CL and move existing tests over to it.",
+      "parentUuid": "1f7ead0a_64814f9d",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "979553f5827614a173d545b7aae671852cb5daec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
