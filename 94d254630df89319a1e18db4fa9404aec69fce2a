@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab22b651_cfa8dc8c",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc607b23_d86d38fa",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8eb22f4_36079522",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "989f9364_70c30016",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c474d1_742adaf9",
+      "range": {
+        "startLine": 31,
+        "startChar": 70,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a6f53f9_6456f728",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
@@ -211,6 +259,30 @@
       "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5876d7_53025f4b",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6f53f9_6456f728",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 70
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "888fa800_70c93a28",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa9a8bb_84c106b9",
+      "range": {
+        "startLine": 39,
+        "startChar": 31,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45e5be56_0bec22fb",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
@@ -248,6 +344,30 @@
       "writtenOn": "2020-05-05T16:49:52Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63fb6df2_ea5f0210",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "I would like us to come to an agreement on the necessity of the line number before changing this.",
+      "parentUuid": "45e5be56_0bec22fb",
       "range": {
         "startLine": 74,
         "startChar": 1,
@@ -283,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "e271d7cd_ba0f9aae",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ab724a_97e56eba",
+      "range": {
+        "startLine": 76,
+        "startChar": 25,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ece90960_e42a78cf",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
@@ -294,6 +438,30 @@
       "writtenOn": "2020-05-05T16:49:52Z",
       "side": 1,
       "message": "IIRC I mentioned about not doing a \"if not ... { continue }\" since it is difficult to read (since you have a previous \"if prefix \u003d\u003d d\".\n\nin any case, I\u0027ll recommend using the switch mentioned above.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908a0dba_6c48a41d",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Since there is only one case I won\u0027t use the switch but instead of:\n\nif !condition {\n  continue\n}\n// More code here.\n\nI\u0027ll do:\n\nif condition {\n  // More code here.\n}\n\nDoes that sound better?",
+      "parentUuid": "ece90960_e42a78cf",
       "range": {
         "startLine": 78,
         "startChar": 2,
@@ -329,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "f6ffad05_ba581d00",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d92d2a74_db7c4b96",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 54
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83204047_3939fa95",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
@@ -352,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "c1608325_dab508b7",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83204047_3939fa95",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8176b0bd_60aa856c",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
@@ -372,6 +588,30 @@
       "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "974fa8e5_86c65603",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8176b0bd_60aa856c",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -421,6 +661,54 @@
     },
     {
       "key": {
+        "uuid": "c265f5ce_143c3d8e",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52d60205_16d50be1",
+      "range": {
+        "startLine": 121,
+        "startChar": 88,
+        "endLine": 121,
+        "endChar": 94
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "141d9f7a_713b982d",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff7678db_6b00808f",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 121,
+        "endChar": 28
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfce4b09_6568bd16",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
@@ -432,6 +720,30 @@
       "writtenOn": "2020-05-05T16:49:52Z",
       "side": 1,
       "message": "is this still used? can you do the regexp without it?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2447e894_ede44a04",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "The parseTime function assumes that it will receive the whole line and not just the timestamp. The whole line will be of the format \"\u003ctimestamp\u003e \u003csize\u003e \u003cd_1\u003e ... \u003cd_size\u003e\". Since the size of the line is not known until after parsing the size constructing the regex for the whole line would make the code a bit more complex (unnecessarily so in my opinion).\n\nA possible solution would be to call the parseTime function like so: parseTime(strings.Fields(line)[0]). If you think that the function should only be dealing with the timestamp instead of the whole line.",
+      "parentUuid": "dfce4b09_6568bd16",
       "range": {
         "startLine": 150,
         "startChar": 0,
@@ -464,6 +776,30 @@
       "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "480003c3_272d9e12",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-06T19:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5be8288_4abeb72b",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 6
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
