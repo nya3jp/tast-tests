@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aa88fb4_6902a07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1403125
+      },
+      "writtenOn": "2020-05-06T20:35:21Z",
+      "side": 1,
+      "message": "Please advise on a better way (maybe directly from local) to get this if possible",
+      "revId": "0a0d0f3965162fd5aae8ddc590fd2ca614297c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
