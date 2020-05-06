@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "46572d70_b1921f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f128e43_0929a27b",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56f4db5b_1f1d7a85",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "92fb4eef_0ec30d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "No, this node is created independently of DUT attributes.",
+      "parentUuid": "56f4db5b_1f1d7a85",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 11
+      },
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd5482ca_77f3ba7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2717278e_a4fad1d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Done (with the first line break at a comma, and subsequent ones at points before the first break as waiting for a semantically significant breakpoint created a jarring reader experience upon experimentation).",
+      "parentUuid": "fd5482ca_77f3ba7c",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "45e843b7_5713da11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Done with a channel since there is just one goroutine to wait for.",
+      "parentUuid": "ebf71fd2_8d8b7f6e",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d52c7589_a7489c3d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
         "patchSetId": 6
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "2d2dec2b_83d593c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d52c7589_a7489c3d",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efc9d130_86ee23fa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
         "patchSetId": 6
@@ -107,6 +203,24 @@
       "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b099d53_7d03d568",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc9d130_86ee23fa",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "316ab329_a494f1d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc273236_802f9749",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73d2b4bd_4e78710d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
         "patchSetId": 6
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "c79d868f_9e47e475",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d2b4bd_4e78710d",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df3bd495_b0b27249",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
         "patchSetId": 6
@@ -164,6 +320,24 @@
       "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5236af62_5ca8a441",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-06T22:52:57Z",
+      "side": 1,
+      "message": "Not in a meaningful way at-the-moment because evdev is stateful, so it\u0027s non-trivial. Once we have established a way to decode the raw evdev events, intent is to use that here.  Tweaked the  TODO to articulate that intent.",
+      "parentUuid": "df3bd495_b0b27249",
+      "revId": "3be3c4ac09900d4b4ac8624d4e87bd848a4df917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
