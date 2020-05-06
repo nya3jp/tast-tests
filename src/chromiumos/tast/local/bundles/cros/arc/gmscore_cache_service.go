@@ -50,7 +50,17 @@ func (c *GmsCoreCacheService) Generate(ctx context.Context, request *arcpb.GmsCo
 		extraArgs = append(extraArgs, "--enable-arcvm")
 	}
 
-	cr, a, err := cache.OpenSession(ctx, cache.PackagesCopy, cache.GMSCoreDisabled, extraArgs, targetDir)
+	packagesCopy := cache.PackagesSkipCopy
+	if request.PackagesCopy {
+		packagesCopy = cache.PackagesCopy
+	}
+
+	gmsCoreEnabled := cache.GMSCoreDisabled
+	if request.GmsCoreEnabled {
+		gmsCoreEnabled = cache.GMSCoreEnabled
+	}
+
+	cr, a, err := cache.OpenSession(ctx, packagesCopy, gmsCoreEnabled, extraArgs, targetDir)
 	if err != nil {
 		os.RemoveAll(targetDir)
 		return nil, errors.Wrap(err, "failed to generage GMS Core caches")
