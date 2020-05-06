@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b5c633_2d720240",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-06T18:51:25Z",
+      "side": 1,
+      "message": "It is the same command as line 328. Is UnmountVault also unmounting all users?",
+      "revId": "d54cf3c3307af76cfd82931cf9cda6d55739bdaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
