@@ -22,6 +22,30 @@
       "revId": "4e614fde39b5a70ca33cd1437890065bfc1657cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e93addd5_1661d9ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-06T19:08:32Z",
+      "side": 1,
+      "message": "Yep. Try it on any device; just `modprobe mac80211_hwsim`, and see Shill start trying to acquire a DHCP lease on it.",
+      "parentUuid": "a86057af_696993cd",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "4e614fde39b5a70ca33cd1437890065bfc1657cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
