@@ -67,11 +67,6 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 		s.Error("DUT was thought to be in Rec mode at start of test")
 	}
 
-	// Exercise the BlockingSync, which will be used for each mode-switching reboot.
-	if _, err := utils.BlockingSync(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Error during BlockingSync: ", err)
-	}
-
 	// TODO (gredelston): When we have the ability to reboot the DUT into dev/recovery mode,
 	// switch into each mode, and check whether we are in the expected state.
 }
