@@ -16,6 +16,24 @@
       "revId": "17e308f5a9954a6024781e8191991ea0ab59850b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "279f0f82_4dd225ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-06T09:32:41Z",
+      "side": 1,
+      "message": "It would be kind of hard to do that because:\n- Each element of the array corresponds to a different key, and each of those keys are created differently, so an array on the creation side is difficult.\n- C0B1%02X series of elements are generated on the fly according to the other keys, and it would be hard to have an array for them on the creation side without breaking the relationship with the other keys.",
+      "parentUuid": "2a3410b8_180cc5cb",
+      "revId": "17e308f5a9954a6024781e8191991ea0ab59850b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
