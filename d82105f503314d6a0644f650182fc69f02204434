@@ -94,6 +94,30 @@
       "revId": "d82105f503314d6a0644f650182fc69f02204434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc0b7fe_08a26464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-06T20:11:40Z",
+      "side": 1,
+      "message": "err, sorry, my comment was a response to vsavu@ to the effect that it\u0027s actually not a logical error because of the behavior of our version of errors.Wrap, though I do think using errors.New looks better and is more clear.",
+      "parentUuid": "5b1044c7_2f7ccbe9",
+      "range": {
+        "startLine": 329,
+        "startChar": 16,
+        "endLine": 329,
+        "endChar": 26
+      },
+      "revId": "d82105f503314d6a0644f650182fc69f02204434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
