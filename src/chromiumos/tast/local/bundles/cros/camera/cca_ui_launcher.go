@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -32,6 +33,11 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+
+	// Force to enter clamshell mode since the launcher button only exist in clamshell mode.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to enter clamshell mode")
 	}
 
 	app, err := cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), func(tconn *chrome.TestConn) error {
