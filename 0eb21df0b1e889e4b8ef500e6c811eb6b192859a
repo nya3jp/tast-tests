@@ -139,6 +139,24 @@
     },
     {
       "key": {
+        "uuid": "27a03456_ecc904f0",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-06T08:40:39Z",
+      "side": 1,
+      "message": "Given the usage in the SimpleConnect, I wonder if it might be simpler to do with the service path returned by Connect (so it should always exist):\n\nrpc QueryService(Service) returns (ServiceInfo) {}\n\nmessage ServiceInfo {\n  bool hidden;\n  ... (more to go)\n}\n\nDean@, WDYT?",
+      "parentUuid": "b2614bf4_586cdca2",
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cb6c853_27e123f3",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 3
