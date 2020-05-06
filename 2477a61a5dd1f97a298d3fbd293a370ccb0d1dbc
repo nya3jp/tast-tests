@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "026c57bc_bb2620dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/README.hostap_hwsim.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-05-06T22:41:53Z",
+      "side": 1,
+      "message": "Would it be worthwhile to include a bit here on how to ensure the right version of the supplicant is being used? That was a brief hangup I had when attempting this workflow recently.  That may not belong here though, so your call.",
+      "revId": "2477a61a5dd1f97a298d3fbd293a370ccb0d1dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
