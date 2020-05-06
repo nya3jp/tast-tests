@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d670a3ef_b5070ece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308136
+      },
+      "writtenOn": "2020-05-06T21:23:29Z",
+      "side": 1,
+      "message": "Format changes are already committed as crrev.com/c/2172682",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "ead283c1b0214256e70768a0b57b1f9ff2c11553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
