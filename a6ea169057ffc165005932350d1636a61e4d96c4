@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "703226ff_b6504b5e",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-06T23:44:32Z",
+      "side": 1,
+      "message": "I see. Deriving would justify the public visibility for Config. If you put things into a single package, it would surely solve the visibility tricks, but the current structure seems fine to me (so far) -- but maybe I might be missing something.\n\nEither way, from coding style point of view, I think the latest patchset looks good.",
+      "parentUuid": "be9330be_531ca02d",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf0aae04_32502e7b",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
@@ -329,6 +353,30 @@
       "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6feb45cb_232d2d7d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-06T23:44:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e6397ce_a262aef5",
+      "range": {
+        "startLine": 112,
+        "startChar": 34,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
