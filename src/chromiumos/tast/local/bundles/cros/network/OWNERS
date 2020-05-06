@@ -1,0 +1,2 @@
+# Allow anyone to update documentation
+per-file *.md=*
