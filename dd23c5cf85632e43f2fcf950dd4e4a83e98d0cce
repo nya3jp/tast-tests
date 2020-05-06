@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9d2b1037_040669d3",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-06T04:04:35Z",
+      "side": 1,
+      "message": "Yes, but the path from the client back to tast (or even /var/log/messages) is long and the client\u0027s logging is not under our control (lxd is an external project)",
+      "parentUuid": "f136aaaf_1557f6f6",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 16
+      },
+      "revId": "dd23c5cf85632e43f2fcf950dd4e4a83e98d0cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8ed21d1_f8e79f0e",
         "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
         "patchSetId": 7
