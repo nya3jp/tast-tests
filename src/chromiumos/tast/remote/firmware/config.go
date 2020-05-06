@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"strings"
 
 	"chromiumos/tast/errors"
 )
@@ -181,6 +182,8 @@ func loadBytes(configDataDir, platform string) ([]byte, error) {
 // TODO(b/154500336): Use the platform config to overwrite parent config(s) and default config
 // TODO(b/154500336): Load model config and overwrite platform config
 func NewConfig(configDataDir, platform string) (*Config, error) {
+	// Remove hyphenated suffixes: ex. "samus-kernelnext" becomes "samus"
+	platform = strings.Split(platform, "-")[0]
 	b, err := loadBytes(configDataDir, platform)
 	if err != nil {
 		return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
