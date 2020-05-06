@@ -35,6 +35,16 @@ const (
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	LoginTimeout = 60 * time.Second
 
+	// noLoginTimeout is the maximum amount of time that Chrome is expected to take on initialization.
+	// Should be shorter than LoginTimeout, but not 0.
+	noLoginTimeout = 30 * time.Second
+
+	// gaiaLoginTimeout is the maximum amount of the time that Chrome is expected
+	// to take to perform actual gaia login. As far as I checked a few samples of
+	// actual test runs, most of successful login finishes within ~40secs. Use
+	// tripled value for the safety.
+	gaiaLoginTimeout = 120 * time.Second
+
 	// DefaultUser contains the email address used to log into Chrome when authentication credentials are not supplied.
 	DefaultUser = "testuser@gmail.com"
 
@@ -324,6 +334,20 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	for _, opt := range opts {
 		opt(c)
 	}
+
+	// Cap the timeout to be certain length depending on the login mode. Sometimes
+	// chrome.New may fail and get stuck on an unexpected screen. Without timeout,
+	// it simply runs out the entire timeout. See https://crbug.com/1078873.
+	timeout := LoginTimeout
+	switch c.loginMode {
+	case noLogin:
+		// If login is not required, timeout can be shorter.
+		timeout = noLoginTimeout
+	case gaiaLogin:
+		timeout = gaiaLoginTimeout
+	}
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
 
 	// Clean up the partially-initialized object on error.
 	toClose := c
