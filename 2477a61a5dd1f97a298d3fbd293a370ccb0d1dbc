@@ -16,6 +16,24 @@
       "revId": "2477a61a5dd1f97a298d3fbd293a370ccb0d1dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b863d07_953639e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/README.hostap_hwsim.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-06T22:56:10Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "026c57bc_bb2620dd",
+      "revId": "2477a61a5dd1f97a298d3fbd293a370ccb0d1dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
