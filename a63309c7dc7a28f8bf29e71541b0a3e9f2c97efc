@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "97c6f49a_d725512c",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-06T04:04:35Z",
+      "side": 1,
+      "message": "Added shutdown using the context cancel function.",
+      "parentUuid": "b4ad9958_3b2805c5",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 13
+      },
+      "revId": "a63309c7dc7a28f8bf29e71541b0a3e9f2c97efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cddc387_962d99c8",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 6
