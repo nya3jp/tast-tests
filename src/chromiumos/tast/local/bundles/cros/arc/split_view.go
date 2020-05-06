@@ -17,6 +17,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type splitViewTestParams struct {
+	tabletMode            bool
+	startFromHomeLauncher bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SplitView,
@@ -28,13 +33,19 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
-				Val:  false,
+				Val:  splitViewTestParams{tabletMode: false, startFromHomeLauncher: false},
 			},
 			{
 				Name:              "tablet_mode",
 				ExtraSoftwareDeps: []string{"tablet_mode"},
 				Pre:               arc.BootedInTabletMode(),
-				Val:               true,
+				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: false},
+			},
+			{
+				Name:              "tablet_home_launcher",
+				ExtraSoftwareDeps: []string{"tablet_mode"},
+				Pre:               arc.BootedInTabletMode(),
+				Val:               splitViewTestParams{tabletMode: true, startFromHomeLauncher: true},
 			},
 		},
 	})
@@ -42,18 +53,12 @@ func init() {
 
 // dragToSnapFirstOverviewWindow finds the first window in overview, and drags
 // to snap it. This function assumes that overview is already active.
-func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, targetX input.TouchCoord) error {
+func dragToSnapFirstOverviewWindow(ctx context.Context, tconn *chrome.TestConn, tew *input.TouchscreenEventWriter, stw *input.SingleTouchEventWriter, targetX input.TouchCoord) error {
 	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the internal display info")
 	}
 	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
-
-	stw, err := tew.NewSingleTouchWriter()
-	if err != nil {
-		return errors.Wrap(err, "failed to create a single touch writer")
-	}
-	defer stw.Close()
 
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
@@ -125,12 +130,12 @@ func SplitView(ctx context.Context, s *testing.State) {
 	// Enable DragToSnapInClamshellMode when testing clamshell split view.
 	// TODO(https://crbug.com/1073508): When the feature is fully launched, just
 	// use s.PreValue().(arc.PreData).
-	tabletMode := s.Param().(bool)
+	params := s.Param().(splitViewTestParams)
 	var p arc.PreData
 	var cr *chrome.Chrome
 	var a *arc.ARC
 	var err error
-	if tabletMode {
+	if params.tabletMode {
 		p = s.PreValue().(arc.PreData)
 		cr = p.Chrome
 	} else {
@@ -144,7 +149,7 @@ func SplitView(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-	if tabletMode {
+	if params.tabletMode {
 		// The precondition for the tablet_mode subtest ensures tablet mode.
 		a = p.ARC
 	} else {
@@ -203,25 +208,37 @@ func SplitView(ctx context.Context, s *testing.State) {
 	}
 	defer leftAct.Close()
 
+	stw, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		s.Fatal("Failed to create a single touch writer: ", err)
+	}
+	defer stw.Close()
+
+	if params.startFromHomeLauncher {
+		if err := ash.DragToShowHomescreen(ctx, tew.Width(), tew.Height(), stw, tconn); err != nil {
+			s.Fatal("Failed to drag to show home launcher: ", err)
+		}
+	}
+
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to enter overview: ", err)
 	}
 
 	// Snap activities to left and right.
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, 0); err != nil {
+	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, 0); err != nil {
 		s.Fatal("Failed to drag window from overview and snap left: ", err)
 	}
 	if err := waitUntilStateChange(ctx, tconn, leftAct, nil); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
 	}
-	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, tew.Width()-1); err != nil {
+	if err := dragToSnapFirstOverviewWindow(ctx, tconn, tew, stw, tew.Width()-1); err != nil {
 		s.Fatal("Failed to drag window from overview and snap right: ", err)
 	}
 	if err := waitUntilStateChange(ctx, tconn, nil, rightAct); err != nil {
 		s.Fatal("Failed to wait until window state change: ", err)
 	}
 
-	if tabletMode {
+	if params.tabletMode {
 		// Swap the left activity and the right activity.
 		if err := ash.SwapWindowsInSplitView(ctx, tconn); err != nil {
 			s.Fatal("Failed to swap windows in split view: ", err)
