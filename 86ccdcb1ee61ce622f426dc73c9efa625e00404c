@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23db3dd5_086da118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-05-06T22:58:26Z",
+      "side": 1,
+      "message": "Sure, will dump it to a file since it would be multiple lines. Thanks for the advice!",
+      "parentUuid": "13f4d213_776251ba",
+      "range": {
+        "startLine": 65,
+        "startChar": 22,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "86ccdcb1ee61ce622f426dc73c9efa625e00404c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5ec0f4b_93fec94d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-27T08:57:02Z",
       "side": 1,
       "message": "Could you remove?\nI thought this would be warned by linter (tast-lint). Could you run it?",
+      "range": {
+        "startLine": 146,
+        "startChar": 44,
+        "endLine": 146,
+        "endChar": 48
+      },
+      "revId": "86ccdcb1ee61ce622f426dc73c9efa625e00404c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e2a269_75fd18d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-05-06T22:58:26Z",
+      "side": 1,
+      "message": "Done. Confirmed that a warning message pops up when running tast-lint locally. But IIRC the repo upload check didn\u0027t give me a warning like this for the last patchset, which was weird as I think tast-lint should be run as part of the check.",
+      "parentUuid": "f5ec0f4b_93fec94d",
       "range": {
         "startLine": 146,
         "startChar": 44,
