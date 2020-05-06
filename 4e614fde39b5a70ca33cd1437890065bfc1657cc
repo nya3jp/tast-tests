@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a86057af_696993cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-06T19:05:04Z",
+      "side": 1,
+      "message": "So just for my understanding, it used to label the hwsim interfaces as Ethernet-type devices, right?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "4e614fde39b5a70ca33cd1437890065bfc1657cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
