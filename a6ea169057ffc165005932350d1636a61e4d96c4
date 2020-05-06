@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "be9330be_531ca02d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-06T18:55:58Z",
+      "side": 1,
+      "message": "FWIW, the only reason Dean gave for making new packages for each security type, is to make names shorter. I haven\u0027t seen the CLs for it yet, but I imagine the EAP types (where you plan to inherit from each other) make for a stronger case of \"put it all in one package.\" That way, EAP children can borrow from each others\u0027 internals without exposing everything to all users.",
+      "parentUuid": "2c260f4c_cc232c6d",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf0aae04_32502e7b",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
