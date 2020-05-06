@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "74658e9d_6f284048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-06T23:56:45Z",
+      "side": 1,
+      "message": "I think you\u0027re right, this does seem a bit weird now that I see it written out.  How about this: take a screenshot outside of the polling function.  In the polling function, check the first icon color, and if it\u0027s not good then take a new screenshot, update the img variable, and keep polling.  Once the polling function exits, continue with the test using img (which may or may not have been updated during the poll).",
+      "parentUuid": "13d5553a_12ac6186",
+      "revId": "8b818246fe7d4d4616a6ad65e217d78602ac7766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a57a8e76_1cc929da",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 3
