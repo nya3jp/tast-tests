@@ -17,6 +17,8 @@ service GmsCoreCacheService {
 message GmsCoreCacheRequest {
   // Specify which build is requested.
   bool vm_enabled = 1;
+  bool packages_copy = 2;
+  bool gms_core_enabled = 3;
 }
 
 message GmsCoreCacheResponse {
