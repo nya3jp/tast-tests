@@ -309,6 +309,12 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	ctx, st := timing.Start(ctx, "chrome_new")
 	defer st.End()
 
+	// Cap the total timeout of initializing chrome; usually tests pass the bare
+	// ctx to chrome.New when they want to initialize, which may wait up to the
+	// entire timeout when things go wrong. See https://crbug.com/1078873.
+	ctx, cancel := context.WithTimeout(ctx, 3*LoginTimeout)
+	defer cancel()
+
 	c := &Chrome{
 		user:             DefaultUser,
 		pass:             DefaultPass,
