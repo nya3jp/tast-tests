@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3410b8_180cc5cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-06T09:15:34Z",
+      "side": 1,
+      "message": "It would be ideal if these were just defined in once place, and shared between creation and deletion",
+      "revId": "17e308f5a9954a6024781e8191991ea0ab59850b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
