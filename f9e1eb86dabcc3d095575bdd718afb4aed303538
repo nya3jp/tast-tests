@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "419f08ca_a99edb47",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-06T18:33:52Z",
+      "side": 1,
+      "message": "Right, I meant bitset operations like inclusion testing, union, etc.\n\nBut if those are only used in this file then it\u0027s not a big deal.",
+      "parentUuid": "d041e4aa_a260c054",
+      "revId": "f9e1eb86dabcc3d095575bdd718afb4aed303538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1aa2c980_f09e5282",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
         "patchSetId": 14

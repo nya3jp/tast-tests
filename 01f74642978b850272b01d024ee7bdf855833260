@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdaf0b76_a4ca3b5c",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-06T18:33:52Z",
+      "side": 1,
+      "message": "nit: same as below re: \"got %v, want %v\"",
+      "range": {
+        "startLine": 124,
+        "startChar": 39,
+        "endLine": 124,
+        "endChar": 59
+      },
+      "revId": "01f74642978b850272b01d024ee7bdf855833260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
