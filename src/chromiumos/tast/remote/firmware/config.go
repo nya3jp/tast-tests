@@ -184,6 +184,9 @@ func loadBytes(configDataDir, platform string) ([]byte, error) {
 func NewConfig(configDataDir, platform string) (*Config, error) {
 	// Remove hyphenated suffixes: ex. "samus-kernelnext" becomes "samus"
 	platform = strings.Split(platform, "-")[0]
+	// If the platform name is given as board_variant, take just the variant: ex. "veyron_minnie" becomes "minnie"
+	platform = strings.Split(platform, "_")[strings.Count(platform, "_")]
+
 	b, err := loadBytes(configDataDir, platform)
 	if err != nil {
 		return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
