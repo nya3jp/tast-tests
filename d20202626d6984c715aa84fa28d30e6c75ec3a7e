@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f27322fc_923052ab",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-06T23:44:32Z",
+      "side": 1,
+      "message": "nit: int() is not necessary (cf. https://play.golang.org/p/_J0lwieJFRI)",
+      "range": {
+        "startLine": 131,
+        "startChar": 42,
+        "endLine": 131,
+        "endChar": 45
+      },
+      "revId": "d20202626d6984c715aa84fa28d30e6c75ec3a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab04907b_d94fc009",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 13
@@ -13,6 +36,30 @@
       "writtenOn": "2020-05-06T18:41:30Z",
       "side": 1,
       "message": "Is this not equivalent to\n\n strings.Join(ciphers, \" \")\n\nsince Cipher is a type alias of string?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "d20202626d6984c715aa84fa28d30e6c75ec3a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9581edb_a56d61a8",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-06T23:44:32Z",
+      "side": 1,
+      "message": "I don\u0027t think so; Cipher is not a type alias but a new type, strings.Join won\u0027t work (https://play.golang.org/p/oVZZ-HZ1xMU)",
+      "parentUuid": "ab04907b_d94fc009",
       "range": {
         "startLine": 171,
         "startChar": 0,
