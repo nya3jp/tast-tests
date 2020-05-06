@@ -73,6 +73,40 @@
       "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53667ffb_4a4e2ac7",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T04:41:50Z",
+      "side": 1,
+      "message": "How about \n\nfunc (c *config)CmdArgs(targetIP string) ([]string, error) {...}",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b92292_de7e6c41",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T04:41:50Z",
+      "side": 1,
+      "message": "Is cfg.Count a required field? If so, please comment it in the definition of struct count.",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
