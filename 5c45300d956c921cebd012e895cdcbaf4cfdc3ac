@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d1e2430_e604bd70",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-06T22:26:48Z",
+      "side": 1,
+      "message": "where\u0027s the caller of the function?",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 18
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
