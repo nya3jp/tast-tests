@@ -233,3 +233,24 @@ func PoliciesFromDUT(ctx context.Context, tconn *chrome.TestConn) (*DUTPolicies,
 
 	return &dps, nil
 }
+
+// PolicyFromDUT returns an unmarshalled value for the passed policy.Policy.
+func (dps *DUTPolicies) PolicyFromDUT(expected policy.Policy) (interface{}, error) {
+	actual, ok := dps.Chrome[expected.Name()]
+	if !ok {
+		return "", errors.Errorf("policy %s is unset", expected.Name())
+	}
+
+	// Flag any set policies with an error value, e.g. schema violations.
+	if actual.Error != "" {
+		return "", errors.Errorf("policy %s error: %s", expected.Name(), actual.Error)
+	}
+
+	// Policy value.
+	actualValue, err := expected.UnmarshalAs(actual.ValueJSON)
+	if err != nil {
+		return "", err
+	}
+
+	return actualValue, nil
+}
