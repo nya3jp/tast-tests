@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "05e18161_d155fd42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-06T04:47:56Z",
+      "side": 1,
+      "message": "Manager.ConfigureService()",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "8109677122c9f4d0ef168bb4dcececf87058da08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6bde812e_445455f1",
         "filename": "src/chromiumos/tast/local/shill/ipconfig.go",
         "patchSetId": 6
