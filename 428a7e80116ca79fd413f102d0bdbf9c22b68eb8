@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c1145a1_d02fd032",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-06T06:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac9f595_a8b5f64b",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e03e7240_55d137f9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2860ec9a_da157823",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-06T06:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e03e7240_55d137f9",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "065b928d_e171a60b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-06T06:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e88166fa_d3ca3ab9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f1655ce_5ebb63e0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9aeff8_c88fb6f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-06T06:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f1655ce_5ebb63e0",
+      "range": {
+        "startLine": 186,
+        "startChar": 11,
+        "endLine": 186,
+        "endChar": 77
+      },
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -131,6 +227,24 @@
       "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0311a33f_43589a7d",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-06T06:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b3dfc32_34c96086",
+      "revId": "428a7e80116ca79fd413f102d0bdbf9c22b68eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
