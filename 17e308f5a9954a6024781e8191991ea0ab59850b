@@ -34,6 +34,47 @@
       "revId": "17e308f5a9954a6024781e8191991ea0ab59850b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcee25d7_d939805f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-06T22:43:29Z",
+      "side": 1,
+      "message": "I feel like this could lead to mistakes and data mismatches.\n\nI think it may be better to just move this list to a global location and then reference it in both places. Also, you can just define the first half of the list and then generate the second half of the list in each function.\n\nOtherwise, if you are going to build list here, I would build it out of constants. ex:\nkeyIDs :\u003d []string{importedKeyID, softwareKeyID, generatedKeyID}\n\nthen in the create function directly use the constants. I would still advise generating the second half of the list in this function.",
+      "parentUuid": "279f0f82_4dd225ee",
+      "revId": "17e308f5a9954a6024781e8191991ea0ab59850b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8022b3eb_919c4dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-06T22:43:29Z",
+      "side": 1,
+      "message": "nit: you might not want to name this i because people may think that it is supposed to be an index variable and get confused. Maybe id or key.",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "17e308f5a9954a6024781e8191991ea0ab59850b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
