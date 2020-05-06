@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50f52587_21db6d58",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "It is necessary since there is already a Mode() in options.go.",
+      "parentUuid": "4f0f1387_896fd4a8",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "406fcf4d_1c641098",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-05T23:41:27Z",
       "side": 1,
       "message": "ditto re: Enum in the type name",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b027e45_d0d96850",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "Same reason as above.",
+      "parentUuid": "406fcf4d_1c641098",
       "range": {
         "startLine": 45,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2c260f4c_cc232c6d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "The fields are changed to private.\n\nIn the future CLs, eap.Config will be derived by the Config of some other protocols. Since they will be placed in the different packages, at least eap.Config should be exposed so that it can be embedded to the other Config. Thus, currently I keep all Config public.",
+      "parentUuid": "e1e3d084_fa0bd4db",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf0aae04_32502e7b",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
@@ -91,6 +163,30 @@
       "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e2da82d_962dff88",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf0aae04_32502e7b",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a7ee7e58_01eb01dc",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37918dc3_640cb375",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f727abd8_07df2c80",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
@@ -128,6 +248,30 @@
       "writtenOn": "2020-05-05T17:51:34Z",
       "side": 1,
       "message": "It is not clear to me why a map is used for this method. Is this really a good choice?",
+      "range": {
+        "startLine": 112,
+        "startChar": 34,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6397ce_a262aef5",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "The next CLs will be about EAP network, which will be derived by other protocols such as Dynamic WEP and WPA EAP. They will call the HostapdConfig() of super and then add more config to the its result. AFAIK, though it might be ok to just return a string, I think keep the flexibility will be better.",
+      "parentUuid": "f727abd8_07df2c80",
       "range": {
         "startLine": 112,
         "startChar": 34,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "7709aecc_4b208ffe",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "No, I think. Users do not need to access the content.",
+      "parentUuid": "edd181c7_468b9d4f",
+      "range": {
+        "startLine": 113,
+        "startChar": 26,
+        "endLine": 113,
+        "endChar": 31
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3804e98_f4af5aeb",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
@@ -183,6 +351,30 @@
       "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22ab730_d67db07f",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "Since we are not exposing the fields of Config, I think it can be omitted here.",
+      "parentUuid": "a3804e98_f4af5aeb",
+      "range": {
+        "startLine": 126,
+        "startChar": 13,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "76081a34_3468edf1",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d2289d_46767e2a",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 2
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6954311b_62829a61",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config_test.go",
         "patchSetId": 12
@@ -229,6 +445,30 @@
       "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ea5175_7a344c10",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-06T17:30:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6954311b_62829a61",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
