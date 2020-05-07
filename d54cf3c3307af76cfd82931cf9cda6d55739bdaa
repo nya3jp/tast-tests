@@ -16,6 +16,24 @@
       "revId": "d54cf3c3307af76cfd82931cf9cda6d55739bdaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa32e633_dc8e8268",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-07T07:21:17Z",
+      "side": 1,
+      "message": "Yes, but it\u0027s also checking if a user has been unmounted. We don\u0027t know what users exist to pass to UnmountVault.\n\nAlternatively we can allow UnmountVault to accept an empty string and not check. Which do you prefer?",
+      "parentUuid": "02b5c633_2d720240",
+      "revId": "d54cf3c3307af76cfd82931cf9cda6d55739bdaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
