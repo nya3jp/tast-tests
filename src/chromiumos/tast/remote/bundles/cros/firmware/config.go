@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:        Config,
 		Desc:        "Verifies that remote tests can load fw-testing-configs properly",
-		Contacts:    []string{"chromeos-engprod@google.com"},
+		Contacts:    []string{"cros-fw-engprod@google.com"},
 		Data:        firmware.ConfigDatafiles(),
 		ServiceDeps: []string{"tast.cros.firmware.UtilsService"},
 		Attr:        []string{"group:mainline", "informational"},
