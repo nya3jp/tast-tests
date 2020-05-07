@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "f9e03890_a64bf771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-07T22:44:57Z",
+      "side": 1,
+      "message": "Made a bug and mentioned it here",
+      "parentUuid": "c2428ba8_4cca5e8b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 86
+      },
+      "revId": "979553f5827614a173d545b7aae671852cb5daec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7ead0a_64814f9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_open_settings.go",
         "patchSetId": 1
