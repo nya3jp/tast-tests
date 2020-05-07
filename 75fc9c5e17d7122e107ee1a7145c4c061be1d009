@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4d1f8f0_b2af4e4a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-07T08:41:01Z",
+      "side": 1,
+      "message": "Thanks, setting a timeout here should be useful. I\u0027m fully supportive of this change.\n\nThat said, I wonder what\u0027s the appropriate deadline to set here. LoginTimeout is defined as:\n\n\t// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.\n\t// Tests that call New with the default fake login mode should declare a timeout that\u0027s at least this long.\n\tLoginTimeout \u003d 60 * time.Second\n\nSo as long as loginMode \u003d\u003d fakeLogin, this should be just LoginTimeout. Otherwise it\u0027s an identity crisis of LoginTimeout :) In fact, ui.ChromeLogin seems to take up to 45 seconds.\nhttps://tastboard.corp.google.com/test/ui.ChromeLogin\n\nOTOH I guess it may take more time with GAIA logins. I don\u0027t know any existing test suitable for estimating the runtime for this case. Maybe 3 * LoginTimeout is a good upper-bound estimate and we can start with it.\n\nSo, in the end, how about defining a timeout for GAIA login separately from LoginTimeout and using it here? That is:\n\n const loginWithGAIATimeout \u003d 3 * time.Minute // need a comment that this is a rough estimate; unexported for now because it is not ready to be depended by tests\n\n ...\n\n timeout \u003d LoginTimeout\n if loginMode \u003d\u003d gaiaLogin {\n   timeout \u003d loginWithGAIATimeout\n }\n ctx, cancel :\u003d context.WithTimeout(ctx, timeout)",
+      "range": {
+        "startLine": 315,
+        "startChar": 41,
+        "endLine": 315,
+        "endChar": 56
+      },
+      "revId": "75fc9c5e17d7122e107ee1a7145c4c061be1d009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
