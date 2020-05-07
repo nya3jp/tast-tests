@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "703e49f9_4a750427",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/blocking_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-07T15:42:23Z",
+      "side": 1,
+      "message": "Just curious: why it isn\u0027t the same email as in firmware/check_boot_mode.go?\n\nIf you need to change email in firmware/check_boot_mode.go, please create a following CL.",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "f86b5a4e644af44a7d5d6328c59de20ff4330802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
