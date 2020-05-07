@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd710aa1_735ed9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-07T07:16:27Z",
+      "side": 1,
+      "message": "sg",
+      "parentUuid": "2ac20607_87b142a0",
+      "revId": "b40f41334faa5a40e68cc84cf986f45076e95847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de95db0b_72f11bd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "1666bb84_b205f50f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-07T07:16:27Z",
+      "side": 1,
+      "message": "sg, Done",
+      "parentUuid": "de95db0b_72f11bd2",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "b40f41334faa5a40e68cc84cf986f45076e95847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de59f401_3bb4078b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_speech.MainActivity.json",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "b40f41334faa5a40e68cc84cf986f45076e95847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57832fb_459a4c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_speech.MainActivity.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-07T07:16:27Z",
+      "side": 1,
+      "message": "Done, formatted using `cat accessibility_event.EditTextActivity.json | python -m json.tool`",
+      "parentUuid": "de59f401_3bb4078b",
+      "revId": "b40f41334faa5a40e68cc84cf986f45076e95847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
