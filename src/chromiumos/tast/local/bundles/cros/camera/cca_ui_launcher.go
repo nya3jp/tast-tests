@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/launcher"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
@@ -34,8 +35,18 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 
+	// Only tests clicking camera icon on launcher under clamshell mode since all apps will minimize when the launcher shows up in tablet mode.
+	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check if it is tablet mode: ", err)
+	}
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to enter clamshell mode")
+	}
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletMode)
+
 	app, err := cca.Init(ctx, cr, []string{s.DataPath("cca_ui.js")}, s.OutDir(), func(tconn *chrome.TestConn) error {
-		if err := launcher.SearchAndLaunch(ctx, tconn, "camera"); err != nil {
+		if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 			return err
 		}
 		return nil
@@ -45,7 +56,7 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	}
 
 	// When firing the launch event as the app is currently showing, the app should minimize.
-	if err := launcher.SearchAndLaunch(ctx, tconn, "camera"); err != nil {
+	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
 	}
 	if isMinimized, err := app.IsWindowMinimized(ctx); err != nil {
@@ -55,7 +66,7 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	}
 
 	// When firing the launch event as the app is minimized, the app window should be restored.
-	if err := launcher.SearchAndLaunch(ctx, tconn, "camera"); err != nil {
+	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
 	}
 	if isMinimized, err := app.IsWindowMinimized(ctx); err != nil {
