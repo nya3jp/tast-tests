@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "008664a9_e4a5157f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T07:01:51Z",
+      "side": 1,
+      "message": "nit/style: could you merge two lines?\n\nif err :\u003d service.SetProperty(...); err !\u003d nil {",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "1db25b6700f8701d7ab37608910e756e1fdbcc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
