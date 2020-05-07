@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/launcher"
+	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -21,9 +21,8 @@ func init() {
 		Func: LaunchCanvas,
 		Desc: "Launches Chrome Canvas APP through the launcher after user login",
 		Contacts: []string{
+			"blick-swe@google.com",
 			"shengjun@chromium.org",
-			"xiaoningw@chromium.org",
-			"jomag@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      3 * time.Minute,
@@ -44,23 +43,27 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	if err := launcher.OpenLauncher(ctx, tconn); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
+	if err = ash.WaitForChromeAppInstalled(ctx, tconn, apps.Canvas.ID, 2*time.Minute); err != nil {
+		s.Fatal("Failed to wait for installed app: ", err)
+	}
+
+	if err := apps.Launch(ctx, tconn, apps.Canvas.ID); err != nil {
+		s.Fatal("Failed to launch Canvas: ", err)
 	}
 
 	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
-	// Canvas is a PWA installed after user login. Set long timeout for download.
-	appNode, err := launcher.SearchAndWaitForApp(ctx, tconn, apps.Canvas.Name, 2*time.Minute)
-	if err != nil {
-		s.Fatal("Failed to search app and assert: ", err)
-	}
-
-	if err := appNode.LeftClick(ctx); err != nil {
-		s.Fatalf("Failed to click to launch app %s: %v", apps.Canvas.Name, err)
-	}
-
 	if err := ash.WaitForApp(ctx, tconn, apps.Canvas.ID); err != nil {
 		s.Fatalf("Fail to wait for %s by app id %s: %v", apps.Canvas.Name, apps.Canvas.ID, err)
+	}
+
+	// Use welcome page to verify page rendering
+	params := ui.FindParams{
+		Name: "Welcome to Canvas!",
+		Role: ui.RoleTypeHeading,
+	}
+	_, err = ui.FindWithTimeout(ctx, tconn, params, 20*time.Second)
+	if err != nil {
+		s.Fatal("Failed to render Canvas: ", err)
 	}
 }
