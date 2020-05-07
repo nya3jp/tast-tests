@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e08499ef_ea1c9fc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e18161_d155fd42",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "8109677122c9f4d0ef168bb4dcececf87058da08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bde812e_445455f1",
         "filename": "src/chromiumos/tast/local/shill/ipconfig.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "22f982fb_ba3cd1a2",
+        "filename": "src/chromiumos/tast/local/shill/ipconfig.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bde812e_445455f1",
+      "range": {
+        "startLine": 26,
+        "startChar": 46,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "8109677122c9f4d0ef168bb4dcececf87058da08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b934e6e_ee3c1aa9",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "8109677122c9f4d0ef168bb4dcececf87058da08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530e750e_87ce5675",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b934e6e_ee3c1aa9",
+      "range": {
+        "startLine": 201,
+        "startChar": 79,
+        "endLine": 201,
+        "endChar": 87
+      },
+      "revId": "8109677122c9f4d0ef168bb4dcececf87058da08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
