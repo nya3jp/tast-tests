@@ -46,6 +46,30 @@
       "revId": "890ec9afc8e9b00a2704239ba02f91f64b8bfbad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "777be7df_ccc9ced2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-07T01:15:27Z",
+      "side": 1,
+      "message": "I misread the loop, is what happened :P.\n\nI thought you were returning after killing one crashpad process.",
+      "parentUuid": "3a1a4bc6_0b47e23b",
+      "range": {
+        "startLine": 662,
+        "startChar": 44,
+        "endLine": 662,
+        "endChar": 53
+      },
+      "revId": "890ec9afc8e9b00a2704239ba02f91f64b8bfbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
