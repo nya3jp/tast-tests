@@ -22,6 +22,46 @@
       "revId": "216f5f6db07986dcd882e8bb9fc20cc32c6d6d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2155421f_75b169a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_service-worker.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:30:13Z",
+      "side": 1,
+      "message": "nit: Could you comment this is intentionally empty?",
+      "revId": "216f5f6db07986dcd882e8bb9fc20cc32c6d6d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec117a8_ff502674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:30:13Z",
+      "side": 1,
+      "message": "nit/style: Concat two terms can be simply a + b. So,\n\nserver.URL + \"/web\\app_install_force_list_index.html\"\n\nNote, for concating three or more terms, Sprintf looks better.\n(Sorry, I overlooked in the last iteration).",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 97
+      },
+      "revId": "216f5f6db07986dcd882e8bb9fc20cc32c6d6d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
