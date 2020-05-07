@@ -29,7 +29,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"accessibility_speech.MainActivity.json"},
+		Data:         []string{"accessibility_speech.MainActivity.json", "accessibility_speech.EditTextActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -84,8 +84,7 @@ func getSpeechTestSteps(filepath string) ([]axSpeechTestStep, error) {
 
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	const axSpeechFilePrefix = "accessibility_speech"
-
-	testActivities := []accessibility.TestActivity{accessibility.MainActivity}
+	testActivities := []accessibility.TestActivity{accessibility.MainActivity, accessibility.EditTextActivity}
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
 		// Enable speech logging.
 		if err := cvconn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
@@ -137,5 +136,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
-	accessibility.RunTest(ctx, s, testActivities, testFunc)
+	for _, activity := range testActivities {
+		accessibility.RunTest(ctx, s, []accessibility.TestActivity{activity}, testFunc)
+	}
 }
