@@ -46,6 +46,30 @@
       "revId": "998e83264688cc308e53f5325b3720f6197f4822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f542a9_9d913f39",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2020-05-07T06:13:54Z",
+      "side": 1,
+      "message": "Yes, we can use prefixes or something like this. I think it\u0027s better to keep all logs in one file, at least it\u0027s easier for sequential analysis. I mean in context of one application.",
+      "parentUuid": "27c19f3d_d8051486",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "998e83264688cc308e53f5325b3720f6197f4822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
