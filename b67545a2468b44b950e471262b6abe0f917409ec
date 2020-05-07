@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6f10176_da365bf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-07T20:33:14Z",
+      "side": 1,
+      "message": "nit: missing space",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 16
+      },
+      "revId": "b67545a2468b44b950e471262b6abe0f917409ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1068c7b4_06833be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-07T20:33:14Z",
+      "side": 1,
+      "message": "Nit: missing closed parens",
+      "range": {
+        "startLine": 151,
+        "startChar": 25,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "b67545a2468b44b950e471262b6abe0f917409ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
