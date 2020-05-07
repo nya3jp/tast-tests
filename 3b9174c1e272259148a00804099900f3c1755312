@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ba14dd9_7448a72d",
+        "filename": "src/chromiumos/tast/common/network/cmd/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-07T07:17:56Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s better to move the local/remote implementation under local/remote directory. e.g.\n\nIn tast/common/network/cmd/runner.go:\n  type Runner interface {...}\n\nIn tast/local/network/cmd/runner.go:\n  import \"chromiumos/tast/common/network/cmd/runner.go\"\n  type LocalCmdRunner struct{}\n  var _ cmd.Runner \u003d (*LocalCmdRunner)(nil)\n\nIn tast/remote/network/cmd/runner.go:\n  import \"chromiumos/tast/common/network/cmd/runner.go\"\n  type RemoteCmdRunner struct{}\n  var _ cmd.Runner \u003d (*RemoteCmdRunner)(nil)\n\nThen the dependency will always be local-\u003ecommon or remote-\u003ecommon and never the reverse.\nWDYT?",
+      "revId": "3b9174c1e272259148a00804099900f3c1755312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb69324_cb3968f7",
+        "filename": "src/chromiumos/tast/local/network/iw/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-07T07:17:56Z",
+      "side": 1,
+      "message": "I think this is better to be next to the struct definition.",
+      "revId": "3b9174c1e272259148a00804099900f3c1755312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "732950e1_cffbb40a",
+        "filename": "src/chromiumos/tast/local/network/ping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-07T07:17:56Z",
+      "side": 1,
+      "message": "ditto, better be next to the object definition.",
+      "revId": "3b9174c1e272259148a00804099900f3c1755312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7efea1c_7c743b94",
+        "filename": "src/chromiumos/tast/remote/network/iw/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-07T07:17:56Z",
+      "side": 1,
+      "message": "ditto, better be next to the object definition.",
+      "revId": "3b9174c1e272259148a00804099900f3c1755312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa62c1f3_b505a5b3",
+        "filename": "src/chromiumos/tast/remote/network/ping/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-07T07:17:56Z",
+      "side": 1,
+      "message": "ditto, better be next to the object definition.",
+      "revId": "3b9174c1e272259148a00804099900f3c1755312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
