@@ -8,7 +8,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"os"
 	"reflect"
 	"time"
 
@@ -32,7 +31,7 @@ type eventLog struct {
 	// eventLog has docUrl, but it will not be used in test.
 }
 
-type testStep struct {
+type eventTestStep struct {
 	Key    string        // key events to invoke the event.
 	Params ui.FindParams // expected params of focused node after the event.
 	Event  eventLog      // expected event log.
@@ -85,7 +84,7 @@ func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog eventLog, c
 	return nil
 }
 
-func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test testStep, isFirstStep bool) error {
+func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test eventTestStep, isFirstStep bool) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
 	if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox log")
@@ -117,15 +116,15 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return nil
 }
 
-// getTestSteps returns a slice of testStep, which is read from the specific file.
-func getTestSteps(filepath string) ([]testStep, error) {
-	f, err := os.Open(filepath)
+// getEventTestSteps returns a slice of eventTestStep, which is read from the specific file.
+func getEventTestSteps(filepath string) ([]eventTestStep, error) {
+	f, err := accessibility.OpenFile(filepath)
 	if err != nil {
 		return nil, err
 	}
 	defer f.Close()
 
-	var steps []testStep
+	var steps []eventTestStep
 	err = json.NewDecoder(f).Decode(&steps)
 	return steps, err
 }
@@ -168,11 +167,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		if err := setupEventStreamLogging(ctx, cvconn, currentActivity.Name); err != nil {
 			s.Fatal("Failed to enable event stream logging: ", err)
 		}
-		testSteps, err := getTestSteps(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
+		eventTestSteps, err := getEventTestSteps(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
 		if err != nil {
 			return errors.Wrap(err, "error reading from JSON")
 		}
-		for i, test := range testSteps {
+		for i, test := range eventTestSteps {
 			test.Event.RootName = currentActivity.Title
 			if err := runTestStep(ctx, cvconn, tconn, ew, test, i == 0); err != nil {
 				return errors.Wrapf(err, "failed to run a test step %v", test)
