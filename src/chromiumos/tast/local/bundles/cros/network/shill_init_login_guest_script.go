@@ -46,7 +46,7 @@ func testLoginGuest(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.Login(ctx, ""); err != nil {
+	if err := shillscript.Login(ctx, shillscript.GuestUser); err != nil {
 		_, _ = stop()
 		return errors.Wrap(err, "failed logging in")
 	}
@@ -61,15 +61,11 @@ func testLoginGuest(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.AssureNotExists(env.ShillUserProfile); err != nil {
+	if err := shillscript.AssureExists(env.ShillGuestProfile); err != nil {
 		return err
 	}
 
-	if err := shillscript.AssureNotExists(env.ShillUserProfileDir); err != nil {
-		return err
-	}
-
-	if err := shillscript.AssureIsDir(shillscript.GuestShillUserProfileDir); err != nil {
+	if err := shillscript.AssureIsDir(env.ShillGuestProfileDir); err != nil {
 		return err
 	}
 
@@ -77,7 +73,7 @@ func testLoginGuest(ctx context.Context, env *shillscript.TestEnv) error {
 		return err
 	}
 
-	if err := shillscript.AssureIsLinkTo(shillscript.ShillUserProfileChronosDir, shillscript.GuestShillUserProfileDir); err != nil {
+	if err := shillscript.AssureIsLinkTo(shillscript.ShillUserProfileChronosDir, env.ShillGuestProfileDir); err != nil {
 		return err
 	}
 
