@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b03e0c8e_e590db68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:32:41Z",
+      "side": 1,
+      "message": "nit/style: (As you touch this line) we often combine those lines.\n\nif err :\u003d ...; err !\u003d nil {\n  ...\n}\n\n# Even if lengthy, because go does not have line char limit.",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 16
+      },
+      "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
