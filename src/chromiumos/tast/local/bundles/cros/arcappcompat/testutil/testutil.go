@@ -175,23 +175,45 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		CurrentAppPackage(ctx, s, d)
 	} else {
 		s.Log("It's an N-app")
-		s.Log("Get to Normal size of the window")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
-			s.Error("Normal size of the window is failed: ", err)
+		// Launch the app.
+		act, err := arc.NewActivity(a, appPkgName, appActivity)
+		if err != nil {
+			s.Fatal("Failed to create new app activity: ", err)
 		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
-			s.Error("The window is not normalized: ", err)
+		defer act.Close()
+		if err := act.Start(ctx, tconn); err != nil {
+			s.Fatal("Failed start app: ", err)
 		}
-		DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-		CurrentAppPackage(ctx, s, d)
-		s.Log("Get back to maximized window state")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
-			s.Log("Maximize the window is failed: ", err)
+		defer act.Stop(ctx)
+		checkForResizable, err := act.Resizable(ctx)
+		if err != nil {
+			s.Fatal("Failed get the resizable info: ", err)
 		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
-			s.Log("The window is not maximized: ", err)
+		s.Log("checkForResizable:", checkForResizable)
+		if checkForResizable {
+			s.Log("App is resizable")
+			s.Log("Get to Normal size of the window")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Error("Normal size of the window is failed: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+			CurrentAppPackage(ctx, s, d)
+			s.Log("Get back to maximized window state")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
+				s.Log("Maximize the window is failed: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
+				s.Log("The window is not maximized: ", err)
+			}
+		} else {
+			s.Log("App is not resizable")
 		}
+
 	}
+
 }
 
 // isNApp func to check if it is an N or pre-N app
