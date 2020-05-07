@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b288c610_fb6c9be6",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-07T13:23:50Z",
+      "side": 1,
+      "message": "hmm..., this one looks kind of awkward. I think at this point, h.hostapd and h.dhcpd are both nil and only the time (1 second) for tearDownIface is reserved. Maybe we should shorten on the way after each service get started? although it is kind of verbose.",
+      "revId": "eaad53c1c02f2fe4a953c4ed8158e2b6a336d0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3522e9_b66c9bcc",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-07T13:23:50Z",
+      "side": 1,
+      "message": "This one looks similar. I think h.hostapd and h.dhcpd are still nil here. I guess we don\u0027t really need shorten here as freeSubnetIdx and freeIface does not need ctx? (and h.stop is already called in h.start on error)",
+      "revId": "eaad53c1c02f2fe4a953c4ed8158e2b6a336d0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
