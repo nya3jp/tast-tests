@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aeeec448_c2255c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-07T07:15:24Z",
+      "side": 1,
+      "message": "No, for this test we don\u0027t need to run a such command to get owner_id\nbecause we know the user is \"testuser@gmail.com\".\nWe just pass chrome.DefaultUser (testuser@gmail.com) to the hash function.",
+      "parentUuid": "773d3b39_12f7e75e",
+      "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b368be8f_5c4b914a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 4
