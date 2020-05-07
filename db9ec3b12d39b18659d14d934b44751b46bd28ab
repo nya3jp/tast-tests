@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f9208ed_c44e5e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-07T22:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddcdee2f_eecdd88f",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "db9ec3b12d39b18659d14d934b44751b46bd28ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9f5839b_46f1ff32",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "23a46a48_d55d8da4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-07T22:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f5839b_46f1ff32",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "db9ec3b12d39b18659d14d934b44751b46bd28ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bfdb971_80758fde",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "db9ec3b12d39b18659d14d934b44751b46bd28ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197a8b10_8ae6780a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-07T22:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bfdb971_80758fde",
+      "revId": "db9ec3b12d39b18659d14d934b44751b46bd28ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
