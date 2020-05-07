@@ -22,6 +22,30 @@
       "revId": "f86b5a4e644af44a7d5d6328c59de20ff4330802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0c1b29_ef41b8ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/blocking_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-07T16:04:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "703e49f9_4a750427",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "f86b5a4e644af44a7d5d6328c59de20ff4330802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
