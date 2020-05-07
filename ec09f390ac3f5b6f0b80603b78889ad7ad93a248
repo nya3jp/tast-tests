@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4993036a_27a2b055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T22:14:13Z",
+      "side": 1,
+      "message": "This type is common in this package (i.e. all arc tests), so I\u0027m afraid this is too generic. Actually there\u0027s already \u0027testParam\u0027 struct auth_perf.go (which does not look great to me).\n\nCan you be naming a bit more specific to this test?  like, splitViewTestParams?",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "ec09f390ac3f5b6f0b80603b78889ad7ad93a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07fec320_1acbb72d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T22:14:13Z",
+      "side": 1,
+      "message": "I have overseen this in your previous CL. Some devices (like chromeboxes) will not have internal displays, yet android may be available. According to the test logs, veyron_fieval is one of such.\n\nCan you find the way to work on such situation?  Maybe you can use a mouse (ash.Mouse... functions). Or, I have pointer package which is under ui; you could move it to somewhere and use it from here (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/bundles/cros/ui/pointer).  Maybe chrome/ui/pointer package might be a good location.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "ec09f390ac3f5b6f0b80603b78889ad7ad93a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1d6069_7b05e925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T22:14:13Z",
+      "side": 1,
+      "message": "It is not clear to me what is this operation for. If it\u0027s for showing home-screen; can you use ash.DragToShowHomescreen?\n\nIf not, please add some comments for what this operation is supposed to do.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 3
+      },
+      "revId": "ec09f390ac3f5b6f0b80603b78889ad7ad93a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
