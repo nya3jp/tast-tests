@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38dd89ab_de6e26dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:47:00Z",
+      "side": 1,
+      "message": "Is it necessary to generate a random uniq every time, or could we hard-code one and get rid of `f2RNumData`?",
+      "revId": "9e9875e4cb349540cc4d969031b29ef66948f2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ff56fe_37770a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:47:00Z",
+      "side": 1,
+      "message": "Nit: this isn\u0027t DS3-specific any more, presumably.",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "9e9875e4cb349540cc4d969031b29ef66948f2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
