@@ -11,6 +11,8 @@ import (
 	"log"
 	"os"
 	"regexp"
+
+	"chromiumos/tast/genutil"
 )
 
 func main() {
@@ -35,25 +37,25 @@ func main() {
 		metaStateType = "MetaState"
 	)
 
-	params := Params{
+	params := genutil.Params{
 		PackageName: "ui",
 		RepoName:    "Android frameworks/base",
 		PreludeCode: `// Assumes that Android repo is checked out at same folder level as Chrome OS. e.g: If Chrome OS sources are in:
 // ~/src/chromeos/, then Android sources should be in ~/src/android/
-//go:generate ` + goSh + ` run ` + thisFile + ` gen/util.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
+//go:generate ` + goSh + ` run ` + thisFile + ` ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
 //go:generate ` + goSh + ` fmt generated_constants.go`,
 		CopyrightYear:  2019,
 		MainGoFilePath: thisFile,
 
-		Types: []TypeSpec{
-			{keyCodeType, "uint16", "represents an Android key code."},
-			{metaStateType, "uint64", "represents a meta-key state. Each bit set to 1 represents a pressed meta key."},
+		Types: []genutil.TypeSpec{
+			{Name: keyCodeType, NativeType: "uint16", Desc: "represents an Android key code."},
+			{Name: metaStateType, NativeType: "uint64", Desc: "represents a meta-key state. Each bit set to 1 represents a pressed meta key."},
 		},
 
 		// We only care about KEYCODE and META prefixes. We ignore the rest.
-		Groups: []GroupSpec{
-			{"KEYCODE", keyCodeType, "KeyCodes constants"},
-			{"META", metaStateType, "Meta-key constants"},
+		Groups: []genutil.GroupSpec{
+			{Prefix: "KEYCODE", TypeName: keyCodeType, Desc: "KeyCodes constants"},
+			{Prefix: "META", TypeName: metaStateType, Desc: "Meta-key constants"},
 		},
 
 		// Read inputFile, a KeyEvent.java. Looking for lines like:
@@ -61,7 +63,7 @@ func main() {
 		// TODO(ricardoq): Multiline, bitwise-or metas are not supported. Find a robust way to support them. e.g:
 		//   public static final int META_SHIFT_MASK = META_SHIFT_ON
 		//        | META_SHIFT_LEFT_ON | META_SHIFT_RIGHT_ON;
-		LineParser: func() LineParser {
+		LineParser: func() genutil.LineParser {
 			re := regexp.MustCompile(`^\s+public static final int ([_A-Z0-9]+)\s*=\s*(0x[0-9a-fA-F]+|\d+);$`)
 			return func(line string) (name, sval string, ok bool) {
 				m := re.FindStringSubmatch(line)
@@ -73,7 +75,7 @@ func main() {
 		}(),
 	}
 
-	if err := GenerateConstants(inputFile, outputFile, params); err != nil {
+	if err := genutil.GenerateConstants(inputFile, outputFile, params); err != nil {
 		log.Fatalf("Failed to generate %v: %v", outputFile, err)
 	}
 }

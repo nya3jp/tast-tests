@@ -11,6 +11,8 @@ import (
 	"log"
 	"os"
 	"regexp"
+
+	"chromiumos/tast/genutil"
 )
 
 func main() {
@@ -36,49 +38,49 @@ func main() {
 		propType = "DeviceProperty"
 	)
 
-	params := Params{
+	params := genutil.Params{
 		PackageName: "input",
 		RepoName:    "Linux kernel",
-		PreludeCode: `//go:generate ` + goSh + ` run ` + thisFile + ` gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+		PreludeCode: `//go:generate ` + goSh + ` run ` + thisFile + ` ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
 //go:generate ` + goSh + ` fmt generated_constants.go`,
 		CopyrightYear:  2018,
 		MainGoFilePath: thisFile,
 
-		Types: []TypeSpec{{
-			etType,
-			"uint16",
-			`corresponds to the "type" field in the input_event C struct.
+		Types: []genutil.TypeSpec{{
+			Name:       etType,
+			NativeType: "uint16",
+			Desc: `corresponds to the "type" field in the input_event C struct.
 	// Per the kernel documentation, "event types are groupings of codes under a logical input construct."
 	// Stated more plainly, event types represent broad categories like "keyboard events".`,
 		}, {
-			ecType,
-			"uint16",
-			`corresponds to the "code" field in the input_event C struct.
+			Name:       ecType,
+			NativeType: "uint16",
+			Desc: `corresponds to the "code" field in the input_event C struct.
 	// Per the kernel documentation, "event codes define the precise type of event."
 	// There are codes corresponding to different keys on a keyboard or different mouse buttons, for example.`,
 		}, {
-			propType,
-			"uint16",
-			`describes additional information about an input device beyond
+			Name:       propType,
+			NativeType: "uint16",
+			Desc: `describes additional information about an input device beyond
 	// the event types that it supports.`,
 		}},
 
-		Groups: []GroupSpec{
-			{"EV", etType, "Event types"},
-			{"SYN", ecType, "Synchronization events"},
-			{"KEY", ecType, "Keyboard events"},
-			{"BTN", ecType, "Momentary switch events"},
-			{"REL", ecType, "Relative change events"},
-			{"ABS", ecType, "Absolute change events"},
-			{"SW", ecType, "Stateful binary switch events"},
-			{"MSC", ecType, "Miscellaneous input and output events"},
-			{"LED", ecType, "LED events"},
-			{"SND", ecType, "Commands to simple sound output devices"},
-			{"REP", ecType, "Autorepeat events"},
-			{"INPUT_PROP", propType, "Device properties"},
+		Groups: []genutil.GroupSpec{
+			{Prefix: "EV", TypeName: etType, Desc: "Event types"},
+			{Prefix: "SYN", TypeName: ecType, Desc: "Synchronization events"},
+			{Prefix: "KEY", TypeName: ecType, Desc: "Keyboard events"},
+			{Prefix: "BTN", TypeName: ecType, Desc: "Momentary switch events"},
+			{Prefix: "REL", TypeName: ecType, Desc: "Relative change events"},
+			{Prefix: "ABS", TypeName: ecType, Desc: "Absolute change events"},
+			{Prefix: "SW", TypeName: ecType, Desc: "Stateful binary switch events"},
+			{Prefix: "MSC", TypeName: ecType, Desc: "Miscellaneous input and output events"},
+			{Prefix: "LED", TypeName: ecType, Desc: "LED events"},
+			{Prefix: "SND", TypeName: ecType, Desc: "Commands to simple sound output devices"},
+			{Prefix: "REP", TypeName: ecType, Desc: "Autorepeat events"},
+			{Prefix: "INPUT_PROP", TypeName: propType, Desc: "Device properties"},
 		},
 
-		LineParser: func() LineParser {
+		LineParser: func() genutil.LineParser {
 			// Reads inputFile, a kernel input-event-codes.h. Looking for lines like:
 			//   #define EV_SYN 0x00
 			re := regexp.MustCompile(`^#define\s+([A-Z][_A-Z0-9]+)\s+(0x[0-9a-fA-F]+|\d+)`)
@@ -92,7 +94,7 @@ func main() {
 		}(),
 	}
 
-	if err := GenerateConstants(inputFile, outputFile, params); err != nil {
+	if err := genutil.GenerateConstants(inputFile, outputFile, params); err != nil {
 		log.Fatalf("Failed to generate %v: %v", outputFile, err)
 	}
 }

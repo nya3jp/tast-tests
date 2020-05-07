@@ -14,7 +14,7 @@ package ui
 
 // Assumes that Android repo is checked out at same folder level as Chrome OS. e.g: If Chrome OS sources are in:
 // ~/src/chromeos/, then Android sources should be in ~/src/android/
-//go:generate ../../../../../../../tast/tools/go.sh run gen/gen_constants.go gen/util.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
+//go:generate ../../../../../../../tast/tools/go.sh run gen/gen_constants.go ../../../../../../../../../../android/frameworks/base/core/java/android/view/KeyEvent.java generated_constants.go
 //go:generate ../../../../../../../tast/tools/go.sh fmt generated_constants.go
 
 // KeyCode represents an Android key code.

@@ -9,10 +9,10 @@ package input
 // Do not change the above line; see https://golang.org/pkg/cmd/go/internal/generate/
 //
 // This file contains constants from include/uapi/linux/input-event-codes.h
-// in the Linux kernel repository at revision 2eca55fc6a9240d9a723701b7a3b9b05da2849fe.
+// in the Linux kernel repository at revision 5d1dbc856254dafc3a4141164ecbc14c04b7c743.
 // Run "go generate" to regenerate it.
 
-//go:generate ../../../../../../tast/tools/go.sh run gen/gen_constants.go gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+//go:generate ../../../../../../tast/tools/go.sh run gen/gen_constants.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
 //go:generate ../../../../../../tast/tools/go.sh fmt generated_constants.go
 
 // EventType corresponds to the "type" field in the input_event C struct.
