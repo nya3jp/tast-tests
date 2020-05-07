@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d13cfced_77503c8f",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "nit: move this inside the switch ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "911b7b2a_fb98fe80",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "ditto below:\nscanner.Err() outside the loop.\nhttps://golang.org/pkg/bufio/#example_Scanner_lines",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049cec15_6b8ba265",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "outdated",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 53
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b81eae1_cb9e6515",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "len \u003c 15 doesn\u0027t mean it is empty.\nperhaps \"unexpected format for event line\"? (or one that you prefer)\n\nalso what about calling parsingError() ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e717075_d7470e2c",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "ditto above: parsingError() here perhaps?",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0e42ed_b3de2fab",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "don\u0027t ignore err returned by Sleep.\n\nsleep could fail because the ctx timed-out. and it is important to return that error.",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917370ee_76dc7206",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "scanner.Err() should be outside the loop:\nhttps://golang.org/pkg/bufio/#example_Scanner_lines",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9062725_94d2cd8d",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "comment is outdated",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c8f6b6_f5c3a2fd",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "nit: as discussed off-line, log regexp / string too\n(example in message below)",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e07ab507_d7303192",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "this is not needed. the above guard covers it.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521b6541_c6946710",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "huge nit: we -\u003e We",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 5
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a281ce91_c9661f2e",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "nit: (I missed it before).\n\nIf the time must be exacly 6-digits.6-digits then you can force that in the regexp with:\n\n    (\\d{6})\\.(\\d{6})\n\nin addition to that, you can get rid of strings.Fields().\nThe regular expression, as it is, should work. But in case it doesn\u0027t work you can try with:\n\n    (\\d{6})\\.(\\d{6}).*    : will ignore everything after the timestamp\n    (\\d{6})\\.(\\d{6})\\s+.* : requires some whitespaces after the timespace, and will ignore the rest.",
+      "range": {
+        "startLine": 164,
+        "startChar": 30,
+        "endLine": 164,
+        "endChar": 42
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350d8a3a_a35155e6",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "nit: len(times) \u003d\u003d 0 {\n}\n\nFindStringSubmatch either returns all the groups that you asked for, or none.\nComparing for  `len(..) \u003d\u003d 0 {}` is slightly better  than `len() !\u003d 3`: In case you need to change the regexp in the future, you don\u0027t need to update the groups size.\n\nhttps://golang.org/pkg/regexp/#Regexp.FindStringSubmatch\n\n\nas mentioned off-line, would you mind logging the regexp + line that make it fail. e.g:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/dumpsys.go;l\u003d142?q\u003ddumpsys.go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "range": {
+        "startLine": 166,
+        "startChar": 14,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b07299_dc48cbea",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T01:58:23Z",
+      "side": 1,
+      "message": "nit: add comment for func",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 17
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
