@@ -25,7 +25,7 @@ func init() {
 }
 
 func ShillInitScriptsLoginProfileExists(ctx context.Context, s *testing.State) {
-	if err := shillscript.RunTest(ctx, testLoginProfileExists); err != nil {
+	if err := shillscript.RunTest(ctx, testLoginProfileExists, false); err != nil {
 		s.Fatal("Failed running testLoginProfileExists: ", err)
 	}
 }

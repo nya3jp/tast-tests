@@ -24,7 +24,7 @@ func init() {
 }
 
 func ShillInitLogoutScript(ctx context.Context, s *testing.State) {
-	if err := shillscript.RunTest(ctx, testLogout); err != nil {
+	if err := shillscript.RunTest(ctx, testLogout, false); err != nil {
 		s.Fatal("Failed running testLogout: ", err)
 	}
 }

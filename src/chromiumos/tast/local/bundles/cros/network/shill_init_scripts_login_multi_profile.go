@@ -24,7 +24,7 @@ func init() {
 }
 
 func ShillInitScriptsLoginMultiProfile(ctx context.Context, s *testing.State) {
-	if err := shillscript.RunTest(ctx, testLoginMultiProfile); err != nil {
+	if err := shillscript.RunTest(ctx, testLoginMultiProfile, false); err != nil {
 		s.Fatal("Failed running testLoginMultiProfile: ", err)
 	}
 }

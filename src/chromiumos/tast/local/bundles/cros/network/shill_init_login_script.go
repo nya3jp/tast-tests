@@ -23,7 +23,7 @@ func init() {
 }
 
 func ShillInitLoginScript(ctx context.Context, s *testing.State) {
-	if err := shillscript.RunTest(ctx, testLogin); err != nil {
+	if err := shillscript.RunTest(ctx, testLogin, false); err != nil {
 		s.Fatal("Failed running testLogin: ", err)
 	}
 }
