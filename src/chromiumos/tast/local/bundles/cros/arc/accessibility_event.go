@@ -22,19 +22,19 @@ import (
 
 const axEventFilePrefix = "accessibility_event"
 
-// eventLog represents a log of accessibility event.
+// axEventLog represents a log of accessibility event.
 // Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/accessibility/chromevox/background/logging/log_types.js
-type eventLog struct {
+type axEventLog struct {
 	EventType  string `json:"type_"`
 	TargetName string `json:"targetName_"`
 	RootName   string `json:"rootName_"`
-	// eventLog has docUrl, but it will not be used in test.
+	// There is also docUrl property, but it is not used in test.
 }
 
-type testStep struct {
+type axEventTestStep struct {
 	Key    string        // key events to invoke the event.
 	Params ui.FindParams // expected params of focused node after the event.
-	Event  eventLog      // expected event log.
+	Event  axEventLog    // expected event log.
 }
 
 func init() {
@@ -59,8 +59,8 @@ func init() {
 
 // verifyLog gets the current ChromeVox log and checks that it matches with expected log.
 // Note that as the initial a11y focus is unstable, checkOnlyLatest=true can be used to check only the latest log.
-func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog eventLog, checkOnlyLatest bool) error {
-	var logs []eventLog
+func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog axEventLog, checkOnlyLatest bool) error {
+	var logs []axEventLog
 	if err := cvconn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
 		return errors.Wrap(err, "failed to get event logs")
 	}
@@ -84,7 +84,7 @@ func verifyLog(ctx context.Context, cvconn *chrome.Conn, expectedLog eventLog, c
 	return nil
 }
 
-func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test testStep, isFirstStep bool) error {
+func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, test axEventTestStep, isFirstStep bool) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
 	if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox log")
@@ -110,23 +110,23 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	return nil
 }
 
-// getTestSteps returns a slice of testStep, which is read from the specific file.
-func getTestSteps(filepath string) ([]testStep, error) {
+// getEventTestSteps returns a slice of axEventTestStep, which is read from the specific file.
+func getEventTestSteps(filepath string) ([]axEventTestStep, error) {
 	f, err := os.Open(filepath)
 	if err != nil {
 		return nil, err
 	}
 	defer f.Close()
 
-	var steps []testStep
+	var steps []axEventTestStep
 	err = json.NewDecoder(f).Decode(&steps)
 	return steps, err
 }
 
-func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, testSteps []testStep) error {
+func setupEventStreamLogging(ctx context.Context, cvconn *chrome.Conn, activityName string, axEventTestSteps []axEventTestStep) error {
 	eventsSeen := make(map[string]bool)
 	var events []string
-	for _, test := range testSteps {
+	for _, test := range axEventTestSteps {
 		currentEvent := test.Event.EventType
 		if _, ok := eventsSeen[currentEvent]; !ok {
 			eventsSeen[currentEvent] = true
@@ -162,7 +162,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
-		testSteps, err := getTestSteps(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
+		testSteps, err := getEventTestSteps(s.DataPath(axEventFilePrefix + currentActivity.Name + ".json"))
 		if err != nil {
 			return errors.Wrap(err, "error reading from JSON")
 		}
