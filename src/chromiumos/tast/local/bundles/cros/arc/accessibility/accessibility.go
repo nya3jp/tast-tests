@@ -9,6 +9,7 @@ package accessibility
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -69,6 +70,16 @@ const (
 	SelectToSpeak          = "selectToSpeak"
 	FocusHighlight         = "focusHighlight"
 )
+
+// OpenFile opens filepath for reading.
+// It is up to the caller to close this file.
+func OpenFile(filepath string) (*os.File, error) {
+	f, err := os.Open(filepath)
+	if err != nil {
+		return nil, err
+	}
+	return f, nil
+}
 
 // focusedNode returns the currently focused node of ChromeVox.
 // The returned node should be release by the caller.
