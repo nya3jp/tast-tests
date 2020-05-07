@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d08b048e_c3c7feab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_duo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-07T19:10:13Z",
+      "side": 1,
+      "message": "This should make no difference because am start is what act.Start calls. Also, this omits closing the app. Please change this section back.",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "075ef5e03806b7f0ee04bf6a6970ac23d8383224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
