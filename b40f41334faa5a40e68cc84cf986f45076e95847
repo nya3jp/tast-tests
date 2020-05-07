@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ac20607_87b142a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-07T04:59:31Z",
+      "side": 1,
+      "message": "Do we really need this?\nThis operation doesn\u0027t have accessibility specific logic. This only calls os.Open(), which doesn\u0027t reduce any duplicated logic. Actually I think each caller can directly call os.Open().",
+      "revId": "b40f41334faa5a40e68cc84cf986f45076e95847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de95db0b_72f11bd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-07T04:59:31Z",
+      "side": 1,
+      "message": "This is not directly related to this change, but would you rename these variables to start from \"ax\"?\nThese names are also visible from the files under arc/, so using more specific name is more suitable.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "b40f41334faa5a40e68cc84cf986f45076e95847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de59f401_3bb4078b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_speech.MainActivity.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-07T04:59:31Z",
+      "side": 1,
+      "message": "can you format the file?\nspaces and tabs are mixed in the file.\n\nActually I noticed that already our JSON files are not formatted in ToT though.",
+      "revId": "b40f41334faa5a40e68cc84cf986f45076e95847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
