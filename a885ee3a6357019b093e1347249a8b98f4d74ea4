@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b43bdf4_c6d06cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-07T07:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c308759c_ec779b2c",
+      "revId": "a885ee3a6357019b093e1347249a8b98f4d74ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddc1967d_d1f8f2fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service_test.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "a885ee3a6357019b093e1347249a8b98f4d74ea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b30b40_95d07257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/baserpc/file_system_service_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-07T07:37:15Z",
+      "side": 1,
+      "message": "Sounds nice, added a test.",
+      "parentUuid": "ddc1967d_d1f8f2fd",
+      "revId": "a885ee3a6357019b093e1347249a8b98f4d74ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
