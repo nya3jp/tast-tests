@@ -32,7 +32,7 @@ func init() {
 			"gildekel@chromium.org", // WebP decoder test author
 			"chromeos-gfx@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vaapi"},
 		Params: []testing.Param{{
 			Name: "webp_decoder",
@@ -50,12 +50,14 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeJPEG},
 			ExtraData:         vaImageTestFiles["jpeg"],
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "common",
 			Val: decoderConfig{
 				format:      "common",
 				gtestFilter: fmt.Sprintf("-%s:%s", webpGFilter, jpegGFilter),
 			},
+			ExtraSoftwareDeps: []string{"no_qemu"},
 		}},
 	})
 }
