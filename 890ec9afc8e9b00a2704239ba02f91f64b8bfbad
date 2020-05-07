@@ -22,6 +22,30 @@
       "revId": "890ec9afc8e9b00a2704239ba02f91f64b8bfbad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a1a4bc6_0b47e23b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-05-07T01:04:42Z",
+      "side": 1,
+      "message": "It\u0027s intentional in two senses:\n1. Grammatically, I would save \"some people\" if I don\u0027t know the exact number of people. :) I didn\u0027t actually count the # of processes.\n2. Chrome will always start up 2 copies of crashpad_handler. I don\u0027t quite know why, I think it\u0027s to have one monitor the other, but you always see two crashpad_handler processes. I don\u0027t think we can distinguish which is the \u0027important\u0027 one. (I might be able to read the command line and look for a specific flag, but even if that worked, it seems unnecessarily complex and fragile.) I\u0027d rather kill them both and wait for all of them to exit.\n\nI\u0027m not quite parsing the rest of your comment, so I\u0027m not clear if you want me to make more changes.",
+      "parentUuid": "cb77b344_abd5ef0b",
+      "range": {
+        "startLine": 662,
+        "startChar": 44,
+        "endLine": 662,
+        "endChar": 53
+      },
+      "revId": "890ec9afc8e9b00a2704239ba02f91f64b8bfbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
