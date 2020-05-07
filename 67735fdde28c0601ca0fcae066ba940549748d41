@@ -118,6 +118,30 @@
       "revId": "67735fdde28c0601ca0fcae066ba940549748d41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c45f2b76_cd6fc941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-07T22:57:36Z",
+      "side": 1,
+      "message": "Thanks Shijin, checking the \u0027Powered\u0027 property was the one I found also, so I used that here.",
+      "parentUuid": "5e24e0da_e76d3551",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "67735fdde28c0601ca0fcae066ba940549748d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
