@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -36,9 +37,13 @@ const (
 	perfMeasurementDuration = time.Duration(30) * time.Second
 	perfTestSlack           = time.Duration(60) * time.Second
 
+	// perfRounds is the rounds we run perf measurements. We report the median of the metric to avoid the outlier.
+	perfRounds = 3
+
 	// PerfTestRuntime is the runtime for a single performance test case
 	// * 2 because two sets of perf measurements are gathered per test (rendering, no rendering)
-	PerfTestRuntime = (perfMeasurementDuration * 2) + perfTestSlack
+	// * perfRounds because we run the perf measurements multiple rounds then report median of the results.
+	PerfTestRuntime = ((perfMeasurementDuration * 2) + perfTestSlack) * perfRounds
 )
 
 // arcTestConfig stores GoogleTest configuration passed to c2_e2e_test APK.
@@ -195,10 +200,45 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 }
 
-// runARCVideoPerfTest runs c2_e2e_test APK in ARC and gathers perf statistics.
+// runFuncWithMedianResult runs a closure multiple times, and calcuates the median of each metric.
+func runFuncWithMedianResult(closure func() map[string]float64, rounds int) map[string]float64 {
+	median := func(values []float64) float64 {
+		sort.Float64s(values)
+		mid := len(values) / 2
+		if len(values)%2 == 1 {
+			return values[mid]
+		}
+		return (values[mid-1] + values[mid]) / 2
+	}
+
+	stats := make(map[string][]float64)
+	for round := 0; round < rounds; round++ {
+		for k, v := range closure() {
+			if round == 0 {
+				stats[k] = make([]float64, rounds)
+			}
+			stats[k][round] = v
+		}
+	}
+
+	medianStats := make(map[string]float64)
+	for k, values := range stats {
+		medianStats[k] = median(values)
+	}
+	return medianStats
+}
+
+func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) map[string]float64 {
+	closure := func() map[string]float64 {
+		return runARCVideoPerfTestOnce(ctx, s, cfg)
+	}
+	return runFuncWithMedianResult(closure, perfRounds)
+}
+
+// runARCVideoPerfTestOnce runs c2_e2e_test APK once in ARC and gathers perf statistics.
 // It fails if c2_e2e_test fails.
 // It returns a map of perf statistics containing fps, dropped frame, cpu, and power stats.
-func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
+func runARCVideoPerfTestOnce(ctx context.Context, s *testing.State, cfg arcTestConfig) (perf map[string]float64) {
 	cr := s.PreValue().(arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
