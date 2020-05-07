@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b2e7da9_575899c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:07:10Z",
+      "side": 1,
+      "message": "Should err be returned if not nil?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f8fdf3_b425c269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:07:10Z",
+      "side": 1,
+      "message": "nit: could you insert \"break\"?",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95f2a819_6ee8b5c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:07:10Z",
+      "side": 1,
+      "message": "Looks unused?\nOr, the buffer.go:L80 needs to be fixed?\n\nIf this needs to be kept here, could you put this as a first member?",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7196109a_5fbc1ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:07:10Z",
+      "side": 1,
+      "message": "Is it expected that parsing fails?\nIf not, could you return?\nIf so, could you comment the reason (with maybe logging?)",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25801f74_5d3efaa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:07:10Z",
+      "side": 1,
+      "message": "Could you move this out from the function to file level with more descriptive name, to avoid compiling the regexp repeatedly?",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0446137_31a733e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:07:10Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1645ce8_26d41bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:07:10Z",
+      "side": 1,
+      "message": "nit/style: Could you use CompiteLiteral here, and remove trigger variable?",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
