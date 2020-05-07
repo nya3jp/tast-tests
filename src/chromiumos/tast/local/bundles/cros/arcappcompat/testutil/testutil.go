@@ -30,7 +30,7 @@ const (
 )
 
 // TestFunc represents the "test" function.
-type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string)
+type TestFunc func(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string, checkForResizable bool)
 
 // TestSuite represents the  name of test, and the function to call.
 type TestSuite struct {
@@ -87,7 +87,7 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 }
 
 // ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR.
-func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string, checkForResizable bool) {
 	const restartButtonResourceID = "android:id/button1"
 
 	s.Log("Set the window to fullscreen")
@@ -120,7 +120,7 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 }
 
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
-func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string, checkForResizable bool) {
 
 	s.Log("Minimize the window")
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMinimize); err != nil {
@@ -147,7 +147,7 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 }
 
 // ClamshellResizeWindow Test "resize and restore back to original state of the app" and verifies app launch successfully without crash or ANR.
-func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string, checkForResizable bool) {
 	const restartButtonResourceID = "android:id/button1"
 
 	if !isNApp(ctx, s, tconn, a, d, appPkgName) {
@@ -175,23 +175,31 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		CurrentAppPackage(ctx, s, d)
 	} else {
 		s.Log("It's an N-app")
-		s.Log("Get to Normal size of the window")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
-			s.Error("Normal size of the window is failed: ", err)
+		s.Log("checkForResizable:", checkForResizable)
+		if checkForResizable {
+			s.Log("App is resizable")
+			s.Log("Get to Normal size of the window")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Error("Normal size of the window is failed: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+			CurrentAppPackage(ctx, s, d)
+			s.Log("Get back to maximized window state")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
+				s.Log("Maximize the window is failed: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
+				s.Log("The window is not maximized: ", err)
+			}
+		} else {
+			s.Log("App is not resizable")
 		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
-			s.Error("The window is not normalized: ", err)
-		}
-		DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-		CurrentAppPackage(ctx, s, d)
-		s.Log("Get back to maximized window state")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
-			s.Log("Maximize the window is failed: ", err)
-		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
-			s.Log("The window is not maximized: ", err)
-		}
+
 	}
+
 }
 
 // isNApp func to check if it is an N or pre-N app
@@ -211,7 +219,7 @@ func isNApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 }
 
 // ReOpenWindow Test "close and relaunch the app" and verifies app launch successfully without crash or ANR.
-func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string, checkForResizable bool) {
 
 	s.Log("Close the app")
 	if err := a.Command(ctx, "am", "force-stop", appPkgName).Run(testexec.DumpLogOnError); err != nil {
