@@ -239,6 +239,24 @@
       "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30109585_67a4ff3e",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T20:03:51Z",
+      "side": 1,
+      "message": "At the begining of the Ping command. the default values are assigned:\ncfg :\u003d \u0026config{Count: 3, Interval: 0.5}\n\tfor _, opt :\u003d range options {\n\t\topt(cfg)\n\t}",
+      "parentUuid": "114a19a9_e3fcedc1",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
