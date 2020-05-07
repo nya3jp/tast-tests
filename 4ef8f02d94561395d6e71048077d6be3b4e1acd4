@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b42cee9c_eabff255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-07T17:58:04Z",
+      "side": 1,
+      "message": "This is not \"testuser@\". This is lib and user is passed to particular test.\nConsumers of this at least:\ntast.CacheValidation\ntast.DataCollector",
+      "parentUuid": "8adeb75d_1b5dba6e",
+      "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b368be8f_5c4b914a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 4
@@ -66,6 +84,30 @@
       "writtenOn": "2020-04-29T11:09:31Z",
       "side": 1,
       "message": "@khmel\n\nIf you don\u0027t care much about stat results for symbolic link files (app_chimera/m/0000000?/*.apk ), we can remove this entire block.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb653ae4_21e6ca26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-07T17:58:04Z",
+      "side": 1,
+      "message": "links are essential for GMS Core data",
+      "parentUuid": "b368be8f_5c4b914a",
       "range": {
         "startLine": 160,
         "startChar": 1,
