@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc88b5da_ad10a022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:57:15Z",
+      "side": 1,
+      "message": "I seem to remember the DS4 having a button mapping for when you press on the touchpad, is that right? If so, it would be worth checking that too.",
+      "revId": "303326fe0c100e3f232452f7b0d60485540c5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "187f7ca5_cd09e956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:57:15Z",
+      "side": 1,
+      "message": "Do you know what the 0x05 rnum represents? If so, it would be nice to have a named constant for it, rather than just a \"magic number\". (Ditto for 0xa3 and 0x81)",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 16
+      },
+      "revId": "303326fe0c100e3f232452f7b0d60485540c5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647bcee3_20bd8735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/dualshock/dualshock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:57:15Z",
+      "side": 1,
+      "message": "Nit: now generic for both DS 3 and 4.",
+      "range": {
+        "startLine": 20,
+        "startChar": 55,
+        "endLine": 20,
+        "endChar": 65
+      },
+      "revId": "303326fe0c100e3f232452f7b0d60485540c5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294ce941_88736472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/dualshock/dualshock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:57:15Z",
+      "side": 1,
+      "message": "As I mentioned in the DS3 CL (sorry, it looks like I forgot to submit my draft comments until just now), do we have to randomly generate a Uniq every time, or could we hard code it? (That would let us hard-code the bytes from `StoreUniqInReport`, too.)",
+      "revId": "303326fe0c100e3f232452f7b0d60485540c5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df092b8_c7c5bd4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/dualshock/dualshock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:57:15Z",
+      "side": 1,
+      "message": "Nit: this makes it sound like it handles multiple requests, whereas it actually only does one.",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "303326fe0c100e3f232452f7b0d60485540c5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "740cf0b6_fbad8af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/dualshock/dualshock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-07T21:57:15Z",
+      "side": 1,
+      "message": "When I see a method named `Get...` I kind of expect a simple getter method. Maybe `HandleGetReport` would be a clearer name?",
+      "revId": "303326fe0c100e3f232452f7b0d60485540c5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
