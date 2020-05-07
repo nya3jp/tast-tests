@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a917033_1d5514e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-07T03:34:51Z",
+      "side": 1,
+      "message": "small nit: Doesn\u0027t it produce deeply indented text when the test step has multiple event types? It works, but seems weird to me.\n\nI would simply do like this: eventStreamFilters +\u003d fmt.Sprintf(\"EventStreamLogger.instance.notifyEventStreamFilterChanged(\u0027%s\u0027, true);\", currentEvent)",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 136,
+        "endChar": 74
+      },
+      "revId": "75d2f66ab5ceaea9f715fbbdc8324d9aa3925523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
