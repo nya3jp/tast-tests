@@ -22,6 +22,30 @@
       "revId": "75d2f66ab5ceaea9f715fbbdc8324d9aa3925523",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d781e015_eb186ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-07T07:45:34Z",
+      "side": 1,
+      "message": "oh isee what you mean",
+      "parentUuid": "0a917033_1d5514e8",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 136,
+        "endChar": 74
+      },
+      "revId": "75d2f66ab5ceaea9f715fbbdc8324d9aa3925523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
