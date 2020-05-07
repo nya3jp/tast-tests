@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "52813d6f_2584de0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:33:29Z",
+      "side": 1,
+      "message": "nit: device\u0027s",
+      "range": {
+        "startLine": 286,
+        "startChar": 33,
+        "endLine": 286,
+        "endChar": 41
+      },
+      "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b03e0c8e_e590db68",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -18,6 +41,29 @@
         "startChar": 1,
         "endLine": 291,
         "endChar": 16
+      },
+      "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a13bd195_2206c02d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:33:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 298,
+        "startChar": 22,
+        "endLine": 298,
+        "endChar": 30
       },
       "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
