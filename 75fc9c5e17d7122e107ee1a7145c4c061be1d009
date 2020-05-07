@@ -22,6 +22,30 @@
       "revId": "75fc9c5e17d7122e107ee1a7145c4c061be1d009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1cea05_e364fdce",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T21:08:15Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Done for changing the timeout depending on loginMode.  I see there\u0027s noLogin mode, which should be faster than fakeLogin -- so it has 3 timeouts now. Also, I checked several samples of successful runs of gaia-login, and noticed that login phase usually took \u003c40 seconds; 120 seconds (2mins) should be long enough for the timeout.",
+      "parentUuid": "a4d1f8f0_b2af4e4a",
+      "range": {
+        "startLine": 315,
+        "startChar": 41,
+        "endLine": 315,
+        "endChar": 56
+      },
+      "revId": "75fc9c5e17d7122e107ee1a7145c4c061be1d009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
