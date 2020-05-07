@@ -70,6 +70,30 @@
       "revId": "003756274c6f52849f6e36b6400a042d5ec39550",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc4e87b7_717dd8c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2020-05-07T20:52:29Z",
+      "side": 1,
+      "message": "Good point. I think I prefer it explicit and consistent for all.",
+      "parentUuid": "2245e2b9_c8e99caa",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 42
+      },
+      "revId": "003756274c6f52849f6e36b6400a042d5ec39550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
