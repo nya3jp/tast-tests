@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3671275e_69b091b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2020-05-07T13:53:05Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "74658e9d_6f284048",
+      "revId": "8b818246fe7d4d4616a6ad65e217d78602ac7766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a57a8e76_1cc929da",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 3
