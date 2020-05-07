@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "549a7611_6fe622a2",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-07T18:41:20Z",
+      "side": 1,
+      "message": "yes. that would be enough.",
+      "parentUuid": "2c86527c_6b77e0e9",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "917370ee_76dc7206",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
