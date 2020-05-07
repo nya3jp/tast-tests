@@ -283,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "44f182de_4c06319c",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-07T10:33:40Z",
+      "side": 1,
+      "message": "Makes sense. Sorry Arowa for keeping you changing.",
+      "parentUuid": "27a03456_ecc904f0",
+      "revId": "0eb21df0b1e889e4b8ef500e6c811eb6b192859a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cb6c853_27e123f3",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 3
