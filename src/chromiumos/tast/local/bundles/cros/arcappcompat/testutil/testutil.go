@@ -172,23 +172,31 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 		CurrentAppPackage(ctx, s, d)
 	} else {
 		s.Log("It's an N-app")
-		s.Log("Get to Normal size of the window")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
-			s.Error("Normal size of the window is failed: ", err)
+		// To check an app is resizeable or not.
+		if isAppResizeableOrNot(ctx, s, tconn, a, d, appPkgName) {
+			s.Log("App is un-resizeable")
+		} else {
+			s.Log("App is resizeable")
+			s.Log("Get to Normal size of the window")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Error("Normal size of the window is failed: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+			DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
+			CurrentAppPackage(ctx, s, d)
+			s.Log("Get back to maximized window state")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
+				s.Log("Maximize the window is failed: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
+				s.Log("The window is not maximized: ", err)
+			}
 		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
-			s.Error("The window is not normalized: ", err)
-		}
-		DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
-		CurrentAppPackage(ctx, s, d)
-		s.Log("Get back to maximized window state")
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMaximize); err != nil {
-			s.Log("Maximize the window is failed: ", err)
-		}
-		if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateMaximized); err != nil {
-			s.Log("The window is not maximized: ", err)
-		}
+
 	}
+
 }
 
 // isNApp func to check if it is an N or pre-N app
@@ -315,4 +323,42 @@ func handleCrashOrANRDialog(ctx context.Context, s *testing.State, d *ui.Device)
 	} else if err := okButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on OkButton: ", err)
 	}
+}
+
+// isAppResizeableOrNot func is to find an app is resizeable or not.
+func isAppResizeableOrNot(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName string) bool {
+
+	var unResizeable bool
+	windowStateForUnResizeableSuffix1 := "WindowState{freeform orientLocked"
+	windowStateForUnResizeableSuffix2 := "WindowState{freeform force-maximized"
+	windowStateForUnResizeableSuffix3 := "WindowState{fullscreen force-maximized"
+	windowStateForUnResizeableSuffix4 := "WindowState{fullscreen orientLocked"
+	windowStateForUnResizeableSuffix5 := "WindowState{fullscreen force-maximized restore-bounds=Rect(0, 0 - 0, 0)"
+	windowStateForUnResizeableSuffix6 := "WindowState{fullscreen force-maximized restore-bounds=null"
+
+	// Use dumpsys command to find window state.
+	out, err := a.Command(ctx, "dumpsys", "activity", "activities").Output(testexec.DumpLogOnError)
+	if err != nil {
+		errors.Wrap(err, "could not get 'dumpsys activity activities' output")
+	}
+	output := string(out)
+	// Split on new line.
+	splitedOutput := strings.Split(output, "\n")
+
+	// Display all elements.
+	for splitedLine := range splitedOutput {
+		// Filter line with app package name.
+		filterLineWithAppPackageName := "A=" + appPkgName
+		if strings.Contains(splitedOutput[splitedLine], filterLineWithAppPackageName) {
+			if strings.Contains(splitedOutput[splitedLine], windowStateForUnResizeableSuffix1) ||
+				strings.Contains(splitedOutput[splitedLine], windowStateForUnResizeableSuffix2) ||
+				strings.Contains(splitedOutput[splitedLine], windowStateForUnResizeableSuffix3) ||
+				strings.Contains(splitedOutput[splitedLine], windowStateForUnResizeableSuffix4) ||
+				strings.Contains(splitedOutput[splitedLine], windowStateForUnResizeableSuffix5) ||
+				strings.Contains(splitedOutput[splitedLine], windowStateForUnResizeableSuffix6) {
+				unResizeable = true
+			}
+		}
+	}
+	return unResizeable
 }
