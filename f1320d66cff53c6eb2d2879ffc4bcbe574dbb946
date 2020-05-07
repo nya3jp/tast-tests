@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af07617e_c64f798e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-07T07:21:11Z",
+      "side": 1,
+      "message": "small nit: how about renaming this too? e.g. exEventTestStep.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "f1320d66cff53c6eb2d2879ffc4bcbe574dbb946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865641ad_3031536c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-07T07:21:11Z",
+      "side": 1,
+      "message": "would you add TODO(b:155949540) to migrate Golang struct?",
+      "revId": "f1320d66cff53c6eb2d2879ffc4bcbe574dbb946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
