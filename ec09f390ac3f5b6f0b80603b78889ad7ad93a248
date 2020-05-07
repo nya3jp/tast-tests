@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0171a18b_d66e2c23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-05-07T22:42:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4993036a_27a2b055",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "ec09f390ac3f5b6f0b80603b78889ad7ad93a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07fec320_1acbb72d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dfcfc3c7_9ca3ac9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-05-07T22:42:16Z",
+      "side": 1,
+      "message": "I might not have time to do that as I should be ramping up on performance (switching from window management).",
+      "parentUuid": "07fec320_1acbb72d",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "ec09f390ac3f5b6f0b80603b78889ad7ad93a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd1d6069_7b05e925",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "ec09f390ac3f5b6f0b80603b78889ad7ad93a248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3769b0_a7877bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-05-07T22:42:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd1d6069_7b05e925",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 3
+      },
+      "revId": "ec09f390ac3f5b6f0b80603b78889ad7ad93a248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
