@@ -780,6 +780,30 @@
     },
     {
       "key": {
+        "uuid": "d533c3d3_201dd68a",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T18:01:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e51da5fa_2416df7e",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "94d254630df89319a1e18db4fa9404aec69fce2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5be8288_4abeb72b",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 12
