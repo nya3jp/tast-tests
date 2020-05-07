@@ -94,6 +94,30 @@
       "revId": "67735fdde28c0601ca0fcae066ba940549748d41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e24e0da_e76d3551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2020-05-07T07:04:36Z",
+      "side": 1,
+      "message": "I made a mistake in my earlier comment. Bluetooth state can be checked via this code https://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/cros/bluetooth/bluetooth_device_xmlrpc_server.py?l\u003d986-987\n\nor by \n\nhttps://cs.corp.google.com/aosp-pie/external/autotest/client/site_tests/bluetooth_TurnOnOffUI/bluetooth_TurnOnOffUI.py?l\u003d91-97",
+      "parentUuid": "cae91177_b08056fc",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 26
+      },
+      "revId": "67735fdde28c0601ca0fcae066ba940549748d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
