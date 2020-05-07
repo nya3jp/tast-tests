@@ -16,6 +16,24 @@
       "revId": "74dbd2028ed319f1ee235c8c5692c7f317c5ca01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17130f99_60a99b5d",
+        "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-07T20:05:50Z",
+      "side": 1,
+      "message": "Done, thanks for the catch.",
+      "parentUuid": "3a98748c_58f31d4b",
+      "revId": "74dbd2028ed319f1ee235c8c5692c7f317c5ca01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
