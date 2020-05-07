@@ -93,6 +93,30 @@
       "revId": "d20202626d6984c715aa84fa28d30e6c75ec3a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9512df44_13fc551d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-07T00:59:34Z",
+      "side": 1,
+      "message": "/also this is why it\u0027s normal to do bitwise operations on declared enum types, like we do here in the definitions of ModeMixed and FTModeMixed.",
+      "parentUuid": "8cbd3ef1_9b1a1c4e",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "d20202626d6984c715aa84fa28d30e6c75ec3a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
