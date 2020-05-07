@@ -22,6 +22,69 @@
       "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "737d5ea3_e9a82e00",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-07T08:26:50Z",
+      "side": 1,
+      "message": "\"policy %s is unset\", expected.Name()",
+      "range": {
+        "startLine": 248,
+        "startChar": 25,
+        "endLine": 248,
+        "endChar": 34
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9500c5b_783308ec",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-07T08:26:50Z",
+      "side": 1,
+      "message": "\"policy %s error: %v\", expected.Name(), actual.Error",
+      "range": {
+        "startLine": 253,
+        "startChar": 28,
+        "endLine": 253,
+        "endChar": 37
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca2b044_91c1ed8b",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-07T08:26:50Z",
+      "side": 1,
+      "message": "Not all policies have a string value. This does not make sense for all policies. You can return an interface{} and do the specific handling in the caller.",
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
