@@ -11,6 +11,8 @@ import (
 	"log"
 	"os"
 	"regexp"
+
+	"chromiumos/tast/genutil"
 )
 
 func main() {
@@ -36,15 +38,15 @@ func main() {
 		propType = "DeviceProperty"
 	)
 
-	params := Params{
+	params := genutil.Params{
 		PackageName: "input",
 		RepoName:    "Linux kernel",
-		PreludeCode: `//go:generate ` + goSh + ` run ` + thisFile + ` gen/util.go ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
+		PreludeCode: `//go:generate ` + goSh + ` run ` + thisFile + ` ../../../../../../../third_party/kernel/v4.14/include/uapi/linux/input-event-codes.h generated_constants.go
 //go:generate ` + goSh + ` fmt generated_constants.go`,
 		CopyrightYear:  2018,
 		MainGoFilePath: thisFile,
 
-		Types: []TypeSpec{{
+		Types: []genutil.TypeSpec{{
 			etType,
 			"uint16",
 			`corresponds to the "type" field in the input_event C struct.
@@ -63,7 +65,7 @@ func main() {
 	// the event types that it supports.`,
 		}},
 
-		Groups: []GroupSpec{
+		Groups: []genutil.GroupSpec{
 			{"EV", etType, "Event types"},
 			{"SYN", ecType, "Synchronization events"},
 			{"KEY", ecType, "Keyboard events"},
@@ -78,7 +80,7 @@ func main() {
 			{"INPUT_PROP", propType, "Device properties"},
 		},
 
-		LineParser: func() LineParser {
+		LineParser: func() genutil.LineParser {
 			// Reads inputFile, a kernel input-event-codes.h. Looking for lines like:
 			//   #define EV_SYN 0x00
 			re := regexp.MustCompile(`^#define\s+([A-Z][_A-Z0-9]+)\s+(0x[0-9a-fA-F]+|\d+)`)
@@ -92,7 +94,7 @@ func main() {
 		}(),
 	}
 
-	if err := GenerateConstants(inputFile, outputFile, params); err != nil {
+	if err := genutil.GenerateConstants(inputFile, outputFile, params); err != nil {
 		log.Fatalf("Failed to generate %v: %v", outputFile, err)
 	}
 }
