@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddcdee2f_eecdd88f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:29:46Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "db9ec3b12d39b18659d14d934b44751b46bd28ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f5839b_46f1ff32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_canvas.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:29:46Z",
+      "side": 1,
+      "message": "nit/style: could you combine these lines to minimize err (for consistency)?\n\nif _, err :\u003d ui.FindWithTimeout(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "db9ec3b12d39b18659d14d934b44751b46bd28ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bfdb971_80758fde",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:29:46Z",
+      "side": 1,
+      "message": "nit/optional: how about including \"appID\" in the message?",
+      "revId": "db9ec3b12d39b18659d14d934b44751b46bd28ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
