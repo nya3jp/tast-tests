@@ -22,6 +22,30 @@
       "revId": "dc926c3092055d7165f20acb0165a114e6f0fff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ed009e_25f053fb",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-07T23:40:35Z",
+      "side": 1,
+      "message": "Agreed! Luckily, it\u0027s only a (roughly) 3x3 grid. And there are a few that we may be able to collapse into a common function, like Normal\u003eRec and Normal\u003eRecForceMRC.\n\nThe nested switches might not turn out to be the best structure to use. I\u0027m hoping that will become clear as I continue to develop, and I\u0027ll refactor as better patterns become apparent.",
+      "parentUuid": "f49a9697_b9143e78",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "dc926c3092055d7165f20acb0165a114e6f0fff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
