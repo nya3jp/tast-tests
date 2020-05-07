@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d899fc7_f371e524",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c401030_e6056197",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbbdc7a4_8343423c",
         "filename": "src/chromiumos/tast/common/network/ping/runner.go",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a8a8debc_632c4240",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbbdc7a4_8343423c",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19cf9244_8f8377b0",
         "filename": "src/chromiumos/tast/common/network/ping/runner.go",
         "patchSetId": 6
@@ -50,6 +86,24 @@
       "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3729f7c3_39ada7e4",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19cf9244_8f8377b0",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "5a5b8ea9_613ec762",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f59c6084_c904799f",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 36
+      },
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53667ffb_4a4e2ac7",
         "filename": "src/chromiumos/tast/common/network/ping/runner.go",
         "patchSetId": 6
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "1d6736ab_ffbd02fe",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53667ffb_4a4e2ac7",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13b92292_de7e6c41",
         "filename": "src/chromiumos/tast/common/network/ping/runner.go",
         "patchSetId": 6
@@ -104,6 +200,24 @@
       "writtenOn": "2020-05-06T04:41:50Z",
       "side": 1,
       "message": "Is cfg.Count a required field? If so, please comment it in the definition of struct count.",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9eb5461_9a6a2aab",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-07T06:35:03Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s required. The reason that this packge defines a default value for it as mentioned in the comment of Ping().",
+      "parentUuid": "13b92292_de7e6c41",
       "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
