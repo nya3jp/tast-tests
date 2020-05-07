@@ -32,8 +32,8 @@ func init() {
 			"gildekel@chromium.org", // WebP decoder test author
 			"chromeos-gfx@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "vaapi"},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"chrome", "no_qemu", "vaapi"}, // TODO(crbug.com/1080871): Remove no_qemu SoftwareDeps.
 		Params: []testing.Param{{
 			Name: "webp_decoder",
 			Val: decoderConfig{
@@ -50,6 +50,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeJPEG},
 			ExtraData:         vaImageTestFiles["jpeg"],
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "common",
 			Val: decoderConfig{
