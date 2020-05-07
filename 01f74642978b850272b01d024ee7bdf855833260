@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1bcfb78_51c00d1c",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-07T03:51:24Z",
+      "side": 1,
+      "message": "The only reason is that the format of hostapd and wpa_cli are different. Though wpa_cli related part is not yet migrated so it seems odd here, I guess it is fine if it is fully commented.",
+      "parentUuid": "03a9716c_cb77c893",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "01f74642978b850272b01d024ee7bdf855833260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdaf0b76_a4ca3b5c",
         "filename": "src/chromiumos/tast/common/wifi/security/wep/config_test.go",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "01f74642978b850272b01d024ee7bdf855833260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1abd05_6e0150b9",
+        "filename": "src/chromiumos/tast/common/wifi/security/wep/config_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2020-05-07T03:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdaf0b76_a4ca3b5c",
+      "range": {
+        "startLine": 124,
+        "startChar": 39,
+        "endLine": 124,
+        "endChar": 59
+      },
+      "revId": "01f74642978b850272b01d024ee7bdf855833260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
