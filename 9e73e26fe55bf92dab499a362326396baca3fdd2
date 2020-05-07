@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d29f31_eaba3b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-07T23:23:27Z",
+      "side": 1,
+      "message": "This does sound like 2 different tests. Possibly parameterized, if that really saves something:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nbut more likely just 2 different tests.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 76
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3785c6fe_76fe8f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-07T23:23:27Z",
+      "side": 1,
+      "message": "https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#Poll\n\n\"Polling often results in increased load and slower execution (since there\u0027s a delay between when something happens and when the next polling cycle notices it). It should only be used as a last resort when there\u0027s no other way to watch for an event.\"\n\nFor Shill at least, there are definitely ways to Wait for an event. So my suggestions below can change from just using \"GetProperties\" to using Wait()/WaitAll()/Expect():\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/shill#PropertiesWatcher",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0716ca27_26a78fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-07T23:23:27Z",
+      "side": 1,
+      "message": "please never hard-code \u0027wlan0\u0027. Device names may change, and not all drivers use \u0027wlan0\u0027",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e21d04a3_8adf981f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-07T23:23:27Z",
+      "side": 1,
+      "message": "please never use ifconfig, and especially not in tests. It\u0027s been deprecated forever -- not really in a Google Reader sense, but maybe in an IPv4 sense ;) iproute2 (e.g., the \u0027ip\u0027 command) is its replacement.\n\nIf you really have to, you could get similar info by something like \u0027ip link show dev \u003cDEVICE_NAME\u003e up\u0027.\n\nBut really, you should use the Tast shill package:\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/shill\n\nYou might want the \u0027shill.WifiInterface()\u0027 method. Then you\u0027d probably check the Device \"Powered\" property:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/master/shill/doc/device-api.txt#615\n\nOr because the UI switch doesn\u0027t actually turn off a single device (it really is calling \"DisableTechnology(wifi)\"), it would be easier to look for the Manager\u0027s EnabledTechnologies field:\n\nhttps://chromium.googlesource.com/chromiumos/platform2/+/master/shill/doc/manager-api.txt#501\n\nSo (excluding error handling):\n\n  m, err :\u003d shill.NewManager(ctx)\n  props, err :\u003d m.GetProperties(ctx)\n  technologies, err :\u003d props.GetStrings(shill.ManagerPropertyEnabledTechnologies)\n  for _, t :\u003d range technologies {\n    if t \u003d\u003d string(shill.TechnologyWifi) {\n      return true // enabled\n    }\n  }\n  return false // disabled",
+      "range": {
+        "startLine": 187,
+        "startChar": 43,
+        "endLine": 187,
+        "endChar": 51
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
