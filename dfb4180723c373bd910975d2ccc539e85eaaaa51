@@ -221,6 +221,24 @@
       "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "114a19a9_e3fcedc1",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-07T10:04:04Z",
+      "side": 1,
+      "message": "So if cfg.Count is not assigned, the default value is 0. Should it append \"-c\", \"0\" into args?",
+      "parentUuid": "a9eb5461_9a6a2aab",
+      "revId": "dfb4180723c373bd910975d2ccc539e85eaaaa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

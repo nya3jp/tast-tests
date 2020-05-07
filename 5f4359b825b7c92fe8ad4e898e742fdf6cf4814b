@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88b3b4c4_5e1ff121",
+        "filename": "src/chromiumos/tast/common/network/cmd/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-07T10:04:04Z",
+      "side": 1,
+      "message": "// Run runs a command and waits for its completion.",
+      "revId": "5f4359b825b7c92fe8ad4e898e742fdf6cf4814b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0012e870_6d82e6c6",
+        "filename": "src/chromiumos/tast/common/network/cmd/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-07T10:04:04Z",
+      "side": 1,
+      "message": "// Output runs a command, waits for its completion and returns\n// stdout output of the command.",
+      "revId": "5f4359b825b7c92fe8ad4e898e742fdf6cf4814b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f19d72ef_caa4ebce",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-07T10:04:04Z",
+      "side": 1,
+      "message": "Rename it as \"cmdArgs\" or \"args\" as \"cfg\" is kind of duplicate.",
+      "range": {
+        "startLine": 137,
+        "startChar": 19,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "5f4359b825b7c92fe8ad4e898e742fdf6cf4814b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464315e8_4e81c71c",
+        "filename": "src/chromiumos/tast/local/network/cmd/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-07T10:04:04Z",
+      "side": 1,
+      "message": "You may follow the interface comment. Same below and the remote counterpart.",
+      "revId": "5f4359b825b7c92fe8ad4e898e742fdf6cf4814b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
