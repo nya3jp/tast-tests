@@ -1,0 +1,27 @@
+[
+    {
+        "Key": "Search+Right",
+        "WantLogs": [
+		"contentDescription",
+		"Edit text",
+		"Press Search+Space to activate"
+        ]
+    },
+    {
+        "Key": "Search+Right",
+        "WantLogs": [
+		"hint",
+		"Edit text",
+		"Press Search+Space to activate"
+        ]
+    },
+    {
+        "Key": "Search+Right",
+        "WantLogs": [
+		"text",
+		"Edit text",
+		"Press Search+Space to activate"
+        ]
+    }
+]
+
