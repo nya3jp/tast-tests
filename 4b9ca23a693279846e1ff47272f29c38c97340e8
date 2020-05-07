@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5386fabd_6cff27ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:14:06Z",
+      "side": 1,
+      "message": "nit/optional: I\u0027d recommend to add file name in the log here. When a person looks at an unintentional failure of this, then they can dive into the file quickly.",
+      "revId": "4b9ca23a693279846e1ff47272f29c38c97340e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0507592e_1e25e2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T17:14:06Z",
+      "side": 1,
+      "message": "We often avoid passing testing.State, to minimize the interface.\nIndeed there\u0027s no clear way in Go to return multiple errors, unfortunately...\n\nIn this case, we often just log the secondary error (i.e. WriteFile\u0027s error) if necessary, which can be done via testing.ContextLogf. Also, OutDir can be taken via testing.ContextOutDir(), too.\n\nfunc parseTimeNearNow(ctx context.Context, html string, ...) ... {\n  ...\n  if matches \u003d\u003d nil {\n    if err :\u003d iotuil.WriteFile(...); err !\u003d nil {\n      testing.ContextLogf(ctx, \"Failed to write output to %s: %v\", ...)\n    }\n    return ...",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "4b9ca23a693279846e1ff47272f29c38c97340e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
