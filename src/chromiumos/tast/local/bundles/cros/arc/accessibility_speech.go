@@ -6,7 +6,9 @@ package arc
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -20,6 +22,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const axSpeechFilePrefix = "accessibility_speech"
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilitySpeech,
@@ -27,6 +31,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{"accessibility_speech.MainActivity.json"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -37,6 +42,11 @@ func init() {
 			Pre:               arc.VMBooted(),
 		}},
 	})
+}
+
+type axSpeechTestStep struct {
+	Key      string
+	WantLogs []string
 }
 
 // speechLog obtains the speech log of ChromeVox.
@@ -60,14 +70,22 @@ func speechLog(ctx context.Context, cvconn *chrome.Conn) ([]string, error) {
 	return gotLogs, nil
 }
 
+// getSpeechTestSteps returns a slice of axSpeechTestStep, which is read from the specific file.
+func getSpeechTestSteps(filepath string) ([]axSpeechTestStep, error) {
+	f, err := os.Open(filepath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+
+	var steps []axSpeechTestStep
+	err = json.NewDecoder(f).Decode(&steps)
+	return steps, err
+}
+
 func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 	testActivities := []accessibility.TestActivity{accessibility.MainActivity}
 	testFunc := func(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, currentActivity accessibility.TestActivity) error {
-		const (
-			nextKey     = "Search+Right"
-			activateKey = "Search+Space"
-		)
-
 		// Enable speech logging.
 		if err := cvconn.Exec(ctx, `ChromeVoxPrefs.instance.setLoggingPrefs(ChromeVoxPrefs.loggingPrefs.SPEECH, true)`); err != nil {
 			return errors.Wrap(err, "could not enable speech logging")
@@ -78,42 +96,17 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}
 		defer ew.Close()
 
-		for _, testStep := range []struct {
-			key      string
-			wantLogs []string
-		}{
-			{
-				nextKey,
-				[]string{"OFF", "Toggle Button", "Not pressed", "Press Search+Space to toggle"},
-			}, {
-				nextKey,
-				[]string{"CheckBox", "Check box", "Not checked", "Press Search+Space to toggle"},
-			}, {
-				nextKey,
-				[]string{"seekBar", "Slider", "25", "Min 0", "Max 100"},
-			}, {
-				nextKey,
-				[]string{"Slider", "3", "Min 0", "Max 10"},
-			}, {
-				nextKey,
-				[]string{"ANNOUNCE", "Button", "Press Search+Space to activate"},
-			}, {
-				activateKey,
-				[]string{"test announcement"},
-			}, {
-				nextKey,
-				[]string{"CLICK TO SHOW TOAST", "Button", "Press Search+Space to activate"},
-			}, {
-				activateKey,
-				[]string{"test toast"},
-			},
-		} {
+		axSpeechTestSteps, err := getSpeechTestSteps(s.DataPath(axSpeechFilePrefix + currentActivity.Name + ".json"))
+		if err != nil {
+			return errors.Wrap(err, "error reading from JSON")
+		}
+		for _, axSpeechTestStep := range axSpeechTestSteps {
 			// Ensure that ChromeVox log is cleared before proceeding.
 			if err := cvconn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 				return errors.Wrap(err, "error with clearing ChromeVox log")
 			}
-			if err := ew.Accel(ctx, testStep.key); err != nil {
-				return errors.Wrapf(err, "accel(%s) returned error", testStep.key)
+			if err := ew.Accel(ctx, axSpeechTestStep.Key); err != nil {
+				return errors.Wrapf(err, "accel(%s) returned error", axSpeechTestStep.Key)
 			}
 
 			diff := ""
@@ -124,7 +117,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 					return testing.PollBreak(err)
 				}
 
-				if diff = cmp.Diff(testStep.wantLogs, gotLogs); diff != "" {
+				if diff = cmp.Diff(axSpeechTestStep.WantLogs, gotLogs); diff != "" {
 					return errors.New("speech log was not as expected")
 				}
 				return nil
