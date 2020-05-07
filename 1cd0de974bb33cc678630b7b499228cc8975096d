@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09002111_ab0e1f63",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13cfced_77503c8f",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "911b7b2a_fb98fe80",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21342b7d_5807e16d",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "911b7b2a_fb98fe80",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9fb58b44_5e710805",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "049cec15_6b8ba265",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 53
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b81eae1_cb9e6515",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
@@ -91,6 +163,30 @@
       "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86353b70_3810c298",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b81eae1_cb9e6515",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6d93e678_ea46f786",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e717075_d7470e2c",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0e42ed_b3de2fab",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
@@ -128,6 +248,30 @@
       "writtenOn": "2020-05-07T01:58:23Z",
       "side": 1,
       "message": "don\u0027t ignore err returned by Sleep.\n\nsleep could fail because the ctx timed-out. and it is important to return that error.",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c86527c_6b77e0e9",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "I don\u0027t think a sleep error counts as a parsing error. Do you think it would be appropriate to call parsingError() here or would something like\n\nerrors.Wrap(err, \"failed while sleeping during replay\")\n\nsuffice?",
+      "parentUuid": "5c0e42ed_b3de2fab",
       "range": {
         "startLine": 97,
         "startChar": 3,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0ea23f8d_305718e9",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917370ee_76dc7206",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9062725_94d2cd8d",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
@@ -183,6 +351,30 @@
       "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29cc2ce8_d11182ef",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9062725_94d2cd8d",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7ba0ccc3_496ecd02",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3c8f6b6_f5c3a2fd",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e07ab507_d7303192",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
@@ -229,6 +445,30 @@
       "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c8d40d_43cb5d9c",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e07ab507_d7303192",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "becff9ea_b8654112",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "521b6541_c6946710",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 5
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a281ce91_c9661f2e",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
@@ -275,6 +539,30 @@
       "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b86e5e_119c069e",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a281ce91_c9661f2e",
+      "range": {
+        "startLine": 164,
+        "startChar": 30,
+        "endLine": 164,
+        "endChar": 42
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "476f3a34_6ee2d59c",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350d8a3a_a35155e6",
+      "range": {
+        "startLine": 166,
+        "startChar": 14,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15b07299_dc48cbea",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 14
@@ -321,6 +633,30 @@
       "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ae8836_0c156581",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-07T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b07299_dc48cbea",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 17
+      },
+      "revId": "1cd0de974bb33cc678630b7b499228cc8975096d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
