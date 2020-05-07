@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb7a5ab8_ed96a6ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/encrypted_reboot_vault.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:36:13Z",
+      "side": 1,
+      "message": "huge nit: linuxssh",
+      "range": {
+        "startLine": 47,
+        "startChar": 42,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "aaabbe9844fc3c4f24f2b795c558b2a92a171d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
