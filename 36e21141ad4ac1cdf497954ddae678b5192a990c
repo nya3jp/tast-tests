@@ -22,6 +22,30 @@
       "revId": "36e21141ad4ac1cdf497954ddae678b5192a990c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2605153d_17674a64",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-07T07:10:12Z",
+      "side": 1,
+      "message": "Thanks for catching; plumbed it the rest of the way.",
+      "parentUuid": "71b7656e_722439f1",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "36e21141ad4ac1cdf497954ddae678b5192a990c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
