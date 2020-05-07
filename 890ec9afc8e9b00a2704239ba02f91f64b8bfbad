@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb77b344_abd5ef0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-07T00:32:57Z",
+      "side": 1,
+      "message": "This is plural. If that\u0027s intentional, do we need the loop to kill all crashpad_handler processes, or is one sufficient?\n\nIf it\u0027s not intentional, can you make it singular?",
+      "range": {
+        "startLine": 662,
+        "startChar": 44,
+        "endLine": 662,
+        "endChar": 53
+      },
+      "revId": "890ec9afc8e9b00a2704239ba02f91f64b8bfbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
