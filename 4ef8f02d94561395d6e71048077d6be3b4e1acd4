@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "773d3b39_12f7e75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-05-07T02:25:52Z",
+      "side": 1,
+      "message": "platform2/arc/scripts/android-sh-vm does \n\nowner_id\u003d\"$(dbus-send \\\n  --system \\\n  --dest\u003dorg.chromium.SessionManager \\\n  --print-reply \\\n  --type\u003dmethod_call \\\n  /org/chromium/SessionManager \\\n  org.chromium.SessionManagerInterface.RetrievePrimarySession \\\n  | awk \u0027NR\u003d\u003d3\u0027 \\\n  | cut -d \"\\\"\" -f2)\"\n\nto get the USER_HASH. Does this end up sending the same D-Bus message?",
+      "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b368be8f_5c4b914a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 4
