@@ -29,6 +29,7 @@ import (
 // FakeUser is used by the login function.
 const (
 	FakeUser                   = "not-a-real-user@chromium.org"
+	GuestUser                  = cryptohome.GuestUser
 	CryptohomePathCommand      = "/usr/sbin/cryptohome-path"
 	DaemonStoreBase            = "/run/daemon-store/shill"
 	ShillUserProfilesDir       = "/run/shill/user_profiles"
@@ -45,9 +46,11 @@ const (
 
 // TestEnv struct has the variables that are used by the functions below.
 type TestEnv struct {
-	ShillUserProfileDir string
-	ShillUserProfile    string
-	CreatedDirectories  []string
+	ShillUserProfileDir  string
+	ShillUserProfile     string
+	ShillGuestProfileDir string
+	ShillGuestProfile    string
+	CreatedDirectories   []string
 }
 
 // testFuncType takes a context.Context, TestEnv struct, and return an error.
@@ -89,19 +92,27 @@ func setUp(ctx context.Context, env *TestEnv) error {
 		return errors.Wrap(err, "failed getting the user hash for the fake user")
 	}
 
+	guestHash, err := cryptohome.UserHash(ctx, GuestUser)
+	if err != nil {
+		return errors.Wrap(err, "failed getting the user hash for the guest user")
+	}
+
 	env.ShillUserProfileDir = filepath.Join(DaemonStoreBase, userHash)
+	env.ShillGuestProfileDir = filepath.Join(DaemonStoreBase, guestHash)
 
 	// 'shill_logout_user' cannot delete the user profile, otherwise users would lose
 	// all their networks. However, some tests assert that the profile is created (not just pushed),
 	// so in order to allow those tests to pass more than once per boot, remove the user profile
 	// directory.
 	env.CreatedDirectories = append(env.CreatedDirectories, env.ShillUserProfileDir)
+	env.CreatedDirectories = append(env.CreatedDirectories, env.ShillGuestProfileDir)
 
 	if err := eraseState(ctx, env); err != nil {
 		testing.ContextLog(ctx, errors.Wrap(err, "failed erasing the system state"))
 	}
 
 	env.ShillUserProfile = filepath.Join(env.ShillUserProfileDir, "shill.profile")
+	env.ShillGuestProfile = filepath.Join(env.ShillGuestProfileDir, "shill.profile")
 
 	return nil
 }
