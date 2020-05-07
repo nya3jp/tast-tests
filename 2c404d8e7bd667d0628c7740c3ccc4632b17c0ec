@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ab13263_e3ed2c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "I don\u0027t think this is correct; it seems a logical CPU section requires at least 6 lines (see my comment below), thus header -\u003e model-name -\u003e value -\u003e [logical CPU section] add up to 9 lines at least.",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9b5520_4ffe68c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "you could write as:\n  for start, i :\u003d 3, 4; i \u003c\u003d len(lines); i++ { ... }\n\nby the way, when there are some gaps from line 2 and 3 (like there\u0027s a blank line there), this fails. Is that okay?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a566bbc9_2dc16ffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "C-state data requires at least 3 lines; therefore this section would require at least 6 lines.",
+      "range": {
+        "startLine": 77,
+        "startChar": 38,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ddac123_56121794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "This can be written as a for loop:\n\n  for i, val :\u003d range vals {\n    if parsed, err :\u003d strconv.Atoi(val); err !\u003d nil {\n      return errors.Wrapf(err, \"failed to convert %q to integer\", want[i])\n    } else if parsed \u003c 0 {\n      return errors.Errorf(\"invalid %q: %v\", want[i], parsed)\n    }\n  }\n\nI guess probably having \u0027val\u0027 in the error message would be more helpful.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ef0614_1d87de16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "please have the value i. (errors.Errorf(\"invalid time_in_state_since_last_boot_us: %d\", i))\n\nI guess also line-number or the having entire line in the error message would be helpful to analyze which line was going wrong. same on line 165.",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 64
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76aa4319_fdb333c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "Since it removes the last line later, this means at least the output should have the first header and the num_total_threads,architecture data.  That means, if there\u0027s no CPU information in the output, it is fine. Is that correct?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c2a2cd7_32b22362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "This looks a bit weird. The previous strings.Split(strings.TrimRight(string(b), \"\\n\"), \"\\n\") looks nicer -- it can deal with the case if the last line isn\u0027t a simple newline.\n(if the last line may contain whitespaces, strings.TrimRight(string(b), \" \\n\") will do)",
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768fce19_5d879b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-07T00:26:42Z",
+      "side": 1,
+      "message": "similar to my comment above; you could write for start, i :\u003d 2, 3; ...\n\nalso, if there are gaps (like blank lines or something else) between lines[1] and the next \"Physical CPU\", it comes to an error. If that should be an error, that would be fine. But I guess it is a bit more resilient to deal with blank lines.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
