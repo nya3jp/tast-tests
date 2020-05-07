@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "117ecd0a_a183895f",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:51:26Z",
+      "side": 1,
+      "message": "nit/style: could you combine lines to minimize the scope?\n\nif err :\u003d json.Unmarshal(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 16
+      },
+      "revId": "4d777a2a8ba31eab70e263ca5c065b4761ab911c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196ada43_4a794730",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-07T16:51:26Z",
+      "side": 1,
+      "message": "Could you avoid Unmarshring on error for consistency?\nI expect cfg is nil (zero value of a pointer), if there is no special reason to return something else.",
+      "range": {
+        "startLine": 209,
+        "startChar": 8,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "4d777a2a8ba31eab70e263ca5c065b4761ab911c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
