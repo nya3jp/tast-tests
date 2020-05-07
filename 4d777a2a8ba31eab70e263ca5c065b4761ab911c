@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6db2b821_3d89b4f7",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-07T20:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "117ecd0a_a183895f",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 16
+      },
+      "revId": "4d777a2a8ba31eab70e263ca5c065b4761ab911c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "196ada43_4a794730",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-07T16:51:26Z",
       "side": 1,
       "message": "Could you avoid Unmarshring on error for consistency?\nI expect cfg is nil (zero value of a pointer), if there is no special reason to return something else.",
+      "range": {
+        "startLine": 209,
+        "startChar": 8,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "4d777a2a8ba31eab70e263ca5c065b4761ab911c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bca82f3_9026e8d8",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-07T20:44:52Z",
+      "side": 1,
+      "message": "Just making sure I understand: I think you\u0027re suggesting that if we return an error on the second time through the loop, then we shouldn\u0027t run the first loop\u0027s deferred Unmarshal. Is that correct?\n\nI have two ideas of how to implement that:\n\n1. Write a custom function, `maybeUnmarshal`, which only runs Unmarshal if error is nil. Defer that instead of deferring json.Unmarshal. This is what I had written in Patch Set 3.\n\n2. Don\u0027t use the defer strategy, and instead keep a sorted list of []byte slices, which the function explicitly Unmarshals in the correct order after the for-loop and before returning. This is what I had written in Patch Set 1.\n\nDo you have a preference between these strategies?",
+      "parentUuid": "196ada43_4a794730",
       "range": {
         "startLine": 209,
         "startChar": 8,
