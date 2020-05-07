@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a98748c_58f31d4b",
+        "filename": "android/ArcMotionInputTest/src/org/chromium/arc/testapp/motioninput/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2020-05-07T08:29:47Z",
+      "side": 1,
+      "message": "It seems you should handle null explicitly. https://stackoverflow.com/a/44631692\nI think either would be fine: returning JSONObject.NULL or showing an empty string.",
+      "revId": "74dbd2028ed319f1ee235c8c5692c7f317c5ca01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
