@@ -11,13 +11,17 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	lacrostest "chromiumos/tast/local/bundles/cros/ui/lacros"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/lacros"
+	"chromiumos/tast/local/lacros/launcher"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,13 +31,28 @@ func init() {
 		Contacts:     []string{"yjliu@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
 		Timeout:      3 * time.Minute,
+		Params: []testing.Param{{
+			Val: lacros.ChromeTypeChromeOS,
+			Pre: chrome.LoggedIn(),
+		}, {
+			Name:      "lacros",
+			Val:       lacros.ChromeTypeLacros,
+			Pre:       launcher.StartedByData(),
+			ExtraData: []string{launcher.DataArtifact},
+			// TODO(crbug.com/1082608): Use ExtraSoftwareDeps here instead.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("eve")),
+		}},
 	})
 }
 
 func WindowCyclePerf(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr, l, cs, err := lacrostest.Setup(ctx, s.PreValue(), s.Param().(lacros.ChromeType))
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacrostest.CloseLacrosChrome(ctx, l)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -55,11 +74,17 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 	for _, numWindows := range []int{2, 8} {
-		conns, err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows-numExistingWindows)
+		conns, err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, numWindows-numExistingWindows)
 		if err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
 		}
 		conns.Close()
+
+		if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+			if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
+				s.Fatal("Failed to close about:blank: ", err)
+			}
+		}
 
 		numExistingWindows = numWindows
 
