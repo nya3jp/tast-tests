@@ -180,7 +180,7 @@ public class CameraActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mCameraFragment = new Camera2VideoFragment(mHistogram);
+        mCameraFragment = new Camera2VideoFragment();
         setContentView(R.layout.activity_camera);
         getFragmentManager().beginTransaction().replace(R.id.container, mCameraFragment).commit();
         this.registerReceiver(mReceiver, getFilter());
@@ -190,5 +190,9 @@ public class CameraActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         this.unregisterReceiver(mReceiver);
+    }
+
+    public CaptureCallbackHistogram getHistogram() {
+        return mHistogram;
     }
 }
