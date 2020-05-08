@@ -165,10 +165,10 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 		return err
 	}
 	request := &network.ConnectRequest{
-		Ssid:         h.Config().Ssid,
-		IsSsidHidden: h.Config().Hidden,
-		Security:     h.Config().SecurityConfig.Class(),
-		Shillprops:   propsEnc,
+		Ssid:       h.Config().Ssid,
+		Hidden:     h.Config().Hidden,
+		Security:   h.Config().SecurityConfig.Class(),
+		Shillprops: propsEnc,
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
 	if err != nil {

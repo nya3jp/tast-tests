@@ -22,7 +22,7 @@ service WifiService {
 
 message ConnectRequest {
   string ssid = 1;
-  bool is_ssid_hidden = 2;
+  bool hidden = 2;
   // security is the SecurityClass (defined in shill/service.go) of the WiFi
   // service to Connect.
   string security = 3;
