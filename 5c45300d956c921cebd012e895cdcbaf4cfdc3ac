@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c61f94e9_d27685ab",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T15:45:40Z",
+      "side": 1,
+      "message": "Done, makes sense",
+      "parentUuid": "009c8732_2c03f174",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 16
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d1e2430_e604bd70",
         "filename": "src/chromiumos/tast/local/policyutil/verify.go",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "8902e966_969545da",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T15:45:40Z",
+      "side": 1,
+      "message": "Hm, \"expected\" is needed only to unmarshall a value. Oleh, could you please clarify what you mean?",
+      "parentUuid": "c575f4ed_e6b9b3ae",
+      "range": {
+        "startLine": 240,
+        "startChar": 64,
+        "endLine": 240,
+        "endChar": 86
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47956a84_383191c9",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T15:45:40Z",
+      "side": 1,
+      "message": "Sorry for not mentioning it here:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/2970975",
+      "parentUuid": "7d1e2430_e604bd70",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 18
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "737d5ea3_e9a82e00",
         "filename": "src/chromiumos/tast/local/policyutil/verify.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1762917f_e7e97d05",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T15:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "737d5ea3_e9a82e00",
+      "range": {
+        "startLine": 248,
+        "startChar": 25,
+        "endLine": 248,
+        "endChar": 34
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "db31bebd_5a41d53b",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T15:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9500c5b_783308ec",
+      "range": {
+        "startLine": 253,
+        "startChar": 28,
+        "endLine": 253,
+        "endChar": 37
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ca2b044_91c1ed8b",
         "filename": "src/chromiumos/tast/local/policyutil/verify.go",
         "patchSetId": 1
@@ -131,6 +251,24 @@
       "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "069e0334_e52cb515",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T15:45:40Z",
+      "side": 1,
+      "message": "Good catch, done",
+      "parentUuid": "8ca2b044_91c1ed8b",
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
