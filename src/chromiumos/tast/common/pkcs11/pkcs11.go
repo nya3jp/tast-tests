@@ -83,16 +83,16 @@ func (p *Chaps) ClearObjectsOfAllType(ctx context.Context, slot int, objID strin
 
 // KeyInfo stores the information for a particular key, both on disk and in chaps keystore.
 type KeyInfo struct {
-	// File path to the public key stored in DER format.
+	// File path to the public key stored in DER format. This may be empty.
 	pubKeyPath string
 
 	// File path to the private key stored in DER format. This may be empty to indicate that the private key cannot be extracted.
 	privKeyPath string
 
-	// File path to the certificate in DER format.
+	// File path to the certificate in DER format. This may be empty.
 	certPath string
 
-	// The prefix of path for all files related to this key. This is used in cleanup. Note that this variable should not have any special characters, as this is used unescaped.
+	// The prefix of path for all files related to this key. This is used in cleanup. Note that this variable should not have any special characters, as this is used unescaped. This may be empty to indicate that this key doesn't have any residual file on disk.
 	keyPrefix string
 
 	// The PKCS#11 token slot that holds this key.
@@ -220,6 +220,29 @@ func (p *Chaps) CreateRsaGeneratedKey(ctx context.Context, scratchpadPath, usern
 	return result, nil
 }
 
+// ImportPrivateKeyBySlot creates a key by importing it from existing DER format private key file specified by privKeyPath. The key will be inserted into the token specified by slot. The object will have an ID of objID.
+func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, slot int, objID string, forceSoftwareBacked bool) (*KeyInfo, error) {
+	// Import the private key into chaps.
+	args := []string{"--import", "--slot=" + strconv.Itoa(slot), "--path=" + privKeyPath, "--type=privkey", "--id=" + objID}
+	if forceSoftwareBacked {
+		args = append(args, "--force_software")
+	}
+	if _, err := p.runner.Run(ctx, "p11_replay", args...); err != nil {
+		return nil, errors.Wrap(err, "failed to import private key into chaps")
+	}
+
+	result := &KeyInfo{
+		keyPrefix:   "",
+		privKeyPath: privKeyPath,
+		pubKeyPath:  "",
+		certPath:    "",
+		objID:       objID,
+		slot:        slot,
+	}
+
+	return result, nil
+}
+
 // generateAttrListForCopyObject is a simple helper function that converts a map from string to string to a string that can be passed to p11_reply --copy_object as --attr_list parameter.
 func generateAttrListForCopyObject(attributes *map[string]string) string {
 	attributesList := make([]string, 0, len(*attributes))
@@ -268,9 +291,11 @@ func (p *Chaps) DestroyKey(ctx context.Context, key *KeyInfo) error {
 		return errors.Wrap(err, "failed to remove objects")
 	}
 
-	// Remove the on disk files.
-	if _, err := p.runner.Run(ctx, "sh", "-c", fmt.Sprintf("rm -f \"%s*\"", key.keyPrefix)); err != nil {
-		return errors.Wrap(err, "failed to remove on disk files starting with "+key.keyPrefix)
+	// Remove the on disk files (if any).
+	if key.keyPrefix != "" {
+		if _, err := p.runner.Run(ctx, "sh", "-c", fmt.Sprintf(`rm -f "%s*"`, key.keyPrefix)); err != nil {
+			return errors.Wrapf(err, "failed to remove on disk files starting with %s", key.keyPrefix)
+		}
 	}
 
 	return nil
