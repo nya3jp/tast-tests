@@ -111,13 +111,17 @@ func SystemBusPrivate(opts ...dbus.ConnOption) (*dbus.Conn, error) {
 	return dbus.SystemBusPrivate(append(busOptions(), opts...)...)
 }
 
-// Connect sets up the D-Bus connection to the service specified by name,
-// path by using SystemBus.
+// Connect sets up the D-Bus connection to the service specified by name, path by using SystemBus.
 // This waits for the service to become available but does not validate path existence.
 func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
 	ctx, st := timing.Start(ctx, fmt.Sprintf("dbusutil.Connect %s:%s", name, path))
 	defer st.End()
 
+	return ConnectNoTiming(ctx, name, path)
+}
+
+// ConnectNoTiming, like Connect() but without emitting timing information.
+func ConnectNoTiming(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
 	conn, err := SystemBus()
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
