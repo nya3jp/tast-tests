@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3da8de21_0207cc68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-08T18:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38dd89ab_de6e26dd",
+      "revId": "9e9875e4cb349540cc4d969031b29ef66948f2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82ff56fe_37770a61",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
         "patchSetId": 17
@@ -39,6 +57,30 @@
       "revId": "9e9875e4cb349540cc4d969031b29ef66948f2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f18133_efe32119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-08T18:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ff56fe_37770a61",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "9e9875e4cb349540cc4d969031b29ef66948f2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
