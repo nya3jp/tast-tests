@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42ade4ac_0333380f",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-08T06:27:39Z",
+      "side": 1,
+      "message": "\u003e \"insufficent\" is a possible misspelling of \"insufficient\".\n\nPlease fix.",
+      "parentUuid": "a5cdf5d5_730e0c40",
+      "range": {
+        "startLine": 78,
+        "startChar": 45,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "23097231f7d1270c08fd6e2a32e78b9d896d635f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
