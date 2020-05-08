@@ -5,6 +5,7 @@
 package firmware
 
 import (
+	"bytes"
 	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -114,7 +115,7 @@ func (*UtilsService) BlockingSync(ctx context.Context, req *empty.Empty) (*empty
 			if len(namespaces) == 0 {
 				return nil, errors.Errorf("Listing namespaces for device %s returned no output", device)
 			}
-			for _, namespace := range namespaces {
+			for _, namespace := range bytes.Split(bytes.TrimSpace(namespaces), []byte("\n")) {
 				ns := strings.Split(string(namespace), ":")[1]
 				if err := testexec.CommandContext(ctx, "nvme", "flush", device, "-n", ns).Run(testexec.DumpLogOnError); err != nil {
 					return nil, errors.Wrapf(err, "flushing namespace %s on device %s", ns, device)
