@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "76a21840_124f7444",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T05:55:39Z",
+      "side": 1,
+      "message": "Copied from chat:\nYes that is recommended for gRPC in general.\n\nTBH the situation is a bit different in Tast\u0027s usage and and others\u0027 usage of gRPC... Typically gRPC client/server might have different versions, so for version compatibility and extensibility it is recommended to use different messages for different methods. OTOH Tast always builds gRPC client/server from the same snapshot of source code so some of those best practices might not apply. But I still think it\u0027s good and less confusing to follow the established best practices.",
+      "parentUuid": "47552a38_ca87f2f8",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3430fc7_3f2541c1",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 14
