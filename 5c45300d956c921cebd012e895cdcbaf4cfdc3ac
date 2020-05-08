@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "6c396143_0210aed9",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-08T16:45:48Z",
+      "side": 1,
+      "message": "I was thinking maybe you are interested in filling policy structure on return. So, you can unmarshal value and put it to \"expected\" struct as value. Looks like it can be more type safe way, e.g. you know the type of expected policy \tvalue.",
+      "parentUuid": "8902e966_969545da",
+      "range": {
+        "startLine": 240,
+        "startChar": 64,
+        "endLine": 240,
+        "endChar": 86
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "737d5ea3_e9a82e00",
         "filename": "src/chromiumos/tast/local/policyutil/verify.go",
         "patchSetId": 1
