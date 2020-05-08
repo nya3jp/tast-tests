@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16d28644_f162ec20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-08T22:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43bf7f44_9d5bd911",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "403da33b_3f82c324",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30892f9_f8468af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-08T22:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "403da33b_3f82c324",
+      "range": {
+        "startLine": 54,
+        "startChar": 96,
+        "endLine": 54,
+        "endChar": 104
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0cf925c7_99d42132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-08T22:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c6122a_a04b6985",
+      "range": {
+        "startLine": 61,
+        "startChar": 96,
+        "endLine": 61,
+        "endChar": 104
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6ed37d6_51847e28",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "044600eb_8295e994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-08T22:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6ed37d6_51847e28",
+      "range": {
+        "startLine": 68,
+        "startChar": 98,
+        "endLine": 68,
+        "endChar": 106
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b84798b_eccb4585",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
         "patchSetId": 6
@@ -108,6 +204,24 @@
       "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc7c98a_2e10f96e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-08T22:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b84798b_eccb4585",
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
