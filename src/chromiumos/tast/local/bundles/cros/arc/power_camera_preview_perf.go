@@ -192,7 +192,7 @@ func PowerCameraPreviewPerf(ctx context.Context, s *testing.State) {
 	p.Set(numDroppedFramesMetric, float64(droppedFrames))
 
 	if totalFrames == 0 {
-		p.Set(frameDropRatioMetric, 0.0)
+		s.Fatal("Camera app did not receive any frames")
 	} else {
 		p.Set(frameDropRatioMetric, float64(droppedFrames)/float64(totalFrames))
 	}
