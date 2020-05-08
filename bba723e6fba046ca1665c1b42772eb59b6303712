@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ee1c05_de57f497",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T02:29:24Z",
+      "side": 1,
+      "message": "nit Does \"proto.Int(90)\" work?",
+      "range": {
+        "startLine": 803,
+        "startChar": 102,
+        "endLine": 803,
+        "endChar": 106
+      },
+      "revId": "bba723e6fba046ca1665c1b42772eb59b6303712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
