@@ -64,20 +64,21 @@ func TFCapture(b bool) TFOption {
 type TestFixture struct {
 	dut        *dut.DUT
 	rpc        *rpc.Client
-	wifiClient network.WifiClient
+	wifiClient network.WifiServiceClient
 
-	routerTarget  string
-	routerHost    *ssh.Conn
-	router        *Router
+	routerTarget string
+	routerHost   *ssh.Conn
+	router       *Router
+
 	pcapTarget    string
 	pcapHost      *ssh.Conn
 	pcap          *Router
 	packetCapture bool
 
-	apID       int
-	curService *network.Service
-	curAP      *APIface
-	capturers  map[*APIface]*pcap.Capturer
+	apID           int
+	curServicePath string
+	curAP          *APIface
+	capturers      map[*APIface]*pcap.Capturer
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -128,7 +129,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect rpc")
 	}
-	tf.wifiClient = network.NewWifiClient(tf.rpc.Conn)
+	tf.wifiClient = network.NewWifiServiceClient(tf.rpc.Conn)
 
 	// TODO(crbug.com/728769): Make sure if we need to turn off powersave.
 	if _, err := tf.wifiClient.InitDUT(ctx, &empty.Empty{}); err != nil {
@@ -332,17 +333,17 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 	if err != nil {
 		return err
 	}
-	config := &network.Config{
+	request := &network.ConnectRequest{
 		Ssid:       h.Config().Ssid,
 		Hidden:     h.Config().Hidden,
 		Security:   h.Config().SecurityConfig.Class(),
 		Shillprops: propsEnc,
 	}
-	service, err := tf.wifiClient.Connect(ctx, config)
+	response, err := tf.wifiClient.Connect(ctx, request)
 	if err != nil {
 		return err
 	}
-	tf.curService = service
+	tf.curServicePath = response.ServicePath
 	tf.curAP = h
 	return nil
 }
@@ -353,10 +354,11 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	defer st.End()
 
 	var err error
-	if _, err2 := tf.wifiClient.Disconnect(ctx, tf.curService); err2 != nil {
+	req := &network.DisconnectRequest{ServicePath: tf.curServicePath}
+	if _, err2 := tf.wifiClient.Disconnect(ctx, req); err2 != nil {
 		err = errors.Wrap(err2, "failed to disconnect")
 	}
-	tf.curService = nil
+	tf.curServicePath = ""
 	tf.curAP = nil
 	return err
 }
@@ -364,7 +366,7 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 // QueryService queries shill service information.
 func (tf *TestFixture) QueryService(ctx context.Context) (*ServiceInfo, error) {
 	req := &network.QueryServiceRequest{
-		Path: tf.curService.Path,
+		Path: tf.curServicePath,
 	}
 
 	serInfo, err := tf.wifiClient.QueryService(ctx, req)
@@ -430,7 +432,7 @@ func (tf *TestFixture) Pcap() *Router {
 	return tf.pcap
 }
 
-// WifiClient returns the gRPC WifiClient of the DUT.
-func (tf *TestFixture) WifiClient() network.WifiClient {
+// WifiClient returns the gRPC WifiServiceClient of the DUT.
+func (tf *TestFixture) WifiClient() network.WifiServiceClient {
 	return tf.wifiClient
 }
