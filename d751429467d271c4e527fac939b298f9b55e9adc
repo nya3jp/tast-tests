@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fe56b3b_778b422d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-08T10:02:04Z",
+      "side": 1,
+      "message": "As you\u0027re breaking the line here, I wonder if this might be better:\n  req :\u003d \u0026network.DisconnectRequest{ServicePath: tf.curServicePath}\n  if _, err2 :\u003d tf.wifiClient.Disconnect(ctx, req); err2 !\u003d nil { ...\n\n(one more similar case in simple_connect.go)\n\nThe guideline of line width in golang is kind of vague [1]. But I guess this suggestion fits the case here? \"If you find that this produces lines that are too long, then change the names or the semantics and you\u0027ll probably get a good result.\"\n\nWDYT?\n\n[1] https://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "range": {
+        "startLine": 188,
+        "startChar": 39,
+        "endLine": 188,
+        "endChar": 40
+      },
+      "revId": "d751429467d271c4e527fac939b298f9b55e9adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
