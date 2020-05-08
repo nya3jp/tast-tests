@@ -23,6 +23,30 @@
       "revId": "f781d9928fc6f1cc218c2e5f530ae478807b5364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a42de2a_a2e732c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/web_app_install_force_list_service-worker.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2020-05-08T09:01:31Z",
+      "side": 1,
+      "message": "\u003e \"recquired\" is a possible misspelling of \"required\".\n\nPlease fix.",
+      "parentUuid": "2afe3f98_d402ed89",
+      "range": {
+        "startLine": 6,
+        "startChar": 47,
+        "endLine": 6,
+        "endChar": 56
+      },
+      "revId": "f781d9928fc6f1cc218c2e5f530ae478807b5364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
