@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e3b24b7_7076a382",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-08T00:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f5b21ab_e28e052a",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "e42438c260685c7e24981a65a07c5aedd57b0eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b37fab1_14826f18",
         "filename": "src/chromiumos/tast/local/uhid/replay.go",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "e42438c260685c7e24981a65a07c5aedd57b0eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acf1c79_aafef889",
+        "filename": "src/chromiumos/tast/local/uhid/replay.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-08T00:59:14Z",
+      "side": 1,
+      "message": "I figured returning an error with the regex and the line would be just as good. I\u0027ll change it.",
+      "parentUuid": "7b37fab1_14826f18",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "e42438c260685c7e24981a65a07c5aedd57b0eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
