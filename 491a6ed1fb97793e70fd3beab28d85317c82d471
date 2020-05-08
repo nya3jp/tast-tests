@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c228f457_96ab5cd0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T02:29:43Z",
+      "side": 1,
+      "message": "And f won\u0027t be called for following windows.",
+      "range": {
+        "startLine": 370,
+        "startChar": 99,
+        "endLine": 370,
+        "endChar": 114
+      },
+      "revId": "491a6ed1fb97793e70fd3beab28d85317c82d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba3d2379_d82e195e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T02:29:43Z",
+      "side": 1,
+      "message": "Looks a bit fragile, specifically if the existing window is closed somehow.\nHow about waiting for the window to be visible in the g.Go() ?",
+      "revId": "491a6ed1fb97793e70fd3beab28d85317c82d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
