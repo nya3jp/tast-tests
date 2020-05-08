@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "425e3a31_8b446e0d",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T19:07:46Z",
+      "side": 1,
+      "message": "One nit, you shall use ACK to resolve the comment that no change is made. \"Done\" implies something is changed/fixed.",
+      "parentUuid": "2537a208_50261bdb",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406fcf4d_1c641098",
         "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
         "patchSetId": 12
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2b027e45_d0d96850",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "a6ea169057ffc165005932350d1636a61e4d96c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f737e9_b59d8820",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpa/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T19:07:46Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "897b8abc_9286cf2f",
       "range": {
         "startLine": 45,
         "startChar": 5,
