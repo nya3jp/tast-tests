@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4828c38e_89372eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T17:52:53Z",
+      "side": 1,
+      "message": "Since right now guest user is a user with special name. How about just having ShillUserProfileDir and ShillUserProfile set up?\n\nfunc setUp(ctx, env, isGuest) error {\n  ...\n  var user, userType string\n  if isGutest {\n    user \u003d cryptohome.GuestUser\n    userType \u003d \"gutest\"\n  } else {\n    user \u003d FakeUser\n    userType \u003d \"fake\"\n  }\n  userHash err :\u003d cryptohome.UserHash(ctx, user)\n  if err !\u003d nil {\n    return errors.Wrapf(err, \"failed getting the user hash for the %s user\", userType)\n  }\n  ...\n}",
+      "revId": "e3bda3609e24f2655dab12da1a3f29fdc5893b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
