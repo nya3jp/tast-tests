@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "47552a38_ca87f2f8",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T05:31:19Z",
+      "side": 1,
+      "message": "Thank you for pointing it out. Sorry we missed the rule. Arowa, please follow the rule. I\u0027ll update other message.\n\nNya, if a gRPC request is coming from another gRPC\u0027s response; or some gRPC shares the same request/response struct, should each request/response stick with GrpcNameRequest / GrpcNameResponse?\n\nFor example, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2181681/5/src/chromiumos/tast/services/cros/network/wifi.proto#21 :\nrpc Connect(Config) returns (Service) {}\nrpc QueryService(Service) returns (ServiceInfo) {}\n\nshould we change it to\nrpc Connect(ConnectReqeust) returns (ConnectResponse) {}\nrpc QueryService(QueryServiceRequest) returns (QueryServiceResponse) {}\n\nmessage ConnectRequest {\n  string ssid \u003d 1;\n  bool hidden \u003d 2;\n}\n\nmessage ConnectResponse {\n  string service_path \u003d 1;  \n}\n\nmessage QueryServiceRequest {\n  string service_path \u003d 1;\n}\n\nmessage QueryServiceResponse {\n  string hidden \u003d 1;\n}",
+      "parentUuid": "879622ee_b1ac0005",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3430fc7_3f2541c1",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 14
