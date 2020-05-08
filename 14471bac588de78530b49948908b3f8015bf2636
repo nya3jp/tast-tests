@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75afb149_838e5192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T07:00:20Z",
+      "side": 1,
+      "message": "nit: for consistency, \"lacros-chrome\". Ditto for below (both comments and indentifiers).",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "14471bac588de78530b49948908b3f8015bf2636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68377f6_db38a817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T07:00:20Z",
+      "side": 1,
+      "message": "nit/style: You don\u0027t need \"else\".\n\nif crt \u003d\u003d ... {\n  return ...\n}\nif crt \u003d\u003d ... {\n  ...\n  return ...\n}\n\nOr, maybe switch fits better.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "14471bac588de78530b49948908b3f8015bf2636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
