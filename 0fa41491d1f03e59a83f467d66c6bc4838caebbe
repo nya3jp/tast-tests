@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8365f759_a10dde7f",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-05-08T02:48:25Z",
+      "side": 1,
+      "message": "Do we need the `M` included in the group? It looks like it just gets stripped out in L428.",
+      "range": {
+        "startLine": 421,
+        "startChar": 37,
+        "endLine": 421,
+        "endChar": 47
+      },
+      "revId": "0fa41491d1f03e59a83f467d66c6bc4838caebbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1e1aaf_18095383",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2020-05-08T02:48:25Z",
+      "side": 1,
+      "message": "optional: this can be consolidated with the above (megaPeriods is already scoped outside of the if)",
+      "revId": "0fa41491d1f03e59a83f467d66c6bc4838caebbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
