@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43bf7f44_9d5bd911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-08T14:55:54Z",
+      "side": 1,
+      "message": "nit: allKeyIDs",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403da33b_3f82c324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-08T14:55:54Z",
+      "side": 1,
+      "message": "nit: please use the constant",
+      "range": {
+        "startLine": 54,
+        "startChar": 96,
+        "endLine": 54,
+        "endChar": 104
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38c6122a_a04b6985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-08T14:55:54Z",
+      "side": 1,
+      "message": "nit: please use the constant",
+      "range": {
+        "startLine": 61,
+        "startChar": 96,
+        "endLine": 61,
+        "endChar": 104
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ed37d6_51847e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-08T14:55:54Z",
+      "side": 1,
+      "message": "nit: please use the constant",
+      "range": {
+        "startLine": 68,
+        "startChar": 98,
+        "endLine": 68,
+        "endChar": 106
+      },
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b84798b_eccb4585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-08T14:55:54Z",
+      "side": 1,
+      "message": "nit: Remove newline",
+      "revId": "7010f84b256265070a40f15ee2823ff33bfc9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
