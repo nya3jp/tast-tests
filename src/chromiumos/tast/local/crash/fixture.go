@@ -367,7 +367,10 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 		}
 		if p.rebootTest {
 			mockConsentPersistent := filepath.Join(p.rebootPersistDir, mockConsentFile)
-			if err := ioutil.WriteFile(mockConsentPersistent, nil, 0644); err != nil {
+			// Initialize consent file with contents of "2" so that
+			// it stays across 2 reboots if they happen in the
+			// middle of the test.
+			if err := ioutil.WriteFile(mockConsentPersistent, []byte("2"), 0644); err != nil {
 				return errors.Wrapf(err, "failed writing mock consent file %s", mockConsentPersistent)
 			}
 		}
@@ -386,7 +389,10 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 
 	if p.rebootTest {
 		filePath = filepath.Join(p.rebootPersistDir, crashTestInProgressFile)
-		if err := ioutil.WriteFile(filePath, nil, 0644); err != nil {
+		// Initialize in-progress file with contents of "2" so that it
+		// stays across 2 reboots if they happen in the middle of the
+		// test.
+		if err := ioutil.WriteFile(filePath, []byte("2"), 0644); err != nil {
 			return errors.Wrapf(err, "could not create %v", filePath)
 		}
 	}
