@@ -46,6 +46,30 @@
       "revId": "72a8c05533f83a8ba10963cc6f595b81e0cb8be9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bc7074b_5f28e256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pinterest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-05-08T00:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1ae0a0a_3fb34387",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "72a8c05533f83a8ba10963cc6f595b81e0cb8be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
