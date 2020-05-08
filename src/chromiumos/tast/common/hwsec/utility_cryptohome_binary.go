@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 
 	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/errors"
@@ -680,6 +681,32 @@ func (u *UtilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username 
 		return -1, errors.Wrapf(err, "failed to parse token status %q", cmdOutput)
 	}
 	return slot, nil
+}
+
+// WaitForUserToken wait until the user token for the specified user is ready. Otherwise, return an error if the token is still unavailable.
+func (u *UtilityCryptohomeBinary) WaitForUserToken(ctx context.Context, username string) error {
+	const waitForUserTokenTimeout = 15 * time.Second
+
+	if username == "" {
+		// This method is for user token, not system token.
+		// Note: For those who want to wait for system token, system token is always ready, no need to wait.
+		panic("System token not supported by WaitForUserToken")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		slot, err := u.GetTokenForUser(ctx, username)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get slot ID for username %q", username)
+		}
+		if slot <= 0 {
+			// This is unexpected and shouldn't usually happen.
+			return testing.PollBreak(errors.Wrapf(err, "invalid slot ID %d for username %q", slot, username))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: waitForUserTokenTimeout}); err != nil {
+		return errors.Wrap(err, "failed waiting for user token")
+	}
+	return nil
 }
 
 // FWMPError is a custom error type that conveys the error as well as parsed
