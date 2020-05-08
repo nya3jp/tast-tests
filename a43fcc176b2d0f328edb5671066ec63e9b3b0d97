@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb59fd3f_989e6e22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T13:22:48Z",
+      "side": 1,
+      "message": "Clar: does this mean, betty family does not support VAAPI?\nIf so, should vaapi USE flag not be set on betty?",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "a43fcc176b2d0f328edb5671066ec63e9b3b0d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
