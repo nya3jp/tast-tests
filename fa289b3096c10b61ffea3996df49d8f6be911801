@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ebb5374_ec749761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-08T20:07:27Z",
+      "side": 1,
+      "message": "I feel like this is kind of redundant for the logging. ls of %v failed: %v should be fine.",
+      "range": {
+        "startLine": 173,
+        "startChar": 11,
+        "endLine": 173,
+        "endChar": 17
+      },
+      "revId": "fa289b3096c10b61ffea3996df49d8f6be911801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591c893a_0b839582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-08T20:07:27Z",
+      "side": 1,
+      "message": "and this.",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 15
+      },
+      "revId": "fa289b3096c10b61ffea3996df49d8f6be911801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
