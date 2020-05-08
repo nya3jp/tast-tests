@@ -25,9 +25,9 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Config struct {
-	Ssid   string `protobuf:"bytes,1,opt,name=ssid,proto3" json:"ssid,omitempty"`
-	Hidden bool   `protobuf:"varint,2,opt,name=hidden,proto3" json:"hidden,omitempty"`
+type ConnectRequest struct {
+	Ssid         string `protobuf:"bytes,1,opt,name=ssid,proto3" json:"ssid,omitempty"`
+	IsSsidHidden bool   `protobuf:"varint,2,opt,name=is_ssid_hidden,json=isSsidHidden,proto3" json:"is_ssid_hidden,omitempty"`
 	// security is the SecurityClass (defined in shill/service.go) of the WiFi
 	// service to Connect.
 	Security string `protobuf:"bytes,3,opt,name=security,proto3" json:"security,omitempty"`
@@ -39,53 +39,53 @@ type Config struct {
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *Config) Reset()         { *m = Config{} }
-func (m *Config) String() string { return proto.CompactTextString(m) }
-func (*Config) ProtoMessage()    {}
-func (*Config) Descriptor() ([]byte, []int) {
+func (m *ConnectRequest) Reset()         { *m = ConnectRequest{} }
+func (m *ConnectRequest) String() string { return proto.CompactTextString(m) }
+func (*ConnectRequest) ProtoMessage()    {}
+func (*ConnectRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_14343df069b9efbf, []int{0}
 }
 
-func (m *Config) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Config.Unmarshal(m, b)
+func (m *ConnectRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ConnectRequest.Unmarshal(m, b)
 }
-func (m *Config) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Config.Marshal(b, m, deterministic)
+func (m *ConnectRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ConnectRequest.Marshal(b, m, deterministic)
 }
-func (m *Config) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Config.Merge(m, src)
+func (m *ConnectRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConnectRequest.Merge(m, src)
 }
-func (m *Config) XXX_Size() int {
-	return xxx_messageInfo_Config.Size(m)
+func (m *ConnectRequest) XXX_Size() int {
+	return xxx_messageInfo_ConnectRequest.Size(m)
 }
-func (m *Config) XXX_DiscardUnknown() {
-	xxx_messageInfo_Config.DiscardUnknown(m)
+func (m *ConnectRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ConnectRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Config proto.InternalMessageInfo
+var xxx_messageInfo_ConnectRequest proto.InternalMessageInfo
 
-func (m *Config) GetSsid() string {
+func (m *ConnectRequest) GetSsid() string {
 	if m != nil {
 		return m.Ssid
 	}
 	return ""
 }
 
-func (m *Config) GetHidden() bool {
+func (m *ConnectRequest) GetIsSsidHidden() bool {
 	if m != nil {
-		return m.Hidden
+		return m.IsSsidHidden
 	}
 	return false
 }
 
-func (m *Config) GetSecurity() string {
+func (m *ConnectRequest) GetSecurity() string {
 	if m != nil {
 		return m.Security
 	}
 	return ""
 }
 
-func (m *Config) GetShillprops() map[string]*ShillVal {
+func (m *ConnectRequest) GetShillprops() map[string]*ShillVal {
 	if m != nil {
 		return m.Shillprops
 	}
@@ -172,78 +172,117 @@ func (*ShillVal) XXX_OneofWrappers() []interface{} {
 	}
 }
 
-type Service struct {
-	Path                 string   `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+type ConnectResponse struct {
+	ServicePath          string   `protobuf:"bytes,1,opt,name=service_path,json=servicePath,proto3" json:"service_path,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Service) Reset()         { *m = Service{} }
-func (m *Service) String() string { return proto.CompactTextString(m) }
-func (*Service) ProtoMessage()    {}
-func (*Service) Descriptor() ([]byte, []int) {
+func (m *ConnectResponse) Reset()         { *m = ConnectResponse{} }
+func (m *ConnectResponse) String() string { return proto.CompactTextString(m) }
+func (*ConnectResponse) ProtoMessage()    {}
+func (*ConnectResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_14343df069b9efbf, []int{2}
 }
 
-func (m *Service) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Service.Unmarshal(m, b)
+func (m *ConnectResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ConnectResponse.Unmarshal(m, b)
 }
-func (m *Service) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Service.Marshal(b, m, deterministic)
+func (m *ConnectResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ConnectResponse.Marshal(b, m, deterministic)
 }
-func (m *Service) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Service.Merge(m, src)
+func (m *ConnectResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConnectResponse.Merge(m, src)
 }
-func (m *Service) XXX_Size() int {
-	return xxx_messageInfo_Service.Size(m)
+func (m *ConnectResponse) XXX_Size() int {
+	return xxx_messageInfo_ConnectResponse.Size(m)
 }
-func (m *Service) XXX_DiscardUnknown() {
-	xxx_messageInfo_Service.DiscardUnknown(m)
+func (m *ConnectResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ConnectResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Service proto.InternalMessageInfo
+var xxx_messageInfo_ConnectResponse proto.InternalMessageInfo
 
-func (m *Service) GetPath() string {
+func (m *ConnectResponse) GetServicePath() string {
 	if m != nil {
-		return m.Path
+		return m.ServicePath
 	}
 	return ""
 }
 
-type SSID struct {
+type DisconnectRequest struct {
+	ServicePath          string   `protobuf:"bytes,1,opt,name=service_path,json=servicePath,proto3" json:"service_path,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DisconnectRequest) Reset()         { *m = DisconnectRequest{} }
+func (m *DisconnectRequest) String() string { return proto.CompactTextString(m) }
+func (*DisconnectRequest) ProtoMessage()    {}
+func (*DisconnectRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_14343df069b9efbf, []int{3}
+}
+
+func (m *DisconnectRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DisconnectRequest.Unmarshal(m, b)
+}
+func (m *DisconnectRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DisconnectRequest.Marshal(b, m, deterministic)
+}
+func (m *DisconnectRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DisconnectRequest.Merge(m, src)
+}
+func (m *DisconnectRequest) XXX_Size() int {
+	return xxx_messageInfo_DisconnectRequest.Size(m)
+}
+func (m *DisconnectRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DisconnectRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DisconnectRequest proto.InternalMessageInfo
+
+func (m *DisconnectRequest) GetServicePath() string {
+	if m != nil {
+		return m.ServicePath
+	}
+	return ""
+}
+
+type DeleteEntriesForSSIDRequest struct {
 	Ssid                 string   `protobuf:"bytes,1,opt,name=ssid,proto3" json:"ssid,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SSID) Reset()         { *m = SSID{} }
-func (m *SSID) String() string { return proto.CompactTextString(m) }
-func (*SSID) ProtoMessage()    {}
-func (*SSID) Descriptor() ([]byte, []int) {
-	return fileDescriptor_14343df069b9efbf, []int{3}
+func (m *DeleteEntriesForSSIDRequest) Reset()         { *m = DeleteEntriesForSSIDRequest{} }
+func (m *DeleteEntriesForSSIDRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteEntriesForSSIDRequest) ProtoMessage()    {}
+func (*DeleteEntriesForSSIDRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_14343df069b9efbf, []int{4}
 }
 
-func (m *SSID) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SSID.Unmarshal(m, b)
+func (m *DeleteEntriesForSSIDRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteEntriesForSSIDRequest.Unmarshal(m, b)
 }
-func (m *SSID) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SSID.Marshal(b, m, deterministic)
+func (m *DeleteEntriesForSSIDRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteEntriesForSSIDRequest.Marshal(b, m, deterministic)
 }
-func (m *SSID) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SSID.Merge(m, src)
+func (m *DeleteEntriesForSSIDRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteEntriesForSSIDRequest.Merge(m, src)
 }
-func (m *SSID) XXX_Size() int {
-	return xxx_messageInfo_SSID.Size(m)
+func (m *DeleteEntriesForSSIDRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteEntriesForSSIDRequest.Size(m)
 }
-func (m *SSID) XXX_DiscardUnknown() {
-	xxx_messageInfo_SSID.DiscardUnknown(m)
+func (m *DeleteEntriesForSSIDRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteEntriesForSSIDRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_SSID proto.InternalMessageInfo
+var xxx_messageInfo_DeleteEntriesForSSIDRequest proto.InternalMessageInfo
 
-func (m *SSID) GetSsid() string {
+func (m *DeleteEntriesForSSIDRequest) GetSsid() string {
 	if m != nil {
 		return m.Ssid
 	}
@@ -251,42 +290,46 @@ func (m *SSID) GetSsid() string {
 }
 
 func init() {
-	proto.RegisterType((*Config)(nil), "tast.cros.network.Config")
-	proto.RegisterMapType((map[string]*ShillVal)(nil), "tast.cros.network.Config.ShillpropsEntry")
+	proto.RegisterType((*ConnectRequest)(nil), "tast.cros.network.ConnectRequest")
+	proto.RegisterMapType((map[string]*ShillVal)(nil), "tast.cros.network.ConnectRequest.ShillpropsEntry")
 	proto.RegisterType((*ShillVal)(nil), "tast.cros.network.ShillVal")
-	proto.RegisterType((*Service)(nil), "tast.cros.network.Service")
-	proto.RegisterType((*SSID)(nil), "tast.cros.network.SSID")
+	proto.RegisterType((*ConnectResponse)(nil), "tast.cros.network.ConnectResponse")
+	proto.RegisterType((*DisconnectRequest)(nil), "tast.cros.network.DisconnectRequest")
+	proto.RegisterType((*DeleteEntriesForSSIDRequest)(nil), "tast.cros.network.DeleteEntriesForSSIDRequest")
 }
 
 func init() { proto.RegisterFile("wifi.proto", fileDescriptor_14343df069b9efbf) }
 
 var fileDescriptor_14343df069b9efbf = []byte{
-	// 396 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x52, 0x41, 0x6f, 0x9b, 0x30,
-	0x18, 0x85, 0x42, 0xd3, 0xec, 0xeb, 0x61, 0x9b, 0x55, 0x75, 0x8c, 0x6a, 0x52, 0x84, 0x34, 0x2d,
-	0xbb, 0x18, 0x2d, 0xbb, 0x4c, 0xdb, 0x8d, 0xd2, 0xa9, 0x5c, 0x41, 0xda, 0xa4, 0xde, 0x08, 0x31,
-	0xc1, 0xaa, 0x83, 0x91, 0x6d, 0x52, 0xf1, 0x53, 0xf7, 0x4b, 0x76, 0x9d, 0x6c, 0x93, 0x68, 0xda,
-	0x48, 0x6f, 0xdf, 0x83, 0xf7, 0xbd, 0xf7, 0xfc, 0xf4, 0x01, 0x3c, 0xd1, 0x9a, 0xe2, 0x4e, 0x70,
-	0xc5, 0xd1, 0x6b, 0x55, 0x4a, 0x85, 0x2b, 0xc1, 0x25, 0x6e, 0x89, 0x7a, 0xe2, 0xe2, 0x31, 0xbc,
-	0xd9, 0x72, 0xbe, 0x65, 0x24, 0x36, 0x84, 0x75, 0x5f, 0xc7, 0x64, 0xd7, 0xa9, 0xc1, 0xf2, 0xa3,
-	0xdf, 0x2e, 0xcc, 0x6e, 0x79, 0x5b, 0xd3, 0x2d, 0x42, 0xe0, 0x4b, 0x49, 0x37, 0x81, 0xbb, 0x70,
-	0x97, 0x2f, 0x72, 0x33, 0xa3, 0x6b, 0x98, 0x35, 0x74, 0xb3, 0x21, 0x6d, 0x70, 0xb6, 0x70, 0x97,
-	0xf3, 0x7c, 0x44, 0x28, 0x84, 0xb9, 0x24, 0x55, 0x2f, 0xa8, 0x1a, 0x02, 0xcf, 0xf0, 0x8f, 0x18,
-	0x65, 0x00, 0xb2, 0xa1, 0x8c, 0x75, 0x82, 0x77, 0x32, 0xf0, 0x17, 0xde, 0xf2, 0x72, 0xf5, 0x11,
-	0xff, 0x97, 0x0b, 0x5b, 0x5b, 0x5c, 0x1c, 0xb9, 0x77, 0xad, 0x12, 0x43, 0xfe, 0xd7, 0x72, 0xf8,
-	0x00, 0x2f, 0xff, 0xf9, 0x8d, 0x5e, 0x81, 0xf7, 0x48, 0x86, 0x31, 0xa4, 0x1e, 0xd1, 0x27, 0x38,
-	0xdf, 0x97, 0xac, 0x27, 0x26, 0xe2, 0xe5, 0xea, 0x66, 0xc2, 0xca, 0x88, 0xfc, 0x28, 0x59, 0x6e,
-	0x99, 0x5f, 0xcf, 0xbe, 0xb8, 0xd1, 0x37, 0x98, 0x1f, 0x3e, 0x23, 0x04, 0x9e, 0x54, 0xc2, 0x8a,
-	0xde, 0x3b, 0xb9, 0x06, 0xe8, 0x0a, 0xfc, 0x35, 0xe7, 0xcc, 0x3e, 0xfc, 0xde, 0xc9, 0x0d, 0x4a,
-	0xce, 0xc1, 0xdb, 0x97, 0x2c, 0x7a, 0x07, 0x17, 0x05, 0x11, 0x7b, 0x5a, 0x11, 0x5d, 0x5b, 0x57,
-	0xaa, 0xe6, 0x50, 0x9b, 0x9e, 0xa3, 0x10, 0xfc, 0xa2, 0xc8, 0xd2, 0xa9, 0x4a, 0x57, 0xbf, 0x5c,
-	0xf0, 0x7f, 0xd2, 0x9a, 0xa2, 0x04, 0x2e, 0x6e, 0x79, 0xdb, 0x92, 0x4a, 0xa1, 0xb7, 0x27, 0xeb,
-	0x09, 0xc3, 0xa9, 0xe7, 0x58, 0xeb, 0xc8, 0x41, 0x09, 0x40, 0x4a, 0x65, 0x35, 0xca, 0x3c, 0xc3,
-	0x0d, 0xaf, 0xb1, 0x3d, 0x03, 0x7c, 0x38, 0x03, 0x7c, 0xa7, 0xcf, 0x20, 0x72, 0x50, 0x06, 0x57,
-	0x29, 0x61, 0x44, 0x11, 0x5d, 0x30, 0x25, 0xf2, 0x3b, 0x17, 0x26, 0xfc, 0x9b, 0x29, 0xb5, 0x22,
-	0x4b, 0x4f, 0x4b, 0x25, 0x1f, 0x1e, 0xde, 0x57, 0x8d, 0xe0, 0x3b, 0xda, 0xef, 0xb8, 0x8c, 0xf5,
-	0x7a, 0x2c, 0xad, 0xbf, 0x8c, 0xb5, 0x4e, 0x3c, 0xea, 0xac, 0x67, 0x66, 0xf5, 0xf3, 0x9f, 0x00,
-	0x00, 0x00, 0xff, 0xff, 0x79, 0x35, 0x43, 0xd3, 0xbb, 0x02, 0x00, 0x00,
+	// 442 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4d, 0x6f, 0xd3, 0x40,
+	0x10, 0x4d, 0xe2, 0x14, 0xc2, 0xa4, 0x6a, 0xe9, 0xa8, 0x42, 0x91, 0x73, 0x49, 0xad, 0x22, 0x72,
+	0x5a, 0x2b, 0x01, 0x21, 0x04, 0xb7, 0x92, 0xa2, 0x20, 0x71, 0x00, 0x5b, 0x02, 0xa9, 0x97, 0xe0,
+	0x38, 0x93, 0x7a, 0x55, 0xc7, 0x6b, 0x76, 0xd6, 0xa9, 0xf2, 0x33, 0x38, 0xf0, 0x7f, 0x91, 0x3f,
+	0x1a, 0x28, 0x75, 0x43, 0x6f, 0x33, 0xb3, 0xf3, 0xde, 0xbe, 0x37, 0x33, 0x00, 0xd7, 0x72, 0x29,
+	0x45, 0xaa, 0x95, 0x51, 0x78, 0x64, 0x02, 0x36, 0x22, 0xd4, 0x8a, 0x45, 0x42, 0xe6, 0x5a, 0xe9,
+	0x2b, 0xbb, 0x7f, 0xa9, 0xd4, 0x65, 0x4c, 0x6e, 0xd1, 0x30, 0xcf, 0x96, 0x2e, 0xad, 0x52, 0xb3,
+	0x29, 0xfb, 0x9d, 0x5f, 0x2d, 0x38, 0x78, 0xaf, 0x92, 0x84, 0x42, 0xe3, 0xd1, 0x8f, 0x8c, 0xd8,
+	0x20, 0x42, 0x9b, 0x59, 0x2e, 0x7a, 0xcd, 0x41, 0x73, 0xf8, 0xc4, 0x2b, 0x62, 0x3c, 0x85, 0x03,
+	0xc9, 0xb3, 0x3c, 0x9c, 0x45, 0x72, 0xb1, 0xa0, 0xa4, 0xd7, 0x1a, 0x34, 0x87, 0x1d, 0x6f, 0x5f,
+	0xb2, 0xcf, 0x72, 0x31, 0x2d, 0x6a, 0x68, 0x43, 0x87, 0x29, 0xcc, 0xb4, 0x34, 0x9b, 0x9e, 0x55,
+	0xa0, 0xb7, 0x39, 0x7e, 0x01, 0xe0, 0x48, 0xc6, 0x71, 0xaa, 0x55, 0xca, 0xbd, 0xf6, 0xc0, 0x1a,
+	0x76, 0xc7, 0x23, 0x71, 0x47, 0xad, 0xb8, 0x2d, 0x46, 0xf8, 0x5b, 0xcc, 0x79, 0x62, 0xf4, 0xc6,
+	0xfb, 0x8b, 0xc4, 0xbe, 0x80, 0xc3, 0x7f, 0x9e, 0xf1, 0x29, 0x58, 0x57, 0xb4, 0xa9, 0xa4, 0xe7,
+	0x21, 0x8e, 0x60, 0x6f, 0x1d, 0xc4, 0x19, 0x15, 0x82, 0xbb, 0xe3, 0x7e, 0xcd, 0x97, 0x05, 0xc9,
+	0xd7, 0x20, 0xf6, 0xca, 0xce, 0xb7, 0xad, 0x37, 0x4d, 0xe7, 0x1d, 0x74, 0x6e, 0xca, 0x88, 0x60,
+	0xb1, 0xd1, 0x25, 0xe9, 0xb4, 0xe1, 0xe5, 0x09, 0x1e, 0x43, 0x7b, 0xae, 0x54, 0x5c, 0x8e, 0x61,
+	0xda, 0xf0, 0x8a, 0xec, 0x6c, 0x0f, 0xac, 0x75, 0x10, 0x3b, 0xaf, 0xe0, 0x70, 0x6b, 0x83, 0x53,
+	0x95, 0x30, 0xe1, 0x09, 0xec, 0x33, 0xe9, 0xb5, 0x0c, 0x69, 0x96, 0x06, 0x26, 0xaa, 0x14, 0x76,
+	0xab, 0xda, 0xe7, 0xc0, 0x44, 0xce, 0x6b, 0x38, 0x9a, 0x48, 0x0e, 0x6f, 0x2f, 0xe3, 0x01, 0xb8,
+	0x11, 0xf4, 0x27, 0x14, 0x93, 0xa1, 0x7c, 0x04, 0x92, 0xf8, 0x83, 0xd2, 0xbe, 0xff, 0x71, 0xb2,
+	0x63, 0x9d, 0xe3, 0x9f, 0x2d, 0xe8, 0x7e, 0x93, 0x4b, 0xe9, 0x97, 0x34, 0xe8, 0xc1, 0xe3, 0x4a,
+	0x30, 0x9e, 0xfc, 0x77, 0x27, 0xb6, 0xb3, 0xab, 0xa5, 0xf4, 0xeb, 0x34, 0xf0, 0x13, 0xc0, 0x1f,
+	0x3b, 0x78, 0x5a, 0x83, 0xb9, 0xe3, 0xd6, 0x7e, 0x26, 0xca, 0x5b, 0x15, 0x37, 0xb7, 0x2a, 0xce,
+	0xf3, 0x5b, 0x75, 0x1a, 0xf8, 0x1d, 0x8e, 0xeb, 0x4c, 0xa2, 0xa8, 0xe3, 0xbd, 0x7f, 0x1a, 0xf7,
+	0xff, 0x70, 0xf6, 0xe2, 0xe2, 0x79, 0x18, 0x69, 0xb5, 0x92, 0xd9, 0x4a, 0xb1, 0x9b, 0xb3, 0xba,
+	0xd5, 0x94, 0xd9, 0xcd, 0xe9, 0xdd, 0x8a, 0x7e, 0xfe, 0xa8, 0x80, 0xbe, 0xfc, 0x1d, 0x00, 0x00,
+	0xff, 0xff, 0x61, 0x08, 0x57, 0x60, 0x77, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -297,150 +340,150 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// WifiClient is the client API for Wifi service.
+// WifiServiceClient is the client API for WifiService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type WifiClient interface {
+type WifiServiceClient interface {
 	// Connect attempts to connect WiFi network.
-	Connect(ctx context.Context, in *Config, opts ...grpc.CallOption) (*Service, error)
+	Connect(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 	// Disconnect attempts to disconnect from a service.
-	Disconnect(ctx context.Context, in *Service, opts ...grpc.CallOption) (*empty.Empty, error)
-	// DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
-	DeleteEntriesForSSID(ctx context.Context, in *SSID, opts ...grpc.CallOption) (*empty.Empty, error)
+	Disconnect(ctx context.Context, in *DisconnectRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// DeleteEntriesForSSID deletes all WiFi profile entries with the given SSID.
+	DeleteEntriesForSSID(ctx context.Context, in *DeleteEntriesForSSIDRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
-type wifiClient struct {
+type wifiServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewWifiClient(cc *grpc.ClientConn) WifiClient {
-	return &wifiClient{cc}
+func NewWifiServiceClient(cc *grpc.ClientConn) WifiServiceClient {
+	return &wifiServiceClient{cc}
 }
 
-func (c *wifiClient) Connect(ctx context.Context, in *Config, opts ...grpc.CallOption) (*Service, error) {
-	out := new(Service)
-	err := c.cc.Invoke(ctx, "/tast.cros.network.Wifi/Connect", in, out, opts...)
+func (c *wifiServiceClient) Connect(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error) {
+	out := new(ConnectResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/Connect", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wifiClient) Disconnect(ctx context.Context, in *Service, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *wifiServiceClient) Disconnect(ctx context.Context, in *DisconnectRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, "/tast.cros.network.Wifi/Disconnect", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/Disconnect", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *wifiClient) DeleteEntriesForSSID(ctx context.Context, in *SSID, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *wifiServiceClient) DeleteEntriesForSSID(ctx context.Context, in *DeleteEntriesForSSIDRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, "/tast.cros.network.Wifi/DeleteEntriesForSSID", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/tast.cros.network.WifiService/DeleteEntriesForSSID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// WifiServer is the server API for Wifi service.
-type WifiServer interface {
+// WifiServiceServer is the server API for WifiService service.
+type WifiServiceServer interface {
 	// Connect attempts to connect WiFi network.
-	Connect(context.Context, *Config) (*Service, error)
+	Connect(context.Context, *ConnectRequest) (*ConnectResponse, error)
 	// Disconnect attempts to disconnect from a service.
-	Disconnect(context.Context, *Service) (*empty.Empty, error)
-	// DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
-	DeleteEntriesForSSID(context.Context, *SSID) (*empty.Empty, error)
+	Disconnect(context.Context, *DisconnectRequest) (*empty.Empty, error)
+	// DeleteEntriesForSSID deletes all WiFi profile entries with the given SSID.
+	DeleteEntriesForSSID(context.Context, *DeleteEntriesForSSIDRequest) (*empty.Empty, error)
 }
 
-// UnimplementedWifiServer can be embedded to have forward compatible implementations.
-type UnimplementedWifiServer struct {
+// UnimplementedWifiServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedWifiServiceServer struct {
 }
 
-func (*UnimplementedWifiServer) Connect(ctx context.Context, req *Config) (*Service, error) {
+func (*UnimplementedWifiServiceServer) Connect(ctx context.Context, req *ConnectRequest) (*ConnectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Connect not implemented")
 }
-func (*UnimplementedWifiServer) Disconnect(ctx context.Context, req *Service) (*empty.Empty, error) {
+func (*UnimplementedWifiServiceServer) Disconnect(ctx context.Context, req *DisconnectRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Disconnect not implemented")
 }
-func (*UnimplementedWifiServer) DeleteEntriesForSSID(ctx context.Context, req *SSID) (*empty.Empty, error) {
+func (*UnimplementedWifiServiceServer) DeleteEntriesForSSID(ctx context.Context, req *DeleteEntriesForSSIDRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntriesForSSID not implemented")
 }
 
-func RegisterWifiServer(s *grpc.Server, srv WifiServer) {
-	s.RegisterService(&_Wifi_serviceDesc, srv)
+func RegisterWifiServiceServer(s *grpc.Server, srv WifiServiceServer) {
+	s.RegisterService(&_WifiService_serviceDesc, srv)
 }
 
-func _Wifi_Connect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Config)
+func _WifiService_Connect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConnectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WifiServer).Connect(ctx, in)
+		return srv.(WifiServiceServer).Connect(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tast.cros.network.Wifi/Connect",
+		FullMethod: "/tast.cros.network.WifiService/Connect",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WifiServer).Connect(ctx, req.(*Config))
+		return srv.(WifiServiceServer).Connect(ctx, req.(*ConnectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Wifi_Disconnect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Service)
+func _WifiService_Disconnect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DisconnectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WifiServer).Disconnect(ctx, in)
+		return srv.(WifiServiceServer).Disconnect(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tast.cros.network.Wifi/Disconnect",
+		FullMethod: "/tast.cros.network.WifiService/Disconnect",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WifiServer).Disconnect(ctx, req.(*Service))
+		return srv.(WifiServiceServer).Disconnect(ctx, req.(*DisconnectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Wifi_DeleteEntriesForSSID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SSID)
+func _WifiService_DeleteEntriesForSSID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteEntriesForSSIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(WifiServer).DeleteEntriesForSSID(ctx, in)
+		return srv.(WifiServiceServer).DeleteEntriesForSSID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tast.cros.network.Wifi/DeleteEntriesForSSID",
+		FullMethod: "/tast.cros.network.WifiService/DeleteEntriesForSSID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WifiServer).DeleteEntriesForSSID(ctx, req.(*SSID))
+		return srv.(WifiServiceServer).DeleteEntriesForSSID(ctx, req.(*DeleteEntriesForSSIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Wifi_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "tast.cros.network.Wifi",
-	HandlerType: (*WifiServer)(nil),
+var _WifiService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "tast.cros.network.WifiService",
+	HandlerType: (*WifiServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Connect",
-			Handler:    _Wifi_Connect_Handler,
+			Handler:    _WifiService_Connect_Handler,
 		},
 		{
 			MethodName: "Disconnect",
-			Handler:    _Wifi_Disconnect_Handler,
+			Handler:    _WifiService_Disconnect_Handler,
 		},
 		{
 			MethodName: "DeleteEntriesForSSID",
-			Handler:    _Wifi_DeleteEntriesForSSID_Handler,
+			Handler:    _WifiService_DeleteEntriesForSSID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
