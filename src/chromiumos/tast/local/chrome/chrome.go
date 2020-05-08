@@ -172,6 +172,13 @@ func GuestLogin() Option {
 	}
 }
 
+// DontSkipOOBEAfterLogin returns an Option that can be passed to stay in OOBE after user login.
+func DontSkipOOBEAfterLogin() Option {
+	return func(c *Chrome) {
+		c.skipOOBEAfterLogin = false
+	}
+}
+
 // Region returns an Option that can be passed to New to set the region deciding
 // the locale used in the OOBE screen and the user sessions. region is a
 // two-letter code such as "us", "fr", or "ja".
@@ -262,6 +269,7 @@ type Chrome struct {
 	parentUser, parentPass string // unicorn parent login credentials
 	keepState              bool
 	loginMode              loginMode
+	skipOOBEAfterLogin     bool // skip OOBE post user login
 	region                 string
 	policyEnabled          bool   // flag to enable policy fetch
 	dmsAddr                string // Device Management URL, or empty if using default
@@ -310,16 +318,17 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	defer st.End()
 
 	c := &Chrome{
-		user:             DefaultUser,
-		pass:             DefaultPass,
-		gaiaID:           defaultGaiaID,
-		keepState:        false,
-		loginMode:        fakeLogin,
-		region:           "us",
-		policyEnabled:    false,
-		enroll:           false,
-		breakpadTestMode: true,
-		logMaster:        jslog.NewMaster(),
+		user:               DefaultUser,
+		pass:               DefaultPass,
+		gaiaID:             defaultGaiaID,
+		keepState:          false,
+		loginMode:          fakeLogin,
+		skipOOBEAfterLogin: true,
+		region:             "us",
+		policyEnabled:      false,
+		enroll:             false,
+		breakpadTestMode:   true,
+		logMaster:          jslog.NewMaster(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -622,7 +631,6 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--remote-debugging-port=0",                  // Let Chrome choose its own debugging port.
 		"--disable-logging-redirect",                 // Disable redirection of Chrome logging into cryptohome.
 		"--ash-disable-system-sounds",                // Disable system startup sound.
-		"--oobe-skip-postlogin",                      // Skip post-login screens.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
@@ -634,6 +642,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	}
 	if c.enroll {
 		args = append(args, "--disable-policy-key-verification") // Remove policy key verification for fake enrollment
+	}
+
+	if c.skipOOBEAfterLogin {
+		args = append(args, "--oobe-skip-postlogin")
 	}
 
 	if c.loginMode != gaiaLogin {
@@ -1112,18 +1124,20 @@ func (c *Chrome) logIn(ctx context.Context) error {
 		return err
 	}
 
-	testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
-	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		if t, err := c.getFirstOOBETarget(ctx); err != nil {
-			// This is likely Chrome crash. So there's no chance that
-			// waiting for the dismiss succeeds later. Quit the polling now.
-			return testing.PollBreak(err)
-		} else if t != nil {
-			return errors.Errorf("%s target still exists", oobePrefix)
+	if c.skipOOBEAfterLogin {
+		testing.ContextLog(ctx, "Waiting for OOBE to be dismissed")
+		if err = testing.Poll(ctx, func(ctx context.Context) error {
+			if t, err := c.getFirstOOBETarget(ctx); err != nil {
+				// This is likely Chrome crash. So there's no chance that
+				// waiting for the dismiss succeeds later. Quit the polling now.
+				return testing.PollBreak(err)
+			} else if t != nil {
+				return errors.Errorf("%s target still exists", oobePrefix)
+			}
+			return nil
+		}, loginPollOpts); err != nil {
+			return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
 		}
-		return nil
-	}, loginPollOpts); err != nil {
-		return errors.Wrap(c.chromeErr(err), "OOBE not dismissed")
 	}
 
 	return nil
