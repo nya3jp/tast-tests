@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b02fc4a4_a738ec99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-08T16:58:48Z",
+      "side": 1,
+      "message": "This can consist of multiple lines -- potentially a lot of lines. Generally, multi-lined error messages are discouraged: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\n\u003e In all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\nSo please consider doing like:\n  if len(errorInfos) \u003e 0 {\n    for i, err :\u003d range errorInfos {\n      if err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), fmt.Sprintf(\"error_%d.txt\", i)), []byte(fmt.Sprintf(\"%v: %v\\n%v\", err.Level, err.ErrorType, err.Stack)), 0644); err !\u003d nil {\n        testing.ContextLog(\"Failed to store error data: \", err)\n      }\n    }\n    return errors.Errorf(\"there are %d errors, first error: %v: %v\", len(errorInfos), errorInfos[0].Level, errorInfos[0].ErrorType)\n  }",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 2
+      },
+      "revId": "10718e760e6483d6f4b64923182dae553dcf090b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
