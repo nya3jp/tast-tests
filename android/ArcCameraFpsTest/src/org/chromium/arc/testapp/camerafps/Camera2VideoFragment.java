@@ -86,8 +86,6 @@ public class Camera2VideoFragment extends Fragment {
     private CaptureRequest.Builder mPreviewBuilder;
     // Surface for video recording.
     private Surface mRecorderSurface;
-    // Helper objects that gathers FPS statistics.
-    private CaptureCallbackHistogram mCaptureHistogram;
     // Target frames per second for preview and recording.
     private Integer mTargetFps = null;
     // Target resolution for preview and recording.
@@ -100,11 +98,6 @@ public class Camera2VideoFragment extends Fragment {
     private long mCameraCloseTime;
     // Camera characteristics contain information about supported resolutions etc.
     private CameraCharacteristics mCameraCharacteristics;
-
-    public Camera2VideoFragment(CaptureCallbackHistogram histogram) {
-        super();
-        mCaptureHistogram = histogram;
-    }
 
     // Select the largest resolution among all choices. If a specific target resolution was
     // requested, use that resolution instead if it is supported. If the requested resolution
@@ -474,8 +467,9 @@ public class Camera2VideoFragment extends Fragment {
                     },
                     mBackgroundHandler);
         } catch (Exception e) {
+            // Camera is closed with an exception when the window size is changed. We can drop
+            // such exceptions.
             getActivity().finish();
-            throw new RuntimeException(e);
         }
     }
 
@@ -486,7 +480,9 @@ public class Camera2VideoFragment extends Fragment {
             HandlerThread thread = new HandlerThread("CameraPreview");
             thread.start();
             mPreviewSession.setRepeatingRequest(
-                    mPreviewBuilder.build(), mCaptureHistogram, mBackgroundHandler);
+                    mPreviewBuilder.build(),
+                    ((CameraActivity) getActivity()).getHistogram(),
+                    mBackgroundHandler);
         } catch (Exception e) {
             getActivity().finish();
             throw new RuntimeException(e);
