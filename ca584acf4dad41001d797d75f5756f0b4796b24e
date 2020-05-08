@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e84e776_29dadeef",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T13:01:57Z",
+      "side": 1,
+      "message": "\"launcher\" is the name of the feature in Chrome OS. And the package ash/launcher should be the library to communicate with the \"launcher\", IMO.\n\nThe current implementation is already so, so could you update the document?",
+      "revId": "ca584acf4dad41001d797d75f5756f0b4796b24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8103c548_cdec896c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T13:01:57Z",
+      "side": 1,
+      "message": "style: could you avoid using |varname| style, to follow the go doc style guide?",
+      "range": {
+        "startLine": 41,
+        "startChar": 63,
+        "endLine": 41,
+        "endChar": 70
+      },
+      "revId": "ca584acf4dad41001d797d75f5756f0b4796b24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc54372_2bca7a5e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T13:01:57Z",
+      "side": 1,
+      "message": "nit: s/Launcher// since it is already in the package name.",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "ca584acf4dad41001d797d75f5756f0b4796b24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505eb84b_06a76a50",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T13:01:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "ca584acf4dad41001d797d75f5756f0b4796b24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "724e03e3_fcf2c906",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T13:01:57Z",
+      "side": 1,
+      "message": "But this looks like not a part of launcher?",
+      "revId": "ca584acf4dad41001d797d75f5756f0b4796b24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d02605b_772df2fd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T13:01:57Z",
+      "side": 1,
+      "message": "I think we\u0027d like to completely split lacros and ash, conceptually.\nCould you handle this outside of ash package, e.g. by extracting common part into a helper function?",
+      "range": {
+        "startLine": 38,
+        "startChar": 47,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "ca584acf4dad41001d797d75f5756f0b4796b24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
