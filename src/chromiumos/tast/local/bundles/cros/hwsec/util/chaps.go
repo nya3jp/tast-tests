@@ -108,6 +108,9 @@ func CreateKeysForTesting(ctx context.Context, r hwsec.CmdRunner, pkcs11Util *pk
 			}
 		}
 	}()
+	if err := cryptohomeUtil.WaitForUserToken(ctx, FirstUsername); err != nil {
+		return keys, errors.Wrap(err, "failed to wait for user token")
+	}
 
 	// Cleanup the keys if it failed halfway.
 	defer func() {
