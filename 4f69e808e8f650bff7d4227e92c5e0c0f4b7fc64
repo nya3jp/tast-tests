@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab76f050_b902dfd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-08T06:53:45Z",
+      "side": 1,
+      "message": "move this inside AccessibilitySpeech function",
+      "revId": "4f69e808e8f650bff7d4227e92c5e0c0f4b7fc64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd08fb2_38ec4ed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-08T06:53:45Z",
+      "side": 1,
+      "message": "What do you want to migrate? Perhaps clarify in the comment.",
+      "range": {
+        "startLine": 74,
+        "startChar": 22,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "4f69e808e8f650bff7d4227e92c5e0c0f4b7fc64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
