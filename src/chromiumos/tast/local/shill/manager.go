@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -104,12 +105,18 @@ ForServicePaths:
 
 // FindMatchingService returns a Service who has the expected properties.
 func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {
+	ctx, st := timing.Start(ctx, "m.FindMatchingService")
+	defer st.End()
+
 	return m.findMatchingService(ctx, expectProps, false)
 }
 
 // FindAnyMatchingService returns a service who has the expected properties.
 // It checks all services include hidden one.
 func (m *Manager) FindAnyMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {
+	ctx, st := timing.Start(ctx, "m.FindAnyMatchingService")
+	defer st.End()
+
 	return m.findMatchingService(ctx, expectProps, true)
 }
 
@@ -130,6 +137,9 @@ func (m *Manager) waitForServiceProperties(ctx context.Context, expectProps map[
 // WaitForServiceProperties returns a Service who has the expected properties.
 // If there's no matching service, it polls until timeout is reached.
 func (m *Manager) WaitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (*Service, error) {
+	ctx, st := timing.Start(ctx, "m.WaitForServiceProperties")
+	defer st.End()
+
 	return m.waitForServiceProperties(ctx, expectProps, timeout, false)
 }
 
@@ -137,6 +147,9 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, expectProps map[
 // It checks all services, including hidden ones.
 // If there's no matching service, it polls until timeout is reached.
 func (m *Manager) WaitForAnyServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration) (*Service, error) {
+	ctx, st := timing.Start(ctx, "m.WaitForAnyServiceProperties")
+	defer st.End()
+
 	return m.waitForServiceProperties(ctx, expectProps, timeout, true)
 }
 

@@ -187,7 +187,7 @@ type PropertyHolder struct {
 
 // NewPropertyHolder creates a DBus object with the given path and interface used for accessing properties.
 func NewPropertyHolder(ctx context.Context, iface string, path dbus.ObjectPath) (PropertyHolder, error) {
-	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	conn, obj, err := dbusutil.ConnectNoTiming(ctx, dbusService, path)
 	if err != nil {
 		return PropertyHolder{}, err
 	}
