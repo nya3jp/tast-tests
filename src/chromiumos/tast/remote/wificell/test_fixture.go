@@ -31,11 +31,11 @@ type TestFixture struct {
 	rpc        *rpc.Client
 	routerHost *ssh.Conn
 	router     *Router
-	wifiClient network.WifiClient
+	wifiClient network.WifiServiceClient
 
-	apID       int
-	curService *network.Service
-	curAP      *APIface
+	apID           int
+	curServicePath string
+	curAP          *APIface
 }
 
 // NewTestFixture creates a TestFixture.
@@ -69,7 +69,7 @@ func NewTestFixture(fullCtx context.Context, dut *dut.DUT, rpcHint *testing.RPCH
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect rpc")
 	}
-	tf.wifiClient = network.NewWifiClient(tf.rpc.Conn)
+	tf.wifiClient = network.NewWifiServiceClient(tf.rpc.Conn)
 
 	// TODO(crbug.com/1034875): For now, we assume that we start with a clean DUT.
 	// We may need a gRPC for initializing clean state on DUT. e.g. init_test_network_state
@@ -192,17 +192,17 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 	if err != nil {
 		return err
 	}
-	config := &network.Config{
+	request := &network.ConnectRequest{
 		Ssid:       h.Config().Ssid,
 		Hidden:     h.Config().Hidden,
 		Security:   h.Config().SecurityConfig.Class(),
 		Shillprops: propsEnc,
 	}
-	service, err := tf.wifiClient.Connect(ctx, config)
+	response, err := tf.wifiClient.Connect(ctx, request)
 	if err != nil {
 		return err
 	}
-	tf.curService = service
+	tf.curServicePath = response.ServicePath
 	tf.curAP = h
 	return nil
 }
@@ -213,10 +213,11 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	defer st.End()
 
 	var err error
-	if _, err2 := tf.wifiClient.Disconnect(ctx, tf.curService); err2 != nil {
+	req := &network.DisconnectRequest{ServicePath: tf.curServicePath}
+	if _, err2 := tf.wifiClient.Disconnect(ctx, req); err2 != nil {
 		err = errors.Wrap(err2, "failed to disconnect")
 	}
-	tf.curService = nil
+	tf.curServicePath = ""
 	tf.curAP = nil
 	return err
 }
@@ -271,7 +272,7 @@ func (tf *TestFixture) Router() *Router {
 	return tf.router
 }
 
-// WifiClient returns the gRPC WifiClient of the DUT.
-func (tf *TestFixture) WifiClient() network.WifiClient {
+// WifiClient returns the gRPC WifiServiceClient of the DUT.
+func (tf *TestFixture) WifiClient() network.WifiServiceClient {
 	return tf.wifiClient
 }

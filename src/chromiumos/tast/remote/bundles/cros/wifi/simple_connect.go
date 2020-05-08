@@ -28,7 +28,7 @@ func init() {
 		Desc:        "Verifies that DUT can connect to the host via AP in different WiFi configuration",
 		Contacts:    []string{"yenlinlai@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
-		ServiceDeps: []string{"tast.cros.network.Wifi"},
+		ServiceDeps: []string{"tast.cros.network.WifiService"},
 		Vars:        []string{"router"},
 		Params: []testing.Param{
 			{
@@ -170,7 +170,8 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, &network.SSID{Ssid: ap.Config().Ssid}); err != nil {
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: ap.Config().Ssid}
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
 		}()
