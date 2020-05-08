@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9d6482a_15657632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-08T21:14:34Z",
+      "side": 1,
+      "message": "Will every test expect CreateKeysForTesting to mount the cryptohome vault? I feel like this is an odd side effect that may not be expected by every person who might call this method? You should probably at least specify this in the method documentation.\n\nAlso, after the keys are created, does the vault still need to be mounted?",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "55fa9c6b88d48c82e15c4085116c511c8b2ba342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fda1707_610d4f59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-08T21:14:34Z",
+      "side": 1,
+      "message": "nit: nil",
+      "range": {
+        "startLine": 121,
+        "startChar": 10,
+        "endLine": 121,
+        "endChar": 29
+      },
+      "revId": "55fa9c6b88d48c82e15c4085116c511c8b2ba342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0bf6c9_f65fdcc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-08T21:14:34Z",
+      "side": 1,
+      "message": "can this all be replaced with CleanupTestingKeys?\n\nie:\ndefer func() {\n  if retErr !\u003d nil{\n    err :\u003d CleanupTestingKeys(...); err !\u003d nil{...}\n  }\n}()",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "55fa9c6b88d48c82e15c4085116c511c8b2ba342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
