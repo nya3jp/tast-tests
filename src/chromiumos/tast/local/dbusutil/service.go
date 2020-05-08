@@ -6,7 +6,6 @@ package dbusutil
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"runtime"
 	"strconv"
@@ -16,7 +15,6 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/timing"
 )
 
 var (
@@ -115,9 +113,6 @@ func SystemBusPrivate(opts ...dbus.ConnOption) (*dbus.Conn, error) {
 // path by using SystemBus.
 // This waits for the service to become available but does not validate path existence.
 func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
-	ctx, st := timing.Start(ctx, fmt.Sprintf("dbusutil.Connect %s:%s", name, path))
-	defer st.End()
-
 	conn, err := SystemBus()
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to connect to system bus")
@@ -166,9 +161,6 @@ func SystemBusPrivateWithAuth(ctx context.Context, uid uint32) (*dbus.Conn, erro
 // SystemBusPrivateWithAuth, the connection should be closed after use.
 // This waits for the service to become available.
 func ConnectPrivateWithAuth(ctx context.Context, uid uint32, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
-	ctx, st := timing.Start(ctx, fmt.Sprintf("dbusutil.ConnectPrivateWithAuth %s:%s", name, path))
-	defer st.End()
-
 	conn, err := SystemBusPrivateWithAuth(ctx, uid)
 	if err != nil {
 		return nil, nil, err
