@@ -28,9 +28,12 @@ import (
 )
 
 const (
-	cryptohomePattern = "/home/chronos/u-*"
+	// CryptohomePattern is a glob pattern that matches all of the cryptohome links
+	// inside of /home/chronos.
+	CryptohomePattern = "/home/chronos/u-*"
+
 	// CryptohomeCrashPattern is a glob pattern that matches any crash directory
-	// inside any user's cryptohome
+	// inside any user's cryptohome.
 	CryptohomeCrashPattern = "/home/chronos/u-*/crash"
 
 	// vModuleFlag is passed to Chrome when testing Chrome crashes. It allows us
@@ -251,7 +254,7 @@ func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
 	// The crash subdirectory may not exist yet, so we can't just do
 	// filepath.Glob(CryptohomeCrashPattern) here. Instead, look for all cryptohomes
 	// and manually add a /crash on the end.
-	paths, err := filepath.Glob(cryptohomePattern)
+	paths, err := filepath.Glob(CryptohomePattern)
 	if err != nil {
 		return nil, err
 	}

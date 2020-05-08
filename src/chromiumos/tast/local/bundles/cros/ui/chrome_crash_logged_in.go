@@ -6,10 +6,13 @@ package ui
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -144,5 +147,34 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 
 	if err = chromecrash.FindCrashFilesIn(chromecrash.CryptohomeCrashPattern, files); err != nil {
 		s.Errorf("Crash files weren't written to cryptohome after crashing the %s process: %v", params.ptype, err)
+		// So we've seen weird problems where the meta files get created but by the
+		// time 'newFiles, err := crash.GetCrashes(dirs...)' runs inside
+		// KillAndGetCrashFiles, the meta files aren't found. Add more debugging
+		// output to diagnose. crbug.com/1080365
+		args := []string{"-lia", "/home/chronos", "/home/user"}
+		if paths, err := filepath.Glob(chromecrash.CryptohomePattern); err != nil {
+			s.Log("Error getting cryptohomes from ", chromecrash.CryptohomePattern, ": ", err)
+		} else {
+			for _, path := range paths {
+				args = append(args, path, filepath.Join(path, "crash"))
+			}
+		}
+		if paths, err := filepath.Glob("/home/user/*"); err != nil {
+			s.Log("Error getting cryptohomes from /home/user/*: ", err)
+		} else {
+			for _, path := range paths {
+				args = append(args, path, filepath.Join(path, "crash"))
+			}
+		}
+
+		cmd := testexec.CommandContext(ctx, "/bin/ls", args...)
+		out, err := cmd.CombinedOutput()
+		if err != nil {
+			s.Logf("ls of %v failed: %v", args, err)
+		}
+		outfile := filepath.Join(s.OutDir(), "ls_output.txt")
+		if err := ioutil.WriteFile(outfile, out, 0644); err != nil {
+			s.Logf("Storing ls output %v to %v failed: %v", out, outfile, err)
+		}
 	}
 }
