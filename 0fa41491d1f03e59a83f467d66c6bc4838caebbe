@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1aaac797_db4dd9b3",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-08T15:03:17Z",
+      "side": 1,
+      "message": "Ah yes, well, we still want the \u0027M\u0027 somewhere and we don\u0027t know how many\nwhitespace there might be between that \u0027M\u0027 and the \"i915/actual-frequency/\",\nbut you\u0027re absolutely right that it doesn\u0027t need to be part of the match,\nwhich i turn makes the strings.Split() unnecessary. Done!",
+      "parentUuid": "8365f759_a10dde7f",
+      "range": {
+        "startLine": 421,
+        "startChar": 37,
+        "endLine": 421,
+        "endChar": 47
+      },
+      "revId": "0fa41491d1f03e59a83f467d66c6bc4838caebbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b1e1aaf_18095383",
         "filename": "src/chromiumos/tast/local/graphics/dri.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "0fa41491d1f03e59a83f467d66c6bc4838caebbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2cb08a_a8ad8cc1",
+        "filename": "src/chromiumos/tast/local/graphics/dri.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2020-05-08T15:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b1e1aaf_18095383",
+      "revId": "0fa41491d1f03e59a83f467d66c6bc4838caebbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
