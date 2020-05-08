@@ -85,10 +85,26 @@ func importKeysAndMeasure(ctx context.Context, pkcs11Util *pkcs11.Chaps, privKey
 	return importedKeys, importElapsed, nil
 }
 
+// signAndMeasure will sign the content pointed by tmpFile1 with mechanism and write the signature into tmpFile2 for times times. It'll return the total duration and if an error occurred.
+func signAndMeasure(ctx context.Context, pkcs11Util *pkcs11.Chaps, key *pkcs11.KeyInfo, mechanism *pkcs11.MechanismInfo, times int, tmpFile1, tmpFile2 string) (signElapsed time.Duration, retErr error) {
+	signHwStart := time.Now()
+	for i := 0; i < times; i++ {
+		// Note that we do not verify the signature here, it is checked by other tests.
+		// We just assume Sign produces the correct signature if it returns no error.
+		if err := pkcs11Util.Sign(ctx, key, tmpFile1, tmpFile2, mechanism); err != nil {
+			return signElapsed, errors.Wrap(err, "failed to sign with key")
+		}
+	}
+	signElapsed = time.Since(signHwStart)
+	return signElapsed, nil
+}
+
 func ChapsPerf(ctx context.Context, s *testing.State) {
 	const (
 		importHwTimes = 16
 		importSwTimes = 16
+		signHwTimes   = 16
+		signSwTimes   = 16
 	)
 
 	r, err := libhwseclocal.NewCmdRunner()
@@ -116,7 +132,7 @@ func ChapsPerf(ctx context.Context, s *testing.State) {
 	cleanupUserMount(ctx, utility)
 
 	// Prepare the scratchpad.
-	_, _, err = pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath)
+	f1, f2, err := pkcs11test.PrepareScratchpadAndTestFiles(ctx, r, scratchpadPath)
 	if err != nil {
 		s.Fatal("Failed to initialize the scratchpad space: ", err)
 	}
@@ -147,16 +163,28 @@ func ChapsPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Time the import operation for hw-backed keys.
-	_, importHwElapsed, err := importKeysAndMeasure(ctx, pkcs11Util, privKeyPath, slot, "11", importHwTimes, false)
+	importedHwKeys, importHwElapsed, err := importKeysAndMeasure(ctx, pkcs11Util, privKeyPath, slot, "11", importHwTimes, false)
 	if err != nil {
 		s.Fatal("Failed to import hardware backed keys: ", err)
 	}
 	// Note: We don't need to cleanup the imported keys here because it goes with the vault cleanup.
 
 	// Time the import operation for sw-backed keys.
-	_, importSwElapsed, err := importKeysAndMeasure(ctx, pkcs11Util, privKeyPath, slot, "22", importSwTimes, true)
+	importedSwKeys, importSwElapsed, err := importKeysAndMeasure(ctx, pkcs11Util, privKeyPath, slot, "22", importSwTimes, true)
 	if err != nil {
 		s.Fatal("Failed to import software backed keys: ", err)
+	}
+
+	// Time the signing operation for hw-backed keys.
+	signHwElapsed, err := signAndMeasure(ctx, pkcs11Util, importedHwKeys[0], &pkcs11.SHA256RSAPKCS, signHwTimes, f1, f2)
+	if err != nil {
+		s.Fatal("Failed to sign with hardware backed keys: ", err)
+	}
+
+	// Time the signing operation for sw-backed keys.
+	signSwElapsed, err := signAndMeasure(ctx, pkcs11Util, importedSwKeys[0], &pkcs11.SHA256RSAPKCS, signSwTimes, f1, f2)
+	if err != nil {
+		s.Fatal("Failed to sign with software backed keys: ", err)
 	}
 
 	// Record the perf measurements.
@@ -176,6 +204,20 @@ func ChapsPerf(ctx context.Context, s *testing.State) {
 		Direction: perf.SmallerIsBetter,
 		Multiple:  false,
 	}, importSwElapsed.Seconds()/float64(importSwTimes))
+	value.Set(perf.Metric{
+		Name:      "chaps_sign_time",
+		Variant:   "hwbacked_rsa_pkcs_sha256",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, signHwElapsed.Seconds()/float64(signHwTimes))
+	value.Set(perf.Metric{
+		Name:      "chaps_sign_time",
+		Variant:   "swbacked_rsa_pkcs_sha256",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  false,
+	}, signSwElapsed.Seconds()/float64(signSwTimes))
 
 	value.Save(s.OutDir())
 }
