@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd6eb703_db8911d8",
+        "filename": "src/chromiumos/tast/remote/wificell/client_iface.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T18:12:16Z",
+      "side": 1,
+      "message": "Unless we are going to put something here, I feel this is an over-engineering.\n\nHow about just let NewClientInterface()\u0027s caller inline the code so that this file can be removed.",
+      "revId": "a855a1578d608e8b80aab07394a9b97f2911e44c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
