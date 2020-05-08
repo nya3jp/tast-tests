@@ -45,6 +45,23 @@
       "revId": "26afd7a2b35f882488249308e90ad61b2a00ad7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6aa1d8c_561e8e30",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T06:00:22Z",
+      "side": 1,
+      "message": "According to the comment in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2156192/14/src/chromiumos/tast/services/cros/network/wifi.proto#21 , please use:\n\nrpc QueryService(QueryServiceRequest) returns (QueryServiceResponse) {}\n\nmessage QueryServiceRequest {\n  string service_path \u003d 1;\n}\n\nmessage QueryServiceResponse {\n  string hidden_ssid \u003d 1;\n}\n\n\nNoted that I\u0027ll update other messages.",
+      "revId": "26afd7a2b35f882488249308e90ad61b2a00ad7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
