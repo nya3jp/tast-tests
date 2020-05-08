@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff62714_d87faf19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-05-08T06:40:56Z",
+      "side": 1,
+      "message": "Could you update README to mention we reports median?\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/changes/17/2187117/1/src/chromiumos/tast/local/bundles/cros/arc/README.md",
+      "revId": "ca3e5316f428747ec852bfe38b264d2f17bc1979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbaeac47_2d73cc24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-05-08T06:40:56Z",
+      "side": 1,
+      "message": "Instead of calling runARCVideoPerfTestOnce multiple times, I wonder if it isn\u0027t possible to pass --gtest_repeat to c2_e2e_test?\n\nhttps://github.com/google/googletest/blob/master/googletest/docs/advanced.md#repeating-the-tests\n\nIf possible, it should be better because we need the general ARC setup only once.\n\nAlso, we would be able to allow flakiness. The current implementation requires the test to pass in all three rounds.",
+      "revId": "ca3e5316f428747ec852bfe38b264d2f17bc1979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
