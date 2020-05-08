@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43f50022_4d740cc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-05-08T09:05:47Z",
+      "side": 1,
+      "message": "It seems that every test case has this SWDep. How about moving this out to the gobal SoftwareDeps? Or, are you planning to add encoder tests for other codecs?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "313a23a5512bde14ef8abcbfb2e56531f47ad657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
