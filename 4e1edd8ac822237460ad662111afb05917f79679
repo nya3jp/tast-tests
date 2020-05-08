@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "58922f05_2d3b47c3",
+        "filename": "src/chromiumos/tast/local/network/cmd/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-08T06:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd0ed06_854718a4",
+      "revId": "4e1edd8ac822237460ad662111afb05917f79679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a90eee6_ead21e2f",
         "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "4e1edd8ac822237460ad662111afb05917f79679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aec7dc6_8223a722",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-08T06:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a90eee6_ead21e2f",
+      "revId": "4e1edd8ac822237460ad662111afb05917f79679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1a87417f_87289355",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-08T06:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7938d269_f8d936e3",
+      "revId": "4e1edd8ac822237460ad662111afb05917f79679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ce6fdc3_080696e9",
         "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
         "patchSetId": 9
@@ -67,6 +121,24 @@
       "revId": "4e1edd8ac822237460ad662111afb05917f79679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34031f3_fcac0216",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-08T06:59:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ce6fdc3_080696e9",
+      "revId": "4e1edd8ac822237460ad662111afb05917f79679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
