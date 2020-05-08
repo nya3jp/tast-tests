@@ -192,6 +192,11 @@ func (c *Cras) SetActiveNodeByType(ctx context.Context, nodeType string) error {
 	return nil
 }
 
+// SetOutputNodeVolume calls cras.Control.SetOutputNodeVolume over D-Bus.
+func (c *Cras) SetOutputNodeVolume(ctx context.Context, node CrasNode, volume int) error {
+	return c.call(ctx, "SetOutputNodeVolume", node.ID, volume).Err
+}
+
 // WaitForDevice waits for specified types of stream nodes to be active.
 // You can pass the streamType as a bitmap to wait for both input and output
 // nodes to be active. Ex: WaitForDevice(ctx, InputStream|OutputStream)
