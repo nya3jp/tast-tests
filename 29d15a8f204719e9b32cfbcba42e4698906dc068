@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "479fe2e5_8ff1e3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_showoff_after_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-05-08T04:55:06Z",
+      "side": 1,
+      "message": "Here and everywhere else in this test (and test name), this is HelpApp in Chromium code.",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "29d15a8f204719e9b32cfbcba42e4698906dc068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd5312c_81c22093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_showoff_after_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1365565
+      },
+      "writtenOn": "2020-05-08T04:55:06Z",
+      "side": 1,
+      "message": "Does this need to be a valid email address?",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "29d15a8f204719e9b32cfbcba42e4698906dc068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
