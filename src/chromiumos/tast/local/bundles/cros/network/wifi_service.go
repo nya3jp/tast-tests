@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			network.RegisterWifiServer(srv, &WifiService{s: s})
+			network.RegisterWifiServiceServer(srv, &WifiService{s: s})
 		},
 	})
 }
@@ -123,8 +123,8 @@ func (s *WifiService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Empt
 
 // Connect connects to a WiFi service with specific config.
 // This is the implementation of network.Wifi/Connect gRPC.
-func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*network.Service, error) {
-	testing.ContextLog(ctx, "Attempting to connect with config: ", config)
+func (s *WifiService) Connect(ctx context.Context, request *network.ConnectRequest) (*network.ConnectResponse, error) {
+	testing.ContextLog(ctx, "Attempting to connect with config: ", request)
 
 	testing.ContextLog(ctx, "Discovering")
 	m, err := shill.NewManager(ctx)
@@ -133,12 +133,12 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 	}
 
 	// Configure a service for the hidden SSID as a result of manual input SSID.
-	if config.Hidden {
+	if request.Hidden {
 		props := map[string]interface{}{
 			shill.ServicePropertyType:           shill.TypeWifi,
-			shill.ServicePropertySSID:           config.Ssid,
-			shill.ServicePropertyWiFiHiddenSSID: config.Hidden,
-			shill.ServicePropertySecurityClass:  config.Security,
+			shill.ServicePropertySSID:           request.Ssid,
+			shill.ServicePropertyWiFiHiddenSSID: request.Hidden,
+			shill.ServicePropertySecurityClass:  request.Security,
 		}
 		if err := m.ConfigureService(ctx, props); err != nil {
 			return nil, errors.Wrap(err, "failed to configure a hidden SSID")
@@ -147,8 +147,8 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 
 	props := map[string]interface{}{
 		shill.ServicePropertyType:          shill.TypeWifi,
-		shill.ServicePropertyName:          config.Ssid,
-		shill.ServicePropertySecurityClass: config.Security,
+		shill.ServicePropertyName:          request.Ssid,
+		shill.ServicePropertySecurityClass: request.Security,
 	}
 
 	// TODO(crbug.com/1034875): collect timing metrics, e.g. discovery time.
@@ -173,7 +173,7 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 
 	testing.ContextLog(ctx, "Connecting to service: ", service)
 
-	shillProps, err := protoutil.DecodeFromShillValMap(config.Shillprops)
+	shillProps, err := protoutil.DecodeFromShillValMap(request.Shillprops)
 	if err != nil {
 		return nil, err
 	}
@@ -203,15 +203,15 @@ func (s *WifiService) Connect(ctx context.Context, config *network.Config) (*net
 		return nil, err
 	}
 
-	return &network.Service{
-		Path: string(service.ObjectPath()),
+	return &network.ConnectResponse{
+		ServicePath: string(service.ObjectPath()),
 	}, nil
 }
 
 // Disconnect disconnects from a WiFi service.
 // This is the implementation of network.Wifi/Disconnect gRPC.
-func (s *WifiService) Disconnect(ctx context.Context, config *network.Service) (*empty.Empty, error) {
-	service, err := shill.NewService(ctx, dbus.ObjectPath(config.Path))
+func (s *WifiService) Disconnect(ctx context.Context, request *network.DisconnectRequest) (*empty.Empty, error) {
+	service, err := shill.NewService(ctx, dbus.ObjectPath(request.ServicePath))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create service object")
 	}
@@ -257,13 +257,13 @@ func (s *WifiService) QueryService(ctx context.Context, ser *network.QueryServic
 }
 
 // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
-func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, ssid *network.SSID) (*empty.Empty, error) {
+func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, request *network.DeleteEntriesForSSIDRequest) (*empty.Empty, error) {
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
 	filter := map[string]interface{}{
-		shill.ProfileEntryPropertyName: ssid.Ssid,
+		shill.ProfileEntryPropertyName: request.Ssid,
 		shill.ProfileEntryPropertyType: shill.TypeWifi,
 	}
 	if err := s.removeMatchedEntries(ctx, m, filter); err != nil {
@@ -332,6 +332,7 @@ func (s *WifiService) removeMatchedEntries(ctx context.Context, m *shill.Manager
 			if err != nil {
 				return errors.Wrapf(err, "failed to get entry %s", entryID)
 			}
+
 			for k, expect := range propFilter {
 				v, ok := entry[k]
 				if !ok || !reflect.DeepEqual(expect, v) {
