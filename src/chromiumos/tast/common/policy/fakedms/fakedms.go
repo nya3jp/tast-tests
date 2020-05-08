@@ -148,9 +148,9 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 	case <-ctx.Done():
 		fdms.kill(ctx)
 		return errors.Errorf("test has timed out: %s", ctx.Err())
-	case <-time.After(10 * time.Second):
+	case <-time.After(15 * time.Second):
 		fdms.kill(ctx)
-		return errors.New("FakeDMS took more than 10 seconds to start")
+		return errors.New("FakeDMS took more than 15 seconds to start")
 	case p := <-pDone:
 		if p.Err != nil {
 			fdms.kill(ctx)
