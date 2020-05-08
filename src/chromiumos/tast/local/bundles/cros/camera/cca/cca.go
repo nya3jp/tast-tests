@@ -20,6 +20,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -1088,4 +1089,25 @@ func (a *App) TriggerConfiguration(ctx context.Context, trigger func() error) er
 		return err
 	}
 	return a.conn.EvalPromise(ctx, "CCAConfigurationReady", nil)
+}
+
+// EnsureTabletModeEnabled makes sure that the tablet mode states of both
+// device and app are enabled, and returns a function which reverts back to the
+// original state.
+func (a *App) EnsureTabletModeEnabled(ctx context.Context, enabled bool) (func(ctx context.Context) error, error) {
+	tconn, err := a.cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, enabled)
+	if err != nil {
+		return nil, err
+	}
+	if err := a.WaitForState(ctx, "tablet", enabled); err != nil {
+		if err := cleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to restore tablet mode state: ", err)
+		}
+		return nil, err
+	}
+	return cleanup, nil
 }
