@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbe7e3fa_2425da5a",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-08T18:17:27Z",
+      "side": 1,
+      "message": "let\u0027s keep one thread from patch 1",
+      "parentUuid": "d15714d9_ca98e37a",
+      "range": {
+        "startLine": 238,
+        "startChar": 38,
+        "endLine": 238,
+        "endChar": 60
+      },
+      "revId": "9de006626478ef571d55f5731e77e360cbcabc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e5ebc14_e8d5c406",
         "filename": "src/chromiumos/tast/local/policyutil/verify.go",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "9de006626478ef571d55f5731e77e360cbcabc17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92fa0f2_c6c2064e",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-08T18:17:27Z",
+      "side": 1,
+      "message": "Then looks like we don\u0027t care.",
+      "parentUuid": "1750c4e9_f549fe08",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 25
+      },
+      "revId": "9de006626478ef571d55f5731e77e360cbcabc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
