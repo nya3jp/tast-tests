@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35e88396_5841df1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-05-08T05:42:12Z",
+      "side": 1,
+      "message": "nit: imitate?",
+      "range": {
+        "startLine": 14,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 63
+      },
+      "revId": "3ac0ac8e2e982c93723bf87b9d4c204fa03ca8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06f8c49a_c520aa2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drag_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-05-08T05:42:12Z",
+      "side": 1,
+      "message": "Can you add a \u0027.vm\u0027 variation as well as the other tests?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "3ac0ac8e2e982c93723bf87b9d4c204fa03ca8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
