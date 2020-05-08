@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "1750c4e9_f549fe08",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T17:35:52Z",
+      "side": 1,
+      "message": "It\u0027s an interesting question. For the current users of this method it\u0027s always Chrome.\nVerify() does not process device local account and extensions policies either. Should it comply?",
+      "parentUuid": "5e5ebc14_e8d5c406",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 25
+      },
+      "revId": "9de006626478ef571d55f5731e77e360cbcabc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b164c98e_9358f9c1",
         "filename": "src/chromiumos/tast/local/policyutil/verify.go",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "9de006626478ef571d55f5731e77e360cbcabc17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2121c8_0cc8df59",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-08T17:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b164c98e_9358f9c1",
+      "range": {
+        "startLine": 246,
+        "startChar": 38,
+        "endLine": 246,
+        "endChar": 43
+      },
+      "revId": "9de006626478ef571d55f5731e77e360cbcabc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
