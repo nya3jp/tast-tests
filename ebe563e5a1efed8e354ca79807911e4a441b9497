@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77332511_9981a4ef",
+        "filename": "android/ArcDragDropTest/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-08T07:14:12Z",
+      "side": 1,
+      "message": "Question.\nNow that we can use \u003clayout\u003e param, is it possible to simplify android app with only MainActivity?\nhttps://developer.android.com/topic/arc/window-management#launch_size\n\nEven if we can, it\u0027s okay to do this in a follow-up CL.",
+      "revId": "ebe563e5a1efed8e354ca79807911e4a441b9497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
