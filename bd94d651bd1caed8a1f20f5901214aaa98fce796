@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "54285f88_03a90cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2020-05-08T16:21:23Z",
+      "side": 1,
+      "message": "For reference, the above CL causes modifications to the StaticIPConfig property to trigger Device::OnIPConfigUpdated. This then triggers Connection::UpdateFromIPConfig, which will clear out all the routing rules for that Device and create new ones. During that interim, connectivity is not possible using that Device as traffic cannot be routed to it.\n\nDevice::OnIPConfigUpdated doesn\u0027t cause an Online Service to change state, as this would lead to fluctuations of what the default Service is every time a DHCP lease is renewed [0]. So in this case we need to wait for routing to be reestablished, but don\u0027t have a good D-Bus property to poll.\n\nTBH I think the reasoning behind [0] is valid for DHCP renewals doesn\u0027t extend to StaticIPConfig changes or DHCP rebinding. Could be worth looking into rectifying this, but in any case, the existing code here makes sense for now because we can actually use state to track the Service\u0027s connectivity. Putting a comment above this code to explain why this is used would be appreciated. Ty for pointing this out!\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform2/+/c975b12e6706ebc36779001b77ae5dcc54f4c1b1",
+      "parentUuid": "b4e0de00_ab5e147e",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "bd94d651bd1caed8a1f20f5901214aaa98fce796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fc8bdbb_f4749c1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 11
