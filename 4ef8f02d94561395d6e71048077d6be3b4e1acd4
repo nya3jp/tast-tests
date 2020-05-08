@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "1ab679db_6bc86ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-08T03:54:59Z",
+      "side": 1,
+      "message": "For arc.DataCollector, while the initial part of the test (UreadaheadPack part) is correctly done by the account specified by UreadaheadService_username, it seems that the last part of the test (GmsCoreCache part) is always done by testuser@gmail.com [1]\n(So my current code for calculating hash from testuser@gmail.com works.)\n\nMaybe it is not an intended behavior?\n\n\n[1]\narc.DataCollector log : https://paste.googleplex.com/5670584769839104?raw\n\n2020/05/08 12:41:20 [12:41:20.049] Logging in as user \"testuser@gmail.com\"\n2020/05/08 12:41:20 [12:41:20.231] Waiting for cryptohome for user \"testuser@gmail.com\" with timeout 30s\n2020/05/08 12:41:27 [12:41:27.698] Waiting for OOBE to be dismissed\n2020/05/08 12:41:29 [12:41:29.117] Waiting for Android boot\n...\n2020/05/08 12:41:47 [12:41:47.244] Compressing GMS Core caches to \"/tmp/gms_core_caches925266357/gms_core_cache.tar\"",
+      "parentUuid": "b42cee9c_eabff255",
+      "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b368be8f_5c4b914a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 4
@@ -117,6 +135,30 @@
       "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8eebda_62215393",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-08T03:54:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb653ae4_21e6ca26",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 25
+      },
+      "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
