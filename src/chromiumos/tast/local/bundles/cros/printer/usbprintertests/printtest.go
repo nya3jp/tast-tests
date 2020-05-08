@@ -67,10 +67,8 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	defer func() {
 		printer.Kill()
 		printer.Wait()
-		// The recording file is created by the virtual printer on startup. If the
-		// record file already exists then startup will fail. For this reason the
-		// record file must be removed after the test has finished.
-		if err := os.Remove(record); err != nil {
+		// Remove the recorded file. Ignore errors if the path doesn't exist.
+		if err := os.Remove(record); err != nil && !os.IsNotExist(err) {
 			s.Error("Failed to remove file: ", err)
 		}
 	}()
