@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "5cf9b811_7592cf37",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-08T09:24:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76a21840_124f7444",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3430fc7_3f2541c1",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 14
