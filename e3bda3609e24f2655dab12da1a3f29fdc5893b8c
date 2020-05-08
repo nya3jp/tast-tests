@@ -16,6 +16,24 @@
       "revId": "e3bda3609e24f2655dab12da1a3f29fdc5893b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a4afcca_f3631e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shillscript/shillscript.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-08T19:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4828c38e_89372eec",
+      "revId": "e3bda3609e24f2655dab12da1a3f29fdc5893b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
