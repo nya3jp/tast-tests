@@ -65,7 +65,7 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 		s.Fatal("Resolution settings menu is not available on device")
 	}
 
-	saveDir, err := cca.GetSavedDir(ctx, cr)
+	saveDir, err := app.GetSavedDir(ctx)
 	if err != nil {
 		s.Fatal("Failed to get save dir: ", err)
 	}
