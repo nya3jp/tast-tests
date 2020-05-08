@@ -212,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "879622ee_b1ac0005",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-08T05:07:44Z",
+      "side": 1,
+      "message": "Please name request/response messages as FooBarRequest/FooBarResponse unless using Empty. It is mentioned in go/tast-writing:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Defining-gRPC-services\n\nIt is also the defacto standard naming convention in gRPC.\nhttps://cloud.google.com/apis/design/naming_convention?hl\u003den#request_and_response_messages\n\nFooBarResponse might have only one field but that is perfectly fine.\n\nAs for the method name, I recommend GetInterface. It is a common practice to start a gRPC method name with a verb.\nhttps://cloud.google.com/apis/design/naming_convention?hl\u003den#method_names",
+      "parentUuid": "1456eb58_1e1f3e1f",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "908e00c24be15a6002b95aeb84c8e3074b9b3b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3430fc7_3f2541c1",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 14
