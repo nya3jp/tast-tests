@@ -39,6 +39,24 @@
       "revId": "491a6ed1fb97793e70fd3beab28d85317c82d471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6f9f9d_2eba5be6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-08T02:34:41Z",
+      "side": 1,
+      "message": "How does waiting for the window to be visible in the g.Go fix the existing window being closed issue? There\u0027s no easy way to tell if a new window corresponds with cr.NewConn AFAICT.",
+      "parentUuid": "ba3d2379_d82e195e",
+      "revId": "491a6ed1fb97793e70fd3beab28d85317c82d471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
