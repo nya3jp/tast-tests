@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6bef7e4_e3af09a2",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T06:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b288c610_fb6c9be6",
+      "revId": "eaad53c1c02f2fe4a953c4ed8158e2b6a336d0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb3522e9_b66c9bcc",
         "filename": "src/chromiumos/tast/remote/wificell/router.go",
         "patchSetId": 12
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-07T13:23:50Z",
       "side": 1,
       "message": "This one looks similar. I think h.hostapd and h.dhcpd are still nil here. I guess we don\u0027t really need shorten here as freeSubnetIdx and freeIface does not need ctx? (and h.stop is already called in h.start on error)",
+      "revId": "eaad53c1c02f2fe4a953c4ed8158e2b6a336d0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57d7f5f_844dc5da",
+        "filename": "src/chromiumos/tast/remote/wificell/router.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-08T06:21:12Z",
+      "side": 1,
+      "message": "That reminds me that h.stop() will call twice if it fails to start:\nh.start() calls h.stop() when it fails to start. Then r.StopAPIface() calls h.stop() again.\n\nAdding h.stopped field. PTAL.",
+      "parentUuid": "eb3522e9_b66c9bcc",
       "revId": "eaad53c1c02f2fe4a953c4ed8158e2b6a336d0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
