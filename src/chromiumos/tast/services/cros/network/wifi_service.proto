@@ -10,18 +10,19 @@ import "google/protobuf/empty.proto";
 
 option go_package = "chromiumos/tast/services/cros/network";
 
-// Wifi allows remote wifi setup though shill dbus interface.
-service Wifi {
+// WifiService allows remote WiFi setup though shill dbus interface.
+service WifiService {
   // Connect attempts to connect WiFi network.
-  rpc Connect(Config) returns (Service) {}
+  rpc Connect(ConnectRequest) returns (ConnectResponse) {}
   // Disconnect attempts to disconnect from a service.
-  rpc Disconnect(Service) returns (google.protobuf.Empty) {}
-  // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
-  rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
+  rpc Disconnect(DisconnectRequest) returns (google.protobuf.Empty) {}
+  // DeleteEntriesForSSID deletes all WiFi profile entries with the given SSID.
+  rpc DeleteEntriesForSSID(DeleteEntriesForSSIDRequest) returns (google.protobuf.Empty) {}
 }
 
-message Config {
+message ConnectRequest {
   string ssid = 1;
+  // hidden denotes that if the SSID is hidden.
   bool hidden = 2;
   // security is the SecurityClass (defined in shill/service.go) of the WiFi
   // service to Connect.
@@ -38,10 +39,14 @@ message ShillVal {
   }
 }
 
-message Service {
-  string path = 1;
+message ConnectResponse {
+  string service_path = 1;
 }
 
-message SSID {
+message DisconnectRequest {
+  string service_path = 1;
+}
+
+message DeleteEntriesForSSIDRequest {
   string ssid = 1;
 }
