@@ -32,9 +32,9 @@ type TestFixture struct {
 	router     *Router
 	wifiClient network.WifiClient
 
-	apID       int
-	curService *network.Service
-	curAP      *APIface
+	apID           int
+	curServicePath string
+	curAP          *APIface
 }
 
 // NewTestFixture creates a TestFixture.
@@ -164,17 +164,17 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 	if err != nil {
 		return err
 	}
-	config := &network.Config{
-		Ssid:       h.Config().Ssid,
-		Hidden:     h.Config().Hidden,
-		Security:   h.Config().SecurityConfig.Class(),
-		Shillprops: propsEnc,
+	request := &network.ConnectRequest{
+		Ssid:         h.Config().Ssid,
+		IsSsidHidden: h.Config().Hidden,
+		Security:     h.Config().SecurityConfig.Class(),
+		Shillprops:   propsEnc,
 	}
-	service, err := tf.wifiClient.Connect(ctx, config)
+	response, err := tf.wifiClient.Connect(ctx, request)
 	if err != nil {
 		return err
 	}
-	tf.curService = service
+	tf.curServicePath = response.ServicePath
 	tf.curAP = h
 	return nil
 }
@@ -185,10 +185,11 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 	defer st.End()
 
 	var err error
-	if _, err2 := tf.wifiClient.Disconnect(ctx, tf.curService); err2 != nil {
+	if _, err2 := tf.wifiClient.Disconnect(
+		ctx, &network.DisconnectRequest{ServicePath: tf.curServicePath}); err2 != nil {
 		err = errors.Wrap(err2, "failed to disconnect")
 	}
-	tf.curService = nil
+	tf.curServicePath = ""
 	tf.curAP = nil
 	return err
 }

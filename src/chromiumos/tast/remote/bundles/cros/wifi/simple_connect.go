@@ -165,7 +165,8 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			if err := tf.DisconnectWifi(ctx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, &network.SSID{Ssid: ap.Config().Ssid}); err != nil {
+			if _, err := tf.WifiClient().DeleteEntriesForSSID(
+				ctx, &network.DeleteEntriesForSSIDRequest{Ssid: ap.Config().Ssid}); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
 		}()
