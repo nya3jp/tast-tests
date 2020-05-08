@@ -93,6 +93,30 @@
       "revId": "4d777a2a8ba31eab70e263ca5c065b4761ab911c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c895b07_70c8022d",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-08T14:33:01Z",
+      "side": 1,
+      "message": "My recommendation is, if an error is returned, we should not run Unmarshal for cfg on defer, because it will overwrites the first return value (although it is in the error case), which looks unexpected (or at least confusing).\n\nBecause \"defer\" is commonly used for clean up, but this is not, so I\u0027d suggest 2.\n\nLooking at PS1 (thank you for the pointer!).\nI would avoid prepending O(n^2) approach.\nInstead, simply append, and then reverse the slice (or traverse the array in the reverse order).",
+      "parentUuid": "4bca82f3_9026e8d8",
+      "range": {
+        "startLine": 209,
+        "startChar": 8,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "4d777a2a8ba31eab70e263ca5c065b4761ab911c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
