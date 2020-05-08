@@ -26,8 +26,15 @@ func init() {
 		Desc:         "Checks that Pointer Capture works in Android",
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
-		Pre:          arc.VMBooted(),
+		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Pre:               arc.VMBooted(),
+		}},
 	})
 }
 
