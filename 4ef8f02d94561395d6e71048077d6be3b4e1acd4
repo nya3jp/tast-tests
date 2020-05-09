@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "478856af_12b87f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-09T03:00:22Z",
+      "side": 1,
+      "message": "ok, added comments to L94 and here.\nLeaving this (chrome.DefaultUser) as is for now.",
+      "parentUuid": "eb3f86bc_2666a740",
+      "revId": "4ef8f02d94561395d6e71048077d6be3b4e1acd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b368be8f_5c4b914a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 4
