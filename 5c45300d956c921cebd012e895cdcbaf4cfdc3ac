@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "4d52efd9_f73cf8e2",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-09T07:16:31Z",
+      "side": 1,
+      "message": "Looks good. I get what you meant now:) Thanks, Oleh!\nI still think that it\u0027s not general, since this method can be used only for JSON policies, but can\u0027t think of any usage of getting a policy value for non-JSON policy.\nDone.",
+      "parentUuid": "5ec137a6_b57ae192",
+      "range": {
+        "startLine": 240,
+        "startChar": 64,
+        "endLine": 240,
+        "endChar": 86
+      },
+      "revId": "5c45300d956c921cebd012e895cdcbaf4cfdc3ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "737d5ea3_e9a82e00",
         "filename": "src/chromiumos/tast/local/policyutil/verify.go",
         "patchSetId": 1
