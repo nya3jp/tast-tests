@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bc9bc58_016bb15c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-09T05:04:28Z",
+      "side": 1,
+      "message": "@Brian, just pointing you towards some of the relevant changes from your last comment, since I split the file and it\u0027s harder to see what\u0027s new. I stuck with using GetProperties, since sometimes the wifi status has already changed by the time I entered this function.",
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8063901e_c1e899df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-09T05:04:28Z",
+      "side": 1,
+      "message": "@Brian, I used the Watcher here to wait for the properties to update before checking the status again. Let me know if there\u0027s any cleaner way to use the Watcher, or if this seems alright.",
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

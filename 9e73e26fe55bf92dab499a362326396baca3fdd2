@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a579c3bc_a5c88a0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-09T05:04:28Z",
+      "side": 1,
+      "message": "I went ahead and split them into 2 different tests, since there were a few differences that didn\u0027t seem to lend themselves well to the parameterized approach.",
+      "parentUuid": "d6d29f31_eaba3b96",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 76
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3785c6fe_76fe8f02",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c77c39b4_9108b27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-09T05:04:28Z",
+      "side": 1,
+      "message": "Thanks for pointing me towards Shill! I ended up using a mix of your suggestions below and the WaitAll function. Using a Watcher on its own didn\u0027t quite work, because usually the wifi status had already changed by the time the Assistant query ended, so I guess the signal it was watching for wasn\u0027t firing.\n\nI\u0027ve kept polling in for UI checking, since we just don\u0027t have any better ways right now.",
+      "parentUuid": "3785c6fe_76fe8f02",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ff39a124_83711279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-09T05:04:28Z",
+      "side": 1,
+      "message": "Yeah this didn\u0027t seem right, but I wasn\u0027t sure what of a better way at the time. Replaced with the shill utilities now :)",
+      "parentUuid": "0716ca27_26a78fe9",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e21d04a3_8adf981f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bb2199_c5371ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2020-05-09T05:04:28Z",
+      "side": 1,
+      "message": "Roger that. Thank you for the suggestions and good info about checking wifi status! I incorporated this together with the Watcher approach you metioned above in the latest patch set.",
+      "parentUuid": "e21d04a3_8adf981f",
+      "range": {
+        "startLine": 187,
+        "startChar": 43,
+        "endLine": 187,
+        "endChar": 51
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
