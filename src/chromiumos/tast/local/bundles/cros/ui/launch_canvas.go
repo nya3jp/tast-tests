@@ -25,7 +25,7 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      3 * time.Minute,
+		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 	})
 }
@@ -62,7 +62,7 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 		Name: "Welcome to Canvas!",
 		Role: ui.RoleTypeHeading,
 	}
-	if _, err = ui.FindWithTimeout(ctx, tconn, params, 20*time.Second); err != nil {
+	if _, err = ui.FindWithTimeout(ctx, tconn, params, 60*time.Second); err != nil {
 		s.Fatal("Failed to render Canvas: ", err)
 	}
 }
