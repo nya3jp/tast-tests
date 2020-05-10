@@ -50,6 +50,7 @@ func Config(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that the resulting config's "platform" attribute matches the platform returned by RPC.
+	platform = strings.Split(platform, "-")[0]
 	if cfg.Platform != platform {
 		s.Errorf("Unexpected Platform value; got %s, want %s", cfg.Platform, platform)
 	}

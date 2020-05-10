@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/media/caps"
@@ -19,6 +20,7 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"android_p", "arc_camera3", caps.BuiltinCamera},
+		Timeout:      4 * time.Minute,
 	})
 }
 

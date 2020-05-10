@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/local/crostini"
@@ -52,6 +53,13 @@ func AudioSanity(ctx context.Context, s *testing.State) {
 	s.Log("List alsa output devices")
 	if err := cont.Command(ctx, "aplay", "-l").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to list alsa output devices: ", err)
+	}
+
+	alsaSinksPattern := regexp.MustCompile("1\talsa_output.hw_0_0\tmodule-alsa-sink.c\ts16le 2ch 48000Hz\t(IDLE|SUSPENDED)\n")
+	if out, err := cont.Command(ctx, "pactl", "list", "sinks", "short").Output(); err != nil {
+		s.Fatal("Failed to list pulseaudio sinks: ", err)
+	} else if res := alsaSinksPattern.Match(out); !res {
+		s.Fatal("Failed to load alsa device to pulseaudio:", string(out))
 	}
 
 	s.Log("Play zeros with alsa device")

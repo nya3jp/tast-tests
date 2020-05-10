@@ -239,7 +239,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 // measureGPUCounters measures GPU usage for a period of time into p.
 func measureGPUCounters(ctx context.Context, p *perf.Values) error {
 	testing.ContextLog(ctx, "Measuring GPU usage for ", gpuMeasuring)
-	counters, err := graphics.CollectPerformanceCounters(ctx, gpuMeasuring)
+	counters, megaPeriods, err := graphics.CollectPerformanceCounters(ctx, gpuMeasuring)
 	if err != nil {
 		return errors.Wrap(err, "error collecting graphics performance counters")
 	}
@@ -250,6 +250,15 @@ func measureGPUCounters(ctx context.Context, p *perf.Values) error {
 		return errors.New("total elapsed time counter is zero")
 	}
 
+	if megaPeriods != 0 {
+		frequencyMHz := float64(megaPeriods) / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "Average frequency: %fMHz", frequencyMHz)
+		p.Set(perf.Metric{
+			Name:      "frequency",
+			Unit:      "MHz",
+			Direction: perf.SmallerIsBetter,
+		}, frequencyMHz)
+	}
 	if rcs, ok := counters["rcs"]; ok && rcs.Seconds() != 0 {
 		rcsUsage := 100 * rcs.Seconds() / counters["total"].Seconds()
 		testing.ContextLogf(ctx, "RCS usage: %f%%", rcsUsage)

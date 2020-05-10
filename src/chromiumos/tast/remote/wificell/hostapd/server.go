@@ -12,8 +12,10 @@ import (
 	"os"
 	"path"
 	"sync"
+	"time"
 
 	"chromiumos/tast/common/network/daemonutil"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
@@ -47,7 +49,9 @@ type Server struct {
 // StartServer creates a new Server object and runs hostapd on iface of the given host with settings
 // specified in config. workDir is the dir on host for the server to put temporary files.
 // name is the identifier used for log filenames in OutDir.
-func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (server *Server, err error) {
+// After getting a Server instance, s, the caller should call s.Close() at the end, and use the
+// shortened ctx (provided by s.ReserveForClose()) before s.Close() to reserve time for it to run.
+func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, config *Config) (server *Server, retErr error) {
 	ctx, st := timing.Start(ctx, "hostapd.StartServer")
 	defer st.End()
 
@@ -60,7 +64,7 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 	}
 	// Clean up on error.
 	defer func() {
-		if err != nil {
+		if retErr != nil {
 			// Close the Server instance created above, not the returned one as it might be nil.
 			s.Close(ctx)
 		}
@@ -117,9 +121,18 @@ func (s *Server) initConfig(ctx context.Context) error {
 }
 
 // start spawns a hostapd daemon and waits until it is ready.
-func (s *Server) start(ctx context.Context) error {
-	ctx, st := timing.Start(ctx, "start")
+func (s *Server) start(fullCtx context.Context) (retErr error) {
+	fullCtx, st := timing.Start(fullCtx, "start")
 	defer st.End()
+
+	defer func() {
+		if retErr != nil {
+			s.Close(fullCtx)
+		}
+	}()
+
+	ctx, cancel := s.ReserveForClose(fullCtx)
+	defer cancel()
 
 	testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
 	cmd := s.host.Command(hostapdCmd, "-dd", "-t", s.confPath())
@@ -172,6 +185,12 @@ func (s *Server) start(ctx context.Context) error {
 
 	testing.ContextLog(ctx, "hostapd started")
 	return nil
+}
+
+// ReserveForClose returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before s.Close() to reserve time for it to run.
+func (s *Server) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 2*time.Second)
 }
 
 // Close stops hostapd and cleans up related resources.

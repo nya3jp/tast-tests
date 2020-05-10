@@ -56,7 +56,7 @@ func TestTimeline(t *testing.T) {
 	d1 := &testTimelineDatasource{}
 	d2 := &testTimelineDatasource{}
 
-	tl, err := NewTimeline(ctx, []TimelineDatasource{d1, d2}, Interval(200*time.Millisecond))
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d1, d2}, Interval(1*time.Second))
 	if err != nil {
 		t.Error("Failed to create Timeline: ", err)
 	}
@@ -76,7 +76,7 @@ func TestTimeline(t *testing.T) {
 		t.Error("Failed to start recording: ", err)
 	}
 
-	tasttesting.Sleep(ctx, 450*time.Millisecond)
+	tasttesting.Sleep(ctx, 2500*time.Millisecond)
 
 	if v, err := tl.StopRecording(); err != nil {
 		t.Error("Error while recording: ", err)
@@ -93,7 +93,7 @@ func TestTimeline(t *testing.T) {
 		t.Error("Failed to start recording: ", err)
 	}
 
-	tasttesting.Sleep(ctx, 650*time.Millisecond)
+	tasttesting.Sleep(ctx, 3500*time.Millisecond)
 
 	if v, err := tl.StopRecording(); err != nil {
 		t.Error("Error while recording: ", err)

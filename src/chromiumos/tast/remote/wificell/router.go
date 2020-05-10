@@ -7,20 +7,21 @@ package wificell
 import (
 	"context"
 	"fmt"
-	"os"
-	"path"
+	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/network/iw"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/ssh"
-	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -29,39 +30,52 @@ const workingDir = "/tmp/tast-test/"
 
 // Router is used to control an wireless router and stores state of the router.
 type Router struct {
-	host        *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
-	name        string
-	board       string
-	busySubnet  map[byte]struct{}
-	phys        map[int]*iw.Phy            // map from phy idx to iw.Phy.
-	busyPhy     map[int]map[iw.IfType]bool // map from phy idx to the map of business of interface types.
-	availIfaces map[string]*iw.NetDev      // map from interface name to iw.NetDev.
-	busyIfaces  map[string]*iw.NetDev      // map from interface name to iw.NetDev.
-	ifaceID     int
-	iwr         *iw.Runner
+	host          *ssh.Conn // TODO(crbug.com/1019537): use a more suitable ssh object.
+	name          string
+	board         string
+	busySubnet    map[byte]struct{}
+	phys          map[int]*iw.Phy            // map from phy idx to iw.Phy.
+	busyPhy       map[int]map[iw.IfType]bool // map from phy idx to the map of business of interface types.
+	availIfaces   map[string]*iw.NetDev      // map from interface name to iw.NetDev.
+	busyIfaces    map[string]*iw.NetDev      // map from interface name to iw.NetDev.
+	ifaceID       int
+	iwr           *iw.Runner
+	logCollectors map[string]*log.Collector // map from log path to its collector.
 }
 
 // NewRouter connects to and initializes the router via SSH then returns the Router object.
-func NewRouter(ctx context.Context, host *ssh.Conn, name string) (*Router, error) {
+// This method takes two context: ctx and daemonCtx, the first is the context for the New
+// method and daemonCtx is for the spawned background daemons.
+// After getting a Server instance, d, the caller should call r.Close() at the end, and use the
+// shortened ctx (provided by d.ReserveForClose()) before r.Close() to reserve time for it to run.
+func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Router, error) {
 	ctx, st := timing.Start(ctx, "NewRouter")
 	defer st.End()
-
 	r := &Router{
-		host:        host,
-		name:        name,
-		busySubnet:  make(map[byte]struct{}),
-		phys:        make(map[int]*iw.Phy),
-		busyPhy:     make(map[int]map[iw.IfType]bool),
-		availIfaces: make(map[string]*iw.NetDev),
-		busyIfaces:  make(map[string]*iw.NetDev),
-		iwr:         remote_iw.NewRunner(host),
+		host:          host,
+		name:          name,
+		busySubnet:    make(map[byte]struct{}),
+		phys:          make(map[int]*iw.Phy),
+		busyPhy:       make(map[int]map[iw.IfType]bool),
+		availIfaces:   make(map[string]*iw.NetDev),
+		busyIfaces:    make(map[string]*iw.NetDev),
+		iwr:           remote_iw.NewRunner(host),
+		logCollectors: make(map[string]*log.Collector),
 	}
-	if err := r.initialize(ctx); err != nil {
+
+	shortCtx, cancel := r.ReserveForClose(ctx)
+	defer cancel()
+	if err := r.initialize(shortCtx, daemonCtx); err != nil {
 		r.Close(ctx)
 		return nil, err
 	}
-
 	return r, nil
+}
+
+// ReserveForClose returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before r.Close() to reserve time for it to run.
+func (r *Router) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
+	return ctxutil.Shorten(ctx, 5*time.Second)
 }
 
 // removeWifiIface removes iface with iw command.
@@ -184,7 +198,9 @@ func (r *Router) configureRNG(ctx context.Context) error {
 }
 
 // initialize prepares initial test AP state (e.g., initializing wiphy/wdev).
-func (r *Router) initialize(ctx context.Context) error {
+// ctx is the deadline for the step and daemonCtx is the lifetime for background
+// daemons.
+func (r *Router) initialize(ctx, daemonCtx context.Context) error {
 	ctx, st := timing.Start(ctx, "initialize")
 	defer st.End()
 
@@ -200,6 +216,12 @@ func (r *Router) initialize(ctx context.Context) error {
 	}
 	if err := r.host.Command("mkdir", "-p", r.workDir()).Run(ctx); err != nil {
 		return errors.Wrapf(err, "failed to create workdir %q", r.workDir())
+	}
+
+	// Start log collectors with daemonCtx as it should live longer than current
+	// stage when we are in precondition.
+	if err := r.startLogCollectors(daemonCtx); err != nil {
+		return errors.Wrap(err, "failed to start loggers")
 	}
 
 	if err := r.setupWifiPhys(ctx); err != nil {
@@ -253,26 +275,32 @@ func (r *Router) Close(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "router.Close")
 	defer st.End()
 
-	var err error
+	var firstErr error
+
 	// Remove the interfaces that we created.
 	for _, nd := range r.availIfaces {
-		if err2 := r.removeWifiIface(ctx, nd.IfName); err2 != nil {
-			err = errors.Wrapf(err, "failed to remove interfaces, err=%s", err2.Error())
+		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
+			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
 	for _, nd := range r.busyIfaces {
 		testing.ContextLogf(ctx, "iface %s not yet freed", nd.IfName)
-		if err2 := r.removeWifiIface(ctx, nd.IfName); err2 != nil {
-			err = errors.Wrapf(err, "failed to remove interfaces, err=%s", err2.Error())
+		if err := r.removeWifiIface(ctx, nd.IfName); err != nil {
+			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove interfaces"))
 		}
 	}
-	if err2 := r.collectLogs(ctx); err2 != nil {
-		err = errors.Wrapf(err, "failed to collect logs, err=%s", err2.Error())
+	// Collect closing log to facilitate debugging for error occurs in
+	// r.initialize() or after r.CollectLogs().
+	if err := r.collectLogs(ctx, ".close"); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to collect logs"))
 	}
-	if err2 := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err2 != nil {
-		err = errors.Wrapf(err, "failed to remove working dir, err=%s", err2.Error())
+	if err := r.stopLogCollectors(ctx); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop loggers"))
 	}
-	return err
+	if err := r.host.Command("rm", "-rf", r.workDir()).Run(ctx); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to remove working dir"))
+	}
+	return firstErr
 }
 
 // phy finds an suitable phy for the given channel and target interface type t.
@@ -319,6 +347,9 @@ func (r *Router) netDev(ctx context.Context, channel int, t iw.IfType) (*iw.NetD
 // StartAPIface starts a hostapd service which includes hostapd and dhcpd. It will select a suitable
 // phy and re-use or create interface on the phy. Name is used on the path to store logs, config files
 // or related resources. The handle object for the service is returned.
+// After getting an APIface instance, h, the caller should call h.StopAPIfaceClose() at the end,
+// and use the shortened ctx (provided by h.ReserveForStopAPIface()) before h.StopAPIfaceClose()
+// to reserve time for it to run.
 func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Config) (*APIface, error) {
 	ctx, st := timing.Start(ctx, "router.StartAPIface")
 	defer st.End()
@@ -345,13 +376,20 @@ func (r *Router) StartAPIface(ctx context.Context, name string, conf *hostapd.Co
 		subnetIdx: idx,
 		config:    conf,
 	}
+
+	// Note that we don't need to reserve time for clean up as h.start() reserves time to clean
+	// up itself and the rest of cleaning up in r.StopAPIface() does not limited by ctx.
 	if err := h.start(ctx); err != nil {
-		// Release resources.
-		r.freeSubnetIdx(idx)
-		r.freeIface(iface)
+		r.StopAPIface(ctx, h)
 		return nil, err
 	}
 	return h, nil
+}
+
+// ReserveForStopAPIface returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before r.StopAPIface() to reserve time for it to run.
+func (r *Router) ReserveForStopAPIface(ctx context.Context, h *APIface) (context.Context, context.CancelFunc) {
+	return h.reserveForStop(ctx)
 }
 
 // StopAPIface stops the InterfaceHandle, release the subnet and mark the interface
@@ -368,6 +406,9 @@ func (r *Router) StopAPIface(ctx context.Context, h *APIface) error {
 }
 
 // StartCapture starts a packet capturer.
+// After getting a Capturer instance, c, the caller should call r.StopCapture(ctx, c) at the end,
+// and use the shortened ctx (provided by r.ReserveForStopCapture(ctx, c)) before r.StopCapture()
+// to reserve time for it to run.
 func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps []iw.SetFreqOption, pcapOps ...pcap.Option) (ret *pcap.Capturer, retErr error) {
 	ctx, st := timing.Start(ctx, "router.StartCapture")
 	defer st.End()
@@ -418,25 +459,24 @@ func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps 
 	return c, nil
 }
 
+// ReserveForStopCapture returns a shortened ctx with cancel function.
+// The shortened ctx is used for running things before r.StopCapture() to reserve time for it to run.
+func (r *Router) ReserveForStopCapture(ctx context.Context, capturer *pcap.Capturer) (context.Context, context.CancelFunc) {
+	return capturer.ReserveForClose(ctx)
+}
+
 // StopCapture stops the packet capturer and releases related resources.
 func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error {
 	ctx, st := timing.Start(ctx, "router.StopCapture")
 	defer st.End()
 
 	var firstErr error
-	collectErr := func(err error) {
-		if firstErr != nil {
-			testing.ContextLog(ctx, "StopCapture error: ", err)
-		} else {
-			firstErr = err
-		}
-	}
 	iface := capturer.Interface()
 	if err := capturer.Close(ctx); err != nil {
-		collectErr(errors.Wrap(err, "failed to stop capturer"))
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 	}
 	if err := r.host.Command("ip", "link", "set", iface, "down").Run(ctx); err != nil {
-		collectErr(errors.Wrapf(err, "failed to set %s down", iface))
+		collectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to set %s down", iface))
 	}
 	r.freeIface(iface)
 	return firstErr
@@ -558,30 +598,66 @@ func (r *Router) freeSubnetIdx(i byte) {
 	delete(r.busySubnet, i)
 }
 
-// collectLogs downloads log files from router.
-func (r *Router) collectLogs(ctx context.Context) error {
+// logsToCollect is the list of files on router to collect.
+var logsToCollect = []string{
+	"/var/log/messages",
+}
+
+// startLogCollectors starts log collectors.
+func (r *Router) startLogCollectors(ctx context.Context) error {
+	for _, p := range logsToCollect {
+		logger, err := log.StartCollector(ctx, r.host, p)
+		if err != nil {
+			return errors.Wrap(err, "failed to start log collector")
+		}
+		r.logCollectors[p] = logger
+	}
+	return nil
+}
+
+// collectLogs downloads log files from router to $OutDir/debug/$r.name with suffix
+// appended to the filenames.
+func (r *Router) collectLogs(ctx context.Context, suffix string) error {
 	ctx, st := timing.Start(ctx, "collectLogs")
 	defer st.End()
 
-	collect := map[string]string{
-		"/var/log/messages": fmt.Sprintf("debug/%s_host_messages", r.name),
-	}
-	// TODO(crbug.com/1034875): Trim logs before creation of this object.
-	outdir, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		return errors.New("OutDir not supported")
-	}
-	for s, d := range collect {
-		dst := path.Join(outdir, d)
-		basedir := path.Dir(dst)
-		if err := os.MkdirAll(basedir, 0755); err != nil {
-			return errors.Wrapf(err, "failed to mkdir %s", basedir)
+	baseDir := filepath.Join("debug", r.name)
+
+	for _, src := range logsToCollect {
+		dst := filepath.Join(baseDir, filepath.Base(src)+suffix)
+		collector := r.logCollectors[src]
+		if collector == nil {
+			testing.ContextLogf(ctx, "No log collector for %s found", src)
+			continue
 		}
-		if err := linuxssh.GetFile(ctx, r.host, s, dst); err != nil {
-			return errors.Wrapf(err, "failed to download %s to %s", s, dst)
+		f, err := fileutil.PrepareOutDirFile(ctx, dst)
+		if err != nil {
+			testing.ContextLogf(ctx, "Failed to collect %q, err: %v", src, err)
+			continue
+		}
+		if err := collector.Dump(f); err != nil {
+			testing.ContextLogf(ctx, "Failed to dump %q logs, err: %v", src, err)
+			continue
+
 		}
 	}
 	return nil
+}
+
+// stopLogCollectors closes all log collectors spawned.
+func (r *Router) stopLogCollectors(ctx context.Context) error {
+	var firstErr error
+	for _, c := range r.logCollectors {
+		if err := c.Close(ctx); err != nil {
+			collectFirstErr(ctx, &firstErr, err)
+		}
+	}
+	return firstErr
+}
+
+// CollectLogs downloads log files from router to OutDir.
+func (r *Router) CollectLogs(ctx context.Context) error {
+	return r.collectLogs(ctx, "")
 }
 
 // hostBoard returns the board information on a chromeos host.
