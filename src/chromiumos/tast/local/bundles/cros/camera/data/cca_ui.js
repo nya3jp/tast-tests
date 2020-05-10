@@ -295,7 +295,6 @@ window.Tast = class {
   static async checkMojoConnection(shouldSupportDeviceOperator) {
     // Checks if ChromeHelper works. It should work on all devices.
     const chromeHelper = ChromeHelper.getInstance();
-    await chromeHelper.isTabletMode();
 
     const isDeviceOperatorSupported = await DeviceOperator.isSupported();
     if (shouldSupportDeviceOperator !== isDeviceOperatorSupported) {
