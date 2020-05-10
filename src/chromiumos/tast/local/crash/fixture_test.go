@@ -106,7 +106,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		defer close(done)
 		err := cmd.Wait()
 		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-			t.Errorf("Fake crash_sender process was not killed: %v", err)
+			t.Errorf("Fake crash_sender process was not killed (ok: %v, signaled: %v, signal: %v): %v", ok, ws.Signaled(), ws.Signal(), err)
 		}
 	}()
 	defer func() { <-done }()

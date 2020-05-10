@@ -183,13 +183,30 @@ func (at *AttestationTest) GetCertificate(ctx context.Context, username, label s
 	return nil
 }
 
+func getDecodedVAChallenge(ctx context.Context, retryCount int) ([]byte, error) {
+	var challenge []byte
+	var lastErr error
+	for i := 0; i < retryCount; i++ {
+		resp, err := SendGetRequestTo(ctx, "https://test-dvproxy-server.sandbox.google.com/dvproxy/getchallenge")
+		if err != nil {
+			lastErr = errors.Wrap(err, "failed to send request to VA")
+			continue
+		}
+		challenge, lastErr = base64.StdEncoding.DecodeString(resp)
+		if lastErr != nil {
+			lastErr = errors.Wrap(lastErr, "failed to base64-decode challenge")
+			continue
+		}
+		break
+	}
+	return challenge, lastErr
+}
+
 // SignEnterpriseChallenge gets the challenge from default VA server, perform SPKAC, and sends the signed challenge back to verify it
 func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username, label string) error {
-	resp, err := SendGetRequestTo(ctx, "https://test-dvproxy-server.sandbox.google.com/dvproxy/getchallenge")
-	if err != nil {
-		return errors.Wrap(err, "failed to send request to VA")
-	}
-	challenge, err := base64.StdEncoding.DecodeString(resp)
+	// In case the request fails for any reason, retry for 5 times.
+	const RetryCount = 5
+	challenge, err := getDecodedVAChallenge(ctx, RetryCount)
 	if err != nil {
 		return errors.Wrap(err, "failed to base64-decode challenge")
 	}
@@ -207,7 +224,7 @@ func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username
 	}
 	b64SignedChallenge := base64.StdEncoding.EncodeToString([]byte(signedChallenge))
 	urlForVerification := "https://test-dvproxy-server.sandbox.google.com/dvproxy/verifychallengeresponse?signeddata=" + url.QueryEscape(b64SignedChallenge)
-	resp, err = SendGetRequestTo(ctx, urlForVerification)
+	_, err = SendGetRequestTo(ctx, urlForVerification)
 	if err != nil {
 		return errors.Wrap(err, "failed to verify challenge")
 	}

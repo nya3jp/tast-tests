@@ -12,7 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/network"
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -37,8 +38,9 @@ func init() {
 				Name: "sanity",
 				// Keep this test list short, as it can take a while to run many modules.
 				Val: []string{
-					"-f",
-					"scan",
+					"module_wpa_supplicant", // unit tests for wpa_supplicant
+					"module_hostapd",        // unit tests for hostapd
+					"scan_random_mac",       // example scanning test
 				},
 				// Only target the 'sanity' list for mainline, as anything more can take a
 				// long time.
@@ -51,7 +53,7 @@ func init() {
 				Val: []string{
 					"-f",
 					"oce",
-					"scan",
+					"scan", // NB (https://crbug.com/1060000): 'scan_only' is flaky.
 					"owe",
 					"wpas_wmm_ac",
 					"bgscan",
@@ -98,10 +100,10 @@ func init() {
 	})
 }
 
-func HostapHwsim(ctx context.Context, s *testing.State) {
-	// Hwsim tests will spin up ~8 virtual clients and ~3 APs. We don't
-	// want shill to manage any of them.
-	const blacklistArgs = "BLACKLISTED_DEVICES=wlan0,wlan1,wlan2,wlan3,wlan4,wlan5,wlan6,wlan7,hwsim0,hwsim1,hwsim2"
+func HostapHwsim(fullCtx context.Context, s *testing.State) {
+	// Save a few seconds for cleanup.
+	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second*5)
+	defer cancel()
 
 	// Arguments passed to the run-all wrapper script. Useful args:
 	//   --vm: tell the test wrapper we're launching directly within a VM.
@@ -131,50 +133,42 @@ func HostapHwsim(ctx context.Context, s *testing.State) {
 		runArgs = append(testArgs, defaultTestList...)
 	}
 
+	s.Log("Preparing wpa_supplicant and shill")
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to shill Manager: ", err)
+	}
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		s.Fatal("Failed to get properties: ", err)
+	}
+	origProhibited, err := props.GetString(shill.ManagerPropertyProhibitedTechnologies)
+	if err != nil {
+		s.Fatal("Failed to get ProhibitedTechnologies: ", err)
+	}
+	// We don't want shill to manage any WiFi devices created by this test.
+	var prohibited string
+	if origProhibited != "" {
+		prohibited = origProhibited + "," + string(shill.TechnologyWifi)
+	} else {
+		prohibited = string(shill.TechnologyWifi)
+	}
+	if err := m.SetProperty(ctx, shill.ManagerPropertyProhibitedTechnologies, prohibited); err != nil {
+		s.Fatal("Could not prohibit WiFi from shill: ", err)
+	}
+	defer func() {
+		// Reset to original prohibition list.
+		if err := m.SetProperty(fullCtx, shill.ManagerPropertyProhibitedTechnologies, origProhibited); err != nil {
+			s.Error("Could not reset shill prohibited technologies: ", err)
+		}
+	}()
+
 	// Get the system wpa_supplicant out of the way; hwsim tests spin up
 	// several of their own instances.
-	s.Log("Preparing wpa_supplicant and shill")
 	if err := upstart.StopJob(ctx, "wpasupplicant"); err != nil {
 		s.Fatal("Failed to stop wpasupplicant: ", err)
 	}
-	defer upstart.StartJob(ctx, "wpasupplicant")
-
-	func() {
-		// Don't let recover_duts be confused by a re-starting Shill.
-		unlock, err := network.LockCheckNetworkHook(ctx)
-		if err != nil {
-			s.Fatal("Failed to lock check network hook: ", err)
-		}
-		// Release the lock after restarting Shill, since the rest of
-		// this test doesn't disturb connectivity, and it can run
-		// pretty long.
-		defer unlock()
-
-		// We don't want Shill to try to manage any of the hwsim WiFi client or
-		// AP devices, so re-start Shill with an appropriate blacklist.
-		if err := upstart.StopJob(ctx, "shill"); err != nil {
-			s.Fatal("Failed to stop shill: ", err)
-		}
-		if err := upstart.StartJob(ctx, "shill", blacklistArgs); err != nil {
-			// One last attempt to get Shill back up / re-set blacklist.
-			upstart.RestartJob(ctx, "shill")
-			s.Fatal("Failed to start shill with new blacklist: ", err)
-		}
-	}()
-
-	defer func() {
-		// Don't let recover_duts be confused by a re-starting Shill.
-		unlock, err := network.LockCheckNetworkHook(ctx)
-		if err != nil {
-			s.Error("Failed to lock check network hook: ", err)
-			// Continue anyway, since it's more important to re-set Shill.
-		} else {
-			defer unlock()
-		}
-
-		// Always re-start Shill at exit, to reset the device blacklist.
-		upstart.RestartJob(ctx, "shill")
-	}()
+	defer upstart.StartJob(fullCtx, "wpasupplicant")
 
 	s.Log("Running hwsim tests, args: ", runArgs)
 	// Hwsim tests like to run from their own directory.

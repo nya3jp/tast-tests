@@ -12,10 +12,21 @@ option go_package = "chromiumos/tast/services/cros/network";
 
 // Wifi allows remote wifi setup though shill dbus interface.
 service Wifi {
+  // InitDUT initialize the DUT for WiFi testing.
+  rpc InitDUT(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ReinitTestState cleans and sets up the environment for a single WiFi testcase.
+  rpc ReinitTestState(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // TearDown reverts the settings made in InitDUT (and also ReinitTestState).
+  rpc TearDown(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // Connect attempts to connect WiFi network.
   rpc Connect(Config) returns (Service) {}
+
   // Disconnect attempts to disconnect from a service.
   rpc Disconnect(Service) returns (google.protobuf.Empty) {}
+
   // DeleteEntriesForSSID deletes all WiFi profile entries for a given ssid.
   rpc DeleteEntriesForSSID(SSID) returns (google.protobuf.Empty) {}
 }
@@ -23,6 +34,19 @@ service Wifi {
 message Config {
   string ssid = 1;
   bool hidden = 2;
+  // security is the SecurityClass (defined in shill/service.go) of the WiFi
+  // service to Connect.
+  string security = 3;
+  // shillprops is the shill properties the DUT should set to Connect to the
+  // WiFi service.
+  map<string, ShillVal> shillprops = 4;
+}
+
+message ShillVal {
+  oneof val {
+    string str = 1;
+    bool bool = 2;
+  }
 }
 
 message Service {

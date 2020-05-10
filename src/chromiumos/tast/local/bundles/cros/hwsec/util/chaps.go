@@ -81,3 +81,17 @@ func CreateKeysForTesting(ctx context.Context, r hwsec.CmdRunner, pkcs11Util *pk
 
 	return keys, nil
 }
+
+// CleanupTestingKeys is a helper method that remove the keys created by CreateKeysForTesting() after the test finishes.
+// Usually this is called by defer in the test body.
+func CleanupTestingKeys(ctx context.Context, keys []*pkcs11.KeyInfo, pkcs11Util *pkcs11.Chaps, cryptohomeUtil *hwsec.UtilityCryptohomeBinary) (retErr error) {
+	// Cleanup should remove all keys, only return the last error.
+	for _, k := range keys {
+		if err := pkcs11Util.DestroyKey(ctx, k); err != nil {
+			testing.ContextLogf(ctx, "Failed to destroy key %s during CleanupTestingKeys: ", pkcs11Util.DumpKeyInfo(k))
+			retErr = errors.Wrapf(err, "failed to destroy key %s during CleanupTestingKeys", pkcs11Util.DumpKeyInfo(k))
+		}
+	}
+
+	return retErr
+}
