@@ -37,7 +37,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(peerconnection.DataFiles(), peerconnection.LoopbackFile),
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		// TODO(crbug.com/1017374): add "vp9_enc".
 		Params: []testing.Param{{
 			Name:              "vp8_enc",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8", simulcast: false},
@@ -92,6 +91,11 @@ func init() {
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8", simulcast: true},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
+		}, {
+			Name:              "vp9_enc_temporal_layer",
+			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP9", simulcast: false},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Pre:               pre.ChromeVideoWithFakeWebcamAndForce1SL3TLAndVP9VaapiEncoder(),
 		}, {
 			Name:              "vp8_enc_cam",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8", simulcast: false},
