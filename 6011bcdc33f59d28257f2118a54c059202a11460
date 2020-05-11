@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25db3584_95810881",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-11T04:03:33Z",
+      "side": 0,
+      "message": "I don\u0027t remember why this was 2. I think 1 should be enough because the goroutine will write no more than one value to the channel.",
+      "range": {
+        "startLine": 152,
+        "startChar": 38,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "6011bcdc33f59d28257f2118a54c059202a11460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
