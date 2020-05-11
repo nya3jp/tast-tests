@@ -20,6 +20,9 @@ const (
 
 	// SDKQ is the SDK version of Android Q.
 	SDKQ = 29
+
+	// SDKR is the SDK version of Android R.
+	SDKR = 30
 )
 
 // SDKVersion returns the ARC's Android SDK version for the current ARC image
