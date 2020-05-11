@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b890580_e4ea7130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-11T15:17:04Z",
+      "side": 1,
+      "message": "nit:\nif you convert the namespaces from bytes to string before the loop, you can get ride of the three \"bytes\" from L118 and L119.",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "ca99c91e59a9b45315524decf86ffaaa1eb2a9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
