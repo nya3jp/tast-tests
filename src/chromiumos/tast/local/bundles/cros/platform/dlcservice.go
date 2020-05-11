@@ -304,22 +304,4 @@ func DLCService(ctx context.Context, s *testing.State) {
 		dumpAndVerifyInstalledDLCs("install_unsupported")
 
 	})
-
-	s.Run(ctx, "Multi DLC combination tests", func(context.Context, *testing.State) {
-		url, cmd := startNebraska()
-		defer stopNebraska(cmd, "multi-dlc")
-
-		// Install multiple DLC(s).
-		install([]string{dlcID1, dlcID2}, url, success)
-		dumpAndVerifyInstalledDLCs("install_multiple", dlcID1, dlcID2)
-
-		// Install multiple DLC(s) already installed.
-		install([]string{dlcID1, dlcID2}, url, success)
-		dumpAndVerifyInstalledDLCs("install_multiple_already_installed", dlcID1, dlcID2)
-
-		// Uninstall multiple installed DLC(s).
-		uninstall(dlcID1, success)
-		uninstall(dlcID2, success)
-		dumpAndVerifyInstalledDLCs("uninstall_multiple_installed")
-	})
 }
