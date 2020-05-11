@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/testexec"
@@ -102,23 +103,6 @@ func pathExist(path string) (bool, error) {
 	return true, nil
 }
 
-func isV1Legacy(ctx context.Context) bool {
-	// For unibuild, we can determine if a device is v1 legacy by checking
-	// 'legacy-usb' under path '/camera' in cros_config.
-	if out, err := testexec.CommandContext(ctx, "cros_config", "/camera", "legacy-usb").Output(); err == nil && string(out) == "true" {
-		return true
-	}
-
-	// For non-unibuild, we can check if 'v1device' presents in the config file
-	// '/etc/camera/camera_chracteristics.conf'.
-	if config, err := ioutil.ReadFile("/etc/camera/camera_characteristics.conf"); err == nil {
-		if strings.Contains(string(config), "v1device") {
-			return true
-		}
-	}
-	return false
-}
-
 func setHWTimestamps(newValue string) (oldValue string, err error) {
 	b, err := ioutil.ReadFile(hwTimestampsPath)
 	if err != nil {
@@ -138,7 +122,7 @@ func getTestList(ctx context.Context) (string, error) {
 		return "", err
 	}
 
-	if hasV3 && !isV1Legacy(ctx) {
+	if hasV3 && !hal3.IsV1Legacy(ctx) {
 		return "halv3", nil
 	}
 
