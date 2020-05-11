@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5307aa35_66afc714",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T22:40:14Z",
+      "side": 1,
+      "message": "Is it possible for a query to be both log and download? Also, do you want to early return on the download error? If so, should you be early returning in every case? Just seems to kinda strange to early return in a for loop and potentially miss part of a request.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "6ffcb330273516b6873bbdf3eef7a8ecb7b6528a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
