@@ -246,8 +246,6 @@ func stashLeaveCore(ctx context.Context, cr *chrome.Chrome, s *testing.State) (r
 
 // testCoreFileRemovedInProduction tests core files do not stick around for production builds.
 func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	crash.ReporterVerboseLevel(2)
-	defer crash.ReporterVerboseLevel(0)
 	fullCtx := ctx
 	ctx, cancel := ctxutil.Shorten(fullCtx, 10*time.Second)
 	defer cancel()
