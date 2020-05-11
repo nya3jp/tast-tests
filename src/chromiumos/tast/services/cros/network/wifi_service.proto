@@ -32,10 +32,16 @@ service WifiService {
 
   // QueryService queries shill service information.
   rpc QueryService(QueryServiceRequest) returns (QueryServiceResponse) {}
+
   // GetInterface returns the WiFi device interface name (e.g., wlan0).
   rpc GetInterface(google.protobuf.Empty) returns (GetInterfaceResponse) {}
+
+  // ToggleInterface enables/disables the WiFi interface from shill.
+  rpc ToggleInterface(ToggleInterfaceRequest) returns (google.protobuf.Empty) {}
+
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
+
 }
 
 message ConnectRequest {
@@ -87,4 +93,9 @@ message GetIPv4AddrsRequest {
 
 message GetIPv4AddrsResponse {
   repeated string ipv4 = 1;
+}
+
+message ToggleInterfaceRequest {
+  string interfaceName = 1;
+  bool enable = 2;
 }

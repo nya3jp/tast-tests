@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
+	remote_iw "chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -438,6 +439,16 @@ func (tf *TestFixture) WifiClient() network.WifiServiceClient {
 	return tf.wifiClient
 }
 
+// IwRunner returns a newe iw Runner object.
+func (tf *TestFixture) IwRunner() *iw.Runner {
+	return remote_iw.NewRunner(tf.dut.Conn())
+}
+
+// ClientConn returns the connection to the DUT, or nil if there's no connection.
+func (tf *TestFixture) ClientConn() *ssh.Conn {
+	return tf.dut.Conn()
+}
+
 // DefaultOpenNetworkAP configures the router to provide an 802.11n open network.
 func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, error) {
 	var secConfFac security.ConfigFactory
@@ -453,4 +464,24 @@ func (tf *TestFixture) ClientInterface(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "failed to get the WiFi interface name")
 	}
 	return netIf.Name, nil
+}
+
+// ToggleClientInterface toggle the clinet's interface.
+func (tf *TestFixture) ToggleClientInterface(ctx context.Context, netIf string, enable bool) error {
+	req := &network.ToggleInterfaceRequest{
+		InterfaceName: netIf,
+		Enable:        enable,
+	}
+
+	_, err := tf.wifiClient.ToggleInterface(ctx, req)
+	if err != nil {
+		var verb string
+		if enable {
+			verb = "enable"
+		} else {
+			verb = "disable"
+		}
+		return errors.Wrapf(err, "failed to %s the WiFi interface %s", verb, netIf)
+	}
+	return nil
 }
