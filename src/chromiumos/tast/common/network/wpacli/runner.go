@@ -42,3 +42,13 @@ func (r *Runner) Ping(ctx context.Context, iface string) ([]byte, error) {
 	}
 	return cmdOut, nil
 }
+
+// ClearBlacklist runs "wpa_cli blacklist clear" command.
+func (r *Runner) ClearBlacklist(ctx context.Context) error {
+	err := r.cmd.Run(ctx, "sudo", sudoWpacli("blacklist", "clear")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli blacklist clear")
+	}
+	return nil
+
+}
