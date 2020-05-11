@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/ui"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/lacros"
 	"chromiumos/tast/local/lacros/launcher"
@@ -58,8 +59,9 @@ const (
 )
 
 type page struct {
-	name string
-	url  string
+	name     string
+	url      string
+	finalize func(ctx context.Context, conn *chrome.Conn) error
 }
 
 var pageSet = []page{
@@ -76,8 +78,9 @@ var pageSet = []page{
 		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
 	},
 	{
-		name: "youtube", // YouTube. This page is for testing video playback.
-		url:  "https://www.youtube.com/watch?v=aqz-KE-bpKQ?autoplay=1",
+		name:     "youtube", // YouTube. This page is for testing video playback.
+		url:      "https://www.youtube.com/watch?v=aqz-KE-bpKQ?autoplay=1",
+		finalize: webutil.WaitForYoutubeVideo,
 	},
 	{
 		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
@@ -711,6 +714,12 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	// Close the initial "about:blank" tab present at startup.
 	if err := lacros.CloseAboutBlank(ctx, l.Devsess); err != nil {
 		return errors.Wrap(err, "failed to close about:blank tab")
+	}
+
+	if invoc.page.finalize != nil {
+		if err := invoc.page.finalize(ctx, connURL); err != nil {
+			return err
+		}
 	}
 
 	// Setup extra window for multi-window tests.
