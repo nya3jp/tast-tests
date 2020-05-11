@@ -16,6 +16,52 @@
       "revId": "d37463e82f93bbcf0f023165350b5f241108c1dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c26a9e5_542cf1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T04:43:59Z",
+      "side": 1,
+      "message": "journalctl is going away from Chrome OS in near future. Could you use syslog.Reader instead?\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/syslog#Reader",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "d37463e82f93bbcf0f023165350b5f241108c1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fde7f95_5f5998ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T04:43:59Z",
+      "side": 1,
+      "message": "I think we have to distinguish three outcomes:\n\n1. CRNG initialized as expected\n2. CRNG initialized in unexpected way (crng_init\u003d0)\n3. CRNG initialization entry was not found in syslog\n\nCurrently it seems like this test doesn\u0027t distinguish 1 and 3.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "d37463e82f93bbcf0f023165350b5f241108c1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
