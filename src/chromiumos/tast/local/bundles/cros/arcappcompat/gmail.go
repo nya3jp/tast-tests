@@ -96,14 +96,6 @@ func Gmail(ctx context.Context, s *testing.State) {
 	for idx, test := range testSet.Tests {
 		// Run subtests.
 		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
-			defer func() {
-				if s.HasError() {
-					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
-					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-						s.Log("Failed to capture screenshot: ", err)
-					}
-				}
-			}()
 			// Launch the app.
 			act, err := arc.NewActivity(a, appPkgName, appActivity)
 			if err != nil {
@@ -118,6 +110,16 @@ func Gmail(ctx context.Context, s *testing.State) {
 			s.Log("App launched successfully")
 
 			defer act.Stop(ctx)
+
+			// Take screenshot on failure.
+			defer func() {
+				if s.HasError() {
+					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
+					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+						s.Log("Failed to capture screenshot: ", err)
+					}
+				}
+			}()
 
 			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
