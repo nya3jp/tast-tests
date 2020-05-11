@@ -46,6 +46,30 @@
       "revId": "1586a8562e4359600bb73ddb246013297e18de92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "834216ec_7be18cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T23:38:03Z",
+      "side": 1,
+      "message": "Yeah. I\u0027ll leave it like this for the time being.",
+      "parentUuid": "80d730fd_46b00dde",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 3
+      },
+      "revId": "1586a8562e4359600bb73ddb246013297e18de92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
