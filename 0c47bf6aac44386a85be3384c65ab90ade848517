@@ -22,6 +22,30 @@
       "revId": "0c47bf6aac44386a85be3384c65ab90ade848517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3e5a0a_98bb2566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-11T09:04:47Z",
+      "side": 1,
+      "message": "hm I\u0027ve left it for now, I think the \"event\" inside of the for loop needs to be in quotes. (I tried \\\", which did not work).",
+      "parentUuid": "2b22bb19_ae96f013",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 47
+      },
+      "revId": "0c47bf6aac44386a85be3384c65ab90ade848517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
