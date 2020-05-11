@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab28bcf_769d49e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crng_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-11T01:16:15Z",
+      "side": 1,
+      "message": "Since this is copied from some SELinux test, I wonder if we can make it into a library function?",
+      "revId": "d37463e82f93bbcf0f023165350b5f241108c1dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
