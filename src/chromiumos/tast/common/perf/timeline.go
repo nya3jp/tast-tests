@@ -65,6 +65,19 @@ func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 	return nil
 }
 
+// SleepTimer implementations are used for waiting a certain time duration. In unit tests, fake SleepTimers should be used to avoid race conditions.
+type SleepTimer interface {
+	Sleep(ctx context.Context, d time.Duration) error
+}
+
+// defaultSleepTimer uses the default sleep implementation.
+type defaultSleepTimer struct{}
+
+// Sleep waits for a certain time duration.
+func (t defaultSleepTimer) Sleep(ctx context.Context, d time.Duration) error {
+	return testing.Sleep(ctx, d)
+}
+
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline struct {
 	sources         []TimelineDatasource
@@ -72,6 +85,7 @@ type Timeline struct {
 	cancelRecording context.CancelFunc
 	recordingValues *Values
 	recordingStatus chan error
+	timer           SleepTimer
 }
 
 // NewTimelineOptions holds all optional parameters of NewTimeline.
@@ -80,6 +94,8 @@ type NewTimelineOptions struct {
 	Prefix string
 	// The time duration between two subsequent metric snapshots. Default value is 10 seconds.
 	Interval time.Duration
+	// A different Timer implementation is used in Timeline unit tests to avoid sleeping in test code.
+	Timer SleepTimer
 }
 
 // NewTimelineOption sets an optional parameter of NewTimeline.
@@ -99,9 +115,16 @@ func Prefix(prefix string) NewTimelineOption {
 	}
 }
 
+// WithTimer sets a SleepTimer implementation.
+func WithTimer(timer SleepTimer) NewTimelineOption {
+	return func(args *NewTimelineOptions) {
+		args.Timer = timer
+	}
+}
+
 // NewTimeline creates a Timeline from a slice of TimelineDatasources. Metric names may be prefixed and callers can specify the time interval between two subsequent snapshots. This method calls the Setup method of each data source.
 func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...NewTimelineOption) (*Timeline, error) {
-	args := NewTimelineOptions{Interval: 10 * time.Second}
+	args := NewTimelineOptions{Interval: 10 * time.Second, Timer: &defaultSleepTimer{}}
 	for _, setter := range setters {
 		setter(&args)
 	}
@@ -112,7 +135,7 @@ func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...N
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}
-	return &Timeline{sources: ss, interval: args.Interval}, nil
+	return &Timeline{sources: ss, interval: args.Interval, timer: args.Timer}, nil
 }
 
 // Start starts metric collection on all datasources.
@@ -143,11 +166,19 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 
 	ctx, t.cancelRecording = context.WithCancel(ctx)
 	t.recordingValues = NewValues()
-	t.recordingStatus = make(chan error, 2)
+	t.recordingStatus = make(chan error, 1)
 
-	go func() {
+	go func(previousTime time.Time) {
 		for {
-			if err := testing.Sleep(ctx, t.interval); err != nil {
+			// sleep time = interval - (now - previous)
+			sleepTime := t.interval - (time.Now().Sub(previousTime))
+			previousTime = time.Now().Add(t.interval)
+			if sleepTime < 0 {
+				t.recordingStatus <- errors.Errorf("trying to snapshot every %d milliseconds, but taking the last snapshot already took more time", t.interval/time.Millisecond)
+				return
+			}
+
+			if err := t.timer.Sleep(ctx, sleepTime); err != nil {
 				t.recordingStatus <- nil
 				return
 			}
@@ -157,7 +188,7 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 				return
 			}
 		}
-	}()
+	}(time.Now())
 
 	return nil
 }

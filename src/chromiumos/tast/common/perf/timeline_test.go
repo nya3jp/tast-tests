@@ -16,6 +16,7 @@ import (
 type testTimelineDatasource struct {
 	setUp, started, errSetup, errStart, errSnapshot bool
 	snapshotCount                                   int
+	snapshotSleepDuration                           time.Duration
 }
 
 var errSetup = errors.New("setup should fail")
@@ -40,7 +41,8 @@ func (t *testTimelineDatasource) Start(_ context.Context) error {
 
 var errSnapshot = errors.New("snapshot should fail")
 
-func (t *testTimelineDatasource) Snapshot(_ context.Context, v *Values) error {
+func (t *testTimelineDatasource) Snapshot(ctx context.Context, v *Values) error {
+	tasttesting.Sleep(ctx, t.snapshotSleepDuration)
 	if t.errSnapshot {
 		return errSnapshot
 	}
@@ -48,15 +50,62 @@ func (t *testTimelineDatasource) Snapshot(_ context.Context, v *Values) error {
 	return nil
 }
 
+func (t *testTimelineDatasource) WaitForSnapshots(ctx context.Context, count int) error {
+	return tasttesting.Poll(ctx, func(ctx context.Context) error {
+		if t.snapshotCount < count {
+			return errors.New("still waiting")
+		}
+		return nil
+	}, &tasttesting.PollOptions{Interval: 10 * time.Millisecond})
+}
+
+type fakeTimer struct {
+	clock      int64
+	isSleeping bool
+}
+
+func (t *fakeTimer) Sleep(ctx context.Context, d time.Duration) error {
+	timeBefore := t.clock
+	timeAfter := timeBefore + d.Milliseconds()
+
+	err := tasttesting.Poll(
+		ctx,
+		func(ctx context.Context) error {
+			if t.clock < timeAfter {
+				t.isSleeping = true
+				return errors.New("still waiting")
+			}
+			return nil
+		}, &tasttesting.PollOptions{Interval: 10 * time.Millisecond})
+
+	t.isSleeping = false
+	return err
+}
+
+func (t *fakeTimer) AdvanceClock(d time.Duration) {
+	t.clock = t.clock + d.Milliseconds()
+}
+
+func (t *fakeTimer) WaitForSleep(ctx context.Context) error {
+	return tasttesting.Poll(ctx, func(ctx context.Context) error {
+		if !t.isSleeping {
+			return errors.New("not sleeping yet")
+		}
+		return nil
+	}, &tasttesting.PollOptions{Interval: 10 * time.Millisecond})
+}
+
 func TestTimeline(t *testing.T) {
 	p := NewValues()
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
+	timer := &fakeTimer{}
+
 	d1 := &testTimelineDatasource{}
 	d2 := &testTimelineDatasource{}
 
-	tl, err := NewTimeline(ctx, []TimelineDatasource{d1, d2}, Interval(1*time.Second))
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d1, d2}, Interval(1*time.Second), WithTimer(timer))
 	if err != nil {
 		t.Error("Failed to create Timeline: ", err)
 	}
@@ -76,7 +125,13 @@ func TestTimeline(t *testing.T) {
 		t.Error("Failed to start recording: ", err)
 	}
 
-	tasttesting.Sleep(ctx, 2500*time.Millisecond)
+	// Take 2 samples.
+	timer.WaitForSleep(ctx)
+	for i := 0; i < 2; i++ {
+		timer.AdvanceClock(1200 * time.Millisecond)
+		d1.WaitForSnapshots(ctx, i+1)
+		timer.WaitForSleep(ctx)
+	}
 
 	if v, err := tl.StopRecording(); err != nil {
 		t.Error("Error while recording: ", err)
@@ -85,7 +140,7 @@ func TestTimeline(t *testing.T) {
 	}
 
 	if d1.snapshotCount != 2 || d2.snapshotCount != 2 {
-		t.Error("Wrong number of snapshots collected")
+		t.Errorf("Wrong number of snapshots collected: %d, %d", d1.snapshotCount, d2.snapshotCount)
 	}
 
 	// Second round of recording.
@@ -93,7 +148,13 @@ func TestTimeline(t *testing.T) {
 		t.Error("Failed to start recording: ", err)
 	}
 
-	tasttesting.Sleep(ctx, 3500*time.Millisecond)
+	// Take 3 more samples.
+	timer.WaitForSleep(ctx)
+	for i := 2; i < 5; i++ {
+		timer.AdvanceClock(1200 * time.Millisecond)
+		d1.WaitForSnapshots(ctx, i+1)
+		timer.WaitForSleep(ctx)
+	}
 
 	if v, err := tl.StopRecording(); err != nil {
 		t.Error("Error while recording: ", err)
@@ -145,6 +206,32 @@ func TestTimelineStartRecordingTwice(t *testing.T) {
 
 	if err := tl.StartRecording(ctx); err == nil {
 		t.Error("StartRecording should have failed")
+	}
+}
+
+func TestTimelineSlowSnapshot(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	d := &testTimelineDatasource{snapshotSleepDuration: 500 * time.Millisecond}
+
+	tl, err := NewTimeline(ctx, []TimelineDatasource{d}, Interval(200*time.Millisecond))
+	if err != nil {
+		t.Error("Failed to create Timeline: ", err)
+	}
+
+	if err := tl.Start(ctx); err != nil {
+		t.Error("Failed to start timeline: ", err)
+	}
+
+	if err := tl.StartRecording(ctx); err != nil {
+		t.Error("Failed to start recording: ", err)
+	}
+
+	tasttesting.Sleep(ctx, 1500*time.Millisecond)
+
+	if _, err := tl.StopRecording(); err == nil {
+		t.Error("StopRecording should have failed")
 	}
 }
 
