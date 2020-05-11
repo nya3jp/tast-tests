@@ -65,6 +65,24 @@ func (t *timestampSource) Snapshot(_ context.Context, v *Values) error {
 	return nil
 }
 
+// Clock implementations are used for waiting a certain time duration. In unit tests, fake Clocks should be used to avoid race conditions.
+type Clock interface {
+	Sleep(ctx context.Context, d time.Duration) error
+	Now() time.Time
+}
+
+// defaultClock uses the default Sleep()/Now() implementations.
+type defaultClock struct{}
+
+// Sleep waits for a certain time duration.
+func (t defaultClock) Sleep(ctx context.Context, d time.Duration) error {
+	return testing.Sleep(ctx, d)
+}
+
+func (t defaultClock) Now() time.Time {
+	return time.Now()
+}
+
 // Timeline collects performance metrics periodically on a common timeline.
 type Timeline struct {
 	sources         []TimelineDatasource
@@ -72,6 +90,7 @@ type Timeline struct {
 	cancelRecording context.CancelFunc
 	recordingValues *Values
 	recordingStatus chan error
+	clock           Clock
 }
 
 // NewTimelineOptions holds all optional parameters of NewTimeline.
@@ -80,6 +99,8 @@ type NewTimelineOptions struct {
 	Prefix string
 	// The time duration between two subsequent metric snapshots. Default value is 10 seconds.
 	Interval time.Duration
+	// A different Clock implementation is used in Timeline unit tests to avoid sleeping in test code.
+	Clock Clock
 }
 
 // NewTimelineOption sets an optional parameter of NewTimeline.
@@ -99,9 +120,16 @@ func Prefix(prefix string) NewTimelineOption {
 	}
 }
 
+// WithClock sets a Clock implementation.
+func WithClock(clock Clock) NewTimelineOption {
+	return func(args *NewTimelineOptions) {
+		args.Clock = clock
+	}
+}
+
 // NewTimeline creates a Timeline from a slice of TimelineDatasources. Metric names may be prefixed and callers can specify the time interval between two subsequent snapshots. This method calls the Setup method of each data source.
 func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...NewTimelineOption) (*Timeline, error) {
-	args := NewTimelineOptions{Interval: 10 * time.Second}
+	args := NewTimelineOptions{Interval: 10 * time.Second, Clock: &defaultClock{}}
 	for _, setter := range setters {
 		setter(&args)
 	}
@@ -112,7 +140,7 @@ func NewTimeline(ctx context.Context, sources []TimelineDatasource, setters ...N
 			return nil, errors.Wrap(err, "failed to setup TimelineDatasource")
 		}
 	}
-	return &Timeline{sources: ss, interval: args.Interval}, nil
+	return &Timeline{sources: ss, interval: args.Interval, clock: args.Clock}, nil
 }
 
 // Start starts metric collection on all datasources.
@@ -143,11 +171,19 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 
 	ctx, t.cancelRecording = context.WithCancel(ctx)
 	t.recordingValues = NewValues()
-	t.recordingStatus = make(chan error, 2)
+	t.recordingStatus = make(chan error, 1)
 
-	go func() {
+	go func(previousTime time.Time) {
 		for {
-			if err := testing.Sleep(ctx, t.interval); err != nil {
+			// sleep time = interval - (now - previous)
+			sleepTime := t.interval - (t.clock.Now().Sub(previousTime))
+			previousTime = t.clock.Now().Add(t.interval)
+			if sleepTime < 0 {
+				t.recordingStatus <- errors.Errorf("trying to snapshot every %d milliseconds, but taking the last snapshot already took more time", t.interval/time.Millisecond)
+				return
+			}
+
+			if err := t.clock.Sleep(ctx, sleepTime); err != nil {
 				t.recordingStatus <- nil
 				return
 			}
@@ -157,9 +193,26 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 				return
 			}
 		}
-	}()
+	}(t.clock.Now())
 
 	return nil
+}
+
+// RecordingStatus checks if we are still recording. If so, this function returns nil. Otherwise, this functions returns an error that describes why not.
+// Note: Every call of StartRecording() must eventually be followed by StopRecording(), regardless of whether this function is called or not.
+// Note: RecordingStatus and StopRecording must not be called from different goroutines.
+func (t *Timeline) RecordingStatus() error {
+	if t.recordingStatus == nil {
+		return errors.New("not recording yet")
+	}
+
+	select {
+	case err := <-t.recordingStatus:
+		t.recordingStatus <- err
+		return err
+	default:
+		return nil
+	}
 }
 
 // StopRecording stops capturing metrics and returns the captured metrics.
