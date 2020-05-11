@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8860ba3d_7c2eadd4",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T08:21:18Z",
+      "side": 1,
+      "message": "nit: you can drop this.",
+      "range": {
+        "startLine": 184,
+        "startChar": 9,
+        "endLine": 184,
+        "endChar": 10
+      },
+      "revId": "c0eb53158e20bcd290a8eb0b7070905a8aeaab7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e99033f0_7fbe6f82",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T08:21:18Z",
+      "side": 1,
+      "message": "nit/off-topic: For slightly better performance (and to indicate its intention more cleanly),\n\nstrings.SplitN(platform, \"-\", 2)[0]",
+      "revId": "c0eb53158e20bcd290a8eb0b7070905a8aeaab7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06973fcb_f6fc56ff",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T08:21:18Z",
+      "side": 1,
+      "message": "nit: let\u0027s avoid hungarian notation.\n\nvar inherits [][]byte",
+      "revId": "c0eb53158e20bcd290a8eb0b7070905a8aeaab7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb19990_2c93b218",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T08:21:18Z",
+      "side": 1,
+      "message": "nit: could you remove \u0027*\u0027?",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 10
+      },
+      "revId": "c0eb53158e20bcd290a8eb0b7070905a8aeaab7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8345c069_d1a9fc4d",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T08:21:18Z",
+      "side": 1,
+      "message": "I think b can be multi-line. If so, could you avoid to embed it in the error message?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d quote \u003d\u003d\nIn all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\u003d\u003d quote end \u003d\u003d\n\nYou may be interested in to dump the content into a file under the OutDir if it is transient.\nOr, if the config data is already embedded in the image, you can skip the dump.\n\nInstead, how about using platform name for debugging?\nSimilary, cfg looks unrelated for the failing. So my recommendation is, like:\n\nvar inherits []struct {\n  platform: string\n  blob: []byte\n}\n\nfor platform !\u003d \"\" {\n  b, err :\u003d loadBytes(...)\n  ...\n  inherits \u003d append(inherits, ...)\n  platform, err \u003d parentFromBytes(...)\n  ...\n}\n\nfor i :\u003d len(inherits) - 1; i \u003e\u003d 0; i-- {\n  if err :\u003d json.Unmarshal(inherits[i].blob, \u0026cfg); err !\u003d nil {\n    return nil, errors.Wrapf(err, \"failed to unmarshal the config for %s\", inherits[i].platform)\n  }\n}\n\nWDYT?",
+      "range": {
+        "startLine": 219,
+        "startChar": 71,
+        "endLine": 219,
+        "endChar": 72
+      },
+      "revId": "c0eb53158e20bcd290a8eb0b7070905a8aeaab7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69d163d0_50a92840",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T08:21:18Z",
+      "side": 1,
+      "message": "and add \u0026 here?\n\nreturn \u0026cfg, nil\n\nthat\u0027s more consistent style in Tast.",
+      "revId": "c0eb53158e20bcd290a8eb0b7070905a8aeaab7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
