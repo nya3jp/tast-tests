@@ -417,3 +417,40 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 
 	return &ret, nil
 }
+
+// WaitForBsses waits for all BSSes associated with given SSID to be discovered.
+// This is the implementation of network.Wifi/WaitForBsses gRPC.
+func (s *WifiService) WaitForBsses(ctx context.Context, req *network.WaitForBssesRequest) (*empty.Empty, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	props := map[string]interface{}{
+		shill.ServicePropertyType: shill.TypeWifi,
+		shill.ServicePropertyName: req.Ssid,
+	}
+	wantNumBsses := int(req.NumBss)
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		services, err := m.FindAllMatchingService(ctx, props)
+		testing.ContextLogf(ctx, "#services: %d", len(services))
+		if err == nil && len(services) == wantNumBsses {
+			return nil
+		}
+		// Scan WiFi AP again if the expected AP is not found.
+		if err := m.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+			testing.ContextLogf(ctx, "WaitForBsses/RequestScan err: %s", err)
+			return testing.PollBreak(errors.Wrap(err, "failed to request active scan"))
+		}
+		return errors.Errorf("unexpected #BSSes: want: %d, got %d", wantNumBsses, len(services))
+	}, &testing.PollOptions{
+		Timeout:  15 * time.Second,
+		Interval: 200 * time.Millisecond, // RequestScan is spammy, but shill handles that for us.
+	}); err != nil {
+		testing.ContextLogf(ctx, "error: %s", err)
+		return &empty.Empty{}, err
+	}
+	testing.ContextLog(ctx, "WaitForBsses success")
+	return &empty.Empty{}, nil
+}

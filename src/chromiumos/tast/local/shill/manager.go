@@ -60,10 +60,11 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return &Manager{PropertyHolder: ph}, nil
 }
 
-// findMatchingService returns a Service who has the expected properties.
+// findService returns a list of Services who has the expected properties.
 // It first obtains a list of services (including hidden ones if complete is set).
 // Then for each service, checks if it has the given props.
-func (m *Manager) findMatchingService(ctx context.Context, expectProps map[string]interface{}, complete bool) (*Service, error) {
+// If shortcut is set, it returns the first found Service. Otherwise, it returns all matched Services.
+func (m *Manager) findService(ctx context.Context, expectProps map[string]interface{}, complete, shortcut bool) ([]*Service, error) {
 	serviceListName := ManagerPropertyServices
 	if complete {
 		serviceListName = ManagerPropertyServiceCompleteList
@@ -77,6 +78,7 @@ func (m *Manager) findMatchingService(ctx context.Context, expectProps map[strin
 	if err != nil {
 		return nil, err
 	}
+	var ret []*Service
 ForServicePaths:
 	for _, path := range servicePaths {
 		service, err := NewService(ctx, path)
@@ -91,26 +93,47 @@ ForServicePaths:
 			}
 			return nil, err
 		}
+		testing.ContextLogf(ctx, "service path:%s props:%s", path, serviceProps)
 
 		for key, val1 := range expectProps {
 			if val2, err := serviceProps.Get(key); err != nil || !reflect.DeepEqual(val1, val2) {
 				continue ForServicePaths
 			}
 		}
-		return service, nil
+		ret = append(ret, service)
+		if shortcut {
+			return ret, nil
+		}
 	}
-	return nil, errors.New("unable to find matching service")
+	if len(ret) == 0 {
+		return nil, errors.New("unable to find a service")
+	}
+	return ret, nil
+}
+
+// findAService returns the first Services who has the expected properties.
+func (m *Manager) findAService(ctx context.Context, expectProps map[string]interface{}, complete bool) (*Service, error) {
+	s, err := m.findService(ctx, expectProps, complete, true)
+	if err != nil {
+		return nil, err
+	}
+	return s[0], nil
 }
 
 // FindMatchingService returns a Service who has the expected properties.
 func (m *Manager) FindMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {
-	return m.findMatchingService(ctx, expectProps, false)
+	return m.findAService(ctx, expectProps, false)
 }
 
 // FindAnyMatchingService returns a service who has the expected properties.
 // It checks all services include hidden one.
 func (m *Manager) FindAnyMatchingService(ctx context.Context, expectProps map[string]interface{}) (*Service, error) {
-	return m.findMatchingService(ctx, expectProps, true)
+	return m.findAService(ctx, expectProps, true)
+}
+
+// FindAllMatchingService returns all Service who have the expected properties.
+func (m *Manager) FindAllMatchingService(ctx context.Context, expectProps map[string]interface{}) ([]*Service, error) {
+	return m.findService(ctx, expectProps, false, true)
 }
 
 // waitForServiceProperties returns a Service who has the expected properties.
@@ -119,7 +142,7 @@ func (m *Manager) FindAnyMatchingService(ctx context.Context, expectProps map[st
 func (m *Manager) waitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration, complete bool) (*Service, error) {
 	var service *Service
 	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
-		service, e = m.findMatchingService(ctx, expectProps, complete)
+		service, e = m.findAService(ctx, expectProps, complete)
 		return e
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return nil, err

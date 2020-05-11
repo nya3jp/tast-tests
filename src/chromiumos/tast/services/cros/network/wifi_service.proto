@@ -33,9 +33,14 @@ service WifiService {
   // QueryService queries shill service information.
   rpc QueryService(QueryServiceRequest) returns (QueryServiceResponse) {}
   // GetInterface returns the WiFi device interface name (e.g., wlan0).
+
   rpc GetInterface(google.protobuf.Empty) returns (GetInterfaceResponse) {}
+
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
+
+  // WaitForBsses waits for all BSSes associated with given SSID to be discovered.
+  rpc WaitForBsses(WaitForBssesRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -87,4 +92,9 @@ message GetIPv4AddrsRequest {
 
 message GetIPv4AddrsResponse {
   repeated string ipv4 = 1;
+}
+
+message WaitForBssesRequest {
+  string ssid = 1;
+  int32 num_bss = 2;
 }
