@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78a0aaa5_128dec91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "Sure, we can switch the way this logic works. As previously written, if a physical CPU had four or more lines, but fewer than 9 lines, that error would be caught by either the logical CPU or C-state check. I don\u0027t have a problem with checking upfront and failing earlier.",
+      "parentUuid": "4ab13263_e3ed2c2c",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b9b5520_4ffe68c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c7a797_fc15fae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "Done. And yep, blank lines should cause us to fail!",
+      "parentUuid": "0b9b5520_4ffe68c6",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "db2f4b1d_a72f8fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a566bbc9_2dc16ffe",
+      "range": {
+        "startLine": 77,
+        "startChar": 38,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ddac123_56121794",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "09623c22_3ef67f87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ddac123_56121794",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 0
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96ef0614_1d87de16",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2020-05-07T00:26:42Z",
       "side": 1,
       "message": "please have the value i. (errors.Errorf(\"invalid time_in_state_since_last_boot_us: %d\", i))\n\nI guess also line-number or the having entire line in the error message would be helpful to analyze which line was going wrong. same on line 165.",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 64
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0eb5456_641c3658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "I think printing the erroneous values should be enough, since it\u0027s the only thing that could be wrong on this line if the test has gotten to this point. If the line was blank or had more or less than two values, we would\u0027ve already failed before printing out this line. WDYT?",
+      "parentUuid": "96ef0614_1d87de16",
       "range": {
         "startLine": 167,
         "startChar": 10,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5eb71aba_93ae99bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "That would be bad, actually. Similarly to the physical and logical CPU checks, I\u0027ve checked for the full minimum output length here.",
+      "parentUuid": "76aa4319_fdb333c7",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c2a2cd7_32b22362",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
         "patchSetId": 4
@@ -154,6 +298,24 @@
       "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0181e093_fbdd4a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2a2cd7_32b22362",
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -177,6 +339,30 @@
       "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe340ec1_4ca65b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-11T20:20:36Z",
+      "side": 1,
+      "message": "Cool syntax! We\u0027re dealing with a very specific format here, so if there was a newline between \"Physical CPU\" entries then we would want to fail.",
+      "parentUuid": "768fce19_5d879b0c",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "2c404d8e7bd667d0628c7740c3ccc4632b17c0ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
