@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9eb30dac_59b0b64d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T03:11:42Z",
+      "side": 1,
+      "message": "I\u0027m afraid that 30s might be too short. For example, ui.OOBESmoke uses chrome.NoLogin(), and it sometimes takes 30+ seconds.\nhttps://tastboard.corp.google.com/test/ui.OOBESmoke\n\nMaybe it\u0027s good to start from the same timeout as FakeLogin.",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "4d711d9e533a4a9dba9dfab4576f5381ef74cce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf41f121_0e65401b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T03:11:42Z",
+      "side": 1,
+      "message": "doubled :)",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "4d711d9e533a4a9dba9dfab4576f5381ef74cce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
