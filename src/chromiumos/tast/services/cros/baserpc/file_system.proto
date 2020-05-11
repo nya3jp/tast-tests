@@ -13,7 +13,11 @@ option go_package = "chromiumos/tast/services/cros/baserpc";
 service FileSystem {
   // ReadDir returns the content of a directory.
   rpc ReadDir (ReadDirRequest) returns (ReadDirResponse) {}
-  rpc Stat (StatRequest) returns (FileInfo) {}
+
+  // Stat returns information of a file.
+  rpc Stat (StatRequest) returns (StatResponse) {}
+
+  // ReadFile reads the content of a file.
   rpc ReadFile (ReadFileRequest) returns (ReadFileResponse) {}
 }
 
@@ -23,13 +27,19 @@ message ReadDirRequest {
 }
 
 message ReadDirResponse {
+  Error error = 1;
   // List of files under the directory, sorted by filename.
-  repeated FileInfo files = 1;
+  repeated FileInfo files = 2;
 }
 
 message StatRequest {
   // File path to the file to get file information.
   string name = 1;
+}
+
+message StatResponse {
+  Error error = 1;
+  FileInfo info = 2;
 }
 
 message ReadFileRequest {
@@ -38,7 +48,8 @@ message ReadFileRequest {
 }
 
 message ReadFileResponse {
-  bytes content = 1;
+  Error error = 1;
+  bytes content = 2;
 }
 
 // FileInfo contains attributes of a file.
@@ -47,4 +58,32 @@ message FileInfo {
   uint64 size = 2;
   uint64 mode = 3;
   google.protobuf.Timestamp modified = 4;
+}
+
+message Error {
+  oneof type {
+    uint32 errno = 1;  // syscall.Errno
+    LinkError link = 2;  // os.LinkError
+    PathError path = 3;  // os.PathError
+    SyscallError syscall = 4;  // os.SyscallError
+    string msg = 5;  // other errors
+  }
+}
+
+message LinkError {
+  string op = 1;
+  string old = 2;
+  string new = 3;
+  Error error = 4;
+}
+
+message PathError {
+  string op = 1;
+  string path = 2;
+  Error error = 3;
+}
+
+message SyscallError {
+  string syscall = 1;
+  Error error = 2;
 }

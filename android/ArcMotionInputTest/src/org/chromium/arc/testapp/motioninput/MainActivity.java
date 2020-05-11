@@ -7,6 +7,7 @@
 package org.chromium.arc.testapp.motioninput;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -20,7 +21,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends Activity {
+
     public static final String TAG = MainActivity.class.getSimpleName();
+
+    public static final String ACTION_CLEAR_EVENTS =
+            "org.chromium.arc.testapp.motioninput.ACTION_CLEAR_EVENTS";
 
     private static final String KEY_ACTION = "action";
     private static final String KEY_SOURCES = "sources";
@@ -55,6 +60,8 @@ public class MainActivity extends Activity {
 
     private TextView mTvMotionEvents;
 
+    private JSONArray mEventsToReport = new JSONArray();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,33 +71,55 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        if (intent == null) {
+            return;
+        }
+
+        if (ACTION_CLEAR_EVENTS.equals(intent.getAction())) {
+            clearEvents();
+        }
+    }
+
+    @Override
     public boolean dispatchGenericMotionEvent(MotionEvent ev) {
-        mTvMotionEvents.setText(getJSONStringFromMotionEvent(ev));
-        return true;
+        reportMotionEvent(ev);
+        return super.dispatchGenericMotionEvent(ev);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        mTvMotionEvents.setText(getJSONStringFromMotionEvent(ev));
-        return true;
+        reportMotionEvent(ev);
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean dispatchTrackballEvent(MotionEvent ev) {
-        mTvMotionEvents.setText(getJSONStringFromMotionEvent(ev));
-        return true;
+        reportMotionEvent(ev);
+        return super.dispatchTrackballEvent(ev);
     }
 
-    protected static String getJSONStringFromMotionEvent(MotionEvent event) {
+    protected void reportMotionEvent(MotionEvent ev) {
+        final JSONObject jsonEvent = getJSONObjectFromMotionEvent(ev);
+        mEventsToReport.put(jsonEvent == null ? JSONObject.NULL : jsonEvent);
+        mTvMotionEvents.setText(mEventsToReport.toString());
+    }
+
+    protected void clearEvents() {
+        mEventsToReport = new JSONArray();
+        mTvMotionEvents.setText(mEventsToReport.toString());
+    }
+
+    private static JSONObject getJSONObjectFromMotionEvent(MotionEvent event) {
         final InputDevice device = InputDevice.getDevice(event.getDeviceId());
         if (device == null) {
             Log.e(TAG, "Failed to get InputDevice with device id: " + event.getDeviceId());
-            return "";
+            return null;
         }
         final List<InputDevice.MotionRange> motionRanges = device.getMotionRanges();
         if (motionRanges == null) {
             Log.e(TAG, "Failed to get MotionRanges for device id: " + event.getDeviceId());
-            return "";
+            return null;
         }
 
         final JSONObject eventObj = new JSONObject();
@@ -113,7 +142,7 @@ public class MainActivity extends Activity {
         } catch (JSONException e) {
             Log.e(TAG, "Failed to write event to JSON", e);
         }
-        return eventObj.toString();
+        return eventObj;
     }
 
     private static List<String> getStringsForSource(int source) {

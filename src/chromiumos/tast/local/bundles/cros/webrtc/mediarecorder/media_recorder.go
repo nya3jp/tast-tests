@@ -71,7 +71,7 @@ func measureCPU(ctx context.Context, s, t time.Duration, p *perf.Values) error {
 // measureGPUCounters measures GPU usage for a period of time t into p.
 func measureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) error {
 	testing.ContextLog(ctx, "Measuring GPU usage for ", t)
-	counters, err := graphics.CollectPerformanceCounters(ctx, t)
+	counters, megaPeriods, err := graphics.CollectPerformanceCounters(ctx, t)
 	if err != nil {
 		return errors.Wrap(err, "error collecting graphics performance counters")
 	}
@@ -82,6 +82,11 @@ func measureGPUCounters(ctx context.Context, t time.Duration, p *perf.Values) er
 		return errors.New("total elapsed time counter is zero")
 	}
 
+	if megaPeriods != 0 {
+		frequencyMHz := float64(megaPeriods) / counters["total"].Seconds()
+		testing.ContextLogf(ctx, "Average frequency: %fMHz", frequencyMHz)
+		reportMetric("frequency", "MHz", frequencyMHz, perf.SmallerIsBetter, p)
+	}
 	if rcs, ok := counters["rcs"]; ok && rcs.Seconds() != 0 {
 		rcsUsage := 100 * rcs.Seconds() / counters["total"].Seconds()
 		testing.ContextLogf(ctx, "RCS usage: %f%%", rcsUsage)

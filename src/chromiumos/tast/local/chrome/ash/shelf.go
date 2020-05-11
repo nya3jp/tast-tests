@@ -246,6 +246,33 @@ func ChromeApps(ctx context.Context, tconn *chrome.TestConn) ([]*ChromeApp, erro
 	return s, nil
 }
 
+// ChromeAppInstalled checks if an app specified by appID is installed.
+func ChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, error) {
+	installedApps, err := ChromeApps(ctx, tconn)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get all installed Apps")
+	}
+
+	for _, app := range installedApps {
+		if app.AppID == appID {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+// WaitForChromeAppInstalled waits for the app specified by appID to appear in installed apps.
+func WaitForChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appID string, timeout time.Duration) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if installed, err := ChromeAppInstalled(ctx, tconn, appID); err != nil {
+			return testing.PollBreak(err)
+		} else if !installed {
+			return errors.New("failed to wait for installed app by id: " + appID)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout})
+}
+
 // ShelfItems returns the list of apps in the shelf.
 func ShelfItems(ctx context.Context, tconn *chrome.TestConn) ([]*ShelfItem, error) {
 	var s []*ShelfItem
@@ -335,7 +362,7 @@ func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, 
 	return appShown, nil
 }
 
-// WaitForApp waits for the app specifed by appID to appear in the shelf.
+// WaitForApp waits for the app specified by appID to appear in the shelf.
 func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if visible, err := AppShown(ctx, tconn, appID); err != nil {

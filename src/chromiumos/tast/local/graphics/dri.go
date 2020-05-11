@@ -347,12 +347,14 @@ func mean(values []int) float64 {
 // time counter.
 // If the hardware/kernel doesn't provide PMU event monitoring, the returned
 // counters will be nil.
-func CollectPerformanceCounters(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, err error) {
+func CollectPerformanceCounters(ctx context.Context, interval time.Duration) (counters map[string]time.Duration, megaPeriods int64, err error) {
 	var perfCounters = []struct {
 		filePath   string
 		eventName  string
 		outputName string
 	}{
+		// "actual-frequency" is NOT a frequency, but an accumulation of cycles.
+		{"/sys/devices/i915/events/actual-frequency", "i915/actual-frequency/", "megaperiod"},
 		{"/sys/devices/i915/events/rcs0-busy", "i915/rcs0-busy/", "rcs"},
 		{"/sys/devices/i915/events/vcs0-busy", "i915/vcs0-busy/", "vcs"},
 		{"/sys/devices/i915/events/vecs0-busy", "i915/vecs0-busy/", "vecs"},
@@ -368,7 +370,7 @@ func CollectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	}
 
 	if len(eventsToCollect) == 0 {
-		return nil, nil
+		return nil, 0, nil
 	}
 
 	// Run the command e.g. `perf stat -e i915/vcs0-busy/ -- sleep 2`
@@ -378,12 +380,13 @@ func CollectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 	var perfOutput bytes.Buffer
 	cmd.Stderr = &perfOutput
 	if err := cmd.Run(); err != nil {
-		return nil, errors.Wrap(err, "error while measuring perf counters")
+		return nil, 0, errors.Wrap(err, "error while measuring perf counters")
 	}
 
-	// A sample three counter output perfOutput could be e.g.:
+	// A sample multiple counter output perfOutput could be e.g.:
 	// Performance counter stats for 'system wide':
 	//
+	//             8215 M    i915/actual-frequency/
 	//      17188646693 ns   i915/rcs0-busy/
 	//      11937916640 ns   i915/vcs0-busy/
 	//      12894570939 ns   i915/vecs0-busy/
@@ -407,10 +410,24 @@ func CollectPerformanceCounters(ctx context.Context, interval time.Duration) (co
 			// ParseDuration() cannot parse whitespaces in the input string.
 			counters[name], err = time.ParseDuration(strings.Replace(string(submatch[1]), " ", "", -1))
 			if err != nil {
-				return nil, errors.Wrapf(err, "error parsing perf output (%s)", perfOutput.String())
+				return nil, 0, errors.Wrapf(err, "error parsing perf output (%s)", perfOutput.String())
 			}
 		}
 	}
 
-	return counters, nil
+	// Run and extra regexp pass for the GPU actual-frequency. This information is
+	// provided as a number-of-accumulated mega cycles over the total time, see
+	// https://patchwork.freedesktop.org/patch/339667/.
+	regexpCycles := regexp.MustCompile(`([0-9]+)\s*M\s*` + "i915/actual-frequency/")
+	for _, line := range strings.Split(perfOutput.String(), "\n") {
+		submatch := regexpCycles.FindStringSubmatch(line)
+		if submatch == nil {
+			continue
+		}
+		if megaPeriods, err = strconv.ParseInt(submatch[1], 10, 64); err != nil {
+			return nil, 0, errors.Wrapf(err, "error parsing perf output (%s)", perfOutput.String())
+		}
+	}
+
+	return counters, megaPeriods, nil
 }

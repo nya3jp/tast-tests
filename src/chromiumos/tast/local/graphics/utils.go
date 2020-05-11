@@ -17,7 +17,6 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -320,13 +319,4 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 		return -1, errors.Wrapf(err, "could not parse %v", filepath.Base(dirtyWritebackCentisecsPath))
 	}
 	return time.Duration(centisecs) * (time.Second / 100), nil
-}
-
-// WaitForExpInLogcat waits for a regexp to appear in the logcat with timeout.
-// DEPRECATED: This will be removed as soon as tests in tast-tests-private are updated to the new API.
-func WaitForExpInLogcat(ctx context.Context, a *arc.ARC, exp *regexp.Regexp, timeout time.Duration) error {
-	ctx, cancel := context.WithTimeout(ctx, timeout)
-	defer cancel()
-
-	return a.WaitForLogcat(ctx, arc.RegexpPred(exp))
 }

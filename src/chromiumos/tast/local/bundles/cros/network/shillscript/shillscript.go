@@ -29,6 +29,7 @@ import (
 // FakeUser is used by the login function.
 const (
 	FakeUser                   = "not-a-real-user@chromium.org"
+	GuestUser                  = cryptohome.GuestUser
 	CryptohomePathCommand      = "/usr/sbin/cryptohome-path"
 	DaemonStoreBase            = "/run/daemon-store/shill"
 	ShillUserProfilesDir       = "/run/shill/user_profiles"
@@ -54,7 +55,7 @@ type TestEnv struct {
 type testFuncType func(ctx context.Context, env *TestEnv) error
 
 // RunTest runs the test, stops shill and erases the state.
-func RunTest(ctx context.Context, fn testFuncType) error {
+func RunTest(ctx context.Context, fn testFuncType, isGuest bool) error {
 	// We lose connectivity along the way here, and if that races with the
 	// recover_duts network-recovery hooks, it may interrupt us.
 	unlock, err := network.LockCheckNetworkHook(ctx)
@@ -67,7 +68,7 @@ func RunTest(ctx context.Context, fn testFuncType) error {
 
 	defer tearDown(ctx, &env)
 
-	if err := setUp(ctx, &env); err != nil {
+	if err := setUp(ctx, &env, isGuest); err != nil {
 		return errors.Wrap(err, "failed starting the test")
 	}
 
@@ -75,7 +76,7 @@ func RunTest(ctx context.Context, fn testFuncType) error {
 }
 
 // setUp setup the start of the test. Stop shill and create test harness.
-func setUp(ctx context.Context, env *TestEnv) error {
+func setUp(ctx context.Context, env *TestEnv, isGuest bool) error {
 	// The directories names that are created during the test and deleted at the end of the test.
 	env.CreatedDirectories = append(env.CreatedDirectories, "/var/cache/shill", "/run/shill", "/run/state/logged-in", "/run/dhcpcd", "/var/lib/dhcpcd")
 
@@ -84,9 +85,18 @@ func setUp(ctx context.Context, env *TestEnv) error {
 		return errors.Wrap(err, "failed stopping shill")
 	}
 
-	userHash, err := cryptohome.UserHash(ctx, FakeUser)
+	var user, userType string
+	if isGuest {
+		user = cryptohome.GuestUser
+		userType = "guest"
+	} else {
+		user = FakeUser
+		userType = "fake"
+	}
+
+	userHash, err := cryptohome.UserHash(ctx, user)
 	if err != nil {
-		return errors.Wrap(err, "failed getting the user hash for the fake user")
+		return errors.Wrapf(err, "failed getting the user hash for the %s user", userType)
 	}
 
 	env.ShillUserProfileDir = filepath.Join(DaemonStoreBase, userHash)
