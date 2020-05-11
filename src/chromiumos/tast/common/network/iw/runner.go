@@ -234,12 +234,12 @@ func (r *Runner) PhyByID(ctx context.Context, id int) (*Phy, error) {
 	return parsePhyInfo(out)
 }
 
-// TimedScan runs a scan on a specified interface and frequencies (if applicable).
+// TimedScan runs a scan on a specified interface, frequencies (if applicable) and ssids (if applicable).
 // A channel map for valid frequencies can be found in
 // third_party/autotest/files/server/cros/network/hostap_config.py
 // The frequency slice is used to whitelist which frequencies/bands to scan on.
 // The SSIDs slice will filter the results of the scan to those that pertain
-// to the whitelisted SSIDs (although this doesn't seem to work on some devices).
+// to the whitelisted SSIDs.
 func (r *Runner) TimedScan(ctx context.Context, iface string,
 	frequencies []int, ssids []string) (*TimedScanData, error) {
 	args := []string{"dev", iface, "scan"}
@@ -260,10 +260,23 @@ func (r *Runner) TimedScan(ctx context.Context, iface string,
 	if err != nil {
 		return nil, err
 	}
+	if len(ssids) > 0 {
+		var filteredBSSList []*BSSData
+		for _, b := range bssList {
+			for _, ssid := range ssids {
+				if b.SSID == ssid {
+					filteredBSSList = append(filteredBSSList, b)
+					break
+				}
+			}
+		}
+		return &TimedScanData{scanTime, filteredBSSList}, nil
+	}
 	return &TimedScanData{scanTime, bssList}, nil
 }
 
 // ScanDump returns a list of BSSData from a scan dump.
+// Note that it does not perform a new scan.
 func (r *Runner) ScanDump(ctx context.Context, iface string) ([]*BSSData, error) {
 	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "scan", "dump")
 	if err != nil {
