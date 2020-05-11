@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b269cef5_8c73e008",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-05-11T22:26:48Z",
+      "side": 1,
+      "message": "Not sure what \u0027necessary\u0027 means in this sentence?",
+      "range": {
+        "startLine": 372,
+        "startChar": 25,
+        "endLine": 372,
+        "endChar": 34
+      },
+      "revId": "2a8fc191d17c6b40cc441c77d9fb158fb6b43ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a82b7e_fc43f5ea",
+        "filename": "src/chromiumos/tast/local/crash/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-05-11T22:26:48Z",
+      "side": 1,
+      "message": "also here",
+      "range": {
+        "startLine": 394,
+        "startChar": 10,
+        "endLine": 394,
+        "endChar": 19
+      },
+      "revId": "2a8fc191d17c6b40cc441c77d9fb158fb6b43ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
