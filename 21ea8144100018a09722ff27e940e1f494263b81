@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfdfc4fd_92935c3d",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:12:14Z",
+      "side": 1,
+      "message": "This looks risky in general.\nIf username becomes accidentally empty, you cannot catch it.\nIt is named \"UserToken\" so I think supporting SystemToken sounds like out of scope.\nHow about just removing this?",
+      "range": {
+        "startLine": 690,
+        "startChar": 1,
+        "endLine": 693,
+        "endChar": 2
+      },
+      "revId": "21ea8144100018a09722ff27e940e1f494263b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d40c4e_2c7fa922",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:12:14Z",
+      "side": 1,
+      "message": "Hmm... having two conditions looks a bit weird? Is either an actual failure, so that the polling should be terminated immediately (by testing.PollBreak)?",
+      "range": {
+        "startLine": 697,
+        "startChar": 2,
+        "endLine": 702,
+        "endChar": 3
+      },
+      "revId": "21ea8144100018a09722ff27e940e1f494263b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
