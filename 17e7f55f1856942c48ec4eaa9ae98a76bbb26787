@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d66b7b59_7318fe5c",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-11T07:41:02Z",
+      "side": 1,
+      "message": "Do you use this function in the following CLs? I see only ImportPrivateKeyBySlot usages.",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 32
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9d8bee_3f9f6ba7",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-11T07:41:02Z",
+      "side": 1,
+      "message": "nit: `rm -f \"%s*\"`",
+      "range": {
+        "startLine": 307,
+        "startChar": 57,
+        "endLine": 307,
+        "endChar": 72
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9610b1c_1414c83d",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-11T07:41:02Z",
+      "side": 1,
+      "message": "nit: errors.Wrapf(err, \"failed to remove on disk files starting with %s\", key.keyPrefix)",
+      "range": {
+        "startLine": 308,
+        "startChar": 10,
+        "endLine": 308,
+        "endChar": 89
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
