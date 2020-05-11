@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65e02510_408abb3f",
+        "filename": "src/chromiumos/tast/local/power/battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-05-11T01:13:05Z",
+      "side": 1,
+      "message": "very small nit: Go does\u0027t like the word Get, it\u0027s idiomatic to have a getter for foo just be called Foo (and the setter SetFoo).\n\nSo maybe ReadSystemPowerFromSysfs?",
+      "revId": "bc6079e8e225aafd117b0ff49bea945066d68127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a77ec944_ddbfd0c0",
+        "filename": "src/chromiumos/tast/local/power/battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2020-05-11T01:13:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure on Go\u0027s position on using closures instead of module global functions. I think these should be plain functions; these are pure functions, they don\u0027t need to capture anything from the containing scope.\n\nAlso, you pass devPath and name, but only join them. Maybe only pass filename?",
+      "revId": "bc6079e8e225aafd117b0ff49bea945066d68127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
