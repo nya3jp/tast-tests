@@ -1,0 +1,308 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "542b80d1_047427e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "How about put this in crash package?",
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db836dd3_1442b732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 64
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "311ede7f_7bb8682f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "I think this should be dropped?\nOr, if there\u0027s some special handling is needed, could you comment?",
+      "range": {
+        "startLine": 79,
+        "startChar": 76,
+        "endLine": 79,
+        "endChar": 98
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d0867cd_e60c8cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "you can just inline cmd to make its scope minimize.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 44
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ae9dff_9e49b7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "I think this can be dropped. In case of failure, DumpLogOnError outputs the command.",
+      "range": {
+        "startLine": 94,
+        "startChar": 75,
+        "endLine": 94,
+        "endChar": 103
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d2d585_ce223271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "https://golang.org/pkg/os/#IsNotExist\n\nit is a function to check if the given error is ENOENT, so it looks like slightly out of expected use. How about:\n\nexpectCrashReport(..., expectExist bool) ... {\n\n  ...\n  if err !\u003d nil \u0026\u0026 os.IsNotExist(err) {\n    ...\n  }\n  exists :\u003d err \u003d\u003d nil\n\n  if exists !\u003d expectExists {\n    ...\n  }\n  ...\n}",
+      "range": {
+        "startLine": 110,
+        "startChar": 14,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3356ede_e3fa073d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "nit: \"content\" ?",
+      "range": {
+        "startLine": 116,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf551279_0eaae2fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "this looks just not only checking expectation, but also runs some test target.\nMaybe naming to testXxx?\n\n\nAlso, this successExpected is always true, so you can just drop it.",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 11
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bd5798_c12e35e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "Ditto for naming.",
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a52cbf_44ba0712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "The only diff looks like the second arg for expectEphemeralCollection.\nLet\u0027s avoid duplication, and define just a bool member as a part of parameter.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bea6e0_f9afa9f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "nit: could you minimize the scope of err?",
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfab9f8_82465d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "nit/style: I would avoid repeating chrome.New().\n\nvar opts []chrome.Option\nif !oobeComplete {\n  opts \u003d append(opts, chrome.NoLogin())\n}\ncr, err \u003d chrome.New(ctx, opts...)\n...",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 3
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638baac2_e04ca5ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "nit: let\u0027s remove these two lines.\nSetUp/TearDown are pair. Also, the comment is just repeating the code in defer which is nice to avoid.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 33
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923891a6_e1896298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T14:06:23Z",
+      "side": 1,
+      "message": "I\u0027d recommend to inline validate* functions by merging as recommended above.\n\n(optional): In addition, you can use s.Run() for subtest to run\nexpectEphemeralCollection even if expectEphemeralPreservationAcrossClobber failed (if those are independent conceptually).",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "54851eda9cbdbc7508997da5cae24909c94f0720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
