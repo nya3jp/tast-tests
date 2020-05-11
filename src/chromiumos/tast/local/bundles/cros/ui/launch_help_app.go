@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/testing"
 )
@@ -43,17 +44,34 @@ func LaunchHelpApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	// Verify HelpApp (aka Discover) launched in background.
-	if _, err = ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: apps.Help.Name}, 20*time.Second); err != nil {
-		s.Error("Failed to wait for Help app launched in background: ", err)
+	tabletEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get current ui mode: ", err)
 	}
 
-	// Find Overview tab to verify app rendering.
-	params := ui.FindParams{
-		Name: "Overview",
-		Role: ui.RoleTypeTab,
-	}
-	if _, err = ui.FindWithTimeout(ctx, tconn, params, 20*time.Second); err != nil {
-		s.Error("Failed to render Help app: ", err)
+	// Verify HelpApp (aka Discover) launched in Clamshell mode
+	if !tabletEnabled {
+		if _, err = ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: apps.Help.Name}, 20*time.Second); err != nil {
+			s.Error("Failed to wait for Help app launched: ", err)
+		}
+
+		// Find Overview tab to verify app rendering.
+		params := ui.FindParams{
+			Name: "Overview",
+			Role: ui.RoleTypeTab,
+		}
+		if _, err = ui.FindWithTimeout(ctx, tconn, params, 20*time.Second); err != nil {
+			s.Error("Failed to render Help app: ", err)
+		}
+	} else {
+		//Verify HelpApp (aka Discover) not to launch in Tablet mode
+		isHelpAppLaunched, err := ui.Exists(ctx, tconn, ui.FindParams{Name: apps.Help.Name})
+		if err != nil {
+			s.Error("Failed to check HelpApp existence: ", err)
+		}
+
+		if isHelpAppLaunched {
+			s.Error("Help app is launched in Tablet mode")
+		}
 	}
 }
