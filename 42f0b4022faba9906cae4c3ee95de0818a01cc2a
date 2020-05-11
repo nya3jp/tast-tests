@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "657f6195_1cede51b",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T13:44:47Z",
+      "side": 1,
+      "message": "nit/style:\n\nconst pingCmd \u003d \"ping\"",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "42f0b4022faba9906cae4c3ee95de0818a01cc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2161f780_931daa2d",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T13:44:47Z",
+      "side": 1,
+      "message": "fields can be private in this struct?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "42f0b4022faba9906cae4c3ee95de0818a01cc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e96e8e_ad694773",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T13:44:47Z",
+      "side": 1,
+      "message": "unused? Ditto for below.\n\nWe often define just a package function for option pattern. Then you can write:\n\nr :\u003d ping.NewRunner(...)\nr.Ping(ctx, ..., ping.BindAddress(true), ping.Size(10), ...)",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "42f0b4022faba9906cae4c3ee95de0818a01cc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79f2184_5c815e04",
+        "filename": "src/chromiumos/tast/common/network/ping/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T13:44:47Z",
+      "side": 1,
+      "message": "Could you define a package var to avoid compile multple times? Ditto for below.",
+      "range": {
+        "startLine": 161,
+        "startChar": 11,
+        "endLine": 161,
+        "endChar": 58
+      },
+      "revId": "42f0b4022faba9906cae4c3ee95de0818a01cc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff82f91_f36c5375",
+        "filename": "src/chromiumos/tast/local/network/ping/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T13:44:47Z",
+      "side": 1,
+      "message": "Hmm... most of the implementation is in common pacakge by design to share the code with remote package?\n\nIf so, \"Package ping provides a factory to run ping on DUT.\"\n\nSimilary remote ping package can be\n\n\"Packag ping provides a factory to run ping on DUT from remote machine.\"\n\nor something?\n\nWDYT?",
+      "revId": "42f0b4022faba9906cae4c3ee95de0818a01cc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221783db_acd94735",
+        "filename": "src/chromiumos/tast/local/network/ping/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T13:44:47Z",
+      "side": 1,
+      "message": "Do you need alias here?\n\nI think you can just use common ping package.\nYou may also interested in to name this package slightly differently, instead. E.g.\n\n\nimport (\n  \"chromiumos/tast/common/network/ping\"\n  localping \"chromiumos/tsat/local/network/ping\"\n  ...\n)\n\nso that\n\nr :\u003d localping.NewRunner()\n... // hereafter, you can just use ping package.\n\nSame can be said for remote ping package.\n\nWDYT?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "42f0b4022faba9906cae4c3ee95de0818a01cc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364d1a4a_72e72144",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T13:44:47Z",
+      "side": 1,
+      "message": "Could you avoid output multiple lines?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\n\u003d\u003d quote \u003d\u003d\nIn all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\u003d\u003d quote end \u003d\u003d",
+      "revId": "42f0b4022faba9906cae4c3ee95de0818a01cc2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
