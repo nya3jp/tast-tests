@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
@@ -769,6 +770,11 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+
+	if err := audio.Mute(ctx); err != nil {
+		s.Fatal("Failed to mute audio: ", err)
+	}
+	defer audio.Unmute(ctx)
 
 	if err := toggleTraySetting(ctx, tconn, "Toggle Do not disturb. Do not disturb is off."); err != nil {
 		s.Fatal("Failed to disable notifications: ", err)
