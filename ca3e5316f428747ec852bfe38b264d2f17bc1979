@@ -51,6 +51,24 @@
       "revId": "ca3e5316f428747ec852bfe38b264d2f17bc1979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a12cb1_fbc345b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2020-05-11T07:21:39Z",
+      "side": 1,
+      "message": "For --gtest_repeat: I see. make sense.\n\nFor flakiness, I thought we don\u0027t need to care about flakes so much in this perf test because we have non-perf functional tests to monitor flakiness. However, I have no strong reasons to ignore failures.\nSo, I\u0027m okay with the current implementation now.",
+      "parentUuid": "1fee87ec_8760cc27",
+      "revId": "ca3e5316f428747ec852bfe38b264d2f17bc1979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
