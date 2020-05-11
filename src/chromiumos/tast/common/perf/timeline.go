@@ -149,11 +149,19 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 
 	ctx, t.cancelRecording = context.WithCancel(ctx)
 	t.recordingValues = NewValues()
-	t.recordingStatus = make(chan error, 2)
+	t.recordingStatus = make(chan error, 1)
 
-	go func() {
+	go func(previousTime time.Time) {
 		for {
-			if err := testing.Sleep(ctx, t.interval); err != nil {
+			// sleep time = interval - (now - previous)
+			sleepTime := t.interval - (time.Now().Sub(previousTime))
+			previousTime = time.Now().Add(t.interval)
+			if sleepTime < 0 {
+				t.recordingStatus <- errors.Errorf("trying to snapshot every %d milliseconds, but taking the last snapshot already took more time", t.interval/time.Millisecond)
+				return
+			}
+
+			if err := testing.Sleep(ctx, sleepTime); err != nil {
 				t.recordingStatus <- nil
 				return
 			}
@@ -163,7 +171,7 @@ func (t *Timeline) StartRecording(ctx context.Context) error {
 				return
 			}
 		}
-	}()
+	}(time.Now())
 
 	return nil
 }
