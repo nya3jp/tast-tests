@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b22128b3_3feecac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T04:24:01Z",
+      "side": 1,
+      "message": "nit: nil is shorter, and more efficient per memory.",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "4d50f39de110a3daf39d6e9a0792f86a47191c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6702ccf5_6a7b2924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T04:24:01Z",
+      "side": 1,
+      "message": "nit: This number is easy to get stale, I recommend avoiding to mention the specific number.",
+      "range": {
+        "startLine": 74,
+        "startChar": 18,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "4d50f39de110a3daf39d6e9a0792f86a47191c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
