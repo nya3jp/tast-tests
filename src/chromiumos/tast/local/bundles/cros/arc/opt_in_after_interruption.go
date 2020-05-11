@@ -1,0 +1,277 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
+)
+
+const (
+	// Timeout to wait ARC provisioning is completed.
+	arcProvisionedWaitTimeOut = 60 * time.Second
+
+	// Interval to check ARC provisioning status.
+	arcProvisionedCheckInterval = 1 * time.Second
+)
+
+type optInTestParams struct {
+	username    string // user for Chrome login. It is different for managed and unmanaged cases.
+	password    string // password to login
+	delays      []int  // slice of delays for Chrome restart in seconds
+	acceptTerms bool   // True if Terms of Services require acceptance. False to provision for unmanaged users.
+	chromeArgs  []string
+}
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: OptInAfterInterruption,
+		Desc: "Verify ARC Provisioning completes even with interruptions by restarting Chrome",
+		Contacts: []string{
+			"arc-performance@google.com",
+			"alanding@chromium.org", // Tast port author.
+			"khmel@chromium.org",    // Original autotest author.
+		},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "unmanaged",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: optInTestParams{
+				username:    "arc.OptInAfterInterruption.unmanaged_username",
+				password:    "arc.OptInAfterInterruption.unmanaged_password",
+				delays:      []int{7, 10, 13, 17},
+				acceptTerms: true,
+				chromeArgs:  []string{},
+			},
+		}, {
+			Name:              "unmanaged_vm_p",
+			ExtraSoftwareDeps: []string{"android_vm_p_deprecated"},
+			Val: optInTestParams{
+				username:    "arc.OptInAfterInterruption.unmanaged_username",
+				password:    "arc.OptInAfterInterruption.unmanaged_password",
+				delays:      []int{7, 10, 13, 17},
+				acceptTerms: true,
+				chromeArgs:  []string{"--enable-arcvm"},
+			},
+		}, {
+			Name:              "unmanaged_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: optInTestParams{
+				username:    "arc.OptInAfterInterruption.unmanaged_username",
+				password:    "arc.OptInAfterInterruption.unmanaged_password",
+				delays:      []int{7, 10, 13, 17},
+				acceptTerms: true,
+				chromeArgs:  []string{"--enable-arcvm"},
+			},
+		}, {
+			Name:              "managed",
+			ExtraSoftwareDeps: []string{"android_p"},
+			Val: optInTestParams{
+				username:    "arc.OptInAfterInterruption.managed_username",
+				password:    "arc.OptInAfterInterruption.managed_password",
+				delays:      []int{10, 14, 18, 22},
+				acceptTerms: false,
+				chromeArgs:  []string{},
+			},
+		}, {
+			Name:              "managed_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: optInTestParams{
+				username:    "arc.OptInAfterInterruption.managed_username",
+				password:    "arc.OptInAfterInterruption.managed_password",
+				delays:      []int{10, 14, 18, 22},
+				acceptTerms: false,
+				chromeArgs:  []string{"--enable-arcvm"},
+			},
+		}, {
+			Name:              "managed_vm_p",
+			ExtraSoftwareDeps: []string{"android_vm_p_deprecated"},
+			Val: optInTestParams{
+				username:    "arc.OptInAfterInterruption.managed_username",
+				password:    "arc.OptInAfterInterruption.managed_password",
+				delays:      []int{10, 14, 18, 22},
+				acceptTerms: false,
+				chromeArgs:  []string{"--enable-arcvm"},
+			},
+		}},
+		Vars: []string{
+			"arc.OptInAfterInterruption.unmanaged_username",
+			"arc.OptInAfterInterruption.unmanaged_password",
+			"arc.OptInAfterInterruption.managed_username",
+			"arc.OptInAfterInterruption.managed_password",
+		},
+	})
+}
+
+// OptInAfterInterruption verifies ARC provisioning is completed after interruption.
+//
+// This performs several iteration. On each iteration it starts initial ARC
+// provisioning and then restart Chrome after some delay. It confirms that
+// ARC completes provisioning on next login. This increases delay on 30%
+// for the next iteration. Tests passes when ARC is provisioned before Chrome
+// restart. Last case indicates that trying longer delays does not make sense
+// on this platform because ARC would be provisioning in this interval and
+// next Chrome restart will deal with already provisioned ARC and provisioning
+// flow won't be initiated.
+func OptInAfterInterruption(ctx context.Context, s *testing.State) {
+	param := s.Param().(optInTestParams)
+	username := s.RequiredVar(param.username)
+	password := s.RequiredVar(param.password)
+	extraArgs := param.chromeArgs
+
+	args := []string{"--arc-force-show-optin-ui", "--arc-disable-app-sync", "--arc-disable-play-auto-install"}
+	args = append(args, extraArgs...)
+
+	delays := param.delays
+	acceptTerms := param.acceptTerms
+	completedEarly := false
+	for _, delay := range delays {
+		s.Logf("Start iteration for %d seconds delay", delay)
+
+		func() {
+			s.Log("Log into Chrome instance")
+			cr, err := chrome.New(
+				ctx,
+				chrome.ARCSupported(),
+				chrome.GAIALogin(),
+				chrome.Auth(username, password, ""),
+				chrome.ExtraArgs(args...),
+			)
+			if err != nil {
+				s.Fatal("Failed to connect to Chrome: ", err)
+			}
+			defer cr.Close(ctx)
+
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create test API connection: ", err)
+			}
+			defer tconn.Close()
+
+			s.Log("Check Play Store state")
+			playStoreState, err := optin.GetPlayStoreState(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to check Play Store state: ", err)
+			} else if playStoreState["allowed"] == false {
+				s.Log("WARNING: Play Store state is set to not allowed")
+				completedEarly = true
+				return
+			}
+
+			s.Log("Performing optin to Play Store (enabling ARC)")
+			if err := optin.SetPlayStoreEnabled(ctx, tconn, true); err != nil {
+				s.Fatal("Failed to set enable Play Store: ", err)
+			}
+
+			// Press Agree to continue if needed. Managed account is tuned to optin silently.
+			if playStoreState["managed"] == false {
+				s.Log("Determined that user account is unmanaged")
+				if acceptTerms {
+					s.Log("Setting to explicitly accepting optin terms")
+					if err := optin.FindOptInExtensionPageAndAcceptTerms(ctx, cr, false); err != nil {
+						s.Fatal("Failed to find optin extension page: ", err)
+					}
+				}
+			} else {
+				s.Log("Determined that user account is managed")
+			}
+
+			if err := testing.Sleep(ctx, time.Duration(delay)*time.Second); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
+			s.Log("Sleep completed")
+
+			if arcProvisioned, err := checkArcProvisioned(ctx, tconn); err != nil {
+				s.Fatal("Failed to check if ARC is provisioned: ", err)
+			} else if arcProvisioned {
+				s.Logf("ARC is already provisioned after %d seconds delay", delay)
+				if delay == delays[0] {
+					const warnString = "This is first iteration and Chrome restart " +
+						"was not validated. Consider decreasing initial delay value"
+					s.Logf("WARNING: %s", warnString)
+				}
+				completedEarly = true
+			}
+			s.Log("ARC provisioning is not completed")
+		}()
+
+		if completedEarly {
+			s.Logf("Completed test before ending iteration for %d seconds delay", delay)
+			break
+		}
+
+		func() {
+			// ARC should start automatically due acceptance above.
+			// chrome.KeepState() is set to prevent data clean-up.
+			s.Log("Log into another Chrome instance")
+			cr, err := chrome.New(
+				ctx,
+				chrome.ARCSupported(),
+				chrome.GAIALogin(),
+				chrome.Auth(username, password, ""),
+				chrome.ExtraArgs(args...),
+				chrome.KeepState(),
+			)
+			if err != nil {
+				s.Fatal("Failed to connect to Chrome: ", err)
+			}
+			defer cr.Close(ctx)
+
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Failed to create test API connection: ", err)
+			}
+			defer tconn.Close()
+
+			s.Log("Wait for ARC to complete provisioning")
+			waitForArcProvisioned(ctx, tconn)
+
+			if err := waitForArcProvisioned(ctx, tconn); err != nil {
+				s.Fatal("Failed to wait for ARC to complete provisioning: ", err)
+			}
+			s.Log("ARC is provisioned after restart")
+		}()
+		s.Logf("End iteration for %d seconds delay", delay)
+
+		if delay == delays[len(delays)-1] {
+			s.Error("Test did not complete with the expect delays ", delays)
+		}
+	}
+}
+
+// checkArcProvisioned checks whether ARC provisioning is completed.
+func checkArcProvisioned(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	var provisioned = false
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.isArcProvisioned)()`, &provisioned); err != nil {
+		return false, errors.Wrap(err, "failed running autotestPrivate.isArcProvisioned")
+	}
+	return provisioned, nil
+}
+
+// waitForArcProvisioned waits until ARC provisioning is completed.
+func waitForArcProvisioned(ctx context.Context, tconn *chrome.TestConn) error {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if provisioned, err := checkArcProvisioned(ctx, tconn); err != nil {
+			return testing.PollBreak(err)
+		} else if !provisioned {
+			return errors.New("provisioning for ARC is not complete yet")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  arcProvisionedWaitTimeOut,
+		Interval: arcProvisionedCheckInterval,
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to wait for ARC provisioning to complete")
+	}
+	return nil
+}
