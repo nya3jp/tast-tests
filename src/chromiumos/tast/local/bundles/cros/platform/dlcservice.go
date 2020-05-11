@@ -183,7 +183,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 	install := func(dlcs []string, omahaURL string, e expect) {
 		s.Log("Installing DLC(s): ", dlcs, " to ", omahaURL)
-		runCmd("install", e, "sudo", "-u", "chronos", "dlcservice_util", "--install",
+		runCmd("install", e, "dlcservice_util", "--install",
 			"--dlc_ids="+strings.Join(dlcs, ":"), "--omaha_url="+omahaURL)
 	}
 
