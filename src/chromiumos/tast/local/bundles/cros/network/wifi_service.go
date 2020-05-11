@@ -507,3 +507,56 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 func (s *WifiService) hexSSID(ssid []byte) string {
 	return strings.ToUpper(hex.EncodeToString(ssid))
 }
+
+// ExpectWifiFrequencies checks if the device discovers the given SSID on the specific frequencies.
+func (s *WifiService) ExpectWifiFrequencies(ctx context.Context, req *network.ExpectWifiFrequenciesRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.ExpectWifiFrequencies")
+	defer st.End()
+	testing.ContextLog(ctx, "ExpectWifiFrequencies: ", req)
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	query := map[string]interface{}{
+		shill.ServicePropertyType: "wifi",
+		// Use WiFi.HexSSID instead.
+		shill.ServicePropertyName: req.Ssid,
+	}
+
+	service, err := s.discoverService(ctx, m, query)
+	if err != nil {
+		return nil, err
+	}
+
+	// Spawn watcher for checking property change.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	shortCtx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	defer cancel()
+
+	for {
+		props, err := service.GetProperties(shortCtx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get service properties")
+		}
+		fs, err := props.GetUint16s(shill.ServicePropertyWiFiFrequencyList)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to get property %s", shill.ServicePropertyWiFiFrequencyList)
+		}
+		freqs := uint16sToUint32s(fs)
+		if reflect.DeepEqual(req.Frequencies, freqs) {
+			break
+		}
+		testing.ContextLogf(shortCtx, "Got frequencies %v for service with SSID: %s; want %v; waiting for update", freqs, req.Ssid, req.Frequencies)
+		if _, err := pw.WaitAll(shortCtx, shill.ServicePropertyWiFiFrequencyList); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for the service property change")
+		}
+	}
+	return &empty.Empty{}, nil
+}
