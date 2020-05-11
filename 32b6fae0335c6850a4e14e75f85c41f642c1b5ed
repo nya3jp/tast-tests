@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aadc0c32_a5970067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_duo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T22:50:49Z",
+      "side": 1,
+      "message": "nit: google duo",
+      "range": {
+        "startLine": 107,
+        "startChar": 15,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "32b6fae0335c6850a4e14e75f85c41f642c1b5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3bdc3cf_ef278142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_duo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T22:50:49Z",
+      "side": 1,
+      "message": "why is this done twice?",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "32b6fae0335c6850a4e14e75f85c41f642c1b5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d26c0675_c2f2fa46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/google_duo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T22:50:49Z",
+      "side": 1,
+      "message": "This is also done just above.",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "32b6fae0335c6850a4e14e75f85c41f642c1b5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
