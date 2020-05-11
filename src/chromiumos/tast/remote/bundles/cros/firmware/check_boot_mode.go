@@ -27,9 +27,16 @@ func init() {
 	})
 }
 
+// modes enumerates the order in which the DUT will transition through BootModes during this test.
+var modes = []fwCommon.BootMode{
+	fwCommon.BootModeNormal,
+	fwCommon.BootModeNormal,
+}
+
 func CheckBootMode(ctx context.Context, s *testing.State) {
 	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	d := s.DUT()
+	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC: ", err)
 	}
@@ -37,56 +44,32 @@ func CheckBootMode(ctx context.Context, s *testing.State) {
 	utils := fwpb.NewUtilsServiceClient(cl.Conn)
 
 	// DUT should start in normal mode.
-	// Exercise all ways of verifying the boot mode.
-	currentBootModeResponse, err := utils.CurrentBootMode(ctx, &empty.Empty{})
-	if err != nil {
-		s.Fatal("Error during CurrentBootMode: ", err)
-	}
-	if currentBootModeResponse.BootMode != fwpb.BootMode_BOOT_MODE_NORMAL {
-		s.Errorf("CurrentBootMode returned BootMode %s; want %s", currentBootModeResponse.BootMode, fwpb.BootMode_BOOT_MODE_NORMAL)
-	}
-	normalMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeNormal)
-	if err != nil {
-		s.Fatal("Failed calling CheckBootMode RPC wrapper: ", err)
-	}
-	if !normalMode {
-		s.Error("DUT was not in Normal mode at start of test")
-	}
-	devMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeDev)
-	if err != nil {
-		s.Fatal("Failed calling CheckBootMode RPC wrapper: ", err)
-	}
-	if devMode {
-		s.Error("DUT was thought to be in Dev mode at start of test")
-	}
-	recMode, err := firmware.CheckBootMode(ctx, utils, fwCommon.BootModeRecovery)
-	if err != nil {
-		s.Fatal("Failed calling CheckBootMode RPC wrapper: ", err)
-	}
-	if recMode {
-		s.Error("DUT was thought to be in Rec mode at start of test")
+	if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Error during CheckBootMode at beginning of test: ", err)
+	} else if fwCommon.BootModeFromProto[r.BootMode] != fwCommon.BootModeNormal {
+		s.Fatalf("DUT was in %s mode at beginning of test; expected normal", fwCommon.BootModeFromProto[r.BootMode])
 	}
 
-	// Boot from Normal > Normal mode
-	d := s.DUT()
-	if err := firmware.RebootToMode(ctx, d, utils, fwCommon.BootModeNormal); err != nil {
-		s.Fatal("Error during Normal>Normal transition: ", err)
-	}
-
-	// Reconnect to the RPC server after rebooting.
-	cl, err = rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to reconnect to the RPC: ", err)
-	}
-	defer cl.Close(ctx)
-	utils = fwpb.NewUtilsServiceClient(cl.Conn)
-
-	// Verify that we booted into the new mode correctly
-	currentBootModeResponse, err = utils.CurrentBootMode(ctx, &empty.Empty{})
-	if err != nil {
-		s.Fatal("Error during CurrentBootMode: ", err)
-	}
-	if currentBootModeResponse.BootMode != fwpb.BootMode_BOOT_MODE_NORMAL {
-		s.Fatalf("After booting Normal>Normal, CurrentBootMode returned BootMode %s; want %s", currentBootModeResponse.BootMode, fwpb.BootMode_BOOT_MODE_NORMAL)
+	// Transition through the boot modes enumerated in ms, verifying boot mode at each step along the way.
+	var fromMode, toMode fwCommon.BootMode
+	for i := 0; i < len(modes)-1; i++ {
+		fromMode = modes[i]
+		toMode = modes[i+1]
+		testing.ContextLogf(ctx, "Transitioning from %s to %s", fromMode, toMode)
+		if err := firmware.RebootToMode(ctx, d, utils, toMode); err != nil {
+			s.Fatalf("Error during transition from %s to %s: %+v", fromMode, toMode, err)
+		}
+		// Rebooting kills the RPC connection.
+		cl, err = rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+		if err != nil {
+			s.Fatal("Failed to reconnect to the RPC: ", err)
+		}
+		defer cl.Close(ctx)
+		utils = fwpb.NewUtilsServiceClient(cl.Conn)
+		if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
+			s.Fatalf("Error during CurrentBootMode after transition from %s to %s: %+v", fromMode, toMode, err)
+		} else if fwCommon.BootModeFromProto[r.BootMode] != toMode {
+			s.Fatalf("DUT was in %s after transition from %s to %s", fwCommon.BootModeFromProto[r.BootMode], fromMode, toMode)
+		}
 	}
 }
