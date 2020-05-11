@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfbde5c2_e0f1e113",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T21:15:30Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at any of the protos yet, are they actually the same for everything referenced by ActivityActivities?\n\nDon\u0027t want parts of the data to be missing or incorrect if something got deprecated.",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 66
+      },
+      "revId": "a04293ada2cf811fd3d1640f059e2fbee616ca08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
