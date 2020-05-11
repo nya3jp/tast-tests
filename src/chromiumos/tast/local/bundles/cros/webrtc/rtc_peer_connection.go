@@ -37,7 +37,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(peerconnection.DataFiles(), peerconnection.LoopbackFile),
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		// TODO(crbug.com/1017374): add "vp9_enc".
 		Params: []testing.Param{{
 			Name:              "vp8_enc",
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8", simulcast: false},
@@ -92,6 +91,13 @@ func init() {
 			Val:               rtcTest{codec: peerconnection.Encoding, profile: "VP8", simulcast: true},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Pre:               pre.ChromeVideoWithFakeWebcam(),
+		}, {
+			Name: "vp9_enc_temporal_layer",
+			Val:  rtcTest{codec: peerconnection.Encoding, profile: "VP9", simulcast: false},
+			// TODO(crbug.com/811912): Remove "vaapi" and pre.ChromeVideoWithFakeWebcamAndVP9VaapiEncoder()
+			// once the feature is enabled by default on VA-API devices.
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			Pre:               pre.ChromeVideoWithFakeWebcamAndForce1SL3TLAndVP9VaapiEncoder(),
 		}},
 	})
 }
