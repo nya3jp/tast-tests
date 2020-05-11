@@ -50,22 +50,45 @@ func (s *WifiService) InitDUT(ctx context.Context, _ *empty.Empty) (*empty.Empty
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
-	// Turn on the WiFi device.
-	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
+
+	iface, err := s.wifiInterface(ctx, m)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get a WiFi device")
+		return nil, err
 	}
-	dev, err := m.DeviceByName(ctx, iface)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to find the device for interface %s", iface)
-	}
-	if err := dev.Enable(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to enable WiFi device")
+	if err := s.toggleWifi(ctx, m, iface, true); err != nil {
+		return nil, err
 	}
 	if err := s.reinitTestState(ctx, m); err != nil {
 		return nil, err
 	}
 	return &empty.Empty{}, nil
+}
+
+// wifiInterface gets the WiFi interface name.
+func (s *WifiService) wifiInterface(ctx context.Context, m *shill.Manager) (string, error) {
+	iface, err := shill.WifiInterface(ctx, m, 5*time.Second)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get a WiFi device")
+	}
+	return iface, nil
+}
+
+// toggleWifi enables/disables the WiFi device.
+func (s *WifiService) toggleWifi(ctx context.Context, m *shill.Manager, iface string, enable bool) error {
+	dev, err := m.DeviceByName(ctx, iface)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the device for interface %s", iface)
+	}
+	if enable {
+		if err := dev.Enable(ctx); err != nil {
+			return errors.Wrap(err, "failed to enable WiFi device")
+		}
+	} else {
+		if err := dev.Disable(ctx); err != nil {
+			return errors.Wrap(err, "failed to disable WiFi device")
+		}
+	}
+	return nil
 }
 
 // reinitTestState prepare the environment for WiFi testcase.
@@ -382,13 +405,14 @@ func (s *WifiService) removeMatchedEntries(ctx context.Context, m *shill.Manager
 
 // GetInterface returns the WiFi device interface name (e.g., wlan0).
 func (s *WifiService) GetInterface(ctx context.Context, e *empty.Empty) (*network.GetInterfaceResponse, error) {
-	manager, err := shill.NewManager(ctx)
+	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager proxy")
 	}
-	netIf, err := shill.WifiInterface(ctx, manager, 5*time.Second)
+
+	netIf, err := s.wifiInterface(ctx, m)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the WiFi interface")
+		return nil, err
 	}
 	return &network.GetInterfaceResponse{
 		Name: netIf,
@@ -416,4 +440,46 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 	}
 
 	return &ret, nil
+}
+
+// ToggleInterface enables/disables the WiFi interface from shill.
+func (s *WifiService) ToggleInterface(ctx context.Context, req *network.ToggleInterfaceRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "ToggleInterface")
+	defer st.End()
+
+	upStr := func(up bool) string {
+		if up {
+			return "up"
+		}
+		return "down"
+	}
+	testing.ContextLogf(ctx, "Toggling WiFi interface %s %s", req.InterfaceName, upStr(req.Enable))
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
+	}
+	if err := s.toggleWifi(ctx, m, req.InterfaceName, req.Enable); err != nil {
+		return nil, err
+	}
+
+	// Make sure interface is up/down.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		netIface, err := net.InterfaceByName(req.InterfaceName)
+		if err != nil {
+			return err
+		}
+		ifaceUp := netIface.Flags&net.FlagUp != 0
+		if ifaceUp == req.Enable {
+			return nil
+		}
+		return errors.Errorf("got %s %s; want %s", req.InterfaceName, upStr(ifaceUp), upStr(req.Enable))
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 50 * time.Millisecond,
+	}); err != nil {
+		return nil, err
+	}
+
+	return &empty.Empty{}, nil
 }
