@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20c19fe3_787773c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-11T04:38:24Z",
+      "side": 1,
+      "message": "Should we rename LinuxChrome \u003d\u003e LacrosChrome then?",
+      "parentUuid": "75afb149_838e5192",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "14471bac588de78530b49948908b3f8015bf2636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e68377f6_db38a817",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "14471bac588de78530b49948908b3f8015bf2636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c93a36_11a190b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-11T04:38:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68377f6_db38a817",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "14471bac588de78530b49948908b3f8015bf2636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
