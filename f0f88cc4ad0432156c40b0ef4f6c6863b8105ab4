@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0c86dc0_4319a027",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T16:57:50Z",
+      "side": 1,
+      "message": "nit: As you used \"parent\" as a new variable at L212, I think it makes sense to move this to just before L216.",
+      "revId": "f0f88cc4ad0432156c40b0ef4f6c6863b8105ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
