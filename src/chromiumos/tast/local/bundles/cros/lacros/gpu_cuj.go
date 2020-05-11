@@ -52,27 +52,35 @@ const (
 	// dragMoveOffsetDP indicates the offset from the top-left of a Chrome window to drag to ensure we can drag move it.
 	dragMoveOffsetDP int = 5
 	// insetSlopDP indicates how much to inset the work area (display area) to avoid window snapping to the
-	// edges of the screen intefering with drag-move and drag-resize of windows.
+	// edges of the screen interfering with drag-move and drag-resize of windows.
 	insetSlopDP int = 40
 )
 
 type page struct {
 	name string
-	url  string // TODO: Replace this with WPR.
+	url  string
 }
 
 var pageSet = []page{
 	{
-		name: "aquarium", // WebGL Aquarium
+		name: "aquarium", // WebGL Aquarium. This page is for testing WebGL.
 		url:  "https://webglsamples.org/aquarium/aquarium.html",
 	},
 	{
-		name: "poster", // Poster Circle
+		name: "poster", // Poster Circle. This page is for testing compositor performance.
 		url:  "https://webkit.org/blog-files/3d-transforms/poster-circle.html",
 	},
 	{
-		name: "maps", // Google Maps
+		name: "maps", // Google Maps. This page is for testing WebGL.
 		url:  "https://www.google.com/maps/@35.652772,139.6605155,14z",
+	},
+	{
+		name: "youtube", // YouTube. This page is for testing video playback.
+		url:  "https://www.youtube.com/watch?v=aqz-KE-bpKQ?autoplay=1",
+	},
+	{
+		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
+		url:  "https://en.wikipedia.org/wiki/Cat",
 	},
 }
 
