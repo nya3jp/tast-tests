@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e172c8e_f13e57d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-11T06:33:08Z",
+      "side": 0,
+      "message": "We need to replace this line with some other function in chromeHelper to test if the route works.",
+      "range": {
+        "startLine": 298,
+        "startChar": 9,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "7627c97c2ae5752e6e3a771468f2c68b58448fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
