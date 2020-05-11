@@ -22,6 +22,30 @@
       "revId": "ca99c91e59a9b45315524decf86ffaaa1eb2a9a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a87287_38687fc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-11T16:47:47Z",
+      "side": 1,
+      "message": "Done. But, most of those \"bytes\" occurrences are functions imported from the \"bytes\" package, which are now instead analogous functions imported from the \"strings\" package. But, we get to change `[]byte(\"\\n\")` into `\"\\n\"`, and in the next line `string(namespace)` into just `namespace`, so agreed that this is clearer.",
+      "parentUuid": "2b890580_e4ea7130",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "ca99c91e59a9b45315524decf86ffaaa1eb2a9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
