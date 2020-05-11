@@ -98,6 +98,7 @@ func init() {
 		Func:         GpuCUJ,
 		Desc:         "Lacros GPU performance CUJ tests",
 		Contacts:     []string{"edcourtney@chromium.org", "hidehiko@chromium.org", "lacros-team@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      60 * time.Minute,
 		Data:         []string{launcher.DataArtifact},
