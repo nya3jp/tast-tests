@@ -22,6 +22,30 @@
       "revId": "6ffcb330273516b6873bbdf3eef7a8ecb7b6528a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e84d951_f0cd6cea",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-11T22:47:38Z",
+      "side": 1,
+      "message": "Made both early return. But in principle, we won\u0027t have download/log request at the same time.",
+      "parentUuid": "5307aa35_66afc714",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "6ffcb330273516b6873bbdf3eef7a8ecb7b6528a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
