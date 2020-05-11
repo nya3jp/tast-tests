@@ -45,10 +45,9 @@ func SetPlayStoreEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bo
 	return tconn.EvalPromise(ctx, expr, nil)
 }
 
-// Perform steps through opt-in flow and wait for it to complete.
-func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
-	SetPlayStoreEnabled(ctx, tconn, true)
-
+// FindOptInExtensionPageAndAcceptTerms will find the opt-in extension page, optin if verified,
+// and optionally wait for completion.
+func FindOptInExtensionPageAndAcceptTerms(ctx context.Context, cr *chrome.Chrome, wait bool) error {
 	bgURL := chrome.ExtensionBackgroundPageURL(apps.PlayStore.ID)
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
@@ -70,8 +69,21 @@ func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) err
 		return errors.Wrap(err, "failed to execute 'termsPage.onAgree()'")
 	}
 
-	if err := conn.WaitForExpr(ctx, "!appWindow"); err != nil {
-		return errors.Wrap(err, "failed to wait for '!appWindow'")
+	if wait {
+		if err := conn.WaitForExpr(ctx, "!appWindow"); err != nil {
+			return errors.Wrap(err, "failed to wait for '!appWindow'")
+		}
+	}
+
+	return nil
+}
+
+// Perform steps through opt-in flow and wait for it to complete.
+func Perform(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
+	SetPlayStoreEnabled(ctx, tconn, true)
+
+	if err := FindOptInExtensionPageAndAcceptTerms(ctx, cr, true); err != nil {
+		return errors.Wrap(err, "failed to find optin extension page")
 	}
 
 	// TODO(niwa): Check if we still need to handle non-tos_needed case.
@@ -99,4 +111,13 @@ func WaitForPlayStoreReady(ctx context.Context, tconn *chrome.TestConn) error {
 // WaitForPlayStoreShown waits for Play Store window to be shown.
 func WaitForPlayStoreShown(ctx context.Context, tconn *chrome.TestConn) error {
 	return ash.WaitForApp(ctx, tconn, apps.PlayStore.ID)
+}
+
+// GetPlayStoreState is a wrapper for chrome.autotestPrivate.getPlayStoreState.
+func GetPlayStoreState(ctx context.Context, tconn *chrome.TestConn) (map[string]bool, error) {
+	state := make(map[string]bool)
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getPlayStoreState)()`, &state); err != nil {
+		return state, errors.Wrap(err, "failed running autotestPrivate.getPlayStoreState")
+	}
+	return state, nil
 }

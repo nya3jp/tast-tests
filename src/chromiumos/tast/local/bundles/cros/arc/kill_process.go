@@ -91,7 +91,7 @@ func KillProcess(ctx context.Context, s *testing.State) {
 // processExist returns whether the kernel process procName exist.
 func processExist(ctx context.Context, a *arc.ARC, procName string) (bool, error) {
 	// Cannot query the host processes since this test runs both on Container and VM.
-	// Querying Android processes intead.
+	// Querying Android processes instead.
 	out, err := a.Command(ctx, "ps", "-A").Output()
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get processes")
