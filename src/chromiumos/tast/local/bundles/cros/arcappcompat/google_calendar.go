@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -26,19 +27,19 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.BootedAppCompat(),
+			Pre:               pre.AppCompatBooted,
 		}, {
 			Name:              "tablet_mode",
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
-			Pre:               arc.BootedInTabletModeAppCompat(),
+			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBootedAppCompat(),
+			Pre:               pre.AppCompatVMBooted,
 		}, {
 			Name:              "vm_tablet_mode",
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
-			Pre:               arc.VMBootedInTabletModeAppCompat(),
+			Pre:               pre.AppCompatVMBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
 		Vars:    []string{"arcappcompat.username", "arcappcompat.password"},

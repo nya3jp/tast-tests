@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/screenshot"
@@ -47,7 +48,7 @@ func init() {
 				Tests:      clamshellTestsForSlack,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
-			Pre:               arc.BootedAppCompat(),
+			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
@@ -55,7 +56,7 @@ func init() {
 				Tests:      touchviewTestsForSlack,
 			},
 			ExtraSoftwareDeps: []string{"android_p", "tablet_mode"},
-			Pre:               arc.BootedInTabletModeAppCompat(),
+			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm",
 			Val: testutil.TestParams{
@@ -63,7 +64,7 @@ func init() {
 				Tests:      clamshellTestsForSlack,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Pre:               arc.VMBootedAppCompat(),
+			Pre:               pre.AppCompatVMBooted,
 		}, {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
@@ -71,7 +72,7 @@ func init() {
 				Tests:      touchviewTestsForSlack,
 			},
 			ExtraSoftwareDeps: []string{"android_vm", "tablet_mode"},
-			Pre:               arc.VMBootedInTabletModeAppCompat(),
+			Pre:               pre.AppCompatVMBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
 		Vars: []string{"arcappcompat.username", "arcappcompat.password",

@@ -105,72 +105,25 @@ var bootedWithVideoLoggingPre = &preImpl{
 			"*/components/arc/video_accelerator/*"}, ",")},
 }
 
-// BootedAppCompat returns a precondition similar to Booted(). The only difference from Booted() is
-// that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
-func BootedAppCompat() testing.Precondition { return bootedAppCompatPre }
-
-// bootedAppCompatPre is returned by BootedAppCompat.
-var bootedAppCompatPre = &preImpl{
-	name:    "arc_booted_appcompat",
-	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
-	gaia: &gaiaVars{
-		userVar: "arcappcompat.username",
-		passVar: "arcappcompat.password",
-	},
-	extraArgs: []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
+// NewPrecondition creates a new arc precondition for tests that need different args.
+func NewPrecondition(name string, useARCVM bool, gaia *GaiaVars, extraArgs ...string) testing.Precondition {
+	pre := &preImpl{
+		name:      name,
+		timeout:   resetTimeout + chrome.LoginTimeout + BootTimeout,
+		gaia:      gaia,
+		extraArgs: extraArgs,
+		useARCVM:  useARCVM,
+	}
+	if pre.gaia != nil {
+		pre.timeout += optin.OptinTimeout
+	}
+	return pre
 }
 
-// VMBootedAppCompat returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
-// that ARC VM, and not the ARC Container, is enabled in this precondition.
-func VMBootedAppCompat() testing.Precondition { return vmBootedAppCompatPre }
-
-// vmBootedAppCompatPre is returned by VMBootedAppCompat.
-var vmBootedAppCompatPre = &preImpl{
-	name:    "arcvm_booted_appcompat",
-	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
-	gaia: &gaiaVars{
-		userVar: "arcappcompat.username",
-		passVar: "arcappcompat.password",
-	},
-	extraArgs: []string{"--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
-	useARCVM:  true,
-}
-
-// BootedInTabletModeAppCompat returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
-// that Chrome is launched in tablet mode in this precondition.
-func BootedInTabletModeAppCompat() testing.Precondition { return bootedInTabletModeAppCompatPre }
-
-// bootedInTabletModeAppCompatPre is returned by BootedInTabletModeAppCompat.
-var bootedInTabletModeAppCompatPre = &preImpl{
-	name:    "arc_booted_in_tablet_mode_appcompat",
-	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
-	gaia: &gaiaVars{
-		userVar: "arcappcompat.username",
-		passVar: "arcappcompat.password",
-	},
-	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
-}
-
-// VMBootedInTabletModeAppCompat returns a precondition similar to BootedInTabletModeAppCompat(). The only difference from BootedInTabletModeAppCompat() is
-// that ARC VM, and not the ARC Container, is enabled in this precondition.
-func VMBootedInTabletModeAppCompat() testing.Precondition { return vmBootedInTabletModeAppCompatPre }
-
-// vmBootedInTabletModeAppCompatPre is returned by VMBootedInTabletModeAppCompat.
-var vmBootedInTabletModeAppCompatPre = &preImpl{
-	name:    "arcvm_booted_in_tablet_mode_appcompat",
-	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout + optin.OptinTimeout,
-	gaia: &gaiaVars{
-		userVar: "arcappcompat.username",
-		passVar: "arcappcompat.password",
-	},
-	extraArgs: []string{"--force-tablet-mode=touch_view", "--enable-virtual-keyboard", "--arc-disable-app-sync", "--arc-disable-play-auto-install", "--arc-disable-locale-sync", "--arc-play-store-auto-update=off"},
-	useARCVM:  true,
-}
-
-// gaiaVars holds the secret variables for username and password for a GAIA login.
-type gaiaVars struct {
-	userVar string // the secret variable for the GAIA username
-	passVar string // the secret variable for the GAIA password
+// GaiaVars holds the secret variables for username and password for a GAIA login.
+type GaiaVars struct {
+	UserVar string // the secret variable for the GAIA username
+	PassVar string // the secret variable for the GAIA password
 }
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
@@ -179,7 +132,7 @@ type preImpl struct {
 	timeout time.Duration // testing.PreconditionImpl.Timeout
 
 	extraArgs []string  // passed to Chrome on initialization
-	gaia      *gaiaVars // a struct containing GAIA secret variables
+	gaia      *GaiaVars // a struct containing GAIA secret variables
 
 	cr  *chrome.Chrome
 	arc *ARC
@@ -255,8 +208,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 		var err error
 		if p.gaia != nil {
-			username := s.RequiredVar(p.gaia.userVar)
-			password := s.RequiredVar(p.gaia.passVar)
+			username := s.RequiredVar(p.gaia.UserVar)
+			password := s.RequiredVar(p.gaia.PassVar)
 			p.cr, err = chrome.New(ctx, chrome.GAIALogin(), chrome.Auth(username, password, "gaia-id"), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
 		} else {
 			p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(extraArgs...))
