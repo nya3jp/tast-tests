@@ -688,7 +688,7 @@ func testMaxEnqueuedCrash(ctx context.Context, cr *chrome.Chrome, s *testing.Sta
 		if !result.CrashReporterCaught {
 			s.Fatal("Crash reporter did not catch crash")
 		}
-		if _, err := reader.Wait(ctx, 20*time.Second, func(e *syslog.Entry) bool { return strings.Contains(e.Content, fullMessage) }); err != nil {
+		if _, err := reader.Wait(ctx, 30*time.Second, func(e *syslog.Entry) bool { return strings.Contains(e.Content, fullMessage) }); err != nil {
 			s.Error("Expected full message: ", fullMessage)
 		}
 		files, err = ioutil.ReadDir(crashDir)
