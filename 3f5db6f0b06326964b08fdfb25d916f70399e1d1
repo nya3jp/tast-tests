@@ -22,6 +22,30 @@
       "revId": "3f5db6f0b06326964b08fdfb25d916f70399e1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d99a91_c6d62e37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-11T15:28:08Z",
+      "side": 1,
+      "message": "In gRPC WifiService.Connect() implementation, after AP is set, it polls shill services to expect a new service with AP\u0027s unique SSID:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_service.go?l\u003d158\u0026rcl\u003da5dadb1f4968ae1c505ff28c01b76eae17560fab\n\nAnd in FindMatchingService(), it calls NewService() for each service in org.chromium.flimflam.Manager:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/shill/manager.go?l\u003d82\u0026rcl\u003dab012c382aae41942747d3c03654d7610f27c871\n\nWell, m.findMatchingService() can be improved by caching the created service objected. But it still creates lots of service object for the first polling loop.\n\np.s. Part of timing.json:\nhttps://paste.googleplex.com/5476587606638592",
+      "parentUuid": "799a3ff5_d2738b0d",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3f5db6f0b06326964b08fdfb25d916f70399e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
