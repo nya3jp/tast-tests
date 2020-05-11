@@ -70,6 +70,30 @@
       "revId": "f606b953413bde07964440de54a937cfe89bed32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6552798_1072d85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-11T03:39:40Z",
+      "side": 1,
+      "message": "Done by switching to clamshell mode at runtime. Thanks.",
+      "parentUuid": "190b3665_b93e55d1",
+      "range": {
+        "startLine": 26,
+        "startChar": 23,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "f606b953413bde07964440de54a937cfe89bed32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
