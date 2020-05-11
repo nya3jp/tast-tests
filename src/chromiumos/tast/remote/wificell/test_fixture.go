@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/iw"
+	remote_iw "chromiumos/tast/remote/network/iw"
 	remoteping "chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -321,12 +322,12 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 	return firstErr
 }
 
-// ConnectWifi asks the DUT to connect to the given WiFi service.
-func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
+// ConnectWifi asks the DUT to connect to the specified WiFi.
+func (tf *TestFixture) ConnectWifi(ctx context.Context, ssid string, hidden bool, secConf security.Config) error {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
 
-	props, err := h.Config().SecurityConfig.ShillServiceProperties()
+	props, err := secConf.ShillServiceProperties()
 	if err != nil {
 		return err
 	}
@@ -335,9 +336,9 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 		return err
 	}
 	request := &network.ConnectRequest{
-		Ssid:       h.Config().Ssid,
-		Hidden:     h.Config().Hidden,
-		Security:   h.Config().SecurityConfig.Class(),
+		Ssid:       ssid,
+		Hidden:     hidden,
+		Security:   secConf.Class(),
 		Shillprops: propsEnc,
 	}
 	response, err := tf.wifiClient.Connect(ctx, request)
@@ -345,7 +346,16 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 		return err
 	}
 	tf.curServicePath = response.ServicePath
-	tf.curAP = h
+	return nil
+}
+
+// ConnectWifiAP asks the DUT to connect to the WiFi provided by the given AP.
+func (tf *TestFixture) ConnectWifiAP(ctx context.Context, ap *APIface) error {
+	conf := ap.Config()
+	if err := tf.ConnectWifi(ctx, conf.Ssid, conf.Hidden, conf.SecurityConfig); err != nil {
+		return err
+	}
+	tf.curAP = ap
 	return nil
 }
 
@@ -436,6 +446,11 @@ func (tf *TestFixture) Pcap() *Router {
 // WifiClient returns the gRPC WifiServiceClient of the DUT.
 func (tf *TestFixture) WifiClient() network.WifiServiceClient {
 	return tf.wifiClient
+}
+
+// IwRunner returns a newe iw Runner object.
+func (tf *TestFixture) IwRunner() *iw.Runner {
+	return remote_iw.NewRunner(tf.dut.Conn())
 }
 
 // DefaultOpenNetworkAP configures the router to provide an 802.11n open network.
