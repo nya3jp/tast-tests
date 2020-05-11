@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "95bc0159_af0bc1f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-11T22:41:07Z",
+      "side": 1,
+      "message": "maybe better to include the name of the crash",
+      "revId": "3aaff713d237e2613ca6202061d2f0374638ac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3260370c_a1b3be7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 3
@@ -36,6 +53,30 @@
       "writtenOn": "2020-05-11T21:24:36Z",
       "side": 1,
       "message": "if params.consentType \u003d\u003d crash.RealConsent \u0026\u0026 !params.consent, we don\u0027t necessarily want to use crash.WithMockConsent(). It dosn\u0027t _hurt_, because SetConsent(false) will remove the mock consent file, but it makes the code a bit more confusing.\n\nMaybe:\n\nif !params.consent {\n\tif err :\u003d crash.SetUpCrashTest(ctx); err !\u003d nil {\n\t\ts.Fatal(\"SetUpCrashTest failed: \", err)\n\t}\n} else {\n\topt :\u003d crash.WithMockConsent()\n\tif params.consentType \u003d\u003d crash.RealConsent {\n\t\topt \u003d crash.WithConsent(cr)\n\t}\n\tif err :\u003d crash.SetUpCrashTest(ctx); err !\u003d nil {\n\t\ts.Fatal(\"SetUpCrashTest failed: \", err)\n\t}\n}\n\ndefer ...\n\n(the SetConsent(false) will still be necessary, in case a prior test enabled consent)",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 61
+      },
+      "revId": "3aaff713d237e2613ca6202061d2f0374638ac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464fa470_95fe081f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-11T22:41:07Z",
+      "side": 1,
+      "message": "+1 on this, the workflow is more easy to follow.",
+      "parentUuid": "868edbef_15a44548",
       "range": {
         "startLine": 194,
         "startChar": 1,
