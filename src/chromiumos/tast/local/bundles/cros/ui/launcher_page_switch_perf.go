@@ -217,6 +217,10 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		if err := clickPageButtonAndWait(ctx, pageButtons[1]); err != nil {
 			s.Fatal("Failed to switch to the second page: ", err)
 		}
+		// Reset back to the first page at the end of the test; apps-grid page
+		// selection may stay in the last page, and that causes troubles on another
+		// test. See https://crbug.com/1081285.
+		defer pointer.Click(ctx, pc, pageButtons[0].Location.CenterPoint())
 		appsGridLocation := appsGridView.Location
 		// drag-up gesture positions; starting at a bottom part of the apps-grid (at
 		// 4/5 height), and moves the height of the apps-grid. The starting height
