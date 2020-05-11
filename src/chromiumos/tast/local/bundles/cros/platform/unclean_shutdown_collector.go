@@ -114,7 +114,7 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 	if err := testing.Poll(ctx, func(c context.Context) error {
 		newUnclean, err := getUncleanShutdownCount(ctx)
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "could not get unclean shutdown count"))
+			return errors.Wrap(err, "could not get unclean shutdown count")
 		}
 
 		if newUnclean != oldUnclean+1 {

@@ -8,7 +8,9 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
@@ -30,11 +32,14 @@ type APIface struct {
 
 	hostapd *hostapd.Server
 	dhcpd   *dhcp.Server
+
+	stopped bool // true if stop() is called. Used to avoid stop() being called twice.
 }
 
 // Config returns the config of hostapd.
-func (h *APIface) Config() hostapd.Config {
-	return *h.config
+// NOTE: Caller should not modify the returned object.
+func (h *APIface) Config() *hostapd.Config {
+	return h.config
 }
 
 // subnetIP returns 192.168.$subnetIdx.$suffix IP.
@@ -57,16 +62,24 @@ func (h *APIface) ServerIP() net.IP {
 	return h.subnetIP(254)
 }
 
-// start the service. Make this private as one should start this from Router.
-func (h *APIface) start(ctx context.Context) (retErr error) {
+// start starts the service. Make this private as one should start this from Router.
+// After start(), the caller should call h.stop() at the end, and use the shortened ctx
+// (provided b h.reserveForStop()) before h.stop() to reserve time for h.stop() to run.
+func (h *APIface) start(fullCtx context.Context) (retErr error) {
 	defer func() {
-		if retErr == nil {
-			return
-		}
-		if err := h.stop(ctx); err != nil {
-			testing.ContextLogf(ctx, "Failed to stop HostAPHandle, err=%s", err.Error())
+		if retErr != nil {
+			if err := h.stop(fullCtx); err != nil {
+				testing.ContextLogf(fullCtx, "Failed to stop HostAPHandle, err=%s", err.Error())
+			}
 		}
 	}()
+	h.stopped = false
+
+	// Reserve for h.tearDownIface() running in h.stop().
+	// Calling h.reserveForStop() here reserves insufficient time because h.hostapd and h.dhcpd
+	// are not set yet.
+	ctx, cancel := ctxutil.Shorten(fullCtx, time.Second)
+	defer cancel()
 
 	if err := h.configureIface(ctx); err != nil {
 		return errors.Wrap(err, "failed to setup interface")
@@ -77,6 +90,8 @@ func (h *APIface) start(ctx context.Context) (retErr error) {
 		return errors.Wrap(err, "failed to start hostapd")
 	}
 	h.hostapd = hs
+	// We only need to call cancel of the first shorten context.
+	ctx, _ = h.hostapd.ReserveForClose(ctx)
 
 	ds, err := dhcp.StartServer(ctx, h.host, h.name, h.iface, h.workDir, h.subnetIP(1), h.subnetIP(128))
 	if err != nil {
@@ -87,8 +102,28 @@ func (h *APIface) start(ctx context.Context) (retErr error) {
 	return nil
 }
 
-// stop the service. Make this private as one should stop it from Router.
+// reserveForStop returns a shortened ctx with its cancel function.
+// The shortened ctx is used for running things before h.stop() to reserve time for it to run.
+func (h *APIface) reserveForStop(ctx context.Context) (context.Context, context.CancelFunc) {
+	// Reserve for h.tearDownIface()
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	if h.hostapd != nil {
+		// We only need to call cancel of the first shorten context because the shorten context's
+		// Done channel is closed when the parent context's Done channel is closed.
+		// https://golang.org/pkg/context/#WithDeadline.
+		ctx, _ = h.hostapd.ReserveForClose(ctx)
+	}
+	if h.dhcpd != nil {
+		ctx, _ = h.dhcpd.ReserveForClose(ctx)
+	}
+	return ctx, cancel
+}
+
+// stop stops the service. Make this private as one should stop it from Router.
 func (h *APIface) stop(ctx context.Context) error {
+	if h.stopped {
+		return nil
+	}
 	var retErr error
 	if h.dhcpd != nil {
 		if err := h.dhcpd.Close(ctx); err != nil {
@@ -103,6 +138,7 @@ func (h *APIface) stop(ctx context.Context) error {
 	if err := h.tearDownIface(ctx); err != nil {
 		retErr = errors.Wrapf(retErr, "teardownIface error=%s", err.Error())
 	}
+	h.stopped = true
 	return retErr
 }
 

@@ -24,7 +24,7 @@ func init() {
 }
 
 func ShillInitScriptsStartLoggedin(ctx context.Context, s *testing.State) {
-	if err := shillscript.RunTest(ctx, testStartLoggedIn); err != nil {
+	if err := shillscript.RunTest(ctx, testStartLoggedIn, false); err != nil {
 		s.Fatal("Failed running testStartLoggedIn: ", err)
 	}
 }

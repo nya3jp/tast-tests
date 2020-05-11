@@ -36,19 +36,13 @@ func SearchAndLaunch(ctx context.Context, tconn *chrome.TestConn, query string) 
 
 // OpenLauncher opens the launcher.
 func OpenLauncher(ctx context.Context, tconn *chrome.TestConn) error {
-	params := ui.FindParams{
-		Name: "Launcher",
-		Role: ui.RoleTypeButton,
-	}
-	launcherButton, err := ui.FindWithTimeout(ctx, tconn, params, defaultTimeout)
+	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to find launcher button")
+		return err
 	}
-	defer launcherButton.Release(ctx)
-	if err := launcherButton.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click launcher button")
-	}
-	return nil
+	defer keyboard.Close()
+
+	return keyboard.Accel(ctx, "Search")
 }
 
 func search(ctx context.Context, tconn *chrome.TestConn, query string) error {
