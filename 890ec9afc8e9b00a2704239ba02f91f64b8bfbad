@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "a245916f_1b44a811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T21:18:24Z",
+      "side": 1,
+      "message": "did you want to put\n\n killCrashpad: false\n\nin here for consistency, since you also did that on L102?",
+      "revId": "890ec9afc8e9b00a2704239ba02f91f64b8bfbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f129d03c_dbde9bed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T21:18:24Z",
+      "side": 1,
+      "message": "nit: I would probably just say \"kill crashpad\" here",
+      "range": {
+        "startLine": 146,
+        "startChar": 22,
+        "endLine": 146,
+        "endChar": 34
+      },
+      "revId": "890ec9afc8e9b00a2704239ba02f91f64b8bfbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb77b344_abd5ef0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 1
