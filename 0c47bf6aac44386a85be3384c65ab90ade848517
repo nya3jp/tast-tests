@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b22bb19_ae96f013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T03:00:07Z",
+      "side": 1,
+      "message": "Optional: It is recommended to avoid crafting JS code as much as possible to avoid escaping issues. In this case currentEvent comes from JSON data so it should be okay. But if we want to do it better, we can use conn.Call.\n\nExample:\n\n var events []string\n // ... add elements to events ...\n fn :\u003d `\n (events) \u003d\u003e new Promise((resolve, reject) \u003d\u003e {\n   chrome.automation.getDesktop((desktop) \u003d\u003e {\n     EventStreamLogger.instance \u003d new EventStreamLogger(desktop);\n     EventStreamLogger.instance.notifyEventStreamFilterChangedAll(false);\n     for (const event of events) {\n       EventStreamLogger.instance.notifyEventStreamFilterChanged(event, true);\n     }\n     resolve();\n   });\n }`\n if err :\u003d cvconn.Call(ctx, nil, fn, events); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 47
+      },
+      "revId": "0c47bf6aac44386a85be3384c65ab90ade848517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
