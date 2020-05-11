@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d1614a26_a4756441",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "This CL explains the use of fullctx, I just didn\u0027t use it correctly. \nIt should be good now:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2159154",
+      "parentUuid": "b8e6668c_ba6608d7",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33d42c6a_0ea3e61f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-11T19:04:47Z",
       "side": 1,
       "message": "is this a test failure?",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18a1b498_ef85cd29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "I think this should not be a test failure, but I will wait for Dean to agree on that.",
+      "parentUuid": "33d42c6a_0ea3e61f",
       "range": {
         "startLine": 47,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8157d3fb_458d1661",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "I think this should not be a test failure, but I will wait for Dean to agree on that.",
+      "parentUuid": "62e57cbe_f75f3faa",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ed6dd4c_506baff9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 18
@@ -91,6 +163,30 @@
       "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b48745_b46ee4c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed6dd4c_506baff9",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5557f93c_0ff9a1f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c96ea539_7de7974d",
+      "range": {
+        "startLine": 102,
+        "startChar": 15,
+        "endLine": 102,
+        "endChar": 22
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72701c34_fe097e44",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 18
@@ -131,6 +251,24 @@
       "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd44a30c_d02102e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72701c34_fe097e44",
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "5307ff9c_809ab53b",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8ec41e_0e1d39cf",
+      "range": {
+        "startLine": 33,
+        "startChar": 51,
+        "endLine": 33,
+        "endChar": 68
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66cb7c47_a57b4582",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 18
@@ -177,6 +339,30 @@
       "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ed5f38_a99c2a58",
+        "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
+        "patchSetId": 18
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-11T21:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66cb7c47_a57b4582",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
