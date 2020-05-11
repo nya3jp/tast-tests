@@ -50,12 +50,6 @@ const (
 
 	// BlankURL is the URL corresponding to the about:blank page.
 	BlankURL = "about:blank"
-
-	// OobeGaiaPrimaryButtonClickScript is a javascript statement to click
-	// on the primary action button on the Gaia screen. With the
-	// GaiaActionButtons feature enabled - Gaia does not show the "Next"
-	// button. It is shown on the OOBE side instead.
-	OobeGaiaPrimaryButtonClickScript = "document.getElementById('gaia-signin').$$('#primary-action-button').click();"
 )
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
@@ -1181,13 +1175,13 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	if err := insertGAIAField(ctx, gaiaConn, "identifierId", c.user); err != nil {
 		return errors.Wrap(err, "failed to fill username field")
 	}
-	if err := oobeConn.Exec(ctx, OobeGaiaPrimaryButtonClickScript); err != nil {
+	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 	if err := insertGAIAField(ctx, gaiaConn, "password", c.pass); err != nil {
 		return errors.Wrap(err, "failed to fill password field")
 	}
-	if err := oobeConn.Exec(ctx, OobeGaiaPrimaryButtonClickScript); err != nil {
+	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
@@ -1201,7 +1195,7 @@ func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	return nil
 }
 
-// insertGAIAField fills a field of the GAIA login form and clicks next.
+// insertGAIAField fills a field of the GAIA login form.
 func insertGAIAField(ctx context.Context, gaiaConn *Conn, inputID, value string) error {
 	// Ensure that the input exists.
 	if err := gaiaConn.WaitForExpr(ctx, fmt.Sprintf(
@@ -1309,7 +1303,7 @@ func (c *Chrome) performUnicornParentLogin(ctx context.Context, oobeConn, gaiaCo
 	if err := insertGAIAField(ctx, gaiaConn, "password", c.parentPass); err != nil {
 		return err
 	}
-	if err := oobeConn.Exec(ctx, OobeGaiaPrimaryButtonClickScript); err != nil {
+	if err := oobeConn.Exec(ctx, "Oobe.clickGaiaPrimaryButtonForTesting()"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
 	}
 
