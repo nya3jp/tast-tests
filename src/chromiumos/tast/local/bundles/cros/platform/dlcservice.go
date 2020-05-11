@@ -36,7 +36,6 @@ func init() {
 func DLCService(ctx context.Context, s *testing.State) {
 	const (
 		dlcID1          = "test1-dlc"
-		dlcID2          = "test2-dlc"
 		testPackage     = "test-package"
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
@@ -181,15 +180,14 @@ func DLCService(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	install := func(dlcs []string, omahaURL string, e expect) {
-		s.Log("Installing DLC(s): ", dlcs, " to ", omahaURL)
-		runCmd("install", e, "dlcservice_util", "--install",
-			"--dlc_ids="+strings.Join(dlcs, ":"), "--omaha_url="+omahaURL)
+	install := func(dlc, omahaURL string, e expect) {
+		s.Log("Installing DLC: ", dlc, " using ", omahaURL)
+		runCmd("install", e, "dlcservice_util", "--install", "--dlc_ids="+dlc, "--omaha_url="+omahaURL)
 	}
 
-	uninstall := func(dlcs string, e expect) {
-		s.Log("Uninstalling DLC(s): ", dlcs)
-		runCmd("uninstall", e, "dlcservice_util", "--uninstall", "--dlc_ids="+dlcs)
+	uninstall := func(dlc string, e expect) {
+		s.Log("Uninstalling DLC: ", dlc)
+		runCmd("uninstall", e, "dlcservice_util", "--uninstall", "--dlc_ids="+dlc)
 	}
 
 	startNebraska := func() (string, *testexec.Cmd) {
@@ -251,7 +249,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 	defer func() {
 		// Removes the installed DLC module and unmounts all test DLC images mounted under /run/imageloader.
-		ids := []string{dlcID1, dlcID2}
+		ids := []string{dlcID1}
 		for _, id := range ids {
 			path := filepath.Join("/run/imageloader", id, testPackage)
 			if err := testexec.CommandContext(ctx, "imageloader", "--unmount", "--mount_point="+path).Run(testexec.DumpLogOnError); err != nil {
@@ -270,21 +268,13 @@ func DLCService(ctx context.Context, s *testing.State) {
 		// Before performing any Install/Uninstall.
 		dumpAndVerifyInstalledDLCs("initial_state")
 
-		// Install empty DLC.
-		install([]string{}, url, failure)
-		dumpAndVerifyInstalledDLCs("install_empty")
-
 		// Install single DLC.
-		install([]string{dlcID1}, url, success)
+		install(dlcID1, url, success)
 		dumpAndVerifyInstalledDLCs("install_single", dlcID1)
 
 		// Install already installed DLC.
-		install([]string{dlcID1}, url, success)
+		install(dlcID1, url, success)
 		dumpAndVerifyInstalledDLCs("install_already_installed", dlcID1)
-
-		// Install duplicates of already installed DLC.
-		install([]string{dlcID1, dlcID1}, url, success)
-		dumpAndVerifyInstalledDLCs("install_already_installed_duplicate", dlcID1)
 
 		// Uninstall single DLC.
 		uninstall(dlcID1, success)
@@ -293,32 +283,5 @@ func DLCService(ctx context.Context, s *testing.State) {
 		// Uninstall already uninstalled DLC.
 		uninstall(dlcID1, success)
 		dumpAndVerifyInstalledDLCs("uninstall_already_uninstalled")
-
-		// Install duplicates of DLC atomically.
-		install([]string{dlcID1, dlcID1}, url, success)
-		dumpAndVerifyInstalledDLCs("atommically_install_duplicate", dlcID1)
-
-		// Install unsupported DLC.
-		install([]string{"unsupported-dlc"}, url, failure)
-		dumpAndVerifyInstalledDLCs("install_unsupported")
-
-	})
-
-	s.Run(ctx, "Multi DLC combination tests", func(context.Context, *testing.State) {
-		url, cmd := startNebraska()
-		defer stopNebraska(cmd, "multi-dlc")
-
-		// Install multiple DLC(s).
-		install([]string{dlcID1, dlcID2}, url, success)
-		dumpAndVerifyInstalledDLCs("install_multiple", dlcID1, dlcID2)
-
-		// Install multiple DLC(s) already installed.
-		install([]string{dlcID1, dlcID2}, url, success)
-		dumpAndVerifyInstalledDLCs("install_multiple_already_installed", dlcID1, dlcID2)
-
-		// Uninstall multiple installed DLC(s).
-		uninstall(dlcID1, success)
-		uninstall(dlcID2, success)
-		dumpAndVerifyInstalledDLCs("uninstall_multiple_installed")
 	})
 }
