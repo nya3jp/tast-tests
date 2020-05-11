@@ -62,9 +62,6 @@ func (s *WifiService) InitDUT(ctx context.Context, _ *empty.Empty) (*empty.Empty
 	if err := dev.Enable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable WiFi device")
 	}
-	if err := s.reinitTestState(ctx, m); err != nil {
-		return nil, err
-	}
 	return &empty.Empty{}, nil
 }
 
@@ -416,4 +413,48 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 	}
 
 	return &ret, nil
+}
+
+func (s *WifiService) GetShillService(ctx context.Context, req *network.GetShillServiceRequest) (*network.GetShillServiceResponse, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.GetShillService")
+	defer st.End()
+	testing.ContextLog(ctx, "Getting shill service: ", req)
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	query := map[string]interface{}{
+		shill.ServicePropertyType: req.Type,
+		// Use WiFi.HexSSID instead.
+		shill.ServicePropertyName: req.Ssid,
+	}
+
+	service, err := s.discoverService(ctx, m, query)
+	if err != nil {
+		return nil, err
+	}
+	props, err := service.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get service's properties")
+	}
+
+	resp := network.GetShillServiceResponse{}
+	if s, err := props.GetString(shill.ServicePropertyType); err == nil {
+		resp.Type = string(s)
+	}
+	if s, err := props.GetString(shill.ServicePropertyName); err == nil {
+		resp.Ssid = string(s)
+	}
+	if f, err := props.GetUint16("WiFi.Frequency"); err == nil {
+		resp.Frequency = uint32(f)
+	}
+	if fs, err := props.GetUint16s("WiFi.FrequencyList"); err == nil {
+		resp.FrequencyList = make([]uint32, len(fs))
+		for i, f := range fs {
+			resp.FrequencyList[i] = uint32(f)
+		}
+	}
+	return &resp, nil
 }
