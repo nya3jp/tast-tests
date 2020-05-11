@@ -2,6 +2,138 @@
   "comments": [
     {
       "key": {
+        "uuid": "b8e6668c_ba6608d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T19:04:47Z",
+      "side": 1,
+      "message": "nit: any reason not to use \"ctx\" here as usual?",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d42c6a_0ea3e61f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T19:04:47Z",
+      "side": 1,
+      "message": "is this a test failure?",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62e57cbe_f75f3faa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T19:04:47Z",
+      "side": 1,
+      "message": "is this a test failure? (Since this is randomly generated, is it likely to matter if we have stale entries?)",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ed6dd4c_506baff9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T19:04:47Z",
+      "side": 1,
+      "message": "Just inline waitIPGone here, it doesn\u0027t look like the extra function scope is being used for anything since the function call you\u0027re doing is already in tail position (i.e. the st.End() call will happen at the same time even if there is no extra function here)",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c96ea539_7de7974d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T19:04:47Z",
+      "side": 1,
+      "message": "nit: same as above with \"ctx\" vs \"fullctx\"",
+      "range": {
+        "startLine": 102,
+        "startChar": 15,
+        "endLine": 102,
+        "endChar": 22
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72701c34_fe097e44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-11T19:04:47Z",
+      "side": 1,
+      "message": "nit: blank line before this one",
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b8ec41e_0e1d39cf",
         "filename": "src/chromiumos/tast/services/cros/network/wifi.proto",
         "patchSetId": 18
