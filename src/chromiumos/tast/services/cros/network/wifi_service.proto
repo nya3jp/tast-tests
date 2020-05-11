@@ -32,10 +32,15 @@ service WifiService {
 
   // QueryService queries shill service information.
   rpc QueryService(QueryServiceRequest) returns (QueryServiceResponse) {}
+
   // GetInterface returns the WiFi device interface name (e.g., wlan0).
   rpc GetInterface(google.protobuf.Empty) returns (GetInterfaceResponse) {}
+
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
+
+  // GetShillService returns the shill services that match the requested condition.
+  rpc GetShillService(GetShillServiceRequest) returns (GetShillServiceResponse) {}
 }
 
 message ConnectRequest {
@@ -87,4 +92,17 @@ message GetIPv4AddrsRequest {
 
 message GetIPv4AddrsResponse {
   repeated string ipv4 = 1;
+}
+
+message GetShillServiceRequest {
+  string type = 1;
+  string ssid = 2;
+}
+
+message GetShillServiceResponse {
+  string type = 1;
+  string ssid = 2;
+  string bssid = 3;
+  uint32 frequency = 4;
+  repeated uint32 frequency_list = 5;
 }
