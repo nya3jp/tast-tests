@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d5fb85b7_5bda1908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-11T06:39:48Z",
+      "side": 1,
+      "message": "Thanks for explanation.\nCould you add TODO to remove no_qemu with brief explanation/tied to a tracking issue, then?",
+      "parentUuid": "6760acc2_89a3542b",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "a43fcc176b2d0f328edb5671066ec63e9b3b0d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73ce198a_8d5522b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
         "patchSetId": 3
