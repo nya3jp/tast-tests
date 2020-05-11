@@ -33,6 +33,24 @@
       "revId": "ca3e5316f428747ec852bfe38b264d2f17bc1979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fee87ec_8760cc27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2020-05-11T01:25:37Z",
+      "side": 1,
+      "message": "I don\u0027t think --gtest_repeat really matters.  The setup is generally done when RunARCVideoPerfTest calls runARCVideoTestSetup, so all runARCVideoPerfTestOnce is doing is launching/finishing an activity. Integrating things with gtest might also be a little difficult, since the perf test isn\u0027t really a normal gtest test, it\u0027s just reusing the test APK.\n\nFor flakiness, wouldn\u0027t it be better to fail if any of the runs fails? A partial flake still indicates a problem in the test or in the video stack.",
+      "parentUuid": "fbaeac47_2d73cc24",
+      "revId": "ca3e5316f428747ec852bfe38b264d2f17bc1979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
