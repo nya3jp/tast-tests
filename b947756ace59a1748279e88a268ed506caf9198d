@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94aa2369_8dd24744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c50a2822_20f517a9",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8770751_adb8575d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "74af6b38_c917692c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8770751_adb8575d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d3a1305_59b47fe0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-14T20:27:18Z",
       "side": 1,
       "message": "Unless you particularly want to verify the real consent system, I\u0027d strongly recommend using mock consent instead of the real thing. That should let you get rid of both chrome and metrics_consent. You may also be able to get rid of pstore, as the test doesn\u0027t reboot or (as far as I\u0027ve seen from reading this far) read from it.",
+      "range": {
+        "startLine": 43,
+        "startChar": 36,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8401ec1c_0f20d164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Sure!\n\nRe:pstore: the reboot vault itself depends on pstore support so the dependency here would just scope the test to boards that have a pstore.",
+      "parentUuid": "0d3a1305_59b47fe0",
       "range": {
         "startLine": 43,
         "startChar": 36,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "77a2e221_22050953",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "I overloaded this string to be both the name of the file and contents (since the contents are fake anyway). Do you prefer I create a separate variable for the contents?",
+      "parentUuid": "2fc905d1_d799e37b",
+      "range": {
+        "startLine": 70,
+        "startChar": 63,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5da3f26d_80893a2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "b947756ace59a1748279e88a268ed506caf9198d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b72bf1_4e275435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s mostly just a glorified file mover :)",
+      "parentUuid": "5da3f26d_80893a2c",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "89624088_8d2f40ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Changed to use CombinedOutput.",
+      "parentUuid": "59b735f8_7b3f2a8b",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1ba3fe9_d6936233",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2020-04-14T20:27:18Z",
       "side": 1,
       "message": "I think this is backwards; if the file does exist, err will be nil and os.IsNotExist(nil) should be false",
+      "range": {
+        "startLine": 110,
+        "startChar": 14,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2170f121_24080bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Right, and if that matches the expected exists value (false), we should error out since we see a file we don\u0027t expect to have been copied over.",
+      "parentUuid": "b1ba3fe9_d6936233",
       "range": {
         "startLine": 110,
         "startChar": 14,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "764da8fc_1df95221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Changed to a more generic function.",
+      "parentUuid": "df6d8a6c_6eac5951",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 44
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71f5e05f_d689985e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 1
@@ -206,6 +398,30 @@
       "revId": "b947756ace59a1748279e88a268ed506caf9198d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9759ec58_faa460e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-11T02:47:49Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "71f5e05f_d689985e",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 58
+      },
+      "revId": "b947756ace59a1748279e88a268ed506caf9198d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
