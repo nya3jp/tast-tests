@@ -32,10 +32,15 @@ service WifiService {
 
   // QueryService queries shill service information.
   rpc QueryService(QueryServiceRequest) returns (QueryServiceResponse) {}
+
   // GetInterface returns the WiFi device interface name (e.g., wlan0).
   rpc GetInterface(google.protobuf.Empty) returns (GetInterfaceResponse) {}
+
   // GetIPv4Addrs returns the IPv4 addresses for the network interface.
   rpc GetIPv4Addrs(GetIPv4AddrsRequest) returns (GetIPv4AddrsResponse) {}
+
+  // ExpectWifiFrequency checks if the device discovers the requested WiFi SSID on the specific frequency.
+  rpc ExpectWifiFrequency(ExpectWifiFrequencyRequest) returns (google.protobuf.Empty) {}
 }
 
 message ConnectRequest {
@@ -87,4 +92,12 @@ message GetIPv4AddrsRequest {
 
 message GetIPv4AddrsResponse {
   repeated string ipv4 = 1;
+}
+
+message ExpectWifiFrequencyRequest {
+  string ssid = 1;
+  // Expected frequency used to connect to the SSID.
+  uint32 active_frequency = 2;
+  // Expected list of frequencies for the SSID.
+  repeated uint32 frequency_list = 3;
 }

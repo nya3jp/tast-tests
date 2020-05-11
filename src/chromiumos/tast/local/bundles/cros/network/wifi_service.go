@@ -417,3 +417,63 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 
 	return &ret, nil
 }
+
+// ExpectWifiFrequency checks if the device discovers the requested WiFi SSID on the specific frequency.
+func (s *WifiService) ExpectWifiFrequency(ctx context.Context, req *network.ExpectWifiFrequencyRequest) (*empty.Empty, error) {
+	ctx, st := timing.Start(ctx, "wifi_service.ExpectWifiFrequency")
+	defer st.End()
+	testing.ContextLog(ctx, "Looking for shill service: ", req)
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a manager object")
+	}
+
+	query := map[string]interface{}{
+		shill.ServicePropertyType: "wifi",
+		// Use WiFi.HexSSID instead.
+		shill.ServicePropertyName: req.Ssid,
+	}
+
+	service, err := s.discoverService(ctx, m, query)
+	if err != nil {
+		return nil, err
+	}
+
+	// Spawn watcher for checking property change.
+	pw, err := service.CreateWatcher(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create watcher")
+	}
+	defer pw.Close(ctx)
+
+	shortCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+
+	for {
+		var freq uint32
+		var freqList []uint32
+
+		props, err := service.GetProperties(shortCtx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get service properties")
+		}
+		if f, err := props.GetUint16("WiFi.Frequency"); err == nil {
+			freq = uint32(f)
+		}
+		if fs, err := props.GetUint16s("WiFi.FrequencyList"); err == nil {
+			freqList = make([]uint32, len(fs))
+			for i, f := range fs {
+				freqList[i] = uint32(f)
+			}
+		}
+		if freq == req.ActiveFrequency && reflect.DeepEqual(req.FrequencyList, freqList) {
+			break
+		}
+		testing.ContextLogf(shortCtx, "Unexpected freqency %d, frequencyList %v for service with SSID: %s; waiting for update", freq, freqList, req.Ssid)
+		if _, err := pw.WaitAll(shortCtx, "WiFi.Frequency", "WiFi.FrequencyList"); err != nil {
+			return nil, errors.Wrap(err, "failed to wait for service properties' change")
+		}
+	}
+	return &empty.Empty{}, nil
+}
