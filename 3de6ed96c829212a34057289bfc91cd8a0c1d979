@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f16b419e_9b9a5f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_brightness_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "I would remove the ubertray check because this is an assistant test, not ubertray test.",
+      "parentUuid": "41720662_9bf2c594",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "3de6ed96c829212a34057289bfc91cd8a0c1d979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3687e3d_33680ab3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_brightness_queries.go",
         "patchSetId": 2

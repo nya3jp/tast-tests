@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "344d41a0_4e4d0e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "should this person be a reviewer if they are a contact?",
+      "range": {
+        "startLine": 26,
+        "startChar": 80,
+        "endLine": 26,
+        "endChar": 100
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a38766_9345a2ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "This isn\u0027t needed previous will be b0",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 63
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04dc337_9a3ee1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "I would move all of this polling into brightnessUICheck using the predicate and such.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986d5043_dc30c669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "same as line 87 comment",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a20eab30_84432dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "nit: just \"brightnessUICheck sends assistant brightness queries and checks their result\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 130
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3165f06e_e3d7860e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "add todo with bug link.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 115
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8aba0b3_c8757a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "get is frowned upon in go. How about just brightness. Same with getNodeValue.",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65b673b_c5b68b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-11T23:22:27Z",
+      "side": 1,
+      "message": "I assume this is pretty common in some other tests. Should it be in its own library?",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
