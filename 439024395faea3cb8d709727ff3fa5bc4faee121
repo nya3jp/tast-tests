@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b6cfd73_8a2df9de",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T04:27:53Z",
+      "side": 1,
+      "message": "Could you move the new method here?",
+      "revId": "439024395faea3cb8d709727ff3fa5bc4faee121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "613535b7_5c583a61",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-11T04:27:53Z",
+      "side": 1,
+      "message": "While you\u0027re at it, could you move this to just after the definition of DUTPolicy?",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "439024395faea3cb8d709727ff3fa5bc4faee121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
