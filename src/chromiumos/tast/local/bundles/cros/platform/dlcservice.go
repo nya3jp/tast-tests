@@ -183,14 +183,13 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 	install := func(dlcs []string, omahaURL string, e expect) {
 		s.Log("Installing DLC(s): ", dlcs, " to ", omahaURL)
-		runCmd("install", e, "sudo", "-u", "chronos", "dlcservice_util", "--install",
+		runCmd("install", e, "dlcservice_util", "--install",
 			"--dlc_ids="+strings.Join(dlcs, ":"), "--omaha_url="+omahaURL)
 	}
 
 	uninstall := func(dlcs string, e expect) {
 		s.Log("Uninstalling DLC(s): ", dlcs)
-		runCmd("uninstall", e, "sudo", "-u", "chronos", "dlcservice_util",
-			"--uninstall", "--dlc_ids="+dlcs)
+		runCmd("uninstall", e, "dlcservice_util", "--uninstall", "--dlc_ids="+dlcs)
 	}
 
 	startNebraska := func() (string, *testexec.Cmd) {
