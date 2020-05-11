@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "06b3f522_f62e93d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-11T17:29:33Z",
+      "side": 1,
+      "message": "probably want \"shill-wifi\" in here too. There are some boards that disable WiFi support. They *probably* don\u0027t also have Chrome support, but no guarantee.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7bc9bc58_016bb15c",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
         "patchSetId": 6
@@ -19,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "84bf3e54_66741388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-11T17:29:33Z",
+      "side": 1,
+      "message": "You can create the Manager and Watcher objects before you start your test actions, then the Watcher will buffer any events and you can exclusively use WaitAll (it returns the property status) post-action.\n\nMy suggestion won\u0027t work quite right if the property doesn\u0027t actually change though (e.g., if the Assistant is requesting \"enabled\" and WiFi is already enabled). So maybe you\u0027re better with something like your current design.",
+      "parentUuid": "7bc9bc58_016bb15c",
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8063901e_c1e899df",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
         "patchSetId": 6
@@ -30,6 +71,24 @@
       "writtenOn": "2020-05-09T05:04:28Z",
       "side": 1,
       "message": "@Brian, I used the Watcher here to wait for the properties to update before checking the status again. Let me know if there\u0027s any cleaner way to use the Watcher, or if this seems alright.",
+      "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da9c6263_555c1d69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/wifi_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-11T17:29:33Z",
+      "side": 1,
+      "message": "Noted above; this works OK, but you might be able to get by without an additional GetProperties.",
+      "parentUuid": "8063901e_c1e899df",
       "revId": "759bc7972f24e7a5134a52b915a61e4005a0ed09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

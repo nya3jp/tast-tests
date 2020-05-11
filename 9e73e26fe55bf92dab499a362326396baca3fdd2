@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "89cd31e4_99442d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-11T17:29:33Z",
+      "side": 1,
+      "message": "\u003e Using a Watcher on its own didn\u0027t quite work, because usually the wifi status had already changed by the time the Assistant query ended, so I guess the signal it was watching for wasn\u0027t firing.\n\nThere\u0027s an easy solution for that, noted in the latest. But it\u0027s also fair to do an initial GetProperties, kinda like you\u0027re doing in the latest.",
+      "parentUuid": "c77c39b4_9108b27a",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "9e73e26fe55bf92dab499a362326396baca3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0716ca27_26a78fe9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_bluetooth_wifi_queries.go",
         "patchSetId": 3
