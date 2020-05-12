@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "40ea94a7_439eb561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-12T17:08:20Z",
+      "side": 1,
+      "message": "nit: could you move this to just before L187 to make the scope minimize?",
+      "revId": "1586a8562e4359600bb73ddb246013297e18de92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df539b73_fe544006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-12T17:08:20Z",
+      "side": 1,
+      "message": "style:\n\nvar opts []crash.Option\nif params.consent {\n  if params.consentType \u003d\u003d crash.RealConsent {\n    opts \u003d append(opts, crash.WithConsent(cr))\n  } else {\n    opts \u003d append(opts, crash.WithMockConsent())\n  }\n}\nif err :\u003d crash.SetUpCrashTest(ctx, opts...); err !\u003d nil {\n  ...\n}\ndefer ...\n\n(note: you can make crash.Option public).",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "1586a8562e4359600bb73ddb246013297e18de92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3fd9b58_3a72e095",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 5
@@ -65,6 +105,29 @@
         "startLine": 211,
         "startChar": 2,
         "endLine": 213,
+        "endChar": 3
+      },
+      "revId": "1586a8562e4359600bb73ddb246013297e18de92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b959fd31_33314364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-12T17:08:20Z",
+      "side": 1,
+      "message": "Style: I\u0027d recommend, either:\n\nfunc testEphemetalPreservationAcrossClobber(ctx context, s *testing.State) {\n  ...  // s.Error/s.Fatal as if normal test case.\n}\n...\n\nthen\ns.Run(ctx, \"PreservationAcrossClobber\", testEphemeralPreservationAcrossClobber)\ns.Run(ctx, \"Collection\", testEphemeralCollection)\n\nor, you can simply get rid of s.Run(), instead.\n\nif err :\u003d testEphemeralPreservationAcrossClobber(...); err !\u003d nil {\n  s.Error(...)\n}\n\nif err :\u003d testEphemeralCollection(...); err !\u003d nil {\n  s.Error(...)\n}",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 226,
         "endChar": 3
       },
       "revId": "1586a8562e4359600bb73ddb246013297e18de92",
