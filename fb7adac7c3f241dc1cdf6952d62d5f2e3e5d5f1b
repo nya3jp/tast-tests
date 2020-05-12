@@ -22,6 +22,30 @@
       "revId": "fb7adac7c3f241dc1cdf6952d62d5f2e3e5d5f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3a4f8a_cbd3becc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-12T04:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d077b160_a5e5315f",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "fb7adac7c3f241dc1cdf6952d62d5f2e3e5d5f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
