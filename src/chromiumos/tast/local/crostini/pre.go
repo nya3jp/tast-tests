@@ -7,6 +7,10 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
 	"time"
 
 	"golang.org/x/sys/unix"
@@ -14,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -330,15 +335,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	}
 
 	// To help identify sources of flake, we report disk usage before the test.
-	if size, err := checkStatefulDisk(ctx, used); err != nil {
-		s.Log("Failed to check disk usage: ", err)
-	} else {
-		s.Logf("Disk has %s space used", size)
-	}
-	if size, err := checkStatefulDisk(ctx, available); err != nil {
-		s.Log("Failed to check disk availability: ", err)
-	} else {
-		s.Logf("Disk has %s space available", size)
+	if err := reportDiskUsage(ctx); err != nil {
+		s.Log("Failed to gather disk usage: ", err)
 	}
 
 	var err error
@@ -481,27 +479,107 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
 }
 
-type fstatMetric int
+// reportDiskUsage logs a report of the current disk usage.
+func reportDiskUsage(ctx context.Context) error {
+	var (
+		statefulRoot       = "/mnt/stateful_partition"
+		encryptedRoot      = filepath.Join(statefulRoot, "encrypted")
+		chronosDir         = filepath.Join(encryptedRoot, "chronos")
+		varDir             = filepath.Join(encryptedRoot, "var")
+		encryptedBlockPath = filepath.Join(statefulRoot, "encrypted.block")
+		devImageDir        = filepath.Join(statefulRoot, "dev_image")
+		homeDir            = filepath.Join(statefulRoot, "home")
+	)
 
-const (
-	available fstatMetric = iota
-	used
-)
+	testing.ContextLog(ctx, "Saving disk usage snapshot")
 
-// checkStatefulDisk reports the chosen fstat metric in the /mnt/stateful
-// partition. Returns the size as a human-readable string like "12G".
-func checkStatefulDisk(ctx context.Context, metric fstatMetric) (string, error) {
-	var result unix.Statfs_t
-	if err := unix.Statfs("/mnt/stateful_partition", &result); err != nil {
-		return "", err
+	if err := func() error {
+		outDir, ok := testing.ContextOutDir(ctx)
+		if !ok {
+			return errors.New("outdir not available")
+		}
+		f, err := os.Create(filepath.Join(outDir, "du_stateful.txt"))
+		if err != nil {
+			return err
+		}
+		defer f.Close()
+		cmd := testexec.CommandContext(ctx, "du", "--block-size=1M", statefulRoot)
+		cmd.Stdout = f
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "du %q", statefulRoot)
+		}
+		return nil
+	}(); err != nil {
+		return err
 	}
-	var bytes uint64
-	switch metric {
-	case available:
-		bytes = result.Bavail
-	case used:
-		bytes = result.Blocks - result.Bfree
+
+	testing.ContextLog(ctx, "Gathering disk usage data")
+
+	fsSize := func(root string) (free, used, total uint64, err error) {
+		var st unix.Statfs_t
+		if err := unix.Statfs(root, &st); err != nil {
+			return 0, 0, 0, err
+		}
+		bsz := uint64(st.Bsize)
+		return st.Bfree * bsz, (st.Blocks - st.Bfree) * bsz, st.Blocks * bsz, nil
 	}
-	bytes = bytes * uint64(result.Bsize)
-	return fmt.Sprintf("%.1fG", float64(bytes)/1024/1024/1024), nil
+
+	statefulFree, statefulUsed, statefulTotal, err := fsSize(statefulRoot)
+	if err != nil {
+		return err
+	}
+	encryptedFree, encryptedUsed, encryptedTotal, err := fsSize(encryptedRoot)
+	if err != nil {
+		return err
+	}
+
+	treeSize := func(dir string) (uint64, error) {
+		out, err := testexec.CommandContext(ctx, "du", "--block-size=1", "--summarize", "--one-file-system", dir).Output(testexec.DumpLogOnError)
+		if err != nil {
+			return 0, errors.Wrapf(err, "du %q", dir)
+		}
+		ts := strings.SplitN(string(out), "\t", 2)
+		if len(ts) != 2 {
+			return 0, errors.Errorf("du %q: uncognized output %q", dir, string(out))
+		}
+		return strconv.ParseUint(ts[0], 10, 64)
+	}
+
+	chronosSize, err := treeSize(chronosDir)
+	if err != nil {
+		return err
+	}
+	varSize, err := treeSize(varDir)
+	if err != nil {
+		return err
+	}
+	encryptedBlockSize, err := treeSize(encryptedBlockPath)
+	if err != nil {
+		return err
+	}
+	devImageSize, err := treeSize(devImageDir)
+	if err != nil {
+		return err
+	}
+	homeSize, err := treeSize(homeDir)
+	if err != nil {
+		return err
+	}
+
+	mb := func(bytes uint64) string {
+		return fmt.Sprintf("%5.1f GB", float32(bytes)/1024/1024/1024)
+	}
+
+	testing.ContextLog(ctx, "Disk usage report:")
+	testing.ContextLogf(ctx, "  stateful:      %s / %s (%s free)", mb(statefulUsed), mb(statefulTotal), mb(statefulFree))
+	testing.ContextLogf(ctx, "    encrypted:   %s / %s (%s free)", mb(encryptedBlockSize), mb(encryptedTotal), mb(encryptedFree))
+	testing.ContextLogf(ctx, "      chronos:   %s", mb(chronosSize))
+	testing.ContextLogf(ctx, "      var:       %s", mb(varSize))
+	testing.ContextLogf(ctx, "      misc:      %s", mb(encryptedUsed-(chronosSize+varSize)))
+	testing.ContextLogf(ctx, "      allocated: %s", mb(encryptedBlockSize-encryptedUsed))
+	testing.ContextLogf(ctx, "    unencrypted: %s", mb(statefulUsed-encryptedBlockSize))
+	testing.ContextLogf(ctx, "      dev_image: %s", mb(devImageSize))
+	testing.ContextLogf(ctx, "      home:      %s", mb(homeSize))
+	testing.ContextLogf(ctx, "      misc:      %s", mb(statefulUsed-encryptedBlockSize-(devImageSize+homeSize)))
+	return nil
 }
