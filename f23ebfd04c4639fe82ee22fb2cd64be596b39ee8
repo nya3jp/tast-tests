@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d6026212_4cfdc7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-12T14:27:18Z",
+      "side": 1,
+      "message": "+1 for nya\u0027s suggestion.\n\nAnother possibility would be to have two tests using the parameterized option: one that forces tablet mode, and the other that forces clamshell mode.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "parentUuid": "4663e442_b930c446",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "139042ae_ba451be4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
         "patchSetId": 4
