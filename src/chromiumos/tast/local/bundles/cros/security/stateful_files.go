@@ -181,8 +181,8 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("cups"); err == nil {
 		prependPatterns(
-			chk.NewPattern(chk.Tree("encrypted/var/cache/cups"), users("cups"), groups("cups", "root"), chk.NotMode(02)),
-			chk.NewPattern(chk.Tree("encrypted/var/spool/cups"), users("cups"), groups("cups", "root"), chk.NotMode(02)))
+			chk.NewPattern(chk.Tree("encrypted/var/cache/cups"), users("cups"), groups("cups", "nobody"), chk.NotMode(02)),
+			chk.NewPattern(chk.Tree("encrypted/var/spool/cups"), users("cups"), groups("cups", "nobody"), chk.NotMode(02)))
 	}
 
 	if _, err := user.Lookup("android-root"); err == nil {
