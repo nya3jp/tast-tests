@@ -22,6 +22,30 @@
       "revId": "72946cd43ccb1e6b2a9aa0441d38b5fd697b345c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16adddf9_2a330b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-12T20:16:25Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "49fa7766_cfe984ae",
+      "range": {
+        "startLine": 313,
+        "startChar": 27,
+        "endLine": 313,
+        "endChar": 33
+      },
+      "revId": "72946cd43ccb1e6b2a9aa0441d38b5fd697b345c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

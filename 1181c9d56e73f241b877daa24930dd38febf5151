@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a8a74c9_973a93cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-12T20:16:25Z",
+      "side": 1,
+      "message": "I don\u0027t know why adding string type here, tast-lint complains and removes it. But it seems to be working. Let me know if you have any idea why.",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 21
+      },
+      "revId": "1181c9d56e73f241b877daa24930dd38febf5151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
