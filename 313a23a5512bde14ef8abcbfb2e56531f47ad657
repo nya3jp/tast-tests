@@ -46,6 +46,30 @@
       "revId": "313a23a5512bde14ef8abcbfb2e56531f47ad657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c3dada_e5cf9f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_encode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2020-05-12T03:17:24Z",
+      "side": 1,
+      "message": "I\u0027m planning to add tests for VP8/9 once we add support for those. But as that might takes some time I moved the SWdeps.",
+      "parentUuid": "ac2a9256_f8530695",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "313a23a5512bde14ef8abcbfb2e56531f47ad657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
