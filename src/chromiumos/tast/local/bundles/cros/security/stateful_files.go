@@ -137,7 +137,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("etc"), users("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Path("home/.shadow"), users("root"), groups("root"), chk.Mode(0700), chk.SkipChildren()),
-		chk.NewPattern(chk.Path("home/root"), users("root"), groups("root"), chk.Mode(0771|os.ModeSticky)),                    // directory itself
+		chk.NewPattern(chk.Path("home/root"), users("root"), groups("root"), chk.Mode(0751|os.ModeSticky)),                    // directory itself
 		chk.NewPattern(chk.Tree("home/root"), users("root"), groups("root"), chk.Mode(0700), chk.SkipChildren()),              // top-level children
 		chk.NewPattern(chk.Path("home/user"), users("root"), groups("root"), chk.Mode(0755)),                                  // directory itself
 		chk.NewPattern(chk.Tree("home/user"), users("chronos"), groups("chronos-access"), chk.Mode(0700), chk.SkipChildren()), // top-level children
@@ -201,6 +201,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("dlcservice"); err == nil {
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/dlcservice"), users("dlcservice"), groups("dlcservice"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("wilco_dtc"); err == nil {
