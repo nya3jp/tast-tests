@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31a1e106_4ed6e5da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f6afd5b_d0e00d59",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fcd3610_d6fe8b4e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 23
@@ -45,6 +69,30 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa36d43d_75e57185",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcd3610_d6fe8b4e",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7cd3d68e_471fba73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a94d57_dfb0f6ea",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5f4c9a8_98d44b6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
         "patchSetId": 23
@@ -91,6 +163,30 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae3383a_08306334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5f4c9a8_98d44b6e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "545815fc_9b23e209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ad35ae0_f159d10b",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16679ef4_3a0a0240",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
         "patchSetId": 23
@@ -137,6 +257,30 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ec67e1_a8863fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16679ef4_3a0a0240",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 52
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "6c0b9eb2_cfb89131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef46906_63e73e93",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 10
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d85ea6ee_9504e3c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
         "patchSetId": 23
@@ -174,6 +342,30 @@
       "writtenOn": "2020-05-09T01:45:25Z",
       "side": 1,
       "message": "should you return an error instead?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac8a72e_3fb7452d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "This is fine. Some get report requests don\u0027t require a specific answer so returning an empty array is fine. You\u0027ll see an example of that case in the dualshock 4 test.",
+      "parentUuid": "d85ea6ee_9504e3c4",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "04b69057_4587a177",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "544c8b80_f297fe6e",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cb6a84d_87e37827",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
         "patchSetId": 23
@@ -229,6 +445,30 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d63e9b_8ebc1830",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb6a84d_87e37827",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "4ec4e3b2_8e52910b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a9f4216_5d9eedc1",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fec907e_333cd522",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
         "patchSetId": 23
@@ -275,6 +539,30 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3a5e8c_947c856d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fec907e_333cd522",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "a3015b2b_db506f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c89bf0d_ff3257d5",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53af549a_6c39a374",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
         "patchSetId": 23
@@ -321,6 +633,30 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd6bcb1a_42f6bd4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53af549a_6c39a374",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "6002aae3_381141c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75773334_0f73f1c9",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 22
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d938c8_0e3342e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
         "patchSetId": 23
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "015ed635_d91f035e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d938c8_0e3342e5",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 26
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6dd2053_c40137b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
         "patchSetId": 23
@@ -390,6 +774,30 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f749572c_d9590fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6dd2053_c40137b1",
+      "range": {
+        "startLine": 142,
+        "startChar": 101,
+        "endLine": 142,
+        "endChar": 107
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -436,6 +844,54 @@
       "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0874a7_d9641781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ade3b5af_80075131",
+      "range": {
+        "startLine": 146,
+        "startChar": 65,
+        "endLine": 146,
+        "endChar": 71
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68a73aad_8df41d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-12T19:36:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e396fd_8786e24a",
+      "range": {
+        "startLine": 146,
+        "startChar": 25,
+        "endLine": 146,
+        "endChar": 31
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
