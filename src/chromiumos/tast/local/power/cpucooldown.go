@@ -81,7 +81,7 @@ func WaitUntilCPUCoolDown(ctx context.Context, coolDownMode CoolDownMode) error 
 					errors.Wrapf(err, "failed to read %q", zoneTypePath))
 			}
 			zoneType := strings.TrimSpace(string(b))
-			if zoneType == thermalIgnoreType {
+			if strings.Contains(zoneType, thermalIgnoreType) {
 				continue
 			}
 
