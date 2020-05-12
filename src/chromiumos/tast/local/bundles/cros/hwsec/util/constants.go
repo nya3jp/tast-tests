@@ -17,6 +17,7 @@ const (
 	PasswordLabel = "PasswordLabel"
 	PinLabel      = "PinLabel"
 
-	TestFileName    = "TESTFILE"
+	TestFileName1   = "TESTFILE1"
+	TestFileName2   = "TESTFILE2"
 	TestFileContent = "TEST_CONTENT"
 )

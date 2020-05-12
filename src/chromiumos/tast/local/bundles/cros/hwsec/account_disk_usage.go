@@ -60,7 +60,7 @@ func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.Cmd
 		s.Fatal("Failed to get the account disk usage before writing data: ", err)
 	}
 
-	testFilePath, err := util.GetUserTestFilePath(ctx, username, util.TestFileName)
+	testFilePath, err := util.GetUserTestFilePath(ctx, username, util.TestFileName1)
 	if err != nil {
 		s.Fatal("Failed to get user test file path: ", err)
 	}
