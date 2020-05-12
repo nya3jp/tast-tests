@@ -365,7 +365,7 @@ func checkCaptureResult(ctx context.Context, app *cca.App, cr *chrome.Chrome, mo
 
 	dir := info.Dir
 	if dir == "" {
-		ccaSavedDir, err := cca.GetSavedDir(ctx, cr)
+		ccaSavedDir, err := app.GetSavedDir(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get CCA default saved path")
 		}
