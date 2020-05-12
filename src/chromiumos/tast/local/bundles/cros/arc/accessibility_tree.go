@@ -125,23 +125,32 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to get the expected accessibility tree from the file")
 		}
 
-		// Extract accessibility tree.
-		root, err := getDesktopTree(ctx, cvconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
-		}
-
 		actualFileName := axTreeActualTreeFilePrefix + currentActivity.Name + ".json"
 		actualFilePath := filepath.Join(s.OutDir(), actualFileName)
 
+		var root *simpleAutomationNode
+		var appRoot *simpleAutomationNode
 		// Find the root node of Android application.
-		appRoot, ok := findNode(root, expected.Name, expected.Role)
-		if appRoot == nil || !ok {
-			// When the root could not be found, dump the entire tree.
-			if err := dumpTree(root, actualFilePath); err != nil {
-				return errors.Wrap(err, "failed to get Android root from accessibility tree, and dumpTree failed")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Extract accessibility tree.
+			root, err = getDesktopTree(ctx, cvconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to get the actual accessibility tree for current desktop")
 			}
-			return errors.Errorf("failed to get Android root from accessibility tree, wrote the entire tree to %q", actualFileName)
+
+			var ok bool
+			appRoot, ok = findNode(root, expected.Name, expected.Role)
+			if appRoot == nil || !ok {
+				return errors.New("failed to get Android root from accessibility tree")
+			}
+
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			// When the root could not be found, dump the entire tree.
+			if dumpTreeErr := dumpTree(root, actualFilePath); dumpTreeErr != nil {
+				return errors.Wrapf(err, "timed out waiting for appRoot and the previous error is %v", dumpTreeErr)
+			}
+			return errors.Wrapf(err, "timed out waiting for appRoot and wrote the entire tree to %q", actualFileName)
 		}
 
 		if diff := cmp.Diff(appRoot, expected, cmpopts.EquateEmpty()); diff != "" {
