@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ba9ccee_d1dedb27",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-12T18:41:29Z",
+      "side": 1,
+      "message": "If dut is assumed to be in normal mode before the loop starts, then just need 1 fwCommon.BootModeNormal here, indicating the next mode to transition to.  Or you can keep things as-is here and fold the logic to check for starting mode into the loop (could be cleaner to do it this way).",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f784806_aa73b1f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-12T18:41:29Z",
+      "side": 1,
+      "message": "Since rebooting kills the rpc connection, shouldn\u0027t it close the previous one before dialing the new one?",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
