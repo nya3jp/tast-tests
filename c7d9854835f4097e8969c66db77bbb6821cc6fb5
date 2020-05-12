@@ -22,6 +22,30 @@
       "revId": "c7d9854835f4097e8969c66db77bbb6821cc6fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea69c259_9edb8538",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-12T17:42:31Z",
+      "side": 1,
+      "message": "FYI: it would be up to you. As I searched the commit log, there seems no specific rules for this format. Someone don\u0027t specify, someone use tast-tests, and someone use component names like this.\n\n(cf. https://chromium.googlesource.com/chromiumos/platform/tast-tests/+log)",
+      "parentUuid": "9d452bae_1589999a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "c7d9854835f4097e8969c66db77bbb6821cc6fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
