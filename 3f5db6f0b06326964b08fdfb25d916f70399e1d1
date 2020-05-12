@@ -94,6 +94,30 @@
       "revId": "3f5db6f0b06326964b08fdfb25d916f70399e1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3af40f_16072988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-12T20:43:16Z",
+      "side": 1,
+      "message": "We shouldn\u0027t do this generally -- kwargs in python which are very similar were abused a lot in autotest, and I would like for that not to be easy to do again.",
+      "parentUuid": "7366550d_1cafefca",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3f5db6f0b06326964b08fdfb25d916f70399e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
