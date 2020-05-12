@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "a3f4f570_00b1c382",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-12T20:02:04Z",
+      "side": 1,
+      "message": "Failure of test tear-down should be treated as a test failure as it may undermine the following tests. By doing so, it could facilitate our bug hunting.",
+      "parentUuid": "53a3ba99_aa4356a8",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62e57cbe_f75f3faa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 18
