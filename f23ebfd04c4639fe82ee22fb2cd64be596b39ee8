@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4663e442_b930c446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-12T12:54:29Z",
+      "side": 1,
+      "message": "Hi Shuhei, thanks for the comment first. My intention is to get current tablet mode status, and then use it for testing visibility. I know ideally it should test all boards in both mode, and current approach might cause uncertainity. HelpApp is a SWA, so less likely to break on different boards. Any suggestions here?",
+      "parentUuid": "bd7fe264_6cf23c6e",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "139042ae_ba451be4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "abbbfd62_a3741e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-12T12:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "139042ae_ba451be4",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bcc9bec_c5b74201",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892be60f_851fde53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-12T12:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bcc9bec_c5b74201",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
