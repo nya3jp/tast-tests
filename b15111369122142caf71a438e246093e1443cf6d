@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d01ace7c_efbb151d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-12T23:33:22Z",
+      "side": 1,
+      "message": "In the case of just having toModes in the list, the fromMode is just the previous toMode, with it initialized to normal.\n\nFolding the logic into the loop would look something like this:\n\nfromMode :\u003d modes[0]\n// check dut is in fromMode\n...\nfor i :\u003d 1; i \u003c len(modes); i++ {\n    toMode \u003d modes[i]\n    ...\n    fromMode \u003d toMode\n}",
+      "parentUuid": "c6e15ee7_d794b4d3",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f784806_aa73b1f3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Great question! I tried for that. The problem is that if you run `cl.Close(ctx)` manually, then when the test ends, the deferred `cl.Close(ctx)` runs, and it panics due to trying to close an already-closed client. So, not great.\n\nWe could write a custom function, `maybeClose(cl, ctx)`, which only closes the connection if it hasn\u0027t already been closed, but there\u0027s more design work to be done there (how would we keep track of which connections had been closed?).\n\nIn any case, the reconnect logic is not net-new in this CL, so perhaps we should handle it in an upcoming patch set. If you have an idea of how to address this well, I would be curious to hear. Otherwise, perhaps we should leave this comment thread open so that it\u0027s visible during tast-owners review.",
       "parentUuid": "3f784806_aa73b1f3",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f569cb_128a90d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-12T23:33:22Z",
+      "side": 1,
+      "message": "Can do it like this:\n\n// No need to do any other defers besides this one, from tast codelab 2 \u003d)\ndefer func() {\n    if cl !\u003d nil {\n        cl.Close()\n    }\n}()\n...\n\nfor ... {\n   ...\n   cl.Close()\n   cl, err \u003d rpc.Dial ...\n   ...\n}",
+      "parentUuid": "3c37c6c0_427523cf",
       "revId": "b15111369122142caf71a438e246093e1443cf6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
