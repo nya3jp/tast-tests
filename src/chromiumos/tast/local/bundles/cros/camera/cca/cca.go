@@ -541,7 +541,7 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		return nil, errors.Wrap(err, "capturing hasn't ended")
 	}
 
-	dir, err := GetSavedDir(ctx, a.cr)
+	dir, err := a.GetSavedDir(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -630,7 +630,7 @@ func (a *App) StopRecording(ctx context.Context, timerState TimerState, startTim
 	if err := a.WaitForState(ctx, "taking", false); err != nil {
 		return nil, errors.Wrap(err, "shutter is not ended")
 	}
-	dir, err := GetSavedDir(ctx, a.cr)
+	dir, err := a.GetSavedDir(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -662,8 +662,8 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 }
 
 // GetSavedDir returns the path to the folder where captured files are saved.
-func GetSavedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
-	path, err := cryptohome.UserPath(ctx, cr.User())
+func (a *App) GetSavedDir(ctx context.Context) (string, error) {
+	path, err := cryptohome.UserPath(ctx, a.cr.User())
 	if err != nil {
 		return "", err
 	}
