@@ -1,0 +1,337 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73530957_2575ab37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "Please put this into a separate CL, looks like it\u0027s not very related to the current changes",
+      "range": {
+        "startLine": 666,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 0
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef10a349_722fe566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "nti: let\u0027s just log here. we probably interested in first error (from WaitForState).\n\nuse testing.ContextLog for logging",
+      "range": {
+        "startLine": 1108,
+        "startChar": 3,
+        "endLine": 1108,
+        "endChar": 18
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e538d612_100dc1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "I guess it makes sense to move this variable inside function were you actually use it",
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b57ce7_8d38bfc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "tracker should only track :)",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e270dc1_c3c1837c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "I am not sure whether tracker should be responsible to setting some values",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a5bf63_73cbbac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "this can be nil\nplease add check before to avoid panic",
+      "range": {
+        "startLine": 49,
+        "startChar": 41,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6c3d8d_158ac3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "1. please omit \"get\" in Go names: https://golang.org/doc/effective_go.html#Getters\n2. this method does many unexpected things: create initial value for active node, update active node, verifies that nothing changed, returns current volume. I\u0027d like to split into few smaller methods",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1cb2b73_766f2ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "looks like newVolumeTracker should be responsible for getting initial volume level",
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb31ea3_8be0f942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "why this method is responsible for calling \"doChange\"? \n\nBTW, are you not interested on \"how much\" volume changed?",
+      "range": {
+        "startLine": 71,
+        "startChar": 25,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72f3271c_bacea67e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "let\u0027s increate to 5 seconds to avoid flakiness",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b138cbe_43879b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "nit: please use errors.Wrap\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 22
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9f9d40_36bca5da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "nit: please keep more time for cleanup, e.g.:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time.Second*5)\ndefer cancel()\n\ndefer func(ctx context.Context) {\n  if err :\u003d vt.setVolume(ctx, originalVolume); err !\u003d nil {\n    s.Fatal(\"Failed to restore original volume: \", err)\n  }\n}(cleanupCtx)\n\n\n\n___\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup for more info",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 5
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5db0b300_e094dfcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "this looks a bit complicated for now, i\u0027d like to either simplify for now or see following CLs with more items/cases.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d423e2fe_5f6fe651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "it\u0027s safer to put cleanup context",
+      "range": {
+        "startLine": 156,
+        "startChar": 16,
+        "endLine": 156,
+        "endChar": 19
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584ed7e7_cb07cc56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-12T13:58:15Z",
+      "side": 1,
+      "message": "nit: please wrap this and next errors",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 15
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
