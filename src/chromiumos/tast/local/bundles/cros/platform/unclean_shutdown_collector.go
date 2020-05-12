@@ -22,7 +22,18 @@ func init() {
 		Func:     UncleanShutdownCollector,
 		Desc:     "Verify unclean shutdown produces collection",
 		Contacts: []string{"joonbug@chromium.org", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
+		// On some boards, this test is unstable for difficult-to-resolve reasons.
+		// TODO(https://crbug.com/1041639): Remove once this is fixed.
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"unclean_shutdown_stable"},
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"unclean_shutdown_unstable"},
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
