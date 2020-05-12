@@ -46,6 +46,30 @@
       "revId": "3f5db6f0b06326964b08fdfb25d916f70399e1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80990f6c_163ba390",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-12T17:17:17Z",
+      "side": 1,
+      "message": "Thank you for sharing.\n\nI still think it is beneficial to keep the timing log because it is a blocking operation against system, while I agreed with you that it does not meet with your purpose.\n\nHmm... although it\u0027s just a tweaking there\u0027s no good API I could come up with because go does not support clear and simple optional arguments.\n\nHow about introducing just a new method\n\nConnectWithoutTiming().\n\nThen refactor Connect()?\n\nIt\u0027d be nice to document when to call ConnectWithoutTiming().",
+      "parentUuid": "65d99a91_c6d62e37",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3f5db6f0b06326964b08fdfb25d916f70399e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
