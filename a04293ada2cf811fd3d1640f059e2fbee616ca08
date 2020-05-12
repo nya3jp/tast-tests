@@ -22,6 +22,30 @@
       "revId": "a04293ada2cf811fd3d1640f059e2fbee616ca08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064f2c9d_610f884c",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-12T20:24:38Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the ActivityManagerService proto changes between Q and R. This is also not the only place where the proto changes need to be verified, since other places in tast use checks like if sdk \u003e\u003d SDKQ instead of using specific version numbers.\n\nI\u0027ve create a bug and added a TODO to verify the proto changes.\n\nI\u0027ve heard talk of declaring our own protos for tast, so that version-sepecific parsing doesn\u0027t need to happen. If that happens, then this would be irrelevant, but I\u0027m not sure what the timeline for that is.",
+      "parentUuid": "dfbde5c2_e0f1e113",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 66
+      },
+      "revId": "a04293ada2cf811fd3d1640f059e2fbee616ca08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
