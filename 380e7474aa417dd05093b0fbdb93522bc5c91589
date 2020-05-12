@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "53a3ba99_aa4356a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-12T19:33:21Z",
+      "side": 1,
+      "message": "Right, what I meant is: should this be an Error or a Log?",
+      "parentUuid": "356a0cdd_74058d4b",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62e57cbe_f75f3faa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 18
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "s.Error() also marks the test as failed. It just don\u0027t stop the test immediately. As the defer section is in the tail of the test, using s.Error() should be just okay.",
       "parentUuid": "8157d3fb_458d1661",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ba636f_fdacfc92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-12T19:33:21Z",
+      "side": 1,
+      "message": "same as above re: Error vs. Log",
+      "parentUuid": "6fa657df_61f705e0",
       "range": {
         "startLine": 56,
         "startChar": 5,
