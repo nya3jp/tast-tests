@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fc6f2a3_fcbe162f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-12T16:58:11Z",
+      "side": 1,
+      "message": "To avoid conflicting, could you define a struct instead of using formatted line to be cleaner?",
+      "revId": "b12d66041ae078fb5964db5e215cde739688770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad12876b_022f0181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-12T16:58:11Z",
+      "side": 1,
+      "message": "Could you avoid stat? os.Stat should work?",
+      "revId": "b12d66041ae078fb5964db5e215cde739688770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f6d3348_52a3a517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-12T16:58:11Z",
+      "side": 1,
+      "message": "I think you need to report an error if err is returned and not ENOENT. Suggestion.\n\n_, err :\u003d os.Stat(path)\nif err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n  return testing.PollBreak(errors.Wrap(err, ...))\n}\n\nexists :\u003d err \u003d\u003d nil\nif c \u003d\u003d pathMustExist {\n  if !exists {\n    return ...\n  }\n} else {\n  if exists {\n    return ...\n  }\n}\n\nreturn nil",
+      "revId": "b12d66041ae078fb5964db5e215cde739688770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
