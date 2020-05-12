@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31f51234_e9a1dbd6",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "nit: finds ... optins waits",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 49
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc393804_dcecd4dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "not very sure, but could this be time.Duration?",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8813a9de_130c46ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "I think we could drop it, main focus now is arc-r. So you may use android_vm instead",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c904492d_d2fd4b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "nit: restarts",
+      "range": {
+        "startLine": 118,
+        "startChar": 25,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f5c1ee_db735e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "this might not be true with your current implementation and having fixed timeouts.",
+      "range": {
+        "startLine": 119,
+        "startChar": 66,
+        "endLine": 119,
+        "endChar": 72
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a32e1c_c30d2322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "nit: wonder if we could move this to function to reduce indentation.",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ff2388_e9c5be01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "for test this should be not the case. Play Store must be allowed for accounts in this test.",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 59
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4efc4be_de0dfcbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-12T16:54:12Z",
+      "side": 1,
+      "message": "In ARC account might be managed but terms shown. Would you try flag force show optin and simplify this logic? arc.AuthPerf should have this example IIRC",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 52
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
