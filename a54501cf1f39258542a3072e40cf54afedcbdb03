@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d0bc1bd_3d899d5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-12T00:29:23Z",
+      "side": 1,
+      "message": "Missed here",
+      "range": {
+        "startLine": 192,
+        "startChar": 26,
+        "endLine": 192,
+        "endChar": 48
+      },
+      "revId": "a54501cf1f39258542a3072e40cf54afedcbdb03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
