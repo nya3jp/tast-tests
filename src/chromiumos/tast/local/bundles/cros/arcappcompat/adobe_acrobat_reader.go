@@ -83,31 +83,34 @@ func init() {
 func AdobeAcrobatReader(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.adobe.reader"
-		appActivity = "com.adobe.reader.home.ARHomeActivity"
-
-		openButtonRegex = "Open|OPEN"
+		appActivity = ".AdobeReader"
 	)
 
 	// Step up chrome on Chromebook.
 	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
 	defer d.Close()
 
-	// Todo: Need to figure out why it crashes when using Activity.Start and to remove use of the open button.
-	// Click on open button.
-	openButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches(openButtonRegex))
-	if err := openButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Open button does not exist: ", err)
-	}
-	// Open button exist and click on open button
-	if err := openButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on open button: ", err)
-	}
-
 	testSet := s.Param().(testutil.TestParams)
 	// Run the different test cases.
 	for idx, test := range testSet.Tests {
 		// Run subtests.
 		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
+			// Launch the app.
+			act, err := arc.NewActivity(a, appPkgName, appActivity)
+			if err != nil {
+				s.Fatal("Failed to create new app activity: ", err)
+			}
+			s.Log("Created new app activity")
+
+			defer act.Close()
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatal("Failed start app: ", err)
+			}
+			s.Log("App launched successfully")
+
+			defer act.Stop(ctx)
+
+			// Take screenshot on failure.
 			defer func() {
 				if s.HasError() {
 					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)

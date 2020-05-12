@@ -80,6 +80,9 @@ func SetUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err := playstore.InstallApp(ctx, a, d, appPkgName); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
+	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
+		s.Log("Failed to close Play Store: ", err)
+	}
 	return cr, tconn, a, d
 }
 

@@ -84,30 +84,34 @@ func init() {
 func AmazonPrimeVideo(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.amazon.avod.thirdpartyclient"
-		appActivity = "com.amazon.identity.auth.device.AuthPortalUIActivity"
-
-		openButtonRegex = "Open|OPEN"
+		appActivity = ".LauncherActivity"
 	)
 
 	// Step up chrome on Chromebook.
 	cr, tconn, a, d := testutil.SetUpDevice(ctx, s, appPkgName, appActivity)
 	defer d.Close()
 
-	s.Log("Launch the app")
-	// Todo: Need to figure out why it crashes when using Activity.Start and to remove use of the open button.
-	// Click on open button.
-	openButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches(openButtonRegex))
-	if err := openButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Fatal("Open Button doesn't exist: ", err)
-	} else if err := openButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on openButton: ", err)
-	}
-
 	testSet := s.Param().(testutil.TestParams)
 	// Run the different test cases.
 	for idx, test := range testSet.Tests {
 		// Run subtests.
 		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
+			// Launch the app.
+			act, err := arc.NewActivity(a, appPkgName, appActivity)
+			if err != nil {
+				s.Fatal("Failed to create new app activity: ", err)
+			}
+			s.Log("Created new app activity")
+
+			defer act.Close()
+			if err := act.Start(ctx, tconn); err != nil {
+				s.Fatal("Failed start app: ", err)
+			}
+			s.Log("App launched successfully")
+
+			defer act.Stop(ctx)
+
+			// Take screenshot on failure.
 			defer func() {
 				if s.HasError() {
 					path := fmt.Sprintf("%s/screenshot-arcappcompat-failed-test-%d.png", s.OutDir(), idx)
@@ -116,6 +120,7 @@ func AmazonPrimeVideo(ctx context.Context, s *testing.State) {
 					}
 				}
 			}()
+
 			testutil.DetectAndCloseCrashOrAppNotResponding(ctx, s, tconn, a, d, appPkgName)
 			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
 		})
