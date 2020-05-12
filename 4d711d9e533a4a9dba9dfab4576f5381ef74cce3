@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "48a8145a_0b6e07fe",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-12T10:07:57Z",
+      "side": 1,
+      "message": "I see, thanks for clarification. Then it might be okay to set the 30-second timeout, but personally I\u0027m not very eager to set shorter timeout for the no-login case because it\u0027s not popular... Test stability is much more important.",
+      "parentUuid": "9d7c4452_fc873d8d",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "4d711d9e533a4a9dba9dfab4576f5381ef74cce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf41f121_0e65401b",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 5
@@ -93,6 +117,30 @@
       "revId": "4d711d9e533a4a9dba9dfab4576f5381ef74cce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66b9965b_afa1a86d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-12T10:07:57Z",
+      "side": 1,
+      "message": "Oh I see.",
+      "parentUuid": "a2e9a51d_41597bcc",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "4d711d9e533a4a9dba9dfab4576f5381ef74cce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
