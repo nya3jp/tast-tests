@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22006c9b_49737763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-12T20:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5324d497_fd91ff04",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 30
+      },
+      "revId": "8be1aa4c3884d874a18bc42c79030700e0778819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f368705f_fdbbff71",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cf3dc4bc_cf38b7f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-12T20:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f368705f_fdbbff71",
+      "range": {
+        "startLine": 187,
+        "startChar": 15,
+        "endLine": 187,
+        "endChar": 39
+      },
+      "revId": "8be1aa4c3884d874a18bc42c79030700e0778819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f0772c1_80f9637f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "8be1aa4c3884d874a18bc42c79030700e0778819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8502d9c_238512e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-12T20:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0772c1_80f9637f",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 9
+      },
+      "revId": "8be1aa4c3884d874a18bc42c79030700e0778819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
