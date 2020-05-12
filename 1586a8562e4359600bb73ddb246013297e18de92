@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f4177796_f4cc302b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-12T19:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ea94a7_439eb561",
+      "revId": "1586a8562e4359600bb73ddb246013297e18de92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df539b73_fe544006",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "1586a8562e4359600bb73ddb246013297e18de92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6a00e3_22850919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-12T19:10:03Z",
+      "side": 1,
+      "message": "Done (exported crash.Option in a separate parent patch and added you as a reviewer to that as well)",
+      "parentUuid": "df539b73_fe544006",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "1586a8562e4359600bb73ddb246013297e18de92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +175,30 @@
       "revId": "1586a8562e4359600bb73ddb246013297e18de92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21bb2f52_61649f9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2020-05-12T19:10:03Z",
+      "side": 1,
+      "message": "Followed the first suggestion.",
+      "parentUuid": "b959fd31_33314364",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 3
+      },
+      "revId": "1586a8562e4359600bb73ddb246013297e18de92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
