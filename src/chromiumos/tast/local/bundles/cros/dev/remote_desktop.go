@@ -7,6 +7,7 @@ package example
 import (
 	"context"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -23,9 +24,11 @@ var rdpPollOpts = &testing.PollOptions{Interval: time.Second}
 
 // rdpVars represents the configurable parameters for the remote desktop session.
 type rdpVars struct {
-	user string
-	pass string
-	wait bool
+	user      string
+	pass      string
+	wait      bool
+	reset     bool
+	extraArgs []string
 }
 
 func init() {
@@ -39,7 +42,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			// For running manually.
-			"user", "pass", "wait",
+			"user", "pass", "wait", "extra_args", "reset",
 			// For automated testing.
 			"dev.username", "dev.password",
 		},
@@ -229,6 +232,15 @@ func getVars(s *testing.State) rdpVars {
 		pass = s.RequiredVar("dev.password")
 	}
 
+	resetStr, ok := s.Var("reset")
+	if !ok {
+		resetStr = "false"
+	}
+	reset, err := strconv.ParseBool(resetStr)
+	if err != nil {
+		s.Fatal("Failed to parse the variable `reset`: ", err)
+	}
+
 	waitStr, ok := s.Var("wait")
 	if !ok {
 		// Only wait for remote connection when running manually.
@@ -243,10 +255,18 @@ func getVars(s *testing.State) rdpVars {
 		s.Fatal("Failed to parse the variable `wait`: ", err)
 	}
 
+	extraArgsStr, ok := s.Var("extra_args")
+	if !ok {
+		extraArgsStr = ""
+	}
+	extraArgs := strings.Fields(extraArgsStr)
+
 	return rdpVars{
-		user: user,
-		pass: pass,
-		wait: wait,
+		user:      user,
+		pass:      pass,
+		wait:      wait,
+		reset:     reset,
+		extraArgs: extraArgs,
 	}
 }
 
@@ -255,18 +275,25 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	// "lang=en-US" for Chrome does not work.
 
 	vars := getVars(s)
+	var opts []chrome.Option
 
 	chromeARCOpt := chrome.ARCDisabled()
 	if arc.Supported() {
 		chromeARCOpt = chrome.ARCSupported()
 	}
-	cr, err := chrome.New(
-		ctx,
-		chromeARCOpt,
-		chrome.Auth(vars.user, vars.pass, ""),
-		chrome.GAIALogin(),
-		chrome.KeepState(),
-	)
+	opts = append(opts, chromeARCOpt)
+	opts = append(opts, chrome.Auth(vars.user, vars.pass, ""))
+	opts = append(opts, chrome.GAIALogin())
+
+	if !vars.reset {
+		opts = append(opts, chrome.KeepState())
+	}
+
+	if len(vars.extraArgs) > 0 {
+		opts = append(opts, chrome.ExtraArgs(vars.extraArgs...))
+	}
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
