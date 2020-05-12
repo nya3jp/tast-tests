@@ -72,7 +72,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	if err := utility.CheckTPMWrappedUserKeyset(ctx, util.FirstUsername); err != nil {
 		s.Fatal("Check user keyset failed: ", err)
 	}
-	if err := util.WriteUserTestContent(ctx, util.FirstUsername, util.TestFileName, []byte(util.TestFileContent)); err != nil {
+	if err := util.WriteUserTestContent(ctx, util.FirstUsername, util.TestFileName1, []byte(util.TestFileContent)); err != nil {
 		s.Fatal("Failed to write user test content: ", err)
 	}
 	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
@@ -96,7 +96,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	}
 
 	// User vault should already exist and shouldn't be recreated.
-	if content, err := readUserTestContent(ctx, util.FirstUsername, util.TestFileName); err != nil {
+	if content, err := readUserTestContent(ctx, util.FirstUsername, util.TestFileName1); err != nil {
 		s.Fatal("Failed to read user test content: ", err)
 	} else if !bytes.Equal(content, []byte(util.TestFileContent)) {
 		s.Fatalf("Unexpected test file content: got %q, want %q", string(content), util.TestFileContent)
@@ -125,7 +125,7 @@ func RecreateUserVault(ctx context.Context, s *testing.State) {
 	}
 
 	// User vault should be recreated after TPM is cleared.
-	if exists, err := util.DoesUserTestFileExist(ctx, util.FirstUsername, util.TestFileName); err != nil {
+	if exists, err := util.DoesUserTestFileExist(ctx, util.FirstUsername, util.TestFileName1); err != nil {
 		s.Fatal("Failed to check user test file: ", err)
 	} else if exists {
 		s.Fatal("Cryptohome didn't recreate user vault; original test file still exists")
