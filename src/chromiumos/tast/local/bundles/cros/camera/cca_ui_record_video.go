@@ -51,7 +51,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	dir, err := cca.GetSavedDir(ctx, cr)
+	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		s.Fatal("Failed to get CCA default saved path: ", err)
 	}
