@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd7fe264_6cf23c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-12T10:22:32Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with UI area, so please correct me if I\u0027m wrong.\n\nIIUC this function returns if the tablet mode is enabled currently, and it depends on the device placement. For example, in the case of an Eve device, it returns true if the lid is open more than 180 degrees. I don\u0027t think we have strict policy on placement of devices in lab, so I\u0027m afraid that some Eve devices return TabletModeEnabled \u003d false while other Eve devices return TabletModeEnabled \u003d true, leading to test flakiness.\n\nLooking at other tests, it rather looks like they\u0027re testing both modes, i.e. TabletModeEnabled \u003d false and true.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go?type\u003dcs\u0026q\u003dfile:tast-tests+%22+TabletModeEnabled%22\u0026g\u003d0\u0026l\u003d156",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "139042ae_ba451be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-12T10:22:32Z",
+      "side": 1,
+      "message": "style nit: Please end comment sentences with a period.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bcc9bec_c5b74201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-12T10:22:32Z",
+      "side": 1,
+      "message": "style nit: mind inserting a space between // and Verify?",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
