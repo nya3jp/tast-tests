@@ -22,6 +22,30 @@
       "revId": "46acd3a1b48573430b5315aafb9673c8036d28fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f3494f_5a384d93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-12T22:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a60383_79bbbb11",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "46acd3a1b48573430b5315aafb9673c8036d28fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
