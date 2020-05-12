@@ -644,21 +644,30 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 			return errors.Wrap(err, "failed to restore blank window")
 		}
 
-		// Set content window to take up the left half of the screen.
-		sbl := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width/2, info.WorkArea.Height).WithInset(insetSlopDP, insetSlopDP)
+		isp := info.WorkArea.Width < info.WorkArea.Height
+
+		// Set content window to take up the left half of the screen in landscape, or top half in portrait.
+		sbl := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width/2, info.WorkArea.Height)
+		if isp {
+			sbl = coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width, info.WorkArea.Height/2)
+		}
+		sbl = sbl.WithInset(insetSlopDP, insetSlopDP)
 		if err := setWindowBounds(ctx, ctconn, w.ID, sbl); err != nil {
 			return errors.Wrap(err, "failed to set non-blank window initial bounds")
 		}
 
 		// Set the occluding window to take up the right side of the screen.
 		sbr := sbl.WithOffset(sbl.Width, 0)
+		if isp {
+			sbr = sbl.WithOffset(0, sbl.Height)
+		}
 		if err := setWindowBounds(ctx, ctconn, wb.ID, sbr); err != nil {
 			return errors.Wrap(err, "failed to set blank window initial bounds")
 		}
 		perfFn = func() error {
 			// Drag from not occluding to completely occluding.
 			start := coords.NewPoint(sbr.Left+dragMoveOffsetDP, sbr.Top+dragMoveOffsetDP)
-			end := coords.NewPoint(sbl.Left, sbr.Top+1)
+			end := coords.NewPoint(sbl.Left+dragMoveOffsetDP, sbl.Top+dragMoveOffsetDP)
 			if err := ash.MouseDrag(ctx, ctconn, start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag move")
 			}
