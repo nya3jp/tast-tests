@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "726c27d1_691b3c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-12T05:44:58Z",
+      "side": 1,
+      "message": "Ah, yes, bytes is a better fit.  Done.",
+      "parentUuid": "594221a4_f2810600",
+      "range": {
+        "startLine": 160,
+        "startChar": 46,
+        "endLine": 160,
+        "endChar": 54
+      },
+      "revId": "1d503957019c7556d9b99ffd276547a065802c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f11764b2_08210c17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-12T05:44:58Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "364dea11_e4d1f9e4",
+      "range": {
+        "startLine": 160,
+        "startChar": 55,
+        "endLine": 160,
+        "endChar": 59
+      },
+      "revId": "1d503957019c7556d9b99ffd276547a065802c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b0ffa85_6c446a3d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "1d503957019c7556d9b99ffd276547a065802c7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f55e543_e92c6769",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-12T05:44:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0ffa85_6c446a3d",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "1d503957019c7556d9b99ffd276547a065802c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e7b8503b_576cfb90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-12T05:44:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6956cd9_a36139ec",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "1d503957019c7556d9b99ffd276547a065802c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e59b38b_98cc4dd2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
         "patchSetId": 9
@@ -114,6 +210,30 @@
       "revId": "1d503957019c7556d9b99ffd276547a065802c7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c66a482_bafe443a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-12T05:44:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e59b38b_98cc4dd2",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "1d503957019c7556d9b99ffd276547a065802c7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
