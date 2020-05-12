@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81e22756_613c9bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-12T19:20:48Z",
+      "side": 1,
+      "message": "no, it is expected \"\"trigger/current_trigger\" to not exist on kernel \u003e 4.4.",
+      "parentUuid": "3b2e7da9_575899c2",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8f8fdf3_b425c269",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "0aca2be1_80f5e666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-12T19:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8f8fdf3_b425c269",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95f2a819_6ee8b5c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2020-05-07T17:07:10Z",
       "side": 1,
       "message": "Looks unused?\nOr, the buffer.go:L80 needs to be fixed?\n\nIf this needs to be kept here, could you put this as a first member?",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb0b92b_687336b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-12T19:20:48Z",
+      "side": 1,
+      "message": "It is needed as we need to read trigger register in its path. (see trigger.ReadAttr line 312).\nPut as first member for Trigger and Device classes.",
+      "parentUuid": "95f2a819_6ee8b5c3",
       "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "386c133c_cce3fb42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-12T19:20:48Z",
+      "side": 1,
+      "message": "It is expected, as /sys/bus/iio/devices contains both triggers and devices. We skip entries we don\u0027t want, like in GetSensors.",
+      "parentUuid": "7196109a_5fbc1ad0",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25801f74_5d3efaa2",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb51d6e_5623048a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-12T19:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25801f74_5d3efaa2",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "9a9b5c84_f06d778a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-12T19:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0446137_31a733e6",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1645ce8_26d41bdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 2
@@ -121,6 +235,24 @@
       "writtenOn": "2020-05-07T17:07:10Z",
       "side": 1,
       "message": "nit/style: Could you use CompiteLiteral here, and remove trigger variable?",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d355a0c9_0065df45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-12T19:20:48Z",
+      "side": 1,
+      "message": "I need the trigger object to be partially initialized [from line 310], to be able to read its attributes in sysfs.",
+      "parentUuid": "b1645ce8_26d41bdd",
       "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
