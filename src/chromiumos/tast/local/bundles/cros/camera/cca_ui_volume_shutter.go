@@ -30,6 +30,8 @@ func init() {
 	})
 }
 
+var volumeKeys = []string{"volumedown", "volumeup"}
+
 func getActiveCrasNode(ctx context.Context, cras *audio.Cras) (*audio.CrasNode, error) {
 	nodes, err := cras.GetNodes(ctx)
 	if err != nil {
@@ -154,6 +156,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		testFunc func(context.Context, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
 	}{
 		{"testSwitchDeviceMode", testSwitchDeviceMode},
+		{"testRecordVideo", testRecordVideo},
 	} {
 		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
 			if err := tst.testFunc(ctx, app, kb, vh); err != nil {
@@ -164,6 +167,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testSwitchDeviceMode tests behavior of pressing volume button in both tablet and clamshell mode.
 func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
@@ -172,6 +176,10 @@ func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardE
 	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
+	}
+
+	if err := app.SwitchMode(ctx, cca.Photo); err != nil {
+		return errors.Wrap(err, "failed to switch to photo mode")
 	}
 
 	modeName := func(tablet bool) string {
@@ -189,7 +197,7 @@ func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardE
 		}
 		defer cleanup(cleanupCtx)
 
-		for _, key := range []string{"volumedown", "volumeup"} {
+		for _, key := range volumeKeys {
 			pressKey := func() error {
 				testing.ContextLogf(ctx, "Press %v key in %v mode", key, modeName(tablet))
 				return kb.Accel(ctx, key)
@@ -228,6 +236,69 @@ func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardE
 	for _, tablet := range []bool{false, true} {
 		if err := testDeviceMode(tablet); err != nil {
 			return errors.Wrapf(err, "failed when test in %v mode", modeName(tablet))
+		}
+	}
+	return nil
+}
+
+// testRecordVideo tests scenario of recording one second video by volume button in tablet mode.
+func testRecordVideo(ctx context.Context, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
+	defer cancel()
+
+	cleanup, err := app.EnsureTabletModeEnabled(ctx, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to switch to tablet mode")
+	}
+	defer cleanup(cleanupCtx)
+
+	dir, err := app.SavedDir(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get result saved directory")
+	}
+
+	if err := app.SwitchMode(ctx, cca.Video); err != nil {
+		return errors.Wrap(err, "failed to switch to video mode")
+	}
+
+	for _, key := range volumeKeys {
+		prevVolume, err := vh.refreshVolume(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get volume before shutter")
+		}
+
+		// Start recording.
+		if err := kb.Accel(ctx, key); err != nil {
+			return errors.Wrapf(err, "failed to press %v key", key)
+		}
+		if err := app.WaitForState(ctx, "taking", true); err != nil {
+			return errors.Wrap(err, "shutter is not started")
+		}
+
+		testing.ContextLog(ctx, "Record video for a second")
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return err
+		}
+
+		// Stop recording.
+		start := time.Now()
+		if err := kb.Accel(ctx, key); err != nil {
+			return errors.Wrapf(err, "failed to press %v key", key)
+		}
+		if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
+			return errors.Wrap(err, "cannot find result video")
+		}
+		if err := app.WaitForState(ctx, "taking", false); err != nil {
+			return errors.Wrap(err, "shutter is not ended")
+		}
+
+		volume, err := vh.refreshVolume(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get volume after shutter")
+		}
+		if prevVolume != volume {
+			return errors.Errorf("volume changed from %v to %v after shutter", prevVolume, volume)
 		}
 	}
 	return nil
