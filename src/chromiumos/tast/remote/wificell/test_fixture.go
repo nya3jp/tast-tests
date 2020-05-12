@@ -119,7 +119,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer cancel()
 
 	var err error
-	tf.rpc, err = rpc.Dial(ctx, tf.dut, rpcHint, "cros")
+	tf.rpc, err = rpc.Dial(daemonCtx, tf.dut, rpcHint, "cros")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect rpc")
 	}
