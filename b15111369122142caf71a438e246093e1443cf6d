@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c6e15ee7_d794b4d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-12T19:25:02Z",
+      "side": 1,
+      "message": "\u003e just need 1 fwCommon.BootModeNormal here, indicating the next mode to transition to.\n\nThat\u0027s true, but if we remove the initial state then this list is not enough to discern both fromMode and toMode, which is useful information for logging. We could have a default value for fromMode around L56 (pseudocode: `fromMode \u003d if i \u003e 0 then modes[i-1] else initialState`), but IMO that is a little sloppier and I\u0027m not sure what we gain from this.\n\nI do see some potential for a bug: if the first element of modes were, say, fwCommon.BootModeDev, then the boot order would still be correct, but logs during the first loop would inaccurately report \"Transitioning from dev to normal\". And that\u0027s wrong.\n\nWe could address this either by asserting that modes[0]\u003d\u003dfwCommon.BootModeNormal, or by updating L46-50 to reference modes[0] instead of hardcoding fwCommon.BootModeNormal. I favor the latter, because that way it would be easier during development to start the test in a different boot-mode, if our dut accidentally gets left in a different boot-mode. WDYT?\n\n\u003e Or you can keep this as-is here and fold the logic to check for starting mode into the loop\n\nYes, but it is also useful to check for the mode after the transition; and it\u0027s redundant to check both before and after for each iteration. So if we moved the mode-checking logic to the beginning of the loop, then we would need one final check at the end to see whether we\u0027re in the expected final state. IMO, that is not cleaner than the current logic, perhaps even a little less clean.",
+      "parentUuid": "4ba9ccee_d1dedb27",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f784806_aa73b1f3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-12T18:41:29Z",
       "side": 1,
       "message": "Since rebooting kills the rpc connection, shouldn\u0027t it close the previous one before dialing the new one?",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c37c6c0_427523cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-12T19:25:02Z",
+      "side": 1,
+      "message": "Great question! I tried for that. The problem is that if you run `cl.Close(ctx)` manually, then when the test ends, the deferred `cl.Close(ctx)` runs, and it panics due to trying to close an already-closed client. So, not great.\n\nWe could write a custom function, `maybeClose(cl, ctx)`, which only closes the connection if it hasn\u0027t already been closed, but there\u0027s more design work to be done there (how would we keep track of which connections had been closed?).\n\nIn any case, the reconnect logic is not net-new in this CL, so perhaps we should handle it in an upcoming patch set. If you have an idea of how to address this well, I would be curious to hear. Otherwise, perhaps we should leave this comment thread open so that it\u0027s visible during tast-owners review.",
+      "parentUuid": "3f784806_aa73b1f3",
       "revId": "b15111369122142caf71a438e246093e1443cf6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
