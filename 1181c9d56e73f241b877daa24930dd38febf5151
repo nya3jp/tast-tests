@@ -22,6 +22,30 @@
       "revId": "1181c9d56e73f241b877daa24930dd38febf5151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1490c14_2cf2ae0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-12T20:21:10Z",
+      "side": 1,
+      "message": "it joins the same types. dlc and omahaURL have the same types \u003d\u003d string.\nnot sure what it\u0027s called off the top of my head, tast owners/experts like hidehiko might know",
+      "parentUuid": "0a8a74c9_973a93cd",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 21
+      },
+      "revId": "1181c9d56e73f241b877daa24930dd38febf5151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
