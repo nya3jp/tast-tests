@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5324d497_fd91ff04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-12T18:45:14Z",
+      "side": 1,
+      "message": "convert to `dlc string`",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 30
+      },
+      "revId": "8be1aa4c3884d874a18bc42c79030700e0778819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f368705f_fdbbff71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-12T18:45:14Z",
+      "side": 1,
+      "message": "No need to join strings anymore.",
+      "range": {
+        "startLine": 187,
+        "startChar": 15,
+        "endLine": 187,
+        "endChar": 39
+      },
+      "revId": "8be1aa4c3884d874a18bc42c79030700e0778819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0772c1_80f9637f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-12T18:45:14Z",
+      "side": 1,
+      "message": "update to all the install cases to take string.",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 9
+      },
+      "revId": "8be1aa4c3884d874a18bc42c79030700e0778819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
