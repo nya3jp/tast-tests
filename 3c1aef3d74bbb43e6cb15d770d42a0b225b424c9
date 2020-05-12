@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee8fedc3_79257753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-05-12T02:56:36Z",
+      "side": 1,
+      "message": "Does this need cleanup even when the setup failed?\n(maybe cryptohome mount_ex leaves incomplete result when error?)",
+      "revId": "3c1aef3d74bbb43e6cb15d770d42a0b225b424c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
