@@ -380,6 +380,11 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		builtin = append(builtin, "PAGE_TABLE_ISOLATION")
 		builtin = append(builtin, "RANDOMIZE_BASE")
 		// builtin = append(builtin, "RANDOMIZE_MEMORY")
+
+		// Retpoline is a Spectre v2 mitigation.
+		if ver.isOrLater(3, 18) {
+			builtin = append(builtin, "RETPOLINE")
+		}
 	}
 
 	return &kernelConfigCheck{
