@@ -22,6 +22,30 @@
       "revId": "933a3c4701458a2ecbf4e40e32cbe2be49a3fe38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2529172_06f62d18",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-12T17:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc49dc30_0cbb1506",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "933a3c4701458a2ecbf4e40e32cbe2be49a3fe38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
