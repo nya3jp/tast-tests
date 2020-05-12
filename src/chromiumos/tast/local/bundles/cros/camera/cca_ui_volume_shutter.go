@@ -30,6 +30,8 @@ func init() {
 	})
 }
 
+var volumeKeys = []string{"volumedown", "volumeup"}
+
 // volumeHelper helps to set/get system volume and verify volume related function.
 type volumeHelper struct {
 	cras       *audio.Cras
@@ -148,6 +150,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 		testFunc func(context.Context, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
 	}{
 		{"testSwitchDeviceMode", testSwitchDeviceMode},
+		{"testRecordVideo", testRecordVideo},
 	} {
 		if err := tst.testFunc(ctx, app, kb, vh); err != nil {
 			s.Errorf("Failed in %v(): %v", tst.name, err)
@@ -157,6 +160,10 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 }
 
 func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+	if err := app.SwitchMode(ctx, cca.Photo); err != nil {
+		return err
+	}
+
 	modeName := func(tablet bool) string {
 		if tablet {
 			return "tablet"
@@ -174,7 +181,7 @@ func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardE
 		defer cancel()
 		defer cleanup(cleanupCtx)
 
-		for _, key := range []string{"volumedown", "volumeup"} {
+		for _, key := range volumeKeys {
 			pressKey := func() error {
 				testing.ContextLogf(ctx, "Click %v key in %v mode", key, modeName(tablet))
 				return kb.Accel(ctx, key)
@@ -210,6 +217,64 @@ func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardE
 					return errors.Wrapf(err, "volume not changed after press %v key in clamshell mode", err)
 				}
 			}
+		}
+	}
+	return nil
+}
+
+func testRecordVideo(ctx context.Context, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+	cleanup, err := app.EnsureTabletModeEnabled(ctx, true)
+	defer cleanup(ctx)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
+	defer cancel()
+	defer cleanup(cleanupCtx)
+
+	dir, err := app.GetSavedDir(ctx)
+	if err != nil {
+		return err
+	}
+	if err := app.SwitchMode(ctx, cca.Video); err != nil {
+		return err
+	}
+
+	for _, key := range volumeKeys {
+		prevVolume, err := vh.currentVolume(ctx)
+		if err != nil {
+			return err
+		}
+
+		testing.ContextLogf(ctx, "Press %v key in tablet mode", key)
+		if err := kb.Accel(ctx, key); err != nil {
+			return errors.Wrapf(err, "failed to press %v key", key)
+		}
+		if err := app.WaitForState(ctx, "taking", true); err != nil {
+			return errors.Wrap(err, "shutter is not started")
+		}
+
+		testing.ContextLog(ctx, "Record video for a second")
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return err
+		}
+
+		testing.ContextLogf(ctx, "Press %v key in tablet mode", key)
+		start := time.Now()
+		if err := kb.Accel(ctx, key); err != nil {
+			return errors.Wrapf(err, "failed to press %v key", key)
+		}
+		if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
+			return errors.Wrap(err, "cannot find result video")
+		}
+		if err := app.WaitForState(ctx, "taking", false); err != nil {
+			return errors.Wrap(err, "shutter is not ended")
+		}
+
+		volume, err := vh.currentVolume(ctx)
+		if err != nil {
+			return err
+		}
+		if prevVolume != volume {
+			return errors.Errorf("volume changed from %v to %v after shutter", prevVolume, volume)
 		}
 	}
 	return nil
