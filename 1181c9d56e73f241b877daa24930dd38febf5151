@@ -46,6 +46,30 @@
       "revId": "1181c9d56e73f241b877daa24930dd38febf5151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d85eca8_3212aacc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-12T20:24:24Z",
+      "side": 1,
+      "message": "Thanks for clarification. that makes sense.",
+      "parentUuid": "d1490c14_2cf2ae0e",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 21
+      },
+      "revId": "1181c9d56e73f241b877daa24930dd38febf5151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
