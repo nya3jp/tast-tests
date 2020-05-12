@@ -156,15 +156,15 @@ func moveAllCrashesTo(source, target string) error {
 	return nil
 }
 
-// option is a self-referential function can be used to configure crash tests.
+// Option is a self-referential function can be used to configure crash tests.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type option func(p *setUpParams)
+type Option func(p *setUpParams)
 
 // DevImage prevents the test library from indicating to the DUT that a crash
 // test is in progress, allowing the test to complete with standard developer
 // image behavior.
-func DevImage() option {
+func DevImage() Option {
 	return func(p *setUpParams) {
 		p.isDevImageTest = true
 	}
@@ -172,7 +172,7 @@ func DevImage() option {
 
 // WithConsent indicates that the test should enable metrics consent.
 // Pre: cr should be a logged-in chrome session.
-func WithConsent(cr *chrome.Chrome) option {
+func WithConsent(cr *chrome.Chrome) Option {
 	return func(p *setUpParams) {
 		p.setConsent = true
 		p.chrome = cr
@@ -182,7 +182,7 @@ func WithConsent(cr *chrome.Chrome) option {
 // WithMockConsent indicates that the test should touch the mock metrics consent
 // file which causes crash_reporter and crash_sender to act as if they had
 // consent to process crashes.
-func WithMockConsent() option {
+func WithMockConsent() Option {
 	return func(p *setUpParams) {
 		p.setMockConsent = true
 	}
@@ -192,7 +192,7 @@ func WithMockConsent() option {
 // reporting state files (e.g. crash-test-in-progress) should also be placed in
 // /var/spool/crash/ (so that the persist-crash-test task moves them over to
 // /run/crash_reporter on boot).
-func RebootingTest() option {
+func RebootingTest() Option {
 	return func(p *setUpParams) {
 		p.rebootTest = true
 	}
@@ -200,7 +200,7 @@ func RebootingTest() option {
 
 // DaemonStore indicates that this test wants to use the daemon store
 // directories, so SetUp should stash them.
-func DaemonStore() option {
+func DaemonStore() Option {
 	return func(p *setUpParams) {
 		p.useDaemonStore = true
 	}
@@ -210,7 +210,7 @@ func DaemonStore() option {
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest(ctx)" after calling this. If developer image
 // behavior is required for the test, call SetUpDevImageCrashTest instead.
-func SetUpCrashTest(ctx context.Context, opts ...option) error {
+func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	crashDirs := []crashAndStash{
 		{SystemCrashDir, systemCrashStash},
 		{LocalCrashDir, localCrashStash},
