@@ -36,8 +36,6 @@ var ModelBlacklist = []string{
 	// Platform celes
 	"celes",
 	// Platform coral
-	"astronaut",
-	"babymega",
 	"blacktip360",
 	"blacktiplte",
 	"bruce",
@@ -59,7 +57,6 @@ var ModelBlacklist = []string{
 	"careena",
 	"kasumi",
 	"treeya",
-	"treeya360",
 	// Platform guado
 	"guado",
 	// Platform hana
@@ -78,15 +75,12 @@ var ModelBlacklist = []string{
 	"ampton",
 	"apel",
 	"bloog",
-	"blooguard",
 	"bluebird",
 	"bobba",
 	"bobba360",
-	"casta",
 	"droid",
 	"fleex",
 	"foob",
-	"foob360",
 	"garg",
 	"laser14",
 	"phaser360",
@@ -95,8 +89,6 @@ var ModelBlacklist = []string{
 	"vortininja",
 	// Platform relm
 	"relm",
-	// Platform samus
-	"samus",
 	// Platform sarien
 	"arcada",
 	// Platform scarlet
