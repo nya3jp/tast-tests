@@ -7,6 +7,7 @@ package hwsec
 import (
 	"context"
 	"fmt"
+	"os"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -43,6 +44,24 @@ func setupVault(ctx context.Context, s *testing.State, username, password, label
 	return nil
 }
 
+// createSparseFile creates a sparse file of the given size in bytes at location path.
+func createSparseFile(path string, size int64) error {
+	// Create the file. Note that if the file exist, it'll be truncated to 0 bytes.
+	f, err := os.Create(path)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create or reduce filesize of file %q to 0", path)
+	}
+
+	if err := f.Truncate(size); err != nil {
+		return errors.Wrapf(err, "failed to set filesize of file %q to %d", path, size)
+	}
+
+	if err := f.Close(); err != nil {
+		return errors.Wrapf(err, "failed to close file %q", path)
+	}
+	return nil
+}
+
 // testAccountUsage will test a given account and see if GetAccountDiskUsage() works correctly with it or not.
 // Note that the account's home directory should be empty or nearly empty before calling this.
 // This method doesn't return anything, it'll just output the error or abort the test.
@@ -50,6 +69,8 @@ func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.Cmd
 	const (
 		// The size of the test file in MiB.
 		testFileSize = 256
+		// The size of the sparse file in MiB.
+		testSparseFileSize = 4096
 		// The margin we'll have for testing in MiB.
 		// The test will pass if the result is +/- this margin.
 		testFileMargin = 32
@@ -65,12 +86,22 @@ func testAccountUsage(ctx context.Context, s *testing.State, cmdRunner hwsec.Cmd
 		s.Fatal("Failed to get user test file path: ", err)
 	}
 
+	testSparseFilePath, err := util.GetUserTestFilePath(ctx, username, util.TestFileName2)
+	if err != nil {
+		s.Fatal("Failed to get user test sparse file path: ", err)
+	}
+
 	// Write a test file.
 	// Note that we want the file to be random so that transparent filesystem
 	// compression (if any is implemented) doesn't affect this test.
 	// OpenSSL is used instead of /dev/urandom because it's much faster.
 	if _, err := cmdRunner.Run(ctx, "sh", "-c", fmt.Sprintf("openssl enc -aes-128-ctr -pass pass:CrOS4tw -nosalt </dev/zero | dd of=%s bs=1M count=%d iflag=fullblock", shutil.Escape(testFilePath), testFileSize)); err != nil {
 		s.Fatal("Failed to write the test file: ", err)
+	}
+
+	// Write a sparse test file. *1024*1024 because 1MiB is 1024*1024 bytes.
+	if err := createSparseFile(testSparseFilePath, testSparseFileSize*1024*1024); err != nil {
+		s.Fatal("Failed to create sparse test file: ", err)
 	}
 
 	// Synchronize cached writes to persistent storage before we query again.
