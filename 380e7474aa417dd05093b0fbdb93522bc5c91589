@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "356a0cdd_74058d4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-12T06:43:52Z",
+      "side": 1,
+      "message": "In one of my past CL\u0027s review comment, some reviewer told me that we can just call s.Error() for failures in test body\u0027s tail (e.g. in defer section) or the failure doesn\u0027t need to stop the test immediately.",
+      "parentUuid": "18a1b498_ef85cd29",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62e57cbe_f75f3faa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 18
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "I think this should not be a test failure, but I will wait for Dean to agree on that.",
       "parentUuid": "62e57cbe_f75f3faa",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa657df_61f705e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-12T06:43:52Z",
+      "side": 1,
+      "message": "s.Error() also marks the test as failed. It just don\u0027t stop the test immediately. As the defer section is in the tail of the test, using s.Error() should be just okay.",
+      "parentUuid": "8157d3fb_458d1661",
       "range": {
         "startLine": 56,
         "startChar": 5,
