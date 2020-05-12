@@ -32,7 +32,7 @@ import (
 // Tast can sometimes be run against a freshly-booted VM, and we don't want every test that
 // depends on a critical daemon to need to call upstart.WaitForJobStatus to wait for the
 // corresponding job to be running. See https://crbug.com/897521 for more details.
-func Wait(ctx context.Context, log func(string)) error {
+func Wait(ctx context.Context) error {
 	// Periodically log a message to make it clearer what we're doing.
 	// Sending a periodic control message is also needed to let the main tast process
 	// know that the DUT is still responsive.
@@ -42,15 +42,15 @@ func Wait(ctx context.Context, log func(string)) error {
 		for {
 			select {
 			case <-time.After(30 * time.Second):
-				log("Still waiting for important system services to be running")
+				testing.ContextLog(ctx, "Still waiting for important system services to be running")
 			case <-done:
 				return
 			}
 		}
 	}()
 
-	killOrphanAutotestd(log)
-	clearPolicies(log)
+	killOrphanAutotestd(ctx)
+	clearPolicies(ctx)
 
 	// Disable the periodic log cleanup job to make sure system logs generated during tests are preserved.
 	// We never resume the job so as to make it easier for users to inspect system logs later.
@@ -93,21 +93,21 @@ func Wait(ctx context.Context, log func(string)) error {
 	}
 	for range daemonJobs {
 		if je := <-ch; je != nil {
-			log(fmt.Sprintf("Failed waiting for job %v: %v", je.job, je.err))
+			testing.ContextLogf(ctx, "Failed waiting for job %v: %v", je.job, je.err)
 		}
 	}
 
 	if upstart.JobExists(ctx, "cryptohomed") {
-		if err := waitForCryptohomeService(ctx, log); err != nil {
-			log(fmt.Sprintf("Failed waiting for cryptohome D-Bus service: %v", err))
+		if err := waitForCryptohomeService(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed waiting for cryptohome D-Bus service: ", err)
 		} else {
-			if hasTPM(log) {
-				if err := ensureTPMInitialized(ctx, log); err != nil {
-					log(fmt.Sprintf("Failed ensuring that TPM is initialized: %v", err))
+			if hasTPM(ctx) {
+				if err := ensureTPMInitialized(ctx); err != nil {
+					testing.ContextLog(ctx, "Failed ensuring that TPM is initialized: ", err)
 				}
-				checkEnterpriseOwned(ctx, log)
+				checkEnterpriseOwned(ctx)
 			} else {
-				log("TPM not available, not waiting for readiness")
+				testing.ContextLog(ctx, "TPM not available, not waiting for readiness")
 			}
 		}
 	}
@@ -140,10 +140,10 @@ func isAutotestd(p *process.Process) bool {
 // killOrphanAutotestd sends SIGKILL to running autotestd processes and their
 // subprocesses. This works around the known issue that autotestd from timed out
 // jobs interferes with Tast tests (crbug.com/874333, crbug.com/977035).
-func killOrphanAutotestd(log func(string)) {
+func killOrphanAutotestd(ctx context.Context) {
 	ps, err := process.Processes()
 	if err != nil {
-		log(fmt.Sprint("Failed to enumerate processes: ", err))
+		testing.ContextLog(ctx, "Failed to enumerate processes: ", err)
 		return
 	}
 
@@ -156,16 +156,16 @@ func killOrphanAutotestd(log func(string)) {
 		// Unfortunately gopsutil does not support getting it.
 		out, err := exec.Command("ps", "-o", "pgid=", strconv.Itoa(int(p.Pid))).Output()
 		if err != nil {
-			log(fmt.Sprint("ps command failed: ", err))
+			testing.ContextLog(ctx, "ps command failed: ", err)
 		}
 		pgid, err := strconv.Atoi(strings.TrimSpace(string(out)))
 		if err != nil {
-			log(fmt.Sprint("Failed to parse ps command output: ", err))
+			testing.ContextLog(ctx, "Failed to parse ps command output: ", err)
 		}
 
-		log(fmt.Sprintf("Killing orphan autotestd (pid=%d, pgid=%d)", p.Pid, pgid))
+		testing.ContextLogf(ctx, "Killing orphan autotestd (pid=%d, pgid=%d)", p.Pid, pgid)
 		if err := syscall.Kill(-pgid, syscall.SIGKILL); err != nil {
-			log(fmt.Sprint("Failed to kill autotestd: ", err))
+			testing.ContextLog(ctx, "Failed to kill autotestd: ", err)
 		}
 	}
 }
@@ -179,7 +179,7 @@ func disableLogCleanup() error {
 }
 
 // hasTPM checks whether the DUT has a TPM.
-func hasTPM(log func(string)) bool {
+func hasTPM(ctx context.Context) bool {
 	const noTPMError = "Communication failure"
 
 	out, err := exec.Command("tpm_version").CombinedOutput()
@@ -187,10 +187,10 @@ func hasTPM(log func(string)) bool {
 		if exitError, ok := err.(*exec.ExitError); ok {
 			if !strings.Contains(string(out), noTPMError) {
 				// Only log unexpected errors. Communication failure is expected on devices without TPMs.
-				log(fmt.Sprintf("tpm_version exited with code %d: %s", exitError.ExitCode(), string(out)))
+				testing.ContextLogf(ctx, "tpm_version exited with code %d: %s", exitError.ExitCode(), string(out))
 			}
 		} else {
-			log(fmt.Sprintf("Failed to run tpm_version: %v", err))
+			testing.ContextLog(ctx, "Failed to run tpm_version: ", err)
 		}
 
 		return false
@@ -200,7 +200,7 @@ func hasTPM(log func(string)) bool {
 }
 
 // waitForCryptohomeService waits for cryptohomed's D-Bus service to become available.
-func waitForCryptohomeService(ctx context.Context, log func(string)) error {
+func waitForCryptohomeService(ctx context.Context) error {
 	const (
 		svc        = "org.chromium.Cryptohome"
 		svcTimeout = 15 * time.Second
@@ -228,7 +228,7 @@ func waitForCryptohomeService(ctx context.Context, log func(string)) error {
 	}
 	if uptime < minUptime {
 		d := minUptime - uptime
-		log(fmt.Sprintf("Waiting %v for cryptohomed to stabilize", d.Round(time.Millisecond)))
+		testing.ContextLogf(ctx, "Waiting %v for cryptohomed to stabilize", d.Round(time.Millisecond))
 		if err := testing.Sleep(ctx, d); err != nil {
 			return err
 		}
@@ -270,7 +270,7 @@ var tpmInitializedRegexp = regexp.MustCompile(`(?m)^\s*attestation_prepared:\s*t
 
 // ensureTPMInitialized checks if the TPM is already initialized and tries to take ownership if not.
 // nil is returned if the TPM is not enabled (as is the case on VMs).
-func ensureTPMInitialized(ctx context.Context, log func(string)) error {
+func ensureTPMInitialized(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 	defer cancel()
 
@@ -289,7 +289,7 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 		return nil
 	}
 
-	log("TPM not initialized; taking ownership now to ensure that tests aren't blocked during login")
+	testing.ContextLog(ctx, "TPM not initialized; taking ownership now to ensure that tests aren't blocked during login")
 	if err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_take_ownership").Run(); err != nil {
 		return err
 	}
@@ -325,22 +325,22 @@ func errorLogAppendError(path, msg string) error {
 // clearPolicies removes all policies that might have been set by previously running tests.
 // Tests that do not work with policies might still be affected by them, so this brings the device back to the default state.
 // It is possible that device is already enrolled, but to unenroll the device we need a reboot, so we can do nothing here.
-func clearPolicies(log func(string)) {
+func clearPolicies(ctx context.Context) {
 	// /var/lib/whitelist is a directory containing device policies.
 	// /home/chronos/Local State is a file containing local state JSON including user policy data.
 	policyFiles := []string{"/var/lib/whitelist", "/home/chronos/Local State"}
 
 	// Clear error log for this function.
 	if err := os.RemoveAll(ClearPoliciesLogLocation); err != nil {
-		log(fmt.Sprintf("Failed to remove error log %q: %v", ClearPoliciesLogLocation, err))
+		testing.ContextLogf(ctx, "Failed to remove error log %q: %v", ClearPoliciesLogLocation, err)
 	}
 
 	for _, path := range policyFiles {
 		if err := os.RemoveAll(path); err != nil {
 			msg := fmt.Sprintf("Failed to remove %q: %v", path, err)
-			log(msg)
+			testing.ContextLog(ctx, msg)
 			if err := errorLogAppendError(ClearPoliciesLogLocation, msg); err != nil {
-				log(err.Error())
+				testing.ContextLog(ctx, err.Error())
 			}
 		}
 	}
@@ -356,7 +356,7 @@ const EnterpriseOwnedLogLocation = "/tmp/ready-enterpriseOwned.err"
 
 var trueRegex = regexp.MustCompile(`(?m)^\s*[Tt]rue\s*$`)
 
-func checkEnterpriseOwned(ctx context.Context, log func(string)) {
+func checkEnterpriseOwned(ctx context.Context) {
 	isEnterpriseOwned := func(ctx context.Context) (bool, error) {
 		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=install_attributes_get", "--name=enterprise.owned").Output()
 		if err != nil {
@@ -369,22 +369,22 @@ func checkEnterpriseOwned(ctx context.Context, log func(string)) {
 
 	// Clear error log for this function.
 	if err := os.RemoveAll(EnterpriseOwnedLogLocation); err != nil {
-		log(fmt.Sprintf("Failed to remove error log %q: %v", EnterpriseOwnedLogLocation, err))
+		testing.ContextLogf(ctx, "Failed to remove error log %q: %v", EnterpriseOwnedLogLocation, err)
 	}
 
 	owned, err := isEnterpriseOwned(ctx)
 	if err != nil {
 		// Don't fail here as install attributes can be missing. Device is not
 		// enterprise owned in that case.
-		log(fmt.Sprintf("Failed to check if device is enterprise enrolled: %v", err))
+		testing.ContextLog(ctx, "Failed to check if device is enterprise enrolled: ", err)
 		return
 	}
 
 	if owned {
 		if err := errorLogAppendError(EnterpriseOwnedLogLocation, "Device is enterprise owned"); err != nil {
-			log(err.Error())
+			testing.ContextLog(ctx, err.Error())
 		}
-		log("Device is enterprise owned, please clear ownership before running tests.")
-		log("To clear ownership you can powerwash (Ctrl + Alt + Shift + r at the login screen).")
+		testing.ContextLog(ctx, "Device is enterprise owned, please clear ownership before running tests")
+		testing.ContextLog(ctx, "To clear ownership you can powerwash (Ctrl + Alt + Shift + r at the login screen)")
 	}
 }
