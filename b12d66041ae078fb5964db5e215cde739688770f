@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65d82afe_0b53bcbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-13T05:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fc6f2a3_fcbe162f",
+      "revId": "b12d66041ae078fb5964db5e215cde739688770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad12876b_022f0181",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2a1e168e_e86cf8c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-13T05:37:03Z",
+      "side": 1,
+      "message": "I think we still want to use stat command because\n- it is easier to get number of blocks for the file\n- we need to rely on \"adb shell stat\" anyway for files under /system/, so using stat command with the same options for files under /data/ is easier because it outputs data in the same format.\n\nInstead, I made the following changes:\n- Use os.Lstat/os.Readlink for obtaining symbolic link info. It is cleaner than extracting symbolic link info from stat command results with regexp.\n- Now stat command options are much simpler. it\u0027s just \"stat -c %a:%b\"",
+      "parentUuid": "ad12876b_022f0181",
+      "revId": "b12d66041ae078fb5964db5e215cde739688770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f6d3348_52a3a517",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
         "patchSetId": 8
@@ -50,6 +86,24 @@
       "revId": "b12d66041ae078fb5964db5e215cde739688770f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b352bb5_2b5e2216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2020-05-13T05:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f6d3348_52a3a517",
+      "revId": "b12d66041ae078fb5964db5e215cde739688770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
