@@ -93,6 +93,30 @@
       "revId": "bac8e3ba9fa6dba0e9ec925e614238e4b4ec4b0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c829036f_d574cf2f",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-13T22:09:11Z",
+      "side": 1,
+      "message": "That was my thought too. Sounds good.",
+      "parentUuid": "077b4e0d_77717117",
+      "range": {
+        "startLine": 395,
+        "startChar": 113,
+        "endLine": 395,
+        "endChar": 132
+      },
+      "revId": "bac8e3ba9fa6dba0e9ec925e614238e4b4ec4b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
