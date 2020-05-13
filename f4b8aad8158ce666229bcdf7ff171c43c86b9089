@@ -70,6 +70,30 @@
       "revId": "f4b8aad8158ce666229bcdf7ff171c43c86b9089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ee59e5_ae4b4ff4",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2020-05-13T12:38:45Z",
+      "side": 1,
+      "message": "Ignore my previous comment.\nOleh is right, actualValue cannot be easily casted to out, since its policy type is a string.",
+      "parentUuid": "8e44e0ae_1d48d749",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "f4b8aad8158ce666229bcdf7ff171c43c86b9089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
