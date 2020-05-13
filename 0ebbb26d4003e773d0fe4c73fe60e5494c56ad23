@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a20e10c3_9c4e037d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-05-13T23:39:00Z",
+      "side": 1,
+      "message": "I looked through some of our existing SAR tables and the only version numbers I could find were 0x0 and 0x11. I know in $BUG it\u0027s stated that valid version numbers should be 0x0 and 0x1 though. What do you think of this discrepancy? Are tables with version 0x11 bad tables?",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "0ebbb26d4003e773d0fe4c73fe60e5494c56ad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
