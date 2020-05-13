@@ -31,6 +31,7 @@ const (
 	ServicePropertyPassphrase     = "Passphrase"
 	ServicePropertySecurityClass  = "SecurityClass"
 	ServicePropertySSID           = "SSID"
+	ServicePropertyWiFiHexSSID    = "WiFi.HexSSID"
 	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
 	ServicePropertyFTEnabled      = "WiFi.FTEnabled"
 

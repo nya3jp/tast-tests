@@ -213,7 +213,8 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	// Configurable.
 	configure("ctrl_interface", ctrlPath)
-	configure("ssid", c.Ssid)
+	// ssid2 for printf-escaped string, cf. https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf
+	configure("ssid2", encodeSSID(c.Ssid))
 	configure("interface", iface)
 	configure("channel", strconv.Itoa(c.Channel))
 
@@ -467,6 +468,41 @@ func (c *Config) vhtOperChWidthString() (string, error) {
 	default:
 		return "", errors.Errorf("invalid vht_oper_chwidth %d", int(c.VHTChWidth))
 	}
+}
+
+// encodeSSID encodes ssid into the format that hostapd can read.
+// The "%q" format in golang does not work for the case as it contains more
+// escape sequence than what printf_decode in hostapd can understand.
+// Duplicate the logic of printf_encode in hostapd here.
+func encodeSSID(s string) string {
+	var builder strings.Builder
+
+	// Always start with 'P"' prefix as printf-encoded format in hostapd.
+	builder.WriteString("P\"")
+	for i := 0; i < len(s); i++ {
+		switch s[i] {
+		case '\\', '"':
+			builder.WriteByte('\\')
+			builder.WriteByte(s[i])
+		case '\033':
+			builder.WriteString("\\e")
+		case '\n':
+			builder.WriteString("\\n")
+		case '\r':
+			builder.WriteString("\\r")
+		case '\t':
+			builder.WriteString("\\t")
+		default:
+			if s[i] >= 32 && s[i] <= 126 {
+				builder.WriteByte(s[i])
+			} else {
+				builder.WriteString(fmt.Sprintf("\\x%02x", s[i]))
+			}
+		}
+	}
+	// Close the format string.
+	builder.WriteByte('"')
+	return builder.String()
 }
 
 // RandomSSID returns a random SSID of length 30 and given prefix.
