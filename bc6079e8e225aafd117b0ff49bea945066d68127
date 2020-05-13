@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2af67d2b_77c91708",
+        "filename": "src/chromiumos/tast/local/power/battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-13T01:30:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65e02510_408abb3f",
+      "revId": "bc6079e8e225aafd117b0ff49bea945066d68127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a77ec944_ddbfd0c0",
         "filename": "src/chromiumos/tast/local/power/battery_metrics.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "bc6079e8e225aafd117b0ff49bea945066d68127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b40ae1_6f12721c",
+        "filename": "src/chromiumos/tast/local/power/battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-13T01:30:42Z",
+      "side": 1,
+      "message": "I haven\u0027t noticed that Go doesn\u0027t export functions starts with lower cases and I thought it is the only way to prevent putting functions in global scope is using anonymous functions. Moved these anonymous functions to global and changed to take single argument filePath. Thanks!",
+      "parentUuid": "a77ec944_ddbfd0c0",
+      "revId": "bc6079e8e225aafd117b0ff49bea945066d68127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
