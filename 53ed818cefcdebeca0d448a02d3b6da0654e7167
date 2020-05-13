@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecab7678_ded986ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gmscore_cache_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T02:23:04Z",
+      "side": 1,
+      "message": "is this temp name? Response here is relative to target dir.\nSo I am bit confused  GeneratedPackagesCacheName is file name but file is in temp.\nCould we have everything in targetDir? GeneratedPackagesCacheName might be different than PackagesCacheName",
+      "range": {
+        "startLine": 101,
+        "startChar": 44,
+        "endLine": 101,
+        "endChar": 66
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02a874bb_16732c3f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T02:23:04Z",
+      "side": 1,
+      "message": "sorry, missed this in the first review. This could be run on arc-r. and this branch might not have required jar.\nPlease see \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/arc.go;l\u003d232?q\u003dandroid_vm\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2F\n\nwe should probably include buildBranch into params. As alternative you may try detect branch from fingerprint or other prop in build.prop/default.prop. However not sure how alternative would be reliable.\n\nAlso not, you may skip vm_pi target once it is no longer actively used.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 45
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b8adce_9459f0e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T02:23:04Z",
+      "side": 1,
+      "message": "per usage, you don\u0027t have case when one is true, and another is not. So let just use one bool, cachesEnabled?",
+      "range": {
+        "startLine": 124,
+        "startChar": 19,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef06908c_b3874841",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T02:23:04Z",
+      "side": 1,
+      "message": "may be use file name based on file? \nSo this should be join of tempDir, filepath.Base(file) ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cdfd20_a02970e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T02:23:04Z",
+      "side": 1,
+      "message": "Assume following scenario. You get some files and now get fail here. As result you leave some files behind, not removed.\nI would suggest you 2 alternative.\nCreate temp folder globally at the beginning of the test and defer it for removal.\nThen you can create inside this temp folder subfolders with_caches, without_caches and extract resources there.\nSecond alternative is to use s.OutDir() similar way above. Pros in this case, you always can analyze data if something fails after test execution.",
+      "range": {
+        "startLine": 155,
+        "startChar": 6,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bc1068_4e0a3026",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/data_collector.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T02:23:04Z",
+      "side": 1,
+      "message": "Please double check. Original code:\n\ncache.PackagesCopy, cache.GMSCoreDisabled\n\nSo GmsCoreEnabled should be false?",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 30
+      },
+      "revId": "53ed818cefcdebeca0d448a02d3b6da0654e7167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
