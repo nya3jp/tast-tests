@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f53e2232_bd83917f",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-13T18:27:16Z",
+      "side": 1,
+      "message": "Not for now. However, the convention in this library is to specify slot by username, so I added this method. Usually we don\u0027t specify by slot, the only reason there\u0027s a ImportPrivateKeyBySlot() is to exclude the time it takes to call GetTokenForUser() in performance test.\n\nAlso, it seemed possible that a helper that we are writing for the WiFi team might need ImportPrivateKey().",
+      "parentUuid": "d66b7b59_7318fe5c",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 32
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec9d8bee_3f9f6ba7",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "25f11733_f357d224",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-13T18:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec9d8bee_3f9f6ba7",
+      "range": {
+        "startLine": 307,
+        "startChar": 57,
+        "endLine": 307,
+        "endChar": 72
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9610b1c_1414c83d",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9903bab9_9dbb0d25",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-13T18:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9610b1c_1414c83d",
+      "range": {
+        "startLine": 308,
+        "startChar": 10,
+        "endLine": 308,
+        "endChar": 89
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
