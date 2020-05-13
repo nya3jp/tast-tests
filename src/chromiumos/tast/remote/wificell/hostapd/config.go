@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/shill"
 )
 
 // ModeEnum is the type for specifying hostap mode.
@@ -93,6 +94,16 @@ const (
 	VHTChWidth80Plus80
 )
 
+// PMFEnum is the type for specifying the setting of "Protected Management Frames" (IEEE802.11w).
+type PMFEnum int
+
+// PMF enums.
+const (
+	PMFDisabled = iota
+	PMFOptional
+	PMFRequired
+)
+
 // Option is the function signature used to specify options of Config.
 type Option func(*Config)
 
@@ -161,6 +172,14 @@ func SecurityConfig(conf security.Config) Option {
 	}
 }
 
+// PMF returns an Options which sets whether protected management frame
+// is enabled or required.
+func PMF(p PMFEnum) Option {
+	return func(c *Config) {
+		c.PMF = p
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -191,6 +210,7 @@ type Config struct {
 	VHTChWidth       VHTChWidthEnum
 	Hidden           bool
 	SecurityConfig   security.Config
+	PMF              PMFEnum
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -264,6 +284,12 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 		configure(k, v)
 	}
 
+	pmf, err := c.pmfString()
+	if err != nil {
+		return "", nil
+	}
+	configure("ieee80211w", pmf)
+
 	return builder.String(), nil
 }
 
@@ -329,6 +355,12 @@ func (c *Config) validate() error {
 	}
 	if c.SecurityConfig == nil {
 		return errors.New("no SecurityConfig set")
+	}
+	if c.PMF != PMFDisabled {
+		secClass := c.SecurityConfig.Class()
+		if secClass == shill.SecurityNone || secClass == shill.SecurityWEP {
+			return errors.Errorf("class %s does not support PMF", secClass)
+		}
 	}
 	return nil
 }
@@ -471,6 +503,19 @@ func (c *Config) vhtOperChWidthString() (string, error) {
 		return "3", nil
 	default:
 		return "", errors.Errorf("invalid vht_oper_chwidth %d", int(c.VHTChWidth))
+	}
+}
+
+func (c *Config) pmfString() (string, error) {
+	switch c.PMF {
+	case PMFDisabled:
+		return "0", nil
+	case PMFOptional:
+		return "1", nil
+	case PMFRequired:
+		return "2", nil
+	default:
+		return "", errors.Errorf("invalid PMFEnum %d", int(c.PMF))
 	}
 }
 
