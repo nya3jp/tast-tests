@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/shill"
 )
 
 // ModeEnum is the type for specifying hostap mode.
@@ -95,6 +96,16 @@ const (
 	VHTChWidth80Plus80
 )
 
+// PMFEnum is the type for specifying the setting of "Protected Management Frames" (IEEE802.11w).
+type PMFEnum int
+
+// PMF enums.
+const (
+	PMFDisabled PMFEnum = iota
+	PMFOptional
+	PMFRequired
+)
+
 // Option is the function signature used to specify options of Config.
 type Option func(*Config)
 
@@ -163,6 +174,14 @@ func SecurityConfig(conf security.Config) Option {
 	}
 }
 
+// PMF returns an Options which sets whether protected management frame
+// is enabled or required.
+func PMF(p PMFEnum) Option {
+	return func(c *Config) {
+		c.PMF = p
+	}
+}
+
 // NewConfig creates a Config with given options.
 // Default value of Ssid is a random generated string with prefix "TAST_TEST_" and total length 30.
 func NewConfig(ops ...Option) (*Config, error) {
@@ -193,6 +212,7 @@ type Config struct {
 	VHTChWidth       VHTChWidthEnum
 	Hidden           bool
 	SecurityConfig   security.Config
+	PMF              PMFEnum
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
@@ -226,22 +246,14 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 
 	if c.is80211n() || c.is80211ac() {
 		configure("ieee80211n", "1")
-		htCaps, err := c.htCapsString()
-		if err != nil {
-			return "", err
-		}
-		configure("ht_capab", htCaps)
+		configure("ht_capab", c.htCapsString())
 		if c.Mode == Mode80211nPure {
 			configure("require_ht", "1")
 		}
 	}
 	if c.is80211ac() {
 		configure("ieee80211ac", "1")
-		chw, err := c.vhtOperChWidthString()
-		if err != nil {
-			return "", err
-		}
-		configure("vht_oper_chwidth", chw)
+		configure("vht_oper_chwidth", strconv.Itoa(int(c.VHTChWidth)))
 		// If not set, ignore this field and use hostapd's default value.
 		if c.VHTCenterChannel != 0 {
 			configure("vht_oper_centr_freq_seg0_idx", strconv.Itoa(c.VHTCenterChannel))
@@ -265,6 +277,8 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	for k, v := range securityConf {
 		configure(k, v)
 	}
+
+	configure("ieee80211w", strconv.Itoa(int(c.PMF)))
 
 	return builder.String(), nil
 }
@@ -322,12 +336,17 @@ func (c *Config) validate() error {
 		if c.VHTChWidth != VHTChWidth20Or40 {
 			return errors.Errorf("VHTChWidth is not supported by mode %s", c.Mode)
 		}
+	} else if err := c.validateVHTChWidth(); err != nil {
+		return err
 	}
 	if err := c.validateChannel(); err != nil {
 		return err
 	}
 	if c.SecurityConfig == nil {
 		return errors.New("no SecurityConfig set")
+	}
+	if err := c.validatePMF(); err != nil {
+		return err
 	}
 	return nil
 }
@@ -427,7 +446,7 @@ func (c *Config) htMode() HTCap {
 	return 0
 }
 
-func (c *Config) htCapsString() (string, error) {
+func (c *Config) htCapsString() string {
 	var caps []string
 	htMode := c.htMode()
 	switch htMode {
@@ -444,7 +463,7 @@ func (c *Config) htCapsString() (string, error) {
 	if c.HTCaps&HTCapSGI40 > 0 {
 		caps = append(caps, "[SHORT-GI-40]")
 	}
-	return strings.Join(caps, ""), nil
+	return strings.Join(caps, "")
 }
 
 func (c *Config) vhtCapsString() string {
@@ -455,18 +474,27 @@ func (c *Config) vhtCapsString() string {
 	return strings.Join(caps, "")
 }
 
-func (c *Config) vhtOperChWidthString() (string, error) {
+func (c *Config) validateVHTChWidth() error {
 	switch c.VHTChWidth {
-	case VHTChWidth20Or40:
-		return "0", nil
-	case VHTChWidth80:
-		return "1", nil
-	case VHTChWidth160:
-		return "2", nil
-	case VHTChWidth80Plus80:
-		return "3", nil
+	case VHTChWidth20Or40, VHTChWidth80, VHTChWidth160, VHTChWidth80Plus80:
+		return nil
 	default:
-		return "", errors.Errorf("invalid vht_oper_chwidth %d", int(c.VHTChWidth))
+		return errors.Errorf("invalid vht_oper_chwidth %d", int(c.VHTChWidth))
+	}
+}
+
+func (c *Config) validatePMF() error {
+	switch c.PMF {
+	case PMFDisabled:
+		return nil
+	case PMFOptional, PMFRequired:
+		secClass := c.SecurityConfig.Class()
+		if secClass == shill.SecurityNone || secClass == shill.SecurityWEP {
+			return errors.Errorf("class %s does not support PMF", secClass)
+		}
+		return nil
+	default:
+		return errors.Errorf("invalid PMFEnum %d", int(c.PMF))
 	}
 }
 
