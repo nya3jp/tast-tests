@@ -46,6 +46,30 @@
       "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca550506_668a78e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-13T22:57:27Z",
+      "side": 1,
+      "message": "Every time a new bounds data arrives to the automation API (and so cached bounds are updated), EventTypeLocationChanged should also occur.\n\nIf you create an event watcher for locaiton changed, and wait until no location-changed events happen (i.e. testing.Poll with EnsureNoEvents), the cached bounds should be updated.\n\nPlease take a look at WaitForLocationChangeCompleted for your reference (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/chrome/ui/watcher.go#133).  This was created exactly for the situation you described.",
+      "parentUuid": "45c12991_e5525f58",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 38
+      },
+      "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
