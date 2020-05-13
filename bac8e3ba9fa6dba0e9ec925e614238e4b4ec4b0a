@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a80c3a0c_c5fd67b8",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-13T21:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf327ef_c2b9e986",
+      "range": {
+        "startLine": 390,
+        "startChar": 21,
+        "endLine": 390,
+        "endChar": 54
+      },
+      "revId": "bac8e3ba9fa6dba0e9ec925e614238e4b4ec4b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08a21280_4ab64f80",
         "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-13T20:22:19Z",
       "side": 1,
       "message": "Just a note, since you have a default that is expected, it might be nicer in the long run to pass in options like chrome does. It doesn\u0027t matter much with only 2 config options, but it can be quite nice with many options that are rarely use and that might need to be used together. Would look something like:\n\nfunc (...) MountVault(..., opts ...VaultOptions){\n   config :\u003d \u0026VaultConfig{}\n   for _, opt :\u003d range opts {\n      opt(config)\n   }\n   // use config as expected\n   ...\n}\n\nWith this, the default is to pass nothing, and if you want a specific option, you just add the single option as an arg to the function. i.e:\nMountVault(...) -\u003e default config\nMountVault(..., hwsec.EphemeralVault()) -\u003e ephemeral",
+      "range": {
+        "startLine": 395,
+        "startChar": 113,
+        "endLine": 395,
+        "endChar": 132
+      },
+      "revId": "bac8e3ba9fa6dba0e9ec925e614238e4b4ec4b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "077b4e0d_77717117",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-13T21:01:30Z",
+      "side": 1,
+      "message": "I see, I think I\u0027ll change it to that format when we\u0027ve enough options. At the moment we don\u0027t have that many.",
+      "parentUuid": "08a21280_4ab64f80",
       "range": {
         "startLine": 395,
         "startChar": 113,
