@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f7a799f_84ae16fa",
+        "filename": "android/ArcMotionInputTest/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T15:21:19Z",
+      "side": 1,
+      "message": "nit: was \"26\" added for any particular reason? If so, please add comment.",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ae866c_de4daf78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T15:21:19Z",
+      "side": 1,
+      "message": "similar to a comment in a previous CL, it makes sense to enable this on android P as well.\nIt doesn\u0027t have to be you. Perhaps filing a bug an assign it to yhanada@ ?\nAnd comment here with something like: // TODO(....): enable it on ARC contaiener",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b86a9a6_84ad7372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T15:21:19Z",
+      "side": 1,
+      "message": "style, huge nit: Ash\n\n(and in the rest of \"ash\" instances in comments)",
+      "range": {
+        "startLine": 41,
+        "startChar": 40,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a949dba_ebd6c9aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T15:21:19Z",
+      "side": 1,
+      "message": "nit, optional:\nyou might want to verify that the object is ready before interacting with it:\n\nif err :\u003d view.WaitForExists(ctx, 5*time.Second); err !\u003d nil {\n\t\treturn ....\n}",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4391129_d98acc4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T15:21:19Z",
+      "side": 1,
+      "message": "nit style: would you mind moving PointerCapture to L33?\n\nthe main test function usually is placed after the Init() one.",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f19d09_2e1fa901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T15:21:19Z",
+      "side": 1,
+      "message": "add link to chrome code (or doc if there is any) that says 30hz events don\u0027t get aggregated.",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
