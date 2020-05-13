@@ -287,6 +287,25 @@ func (c *WilcoService) TestGetAvailableRoutines(ctx context.Context, req *empty.
 	return &empty.Empty{}, nil
 }
 
+func (c *WilcoService) TestGetStatefulPartitionAvailableCapacity(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	request := dtcpb.GetStatefulPartitionAvailableCapacityRequest{}
+	response := dtcpb.GetStatefulPartitionAvailableCapacityResponse{}
+
+	if err := wilco.DPSLSendMessage(ctx, "GetStatefulPartitionAvailableCapacity", &request, &response); err != nil {
+		return nil, errors.Wrap(err, "unable to get stateful partition available capacity")
+	}
+
+	if response.Status != dtcpb.GetStatefulPartitionAvailableCapacityResponse_STATUS_OK {
+		return nil, errors.Errorf("unexpected status %d", response.Status)
+	}
+
+	if response.AvailableCapacityMb < 0 {
+		return nil, errors.Errorf("negative capacity %d", response.AvailableCapacityMb)
+	}
+
+	return &empty.Empty{}, nil
+}
+
 func (c *WilcoService) StartDPSLListener(ctx context.Context, req *wpb.StartDPSLListenerRequest) (*empty.Empty, error) {
 	if c.receiver != nil {
 		return nil, errors.New("DPSL listener already running")
