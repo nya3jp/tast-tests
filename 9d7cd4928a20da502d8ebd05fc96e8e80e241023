@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee100ca1_e32966b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T14:00:33Z",
+      "side": 1,
+      "message": "Needs to be limited to Lacros supported board only.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 46
+      },
+      "revId": "9d7cd4928a20da502d8ebd05fc96e8e80e241023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
