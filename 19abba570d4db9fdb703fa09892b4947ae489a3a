@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f75056da_ecc03f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T18:36:04Z",
+      "side": 1,
+      "message": "hmm, this looks like not a func. Just var.\nmay be rename it to shorter?\nneedContinue :\u003d ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "19abba570d4db9fdb703fa09892b4947ae489a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d72d67d0_5461e76e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T18:36:04Z",
+      "side": 1,
+      "message": "nit: add comment for this case please",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "19abba570d4db9fdb703fa09892b4947ae489a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ee738b_7d80c805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T18:36:04Z",
+      "side": 1,
+      "message": "please see my other comment for firstRun. We should avoid this style \nAlso I would drop this check.\nLet have the test less smart. we adding here external dependency on board performance. Let not test the case when we expect that ARC is provisioned at specific time. Assume we test intervals where we expect ARC is not finished. If needed, this should be done in separate test.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "19abba570d4db9fdb703fa09892b4947ae489a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8878fa_79b3402b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T18:36:04Z",
+      "side": 1,
+      "message": "I would pass explicit bool , firstRun. This is bit not-clear. attemptOptIn normally should not get global test params.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 23
+      },
+      "revId": "19abba570d4db9fdb703fa09892b4947ae489a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91fada26_d2b785d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T18:36:04Z",
+      "side": 1,
+      "message": "nit: please add comment why you use this construction.",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 21
+      },
+      "revId": "19abba570d4db9fdb703fa09892b4947ae489a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
