@@ -22,6 +22,30 @@
       "revId": "73d3e755806bec0c219bc7e958569cf263887011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b080c74_2ee48ae3",
+        "filename": "src/chromiumos/tast/common/network/ping/regexps/regexps.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-13T18:49:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b3d75f9_44d1f1c0",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "73d3e755806bec0c219bc7e958569cf263887011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
