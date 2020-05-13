@@ -22,6 +22,30 @@
       "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c12991_e5525f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-05-13T22:38:28Z",
+      "side": 1,
+      "message": "The EventWatcher requires deskMiniViews, and the problem is that when I call chromeui.FindAll to fetch deskMiniViews before/during the animation, the bounds seem to be somehow cached. I can wait for the animation simply with testing.Sleep and look at the test device so I definitely know the animation finishes, but even if I do deskMiniViews.Release(ctx) and call chromeui.FindAll again, I still get the bounds from the first call to chromeui.FindAll. The only way I get the correct bounds is if I do not make the call to chromeui.FindAll until the animation is done.",
+      "parentUuid": "a5a80666_61b3d181",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 38
+      },
+      "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
