@@ -21,7 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WifiCheckSARTable,
+		Func: WifiCheckIntelSARTable,
 		Desc: "Runs a preliminary check on device SAR tables for devices with Intel WiFi",
 		Contacts: []string{
 			"kglund@google.com",               // Author
@@ -198,7 +198,7 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, s *testing.State) {
 	s.Logf("%v SAR values are within allowable limits", tableName)
 }
 
-func WifiCheckSARTable(ctx context.Context, s *testing.State) {
+func WifiCheckIntelSARTable(ctx context.Context, s *testing.State) {
 	const (
 		// SSDT (Secondary System Description Table) contains SAR data
 		// in encoded binary format.
