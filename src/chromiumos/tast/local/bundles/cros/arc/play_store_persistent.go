@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
@@ -62,16 +63,18 @@ func getPlayStorePid(ctx context.Context, a *arc.ARC) (uint, error) {
 
 // readFinskyPrefs reads content of Finsky shared prefs file.
 func readFinskyPrefs(ctx context.Context) ([]byte, error) {
-	const finskyPrefs = "/data/data/com.android.vending/shared_prefs/finsky.xml"
+	const finskyPrefsPath = "/data/data/com.android.vending/shared_prefs/finsky.xml"
 
-	// adb pull would fail due to permissions limitation. Use bootstrapped cat to copy it.
-	// TODO(b/148832630): get rid of BootstrapCommand.
-	cmd := arc.BootstrapCommand(ctx, "/bin/cat", finskyPrefs)
-	out, err := cmd.Output()
+	// Cryptohome dir for the current user. (PlayStorePersistent signs in as chrome.DefaultUser.)
+	rootCryptDir, err := cryptohome.SystemPath(chrome.DefaultUser)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}
-	return out, nil
+
+	// android-data dir under the cryptohome dir (/home/root/${USER_HASH}/android-data)
+	androidDataDir := filepath.Join(rootCryptDir, "android-data")
+
+	return ioutil.ReadFile(filepath.Join(androidDataDir, finskyPrefsPath))
 }
 
 // waitForDailyHygieneDone waits for Play Store daily hygiene is done. dailyhygiene-last-version
