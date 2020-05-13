@@ -70,6 +70,30 @@
       "revId": "46acd3a1b48573430b5315aafb9673c8036d28fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b714b8b_400e2fdc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-13T05:55:10Z",
+      "side": 1,
+      "message": "If I use the same ctx name. st.End() cause the following function to fail. \ndefer func() {\n\t\tif _, err :\u003d tf.WifiClient().DeleteEntriesForSSID(ctx, \u0026network.DeleteEntriesForSSIDRequest{Ssid: ap.Config().Ssid}); err !\u003d nil {\n\t\t\ts.Errorf(\"Failed to remove entries for ssid\u003d%s, err: %v\", ap.Config().Ssid, err)\n\t\t}\n\t}()\nIIUC, there will be no time to execute the function above.",
+      "parentUuid": "d023116b_2a6b38a7",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "46acd3a1b48573430b5315aafb9673c8036d28fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

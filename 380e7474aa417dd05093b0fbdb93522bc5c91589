@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "93972fe2_fc02975a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2020-05-13T05:55:10Z",
+      "side": 1,
+      "message": "Same as comment above.",
+      "parentUuid": "94ba636f_fdacfc92",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "380e7474aa417dd05093b0fbdb93522bc5c91589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ed6dd4c_506baff9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go",
         "patchSetId": 18
