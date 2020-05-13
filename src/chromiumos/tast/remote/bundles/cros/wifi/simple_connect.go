@@ -7,6 +7,7 @@ package wifi
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/wep"
@@ -82,6 +83,13 @@ func init() {
 				Name: "80211n5ht40",
 				Val: []simpleConnectTestcase{
 					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus)}},
+				},
+			}, {
+				// This test verifies that DUT can connect to an open 802.11n network on 5 GHz channel with short guard intervals enabled (both 20/40 Mhz).
+				Name: "80211nsgi",
+				Val: []simpleConnectTestcase{
+					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT20, ap.HTCapSGI20)}},
+					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40Minus, ap.HTCapSGI40)}},
 				},
 			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on channel 60 with a channel width of 20MHz.
@@ -396,6 +404,19 @@ func init() {
 						),
 					},
 				},
+			}, {
+				// Verifies that DUT can connect to an open network on a DFS channel.
+				Name: "dfs",
+				Val: []simpleConnectTestcase{
+					{apOpts: []ap.Option{ap.Mode(ap.Mode80211nMixed), ap.Channel(136), ap.HTCaps(ap.HTCapHT40)}},
+				},
+			}, {
+				// Verifies that DUT can connect to a networks with the longest and shortest SSID.
+				Name: "ssid_limits",
+				Val: []simpleConnectTestcase{
+					{apOpts: simpleConnectCommonCase(ap.SSID("a"))},
+					{apOpts: simpleConnectCommonCase(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32]))},
+				},
 			},
 		},
 	})
@@ -496,6 +517,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 func wep40Keys() []string {
 	return []string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}
 }
+
 func wep104Keys() []string {
 	return []string{
 		"0123456789abcdef0123456789", "mlk:ihgfedcba",
@@ -503,12 +525,27 @@ func wep104Keys() []string {
 		"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3",
 	}
 }
+
 func wep40KeysHidden() []string {
 	return []string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}
 }
+
 func wep104KeysHidden() []string {
 	return []string{
 		"0123456789abcdef0123456789", "89abcdef0123456789abcdef01",
 		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
 	}
+}
+
+// simpleConnectCommonCase generates a set of options with common settings and given
+// options.
+func simpleConnectCommonCase(options ...ap.Option) []ap.Option {
+	// Common case: 80211n, 5GHz channel, 40 MHz width.
+	commonCase := []ap.Option{
+		ap.Mode(ap.Mode80211nMixed),
+		ap.Channel(48),
+		ap.HTCaps(ap.HTCapHT40),
+	}
+	// append options to override default if needed.
+	return append(commonCase, options...)
 }
