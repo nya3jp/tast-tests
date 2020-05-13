@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e3d6b4_bdd50165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-13T21:24:19Z",
+      "side": 1,
+      "message": "feel free to drop this, and GetPlayStoreState func. Our test account should be always configured to be allowed. And if not, this test would just fail",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
