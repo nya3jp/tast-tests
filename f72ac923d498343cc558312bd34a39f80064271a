@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf4611c3_96e43adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-13T19:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "582ad117_ab21fc7c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "f72ac923d498343cc558312bd34a39f80064271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "723db0f2_7b3329cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
         "patchSetId": 25
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-13T14:37:02Z",
       "side": 1,
       "message": "ahhh... ok. so, you generated this file yourself? I thought it was copied from somewhere else.\n\nin that case, there is no need to mention the license of the tool. You can remove this comment altogether.\n\nbut, please add the steps to generate the hid files then. It could be a in different file... like \"README_hid_files.md\" (or something like that).\nAnd describe there the steps to generate these files. thanks.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 62
+      },
+      "revId": "f72ac923d498343cc558312bd34a39f80064271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd96ed8_d4d191cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-13T19:29:54Z",
+      "side": 1,
+      "message": "I think that would be a good idea. However, I think the explanation would be a little short to put in a README of its own. Maybe I could put it as a comment somewhere?",
+      "parentUuid": "723db0f2_7b3329cf",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a4db889c_c6a17a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-13T19:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63bff686_83591800",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "f72ac923d498343cc558312bd34a39f80064271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26601fe0_1f2e6f3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
         "patchSetId": 25
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "412eb9fe_f7c345ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-13T19:29:54Z",
+      "side": 1,
+      "message": "I don\u0027t know if any documentation exists. I could only link to the functions that handle there report requests.",
+      "parentUuid": "26601fe0_1f2e6f3c",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "f72ac923d498343cc558312bd34a39f80064271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c024673_30a4676d",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
         "patchSetId": 25
@@ -114,6 +210,30 @@
       "revId": "f72ac923d498343cc558312bd34a39f80064271a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756c374a_123fbb18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-13T19:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c024673_30a4676d",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "f72ac923d498343cc558312bd34a39f80064271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
