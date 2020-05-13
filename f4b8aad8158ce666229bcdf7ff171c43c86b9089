@@ -94,6 +94,30 @@
       "revId": "f4b8aad8158ce666229bcdf7ff171c43c86b9089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3961cc2b_1308bac9",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T17:53:53Z",
+      "side": 1,
+      "message": "I didn\u0027t parse \"Note that expected policy must have a JSON value.\" correctly at first - maybe a clearer function name would help?  What about UnmarshalAsJSON or UnmarshalInnerJSON?\n\nAlso, should this be taken care of by UnmarshalAs instead?  Policies with double JSON values could have custom marshal/unmarshal functions.",
+      "parentUuid": "68ee59e5_ae4b4ff4",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "f4b8aad8158ce666229bcdf7ff171c43c86b9089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
