@@ -419,6 +419,27 @@ func init() {
 					{apOpts: wificell.CommonAPOptions(ap.SSID("a"))},
 					{apOpts: wificell.CommonAPOptions(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32]))},
 				},
+			}, {
+				// This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID.
+				Name: "non_ascii_ssid",
+				Val: []simpleConnectTestcase{
+					// TODO(crbug.com/1082582): shill don't allow leading 0x00 now, so let's append it in the
+					// end to keep the coverage.
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(1, 32) + "\x00"))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(32, 64)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(64, 96)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(96, 128)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(128, 160)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(160, 192)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(192, 224)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(224, 256)))},
+					// Valid Unicode characters.
+					{apOpts: wificell.CommonAPOptions(ap.SSID("\xe4\xb8\xad\xe5\x9b\xbd"))},
+					// Single extended ASCII character (a-grave).
+					{apOpts: wificell.CommonAPOptions(ap.SSID("\xe0"))},
+					// Mix of ASCII and Unicode characters as SSID.
+					{apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac"))},
+				},
 			},
 		},
 	})
@@ -470,7 +491,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: ap.Config().Ssid}
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}
 			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
@@ -537,4 +558,14 @@ func wep104KeysHidden() []string {
 		"0123456789abcdef0123456789", "89abcdef0123456789abcdef01",
 		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
 	}
+}
+
+// byteSequenceStr generates a string from the slice of bytes, range(start, end).
+// A valid input should have 0 <= start < end <= 256.
+func byteSequenceStr(start, end int) string {
+	var ret []byte
+	for i := start; i < end; i++ {
+		ret = append(ret, byte(i))
+	}
+	return string(ret)
 }

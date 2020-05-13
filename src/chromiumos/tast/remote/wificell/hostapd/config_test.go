@@ -274,7 +274,7 @@ func TestConfigFormat(t *testing.T) {
 				SecurityConfig: &base.Config{},
 			},
 			verify: map[string]string{
-				"ssid":           "ssid000",
+				"ssid2":          `P"ssid000"`,
 				"hw_mode":        "b",
 				"channel":        "1",
 				"interface":      iface,
@@ -400,6 +400,40 @@ func TestConfigFormat(t *testing.T) {
 			},
 			verify: map[string]string{
 				"ignore_broadcast_ssid": "1",
+			},
+		},
+		// Check non-ASCII SSIDs.
+		{
+			conf: &Config{
+				Ssid:           "\a\b\f\n\r\t\v'\"\x1b", // Escaped characters.
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+			},
+			verify: map[string]string{
+				"ssid2": `P"\x07\x08\x0c\n\r\t\x0b'\"\e"`,
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "\xe9\x89\xbb", // UTF-8
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+			},
+			verify: map[string]string{
+				"ssid2": `P"\xe9\x89\xbb"`,
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "\xf2\xe3\x00\xd4\xc5\xb6", // Random binary
+				Mode:           Mode80211b,
+				Channel:        1,
+				SecurityConfig: &base.Config{},
+			},
+			verify: map[string]string{
+				"ssid2": `P"\xf2\xe3\x00\xd4\xc5\xb6"`,
 			},
 		},
 	}
