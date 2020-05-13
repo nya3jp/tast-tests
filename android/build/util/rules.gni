@@ -17,7 +17,7 @@
 #         AndroidManifest.xml.
 
 template("process_resources") {
-  compile_dir = "${target_gen_dir}/compiled"
+  compile_dir = "${target_gen_dir}/${target_name}"
 
   action(target_name) {
     forward_variables_from(invoker, [

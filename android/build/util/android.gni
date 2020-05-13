@@ -25,9 +25,9 @@ template("android_apk") {
   apk_name = target_name
 
   target_apk = apk_name + ".apk"
-  resource_apk = "${target_gen_dir}/${target_apk}"
-  rjava_dir = "${target_gen_dir}/rjava"
-  unsigned_apk = "${target_gen_dir}/${target_apk}.unsigned"
+  resource_apk = "${target_gen_dir}/${target_name}/${target_apk}"
+  rjava_dir = "${target_gen_dir}/${target_name}/rjava"
+  unsigned_apk = "${target_gen_dir}/${target_name}/${target_apk}.unsigned"
   signed_apk = "${root_build_dir}/apks/${target_apk}"
 
   process_resources("${apk_name}__process_resources") {
