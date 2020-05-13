@@ -35,7 +35,7 @@ service WifiService {
 }
 
 message ConnectRequest {
-  string ssid = 1;
+  bytes ssid = 1;
   // hidden denotes that if the SSID is hidden.
   bool hidden = 2;
   // security is the SecurityClass (defined in shill/service.go) of the WiFi
@@ -62,7 +62,7 @@ message DisconnectRequest {
 }
 
 message DeleteEntriesForSSIDRequest {
-  string ssid = 1;
+  bytes ssid = 1;
 }
 
 message QueryServiceRequest {
