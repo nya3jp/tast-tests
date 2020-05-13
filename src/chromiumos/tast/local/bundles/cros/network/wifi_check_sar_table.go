@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -36,13 +37,38 @@ func init() {
 // sarTableType is an enum that accounts for the different kinds of SAR tables
 // defined by Intel WiFi. We use the general names "profileA" and "profileB" to
 // avoid propogating the confusing WRDS and EWRD syntax.
-// It could be extended to provide support for WGDS or multiple sets within EWRD.
 type sarTableType int
 
 const (
 	profileA sarTableType = iota // WRDS
 	profileB                     // EWRD
-	// TODO(kglund): add support for WGDS
+)
+
+// Stores a GEO SAR table in units of 0.125 dBm.
+type geoSARTable struct {
+	max2g          int64
+	chainAOffset2g int64
+	chainBOffset2g int64
+	max5g          int64
+	chainAOffset5g int64
+	chainBOffset5g int64
+}
+
+// For the sake of clarity, we convert the the GEO SAR tables to units of 1 dBm
+// before printing.
+func (table geoSARTable) String() string {
+	return fmt.Sprintf("{%.3f %.3f %.3f %.3f %.3f %.3f}",
+		float64(table.max2g)/8.0, float64(table.chainAOffset2g)/8.0,
+		float64(table.chainBOffset2g)/8.0, float64(table.max5g)/8.0,
+		float64(table.chainAOffset5g)/8.0, float64(table.chainBOffset5g)/8.0)
+}
+
+const (
+	// These values represent the allowable SAR limits in units of 1 dBm.
+	hardMax = 22.0
+	softMax = 20.0
+	hardMin = 6.0
+	softMin = 8.0
 )
 
 // Information about dynamic SAR tables and the relevant acronyms can be found on
@@ -59,6 +85,88 @@ func getWifiVendorID(ctx context.Context, netIf string) (string, error) {
 		return "", errors.Wrapf(err, "get device %v: failed to get vendor ID", netIf)
 	}
 	return strings.TrimSpace(string(vendorID)), nil
+}
+
+// getGeoSARTablesFromASL parses ASL formatted data and returns an array of
+// geoSARTable structs derived from the body of the WGDS section.
+// If the WGDS section is not found, return nil. If the parsing of the ASL data
+// fails, return an error.
+func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
+	dataString := string(data)
+	// Remove spaces and newlines from from data to make parsing easier.
+	dataString = strings.Replace(dataString, "\n", "", -1)
+	dataString = strings.Replace(dataString, " ", "", -1)
+
+	// Try to find the GEO SAR table within the data.
+	keyIndex := -1
+	keyIndex = strings.Index(dataString, "Name(WGDS,Package")
+	// If we don't find the WGDS table, return nil. (This isn't considered a
+	// failure so we don't return an error)
+	if keyIndex == -1 {
+		return nil, nil
+	}
+	// Below is an example of the format for the ASL data for a GEO SAR (WGDS)
+	// table. Parse by first finding the key "Name(WGDS,Package" and then moving
+	// two open brackets down to reach the body of the data, and end on the next
+	// closed bracket.
+	//
+	// Name (WGDS, Package (0x02)
+	//            {
+	//                0x00000000,
+	//                Package (0x13)
+	//                {
+	//                    0x00000007,
+	//                    0x98,
+	//                    0x00,
+	//                    0x00,
+	//                    0x98,
+	//                    0x00,
+	//                    0x00,
+	//                    0x78,
+	//                    0x00,
+	//                    0x00,
+	//                    0x80,
+	//                    0x10,
+	//                    0x10,
+	//                    0x78,
+	//                    0x00,
+	//                    0x00,
+	//                    0x80,
+	//                    0x10,
+	//                    0x10
+	//                }
+	//            })
+	startIndex := strings.Index(dataString[keyIndex:], "{") + keyIndex + 1
+	startIndex = strings.Index(dataString[startIndex:], "{") + startIndex + 1
+	endIndex := strings.Index(dataString[startIndex:], "}") + startIndex
+	values := strings.Split(dataString[startIndex:endIndex], ",")
+	var geoTables []geoSARTable
+	var err error
+	// Parse out the GEO SAR values.
+	for i := 0; i < 3; i++ {
+		start := (i * 6) + 1
+		currentTable := geoSARTable{}
+		if currentTable.max2g, err = strconv.ParseInt(values[start], 0, 64); err != nil {
+			return nil, err
+		}
+		if currentTable.chainAOffset2g, err = strconv.ParseInt(values[start+1], 0, 64); err != nil {
+			return nil, err
+		}
+		if currentTable.chainBOffset2g, err = strconv.ParseInt(values[start+2], 0, 64); err != nil {
+			return nil, err
+		}
+		if currentTable.max5g, err = strconv.ParseInt(values[start+3], 0, 64); err != nil {
+			return nil, err
+		}
+		if currentTable.chainAOffset5g, err = strconv.ParseInt(values[start+4], 0, 64); err != nil {
+			return nil, err
+		}
+		if currentTable.chainBOffset5g, err = strconv.ParseInt(values[start+5], 0, 64); err != nil {
+			return nil, err
+		}
+		geoTables = append(geoTables, currentTable)
+	}
+	return geoTables, nil
 }
 
 // getSARTableFromASL parses ASL formatted data and returns
@@ -131,19 +239,38 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 	return intValues[tableIndices[0]:tableIndices[1]], nil
 }
 
+// verifyAndGetGeoTables checks the GEO SAR tables contained within decodedSSDT and
+// returns an array of geoSARTable structs. This function performs a sanity check
+// to ensure that none of the "max power" fields of the tables is below the minumum
+// allowable power. If the GEO SAR tables don't exist, this function logs that fact
+// and returns nil. If there is an error parsing the GEO SAR tables, this function
+// reports the error and returns nil.
+// The GEO offsets themselves are only relevant in the context of the base SAR
+// values to which they apply, so they are not directly tested by this function.
+func verifyAndGetGeoTables(decodedSSDT []byte, s *testing.State) []geoSARTable {
+	geoSARTables, err := getGeoSARTablesFromASL(decodedSSDT)
+	if err != nil {
+		s.Error("Error occured when parsing GEO SAR (WGDS) table: ", err)
+		return nil
+	}
+	if geoSARTables == nil {
+		s.Log("No GEO SAR (WGDS) table found")
+		return nil
+	}
+	s.Log("GEO SAR (WGDS) tables: ", geoSARTables)
+	for _, table := range geoSARTables {
+		if table.max2g < hardMin || table.max5g < hardMin {
+			s.Fatal("Geo SAR table found with max power field below the minimum allowed power")
+		}
+	}
+	return geoSARTables
+}
+
 // verifyTable checks the table of type sarTableType contained within decodedSSDT
 // against a set of SAR limits. These limits serve as a sanity check for the SAR
 // and are not based on a true regulatory standard. The test will fail if the SSDT
 // provided does not contain SAR tables.
-func verifyTable(decodedSSDT []byte, tableType sarTableType, s *testing.State) {
-	const (
-		// These values represent the allowable SAR limits
-		hardMax = 22.0
-		softMax = 20.0
-		hardMin = 6.0
-		softMin = 8.0
-	)
-
+func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSARTable, s *testing.State) {
 	// There is a special case for SAR tables that indicates an unused or no-op
 	// table. These tables are encoded with the value 255 (oxFF) in every index.
 	// Such tables are handled and accpeted specifically by this test.
@@ -168,6 +295,7 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, s *testing.State) {
 	exceedsHardLimits := false
 	// Check for no-op table, which is encoded as a table with 255 in each index.
 	isNoOpTable := true
+	// Check that base SAR values are within allowable limits.
 	for _, val := range sarTable {
 		if val != 255 {
 			isNoOpTable = false
@@ -187,6 +315,36 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, s *testing.State) {
 		s.Logf("%v is a no-op table, meaning it will not be used", tableName)
 		return
 	}
+
+	// If we have GEO SAR tables, check that the SAR values do not exceed allowable
+	// limits after the relevant offsets have been applied.
+	if geoTables != nil {
+		for index, val := range sarTable {
+			for _, geoTable := range geoTables {
+				var geoOffset int64
+				if index == 0 {
+					geoOffset = geoTable.chainAOffset2g
+				} else if index == 5 {
+					geoOffset = geoTable.chainBOffset2g
+				} else if index > 5 {
+					geoOffset = geoTable.chainBOffset5g
+				} else {
+					geoOffset = geoTable.chainAOffset5g
+				}
+				// Actual SAR values are 1/8 * the stored ints.
+				realSARValue := float64(val) / 8.0
+				realGeoOffset := float64(geoOffset) / 8.0
+				geoAdjustedSARValue := realSARValue + realGeoOffset
+				if geoAdjustedSARValue < softMin || geoAdjustedSARValue > softMax {
+					exceedsSoftLimits = true
+				}
+				if geoAdjustedSARValue < hardMin || geoAdjustedSARValue > hardMax {
+					exceedsHardLimits = true
+				}
+			}
+		}
+	}
+
 	if exceedsHardLimits {
 		s.Errorf("%v SAR values exceed limits, requires manual approval", tableName)
 		return
@@ -255,8 +413,9 @@ func WifiCheckSARTable(ctx context.Context, s *testing.State) {
 	defer ssdtOut.Close()
 	ssdtOut.Write(decodedSSDT)
 
+	geoTables := verifyAndGetGeoTables(decodedSSDT, s)
 	// profileA retrieves WRDS table which stores "static" SAR table.
-	verifyTable(decodedSSDT, profileA, s)
+	verifyTable(decodedSSDT, profileA, geoTables, s)
 	// profileB retrieves EWRD table which stores "dynamic" SAR tables.
-	verifyTable(decodedSSDT, profileB, s)
+	verifyTable(decodedSSDT, profileB, geoTables, s)
 }
