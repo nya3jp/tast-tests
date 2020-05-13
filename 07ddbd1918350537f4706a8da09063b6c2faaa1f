@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95143c3e_4002cba3",
+        "filename": "src/chromiumos/tast/local/chrome/webutil/webutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T13:50:40Z",
+      "side": 1,
+      "message": "huge nit/optional: how about using const or let?\nDitto for bounds.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "07ddbd1918350537f4706a8da09063b6c2faaa1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "454d2a75_ad847464",
+        "filename": "src/chromiumos/tast/local/chrome/webutil/webutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T13:50:40Z",
+      "side": 1,
+      "message": "Could you follow JS style guide in embedded JS code?\nhttps://google.github.io/styleguide/jsguide.html",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "07ddbd1918350537f4706a8da09063b6c2faaa1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
