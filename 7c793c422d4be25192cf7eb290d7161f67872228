@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aae251a3_d45a5613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/runtimeprobe/runtimeprobe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2020-05-13T10:37:35Z",
+      "side": 1,
+      "message": "Use *rppb.ProbeRequest type instead?",
+      "range": {
+        "startLine": 22,
+        "startChar": 40,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "7c793c422d4be25192cf7eb290d7161f67872228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
