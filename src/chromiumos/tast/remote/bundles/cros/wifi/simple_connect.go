@@ -283,6 +283,19 @@ func init() {
 					},
 				},
 			}, {
+				// Verifies that we can connect to an AP broadcasting a WPA2 network using AES based CCMP.
+				// In addition, the client must also support 802.11w protected management frames.
+				Name: "wpa2pmf",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.PMF(ap.PMFRequired)},
+						secConfFac: wpa.NewConfigFactory(
+							"chromeos", wpa.Mode(wpa.ModePureWPA2),
+							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA2 (aka RSN) and encrypted under AES.
 				Name: "wpa2",
 				Val: []simpleConnectTestcase{
