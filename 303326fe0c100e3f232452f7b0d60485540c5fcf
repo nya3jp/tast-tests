@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "376c82e1_0279faf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-05-13T22:03:39Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "6e1174cd_50290d54",
+      "revId": "303326fe0c100e3f232452f7b0d60485540c5fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "187f7ca5_cd09e956",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds4.go",
         "patchSetId": 2
