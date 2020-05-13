@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/ui/many_small_files_20200519.zip",
+  "size": 177912,
+  "sha256sum": "cbdedc160dadb0051d1fbaba2bee1698db30a1a2174cdc3f2ef0f0cc5d53bd98"
+}
