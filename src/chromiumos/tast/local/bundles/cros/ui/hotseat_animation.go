@@ -86,6 +86,8 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		hiddenWidgetHistogram   = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToHiddenHotseat"
 		shownWidgetHistogram    = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToShownHotseat"
 		extendedWidgetHistogram = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToExtendedHotseat"
+
+		overviewTimeout = 10 * time.Second
 	)
 
 	cr := s.PreValue().(*chrome.Chrome)
@@ -215,7 +217,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		if err := stw.End(); err != nil {
 			return errors.Wrap(err, "failed to finish the tap gesture")
 		}
-		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
+		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden, overviewTimeout); err != nil {
 			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
@@ -235,7 +237,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		if err := stw.End(); err != nil {
 			return errors.Wrap(err, "failed to finish the tap gesture")
 		}
-		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden); err != nil {
+		if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden, overviewTimeout); err != nil {
 			return errors.Wrap(err, "failed to wait for animation to finish")
 		}
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
