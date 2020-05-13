@@ -252,7 +252,7 @@ func init() {
 				},
 			}, {
 				// Verifies that DUT can connect to an protected network supporting for pure WPA with both AES based CCMP and TKIP.
-				Name: "wpamuti",
+				Name: "wpamulti",
 				Val: []simpleConnectTestcase{
 					{
 						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
