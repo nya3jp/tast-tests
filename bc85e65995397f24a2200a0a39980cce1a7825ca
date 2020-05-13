@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd370f0_11a7cd17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T18:37:09Z",
+      "side": 1,
+      "message": "why 92: add a comment: kSetCurrentUserOldOffsetInDays",
+      "revId": "bc85e65995397f24a2200a0a39980cce1a7825ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b516dd9_4515cb61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T18:37:09Z",
+      "side": 1,
+      "message": "Can you check the master file time did not change, only the timestamp file is updated when set_current_user_old is called.",
+      "revId": "bc85e65995397f24a2200a0a39980cce1a7825ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
