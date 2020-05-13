@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "721bde53_9f4e12b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds4.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T14:42:55Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "4082e44ad3fc8f411d093998d778edce59d279de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b33e56_256d3af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds4.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T14:42:55Z",
+      "side": 1,
+      "message": "inline inside getReportDS4?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "4082e44ad3fc8f411d093998d778edce59d279de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
