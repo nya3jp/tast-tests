@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "14dfd861_44ab6ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T23:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75114272_745473a0",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8f8fdf3_b425c269",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
         "patchSetId": 2
@@ -158,6 +182,24 @@
       "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b364287_5fbc278c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T23:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e3ad72_37dd7a38",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -316,6 +358,24 @@
       "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a79bbb_2f9c1924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T23:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db5189e_237ce023",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
