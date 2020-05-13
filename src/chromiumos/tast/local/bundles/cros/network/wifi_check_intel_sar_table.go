@@ -91,7 +91,8 @@ func getWifiVendorID(ctx context.Context, netIf string) (string, error) {
 // geoSARTable structs derived from the body of the WGDS section.
 // If the WGDS section is not found, return nil. If the parsing of the ASL data
 // fails, return an error.
-func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
+func getGeoSARTablesFromASL(data []byte, s *testing.State) ([]geoSARTable, error) {
+	validGeoSARVersions := []int64{0x0, 0x11}
 	dataString := string(data)
 	// Remove spaces and newlines from from data to make parsing easier.
 	dataString = strings.Replace(dataString, "\n", "", -1)
@@ -112,7 +113,7 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 	//
 	// Name (WGDS, Package (0x02)
 	//            {
-	//                0x00000000,
+	//                0x00000000,     // GEO SAR Version Number
 	//                Package (0x13)
 	//                {
 	//                    0x00000007,
@@ -137,11 +138,27 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 	//                }
 	//            })
 	startIndex := strings.Index(dataString[keyIndex:], "{") + keyIndex + 1
+	// Parse and verify the GEO SAR version.
+	geoSARVersion := dataString[startIndex : startIndex+strings.Index(dataString[startIndex:], ",")]
+	var err error
+	var intVersion int64
+	if intVersion, err = strconv.ParseInt(geoSARVersion, 0, 64); err != nil {
+		return nil, err
+	}
+	validVersion := false
+	for _, version := range validGeoSARVersions {
+		if intVersion == version {
+			validVersion = true
+		}
+	}
+	if !validVersion {
+		s.Fatalf("Invalid GEO SAR version number %s", geoSARVersion)
+	}
+	// Continue parsing the GEO SAR Tables.
 	startIndex = strings.Index(dataString[startIndex:], "{") + startIndex + 1
 	endIndex := strings.Index(dataString[startIndex:], "}") + startIndex
 	values := strings.Split(dataString[startIndex:endIndex], ",")
 	var geoTables []geoSARTable
-	var err error
 	// Parse out the GEO SAR values.
 	for i := 0; i < 3; i++ {
 		start := (i * 6) + 1
@@ -172,7 +189,8 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 // getSARTableFromASL parses ASL formatted data and returns
 // the array of integers from the body of the section labeled with the given key.
 // TODO(kglund) unit test this function
-func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
+func getSARTableFromASL(data []byte, tableType sarTableType, s *testing.State) ([]int64, error) {
+	validSARVersions := []int64{0x00}
 	dataString := string(data)
 	// Remove spaces and newlines from from data to make parsing easier.
 	dataString = strings.Replace(dataString, "\n", "", -1)
@@ -206,7 +224,7 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 	//
 	// Name (WRDS, Package (0x02)
 	// {
-	// 		0x00000000,
+	// 		0x00000000,     // SAR Version Number
 	// 		Package (0x0C)
 	// 		{
 	// 			0x00000007,
@@ -224,6 +242,23 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 	// 		}
 	// })
 	startIndex := strings.Index(dataString[keyIndex:], "{") + keyIndex + 1
+	// Parse and verify the SAR version.
+	sarVersion := dataString[startIndex : startIndex+strings.Index(dataString[startIndex:], ",")]
+	var err error
+	var intVersion int64
+	if intVersion, err = strconv.ParseInt(sarVersion, 0, 64); err != nil {
+		return nil, err
+	}
+	validVersion := false
+	for _, version := range validSARVersions {
+		if intVersion == version {
+			validVersion = true
+		}
+	}
+	if !validVersion {
+		s.Fatalf("Invalid SAR version number %s", sarVersion)
+	}
+	// Continue parsing the SAR Table.
 	startIndex = strings.Index(dataString[startIndex:], "{") + startIndex + 1
 	endIndex := strings.Index(dataString[startIndex:], "}") + startIndex
 	values := strings.Split(dataString[startIndex:endIndex], ",")
@@ -248,7 +283,7 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 // The GEO offsets themselves are only relevant in the context of the base SAR
 // values to which they apply, so they are not directly tested by this function.
 func verifyAndGetGeoTables(decodedSSDT []byte, s *testing.State) []geoSARTable {
-	geoSARTables, err := getGeoSARTablesFromASL(decodedSSDT)
+	geoSARTables, err := getGeoSARTablesFromASL(decodedSSDT, s)
 	if err != nil {
 		s.Error("Error occured when parsing GEO SAR (WGDS) table: ", err)
 		return nil
@@ -283,7 +318,7 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSART
 		tableName = "PROFILE_B"
 	}
 
-	sarTable, err := getSARTableFromASL(decodedSSDT, tableType)
+	sarTable, err := getSARTableFromASL(decodedSSDT, tableType, s)
 	if err != nil {
 		s.Fatal("Unable to find SAR table: ", err)
 	}
