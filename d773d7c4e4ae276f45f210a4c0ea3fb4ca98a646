@@ -22,6 +22,30 @@
       "revId": "d773d7c4e4ae276f45f210a4c0ea3fb4ca98a646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6f8f15_f3f626d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-13T23:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd6538bf_7c1c8da4",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "d773d7c4e4ae276f45f210a4c0ea3fb4ca98a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
