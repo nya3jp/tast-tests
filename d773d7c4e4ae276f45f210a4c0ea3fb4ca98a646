@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd6538bf_7c1c8da4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-13T22:49:59Z",
+      "side": 1,
+      "message": "nit: modes :\u003d ... without var will work.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "d773d7c4e4ae276f45f210a4c0ea3fb4ca98a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
