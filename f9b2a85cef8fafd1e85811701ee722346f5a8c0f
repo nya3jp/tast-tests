@@ -70,6 +70,30 @@
       "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a40120d_177a2ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2020-05-13T23:17:24Z",
+      "side": 1,
+      "message": "Why does this not work:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2200237",
+      "parentUuid": "ca550506_668a78e5",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 38
+      },
+      "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
