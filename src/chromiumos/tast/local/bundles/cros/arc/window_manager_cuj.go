@@ -93,7 +93,7 @@ func init() {
 		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipSimpleTastTest.apk"},
+		Data:         []string{"ArcPipSimpleTastTest.apk"},
 		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
 			Val:               stableCUJTests,
@@ -133,10 +133,13 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	for _, apk := range []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipSimpleTastTest.apk"} {
-		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+	for _, apk := range []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk"} {
+		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 			s.Fatal("Failed installing app: ", err)
 		}
+	}
+	if err := a.Install(ctx, s.DataPath("ArcPipSimpleTastTest.apk")); err != nil {
+		s.Fatal("Failed installing app: ", err)
 	}
 
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
