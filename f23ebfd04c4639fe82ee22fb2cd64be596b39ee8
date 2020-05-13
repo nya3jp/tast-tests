@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "8d63feff_d2dec713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-13T02:00:25Z",
+      "side": 1,
+      "message": "Good to know this. Honestly I am facing a challenge to force ui mode in OOBE stage. Seems test conn / autolib is not available yet. I failed to find a system level api to do this. Really appreicate if you know any approach to do this.\n\nBtw, if currently no api available and you do not mind, can we merge this code first? Since it fails on tablet now. I will raise a bug to change this to run on both mode.",
+      "parentUuid": "7c5ec53a_30b3d085",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "139042ae_ba451be4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
         "patchSetId": 4
