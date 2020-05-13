@@ -22,6 +22,53 @@
       "revId": "6992bacacec7192734da414559385a791b280d03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86efadd3_476892d0",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-13T01:55:20Z",
+      "side": 1,
+      "message": "I think that command line is good to replace the code to generate du_stateful.txt, let me do that.\n\nAs for statfs code, I have two reasons. One reason is that there are several mountpoints under /mnt/stateful_partition so it is difficult to tell the real \"used\" size per filesystem from the output of du. The other reason is that, while debugging some failures, I saw a case where encrypted.block allocated size was a lot larger than total size of /mnt/stateful_partition/encrypted. I guess it was caused by large files in the directory created and then removed. Unfortunately we can\u0027t observe this by simple \"du\" command.",
+      "parentUuid": "f60d70ad_6be3dd1e",
+      "range": {
+        "startLine": 483,
+        "startChar": 5,
+        "endLine": 483,
+        "endChar": 20
+      },
+      "revId": "6992bacacec7192734da414559385a791b280d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95812ea0_fc03bd98",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-13T01:55:20Z",
+      "side": 1,
+      "message": "FYI: This is the value I\u0027m interested in.",
+      "range": {
+        "startLine": 579,
+        "startChar": 33,
+        "endLine": 579,
+        "endChar": 86
+      },
+      "revId": "6992bacacec7192734da414559385a791b280d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
