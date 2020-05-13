@@ -335,7 +335,7 @@ func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 		return err
 	}
 	request := &network.ConnectRequest{
-		Ssid:       h.Config().Ssid,
+		Ssid:       []byte(h.Config().Ssid),
 		Hidden:     h.Config().Hidden,
 		Security:   h.Config().SecurityConfig.Class(),
 		Shillprops: propsEnc,

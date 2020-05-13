@@ -432,6 +432,27 @@ func init() {
 					{apOpts: wificell.CommonAPOptions(ap.SSID("a"))},
 					{apOpts: wificell.CommonAPOptions(ap.SSID(strings.Repeat("MaxLengthSSID", 4)[:32]))},
 				},
+			}, {
+				// This test case verifies that the DUT accepts ascii and non-ascii type characters as the SSID.
+				Name: "non_ascii_ssid",
+				Val: []simpleConnectTestcase{
+					// TODO(crbug.com/1082582): shill don't allow leading 0x00 now, so let's append it in the
+					// end to keep the coverage.
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(1, 31) + "\x00"))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(32, 63)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(64, 95)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(96, 127)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(128, 159)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(160, 191)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(192, 223)))},
+					{apOpts: wificell.CommonAPOptions(ap.SSID(byteSequenceStr(224, 255)))},
+					// Valid Unicode characters.
+					{apOpts: wificell.CommonAPOptions(ap.SSID("\xe4\xb8\xad\xe5\x9b\xbd"))},
+					// Single extended ASCII character (a-grave).
+					{apOpts: wificell.CommonAPOptions(ap.SSID("\xe0"))},
+					// Mix of ASCII and Unicode characters as SSID.
+					{apOpts: wificell.CommonAPOptions(ap.SSID("Chrome\xe7\xac\x94\xe8\xae\xb0\xe6\x9c\xac"))},
+				},
 			},
 		},
 	})
@@ -483,7 +504,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 			if err := tf.DisconnectWifi(fullCtx); err != nil {
 				s.Error("Failed to disconnect WiFi, err: ", err)
 			}
-			req := &network.DeleteEntriesForSSIDRequest{Ssid: ap.Config().Ssid}
+			req := &network.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().Ssid)}
 			if _, err := tf.WifiClient().DeleteEntriesForSSID(fullCtx, req); err != nil {
 				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().Ssid, err)
 			}
@@ -532,6 +553,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 func wep40Keys() []string {
 	return []string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}
 }
+
 func wep104Keys() []string {
 	return []string{
 		"0123456789abcdef0123456789", "mlk:ihgfedcba",
@@ -539,12 +561,29 @@ func wep104Keys() []string {
 		"\xe4\xb8\x80\xe4\xba\x8c\xe4\xb8\x89\xc2\xa2\xc2\xa3",
 	}
 }
+
 func wep40KeysHidden() []string {
 	return []string{"0123456789", "89abcdef01", "9876543210", "fedcba9876"}
 }
+
 func wep104KeysHidden() []string {
 	return []string{
 		"0123456789abcdef0123456789", "89abcdef0123456789abcdef01",
 		"fedcba9876543210fedcba9876", "109fedcba987654321fedcba98",
 	}
+}
+
+// byteSequenceStr generates a string from the slice of bytes in [start, end].
+// Both start and end are included in the result string.
+// If start > end, empty string will be returned.
+func byteSequenceStr(start, end byte) string {
+	var ret []byte
+	if start > end {
+		return ""
+	}
+	for i := start; i < end; i++ {
+		ret = append(ret, i)
+	}
+	ret = append(ret, end)
+	return string(ret)
 }

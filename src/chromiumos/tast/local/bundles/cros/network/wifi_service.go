@@ -6,8 +6,10 @@ package network
 
 import (
 	"context"
+	"encoding/hex"
 	"net"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -189,11 +191,13 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 		return nil, errors.Wrap(err, "failed to create a manager object")
 	}
 
+	hexSSID := s.hexSSID(request.Ssid)
+
 	// Configure a service for the hidden SSID as a result of manual input SSID.
 	if request.Hidden {
 		props := map[string]interface{}{
 			shill.ServicePropertyType:           shill.TypeWifi,
-			shill.ServicePropertySSID:           request.Ssid,
+			shill.ServicePropertyWiFiHexSSID:    hexSSID,
 			shill.ServicePropertyWiFiHiddenSSID: request.Hidden,
 			shill.ServicePropertySecurityClass:  request.Security,
 		}
@@ -203,7 +207,7 @@ func (s *WifiService) Connect(ctx context.Context, request *network.ConnectReque
 	}
 	props := map[string]interface{}{
 		shill.ServicePropertyType:          shill.TypeWifi,
-		shill.ServicePropertyName:          request.Ssid,
+		shill.ServicePropertyWiFiHexSSID:   hexSSID,
 		shill.ServicePropertySecurityClass: request.Security,
 	}
 
@@ -295,8 +299,8 @@ func (s *WifiService) DeleteEntriesForSSID(ctx context.Context, request *network
 		return nil, errors.Wrap(err, "failed to create Manager object")
 	}
 	filter := map[string]interface{}{
-		shill.ProfileEntryPropertyName: request.Ssid,
-		shill.ProfileEntryPropertyType: shill.TypeWifi,
+		shill.ServicePropertyWiFiHexSSID: s.hexSSID(request.Ssid),
+		shill.ProfileEntryPropertyType:   shill.TypeWifi,
 	}
 	if err := s.removeMatchedEntries(ctx, m, filter); err != nil {
 		return nil, err
@@ -416,4 +420,12 @@ func (s *WifiService) GetIPv4Addrs(ctx context.Context, iface *network.GetIPv4Ad
 	}
 
 	return &ret, nil
+}
+
+// hexSSID converts a SSID into the format of WiFi.HexSSID in shill.
+// As in our tests, the SSID might contain non-ASCII characters, use WiFi.HexSSID
+// field for better compatibility.
+// Note: shill has the hex in upper case.
+func (s *WifiService) hexSSID(ssid []byte) string {
+	return strings.ToUpper(hex.EncodeToString(ssid))
 }
