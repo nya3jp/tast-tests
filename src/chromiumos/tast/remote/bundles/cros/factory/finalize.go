@@ -90,4 +90,10 @@ func cleanup(ctx context.Context, s *testing.State) {
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}
+
+	// /var/log may be umount during the test, backup the log after cleanup.
+	s.Log("Backing up the logs under /var/log")
+	if err := d.GetFile(ctx, "/var/log/upstart.log", filepath.Join(s.OutDir(), "upstart.log")); err != nil {
+		s.Error("Dump upstart.log fail: ", err)
+	}
 }
