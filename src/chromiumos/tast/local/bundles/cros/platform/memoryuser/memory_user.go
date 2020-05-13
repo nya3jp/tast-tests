@@ -217,6 +217,14 @@ func initChrome(ctx context.Context, p *RunParameters, te *TestEnv) error {
 	var opts []chrome.Option
 	var err error
 
+	if p.ExistingChrome != nil {
+		te.cr = p.ExistingChrome
+		if p.WPRArchivePath != "" {
+			return errors.New("WPR can not be used with ExistingChrome")
+		}
+		return nil
+	}
+
 	if p.WPRArchivePath != "" {
 		te.wpr, err = wpr.New(ctx, p.WPRMode, p.WPRArchivePath)
 		if err != nil {
@@ -249,7 +257,7 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 	toClose := te
 	defer func() {
 		if toClose != nil {
-			toClose.Close(ctx)
+			toClose.Close(ctx, p)
 		}
 	}()
 
@@ -259,7 +267,9 @@ func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv,
 
 	var err error
 	if p.UseARC {
-		if te.arc, err = arc.New(ctx, outDir); err != nil {
+		if p.ExistingARC != nil {
+			te.arc = p.ExistingARC
+		} else if te.arc, err = arc.New(ctx, outDir); err != nil {
 			return nil, errors.Wrap(err, "failed to start ARC")
 		}
 	}
@@ -283,28 +293,6 @@ func startVM(ctx context.Context, te *TestEnv) error {
 	}
 	te.vm = true
 	return nil
-}
-
-// Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
-func (te *TestEnv) Close(ctx context.Context) {
-	if te.vm {
-		if err := te.tconn.EvalPromise(ctx,
-			`tast.promisify(chrome.autotestPrivate.runCrostiniUninstaller)()`, nil); err != nil {
-			testing.ContextLog(ctx, "Running autotestPrivate.runCrostiniInstaller failed: ", err)
-		}
-	}
-	if te.arc != nil {
-		te.arc.Close()
-		te.arc = nil
-	}
-	if te.cr != nil {
-		te.cr.Close(ctx)
-		te.cr = nil
-	}
-	if te.wpr != nil {
-		te.wpr.Close(ctx)
-		te.wpr = nil
-	}
 }
 
 // runTask runs a MemoryTask.
@@ -335,6 +323,37 @@ type RunParameters struct {
 	UseARC bool
 	// ParallelTasks indicates whether the memory tasks should be run in parallel
 	ParallelTasks bool
+	// ExistingChrome indicates that we should use this Chrome instance instead
+	// of creating a new one.
+	ExistingChrome *chrome.Chrome
+	// ExistingARC indicates that we should use this ARC instance instead of
+	// creating a new one. ExistingChrome and UseARC must be set.
+	ExistingARC *arc.ARC
+	// ExtraPerfMetrics is a function that, if provided, is called at the end of
+	// the test to add additional performance metrics.
+	ExtraPerfMetrics func(context.Context, *TestEnv, *perf.Values, string)
+}
+
+// Close closes the Chrome, ARC, and WPR instances used in the TestEnv.
+func (te *TestEnv) Close(ctx context.Context, p *RunParameters) {
+	if te.vm {
+		if err := te.tconn.EvalPromise(ctx,
+			`tast.promisify(chrome.autotestPrivate.runCrostiniUninstaller)()`, nil); err != nil {
+			testing.ContextLog(ctx, "Running autotestPrivate.runCrostiniInstaller failed: ", err)
+		}
+	}
+	if te.arc != nil && p.ExistingARC == nil {
+		te.arc.Close()
+		te.arc = nil
+	}
+	if te.cr != nil && p.ExistingChrome == nil {
+		te.cr.Close(ctx)
+		te.cr = nil
+	}
+	if te.wpr != nil {
+		te.wpr.Close(ctx)
+		te.wpr = nil
+	}
 }
 
 // RunTest creates a new TestEnv and then runs ARC, Chrome, and VM tasks in parallel.
@@ -349,7 +368,7 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
-	defer testEnv.Close(ctx)
+	defer testEnv.Close(ctx, p)
 
 	if err = prepareMemdLogging(ctx); err != nil {
 		s.Error("Failed to prepare memd logging: ", err)
@@ -404,6 +423,9 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 	}
 
 	setPerfValues(s, testMeter, perfValues, "full_test")
+	if p.ExtraPerfMetrics != nil {
+		p.ExtraPerfMetrics(ctx, testEnv, perfValues, "full_test")
+	}
 	resetAndLogStats(ctx, testMeter, "full test")
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
