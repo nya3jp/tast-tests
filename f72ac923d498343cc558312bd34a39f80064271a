@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "82d5609a_af9d661d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1393420
+      },
+      "writtenOn": "2020-05-13T20:49:17Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "49cf574c_ff4acd6d",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 62
+      },
+      "revId": "f72ac923d498343cc558312bd34a39f80064271a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63bff686_83591800",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
         "patchSetId": 25
