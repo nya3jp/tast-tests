@@ -436,6 +436,33 @@ func TestConfigFormat(t *testing.T) {
 				"ssid2": `P"\xf2\xe3\x00\xd4\xc5\xb6"`,
 			},
 		},
+		// Check PMF.
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				Hidden:         true,
+				SecurityConfig: &base.Config{},
+				PMF:            PMFRequired,
+			},
+			verify: map[string]string{
+				"ieee80211w": "2",
+			},
+		},
+		{
+			conf: &Config{
+				Ssid:           "ssid",
+				Mode:           Mode80211b,
+				Channel:        1,
+				Hidden:         true,
+				SecurityConfig: &base.Config{},
+				PMF:            PMFOptional,
+			},
+			verify: map[string]string{
+				"ieee80211w": "1",
+			},
+		},
 	}
 
 	for i, tc := range testcases {
