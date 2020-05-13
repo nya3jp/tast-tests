@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b65c131_9b9ed87c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "(optional): I\u0027d recommend to have prefixes for each constant.\nActionDown, AxisX, SourceMouse, etc.\n\nto be consistent with other code.",
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37088de_7585033f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "I\u0027d recommend to remove this. Please find my comments below.",
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f37b08_2f6af877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "Although go strongly prefers shorter name, public interface often uses word, rather than abbreviation without vowels. How about \"Package\" and \"Activity\" here?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 4
+      },
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c704e14_caad0eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "Because this relies on arc.Activity, which manages the Activity conceptually, including its package/activity names, I think we should drop this field, since it should be a part of act.",
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa54fa5b_6f25b50f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "Could you mention the lifetime of d? It must be outlive, iiuc.",
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100fd054_460786c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "here, do you want/need to continue to poll? I guess, even in the following iterations, the error wouldn\u0027t be fixed? If the polling should be stopped, testing.PollBreak() helps you.",
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31c77e4_4ba2cc13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "Let\u0027s use act.StartWithArgs, instead, which helps you to remove t.cls and t.arc.",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 116
+      },
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f52b8248_0286d595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "Could you start with small letter to make this private?\nAlso, this is only for SInglePointerMatcher implementation, so could you move to there to minimize the scope?\n\nDitto for below.",
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b90f9f_cac3da2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "Could you move this down to L201?",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622167fb_f06b283e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/motioninput/motion_input_tester.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:08:45Z",
+      "side": 1,
+      "message": "style: Could you avoid \"else\"?\n\nif !sourceMatches {\n  return ...\n}\nif event.Action !\u003d a {\n  return ...\n}\n...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 3
+      },
+      "revId": "5b735ecac8429079a21c0a83d69acfade1bf08cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
