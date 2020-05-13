@@ -14,7 +14,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ReconnectToDUT,
 		Desc:     "Demonstrates connecting to and disconnecting from DUT",
-		Contacts: []string{"tast-owners@google.com"},
+		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }

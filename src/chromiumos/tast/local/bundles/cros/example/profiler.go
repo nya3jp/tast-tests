@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Profiler,
 		Desc:     "Demonstrates how to use profiler package",
-		Contacts: []string{"tast-owners@google.com"},
+		Contacts: []string{"chinglinyu@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }

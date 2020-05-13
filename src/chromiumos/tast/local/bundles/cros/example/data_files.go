@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     DataFiles,
 		Desc:     "Demonstrates how to use data files",
-		Contacts: []string{"tast-owners@google.com"},
+		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Data: []string{
 			"data_files_internal.txt",
 			"data_files_external.txt",

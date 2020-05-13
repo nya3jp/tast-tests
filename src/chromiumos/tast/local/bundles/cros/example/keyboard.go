@@ -1,6 +1,6 @@
 // Copyright 2018 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE
+// found in the LICENSE file.
 
 package example
 
@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Keyboard,
 		Desc:         "Demonstrates injecting keyboard events",
-		Contacts:     []string{"tast-owners@google.com"},
+		Contacts:     []string{"ricardoq@chromium.org", "tast-owners@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
