@@ -1,0 +1,49 @@
+<!-- Don't translate clickable strings. Needed in their original language by autotests -->
+<resources>
+    <!-- TODO(tetsui): Show different strings depending on target SDK versions -->
+    <string name="app_name">ARC WM</string>
+
+    <string name="actions_for_current_activity">Options for Current Activity</string>
+    <string name="app_version">version: </string>
+    <string name="crash">Crash!</string>
+    <string name="current_dialog_options">Current dialog options</string>
+    <string name="display">Display</string>
+    <string name="display_test">Display Test</string>
+    <string name="error_see_logcat">Error. See logcat.</string>
+    <string name="name">Name</string>
+    <string name="only_on_chromebooks">This view only gets updated in Chromebooks.</string>
+    <string name="options">Options</string>
+    <string name="options_for_new_activity">Options for New Activity</string>
+    <string name="orientation">Orientation</string>
+    <string name="real_size">Real Size</string>
+    <string name="refresh_status">Refresh Status</string>
+    <string name="size">Size</string>
+    <string name="system_bar">System Bar</string>
+    <string name="test_keyboard">Test Keyboard:</string>
+    <string name="title_activity_accelerometer">AccelerometerActivity</string>
+    <string name="uninitialized">uninitialized</string>
+    <string translatable="false" name="accelerometer_test">Accelerometer Test</string>
+    <string translatable="false" name="app_name_landscape">Landscape Mode</string>
+    <string translatable="false" name="app_name_portrait">Portrait Mode</string>
+    <string translatable="false" name="app_name_unspecified">Sensor Mode</string>
+    <string translatable="false" name="bounds">Bounds</string>
+    <string translatable="false" name="change_attributes">Change attributes</string>
+    <string translatable="false" name="change_layout">Change layout</string>
+    <string translatable="false" name="close_dialog">Close dialog</string>
+    <string translatable="false" name="documentation">Documentation</string>
+    <string translatable="false" name="fullscreen">Fullscreen</string>
+    <string translatable="false" name="hello">Hello!</string>
+    <string translatable="false" name="immersive">Immersive</string>
+    <string translatable="false" name="immersive_sticky">Immersive Sticky</string>
+    <string translatable="false" name="keyboard_test">Keyboard Test</string>
+    <string translatable="false" name="landscape">Landscape</string>
+    <string translatable="false" name="launch_activity">Launch Activity</string>
+    <string translatable="false" name="normal">Normal</string>
+    <string translatable="false" name="ok">OK</string>
+    <string translatable="false" name="portrait">Portrait</string>
+    <string translatable="false" name="root_activity">Root Activity</string>
+    <string translatable="false" name="strict_mode_test">Strict Mode Test</string>
+    <string translatable="false" name="test_keyboard_plain">Test Keyboard</string>
+    <string translatable="false" name="type_something_here">Type something here</string>
+    <string translatable="false" name="unspecified">Unspecified</string>
+</resources>

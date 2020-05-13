@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/text_view_current_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/actions_for_current_activity"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text_view_system_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/text_view_current_activity"
+        android:layout_marginTop="10dp"
+        android:text="@string/system_bar" />
+
+    <Button
+        android:id="@+id/button_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_view_system_bar"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/text_view_system_bar"
+        android:text="@string/normal" />
+
+    <Button
+        android:id="@+id/button_hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_show"
+        android:layout_alignBottom="@+id/button_show"
+        android:layout_toEndOf="@+id/button_show"
+        android:text="@string/immersive" />
+
+    <CheckBox
+        android:id="@+id/check_box_immersive_sticky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_show"
+        android:layout_alignBottom="@+id/button_show"
+        android:layout_toEndOf="@+id/button_hide"
+        android:checked="true"
+        android:text="@string/immersive_sticky" />
+
+    <TextView
+        android:id="@+id/text_view_orientation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/text_view_system_bar"
+        android:layout_below="@+id/button_show"
+        android:layout_marginTop="10dp"
+        android:text="@string/orientation" />
+
+    <Button
+        android:id="@+id/button_portrait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_show"
+        android:layout_alignTop="@+id/text_view_orientation"
+        android:text="@string/portrait" />
+
+    <Button
+        android:id="@+id/button_landscape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_portrait"
+        android:layout_alignBottom="@+id/button_portrait"
+        android:layout_toEndOf="@+id/button_portrait"
+        android:text="@string/landscape" />
+
+    <Button
+        android:id="@+id/button_sensor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_landscape"
+        android:layout_alignBottom="@+id/button_landscape"
+        android:layout_toEndOf="@+id/button_landscape"
+        android:text="@string/unspecified" />
+
+    <Button
+        android:id="@+id/button_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/text_view_system_bar"
+        android:layout_below="@+id/button_portrait"
+        android:text="@string/refresh_status" />
+
+</RelativeLayout>
