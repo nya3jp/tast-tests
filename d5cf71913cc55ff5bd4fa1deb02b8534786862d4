@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a56e34e9_7f1fddcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2020-05-13T23:38:35Z",
+      "side": 1,
+      "message": "I made this a 2 way dependency. Is that the right thing to do in this situation?",
+      "revId": "d5cf71913cc55ff5bd4fa1deb02b8534786862d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
