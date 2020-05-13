@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f60d70ad_6be3dd1e",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-13T00:03:24Z",
+      "side": 1,
+      "message": "I more had something like this in mind:\n\ndu -h /mnt/stateful_partition/ -t 50M | sort -rh\n\nand just dump the results into a separate output file (or a limited number of lines to the log).\n\nDo you see advantages with your current code?",
+      "range": {
+        "startLine": 483,
+        "startChar": 5,
+        "endLine": 483,
+        "endChar": 20
+      },
+      "revId": "6992bacacec7192734da414559385a791b280d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
