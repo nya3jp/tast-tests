@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "5489e24e_f1ebbfcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-13T15:25:51Z",
+      "side": 1,
+      "message": "I took a look at the DS4 code. But I think there two cases that need to be handled:\n\n- the \"expected\" requests that return nothing\n- the \"unexpected\" requests should return error",
+      "parentUuid": "1f719f9a_9c4ff42d",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "e0795879f81c69e4bd2be97e79a298b536475fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "544c8b80_f297fe6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/jstest/jstest.go",
         "patchSetId": 23
