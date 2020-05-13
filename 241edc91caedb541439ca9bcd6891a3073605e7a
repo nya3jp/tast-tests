@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c626cc8_e756c5ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "resetting initial state",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eabc8985_a511805a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "you don\u0027t use this until down below, so it would be more readable to have it down there with the activity slice that is also defined there",
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef8f20d_0bbc231d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "optional: you could move this setup code to perappdensity, e.g. perappdensity.SetUpApk() or something like that",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a7542f_884e1a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "nit: screenshot",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e9eb683_151c14aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "avoid passing around testing.State like this, since it has a bunch of stuff you don\u0027t need.  Instead, take in a as an input.",
+      "range": {
+        "startLine": 73,
+        "startChar": 38,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e92930a_504599ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "\"InitDisplay\" doesn\u0027t sound like it will also return the density.  What about MeasureDensity or InitialDensity or something along those lines?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03d6a40_9d0a08e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "nit: \" and a\" (no comma)",
+      "range": {
+        "startLine": 90,
+        "startChar": 42,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f10c1e1_aa8cadd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "pass in cr and a instead of s",
+      "range": {
+        "startLine": 91,
+        "startChar": 34,
+        "endLine": 91,
+        "endChar": 49
+      },
+      "revId": "241edc91caedb541439ca9bcd6891a3073605e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

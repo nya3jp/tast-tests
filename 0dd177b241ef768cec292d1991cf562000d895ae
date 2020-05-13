@@ -187,6 +187,30 @@
       "revId": "0dd177b241ef768cec292d1991cf562000d895ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bbc06c2_873cdfa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-13T05:36:30Z",
+      "side": 1,
+      "message": "Right now RunTest assumes the test is using a particular precondition, which isn\u0027t necessary.  By putting extracting arc/chrome from the precondition back in the test file you can in the future call RunTest under different preconditions as well.  It\u0027s frowned upon to take in testing.State directly - and by passing in a and cr instead you won\u0027t need to.\n\nIn my comment I was suggesting that you also put the for loop back in the test as well, but either way is fine I think.",
+      "parentUuid": "6a34977e_fec775bd",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "0dd177b241ef768cec292d1991cf562000d895ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
