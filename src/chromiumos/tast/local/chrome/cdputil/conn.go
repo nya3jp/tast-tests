@@ -23,6 +23,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// TastObjectGroup is the object group used for releasing remote objects owned by Tast.
+const TastObjectGroup = "TastObjectGroup"
+
 // Conn is the connection to a web content view, e.g. a tab.
 type Conn struct {
 	co       *rpcc.Conn
@@ -98,7 +101,7 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 // The *runtime.RemoteObject should get released or the memory it references will not be freed.
 // In case of JavaScript exceptions, errorText and exc are returned.
 func (c *Conn) Eval(ctx context.Context, expr string, awaitPromise bool, out interface{}) (*runtime.ExceptionDetails, error) {
-	args := runtime.NewEvaluateArgs(expr)
+	args := runtime.NewEvaluateArgs(expr).SetObjectGroup(TastObjectGroup)
 	if awaitPromise {
 		args = args.SetAwaitPromise(true)
 	}
@@ -160,7 +163,7 @@ func (c *Conn) CallOn(ctx context.Context, objectID runtime.RemoteObjectID, out 
 			callArgs = append(callArgs, runtime.CallArgument{Value: jsonArg})
 		}
 	}
-	callOnArgs := runtime.NewCallFunctionOnArgs(fn).SetObjectID(objectID).SetArguments(callArgs).SetAwaitPromise(true)
+	callOnArgs := runtime.NewCallFunctionOnArgs(fn).SetObjectGroup(TastObjectGroup).SetObjectID(objectID).SetArguments(callArgs).SetAwaitPromise(true)
 
 	ro, returnRemoteObject := out.(*runtime.RemoteObject)
 	if out != nil && !returnRemoteObject {
@@ -199,6 +202,12 @@ func (c *Conn) ReleaseObject(ctx context.Context, object runtime.RemoteObject) e
 		return c.cl.Runtime.ReleaseObject(ctx, args)
 	}
 	return nil
+}
+
+// ReleaseObjectGroup releases the specified object group.
+func (c *Conn) ReleaseObjectGroup(ctx context.Context, objectGroup string) error {
+	args := runtime.NewReleaseObjectGroupArgs(objectGroup)
+	return c.cl.Runtime.ReleaseObjectGroup(ctx, args)
 }
 
 // extractExceptionText extracts an error string from the exception described by d.

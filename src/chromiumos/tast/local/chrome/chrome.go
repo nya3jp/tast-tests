@@ -538,12 +538,16 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 	}
 
-	if vkEnabled {
-		tconn, err := c.TestAPIConn(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get test API connection")
-		}
+	// Free any remote objects that were not released.
+	tconn, err := c.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get test API connection")
+	}
+	if err := tconn.co.ReleaseObjectGroup(ctx, cdputil.TastObjectGroup); err != nil {
+		return errors.Wrap(err, "failed to free tast JS remote object group")
+	}
 
+	if vkEnabled {
 		// calling the method directly to avoid vkb/chrome circular imports
 		if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.inputMethodPrivate.hideInputView)()", nil); err != nil {
 			return errors.Wrap(err, "failed to hide virtual keyboard")
