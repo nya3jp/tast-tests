@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6d7ee466_f940a260",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-13T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01ace7c_efbb151d",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f784806_aa73b1f3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
         "patchSetId": 2
@@ -105,6 +123,24 @@
       "revId": "b15111369122142caf71a438e246093e1443cf6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bff1c42_9112d41d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-13T16:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80f569cb_128a90d4",
+      "revId": "b15111369122142caf71a438e246093e1443cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
