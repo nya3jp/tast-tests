@@ -657,29 +657,35 @@ func parseTokenStatus(cmdOutput string) (returnedLabel, returnedPin string, retu
 	return params["Label"], params["Pin"], slot, nil
 }
 
-// GetTokenForUser retrieve the token slot for the user token if username is non-empty, or system token if username is empty.
-func (u *UtilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username string) (int, error) {
+// GetTokenInfoForUser retrieve the token label, pin and slot for the user token if username is non-empty, or system token if username is empty.
+func (u *UtilityCryptohomeBinary) GetTokenInfoForUser(ctx context.Context, username string) (returnedLabel, returnedPin string, returnedSlot int, returnedErr error) {
 	cmdOutput := ""
 	if username == "" {
 		// We want the system token.
 		out, err := u.binary.Pkcs11SystemTokenInfo(ctx)
 		cmdOutput = string(out)
 		if err != nil {
-			return -1, errors.Wrapf(err, "failed to get system token info %q", cmdOutput)
+			return "", "", -1, errors.Wrapf(err, "failed to get system token info %q", cmdOutput)
 		}
 	} else {
 		// We want the user token.
 		out, err := u.binary.Pkcs11UserTokenInfo(ctx, username)
 		cmdOutput = string(out)
 		if err != nil {
-			return -1, errors.Wrapf(err, "failed to get user token info %q", cmdOutput)
+			return "", "", -1, errors.Wrapf(err, "failed to get user token info %q", cmdOutput)
 		}
 	}
-	_, _, slot, err := parseTokenStatus(cmdOutput)
+	label, pin, slot, err := parseTokenStatus(cmdOutput)
 	if err != nil {
-		return -1, errors.Wrapf(err, "failed to parse token status %q", cmdOutput)
+		return "", "", -1, errors.Wrapf(err, "failed to parse token status %q", cmdOutput)
 	}
-	return slot, nil
+	return label, pin, slot, nil
+}
+
+// GetTokenForUser retrieve the token slot for the user token if username is non-empty, or system token if username is empty.
+func (u *UtilityCryptohomeBinary) GetTokenForUser(ctx context.Context, username string) (int, error) {
+	_, _, slot, err := u.GetTokenInfoForUser(ctx, username)
+	return slot, err
 }
 
 // FWMPError is a custom error type that conveys the error as well as parsed
