@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:        RemoteFileSystem,
 		Desc:        "Demonstrates how to access remote file system",
-		Contacts:    []string{"tast-owners@google.com"},
+		Contacts:    []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:        []string{"group:mainline", "informational"},
 		ServiceDeps: []string{dutfs.ServiceName},
 	})

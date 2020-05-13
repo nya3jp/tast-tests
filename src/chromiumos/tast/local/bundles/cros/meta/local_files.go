@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     LocalFiles,
 		Desc:     "Helper test that uses data and output files",
-		Contacts: []string{"tast-owners@google.com"},
+		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Data: []string{
 			"local_files_internal.txt",
 			"local_files_external.txt",

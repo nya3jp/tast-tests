@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GRPC,
 		Desc:         "Demonstrates how to use gRPC support to run Go code on DUT",
-		Contacts:     []string{"nya@chromium.org", "tast-users@chromium.org"},
+		Contacts:     []string{"nya@chromium.org", "tast-owners@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.example.ChromeService"},

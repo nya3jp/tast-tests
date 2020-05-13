@@ -14,7 +14,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Pass,
 		Desc:     "Always passes",
-		Contacts: []string{"tast-owners@google.com"},
+		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline"},
 	})
 }

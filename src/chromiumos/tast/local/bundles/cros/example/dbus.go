@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     DBus,
 		Desc:     "Demonstrates how to use D-Bus",
-		Contacts: []string{"tast-owners@google.com"},
+		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline"},
 	})
 }

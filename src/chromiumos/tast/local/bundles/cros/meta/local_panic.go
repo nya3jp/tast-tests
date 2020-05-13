@@ -14,7 +14,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     LocalPanic,
 		Desc:     "Helper test that panics",
-		Contacts: []string{"tast-owners@google.com"},
+		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		// This test is called by remote tests in the meta package.
 	})
 }
