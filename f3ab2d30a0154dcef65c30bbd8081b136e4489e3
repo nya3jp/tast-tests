@@ -186,6 +186,30 @@
     },
     {
       "key": {
+        "uuid": "06973e11_8235c464",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-05-13T11:47:41Z",
+      "side": 1,
+      "message": "This title is not relevant anymore. I changed it to \"Fix HAL3 tests for ARCVM\".",
+      "parentUuid": "11956889_f7626b4e",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "f3ab2d30a0154dcef65c30bbd8081b136e4489e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff3b0d57_4e3b80f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 1

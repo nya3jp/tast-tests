@@ -46,6 +46,30 @@
       "revId": "71b78c0c2010dc2c66ca5ee4ae756fa030443af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4afd11fa_43f26d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2020-05-13T11:47:41Z",
+      "side": 1,
+      "message": "Done - added the package in CL 2996275 (added cq-depend).",
+      "parentUuid": "95ff1570_ce2c5cb6",
+      "range": {
+        "startLine": 56,
+        "startChar": 43,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "71b78c0c2010dc2c66ca5ee4ae756fa030443af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
