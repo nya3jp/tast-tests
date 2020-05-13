@@ -158,15 +158,16 @@ func ConfigDatafiles() []string {
 // Config contains platform-specific attributes.
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
-	Platform             string           `json:"platform"`
-	Parent               string           `json:"parent"`
-	ModeSwitcherType     ModeSwitcherType `json:"mode_switcher_type"`
-	PowerButtonDevSwitch bool             `json:"power_button_dev_switch"`
-	RecButtonDevSwitch   bool             `json:"rec_button_dev_switch"`
-	FirmwareScreen       int              `json:"firmware_screen"`
-	DelayRebootToPing    int              `json:"delay_reboot_to_ping"`
-	ConfirmScreen        int              `json:"confirm_screen"`
-	USBPlug              int              `json:"usb_plug"`
+	Platform             string            `json:"platform"`
+	Parent               string            `json:"parent"`
+	ModeSwitcherType     ModeSwitcherType  `json:"mode_switcher_type"`
+	PowerButtonDevSwitch bool              `json:"power_button_dev_switch"`
+	RecButtonDevSwitch   bool              `json:"rec_button_dev_switch"`
+	FirmwareScreen       int               `json:"firmware_screen"`
+	DelayRebootToPing    int               `json:"delay_reboot_to_ping"`
+	ConfirmScreen        int               `json:"confirm_screen"`
+	USBPlug              int               `json:"usb_plug"`
+	Models               map[string]Config `json:"models"`
 }
 
 // loadBytes reads '${platform}.json' from configDataDir and returns it as a slice of bytes.
@@ -192,20 +193,19 @@ func parentFromBytes(b []byte) (string, error) {
 }
 
 // NewConfig creates a new Config matching the DUT platform.
-// TODO(b/154500336): Load model config and overwrite platform config
-func NewConfig(configDataDir, platform string) (*Config, error) {
+func NewConfig(configDataDir, board, model string) (*Config, error) {
 	// Remove hyphenated suffixes: ex. "samus-kernelnext" becomes "samus"
-	platform = strings.SplitN(platform, "-", 2)[0]
-	// If the platform name is given as board_variant, take just the variant: ex. "veyron_minnie" becomes "minnie"
-	platform = strings.Split(platform, "_")[strings.Count(platform, "_")]
+	board = strings.SplitN(board, "-", 2)[0]
+	// If the board name is given as board_variant, take just the variant: ex. "veyron_minnie" becomes "minnie"
+	board = strings.Split(board, "_")[strings.Count(board, "_")]
 
-	// Load JSON bytes in order from most specific (platform) to most general (DEFAULTS).
+	// Load JSON bytes in order from most specific (board) to most general (DEFAULTS).
 	type platformBytes struct {
 		name string
 		b    []byte
 	}
 	var inherits []platformBytes
-	for platform != "" {
+	for platform := board; platform != ""; {
 		b, err := loadBytes(configDataDir, platform)
 		if err != nil {
 			return nil, errors.Wrapf(err, "loading config bytes for platform %s", platform)
@@ -218,11 +218,18 @@ func NewConfig(configDataDir, platform string) (*Config, error) {
 		platform = parent
 	}
 
-	// Unmarshal JSON bytes in order from most general (DEFAULTS) to most specific (platform).
+	// Unmarshal JSON bytes in order from most general (DEFAULTS) to most specific (board).
 	var cfg Config
 	for i := len(inherits) - 1; i >= 0; i-- {
 		if err := json.Unmarshal(inherits[i].b, &cfg); err != nil {
 			return nil, errors.Wrapf(err, "failed to unmarshal config for %q", inherits[i].name)
+		}
+	}
+
+	// Unmarshal model-level config on top of the existing config
+	if modelCfg, ok := cfg.Models[model]; ok {
+		if err := json.Unmarshal(modelCfg, &cfg); err != nil {
+			return nil, errors.Wrapf(err, "failed to unmarshal model-level config for %q", model)
 		}
 	}
 	return &cfg, nil
