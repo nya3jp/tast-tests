@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4a4e5bc8_b1b55611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-13T00:13:01Z",
+      "side": 1,
+      "message": "Do all boards support both modes?  How would we limit the parameterized tests to run only on the boards that support that mode?  I only see hw/sw deps for touchscreen support, not for tablet mode directly.",
+      "parentUuid": "d6026212_4cfdc7ab",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "f23ebfd04c4639fe82ee22fb2cd64be596b39ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "139042ae_ba451be4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/launch_help_app.go",
         "patchSetId": 4
