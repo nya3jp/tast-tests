@@ -6,6 +6,7 @@ package wilco
 
 import (
 	"context"
+	"syscall"
 	"time"
 
 	"github.com/golang/protobuf/proto"
@@ -284,6 +285,40 @@ func (c *WilcoService) TestGetAvailableRoutines(ctx context.Context, req *empty.
 			return nil, errors.Errorf("routine %s missing", val)
 		}
 	}
+	return &empty.Empty{}, nil
+}
+
+func absDiff(a, b int32) int32 {
+	if a > b {
+		return a - b
+	}
+	return b - a
+}
+
+func (c *WilcoService) TestGetStatefulPartitionAvailableCapacity(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	request := dtcpb.GetStatefulPartitionAvailableCapacityRequest{}
+	response := dtcpb.GetStatefulPartitionAvailableCapacityResponse{}
+
+	if err := wilco.DPSLSendMessage(ctx, "GetStatefulPartitionAvailableCapacity", &request, &response); err != nil {
+		return nil, errors.Wrap(err, "unable to get stateful partition available capacity")
+	}
+
+	if response.Status != dtcpb.GetStatefulPartitionAvailableCapacityResponse_STATUS_OK {
+		return nil, errors.Errorf("unexpected status %d", response.Status)
+	}
+
+	var stat syscall.Statfs_t
+	if err := syscall.Statfs("/mnt/stateful_partition", &stat); err != nil {
+		return nil, errors.Wrap(err, "failed to get disk stats for the stateful partition")
+	}
+
+	realAvailableMb := int32(stat.Bavail * uint64(stat.Bsize) / uint64(1000) / uint64(1000))
+	margin := int32(100) // 100MB
+
+	if absDiff(response.AvailableCapacityMb, realAvailableMb) > margin {
+		return nil, errors.Errorf("invalid available_space: got %v; want %v +- %v", response.AvailableCapacityMb, realAvailableMb, margin)
+	}
+
 	return &empty.Empty{}, nil
 }
 
