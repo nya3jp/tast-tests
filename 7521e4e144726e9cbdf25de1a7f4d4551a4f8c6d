@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5eaeab63_09988e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T23:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52813d6f_2584de0e",
+      "range": {
+        "startLine": 286,
+        "startChar": 33,
+        "endLine": 286,
+        "endChar": 41
+      },
+      "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03e0c8e_e590db68",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ed7c8aff_9d5bf519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T23:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b03e0c8e_e590db68",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 16
+      },
+      "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a13bd195_2206c02d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7a9f20_aee0997c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-13T23:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13bd195_2206c02d",
+      "range": {
+        "startLine": 298,
+        "startChar": 22,
+        "endLine": 298,
+        "endChar": 30
+      },
+      "revId": "7521e4e144726e9cbdf25de1a7f4d4551a4f8c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
