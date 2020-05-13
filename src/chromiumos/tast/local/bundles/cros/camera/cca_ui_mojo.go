@@ -6,7 +6,9 @@ package camera
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
@@ -39,5 +41,20 @@ func CCAUIMojo(ctx context.Context, s *testing.State) {
 
 	if err := app.CheckMojoConnection(ctx); err != nil {
 		s.Fatal("Failed to construct mojo connection: ", err)
+	}
+
+	for _, tablet := range []bool{true, false} {
+		cleanup, err := app.EnsureTabletModeEnabled(ctx, tablet)
+		if err != nil {
+			mode := "clamshell"
+			if tablet {
+				mode = "tablet"
+			}
+			s.Fatalf("Failed to switch to %v mode: %v", mode, err)
+		}
+		cleanupCtx := ctx
+		_, cancel := ctxutil.Shorten(ctx, time.Second*5)
+		defer cancel()
+		defer cleanup(cleanupCtx)
 	}
 }
