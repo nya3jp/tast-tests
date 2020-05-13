@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e17d31b8_3e76fd0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-13T21:27:19Z",
+      "side": 1,
+      "message": "Please move these values inside of CheckBootMode; they\u0027re local to this function.\n  func CheckBootMode(...) {\n    const initialMode \u003d fwCommon.BootModeNormal\n    ...\n  }",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "4f90bfe7cfa2e96ae4b1971282a5b3bc78c322d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018f9ac0_5e60c179",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_boot_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-13T21:27:19Z",
+      "side": 1,
+      "message": "This can be written as:\n  for _, toMode :\u003d range modes {\n    ...\n  }",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "4f90bfe7cfa2e96ae4b1971282a5b3bc78c322d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
