@@ -172,7 +172,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			if err := kw.Accel(ctx, topRow.SelectTask); err != nil {
 				return errors.Wrap(err, "failed to hit overview key")
 			}
-			return ash.WaitForOverviewState(ctx, tconn, ash.Shown)
+			return ash.WaitForOverviewState(ctx, tconn, ash.Shown, timeout)
 		}
 		openAppList = func(ctx context.Context) error {
 			return kw.Accel(ctx, "search")
