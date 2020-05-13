@@ -317,7 +317,9 @@ const (
 )
 
 // WaitForOverviewState waits until overview is shown or hidden completely. Returns immediately if overview mode state matches |overview_state|.
-func WaitForOverviewState(ctx context.Context, tconn *chrome.TestConn, state OverviewState) error {
+func WaitForOverviewState(ctx context.Context, tconn *chrome.TestConn, state OverviewState, timeout time.Duration) error {
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
 	expr := fmt.Sprintf(
 		`tast.promisify(chrome.autotestPrivate.waitForOverviewState)('%s')`, state)
 	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
@@ -514,7 +516,7 @@ func DragToShowOverview(ctx context.Context, width, height input.TouchCoord, stw
 	}
 
 	// Now that all windows are done animating, ensure overview is still shown.
-	if err := WaitForOverviewState(ctx, tconn, Shown); err != nil {
+	if err := WaitForOverviewState(ctx, tconn, Shown, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to wait for animation to finish")
 	}
 	return nil
