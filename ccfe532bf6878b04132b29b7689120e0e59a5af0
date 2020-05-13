@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c7949086_7beb4c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2020-05-13T23:39:32Z",
+      "side": 1,
+      "message": "I agree. Having the same tests on the versions makes it easy to detect incompatibility between the versions. Please feel free to file a bug and assign it to me.",
+      "parentUuid": "26ae866c_de4daf78",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b86a9a6_84ad7372",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
         "patchSetId": 5
