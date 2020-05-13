@@ -1,0 +1,19 @@
+# Copyright 2020 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+android_apk("ArcWMTestApp_23") {
+  manifest = "sdk23/AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res", "sdk23/res"]
+  target_sdk_version = "23"
+  rename_manifest_package = "org.chromium.arc.testapp.windowmanager23"
+}
+
+android_apk("ArcWMTestApp_24") {
+  manifest = "sdk24/AndroidManifest.xml"
+  source_dirs = ["src"]
+  resource_dirs = ["res", "sdk24/res"]
+  target_sdk_version = "24"
+  rename_manifest_package = "org.chromium.arc.testapp.windowmanager24"
+}

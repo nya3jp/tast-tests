@@ -27,5 +27,7 @@ group("all") {
     "ArcQuarterSizedWindowZoomingTest:ArcQuarterSizedWindowZoomingTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
     "ArcSurfaceInsetsTest:ArcSurfaceInsetsTest",
+    "ArcWMTestApp:ArcWMTestApp_23",
+    "ArcWMTestApp:ArcWMTestApp_24",
   ]
 }

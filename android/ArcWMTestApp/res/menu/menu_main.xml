@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.chromium.arc.testapp.windowmanager.MainActivity">
+
+    <item
+        android:id="@+id/action_keyboard"
+        android:orderInCategory="101"
+        android:title="@string/keyboard_test" />
+
+    <item
+        android:id="@+id/action_accel"
+        android:orderInCategory="102"
+        android:title="@string/accelerometer_test" />
+
+    <item
+        android:id="@+id/action_display"
+        android:orderInCategory="103"
+        android:title="@string/display_test" />
+
+    <item
+        android:id="@+id/action_docs"
+        android:orderInCategory="104"
+        android:title="@string/documentation" />
+
+    <item
+        android:id="@+id/action_crash"
+        android:orderInCategory="105"
+        android:title="@string/crash" />
+
+    <item
+        android:id="@+id/action_strict_mode"
+        android:orderInCategory="106"
+        android:title="@string/strict_mode_test" />
+
+    <item
+        android:id="@+id/action_version"
+        android:enabled="false"
+        android:orderInCategory="107"
+        android:title="@string/app_version" />
+
+</menu>
