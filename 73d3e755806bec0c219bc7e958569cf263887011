@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b3d75f9_44d1f1c0",
+        "filename": "src/chromiumos/tast/common/network/ping/regexps/regexps.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:16:17Z",
+      "side": 1,
+      "message": "The package name regexps sounds like too generic (even under network/ping package, we still take care of its stem name in Go / Tast. E.g. stdlib has io/ioutil rather than io/util).\n\nIn this case, I think this file can be a part of ping package, still.\nping.SentRE, ping.ReceivedRE ping.LossRE, ping.StatRE should make sense (and IIUC, these can be package private, so sentRE, receivedRE, etc.).",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "73d3e755806bec0c219bc7e958569cf263887011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
