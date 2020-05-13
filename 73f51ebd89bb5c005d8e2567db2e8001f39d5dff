@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "75114272_745473a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T08:42:41Z",
+      "side": 1,
+      "message": "Ok, could you return an err if it is not os.IsNotExist() err?\n\nnit: Also, could you explicitly comment that it is expect not to exists in kernel 4.4 or later, in addition to ones above?",
+      "parentUuid": "81e22756_613c9bc3",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8f8fdf3_b425c269",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
         "patchSetId": 2
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "It is needed as we need to read trigger register in its path. (see trigger.ReadAttr line 312).\nPut as first member for Trigger and Device classes.",
       "parentUuid": "95f2a819_6ee8b5c3",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38e3ad72_37dd7a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T08:42:41Z",
+      "side": 1,
+      "message": "L312 looks just initialization, so I still don\u0027t think you need this.\nPls, let me know if there\u0027s other uses, or plans to be used later.",
+      "parentUuid": "8fb0b92b_687336b0",
       "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -253,6 +295,24 @@
       "side": 1,
       "message": "I need the trigger object to be partially initialized [from line 310], to be able to read its attributes in sysfs.",
       "parentUuid": "b1645ce8_26d41bdd",
+      "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db5189e_237ce023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T08:42:41Z",
+      "side": 1,
+      "message": "You can create Device, instead.\n\nrawName, err :\u003d Device{devName}.ReadAttr(\"name\")\n\nshould work for you?\nIn general, calling a method with partially initialized object is source of confusion and issues.\nIf there is no special reasons it must be, I\u0027d relatively strongly recommend to avoid such.",
+      "parentUuid": "d355a0c9_0065df45",
       "revId": "73f51ebd89bb5c005d8e2567db2e8001f39d5dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
