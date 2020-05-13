@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46148b71_6ed55aa0",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "31f51234_e9a1dbd6",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 49
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc393804_dcecd4dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7549dd73_e94f3aa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "yes it can and I updated.",
+      "parentUuid": "fc393804_dcecd4dc",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ade1df7_95a57e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "Dropped.",
+      "parentUuid": "8813a9de_130c46ff",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c904492d_d2fd4b62",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13729e5d_a5b56966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "Updated wording for this comment.",
+      "parentUuid": "c904492d_d2fd4b62",
+      "range": {
+        "startLine": 118,
+        "startChar": 25,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6d6d1659_eeaf8e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "Good catch, I updated the comment.",
+      "parentUuid": "c9f5c1ee_db735e68",
+      "range": {
+        "startLine": 119,
+        "startChar": 66,
+        "endLine": 119,
+        "endChar": 72
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35a32e1c_c30d2322",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75dde015_703a0ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "Hopefully I made this function easier to read in Patchset 2 😊\n\nNow it calls a function which returns a closure handler depending on whether the test should end early (already provisioned / unexpected error) or continue after interruption.",
+      "parentUuid": "35a32e1c_c30d2322",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "de5e2a9e_d50f7ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "I added a comment and mentioned it\u0027s more of a sanity check.",
+      "parentUuid": "53ff2388_e9c5be01",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 59
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4efc4be_de0dfcbd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52f7b93e_cd0da92b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-13T07:43:44Z",
+      "side": 1,
+      "message": "Added force show optin UI flag so that the managed vs. unmanaged flow is simplified / unified as you suggested.  Although the trade-off I expect is forcing optin UI in managed case will take a little bit longer due to the extra function calls to find extension page and manually accept terms.  I agree the negligible delta is worth having a simpler test flow.",
+      "parentUuid": "c4efc4be_de0dfcbd",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 52
+      },
+      "revId": "d3d923e817560c5b948a6e6cff1dcd3fed6b7a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
