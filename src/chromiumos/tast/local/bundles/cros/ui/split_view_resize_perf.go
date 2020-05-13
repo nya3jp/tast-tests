@@ -199,20 +199,41 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return errors.Wrap(err, "failed to find the window in the overview mode")
 				}
-				// Wait for the desk mini-view to finish animating before we get its
-				// bounds. The animation only takes 250 milliseconds, but we may need to
-				// wait a little longer because everything takes time.
-				testing.Sleep(ctx, 500*time.Millisecond)
 				deskMiniViews, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "DeskMiniView"})
 				if err != nil {
 					return errors.Wrap(err, "failed to get desk mini-views")
 				}
-				defer deskMiniViews.Release(ctx)
 				if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount != 2 {
+					deskMiniViews.Release(ctx)
 					return errors.Wrapf(err, "expected 2 desk mini-views; found %v", deskMiniViewCount)
 				}
+				ew, err := chromeui.NewWatcher(ctx, deskMiniViews[1], chromeui.EventTypeLocationChanged)
+				if err != nil {
+					deskMiniViews.Release(ctx)
+					return errors.Wrap(err, "failed to create event watcher")
+				}
+				if err := testing.Poll(ctx, func(ctx context.Context) error { return ew.EnsureNoEvents(ctx, 100*time.Millisecond) }, &testing.PollOptions{Timeout: time.Second}); err != nil {
+					ew.Release(ctx)
+					deskMiniViews.Release(ctx)
+					return errors.Wrap(err, "failed to wait for desk mini-view animation")
+				}
+				ew.Release(ctx)
+				deskMiniViews.Release(ctx)
+				if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+					return errors.Wrap(err, "failed to wait for location-change events to be propagated to the automation API")
+				}
+				// Wait an additional 10 seconds just to be as careful as possible.
+				testing.Sleep(ctx, 10*time.Second)
+				deskMiniViewsAfterAnimation, err := chromeui.FindAll(ctx, tconn, chromeui.FindParams{ClassName: "DeskMiniView"})
+				if err != nil {
+					return errors.Wrap(err, "failed to get desk mini-views after animation")
+				}
+				defer deskMiniViewsAfterAnimation.Release(ctx)
+				if deskMiniViewCountAfterAnimation := len(deskMiniViewsAfterAnimation); deskMiniViewCountAfterAnimation != 2 {
+					return errors.Wrapf(err, "expected 2 desk mini-views after animation; found %v", deskMiniViewCountAfterAnimation)
+				}
 				wCenterX, wCenterY := tcc.ConvertLocation(w.OverviewInfo.Bounds.CenterPoint())
-				dCenterX, dCenterY := tcc.ConvertLocation(deskMiniViews[1].Location.CenterPoint())
+				dCenterX, dCenterY := tcc.ConvertLocation(deskMiniViewsAfterAnimation[1].Location.CenterPoint())
 				if err := stw.Swipe(ctx, wCenterX, wCenterY, dCenterX, dCenterY, time.Second); err != nil {
 					return errors.Wrap(err, "failed to swipe window to desk mini-view")
 				}
