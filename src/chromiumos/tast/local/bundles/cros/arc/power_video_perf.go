@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 const (
@@ -43,6 +44,7 @@ func init() {
 			"arcvm-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8_60},
+		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName, testVideoFile, testVideoFile + ".json"},
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
