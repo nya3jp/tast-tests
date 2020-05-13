@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "5b45de1d_8749aa6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-13T10:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd275bcd_87a5ac93",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e270dc1_c3c1837c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 1
@@ -222,6 +246,30 @@
       "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7e3a399_5adb419e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-13T10:34:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f03d17_a443b5c6",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -401,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "37b6b2a2_f9bf1afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-13T10:34:15Z",
+      "side": 1,
+      "message": "Ack, sorry I didn\u0027t get it",
+      "parentUuid": "ef452d1e_f3ac0bc9",
+      "range": {
+        "startLine": 71,
+        "startChar": 25,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72f3271c_bacea67e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 1
@@ -436,6 +508,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "72f3271c_bacea67e",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "3d236c7f5f06deacde58a6d6ece9b41802b912d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fea159ea_024ae527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-13T10:34:15Z",
+      "side": 1,
+      "message": "BTW, default poll interval is 1 second. You was lucky to don\u0027t see flakiness during test :)",
+      "parentUuid": "6428da60_e7bdee9e",
       "range": {
         "startLine": 88,
         "startChar": 34,
