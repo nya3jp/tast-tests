@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cd3871d2_eee93cec",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-13T21:26:23Z",
+      "side": 1,
+      "message": "I\u0027d like to don\u0027t have functions that nobody use them.\n\nIf someone will need some functionality, they are more than welcome to add missed functionality.",
+      "parentUuid": "f53e2232_bd83917f",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 32
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec9d8bee_3f9f6ba7",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 1
