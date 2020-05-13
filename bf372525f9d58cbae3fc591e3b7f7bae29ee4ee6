@@ -22,6 +22,30 @@
       "revId": "bf372525f9d58cbae3fc591e3b7f7bae29ee4ee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1369b6_06e7e664",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-13T10:23:55Z",
+      "side": 1,
+      "message": "No reason, it\u0027s just a placeholder for tast to verify that it compiles alright. I\u0027ve not found any convention or guidance on the psuedo test name to use in this case, but I believe it doesn\u0027t matter much because this doesn\u0027t introduce burden on maintaining the code.",
+      "parentUuid": "05808227_4e4bd561",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "bf372525f9d58cbae3fc591e3b7f7bae29ee4ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
