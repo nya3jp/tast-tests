@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d44f485_88ddbea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:22:59Z",
+      "side": 1,
+      "message": "nit: to minimize the scope, you can declare the struct in the body of the function.",
+      "revId": "7c6172a57f8133f94b0bcc7db18a2c75afa87064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f614e04a_6527a1ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cache/cache.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-13T09:22:59Z",
+      "side": 1,
+      "message": "style/optional:\nI\u0027d recommend to use CompositLiteral in append directly then to get rid of this.",
+      "revId": "7c6172a57f8133f94b0bcc7db18a2c75afa87064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
