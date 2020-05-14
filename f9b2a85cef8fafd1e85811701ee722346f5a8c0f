@@ -94,6 +94,30 @@
       "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd7832f5_29ca4a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-14T17:01:15Z",
+      "side": 1,
+      "message": "It looks like transform changes for views aren\u0027t propagated as accessibility events.\nFiled as crbug.com/1082562",
+      "parentUuid": "5a40120d_177a2ae3",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 38
+      },
+      "revId": "f9b2a85cef8fafd1e85811701ee722346f5a8c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
