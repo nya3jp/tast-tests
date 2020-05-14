@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46a9daeb_0d40c1ba",
+        "filename": "src/chromiumos/tast/common/hwsec/utility_cryptohome_binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-14T21:12:07Z",
+      "side": 1,
+      "message": "Note: I got the wrong error the last time, so I swapped it in this patchset.",
+      "range": {
+        "startLine": 699,
+        "startChar": 3,
+        "endLine": 699,
+        "endChar": 54
+      },
+      "revId": "81328d56b284bcb9bba158bf9e59cae748f71034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
