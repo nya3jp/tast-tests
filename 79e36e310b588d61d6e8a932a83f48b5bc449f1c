@@ -22,6 +22,30 @@
       "revId": "79e36e310b588d61d6e8a932a83f48b5bc449f1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c220145a_7a644019",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T03:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92dbdb12_b5e634a8",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "79e36e310b588d61d6e8a932a83f48b5bc449f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
