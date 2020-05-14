@@ -20,8 +20,16 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type overflowShelfTest struct {
-	enabled bool // Whether overflow shelf should be tested.
+type hotseatTestType string
+
+const (
+	nonOverflow          hotseatTestType = "NonOverflow"
+	overflow             hotseatTestType = "Oveflow"              // In test, add enough apps to enter overflow mode.
+	showNavigationWidget hotseatTestType = "ShowNavigationWidget" // In test, show the navigation widget (including home button and back button) by disabling the flag which hides the navigation widget as default.
+)
+
+type hotseatTestVal struct {
+	TestType hotseatTestType
 }
 
 func init() {
@@ -31,31 +39,53 @@ func init() {
 		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "andrewxu@chromium.org", "cros-shelf-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
-		Pre:          ash.LoggedInWith100DummyApps(),
-		Timeout:      8 * time.Minute,
-		Params: []testing.Param{{
-			Name: "non_overflow_shelf",
-			Val: overflowShelfTest{
-				enabled: false,
+		Timeout:      3 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "non_overflow_shelf",
+				Val:  nonOverflow,
+				Pre:  ash.LoggedInWith100DummyApps(),
 			},
-		}, {
-			Name: "overflow_shelf",
-			Val: overflowShelfTest{
-				enabled: true,
+			{
+				Name: "overflow_shelf",
+				Val:  overflow,
+				Pre:  ash.LoggedInWith100DummyApps(),
 			},
-		}},
+
+			// TODO(https://crbug.com/1083068): when the flag hide-shelf-controls-in-tablet-mode is removed, delete this test.
+			{
+				Name: "shelf_with_navigation_widget",
+				Val:  showNavigationWidget,
+				Pre:  chrome.NewPrecondition("ShowNavigationWidget", chrome.ExtraArgs("--disable-features=HideShelfControlsInTabletMode")),
+			},
+		},
 	})
 }
 
 // HotseatAnimation measures the performance of hotseat background bounds animation.
 func HotseatAnimation(ctx context.Context, s *testing.State) {
-	// TODO(newcomer): please record performance of navigation widget (https://crbug.com/1065405).
 	const (
+		// Histograms for hotseat.
 		extendedHotseatHistogram    = "Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"
 		hiddenHotseatHistogram      = "Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"
 		shownHotseatHistogram       = "Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"
 		shownHomeLauncherHistogram  = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeInOverview"
 		hiddenHomeLauncherHistogram = "Apps.HomeLauncherTransition.AnimationSmoothness.FadeOutOverview"
+
+		// Histograms for back button.
+		hiddenBackButtonHistogram   = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownBackButtonHistogram    = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToShownHotseat"
+		extendedBackButtonHistogram = "Ash.NavigationWidget.BackButton.AnimationSmoothness.TransitionToExtendedHotseat"
+
+		// Histograms for home button.
+		hiddenHomeButtonHistogram   = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownHomeButtonHistogram    = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToShownHotseat"
+		extendedHomeButtonHistogram = "Ash.NavigationWidget.HomeButton.AnimationSmoothness.TransitionToExtendedHotseat"
+
+		// Histograms for navigation widget.
+		hiddenWidgetHistogram   = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToHiddenHotseat"
+		shownWidgetHistogram    = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToShownHotseat"
+		extendedWidgetHistogram = "Ash.NavigationWidget.Widget.AnimationSmoothness.TransitionToExtendedHotseat"
 	)
 
 	cr := s.PreValue().(*chrome.Chrome)
@@ -92,7 +122,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	if s.Param().(overflowShelfTest).enabled {
+	if s.Param().(hotseatTestType) == overflow {
 		if err := ash.EnterShelfOverflow(ctx, tconn); err != nil {
 			s.Fatal(err, "Failed to enter overflow shelf")
 		}
@@ -105,7 +135,16 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
+	var histogramsName []string
+
 	// Collect metrics data from hiding hotseat by window creation.
+	histogramsName = append(histogramsName, hiddenHotseatHistogram)
+	if s.Param().(hotseatTestType) == showNavigationWidget {
+		histogramsName = append(histogramsName,
+			hiddenBackButtonHistogram,
+			hiddenHomeButtonHistogram,
+			hiddenWidgetHistogram)
+	}
 	histogramGroup, err := metrics.Run(ctx, tconn, func() error {
 		const numWindows = 1
 		conns, err := ash.CreateWindows(ctx, cr, "", numWindows)
@@ -121,7 +160,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, hiddenHotseatHistogram)
+	}, histogramsName...)
 	if err != nil {
 		s.Fatal("Failed to get mean histograms from hiding hotseat by window creation: ", err)
 	}
@@ -141,6 +180,20 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 
 	// Collect metrics data from entering/exiting overview.
+	histogramsName = []string{
+		shownHotseatHistogram,
+		extendedHotseatHistogram,
+		shownHomeLauncherHistogram,
+		hiddenHomeLauncherHistogram}
+	if s.Param().(hotseatTestType) == showNavigationWidget {
+		histogramsName = append(histogramsName,
+			extendedBackButtonHistogram,
+			shownBackButtonHistogram,
+			extendedHomeButtonHistogram,
+			shownHomeButtonHistogram,
+			extendedWidgetHistogram,
+			shownWidgetHistogram)
+	}
 	histogramGroup, err = metrics.Run(ctx, tconn, func() error {
 		// Add a new tab.
 		conn, err := cr.NewConn(ctx, ui.PerftestURL)
@@ -208,11 +261,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	},
-		shownHotseatHistogram,
-		extendedHotseatHistogram,
-		shownHomeLauncherHistogram,
-		hiddenHomeLauncherHistogram)
+	}, histogramsName...)
 	if err != nil {
 		s.Fatal("Failed to get mean histogram from entering/exiting overview: ", err)
 	}
@@ -232,6 +281,13 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 	}
 
 	// Collect metrics data from hiding hotseat by window activation.
+	histogramsName = []string{hiddenHotseatHistogram}
+	if s.Param().(hotseatTestType) == showNavigationWidget {
+		histogramsName = append(histogramsName,
+			hiddenBackButtonHistogram,
+			hiddenHomeButtonHistogram,
+			hiddenWidgetHistogram)
+	}
 	histogramGroup, err = metrics.Run(ctx, tconn, func() error {
 		// Verify the initial hotseat state before hiding.
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownHomeLauncher); err != nil {
@@ -273,7 +329,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, hiddenHotseatHistogram)
+	}, histogramsName...)
 	if err != nil {
 		s.Fatal("Failed to get mean histograms from hiding hotseat by window activation: ", err)
 	}
