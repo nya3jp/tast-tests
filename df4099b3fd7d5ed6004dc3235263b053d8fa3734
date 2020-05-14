@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f30c5261_e3e08853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T11:47:46Z",
+      "side": 1,
+      "message": "Done.  Using initializer functions to reduce copy paste.",
+      "parentUuid": "41c5b588_136c5771",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8745293_9f46bbe9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024fed4e_3d60a55a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T11:47:46Z",
+      "side": 1,
+      "message": "Done. Added to comment.",
+      "parentUuid": "e8745293_9f46bbe9",
+      "range": {
+        "startLine": 95,
+        "startChar": 31,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b9b0fee1_87f3636b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T11:47:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "95641dd5_8e300a1f",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fff716b_22c2dcf5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdbbf0d_1888f887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T11:47:46Z",
+      "side": 1,
+      "message": "Done. Added returning errors.",
+      "parentUuid": "6fff716b_22c2dcf5",
+      "range": {
+        "startLine": 110,
+        "startChar": 21,
+        "endLine": 110,
+        "endChar": 33
+      },
+      "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4807f90e_c6bde63a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T11:47:46Z",
+      "side": 1,
+      "message": "Done and added err as well.",
+      "parentUuid": "b182632b_026f0c1f",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7e3d6b4_bdd50165",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2020-05-13T21:24:19Z",
       "side": 1,
       "message": "feel free to drop this, and GetPlayStoreState func. Our test account should be always configured to be allowed. And if not, this test would just fail",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "df4099b3fd7d5ed6004dc3235263b053d8fa3734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0757b07_90e5e4c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T11:47:46Z",
+      "side": 1,
+      "message": "Got it.  So SetPlayStoreEnabled will fail if either Play Store is not allowed, someone changed the test accounts by accident and / or account settings changed.  I am thinking adding a sanity check may provide more context; would a SetPlayStoreEnabled JS function failure provide whether it\u0027s a test account settings change making it not allowed vs. an API issue?",
+      "parentUuid": "f7e3d6b4_bdd50165",
       "range": {
         "startLine": 183,
         "startChar": 0,
