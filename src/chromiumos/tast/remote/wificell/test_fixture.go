@@ -267,6 +267,10 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 		return nil, err
 	}
 
+	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHost); err != nil {
+		return nil, err
+	}
+
 	ap, err := tf.router.StartAPIface(ctx, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
@@ -323,6 +327,10 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
+
+	if err := h.Config().SecurityConfig.InstallClientCredentials(ctx, tf.dut); err != nil {
+		return err
+	}
 
 	props, err := h.Config().SecurityConfig.ShillServiceProperties()
 	if err != nil {
