@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ebc35c_3df8bd4d",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T02:27:29Z",
+      "side": 1,
+      "message": "I don\u0027t really want to have this function here. If it is used incorrectly (e.g., called from another goroutine as StopRecording), then there could be a nullpointer exception. But I need it for the unit tests of Timeline. In those tests, I am waiting for certain conditions, e.g., for the goroutine to go to sleep or for a snapshot to be taken. If an error occurs during taking a snapshot, the goroutine stops and we would be waiting forever. So there must be a way to check if we are still recording.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 88
+      },
+      "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
