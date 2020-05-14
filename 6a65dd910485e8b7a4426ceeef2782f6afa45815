@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5640d8a_c39542bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T09:07:18Z",
+      "side": 1,
+      "message": "Maybe we can find a better place to store the common options. Noted that another CL did the similar thing: https://crrev.com/c/2156192/21/src/chromiumos/tast/remote/wificell/test_fixture.go",
+      "revId": "6a65dd910485e8b7a4426ceeef2782f6afa45815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
