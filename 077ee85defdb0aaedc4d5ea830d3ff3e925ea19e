@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c228acb_50dc5977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-14T23:56:10Z",
+      "side": 1,
+      "message": "nit: you could say:\n  collapseButton, err :\u003d ui.FindWithTimeout(ctx, tconn, params)",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 87
+      },
+      "revId": "077ee85defdb0aaedc4d5ea830d3ff3e925ea19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
