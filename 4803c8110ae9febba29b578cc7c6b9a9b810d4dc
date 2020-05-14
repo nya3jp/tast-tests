@@ -70,6 +70,30 @@
       "revId": "4803c8110ae9febba29b578cc7c6b9a9b810d4dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8976716_526c4a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-14T08:58:02Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll change it, thanks!",
+      "parentUuid": "a0e9903e_4cf19283",
+      "range": {
+        "startLine": 917,
+        "startChar": 14,
+        "endLine": 917,
+        "endChar": 41
+      },
+      "revId": "4803c8110ae9febba29b578cc7c6b9a9b810d4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
