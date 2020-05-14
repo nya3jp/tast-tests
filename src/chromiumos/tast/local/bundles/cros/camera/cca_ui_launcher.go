@@ -59,19 +59,15 @@ func CCAUILauncher(ctx context.Context, s *testing.State) {
 	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
 	}
-	if isMinimized, err := app.IsWindowMinimized(ctx); err != nil {
-		s.Fatal("Failed to check if window is minimized: ", err)
-	} else if !isMinimized {
-		s.Error("App should be minimized after firing launch when the window is shown")
+	if err := app.WaitForMinimizeStateChanged(ctx, true); err != nil {
+		s.Fatal("Failed to wait for app being minimized: ", err)
 	}
 
 	// When firing the launch event as the app is minimized, the app window should be restored.
 	if err := launcher.SearchAndLaunch(ctx, tconn, "Camera"); err != nil {
 		s.Fatal("Failed to launch camera app: ", err)
 	}
-	if isMinimized, err := app.IsWindowMinimized(ctx); err != nil {
-		s.Fatal("Failed to check if window is minimized: ", err)
-	} else if isMinimized {
-		s.Error("App should be restored after firing launch when the window is minimized")
+	if err := app.WaitForMinimizeStateChanged(ctx, false); err != nil {
+		s.Fatal("Failed to wait for app being restored: ", err)
 	}
 }

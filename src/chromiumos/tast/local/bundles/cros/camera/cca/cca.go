@@ -913,6 +913,15 @@ func (a *App) WaitForState(ctx context.Context, state string, active bool) error
 	return nil
 }
 
+// WaitForMinimizeStateChanged waits for app window get minimized/restored.
+func (a *App) WaitForMinimizeStateChanged(ctx context.Context, minimized bool) error {
+	code := fmt.Sprintf("Tast.isMinimized() === %t", minimized)
+	if err := a.conn.WaitForExpr(ctx, code); err != nil {
+		return errors.Wrap(err, "failed to wait for app window being minimized/restored")
+	}
+	return nil
+}
+
 // CheckGridOption checks whether grid option enable state is as expected.
 func (a *App) CheckGridOption(ctx context.Context, expected bool) error {
 	var actual bool
