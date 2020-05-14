@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8400f78b_e1cd6773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-14T21:16:03Z",
+      "side": 1,
+      "message": "s is a big structure, we should consider not passing it if necessary. \n\nIs the following function fingerprint look good to you?\nfunc attempOptIn(ctx context.Context, username, password string, extraArgs []string, delay time.Durations} (arcProvisioned bool, err error)",
+      "range": {
+        "startLine": 159,
+        "startChar": 39,
+        "endLine": 159,
+        "endChar": 40
+      },
+      "revId": "f321bc8831c3fd15520fe2b620867cf7836aca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b59ebe2_1e189fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-14T21:16:03Z",
+      "side": 1,
+      "message": "If you agree with the function I purposed, you can \"return true, nil\" here.",
+      "range": {
+        "startLine": 222,
+        "startChar": 9,
+        "endLine": 225,
+        "endChar": 8
+      },
+      "revId": "f321bc8831c3fd15520fe2b620867cf7836aca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593909b4_8af60671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-14T21:16:03Z",
+      "side": 1,
+      "message": "I\u0027d prefer put this function to OptInAfterInterruption to simplify the workflow. With the current approach, it is hard to see what the returned function would do.",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 261,
+        "endChar": 2
+      },
+      "revId": "f321bc8831c3fd15520fe2b620867cf7836aca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
