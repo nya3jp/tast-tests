@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b455698_efcc718e",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-14T04:15:22Z",
+      "side": 1,
+      "message": "I thought that passing the slice as a pointer is faster than copying, but I read this ( https://go101.org/article/value-copy-cost.html ) and changed my mind. Thanks for pointing out!",
+      "parentUuid": "34f8de95_773869fc",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 31
+      },
+      "revId": "4e3d1760e517d8bc6a01ac657d364c2171b7c10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a0fe5df_36b1d095",
         "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2afbc871_adb080ce",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-14T04:15:22Z",
+      "side": 1,
+      "message": "Changed to return err on unexpected errors.",
+      "parentUuid": "4a0fe5df_36b1d095",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 58
+      },
+      "revId": "4e3d1760e517d8bc6a01ac657d364c2171b7c10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28cd45f7_0ed2370c",
         "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-13T20:45:51Z",
       "side": 1,
       "message": "Is this standard to leave this in the final code? Won\u0027t L17 in metrics.go confirm this anyway?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 54
+      },
+      "revId": "4e3d1760e517d8bc6a01ac657d364c2171b7c10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2db06fb_8769f7bf",
+        "filename": "src/chromiumos/tast/local/power/sysfs_battery_metrics.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2020-05-14T04:15:22Z",
+      "side": 1,
+      "message": "I added this to align with other power metrics implementations such as battery_metrics.go:137 and rapl_metrics.go:21. It improves readability with asserting the type implements perf.TimelineDatasource interface in the same file the type is implemented. Does it make sense to you?",
+      "parentUuid": "28cd45f7_0ed2370c",
       "range": {
         "startLine": 113,
         "startChar": 0,
