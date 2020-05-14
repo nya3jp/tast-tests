@@ -223,9 +223,9 @@ func isNApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 	info, err := d.GetInfo(ctx)
 	if err != nil {
 		s.Log("Failed to get app sdk version: ", err)
-	} else {
-		s.Logf("App sdk version %+v", info.SDKInt)
+		return false
 	}
+	s.Logf("App sdk version %+v", info.SDKInt)
 	if info.SDKInt >= 24 {
 		nApp = true
 	}
@@ -262,9 +262,9 @@ func CurrentAppPackage(ctx context.Context, s *testing.State, d *ui.Device) stri
 	info, err := d.GetInfo(ctx)
 	if err != nil {
 		s.Log("Failed to get app package name: ", err)
-	} else {
-		s.Logf("Current app package name %+v", info.CurrentPackagename)
+		return ""
 	}
+	s.Logf("Current app package name %+v", info.CurrentPackagename)
 	return info.CurrentPackagename
 }
 
