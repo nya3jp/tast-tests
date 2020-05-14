@@ -40,7 +40,14 @@ const (
 	ServicePropertyEAPInnerEAP  = "EAP.InnerEAP"
 	ServicePropertyEAPIdentity  = "EAP.Identity"
 	ServicePropertyEAPPassword  = "EAP.Password"
+	ServicePropertyEAPPin       = "EAP.PIN"
+	ServicePropertyEAPCertID    = "EAP.CertID"
+	ServicePropertyEAPKeyID     = "EAP.KeyID"
+	ServicePropertyEAPKeyMgmt   = "EAP.KeyMgmt"
 )
+
+// ServicePropertyEAPKeyMgmtIEEE8021X is a value of EAPKeyMgmt.
+const ServicePropertyEAPKeyMgmtIEEE8021X = "IEEE8021X"
 
 // Service state values defined in dbus-constants.h
 const (
