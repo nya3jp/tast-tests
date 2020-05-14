@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "08e0667e_956675a3",
+        "filename": "src/chromiumos/tast/common/perf/timeline.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T06:31:37Z",
+      "side": 1,
+      "message": "\u003e As for WaitForSleep, I think it is sufficient to just wait for fakeClock.isSleeping \u003d true.\n\nIf then goroutine exits with an error (e.g., because of an error in Snapshot()), `fakeClock.isSleeping` will be false and never be set to `true` again (because the goroutine won\u0027t call Sleep() anymore). So we would wait forever.\n\nAs for WaitForSnapshots, if I understand correctly, you suggest adding an reading from a channel N times. If the goroutine exits, it would close the channel and WaitForSnapshots would stop waiting for a message on the channel. I think this would work, but we would pollute \"production\" code with testing state/code (adding a channel, logic for closing a channel). I don\u0027t have a better solution, but I think this should be avoided.",
+      "parentUuid": "39bb7044_70c1f217",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 88
+      },
+      "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5df1e4ab_f6246b8e",
         "filename": "src/chromiumos/tast/common/perf/timeline.go",
         "patchSetId": 3
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "19463440_fedcf0f4",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T06:31:37Z",
+      "side": 1,
+      "message": "This code path is used only in TestTimelineSlowSnapshot. If we want to simulate a slow Snapshot function, we have to make it pass time. This means calling `AdvanceClock`, I don\u0027t see any way around this.\n\nNote, not only the clock is accessed by multiple goroutines. The same is the case for `isSleeping` (set to true in snapshotting goroutine, read from the the main goroutine; but this is less dangerous than the clock which is written from two goroutines). I am not sure if those should go through a channel. If we have one reader and one writer, there is no race, even if they are in different goroutines.",
+      "parentUuid": "1af45d75_d627f52d",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f3662e7_ef6c5011",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 3
@@ -106,6 +154,30 @@
       "writtenOn": "2020-05-14T03:18:48Z",
       "side": 1,
       "message": "Is it a data race to access these fields from multiple goroutines without a lock.\n\nUse a mutex to protect these fields.\nhttps://godoc.org/sync#Mutex",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 16
+      },
+      "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d25f2b_807aec7e",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T06:31:37Z",
+      "side": 1,
+      "message": "Mutex or channel, which is the preferred way?",
+      "parentUuid": "8f3662e7_ef6c5011",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1914a14e_d7580586",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T06:31:37Z",
+      "side": 1,
+      "message": "Done.\n\nAlthough, as you said it can still malfunction if called from multiple goroutines.",
+      "parentUuid": "0ce99f92_2258b07c",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "177f9917_1691b00a",
         "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
         "patchSetId": 3
@@ -152,6 +248,30 @@
       "writtenOn": "2020-05-14T03:18:48Z",
       "side": 1,
       "message": "We should avoid polling for a condition when we can detect events. Please try to remove all use of testing.Poll from these unit tests.\n\nIn this case we want to notify the goroutine blocked in Sleep for clock change. There are at least two common ways to do this: channels and sync.Cond. In this case we also have to wait for ctx cancellation, so channels are the only choice.\n\nThis is an example notifying value changes. Note that channels are very cheap in Go.\n\n type Counter struct {\n   mu  sync.Mutex\n   ch  chan struct{} // closed when cnt is changed\n   cnt int\n }\n\n func NewCounter() *Counter {\n   return \u0026Counter{ch: make(chan struct{}))\n }\n\n // Add adds d to the counter.\n func (c *Counter) Add(d int) {\n   c.mu.Lock()\n   defer c.mu.Unlock()\n   c.cnt +\u003d d\n   close(c.ch)\n   c.ch \u003d make(chan struct{})\n }\n\n // Wait waits until the counter value becomes want.\n func (c *Counter) Wait(ctx context.Context, want int) error {\n   for {\n     c.mu.Lock()\n     got :\u003d c.cnt\n     ch :\u003d c.ch\n     c.mu.Unlock()\n\n     if got \u003d\u003d want {\n       return nil\n     }\n\n     select {\n     case \u003c-ctx.Done():\n       return ctx.Err()\n     case \u003c-ch:\n     }\n   }\n }",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4794ef70_589bc143",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T06:31:37Z",
+      "side": 1,
+      "message": "I have to think about this a bit...",
+      "parentUuid": "177f9917_1691b00a",
       "range": {
         "startLine": 85,
         "startChar": 8,
