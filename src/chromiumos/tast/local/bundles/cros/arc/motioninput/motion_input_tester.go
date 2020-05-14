@@ -62,6 +62,10 @@ type MotionEvent struct {
 	DeviceID    int                `json:"device_id"`
 	Sources     []Source           `json:"sources"`
 	PointerAxes []map[Axis]float64 `json:"pointer_axes"`
+	// Batched is true if this event was included in the history of another MotionEvent in Android,
+	// and false otherwise. See more information about batching at:
+	// https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/view/MotionEvent.java;l=93
+	Batched bool `json:"batched"`
 }
 
 // Constants for the test application ArcMotionInputTest.apk.
