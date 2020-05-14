@@ -16,6 +16,24 @@
       "revId": "6a31466d1cd5c651a02233ebeda9e875baae3aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb97270b_13c00168",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-14T06:17:44Z",
+      "side": 1,
+      "message": "Done. If this becomes a problem we can look at the intersection of the set of window ids before and after.",
+      "parentUuid": "7533aa6a_e9164620",
+      "revId": "6a31466d1cd5c651a02233ebeda9e875baae3aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
