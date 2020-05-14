@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a777bf28_4886f1d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/ownership/ownership.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2020-05-14T00:58:50Z",
+      "side": 1,
+      "message": "Does that works? I don\u0027t feel it is encouraged in tast to symlink the actual code. \nCan you upstream the ownership.go instead?",
+      "range": {
+        "startLine": 1,
+        "startChar": 6,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "607c18b36343caa2039c0dd61873184680d58d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
