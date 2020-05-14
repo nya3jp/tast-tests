@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b2a4dde_5f239834",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "despite security changes",
+      "range": {
+        "startLine": 21,
+        "startChar": 54,
+        "endLine": 21,
+        "endChar": 86
+      },
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c84a755_6489269c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "the DUT",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5873a52f_06ac8647",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "chromeos-platform-connectivity",
+      "range": {
+        "startLine": 22,
+        "startChar": 49,
+        "endLine": 22,
+        "endChar": 69
+      },
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69df1498_4b2aa0f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "// setUpAndConnect sets up the WiFi AP and verifies the DUT can connect to it.",
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b503e8_cf77a033",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "Hot about adding a timing info?",
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26dfc2fb_12287b86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "// collectErr logs the given err and returns it if the returning error is is unspecified.\n// Used in deferred functions.",
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456d327c_3da60cde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "protected network",
+      "range": {
+        "startLine": 98,
+        "startChar": 24,
+        "endLine": 98,
+        "endChar": 44
+      },
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db9147d1_fcd98fe1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "a protected network (WPA):",
+      "range": {
+        "startLine": 100,
+        "startChar": 32,
+        "endLine": 100,
+        "endChar": 40
+      },
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3639100_0c1b0b6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sec_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:15:14Z",
+      "side": 1,
+      "message": "an open",
+      "range": {
+        "startLine": 104,
+        "startChar": 32,
+        "endLine": 104,
+        "endChar": 36
+      },
+      "revId": "bd521937b96eff32a6acf649c221b9f3745c349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
