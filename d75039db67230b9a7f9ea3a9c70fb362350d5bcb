@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "bba46664_28cdf369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T20:12:53Z",
+      "side": 1,
+      "message": "I believe so, otherwise we\u0027ll modify test",
+      "parentUuid": "4362c317_0be7f0f7",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003f9355_a4c54b9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Is it really necessary? We don\u0027t do this for any of our other cros_healthd tast tests.",
       "parentUuid": "003f9355_a4c54b9c",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256e198e_43ac6376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T20:12:53Z",
+      "side": 1,
+      "message": "it\u0027s up to you I guess. If you don\u0027t verify values, it\u0027s more like smoke test.\n\nThere are already helper libraries for BT, why not use them then?",
+      "parentUuid": "7c66393c_491ff052",
       "range": {
         "startLine": 73,
         "startChar": 1,
