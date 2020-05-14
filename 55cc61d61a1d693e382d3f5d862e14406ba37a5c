@@ -281,6 +281,30 @@
       "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328cb9df_e1ff5842",
+        "filename": "src/chromiumos/tast/common/perf/timeline_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1375928
+      },
+      "writtenOn": "2020-05-14T07:14:49Z",
+      "side": 1,
+      "message": "There are 3 poll statements in the code right now.\n\n* WaitForSnapshots(n): Can be done with Counter.\n* WaitForClockAdvance(time): Can be done with Counter.\n* WaitForSleep(): Cannot be done with Counter. We have to wait until the goroutine is sleeping. Essentially, we have to wait until WaitForClockAdvance() is blocking. This depends on the internal state of Counter. So Counter has to expose some of its internal state, preferably in a thread-safe way. This is tricky.",
+      "parentUuid": "4794ef70_589bc143",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "55cc61d61a1d693e382d3f5d862e14406ba37a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
