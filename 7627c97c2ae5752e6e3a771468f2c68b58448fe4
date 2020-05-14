@@ -94,6 +94,30 @@
       "revId": "7627c97c2ae5752e6e3a771468f2c68b58448fe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aecc44b_e9bc21b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-14T03:37:47Z",
+      "side": 0,
+      "message": "I prefer we change to test some other methods if that method is not used by anyone. How about we test StartPerfEventTrace(\"Test\")  [1] and StopPerfEventTrace(\"Test\") which I think are also simple enough?\n\n[1]: https://source.chromium.org/chromium/chromium/src/+/master:components/chromeos_camera/common/camera_app_helper.mojom;drc\u003ded72cf43a8d6358b368dce0602954d795f239a15;l\u003d33?originalUrl\u003dhttps:%2F%2Fcs.chromium.org%2F",
+      "parentUuid": "1e1fce70_dad87072",
+      "range": {
+        "startLine": 298,
+        "startChar": 9,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "7627c97c2ae5752e6e3a771468f2c68b58448fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
