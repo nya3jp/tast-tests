@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdc0c452_a83586f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-14T02:22:30Z",
+      "side": 1,
+      "message": "IIUC, if err \u003d\u003d nil, this returns false so throws an error?\nMaybe\n\nif err !\u003d nil \u0026\u0026 !errors.Is(err, os.ErrNotExist) {\n  ...\n}",
+      "revId": "e160771b9b6f96a8efccd381547aa38aa7557255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
