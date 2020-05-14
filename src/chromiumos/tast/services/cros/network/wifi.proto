@@ -48,7 +48,12 @@ message ShillVal {
   oneof val {
     string str = 1;
     bool bool = 2;
+    StrArray strArray = 3;
   }
+}
+
+message StrArray {
+  repeated string strArray = 1;
 }
 
 message Service {

@@ -6,13 +6,16 @@
 package wpa
 
 import (
+	"context"
 	"encoding/hex"
 	"strconv"
 	"strings"
 
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/ssh"
 )
 
 // A PSK should be a string composed with 64 hex digits, or a ASCII passphrase whose length is between 8 and 63 (inclusive).
@@ -123,6 +126,16 @@ func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 		ret[shill.ServicePropertyFTEnabled] = true
 	}
 	return ret, nil
+}
+
+// InstallClientCredentials installs the nacessary credentials onto DUT.
+func (*Config) InstallClientCredentials(context.Context, *dut.DUT) error {
+	return nil
+}
+
+// InstallRouterCredentials installs the nacessary credentials onto router.
+func (*Config) InstallRouterCredentials(context.Context, *ssh.Conn) error {
+	return nil
 }
 
 // validate validates the Config.

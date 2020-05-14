@@ -6,8 +6,12 @@
 package base
 
 import (
+	"context"
+
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/ssh"
 )
 
 // Config implements security.Config interface for open network, i.e., no security.
@@ -45,4 +49,14 @@ func (*Config) HostapdConfig() (map[string]string, error) {
 // ShillServiceProperties returns shill properties of open network.
 func (*Config) ShillServiceProperties() (map[string]interface{}, error) {
 	return nil, nil
+}
+
+// InstallClientCredentials installs the nacessary credentials onto DUT.
+func (*Config) InstallClientCredentials(context.Context, *dut.DUT) error {
+	return nil
+}
+
+// InstallRouterCredentials installs the nacessary credentials onto router.
+func (*Config) InstallRouterCredentials(context.Context, *ssh.Conn) error {
+	return nil
 }

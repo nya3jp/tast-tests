@@ -9,6 +9,13 @@
 //   in testing.AddTest and Gen the Config object later in test body.
 package security
 
+import (
+	"context"
+
+	"chromiumos/tast/dut"
+	"chromiumos/tast/ssh"
+)
+
 // Config defines methods to generate hostapd and shill config of protected network.
 type Config interface {
 	// Class returns the SecurityClass (defined in shill/service.go) of the WiFi service
@@ -19,6 +26,10 @@ type Config interface {
 	// ShillServiceProperties returns the shill properties that the DUT should set in
 	// order to connect to the WiFi service configured by HostapdConfig.
 	ShillServiceProperties() (map[string]interface{}, error)
+	// InstallClientCredentials installs the nacessary credentials onto DUT.
+	InstallClientCredentials(context.Context, *dut.DUT) error
+	// InstallRouterCredentials installs the nacessary credentials onto router.
+	InstallRouterCredentials(context.Context, *ssh.Conn) error
 }
 
 // ConfigFactory defines a Gen() method to generate a Config instance.

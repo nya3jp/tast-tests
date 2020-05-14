@@ -20,12 +20,14 @@ func TestShillValMapConvert(t *testing.T) {
 	}{
 		{ // all supported types
 			normalMap: map[string]interface{}{
-				"bool":   true,
-				"string": "abc",
+				"bool":     true,
+				"string":   "abc",
+				"[]string": []string{"abc", "123"},
 			},
 			shillValMap: ShillValMap{
-				"bool":   &network.ShillVal{Val: &network.ShillVal_Bool{Bool: true}},
-				"string": &network.ShillVal{Val: &network.ShillVal_Str{Str: "abc"}},
+				"bool":     &network.ShillVal{Val: &network.ShillVal_Bool{Bool: true}},
+				"string":   &network.ShillVal{Val: &network.ShillVal_Str{Str: "abc"}},
+				"[]string": &network.ShillVal{Val: &network.ShillVal_StrArray{StrArray: &network.StrArray{StrArray: []string{"abc", "123"}}}},
 			},
 			shouldFail: false,
 		},
@@ -56,13 +58,6 @@ func TestShillValMapConvert(t *testing.T) {
 			},
 			shillValMap: nil,
 			shouldFail:  true, // []bool is not supported
-		},
-		{
-			normalMap: map[string]interface{}{
-				"[]string": []string{},
-			},
-			shillValMap: nil,
-			shouldFail:  true, // []string is not supported
 		},
 	}
 

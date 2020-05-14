@@ -6,13 +6,16 @@
 package wep
 
 import (
+	"context"
 	"encoding/hex"
 	"fmt"
 	"strconv"
 
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/ssh"
 )
 
 // AuthAlgo is the type for specifying WEP authentication algorithms.
@@ -59,6 +62,16 @@ func (c *Config) HostapdConfig() (map[string]string, error) {
 func (c *Config) ShillServiceProperties() (map[string]interface{}, error) {
 	keyWithIndex := fmt.Sprintf("%d:%s", c.defaultKey, c.keys[c.defaultKey])
 	return map[string]interface{}{shill.ServicePropertyPassphrase: keyWithIndex}, nil
+}
+
+// InstallClientCredentials installs the nacessary credentials onto DUT.
+func (*Config) InstallClientCredentials(context.Context, *dut.DUT) error {
+	return nil
+}
+
+// InstallRouterCredentials installs the nacessary credentials onto router.
+func (*Config) InstallRouterCredentials(context.Context, *ssh.Conn) error {
+	return nil
 }
 
 // formatKey is a helper function for generating hostapd and wpa_cli config.

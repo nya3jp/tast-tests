@@ -30,6 +30,12 @@ func EncodeToShillValMap(conf map[string]interface{}) (ShillValMap, error) {
 					Bool: x,
 				},
 			}
+		case []string:
+			ret[k] = &network.ShillVal{
+				Val: &network.ShillVal_StrArray{
+					StrArray: &network.StrArray{StrArray: x},
+				},
+			}
 		default:
 			return nil, errors.Errorf("unsupported type %T", x)
 		}
@@ -46,6 +52,8 @@ func DecodeFromShillValMap(conf ShillValMap) (map[string]interface{}, error) {
 			ret[k] = x.Str
 		case *network.ShillVal_Bool:
 			ret[k] = x.Bool
+		case *network.ShillVal_StrArray:
+			ret[k] = x.StrArray.StrArray
 		default:
 			return nil, errors.Errorf("unsupported type %T", x)
 		}
