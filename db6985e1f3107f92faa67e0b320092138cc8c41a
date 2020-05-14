@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "c1042f14_1ed09560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/navigation_widget_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-14T20:33:17Z",
+      "side": 1,
+      "message": "Can you add this \"Desc\" section a bit more?",
+      "parentUuid": "a031e04a_294f6a8f",
+      "range": {
+        "startLine": 25,
+        "startChar": 47,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "db6985e1f3107f92faa67e0b320092138cc8c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2d1f40_7fd13893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/navigation_widget_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-14T20:33:17Z",
+      "side": 1,
+      "message": "8 minutes looks a bit long. Does it take that time really?",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "db6985e1f3107f92faa67e0b320092138cc8c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "852b73d2_5870c2a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/navigation_widget_perf.go",
         "patchSetId": 2
@@ -89,6 +136,23 @@
         "endLine": 46,
         "endChar": 105
       },
+      "revId": "db6985e1f3107f92faa67e0b320092138cc8c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f24465c3_cb8f1353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/navigation_widget_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-14T20:33:17Z",
+      "side": 1,
+      "message": "Please:\n- file an issue for the feature flag handling. It is going to be disabled by default eventually, correct?\n- add a TODO comment of \"use chrome.LoggedIn() precondition once this feature is disabled by default\" with the link to the issue you filed.",
       "revId": "db6985e1f3107f92faa67e0b320092138cc8c41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
