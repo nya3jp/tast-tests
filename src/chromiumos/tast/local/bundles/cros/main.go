@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/local/bundlemain"
 	// Underscore-imported packages register their tests via init functions.
 	_ "chromiumos/tast/local/bundles/cros/ad"
+	_ "chromiumos/tast/local/bundles/cros/apps"
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/arcappcompat"
 	_ "chromiumos/tast/local/bundles/cros/assistant"
