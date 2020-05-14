@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39e6d41c_e0ffbd95",
+        "filename": "android/ArcMotionInputTest/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-14T20:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f7a799f_84ae16fa",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26ae866c_de4daf78",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
         "patchSetId": 5
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "52c54f86_a9685994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-14T20:22:01Z",
+      "side": 1,
+      "message": "I already have a CL on top of this to enable this in P, and I have already tested it in P as well.\n\nI did not request a review on that yet, as I wanted to get a +2 on this first.\n\nI also wanted it on a separate CL so that it can be disabled in P easily with a revert.",
+      "parentUuid": "c7949086_7beb4c36",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b86a9a6_84ad7372",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
         "patchSetId": 5
@@ -92,6 +140,30 @@
       "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b053531_87c46706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-14T20:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b86a9a6_84ad7372",
+      "range": {
+        "startLine": 41,
+        "startChar": 40,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "55df1ca8_26cb8320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-14T20:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a949dba_ebd6c9aa",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4391129_d98acc4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
         "patchSetId": 5
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "1983d8a4_def6fe7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-14T20:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4391129_d98acc4e",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1f19d09_2e1fa901",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
         "patchSetId": 5
@@ -161,6 +281,30 @@
       "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f93efd1f_40738822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pointer_capture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1310387
+      },
+      "writtenOn": "2020-05-14T20:22:01Z",
+      "side": 1,
+      "message": "I completely forgot about MotionEvent batching in Android.\n\nI uploaded another CL to address the batching issue: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2202637\n\nAfter that, it turns out there was a bug in pointer capture, so I have the appropriate TODOs.",
+      "parentUuid": "a1f19d09_2e1fa901",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "ccfe532bf6878b04132b29b7689120e0e59a5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
