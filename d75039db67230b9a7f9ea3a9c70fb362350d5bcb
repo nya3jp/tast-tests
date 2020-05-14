@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21bc2a1c_0e2cbf36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:57:49Z",
+      "side": 1,
+      "message": "I saw it multiple time, looks like it\u0027s a good candidate to move into a separate function\n\n// returns telemetry in CSV\nfunc FetchTelemetry(ctx context.Context, category string) ([][]string, error)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302d497a_6527a837",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:57:49Z",
+      "side": 1,
+      "message": "I guess if \"len(lines) \u003d\u003d 1\" we should fail.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003f9355_a4c54b9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:57:49Z",
+      "side": 1,
+      "message": "Let\u0027s compare with real values.\n\nSee how we did for wilco: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/bt/validate.go",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1beb837_5f018395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:57:49Z",
+      "side": 1,
+      "message": "nit: specify why it\u0027s invalid",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
