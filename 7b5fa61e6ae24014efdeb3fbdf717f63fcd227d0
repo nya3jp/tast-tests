@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "694c5336_8aec24e4",
+        "filename": "android/build/util/rules.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-05-14T02:07:54Z",
+      "side": 1,
+      "message": "\"target_gen_dir\" sonud like unique to each build target, but actually GN gives the common value to all targets in the same BUILD.gn, by design.\n\nfrom gn help target_gen_dir:\n\u003e target_gen_dir: Directory for a target\u0027s generated files.\n\u003e \n\u003e   Absolute path to the target\u0027s generated file directory. This will be the\n\u003e   \"root_gen_dir\" followed by the relative path to the current build file.",
+      "revId": "7b5fa61e6ae24014efdeb3fbdf717f63fcd227d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
