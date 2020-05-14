@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "fd96c470_c6a63f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T04:13:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1852702_bfcde581",
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb6cda9f_b11f809b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 5
@@ -142,6 +160,30 @@
       "side": 1,
       "message": "The tast owner lamzin@ prefer to pass in ctx as argument. See the lamzin\u0027s comment on PS1 PS4.",
       "parentUuid": "fb6cda9f_b11f809b",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf90f60_969f4e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T04:13:20Z",
+      "side": 1,
+      "message": "Hi lamzin@, could you help elaborate more on this? Thanks.",
+      "parentUuid": "83dcfd18_154c8a9c",
       "range": {
         "startLine": 132,
         "startChar": 25,
