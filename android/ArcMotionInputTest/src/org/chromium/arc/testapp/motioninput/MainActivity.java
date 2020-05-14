@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
 import android.view.InputDevice;
+import android.view.InputDevice.MotionRange;
 import android.view.MotionEvent;
+import android.view.MotionEvent.PointerCoords;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class MainActivity extends Activity {
     private static final String KEY_SOURCES = "sources";
     private static final String KEY_POINTER_AXES = "pointer_axes";
     private static final String KEY_DEVICE_ID = "device_id";
+    private static final String KEY_BATCHED = "batched";
 
     private static final String SOURCE_KEYBOARD = "keyboard";
     private static final String SOURCE_DPAD = "dpad";
@@ -100,8 +103,11 @@ public class MainActivity extends Activity {
     }
 
     protected void reportMotionEvent(MotionEvent ev) {
-        final JSONObject jsonEvent = getJSONObjectFromMotionEvent(ev);
-        mEventsToReport.put(jsonEvent == null ? JSONObject.NULL : jsonEvent);
+        final List<JSONObject> jsonEvents = getJSONObjectsFromMotionEvent(ev);
+        if (jsonEvents.isEmpty()) {
+            mEventsToReport.put(JSONObject.NULL);
+        }
+        jsonEvents.forEach(mEventsToReport::put);
         mTvMotionEvents.setText(mEventsToReport.toString());
     }
 
@@ -110,18 +116,53 @@ public class MainActivity extends Activity {
         mTvMotionEvents.setText(mEventsToReport.toString());
     }
 
-    private static JSONObject getJSONObjectFromMotionEvent(MotionEvent event) {
+    /**
+     * Convert the provided MotionEvent and every event in its history to JSONObjects, returning an
+     * empty list if there is an issue.
+     *
+     * @param event MotionEvent
+     * @return A list of size zero or {@code event.getHistorySize() + 1}.
+     */
+    private static List<JSONObject> getJSONObjectsFromMotionEvent(MotionEvent event) {
+        final List<JSONObject> ret = new ArrayList<>();
         final InputDevice device = InputDevice.getDevice(event.getDeviceId());
         if (device == null) {
             Log.e(TAG, "Failed to get InputDevice with device id: " + event.getDeviceId());
-            return null;
+            return ret;
         }
-        final List<InputDevice.MotionRange> motionRanges = device.getMotionRanges();
+        final List<MotionRange> motionRanges = device.getMotionRanges();
         if (motionRanges == null) {
             Log.e(TAG, "Failed to get MotionRanges for device id: " + event.getDeviceId());
-            return null;
+            return ret;
         }
 
+        // Generate an additional JSONObject labeled as "batched" for each history value in event.
+        for (int i = 0; i < event.getHistorySize(); i++) {
+            final int historyPosition = i;
+            final JSONObject eventObj =
+                    getJSONObjectFromMotionEventHelper(event, motionRanges, true /*batched*/,
+                            (pointer, out) ->
+                                    event.getHistoricalPointerCoords(pointer, historyPosition, out)
+                    );
+            ret.add(eventObj);
+        }
+
+        // Generate the JSONObject for event.
+        final JSONObject eventObj =
+                getJSONObjectFromMotionEventHelper(event, motionRanges, false /*batched*/,
+                        event::getPointerCoords);
+        ret.add(eventObj);
+
+        return ret;
+    }
+
+    private interface PointerCoordsProvider {
+
+        void populate(int pointer, PointerCoords out);
+    }
+
+    private static JSONObject getJSONObjectFromMotionEventHelper(MotionEvent event,
+            List<MotionRange> motionRanges, boolean batched, PointerCoordsProvider coordsProvider) {
         final JSONObject eventObj = new JSONObject();
         try {
             eventObj.put(KEY_ACTION, MotionEvent.actionToString(event.getAction()));
@@ -130,15 +171,18 @@ public class MainActivity extends Activity {
             getStringsForSource(event.getSource()).forEach(sourcesArr::put);
             eventObj.put(KEY_SOURCES, sourcesArr);
             final JSONArray pointers = new JSONArray();
-            for (int i = 0; i < event.getPointerCount(); i++) {
+            for (int pointer = 0; pointer < event.getPointerCount(); pointer++) {
                 final JSONObject axesObj = new JSONObject();
-                for (final InputDevice.MotionRange motionRange : motionRanges) {
+                final PointerCoords pointerCoords = new PointerCoords();
+                coordsProvider.populate(pointer, pointerCoords);
+                for (final MotionRange motionRange : motionRanges) {
                     final int axis = motionRange.getAxis();
-                    axesObj.put(MotionEvent.axisToString(axis), event.getAxisValue(axis));
+                    axesObj.put(MotionEvent.axisToString(axis), pointerCoords.getAxisValue(axis));
                 }
                 pointers.put(axesObj);
             }
             eventObj.put(KEY_POINTER_AXES, pointers);
+            eventObj.put(KEY_BATCHED, batched);
         } catch (JSONException e) {
             Log.e(TAG, "Failed to write event to JSON", e);
         }
