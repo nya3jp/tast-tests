@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "98bcf1ca_d2db792e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T10:18:35Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation! I am slightly leaning to not redefine cleanupCtx in that case, but it\u0027s a valid concern and copy the context would be safer.\n\nIt looks like the pattern is not enforced and there are many existing tests [1] using cleanupCtx directly without a copy. Maybe we should fix them and update the doc to make it more clear?\n\n[1] http://cs/search/?q\u003dpackage:chromeos+:%3D%5C+ctx$+ctxutil.Shorten\u0026m\u003d100\u0026type\u003dcs",
+      "parentUuid": "bf063b80_a0fcc45c",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c27ee9c_9ce8911f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 5
