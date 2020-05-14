@@ -116,6 +116,10 @@ window.Tast = class {
         (w) => w.fullscreen());
   }
 
+  static focusWindow() {
+    chrome.app.window.current().focus();
+  }
+
   /**
    * @return {string}
    */

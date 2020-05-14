@@ -153,13 +153,14 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 
 	for _, tst := range []struct {
 		name     string
-		testFunc func(context.Context, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
+		testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
 	}{
 		{"testSwitchDeviceMode", testSwitchDeviceMode},
 		{"testRecordVideo", testRecordVideo},
+		{"testAppInBackground", testAppInBackground},
 	} {
 		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := tst.testFunc(ctx, app, kb, vh); err != nil {
+			if err := tst.testFunc(ctx, cr, app, kb, vh); err != nil {
 				s.Error("Test failed: ", err)
 				restartApp(ctx)
 			}
@@ -168,7 +169,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 }
 
 // testSwitchDeviceMode tests behavior of pressing volume button in both tablet and clamshell mode.
-func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+func testSwitchDeviceMode(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 	defer cancel()
@@ -242,7 +243,7 @@ func testSwitchDeviceMode(ctx context.Context, app *cca.App, kb *input.KeyboardE
 }
 
 // testRecordVideo tests scenario of recording one second video by volume button in tablet mode.
-func testRecordVideo(ctx context.Context, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 	defer cancel()
@@ -301,5 +302,58 @@ func testRecordVideo(ctx context.Context, app *cca.App, kb *input.KeyboardEventW
 			return errors.Errorf("volume changed from %v to %v after shutter", prevVolume, volume)
 		}
 	}
+	return nil
+}
+
+// testAppInBackground tests scenario of pressing volume button when CCA is in background in tablet mode.
+func testAppInBackground(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) (retErr error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
+	defer cancel()
+
+	cleanup, err := app.EnsureTabletModeEnabled(ctx, true)
+	if err != nil {
+		return errors.Wrap(err, "failed to switch to tablet mode")
+	}
+	defer cleanup(cleanupCtx)
+
+	conn, err := cr.NewConn(ctx, "")
+	if err != nil {
+		return errors.Wrap(err, "failed to open blank chrome tab")
+	}
+	defer (func(ctx context.Context) {
+		if err := conn.CloseTarget(ctx); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed to close blank chrome tab: ", err)
+			} else {
+				retErr = errors.Wrap(err, "failed to close blank chrome tab")
+			}
+		}
+		if err := conn.Close(); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed to close connection to blank chrome tab: ", err)
+			} else {
+				retErr = errors.Wrap(err, "failed to close connection to blank chrome tab")
+			}
+		}
+		if err := app.Focus(ctx); err != nil {
+			if retErr != nil {
+				testing.ContextLog(ctx, "Failed to refocus to camera app: ", err)
+			} else {
+				retErr = errors.Wrap(err, "failed to refocus to camera app")
+			}
+		}
+	})(cleanupCtx)
+
+	for _, key := range volumeKeys {
+		pressKey := func() error {
+			testing.ContextLogf(ctx, "Press %v key in tablet mode", key)
+			return kb.Accel(ctx, key)
+		}
+		if err := vh.verifyVolumeChanged(ctx, pressKey); err != nil {
+			return errors.Wrapf(err, "volume not changed after press %v key when CCA is in background in tablet mode", key)
+		}
+	}
+
 	return nil
 }
