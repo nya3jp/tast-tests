@@ -39,6 +39,48 @@
       "revId": "484274a225d1157f9df76090a23e3d1f4c1aa01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c4337d_9cbc5d43",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-14T06:18:31Z",
+      "side": 1,
+      "message": "Changed it to ChromeOSChromeOptions. Just ChromeOptions by itself seems confusing to me (which Chrome?).",
+      "parentUuid": "d22b8890_1f565210",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "484274a225d1157f9df76090a23e3d1f4c1aa01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95969072_8e20d56e",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-14T06:18:31Z",
+      "side": 1,
+      "message": "Made it private.\n\nThis precondition is wrapped by ash.NewDummyAppPrecondition and it\u0027s called once, creating startedByDataWith100DummyAppsPre which is a global instance, so I think it should be okay, IIUC.",
+      "parentUuid": "ce07603e_12ebe6a1",
+      "revId": "484274a225d1157f9df76090a23e3d1f4c1aa01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
