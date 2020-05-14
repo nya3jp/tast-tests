@@ -13,11 +13,14 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/wifi"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	remote_hwsec "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/network/ping"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -78,6 +81,8 @@ type TestFixture struct {
 	curService *network.Service
 	curAP      *APIface
 	capturers  map[*APIface]*pcap.Capturer
+
+	tpm *wifi.TPMStore
 }
 
 // connectCompanion dials SSH connection to companion device with the auth key of DUT.
@@ -88,6 +93,33 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string) (*
 	sopt.KeyFile = tf.dut.KeyFile()
 	sopt.ConnectTimeout = 10 * time.Second
 	return ssh.New(ctx, &sopt)
+}
+
+// setupTPMStore setups TPM for EAP relating tests.
+func (tf *TestFixture) setupTPMStore(ctx context.Context) error {
+	runner, err := remote_hwsec.NewCmdRunner(tf.dut)
+	if err != nil {
+		return err
+	}
+	cryptohomeUtil, err := hwsec.NewUtilityCryptohomeBinary(runner)
+	if err != nil {
+		return err
+	}
+	tf.tpm, err = wifi.SetupTPMStore(ctx, cryptohomeUtil, runner)
+	return err
+}
+
+// resetTPMStore resets TPMStore.
+func (tf *TestFixture) resetTPMStore(ctx context.Context) error {
+	runner, err := remote_hwsec.NewCmdRunner(tf.dut)
+	if err != nil {
+		return err
+	}
+	cryptohomeUtil, err := hwsec.NewUtilityCryptohomeBinary(runner)
+	if err != nil {
+		return err
+	}
+	return wifi.ResetTPMStore(ctx, tf.tpm, cryptohomeUtil)
 }
 
 // NewTestFixture creates a TestFixture.
@@ -186,6 +218,11 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		}
 	}
 
+	// Setup TPM for EAP relating tests.
+	if err := tf.setupTPMStore(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to setup TPM")
+	}
+
 	// TODO(crbug.com/1034875): set up attenuator.
 
 	// Seed the random as we have some randomization. e.g. default SSID.
@@ -204,6 +241,11 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	defer st.End()
 
 	var firstErr error
+
+	if err := tf.resetTPMStore(ctx); err != nil {
+		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reset TPM"))
+	}
+
 	if tf.pcap != nil && tf.pcap != tf.router {
 		if err := tf.pcap.Close(ctx); err != nil {
 			collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to close pcap"))
@@ -267,6 +309,10 @@ func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fa
 		return nil, err
 	}
 
+	if err := config.SecurityConfig.InstallRouterCredentials(ctx, tf.routerHost); err != nil {
+		return nil, err
+	}
+
 	ap, err := tf.router.StartAPIface(ctx, name, config)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
@@ -323,6 +369,10 @@ func (tf *TestFixture) DeconfigAP(ctx context.Context, ap *APIface) error {
 func (tf *TestFixture) ConnectWifi(ctx context.Context, h *APIface) error {
 	ctx, st := timing.Start(ctx, "tf.ConnectWifi")
 	defer st.End()
+
+	if err := h.Config().SecurityConfig.InstallClientCredentials(ctx, tf.tpm); err != nil {
+		return err
+	}
 
 	props, err := h.Config().SecurityConfig.ShillServiceProperties()
 	if err != nil {
