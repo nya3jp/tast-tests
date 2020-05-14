@@ -8,7 +8,9 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/network/eapcerts"
 	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/dynamicwep"
 	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
@@ -393,6 +395,21 @@ func init() {
 							"chromeos", wpa.Mode(wpa.ModeMixed),
 							wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 							wpa.Ciphers2(wpa.CipherCCMP),
+						),
+					},
+				},
+			}, {
+				// Verifies that DUT can connect to a protected network supporting for dynamic WEP encryption.
+				Name: "8021xwep",
+				Val: []simpleConnectTestcase{
+					{
+						apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+						secConfFac: dynamicwep.NewConfigFactory(
+							eapcerts.CACert1, eapcerts.ServerCert1, eapcerts.ServerPrivateKey1,
+							dynamicwep.ClientCACert(eapcerts.CACert1),
+							dynamicwep.ClientCert(eapcerts.ClientCert1),
+							dynamicwep.ClientKey(eapcerts.ClientPrivateKey1),
+							dynamicwep.RekeyPeriod(20),
 						),
 					},
 				},
