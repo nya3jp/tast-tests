@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbeacadc_022de8ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T03:36:20Z",
+      "side": 1,
+      "message": "Should we wait \"tablet\" state back to the original in cleanup too?",
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9ddba6_b5a0f492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T03:36:20Z",
+      "side": 1,
+      "message": "Do we need to call cras.WaitForDevice() before doing this?",
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430a1995_c4f9f3b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T03:36:20Z",
+      "side": 1,
+      "message": "dumb question: why we need to set activeNode here, given the IDs are the same?",
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb6cda9f_b11f809b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T03:36:20Z",
+      "side": 1,
+      "message": "dumb question: Can we simply use cleanupCtx here instead of passing an argument to the defer func?",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c27ee9c_9ce8911f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-14T03:36:20Z",
+      "side": 1,
+      "message": "IIRC defer here would be stacked only run when the function returns. I guess this is not what you want?",
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
