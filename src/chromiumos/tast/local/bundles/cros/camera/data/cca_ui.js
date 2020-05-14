@@ -116,6 +116,16 @@ window.Tast = class {
         (w) => w.fullscreen());
   }
 
+  static focusWindow() {
+    return changeWindowState(
+        (w) => w.contentWindow.document.hasFocus(),
+        ({contentWindow: cw}) => ({
+          addListener: cw.addEventListener.bind(cw, 'focus'),
+          removeListener: cw.removeEventListener.bind(cw, 'focus')
+        }),
+        (w) => w.focus());
+  }
+
   /**
    * @return {string}
    */
