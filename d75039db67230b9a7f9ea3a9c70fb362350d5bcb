@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d2ef41d_1a7bc2a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-14T20:03:18Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ll do that in a separate CL for all of the tests that use this.",
+      "parentUuid": "21bc2a1c_0e2cbf36",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302d497a_6527a837",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-14T19:57:49Z",
       "side": 1,
       "message": "I guess if \"len(lines) \u003d\u003d 1\" we should fail.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4362c317_0be7f0f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-14T20:03:18Z",
+      "side": 1,
+      "message": "Do we always have at least 1 adapter? Or do some devices have 0 adapters?",
+      "parentUuid": "302d497a_6527a837",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7c66393c_491ff052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-14T20:03:18Z",
+      "side": 1,
+      "message": "Is it really necessary? We don\u0027t do this for any of our other cros_healthd tast tests.",
+      "parentUuid": "003f9355_a4c54b9c",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1beb837_5f018395",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-14T19:57:49Z",
       "side": 1,
       "message": "nit: specify why it\u0027s invalid",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "d75039db67230b9a7f9ea3a9c70fb362350d5bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505ec177_85387282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-14T20:03:18Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "f1beb837_5f018395",
       "range": {
         "startLine": 88,
         "startChar": 13,
