@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "628cc5dd_99f0e4e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/gamepad/ds3.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-14T20:55:28Z",
+      "side": 1,
+      "message": "here and in DS4 test.\n\nsorry, I missed this (you can  do it in a follow-up CL): you need to add the \"mainline\" and \"informational\" attributes. Otherwise your test won\u0027t be run on the lab.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md\n\ne.g:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go;l\u003d94?q\u003d%5C%22informational%5C%22%20lang:go\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "01d7f311a044ea376c78efa34fb4844af5e24e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
