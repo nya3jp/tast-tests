@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a031e04a_294f6a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/navigation_widget_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-14T20:05:33Z",
+      "side": 1,
+      "message": "HomeButton, BackButton and the widget containing HomeButton and BackButton (that widget is invisible). Now those things are not shown as default because of a flag called HideShelfControlsInTabletMode",
+      "parentUuid": "4daf00c6_4bb206e2",
+      "range": {
+        "startLine": 25,
+        "startChar": 47,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "db6985e1f3107f92faa67e0b320092138cc8c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "852b73d2_5870c2a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/navigation_widget_perf.go",
         "patchSetId": 2
