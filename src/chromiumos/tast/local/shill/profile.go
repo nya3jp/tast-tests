@@ -30,7 +30,6 @@ const (
 	ProfilePropertyCheckPortalList           = "CheckPortalList"
 	ProfilePropertyEntries                   = "Entries"
 	ProfilePropertyName                      = "Name"
-	ProfilePropertyOfflineMode               = "OfflineMode"
 	ProfilePropertyPortalURL                 = "PortalURL"
 	ProfilePropertyPortalCheckInterval       = "PortalCheckInterval"
 	ProfilePropertyServices                  = "Services"
