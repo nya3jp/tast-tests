@@ -35,12 +35,21 @@ const (
 	ServicePropertyFTEnabled      = "WiFi.FTEnabled"
 
 	// EAP service property names.
-	ServicePropertyEAPCACertPEM = "EAP.CACertPEM"
-	ServicePropertyEAPMethod    = "EAP.EAP"
-	ServicePropertyEAPInnerEAP  = "EAP.InnerEAP"
-	ServicePropertyEAPIdentity  = "EAP.Identity"
-	ServicePropertyEAPPassword  = "EAP.Password"
+	ServicePropertyEAPCACertPEM                   = "EAP.CACertPEM"
+	ServicePropertyEAPMethod                      = "EAP.EAP"
+	ServicePropertyEAPInnerEAP                    = "EAP.InnerEAP"
+	ServicePropertyEAPIdentity                    = "EAP.Identity"
+	ServicePropertyEAPPassword                    = "EAP.Password"
+	ServicePropertyEAPPin                         = "EAP.PIN"
+	ServicePropertyEAPCertID                      = "EAP.CertID"
+	ServicePropertyEAPKeyID                       = "EAP.KeyID"
+	ServicePropertyEAPKeyMgmt                     = "EAP.KeyMgmt"
+	ServicePropertyEAPUseSystemCAs                = "EAP.UseSystemCAs"
+	ServicePropertyEAPSubjectAlternativeNameMatch = "EAP.SubjectAlternativeNameMatch"
 )
+
+// ServicePropertyEAPKeyMgmtIEEE8021X is a value of EAPKeyMgmt.
+const ServicePropertyEAPKeyMgmtIEEE8021X = "IEEE8021X"
 
 // Service state values defined in dbus-constants.h
 const (

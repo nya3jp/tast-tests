@@ -48,7 +48,14 @@ message ShillVal {
   oneof val {
     string str = 1;
     bool bool = 2;
+    // Because 'repeated' label is not allowed in oneof type, we define StrArray
+    // for repeated string field.
+    StrArray strArray = 3;
   }
+}
+
+message StrArray {
+  repeated string vals = 1;
 }
 
 message Service {
