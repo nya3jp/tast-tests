@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package apps
 
 import (
 	"context"
@@ -26,15 +26,15 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"ui.LaunchHelpApp.consumer_username", "ui.LaunchHelpApp.consumer_password"},
+		Vars:         []string{"apps.LaunchHelpApp.consumer_username", "apps.LaunchHelpApp.consumer_password"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
 
 // LaunchHelpApp verifies launching Showoff after OOBE.
 func LaunchHelpApp(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("ui.LaunchHelpApp.consumer_username")
-	password := s.RequiredVar("ui.LaunchHelpApp.consumer_password")
+	username := s.RequiredVar("apps.LaunchHelpApp.consumer_username")
+	password := s.RequiredVar("apps.LaunchHelpApp.consumer_password")
 
 	cr, err := chrome.New(ctx, chrome.Auth(username, password, ""), chrome.GAIALogin(), chrome.DontSkipOOBEAfterLogin())
 	if err != nil {
