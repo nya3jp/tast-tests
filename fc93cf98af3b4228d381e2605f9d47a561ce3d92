@@ -70,6 +70,30 @@
       "revId": "fc93cf98af3b4228d381e2605f9d47a561ce3d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f16a883_2a96907e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/chaps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-14T19:38:29Z",
+      "side": 1,
+      "message": "tast provides no guarantee on the execution environment that the test runs, so this method takes that into account and accept all cases, whether the user exists or not.",
+      "parentUuid": "142579d5_cabf08c5",
+      "range": {
+        "startLine": 72,
+        "startChar": 20,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "fc93cf98af3b4228d381e2605f9d47a561ce3d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
