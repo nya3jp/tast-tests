@@ -1128,3 +1128,8 @@ func (a *App) EnsureTabletModeEnabled(ctx context.Context, enabled bool) (func(c
 	}
 	return cleanupAll, nil
 }
+
+// Focus sets focus on CCA App window.
+func (a *App) Focus(ctx context.Context) error {
+	return a.conn.Eval(ctx, "Tast.focusWindow()", nil)
+}
