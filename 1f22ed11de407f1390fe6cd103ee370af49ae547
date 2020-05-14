@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "f49311ac_bf55b6a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T17:31:31Z",
+      "side": 1,
+      "message": "I\u0027ll discuss this idea with other Tast owners. Thanks!",
+      "parentUuid": "98bcf1ca_d2db792e",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c27ee9c_9ce8911f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 5
