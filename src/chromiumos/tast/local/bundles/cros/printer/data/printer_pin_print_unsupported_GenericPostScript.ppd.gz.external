@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/printer_pin_print_unsupported_20200512.ppd.gz",
+  "size": 2814,
+  "sha256sum": "7c66771d02f3f50ac8643a45ebdbb6f1efeaaaec60719a8316aadc99948cb19b"
+}
