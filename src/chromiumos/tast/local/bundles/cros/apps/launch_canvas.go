@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+// Package apps contains functionality and test cases for Chrome OS essential Apps.
+package apps
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/ui/faillog"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
@@ -50,8 +50,6 @@ func LaunchCanvas(ctx context.Context, s *testing.State) {
 	if err := apps.Launch(ctx, tconn, apps.Canvas.ID); err != nil {
 		s.Fatal("Failed to launch Canvas: ", err)
 	}
-
-	defer faillog.DumpUITreeOnError(ctx, s, tconn)
 
 	if err := ash.WaitForApp(ctx, tconn, apps.Canvas.ID); err != nil {
 		s.Fatalf("Fail to wait for %s by app id %s: %v", apps.Canvas.Name, apps.Canvas.ID, err)
