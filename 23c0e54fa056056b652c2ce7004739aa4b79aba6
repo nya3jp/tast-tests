@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ed30bdc_24eb9449",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-14T06:01:53Z",
+      "side": 1,
+      "message": "Great!!!!",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 60
+      },
+      "revId": "23c0e54fa056056b652c2ce7004739aa4b79aba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c35c5a4c_e9336ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-14T06:01:53Z",
+      "side": 1,
+      "message": "I think we would dump the tree only on fail. (We don\u0027t need to dump the tree inside poll.)\nI would move this to error handling section of this poll.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 5
+      },
+      "revId": "23c0e54fa056056b652c2ce7004739aa4b79aba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6c7847_6c74eb23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-14T06:01:53Z",
+      "side": 1,
+      "message": "I guess 30 sec is too long? (I remember that in previous review someone from tast-owner said that 10sec is usual time out)",
+      "range": {
+        "startLine": 151,
+        "startChar": 35,
+        "endLine": 151,
+        "endChar": 37
+      },
+      "revId": "23c0e54fa056056b652c2ce7004739aa4b79aba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be963f27_5c730fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-14T06:01:53Z",
+      "side": 1,
+      "message": "please return an error so that RunTest() can handle it and take a screenshot.",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "23c0e54fa056056b652c2ce7004739aa4b79aba6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
