@@ -26,6 +26,7 @@ type TelemCategory string
 const (
 	TelemCategoryBacklight         TelemCategory = "backlight"
 	TelemCategoryBattery           TelemCategory = "battery"
+	TelemCategoryBluetooth         TelemCategory = "bluetooth"
 	TelemCategoryCachedVPD         TelemCategory = "cached_vpd"
 	TelemCategoryCPU               TelemCategory = "cpu"
 	TelemCategoryFan               TelemCategory = "fan"
