@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "062d10b8_c598fc80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T21:29:13Z",
+      "side": 1,
+      "message": "s is passed as pointer (*) so it shouldn\u0027t expensive vs. passing by value?  I\u0027m more experienced with C/C++ so please chime in here.  Also s is needed for logging, thoughts?",
+      "parentUuid": "8400f78b_e1cd6773",
+      "range": {
+        "startLine": 159,
+        "startChar": 39,
+        "endLine": 159,
+        "endChar": 40
+      },
+      "revId": "f321bc8831c3fd15520fe2b620867cf7836aca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b59ebe2_1e189fa4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 8
@@ -59,6 +83,30 @@
       "writtenOn": "2020-05-14T21:16:03Z",
       "side": 1,
       "message": "I\u0027d prefer put this function to OptInAfterInterruption to simplify the workflow. With the current approach, it is hard to see what the returned function would do.",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 261,
+        "endChar": 2
+      },
+      "revId": "f321bc8831c3fd15520fe2b620867cf7836aca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85dfb962_7c03d080",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-14T21:29:13Z",
+      "side": 1,
+      "message": "I can do that if you think it helps.  Just to clarify, originally I put this in anon func(s) in OptInAfterInterruption since defers do not work in loops.  But khmel mentioned to reduce indentation in OptInAfterInterruption so I made it a closure in the attemptOptin function for abstraction and to simplify OptInAfterInterruption.",
+      "parentUuid": "593909b4_8af60671",
       "range": {
         "startLine": 232,
         "startChar": 8,
