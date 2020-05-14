@@ -118,6 +118,12 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 
 		// Dictionaries.
 		mkExp(`/home/chronos/Dictionaries/.*\.bdic`, 0500),
+
+		// TODO(crbug.com/1082765): Figure out why these are needed.
+		// They're not security risks because they refer to the process itself,
+		// but it would be nice to know what they're being used for.
+		mkExp(`/proc/(?P<pid>[0-9]+)/statm`, 0500),
+		mkExp(`/proc/(?P<pid>[0-9]+)/status`, 0500),
 	}
 	eRenderer = append(ePlugin, eRenderer...)
 
