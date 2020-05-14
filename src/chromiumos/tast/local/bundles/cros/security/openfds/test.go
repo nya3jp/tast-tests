@@ -76,7 +76,7 @@ func expectType(mode uint32) bool {
 }
 
 // findExpectation returns a corresponding entry in the given
-// Expecatation array which matches to the given path.
+// Expectation array which matches to the given path.
 func findExpectation(path string, es []Expectation) (*Expectation, error) {
 	for _, e := range es {
 		if e.pathRegex.MatchString(path) {
@@ -177,10 +177,27 @@ func Expect(ctx context.Context, s *testing.State, asan bool, p *process.Process
 
 		if e, err := findExpectation(f.path, es); err != nil {
 			// File path (i.e. the result of readlink(2)) must be
-			// listed in the expectation white list. If not found,
+			// listed in the expectation allow-list. If not found,
 			// it means an unexpected file is opened, so report
 			// an error.
 			s.Errorf("Expectation not found for %v: %v", p, err)
+		} else if submatches := e.pathRegex.FindStringSubmatch(f.path); len(submatches) == 3 {
+			// If an expectation was found, and there are exactly 3 submatches,
+			// and the submatch at index 2 is the named capture group "pid";
+			// only accept the expectation if the PID in the path matches the PID
+			// of the process.
+			// 3 submatches are needed because 'pathRegex' is of the form
+			// ^(pattern)$, and therefore both submatches[0] and submatches[1] include
+			// the entire string.
+			if captureName := e.pathRegex.SubexpNames()[2]; captureName != "pid" {
+				s.Errorf("Unexpected capture group in regexp %v: got %q; want %q", e.PathPattern, captureName, "pid")
+			}
+
+			if n, err := strconv.Atoi(submatches[2]); err != nil {
+				s.Errorf("%v is not a PID: %v", submatches[2], err)
+			} else if n != int(p.Pid) {
+				s.Errorf("PID in path %v does not match expected PID: got %d; want %d", f.path, n, p.Pid)
+			}
 		} else if !expectMode(f.lmode, e.Modes) {
 			s.Errorf("Unexpected file mode %v for %v", f, p)
 		}
