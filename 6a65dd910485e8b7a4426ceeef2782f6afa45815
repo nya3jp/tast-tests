@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e9123659_61ebd84a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T10:29:13Z",
+      "side": 1,
+      "message": "How about add one more line describing DFS:\n// DFS (dynamic frequency selection) channels are channels that may be unavailable if radar interference is detected.\n// See https://en.wikipedia.org/wiki/Dynamic_frequency_selection \n// https://en.wikipedia.org/wiki/List_of_WLAN_channels",
+      "revId": "6a65dd910485e8b7a4426ceeef2782f6afa45815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5640d8a_c39542bc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 1
