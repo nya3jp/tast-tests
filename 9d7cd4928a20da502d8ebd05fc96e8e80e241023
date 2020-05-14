@@ -22,6 +22,30 @@
       "revId": "9d7cd4928a20da502d8ebd05fc96e8e80e241023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38cedd9_cbb40897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-14T06:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee100ca1_e32966b2",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 46
+      },
+      "revId": "9d7cd4928a20da502d8ebd05fc96e8e80e241023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
