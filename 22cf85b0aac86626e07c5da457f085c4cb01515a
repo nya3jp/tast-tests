@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92a818bf_18d1c295",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T09:19:38Z",
+      "side": 1,
+      "message": "// ssid2 for printf-escaped string, cf. https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf",
+      "revId": "22cf85b0aac86626e07c5da457f085c4cb01515a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c5b0c7_f6580b25",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-14T09:19:38Z",
+      "side": 1,
+      "message": "Do you have a test case for this?",
+      "revId": "22cf85b0aac86626e07c5da457f085c4cb01515a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
