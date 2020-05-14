@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e833a340_799fe78c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-14T08:04:51Z",
+      "side": 1,
+      "message": "\u003e \"charactors\" is a possible misspelling of \"characters\".\n\nFixed.",
+      "parentUuid": "60bd176e_17a05ff8",
+      "range": {
+        "startLine": 356,
+        "startChar": 53,
+        "endLine": 356,
+        "endChar": 63
+      },
+      "revId": "9f7360b9362686172deeb1ddd02c7ff2061e352f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
