@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfdf885d_60ef7753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:38:49Z",
+      "side": 1,
+      "message": "Do we expect more than 1 line of data?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "647b1e5feadc4bf236f42537687a90383dc54f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7524c3d1_ed960b93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:38:49Z",
+      "side": 1,
+      "message": "nit: I guess it makes sense to print line[0] as well",
+      "range": {
+        "startLine": 74,
+        "startChar": 31,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "647b1e5feadc4bf236f42537687a90383dc54f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "950a52fe_a230d7d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:38:49Z",
+      "side": 1,
+      "message": "nit: please explain why it\u0027s invalid, e.g. value must be positive",
+      "range": {
+        "startLine": 76,
+        "startChar": 13,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "647b1e5feadc4bf236f42537687a90383dc54f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1199ec6b_dedf9b43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:38:49Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 80,
+        "startChar": 31,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "647b1e5feadc4bf236f42537687a90383dc54f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bdc7146_11f078a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T19:38:49Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "647b1e5feadc4bf236f42537687a90383dc54f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
