@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e3b8872_d92208b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-14T23:59:54Z",
+      "side": 1,
+      "message": "I tried. But the error message is \"unmatched val type: got string; want ui.hotseatTestType\". Did I do something wrong?",
+      "parentUuid": "52077044_d1314825",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd11f78_8486b0ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1a3329_0a12a730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-14T23:59:54Z",
+      "side": 1,
+      "message": "Done. Increase to 3 now.",
+      "parentUuid": "0cd11f78_8486b0ee",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5da6ddf5_1320d069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-14T23:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f59a0882_b13daef8",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4468c18_aede5191",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-14T23:34:48Z",
       "side": 1,
       "message": "Please add a TODO comment.\n\nI believe eventually you may want to remove this precondition once it is disabled by default. Also please add the link to the issue of this feature-flag (file an issue if it does not exist yet).",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 127
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8f9cb7e_c3ba22ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-14T23:59:54Z",
+      "side": 1,
+      "message": "First, I saw your comment in the last CL (just abandoned) but I did not get your point. Sorry that I may ignore your previous comment.\nSecond, what do you mean by \"disabling by default\"? Now shelf controls are hidden by default and it is intended. But some users may disable this flag to show it.",
+      "parentUuid": "d4468c18_aede5191",
       "range": {
         "startLine": 56,
         "startChar": 4,
@@ -114,6 +210,30 @@
       "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1572ff27_08627327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-14T23:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62192b1b_dd38ad16",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 36
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
