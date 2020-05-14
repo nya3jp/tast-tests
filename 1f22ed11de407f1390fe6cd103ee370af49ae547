@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "bf063b80_a0fcc45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-14T09:47:50Z",
+      "side": 1,
+      "message": "Let\u0027s take a look on Context documentation:\n\nDo not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it. The Context should be the first parameter, typically named ctx.\nhttps://golang.org/pkg/context/\n\n--------\n\nWhen you directly use cleanupCtx (by reference) instead passing as an argument, you can face a bug:\n\n// initial cleanup context:\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time.Second*5)\ndefer cancel()\n\ndefer func() {\n    vh.setVolume(cleanupCtx, originalVolume)   // \u003c-- direct use cleanupCtx\n}()\n\n// now we wanna give more time for cleanup for another operation:\ncleanupCtx \u003d ctx \nctx, cancel \u003d ctxutil.Shorten(ctx, time.Second*5)\ndefer cancel()\n\nAnd here we have a problem, you function in defer does not see first cleanup context as you assume, but instead it uses updated cleanup. If you pass context by value, you have a guarantee that your function will use correct context, you just make a copy of context for it.",
+      "parentUuid": "2cf90f60_969f4e7b",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "1f22ed11de407f1390fe6cd103ee370af49ae547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c27ee9c_9ce8911f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 5
