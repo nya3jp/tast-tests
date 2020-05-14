@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8480fa6_2ca662b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-05-14T21:04:08Z",
+      "side": 1,
+      "message": "It seems like your intention was to use named groups (and that\u0027d probably be much cleaner in the code below if it works), but you\u0027re actually not using them?",
+      "range": {
+        "startLine": 125,
+        "startChar": 17,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "e61786525cd4fe3e5f96c74e1b6647acb5af50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
