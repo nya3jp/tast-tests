@@ -22,6 +22,30 @@
       "revId": "345b92ac5161bdfd2fbec129f30c18d07caa795d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6602e8a2_0c9fd467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-14T06:18:16Z",
+      "side": 1,
+      "message": "Thanks for catching.",
+      "parentUuid": "dc4b8972_3a28603f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 46
+      },
+      "revId": "345b92ac5161bdfd2fbec129f30c18d07caa795d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

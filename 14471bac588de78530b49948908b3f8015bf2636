@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1e93d67d_04eca5e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2020-05-14T06:18:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0eca3c8e_fe9d609a",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "14471bac588de78530b49948908b3f8015bf2636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e68377f6_db38a817",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/lacros/lacros.go",
         "patchSetId": 5
