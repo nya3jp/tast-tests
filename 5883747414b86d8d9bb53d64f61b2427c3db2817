@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "520a6bf9_186c0a95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2020-05-14T07:01:33Z",
+      "side": 1,
+      "message": "We should add \"Time\" here since we added this field in the other CL:\nhttps://crrev.com/c/2169448",
+      "revId": "5883747414b86d8d9bb53d64f61b2427c3db2817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
