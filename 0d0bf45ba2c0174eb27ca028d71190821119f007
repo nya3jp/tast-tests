@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b149061_30b19014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T16:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb3134e7_f28fdab2",
+      "revId": "0d0bf45ba2c0174eb27ca028d71190821119f007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c427f0c1_ff1274ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "0d0bf45ba2c0174eb27ca028d71190821119f007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b61465_17dc97bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T16:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c427f0c1_ff1274ea",
+      "range": {
+        "startLine": 93,
+        "startChar": 56,
+        "endLine": 93,
+        "endChar": 65
+      },
+      "revId": "0d0bf45ba2c0174eb27ca028d71190821119f007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
