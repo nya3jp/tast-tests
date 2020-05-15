@@ -46,6 +46,47 @@
       "revId": "e61786525cd4fe3e5f96c74e1b6647acb5af50af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a002d6fc_5a27c99c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-15T06:16:18Z",
+      "side": 1,
+      "message": "You can use:\nhttps://golang.org/pkg/regexp/#Regexp.SubexpNames",
+      "parentUuid": "3880b14f_bad51c96",
+      "range": {
+        "startLine": 125,
+        "startChar": 17,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "e61786525cd4fe3e5f96c74e1b6647acb5af50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50a04ec_2ad02062",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-15T06:16:18Z",
+      "side": 1,
+      "message": "minor nit: \"PID in path %v does not match expected PID: got %d; want %d\", f.path, n, p.Pid\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "e61786525cd4fe3e5f96c74e1b6647acb5af50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
