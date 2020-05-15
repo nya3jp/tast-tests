@@ -16,6 +16,24 @@
       "revId": "2482574b013097a91bc61d3c716cf1b4142c889d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657606e7_5d991d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T17:04:10Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "ac7abab2_65442666",
+      "revId": "2482574b013097a91bc61d3c716cf1b4142c889d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
