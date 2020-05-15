@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac7abab2_65442666",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-15T17:01:47Z",
+      "side": 1,
+      "message": "While copying I stumbled across this:\n\nWhy do you log path here? Seems unrelated.",
+      "revId": "2482574b013097a91bc61d3c716cf1b4142c889d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
