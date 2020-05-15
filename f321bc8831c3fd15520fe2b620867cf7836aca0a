@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0279fa9_4e2a1227",
+        "filename": "src/chromiumos/tast/local/arc/optin/optin.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-15T21:12:37Z",
+      "side": 1,
+      "message": "nit: return nil on failure",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 14
+      },
+      "revId": "f321bc8831c3fd15520fe2b620867cf7836aca0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8400f78b_e1cd6773",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 8
