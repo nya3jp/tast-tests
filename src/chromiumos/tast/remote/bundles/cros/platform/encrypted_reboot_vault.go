@@ -22,7 +22,7 @@ func init() {
 			"chromeos-storage@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"pstore", "reboot"},
+		SoftwareDeps: []string{"encrypted_reboot_vault", "pstore", "reboot"},
 	})
 }
 
