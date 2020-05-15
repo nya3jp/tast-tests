@@ -17,6 +17,7 @@ import (
 	"github.com/google/uuid"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -140,6 +141,17 @@ type uhidCreate2Request struct {
 	version        uint32
 	country        uint32
 	descriptor     [hidMaxDescriptorSize]byte
+}
+
+// OutputRequest replicates the C struct found here:
+// https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/kernel/v4.4/include/uapi/linux/uhid.h;l=80
+// It is used to read output requests written by the kernel and
+// handling them afterwards if necessary.
+type OutputRequest struct {
+	RequestType uint32
+	Data        [hidMaxDescriptorSize]byte
+	Size        uint16
+	RType       uint8
 }
 
 // DeviceData encapsulates the non-trivial data that will then be
@@ -358,6 +370,7 @@ func (d *Device) Dispatch(ctx context.Context) (ReadStatus, error) {
 		if err = binary.Read(reader, binary.LittleEndian, &requestType); err != nil {
 			return StatusOK, errors.Wrap(err, "failed parsing uhid file data into request")
 		}
+		testing.ContextLogf(ctx, "replying to request %d", requestType)
 		return StatusOK, d.processEvent(ctx, buf, requestType)
 	case <-ctx.Done():
 		return StatusNoEvent, nil
