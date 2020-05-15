@@ -60,11 +60,11 @@ func (c *FixtureService) SetUp(ctx context.Context, req *crash_service.SetUpCras
 }
 
 func (c *FixtureService) EnableCrashFilter(ctx context.Context, req *crash_service.EnableCrashFilterRequest) (*empty.Empty, error) {
-	return &empty.Empty{}, crash.EnableCrashFiltering(req.Name)
+	return &empty.Empty{}, crash.EnableCrashFiltering(crash.FilterInPath, req.Name)
 }
 
 func (c *FixtureService) DisableCrashFilter(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	return &empty.Empty{}, crash.DisableCrashFiltering()
+	return &empty.Empty{}, crash.DisableCrashFiltering(crash.FilterInPath)
 }
 
 func (c *FixtureService) WaitForCrashFiles(ctx context.Context, req *crash_service.WaitForCrashFilesRequest) (*crash_service.WaitForCrashFilesResponse, error) {
