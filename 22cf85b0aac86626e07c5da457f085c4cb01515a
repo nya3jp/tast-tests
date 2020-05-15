@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6dae4e08_f1d8ab70",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-15T06:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92a818bf_18d1c295",
+      "revId": "22cf85b0aac86626e07c5da457f085c4cb01515a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0c5b0c7_f6580b25",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "22cf85b0aac86626e07c5da457f085c4cb01515a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f23fbc37_fce06953",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-15T06:55:19Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "c0c5b0c7_f6580b25",
+      "revId": "22cf85b0aac86626e07c5da457f085c4cb01515a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
