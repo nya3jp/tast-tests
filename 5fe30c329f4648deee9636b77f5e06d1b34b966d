@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f8d9028_044b57f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_stateful_partition_available_capacity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-15T13:42:20Z",
+      "side": 1,
+      "message": "I\u0027d actually check the amount of free disk space using some other tool and compare with the result from GetStatefulPartitionAvailableCapacity. The comparison should be lossy (+- 1GB).\n\nIt\u0027s easier to expose a GetStatefulPartitionAvailableCapacity function for this.",
+      "revId": "5fe30c329f4648deee9636b77f5e06d1b34b966d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
