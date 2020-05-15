@@ -6,17 +6,14 @@ package platform
 
 import (
 	"context"
-	"encoding/csv"
-	"io/ioutil"
 	"os"
-	"path/filepath"
 	"reflect"
 	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -55,55 +52,39 @@ func getNumFans(ctx context.Context) (int, error) {
 }
 
 func CrosHealthdProbeFanInfo(ctx context.Context, s *testing.State) {
-	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
-		s.Fatal("Failed to start cros_healthd: ", err)
+	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryFan, s.OutDir())
+	if err != nil {
+		s.Fatal("Faled to get fan telemetry info: ", err)
 	}
 
-	// Get the number of fans reported by ectool to determine how many lines of
-	// output to expect.
+	// Get the number of fans reported by ectool to check the number of records.
 	numFans, err := getNumFans(ctx)
 	if err != nil {
 		s.Fatal("Failed to get number of fans: ", err)
 	}
 
-	b, err := testexec.CommandContext(ctx, "telem", "--category=fan").Output(testexec.DumpLogOnError)
-	if err != nil {
-		s.Fatal("Command failed: ", err)
-	}
-
-	// Log output to file for debugging.
-	path := filepath.Join(s.OutDir(), "command_output.txt")
-	if err := ioutil.WriteFile(path, b, 0644); err != nil {
-		s.Errorf("Failed to write output to %s: %v", path, err)
-	}
-
-	lines, err := csv.NewReader(strings.NewReader(string(b))).ReadAll()
-	if err != nil {
-		s.Fatal("Failed to parse output: ", err)
-	}
-
-	if len(lines) != numFans+1 {
-		s.Fatalf("Incorrect number of output lines: got %d; want %d", len(lines), numFans+1)
+	if len(records) != numFans+1 {
+		s.Fatalf("Incorrect number of records: got %d; want %d", len(records), numFans+1)
 	}
 
 	// Verify the headers are correct.
 	want := []string{"speed_rpm"}
-	got := lines[0]
+	got := records[0]
 	if !reflect.DeepEqual(want, got) {
 		s.Fatalf("Incorrect headers: got %v; want %v", got, want)
 	}
 
-	// Verify each line of fan info contains valid values.
-	for _, line := range lines[1:] {
-		if len(line) != 1 {
-			s.Errorf("Wrong number of values: got %v, want 1", len(line))
+	// Verify the records contain valid values.
+	for _, record := range records[1:] {
+		if len(record) != 1 {
+			s.Errorf("Wrong number of values: got %d; want 1", len(record))
 			continue
 		}
 
-		if speed, err := strconv.Atoi(line[0]); err != nil {
-			s.Errorf("Failed to convert %q to integer: %v", want[0], err)
+		if speed, err := strconv.Atoi(record[0]); err != nil {
+			s.Errorf("Failed to convert %q (speed_rpm) to integer: %v", record[0], err)
 		} else if speed < 0 {
-			s.Errorf("Invalid %s: %v", want[0], speed)
+			s.Errorf("Invalid speed_rpm: got %d; want 0+", speed)
 		}
 	}
 }
