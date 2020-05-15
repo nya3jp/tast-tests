@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "56f98839_0a8c54ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T19:36:10Z",
+      "side": 1,
+      "message": "nit: same: rename to records",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345bf65d_948dbf0a",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T19:36:10Z",
+      "side": 1,
+      "message": "nit: let\u0027s rename to telem.go",
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03356cf2_eaa9ea20",
         "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
         "patchSetId": 2
@@ -73,6 +113,47 @@
     },
     {
       "key": {
+        "uuid": "b6f14c4b_92b982af",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T19:36:10Z",
+      "side": 1,
+      "message": "There is no really good choise, enums in go are not type safe\n\neven if you introduce new type: \"type Category string\", you cannot restrict passing string at compile time.\n\n\n\nAlso, there is a problem that category and outDir have the same type. enums will help a bit.",
+      "parentUuid": "53c5290b_abe8940d",
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07cf5f3e_b2d3c0f7",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T19:36:10Z",
+      "side": 1,
+      "message": "please add comment that it makes dump of telem results",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9fde231_13945385",
         "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
         "patchSetId": 2
@@ -141,6 +222,29 @@
       "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b6eaba1_a1550e7a",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T19:36:10Z",
+      "side": 1,
+      "message": "I guess \"records\" name from original csv library is more precise",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

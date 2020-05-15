@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21fc9fc0_7c408c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_fan_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T19:36:10Z",
+      "side": 1,
+      "message": "optional: can we have a convention that FetchTelemetry will be the first command in test if it\u0027s possible? This may help to unify tests",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "a9141c6c6d63f2b97700342314b6f3933c8d97ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b3a6675_13507233",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T19:36:10Z",
+      "side": 1,
+      "message": "maybe we can rename package to just healthd?\n\nhealthd/telem.go\nhealthd/diagnostics.go",
+      "revId": "a9141c6c6d63f2b97700342314b6f3933c8d97ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
