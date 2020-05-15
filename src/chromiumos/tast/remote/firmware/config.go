@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 )
@@ -163,10 +164,10 @@ type Config struct {
 	ModeSwitcherType     ModeSwitcherType           `json:"mode_switcher_type"`
 	PowerButtonDevSwitch bool                       `json:"power_button_dev_switch"`
 	RecButtonDevSwitch   bool                       `json:"rec_button_dev_switch"`
-	FirmwareScreen       int                        `json:"firmware_screen"`
-	DelayRebootToPing    int                        `json:"delay_reboot_to_ping"`
-	ConfirmScreen        int                        `json:"confirm_screen"`
-	USBPlug              int                        `json:"usb_plug"`
+	FirmwareScreen       time.Duration              `json:"firmware_screen"`
+	DelayRebootToPing    time.Duration              `json:"delay_reboot_to_ping"`
+	ConfirmScreen        time.Duration              `json:"confirm_screen"`
+	USBPlug              time.Duration              `json:"usb_plug"`
 	Models               map[string]json.RawMessage `json:"models"`
 }
 

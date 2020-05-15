@@ -6,7 +6,7 @@ package firmware
 
 import (
 	"context"
-	"time"
+	"strings"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
@@ -37,7 +37,11 @@ func BootMode(ctx context.Context, s *testing.State) {
 	// modes enumerates the order of BootModes into which this test will reboot the DUT (after initialMode).
 	modes := []fwCommon.BootMode{
 		fwCommon.BootModeNormal,
+		fwCommon.BootModeRecovery,
+		fwCommon.BootModeRecovery,
+		fwCommon.BootModeNormal,
 	}
+
 	// Connect to the gRPC server on the DUT.
 	d := s.DUT()
 	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
@@ -61,6 +65,18 @@ func BootMode(ctx context.Context, s *testing.State) {
 	defer pxy.Close(ctx)
 	svo := pxy.Servo()
 
+	// Setup Config.
+	platformResponse, err := utils.Platform(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Error during Platform: ", err)
+	}
+	board := strings.ToLower(platformResponse.Board)
+	model := strings.ToLower(platformResponse.Model)
+	cfg, err := firmware.NewConfig(s.DataPath(firmware.ConfigDir), board, model)
+	if err != nil {
+		s.Fatal("Error during NewConfig: ", err)
+	}
+
 	// Check that DUT starts in initialMode.
 	if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Error during CurrentBootMode at beginning of test: ", err)
@@ -72,39 +88,35 @@ func BootMode(ctx context.Context, s *testing.State) {
 	fromMode := initialMode
 	for _, toMode := range modes {
 		testing.ContextLogf(ctx, "Transitioning from %s to %s", fromMode, toMode)
-		if err := firmware.RebootToMode(ctx, d, svo, utils, toMode); err != nil {
-			s.Fatalf("Error during transition from %s to %s: %+v", fromMode, toMode, err)
+		if err := firmware.RebootToMode(ctx, d, svo, cfg, utils, toMode); err != nil {
+			s.Errorf("Error during transition from %s to %s: %+v", fromMode, toMode, err)
+			break
 		}
 		// Reestablish RPC connection after reboot.
 		cl.Close(ctx)
-		cl, err = rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+		testing.ContextLog(ctx, "Reconnecting to RPC")
+		cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
 		if err != nil {
 			s.Fatal("Failed to reconnect to the RPC: ", err)
 		}
 		utils = fwpb.NewUtilsServiceClient(cl.Conn)
 		if r, err := utils.CurrentBootMode(ctx, &empty.Empty{}); err != nil {
-			s.Fatalf("Error during CurrentBootMode after transition from %s to %s: %+v", fromMode, toMode, err)
+			s.Errorf("Error during CurrentBootMode after transition from %s to %s: %+v", fromMode, toMode, err)
+			break
 		} else if fwCommon.BootModeFromProto[r.BootMode] != toMode {
-			s.Fatalf("DUT was in %s after transition from %s to %s", fwCommon.BootModeFromProto[r.BootMode], fromMode, toMode)
+			s.Errorf("DUT was in %s after transition from %s to %s", fwCommon.BootModeFromProto[r.BootMode], fromMode, toMode)
+			break
 		}
 		fromMode = toMode
 	}
 
-	// Exercise PowerState, which will later be used during firmware.RebootToMode()
-	if err := svo.SetPowerState(ctx, servo.PowerStateOff); err != nil {
-		s.Error("Error from setting power state to Off: ", err)
-	}
-	offCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
-	defer cancel()
-	if err := d.WaitUnreachable(offCtx); err != nil {
-		s.Fatal("Error during d.WaitUnreachable: ", err)
-	}
-	if err := svo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
-		s.Error("Error from setting power state to On: ", err)
-	}
-	onCtx, cancel := context.WithTimeout(ctx, time.Minute)
-	defer cancel()
-	if err := d.WaitConnect(onCtx); err != nil {
-		s.Fatal("Error during d.WaitConnect: ", err)
+	r, err := utils.CurrentBootMode(ctx, &empty.Empty{})
+	if err != nil {
+		s.Error("Error getting boot mode at end of test: ", err)
+	} else if fwCommon.BootModeFromProto[r.BootMode] != initialMode {
+		testing.ContextLog(ctx, "Resetting mode to initialMode")
+		if err := firmware.RebootToMode(ctx, d, svo, cfg, utils, initialMode); err != nil {
+			s.Error("Error rebooting to initialMode at end of test: ", err)
+		}
 	}
 }

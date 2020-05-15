@@ -229,7 +229,10 @@ func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error 
 		}
 		return nil
 	}
-	return s.SetString(ctx, PowerState, string(value))
+	shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+	defer cancel()
+	s.SetString(shortCtx, PowerState, string(value))
+	return nil
 }
 
 // SetV4Role sets the V4Role control for a servo v4.
