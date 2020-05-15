@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9724ae5f_a12e7dde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T00:16:54Z",
+      "side": 1,
+      "message": "Oh, you need to specify type to \"overflow\" and \"showNavigationWidget\" constants, otherwise Go compiler thinks they are string type.\n  const (\n    nonOverflow          hotseatTestType \u003d \"NonOverflow\"\n    overflow             hotseatTestType \u003d \"Overflow\"\n    showNavigationWidget hotseatTestType \u003d \"ShowNavigationWidget\"\n  )\n\nOr you could use iota with int type if you don\u0027t mind the representation:\n  type hotseatTestType int\n  const (\n    nonOverflow hotseatTestType \u003d iota\n    overflow\n    showNavigationWidget\n  )",
+      "parentUuid": "4e3b8872_d92208b2",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd11f78_8486b0ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "First, I saw your comment in the last CL (just abandoned) but I did not get your point. Sorry that I may ignore your previous comment.\nSecond, what do you mean by \"disabling by default\"? Now shelf controls are hidden by default and it is intended. But some users may disable this flag to show it.",
       "parentUuid": "d4468c18_aede5191",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 127
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a9e94f_b739a153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T00:16:54Z",
+      "side": 1,
+      "message": "I assume this --disable-features\u003dHideShelfControlsInTabletMode will become unnecessary eventually. It is going to be the default behavior in some milestone. With that:\n- file an issue for tracking this feature\n- add the comment of \"TODO(https://crbug.com/XXXXXX): remove this precondition and use chrome.LoggedIn()\"\n\nPlease refer some examples like ui.SplitViewResizePerf -- clamshell-mode split-view is currently behind a flag, so it makes chrome.ExtraArgs(). There\u0027s a TODO comment, and it links to the issue of \"clean up when this is unnecessary\". (https://chromium.googlesource.com/chromiumos/platform/tast-tests.git/+/refs/heads/master/src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go#48)",
+      "parentUuid": "f8f9cb7e_c3ba22ca",
       "range": {
         "startLine": 56,
         "startChar": 4,
