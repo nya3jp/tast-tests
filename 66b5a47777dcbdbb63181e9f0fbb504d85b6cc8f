@@ -22,6 +22,30 @@
       "revId": "66b5a47777dcbdbb63181e9f0fbb504d85b6cc8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffd84d40_9237ed09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/openfds/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-05-15T14:25:11Z",
+      "side": 1,
+      "message": "This regexp is only one of the many things tested by this test. So making this failure Fatal would not help. We don\u0027t want to silently pass if the regexp capture group changes, but we certainly don\u0027t want to stop the test from testing all its other patterns.",
+      "parentUuid": "efa7dc8d_9fb926e7",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 12
+      },
+      "revId": "66b5a47777dcbdbb63181e9f0fbb504d85b6cc8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
