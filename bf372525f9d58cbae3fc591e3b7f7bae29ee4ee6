@@ -46,6 +46,30 @@
       "revId": "bf372525f9d58cbae3fc591e3b7f7bae29ee4ee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b60de7_edbec68d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-15T16:17:01Z",
+      "side": 1,
+      "message": "You can use fast_build.sh -T to test tast builds.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/modifying_tast.md#fast_build_sh",
+      "parentUuid": "6e1369b6_06e7e664",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "bf372525f9d58cbae3fc591e3b7f7bae29ee4ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
