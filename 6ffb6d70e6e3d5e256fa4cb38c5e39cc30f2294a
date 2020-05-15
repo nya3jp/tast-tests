@@ -149,6 +149,29 @@
       "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144dc067_19546324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T10:35:38Z",
+      "side": 1,
+      "message": "variables names are confusing for me:\n\n\nyou print next info: 1) some invalid 2) what you got 3) what you want, and arguments names are a) want b) available c) real\n\nit looks like \"a\" should be realted to 3. Can we improve variable names?",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 84
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
