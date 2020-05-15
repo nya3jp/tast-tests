@@ -21,8 +21,7 @@ func init() {
 			"arc-core@google.com",
 			"khmel@chromium.org", // author.
 		},
-		// TODO(khmel): Make it critical.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 			Val:               []string{},
