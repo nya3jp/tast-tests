@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33f38989_ebeed17b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-15T07:35:07Z",
+      "side": 1,
+      "message": "nit: Why not just check for `len(lines) !\u003d 2)` here and drop the second check ten lines below?",
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
