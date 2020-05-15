@@ -1,0 +1,40 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package power
+
+import (
+	"context"
+
+	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: DptfOverrideScript,
+		Desc: "Check that dptf loads correct thermal profile from override script",
+		Contacts: []string{
+			"puthik@chromium.org",                // test author
+			"chromeos-platform-power@google.com", // CrOS platform power developers
+		},
+		Attr: []string{"group:mainline", "informational"},
+		// Only Atlas use override script, board developed later uses unibuild.
+		HardwareDeps: hwdep.D(hwdep.Platform("atlas")),
+	})
+}
+
+func DptfOverride(ctx context.Context, s *testing.State) {
+	if expectedProfile, err := GetProfileFromOverrideScript(ctx); err != nil {
+		s.Fatal("GetProfileFromOverrideScript failed: ", err)
+	}
+	if actualProfile, err := GetProfileFromPgrep(ctx); err != nil {
+		s.Fatal("GetProfileFromPgrep failed: ", err)
+	}
+
+	if expectedProfile != actualProfile {
+		s.Errorf("DPTF profile not matched: got %q, want %q",
+			actualProfile, expectedProfile)
+	}
+}
