@@ -81,7 +81,7 @@ func createEphemeralCrashReport(ctx context.Context, crashDir, crashName string)
 
 // runEphemeralCollector runs the ephemeral crash collector.
 func runEphemeralCollector(ctx context.Context, preserveAcrossClobber bool) error {
-	args := []string{"/sbin/crash_reporter", "--ephemeral_collect", "--log_to_stderr"}
+	args := []string{"/sbin/crash_reporter", "--ephemeral_collect"}
 	if preserveAcrossClobber {
 		args = append(args, "--preserve_across_clobber")
 	}
@@ -178,6 +178,8 @@ func EphemeralCrashCollector(ctx context.Context, s *testing.State) {
 		var opts []chrome.Option
 		if !params.oobeComplete {
 			opts = append(opts, chrome.NoLogin())
+		} else {
+			opts = append(opts, chrome.DontSkipOOBEAfterLogin())
 		}
 
 		var err error
