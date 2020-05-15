@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c57cf7d0_576f0621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T17:33:12Z",
+      "side": 1,
+      "message": "optional: we can put this function inside our function\n\nabsDiff :\u003d func(a, b int32) int32 {\n  ..\n}",
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe91c0d_466bee0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T17:33:12Z",
+      "side": 1,
+      "message": "Thanks Go gRPC :) Now it\u0027s even more consusing, is it megabit?",
+      "range": {
+        "startLine": 318,
+        "startChar": 38,
+        "endLine": 318,
+        "endChar": 40
+      },
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "888db30f_dd5db41d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T17:33:12Z",
+      "side": 1,
+      "message": "add check that we round to 100MB?",
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3160da58_7b367067",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T17:33:12Z",
+      "side": 1,
+      "message": "nit: not related change",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
