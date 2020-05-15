@@ -64,13 +64,21 @@ func RebootToMode(ctx context.Context, d *dut.DUT, svo *servo.Servo, utils fwpb.
 				return errors.Wrap(err, "rebooting DUT")
 			}
 			return nil
+		case fwCommon.BootModeRecovery:
+			if err := cyclePowerState(ctx, d, svo, servo.PowerStateOn); err != nil {
+				return errors.Wrapf(err, "cycling dut power state to %s", servo.PowerStateOn)
+			}
+			return nil
 		default:
 		}
 	case fwCommon.BootModeRecovery:
 		if err := svo.SetV4Role(ctx, servo.V4RoleSnk); err != nil {
 			return err
 		}
-		// TODO(b/155425293): Implement boot to recovery mode.
+		if err := cyclePowerState(ctx, d, svo, servo.PowerStateRec); err != nil {
+			return errors.Wrapf(err, "cycling dut power state to %s", servo.PowerStateOn)
+		}
+		return nil
 	default:
 	}
 	return errors.Errorf("unsupported firmware boot mode transition: %s to %s", fromMode, toMode)
@@ -87,6 +95,22 @@ func poweroff(ctx context.Context, d *dut.DUT) error {
 	defer cancel()
 	if err := d.WaitUnreachable(offCtx); err != nil {
 		return errors.Wrap(err, "waiting for dut to be unreachable after sending poweroff command")
+	}
+	return nil
+}
+
+// cyclePowerState safely powers off the DUT, then sets the power state to a specified value.
+func cyclePowerState(ctx context.Context, d *dut.DUT, svo *servo.Servo, ps servo.PowerStateValue) error {
+	if err := poweroff(ctx, d); err != nil {
+		return errors.Wrap(err, "powering off dut")
+	}
+	if err := svo.SetPowerState(ctx, ps); err != nil {
+		return err
+	}
+	onCtx, cancel := context.WithTimeout(ctx, time.Minute)
+	defer cancel()
+	if err := d.WaitConnect(onCtx); err != nil {
+		return errors.Wrap(err, "waiting to reconnect to dut")
 	}
 	return nil
 }
