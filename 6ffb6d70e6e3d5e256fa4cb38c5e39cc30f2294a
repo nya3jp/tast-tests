@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "38495397_1c83e275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef30e413_0b1205c1",
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efc097b5_7dc69705",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
         "patchSetId": 4
@@ -83,6 +101,54 @@
     },
     {
       "key": {
+        "uuid": "fdd04c06_3fdbeb71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:26:51Z",
+      "side": 1,
+      "message": "I changed it to margin. Also, I think go prefers smaller variable names.",
+      "parentUuid": "efc097b5_7dc69705",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dcf96e6_d14c1bb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e385d4_525b9780",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76c3fae3_cea7e203",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
         "patchSetId": 4
@@ -106,6 +172,30 @@
     },
     {
       "key": {
+        "uuid": "034f1459_97e3fbfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76c3fae3_cea7e203",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a196e08d_497526fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
         "patchSetId": 4
@@ -117,6 +207,30 @@
       "writtenOn": "2020-05-15T10:04:39Z",
       "side": 1,
       "message": "maybe it\u0027ll be easier to introduce abs function?\n\nabs(available - realAvailable) \u003c delta ?",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc34b6e_8673271b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:26:51Z",
+      "side": 1,
+      "message": "I think that could result in overflow in some cases (e.g. when available is smaller than realAvailable).",
+      "parentUuid": "a196e08d_497526fe",
       "range": {
         "startLine": 90,
         "startChar": 11,
@@ -172,6 +286,54 @@
       "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6473934_373464ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec0c85d_5327b31b",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1b188dd_40f256c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:26:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "144dc067_19546324",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 84
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
