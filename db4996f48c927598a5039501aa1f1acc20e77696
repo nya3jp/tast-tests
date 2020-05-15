@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1b4d253a_a82210d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-15T22:28:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a3f4d40_3d0574a3",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 93
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "868c5c09_1ad1678e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 9
@@ -117,6 +141,30 @@
       "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d781bd5e_3b9a4156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-15T22:28:45Z",
+      "side": 1,
+      "message": "I understand the purpose now, I was just initially thrown off by the idea of needing multiple restarts as opposed to just one with a parameterized timeout. It makes the test kinda seem like it is in between a regular test and a performance test that is trying to discover how much delay is necessary for opt in to complete.\nSorry for the misunderstanding of the purpose of the repeated delays.\n\nAs a side note, in Tast, all mainline tests are expected to eventually be promoted to critical. If it is never expected to be in CQ, it theoretically should not be in mainline. This is the reason that the App Compat tests have their own group, for example.",
+      "parentUuid": "0d8563a2_3e926a5c",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
