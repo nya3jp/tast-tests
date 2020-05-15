@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "30d9c3b5_2e6a072f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2020-05-15T00:20:43Z",
+      "side": 1,
+      "message": "Oof. Sorry for the dummy question. Somehow I thought that only the first element needs to specify the type. I may confuse it with the example you gave to me. Thank you!",
+      "parentUuid": "9724ae5f_a12e7dde",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "2a20f1cba797cb082513be631d853232c55b4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd11f78_8486b0ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_animation.go",
         "patchSetId": 2
