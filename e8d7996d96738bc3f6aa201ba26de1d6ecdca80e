@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70dfe11c_fbba33df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-15T23:47:30Z",
+      "side": 1,
+      "message": "nit: switch the if and else branches of this so that the conditional isn\u0027t negated",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 3
+      },
+      "revId": "e8d7996d96738bc3f6aa201ba26de1d6ecdca80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
