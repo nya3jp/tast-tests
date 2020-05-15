@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a3f4d40_3d0574a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-15T22:05:46Z",
+      "side": 1,
+      "message": "@khmel is original autotest owner and I attached the autotest CR in one of my earlier comments for context. \n\nFrom what I can tell, there is variation based on board hw, sw stack, infra, etc. that can cause optin to not finish if interrupted at different points during the ARC provisioning process.  We want to have different delays to test if those various points of interruption can cause issues until provisioning complete before a restart.  And completing provisioning the first restart is not ideal because those delayed interruption points will not be tested (thus the warning).",
+      "parentUuid": "cbdaf6a6_1606bd87",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 93
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "868c5c09_1ad1678e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 9
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "0d8563a2_3e926a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-15T22:05:46Z",
+      "side": 1,
+      "message": "The original autotest was running in suite:bvt-perbuild for several years and based on b/120442693 it seems very useful in catching different types of issues (provisioning, CloudDPC flakiness, etc.).  I am new to tast, is suite:bvt-perbuild equivalent to mainline?\n\nSince the purpose of the b/154761315 is to port the existing autotest to tast and collect information to prove parity before cleaning up the autotest in b/155123848.  I want to suggest creating a separate bug for other enhancement suggestions because it will be difficult to prove parity if the tast(s) behave differently right now.\n\n@khmel has the history on this test and we can discuss further.",
+      "parentUuid": "868c5c09_1ad1678e",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed94c491_f4fc6bf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 9
@@ -92,6 +140,30 @@
       "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82a4c38_468fa0ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2020-05-15T22:05:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ed94c491_f4fc6bf6",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 24
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
