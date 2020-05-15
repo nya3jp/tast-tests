@@ -6,17 +6,14 @@ package platform
 
 import (
 	"context"
-	"encoding/csv"
-	"io/ioutil"
 	"os"
-	"path/filepath"
 	"reflect"
 	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -55,10 +52,6 @@ func getNumFans(ctx context.Context) (int, error) {
 }
 
 func CrosHealthdProbeFanInfo(ctx context.Context, s *testing.State) {
-	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
-		s.Fatal("Failed to start cros_healthd: ", err)
-	}
-
 	// Get the number of fans reported by ectool to determine how many lines of
 	// output to expect.
 	numFans, err := getNumFans(ctx)
@@ -66,20 +59,9 @@ func CrosHealthdProbeFanInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get number of fans: ", err)
 	}
 
-	b, err := testexec.CommandContext(ctx, "telem", "--category=fan").Output(testexec.DumpLogOnError)
+	lines, err := croshealthd.FetchTelemetry(ctx, croshealthd.CategoryFan, s.OutDir())
 	if err != nil {
-		s.Fatal("Command failed: ", err)
-	}
-
-	// Log output to file for debugging.
-	path := filepath.Join(s.OutDir(), "command_output.txt")
-	if err := ioutil.WriteFile(path, b, 0644); err != nil {
-		s.Errorf("Failed to write output to %s: %v", path, err)
-	}
-
-	lines, err := csv.NewReader(strings.NewReader(string(b))).ReadAll()
-	if err != nil {
-		s.Fatal("Failed to parse output: ", err)
+		s.Fatal("Faled to get fan telemetry info: ", err)
 	}
 
 	if len(lines) != numFans+1 {
