@@ -39,6 +39,24 @@
       "revId": "a9141c6c6d63f2b97700342314b6f3933c8d97ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62cee675_51ea8c0c",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2020-05-15T19:38:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we should do this unless we also rename cros_healthd to healthd, otherwise it could be confusing.",
+      "parentUuid": "3b3a6675_13507233",
+      "revId": "a9141c6c6d63f2b97700342314b6f3933c8d97ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
