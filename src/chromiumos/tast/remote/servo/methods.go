@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // A StringControl contains the name of a gettable/settable Control which takes a string value.
@@ -18,6 +19,7 @@ const (
 	ActiveChgPort StringControl = "active_chg_port"
 	DUTVoltageMV  StringControl = "dut_voltage_mv"
 	FWWPState     StringControl = "fw_wp_state"
+	PowerState    StringControl = "power_state"
 )
 
 // A KeypressControl is a special type of Control which can take either a numerical value or a KeypressDuration.
@@ -46,6 +48,20 @@ const (
 	DurTab       KeypressDuration = "tab"
 	DurPress     KeypressDuration = "press"
 	DurLongPress KeypressDuration = "long_press"
+)
+
+// A PowerStateValue is a string accepted by the PowerState control.
+type PowerStateValue string
+
+// These are the string values that can be passed to the PowerState control.
+const (
+	PowerStateCR50Reset   PowerStateValue = "cr50_reset"
+	PowerStateOff         PowerStateValue = "off"
+	PowerStateOn          PowerStateValue = "on"
+	PowerStateRec         PowerStateValue = "rec"
+	PowerStateRecForceMRC PowerStateValue = "rec_force_mrc"
+	PowerStateReset       PowerStateValue = "reset"
+	PowerStateWarmReset   PowerStateValue = "warm_reset"
 )
 
 // Echo calls the Servo echo method.
@@ -102,7 +118,7 @@ func (s *Servo) SetString(ctx context.Context, control StringControl, value stri
 	// then run() returns an error anyway.
 	var val bool
 	err := s.run(ctx, newCall("set", string(control), value), &val)
-	return err
+	return errors.Wrapf(err, "setting servo control %s to %s", control, value)
 }
 
 // SetStringAndCheck sets a control to a specified value, and then verifies that it was set correctly.
@@ -121,4 +137,12 @@ func (s *Servo) SetStringAndCheck(ctx context.Context, control StringControl, va
 // KeypressWithDuration sets a KeypressControl to a KeypressDuration value.
 func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressControl, value KeypressDuration) error {
 	return s.SetString(ctx, StringControl(control), string(value))
+}
+
+// SetPowerState sets the PowerState control.
+// Because the DUT is usually unable to respond to this command, it is run in parallel, and no error is returned.
+// Because this state-change is particularly disruptive, it is logged.
+func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) {
+	testing.ContextLogf(ctx, "Setting %s to %s", PowerState, value)
+	go s.SetString(ctx, PowerState, string(value))
 }
