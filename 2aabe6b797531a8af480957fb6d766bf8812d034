@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e9bf43_ae39e66c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-15T19:57:45Z",
+      "side": 1,
+      "message": "what are these quotes for?",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f21732d_635a84ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-15T19:57:45Z",
+      "side": 1,
+      "message": "Isn\u0027t this just a failure?",
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03837d52_597a966b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-15T19:57:45Z",
+      "side": 1,
+      "message": "nit: maybe put this as %q since it is a command string with spaces in it",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cee37c1_232a140b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-15T19:57:45Z",
+      "side": 1,
+      "message": "nit: same re: %q",
+      "range": {
+        "startLine": 55,
+        "startChar": 35,
+        "endLine": 55,
+        "endChar": 37
+      },
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082c7308_391fc56a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-15T19:57:45Z",
+      "side": 1,
+      "message": "nit: The canonical way of stating expected vs. actual is:\n\n \"...: got %q, want %q\"",
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
