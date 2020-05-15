@@ -10,13 +10,16 @@ This file implements functions to check or switch the DUT's boot mode.
 
 import (
 	"context"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/servo"
 	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/testing"
 )
 
 // CheckBootMode forwards to the CheckBootMode RPC to check whether the DUT is in a specified boot mode.
@@ -30,7 +33,7 @@ func CheckBootMode(ctx context.Context, utils fwpb.UtilsServiceClient, bootMode 
 
 // RebootToMode reboots the DUT into the specified boot mode.
 // This has the side-effect of disconnecting the RPC client from the DUT's RPC server.
-func RebootToMode(ctx context.Context, d *dut.DUT, utils fwpb.UtilsServiceClient, toMode fwCommon.BootMode) error {
+func RebootToMode(ctx context.Context, d *dut.DUT, svo *servo.Servo, utils fwpb.UtilsServiceClient, toMode fwCommon.BootMode) error {
 	res, err := utils.CurrentBootMode(ctx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "calling CurrentBootMode rpc")
@@ -45,10 +48,46 @@ func RebootToMode(ctx context.Context, d *dut.DUT, utils fwpb.UtilsServiceClient
 				return errors.Wrap(err, "rebooting DUT")
 			}
 			return nil
+		case fwCommon.BootModeRecovery:
+			if err := cyclePowerState(ctx, d, svo, servo.PowerStateOn); err != nil {
+				return errors.Wrapf(err, "cycling dut power state to %s", servo.PowerStateOn)
+			}
+			return nil
 		default:
 			return errors.Errorf("unsupported firmware boot mode transition %s>%s", fromMode, toMode)
 		}
+	case fwCommon.BootModeRecovery:
+		if err := cyclePowerState(ctx, d, svo, servo.PowerStateRec); err != nil {
+			return errors.Wrapf(err, "cycling dut power state to %s", servo.PowerStateRec)
+		}
+		return nil
 	default:
 		return errors.Errorf("unsupported firmware boot mode transition to %s", toMode)
 	}
+}
+
+// cyclePowerState sets the PowerState control to Off, then sets the PowerState to a specified value, and reconnects to the DUT.
+func cyclePowerState(ctx context.Context, d *dut.DUT, s *servo.Servo, ps servo.PowerStateValue) error {
+	const timeout = 30 * time.Second
+	if ps == servo.PowerStateOff {
+		return errors.New("cannot cycle power state to off; need a non-off value")
+	}
+	s.SetPowerState(ctx, servo.PowerStateOff)
+	shortContext, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+	if err := d.WaitUnreachable(shortContext); err != nil {
+		return errors.Wrap(err, "waiting for dut to be unreachable")
+	}
+	s.SetPowerState(ctx, ps)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+		if err := d.WaitConnect(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to DUT")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 3 * time.Minute}); err != nil {
+		return errors.Wrap(err, "failed to reconnect to DUT")
+	}
+	return nil
 }
