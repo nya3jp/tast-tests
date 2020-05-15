@@ -47,7 +47,7 @@ func Sender(ctx context.Context, s *testing.State) {
 	if useConsent == crash.RealConsent {
 		opt = crash.WithConsent(s.PreValue().(*chrome.Chrome))
 	}
-	if err := crash.SetUpCrashTest(ctx, opt); err != nil {
+	if err := crash.SetUpCrashTest(ctx, crash.FilterCrashes(crash.FilterInIgnoreAllCrashes), opt); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)

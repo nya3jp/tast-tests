@@ -439,3 +439,69 @@ func TestMoveAllCrashesTo(t *testing.T) {
 		t.Fatalf("%s should be created", dst2)
 	}
 }
+
+func TestFilterIn(t *testing.T) {
+	tmpDir := testutil.TempDir(t)
+	defer os.RemoveAll(tmpDir)
+
+	// We can't use the normal file location /run/crash_reporter; we don't have
+	// permission to write there. Instead write to a location under /tmp.
+	runDir := filepath.Join(tmpDir, "run")
+	pausePath := filepath.Join(tmpDir, "pause")
+	filterInPath := filepath.Join(runDir, "filter-in")
+	mockSendingPath := filepath.Join(tmpDir, "mock-sending")
+	sendDir := filepath.Join(tmpDir, "send")
+	if err := mkdirAll(runDir, sendDir); err != nil {
+		t.Fatalf("mkdirAll: %v", err)
+	}
+	sp := setUpParams{
+		inProgDir:       runDir,
+		crashDirs:       []crashAndStash{},
+		senderPausePath: pausePath,
+		mockSendingPath: mockSendingPath,
+		sendRecordDir:   sendDir,
+		filterInPath:    filterInPath,
+		filterIn:        "a command filter",
+	}
+	if err := setUpCrashTest(context.Background(), &sp); err != nil {
+		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
+	}
+
+	// Verify filter in file was created with right contents.
+	contents, err := ioutil.ReadFile(filterInPath)
+	if err != nil {
+		t.Fatalf("Could not read filter in file %q: %v", filterInPath, err)
+	}
+	if string(contents) != sp.filterIn {
+		t.Fatalf("Incorrect filter in contents: got %q but want %q", string(contents), sp.filterIn)
+	}
+
+	tp := tearDownParams{
+		inProgDir:       runDir,
+		crashDirs:       []crashAndStash{},
+		senderPausePath: pausePath,
+		filterInPath:    filterInPath,
+		mockSendingPath: mockSendingPath,
+	}
+	if err := tearDownCrashTest(context.Background(), &tp); err != nil {
+		t.Errorf("tearDownCrashTest(%#v): %v", tp, err)
+	}
+
+	if err := checkNonExistent(filterInPath); err != nil {
+		t.Errorf("filter in file not deleted: %v", err)
+	}
+
+	// Verify that the file is deleted if the test requests no filtering.
+	// (the default)
+	if err := ioutil.WriteFile(filterInPath, []byte("asdf"), 0664); err != nil {
+		t.Fatalf("Error creating fake filterIn file: %v", err)
+	}
+	sp.filterIn = ""
+
+	if err := setUpCrashTest(context.Background(), &sp); err != nil {
+		t.Fatalf("setUpCrashTest(%#v): %v", sp, err)
+	}
+	if err := checkNonExistent(filterInPath); err != nil {
+		t.Errorf("filter in file not deleted: %v", err)
+	}
+}

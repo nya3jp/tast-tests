@@ -206,6 +206,14 @@ func DaemonStore() Option {
 	}
 }
 
+// FilterCrashes puts s into the filter-in file, so that the crash reporter only
+// processes matching crashes.
+func FilterCrashes(s string) Option {
+	return func(p *setUpParams) {
+		p.filterIn = s
+	}
+}
+
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest(ctx)" after calling this. If developer image
@@ -223,6 +231,7 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 		crashDirs:        crashDirs,
 		rebootPersistDir: SystemCrashDir,
 		senderPausePath:  senderPausePath,
+		filterInPath:     FilterInPath,
 		senderProcName:   senderProcName,
 		mockSendingPath:  mockSendingPath,
 		sendRecordDir:    SendRecordDir,
@@ -270,12 +279,14 @@ type setUpParams struct {
 	senderPausePath  string
 	senderProcName   string
 	mockSendingPath  string
+	filterInPath     string
 	sendRecordDir    string
 	isDevImageTest   bool
 	setConsent       bool
 	setMockConsent   bool
 	rebootTest       bool
 	useDaemonStore   bool
+	filterIn         string
 	chrome           *chrome.Chrome
 }
 
@@ -308,10 +319,21 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 				rebootPersistDir: p.rebootPersistDir,
 				senderPausePath:  p.senderPausePath,
 				mockSendingPath:  p.mockSendingPath,
+				filterInPath:     p.filterInPath,
 				useDaemonStore:   p.useDaemonStore,
 			})
 		}
 	}()
+
+	if p.filterIn == "" {
+		if err := disableCrashFiltering(p.filterInPath); err != nil {
+			return errors.Wrap(err, "couldn't disable crash filtering: ")
+		}
+	} else {
+		if err := enableCrashFiltering(p.filterInPath, p.filterIn); err != nil {
+			return errors.Wrap(err, "couldn't enable crash filtering: ")
+		}
+	}
 
 	if p.setConsent && p.setMockConsent {
 		return errors.New("Should not set consent and mock consent at the same time")
@@ -444,6 +466,7 @@ func TearDownCrashTest(ctx context.Context, opts ...tearDownOption) error {
 		rebootPersistDir: SystemCrashDir,
 		senderPausePath:  senderPausePath,
 		mockSendingPath:  mockSendingPath,
+		filterInPath:     FilterInPath,
 	}
 
 	for _, opt := range opts {
@@ -497,6 +520,7 @@ type tearDownParams struct {
 	rebootPersistDir string
 	senderPausePath  string
 	mockSendingPath  string
+	filterInPath     string
 	useDaemonStore   bool
 }
 
@@ -520,6 +544,13 @@ func tearDownCrashTest(ctx context.Context, p *tearDownParams) error {
 		testing.ContextLogf(ctx, "Error removing persistent crash test in progress file %s: %v", filePath, err)
 		if firstErr == nil {
 			firstErr = errors.Wrapf(err, "removing persistent crash test in progress file %s", filePath)
+		}
+	}
+
+	if err := disableCrashFiltering(p.filterInPath); err != nil {
+		testing.ContextLog(ctx, "Couldn't disable crash filtering: ", err)
+		if firstErr == nil {
+			firstErr = errors.Wrap(err, "couldn't disable crash filtering: ")
 		}
 	}
 
