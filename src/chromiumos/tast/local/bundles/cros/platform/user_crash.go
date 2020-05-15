@@ -162,7 +162,7 @@ func init() {
 // testReporterStartup tests that the core_pattern is set up by crash reporter.
 func testReporterStartup(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
 	// Turn off crash filtering so we see the original setting.
-	if err := localcrash.DisableCrashFiltering(); err != nil {
+	if err := localcrash.DisableCrashFiltering(localcrash.FilterInPath); err != nil {
 		s.Error("Failed to turn off crash filtering: ", err)
 		return
 	}
@@ -415,7 +415,11 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 	if shouldReceive {
 		expected = "Received crash notification for " + crasherBasename
 	} else {
-		expected = "Ignoring crash from " + crasherBasename
+		kernelBasename := crasherBasename
+		if len(kernelBasename) > 15 {
+			kernelBasename = kernelBasename[:15]
+		}
+		expected = fmt.Sprintf("Ignoring crash invocation '--user=%d:11:0:0:%s'", cmd.Process.Pid, kernelBasename)
 	}
 
 	if _, err := reader.Wait(ctx, 10*time.Second, func(e *syslog.Entry) bool {
@@ -444,17 +448,17 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 
 // testCrashFiltering tests that crash filtering (a feature needed for testing) works.
 func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	localcrash.EnableCrashFiltering("none")
+	localcrash.EnableCrashFiltering(localcrash.FilterInPath, "none")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"none\": ", err)
 	}
 
-	localcrash.EnableCrashFiltering("sleep")
+	localcrash.EnableCrashFiltering(localcrash.FilterInPath, "sleep")
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"sleep\": ", err)
 	}
 
-	localcrash.DisableCrashFiltering()
+	localcrash.DisableCrashFiltering(localcrash.FilterInPath)
 	if err := checkFilterCrasher(ctx, true); err != nil {
 		s.Error("testCrashFiltering failed for no-filter: ", err)
 	}
