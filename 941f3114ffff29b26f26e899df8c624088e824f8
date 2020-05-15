@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cd4c8980_4157110a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-15T09:57:16Z",
+      "side": 1,
+      "message": "out looks unused (it\u0027s overwritten immediately). Can we use Run() instead of Output()?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "941f3114ffff29b26f26e899df8c624088e824f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4895687c_327b3eb0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 7
@@ -13,6 +36,24 @@
       "writtenOn": "2020-05-14T06:41:55Z",
       "side": 1,
       "message": "Maybe we can simply read that file in golang instead of running shell commands?",
+      "revId": "941f3114ffff29b26f26e899df8c624088e824f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8aa49ef_446b5420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-15T09:57:16Z",
+      "side": 1,
+      "message": "Yes please do so. The easiest way is ioutil.ReadFile.",
+      "parentUuid": "4895687c_327b3eb0",
       "revId": "941f3114ffff29b26f26e899df8c624088e824f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
