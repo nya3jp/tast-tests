@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b78a7ff3_2ab75cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/ephemeral_crash_collector.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-15T16:46:07Z",
+      "side": 1,
+      "message": "bit late, but this should be expectExists.\n\n(Tastboard shows a bunch of confusing errors \"EphemeralCollection: Crash report check failed: existence check for crash /var/spool/crash/fake_crash_1 failed: Expected: (true); Actual (true)\" because this prints the wrong thing)",
+      "range": {
+        "startLine": 108,
+        "startChar": 102,
+        "endLine": 108,
+        "endChar": 108
+      },
+      "revId": "02cb78ae92641f607a29876392eb2948050b80ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
