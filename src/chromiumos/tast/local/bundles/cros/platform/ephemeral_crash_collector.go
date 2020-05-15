@@ -34,7 +34,7 @@ func init() {
 			"chromeos-storage@google.com",
 			"cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"pstore"},
+		SoftwareDeps: []string{"encrypted_reboot_vault"},
 		Params: []testing.Param{{
 			Name: "pre_oobe_collection",
 			Val: ephemeralCollectionParams{
