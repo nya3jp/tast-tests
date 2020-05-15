@@ -18,7 +18,6 @@ window.addEventListener("gamepadconnected", function(e) {
 window.addEventListener("gamepaddisconnected", function(e) {
   gamepadDisconnected = true;
   window.cancelAnimationFrame(requestId);
-  console.log(gamepadDisconnected);
 });
 
 function queryGamepad(timestamp) {
