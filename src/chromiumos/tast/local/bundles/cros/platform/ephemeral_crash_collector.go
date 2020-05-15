@@ -105,7 +105,7 @@ func expectCrashReport(ctx context.Context, crashDir, crashName string, expectEx
 	exists := err == nil
 
 	if exists != expectExists {
-		return errors.Errorf("existence check for crash %s failed: Expected: (%v); Actual (%v)", crashPath, exists, !os.IsNotExist(err))
+		return errors.Errorf("existence check for crash %s failed: Expected: (%v); Actual (%v)", crashPath, expectExists, !os.IsNotExist(err))
 	}
 
 	// If the file should exist, check the contents.
