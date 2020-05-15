@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dbd1489f_4c1ae5ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c862d94e_485da2d4",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e58e057_4c367eb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bff1ae2_b093dac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e58e057_4c367eb7",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4e2370c1_adfa453a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c749a686_9e69f4ca",
+      "range": {
+        "startLine": 84,
+        "startChar": 55,
+        "endLine": 84,
+        "endChar": 56
+      },
+      "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "272d1480_6c459a8b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46475f6_9b0499e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272d1480_6c459a8b",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 14
+      },
+      "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fea1daf5_bfc7da86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219b0329_644aa879",
+      "range": {
+        "startLine": 107,
+        "startChar": 42,
+        "endLine": 107,
+        "endChar": 43
+      },
+      "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74425cba_b5bae86b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a85292e2_29538322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_bluetooth_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T15:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74425cba_b5bae86b",
+      "range": {
+        "startLine": 111,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 74
+      },
+      "revId": "5ec09562d67e1eb1441100e0795b9f7570b12e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
