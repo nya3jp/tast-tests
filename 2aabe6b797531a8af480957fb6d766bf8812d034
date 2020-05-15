@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "e56392f1_aea17160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-15T21:18:50Z",
+      "side": 1,
+      "message": "Just want to show that no profile is loaded. I change the message to make it clearer.",
+      "parentUuid": "f1e9bf43_ae39e66c",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614c0929_62d5063c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-15T21:18:50Z",
+      "side": 1,
+      "message": "No. In unibuild, some board uses DPTF profile from bios, and some use overriden dptf file.\nSo it is not a failure.",
+      "parentUuid": "3f21732d_635a84ff",
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03837d52_597a966b",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8f9291_d500454c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-15T21:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03837d52_597a966b",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "b2efdacd_d0280951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-15T21:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cee37c1_232a140b",
+      "range": {
+        "startLine": 55,
+        "startChar": 35,
+        "endLine": 55,
+        "endChar": 37
+      },
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "082c7308_391fc56a",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 2
@@ -102,6 +192,24 @@
       "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7b0239_9ba43eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-15T21:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "082c7308_391fc56a",
+      "revId": "2aabe6b797531a8af480957fb6d766bf8812d034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
