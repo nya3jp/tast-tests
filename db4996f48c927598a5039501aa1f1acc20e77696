@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f9175c80_ca8a2fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2020-05-15T21:55:09Z",
+      "side": 1,
+      "message": "This test addresses the real user issue when interrupting ARC optin in the middle of optin flow made it impossible to complete provisioning after the next Chrome login. Delay here is essential. I am bit unclear about your Q about mainline. Why it should not go to this group. It is marked as informational and won\u0027t affect CQ. If not mainline, what is your suggestion? Also please note, this test is port and it was working for a while as autotest.",
+      "parentUuid": "868c5c09_1ad1678e",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed94c491_f4fc6bf6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
         "patchSetId": 9
