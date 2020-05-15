@@ -149,6 +149,30 @@
     },
     {
       "key": {
+        "uuid": "df8d574b_e429afca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-15T15:44:41Z",
+      "side": 1,
+      "message": "yea, Go prefers shorter names\n\nsorry for not clarifying: I added this comment after using \"abs()\" method comment. If you\u0027ll use abs or absDiff, maybe deltaAvailable will better name then.",
+      "parentUuid": "fdd04c06_3fdbeb71",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "6ffb6d70e6e3d5e256fa4cb38c5e39cc30f2294a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76c3fae3_cea7e203",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_stateful_partition_info.go",
         "patchSetId": 4
