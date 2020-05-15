@@ -16,6 +16,41 @@
       "revId": "5fe30c329f4648deee9636b77f5e06d1b34b966d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc638a29_3d79e922",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/api_get_stateful_partition_available_capacity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-15T16:25:08Z",
+      "side": 1,
+      "message": "And you would implement that here? Why not inside TestGetStatefulPartitionAvailableCapacity? That is running on the DUT, isn\u0027t it?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2203003/1/src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go#290",
+      "parentUuid": "8f8d9028_044b57f0",
+      "revId": "5fe30c329f4648deee9636b77f5e06d1b34b966d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8eb30a_0db91d1f",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-15T16:25:08Z",
+      "side": 1,
+      "message": "This is a build artefact, isn\u0027t it? Why is it checked in?",
+      "revId": "5fe30c329f4648deee9636b77f5e06d1b34b966d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
