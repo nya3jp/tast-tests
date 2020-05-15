@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb2c2165_cbfb9b6e",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T18:04:37Z",
+      "side": 1,
+      "message": "They could, but that would mean we\u0027d have to update this file every time we create a new test for a new category.",
+      "parentUuid": "03356cf2_eaa9ea20",
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9fde231_13945385",
         "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-15T18:01:29Z",
       "side": 1,
       "message": "Would we have access to this file if a test failed on stainless?",
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0f2764_0ddf4ff4",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-15T18:04:37Z",
+      "side": 1,
+      "message": "I usually view the test results at https://tastboard.corp.google.com, and this file is available there when a test fails.",
+      "parentUuid": "f9fde231_13945385",
       "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
