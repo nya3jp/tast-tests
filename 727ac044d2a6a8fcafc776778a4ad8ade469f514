@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03356cf2_eaa9ea20",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-05-15T18:01:29Z",
+      "side": 1,
+      "message": "Could these categories be an enum?",
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fde231_13945385",
+        "filename": "src/chromiumos/tast/local/croshealthd/croshealthd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2020-05-15T18:01:29Z",
+      "side": 1,
+      "message": "Would we have access to this file if a test failed on stainless?",
+      "revId": "727ac044d2a6a8fcafc776778a4ad8ade469f514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
