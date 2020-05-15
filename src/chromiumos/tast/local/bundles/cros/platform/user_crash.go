@@ -415,7 +415,11 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 	if shouldReceive {
 		expected = "Received crash notification for " + crasherBasename
 	} else {
-		expected = "Ignoring crash from " + crasherBasename
+		kernelBasename := crasherBasename
+		if len(kernelBasename) > 15 {
+			kernelBasename = kernelBasename[:15]
+		}
+		expected = fmt.Sprintf("Ignoring crash invocation '--user=%d:11:0:0:%s'", cmd.Process.Pid, kernelBasename)
 	}
 
 	if _, err := reader.Wait(ctx, 10*time.Second, func(e *syslog.Entry) bool {
@@ -444,7 +448,7 @@ func checkFilterCrasher(ctx context.Context, shouldReceive bool) error {
 
 // testCrashFiltering tests that crash filtering (a feature needed for testing) works.
 func testCrashFiltering(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
-	localcrash.EnableCrashFiltering("none")
+	localcrash.EnableCrashFiltering(localcrash.FilterInIgnoreAllCrashes)
 	if err := checkFilterCrasher(ctx, false); err != nil {
 		s.Error("testCrashFiltering failed for filter=\"none\": ", err)
 	}
@@ -720,7 +724,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	}
 
 	f := s.Param().(userCrashParams).testFunc
-	if err := crash.RunCrashTest(ctx, cr, s, f, true, consentType); err != nil {
+	if err := crash.RunCrashTest(ctx, cr, s, f, consentType); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
