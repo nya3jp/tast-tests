@@ -22,6 +22,30 @@
       "revId": "e61786525cd4fe3e5f96c74e1b6647acb5af50af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3880b14f_bad51c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2020-05-15T00:37:28Z",
+      "side": 1,
+      "message": "It was! But I cannot for the life of me figure out if the Go regex library can return a dictionary of \"group name\" to \"matched substring\", so I went with this.\n\nIt appears to me that the Go regex library only allows using named groups for string replacement/expansion. But I could be wrong.\n\nI left the group name in here because it was useful documentation.",
+      "parentUuid": "e8480fa6_2ca662b9",
+      "range": {
+        "startLine": 125,
+        "startChar": 17,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "e61786525cd4fe3e5f96c74e1b6647acb5af50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
