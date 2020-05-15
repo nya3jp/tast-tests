@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbdaf6a6_1606bd87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-15T21:12:37Z",
+      "side": 1,
+      "message": "What is the purpose of restarting multiple times instead of restarting once and then waiting for arc to provision?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 93
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868c5c09_1ad1678e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-15T21:12:37Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like the type of test that should be in mainline at least not in it\u0027s current form. I feel like it makes more sense as two separate tests:\n1 test that opts in, restarts chrome, and waits for arc to be provisions. This test would only restart once and would go into mainline. It would not use any delays.\nAnother test that, that is a performance tests(not in mainline) that uses various delays to discover how long provisioning takes.",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed94c491_f4fc6bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/opt_in_after_interruption.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-15T21:12:37Z",
+      "side": 1,
+      "message": "nit: default initialization\nvar provisioned bool",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 24
+      },
+      "revId": "db4996f48c927598a5039501aa1f1acc20e77696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
