@@ -25,7 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowDefaultBounds,
 		Desc:         "Test default window size behavior",
-		Contacts:     []string{"skuhne@google.com", "arc-framework+tast@google.com"},
+		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcWMTestApp_24.apk"},
