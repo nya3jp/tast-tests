@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d5efc10_8bf5c3b7",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T17:44:05Z",
+      "side": 1,
+      "message": "this can be:\n  if runtime.GOARCH \u003d\u003d \"amd64\" {\n    return runtime.GOARTCH\n  }\n  return \"arm64\"\n\nOr simply \"return runtime.GOARCH\" could be possible (if you can ignore 32-bit arm).\n\nBy the way, this architecture strings are different from downloading images; they\u0027re using \"intel64\" vs \"arm32\". I believe this is intentional.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 12
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff4cd038_4033897f",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T17:44:05Z",
+      "side": 1,
+      "message": "Sum\u0027s parameter can be nil if you want to pass empty (see example: https://play.golang.org/p/s16mKkfsXhp)",
+      "range": {
+        "startLine": 178,
+        "startChar": 38,
+        "endLine": 178,
+        "endChar": 46
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eef88f6_265b2f87",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T17:44:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 190,
+        "startChar": 48,
+        "endLine": 190,
+        "endChar": 56
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd46509c_77afaf8f",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T17:44:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 192,
+        "startChar": 50,
+        "endLine": 192,
+        "endChar": 58
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca755e65_ad659406",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T17:44:05Z",
+      "side": 1,
+      "message": "Why not removing this?",
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14319f4_fd6ded84",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-15T17:44:05Z",
+      "side": 1,
+      "message": "I believe that you\u0027ve already considered the use of external data files (https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/writing_tests.md#External-data-files) and chosen not to use this, but I\u0027m interested in why it doesn\u0027t work here. Is it because the staging image data could be updated over the time?",
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
