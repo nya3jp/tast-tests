@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91fb07cb_ffd31a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/hearthstone.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-05-16T04:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa31762_7c9a6bf9",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "revId": "f1937cfd6b40902c9f1199bfe0a9920ecc9510a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "919961f0_0349d3c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f1937cfd6b40902c9f1199bfe0a9920ecc9510a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca0d51b_15c7aeac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-05-16T04:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919961f0_0349d3c9",
+      "range": {
+        "startLine": 40,
+        "startChar": 57,
+        "endLine": 40,
+        "endChar": 76
+      },
+      "revId": "f1937cfd6b40902c9f1199bfe0a9920ecc9510a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e4dbfba4_341b0c89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-05-16T04:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e54b0850_02ac72f8",
+      "range": {
+        "startLine": 44,
+        "startChar": 59,
+        "endLine": 44,
+        "endChar": 80
+      },
+      "revId": "f1937cfd6b40902c9f1199bfe0a9920ecc9510a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9af0140_7ea3abb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "7dd19a60_c8fa2e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-05-16T04:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9af0140_7ea3abb2",
+      "range": {
+        "startLine": 48,
+        "startChar": 69,
+        "endLine": 48,
+        "endChar": 103
+      },
+      "revId": "f1937cfd6b40902c9f1199bfe0a9920ecc9510a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5078f79b_ee18709b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "f1937cfd6b40902c9f1199bfe0a9920ecc9510a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a705e2_4c6634a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2020-05-16T04:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5078f79b_ee18709b",
+      "range": {
+        "startLine": 52,
+        "startChar": 71,
+        "endLine": 52,
+        "endChar": 107
+      },
+      "revId": "f1937cfd6b40902c9f1199bfe0a9920ecc9510a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
