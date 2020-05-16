@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "879db495_5e9b9912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-05-16T11:10:46Z",
+      "side": 1,
+      "message": "I know this is go and it aims to make code as unreadable as possible but can we at least make the logging a bit more helpful for debugging :)",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "0d82da1b61c8b717d4236ab72f8adf82f2e51d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22830374_d9c6c6d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-05-16T11:10:46Z",
+      "side": 1,
+      "message": "function comment",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 15
+      },
+      "revId": "0d82da1b61c8b717d4236ab72f8adf82f2e51d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
