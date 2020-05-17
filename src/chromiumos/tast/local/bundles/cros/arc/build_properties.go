@@ -41,6 +41,7 @@ func init() {
 
 func BuildProperties(ctx context.Context, s *testing.State) {
 	const (
+		propertyBoard         = "ro.product.board"
 		propertyDevice        = "ro.product.device"
 		propertyFirstAPILevel = "ro.product.first_api_level"
 		propertySDKVersion    = "ro.build.version.sdk"
@@ -62,6 +63,15 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}
 		return value
+	}
+
+	// On unibuild boards, system.raw.img's build.prop contains some template
+	// values such as ro.product.board="{metrics-tag}". This check makes sure
+	// that such variables are expanded at runtime.
+	board := getProperty(propertyBoard)
+	if strings.Contains(board, "{") {
+		s.Fatalf("%v property is %q; should not contain unexpanded values",
+			propertyBoard, board)
 	}
 
 	// Read ro.product.device, drop _cheets suffix, and drop more suffices
