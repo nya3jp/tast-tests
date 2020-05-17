@@ -241,18 +241,6 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, zipFile string
 		s.Fatal("Failed navigating to the new directory: ", err)
 	}
 
-	// // Get the Files App listBox.
-	// filesBox, err := files.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
-	// if err != nil {
-	// 	s.Fatal("Failed getting filesBox: ", err)
-	// }
-	// defer filesBox.Release(ctx)
-
-	// // Move the focus to the file list.
-	// if err := filesBox.LeftClick(ctx); err != nil {
-	// 	s.Fatal("Failed selecting filesBox: ", err)
-	// }
-
 	testing.Sleep(ctx, 100*time.Millisecond)
 
 	if err := ew.Accel(ctx, "ctrl+V"); err != nil {
@@ -261,8 +249,6 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, zipFile string
 
 	// Wait for the copy operation to start.
 	params := ui.FindParams{
-		// Name:  "Copying data…",
-		// State: map[ui.StateType]bool{ui.StateTypeFocusable: true},
 		Name: "To " + zipFile[:len(zipFile)-4],
 		Role: ui.RoleTypeStaticText,
 	}
@@ -283,24 +269,6 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, zipFile string
 }
 
 func testZippingFiles(ctx context.Context, tconn *chrome.TestConn, s *testing.State, zipFile string, files *filesapp.FilesApp, ew *input.KeyboardEventWriter) float64 {
-	// // Navigate to the data folder.
-	// params := ui.FindParams{
-	// 	Name: "data",
-	// 	Role: ui.RoleTypeListBoxOption,
-	// }
-	// dataFolder, err := files.Root.DescendantWithTimeout(ctx, params, 15*time.Second)
-	// if err != nil {
-	// 	s.Fatal("Failed to find data folder: ", err)
-	// }
-	// defer dataFolder.Release(ctx)
-	// if err := dataFolder.LeftClick(ctx); err != nil {
-	// 	s.Fatal("Failed to select data folder: ", err)
-	// }
-
-	// if err := ew.Accel(ctx, "Enter"); err != nil {
-	// 	s.Fatal("Failed navigating to the data folder: ", err)
-	// }
-
 	// Get the Files App listBox.
 	filesBox, err := files.Root.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeListBox}, 15*time.Second)
 	if err != nil {
