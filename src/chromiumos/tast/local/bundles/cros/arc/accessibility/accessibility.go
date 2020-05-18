@@ -158,9 +158,9 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 	return cvconn, nil
 }
 
-// WaitForFocusedNode polls until the properties of the focused node matches the given params.
+// WaitForfocusedNode polls until the properties of the focused node matches the given params.
 // Returns an error after 30 seconds.
-func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams) error {
+func WaitForfocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		focused, err := focusedNode(ctx, cvconn, tconn)
@@ -252,7 +252,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 				s.Fatal("Failed to start activity: ", err)
 			}
 
-			if err := WaitForFocusedNode(ctx, cvconn, tconn, &ui.FindParams{
+			if err := WaitForfocusedNode(ctx, cvconn, tconn, &ui.FindParams{
 				ClassName: TextView,
 				Name:      activity.Title,
 				Role:      ui.RoleTypeStaticText,
