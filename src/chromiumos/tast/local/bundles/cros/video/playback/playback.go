@@ -36,16 +36,6 @@ const (
 	hwAccelEnabled
 )
 
-// DefaultPerfState specifies whether to record perf metrics of default playback.
-type DefaultPerfState int
-
-const (
-	// DefaultPerfDisabled disables recording metrics of default playback.
-	DefaultPerfDisabled DefaultPerfState = iota
-	// DefaultPerfEnabled enables recording metrics of default playback.
-	DefaultPerfEnabled
-)
-
 // DecoderType represents the different video decoder types.
 type DecoderType int
 
@@ -97,12 +87,10 @@ var metricDefs = []metricDef{
 }
 
 // RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a
-// video with/without HW Acceleration. The measured values are reported to a dashboard. If dps is
-// DefaultPerfEnabled, an additional set of perf metrics will be recorded for default video playback.
-// The default video playback stands for HW-accelerated one if available, otherwise software playback.
+// video with/without HW Acceleration. The measured values are reported to a dashboard.
 // decoderType specifies whether to run the tests against the VDA or VD based video decoder
 // implementations.
-func RunTest(ctx context.Context, s *testing.State, videoName string, dps DefaultPerfState, decoderType DecoderType) {
+func RunTest(ctx context.Context, s *testing.State, videoName string, decoderType DecoderType) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -121,7 +109,7 @@ func RunTest(ctx context.Context, s *testing.State, videoName string, dps Defaul
 	}
 	s.Log("Measured CPU usage, number of frames dropped and dropped frame percentage: ", perfData)
 
-	if err := savePerfResults(ctx, perfData, s.OutDir(), dps); err != nil {
+	if err := savePerfResults(ctx, perfData, s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", err)
 	}
 }
@@ -271,9 +259,8 @@ func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData 
 }
 
 // savePerfResults saves performance results in outDir.
-func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir string, dps DefaultPerfState) error {
+func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir string) error {
 	p := perf.NewValues()
-	defaultPerfRecorded := false
 	for _, pType := range []playbackType{playbackWithHWAccel, playbackWithoutHWAccel} {
 		keyval, found := perfData[pType]
 		if !found {
@@ -292,12 +279,6 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir str
 			perfPrefixes = append(perfPrefixes, "sw_")
 		}
 
-		// Default metrics represent perf in default playback, which will be hardware-accelerated playback if it is
-		// available on the device; otherwise fallback to software playback.
-		if dps == DefaultPerfEnabled && !defaultPerfRecorded {
-			perfPrefixes = append(perfPrefixes, "default_")
-			defaultPerfRecorded = true
-		}
 		for _, m := range metricDefs {
 			val, found := keyval[m.desc]
 			for _, pp := range perfPrefixes {

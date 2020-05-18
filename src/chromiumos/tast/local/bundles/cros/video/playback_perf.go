@@ -326,5 +326,5 @@ func init() {
 // HW decode acceleration if available. The values are reported to the performance dashboard.
 func PlaybackPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playbackPerfParams)
-	playback.RunTest(ctx, s, testOpt.fileName, playback.DefaultPerfDisabled, testOpt.decoderType)
+	playback.RunTest(ctx, s, testOpt.fileName, testOpt.decoderType)
 }
