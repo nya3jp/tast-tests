@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bd06fb7_22d02ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-05-18T01:26:04Z",
+      "side": 1,
+      "message": "Where does this 4 come from?\n\nI understand it is the length of \u0027.zip\u0027. Maybe there is a better way to remove this suffix? Or maybe you don\u0027t even need to remove it at all.\n\nInstead of:\n\tfor _, zipFile :\u003d range []string{\"many_small_files.zip\", \"misc_zip_files.zip\"} {\n\t\tzipFileLocation :\u003d filepath.Join(filesapp.DownloadPath, zipFile)\n\nYou can do:\n\tfor _, zipBaseName :\u003d range []string{\"many_small_files\", \"misc_zip_files\"} {\n\t\tzipFile :\u003d zipBaseName + \".zip\"\n\t\tzipFileLocation :\u003d filepath.Join(filesapp.DownloadPath, zipFile)\n\nand use zipBaseName instead of zipFile[:len(zipFile)-4]",
+      "range": {
+        "startLine": 101,
+        "startChar": 68,
+        "endLine": 101,
+        "endChar": 70
+      },
+      "revId": "63645035d9aae5bb7938c9d36e38a02cef9d13ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
