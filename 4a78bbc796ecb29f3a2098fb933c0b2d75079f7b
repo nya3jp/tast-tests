@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6322a29f_35e378a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-18T22:36:31Z",
+      "side": 1,
+      "message": "May want to factor out a function to parse the platform name from board.",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4da47a_88ade44e",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-18T22:36:31Z",
+      "side": 1,
+      "message": "In the existing autotest code, the models serves as a lookup to override values, but is not included in the constructed config: \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/autotest/files/server/cros/faft/utils/config.py;l\u003d110\n\nIf we want to retain the model information, it will be better to have a \"Model\" field that is populated according to the provided model and not directly from json.",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e6936d_311b65a9",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-18T22:36:31Z",
+      "side": 1,
+      "message": "The parsed variable should still be named platform.",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee87a92_d954db6c",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-18T22:36:31Z",
+      "side": 1,
+      "message": "While this will work with current config json files, technically it is possible for a parent and child to both contain a model override but on different parameters, then doing this unmarhsal here will lose the override in the parent.",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
