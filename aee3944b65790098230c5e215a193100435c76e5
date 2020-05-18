@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd277aeb_a5e16df2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-18T04:34:06Z",
+      "side": 1,
+      "message": "Great!\nJust checking, what board did you use? For example, I see no failure on eve or betty for now on the Tastboard. Or did you check that the test fails without this patch?",
+      "revId": "aee3944b65790098230c5e215a193100435c76e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cda20bb_948b3105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2020-05-18T04:34:06Z",
+      "side": 1,
+      "message": "In the previous block, we\u0027re already doing poll. So, I\u0027m feeling that wait condition used there is not appropriate.\nIn this case, how about waiting for \u0027value\u0027 attribute to be \u0027a\u0027?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "aee3944b65790098230c5e215a193100435c76e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
