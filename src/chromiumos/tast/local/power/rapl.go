@@ -16,19 +16,28 @@ import (
 	"chromiumos/tast/errors"
 )
 
+var isZoneExpected = map[string]bool{
+	// core reports the the joules from the CPU. It belongs to package-0.
+	"core": true,
+	// dram reports the joules from memory. It belongs to package-0.
+	"dram": true,
+	// package-0 reports the joules from Zone 0 in RAPL, which is about the sum of subzones core, uncore and dram.
+	"package-0": true,
+	// psys reports the joules from Zone 1 in RAPL.
+	"psys": true,
+	// uncore reports the joules from the GPU. It belongs to package-0.
+	"uncore": true,
+}
+
 // RAPLValues represents the Intel "Running Average Power Limit" (RAPL) values.
 // For further info read: https://www.kernel.org/doc/Documentation/power/powercap/powercap.txt
 type RAPLValues struct {
-	// Package0 contains the joules from Zone 0 in RAPL, which is about the sum of subzones Core, Uncore and DRAM.
-	Package0 float64
-	// Core contains the the joules from the CPU. It belongs to Package0.
-	Core float64
-	// Uncore contains the joules from the GPU. It belongs to Package0.
-	Uncore float64
-	// DRAM contains the joules from memory. It belongs to Package0.
-	DRAM float64
-	// Psys contains the joules from Zone 1 in RAPL.
-	Psys float64
+	// joules contains the joules from RAPL
+	joules map[string]float64
+}
+
+func newRAPLValues() *RAPLValues {
+	return &RAPLValues{make(map[string]float64)}
 }
 
 // ReportPerfMetrics appends to perfValues all the RAPL values.
@@ -38,11 +47,11 @@ func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string
 		name  string
 		value float64
 	}{
-		{"Package0", rapl.Package0},
-		{"Core", rapl.Core},
-		{"Uncore", rapl.Uncore},
-		{"DRAM", rapl.DRAM},
-		{"Psys", rapl.Psys},
+		{"Package0", rapl.joules["package-0"]},
+		{"Core", rapl.joules["core"]},
+		{"Uncore", rapl.joules["uncore"]},
+		{"DRAM", rapl.joules["dram"]},
+		{"Psys", rapl.joules["psys"]},
 	} {
 		perfValues.Append(perf.Metric{
 			Name:      prefix + e.name,
@@ -51,6 +60,16 @@ func (rapl *RAPLValues) ReportPerfMetrics(perfValues *perf.Values, prefix string
 			Multiple:  true,
 		}, e.value)
 	}
+}
+
+// Total returns the sum of joules at the top level.
+func (rapl *RAPLValues) Total() float64 {
+	return rapl.joules["package0"] + rapl.joules["psys"]
+}
+
+// Uncore returns the joules from the GPU.
+func (rapl *RAPLValues) Uncore() float64 {
+	return rapl.joules["uncore"]
 }
 
 // RAPLSnapshot represents a snapshot of the RAPL values.
@@ -131,17 +150,14 @@ func (r *RAPLSnapshot) diffWithCurrentRAPL(resetStart bool) (*RAPLValues, error)
 		return nil, err
 	}
 
-	var ret RAPLValues
-	ret.Package0 = diffJoules(r.start.Package0, end.Package0, r.maxJoules)
-	ret.Core = diffJoules(r.start.Core, end.Core, r.maxJoules)
-	ret.Uncore = diffJoules(r.start.Uncore, end.Uncore, r.maxJoules)
-	ret.DRAM = diffJoules(r.start.DRAM, end.DRAM, r.maxJoules)
-	ret.Psys = diffJoules(r.start.Psys, end.Psys, r.maxJoules)
-
+	ret := newRAPLValues()
+	for name, startValue := range r.start.joules {
+		ret.joules[name] = diffJoules(startValue, end.joules[name], r.maxJoules)
+	}
 	if resetStart {
 		r.start = end
 	}
-	return &ret, nil
+	return ret, nil
 }
 
 // DiffWithCurrentRAPL returns the joules used since the snapshot was taken.
@@ -171,7 +187,7 @@ func readRAPLValues(dirsToParse []string) (*RAPLValues, error) {
 		raplNameFile   = "name"
 		raplEnergyFile = "energy_uj"
 	)
-	var rapl RAPLValues
+	rapl := newRAPLValues()
 	for _, dir := range dirsToParse {
 
 		// Get RAPL name.
@@ -185,22 +201,12 @@ func readRAPLValues(dirsToParse []string) (*RAPLValues, error) {
 			return nil, err
 		}
 
-		switch name {
-		case "package-0":
-			rapl.Package0 = e
-		case "dram":
-			rapl.DRAM = e
-		case "core":
-			rapl.Core = e
-		case "uncore":
-			rapl.Uncore = e
-		case "psys":
-			rapl.Psys = e
-		default:
+		if !isZoneExpected[name] {
 			return nil, errors.Errorf("unexpected RAPL name: %q", name)
 		}
+		rapl.joules[name] = e
 	}
-	return &rapl, nil
+	return rapl, nil
 }
 
 // readRAPLFile returns a string with the contents of the first line of the file.

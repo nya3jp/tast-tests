@@ -588,15 +588,14 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, invoc *testInvoca
 		}
 	}
 
-	totalPower := raplv.Package0 + raplv.Psys
-	nongpuPower := totalPower - raplv.Uncore
-	if err := invoc.metrics.recordValue(ctx, invoc, "total_power", totalPower); err != nil {
+	nongpuPower := raplv.Total() - raplv.Uncore()
+	if err := invoc.metrics.recordValue(ctx, invoc, "total_power", raplv.Total()); err != nil {
 		return err
 	}
 	if err := invoc.metrics.recordValue(ctx, invoc, "nongpu_power", nongpuPower); err != nil {
 		return err
 	}
-	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore); err != nil {
+	if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {
 		return err
 	}
 	return nil
