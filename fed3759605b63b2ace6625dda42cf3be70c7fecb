@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4465d527_0c60db5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-05-18T16:28:33Z",
+      "side": 1,
+      "message": "can we do this only lacros so that we can catch the issue when this behavior changes on non lacros side. please add comment why we\u0027re doing this.",
+      "revId": "fed3759605b63b2ace6625dda42cf3be70c7fecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
