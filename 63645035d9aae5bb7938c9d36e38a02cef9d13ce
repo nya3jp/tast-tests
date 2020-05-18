@@ -22,6 +22,30 @@
       "revId": "63645035d9aae5bb7938c9d36e38a02cef9d13ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5002b41f_dacb36a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2020-05-18T22:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bd06fb7_22d02ff6",
+      "range": {
+        "startLine": 101,
+        "startChar": 68,
+        "endLine": 101,
+        "endChar": 70
+      },
+      "revId": "63645035d9aae5bb7938c9d36e38a02cef9d13ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
