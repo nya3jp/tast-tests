@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd648834_8fb7fc51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-18T06:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c57cf7d0_576f0621",
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e78ed47_50be0b94",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b378de9d_8a6f8e25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-18T06:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e78ed47_50be0b94",
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "59df5736_8a53be85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-18T06:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888db30f_dd5db41d",
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3160da58_7b367067",
         "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
         "patchSetId": 2
@@ -96,6 +150,30 @@
       "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e146188_4e39f888",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-18T06:42:01Z",
+      "side": 1,
+      "message": "I\u0027ll leave it in :-)\n\nThe default vim config does this.",
+      "parentUuid": "3160da58_7b367067",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
