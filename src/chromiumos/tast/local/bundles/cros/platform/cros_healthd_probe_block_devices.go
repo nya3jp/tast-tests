@@ -6,10 +6,8 @@ package platform
 
 import (
 	"context"
-	"strings"
 
-	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
 
@@ -28,32 +26,13 @@ func init() {
 }
 
 func CrosHealthdProbeBlockDevices(ctx context.Context, s *testing.State) {
-	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
-		s.Fatal("Failed to start cros_healthd: ", err)
-	}
-
-	// For now we are only testing probe_block_devices because that is all
-	// that's currently implemented.
-	// TODO(crbug.com/979210): narrow interface for testing
-	b, err := testexec.CommandContext(ctx, "telem", "--category=storage").Output(testexec.DumpLogOnError)
+	records, err := croshealthd.FetchTelemetry(ctx, croshealthd.TelemCategoryStorage, s.OutDir())
 	if err != nil {
-		s.Fatal("Failed to run 'telem --category=storage': ", err)
+		s.Fatal("Failed to get storage telemetry info: ", err)
 	}
 
-	// The theory here is that every board should have at least one
-	// non-removable block device showing up in this list.  The output of
-	// cros_healthd probe commands is just a CSV with a line of headers.
-	lineCount := 0
-	for _, line := range strings.Split(string(b), "\n") {
-		if len(strings.TrimSpace(line)) > 0 {
-			lineCount++
-			if lineCount > 1 {
-				// We found at least 1 row of device information. End the test
-				// immediately. This implies success.
-				return
-			}
-		}
+	// Every board should have at least one non-removable block device.
+	if len(records) < 2 {
+		s.Fatalf("Wrong number of output lines: got %d; want 2+", len(records))
 	}
-
-	s.Fatal("Could not find any rows of device information")
 }
