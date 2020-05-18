@@ -375,6 +375,30 @@
       "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b4e5d4_7005a8ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-18T16:57:08Z",
+      "side": 1,
+      "message": "I would say that is a good place since it is already wrapped there. Probably don\u0027t want to call directly into power/setup. I think it would be best to create a power/backlight package that contains all of the methods for backlight brightness control. That should probably be done in a separate CL. Also for that CL, add cwd@ as a reviewer.",
+      "parentUuid": "79eda23d_44bf7e7b",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "3ec7eb5156ae9605b5d3ca6b63d7d2752f4dc558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
