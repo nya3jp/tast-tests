@@ -284,7 +284,7 @@ func checkDaemonsRunning(ctx context.Context) error {
 	if err := expectDaemonRunning(ctx, "seneschal"); err != nil {
 		return err
 	}
-	if err := expectDaemonRunning(ctx, "vm-nat"); err != nil {
+	if err := expectDaemonRunning(ctx, "patchpanel"); err != nil {
 		return err
 	}
 	if err := expectDaemonRunning(ctx, "vmlog_forwarder"); err != nil {
