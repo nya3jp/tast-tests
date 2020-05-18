@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ad1d229_96b1a4be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-18T23:18:57Z",
+      "side": 1,
+      "message": "Good idea, will do.",
+      "parentUuid": "6322a29f_35e378a6",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d4da47a_88ade44e",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-18T22:36:31Z",
       "side": 1,
       "message": "In the existing autotest code, the models serves as a lookup to override values, but is not included in the constructed config: \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/third_party/autotest/files/server/cros/faft/utils/config.py;l\u003d110\n\nIf we want to retain the model information, it will be better to have a \"Model\" field that is populated according to the provided model and not directly from json.",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e542f22_233030f6",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-18T23:18:57Z",
+      "side": 1,
+      "message": "It\u0027s true that models isn\u0027t included in the constructed config, but IMO it is not a big deal that we wind up including it here. I do not expect anyone to use it.\n\n\u003e If we want to retain the model information, it will be better to have a \"Model\" field that is populated according to the provided model and not directly from json.\n\nI\u0027m afraid I don\u0027t understand yet. Could you please explain more about what you meant by this?",
+      "parentUuid": "3d4da47a_88ade44e",
       "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bd4daca9_4e30e526",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-18T23:18:57Z",
+      "side": 1,
+      "message": "I disagree. \"Platform\" is an ambiguous term: it can mean the reference board, the board, the board-variant combination, or the complete combination of reference/board/variant/model. In this CL, I have avoided using the word \"platform\" wherever possible in order to avoid that ambiguity, with two deliberate exceptions:\n1. The RPC is named \"Platform\" because it returns both the board-name and the model-name; i.e., it fully describes the DUT platform.\n2. In L203-219 of this file (immediately below), I preferred the ambiguity of \"platform\" so that it could refer to a board, a parent (i.e. a reference board), or even defaults.\n\nIn this case, however, we are only expecting to receive the board name as an argument. Because this is an argument that test-writers will interact with, it is better to be specific. The fact that board_variant is allowed is an unfortunate fact that results from the way /etc/lsb_release reports the board name.",
+      "parentUuid": "e7e6936d_311b65a9",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ee87a92_d954db6c",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2020-05-18T22:36:31Z",
       "side": 1,
       "message": "While this will work with current config json files, technically it is possible for a parent and child to both contain a model override but on different parameters, then doing this unmarhsal here will lose the override in the parent.",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6a7a68_df13eb0e",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-18T23:18:57Z",
+      "side": 1,
+      "message": "Ack, that is technically possible and good to be aware of. However, I don\u0027t think we need to account for that scenario right now. Autotest doesn\u0027t allow for parents to define models, and AFAICT there is no scenario where both a parent and a board config would define models. We would need to do some design work to determine what that means, and how to reconcile differences between the two.\n\nThe purpose of this CL is to reach feature-parity with Autotest. So, let\u0027s punt this potential feature until a need ever comes up. Then we can give it the proper design, and implement it in both frameworks.",
+      "parentUuid": "9ee87a92_d954db6c",
       "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
