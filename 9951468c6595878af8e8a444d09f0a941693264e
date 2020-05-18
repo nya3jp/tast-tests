@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1256236e_12b50f7f",
+        "filename": "src/chromiumos/tast/local/chrome/webutil/webutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-18T03:13:04Z",
+      "side": 1,
+      "message": "nit/style: Sorry for miscommunication.\n\nCould you add two-tab indent for each line?\nInsitde two-tab indent, could you keep the current indent following JS style guide?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "9951468c6595878af8e8a444d09f0a941693264e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
