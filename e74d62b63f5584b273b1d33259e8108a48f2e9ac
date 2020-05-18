@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01170e9c_5455f814",
+        "filename": "src/chromiumos/tast/local/crash/filter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2020-05-18T22:50:49Z",
+      "side": 1,
+      "message": "s isn\u0027t a process argument. Maybe \"command-line filter\"?\n\nAlso, naming the variable \"filter\" might be more meaningful.",
+      "range": {
+        "startLine": 22,
+        "startChar": 67,
+        "endLine": 22,
+        "endChar": 74
+      },
+      "revId": "e74d62b63f5584b273b1d33259e8108a48f2e9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
