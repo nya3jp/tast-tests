@@ -128,7 +128,7 @@ func createHash(ctx context.Context, dir, name, image string, nBlocks uint) (has
 	}
 	ret := f.Name()
 	f = nil
-	return ret, string(out), nil
+	return ret, strings.TrimSpace(string(out)), nil
 }
 
 // appendHash appends the contents of the hash file to the image file.
