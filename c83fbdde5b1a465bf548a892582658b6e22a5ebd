@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd55a1d3_99115489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:13:54Z",
+      "side": 1,
+      "message": "Is there another hardware dependency that can be used? Could you create one?",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "229b091b_8b208993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:13:54Z",
+      "side": 1,
+      "message": "nit: end sentences with a .\nSame below",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a663be55_2af5afe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:13:54Z",
+      "side": 1,
+      "message": "isn\u0027t using Output safer here?",
+      "range": {
+        "startLine": 47,
+        "startChar": 48,
+        "endLine": 47,
+        "endChar": 62
+      },
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a38fd60a_5ef04ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:13:54Z",
+      "side": 1,
+      "message": "Please use testexec (to allow context):\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/master:src/platform/tast-\ntests/src/chromiumos/tast/local/testexec/testexec.go",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0c6388_d2b59056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:13:54Z",
+      "side": 1,
+      "message": "Is this log helpful?",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e85f81b5_e7cc3f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:13:54Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0c22aa_6a635dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:13:54Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
