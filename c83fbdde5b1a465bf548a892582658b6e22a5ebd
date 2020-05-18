@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "e000ed23_79f81b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-18T19:31:50Z",
+      "side": 1,
+      "message": "+1, CombinedOutput also grabs stderr which might be problematic.",
+      "parentUuid": "a663be55_2af5afe0",
+      "range": {
+        "startLine": 47,
+        "startChar": 48,
+        "endLine": 47,
+        "endChar": 62
+      },
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a0c6388_d2b59056",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
