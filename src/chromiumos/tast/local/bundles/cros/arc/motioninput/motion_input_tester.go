@@ -219,8 +219,8 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 		const (
 			// coordinateAxisEpsilon is the epsilon value to be used when comparing axis values that
 			// represent absolute display coordinates. Scaling and conversions from Chrome to Android's
-			// display spaces means absolute coordinates can be off by up to one pixel.
-			coordinateAxisEpsilon = 1e0
+			// display spaces means absolute coordinates can be off by up to two pixels.
+			coordinateAxisEpsilon = 2e0
 
 			// defaultAxisEpsilon is the epsilon value to be used when comparing axis values that do
 			// not need to be scaled or converted, like pressure (which is in the range [0,1]). We
