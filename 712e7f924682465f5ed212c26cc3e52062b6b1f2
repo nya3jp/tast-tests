@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "867c06e6_894ccbb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-18T22:37:06Z",
+      "side": 1,
+      "message": "Oops, fixed, thanks. Also deleted the parameter since it wasn\u0027t used anywhere else (and was always true)",
+      "parentUuid": "ae21e664_870e748b",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 0
+      },
+      "revId": "712e7f924682465f5ed212c26cc3e52062b6b1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee5e692a_2002ae80",
         "filename": "src/chromiumos/tast/local/crash/filter.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "712e7f924682465f5ed212c26cc3e52062b6b1f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebca22da_ae8334f8",
+        "filename": "src/chromiumos/tast/local/crash/filter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-18T22:37:06Z",
+      "side": 1,
+      "message": "Added a version suitable for testing.\n\nAlso added a test, which I forgot to do before mailing this.",
+      "parentUuid": "ee5e692a_2002ae80",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "712e7f924682465f5ed212c26cc3e52062b6b1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
