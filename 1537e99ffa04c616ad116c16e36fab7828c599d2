@@ -198,6 +198,30 @@
       "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aeb6d57_2ab606ea",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2020-05-18T09:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "037d4371_1795ee5f",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
