@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd3d1b69_4cf45dfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-18T08:14:37Z",
+      "side": 1,
+      "message": "used kevin, but I think the change in the json file is still necessary",
+      "parentUuid": "dd277aeb_a5e16df2",
+      "revId": "aee3944b65790098230c5e215a193100435c76e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cda20bb_948b3105",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "aee3944b65790098230c5e215a193100435c76e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130c7835_83e3552d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-18T08:14:37Z",
+      "side": 1,
+      "message": "sgtm, add attribute to json.",
+      "parentUuid": "3cda20bb_948b3105",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "aee3944b65790098230c5e215a193100435c76e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
