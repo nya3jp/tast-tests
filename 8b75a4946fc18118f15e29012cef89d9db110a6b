@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03143539_4eed6707",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-18T07:50:50Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "ca4246e2_910f07f4",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 66
+      },
+      "revId": "8b75a4946fc18118f15e29012cef89d9db110a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78d743a2_802e45f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5e57b18e_ab784a51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-18T07:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d743a2_802e45f7",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 20
+      },
+      "revId": "8b75a4946fc18118f15e29012cef89d9db110a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06e67d32_80b13529",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 5
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "290e7745_60f5a9d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-18T07:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e67d32_80b13529",
+      "revId": "8b75a4946fc18118f15e29012cef89d9db110a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c1ae58c_d044147b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
         "patchSetId": 5
@@ -79,6 +145,24 @@
       "revId": "8b75a4946fc18118f15e29012cef89d9db110a6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "035b9664_3beefb3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-18T07:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c1ae58c_d044147b",
+      "revId": "8b75a4946fc18118f15e29012cef89d9db110a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
