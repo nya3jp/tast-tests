@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -20,6 +21,8 @@ func init() {
 		// example.SecretVars.password is defined in tast-tests-private/vars/example.SecretVars.yaml
 		// example.commonVar is defined in tast-tests-private/vars/example.yaml
 		Vars: []string{"example.SecretVars.password", "example.commonVar"},
+		// TODO(crbug/1083347): consider cleaner way to skip test when secret is not available.
+		HardwardDeps: []hwdep.D(hwdep.SkipOnModel("amd64_generic")),
 	})
 }
 
