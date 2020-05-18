@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -32,12 +33,14 @@ var isZoneExpected = map[string]bool{
 // RAPLValues represents the Intel "Running Average Power Limit" (RAPL) values.
 // For further info read: https://www.kernel.org/doc/Documentation/power/powercap/powercap.txt
 type RAPLValues struct {
+	// DurationInSecond contains the duraion of the measurement. Zero means this struct contains raw data.
+	duration time.Duration
 	// joules contains the joules from RAPL
 	joules map[string]float64
 }
 
 func newRAPLValues() *RAPLValues {
-	return &RAPLValues{make(map[string]float64)}
+	return &RAPLValues{0, make(map[string]float64)}
 }
 
 // ReportPerfMetrics appends to perfValues all the RAPL values.
@@ -76,7 +79,8 @@ func (rapl *RAPLValues) Uncore() float64 {
 // It contains the RAPL values plus other variables needed to make the "diff" more efficient.
 type RAPLSnapshot struct {
 	// start contains a snapshot of the RAPL values.
-	start *RAPLValues
+	start     *RAPLValues
+	startTime time.Time
 
 	// maxJoules represents the max value that can be represented in RAPL before overflowing.
 	// All Package0, Core, Uncore, DRAM and Psys have the same max joules value. So it is safe
@@ -133,7 +137,7 @@ func NewRAPLSnapshot() (*RAPLSnapshot, error) {
 		return nil, errors.Wrap(err, "could not parse")
 	}
 
-	rapl.start, err = readRAPLValues(rapl.dirsToParse)
+	rapl.start, rapl.startTime, err = readRAPLValues(rapl.dirsToParse)
 	if err != nil {
 		return nil, errors.Wrap(err, "could read RAPL zones")
 	}
@@ -145,7 +149,7 @@ func NewRAPLSnapshot() (*RAPLSnapshot, error) {
 // resetStart is set, then the snapshot is updated with the current values so
 // that the next call is relative to now.
 func (r *RAPLSnapshot) diffWithCurrentRAPL(resetStart bool) (*RAPLValues, error) {
-	end, err := readRAPLValues(r.dirsToParse)
+	end, endTime, err := readRAPLValues(r.dirsToParse)
 	if err != nil {
 		return nil, err
 	}
@@ -154,8 +158,10 @@ func (r *RAPLSnapshot) diffWithCurrentRAPL(resetStart bool) (*RAPLValues, error)
 	for name, startValue := range r.start.joules {
 		ret.joules[name] = diffJoules(startValue, end.joules[name], r.maxJoules)
 	}
+	ret.duration = endTime.Sub(r.startTime)
+
 	if resetStart {
-		r.start = end
+		r.start, r.startTime = end, endTime
 	}
 	return ret, nil
 }
@@ -182,7 +188,7 @@ func diffJoules(start, end, max float64) float64 {
 }
 
 // readRAPLValues reads the RAPL files contained in dirsToParse and returns the RAPL values contained in those files.
-func readRAPLValues(dirsToParse []string) (*RAPLValues, error) {
+func readRAPLValues(dirsToParse []string) (*RAPLValues, time.Time, error) {
 	const (
 		raplNameFile   = "name"
 		raplEnergyFile = "energy_uj"
@@ -193,20 +199,19 @@ func readRAPLValues(dirsToParse []string) (*RAPLValues, error) {
 		// Get RAPL name.
 		name, err := readRAPLFile(path.Join(dir, raplNameFile))
 		if err != nil {
-			return nil, err
+			return nil, time.Time{}, err
 		}
 
 		e, err := readRAPLEnergy(path.Join(dir, raplEnergyFile))
 		if err != nil {
-			return nil, err
+			return nil, time.Time{}, err
 		}
-
 		if !isZoneExpected[name] {
-			return nil, errors.Errorf("unexpected RAPL name: %q", name)
+			return nil, time.Time{}, errors.Errorf("unexpected RAPL name: %q", name)
 		}
 		rapl.joules[name] = e
 	}
-	return rapl, nil
+	return rapl, time.Now(), nil
 }
 
 // readRAPLFile returns a string with the contents of the first line of the file.
