@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "347c2623_4677446f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-18T22:55:35Z",
+      "side": 1,
+      "message": "Please use defer to ensure exiting overview mode at the end for any code paths:\n  defer ash.SetOverviewModeAndWait(ctx, tconn, false)",
+      "revId": "9197cb6b77168480eb5610c63678c6c5741246c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aabecf8_7aa7cef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/hotseat_scroll_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-18T22:55:35Z",
+      "side": 1,
+      "message": "This flag looks like not-independent from launcherVisibility; overview-visible means launcher should be hidden.\n\nThat way, this should be:\n- rename of launcherVisiblity / launcherState to something else\n- add a new item to the type for overview-visible state.",
+      "revId": "9197cb6b77168480eb5610c63678c6c5741246c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
