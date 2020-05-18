@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8f05d23_f125bbef",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-18T03:28:58Z",
+      "side": 1,
+      "message": "yes, termina and container images use different names for the architectures.  I believe termina matches chromeos and container matches lxd/debian.\n\nChanged the code as suggested.",
+      "parentUuid": "7d5efc10_8bf5c3b7",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 12
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff4cd038_4033897f",
         "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3698e246_f3700452",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-18T03:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff4cd038_4033897f",
+      "range": {
+        "startLine": 178,
+        "startChar": 38,
+        "endLine": 178,
+        "endChar": 46
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "95e7a4c3_09086548",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-18T03:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eef88f6_265b2f87",
+      "range": {
+        "startLine": 190,
+        "startChar": 48,
+        "endLine": 190,
+        "endChar": 56
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd46509c_77afaf8f",
         "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
         "patchSetId": 10
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9fc1b85d_5581e63d",
+        "filename": "src/chromiumos/tast/local/crostini/lxd/server.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-18T03:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd46509c_77afaf8f",
+      "range": {
+        "startLine": 192,
+        "startChar": 50,
+        "endLine": 192,
+        "endChar": 58
+      },
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca755e65_ad659406",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 10
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "1f583965_c832bb49",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-18T03:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca755e65_ad659406",
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a14319f4_fd6ded84",
         "filename": "src/chromiumos/tast/local/vm/images.go",
         "patchSetId": 10
@@ -125,6 +239,24 @@
       "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb4dd76_1fdd3770",
+        "filename": "src/chromiumos/tast/local/vm/images.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-18T03:28:58Z",
+      "side": 1,
+      "message": "we have multipke versions of the tests, one version (named artifact) uses the external data files, the other version (named download) don\u0027t.  CQ tests are artifact only, download tests are cutrrently informational.  The download tests test the latest built images coming out of CI and is used as a signal into the manual process of when to update the pinned images used as external data files in the artifact tests.\n\nNote that the external data is still downloaded from the same location (although different versions), it is just downloaded by chromite during the build process rather than by the tests directly.\n\nThe Extract... functions above work with the external data files in the artifact tests.",
+      "parentUuid": "a14319f4_fd6ded84",
+      "revId": "b75433b893c1c1856c66fcb9854521ce4fd538bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
