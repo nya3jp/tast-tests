@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "15c12e2e_521addbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-18T16:12:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f8ba987_04743716",
+      "range": {
+        "startLine": 150,
+        "startChar": 6,
+        "endLine": 150,
+        "endChar": 17
+      },
+      "revId": "d3eb09cc570184c2dd07da78ed2bed12440b1a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3fbfe4b_abe42d5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 3
@@ -187,6 +211,30 @@
       "revId": "d3eb09cc570184c2dd07da78ed2bed12440b1a10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ab11ca_2299d59b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-18T16:12:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e923c0b5_16c85eb5",
+      "range": {
+        "startLine": 153,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 26
+      },
+      "revId": "d3eb09cc570184c2dd07da78ed2bed12440b1a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
