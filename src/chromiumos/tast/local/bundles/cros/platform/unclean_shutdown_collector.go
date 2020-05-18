@@ -7,6 +7,7 @@ package platform
 import (
 	"context"
 	"encoding/binary"
+	"io/ioutil"
 	"os"
 	"time"
 
@@ -57,6 +58,7 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 	const (
 		pendingShutdownFile         = "/var/lib/crash_reporter/pending_clean_shutdown"
 		uncleanShutdownDetectedFile = "/run/metrics/external/crash-reporter/unclean-shutdown-detected"
+		kernelCrashDetectedFile     = "/run/metrics/external/crash-reporter/kernel-crash-detected"
 		suspendFile                 = "/var/lib/power_manager/powerd_suspended"
 	)
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
@@ -100,7 +102,22 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 	}
 
 	if _, err = os.Stat(uncleanShutdownDetectedFile); err != nil {
-		s.Fatal("unclean_shutdown_collector failed to create unclean shutdown file: ", err)
+		// If crash_reporter detected a kernel crash it will instead touch the
+		// kernelCrashDetectedFile. This isn't ideal, but it can happen
+		// for reasons out of this test's control (e.g. if the last boot
+		// happened to have a BIOS panic).
+
+		// TODO(https://crbug.com/1083533): Make this a warning so it isn't as silent.
+		s.Log("unclean_shutdown_collector failed to create unclean shutdown file: ", err)
+		if _, err := os.Stat(kernelCrashDetectedFile); err != nil {
+			// Neither file was created -- that's not supposed to happen.
+			s.Fatal("unclean_shutdown_collector failed to create kernel crash file: ", err)
+		} else {
+			// As a last-ditch attempt to verify that metrics daemon works, create the file manually.
+			if err := ioutil.WriteFile(uncleanShutdownDetectedFile, []byte(""), 0644); err != nil {
+				s.Fatalf("Failed to manually create %q: %v", uncleanShutdownDetectedFile, err)
+			}
+		}
 	}
 	if _, err = os.Stat(pendingShutdownFile); err != nil {
 		s.Fatal("crash_reporter failed to re-create pending shutdown file: ", err)
