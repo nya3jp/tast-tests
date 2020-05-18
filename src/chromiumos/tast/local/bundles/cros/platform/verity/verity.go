@@ -192,7 +192,7 @@ func createVerityDevice(ctx context.Context, name, loop, table string) (string, 
 	// Ignore errors, which could be reported in clean state.
 	// Force and retry the command to give process that maybe using
 	// the device time to close.
-	testexec.CommandContext(ctx, "dmsetup", "remove", "--force", "--retry", devPath).Run()
+	testexec.CommandContext(ctx, "dmsetup", "remove", "--retry", devPath).Run()
 	// Using status to check that the volume is removed. If the volume
 	// is found, the following tests will fail.
 	cmd := testexec.CommandContext(ctx, "dmsetup", "status", devName)
@@ -219,7 +219,7 @@ func createVerityDevice(ctx context.Context, name, loop, table string) (string, 
 // removeVerityDevice tears down the verity device created by the
 // createVerityDevice.
 func removeVerityDevice(ctx context.Context, device string) error {
-	return releaseDevice(ctx, []string{"dmsetup", "remove", "--force", "--retry", device}, device)
+	return releaseDevice(ctx, []string{"dmsetup", "remove", "--retry", device}, device)
 }
 
 // verifiable walks completely over the device, and returns any error if
