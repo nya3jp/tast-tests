@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "8e78ed47_50be0b94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-18T06:06:10Z",
+      "side": 1,
+      "message": "nit: use const and move to the top",
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfe91c0d_466bee0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go",
         "patchSetId": 2
