@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9774bfb_5061d1bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-18T21:04:41Z",
+      "side": 1,
+      "message": "Is there another hardware dependency that can be used? -\u003e no\n\nCould you create one? \nWe want to test only on Atlas and Intel board that has cros_config. Don\u0027t know how we can create the hwdep using these condition. Any suggestion?",
+      "parentUuid": "cd55a1d3_99115489",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229b091b_8b208993",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53cb561e_6c66b129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-18T21:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "229b091b_8b208993",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -100,6 +136,48 @@
     },
     {
       "key": {
+        "uuid": "d7ebf761_9c3250f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-18T21:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a38fd60a_5ef04ee6",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fcb203e_f1d3ca40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-18T21:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e000ed23_79f81b28",
+      "range": {
+        "startLine": 47,
+        "startChar": 48,
+        "endLine": 47,
+        "endChar": 62
+      },
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0c6388_d2b59056",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
@@ -117,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "98534d66_e524455c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-18T21:04:41Z",
+      "side": 1,
+      "message": "Yes. We want to know which way DPTF profile is founded in the log.",
+      "parentUuid": "0a0c6388_d2b59056",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e85f81b5_e7cc3f88",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
@@ -131,6 +227,24 @@
       "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f85787b7_c9e9c37d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-18T21:04:41Z",
+      "side": 1,
+      "message": "OK. this can be infer from line# 53",
+      "parentUuid": "e85f81b5_e7cc3f88",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -154,6 +268,30 @@
       "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f45849_9abb14a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-18T21:04:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f0c22aa_6a635dd8",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
