@@ -174,6 +174,30 @@
       "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "037d4371_1795ee5f",
+        "filename": "src/chromiumos/tast/services/cros/wilco/wilco_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-18T09:03:36Z",
+      "side": 1,
+      "message": "Then create a separate CL with correct prooto formating, it\u0027s not only this one line.",
+      "parentUuid": "2e146188_4e39f888",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "1537e99ffa04c616ad116c16e36fab7828c599d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
