@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a3cecd5e_88ac8a28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-19T20:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad1d229_96b1a4be",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d4da47a_88ade44e",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "I mean just set the Model field to the model passed into NewConfig.  If no one\u0027s using it, we can just drop it or at least make it non-public.",
       "parentUuid": "0e542f22_233030f6",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057c4d67_6b6100b1",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-19T20:55:43Z",
+      "side": 1,
+      "message": "Ah, I see. This contains much different than just the model name passed into NewConfig -- this is loading the model-based override values, like in Autotest. We need to include it in order to find and parse the override that matches the provided model.\n\nI tried to make the field non-public (i.e. changing to \"models\"). However, json.Unmarshal is unable to set values of an unexported field. With that change, cfg.models was always unset, so the TestNewConfigModelOverride test failed. So, the latest patch set keeps Models public.",
+      "parentUuid": "4e5e3076_41f76eb1",
       "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -143,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "1005f929_a9e677ae",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-19T20:55:43Z",
+      "side": 1,
+      "message": "I _think_ that the latest patch set addresses this, but let me know if there are further changes you would recommend.",
+      "parentUuid": "95ced4db_58375969",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ee87a92_d954db6c",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -193,6 +247,24 @@
       "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e18957_39d6f36c",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2020-05-19T20:55:43Z",
+      "side": 1,
+      "message": "Done, and also creating a CL to clarify this in fw-testing-configs \u003e DEFAULTS.json \u003e models.DOC.",
+      "parentUuid": "9d98ca82_c49228bf",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
