@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "18bdc28a_c886276a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-19T04:13:03Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "96bba2a2_ea67bf9f",
+      "range": {
+        "startLine": 426,
+        "startChar": 34,
+        "endLine": 426,
+        "endChar": 52
+      },
+      "revId": "cd11c49e711de8e9080e802279873e1bd69e5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "549e7e82_e5fd1cb9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 3
@@ -116,6 +140,24 @@
       "revId": "cd11c49e711de8e9080e802279873e1bd69e5a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c75396_34c3a7a9",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-19T04:13:03Z",
+      "side": 1,
+      "message": "Thanks, lgtm",
+      "parentUuid": "9824a6a3_7fb7cd8f",
+      "revId": "cd11c49e711de8e9080e802279873e1bd69e5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
