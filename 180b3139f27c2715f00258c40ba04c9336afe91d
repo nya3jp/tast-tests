@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73257341_3db695a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "nit: .",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15d012cc_0c9a6aee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "nit: generally it is best to put the command\n\nI generally do: tast run \u003csoraka\u003e ui.FilesAppSMB",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e6063f_1416baed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "I was trying to run this test, and I am pretty sure you need to add the crostini/data/crostini_guest_images.tar.external to /ui/data/",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195c6426_7db88d2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "nit: SMB",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98533f92_390e340e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "Is it possible to just push this directly to the final location?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90e2b4d4_e8c5d62f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "nit: pick a standard error message. \"Failed to ...\", \"... failed\", \"Error ...\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aabc6830_40c3433a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "super nit: move this to L105 right before it is needed",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1dde4e_c1e27b15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "super nit: any reason that for some commands you use ` and \" and on others you use \" and \u0027?",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 3
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23274218_7f8dd664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "Instead of depending on the network, is it possible to create a data file that can be used for installing samba?",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f88fd93d_5a5b0a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "I am not super familiar with crostini, but is it standard to just pipe in a bunch of commands with sudo interspersed? I feel like in most other parts of tast, many of these command would be wrapped by proper go functions.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 28
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930c35ca_6f0d1260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "nit: merge lines",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a219a1ab_4c5fbe55",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "You function documentation should mention that the function will open the menu. Otherwise if someone already have the menu open, you will close it.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09fb0979_a48ca1e5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "nit: period",
+      "range": {
+        "startLine": 196,
+        "startChar": 43,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd515a8_0c882c8e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-19T18:03:29Z",
+      "side": 1,
+      "message": "Note: you might run into some flakiness issues with this. I know that sometimes menus are still rendering when we try to click a menu item and it causes the click to hit the wrong item as they shift around. I am not sure if this is an issue here, but I know it has happened with certain menus.\n\nIf the test is flaky after it is submitted, feel free to ping me(bhansknecht@), I might have some ideas for fixing this.",
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
