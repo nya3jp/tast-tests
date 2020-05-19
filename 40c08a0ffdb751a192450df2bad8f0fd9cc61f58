@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "208ef8ee_e694751d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-19T16:15:50Z",
+      "side": 1,
+      "message": "I changed it \"lines of output\" to match the other tests.",
+      "parentUuid": "7b31c029_1e3ebd30",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "40c08a0ffdb751a192450df2bad8f0fd9cc61f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4be2a8e_633de345",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-19T08:42:54Z",
       "side": 1,
       "message": "not related: don\u0027t you want to check with VPD field from sysfs?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "40c08a0ffdb751a192450df2bad8f0fd9cc61f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e51bd23e_cb5a3cd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-19T16:15:50Z",
+      "side": 1,
+      "message": "Agreed, we should improve this test. I\u0027ll create a bug for it.",
+      "parentUuid": "e4be2a8e_633de345",
       "range": {
         "startLine": 55,
         "startChar": 1,
