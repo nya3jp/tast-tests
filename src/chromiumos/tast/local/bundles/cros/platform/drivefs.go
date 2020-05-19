@@ -6,7 +6,6 @@ package platform
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 	"path"
 	"time"
@@ -88,6 +87,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 		mountPointTimeout = 15 * time.Second
 		fuseIoTimeout     = 40 * time.Second
 		filesAppUITimeout = 15 * time.Second
+		testFileName      = "drivefs"
 	)
 
 	user := s.RequiredVar("platform.Drivefs.user")
@@ -166,13 +166,14 @@ func Drivefs(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not find team_drives folder inside ", mountPath, ": ", err)
 	}
 
-	// Create a temporary file inside Drive.
-	tmpfile, err := ioutil.TempFile(drivefsRoot, "drivefs")
+	// Create a test file inside Drive.
+	testFile, err := os.Create(path.Join(drivefsRoot, testFileName))
 	if err != nil {
-		s.Fatal("Could not create a temporary file inside ", drivefsRoot, ": ", err)
+		s.Fatal("Could not create the test file inside ", drivefsRoot, ": ", err)
 	}
-	tmpfile.Close()
-	defer os.Remove(tmpfile.Name())
+	testFile.Close()
+	// Don't delete the test file after the test as there may not be enough time
+	// after the test for the deletion to be synced to Drive.
 
 	// Launch Files App and check that Drive is accessible.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -192,9 +193,8 @@ func Drivefs(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not open Google Drive folder: ", err)
 	}
 
-	// Check for the temporary file created earlier.
-	basename := path.Base(tmpfile.Name())
-	if err := filesApp.WaitForFile(ctx, basename, filesAppUITimeout); err != nil {
-		s.Fatal("Could not find test file ", basename, " in Drive: ", err)
+	// Check for the test file created earlier.
+	if err := filesApp.WaitForFile(ctx, testFileName, filesAppUITimeout); err != nil {
+		s.Fatal("Could not find test file '", testFileName, "' in Drive: ", err)
 	}
 }
