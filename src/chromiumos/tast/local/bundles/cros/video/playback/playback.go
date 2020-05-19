@@ -25,13 +25,13 @@ import (
 type DecoderType int
 
 const (
-	// VDA is the video decoder type based on the VideoDecodeAccelerator
-	// interface. These are set to be deprecrated.
+	// VDA - legacy VideoDecodeAccelerator-based accelerated video decoder.
 	VDA DecoderType = iota
-	// VD is the video decoder type based on the VideoDecoder interface. These
-	// will eventually replace the current VDAs.
+	// VD - VideoDecoder-based accelerated video decoder.
 	VD
-	// LibGAV1 is the video decoder type to play AV1 video with Gav1VideoDecoder.
+	// Software - Any software-based video decoder (e.g. ffmpeg, libvpx).
+	Software
+	// LibGAV1 - an alternative software library used to play AV1 video.
 	LibGAV1
 )
 
