@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "3afd6f1d_5307a806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-19T22:11:07Z",
+      "side": 1,
+      "message": "DPTF is Intel framework for thermal.\nMost of the board, the thermal profile for DPTF is stored in coreboot.\n\nBut on Atlas and some Intel board with cros_config, we have fine-tuned thermal profile store in OS image. This test meant to check that the thermal in OS image is loaded correctly.\n\nI think we can do one of these options to avoid hard-coded board list.\nA) Add new DPTF software dependency and test all boards with that.\n   This will unnecessary test some old Intel board.\nB) Separate this into 2 test, Atlas version and cros_config version and using that dep.\n   /etc/dptf/dptf_override.sh only use on Atlas, so this will make the test a bit cleaner.\nOr any suggestion?\n\nWhat do you think?",
+      "parentUuid": "c8c53928_d7bab8ac",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229b091b_8b208993",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
