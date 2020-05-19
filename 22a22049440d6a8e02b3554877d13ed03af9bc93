@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "489b4dcd_e99060f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2020-05-19T09:26:18Z",
+      "side": 1,
+      "message": "Sorry I overlooked we are also managing the cros-camera service here. For simplicity, I think we can merge ln.121-134 into here:\n\n if cfg.ConnectToCameraService {\n     if err :\u003d upstart.EnsureJobRunning(ctx, \"cros-camera\"); err !\u003d nil {\n         ...\n     }\n } else {\n     testing.ContextLog(ctx, \"Stopping cros-camera\")\n     if err :\u003d upstart.StopJob(shortCtx, \"cros-camera\"); err !\u003d nil {\n         ...\n     }\n     defer func() {\n         ...\n     }\n     if err :\u003d upstart.WaitForJobStatus(ctx, \"cros-camera\", upstart.StopGoal,\n         ...\n     }\n }\n\nAnd then remove the |stopCrosCameraService| arg from |runCrosCameraTest()|.",
+      "revId": "22a22049440d6a8e02b3554877d13ed03af9bc93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

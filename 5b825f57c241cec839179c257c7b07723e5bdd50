@@ -317,6 +317,30 @@
       "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fad3270_6c006188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_portrait_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2020-05-19T09:26:18Z",
+      "side": 1,
+      "message": "Ack. Let\u0027s do the arrangements if needed when enabling more tests over camera service.",
+      "parentUuid": "7d32d1b0_42728da4",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
