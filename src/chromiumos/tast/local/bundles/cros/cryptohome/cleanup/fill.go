@@ -2,13 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package disk
+package cleanup
 
 import (
 	"io/ioutil"
 	"syscall"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/disk"
 )
 
 // Fill creates a temporary file in a directory that fills the disk by
@@ -31,7 +32,7 @@ func Fill(path string, tofill uint64) (string, error) {
 // FillUntil reates a temporary file in a directory that fills the disk until
 // less than remaining bytes are available.
 func FillUntil(path string, remaining uint64) (string, error) {
-	freeSpace, err := FreeSpace(path)
+	freeSpace, err := disk.FreeSpace(path)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to read free space in %s", path)
 	}
