@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca5137bc_55e9d87d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-19T06:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f4099b_5123bc50",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd900357_69bbcd74",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eccf8bea_e02bd86d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-19T06:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd900357_69bbcd74",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 17
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "37463d25_6bbabc7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-19T06:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "955953dd_888843c1",
+      "range": {
+        "startLine": 32,
+        "startChar": 58,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "573b5030_76c3bebd",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c0e9187e_96dc3ad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3_test_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-19T06:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "573b5030_76c3bebd",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f17bef10_c2819639",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_portrait_mode.go",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2020-05-19T04:05:36Z",
       "side": 1,
       "message": "Can we create another prefix for the tests running over HAL adapter? Assuming we are going to enable all of them.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da5eeca_91129b2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_portrait_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-19T06:23:32Z",
+      "side": 1,
+      "message": "I would like to have the tests separate, e.g. HAL3PortraitMode and HAL3ZSL, so that it\u0027s easier to tell which functionality falls apart.",
+      "parentUuid": "f17bef10_c2819639",
       "range": {
         "startLine": 28,
         "startChar": 5,
