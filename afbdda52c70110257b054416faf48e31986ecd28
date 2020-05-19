@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b106c0a_3dd4dcba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/sender.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-19T04:34:35Z",
+      "side": 1,
+      "message": "I guess it\u0027s good to introduce a constant for this value.",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "afbdda52c70110257b054416faf48e31986ecd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
