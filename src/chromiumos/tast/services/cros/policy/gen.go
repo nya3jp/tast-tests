@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. policy.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. system_timezone.proto
 
 // Package policy provides the PolicyService
 package policy
