@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/chrome"
 )
 
@@ -33,15 +34,24 @@ func ClickButton(ctx context.Context, conn *chrome.Conn, name string) error {
 
 // Play plays audio player "play" button.
 func Play(ctx context.Context, conn *chrome.Conn) error {
-	return ClickButton(ctx, conn, "Play")
+	if err := ClickButton(ctx, conn, "Play"); err != nil {
+		return mtbferrors.New(mtbferrors.AudioClickPlayButton, err)
+	}
+	return nil
 }
 
 // Pause plays audio player "Pause" button.
 func Pause(ctx context.Context, conn *chrome.Conn) error {
-	return ClickButton(ctx, conn, "Pause")
+	if err := ClickButton(ctx, conn, "Pause"); err != nil {
+		return mtbferrors.New(mtbferrors.AudioClickPauseButton, err)
+	}
+	return nil
 }
 
 // Close plays audio player "Close" button.
 func Close(ctx context.Context, conn *chrome.Conn) error {
-	return ClickButton(ctx, conn, "Close")
+	if err := ClickButton(ctx, conn, "Close"); err != nil {
+		return mtbferrors.New(mtbferrors.AudioClickCloseButton, err)
+	}
+	return nil
 }
