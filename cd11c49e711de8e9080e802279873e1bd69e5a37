@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96bba2a2_ea67bf9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T02:35:46Z",
+      "side": 1,
+      "message": "There were some discussion on updating the testcases. e.g. crbug.com/827829#c24 and [1].\n\nSo I guess we can start it when porting new testcases. (raw_pmk is an exception here as I want to keep the consistency of security testcases and we may update them all together later)\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2156192/5/src/chromiumos/tast/remote/bundles/cros/wifi/disconnect_clears_ip.go#46",
+      "parentUuid": "88f71551_94e965d6",
+      "range": {
+        "startLine": 426,
+        "startChar": 34,
+        "endLine": 426,
+        "endChar": 52
+      },
+      "revId": "cd11c49e711de8e9080e802279873e1bd69e5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "549e7e82_e5fd1cb9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "00ad779a_457ad8e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T02:35:46Z",
+      "side": 1,
+      "message": "Originally, a function was added below and these lines were also added to make spacing consistent. Move the changes to a later cl where new functions are added.",
+      "parentUuid": "549e7e82_e5fd1cb9",
+      "revId": "cd11c49e711de8e9080e802279873e1bd69e5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda385b6_0726ffde",
         "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2020-05-18T19:01:28Z",
       "side": 1,
       "message": "Maybe for a separate change, but it seems a little pointless to have this defined here and throw an error whenever it\u0027s used. Can we either do it the way Autotest does it and just log a warning, or just comment it out here with a comment explaining that it\u0027s not supported?",
+      "revId": "cd11c49e711de8e9080e802279873e1bd69e5a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9824a6a3_7fb7cd8f",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T02:35:46Z",
+      "side": 1,
+      "message": "commenting it out and leaving the reason here sounds good to me. I have another cl for this: crrev.com/c/2206564. PTAL.",
+      "parentUuid": "eda385b6_0726ffde",
       "revId": "cd11c49e711de8e9080e802279873e1bd69e5a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
