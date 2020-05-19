@@ -275,6 +275,30 @@
       "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d32d1b0_42728da4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_portrait_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-19T08:22:47Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I see your point, but in a way we are still testing over the HALv3 interface. Besides, then we might need to change the file names, including hal3.go, as well.",
+      "parentUuid": "36efe50d_62811f97",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
