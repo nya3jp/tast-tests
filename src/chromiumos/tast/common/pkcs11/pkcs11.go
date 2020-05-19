@@ -220,6 +220,17 @@ func (p *Chaps) CreateRsaGeneratedKey(ctx context.Context, scratchpadPath, usern
 	return result, nil
 }
 
+// ImportPrivateKey creates a key by importing it from existing DER format private key file specified by privKeyPath. The key will be inserted into the system token (if username is empty), or user token specified by username. The object will have an ID of objID.
+func (p *Chaps) ImportPrivateKey(ctx context.Context, privKeyPath, username, objID string, forceSoftwareBacked bool) (*KeyInfo, error) {
+	// Get the corresponding slot.
+	slot, err := p.utility.GetTokenForUser(ctx, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get slot")
+	}
+
+	return p.ImportPrivateKeyBySlot(ctx, privKeyPath, slot, objID, forceSoftwareBacked)
+}
+
 // ImportPrivateKeyBySlot creates a key by importing it from existing DER format private key file specified by privKeyPath. The key will be inserted into the token specified by slot. The object will have an ID of objID.
 func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, slot int, objID string, forceSoftwareBacked bool) (*KeyInfo, error) {
 	// Import the private key into chaps.
