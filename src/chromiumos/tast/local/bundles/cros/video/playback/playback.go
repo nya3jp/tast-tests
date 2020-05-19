@@ -58,17 +58,18 @@ const (
 
 type collectedPerfData map[metricDesc]metricValue
 type metricDef struct {
-	desc metricDesc
-	unit string
-	dir  perf.Direction
+	desc     metricDesc
+	unit     string
+	dir      perf.Direction
+	optional bool
 }
 
 // metricDefs is a list of metric measured in this test.
 var metricDefs = []metricDef{
-	{cpuUsageDesc, "percent", perf.SmallerIsBetter},
-	{powerConsumptionDesc, "watt", perf.SmallerIsBetter},
-	{droppedFrameDesc, "frames", perf.SmallerIsBetter},
-	{droppedFramePercentDesc, "percent", perf.SmallerIsBetter},
+	{desc: cpuUsageDesc, unit: "percent", dir: perf.SmallerIsBetter, optional: false},
+	{desc: powerConsumptionDesc, unit: "watt", dir: perf.SmallerIsBetter, optional: true},
+	{desc: droppedFrameDesc, unit: "frames", dir: perf.SmallerIsBetter, optional: false},
+	{desc: droppedFramePercentDesc, unit: "percent", dir: perf.SmallerIsBetter, optional: false},
 }
 
 // RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a
@@ -210,8 +211,8 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir str
 	for _, m := range metricDefs {
 		val, found := perfData[m.desc]
 		perfName := string(m.desc)
-		if !found && m.desc != powerConsumptionDesc {
-			return errors.Errorf("no performance result for %s: %v", perfName, perfData)
+		if !found && !m.optional {
+			return errors.Errorf("no performance result for non-optional %s: %v", perfName, perfData)
 		}
 		p.Set(perf.Metric{Name: perfName, Unit: m.unit, Direction: m.dir}, float64(val))
 	}
@@ -231,7 +232,7 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (map[metricDesc]met
 		return nil, errors.Wrap(err, "failed to measure CPU usage and power consumption")
 	}
 
-	// Create metrics map, power is only measured on Intel platforms.
+	// Create metrics map. "power" is only measured on certain platforms (e.g. Intel).
 	metrics := map[metricDesc]metricValue{
 		cpuUsageDesc: metricValue(measurements["cpu"]),
 	}
