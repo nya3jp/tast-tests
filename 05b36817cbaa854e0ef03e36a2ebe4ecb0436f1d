@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d2ad05f_9940085f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-19T16:28:41Z",
+      "side": 1,
+      "message": "I changed it to \"number of output lines\" to match the other tests.",
+      "parentUuid": "88ccb7b7_4fc7ab53",
+      "range": {
+        "startLine": 36,
+        "startChar": 18,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "05b36817cbaa854e0ef03e36a2ebe4ecb0436f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00e71e2b_f4a4bf23",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1f6c9e88_3655ce4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-19T16:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e71e2b_f4a4bf23",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "05b36817cbaa854e0ef03e36a2ebe4ecb0436f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06fff78d_1278eedc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "05b36817cbaa854e0ef03e36a2ebe4ecb0436f1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a86304_9399cb95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-19T16:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06fff78d_1278eedc",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "05b36817cbaa854e0ef03e36a2ebe4ecb0436f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
