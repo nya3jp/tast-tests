@@ -290,11 +290,117 @@ func init() {
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 		}, {
+			Name: "h264_480p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "480p_30fps_300frames.h264.mp4",
+				decoderType:   playback.Software,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
+		}, {
+			Name: "h264_720p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "720p_30fps_300frames.h264.mp4",
+				decoderType:   playback.Software,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
+		}, {
+			Name: "h264_1080p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "1080p_30fps_300frames.h264.mp4",
+				decoderType:   playback.Software,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
+		}, {
+			Name: "h264_1080p_60fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "1080p_60fps_600frames.h264.mp4",
+				decoderType:   playback.Software,
+			},
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+		}, {
+			Name: "vp8_480p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "480p_30fps_300frames.vp8.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData: []string{"480p_30fps_300frames.vp8.webm"},
+		}, {
+			Name: "vp8_720p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "720p_30fps_300frames.vp8.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData: []string{"720p_30fps_300frames.vp8.webm"},
+		}, {
+			Name: "vp8_1080p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "1080p_30fps_300frames.vp8.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraData: []string{"1080p_30fps_300frames.vp8.webm"},
+		}, {
+			Name: "vp8_1080p_60fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "1080p_60fps_600frames.vp8.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraData: []string{"1080p_60fps_600frames.vp8.webm"},
+		}, {
+			Name: "vp9_480p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "480p_30fps_300frames.vp9.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData: []string{"480p_30fps_300frames.vp9.webm"},
+		}, {
+			Name: "vp9_720p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "720p_30fps_300frames.vp9.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData: []string{"720p_30fps_300frames.vp9.webm"},
+		}, {
+			Name: "vp9_1080p_30fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "1080p_30fps_300frames.vp9.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraData: []string{"1080p_30fps_300frames.vp9.webm"},
+		}, {
+			Name: "vp9_1080p_60fps_sw",
+			Val: playbackPerfParams{
+				enableHWAccel: false,
+				fileName:      "1080p_60fps_600frames.vp9.webm",
+				decoderType:   playback.Software,
+			},
+			ExtraData: []string{"1080p_60fps_600frames.vp9.webm"},
+		}, {
 			Name: "av1_480p_30fps_sw",
 			Val: playbackPerfParams{
 				enableHWAccel: false,
 				fileName:      "480p_30fps_300frames.av1.mp4",
-				decoderType:   playback.VDA,
+				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"480p_30fps_300frames.av1.mp4"},
 		}, {
@@ -302,7 +408,7 @@ func init() {
 			Val: playbackPerfParams{
 				enableHWAccel: false,
 				fileName:      "720p_30fps_300frames.av1.mp4",
-				decoderType:   playback.VDA,
+				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"720p_30fps_300frames.av1.mp4"},
 		}, {
@@ -310,7 +416,7 @@ func init() {
 			Val: playbackPerfParams{
 				enableHWAccel: false,
 				fileName:      "720p_60fps_600frames.av1.mp4",
-				decoderType:   playback.VDA,
+				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"720p_60fps_600frames.av1.mp4"},
 		}, {
@@ -318,7 +424,7 @@ func init() {
 			Val: playbackPerfParams{
 				enableHWAccel: false,
 				fileName:      "1080p_30fps_300frames.av1.mp4",
-				decoderType:   playback.VDA,
+				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_30fps_300frames.av1.mp4"},
 		}, {
@@ -326,7 +432,7 @@ func init() {
 			Val: playbackPerfParams{
 				enableHWAccel: false,
 				fileName:      "1080p_60fps_600frames.av1.mp4",
-				decoderType:   playback.VDA,
+				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.av1.mp4"},
 		}, {
