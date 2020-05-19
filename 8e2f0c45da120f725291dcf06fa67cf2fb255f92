@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af99223_36e03cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_timezone_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-19T08:31:57Z",
+      "side": 1,
+      "message": "nit: maybe \"Wrong lines number of records\"?",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "8e2f0c45da120f725291dcf06fa67cf2fb255f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
