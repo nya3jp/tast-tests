@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mtbferrors"
-	"chromiumos/tast/local/bundles/mtbf/audio/player"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/mtbf/audio"
 	mtbfFilesapp "chromiumos/tast/local/mtbf/ui/filesapp"
 	"chromiumos/tast/local/ui/filesapp"
 	"chromiumos/tast/testing"
@@ -49,28 +49,23 @@ func MTBF022PlayM4a(ctx context.Context, s *testing.State) {
 	}
 	defer filesapp.Close(ctx, tconn)
 
-	audioplayer, mtbferr := player.New(s, audioFile, s.DataPath(audioFile))
-	if mtbferr != nil {
-		s.Fatal(mtbferr)
-	}
-
-	if mtbferr = audioplayer.StartToPlay(ctx, files); mtbferr != nil {
+	if mtbferr := audio.PlayFromDownloadsFolder(ctx, files, s.DataPath(audioFile), audioFile); mtbferr != nil {
 		s.Error(mtbferr)
 	}
-	defer player.ClickButton(ctx, tconn, "Close")
+	defer audio.ClickButton(ctx, tconn, "Close")
 
 	testing.Sleep(ctx, 5*time.Second)
 
 	s.Log("Pause and play m4a")
-	if mtbferr = player.Pause(ctx, tconn); mtbferr != nil {
+	if mtbferr = audio.Pause(ctx, tconn); mtbferr != nil {
 		s.Error(mtbferr)
 	}
 
 	testing.Sleep(ctx, 3*time.Second)
-	if mtbferr = player.Play(ctx, tconn); mtbferr != nil {
+	if mtbferr = audio.Play(ctx, tconn); mtbferr != nil {
 		s.Error(mtbferr)
 	}
-	if mtbferr = player.IsPlaying(ctx, tconn, 5*time.Second); err != nil {
+	if mtbferr = audio.IsPlaying(ctx, tconn, 5*time.Second); err != nil {
 		s.Error(mtbferrors.New(mtbferrors.AudioPlayPause, mtbferr))
 	}
 	testing.Sleep(ctx, 10*time.Second)
