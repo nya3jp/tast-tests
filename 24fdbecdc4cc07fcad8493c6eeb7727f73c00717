@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e577a8bd_d26566a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-19T08:50:30Z",
+      "side": 1,
+      "message": "why you don\u0027t verify headers?\nwhy you don\u0027t verify that values are valid?\n\ngood to have it in the following CL.",
+      "revId": "24fdbecdc4cc07fcad8493c6eeb7727f73c00717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
