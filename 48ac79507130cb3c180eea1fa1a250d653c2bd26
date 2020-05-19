@@ -222,6 +222,24 @@
       "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c67586_8e3ff67d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2020-05-19T19:56:06Z",
+      "side": 1,
+      "message": "fair enough - not for this CL, but something to think about in the future",
+      "parentUuid": "090993f5_22e8e6b6",
+      "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
