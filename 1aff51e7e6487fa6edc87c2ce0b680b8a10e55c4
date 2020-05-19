@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0adfb429_22d4c45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-05-19T17:21:04Z",
+      "side": 1,
+      "message": "Should these be \"error while seeking persistent integer file\" now?",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 71
+      },
+      "revId": "1aff51e7e6487fa6edc87c2ce0b680b8a10e55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d99117_450d64a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2020-05-19T17:21:04Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 48,
+        "startChar": 30,
+        "endLine": 48,
+        "endChar": 72
+      },
+      "revId": "1aff51e7e6487fa6edc87c2ce0b680b8a10e55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
