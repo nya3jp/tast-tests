@@ -16,6 +16,24 @@
       "revId": "6a3c7fd0fd6a5464e122a26d632d669cf3b76c56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da09aebb_ec8a38e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-19T10:15:28Z",
+      "side": 1,
+      "message": "How about we merge these 3 CLs first? So, at least, we have tast-test cover all scenario. And I will upload 4th CL do the refactor work?",
+      "parentUuid": "0b475cd9_45dbbf03",
+      "revId": "6a3c7fd0fd6a5464e122a26d632d669cf3b76c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
