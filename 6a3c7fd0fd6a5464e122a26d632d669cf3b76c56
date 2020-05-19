@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b475cd9_45dbbf03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-19T08:09:20Z",
+      "side": 1,
+      "message": "After reading the whole series of CCAUIVolumeShutter CLs, I slightly prefer to split the subtests in the following way, which is more orthogonal and clear to me:\n\n1. testClamshell: should not trigger shutter\n2. testBackground: should not trigger shutter\n3. testTakePhoto: should trigger shutter\n4. testRecordVideo: should trigger shutter\n\nWDYT?",
+      "revId": "6a3c7fd0fd6a5464e122a26d632d669cf3b76c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
