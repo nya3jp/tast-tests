@@ -21,21 +21,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Identifier for a map of measured values with/without HW Acceleration stored during a test.
-type playbackType int
-
-const (
-	playbackWithHWAccel playbackType = iota
-	playbackWithoutHWAccel
-)
-
-type hwAccelState int
-
-const (
-	hwAccelDisabled hwAccelState = iota
-	hwAccelEnabled
-)
-
 // DecoderType represents the different video decoder types.
 type DecoderType int
 
@@ -62,16 +47,16 @@ const (
 
 	// Description for measured values shown in dashboard.
 	// A video description (e.g. h264_1080p) is appended to them.
-	cpuUsageDesc            metricDesc = "video_cpu_usage"
-	powerConsumptionDesc    metricDesc = "video_power_consumption"
-	droppedFrameDesc        metricDesc = "video_dropped_frames"
-	droppedFramePercentDesc metricDesc = "video_dropped_frames_percent"
+	cpuUsageDesc            metricDesc = "cpu_usage"
+	powerConsumptionDesc    metricDesc = "power_consumption"
+	droppedFrameDesc        metricDesc = "dropped_frames"
+	droppedFramePercentDesc metricDesc = "dropped_frames_percent"
 
 	// Video Element in the page to play a video.
 	videoElement = "document.getElementsByTagName('video')[0]"
 )
 
-type collectedPerfData map[playbackType]map[metricDesc]metricValue
+type collectedPerfData map[metricDesc]metricValue
 type metricDef struct {
 	desc metricDesc
 	unit string
@@ -86,11 +71,11 @@ var metricDefs = []metricDef{
 	{droppedFramePercentDesc, "percent", perf.SmallerIsBetter},
 }
 
-// RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a
-// video with/without HW Acceleration. The measured values are reported to a dashboard.
-// decoderType specifies whether to run the tests against the VDA or VD based video decoder
+// RunTest measures a number of performance metrics while playing a video with
+// or without HW Acceleration as per enableHWAccel. decoderType specifies
+// whether to run the tests against the VDA or VD based video decoder
 // implementations.
-func RunTest(ctx context.Context, s *testing.State, videoName string, decoderType DecoderType) {
+func RunTest(ctx context.Context, s *testing.State, videoName string, decoderType DecoderType, enableHWAccel bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -103,46 +88,24 @@ func RunTest(ctx context.Context, s *testing.State, videoName string, decoderTyp
 	defer audio.Unmute(ctx)
 
 	perfData := collectedPerfData{}
-	s.Log("Measuring performance")
-	if err := measurePerformance(ctx, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, perfData, decoderType); err != nil {
+	testing.ContextLog(ctx, "Measuring performance")
+	if perfData, err = measurePerformance(ctx, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, enableHWAccel); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
-	s.Log("Measured CPU usage, number of frames dropped and dropped frame percentage: ", perfData)
+	testing.ContextLog(ctx, "Measurements: ", perfData)
 
 	if err := savePerfResults(ctx, perfData, s.OutDir()); err != nil {
 		s.Fatal("Failed to save perf data: ", err)
 	}
 }
 
-// measurePerformance collects video playback performance playing a video with SW decoder and
-// also with HW decoder if available.
-// utilsJSPath is a path of chrome_media_internals_utils.js
+// measurePerformance collects video playback performance playing a video with
+// either SW or HW decoder. utilsJSPath is a path of
+// chrome_media_internals_utils.js
 func measurePerformance(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
-	perfData collectedPerfData, decoderType DecoderType) error {
-	// Try Software playback.
-	if err := measureWithConfig(ctx, fileSystem, utilsJSPath, videoName, perfData, hwAccelDisabled, decoderType); err != nil {
-		return err
-	}
-
-	if decoderType == LibGAV1 {
-		// GAV1 decoder's performance has been measured, no need to measure HW decoder's performance.
-		return nil
-	}
-
-	// Try with Chrome's default settings. Even in this case, HW Acceleration may not be used, since a device doesn't
-	// have a capability to play the video with HW acceleration.
-	if err := measureWithConfig(ctx, fileSystem, utilsJSPath, videoName, perfData, hwAccelEnabled, decoderType); err != nil {
-		return err
-	}
-	return nil
-}
-
-// measureWithConfig plays video one time and measures performance values.
-// The measured values are recorded in perfData.
-func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
-	perfData collectedPerfData, hwState hwAccelState, decoderType DecoderType) error {
+	decoderType DecoderType, enableHWAccel bool) (perfData collectedPerfData, err error) {
 	var chromeArgs []string
-	if hwState == hwAccelDisabled {
+	if !enableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
 
@@ -162,18 +125,18 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSP
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
-		return errors.Wrap(err, "failed to connect to Chrome")
+		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 	defer cr.Close(ctx)
 
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return err
+		return nil, err
 	}
 
 	chromeMediaInternalsConn, err := decode.OpenChromeMediaInternalsPageAndInjectJS(ctx, cr, utilsJSPath)
 	if err != nil {
-		return errors.Wrap(err, "failed to open chrome://media-internals")
+		return nil, errors.Wrap(err, "failed to open chrome://media-internals")
 	}
 	defer chromeMediaInternalsConn.Close()
 	defer chromeMediaInternalsConn.CloseTarget(ctx)
@@ -184,117 +147,79 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, utilsJSP
 	url := server.URL + "/" + videoName
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
-		return errors.Wrap(err, "failed to open video page")
+		return nil, errors.Wrap(err, "failed to open video page")
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
 	// Wait until video element is loaded.
 	if err := conn.WaitForExpr(ctx, "document.getElementsByTagName('video').length > 0"); err != nil {
-		return errors.Wrap(err, "failed to wait for video element loading")
+		return nil, errors.Wrap(err, "failed to wait for video element loading")
 	}
 
 	// Play a video repeatedly during measurement.
 	if err := conn.Exec(ctx, videoElement+".loop=true"); err != nil {
-		return errors.Wrap(err, "failed to settle video looping")
+		return nil, errors.Wrap(err, "failed to settle video looping")
 	}
 
-	vs, err := MeasureUsage(ctx, conn)
-	if err != nil {
-		return errors.Wrap(err, "failed to measure CPU usage")
+	if perfData, err = measureCPUUsage(ctx, conn); err != nil {
+		return nil, errors.Wrap(err, "failed to measure CPU usage")
 	}
 
 	vsFrameCount, err := getDroppedFrameCount(ctx, conn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get dropped frames and percentage")
+		return nil, errors.Wrap(err, "failed to get dropped frames and percentage")
 	}
 	for k, v := range vsFrameCount {
-		vs[k] = v
+		perfData[k] = v
 	}
 
 	usesPlatformVideoDecoder, err := decode.URLUsesPlatformVideoDecoder(ctx, chromeMediaInternalsConn, url)
 	if err != nil {
-		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
+		return nil, errors.Wrap(err, "failed to parse chrome:media-internals: ")
+	}
+	if enableHWAccel {
+		if !usesPlatformVideoDecoder {
+			return nil, errors.New("hardware decoding accelerator was expected but wasn't used")
+		}
+	} else {
+		if usesPlatformVideoDecoder {
+			return nil, errors.New("software decoding was expected but wasn't used")
+		}
 	}
 
 	decoderName, err := decode.URLVideoDecoderName(ctx, chromeMediaInternalsConn, url)
 	if err != nil {
-		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
+		return nil, errors.Wrap(err, "failed to parse chrome:media-internals: ")
 	}
 	testing.ContextLog(ctx, "decoderName: ", decoderName)
 	if decoderType == LibGAV1 && decoderName != "Gav1VideoDecoder" {
-		return errors.Errorf("Expect Gav1VideoDecoder, but used Decoder is %s", decoderName)
+		return nil, errors.Errorf("Expect Gav1VideoDecoder, but used Decoder is %s", decoderName)
 	}
 
-	// Stop video.
 	if err := conn.Exec(ctx, videoElement+".pause()"); err != nil {
-		return errors.Wrap(err, "failed to stop video")
+		return nil, errors.Wrap(err, "failed to stop video")
 	}
 
-	return recordMetrics(ctx, vs, perfData, cr, usesPlatformVideoDecoder, hwState)
-}
-
-// recordMetrics records the measured performance values in perfData.
-func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData collectedPerfData, cr *chrome.Chrome, usesPlatformVideoDecoder bool, hwState hwAccelState) error {
-	if usesPlatformVideoDecoder && hwState == hwAccelDisabled {
-		return errors.New("hardware acceleration used despite being disabled")
-	}
-	if !usesPlatformVideoDecoder && hwState == hwAccelEnabled {
-		// Software playback performance is not recorded, unless HW Acceleration is disabled.
-		return nil
-	}
-
-	pType := playbackWithoutHWAccel
-	if usesPlatformVideoDecoder {
-		pType = playbackWithHWAccel
-	}
-
-	if perfData[pType] == nil {
-		perfData[pType] = map[metricDesc]metricValue{}
-	}
-	for desc, value := range vs {
-		perfData[pType][desc] = value
-	}
-	return nil
+	return perfData, nil
 }
 
 // savePerfResults saves performance results in outDir.
 func savePerfResults(ctx context.Context, perfData collectedPerfData, outDir string) error {
 	p := perf.NewValues()
-	for _, pType := range []playbackType{playbackWithHWAccel, playbackWithoutHWAccel} {
-		keyval, found := perfData[pType]
-		if !found {
-			if pType == playbackWithHWAccel {
-				testing.ContextLog(ctx, "No HW playback performance result")
-				continue
-			} else {
-				// SW playback performance results should be collected in any cases.
-				return errors.Errorf("no SW playback performance result: %v", perfData)
-			}
+	for _, m := range metricDefs {
+		val, found := perfData[m.desc]
+		perfName := string(m.desc)
+		if !found && m.desc != powerConsumptionDesc {
+			return errors.Errorf("no performance result for %s: %v", perfName, perfData)
 		}
-		var perfPrefixes []string
-		if pType == playbackWithHWAccel {
-			perfPrefixes = append(perfPrefixes, "hw_")
-		} else {
-			perfPrefixes = append(perfPrefixes, "sw_")
-		}
-
-		for _, m := range metricDefs {
-			val, found := keyval[m.desc]
-			for _, pp := range perfPrefixes {
-				perfName := pp + string(m.desc)
-				if !found && m.desc != powerConsumptionDesc {
-					return errors.Errorf("no performance result for %s: %v", perfName, perfData)
-				}
-				p.Set(perf.Metric{Name: perfName, Unit: m.unit, Direction: m.dir}, float64(val))
-			}
-		}
+		p.Set(perf.Metric{Name: perfName, Unit: m.unit, Direction: m.dir}, float64(val))
 	}
 	return p.Save(outDir)
 }
 
-// MeasureUsage obtains CPU usage percentage and power consumption if supported.
-func MeasureUsage(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
+// measureCPUUsage obtains CPU usage and power consumption if supported.
+func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
 	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
 	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
