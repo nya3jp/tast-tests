@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b3e7b403_03e1070a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2020-05-19T00:38:23Z",
+      "side": 1,
+      "message": "I think the condition is specific enough that only this test will use, so create new hwdep would make this to be more complex than it need to be. \n\nAlso, We can always create new hwdep when there is 2nd test that will use same dependency.",
+      "parentUuid": "55006f54_a19578e7",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229b091b_8b208993",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
