@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d11d35c_c9aa91a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "system_timezone_service.go",
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3ebbf1_d04db93a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "handle the error",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f777f7f5_7adc5957",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "all device policy tests need to be \"group:enrollment\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 25,
+        "endLine": 33,
+        "endChar": 58
+      },
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526b2783_61b65268",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "You also need to always do this at the beginning of the test. If the DUT is not owned it\u0027s a noop.",
+      "range": {
+        "startLine": 42,
+        "startChar": 23,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62307746_579bdabc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "range": {
+        "startLine": 58,
+        "startChar": 17,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0edb0681_da1f526c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "Create a table driven test and set both values. It will not matter what device had initially.",
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59055552_e76b85cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "use s.DUT().Reboot()",
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f2d699_8ca5a1fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "Do you need to redial here?",
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29148321_f7aecee6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "Unexpected timezone: got %q; want %q ...",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 50
+      },
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7d927a_c2051309",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/system_timezone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T10:52:58Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "5d93eb95b7aebdfe6c5977463c4cbb1d39b687c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
