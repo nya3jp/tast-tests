@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3000a70_e32b6036",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-19T00:09:18Z",
+      "side": 1,
+      "message": "This looks like an experimentally-arrived at timeout.  How much margin are you observing (i.e. how long is taking for the network interface to be back up?)  Perhaps logging the total time could help with any future maintenance and debugging (e.g. if a change in the networking stack makes it start to take longer).  Consider logging the total time spent vs the timeout.  Additionally consider reading from EC console to make this a bit more robust (can start the blind timeout after the EC reports being back at S0); that could be a TODO.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "ff3f46c6a042df026fa8b428a69e25c2f3a106d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5a6e5c_db172e21",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2020-05-19T00:09:18Z",
+      "side": 1,
+      "message": "Not sure, but I suspect this could be a source of flakiness, as this approach looks to possibly leave the filesystem corrupted.  Are you able to do a clean shutdown here?",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "ff3f46c6a042df026fa8b428a69e25c2f3a106d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
