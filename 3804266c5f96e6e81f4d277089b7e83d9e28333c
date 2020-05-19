@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06b0e350_cfa644b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T10:19:31Z",
+      "side": 1,
+      "message": "This one looks a little like QueryService. (esp. the part after GetProperties) Not sure if it is worth to extract an internal gRPC message (e.g. ServiceProp) so that the two can share.",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848173e3_b7d59132",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T10:19:31Z",
+      "side": 1,
+      "message": "nit: In Autotest, this test does not capture packets. It might make debug easier, so I\u0027m also OK with it.",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d375ba_abde68c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T10:19:31Z",
+      "side": 1,
+      "message": "In Autotest, there\u0027s a step to clear wpa_supplicant blacklist. (added in crrev.com/c/219844) Not sure if it is still relevant. (the original bug does not say who sets the blacklist)\n\nOr maybe it belongs to reinitTestState even if it\u0027s still relevant?",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62df6c48_884e3b56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T10:19:31Z",
+      "side": 1,
+      "message": "I think in Autotest, this check is after ConnectWifi?",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730cc97c_1d286a63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T10:19:31Z",
+      "side": 1,
+      "message": "Hmm..., the ConnectWifi function now looks awkward for taking the whole APIface. (sorry that I didn\u0027t take this case into account when writing it)\n\nIt is unclear to the caller that what parameters in APIface it uses for connecting. e.g. if it somehow specifies the channel of BSS to connect, then this test cannot use it.\n\nDo you think it might be clearer to make the function (or have a new function) more verbose like Connect(context.Context, ssid string, hidden bool, sec security.Config)",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0c524e9_434b69b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T10:19:31Z",
+      "side": 1,
+      "message": "In Autotest, it logs the signal strength of BSSes for ease of debugging. (added in crrev.com/c/1292796) Maybe we should keep it?",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
