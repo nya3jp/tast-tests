@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "cd52db94_00150cc2",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-19T17:04:06Z",
+      "side": 1,
+      "message": "I\u0027ve split them off into a separate CL that I\u0027ll hold onto until someone needs them.",
+      "parentUuid": "cd3871d2_eee93cec",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 32
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec9d8bee_3f9f6ba7",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 1
