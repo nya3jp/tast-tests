@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cba6b83_49188a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-19T05:05:14Z",
+      "side": 1,
+      "message": "Can we use copy() instead?",
+      "revId": "085c7dc696b25f82d0a008367125955be6180a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b503380b_1f99ebce",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-19T05:05:14Z",
+      "side": 1,
+      "message": "ExppectIn expects the prop\u0027s value to become one of the expected values and returns the first matched one.",
+      "revId": "085c7dc696b25f82d0a008367125955be6180a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
