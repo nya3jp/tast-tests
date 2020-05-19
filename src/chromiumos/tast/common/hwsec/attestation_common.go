@@ -129,15 +129,50 @@ func certURL(pcaType PCAType) string {
 	return caServerURL(pcaType) + "/sign"
 }
 
+// VA declares a pair of functions that get and verify the VA challenge.
+type VA interface {
+	// GetDecodedVAChallenge returns a new VA challenge.
+	GetDecodedVAChallenge(ctx context.Context) ([]byte, error)
+	// VerifyEncodedVAChallenge verifies the signed VA challenge response.
+	VerifyEncodedVAChallenge(ctx context.Context, signedChallenge string) error
+}
+
+// RealVA implemenets the Va functionality by talking to the real VA servers used in production.
+type RealVA struct{}
+
+// NewRealVA creates a new instance of RealVA.
+func NewRealVA() *RealVA {
+	return &RealVA{}
+}
+
+// GetDecodedVAChallenge get the VA challenge from the default VA server and decoded it. In case of any of any error, retries for a certain small number of times.
+func (rc *RealVA) GetDecodedVAChallenge(ctx context.Context) ([]byte, error) {
+	const retryCount = 5
+	return getDecodedVAChallenge(ctx, retryCount)
+}
+
+// VerifyEncodedVAChallenge sends the signed challenge to the default VA server.
+func (rc *RealVA) VerifyEncodedVAChallenge(ctx context.Context, signedChallenge string) error {
+	urlForVerification := "https://test-dvproxy-server.sandbox.google.com/dvproxy/verifychallengeresponse?signeddata=" + url.QueryEscape(signedChallenge)
+	_, err := SendGetRequestTo(ctx, urlForVerification)
+	return err
+}
+
 // AttestationTest provides the complex operations in the attestaion flow along with validations
 type AttestationTest struct {
 	ac      attestationClient
 	pcaType PCAType
+	va      VA
 }
 
-// NewAttestaionTest creates a new AttestationTest instance
+// NewAttestaionTestWithVA creates a new AttestationTest instance with the VA instance used to get and verify VA challenge.
+func NewAttestaionTestWithVA(ac attestationClient, pcaType PCAType, va VA) *AttestationTest {
+	return &AttestationTest{ac, pcaType, &RealVA{}}
+}
+
+// NewAttestaionTest creates a new AttestationTest instance with the RealVA object.
 func NewAttestaionTest(ac attestationClient, pcaType PCAType) *AttestationTest {
-	return &AttestationTest{ac, pcaType}
+	return NewAttestaionTestWithVA(ac, pcaType, &RealVA{})
 }
 
 // Enroll creates the enroll request, sends it to the corresponding PCA server, and finishes the request with the received response.
@@ -205,8 +240,7 @@ func getDecodedVAChallenge(ctx context.Context, retryCount int) ([]byte, error) 
 // SignEnterpriseChallenge gets the challenge from default VA server, perform SPKAC, and sends the signed challenge back to verify it
 func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username, label string) error {
 	// In case the request fails for any reason, retry for 5 times.
-	const RetryCount = 5
-	challenge, err := getDecodedVAChallenge(ctx, RetryCount)
+	challenge, err := at.va.GetDecodedVAChallenge(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to base64-decode challenge")
 	}
@@ -223,10 +257,8 @@ func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username
 		return errors.Wrap(err, "failed to sign VA challenge")
 	}
 	b64SignedChallenge := base64.StdEncoding.EncodeToString([]byte(signedChallenge))
-	urlForVerification := "https://test-dvproxy-server.sandbox.google.com/dvproxy/verifychallengeresponse?signeddata=" + url.QueryEscape(b64SignedChallenge)
-	_, err = SendGetRequestTo(ctx, urlForVerification)
-	if err != nil {
-		return errors.Wrap(err, "failed to verify challenge")
+	if err := at.va.VerifyEncodedVAChallenge(ctx, b64SignedChallenge); err != nil {
+		return errors.Wrap(err, "failed to verify VA challenge.")
 	}
 	return nil
 }
