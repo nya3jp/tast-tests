@@ -166,6 +166,30 @@
       "revId": "7627c97c2ae5752e6e3a771468f2c68b58448fe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fd9b53_a369c031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2020-05-19T07:41:28Z",
+      "side": 0,
+      "message": "Form the original design of |setTabletMonitor()| only allow one monitor to be existed at anytime[1]. If the tast call it again, it may override another monitor register by CCA right after window start. And I afraid it may cause some side effect.\n\n[1]\nhttps://source.chromium.org/chromium/chromium/src/+/master:components/chromeos_camera/camera_app_helper_impl.h;l\u003d53",
+      "parentUuid": "8b2a2a5d_4149d271",
+      "range": {
+        "startLine": 298,
+        "startChar": 9,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "7627c97c2ae5752e6e3a771468f2c68b58448fe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
