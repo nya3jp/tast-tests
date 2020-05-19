@@ -27,12 +27,11 @@ func init() {
 	})
 }
 
-func getUncleanShutdownCount(ctx context.Context) (uint64, error) {
-	const metricsFile = "/var/lib/metrics/Platform.UncleanShutdownsDaily"
+func getPersistentInteger(ctx context.Context, file string) (uint64, error) {
 	const bytesUint64 = 8 // 8 bytes for uint64
 	numUnclean := make([]byte, bytesUint64)
 
-	f, err := os.Open(metricsFile)
+	f, err := os.Open(file)
 	if err != nil {
 		if os.IsNotExist(err) {
 			return 0, nil // On file not exist error, assume count of 0.
@@ -43,11 +42,11 @@ func getUncleanShutdownCount(ctx context.Context) (uint64, error) {
 	// Read the persistent integer consisting of uint32 version info and uint64 value.
 	// chromium.googlesource.com/chromiumos/platform2/+/HEAD/metrics/persistent_integer.h
 	if _, err = f.Seek(4, 0); err != nil { // Skip version information.
-		return 0, errors.Wrap(err, "Error while seeking unclean shutdown file")
+		return 0, errors.Wrapf(err, "error while seeking persistent integer file %q", file)
 	}
 
 	if _, err := f.Read(numUnclean); err != nil {
-		return 0, errors.Wrap(err, "Error while reading unclean shutdown count")
+		return 0, errors.Wrapf(err, "error while reading persistent integer value %q", file)
 	}
 	f.Close()
 
@@ -60,18 +59,13 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 		uncleanShutdownDetectedFile = "/run/metrics/external/crash-reporter/unclean-shutdown-detected"
 		kernelCrashDetectedFile     = "/run/metrics/external/crash-reporter/kernel-crash-detected"
 		suspendFile                 = "/var/lib/power_manager/powerd_suspended"
+		metricsFile                 = "/var/lib/metrics/Platform.UncleanShutdownsDaily"
+		dailyCycleFile              = "/var/lib/metrics/daily.cycle"
 	)
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(ctx)
-
-	oldUnclean, err := getUncleanShutdownCount(ctx)
-	if err != nil {
-		s.Fatal("Could not get unclean shutdown count: ", err)
-	}
-
-	s.Log("Current unclean count: ", oldUnclean)
 
 	if err := upstart.StopJob(ctx, "metrics_daemon"); err != nil {
 		s.Fatal("Failed to stop metrics_daemon: ", err)
@@ -81,6 +75,16 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 			s.Error("Failed to re-start metrics_daemon: ", err)
 		}
 	}()
+
+	oldUnclean, err := getPersistentInteger(ctx, metricsFile)
+	if err != nil {
+		s.Fatal("Could not get unclean shutdown count: ", err)
+	}
+
+	oldDailyCycle, err := getPersistentInteger(ctx, dailyCycleFile)
+	if err != nil {
+		s.Fatal("Could not get old daily cycle count: ", err)
+	}
 
 	// Stash the suspend file so that crash_reporter doesn't see it and
 	// assume the unclean shutdown happened while suspended.
@@ -128,15 +132,22 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 
 	// Wait for unclean shutdown count to be updated.
 	if err := testing.Poll(ctx, func(c context.Context) error {
-		newUnclean, err := getUncleanShutdownCount(ctx)
+		newUnclean, err := getPersistentInteger(ctx, metricsFile)
 		if err != nil {
 			return errors.Wrap(err, "could not get unclean shutdown count")
 		}
 
-		if newUnclean != oldUnclean+1 {
-			return errors.Errorf("Did not see unclean shutdown. Got %d but expected %d", newUnclean, oldUnclean+1)
+		newDailyCycle, err := getPersistentInteger(ctx, dailyCycleFile)
+		if err != nil {
+			return errors.Wrap(err, "could not get daily cycle count: ")
 		}
-		return nil
+
+		// The count should either increment, or we should move to the next day and set the count to 1.
+		if newUnclean == oldUnclean+1 || (newDailyCycle == oldDailyCycle+1 && newUnclean == 1) {
+			return nil
+		}
+		return errors.Errorf("Did not see unclean shutdown. got {unclean: %d, cycle: %d}, want {unclean: %d, cycle: %d} or {unclean: 1, cycle: %d}",
+			newUnclean, newDailyCycle, oldUnclean+1, oldDailyCycle, newDailyCycle)
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Error("Unclean shutdown was logged incorrectly: ", err)
 	}
