@@ -34,6 +34,24 @@
       "revId": "6a3c7fd0fd6a5464e122a26d632d669cf3b76c56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc95129_fa97e41b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-19T10:18:14Z",
+      "side": 1,
+      "message": "sgtm. Let\u0027s have a TODO and merge the CLs first.",
+      "parentUuid": "da09aebb_ec8a38e8",
+      "revId": "6a3c7fd0fd6a5464e122a26d632d669cf3b76c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
