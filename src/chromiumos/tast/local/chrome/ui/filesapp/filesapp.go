@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
@@ -190,4 +191,42 @@ func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 	}
 	defer getInfo.Release(ctx)
 	return getInfo.LeftClick(ctx)
+}
+
+// ClickMoreMenuItem opens More menu then clicks on sub menu items
+// An error is returned if one of the menu items can't be found.
+func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) error {
+	// Open the More Options menu.
+	params := ui.FindParams{
+		Name: "More…",
+		Role: ui.RoleTypePopUpButton,
+	}
+	more, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed finding the More menu item")
+	}
+	defer more.Release(ctx)
+
+	if err := more.LeftClick(ctx); err != nil {
+		return errors.Wrap(err, "failed clicking More menu item")
+	}
+
+	// Iterate over the menu items in string and click them
+	for _, menuItem := range menuItems {
+		params = ui.FindParams{
+			Name: menuItem,
+			Role: ui.RoleTypeMenuItem,
+		}
+		menuItemNode, err := f.Root.DescendantWithTimeout(ctx, params, uiTimeout)
+		if err != nil {
+			return errors.Wrapf(err, "failed finding menu item: %s", menuItem)
+		}
+		defer menuItemNode.Release(ctx)
+
+		if err := menuItemNode.LeftClick(ctx); err != nil {
+			return errors.Wrapf(err, "failed clicking menu item: %s", menuItem)
+		}
+	}
+
+	return nil
 }
