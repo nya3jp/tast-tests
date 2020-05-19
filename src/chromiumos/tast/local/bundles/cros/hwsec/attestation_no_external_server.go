@@ -39,6 +39,17 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Helper creation error: ", err)
 	}
+
+	ali := hwseclocal.NewAttestationLocalInfra(hwsec.NewDaemonController(r))
+	if err := ali.Enable(ctx); err != nil {
+		s.Fatal("Failed to enable local test infra feature: ", err)
+	}
+	defer func() {
+		if err := ali.Disable(ctx); err != nil {
+			s.Error("Failed to disable local test infra feature: ", err)
+		}
+	}()
+
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to ensure tpm readiness: ", err)
 	}
