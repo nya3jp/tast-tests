@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "55006f54_a19578e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-19T00:25:26Z",
+      "side": 1,
+      "message": "I think the request amounts to creating another hwdep representing \"Intel boards with cros_config\" so that can be updated independently of this test or any other test with that dependency. vsavu@, please correct me if that\u0027s wrong.",
+      "parentUuid": "d9774bfb_5061d1bd",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229b091b_8b208993",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
