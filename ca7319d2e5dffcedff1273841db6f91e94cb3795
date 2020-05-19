@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2d24906_bf0c6d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-19T10:48:09Z",
+      "side": 1,
+      "message": "I did a quick test by checking document.hasFocus(), and it seems that the function does not guarantee that the window is already focused when the function is returned.\n\nTo prevent flakiness and races, could you help add an event listener for \"focus\" event on window, and return a Promise that will resolve when the window is focused (similar to the changeWindowState() above)? Thanks.",
+      "revId": "ca7319d2e5dffcedff1273841db6f91e94cb3795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
