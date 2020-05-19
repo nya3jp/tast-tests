@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f7efc085_3442af6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T06:49:23Z",
+      "side": 1,
+      "message": "copy will need the element type to be matched so with []string -\u003e []interface{}, it will complain: \"arguments to copy have different element types: []interface {} and []string\"",
+      "parentUuid": "3cba6b83_49188a4d",
+      "revId": "085c7dc696b25f82d0a008367125955be6180a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b503380b_1f99ebce",
         "filename": "src/chromiumos/tast/local/shill/property.go",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "085c7dc696b25f82d0a008367125955be6180a49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccafe573_dc7c864a",
+        "filename": "src/chromiumos/tast/local/shill/property.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-19T06:49:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b503380b_1f99ebce",
+      "revId": "085c7dc696b25f82d0a008367125955be6180a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
