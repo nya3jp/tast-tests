@@ -10,9 +10,9 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/policy/enterprise_management"
-	"chromiumos/tast/local/bundles/cros/session/ownership"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/testing"
 )
 
