@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "cf619691_fa47acca",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-19T21:34:09Z",
+      "side": 1,
+      "message": "Can hide the Models field by using a private struct to unmarshal, but probably not worth the effort.",
+      "parentUuid": "057c4d67_6b6100b1",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7e6936d_311b65a9",
         "filename": "src/chromiumos/tast/remote/firmware/config.go",
         "patchSetId": 4
@@ -194,6 +212,24 @@
       "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cfe8f71_a2b3b377",
+        "filename": "src/chromiumos/tast/remote/firmware/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2020-05-19T21:34:09Z",
+      "side": 1,
+      "message": "lg",
+      "parentUuid": "1005f929_a9e677ae",
+      "revId": "4a78bbc796ecb29f3a2098fb933c0b2d75079f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
