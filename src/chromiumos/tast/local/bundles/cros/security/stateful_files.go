@@ -72,6 +72,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/chronos"), users("chronos"), groups("chronos"), chk.Mode(0755), chk.SkipChildren()), // contents checked by security.UserFiles*
 
 		chk.NewPattern(chk.Path("encrypted/var/cache/app_pack"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
+		// TODO(crbug.com/905719): Check for a specific user:group and mode.
 		chk.NewPattern(chk.Path("encrypted/var/cache/camera"), users("chronos", "root"), chk.NotMode(02), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_component_policy"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
 		chk.NewPattern(chk.Path("encrypted/var/cache/device_local_account_extensions"), users("chronos"), groups("chronos"), chk.Mode(0700), chk.SkipChildren()),
@@ -192,10 +193,12 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("android-root"); err == nil {
 		prependPatterns(
-			// TODO(crbug.com/905719): Check for a specific user:group and mode.
-			chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("arc-oemcrypto"), groups("arc-oemcrypto"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))
+	}
+
+	if _, err := user.Lookup("arc-oemcrypto"); err == nil {
+		prependPatterns(chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("arc-oemcrypto"), groups("arc-oemcrypto"), chk.Mode(0700), chk.SkipChildren()))
 	}
 
 	if _, err := user.Lookup("fwupd"); err == nil {
