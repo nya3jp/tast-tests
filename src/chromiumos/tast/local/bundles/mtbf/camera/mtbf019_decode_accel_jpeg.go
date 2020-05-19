@@ -76,10 +76,10 @@ func MTBF019DecodeAccelJPEG(ctx context.Context, s *testing.State) {
 		gtest.ExtraArgs(logging.ChromeVmoduleFlag(), "--test_data_path="+tempDir+"/"),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
+		s.Fatal(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
-				s.Error(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
+				s.Fatal(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
 			}
 		}
 	}

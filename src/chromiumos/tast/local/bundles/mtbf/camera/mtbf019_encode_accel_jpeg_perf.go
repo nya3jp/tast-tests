@@ -83,10 +83,10 @@ func MTBF019EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 			"--yuv_filenames="+s.DataPath(testFilename)+testFileSuffix),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
+		s.Fatal(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
-				s.Error(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
+				s.Fatal(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
 			}
 		}
 	}

@@ -52,6 +52,16 @@ func MTBF041DisableBT(ctx context.Context, s *testing.State) {
 		s.Fatal(mtbferrors.New(mtbferrors.BTHIDNeeded, nil, "MTBF041"))
 	}
 
+	btConsole, err := btconn.NewBtConsole(ctx, s)
+	if err != nil {
+		s.Fatal("MTBF failed: ", err)
+	}
+	defer btConsole.Close()
+
+	if _, err := btConsole.CheckScanning(true); err != nil {
+		s.Fatal("MTBF failed: ", err)
+	}
+
 	btConn := initBluetooth(ctx, s)
 	defer btConn.Close()
 	testing.Sleep(ctx, 2*time.Second)
@@ -59,8 +69,8 @@ func MTBF041DisableBT(ctx context.Context, s *testing.State) {
 	s.Logf("a2dp, hid BT device names: %v, %v", a2dpDevName, hidDevName)
 	s.Logf("a2dp, hid BT device address: %v, %v", a2dpDevAddr, hidDevAddr)
 
-	if err := btConn.SwitchOff(); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr := btConn.SwitchOff(); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("BT disabled")
@@ -71,34 +81,52 @@ func MTBF041DisableBT(ctx context.Context, s *testing.State) {
 	testing.Sleep(ctx, 5*time.Second)
 	btConn.EnterBtPage()
 
-	// if err := btConsole.Connect(a2dpDevAddr); err != nil {
-	// 	s.Fatal("MTBF failed: ", err)
+	// if mtbferr := btConsole.Connect(a2dpDevAddr); mtbferr != nil {
+	// 	s.Fatal(mtbferr)
 	// }
 
-	if connected, err := btConn.CheckBtDevice(a2dpDevName); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if connected, mtbferr := btConn.CheckBtDevice(a2dpDevName); mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if !connected {
 		s.Fatal(mtbferrors.New(mtbferrors.BTConnected, nil, a2dpDevName))
 	}
 
-	// if err := btConsole.Connect(hidDevAddr); err != nil {
-	// 	s.Fatal("MTBF failed: ", err)
+	// if mtbferr := btConsole.Connect(hidDevAddr); mtbferr != nil {
+	// 	s.Fatal(mtbferr)
 	// }
 
-	if connected, err := btConn.CheckBtDevice(hidDevName); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if connected, mtbferr := btConn.CheckBtDevice(hidDevName); mtbferr != nil {
+		s.Fatal(mtbferr)
 	} else if !connected {
 		s.Fatal(mtbferrors.New(mtbferrors.BTConnected, nil, hidDevName))
 	}
+
+	testing.Sleep(ctx, time.Second*10)
+
+	if connected, err := btConsole.IsConnected(a2dpDevAddr); err != nil {
+		s.Fatal("MTBF failed: ", err)
+	} else if !connected {
+		s.Fatal(mtbferrors.New(mtbferrors.BTConnectFailed, nil, a2dpDevAddr))
+	}
+
+	//info, err := btConsole.GetDeviceInfo(a2dpDevAddr)
+	//if err != nil {
+	//	s.Fatal("MTBF failed", err)
+	//}
+	//
+	//if strings.Contains(info, "Connected: no") {
+	//	s.Fatal(mtbferrors.New(mtbferrors.BTConnectFailed, nil, a2dpDevAddr))
+	//}
+
 }
 
 // initBluetooth initializes the Bluetooth connection
 func initBluetooth(ctx context.Context, s *testing.State) *btconn.BtConn {
 	var cr = s.PreValue().(*chrome.Chrome)
-	btConn, err := btconn.New(ctx, s, cr, nil)
+	btConn, mtbferr := btconn.New(ctx, s, cr, nil)
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	return btConn
@@ -106,21 +134,21 @@ func initBluetooth(ctx context.Context, s *testing.State) *btconn.BtConn {
 
 // getBtDeviceAddr retrieves Bt connection addresses for A2DP and HID
 func getBtDeviceAddr(ctx context.Context, s *testing.State, btConn *btconn.BtConn, a2dpDevName string, hidDevName string) (string, string) {
-	var err error
+	var mtbferr error
 	var a2dpAddr, hidAddr string
 
-	a2dpAddr, err = btConn.GetAddress(a2dpDevName)
+	a2dpAddr, mtbferr = btConn.GetAddress(a2dpDevName)
 
-	if err != nil {
+	if mtbferr != nil {
 		s.Log("Failed to get BT address for a2dp device: ", a2dpDevName)
-		s.Fatal("MTBF failed: ", err)
+		s.Fatal(mtbferr)
 	}
 
-	hidAddr, err = btConn.GetAddress(hidDevName)
+	hidAddr, mtbferr = btConn.GetAddress(hidDevName)
 
-	if err != nil {
+	if mtbferr != nil {
 		s.Log("Failed to get BT address for hid device: ", hidDevName)
-		s.Fatal("MTBF failed: ", err)
+		s.Fatal(mtbferr)
 	}
 
 	return a2dpAddr, hidAddr
@@ -129,16 +157,16 @@ func getBtDeviceAddr(ctx context.Context, s *testing.State, btConn *btconn.BtCon
 // enableBluetooth enables Bluetooth functionality and checks reconnecting BT devices.
 func enableBluetooth(ctx context.Context, s *testing.State, btConn *btconn.BtConn, btDevAddr ...string) {
 	s.Log("Try to enable BT")
-	err := btConn.SwitchOn()
+	mtbferr := btConn.SwitchOn()
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	btConsole, err := btconn.NewBtConsole(ctx, s)
+	btConsole, mtbferr := btconn.NewBtConsole(ctx, s)
 
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	defer btConsole.Close()
@@ -150,8 +178,8 @@ func enableBluetooth(ctx context.Context, s *testing.State, btConn *btconn.BtCon
 			continue
 		}
 
-		if err = btConsole.Connect(devAddr); err != nil {
-			s.Fatal("MTBF failed: ", err)
+		if mtbferr = btConsole.Connect(devAddr); mtbferr != nil {
+			s.Fatal(mtbferr)
 		}
 	}
 }

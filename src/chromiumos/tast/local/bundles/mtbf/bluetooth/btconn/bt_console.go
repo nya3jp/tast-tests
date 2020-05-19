@@ -100,6 +100,16 @@ func (c *BtConsole) scanOn() error {
 		return mtbferrors.New(mtbferrors.BTCnslCmd, err, "scan on")
 	}
 
+	//testing.Sleep(c.ctx, 1*time.Second)
+	//result, err := c.getTermTxt()
+	//if err != nil {
+	//	return err
+	//}
+
+	//if strings.Contains(result, "org.bluez.Error.NotReady") {
+	//	return mtbferrors.New(mtbferrors.BTServiceNotReady, nil)
+	//}
+
 	return nil
 }
 

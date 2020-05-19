@@ -49,7 +49,7 @@ func MTBF020CaptureUnittests(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	if err := upstart.StopJob(shortCtx, "ui"); err != nil {
-		s.Error("Failed to stop ui: ", err)
+		s.Fatal("Failed to stop ui: ", err)
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
@@ -92,10 +92,10 @@ func MTBF020CaptureUnittests(ctx context.Context, s *testing.State) {
 		gtest.ExtraArgs(logging.ChromeVmoduleFlag(), "--test-launcher-jobs=1"),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(shortCtx); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
+		s.Fatal(mtbferrors.New(mtbferrors.VideoUTRun, err, exec))
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
-				s.Error(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
+				s.Fatal(mtbferrors.New(mtbferrors.VideoUTFailure, err, name))
 			}
 		}
 	}
