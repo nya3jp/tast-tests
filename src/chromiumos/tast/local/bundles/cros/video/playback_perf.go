@@ -318,6 +318,36 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"1080p_60fps_600frames.av1.mp4"},
+		}, {
+			Name: "h264_1080p_60fps_alt",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.h264.mp4",
+				decoderType: playback.VD,
+			},
+			// "chrome_internal" is needed because H.264 is a proprietary codec.
+			ExtraSoftwareDeps: []string{"chrome_internal"},
+			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+		}, {
+			Name: "vp8_1080p_60fps_alt",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.vp8.webm",
+				decoderType: playback.VD,
+			},
+			ExtraData: []string{"1080p_60fps_600frames.vp8.webm"},
+		}, {
+			Name: "vp9_1080p_60fps_alt",
+			Val: playbackPerfParams{
+				fileName:    "1080p_60fps_600frames.vp9.webm",
+				decoderType: playback.VD,
+			},
+			ExtraData: []string{"1080p_60fps_600frames.vp9.webm"},
+		}, {
+			Name: "vp9_2160p_60fps_alt",
+			Val: playbackPerfParams{
+				fileName:    "2160p_60fps_600frames.vp9.webm",
+				decoderType: playback.VD,
+			},
+			ExtraData: []string{"2160p_60fps_600frames.vp9.webm"},
 		}},
 	})
 }

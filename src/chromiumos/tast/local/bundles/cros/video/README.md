@@ -169,18 +169,12 @@ variants. To run all tests use:
 
     tast run $HOST video.PlaybackPerf.*
 
-Additionally there are variants of these tests with 'VD' in their names present.
-These test the new video decoder implementations, which are set to replace the
-current ones. To run all VD video playback performance tests run:
-
-    tast run $HOST video.PlaybackVDPerf.*
-
 ## Seek Tests (`video.Seek`)
 
 These tests verify seeking in videos: Seeks are issued while playing a video in
 Chrome, waiting for the `onseeked` event to be received. These tests come in
 variants with the same taxonomy as described in the
-[Play Tests](#videoplay-tests) Section, and in addition:
+[Play Tests](#play-tests) Section, and in addition:
 
 - Tests with a `stress` suffix issue a much larger amount of seeks, and have a
 much larger timeout.
