@@ -191,3 +191,35 @@ func (f *FilesApp) OpenQuickView(ctx context.Context, filename string) error {
 	defer getInfo.Release(ctx)
 	return getInfo.LeftClick(ctx)
 }
+
+// ClickMoreMenuItem Clicks on the More menu and
+// An error is returned if one of the menu items can't be found
+func (f *FilesApp) ClickMoreMenuItem(ctx context.Context, menuItems []string) error {
+	// Open the More Options menu.
+	params := ui.FindParams{
+		Name: "More…",
+		Role: ui.RoleTypePopUpButton,
+	}
+	more, err := f.Root.DescendantWithTimeout(ctx, params, 10*time.Second)
+	if err != nil {
+		return err
+	}
+	defer more.Release(ctx)
+	more.LeftClick(ctx)
+
+	// Iterate over the menu items in string and click them
+	for _, menuItem := range menuItems {
+		params = ui.FindParams{
+			Name: menuItem,
+			Role: ui.RoleTypeMenuItem,
+		}
+		menuItemNode, err := f.Root.DescendantWithTimeout(ctx, params, 10*time.Second)
+		if err != nil {
+			return err
+		}
+		defer menuItemNode.Release(ctx)
+		menuItemNode.LeftClick(ctx)
+	}
+
+	return nil
+}
