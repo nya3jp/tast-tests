@@ -22,6 +22,30 @@
       "revId": "8e2f0c45da120f725291dcf06fa67cf2fb255f92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a77d60_ac340ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_timezone_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296737
+      },
+      "writtenOn": "2020-05-19T16:30:50Z",
+      "side": 1,
+      "message": "I changed it to \"number of output lines\" to match the other tests.",
+      "parentUuid": "7af99223_36e03cbe",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "8e2f0c45da120f725291dcf06fa67cf2fb255f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
