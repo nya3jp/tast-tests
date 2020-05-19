@@ -152,11 +152,6 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 		chk.NewPattern(chk.Path("var_overlay"), chk.SkipChildren()), // only exists for dev images
 
-		// This file can be created by
-		// https://source.corp.google.com/chromeos_public/src/platform/factory/py/gooftool/wipe.py.
-		// TODO(crbug.com/1083285): Avoid creating this file with 0666 permissions.
-		chk.NewPattern(chk.Path("wipe_mark_file"), chk.Mode(0666)),
-
 		chk.NewPattern(chk.Root(), users("root"), groups("root"), chk.Mode(0755)), // stateful_partition directory itself
 		chk.NewPattern(chk.AllPaths(), users("root"), chk.NotMode(022)),           // everything else not already matched
 	}
