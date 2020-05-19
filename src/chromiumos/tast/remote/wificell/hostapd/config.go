@@ -35,13 +35,15 @@ type HTCap int
 
 // HTCap enums, use bitmask for ease of checking existence.
 const (
-	HTCapHT20       HTCap = 1 << iota // HTCaps string "" means HT20.
-	HTCapHT40                         // auto-detect supported "[HT40-]" or "[HT40+]"
-	HTCapHT40Minus                    // "[HT40-]"
-	HTCapHT40Plus                     // "[HT40+]"
-	HTCapSGI20                        // "[SHORT-GI-20]"
-	HTCapSGI40                        // "[SHORT-GI-40]"
-	HTCapGreenfield                   // "[GF]"
+	HTCapHT20      HTCap = 1 << iota // HTCaps string "" means HT20.
+	HTCapHT40                        // auto-detect supported "[HT40-]" or "[HT40+]"
+	HTCapHT40Minus                   // "[HT40-]"
+	HTCapHT40Plus                    // "[HT40+]"
+	HTCapSGI20                       // "[SHORT-GI-20]"
+	HTCapSGI40                       // "[SHORT-GI-40]"
+	// The test APs don't support Greenfield now. Comment out the option to avoid usage.
+	// (The capability can be shown with `iw phy`)
+	// HTCapGreenfield                   // "[GF]"
 )
 
 // VHTCap is the type for specifying VHT capabilities in hostapd config (vht_capab=).
@@ -320,9 +322,6 @@ func (c *Config) validate() error {
 			return errors.Errorf("VHTChWidth is not supported by mode %s", c.Mode)
 		}
 	}
-	if (c.HTCaps & HTCapGreenfield) > 0 {
-		return errors.New("HTCapGreenfield is not yet supported")
-	}
 	if err := c.validateChannel(); err != nil {
 		return err
 	}
@@ -443,9 +442,6 @@ func (c *Config) htCapsString() (string, error) {
 	}
 	if c.HTCaps&HTCapSGI40 > 0 {
 		caps = append(caps, "[SHORT-GI-40]")
-	}
-	if c.HTCaps&HTCapGreenfield > 0 {
-		caps = append(caps, "[GF]")
 	}
 	return strings.Join(caps, ""), nil
 }
