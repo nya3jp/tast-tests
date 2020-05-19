@@ -34,6 +34,24 @@
       "revId": "fed3759605b63b2ace6625dda42cf3be70c7fecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a6d7dca_b6af57cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2020-05-19T06:21:15Z",
+      "side": 1,
+      "message": "Please disregard previous comment. It was my misunderstanding since it was a while since last review. Sorry about that.",
+      "parentUuid": "1469ce66_488585c2",
+      "revId": "fed3759605b63b2ace6625dda42cf3be70c7fecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
