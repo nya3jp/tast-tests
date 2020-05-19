@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1db82023_b2843db0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-19T00:57:29Z",
+      "side": 1,
+      "message": "we have a poll in CountBlackPixels, do we need another one here?",
+      "parentUuid": "b41a8e37_62f8cc33",
+      "revId": "46ca84f83cadadd08e317925790f6aebbb75c77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a11d924b_78597968",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
         "patchSetId": 11
@@ -33,6 +51,24 @@
       "revId": "46ca84f83cadadd08e317925790f6aebbb75c77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bdfc90b_b4163d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perappdensity/perappdensity.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-19T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11d924b_78597968",
+      "revId": "46ca84f83cadadd08e317925790f6aebbb75c77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
