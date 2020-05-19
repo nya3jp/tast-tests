@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "051867eb_3968404a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-19T00:57:29Z",
+      "side": 1,
+      "message": "Done, thanks for the tip",
+      "parentUuid": "d9be9c77_4fe720af",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "e679c490c16e10c628691a00531ba21f6f65575b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a0af1e3_65a7e896",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d4ff55a7_1f87992c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-19T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a0af1e3_65a7e896",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "e679c490c16e10c628691a00531ba21f6f65575b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85f424f0_50fc4b6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
         "patchSetId": 10
@@ -62,6 +110,24 @@
       "revId": "e679c490c16e10c628691a00531ba21f6f65575b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d24d2de1_a84fa5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/per_app_density.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2020-05-19T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85f424f0_50fc4b6b",
+      "revId": "e679c490c16e10c628691a00531ba21f6f65575b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
