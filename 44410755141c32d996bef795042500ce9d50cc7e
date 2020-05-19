@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa23f76_5db5b9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-19T08:21:40Z",
+      "side": 1,
+      "message": "huge nit: Put this into cca_ui.js as a function, and call that function here. There are already many chrome.app.window things there and group them together is clear and easier to migrate for SWA.",
+      "revId": "44410755141c32d996bef795042500ce9d50cc7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f42c8f_4c8b58f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_volume_shutter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2020-05-19T08:21:40Z",
+      "side": 1,
+      "message": "nit: Can we use a simpler target, such as about:blank by passing an empty string here?",
+      "range": {
+        "startLine": 320,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 49
+      },
+      "revId": "44410755141c32d996bef795042500ce9d50cc7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
