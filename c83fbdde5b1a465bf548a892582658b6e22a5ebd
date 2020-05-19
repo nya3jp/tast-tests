@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "c8c53928_d7bab8ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-19T06:22:31Z",
+      "side": 1,
+      "message": "There already is a cros_config software dependency. Is it helpful?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\n\nI am not really clear on what features are required for a board to run the test. Could you explain more or do you have some documentation?",
+      "parentUuid": "b3e7b403_03e1070a",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229b091b_8b208993",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
