@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "37acf336_9c869943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2020-05-19T07:30:43Z",
+      "side": 1,
+      "message": "In the else case, ensure the camera service is running like CCA tests:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go;l\u003d195",
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd900357_69bbcd74",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 2
@@ -225,6 +242,30 @@
       "side": 1,
       "message": "I would like to have the tests separate, e.g. HAL3PortraitMode and HAL3ZSL, so that it\u0027s easier to tell which functionality falls apart.",
       "parentUuid": "f17bef10_c2819639",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "5b825f57c241cec839179c257c7b07723e5bdd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36efe50d_62811f97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_portrait_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2020-05-19T07:30:43Z",
+      "side": 1,
+      "message": "I meant I think we should name the tests running over camera service to (a new prefix) + {PortraitMode, ZSL, Module, Frame, Recording, ...} instead of HAL3*, to be more clear and avoid name collisions.",
+      "parentUuid": "6da5eeca_91129b2c",
       "range": {
         "startLine": 28,
         "startChar": 5,
