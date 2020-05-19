@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2fc744_d6c608c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "Nice! Didn\u0027t know we had this function. TIL.",
+      "range": {
+        "startLine": 48,
+        "startChar": 15,
+        "endLine": 48,
+        "endChar": 32
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93590135_4817051d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "Should handle error returned by this (if any)\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f934c1_33ab9da8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "Ditto for error handling on these functions",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15be1a96_a8746b91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "Might want to use errors.Wrap() here to add additional context to the error (e.g. which command?)",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 13
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19213585_c961ee0e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "Redundant \u0027and\u0027 or might be missing additional explanation here.",
+      "range": {
+        "startLine": 195,
+        "startChar": 45,
+        "endLine": 195,
+        "endChar": 48
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5698a84_13929ae1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "nit: \u0027clicks\u0027 should probably in lower case",
+      "range": {
+        "startLine": 195,
+        "startChar": 21,
+        "endLine": 195,
+        "endChar": 27
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a8b31e_9392ebbd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "nit: Use full stops at end of comment sentences.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 196,
+        "startChar": 58,
+        "endLine": 196,
+        "endChar": 63
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dbade9a_4738d2d7",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "nit: consider adding additional error context with errors.Wrap() here and elsewhere",
+      "range": {
+        "startLine": 205,
+        "startChar": 9,
+        "endLine": 205,
+        "endChar": 12
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a8c2315_c737971a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "May be missing error handling on this call\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67596d1_cb709200",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "perhaps use the same uiTimeout constant as above?",
+      "range": {
+        "startLine": 216,
+        "startChar": 65,
+        "endLine": 216,
+        "endChar": 79
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34a2db7_5146a017",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2020-05-19T04:27:57Z",
+      "side": 1,
+      "message": "ditto (error handling)",
+      "range": {
+        "startLine": 221,
+        "startChar": 15,
+        "endLine": 221,
+        "endChar": 24
+      },
+      "revId": "0f0b3ff4dae5761123e02554684ae67685a0d37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
