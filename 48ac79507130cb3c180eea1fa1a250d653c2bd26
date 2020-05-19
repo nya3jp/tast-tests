@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6af8fe17_77c4b7da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-19T19:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "722f56cd_988e0232",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 10
+      },
+      "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b150dbd7_c490cf98",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "75d43c56_ccf06736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-19T19:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b150dbd7_c490cf98",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 9
+      },
+      "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15781048_bb9c24a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-19T19:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e384d11c_fa3f32d6",
+      "range": {
+        "startLine": 235,
+        "startChar": 61,
+        "endLine": 235,
+        "endChar": 62
+      },
+      "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bff94e87_84fdc3cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2f3e2aba_174973b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-19T19:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff94e87_84fdc3cb",
+      "range": {
+        "startLine": 238,
+        "startChar": 17,
+        "endLine": 238,
+        "endChar": 23
+      },
+      "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd357f5a_5763c06c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
         "patchSetId": 4
@@ -105,6 +201,24 @@
       "writtenOn": "2020-05-15T19:11:43Z",
       "side": 1,
       "message": "now that you have three of these, what about using a struct type instead:\n\ntype UserId struct {\n\tName string\n\tPw   string\n\tPin  string\n}\n\nThe struct value would be easier to pass into functions, and it would prevent a user from, say, accidentally combining SecondPassword and ThirdUsername.  In this case, you should put \"User\" (or \"Login\" or whatever common term you pick) first in the name, e.g. UserOne, UserTwo, etc.",
+      "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090993f5_22e8e6b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2020-05-19T19:35:23Z",
+      "side": 1,
+      "message": "There are already many users of these constants, so if it is decided that we want to refactor this, it\u0027ll probably need to happen in another CL.\n\nAnother consideration is that if we change it to a struct, the struct cannot be constant, so we\u0027ll have the con of these constants being modifiable.",
+      "parentUuid": "bd357f5a_5763c06c",
       "revId": "48ac79507130cb3c180eea1fa1a250d653c2bd26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
