@@ -141,7 +141,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 			return errors.New("accessibility not enabled")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
 	}
 
@@ -159,8 +159,8 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 }
 
 // WaitForFocusedNode polls until the properties of the focused node matches the given params.
-// Returns an error after 30 seconds.
-func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams) error {
+// timeout specifies the timeout to use when polling.
+func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams, timeout time.Duration) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		focused, err := focusedNode(ctx, cvconn, tconn)
@@ -175,7 +175,7 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 			return errors.Errorf("focused node is incorrect: got %v, want %v", focused, params)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
 		return errors.Wrap(err, "failed to get current focus")
 	}
 	return nil
@@ -231,7 +231,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 
 	for _, activity := range activities {
 		s.Run(ctx, activity.Name, func(ctx context.Context, s *testing.State) {
-			// It takes some time for ArcServiceManager to be ready.
+			// It takes some time for ArcServiceManager to be ready, so make the timeout longer.
 			// TODO(b/150734712): Move this out of each subtest once bug has been addressed.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				if err := tconn.EvalPromise(ctx, "tast.promisify(chrome.autotestPrivate.setArcTouchMode)(true)", nil); err != nil {
@@ -256,10 +256,9 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 				ClassName: TextView,
 				Name:      activity.Title,
 				Role:      ui.RoleTypeStaticText,
-			}); err != nil {
+			}, 10*time.Second); err != nil {
 				s.Fatal("Failed to wait for initial ChromeVox focus: ", err)
 			}
-
 			if err := f(ctx, cvconn, tconn, activity); err != nil {
 				// TODO(crbug.com/1044446): Take faillog on testing.State.Fatal() invocation.
 				path := filepath.Join(s.OutDir(), "screenshot-with-chromevox"+activity.Name+".png")
