@@ -117,6 +117,16 @@ func ChromeVideoWithSWDecoding() testing.Precondition { return chromeVideoWithSW
 var chromeVideoWithSWDecoding = chrome.NewPrecondition("videoWithSWDecoding", chromeVModuleArgs,
 	chrome.ExtraArgs("--disable-accelerated-video-decode"))
 
+// ChromeVideoWithSWDecodingAndLibGAV1 returns a precondition similar to
+// ChromeVideoWithSWDecoding specified above, while enabling the use of LibGAV1
+// for AV1 decoding.
+func ChromeVideoWithSWDecodingAndLibGAV1() testing.Precondition {
+	return chromeVideoWithSWDecodingAndLibGAV1
+}
+
+var chromeVideoWithSWDecodingAndLibGAV1 = chrome.NewPrecondition("videoWithSWDecodingAndLibGAV1", chromeVModuleArgs,
+	chrome.ExtraArgs("--disable-accelerated-video-decode", "--enable-features=Gav1VideoDecoder"))
+
 var chromeVModuleArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
 	"--vmodule=" + strings.Join([]string{
