@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "ca20ddcd_93bd8fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/crostini_guest_images.tar.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-20T23:33:14Z",
+      "side": 1,
+      "message": "I think you need to revert this file?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4625d7dd_aa149420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-20T23:33:14Z",
+      "side": 1,
+      "message": "Please add a test variant for CrostiniUnstable as well, we need to verify that the test works on unstable boards before making them stable.\n\nYou may also want to add a download_buster variant as it is easier to run without setting up the artifact, and it will test the newer buster linux distribution (artifact is still using Debian stretch, but buster is now the default for new Crostini users)",
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e4cacde_5655ab70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-20T23:33:14Z",
+      "side": 1,
+      "message": "You can get this from the pre data, no need to reopen it.",
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d15a5d_6410669d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-20T23:33:14Z",
+      "side": 1,
+      "message": "Samba",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b208c7_f2c45bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-20T23:33:14Z",
+      "side": 1,
+      "message": "Optional: There is a long, hard to read sequence of UI functions here, I\u0027m wondering if it is worth making this into a page object for the file share dialog.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24712291_ddabf5cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 5
@@ -18,6 +121,29 @@
         "startChar": 9,
         "endLine": 86,
         "endChar": 21
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4a66224_8ce82057",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2020-05-20T23:33:14Z",
+      "side": 1,
+      "message": "This name confused me until I read the comment.  A better name would be ClickAction, but that would require handling the case for the actions that are not in the more menu.\n\nI don\u0027t have a good suggestion, just wanted to let you know it confused me at first.",
+      "range": {
+        "startLine": 198,
+        "startChar": 19,
+        "endLine": 198,
+        "endChar": 36
       },
       "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
