@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -115,6 +116,9 @@ func (m *Manager) FindAnyMatchingService(ctx context.Context, expectProps map[st
 // It also checks hidden services if complete is set.
 // If there's no matching service, it polls until timeout is reached.
 func (m *Manager) waitForServiceProperties(ctx context.Context, expectProps map[string]interface{}, timeout time.Duration, complete bool) (*Service, error) {
+	ctx, st := timing.Start(ctx, "waitForServiceProperties")
+	defer st.End()
+
 	var service *Service
 	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
 		service, e = m.findMatchingService(ctx, expectProps, complete)
