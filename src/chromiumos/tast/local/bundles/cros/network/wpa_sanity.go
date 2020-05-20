@@ -6,13 +6,14 @@ package network
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
-	"path/filepath"
-	"strings"
+	"path"
 	"time"
 
+	"chromiumos/tast/common/network/wpacli"
+	"chromiumos/tast/local/network/cmd"
 	"chromiumos/tast/local/shill"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -38,33 +39,28 @@ func WPASanity(ctx context.Context, s *testing.State) {
 	}
 	s.Log("WiFi interface: ", iface)
 
-	var output string
-	logfile := "wpa_cli.log"
-
-	// In case wpa_cli produces multiple line output, in log message we show
-	// the path of wpa_cli.log.
-	wpacliOutput := func() string {
-		if strings.Contains(output, "\n") {
-			return "check wpa_cli logfile: /tmp/tast/results/latest/tests/network.WPASanity/" + logfile
-		}
-		return output
-	}
-
 	// Even if we got a WiFi device, iface, from shill, that does not imply
 	// that wpa_supplicant of the WiFi device is up and running. Poll for a
 	// successful wpa_cli ping for 5 seconds to avoid false negative.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmdOut, err := testexec.CommandContext(
-			ctx, "sudo", "-u", "wpa", "-g", "wpa",
-			"wpa_cli", "-i", iface, "ping").CombinedOutput()
-		ioutil.WriteFile(filepath.Join(s.OutDir(), logfile), cmdOut, 0644)
-		output = strings.TrimSpace(string(cmdOut))
-		return err
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		s.Fatal("Failed to ping wpa_supplicant: " + wpacliOutput())
+	wRunner := wpacli.NewRunner(&cmd.LocalCmdRunner{NoLogOnError: true})
+	var cmdOut []byte
+	dumpCmdOut := func(cmdOut []byte) string {
+		filename := "wpa_cli.stdout"
+		outDir := s.OutDir()
+		outPath := path.Join(outDir, filename)
+		err := ioutil.WriteFile(outPath, cmdOut, 0644)
+		if err != nil {
+			return fmt.Sprintf("failed to write output to %s: %s", outPath, err)
+		}
+		return path.Join("${tast_result}/tests", path.Base(outDir), filename)
 	}
 
-	if !strings.Contains(output, "PONG") {
-		s.Fatal("Failed to see expected PONG reply: " + wpacliOutput())
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err2 error
+		cmdOut, err2 = wRunner.Ping(ctx, iface)
+		return err2
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		s.Fatalf("Failed to ping wpa_supplicant: %s; command output: %s", err, dumpCmdOut(cmdOut))
 	}
+
 }
