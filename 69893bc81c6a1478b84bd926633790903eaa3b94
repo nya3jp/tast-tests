@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9ca53f3_049e6d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-20T07:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de961f66_00e09538",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "69893bc81c6a1478b84bd926633790903eaa3b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57dcdf8e_07870037",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "69893bc81c6a1478b84bd926633790903eaa3b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d46e403_cf7d0e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2020-05-20T07:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57dcdf8e_07870037",
+      "range": {
+        "startLine": 281,
+        "startChar": 50,
+        "endLine": 281,
+        "endChar": 51
+      },
+      "revId": "69893bc81c6a1478b84bd926633790903eaa3b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
