@@ -6,12 +6,13 @@ package wificell
 
 import (
 	"context"
-	"fmt"
 	"net"
 	"time"
 
+	"chromiumos/tast/common/network/ip"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	remote_ip "chromiumos/tast/remote/network/ip"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -156,34 +157,23 @@ func (h *APIface) configureIface(ctx context.Context) error {
 
 // tearDownIface tears down the interface which we provided services on.
 func (h *APIface) tearDownIface(ctx context.Context) error {
-	var retErr error
-	if err := h.flushIP(ctx); err != nil {
-		retErr = err
+	var firstErr error
+	ipr := remote_ip.NewRunner(h.host)
+	if err := ipr.FlushIP(ctx, h.iface); err != nil {
+		collectFirstErr(ctx, &firstErr, err)
 	}
-	if err := h.host.Command("ip", "link", "set", h.iface, "down").Run(ctx); err != nil {
-		err = errors.Wrapf(retErr, "failed to set %s down, err=%s", h.iface, err.Error())
+	if err := ipr.SetLinkDown(ctx, h.iface); err != nil {
+		collectFirstErr(ctx, &firstErr, err)
 	}
-	return nil
-}
-
-// flushIP flushes the IP setting on h.iface.
-func (h *APIface) flushIP(ctx context.Context) error {
-	if err := h.host.Command("ip", "addr", "flush", h.iface).Run(ctx); err != nil {
-		return errors.Wrap(err, "failed to flush address")
-	}
-	return nil
+	return firstErr
 }
 
 // configureIP configures server IP and broadcast IP on h.iface.
 func (h *APIface) configureIP(ctx context.Context) error {
-	if err := h.flushIP(ctx); err != nil {
+	ipr := remote_ip.NewRunner(h.host)
+	if err := ipr.FlushIP(ctx, h.iface); err != nil {
 		return err
 	}
 	maskLen, _ := h.mask().Size()
-	cmd := h.host.Command("ip", "addr", "add", fmt.Sprintf("%s/%d", h.ServerIP().String(), maskLen),
-		"broadcast", h.broadcastIP().String(), "dev", h.iface)
-	if err := cmd.Run(ctx); err != nil {
-		return errors.Wrap(err, "failed to add address")
-	}
-	return nil
+	return ipr.AddIP(ctx, h.iface, h.ServerIP(), maskLen, ip.AddIPBroadcast(h.broadcastIP()))
 }

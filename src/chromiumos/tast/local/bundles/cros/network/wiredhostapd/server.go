@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/network/ip"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -192,7 +193,8 @@ func (s *Server) Start(ctx context.Context) (retErr error) {
 	}
 
 	// Bring up the hostapd link.
-	if err := testexec.CommandContext(ctx, "ip", "link", "set", s.Iface, "up").Run(testexec.DumpLogOnError); err != nil {
+	ipr := ip.NewRunner()
+	if err := ipr.SetLinkUp(ctx, s.Iface); err != nil {
 		return errors.Wrap(err, "could not bring up hostapd veth")
 	}
 
