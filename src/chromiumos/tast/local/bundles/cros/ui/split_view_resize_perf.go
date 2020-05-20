@@ -101,9 +101,9 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	}
 	rotation := -orientation.Angle
 	if orientation.Type == display.OrientationPortraitPrimary {
-		info, err := display.GetInternalInfo(ctx, tconn)
+		info, err := display.GetPrimaryInfo(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to obtain internal display info: ", err)
+			s.Fatal("Failed to get the primary display info: ", err)
 		}
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
@@ -113,9 +113,9 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	}
 	tew.SetRotation(rotation)
 
-	info, err := display.GetInternalInfo(ctx, tconn)
+	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get the internal display info: ", err)
+		s.Fatal("Failed to get the primary display info: ", err)
 	}
 	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
 

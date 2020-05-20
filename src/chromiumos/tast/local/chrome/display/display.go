@@ -115,6 +115,20 @@ func GetInternalInfo(ctx context.Context, tconn *chrome.TestConn) (*Info, error)
 	return nil, errors.New("no internal display")
 }
 
+// GetPrimaryInfo returns information about the primary display.
+func GetPrimaryInfo(ctx context.Context, tconn *chrome.TestConn) (*Info, error) {
+	infos, err := GetInfo(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	for i := range infos {
+		if infos[i].IsPrimary {
+			return &infos[i], nil
+		}
+	}
+	return nil, errors.New("no primary display")
+}
+
 // DisplayProperties holds properties to change and is passed to SetDisplayProperties.
 // nil fields are ignored. See https://developer.chrome.com/apps/system_display#method-setDisplayProperties.
 type DisplayProperties struct { // NOLINT
