@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aed8e6b9_fd0c5bdd",
+        "filename": "src/chromiumos/tast/local/hwsec/attestation_local_va.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-20T07:04:32Z",
+      "side": 1,
+      "message": "Unused",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "077eeec188ad73e455b5530310e0363da31aee1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
