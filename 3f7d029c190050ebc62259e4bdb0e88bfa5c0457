@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "13423145_17b17ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-20T17:27:30Z",
+      "side": 1,
+      "message": "I don\u0027t think golang has a length limit\ngofmt is okay with this, if you look at other lines, you\u0027ll be shocked",
+      "parentUuid": "413391da_496c59ad",
+      "revId": "3f7d029c190050ebc62259e4bdb0e88bfa5c0457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d31522a5_618e3378",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-05-20T16:09:03Z",
       "side": 1,
       "message": "comma or period",
+      "range": {
+        "startLine": 295,
+        "startChar": 25,
+        "endLine": 295,
+        "endChar": 26
+      },
+      "revId": "3f7d029c190050ebc62259e4bdb0e88bfa5c0457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02eb495_32f67940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-20T17:27:30Z",
+      "side": 1,
+      "message": "Renamed to \"Mimic device reboot tests\", please Ack.",
+      "parentUuid": "d31522a5_618e3378",
       "range": {
         "startLine": 295,
         "startChar": 25,
@@ -62,6 +104,30 @@
       "revId": "3f7d029c190050ebc62259e4bdb0e88bfa5c0457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59067da6_216a3e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-20T17:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca4cffd4_c675ebc0",
+      "range": {
+        "startLine": 304,
+        "startChar": 20,
+        "endLine": 304,
+        "endChar": 35
+      },
+      "revId": "3f7d029c190050ebc62259e4bdb0e88bfa5c0457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
