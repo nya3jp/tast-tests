@@ -193,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "e635eb3a_e0c930f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T22:37:56Z",
+      "side": 1,
+      "message": "Thanks for the context. Then, I recommend to remove this.",
+      "parentUuid": "b69d81bf_40887d8f",
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af854584_cc177799",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
         "patchSetId": 14
