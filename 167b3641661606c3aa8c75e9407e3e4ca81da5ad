@@ -22,6 +22,30 @@
       "revId": "167b3641661606c3aa8c75e9407e3e4ca81da5ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "803ac47c_381417fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-20T16:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31acbfe9_f5c73d61",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 10
+      },
+      "revId": "167b3641661606c3aa8c75e9407e3e4ca81da5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
