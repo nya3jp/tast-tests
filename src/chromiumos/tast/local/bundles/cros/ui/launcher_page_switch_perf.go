@@ -158,6 +158,10 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
 		s.Fatal("Failed to wait: ", err)
 	}
+	// Wait for the location changes of launcher UI to be propagated.
+	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for location changes to complete: ", err)
+	}
 
 	// Find the apps grid view bounds.
 	appsGridView, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: "AppsGridView"}, time.Second)
