@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cdf0c8c_fdcdc070",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73257341_3db695a7",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15d012cc_0c9a6aee",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67f8f2c_6dff649b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15d012cc_0c9a6aee",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "36e6de80_35b15c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e6063f_1416baed",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "195c6426_7db88d2f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abddaae_f6bd342c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195c6426_7db88d2f",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "68a368a4_228b4690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "The crostini artifact executes commands as testuser but the final location is /etc/samba which is root owned hence the temp location",
+      "parentUuid": "98533f92_390e340e",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90e2b4d4_e8c5d62f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f98682f_55055775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e2b4d4_e8c5d62f",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "bea81ab4_f9ffba82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aabc6830_40c3433a",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de1dde4e_c1e27b15",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 2
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "d03857e1_87d34732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Updated to the single and double quote standard",
+      "parentUuid": "de1dde4e_c1e27b15",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 3
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23274218_7f8dd664",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 2
@@ -197,6 +389,30 @@
       "writtenOn": "2020-05-19T18:03:29Z",
       "side": 1,
       "message": "Instead of depending on the network, is it possible to create a data file that can be used for installing samba?",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "491e3115_90259057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "There is a way to bake the samba package into the crostini artifact (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/container-guest-tools/lxd/lxd_test_setup.sh) but I thought I would get the test merged then raise a separate CL to add the package into the artifact and remove these install steps.",
+      "parentUuid": "23274218_7f8dd664",
       "range": {
         "startLine": 139,
         "startChar": 2,
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "8658f1ab_563f33b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930c35ca_6f0d1260",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a219a1ab_4c5fbe55",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 2
@@ -301,6 +541,54 @@
     },
     {
       "key": {
+        "uuid": "7faecd1a_43d4764b",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a219a1ab_4c5fbe55",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e1c79c1_bd58b752",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09fb0979_a48ca1e5",
+      "range": {
+        "startLine": 196,
+        "startChar": 43,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cd515a8_0c882c8e",
         "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
         "patchSetId": 2
@@ -315,6 +603,24 @@
       "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5eacee4_fceca5ca",
+        "filename": "src/chromiumos/tast/local/chrome/ui/filesapp/filesapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-20T01:29:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cd515a8_0c882c8e",
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
