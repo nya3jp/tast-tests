@@ -133,7 +133,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Find the Ethernet service and set the static IP.
 	s.Log("Setting static IP")
-	service, err := manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 5*time.Second)
+	service, err := manager.WaitForServiceProperties(ctx, map[string]interface{}{shill.ServicePropertyType: "ethernet"}, 8*time.Second)
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
