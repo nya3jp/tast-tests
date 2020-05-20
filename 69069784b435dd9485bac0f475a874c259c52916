@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f7eb13a_77438b82",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-20T19:36:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is generally useful here. It also might be ambiguous, if a test calls this several times. I\u0027d think this might belong in the calling test, not here.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 57
+      },
+      "revId": "69069784b435dd9485bac0f475a874c259c52916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
