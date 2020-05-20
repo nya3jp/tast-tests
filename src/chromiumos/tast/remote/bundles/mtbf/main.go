@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/bundle"
 	// These packages register their tests via init functions.
+	_ "chromiumos/tast/remote/bundles/mtbf/usbc"
 )
 
 func main() {
