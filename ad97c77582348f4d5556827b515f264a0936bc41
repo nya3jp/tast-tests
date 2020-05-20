@@ -1,0 +1,544 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fee0a221_068cae66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "Please keep in mind that constants like this is shared among all files in the same directory; there are file-local variables in Golang.\n\nWith that, I am afraid that constant like \u0027apk\u0027 is too generic, and might cause conflicts in the future. Please rename this as \"appPositionApk\" or something specific to this test case.",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75aff112_279ce5cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "I believe you meant google.com or chromium.org",
+      "range": {
+        "startLine": 33,
+        "startChar": 13,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664efe9c_81740bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "I am afraid that this is not correct. arc.Booted() do not specify the mode, which means it boots with the default mode; that is clamshell mode on most of the devices, but some tablet devices, it should be in tablet mode. Examples are kukui/krane or scarlet devices.\n\nIf you really assume this test is for clamshell mode and this is not working in tablet-mode, please use ash.EnsureTabletModeEnabled (see https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ash#EnsureTabletModeEnabled)",
+      "range": {
+        "startLine": 38,
+        "startChar": 33,
+        "endLine": 38,
+        "endChar": 129
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ec3277_a3510670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "backbutton / closebutton are only referred once, minimize/maximize buttons are not used anywhere.  Please remove minimize/maximize buttons, and move back/close button to the function which uses.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b028e14_59181600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "\"nocturne\"?  Nocturne is a code name for Pixel Slate.\n\nBy the way, did you verify this with nocturne devices?  The referred bug is old, I am not sure this is still the case.",
+      "range": {
+        "startLine": 53,
+        "startChar": 6,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752bdde7_d4fe32c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "With the fact that Go doesn\u0027t have file-locals, I am hesitant to accept too many small functions like this; again this and other functions are shared with other test files in the same directory. Also keep in mind that our coding style prohibits using functions defined in other test files, since it is confusing.\n\nSome functions, like getFrameBounds() might be good but maybe it would be worthwhile to have it somewhere in src/chromiumos/tast/local/arc package (like a method to Activity). For others which are specific to this test cases, I recommend to embed directly into the user code.",
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d2b5d4_9c7c90c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "maybe better to return coords.Rect{} on erroneous case.",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea48e4f2_c22fd410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "I think things like coords.NewRect(frameBounds.Left+nocturneFix, frameBounds.Top-1, frameBounds.Width-nocturneFix, 1) would be simpler.",
+      "range": {
+        "startLine": 95,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 56
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfef2889_524238a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "maybe better to return coords.Rect{} on erroneous case.",
+      "range": {
+        "startLine": 103,
+        "startChar": 9,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09dfbe37_f00c3c67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "similarly, coords.NewRect would match better for the use like this, I think.",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 83
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb83ccc_3e39c3e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "you can use nil. It is treated as an empty slice.",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1804f76_c88d9dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8125969e_a6f796b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "please use coords.NewRect",
+      "range": {
+        "startLine": 132,
+        "startChar": 20,
+        "endLine": 135,
+        "endChar": 38
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48372c9_c00d391e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "please use coords.NewRect",
+      "range": {
+        "startLine": 140,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 38
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "724f9ce9_6a2a7734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "please use coords.NewRect",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 149,
+        "endChar": 76
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7024843_afdbedb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "maybe better to return coords.Rect{} on erroneous case.",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 20
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4cb82f_a3def7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "Please declare these constants in the function which uses them.\n\nBy the way, you don\u0027t need types for numerical constants (https://blog.golang.org/constants)",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 45
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128554ee_700c3d9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "In Go, \"Want\" is the term usually used (see the top example of https://golang.org/pkg/testing/)",
+      "range": {
+        "startLine": 207,
+        "startChar": 41,
+        "endLine": 207,
+        "endChar": 50
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71361a91_a6796df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "ioutil.TempDir() would be nicer for this use case.\nOr, use s.OutDir() if you want to keep the files in a meaningful place.",
+      "range": {
+        "startLine": 214,
+        "startChar": 10,
+        "endLine": 214,
+        "endChar": 49
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ebf21c_4fb50c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "In the error like this, I thinks errors.Wrap would be nicer to track down the issue when something goes wrong (https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/errors#Wrap)",
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0be46c9_be42f7b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "You don\u0027t need else.",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 9
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85022f3d_53d2aedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 250,
+        "startChar": 3,
+        "endLine": 250,
+        "endChar": 9
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc68a774_a9d41e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 9
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6dac0c_4ece5383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T17:24:02Z",
+      "side": 1,
+      "message": "style nit:\n  const (\n    pkg \u003d \"...\"\n    cls \u003d \"...\"\n  )",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 34
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
