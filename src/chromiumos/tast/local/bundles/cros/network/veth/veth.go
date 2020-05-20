@@ -10,7 +10,7 @@ import (
 	"net"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/network/ip"
 	"chromiumos/tast/testing"
 )
 
@@ -24,19 +24,21 @@ type Pair struct {
 // NewPair sets up a new Pair object, with interface iface and peer interface peerIface.
 // It removes any existing links of the same name.
 func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error) {
+	ipr := ip.NewRunner()
+
 	// Delete any existing links.
 	for _, name := range []string{iface, peerIface} {
 		// Check if interface 'name' exists.
 		if _, err := net.InterfaceByName(name); err == nil {
 			testing.ContextLogf(ctx, "Deleting existing interface %s", name)
-			if err = testexec.CommandContext(ctx, "ip", "link", "del", name).Run(); err != nil {
+			if err := ipr.DeleteLink(ctx, name); err != nil {
 				return nil, errors.Errorf("failed to delete existing link %q", name)
 			}
 		}
 	}
 
 	// Create veth pair.
-	if err := testexec.CommandContext(ctx, "ip", "link", "add", iface, "type", "veth", "peer", "name", peerIface).Run(testexec.DumpLogOnError); err != nil {
+	if err := ipr.AddLink(ctx, iface, "veth", "peer", "name", peerIface); err != nil {
 		return nil, errors.Wrapf(err, "failed to add veth interfaces %q/%q", iface, peerIface)
 	}
 
@@ -59,7 +61,8 @@ func NewPair(ctx context.Context, iface, peerIface string) (*Pair, error) {
 // Delete deletes the virtual link.
 func (v *Pair) Delete(ctx context.Context) error {
 	// Only need to delete one end of the pair.
-	if err := testexec.CommandContext(ctx, "ip", "link", "del", v.Iface.Name).Run(testexec.DumpLogOnError); err != nil {
+	ipr := ip.NewRunner()
+	if err := ipr.DeleteLink(ctx, v.Iface.Name); err != nil {
 		return errors.Wrapf(err, "failed to delete veth iface %q", v.Iface.Name)
 	}
 	return nil
