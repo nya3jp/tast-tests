@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "711531ef_602da4d5",
+        "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2020-05-20T10:38:55Z",
+      "side": 1,
+      "message": "That\u0027s a good decision, thanks!",
+      "parentUuid": "cd52db94_00150cc2",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 32
+      },
+      "revId": "17e7f55f1856942c48ec4eaa9ae98a76bbb26787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec9d8bee_3f9f6ba7",
         "filename": "src/chromiumos/tast/common/pkcs11/pkcs11.go",
         "patchSetId": 1
