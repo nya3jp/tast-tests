@@ -122,7 +122,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 					return errors.New("speech log was not as expected")
 				}
 				return nil
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 				if diff != "" {
 					// Write diff to file, if diff is observed after polling.
 					diffFileName := "accessibility_speech_diff.txt"
