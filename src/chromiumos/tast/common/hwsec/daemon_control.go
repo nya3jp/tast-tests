@@ -131,3 +131,53 @@ func (dc *DaemonController) RestartTpmManager(ctx context.Context) error {
 	}
 	return dc.waitForDBusService(ctx, "org.chromium.TpmManager")
 }
+
+// StartPcaAgent starts pca_agentd and wait until the dbus interface is responsive.
+func (dc *DaemonController) StartPcaAgent(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "start", "pca_agentd"); err != nil {
+		return errors.Wrap(err, "failed to start pca_agent")
+	}
+	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
+}
+
+// StopPcaAgent stops pca_agentd.
+func (dc *DaemonController) StopPcaAgent(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "stop", "pca_agentd"); err != nil {
+		return errors.Wrap(err, "failed to stop pca_agent")
+	}
+	return nil
+}
+
+// RestartPcaAgent restarts pca_agentd and wait until the dbus interface is responsive.
+func (dc *DaemonController) RestartPcaAgent(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "restart", "pca_agentd"); err != nil {
+		return errors.Wrap(err, "failed to restart pca_agent")
+	}
+	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
+}
+
+// StartFakePcaAgent starts fake_pca_agentd and wait until the dbus interface is responsive.
+func (dc *DaemonController) StartFakePcaAgent(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "start", "fake_pca_agentd"); err != nil {
+		return errors.Wrap(err, "failed to start fake_pca_agent")
+	}
+	// Note that fake_pca_agentd runs the same service as pca_agentd.
+	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
+}
+
+// StopFakePcaAgent stops fake_pca_agentd.
+func (dc *DaemonController) StopFakePcaAgent(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "stop", "fake_pca_agentd"); err != nil {
+		return errors.Wrap(err, "failed to stop fake_pca_agent")
+	}
+	return nil
+}
+
+// RestartFakePcaAgent restarts fake_pca_agentd and wait until the dbus interface is responsive.
+func (dc *DaemonController) RestartFakePcaAgent(ctx context.Context) error {
+	if _, err := dc.r.Run(ctx, "restart", "fake_pca_agentd"); err != nil {
+		return errors.Wrap(err, "failed to restart fake_pca_agent")
+	}
+	// Note that fake_pca_agentd runs the same service as pca_agentd.
+	return dc.waitForDBusService(ctx, "org.chromium.PcaAgent")
+}
