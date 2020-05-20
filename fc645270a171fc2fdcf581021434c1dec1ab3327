@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eb1cdec_c8558a95",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-20T04:31:42Z",
+      "side": 1,
+      "message": "seems like this might also belong in validatePMF(). WDYT?",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 2
+      },
+      "revId": "fc645270a171fc2fdcf581021434c1dec1ab3327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
