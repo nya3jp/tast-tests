@@ -1,0 +1,26 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.mtbf.svc;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/mtbf/svc";
+
+// Files App allows basic remote operations.
+service CommService {
+
+  // Login
+  rpc Login (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // TakeScreenshot
+  rpc TakeScreenshot (google.protobuf.Empty) returns (Screenshot) {}
+
+}
+
+message Screenshot {
+  bytes content = 1;
+}
