@@ -58,7 +58,7 @@ func AttestationNoExternalServer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to prepare for enrollment: ", err)
 	}
 
-	at := hwsec.NewAttestaionTestWithVA(utility, hwsec.DefaultPCA, hwseclocal.NewLocalVA())
+	at := hwsec.NewAttestaionTestWith(utility, hwsec.DefaultPCA, hwseclocal.NewPCAAgentClient(), hwseclocal.NewLocalVA())
 	for _, param := range []struct {
 		name  string
 		async bool

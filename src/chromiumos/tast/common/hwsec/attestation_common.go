@@ -158,21 +158,48 @@ func (rc *RealVA) VerifyEncodedVAChallenge(ctx context.Context, signedChallenge 
 	return err
 }
 
+// PCA declares functions that handle PCA requests by attestation.
+type PCA interface {
+	// GetDecodedPCAChallenge returns a new VA challenge.
+	HandleEnrollRequest(ctx context.Context, request string, pcaType PCAType) (string, error)
+	// VerifyEncodedPCAChallenge verifies the signed VA challenge response.
+	HandleCertificateRequest(ctx context.Context, request string, pcaType PCAType) (string, error)
+}
+
+// PCAGoLib implements the PCA functionality by talking to the real servers used in production. The underlying implementation sends the HTTP request using Go's built-in packages.
+type PCAGoLib struct{}
+
+// NewPCAGoLib creates a new instance of PCAGoLib.
+func NewPCAGoLib() *PCAGoLib {
+	return &PCAGoLib{}
+}
+
+// HandleEnrollRequest sends the request to the real PCA server in production directly.
+func (rp *PCAGoLib) HandleEnrollRequest(ctx context.Context, request string, pcaType PCAType) (string, error) {
+	return SendPostRequestTo(ctx, request, enrollURL(pcaType))
+}
+
+// HandleCertificateRequest sends the request to the real PCA server in production directly.
+func (rp *PCAGoLib) HandleCertificateRequest(ctx context.Context, request string, pcaType PCAType) (string, error) {
+	return SendPostRequestTo(ctx, request, certURL(pcaType))
+}
+
 // AttestationTest provides the complex operations in the attestaion flow along with validations
 type AttestationTest struct {
 	ac      attestationClient
 	pcaType PCAType
+	pca     PCA
 	va      VA
 }
 
-// NewAttestaionTestWithVA creates a new AttestationTest instance with the VA instance used to get and verify VA challenge.
-func NewAttestaionTestWithVA(ac attestationClient, pcaType PCAType, va VA) *AttestationTest {
-	return &AttestationTest{ac, pcaType, va}
+// NewAttestaionTestWith creates a new AttestationTest instance with the default PCA and VA instances that talk to the real servers used in production.
+func NewAttestaionTestWith(ac attestationClient, pcaType PCAType, pca PCA, va VA) *AttestationTest {
+	return &AttestationTest{ac, pcaType, pca, va}
 }
 
-// NewAttestaionTest creates a new AttestationTest instance with the RealVA object.
+// NewAttestaionTest creates a new AttestationTest instance with the default PCA and VA objects that talk to the real servers used in production.
 func NewAttestaionTest(ac attestationClient, pcaType PCAType) *AttestationTest {
-	return NewAttestaionTestWithVA(ac, pcaType, &RealVA{})
+	return NewAttestaionTestWith(ac, pcaType, &PCAGoLib{}, &RealVA{})
 }
 
 // Enroll creates the enroll request, sends it to the corresponding PCA server, and finishes the request with the received response.
@@ -181,7 +208,7 @@ func (at *AttestationTest) Enroll(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create enroll request")
 	}
-	resp, err := SendPostRequestTo(ctx, req, enrollURL(at.pcaType))
+	resp, err := at.pca.HandleEnrollRequest(ctx, req, at.pcaType)
 	if err != nil {
 		return errors.Wrap(err, "failed to send request to CA")
 	}
@@ -204,7 +231,7 @@ func (at *AttestationTest) GetCertificate(ctx context.Context, username, label s
 	if err != nil {
 		return errors.Wrap(err, "failed to create certificate request")
 	}
-	resp, err := SendPostRequestTo(ctx, req, certURL(at.pcaType))
+	resp, err := at.pca.HandleCertificateRequest(ctx, req, at.pcaType)
 	if err != nil {
 		return errors.Wrap(err, "failed to send request to CA")
 	}
