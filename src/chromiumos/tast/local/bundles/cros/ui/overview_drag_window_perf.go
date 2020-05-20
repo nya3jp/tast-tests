@@ -163,12 +163,17 @@ func dragToSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 	}
 
 	// Sanity check to ensure one left snapped window.
-	snapped, err := ash.SnappedWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get snapped windows")
-	}
-	if len(snapped) != 1 || snapped[0].State != ash.WindowStateLeftSnapped {
-		return errors.New("left snapped window not found")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		snapped, err := ash.SnappedWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get snapped windows"))
+		}
+		if len(snapped) != 1 || snapped[0].State != ash.WindowStateLeftSnapped {
+			return errors.New("left snapped window not found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return err
 	}
 	return nil
 }
@@ -216,14 +221,18 @@ func clearSnap(ctx context.Context, tsw *input.TouchscreenEventWriter,
 	}
 
 	// Sanity check that there is no longer snapped windows.
-	snapped, err = ash.SnappedWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get snapped windows")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		snapped, err = ash.SnappedWindows(ctx, tconn)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get snapped windows"))
+		}
+		if len(snapped) != 0 {
+			return errors.New("failed to clear snapped window")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second}); err != nil {
+		return err
 	}
-	if len(snapped) != 0 {
-		return errors.New("failed to clear snapped window")
-	}
-
 	return nil
 }
 
