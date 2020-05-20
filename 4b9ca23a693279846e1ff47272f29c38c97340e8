@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa3748d5_5a40081f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-05-20T18:30:55Z",
+      "side": 1,
+      "message": "Good point, thanks for the advice! Done.",
+      "parentUuid": "5386fabd_6cff27ad",
+      "revId": "4b9ca23a693279846e1ff47272f29c38c97340e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0507592e_1e25e2e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "4b9ca23a693279846e1ff47272f29c38c97340e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326b5d88_96e0c787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2020-05-20T18:30:55Z",
+      "side": 1,
+      "message": "Makes sense, thanks for letting me know this! Done.",
+      "parentUuid": "0507592e_1e25e2e0",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "4b9ca23a693279846e1ff47272f29c38c97340e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
