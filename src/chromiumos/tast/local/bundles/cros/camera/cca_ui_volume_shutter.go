@@ -154,12 +154,24 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	for _, tst := range []struct {
 		name     string
 		testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
+		tablet   bool
 	}{
-		{"testSwitchDeviceMode", testSwitchDeviceMode},
-		{"testRecordVideo", testRecordVideo},
-		{"testAppInBackground", testAppInBackground},
+		{"testClamshell", testClamshell, false},
+		{"testTakePicture", testTakePicture, true},
+		{"testRecordVideo", testRecordVideo, true},
+		{"testAppInBackground", testAppInBackground, true},
 	} {
 		s.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {
+			cleanup, err := app.EnsureTabletModeEnabled(ctx, tst.tablet)
+			if err != nil {
+				modeName := "clamshell"
+				if tst.tablet {
+					modeName = "tablet"
+				}
+				s.Fatalf("Failed to switch to %v mode: %v", modeName, err)
+			}
+			defer cleanup(cleanupCtx)
+
 			if err := tst.testFunc(ctx, cr, app, kb, vh); err != nil {
 				s.Error("Test failed: ", err)
 				restartApp(ctx)
@@ -168,12 +180,20 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	}
 }
 
-// testSwitchDeviceMode tests behavior of pressing volume button in both tablet and clamshell mode.
-func testSwitchDeviceMode(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
-	defer cancel()
+// testClamshell tests behavior of pressing volume button in clamshell mode.
+func testClamshell(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+	for _, key := range volumeKeys {
+		if err := vh.verifyVolumeChanged(ctx, func() error {
+			return kb.Accel(ctx, key)
+		}); err != nil {
+			return errors.Wrapf(err, "volume not changed after press %v key in clamshell mode", key)
+		}
+	}
+	return nil
+}
 
+// testTakePicture tests scenario of taking a picture by volume button in tablet mode.
+func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
 	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
@@ -183,60 +203,27 @@ func testSwitchDeviceMode(ctx context.Context, cr *chrome.Chrome, app *cca.App, 
 		return errors.Wrap(err, "failed to switch to photo mode")
 	}
 
-	modeName := func(tablet bool) string {
-		if tablet {
-			return "tablet"
-		}
-		return "clamshell"
-	}
-
-	testDeviceMode := func(tablet bool) error {
-		testing.ContextLogf(ctx, "Switch to %v mode", modeName(tablet))
-		cleanup, err := app.EnsureTabletModeEnabled(ctx, tablet)
+	for _, key := range volumeKeys {
+		prevVolume, err := vh.refreshVolume(ctx)
 		if err != nil {
-			return errors.Wrapf(err, "failed to switch to %v mode", modeName(tablet))
+			return errors.Wrap(err, "failed to get volume before shutter")
 		}
-		defer cleanup(cleanupCtx)
-
-		for _, key := range volumeKeys {
-			pressKey := func() error {
-				testing.ContextLogf(ctx, "Press %v key in %v mode", key, modeName(tablet))
-				return kb.Accel(ctx, key)
-			}
-			if tablet {
-				prevVolume, err := vh.refreshVolume(ctx)
-				if err != nil {
-					return errors.Wrap(err, "failed to get volume before shutter")
-				}
-				start := time.Now()
-				if err := pressKey(); err != nil {
-					return errors.Wrapf(err, "failed to press %v key", key)
-				}
-				if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
-					return errors.Wrap(err, "cannot find captured result file")
-				}
-				if err := app.WaitForState(ctx, "taking", false); err != nil {
-					return errors.Wrap(err, "shutter is not ended")
-				}
-				volume, err := vh.refreshVolume(ctx)
-				if err != nil {
-					return errors.Wrap(err, "failed to get volume after shutter")
-				}
-				if prevVolume != volume {
-					return errors.Errorf("volume changed from %v to %v after shutter", prevVolume, volume)
-				}
-			} else {
-				if err := vh.verifyVolumeChanged(ctx, pressKey); err != nil {
-					return errors.Wrapf(err, "volume not changed after press %v key in clamshell mode", key)
-				}
-			}
+		start := time.Now()
+		if err := kb.Accel(ctx, key); err != nil {
+			return errors.Wrapf(err, "failed to press %v key", key)
 		}
-		return nil
-	}
-
-	for _, tablet := range []bool{false, true} {
-		if err := testDeviceMode(tablet); err != nil {
-			return errors.Wrapf(err, "failed when test in %v mode", modeName(tablet))
+		if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
+			return errors.Wrap(err, "cannot find captured result file")
+		}
+		if err := app.WaitForState(ctx, "taking", false); err != nil {
+			return errors.Wrap(err, "shutter is not ended")
+		}
+		volume, err := vh.refreshVolume(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get volume after shutter")
+		}
+		if prevVolume != volume {
+			return errors.Errorf("volume changed from %v to %v after shutter", prevVolume, volume)
 		}
 	}
 	return nil
