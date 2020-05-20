@@ -11,12 +11,13 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/pointer"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	chromeui "chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -85,12 +86,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	tew, err := input.Touchscreen(ctx)
-	if err != nil {
-		s.Fatal("Failed to access to the touch screen: ", err)
-	}
-	defer tew.Close()
-
 	// Ensures landscape orientation so this test can assume that windows snap on
 	// the left and right. Windows snap on the top and bottom in portrait-oriented
 	// tablet mode. They snap on the left and right in portrait-oriented clamshell
@@ -111,31 +106,34 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
 		rotation += 90
 	}
-	tew.SetRotation(rotation)
+
+	var pointerController pointer.Controller
+	if tabletMode {
+		pointerController, err = pointer.NewTouchController(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to create touch controller: ", err)
+		}
+	} else {
+		pointerController = pointer.NewMouseController(tconn)
+	}
+	defer pointerController.Close()
 
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
-	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
 
-	stw, err := tew.NewSingleTouchWriter()
-	if err != nil {
-		s.Fatal("Failed to create a single touch writer: ", err)
-	}
-	defer stw.Close()
-
-	// Computing the coordinates for the gesture of resizing, see also the
-	// comments around metrics.Run.
-	// y: shares the same value (at the middle of the screen) to move horizontaly.
-	// splitX: in the middle of the screen.
-	// midX: in the center of the left-snapped window.
-	// endX: the right edge of the screen. Note that tew.Width() is outside of the
-	//   visible area, thus subtracted by 1.
-	splitX := tew.Width() / 2
-	y := tew.Height() / 2
-	midX := tew.Width() / 4
-	endX := tew.Width() - 1
+	// The following computations assume that the top left corner of the work area
+	// is at (0, 0).
+	yCenter := info.WorkArea.Height / 2
+	// Compute the coordinates where we will drag an overview window to snap left.
+	leftSnapPoint := coords.Point{X: 0, Y: yCenter}
+	// Compute the coordinates for the actual test scenario: drag the divider
+	// slightly left and then all the way right. The left snapped window should
+	// shrink and then expand and become maximized.
+	dividerDragPointOne := coords.Point{X: info.WorkArea.Width / 2, Y: yCenter}
+	dividerDragPointTwo := coords.Point{X: info.WorkArea.Width / 4, Y: yCenter}
+	dividerDragPointThree := coords.Point{X: info.WorkArea.Width - 1, Y: yCenter}
 
 	// Testing 3 patterns;
 	// SingleWindow: there's a single window which is snapped to the left.
@@ -164,14 +162,8 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 					return err
 				}
 				id1 := w.ID
-				centerX, centerY := tcc.ConvertLocation(w.OverviewInfo.Bounds.CenterPoint())
-				// Tap the center of the overview window, and wait it to be snapped to
-				// the right.
-				if err := stw.Move(centerX, centerY); err != nil {
+				if err := pointer.Click(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint()); err != nil {
 					return errors.Wrapf(err, "failed to tap the center of %d", id1)
-				}
-				if err := stw.End(); err != nil {
-					return errors.Wrapf(err, "failed to release the tap for %d", id1)
 				}
 				return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 					return w.ID == id1 && !w.IsAnimating && w.State == ash.WindowStateRightSnapped
@@ -211,13 +203,8 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 				if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount != 2 {
 					return errors.Wrapf(err, "expected 2 desk mini-views; found %v", deskMiniViewCount)
 				}
-				wCenterX, wCenterY := tcc.ConvertLocation(w.OverviewInfo.Bounds.CenterPoint())
-				dCenterX, dCenterY := tcc.ConvertLocation(deskMiniViews[1].Location.CenterPoint())
-				if err := stw.Swipe(ctx, wCenterX, wCenterY, dCenterX, dCenterY, time.Second); err != nil {
-					return errors.Wrap(err, "failed to swipe window to desk mini-view")
-				}
-				if err := stw.End(); err != nil {
-					return errors.Wrap(err, "failed to end the swipe")
+				if err := pointer.Drag(ctx, pointerController, w.OverviewInfo.Bounds.CenterPoint(), deskMiniViews[1].Location.CenterPoint(), time.Second); err != nil {
+					return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 				}
 				if _, err := ash.FindFirstWindowInOverview(ctx, tconn); err == nil {
 					return errors.New("failed to arrange clamshell split view with empty overview grid")
@@ -241,10 +228,7 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			conns.Close()
 			currentWindows = testCase.numWindows
 
-			// Entering into the overview mode and then drag the window to the side to
-			// achieve ths split-view state. The operation is
-			// * long press at the center of the target window to start dragging
-			// * move the touch point to the middle-left of the screen to snap left
+			// Enter overview, and then drag and snap a window to enter split view.
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 				s.Fatal("Failed to enter into the overview mode: ", err)
 			}
@@ -252,17 +236,22 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to find the window in the overview mode: ", err)
 			}
-			centerX, centerY := tcc.ConvertLocation(w.OverviewInfo.Bounds.CenterPoint())
+			wCenterPoint := w.OverviewInfo.Bounds.CenterPoint()
+			if err := pointerController.Press(ctx, wCenterPoint); err != nil {
+				s.Fatal("Failed to start window drag from overview grid to snap: ", err)
+			}
+			// A window drag from a tablet overview grid must begin with a long press to
+			// disambiguate from scrolling.
 			if tabletMode {
-				if err := stw.LongPressAt(ctx, centerX, centerY); err != nil {
-					s.Fatal("Failed to long-press to select the target window: ", err)
+				if err := testing.Sleep(ctx, time.Second); err != nil {
+					s.Fatal("Failed to wait for touch to become long press, for window drag from overview grid to snap: ", err)
 				}
 			}
-			if err := stw.Swipe(ctx, centerX, centerY, 0, tew.Height()/2, time.Second); err != nil {
-				s.Fatal("Failed to swipe for snapping window: ", err)
+			if err := pointerController.Move(ctx, wCenterPoint, leftSnapPoint, time.Second); err != nil {
+				s.Fatal("Failed during window drag from overview grid to snap: ", err)
 			}
-			if err := stw.End(); err != nil {
-				s.Fatal("Failed to end the swipe: ", err)
+			if err := pointerController.Release(ctx); err != nil {
+				s.Fatal("Failed to end window drag from overview grid to snap: ", err)
 			}
 
 			// id0 supposed to have the window id which is left-snapped.
@@ -282,23 +271,23 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 			}
 
 			hists, err := metrics.Run(ctx, tconn, func() (err error) {
-				// The actual test scenario: first swipe to left so that the window
-				// shrinks slightly, and then swipe to the right-edge of the screen,
-				// so the left-side window should be maximized.
-				if err := stw.Swipe(ctx, splitX, y, midX, y, time.Second); err != nil {
-					return errors.Wrap(err, "failed to swipe to the first point")
+				if err := pointerController.Press(ctx, dividerDragPointOne); err != nil {
+					return errors.Wrap(err, "failed to start divider drag")
 				}
 				ended := false
 				defer func() {
 					if !ended {
-						err = stw.End()
+						err = pointerController.Release(ctx)
 					}
 				}()
-				if err := stw.Swipe(ctx, midX, y, endX, y, 3*time.Second); err != nil {
-					return errors.Wrap(err, "failed to swipe to the end")
+				if err := pointerController.Move(ctx, dividerDragPointOne, dividerDragPointTwo, 3*time.Second); err != nil {
+					return errors.Wrap(err, "failed to drag divider slightly left")
 				}
-				if err := stw.End(); err != nil {
-					return errors.Wrap(err, "failed to end the swipe")
+				if err := pointerController.Move(ctx, dividerDragPointTwo, dividerDragPointThree, 3*time.Second); err != nil {
+					return errors.Wrap(err, "failed to drag divider all the way right")
+				}
+				if err := pointerController.Release(ctx); err != nil {
+					return errors.Wrap(err, "failed to end divider drag")
 				}
 				ended = true
 				return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
