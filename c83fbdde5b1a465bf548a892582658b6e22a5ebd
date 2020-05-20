@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "d7622180_d889681f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2020-05-20T06:41:12Z",
+      "side": 1,
+      "message": "Thanks for the info. The split as described in B makes sense and would make the tests much clearer.\n\nOn the other hand, I would still add a hardware dependency for DPTF (as in A) and test using that. If the feature is used on a future board, we will only need to update the hardware dependency and not tests themselves.\n\nSo I would suggest doing both.",
+      "parentUuid": "3afd6f1d_5307a806",
+      "revId": "c83fbdde5b1a465bf548a892582658b6e22a5ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229b091b_8b208993",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/dptf_override.go",
         "patchSetId": 3
