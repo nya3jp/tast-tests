@@ -25,13 +25,14 @@ import (
 type DecoderType int
 
 const (
-	// VDA - legacy VideoDecodeAccelerator-based accelerated video decoder.
-	VDA DecoderType = iota
-	// VD - VideoDecoder-based accelerated video decoder.
-	VD
+	// Hardware means hardware-accelerated video decoding.
+	Hardware DecoderType = iota
 	// Software - Any software-based video decoder (e.g. ffmpeg, libvpx).
 	Software
-	// LibGAV1 - an alternative software library used to play AV1 video.
+	// LibGAV1 is a subtype of the Software above, using an alternative library
+	// to play AV1 video for experimentation purposes.
+	// TODO(crbug.com/1047051): remove this flag when the experiment is over, and
+	// turn DecoderType into a boolean to represent hardware or software decoding.
 	LibGAV1
 )
 
@@ -47,10 +48,8 @@ const (
 )
 
 // RunTest measures a number of performance metrics while playing a video with
-// or without HW Acceleration as per enableHWAccel. decoderType specifies
-// whether to run the tests against the VDA or VD based video decoder
-// implementations.
-func RunTest(ctx context.Context, s *testing.State, videoName string, decoderType DecoderType, enableHWAccel bool) {
+// or without hardware acceleration as per decoderType.
+func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName string, decoderType DecoderType) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -63,7 +62,7 @@ func RunTest(ctx context.Context, s *testing.State, videoName string, decoderTyp
 	defer audio.Unmute(ctx)
 
 	testing.ContextLog(ctx, "Measuring performance")
-	if err = measurePerformance(ctx, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, enableHWAccel, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, cr, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, s.OutDir()); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
 }
@@ -71,33 +70,8 @@ func RunTest(ctx context.Context, s *testing.State, videoName string, decoderTyp
 // measurePerformance collects video playback performance playing a video with
 // either SW or HW decoder. utilsJSPath is a path of
 // chrome_media_internals_utils.js
-func measurePerformance(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
-	decoderType DecoderType, enableHWAccel bool, outDir string) error {
-	var chromeArgs []string
-	if !enableHWAccel {
-		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
-	}
-
-	// TODO(b/141652665): Currently the ChromeosVideoDecoder feature is enabled
-	// on x% of devices depending on the branch, so we need to use both enable
-	// and disable flags to guarantee correct behavior. Once the feature is
-	// always enabled we can remove the "--enable-features" flag here.
-	// TODO(crbug.com/1065434): Use precondition.
-	switch decoderType {
-	case VD:
-		chromeArgs = append(chromeArgs, "--enable-features=ChromeosVideoDecoder")
-	case VDA:
-		chromeArgs = append(chromeArgs, "--disable-features=ChromeosVideoDecoder")
-	case LibGAV1:
-		chromeArgs = append(chromeArgs, "--enable-features=Gav1VideoDecoder")
-	}
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to Chrome")
-	}
-	defer cr.Close(ctx)
-
+func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, utilsJSPath, videoName string,
+	decoderType DecoderType, outDir string) error {
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return err
@@ -146,7 +120,7 @@ func measurePerformance(ctx context.Context, fileSystem http.FileSystem, utilsJS
 	if err != nil {
 		return errors.Wrap(err, "failed to parse chrome:media-internals: ")
 	}
-	if enableHWAccel {
+	if decoderType == Hardware {
 		if !usesPlatformVideoDecoder {
 			return errors.New("hardware decoding accelerator was expected but wasn't used")
 		}
