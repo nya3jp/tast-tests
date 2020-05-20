@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf003fc_e9a556b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/account_disk_usage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2020-05-20T11:17:58Z",
+      "side": 1,
+      "message": "How about returning error like other return paths? (I think it also results in Fatal by the caller)\nIf it is doable, the *testing.State parameter could also be replaced with a single string from s.DataPath.",
+      "revId": "2088750e8ddef1a3b504cb0dd9d56f6b96e65daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
