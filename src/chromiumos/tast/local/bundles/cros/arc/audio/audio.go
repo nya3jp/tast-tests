@@ -72,6 +72,42 @@ func Run01ResultTest(ctx context.Context, s *testing.State) {
 	}
 }
 
+// Run01withPollResultTest runs the test that verifies the '0' or '1' result on the test App UI, where '0' means fail and '1'
+// means pass and also starts a goroutine to verifies the polling result as well. Both the App result and polling results need to be passed.
+func Run01withPollResultTest(ctx context.Context, s *testing.State, pollFunc func()) {
+	atast, err := NewArcTast(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to init test case: ", err)
+	}
+	defer atast.Close()
+
+	param := s.Param().(TestParameters)
+
+	s.Log("Installing app")
+	if err := atast.InstallAPK(ctx, s.DataPath(apk)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	// Starts a goroutine to verifies the polling result.
+	// The pollFunc can fail the test case by s.Error()
+	go pollFunc()
+
+	s.Log("Starting test activity")
+	act, err := atast.StartActivity(ctx, param)
+	if err != nil {
+		s.Fatal("Failed runing test case: ", err)
+	}
+	defer act.Close()
+	s.Log("Verifying test result")
+	ok, reason, err := atast.Verify01Result(ctx)
+	if err != nil {
+		s.Fatal("Failed verifying test case: ", err)
+	}
+	if !ok {
+		s.Error("Test failed: ", reason)
+	}
+}
+
 // NewArcTast creates an `ArcAudio`.
 func NewArcTast(ctx context.Context, s *testing.State) (*ArcTast, error) {
 	a := s.PreValue().(arc.PreData).ARC
