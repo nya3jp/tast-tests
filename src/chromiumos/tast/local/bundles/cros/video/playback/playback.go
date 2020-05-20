@@ -50,7 +50,7 @@ const (
 // or without HW Acceleration as per enableHWAccel. decoderType specifies
 // whether to run the tests against the VDA or VD based video decoder
 // implementations.
-func RunTest(ctx context.Context, s *testing.State, videoName string, decoderType DecoderType, enableHWAccel bool) {
+func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, videoName string, decoderType DecoderType, enableHWAccel bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -63,7 +63,7 @@ func RunTest(ctx context.Context, s *testing.State, videoName string, decoderTyp
 	defer audio.Unmute(ctx)
 
 	testing.ContextLog(ctx, "Measuring performance")
-	if err = measurePerformance(ctx, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, enableHWAccel, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, cr, s.DataFileSystem(), s.DataPath("chrome_media_internals_utils.js"), videoName, decoderType, enableHWAccel, s.OutDir()); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
 }
@@ -71,33 +71,8 @@ func RunTest(ctx context.Context, s *testing.State, videoName string, decoderTyp
 // measurePerformance collects video playback performance playing a video with
 // either SW or HW decoder. utilsJSPath is a path of
 // chrome_media_internals_utils.js
-func measurePerformance(ctx context.Context, fileSystem http.FileSystem, utilsJSPath, videoName string,
+func measurePerformance(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, utilsJSPath, videoName string,
 	decoderType DecoderType, enableHWAccel bool, outDir string) error {
-	var chromeArgs []string
-	if !enableHWAccel {
-		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
-	}
-
-	// TODO(b/141652665): Currently the ChromeosVideoDecoder feature is enabled
-	// on x% of devices depending on the branch, so we need to use both enable
-	// and disable flags to guarantee correct behavior. Once the feature is
-	// always enabled we can remove the "--enable-features" flag here.
-	// TODO(crbug.com/1065434): Use precondition.
-	switch decoderType {
-	case VD:
-		chromeArgs = append(chromeArgs, "--enable-features=ChromeosVideoDecoder")
-	case VDA:
-		chromeArgs = append(chromeArgs, "--disable-features=ChromeosVideoDecoder")
-	case LibGAV1:
-		chromeArgs = append(chromeArgs, "--enable-features=Gav1VideoDecoder")
-	}
-
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to Chrome")
-	}
-	defer cr.Close(ctx)
-
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return err
