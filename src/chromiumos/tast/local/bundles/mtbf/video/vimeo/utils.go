@@ -7,6 +7,7 @@ package vimeo
 import (
 	"context"
 
+	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/mtbf/dom"
 )
@@ -15,10 +16,16 @@ const vimeoPlayer = `div.vp-video-wrapper > div.vp-video > div > video`
 
 // PlayVideo triggers vimeoPlayer.play().
 func PlayVideo(ctx context.Context, conn *chrome.Conn) error {
-	return dom.PlayElement(ctx, conn, vimeoPlayer)
+	if err := dom.PlayElement(ctx, conn, vimeoPlayer); err != nil {
+		return mtbferrors.New(mtbferrors.ChromeExeJs, err, "OpenAndPlayVideo")
+	}
+	return nil
 }
 
 // PauseVideo triggers vimeoPlayer.pause().
 func PauseVideo(ctx context.Context, conn *chrome.Conn) error {
-	return dom.PauseElement(ctx, conn, vimeoPlayer)
+	if err := dom.PauseElement(ctx, conn, vimeoPlayer); err != nil {
+		return mtbferrors.New(mtbferrors.VideoPauseFailed, err, "Vimeo")
+	}
+	return nil
 }

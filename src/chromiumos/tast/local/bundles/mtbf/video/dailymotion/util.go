@@ -10,6 +10,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -57,14 +58,18 @@ func OpenVideoSettings(ctx context.Context, conn *chrome.Conn) (err error) {
 	defer mouse.Close()
 
 	// Ensure mouse position does not extend beyond the screen.
-	mouse.Move(-10, 0)
+	mouse.Move(-2000, -2000)
 	testing.Sleep(ctx, 1*time.Second)
 	mouse.Move(10, 0)
 
 	// Click settings button.
 	const menuButton = ".np_ButtonSettings"
 	if err = conn.Exec(ctx, dom.Query(menuButton)+".click()"); err != nil {
+		testing.ContextLog(ctx, "Mouse click show menu button")
 		mouse.Click()
+	} else {
+		testing.ContextLog(ctx, "Mouse move show menu button")
+		return nil
 	}
 	return dom.WaitAndClick(ctx, conn, menuButton)
 }
@@ -80,35 +85,47 @@ var Quality = map[string]string{
 }
 
 // ChangeQuality changes the quality options.
-func ChangeQuality(ctx context.Context, conn *chrome.Conn, quality string) (err error) {
-	if err = OpenVideoSettings(ctx, conn); err != nil {
-		return
+func ChangeQuality(ctx context.Context, conn *chrome.Conn, quality string) error {
+	if err := OpenVideoSettings(ctx, conn); err != nil {
+		return mtbferrors.New(mtbferrors.VideoOpenSettings, err)
 	}
 
 	const qualityButton = "#np_quality-menu-item"
-	if err = dom.WaitAndClick(ctx, conn, qualityButton); err != nil {
-		return
+	if err := dom.WaitAndClick(ctx, conn, qualityButton); err != nil {
+		return mtbferrors.New(mtbferrors.VideoWaitAndClick, err, qualityButton)
 	}
 
 	// Wait for animation.
-	if err = testing.Sleep(ctx, 2*time.Second); err != nil {
-		return
+	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		return mtbferrors.New(mtbferrors.ChromeSleep, err)
 	}
 
 	var qualityMenuItem = "#np_quality-menu-item--" + quality
-	if err = dom.WaitAndClick(ctx, conn, qualityMenuItem); err != nil {
-		return
+	if err := dom.WaitAndClick(ctx, conn, qualityMenuItem); err != nil {
+		return mtbferrors.New(mtbferrors.VideoWaitAndClick, err, qualityMenuItem)
 	}
 
 	const closeButton = "div.np_dialog-header.np_menu-header > button"
-	if err = dom.WaitAndClick(ctx, conn, closeButton); err != nil {
-		return
+	if err := dom.WaitAndClick(ctx, conn, closeButton); err != nil {
+		return mtbferrors.New(mtbferrors.VideoWaitAndClick, err, closeButton)
+	}
+	// Wait for video to change quality...
+	if mtbferr := WaitForReadyState(ctx, conn); mtbferr != nil {
+		return mtbferr
 	}
 	return nil
 }
 
 // GetCurrentTime return VideoPlayer.currentTime.
-func GetCurrentTime(ctx context.Context, conn *chrome.Conn) (time float64, err error) {
-	time, err = dom.GetElementCurrentTime(ctx, conn, VideoPlayer)
-	return
+func GetCurrentTime(ctx context.Context, conn *chrome.Conn) (float64, error) {
+	time, err := dom.GetElementCurrentTime(ctx, conn, VideoPlayer)
+	return time, err
+}
+
+// WaitForReadyState wait for ready state
+func WaitForReadyState(ctx context.Context, conn *chrome.Conn) error {
+	if err := dom.WaitForReadyState(ctx, conn, VideoPlayer, 10*time.Second, 100*time.Millisecond); err != nil {
+		return mtbferrors.New(mtbferrors.VideoReadyStatePoll, err)
+	}
+	return nil
 }

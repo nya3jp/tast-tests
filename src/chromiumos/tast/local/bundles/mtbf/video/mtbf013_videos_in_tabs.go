@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/mtbferrors"
+	"chromiumos/tast/local/bundles/mtbf/video/common"
 	"chromiumos/tast/local/bundles/mtbf/video/vimeo"
 	"chromiumos/tast/local/bundles/mtbf/video/youtube"
 	"chromiumos/tast/local/chrome"
@@ -32,48 +32,40 @@ func init() {
 // Set up the two Chrome tabs. Load one tab and start the video.
 // Load the second tab and start the video. Verify both videos are playing.
 func MTBF013VideosInTabs(ctx context.Context, s *testing.State) {
-	url1, ok := s.Var("video.diffTabsVideo1")
-	if !ok {
-		s.Fatal(mtbferrors.New(mtbferrors.OSVarRead, nil, "video.diffTabsVideo1"))
-	}
-
-	url2, ok := s.Var("video.diffTabsVideo3")
-	if !ok {
-		s.Fatal(mtbferrors.New(mtbferrors.OSVarRead, nil, "video.diffTabsVideo3"))
-	}
-
+	url1 := common.GetVar(ctx, s, "video.diffTabsVideo1")
+	url2 := common.GetVar(ctx, s, "video.diffTabsVideo3")
 	cr := s.PreValue().(*chrome.Chrome)
 
 	s.Log("Open video urls")
-	conn1, err := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(url1))
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn1, mtbferr := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(url1))
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn1.Close()
 	defer conn1.CloseTarget(ctx)
 
 	testing.Sleep(ctx, 3*time.Second)
-	if err := youtube.PlayVideo(ctx, conn1); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.ChromeExeJs, err, "OpenAndPlayVideo"))
+	if mtbferr := youtube.PlayVideo(ctx, conn1); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	conn2, err := mtbfchrome.NewConn(ctx, cr, url2)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn2, mtbferr := mtbfchrome.NewConn(ctx, cr, url2)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn2.Close()
 	defer conn2.CloseTarget(ctx)
 
 	testing.Sleep(ctx, 3*time.Second)
-	if err := vimeo.PlayVideo(ctx, conn2); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.ChromeExeJs, err, "OpenAndPlayVideo"))
+	if mtbferr := vimeo.PlayVideo(ctx, conn2); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	if err := youtube.IsPlaying(ctx, conn1, time.Second*5); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr := youtube.IsPlaying(ctx, conn1, time.Second*5); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	if err := vimeo.IsPlaying(ctx, conn2, time.Second*5); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	if mtbferr := vimeo.IsPlaying(ctx, conn2, time.Second*5); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 }

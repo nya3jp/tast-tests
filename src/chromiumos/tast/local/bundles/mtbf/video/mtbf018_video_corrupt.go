@@ -22,7 +22,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          chrome.LoginReuse(),
-		Data:         []string{"2.mp4"},
+		Data:         []string{"corruptedVideo.mp4"},
 	})
 }
 
@@ -30,11 +30,11 @@ func init() {
 func MTBF018VideoCorrupt(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	s.Log("Preparing video to play")
-	videoFile := "2.mp4"
+	videoFile := "corruptedVideo.mp4"
 
-	videoplayer, err := player.NewVideoPlayer(ctx, cr)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	videoplayer, mtbferr := player.NewVideoPlayer(ctx, cr)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer videoplayer.Close(ctx)
 
@@ -46,12 +46,12 @@ func MTBF018VideoCorrupt(ctx context.Context, s *testing.State) {
 	defer tconn.Close()
 
 	if mtbferr := videoplayer.StartToPlay(ctx, videoFile, s.DataPath(videoFile)); mtbferr != nil {
-		s.Error(mtbferr)
+		s.Fatal(mtbferr)
 	}
 
 	testing.Sleep(ctx, time.Second)
 
-	if err := player.VerifyVideoPausing(ctx, tconn, time.Second*5); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoPlayPause, err))
+	if mtbferr := player.VerifyVideoPausing(ctx, tconn, time.Second*5); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 }

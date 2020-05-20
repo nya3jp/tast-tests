@@ -8,10 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/bundles/mtbf/video/media"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
 )
 
 // IsPlaying checks whether youtube is playing the video.
@@ -27,6 +25,11 @@ func IsPausing(ctx context.Context, conn *chrome.Conn, timeout time.Duration) (e
 // PauseAndResume pauses youtube video play, and the resumes it.
 func PauseAndResume(ctx context.Context, conn *chrome.Conn) (err error) {
 	return media.PauseAndResume(ctx, conn, VideoPlayer)
+}
+
+// PauseAndResumeWithoutDebug pauses youtube video play, and the resumes it. skips taking screenshot.
+func PauseAndResumeWithoutDebug(ctx context.Context, conn *chrome.Conn) (err error) {
+	return media.PauseAndResumeWithDebugMode(ctx, conn, VideoPlayer, false)
 }
 
 // RandomSeek does random seek to youtube video.
@@ -47,41 +50,9 @@ func FastRewind(ctx context.Context, conn *chrome.Conn) (err error) {
 // CheckFramedrops checks frame drops every second for a given duration.
 // Error will be returned based on number of frames dropped.
 func CheckFramedrops(ctx context.Context, conn *chrome.Conn, timeout time.Duration) error {
-	currentTime, err := CurrentTime(ctx, conn)
-	if err != nil {
-		return mtbferrors.New(mtbferrors.VideoGetTime, err)
+	fps, mtbferr := getFramePerSecondFromStatsForNerds(ctx, conn)
+	if mtbferr != nil {
+		return mtbferr
 	}
-	var (
-		interval  time.Duration = 1 * time.Second
-		totalTime time.Duration
-	)
-
-	totalFramedrops := 0
-	for totalTime <= timeout {
-		totalTime += interval
-		if err = testing.Sleep(ctx, interval); err != nil {
-			return err
-		}
-
-		framedrops, err := GetFrameDropsFromStatsForNerds(ctx, conn)
-		if err != nil {
-			return mtbferrors.New(mtbferrors.VideoGetFrmDrop, err)
-		}
-		totalFramedrops += framedrops
-	}
-
-	const (
-		minorFrameDropThreshold  = 1
-		majorFrameDropThreshold  = 2
-		severeFrameDropThreshold = 24
-	)
-	if totalFramedrops >= severeFrameDropThreshold {
-		return mtbferrors.New(mtbferrors.VideoSevereFramedrops, nil, currentTime, totalFramedrops, timeout.Seconds())
-	} else if totalFramedrops >= majorFrameDropThreshold {
-		return mtbferrors.New(mtbferrors.VideoMajorFramedrops, nil, currentTime, totalFramedrops, timeout.Seconds())
-	} else if totalFramedrops >= minorFrameDropThreshold {
-		return mtbferrors.New(mtbferrors.VideoMinorFramedrops, nil, currentTime, totalFramedrops, timeout.Seconds())
-	}
-
-	return nil
+	return media.CheckFramedrops(ctx, conn, timeout, fps, VideoPlayer, GetFrameDropsFromStatsForNerds)
 }

@@ -68,7 +68,7 @@ func VerifyVideoPlaying(ctx context.Context, conn *chrome.Conn, timeout time.Dur
 		return
 	}
 	if err = testing.Sleep(ctx, timeout); err != nil {
-		return
+		return mtbferrors.New(mtbferrors.ChromeSleep, err)
 	}
 	if currentTimeStr, err = GetVideoPlayingTime(ctx, conn); err != nil {
 		return
@@ -98,7 +98,7 @@ func VerifyVideoPausing(ctx context.Context, conn *chrome.Conn, timeout time.Dur
 		return
 	}
 	if err = testing.Sleep(ctx, timeout); err != nil {
-		return
+		return mtbferrors.New(mtbferrors.ChromeSleep, err)
 	}
 	if currentTimeStr, err = GetVideoPlayingTime(ctx, conn); err != nil {
 		return

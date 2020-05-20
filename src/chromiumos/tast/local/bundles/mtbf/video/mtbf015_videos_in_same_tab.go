@@ -28,6 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Pre:          chrome.LoginReuse(),
 		Data:         []string{"101587703.mp4", "112068856.mp4", "113102615.mp4", "world.mp4", "mpeg.html"},
+		Timeout:      3 * time.Minute,
 	})
 }
 
@@ -47,9 +48,9 @@ func MTBF015VideosInSameTab(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	mpegURL := server.URL + "/mpeg.html"
-	conn, err := mtbfchrome.NewConn(ctx, cr, mpegURL)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, mpegURL)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
@@ -58,7 +59,7 @@ func MTBF015VideosInSameTab(ctx context.Context, s *testing.State) {
 	for idx, selector := range videoSelectors {
 		if err := media.IsPlaying(ctx, conn, time.Second*5, selector); err != nil {
 			if err := dom.PlayElement(ctx, conn, selector); err != nil {
-				s.Fatal(mtbferrors.New(mtbferrors.VideoNoPlay, err, fmt.Sprintf("Video %d", idx+1)))
+				s.Fatal(mtbferrors.New(mtbferrors.VideoPlayFailed, err, fmt.Sprintf("Video %d", idx+1)))
 			}
 			failed = true
 		}
@@ -69,8 +70,8 @@ func MTBF015VideosInSameTab(ctx context.Context, s *testing.State) {
 	}
 
 	for _, selector := range videoSelectors {
-		if err := media.IsPlaying(ctx, conn, time.Second*5, selector); err != nil {
-			s.Fatal("MTBF failed: ", err)
+		if mtbferr := media.IsPlaying(ctx, conn, time.Second*5, selector); mtbferr != nil {
+			s.Fatal(mtbferr)
 		}
 	}
 }

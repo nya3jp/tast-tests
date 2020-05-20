@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mtbferrors"
+	"chromiumos/tast/local/bundles/mtbf/video/common"
 	"chromiumos/tast/local/bundles/mtbf/video/youtube"
 	"chromiumos/tast/local/chrome"
 	mtbfchrome "chromiumos/tast/local/mtbf/chrome"
@@ -21,14 +22,15 @@ func init() {
 		Desc:         "Verify that we play movies in two different aspect ratios 4:3 and 16:9",
 		Contacts:     []string{"xliu@cienet.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          chrome.LoginReuse(),
 		Attr:         []string{"group:mainline", "informational"},
+		Vars:         []string{"video.youtube16by9Video", "video.youtube4by3Video"},
+		Pre:          chrome.LoginReuse(),
 		Params: []testing.Param{{
 			Name: "16by9",
-			Val:  "https://www.youtube.com/watch?v=WUgvvPRH7Oc",
+			Val:  "video.youtube16by9Video",
 		}, {
 			Name: "4by3",
-			Val:  "https://www.youtube.com/watch?v=mM5_T-F1Yn4",
+			Val:  "video.youtube4by3Video",
 		}},
 	})
 }
@@ -39,67 +41,70 @@ func init() {
 // Verify full screen can be toggled while video is paused or playing.
 func MTBF017AspectRatio(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	videoURL := s.Param().(string)
+	val := s.Param().(string)
+	videoURL := common.GetVar(ctx, s, val)
 
-	conn, err := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(videoURL))
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(videoURL))
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 	s.Log("Youtube video is now ready for playing")
+	if mtbferr := youtube.WaitForReadyState(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
+	}
 	s.Log("Open stats for nerd")
-	if err = youtube.OpenStatsForNerds(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoStatsNerd, err))
+	if mtbferr := youtube.OpenStatsForNerds(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	testing.Sleep(ctx, 1*time.Second)
 
 	s.Log("Get aspect ration from stats for nerd")
 	var videoFrame youtube.VideoFrame
-	videoFrame, err = youtube.GetCurrentResolutionFromStatsForNerds(ctx, conn)
-	if err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoGetRatio, err))
+	videoFrame, mtbferr = youtube.GetCurrentResolutionFromStatsForNerds(ctx, conn)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	if !is16by9(videoFrame.X, videoFrame.Y) && !is4by3(videoFrame.X, videoFrame.Y) {
-		s.Error(mtbferrors.New(mtbferrors.VideoRatio, nil, videoFrame.X, videoFrame.Y))
+		s.Fatal(mtbferrors.New(mtbferrors.VideoRatio, nil, videoFrame.X, videoFrame.Y))
 	}
 
 	s.Log("Verify pause and resume video")
-	if err = youtube.PauseAndResume(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoPauseResume, err))
+	if mtbferr := youtube.PauseAndResumeWithoutDebug(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Verify fast forward, and rewind")
-	if err = youtube.FastForward(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoFastFwd, err))
+	if mtbferr := youtube.FastForward(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	testing.Sleep(ctx, 1*time.Second)
-	if err = youtube.FastRewind(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoFastRwd, err))
+	if mtbferr := youtube.FastRewind(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Verify entering full screen while pause")
-	if err = youtube.PauseVideo(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoNoPause, err, "Youtube"))
+	if mtbferr := youtube.PauseVideo(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	toggleFullscreen(ctx, conn, s)
 
 	s.Log("Verify entering full screen while playing")
-	if err = youtube.PlayVideo(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoNoPlay, err, "Youtube"))
+	if mtbferr := youtube.PlayVideo(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	toggleFullscreen(ctx, conn, s)
 }
 
 // toggleFullscreen switches the video to full screen display and then back to normal display.
 func toggleFullscreen(ctx context.Context, conn *chrome.Conn, s *testing.State) {
-	var err error
-	if err = youtube.ToggleFullScreen(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoEnterFullSc, err))
+	if mtbferr := youtube.ToggleFullScreen(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	testing.Sleep(ctx, 2*time.Second)
-	if err = youtube.ToggleFullScreen(ctx, conn); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.VideoEnterFullSc, err))
+	if mtbferr := youtube.ToggleFullScreen(ctx, conn); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	testing.Sleep(ctx, 2*time.Second)
 }

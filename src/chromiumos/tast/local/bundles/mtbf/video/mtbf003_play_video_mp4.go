@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/mtbferrors"
 	"chromiumos/tast/local/bundles/mtbf/video/media"
 	"chromiumos/tast/local/chrome"
 	mtbfchrome "chromiumos/tast/local/mtbf/chrome"
@@ -40,9 +39,9 @@ func MTBF003PlayVideoMp4(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	videoURL := s.Param().(string)
 
-	conn, err := mtbfchrome.NewConn(ctx, cr, videoURL)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, videoURL)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
@@ -52,16 +51,16 @@ func MTBF003PlayVideoMp4(ctx context.Context, s *testing.State) {
 	testing.Sleep(ctx, 2*time.Second)
 
 	s.Log("Pause / resume video")
-	if err = media.PauseAndResume(ctx, conn, videoPlayer); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.VideoPauseResume, err))
+	if mtbferr := media.PauseAndResume(ctx, conn, videoPlayer); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
 	s.Log("Random seeking")
-	if err = media.RandomSeek(ctx, conn, 5, videoPlayer); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.VideoSeek, err))
+	if mtbferr := media.RandomSeek(ctx, conn, 5, videoPlayer); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	if err = media.IsPlaying(ctx, conn, 5*time.Second, videoPlayer); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.VideoNoPlay, err, videoURL))
+	if mtbferr := media.IsPlaying(ctx, conn, 5*time.Second, videoPlayer); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 }

@@ -76,8 +76,9 @@ func (p *VideoPlayer) StartToPlay(ctx context.Context, filename string, fullFile
 		return mtbferrors.New(mtbferrors.ChromeKeyPress, err, "Enter")
 	}
 	testing.Sleep(ctx, 1*time.Second)
-	debug.TakeScreenshot(ctx)
+
 	if err := p.files.WaitForElement(ctx, filesapp.RoleRootWebArea, filename, time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
 		return mtbferrors.New(mtbferrors.ChromeOpenVideoPlayer, err)
 	}
 	return nil
@@ -85,16 +86,26 @@ func (p *VideoPlayer) StartToPlay(ctx context.Context, filename string, fullFile
 
 // Play plays video file
 func (p *VideoPlayer) Play(ctx context.Context) error {
+	if err := p.files.WaitForElement(ctx, "button", "play", time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
+		return mtbferrors.New(mtbferrors.VideoWaitPlayButton, err)
+	}
+
 	if err := p.files.ClickElement(ctx, "button", "play"); err != nil {
-		return mtbferrors.New(mtbferrors.AudioPlaying, err)
+		return mtbferrors.New(mtbferrors.VideoClickPlayButton, err)
 	}
 	return nil
 }
 
 // Pause pauses playing video file
 func (p *VideoPlayer) Pause(ctx context.Context) error {
+	if err := p.files.WaitForElement(ctx, "button", "pause", time.Minute); err != nil {
+		debug.TakeScreenshot(ctx)
+		return mtbferrors.New(mtbferrors.VideoWaitPauseButton, err)
+	}
+
 	if err := p.files.ClickElement(ctx, "button", "pause"); err != nil {
-		return mtbferrors.New(mtbferrors.AudioPlayPause, err)
+		return mtbferrors.New(mtbferrors.VideoClickPauseButton, err)
 	}
 	return nil
 }

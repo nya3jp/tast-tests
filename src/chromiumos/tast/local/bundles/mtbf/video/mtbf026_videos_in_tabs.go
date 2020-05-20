@@ -9,8 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mtbferrors"
+	"chromiumos/tast/local/bundles/mtbf/video/common"
 	"chromiumos/tast/local/bundles/mtbf/video/youtube"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	mtbfchrome "chromiumos/tast/local/mtbf/chrome"
 	"chromiumos/tast/testing"
 )
@@ -31,48 +33,55 @@ func init() {
 // Set up the two Chrome tabs. Load one tab and start the video.
 // Load the second tab and start the video. Verify both videos are playing.
 func MTBF026VideosInTabs(ctx context.Context, s *testing.State) {
-	url1, ok := s.Var("video.diffTabsVideo1")
-	if !ok {
-		s.Fatal(mtbferrors.New(mtbferrors.OSVarRead, nil, "video.diffTabsVideo1"))
-	}
-
-	url2, ok := s.Var("video.diffTabsVideo2")
-	if !ok {
-		s.Fatal(mtbferrors.New(mtbferrors.OSVarRead, nil, "video.diffTabsVideo2"))
-	}
+	url1 := common.GetVar(ctx, s, "video.diffTabsVideo1")
+	url2 := common.GetVar(ctx, s, "video.diffTabsVideo2")
 
 	cr := s.PreValue().(*chrome.Chrome)
 
 	s.Log("Open video urls")
-	conn1, err := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(url1))
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn1, mtbferr := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(url1))
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn1.Close()
 	defer conn1.CloseTarget(ctx)
 
 	testing.Sleep(ctx, 3*time.Second)
-	if err := youtube.PlayVideo(ctx, conn1); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.ChromeExeJs, err, "OpenAndPlayVideo"))
+	if mtbferr := youtube.PlayVideo(ctx, conn1); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	conn2, err := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(url2))
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn2, mtbferr := mtbfchrome.NewConn(ctx, cr, youtube.Add1SecondForURL(url2))
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn2.Close()
 	defer conn2.CloseTarget(ctx)
 
 	testing.Sleep(ctx, 3*time.Second)
-	if err := youtube.PlayVideo(ctx, conn2); err != nil {
-		s.Fatal(mtbferrors.New(mtbferrors.ChromeExeJs, err, "OpenAndPlayVideo"))
+	if mtbferr := youtube.PlayVideo(ctx, conn2); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	if err := youtube.IsPlaying(ctx, conn1, time.Second*5); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal(mtbferrors.New(mtbferrors.ChromeGetKeyboard, err))
+	}
+	defer kb.Close()
+
+	s.Log("Switch back to tab 1 by press ctrl + 1")
+	if err := kb.Accel(ctx, "Ctrl+1"); err != nil {
+		s.Fatal(mtbferrors.New(mtbferrors.ChromeKeyPress, err, "Ctrl+1"))
+	}
+	if mtbferr := youtube.IsPlaying(ctx, conn1, time.Second*5); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	if err := youtube.IsPlaying(ctx, conn2, time.Second*5); err != nil {
-		s.Fatal("MTBF failed: ", err)
+	s.Log("Switch back to tab 2 by press ctrl + 2")
+	if err := kb.Accel(ctx, "Ctrl+2"); err != nil {
+		s.Fatal(mtbferrors.New(mtbferrors.ChromeKeyPress, err, "Ctrl+2"))
+	}
+	if mtbferr := youtube.IsPlaying(ctx, conn2, time.Second*5); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 }

@@ -28,6 +28,7 @@ func init() {
 	})
 }
 
+// MTBF025PlayPcmWav play pcm files
 func MTBF025PlayPcmWav(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	s.Log("Preparing PCM to play")
@@ -48,24 +49,38 @@ func MTBF025PlayPcmWav(ctx context.Context, s *testing.State) {
 	defer filesapp.Close(ctx, tconn)
 
 	if mtbferr := audio.PlayFromDownloadsFolder(ctx, files, s.DataPath(audioFile), audioFile); mtbferr != nil {
-		s.Fatal("MTBF failed: ", mtbferr)
+		s.Fatal(mtbferr)
 	}
 	defer audio.ClickButton(ctx, tconn, "Close")
 
 	testing.Sleep(ctx, time.Second)
 
 	s.Log("Pause and play PCM")
+	if err := files.WaitForElement(ctx, "button", "Pause", time.Minute); err != nil {
+		s.Fatal(mtbferrors.New(mtbferrors.AudioWaitPauseButton, err))
+	}
+
 	if mtbferr = audio.Pause(ctx, tconn); mtbferr != nil {
-		s.Fatal("MTBF failed: ", mtbferr)
+		s.Fatal(mtbferr)
+	}
+	testing.Sleep(ctx, time.Second)
+	s.Log("Verify audio player is paused")
+	if mtbferr := audio.IsPausing(ctx, tconn, 3*time.Second); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	testing.Sleep(ctx, time.Second)
+	if err := files.WaitForElement(ctx, "button", "Play", time.Minute); err != nil {
+		s.Fatal(mtbferrors.New(mtbferrors.AudioWaitPlayButton, err))
+	}
+
 	if mtbferr = audio.Play(ctx, tconn); mtbferr != nil {
-		s.Fatal("MTBF failed: ", mtbferr)
+		s.Fatal(mtbferr)
 	}
-	if err = audio.IsPlaying(ctx, tconn, time.Second); err != nil {
-		s.Error(mtbferrors.New(mtbferrors.AudioPlayPause, err))
+	testing.Sleep(ctx, time.Second)
+	s.Log("Verify audio player is playing")
+	if mtbferr = audio.IsPlaying(ctx, tconn, 3*time.Second); mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 
-	testing.Sleep(ctx, time.Second)
+	testing.Sleep(ctx, 3*time.Second)
 }

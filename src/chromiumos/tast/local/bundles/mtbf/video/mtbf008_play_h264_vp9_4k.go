@@ -10,11 +10,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/mtbferrors"
+	"chromiumos/tast/local/bundles/mtbf/video/media"
 	"chromiumos/tast/local/chrome"
 	mtbfchrome "chromiumos/tast/local/mtbf/chrome"
 	"chromiumos/tast/local/mtbf/dom"
 	"chromiumos/tast/testing"
 )
+
+const videoSelector = "video"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -40,9 +43,9 @@ func MTBF008PlayH264VP94K(ctx context.Context, s *testing.State) {
 	const videoURL = "https://crosvideo.appspot.com/"
 	videoType := s.Param().(string)
 
-	conn, err := mtbfchrome.NewConn(ctx, cr, videoURL)
-	if err != nil {
-		s.Fatal("MTBF failed: ", err)
+	conn, mtbferr := mtbfchrome.NewConn(ctx, cr, videoURL)
+	if mtbferr != nil {
+		s.Fatal(mtbferr)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
@@ -58,13 +61,16 @@ func MTBF008PlayH264VP94K(ctx context.Context, s *testing.State) {
 			document.querySelector("#videoTracks").value = tracks;
 			loadStream();
 		})("%s", "%s");`, videoType, quality)
-		if err = conn.Exec(ctx, javascript); err != nil {
-			s.Error(mtbferrors.New(mtbferrors.VideoNoPlay, err, videoURL))
+		if err := conn.Exec(ctx, javascript); err != nil {
+			s.Fatal(mtbferrors.New(mtbferrors.VideoPlayFailed, err, videoURL))
 		}
-		testing.Sleep(ctx, 10*time.Second) // Wait for video to change quality and keeps playing...
+		// Wait for video to change quality...
+		if err := dom.WaitForReadyState(ctx, conn, videoSelector, 10*time.Second, 100*time.Millisecond); err != nil {
+			s.Fatal(mtbferrors.New(mtbferrors.VideoReadyStatePoll, err))
+		}
 		s.Log("Verify frame drops is zero")
 		if mtbferr := verifyFramedrops(ctx, conn, 10*time.Second); mtbferr != nil {
-			s.Error(mtbferr)
+			s.Fatal(mtbferr)
 		}
 	}
 
@@ -73,41 +79,7 @@ func MTBF008PlayH264VP94K(ctx context.Context, s *testing.State) {
 
 // verifyFramedrops verifies that no frames are dropped every second during a given time duration.
 func verifyFramedrops(ctx context.Context, conn *chrome.Conn, timeout time.Duration) error {
-	currentTime, err := dom.GetElementCurrentTime(ctx, conn, "video")
-	if err != nil {
-		return mtbferrors.New(mtbferrors.VideoGetTime, err)
-	}
-	var interval, time time.Duration = 1 * time.Second, 0
-
-	totalFramedrops := 0
-	for time <= timeout {
-		if err = testing.Sleep(ctx, interval); err != nil {
-			return err
-		}
-		time += interval
-
-		framedrops, err := getFramedrops(ctx, conn)
-		if err != nil {
-			return mtbferrors.New(mtbferrors.VideoGetFrmDrop, err)
-		}
-		totalFramedrops = framedrops
-	}
-
-	const (
-		minorFrameDropThreshold  = 1
-		majorFrameDropThreshold  = 2
-		severeFrameDropThreshold = 24
-	)
-
-	if totalFramedrops >= severeFrameDropThreshold {
-		return mtbferrors.New(mtbferrors.VideoSevereFramedrops, nil, currentTime, totalFramedrops, timeout.Seconds())
-	} else if totalFramedrops >= majorFrameDropThreshold {
-		return mtbferrors.New(mtbferrors.VideoMajorFramedrops, nil, currentTime, totalFramedrops, timeout.Seconds())
-	} else if totalFramedrops >= minorFrameDropThreshold {
-		return mtbferrors.New(mtbferrors.VideoMinorFramedrops, nil, currentTime, totalFramedrops, timeout.Seconds())
-	}
-
-	return nil
+	return media.CheckFramedrops(ctx, conn, timeout, 30, videoSelector, getFramedrops)
 }
 
 // getFramedrops gets the number of frames dropped by executing  javascript code.
