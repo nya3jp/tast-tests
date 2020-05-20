@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bd7df00_f49cc6f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98ef2563_a621eb2b",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 31
+      },
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b971ee6_4709c703",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
         "patchSetId": 13
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "34d7dfa6_4b861549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b971ee6_4709c703",
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00d3dc39_22786808",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
         "patchSetId": 13
@@ -53,6 +95,24 @@
       "writtenOn": "2020-05-19T09:32:31Z",
       "side": 1,
       "message": "The existing autotest calls arc.set_device_mode(\u0027clamshell\u0027) before calling _test_launch_activity().\n\nIsn\u0027t it necessary to do the same thing in this tast?\n(e.g. https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/4b34306a8013f9f2c207d7c41a643e111076e95d/src/chromiumos/tast/local/bundles/cros/ui/window_cycle_perf.go#42)",
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe05a04f_c7bbff02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "chromiumos/tast/local/arc/pre.go has arc.Booted() and arc.BootedInTabletMode() (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/pre.go;rcl\u003d9c138e3fdbd2dc45ab7e31b0452c2d3a70c6d77d;l\u003d72) and arc.BootedInTabletMode() says \"The only difference from Booted() is that Chrome is launched in tablet mode in this precondition.\", so it seems pre.Booted() use the clamshell mode.\nI already use arc.Booted(), so I think it\u0027s Okay.\n\n(I added a comment to the Pre: field in init().)",
+      "parentUuid": "00d3dc39_22786808",
       "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "fe880d0e_50c4e6f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "I removed this interface and use closures instead.",
+      "parentUuid": "50904b42_e01be4dc",
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49db4fb2_b751fd9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
         "patchSetId": 13
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "9d0eaf9f_40fae61f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "The interface (and methods) are removed.",
+      "parentUuid": "49db4fb2_b751fd9f",
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51312096_b7c7c2fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
         "patchSetId": 13
@@ -107,6 +203,24 @@
       "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37879b8_3a96be95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51312096_b7c7c2fa",
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "06fa3000_2aa614ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b6d1e3d_5506b828",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4deb328_ac5789b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
         "patchSetId": 13
@@ -153,6 +291,30 @@
       "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5fc1d4_ca7a715d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "I replaced it with `expectation string` argument.",
+      "parentUuid": "c4deb328_ac5789b1",
+      "range": {
+        "startLine": 61,
+        "startChar": 90,
+        "endLine": 61,
+        "endChar": 106
+      },
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "ee6738bf_df69d130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "969eaba3_528c67ab",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0df98991_91bb650e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
         "patchSetId": 13
@@ -190,6 +376,24 @@
       "writtenOn": "2020-05-19T09:32:31Z",
       "side": 1,
       "message": "You are repeating the same pattern 3 times here and below.\nIsn\u0027t it possible to avoid that? (e.g. creating a function which returns 0 or the component which is larger than the tolerance value, or an error if there are more than one such components.)",
+      "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb63d6e_10185055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/appposition/imageverifier.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1411497
+      },
+      "writtenOn": "2020-05-20T10:06:00Z",
+      "side": 1,
+      "message": "I agree that these repetitions are not very nice, but I think avoiding this is difficult.\nIf we can rewrite for DRY, I feel it becomes just complicated.\n\n(Rather than that, simplifying the behavior (e.g. stop checking numOfComponents) is the best option, if possible.)",
+      "parentUuid": "0df98991_91bb650e",
       "revId": "a13fa96362bce070ab6ba25a13533ec922c1b10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
