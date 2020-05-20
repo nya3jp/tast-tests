@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de961f66_00e09538",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2020-05-20T02:46:26Z",
+      "side": 1,
+      "message": "nit: Return an error in the else case, or just remove this if since that\u0027s the assumption.",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "69893bc81c6a1478b84bd926633790903eaa3b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
