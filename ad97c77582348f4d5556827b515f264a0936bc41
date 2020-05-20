@@ -175,6 +175,24 @@
     },
     {
       "key": {
+        "uuid": "b69d81bf_40887d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2020-05-20T19:10:09Z",
+      "side": 1,
+      "message": "This is an old test written when we were transitioning from Android caption to Chrome caption.  It was possible to return true back then, but it\u0027s not possible right now.",
+      "parentUuid": "d8521879_ff7159fa",
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af854584_cc177799",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
         "patchSetId": 14
