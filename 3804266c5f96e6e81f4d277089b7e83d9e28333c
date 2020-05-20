@@ -233,6 +233,24 @@
       "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a543ac19_e72a8bf8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-20T22:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbac9b2_5f5749d4",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
