@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aae2481_153d2d5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "splits",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eddc0c5a_5cd7cb86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "IIUC, before this CL, sw results were reported when the test ran in a device that cannot hardware decode a given codec.\n\nAfter this CL, we lose a lot of sw results because the tests should not run on devices that don\u0027t support hardware decoding for a given codec. However, the follow-up CL re-adds some sw coverage.\n\nMaybe this should be explained in the description because when I read \"This CL splits,\" I was expecting to see a set of hw tests and a set of sw tests in the same CL.",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400357f5_0f06348b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "fewer",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a7174f_bf2cf1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "Outdated?",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8505f2f0_2ad60cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "Outdated?",
+      "range": {
+        "startLine": 102,
+        "startChar": 74,
+        "endLine": 103,
+        "endChar": 36
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcbd4406_cb7ddc96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "decoding",
+      "range": {
+        "startLine": 183,
+        "startChar": 36,
+        "endLine": 183,
+        "endChar": 44
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d036802e_0dc265a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "was expected but",
+      "range": {
+        "startLine": 183,
+        "startChar": 56,
+        "endLine": 183,
+        "endChar": 57
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4055b5e4_dbe8382d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "How come this doesn\u0027t fail for the av1 cases that have enableHWAccel \u003d true?",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 70
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d59bb32_f13bdf82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "decoding was expected but",
+      "range": {
+        "startLine": 187,
+        "startChar": 36,
+        "endLine": 187,
+        "endChar": 44
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394cad6e_fb0cb5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "I think you forgot\n\nExtraSoftwareDeps: []string{caps.HWDecodeVP9},\n\nhere",
+      "range": {
+        "startLine": 234,
+        "startChar": 55,
+        "endLine": 234,
+        "endChar": 56
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e159b9_3bf7dedf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "Reading this is confusing: seeing _sw and then enableHWAccel: true. Is this because AV1 hardware decoding is not yet supported?",
+      "range": {
+        "startLine": 292,
+        "startChar": 24,
+        "endLine": 292,
+        "endChar": 27
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "793d36de_b1a0d293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-20T22:31:24Z",
+      "side": 1,
+      "message": "Why don\u0027t we need caps.HWDecodeH264 for these?",
+      "range": {
+        "startLine": 376,
+        "startChar": 5,
+        "endLine": 410,
+        "endChar": 5
+      },
+      "revId": "7bc679f55ab79b3f889d668f6592eef5f983b450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
