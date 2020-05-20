@@ -565,6 +565,24 @@
     },
     {
       "key": {
+        "uuid": "f4104ebf_66836352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-20T21:17:41Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "4252cd2d_6b929297",
+      "revId": "83dcc86b41bdac6e29146891d90faa55b4b462bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bec687f_6f0d50b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
         "patchSetId": 30
@@ -597,6 +615,24 @@
       "revId": "83dcc86b41bdac6e29146891d90faa55b4b462bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e499b3e_d37cd975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-20T21:17:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e870be2_33c34a27",
+      "revId": "83dcc86b41bdac6e29146891d90faa55b4b462bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -761,6 +797,30 @@
       "revId": "83dcc86b41bdac6e29146891d90faa55b4b462bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1384a026_e81dcc34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-20T21:17:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ed6c203b_96713d1d",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 3
+      },
+      "revId": "83dcc86b41bdac6e29146891d90faa55b4b462bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
