@@ -20,7 +20,8 @@ const logName = "cmdOutput.txt"
 
 // RemoteCmdRunner is the object used for running remote commands.
 type RemoteCmdRunner struct {
-	Host *ssh.Conn
+	Host         *ssh.Conn
+	NoLogOnError bool // Default false: dump log on error.
 }
 
 var _ cmd.Runner = (*RemoteCmdRunner)(nil)
@@ -35,17 +36,18 @@ func (r *RemoteCmdRunner) Run(ctx context.Context, cmd string, args ...string) e
 func (r *RemoteCmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
 	out, err := r.Host.Command(cmd, args...).Output(ctx)
 	// NB: the 'local' variant uses DumpLogOnError, which is not provided by Commander.
-	if err != nil {
-		testing.ContextLogf(ctx, "Command: %s %s", shutil.Escape(cmd), shutil.EscapeSlice(args))
-		// Write the output log to the file logName.
-		if dir, ok := testing.ContextOutDir(ctx); ok {
-			if err := ioutil.WriteFile(filepath.Join(dir, logName),
-				out, 0644); err != nil {
-				testing.ContextLog(ctx, "Failed to write command output: ", err)
-			}
-		} else {
-			testing.ContextLog(ctx, "Failed to open OutDir")
+	if err != nil && !r.NoLogOnError {
+		testing.ContextLogf(ctx, "Failed to run command: %s %s", shutil.Escape(cmd), shutil.EscapeSlice(args))
+		dir, ok := testing.ContextOutDir(ctx)
+		if !ok {
+			testing.ContextLog(ctx, "Failed to open OutDir to dump command output")
+			return nil, err
 		}
+		logPath := filepath.Join(dir, logName)
+		if err := ioutil.WriteFile(logPath, out, 0644); err != nil {
+			testing.ContextLog(ctx, "Failed to write command output: ", err)
+		}
+		testing.ContextLog(ctx, "Command output stored in ", logPath)
 	}
 	return out, err
 }
