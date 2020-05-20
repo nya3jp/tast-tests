@@ -22,6 +22,30 @@
       "revId": "3b47487ee00a9c08fcbfc1aa7d88cfa94a4e66fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a804c9_ba48c520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-20T23:52:06Z",
+      "side": 1,
+      "message": "That\u0027s how it was done in Dean\u0027s patch (so the function name would match what was passed into timing.Start, I\u0027m assuming). I don\u0027t really mind either way, fixed.",
+      "parentUuid": "dc6a3d09_2daa75af",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 23
+      },
+      "revId": "3b47487ee00a9c08fcbfc1aa7d88cfa94a4e66fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
