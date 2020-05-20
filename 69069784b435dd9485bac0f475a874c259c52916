@@ -22,6 +22,30 @@
       "revId": "69069784b435dd9485bac0f475a874c259c52916",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b733c2dd_f8b5ebda",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2020-05-20T21:19:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f7eb13a_77438b82",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 57
+      },
+      "revId": "69069784b435dd9485bac0f475a874c259c52916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
