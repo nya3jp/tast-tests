@@ -35,12 +35,14 @@ func init() {
 
 func DLCService(ctx context.Context, s *testing.State) {
 	const (
-		dlcID1          = "test1-dlc"
-		testPackage     = "test-package"
-		dlcserviceJob   = "dlcservice"
-		updateEngineJob = "update-engine"
-		dlcCacheDir     = "/var/cache/dlc"
-		tmpDir          = "/tmp"
+		dlcID1                  = "test1-dlc"
+		testPackage             = "test-package"
+		dlcserviceJob           = "dlcservice"
+		dlcserviceServiceName   = "org.chromium.DlcService"
+		updateEngineJob         = "update-engine"
+		updateEngineServiceName = "org.chromium.UpdateEngine"
+		dlcCacheDir             = "/var/cache/dlc"
+		tmpDir                  = "/tmp"
 	)
 
 	type expect bool
@@ -59,6 +61,21 @@ func DLCService(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to ensure %s running: %v", dlcserviceJob, err)
 	}
 
+	restartUpstartJob := func(job, serviceName string) {
+		// Restart job.
+		s.Logf("Restarting %s job", job)
+		if err := upstart.RestartJob(ctx, job); err != nil {
+			s.Fatalf("Failed to restart %s: %v", job, err)
+		}
+
+		// Wait for service to be ready.
+		if bus, err := dbusutil.SystemBus(); err != nil {
+			s.Fatal("Failed to connect to the message bus: ", err)
+		} else if err := dbusutil.WaitForService(ctx, bus, serviceName); err != nil {
+			s.Fatal("Failed to wait for D-Bus service: ", err)
+		}
+	}
+
 	// Delete rollback-version and rollback-happened pref which are
 	// generated during Rollback and Enterprise Rollback.
 	// rollback-version is written when update_engine Rollback D-Bus API is
@@ -74,17 +91,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart update-engine to pick up the new prefs.
-	s.Logf("Restarting %s job", updateEngineJob)
-	if err := upstart.RestartJob(ctx, updateEngineJob); err != nil {
-		s.Fatalf("Failed to restart %s: %v", updateEngineJob, err)
-	}
-
-	// Wait for update-engine to be ready.
-	if bus, err := dbusutil.SystemBus(); err != nil {
-		s.Fatal("Failed to connect to the message bus: ", err)
-	} else if err := dbusutil.WaitForService(ctx, bus, "org.chromium.UpdateEngine"); err != nil {
-		s.Fatal("Failed to wait for D-Bus service: ", err)
-	}
+	restartUpstartJob(updateEngineJob, updateEngineServiceName)
 
 	readFile := func(path string) []byte {
 		b, err := ioutil.ReadFile(path)
@@ -283,5 +290,21 @@ func DLCService(ctx context.Context, s *testing.State) {
 		// Uninstall already uninstalled DLC.
 		uninstall(dlcID1, success)
 		dumpAndVerifyInstalledDLCs("uninstall_already_uninstalled")
+	})
+
+	s.Run(ctx, "Reboot mimic dlcservice tests", func(context.Context, *testing.State) {
+		url, cmd := startNebraska()
+		defer stopNebraska(cmd, "reboot-mimic-dlc")
+
+		// Install single DLC.
+		install(dlcID1, url, success)
+		dumpAndVerifyInstalledDLCs("reboot_install_before_reboot", dlcID1)
+
+		// Restart dlcservice.
+		restartUpstartJob(updateEngineJob, updateEngineServiceName)
+
+		// Install single DLC after mimicking a reboot.
+		install(dlcID1, url, success)
+		dumpAndVerifyInstalledDLCs("install_single_after_reboot", dlcID1)
 	})
 }
