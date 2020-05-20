@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "dac71433_b90730fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-20T21:00:52Z",
+      "side": 1,
+      "message": "crostini has a TransferToContainerAsRoot function in file.go, but either way is fine.",
+      "parentUuid": "68a368a4_228b4690",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90e2b4d4_e8c5d62f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 2
@@ -422,6 +446,30 @@
       "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ab0c5f_4b8c4cb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2020-05-20T21:00:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "491e3115_90259057",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "180b3139f27c2715f00258c40ba04c9336afe91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
