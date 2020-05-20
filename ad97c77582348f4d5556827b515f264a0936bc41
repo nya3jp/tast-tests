@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35ee839b_347e5781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T18:53:59Z",
+      "side": 1,
+      "message": "Sorry I made a typo. There are NO file-locals in Golang, I meant.",
+      "parentUuid": "fee0a221_068cae66",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75aff112_279ce5cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
         "patchSetId": 14
