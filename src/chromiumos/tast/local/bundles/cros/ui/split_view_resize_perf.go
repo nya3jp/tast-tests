@@ -91,6 +91,11 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	}
 	defer tew.Close()
 
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
 	// Ensures landscape orientation so this test can assume that windows snap on
 	// the left and right. Windows snap on the top and bottom in portrait-oriented
 	// tablet mode. They snap on the left and right in portrait-oriented clamshell
@@ -101,10 +106,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	}
 	rotation := -orientation.Angle
 	if orientation.Type == display.OrientationPortraitPrimary {
-		info, err := display.GetInternalInfo(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to obtain internal display info: ", err)
-		}
 		if err = display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 			s.Fatal("Failed to rotate display: ", err)
 		}
@@ -113,10 +114,6 @@ func SplitViewResizePerf(ctx context.Context, s *testing.State) {
 	}
 	tew.SetRotation(rotation)
 
-	info, err := display.GetInternalInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the internal display info: ", err)
-	}
 	tcc := tew.NewTouchCoordConverter(info.Bounds.Size())
 
 	stw, err := tew.NewSingleTouchWriter()
