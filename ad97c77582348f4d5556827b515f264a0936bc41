@@ -134,6 +134,40 @@
     },
     {
       "key": {
+        "uuid": "d8521879_ff7159fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T18:52:35Z",
+      "side": 1,
+      "message": "IIRC captions are always drawn by ChromeOS (from N? P? I don\u0027t remember exactly).  Do you (or anyone in the reviewers/cc) know when exactly this returns true?",
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af854584_cc177799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T18:52:35Z",
+      "side": 1,
+      "message": "Given that the captions are drawn by ChromeOS, maybe this can be a part of properties of autotest API.  ash.Window struct has the good starting point -- it has bounds property with caption height, which would be good for bounds calculation.  For the colors, maybe we can extend autotest API to add the caption color properties.",
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04d2b5d4_9c7c90c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
         "patchSetId": 14
@@ -220,6 +254,23 @@
         "endLine": 107,
         "endChar": 83
       },
+      "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa5105c_634c1afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_position.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-20T18:52:35Z",
+      "side": 1,
+      "message": "By the way, I think the shadows are set by ChromeOS/Ash, not by Android, right?\nI guess it would be a lot easier to allow accesses properties like this in the test API, so that you don\u0027t need to verify the screenshot. That way you can verify it semantically and more reliably.",
       "revId": "ad97c77582348f4d5556827b515f264a0936bc41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
