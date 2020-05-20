@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f6e8343_b049485f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-20T21:21:08Z",
+      "side": 1,
+      "message": "As I use a specialized gRPC, ExpectWifiFrequency, to replace it. Let\u0027s revise the issue when a test needs to get more service fields.",
+      "parentUuid": "06b0e350_cfa644b8",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848173e3_b7d59132",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3852013e_5b24f302",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-20T21:21:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "848173e3_b7d59132",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68d375ba_abde68c0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 6
@@ -50,6 +86,24 @@
       "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd22c968_cf4aa9a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-20T21:21:08Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "68d375ba_abde68c0",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "07b06798_3024072a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-20T21:21:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62df6c48_884e3b56",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 40
+      },
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "730cc97c_1d286a63",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 6
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "62c6893f_cf16bb5c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-20T21:21:08Z",
+      "side": 1,
+      "message": "Add ConnectWifiAP() for asking DUT to connect to the WiFi provided by the given AP. It also keeps a reference of the AP.\nThe original ConnectWifi() asks DUT to connect to the specified WiFi. \n\nPTAL.",
+      "parentUuid": "730cc97c_1d286a63",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0c524e9_434b69b1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 6
@@ -110,6 +212,24 @@
       "writtenOn": "2020-05-19T10:19:31Z",
       "side": 1,
       "message": "In Autotest, it logs the signal strength of BSSes for ease of debugging. (added in crrev.com/c/1292796) Maybe we should keep it?",
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbac9b2_5f5749d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-20T21:21:08Z",
+      "side": 1,
+      "message": "Ah I missed that. Will add.",
+      "parentUuid": "f0c524e9_434b69b1",
       "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
