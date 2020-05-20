@@ -12,9 +12,11 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/network/ip"
 	"chromiumos/tast/common/network/iw"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	remote_ip "chromiumos/tast/remote/network/ip"
 	remote_iw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/fileutil"
@@ -40,6 +42,7 @@ type Router struct {
 	busyIfaces    map[string]*iw.NetDev      // map from interface name to iw.NetDev.
 	ifaceID       int
 	iwr           *iw.Runner
+	ipr           *ip.Runner
 	logCollectors map[string]*log.Collector // map from log path to its collector.
 }
 
@@ -60,6 +63,7 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		availIfaces:   make(map[string]*iw.NetDev),
 		busyIfaces:    make(map[string]*iw.NetDev),
 		iwr:           remote_iw.NewRunner(host),
+		ipr:           remote_ip.NewRunner(host),
 		logCollectors: make(map[string]*log.Collector),
 	}
 
@@ -432,12 +436,12 @@ func (r *Router) StartCapture(ctx context.Context, name string, ch int, freqOps 
 		}
 	}()
 
-	if err := r.host.Command("ip", "link", "set", iface, "up").Run(ctx); err != nil {
-		return nil, errors.Wrapf(err, "failed to set %s up", iface)
+	if err := r.ipr.SetLinkUp(ctx, iface); err != nil {
+		return nil, err
 	}
 	defer func() {
 		if retErr != nil {
-			if err := r.host.Command("ip", "link", "set", iface, "down").Run(ctx); err != nil {
+			if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
 				testing.ContextLogf(ctx, "Failed to set %s down, err=%s", iface, err.Error())
 			}
 		}
@@ -475,8 +479,8 @@ func (r *Router) StopCapture(ctx context.Context, capturer *pcap.Capturer) error
 	if err := capturer.Close(ctx); err != nil {
 		collectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop capturer"))
 	}
-	if err := r.host.Command("ip", "link", "set", iface, "down").Run(ctx); err != nil {
-		collectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to set %s down", iface))
+	if err := r.ipr.SetLinkDown(ctx, iface); err != nil {
+		collectFirstErr(ctx, &firstErr, err)
 	}
 	r.freeIface(iface)
 	return firstErr
