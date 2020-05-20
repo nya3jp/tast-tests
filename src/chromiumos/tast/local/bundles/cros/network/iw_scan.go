@@ -8,9 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/network/ip"
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/local/shill"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -51,7 +51,8 @@ func IWScan(ctx context.Context, s *testing.State) {
 	}()
 
 	// Bring up wireless device after it's released from shill.
-	if err := testexec.CommandContext(ctx, "ip", "link", "set", iface, "up").Run(testexec.DumpLogOnError); err != nil {
+	ipr := ip.NewRunner()
+	if err := ipr.SetLinkUp(ctx, iface); err != nil {
 		s.Fatalf("Could not bring up %s after shill released WiFi management", iface)
 	}
 
