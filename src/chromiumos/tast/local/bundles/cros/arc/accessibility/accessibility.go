@@ -141,7 +141,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 			return errors.New("accessibility not enabled")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
 	}
 
@@ -159,7 +159,7 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 }
 
 // WaitForFocusedNode polls until the properties of the focused node matches the given params.
-// Returns an error after 30 seconds.
+// Returns an error after 10 seconds.
 func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestConn, params *ui.FindParams) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -175,7 +175,7 @@ func WaitForFocusedNode(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.
 			return errors.Errorf("focused node is incorrect: got %v, want %v", focused, params)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to get current focus")
 	}
 	return nil
@@ -238,7 +238,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 					return err
 				}
 				return nil
-			}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 				s.Fatal("Timed out waiting for touch mode: ", err)
 			}
 
