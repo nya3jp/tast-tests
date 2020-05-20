@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "413391da_496c59ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2020-05-20T16:09:03Z",
+      "side": 1,
+      "message": "too long",
+      "revId": "3f7d029c190050ebc62259e4bdb0e88bfa5c0457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d31522a5_618e3378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2020-05-20T16:09:03Z",
+      "side": 1,
+      "message": "comma or period",
+      "range": {
+        "startLine": 295,
+        "startChar": 25,
+        "endLine": 295,
+        "endChar": 26
+      },
+      "revId": "3f7d029c190050ebc62259e4bdb0e88bfa5c0457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4cffd4_c675ebc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2020-05-20T16:09:03Z",
+      "side": 1,
+      "message": "dlcserviceJob, dlcserviceServiceName",
+      "range": {
+        "startLine": 304,
+        "startChar": 20,
+        "endLine": 304,
+        "endChar": 35
+      },
+      "revId": "3f7d029c190050ebc62259e4bdb0e88bfa5c0457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
