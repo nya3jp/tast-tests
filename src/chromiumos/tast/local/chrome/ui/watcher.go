@@ -132,7 +132,7 @@ func (ew *EventWatcher) Release(ctx context.Context) error {
 // fully to the automation API.
 func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn) error {
 	const (
-		entireTimeout = 10 * time.Second
+		entireTimeout = 30 * time.Second
 		timeout       = 2 * time.Second
 	)
 
