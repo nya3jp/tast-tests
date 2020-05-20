@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5215fa7b_e72c227e",
+        "filename": "src/chromiumos/tast/common/hwsec/daemon_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2020-05-20T14:27:37Z",
+      "side": 1,
+      "message": "nit, style:\nPca -\u003e PCA\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 41
+      },
+      "revId": "832acc48efd0bb6cfb86cbac4bbd9ed4ac11b08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
