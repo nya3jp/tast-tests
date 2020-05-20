@@ -41,6 +41,7 @@ func init() {
 
 func BuildProperties(ctx context.Context, s *testing.State) {
 	const (
+		propertyBootType      = "ro.vendor.arc_boot_type"
 		propertyBoard         = "ro.product.board"
 		propertyDevice        = "ro.product.device"
 		propertyFirstAPILevel = "ro.product.first_api_level"
@@ -63,6 +64,15 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to get %q: %v", propertyName, err)
 		}
 		return value
+	}
+
+	// On each ARC boot, ARC detects its boot type (first boot, first boot after
+	// OTA, or regular boot) and sets the results as a property. Check that the
+	// property is actually set.
+	bootType := getProperty(propertyBootType)
+	if bootTypeInt, err := strconv.Atoi(bootType); err != nil || bootTypeInt <= 0 {
+		s.Fatalf("%v property is %q; should contain a positive number",
+			propertyBootType, bootType)
 	}
 
 	// On unibuild boards, system.raw.img's build.prop contains some template
