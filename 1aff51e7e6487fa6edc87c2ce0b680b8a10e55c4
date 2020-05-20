@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "613d6103_b44705ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-20T17:35:27Z",
+      "side": 1,
+      "message": "Done. Good catch, thanks.",
+      "parentUuid": "0adfb429_22d4c45c",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 71
+      },
+      "revId": "1aff51e7e6487fa6edc87c2ce0b680b8a10e55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9d99117_450d64a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1aff51e7e6487fa6edc87c2ce0b680b8a10e55c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c45aea04_97f50805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-20T17:35:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d99117_450d64a6",
+      "range": {
+        "startLine": 48,
+        "startChar": 30,
+        "endLine": 48,
+        "endChar": 72
+      },
+      "revId": "1aff51e7e6487fa6edc87c2ce0b680b8a10e55c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
