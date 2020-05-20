@@ -6,7 +6,10 @@
 package audio
 
 import (
+	"bufio"
 	"context"
+	"strings"
+	"sync"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -41,6 +44,52 @@ type ArcTast struct {
 	tconn  *chrome.TestConn
 }
 
+// KeyValue is a map of string type key and string type value.
+type KeyValue map[string]string
+
+// DumpActiveStreams parse active stream params from "cras_test_client --dump_audio_thread" log.
+func DumpActiveStreams(ctx context.Context) ([]KeyValue, string, error) {
+	dump, err := testexec.CommandContext(ctx, "cras_test_client", "--dump_audio_thread").Output()
+	if err != nil {
+		return nil, "", errors.Errorf("failed to dump audio thread: %s", err)
+	}
+
+	s := strings.Split(string(dump), "-------------stream_dump------------")
+	if len(s) < 2 {
+		return nil, string(dump), errors.New("no stream_dump")
+	}
+	s = strings.Split(s[1], "Audio Thread Event Log:")
+	if len(s) == 0 {
+		return nil, string(dump), errors.New("invalid stream_dump")
+	}
+	streamStr := strings.Trim(s[0], " \n\t")
+	streams := make([]KeyValue, 0)
+
+	// No active streams, return empty slice.
+	if streamStr == "" {
+		return streams, streamStr, nil
+	}
+	scanner := bufio.NewScanner(strings.NewReader(streamStr))
+	stream := make(KeyValue)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if line == "" {
+			// Appends a stream when sees an empty line.
+			streams = append(streams, stream)
+			stream = make(map[string]string)
+			continue
+		}
+		pair := strings.Split(line, ":")
+		k := strings.Trim(pair[0], " ")
+		v := strings.Trim(pair[1], " ")
+		stream[k] = v
+	}
+	// Appends the last stream
+	streams = append(streams, stream)
+
+	return streams, streamStr, nil
+}
+
 // Run01ResultTest runs the test that result can be either '0' or '1' on the test App UI, where '0' means fail and '1'
 // means pass.
 func Run01ResultTest(ctx context.Context, s *testing.State) {
@@ -69,6 +118,51 @@ func Run01ResultTest(ctx context.Context, s *testing.State) {
 	if !ok {
 		s.Error("Test failed: ", reason)
 	}
+}
+
+// Run01withPollResultTest runs the test that verifies the '0' or '1' result on the test App UI, where '0' means fail and '1'
+// means pass and also starts a goroutine to verifies the polling result as well. Both the App result and polling results need to be passed.
+func Run01withPollResultTest(ctx context.Context, s *testing.State, f func(context.Context) error, timeout time.Duration) {
+	atast, err := NewArcTast(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to init test case: ", err)
+	}
+	defer atast.Close()
+
+	s.Log("Installing app")
+	if err := atast.InstallAPK(ctx, s.DataPath(apk)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	// Starts a goroutine to verifies the polling result.
+	// The pollFunc can fail the test case by s.Error()
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		if err := testing.Poll(ctx, f, &testing.PollOptions{Timeout: timeout}); err != nil {
+			s.Error("Polling result failed: ", err)
+		}
+	}()
+
+	s.Log("Starting test activity")
+	param := s.Param().(TestParameters)
+	act, err := atast.StartActivity(ctx, param)
+	if err != nil {
+		s.Fatal("Failed runing test case: ", err)
+	}
+	defer act.Close()
+	s.Log("Verifying app UI result")
+	ok, reason, err := atast.Verify01Result(ctx)
+	if err != nil {
+		s.Fatal("Failed verifying app UI result: ", err)
+	}
+	if !ok {
+		s.Error("Test failed: ", reason)
+	}
+
+	// Waits until goroutine finish verifying poll result.
+	wg.Wait()
 }
 
 // NewArcTast creates an `ArcAudio`.
