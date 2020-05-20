@@ -10,7 +10,9 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/playback"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
 )
 
@@ -41,6 +43,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"144p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_240p_30fps_hw",
 			Val: playbackPerfParams{
@@ -51,6 +54,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"240p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_360p_30fps_hw",
 			Val: playbackPerfParams{
@@ -61,6 +65,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"360p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_480p_30fps_hw",
 			Val: playbackPerfParams{
@@ -71,6 +76,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_720p_30fps_hw",
 			Val: playbackPerfParams{
@@ -81,6 +87,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_1080p_30fps_hw",
 			Val: playbackPerfParams{
@@ -90,6 +97,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_1080p_60fps_hw",
 			Val: playbackPerfParams{
@@ -99,6 +107,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_2160p_30fps_hw",
 			Val: playbackPerfParams{
@@ -108,6 +117,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraData:         []string{"2160p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_2160p_60fps_hw",
 			Val: playbackPerfParams{
@@ -117,6 +127,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraData:         []string{"2160p_60fps_600frames.h264.mp4"},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_144p_30fps_hw",
 			Val: playbackPerfParams{
@@ -127,6 +138,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"144p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_240p_30fps_hw",
 			Val: playbackPerfParams{
@@ -137,6 +149,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"240p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_360p_30fps_hw",
 			Val: playbackPerfParams{
@@ -147,6 +160,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"360p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_480p_30fps_hw",
 			Val: playbackPerfParams{
@@ -157,6 +171,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_720p_30fps_hw",
 			Val: playbackPerfParams{
@@ -167,6 +182,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_1080p_30fps_hw",
 			Val: playbackPerfParams{
@@ -176,6 +192,7 @@ func init() {
 			},
 			ExtraData:         []string{"1080p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_1080p_60fps_hw",
 			Val: playbackPerfParams{
@@ -185,6 +202,7 @@ func init() {
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_2160p_30fps_hw",
 			Val: playbackPerfParams{
@@ -194,6 +212,7 @@ func init() {
 			},
 			ExtraData:         []string{"2160p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp8_2160p_60fps_hw",
 			Val: playbackPerfParams{
@@ -203,6 +222,7 @@ func init() {
 			},
 			ExtraData:         []string{"2160p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_144p_30fps_hw",
 			Val: playbackPerfParams{
@@ -213,6 +233,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"144p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_240p_30fps_hw",
 			Val: playbackPerfParams{
@@ -223,6 +244,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"240p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_360p_30fps_hw",
 			Val: playbackPerfParams{
@@ -233,6 +255,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"360p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_480p_30fps_hw",
 			Val: playbackPerfParams{
@@ -243,6 +266,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_720p_30fps_hw",
 			Val: playbackPerfParams{
@@ -253,6 +277,7 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_1080p_30fps_hw",
 			Val: playbackPerfParams{
@@ -262,6 +287,7 @@ func init() {
 			},
 			ExtraData:         []string{"1080p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_1080p_60fps_hw",
 			Val: playbackPerfParams{
@@ -271,6 +297,7 @@ func init() {
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_2160p_30fps_hw",
 			Val: playbackPerfParams{
@@ -280,6 +307,7 @@ func init() {
 			},
 			ExtraData:         []string{"2160p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "vp9_2160p_60fps_hw",
 			Val: playbackPerfParams{
@@ -289,6 +317,7 @@ func init() {
 			},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideo(),
 		}, {
 			Name: "h264_480p_30fps_sw",
 			Val: playbackPerfParams{
@@ -299,6 +328,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"480p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "h264_720p_30fps_sw",
 			Val: playbackPerfParams{
@@ -309,6 +339,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "h264_1080p_30fps_sw",
 			Val: playbackPerfParams{
@@ -318,6 +349,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraData:         []string{"1080p_30fps_300frames.h264.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "h264_1080p_60fps_sw",
 			Val: playbackPerfParams{
@@ -327,6 +359,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"chrome_internal"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp8_480p_30fps_sw",
 			Val: playbackPerfParams{
@@ -336,6 +369,7 @@ func init() {
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"480p_30fps_300frames.vp8.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp8_720p_30fps_sw",
 			Val: playbackPerfParams{
@@ -345,6 +379,7 @@ func init() {
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"720p_30fps_300frames.vp8.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp8_1080p_30fps_sw",
 			Val: playbackPerfParams{
@@ -353,6 +388,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_30fps_300frames.vp8.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp8_1080p_60fps_sw",
 			Val: playbackPerfParams{
@@ -361,6 +397,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.vp8.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp9_480p_30fps_sw",
 			Val: playbackPerfParams{
@@ -370,6 +407,7 @@ func init() {
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"480p_30fps_300frames.vp9.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp9_720p_30fps_sw",
 			Val: playbackPerfParams{
@@ -379,6 +417,7 @@ func init() {
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"720p_30fps_300frames.vp9.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp9_1080p_30fps_sw",
 			Val: playbackPerfParams{
@@ -387,6 +426,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_30fps_300frames.vp9.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "vp9_1080p_60fps_sw",
 			Val: playbackPerfParams{
@@ -395,6 +435,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.vp9.webm"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "av1_480p_30fps_sw",
 			Val: playbackPerfParams{
@@ -403,6 +444,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"480p_30fps_300frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "av1_720p_30fps_sw",
 			Val: playbackPerfParams{
@@ -411,6 +453,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"720p_30fps_300frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "av1_720p_60fps_sw",
 			Val: playbackPerfParams{
@@ -419,6 +462,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"720p_60fps_600frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "av1_1080p_30fps_sw",
 			Val: playbackPerfParams{
@@ -427,6 +471,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_30fps_300frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "av1_1080p_60fps_sw",
 			Val: playbackPerfParams{
@@ -435,6 +480,7 @@ func init() {
 				decoderType:   playback.Software,
 			},
 			ExtraData: []string{"1080p_60fps_600frames.av1.mp4"},
+			Pre:       pre.ChromeVideoWithSWDecoding(),
 		}, {
 			Name: "av1_480p_30fps_sw_gav1",
 			Val: playbackPerfParams{
@@ -444,6 +490,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"480p_30fps_300frames.av1.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecodingAndLibGAV1(),
 		}, {
 			Name: "av1_720p_30fps_sw_gav1",
 			Val: playbackPerfParams{
@@ -453,6 +500,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"720p_30fps_300frames.av1.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecodingAndLibGAV1(),
 		}, {
 			Name: "av1_720p_60fps_sw_gav1",
 			Val: playbackPerfParams{
@@ -462,6 +510,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"720p_60fps_600frames.av1.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecodingAndLibGAV1(),
 		}, {
 			Name: "av1_1080p_30fps_sw_gav1",
 			Val: playbackPerfParams{
@@ -471,6 +520,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"1080p_30fps_300frames.av1.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecodingAndLibGAV1(),
 		}, {
 			Name: "av1_1080p_60fps_sw_gav1",
 			Val: playbackPerfParams{
@@ -480,6 +530,7 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"1080p_60fps_600frames.av1.mp4"},
+			Pre:               pre.ChromeVideoWithSWDecodingAndLibGAV1(),
 		}, {
 			Name: "h264_1080p_60fps_hw_alt",
 			Val: playbackPerfParams{
@@ -490,6 +541,7 @@ func init() {
 			// "chrome_internal" is needed because H.264 is a proprietary codec.
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "chrome_internal"},
 			ExtraData:         []string{"1080p_60fps_600frames.h264.mp4"},
+			Pre:               pre.ChromeVideoVD(),
 		}, {
 			Name: "vp8_1080p_60fps_hw_alt",
 			Val: playbackPerfParams{
@@ -499,6 +551,7 @@ func init() {
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Pre:               pre.ChromeVideoVD(),
 		}, {
 			Name: "vp9_1080p_60fps_hw_alt",
 			Val: playbackPerfParams{
@@ -508,6 +561,7 @@ func init() {
 			},
 			ExtraData:         []string{"1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideoVD(),
 		}, {
 			Name: "vp9_2160p_60fps_hw_alt",
 			Val: playbackPerfParams{
@@ -517,6 +571,7 @@ func init() {
 			},
 			ExtraData:         []string{"2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Pre:               pre.ChromeVideoVD(),
 		}},
 	})
 }
@@ -525,5 +580,5 @@ func init() {
 // HW decode acceleration if available. The values are reported to the performance dashboard.
 func PlaybackPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playbackPerfParams)
-	playback.RunTest(ctx, s, testOpt.fileName, testOpt.decoderType, testOpt.enableHWAccel)
+	playback.RunTest(ctx, s, s.PreValue().(*chrome.Chrome), testOpt.fileName, testOpt.decoderType, testOpt.enableHWAccel)
 }
