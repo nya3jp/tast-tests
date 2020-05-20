@@ -96,7 +96,7 @@ func runTestStep(ctx context.Context, cvconn *chrome.Conn, tconn *chrome.TestCon
 	}
 
 	// Wait for the focused element to match the expected.
-	if err := accessibility.WaitForFocusedNode(ctx, cvconn, tconn, &test.Params); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, cvconn, tconn, &test.Params, 10*time.Second); err != nil {
 		return err
 	}
 
