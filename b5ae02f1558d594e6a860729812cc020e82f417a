@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b805bd10_cfa4f17e",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-20T09:39:58Z",
+      "side": 1,
+      "message": "How about defining this as 100 * mib? Then we don\u0027t need to care much about units.",
+      "range": {
+        "startLine": 29,
+        "startChar": 30,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "b5ae02f1558d594e6a860729812cc020e82f417a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35bacec_2098f93c",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-20T09:39:58Z",
+      "side": 1,
+      "message": "This can be false positive. For example, the first test using Crostini precondition will get this warning because VM image is still there.\n\nI think we can start from just reporting disk usage before/after the test, e.g.\n\n Stateful partition usage of this test: 1111MB (2345MB free -\u003e 1234MB free)",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "b5ae02f1558d594e6a860729812cc020e82f417a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
