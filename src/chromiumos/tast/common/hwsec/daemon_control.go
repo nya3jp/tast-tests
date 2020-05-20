@@ -60,7 +60,7 @@ func (dc *DaemonController) waitForDBusService(ctx context.Context, name string)
 	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 15 * time.Second})
 }
 
-// StartCryptohome starts cryptohomed and wait for the dbus interface is responsive.
+// StartCryptohome starts cryptohomed and wait until the dbus interface is responsive.
 func (dc *DaemonController) StartCryptohome(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "start", "cryptohomed"); err != nil {
 		return errors.Wrap(err, "failed to start cryptohome")
@@ -76,7 +76,7 @@ func (dc *DaemonController) StopCryptohome(ctx context.Context) error {
 	return nil
 }
 
-// RestartCryptohome restarts cryptohomed and wait for the dbus interface is responsive.
+// RestartCryptohome restarts cryptohomed and wait until the dbus interface is responsive.
 func (dc *DaemonController) RestartCryptohome(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "restart", "cryptohomed"); err != nil {
 		return errors.Wrap(err, "failed to restart cryptohome")
@@ -84,7 +84,7 @@ func (dc *DaemonController) RestartCryptohome(ctx context.Context) error {
 	return dc.waitForDBusService(ctx, "org.chromium.Cryptohome")
 }
 
-// StartAttestation starts attestationd.
+// StartAttestation starts attestationd and wait until the dbus interface is responsive.
 func (dc *DaemonController) StartAttestation(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "start", "attestationd"); err != nil {
 		return errors.Wrap(err, "failed to start attestation")
@@ -100,7 +100,7 @@ func (dc *DaemonController) StopAttestation(ctx context.Context) error {
 	return nil
 }
 
-// RestartAttestation restarts attestationd and wait for the dbus interface is responsive.
+// RestartAttestation restarts attestationd and wait until the dbus interface is responsive.
 func (dc *DaemonController) RestartAttestation(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "restart", "attestationd"); err != nil {
 		return errors.Wrap(err, "failed to restart attestation")
@@ -108,7 +108,7 @@ func (dc *DaemonController) RestartAttestation(ctx context.Context) error {
 	return dc.waitForDBusService(ctx, "org.chromium.Attestation")
 }
 
-// StartTpmManager starts tpm_managerd and wait for the dbus interface is responsive.
+// StartTpmManager starts tpm_managerd and wait until the dbus interface is responsive.
 func (dc *DaemonController) StartTpmManager(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "start", "tpm_managerd"); err != nil {
 		return errors.Wrap(err, "failed to start tpm_manager")
@@ -124,7 +124,7 @@ func (dc *DaemonController) StopTpmManager(ctx context.Context) error {
 	return nil
 }
 
-// RestartTpmManager restarts tpm_managerd and wait for the dbus interface is responsive.
+// RestartTpmManager restarts tpm_managerd and wait until the dbus interface is responsive.
 func (dc *DaemonController) RestartTpmManager(ctx context.Context) error {
 	if _, err := dc.r.Run(ctx, "restart", "tpm_managerd"); err != nil {
 		return errors.Wrap(err, "failed to restart tpm_manager")
