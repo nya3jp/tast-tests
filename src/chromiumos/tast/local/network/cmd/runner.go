@@ -13,16 +13,26 @@ import (
 )
 
 // LocalCmdRunner is the object used for running local commands.
-type LocalCmdRunner struct{}
+type LocalCmdRunner struct {
+	NoLogOnError bool // Default false: dump log on error.
+}
 
 var _ cmd.Runner = (*LocalCmdRunner)(nil)
 
 // Run runs a command and waits for its completion.
 func (r *LocalCmdRunner) Run(ctx context.Context, cmd string, args ...string) error {
-	return testexec.CommandContext(ctx, cmd, args...).Run(testexec.DumpLogOnError)
+	cc := testexec.CommandContext(ctx, cmd, args...)
+	if r.NoLogOnError {
+		return cc.Run()
+	}
+	return cc.Run(testexec.DumpLogOnError)
 }
 
 // Output runs a command, waits for its completion and returns stdout output of the command.
 func (r *LocalCmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
-	return testexec.CommandContext(ctx, cmd, args...).Output(testexec.DumpLogOnError)
+	cc := testexec.CommandContext(ctx, cmd, args...)
+	if r.NoLogOnError {
+		return cc.Output()
+	}
+	return cc.Output(testexec.DumpLogOnError)
 }
