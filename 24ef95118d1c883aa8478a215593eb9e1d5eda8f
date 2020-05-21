@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d06ac8e_6dcf8c7b",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpacli.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-21T07:55:41Z",
+      "side": 1,
+      "message": "Follow what common/network/ping did.",
+      "parentUuid": "90acd48a_afcc5aff",
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5863b8e_8c4bfe6f",
         "filename": "src/chromiumos/tast/common/network/wpacli/wpacli.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1146c22_843b2070",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpacli.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-21T07:55:41Z",
+      "side": 1,
+      "message": "Per offline discussion, renamed it to Runner (like what common/network/ping did).",
+      "parentUuid": "b5863b8e_8c4bfe6f",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2e8ccdfb_f4c4679f",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpacli.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-21T07:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b39020e8_41d3e944",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4908dc8c_14972b85",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2020-05-21T03:44:23Z",
       "side": 1,
       "message": "As we already have DumpOnError inside cmd.Runner. Maybe we can do this when \"PONG\" check failed instead?\nAlso, looks like wpaCli provide a similar utility MayOutputToFile, maybe it can be used here?",
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c4b46e9_aeb7a4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-21T07:55:41Z",
+      "side": 1,
+      "message": "As it could be too verbose dumping log on errors when polling, I modified cmd.runner to have a flag to suppress dumping log on errors.  WDYT?",
+      "parentUuid": "4908dc8c_14972b85",
       "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -96,6 +180,24 @@
       "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "accb36ea_4ae0f835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-21T07:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30327cae_5e4d4f1b",
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
