@@ -510,7 +510,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		defer cancel()
 		s.Log("AP setup done")
 
-		if err := tf.ConnectWifi(ctx, ap); err != nil {
+		if err := tf.ConnectWifiAP(ctx, ap); err != nil {
 			s.Fatal("Failed to connect to WiFi, err: ", err)
 		}
 		defer func() {
@@ -525,7 +525,7 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 		s.Log("Connected")
 
 		ping := func(ctx context.Context) error {
-			return tf.PingFromDUT(ctx)
+			return tf.PingFromDUT(ctx, ap.ServerIP().String())
 		}
 
 		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
