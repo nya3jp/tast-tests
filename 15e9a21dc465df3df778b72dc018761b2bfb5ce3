@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69d008a3_6d0af04e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2020-05-21T19:01:42Z",
+      "side": 1,
+      "message": "At some point, you may want to refactor this parameter. It\u0027s strange to see the _sw + VDA combination.",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 32
+      },
+      "revId": "15e9a21dc465df3df778b72dc018761b2bfb5ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
