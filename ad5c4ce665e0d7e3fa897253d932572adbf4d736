@@ -16,6 +16,24 @@
       "revId": "ad5c4ce665e0d7e3fa897253d932572adbf4d736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab7120a_a44d16df",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-21T19:17:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019ec0c2_a237573f",
+      "revId": "ad5c4ce665e0d7e3fa897253d932572adbf4d736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
