@@ -7,14 +7,15 @@ package webutil
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/chrome"
 )
 
 // WaitForYoutubeVideo waits for a YouTube video to start on the given chrome.Conn.
-func WaitForYoutubeVideo(ctx context.Context, conn *chrome.Conn) error {
+func WaitForYoutubeVideo(ctx context.Context, conn *chrome.Conn, timeout time.Duration) error {
 	// Wait for <video> tag to show up.
-	return conn.WaitForExprFailOnErr(ctx, `
+	return conn.WaitForExprFailOnErrWithTimeout(ctx, `
 		(function() {
 		  const v = document.querySelector('video');
 		  if (!v) {
@@ -23,5 +24,5 @@ func WaitForYoutubeVideo(ctx context.Context, conn *chrome.Conn) error {
 		  const bounds = v.getBoundingClientRect();
 		  return bounds.x >= 0 && bounds.y >= 0 &&
 		      bounds.width > 0 && bounds.height > 0;
-		})()`)
+		})()`, timeout)
 }

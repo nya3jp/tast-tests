@@ -57,12 +57,38 @@ const (
 	// insetSlopDP indicates how much to inset the work area (display area) to avoid window snapping to the
 	// edges of the screen interfering with drag-move and drag-resize of windows.
 	insetSlopDP int = 40
+
+	// youtubeVideoDx and youtubeVideoDy are found manually by checking where the Youtube video appears relative
+	// to the top left corner of the browser window. These coordinates let us click on the Youtube video area
+	// if the video does not appear. This makes sure the video plays.
+	// See crbug.com/1085355.
+	youtubeVideoDx = 200.0
+	youtubeVideoDy = 250.0
 )
+
+func ensureYoutubeVideo(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error {
+	if err := webutil.WaitForYoutubeVideo(ctx, conn, 10*time.Second); err != nil {
+		// TODO(crbug.com/1085355): Sometimes, lacros-chrome does not autoplay the Youtube video. Programmatic methods
+		// for forcing the video to load and play don't seem to work, so manually click on the video via Ash.
+		w, err := findFirstNonBlankWindow(ctx, ctconn)
+		if err != nil {
+			return err
+		}
+		loc := w.BoundsInRoot.TopLeft().Add(coords.NewPoint(youtubeVideoDx, youtubeVideoDy))
+		if err := ash.MouseClick(ctx, ctconn, loc, ash.LeftButton); err != nil {
+			return err
+		}
+
+		return webutil.WaitForYoutubeVideo(ctx, conn, 100*time.Second)
+	}
+
+	return nil
+}
 
 type page struct {
 	name     string
 	url      string
-	finalize func(ctx context.Context, conn *chrome.Conn) error
+	finalize func(ctx context.Context, ctconn *chrome.TestConn, conn *chrome.Conn) error
 }
 
 var pageSet = []page{
@@ -81,7 +107,7 @@ var pageSet = []page{
 	{
 		name:     "youtube", // YouTube. This page is for testing video playback.
 		url:      "https://www.youtube.com/watch?v=aqz-KE-bpKQ?autoplay=1",
-		finalize: webutil.WaitForYoutubeVideo,
+		finalize: ensureYoutubeVideo,
 	},
 	{
 		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
@@ -698,6 +724,11 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, pd launcher.PreData, i
 }
 
 func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation) error {
+	ctconn, err := pd.Chrome.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to test API")
+	}
+
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
 	l, err := launcher.LaunchLacrosChrome(ctx, pd)
 	if err != nil {
@@ -728,7 +759,7 @@ func runLacrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocati
 	}
 
 	if invoc.page.finalize != nil {
-		if err := invoc.page.finalize(ctx, connURL); err != nil {
+		if err := invoc.page.finalize(ctx, ctconn, connURL); err != nil {
 			return err
 		}
 	}
@@ -773,7 +804,7 @@ func runCrosTest(ctx context.Context, pd launcher.PreData, invoc *testInvocation
 	defer connURL.CloseTarget(ctx)
 
 	if invoc.page.finalize != nil {
-		if err := invoc.page.finalize(ctx, connURL); err != nil {
+		if err := invoc.page.finalize(ctx, ctconn, connURL); err != nil {
 			return err
 		}
 	}
