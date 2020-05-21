@@ -135,7 +135,7 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 	defer cancel()
 
 	testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
-	cmd := s.host.Command(hostapdCmd, "-dd", "-t", s.confPath())
+	cmd := s.host.Command(hostapdCmd, "-dd", "-t", "-K", s.confPath())
 	// Prepare stdout/stderr log files.
 	var err error
 	s.stderrFile, err = fileutil.PrepareOutDirFile(ctx, s.stderrFilename())
