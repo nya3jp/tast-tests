@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48313b6c_81270e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-21T19:13:33Z",
+      "side": 1,
+      "message": "This looks very weird to me that this dumpAndVerifyInstalledDLCs (and other functions, like startNebraska, stopNebraska, uninstall, install) do not take context and testing.State as a parameter.\n\nNote that s.Run is for a subtest; it creates a new context and a new state, and pass them as the parameter to the function (which you ignore in line 274). This is not good. It looks like dumpAndVerifyInstalledDLCs() (and other functions) may invoke s.Fatal(), which leads to the entire test failures and stop the execution.\n\nPlease reform the entire test scenario to respect the purpose of s.Run, i.e.,\n  s.Run(ctx, \"...\", func(ctx context.Context, s *testing.State) {\n    ...\n    dumpAndVerifyInstalleDLCs(ctx, s, \"initial_state\")\n    ...\n  })\nand so on.\n\nOr just stop using s.Run().",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 29
+      },
+      "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc849226_374cb3a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-21T19:13:33Z",
+      "side": 1,
+      "message": "why not separating s.Run()?",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 301,
+        "endChar": 61
+      },
+      "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
