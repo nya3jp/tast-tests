@@ -70,6 +70,30 @@
       "revId": "3b47487ee00a9c08fcbfc1aa7d88cfa94a4e66fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ad2bcb_0b37c271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2020-05-21T02:32:26Z",
+      "side": 1,
+      "message": "Matthew, yes, that\u0027s the motivation I did so. But Brian\u0027s comment also makes sense as we can still give timing.Start() a descriptive tag inside an unnamed function. Either way is fine but we prefer shorter one. I\u0027ll use the pattern.",
+      "parentUuid": "f56e53c2_97c96688",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 23
+      },
+      "revId": "3b47487ee00a9c08fcbfc1aa7d88cfa94a4e66fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
