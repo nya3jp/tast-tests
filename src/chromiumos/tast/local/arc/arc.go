@@ -236,6 +236,7 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 var androidDeps = []string{
 	"android_vm_p_deprecated",
 	"android_vm",
+	"android_r",
 	"android_vm_r",
 	"android_p",
 	"arc",
