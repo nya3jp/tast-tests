@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a71129_5cc6ecf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-05-21T09:13:48Z",
+      "side": 1,
+      "message": "brightness queries to the Assistant",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 53
+      },
+      "revId": "194ff4d9c9706ac8cf2bf5aa740459921ce6a902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7028c53a_055e49ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/brightness_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2020-05-21T09:13:48Z",
+      "side": 1,
+      "message": "No idea what this is telling me",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 100
+      },
+      "revId": "194ff4d9c9706ac8cf2bf5aa740459921ce6a902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
