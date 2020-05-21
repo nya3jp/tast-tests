@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 )
@@ -45,8 +46,7 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	if err = conn.Close(); err != nil {
 		s.Fatal("Failed to close the connection: ", err)
 	}
-	s.Log("Waiting 1 min for stability")
-	if err = testing.Sleep(ctx, time.Minute); err != nil {
+	if err = cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait: ", err)
 	}
 
