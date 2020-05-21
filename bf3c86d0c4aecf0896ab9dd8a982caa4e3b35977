@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0d9b0af_8a4d4843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-05-21T07:04:07Z",
+      "side": 1,
+      "message": "nit: should we consider stricter check \u003c\u003d 0 || \u003e\u003d max_type?",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 78
+      },
+      "revId": "bf3c86d0c4aecf0896ab9dd8a982caa4e3b35977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
