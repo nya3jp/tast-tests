@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33988fb8_fb59481a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T17:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc50e7cf_07198845",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 4
+      },
+      "revId": "8ad2d5a3fda30eaeebe3eae9be5d0e365c215edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "167da111_85fafebf",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "8ad2d5a3fda30eaeebe3eae9be5d0e365c215edd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af3eca66_e0dd1ef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T17:35:38Z",
+      "side": 1,
+      "message": "need to always close Nebraska even on first install failure.\nAck",
+      "parentUuid": "167da111_85fafebf",
+      "revId": "8ad2d5a3fda30eaeebe3eae9be5d0e365c215edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
