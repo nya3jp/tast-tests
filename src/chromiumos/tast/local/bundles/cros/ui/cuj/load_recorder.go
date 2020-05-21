@@ -6,8 +6,11 @@ package cuj
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"math"
+	"path/filepath"
 	"sync"
 	"time"
 
@@ -26,8 +29,9 @@ const waitUntilReady = 3 * time.Second
 const totalEntryName = "total"
 
 type loadEntry struct {
-	privateMemory int64
-	cpuPercent    float64
+	PrivateMemory  int64   `json:"memory"`
+	CPUPercent     float64 `json:"cpu_usage"`
+	InTestScenario bool    `json:"in_test_scenario"`
 }
 
 // loadRecorder records the load (CPU time and memory) of the processes
@@ -41,8 +45,7 @@ type loadRecorder struct {
 
 	mutex     sync.Mutex
 	recording bool
-	prepares  []map[string]*loadEntry
-	records   []map[string]*loadEntry
+	records   map[string][]*loadEntry
 }
 
 // browserProcData searches browser-related process IDs and fill their data
@@ -109,8 +112,7 @@ func newLoadRecorder(ctx context.Context, procNames map[int32]string) (*loadReco
 		procs:     procs,
 		cancel:    cancel,
 		errorc:    make(chan error),
-		recording: true,
-		records:   make([]map[string]*loadEntry, 0, waitUntilReady/checkInterval),
+		records:   make(map[string][]*loadEntry, len(procNames)+1),
 	}
 	go func() {
 		defer close(lr.errorc)
@@ -140,10 +142,6 @@ func newLoadRecorder(ctx context.Context, procNames map[int32]string) (*loadReco
 		if len(lr.records) == 0 {
 			return errors.New("no records found for preparations")
 		}
-		lr.recording = false
-		// Copying the records so far to the prepare.
-		lr.prepares = lr.records
-		lr.records = make([]map[string]*loadEntry, 0, cap(lr.prepares))
 		return nil
 	}(); err != nil {
 		lr.Stop()
@@ -178,12 +176,9 @@ func (lr *loadRecorder) StopRecording() {
 
 func (lr *loadRecorder) check() error {
 	lr.mutex.Lock()
-	defer lr.mutex.Unlock()
-	if !lr.recording {
-		return nil
-	}
+	recording := lr.recording
+	lr.mutex.Unlock()
 
-	record := make(map[string]*loadEntry, len(lr.procs)+1)
 	for _, p := range lr.procs {
 		pid := p.Pid
 		name := lr.procNames[pid]
@@ -195,96 +190,112 @@ func (lr *loadRecorder) check() error {
 		if err != nil {
 			return errors.Wrapf(err, "failed to get CPU percent for %d", pid)
 		}
-		record[name] = &loadEntry{
-			privateMemory: int64(mstat.RSS) - int64(mstat.Shared),
-			cpuPercent:    cpuPercent,
-		}
+		lr.records[name] = append(lr.records[name], &loadEntry{
+			PrivateMemory:  int64(mstat.RSS) - int64(mstat.Shared),
+			CPUPercent:     cpuPercent,
+			InTestScenario: recording,
+		})
 	}
 	cpuPercents, err := cpu.Percent(0, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the entire CPU percent")
 	}
-	record[totalEntryName] = &loadEntry{cpuPercent: cpuPercents[0]}
+	lr.records[totalEntryName] = append(lr.records[totalEntryName], &loadEntry{
+		CPUPercent:     cpuPercents[0],
+		InTestScenario: recording,
+	})
 
-	lr.records = append(lr.records, record)
 	return nil
 }
 
 func (lr *loadRecorder) Save(pv *perf.Values) error {
-	if len(lr.records) == 0 {
-		return errors.New("no load data are recorded")
+	if lr.cancel != nil {
+		return errors.New("load recorder isn't stopped yet")
 	}
-
-	prepareMaxes := make(map[string]*loadEntry, len(lr.procNames)+1)
-	for _, record := range lr.prepares {
-		for name, data := range record {
-			pm, ok := prepareMaxes[name]
-			if ok {
-				if pm.privateMemory < data.privateMemory {
-					pm.privateMemory = data.privateMemory
+	for name, records := range lr.records {
+		if name == totalEntryName {
+			// Recording the TPS score of CPU.
+			for _, data := range records {
+				if data.InTestScenario {
+					pv.Append(perf.Metric{
+						Name:      "TPS.CPU",
+						Unit:      "percent",
+						Direction: perf.SmallerIsBetter,
+						Multiple:  true,
+					}, data.CPUPercent)
 				}
-				pm.cpuPercent = math.Max(pm.cpuPercent, data.cpuPercent)
+			}
+			continue
+		}
+		var prepareMax *loadEntry
+		for _, data := range records {
+			if data.InTestScenario {
+				break
+			}
+			if prepareMax != nil {
+				if prepareMax.PrivateMemory < data.PrivateMemory {
+					prepareMax.PrivateMemory = data.PrivateMemory
+				}
+				prepareMax.CPUPercent = math.Max(prepareMax.CPUPercent, data.CPUPercent)
 			} else {
-				prepareMaxes[name] = &loadEntry{privateMemory: data.privateMemory, cpuPercent: data.cpuPercent}
+				prepareMax = &loadEntry{PrivateMemory: data.PrivateMemory, CPUPercent: data.CPUPercent}
 			}
 		}
-	}
-	sum := make(map[string]*loadEntry, len(lr.procNames)+1)
-	maxIncreases := make(map[string]*loadEntry, len(lr.procNames)+1)
-	for _, record := range lr.records {
-		for name, data := range record {
-			if sumStat, ok := sum[name]; ok {
-				sumStat.privateMemory += data.privateMemory
-				sumStat.cpuPercent += data.cpuPercent
-			} else {
-				sum[name] = &loadEntry{privateMemory: data.privateMemory, cpuPercent: data.cpuPercent}
+		var sum loadEntry
+		var maxIncrease loadEntry
+		for _, data := range records {
+			if !data.InTestScenario {
+				continue
 			}
-			prepareMax := prepareMaxes[name]
+			sum.PrivateMemory += data.PrivateMemory
+			sum.CPUPercent += data.CPUPercent
 			increase := &loadEntry{
-				privateMemory: data.privateMemory - prepareMax.privateMemory,
-				cpuPercent:    data.cpuPercent - prepareMax.cpuPercent,
+				PrivateMemory: data.PrivateMemory - prepareMax.PrivateMemory,
+				CPUPercent:    data.CPUPercent - prepareMax.CPUPercent,
 			}
-			if maxIncrease, ok := maxIncreases[name]; ok {
-				if maxIncrease.privateMemory < increase.privateMemory {
-					maxIncrease.privateMemory = increase.privateMemory
-				}
-				maxIncrease.cpuPercent = math.Max(maxIncrease.cpuPercent, increase.cpuPercent)
-			} else {
-				maxIncreases[name] = increase
+			if maxIncrease.PrivateMemory < increase.PrivateMemory {
+				maxIncrease.PrivateMemory = increase.PrivateMemory
 			}
+			maxIncrease.CPUPercent = math.Max(maxIncrease.CPUPercent, increase.CPUPercent)
 		}
-	}
-	for name, sumStat := range sum {
-		if name != totalEntryName {
-			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.privateMemory", name),
-				Variant:   "average",
-				Direction: perf.SmallerIsBetter,
-				Unit:      "bytes",
-			}, float64(sumStat.privateMemory)/float64(len(lr.records)))
-		}
+
 		pv.Set(perf.Metric{
 			Name:      fmt.Sprintf("%s.cpuPercent", name),
 			Variant:   "average",
 			Direction: perf.SmallerIsBetter,
 			Unit:      "percent",
-		}, sumStat.cpuPercent/float64(len(lr.records)))
-	}
-	for name, maxIncrease := range maxIncreases {
-		if name != totalEntryName {
-			pv.Set(perf.Metric{
-				Name:      fmt.Sprintf("%s.privateMemory", name),
-				Variant:   "maxIncrease",
-				Direction: perf.SmallerIsBetter,
-				Unit:      "bytes",
-			}, float64(maxIncrease.privateMemory))
-		}
+		}, sum.CPUPercent/float64(len(records)))
 		pv.Set(perf.Metric{
 			Name:      fmt.Sprintf("%s.cpuPercent", name),
 			Variant:   "maxIncrease",
 			Direction: perf.SmallerIsBetter,
 			Unit:      "percent",
-		}, maxIncrease.cpuPercent)
+		}, maxIncrease.CPUPercent)
+		pv.Set(perf.Metric{
+			Name:      fmt.Sprintf("%s.privateMemory", name),
+			Variant:   "average",
+			Direction: perf.SmallerIsBetter,
+			Unit:      "bytes",
+		}, float64(sum.PrivateMemory)/float64(len(records)))
+		pv.Set(perf.Metric{
+			Name:      fmt.Sprintf("%s.privateMemory", name),
+			Variant:   "maxIncrease",
+			Direction: perf.SmallerIsBetter,
+			Unit:      "bytes",
+		}, float64(maxIncrease.PrivateMemory))
 	}
+
 	return nil
+}
+
+func (lr *loadRecorder) SaveRecords(outDir string) error {
+	if lr.cancel != nil {
+		return errors.New("load recorder isn't stopped yet")
+	}
+	records := lr.records[totalEntryName]
+	jsonData, err := json.Marshal(map[string]interface{}{"records": records})
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal json")
+	}
+	return ioutil.WriteFile(filepath.Join(outDir, "cpu-records.json"), jsonData, 0644)
 }
