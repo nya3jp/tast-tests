@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b60a18ad_5b6e7f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/gpu_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-05-21T22:23:08Z",
+      "side": 0,
+      "message": "This is unrelated to the move but we should not need two imports for \"chromiumos/tast/local/chrome/ui\" and having an alias for one of them.",
+      "revId": "9c4c26ebe5f892914f84eefae933ce4d258947c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

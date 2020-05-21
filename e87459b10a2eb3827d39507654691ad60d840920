@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "496b49dd_4a086889",
+        "filename": "src/chromiumos/tast/local/chrome/ui/mouse/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2020-05-21T22:23:08Z",
+      "side": 1,
+      "message": "This package doc line and the renaming to strip \"Mouse\" prefix are required by presubmit script.",
+      "revId": "e87459b10a2eb3827d39507654691ad60d840920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
