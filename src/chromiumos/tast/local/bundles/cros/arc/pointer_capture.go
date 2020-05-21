@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/motioninput"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -122,7 +123,7 @@ type pointerCaptureState struct {
 // enablePointerCapture clicks at the center of the test application, which will make the test app
 // trigger Pointer Capture.
 func enablePointerCapture(ctx context.Context, tconn *chrome.TestConn) error {
-	// Click on the capture_view using the Ash mouse. This ensures that the Ash window is in focus.
+	// Click on the capture_view using the ui mouse. This ensures that the Ash window is in focus.
 	// We cannot use UI Automator to click on the capture_view because that does not guarantee the
 	// window is in focus in Ash as there could be something like a pop-up notification that
 	// actually has focus.
@@ -132,7 +133,7 @@ func enablePointerCapture(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	center := w.BoundsInRoot.CenterPoint()
-	if err := ash.MouseClick(ctx, tconn, center, ash.LeftButton); err != nil {
+	if err := mouse.Click(ctx, tconn, center, mouse.LeftButton); err != nil {
 		return errors.Wrap(err, "failed to click in the app window to enable pointer capture")
 	}
 	return nil
