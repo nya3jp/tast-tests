@@ -218,3 +218,8 @@ func (r *Recorder) Record(pv *perf.Values) error {
 	}
 	return nil
 }
+
+// Save saves additional log data into files under outDir.
+func (r *Recorder) Save(outDir string) error {
+	return r.loadRecorder.SaveRecords(outDir)
+}
