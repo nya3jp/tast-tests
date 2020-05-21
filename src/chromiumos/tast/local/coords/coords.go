@@ -27,6 +27,11 @@ func (p Point) String() string {
 	return fmt.Sprintf("(%d, %d)", p.X, p.Y)
 }
 
+// Equals returns true if the point equals another one.
+func (p Point) Equals(pb Point) bool {
+	return p.X == pb.X && p.Y == pb.Y
+}
+
 // Add returns the addition of two Points.
 func (p Point) Add(p2 Point) Point {
 	return Point{p.X + p2.X, p.Y + p2.Y}
