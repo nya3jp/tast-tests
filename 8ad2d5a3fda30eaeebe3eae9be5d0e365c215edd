@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc50e7cf_07198845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-21T17:21:11Z",
+      "side": 1,
+      "message": "I know aparently GO doesn\u0027t have characater limit, but let\u0027s limit the comments at least to 80 so its easier to review/read.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 4
+      },
+      "revId": "8ad2d5a3fda30eaeebe3eae9be5d0e365c215edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "167da111_85fafebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-21T17:21:11Z",
+      "side": 1,
+      "message": "Wouldn\u0027t be easier to just call the stopNebraska() after inistall without scoping it?",
+      "revId": "8ad2d5a3fda30eaeebe3eae9be5d0e365c215edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
