@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c32698c2_dfc1e3f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-05-21T08:26:50Z",
+      "side": 1,
+      "message": "Where does this timeout come from?",
+      "range": {
+        "startLine": 209,
+        "startChar": 20,
+        "endLine": 209,
+        "endChar": 33
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984736aa_48fc95e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_zip_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2020-05-21T08:26:50Z",
+      "side": 1,
+      "message": "Why? How do you know if it\u0027s enough?",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 41
+      },
+      "revId": "cb1118788e6f76df48147bb05fb52b4d25095a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
