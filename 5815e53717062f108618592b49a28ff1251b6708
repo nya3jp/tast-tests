@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be211dbd_c8352863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-21T22:40:51Z",
+      "side": 1,
+      "message": "Yes, it is. Please let me know if any better implementation here",
+      "parentUuid": "ef63e737_6e457f72",
+      "range": {
+        "startLine": 96,
+        "startChar": 37,
+        "endLine": 96,
+        "endChar": 69
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79766be4_f741622d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "5815e53717062f108618592b49a28ff1251b6708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee48a721_ab4bdeae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-21T22:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79766be4_f741622d",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 79
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f7f93625_df303ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-21T22:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf5cd6a_05df3f11",
+      "range": {
+        "startLine": 135,
+        "startChar": 97,
+        "endLine": 135,
+        "endChar": 113
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd3f19e9_ea1cff43",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c8a40b33_17acaf2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-21T22:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3f19e9_ea1cff43",
+      "range": {
+        "startLine": 137,
+        "startChar": 99,
+        "endLine": 137,
+        "endChar": 162
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ed90ab1_16cf87f0",
         "filename": "src/chromiumos/tast/local/coords/coords.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "5815e53717062f108618592b49a28ff1251b6708",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d2bd1f_022fbe01",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2020-05-21T22:40:51Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. Did not notice it.",
+      "parentUuid": "5ed90ab1_16cf87f0",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
