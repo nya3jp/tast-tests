@@ -70,7 +70,14 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	// that such variables are expanded at runtime.
 	board := getProperty(propertyBoard)
 	if strings.Contains(board, "{") {
-		s.Fatalf("%v property is %q; should not contain unexpanded values",
+		s.Errorf("%v property is %q; should not contain unexpanded values",
+			propertyBoard, board)
+	}
+	// On R, we set a placeholder board name during Android build (ag/11322572).
+	// Also make sure the placeholder is not used as-is so we can detect issues
+	// like b/157193348#comment5.
+	if strings.HasPrefix(board, "bertha_") {
+		s.Errorf("%v property is %q; should not start with bertha_",
 			propertyBoard, board)
 	}
 
