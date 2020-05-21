@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f547aa3_4fa2f80a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-21T17:11:36Z",
+      "side": 1,
+      "message": "Could you include file path in the error message so that what causes the failure is easier to understand.\n\n(although it is not the change in this CL), could you s/Error/error/ (starting from lowercase) to follow the guide line?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6da170e_6df0cb88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-21T17:11:36Z",
+      "side": 1,
+      "message": "Looks not consistent with metricsFile reading failure?\n\nClar: Should Polling be terminated in both case? Or only in this case?\n\nCould you use testing.PollBreak(...) instead of s.Fatal() to stop the Poll()?",
+      "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325bfd28_2f769425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-21T17:11:36Z",
+      "side": 1,
+      "message": "As you touch this line, could you use the common message pattern with \"got ..., want ...\"? E.g.:\n\nDid not see unclean shutdown: got {unclean: %d, cycle: %d}, want {unclean: %d, cycle: %d}",
+      "range": {
+        "startLine": 133,
+        "startChar": 24,
+        "endLine": 133,
+        "endChar": 109
+      },
+      "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
