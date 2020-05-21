@@ -152,6 +152,11 @@ func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
 	`, key), nil)
 }
 
+// SwitchToFloatLayout changes virtual keyboard to floating layout.
+func SwitchToFloatLayout(ctx context.Context, kconn *chrome.Conn) error {
+	return TapKey(ctx, kconn, "make virtual keyboard movable")
+}
+
 // TapKeys simulates tap events on the middle of the specified sequence of keys.
 // Each keys can be any letter of the alphabet, "space" or "backspace".
 func TapKeys(ctx context.Context, kconn *chrome.Conn, keys []string) error {
