@@ -70,6 +70,30 @@
       "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b10e227_a8b40b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T19:04:20Z",
+      "side": 1,
+      "message": "These calls should be purge actually,\nWe need separate test scenario for uninstall once you\u0027ve landed your CLs.\nOnly actually dealing with the old uninstall (\u003d\u003d purge) here, I think it should be updated.",
+      "parentUuid": "b5fa1a96_c4ec4f5f",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
