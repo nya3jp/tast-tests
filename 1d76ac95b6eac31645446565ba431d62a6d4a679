@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50433811_c75f94aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-21T18:37:22Z",
+      "side": 1,
+      "message": "Is this really needed? becuse techinically we won\u0027t know if it is downloading from nebraska or using the local one. I don\u0027t think its supposed to download from nebraska, so there is no point having this here I think. Unless you want to test if the image for example is missing. Like deleting the dlc image and make sure it is getting it again from nebraska? WDYT?",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
