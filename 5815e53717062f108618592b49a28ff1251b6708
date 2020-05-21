@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef63e737_6e457f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-21T20:43:14Z",
+      "side": 1,
+      "message": "I assume this is arbitrary?",
+      "range": {
+        "startLine": 96,
+        "startChar": 37,
+        "endLine": 96,
+        "endChar": 69
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79766be4_f741622d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-21T20:43:14Z",
+      "side": 1,
+      "message": "If I understand correctly this could be misleading if dragging was performed but the end result was the wrong location.\n\nAlso, nit: the canonical format for expectation violation messages is\n\n \"...: got %v, want %v\"\n\nand I think that Point can be used directly, rather than calling String() on it, because it implements the Stringer interface.",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 79
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf5cd6a_05df3f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-21T20:43:14Z",
+      "side": 1,
+      "message": "nit: \"in the desired direction\" perhaps?",
+      "range": {
+        "startLine": 135,
+        "startChar": 97,
+        "endLine": 135,
+        "endChar": 113
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3f19e9_ea1cff43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-21T20:43:14Z",
+      "side": 1,
+      "message": "nit: as above, I think you can leave out the .String() calls here",
+      "range": {
+        "startLine": 137,
+        "startChar": 99,
+        "endLine": 137,
+        "endChar": 162
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed90ab1_16cf87f0",
+        "filename": "src/chromiumos/tast/local/coords/coords.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-21T20:43:14Z",
+      "side": 1,
+      "message": "micro nit: this is p2 in Add(), any reason not to be consistent here?",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "5815e53717062f108618592b49a28ff1251b6708",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
