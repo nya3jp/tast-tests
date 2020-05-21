@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd7ee388_4763c44b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/split_view_resize_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2020-05-21T22:13:13Z",
+      "side": 0,
+      "message": "I\u0027m afraid that this can\u0027t be removed. If the display is rotated as in line 109 (in the patchset1), the display info should be updated.  IIRC, this rotation code should be running only on Scarlet devices.\n\nYou could re-invoke display.GetPrimaryInfo() after SetDisplayRotationSync is invoked (or transpose the size for creating tcc).",
+      "revId": "35dc7f721d58c59fa045245aa81401565df751d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
