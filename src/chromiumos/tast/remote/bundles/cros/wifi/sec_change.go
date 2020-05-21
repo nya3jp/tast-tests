@@ -76,7 +76,7 @@ func SecChange(fullCtx context.Context, s *testing.State) {
 		defer cancel()
 		s.Log("AP setup done")
 
-		if err := tf.ConnectWifi(ctx, ap); err != nil {
+		if err := tf.ConnectWifiAP(ctx, ap); err != nil {
 			return errors.Wrap(err, "failed to connect to WiFi")
 		}
 		defer func() {
@@ -89,7 +89,7 @@ func SecChange(fullCtx context.Context, s *testing.State) {
 		}()
 		s.Log("Connected")
 
-		if err := tf.PingFromDUT(ctx); err != nil {
+		if err := tf.PingFromDUT(ctx, ap.ServerIP().String()); err != nil {
 			return errors.Wrap(err, "failed to ping server from DUT")
 		}
 		return nil
