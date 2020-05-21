@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cd47060d_a4941714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-21T17:18:23Z",
+      "side": 1,
+      "message": "probably you want to do it here too. Just turn off nebraska before this.",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 31
+      },
+      "revId": "1768d99f2576a0cbbf30b4d80fe9dc1584baa1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbed3e8d_999acff1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 3
