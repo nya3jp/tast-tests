@@ -46,12 +46,6 @@ func DLCService(ctx context.Context, s *testing.State) {
 		tmpDir                  = "/tmp"
 	)
 
-	type expect bool
-	const (
-		success expect = true
-		failure expect = false
-	)
-
 	// TODO(kimjae): Manage this in separate .go file..
 	type dlcListOutput struct {
 		RootMount string `json:"root_mount"`
@@ -179,23 +173,21 @@ func DLCService(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	runCmd := func(msg string, e expect, name string, args ...string) {
+	runCmd := func(msg, name string, args ...string) {
 		cmd := testexec.CommandContext(ctx, name, args...)
-		if err := cmd.Run(testexec.DumpLogOnError); err != nil && e {
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to ", msg, err)
-		} else if err == nil && !e {
-			s.Fatal("Should have failed to ", msg)
 		}
 	}
 
-	install := func(dlc, omahaURL string, e expect) {
+	install := func(dlc, omahaURL string) {
 		s.Log("Installing DLC: ", dlc, " using ", omahaURL)
-		runCmd("install", e, "dlcservice_util", "--install", "--id="+dlc, "--omaha_url="+omahaURL)
+		runCmd("install", "dlcservice_util", "--install", "--id="+dlc, "--omaha_url="+omahaURL)
 	}
 
-	uninstall := func(dlc string, e expect) {
+	uninstall := func(dlc string) {
 		s.Log("Uninstalling DLC: ", dlc)
-		runCmd("uninstall", e, "dlcservice_util", "--uninstall", "--id="+dlc)
+		runCmd("uninstall", "dlcservice_util", "--uninstall", "--id="+dlc)
 	}
 
 	startNebraska := func() (string, *testexec.Cmd) {
@@ -272,26 +264,32 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Run(ctx, "Single DLC combination tests", func(context.Context, *testing.State) {
-		url, cmd := startNebraska()
-		defer stopNebraska(cmd, "single-dlc")
+		func() {
+			url, cmd := startNebraska()
+			defer stopNebraska(cmd, "single-dlc")
 
-		// Before performing any Install/Uninstall.
-		dumpAndVerifyInstalledDLCs("initial_state")
+			// Before performing any Install/Uninstall.
+			dumpAndVerifyInstalledDLCs("initial_state")
 
-		// Install single DLC.
-		install(dlcID1, url, success)
-		dumpAndVerifyInstalledDLCs("install_single", dlcID1)
+			// Uninstall DLC before installing.
+			uninstall(dlcID1)
+			dumpAndVerifyInstalledDLCs("uninstall_before_installing")
 
-		// Install already installed DLC.
-		install(dlcID1, url, success)
-		dumpAndVerifyInstalledDLCs("install_already_installed", dlcID1)
+			// Install DLC from Nebraska/Omaha.
+			install(dlcID1, url)
+			dumpAndVerifyInstalledDLCs("install_from_url", dlcID1)
+		}()
 
-		// Uninstall single DLC.
-		uninstall(dlcID1, success)
-		dumpAndVerifyInstalledDLCs("uninstall_dlc")
+		// Install already installed DLC when Nebraska/Omaha is down with empty url.
+		install(dlcID1, "")
+		dumpAndVerifyInstalledDLCs("install_already_installed_no_url", dlcID1)
+
+		// Uninstall DLC after installing.
+		uninstall(dlcID1)
+		dumpAndVerifyInstalledDLCs("uninstall_after_installing")
 
 		// Uninstall already uninstalled DLC.
-		uninstall(dlcID1, success)
+		uninstall(dlcID1)
 		dumpAndVerifyInstalledDLCs("uninstall_already_uninstalled")
 	})
 
@@ -304,7 +302,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 			defer stopNebraska(cmd, "reboot-mimic-dlc")
 
 			// Install single DLC.
-			install(dlcID1, url, success)
+			install(dlcID1, url)
 			dumpAndVerifyInstalledDLCs("reboot_install_before_reboot", dlcID1)
 		}()
 
@@ -313,11 +311,11 @@ func DLCService(ctx context.Context, s *testing.State) {
 
 		// Install single DLC after mimicking a reboot. Pass an empty url so
 		// Nebraska/Omaha aren't hit.
-		install(dlcID1, "", success)
+		install(dlcID1, "")
 		dumpAndVerifyInstalledDLCs("install_single_after_reboot", dlcID1)
 
 		// Uninstall single DLC after mimicking a reboot.
-		uninstall(dlcID1, success)
+		uninstall(dlcID1)
 		dumpAndVerifyInstalledDLCs("uninstall_single_after_reboot")
 	})
 }
