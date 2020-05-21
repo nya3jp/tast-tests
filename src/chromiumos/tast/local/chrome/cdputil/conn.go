@@ -257,7 +257,7 @@ const (
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // The behavior on evaluation errors depends on the value of ea.
-func (c *Conn) WaitForExpr(ctx context.Context, expr string, ea ErrorAction) error {
+func (c *Conn) WaitForExpr(ctx context.Context, expr string, ea ErrorAction, timeout time.Duration) error {
 	boolExpr := "!!(" + expr + ")"
 	falseErr := errors.Errorf("%q is false", boolExpr)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -272,7 +272,7 @@ func (c *Conn) WaitForExpr(ctx context.Context, expr string, ea ErrorAction) err
 			return falseErr
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond}); err != nil {
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: timeout}); err != nil {
 		return err
 	}
 	return nil

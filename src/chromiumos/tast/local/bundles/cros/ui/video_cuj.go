@@ -128,7 +128,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for <video> tag to show up.
-	if err := webutil.WaitForYoutubeVideo(ctx, ytConn); err != nil {
+	if err := webutil.WaitForYoutubeVideo(ctx, ytConn, 0); err != nil {
 		s.Fatal("Failed to wait for video element: ", err)
 	}
 
