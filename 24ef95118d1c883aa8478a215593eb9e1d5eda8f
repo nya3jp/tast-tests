@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90acd48a_afcc5aff",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpacli.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T03:44:23Z",
+      "side": 1,
+      "message": "I think the design of the object is to help handling the sudo part and allow the caller the execute arbitrary command? We had a different design like iw.Runner which only allows the wrapped operations.\n\nI think currently we only have two functions used: ping and clear blacklist. Not sure if it might be better to wrap the functions instead of exporting Run/Output? Or did I miss some contraints?",
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5863b8e_8c4bfe6f",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpacli.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T03:44:23Z",
+      "side": 1,
+      "message": "WPA might be preferred. https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b39020e8_41d3e944",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpacli.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T03:44:23Z",
+      "side": 1,
+      "message": "WPA",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4908dc8c_14972b85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T03:44:23Z",
+      "side": 1,
+      "message": "As we already have DumpOnError inside cmd.Runner. Maybe we can do this when \"PONG\" check failed instead?\nAlso, looks like wpaCli provide a similar utility MayOutputToFile, maybe it can be used here?",
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30327cae_5e4d4f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wpa_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T03:44:23Z",
+      "side": 1,
+      "message": "I guess this line can be removed?",
+      "revId": "24ef95118d1c883aa8478a215593eb9e1d5eda8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
