@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3063b6e6_f03c10b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T17:35:38Z",
+      "side": 1,
+      "message": "Follow up CLs with other corner cases to come. Ack",
+      "parentUuid": "cd47060d_a4941714",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 31
+      },
+      "revId": "1768d99f2576a0cbbf30b4d80fe9dc1584baa1b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbed3e8d_999acff1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 3
