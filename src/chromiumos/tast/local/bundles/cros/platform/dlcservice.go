@@ -28,16 +28,27 @@ func init() {
 }
 
 func DLCService(ctx context.Context, s *testing.State) {
+	// Generic constants.
 	const (
-		dlcID1                  = "test1-dlc"
-		testPackage             = "test-package"
-		dlcserviceJob           = "dlcservice"
-		dlcserviceServiceName   = "org.chromium.DlcService"
-		updateEngineJob         = "update-engine"
-		updateEngineServiceName = "org.chromium.UpdateEngine"
-		dlcCacheDir             = "/var/cache/dlc"
-		dlcLibDir               = "/var/lib/dlcservice/dlc"
-		tmpDir                  = "/tmp"
+		powerwashSafeDir = "/mnt/stateful_partition/unencrypted/preserve"
+		tmpDir           = "/tmp"
+	)
+
+	// Dlcservice related constants.
+	const (
+		dlcID1                = "test1-dlc"
+		testPackage           = "test-package"
+		dlcserviceJob         = "dlcservice"
+		dlcserviceServiceName = "org.chromium.DlcService"
+		dlcCacheDir           = "/var/cache/dlc"
+		dlcLibDir             = "/var/lib/dlcservice/dlc"
+	)
+
+	// UpdateEngine related constants.
+	const (
+		updateEngineJob                      = "update-engine"
+		updateEngineServiceName              = "org.chromium.UpdateEngine"
+		updateEnginePowerwashSafePrefsSubDir = "update_engine/prefs"
 	)
 
 	// Check dlcservice is up and running.
@@ -68,7 +79,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	// rollback-happened is written when update_engine finished Enterprise
 	// Rollback operation.
 	for _, p := range []string{"rollback-version", "rollback-happened"} {
-		prefsPath := filepath.Join("/mnt/stateful_partition/unencrypted/preserve/update_engine/prefs", p)
+		prefsPath := filepath.Join(powerwashSafeDir, updateEnginePowerwashSafePrefsSubDir, p)
 		if err := os.RemoveAll(prefsPath); err != nil {
 			s.Fatal("Failed to clean up pref: ", err)
 		}
