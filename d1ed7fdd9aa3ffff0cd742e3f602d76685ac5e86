@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d5837ae_61c6b1ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/crostini_guest_images.tar.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-21T01:57:40Z",
+      "side": 1,
+      "message": "I think I require this file to denote that the artifact is an external dependency? If I don\u0027t have this file (or it\u0027s equivalent with no .external extension) it fails with\n`Failed to build and push: failed to push data files: not found: [ui/data/crostini_guest_images.tar]`",
+      "parentUuid": "ca20ddcd_93bd8fae",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4625d7dd_aa149420",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "14acbf74_8331a536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-21T01:57:40Z",
+      "side": 1,
+      "message": "Split this into stable and unstable, will hold off on the download_buster variant as am aiming to move some of the setup commands to the artifact build",
+      "parentUuid": "4625d7dd_aa149420",
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e4cacde_5655ab70",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cbe7cc_9958f489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-21T01:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4cacde_5655ab70",
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "4437acd2_50164a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-21T01:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37d15a5d_6410669d",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67b208c7_f2c45bb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 5
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d20d0904_c7406ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-21T01:57:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67b208c7_f2c45bb1",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24712291_ddabf5cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
         "patchSetId": 5
@@ -116,6 +224,30 @@
       "writtenOn": "2020-05-20T01:50:55Z",
       "side": 1,
       "message": "FYI, I just filed a bug which is that this placeholder text is wrong: https://crbug.com/1084805\nSo this test will break once that bug is fixed.",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "d1ed7fdd9aa3ffff0cd742e3f602d76685ac5e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9506fcb_53886ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2020-05-21T01:57:40Z",
+      "side": 1,
+      "message": "Thanks for the heads up, CCd into the bug and will update once fixed",
+      "parentUuid": "24712291_ddabf5cf",
       "range": {
         "startLine": 86,
         "startChar": 9,
