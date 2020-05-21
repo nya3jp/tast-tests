@@ -128,6 +128,11 @@ func CrosRuntimeProbeStorage(ctx context.Context, s *testing.State) {
 	}
 	for _, component := range probedStorageComponents {
 		name := component.GetName()
+		if info := component.GetInformation(); info != nil {
+			if compGroup := info.GetCompGroup(); compGroup != "" {
+				name = compGroup
+			}
+		}
 		if name == "generic" {
 			s.Log("Skip known generic probe result")
 		} else {
