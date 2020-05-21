@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -476,7 +477,7 @@ func verifyMouse(ctx context.Context, s *testing.State, t motionInputSubtestStat
 	// TODO(b/155783589): Investigate why injecting only one initial move event (by setting the
 	//  duration to 0) produces ACTION_HOVER_ENTER, ACTION_HOVER_MOVE, and ACTION_HOVER_EXIT,
 	//  instead of the expected single event with action ACTION_HOVER_ENTER.
-	if err := ash.MouseMove(ctx, t.tconn, p, 500*time.Millisecond); err != nil {
+	if err := mouse.Move(ctx, t.tconn, p, 500*time.Millisecond); err != nil {
 		s.Fatalf("Failed to inject move at %v: %v", e, err)
 	}
 	// TODO(b/155783589): Investigate why there are sometimes two ACTION_HOVER_ENTER events being
@@ -500,7 +501,7 @@ func verifyMouse(ctx context.Context, s *testing.State, t motionInputSubtestStat
 		e = t.expectedPoint(p)
 
 		s.Log("Verifying mouse move event at ", e)
-		if err := ash.MouseMove(ctx, t.tconn, p, 0); err != nil {
+		if err := mouse.Move(ctx, t.tconn, p, 0); err != nil {
 			s.Fatalf("Failed to inject move at %v: %v", e, err)
 		}
 		if err := t.expectEventsAndClear(ctx, mouseMatcher(actionHoverMove, e)); err != nil {
@@ -508,7 +509,7 @@ func verifyMouse(ctx context.Context, s *testing.State, t motionInputSubtestStat
 		}
 	}
 
-	if err := ash.MousePress(ctx, t.tconn, ash.LeftButton); err != nil {
+	if err := mouse.Press(ctx, t.tconn, mouse.LeftButton); err != nil {
 		s.Fatal("Failed to press button on mouse: ", err)
 	}
 	if err := t.expectEventsAndClear(ctx, mouseMatcher(actionHoverExit, e), mouseMatcher(actionDown, e), mouseMatcher(actionButtonPress, e)); err != nil {
@@ -521,7 +522,7 @@ func verifyMouse(ctx context.Context, s *testing.State, t motionInputSubtestStat
 		e = t.expectedPoint(p)
 
 		s.Log("Verifying mouse move event at ", e)
-		if err := ash.MouseMove(ctx, t.tconn, p, 0); err != nil {
+		if err := mouse.Move(ctx, t.tconn, p, 0); err != nil {
 			s.Fatalf("Failed to inject move at %v: %v", e, err)
 		}
 		if err := t.expectEventsAndClear(ctx, mouseMatcher(actionMove, e)); err != nil {
@@ -529,7 +530,7 @@ func verifyMouse(ctx context.Context, s *testing.State, t motionInputSubtestStat
 		}
 	}
 
-	if err := ash.MouseRelease(ctx, t.tconn, ash.LeftButton); err != nil {
+	if err := mouse.Release(ctx, t.tconn, mouse.LeftButton); err != nil {
 		s.Fatal("Failed to release mouse button: ", err)
 	}
 	if err := t.expectEventsAndClear(ctx, mouseMatcher(actionButtonRelease, e), mouseMatcher(actionUp, e)); err != nil {
@@ -540,7 +541,7 @@ func verifyMouse(ctx context.Context, s *testing.State, t motionInputSubtestStat
 	p.Y -= deltaDP
 	e = t.expectedPoint(p)
 
-	if err := ash.MouseMove(ctx, t.tconn, p, 0); err != nil {
+	if err := mouse.Move(ctx, t.tconn, p, 0); err != nil {
 		s.Fatalf("Failed to inject move at %v: %v", e, err)
 	}
 	if err := t.expectEventsAndClear(ctx, mouseMatcher(actionHoverEnter, e), mouseMatcher(actionHoverMove, e)); err != nil {

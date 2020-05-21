@@ -17,7 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -182,7 +182,7 @@ func (n *Node) LeftClick(ctx context.Context) error {
 	if n.Location.Empty() {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
-	return ash.MouseClick(ctx, n.tconn, n.Location.CenterPoint(), ash.LeftButton)
+	return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.LeftButton)
 }
 
 // RightClick shows the context menu of the node.
@@ -194,7 +194,7 @@ func (n *Node) RightClick(ctx context.Context) error {
 	if n.Location.Empty() {
 		return errors.New("this node doesn't have a location on the screen and can't be clicked")
 	}
-	return ash.MouseClick(ctx, n.tconn, n.Location.CenterPoint(), ash.RightButton)
+	return mouse.Click(ctx, n.tconn, n.Location.CenterPoint(), mouse.RightButton)
 }
 
 // FocusAndWait calls the focus() Javascript method of the AutomationNode.

@@ -12,8 +12,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -76,23 +76,23 @@ func NewMouseController(tconn *chrome.TestConn) *MouseController {
 
 // Press implements Controller.Press.
 func (mc *MouseController) Press(ctx context.Context, location coords.Point) error {
-	if err := ash.MouseMove(ctx, mc.tconn, location, 0); err != nil {
+	if err := mouse.Move(ctx, mc.tconn, location, 0); err != nil {
 		return errors.Wrapf(err, "failed to move to the location: %v", location)
 	}
-	return ash.MousePress(ctx, mc.tconn, ash.LeftButton)
+	return mouse.Press(ctx, mc.tconn, mouse.LeftButton)
 }
 
 // Release implements Controller.Release.
 func (mc *MouseController) Release(ctx context.Context) error {
-	return ash.MouseRelease(ctx, mc.tconn, ash.LeftButton)
+	return mouse.Release(ctx, mc.tconn, mouse.LeftButton)
 }
 
 // Move implements Controller.Move.
 func (mc *MouseController) Move(ctx context.Context, start, end coords.Point, duration time.Duration) error {
-	if err := ash.MouseMove(ctx, mc.tconn, start, 0); err != nil {
+	if err := mouse.Move(ctx, mc.tconn, start, 0); err != nil {
 		return errors.Wrap(err, "failed to move to the start location")
 	}
-	return ash.MouseMove(ctx, mc.tconn, end, duration)
+	return mouse.Move(ctx, mc.tconn, end, duration)
 }
 
 // Close implements Controller.Close.
