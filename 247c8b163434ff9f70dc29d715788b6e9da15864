@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02d0714c_3f633f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T19:24:16Z",
+      "side": 1,
+      "message": "Hey Jun,\n\nIt seems that forcing two fatal calls within the current s.Run()\u0027s will run both without stopping the entire program:\n\n2020/05/21 12:22:41 Command line: tast run 100.90.31.231 platform.DLCService\n2020/05/21 12:22:41 Writing results to /tmp/tast/results/20200521-122241\n2020/05/21 12:22:41 Connecting to 100.90.31.231\n2020/05/21 12:22:41 Failed to connect to ssh-agent at /tmp/ssh-FcuNBr6JKy/agent.19140: dial unix /tmp/ssh-FcuNBr6JKy/agent.19140: connect: no such file or directory\n2020/05/21 12:22:41 Building local_test_runner, cros, remote_test_runner, cros\n2020/05/21 12:22:44 Built in 3.012s\n2020/05/21 12:22:44 Pushing executables to target\n2020/05/21 12:22:45 Pushed executables in 1.776s (sent 10.5 MB)\n2020/05/21 12:22:46 [12:22:46.792] Devserver status: [[http://127.0.0.1:28082 UP]]\n2020/05/21 12:22:46 [12:22:46.792] Found 0 external linked data file(s), need to download 0\n2020/05/21 12:22:46 [12:22:46.815] Waiting for DUT to be ready for testing\n2020/05/21 12:22:46 [12:22:47.085] Failed to check if device is enterprise enrolled: exit status 1\n2020/05/21 12:22:46 Started test platform.DLCService\n2020/05/21 12:22:46 [12:22:47.088] Restarting update-engine job\n2020/05/21 12:22:46 [12:22:47.120] Starting subtest Single DLC combination tests\n2020/05/21 12:22:46 [12:22:47.120] Error at dlcservice.go:275: first fatal\n2020/05/21 12:22:46 [12:22:47.120] Starting subtest Mimic device reboot tests\n2020/05/21 12:22:46 [12:22:47.120] Error at dlcservice.go:306: second fatal",
+      "parentUuid": "48313b6c_81270e81",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 29
+      },
+      "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc849226_374cb3a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-21T19:13:33Z",
       "side": 1,
       "message": "why not separating s.Run()?",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 301,
+        "endChar": 61
+      },
+      "revId": "247c8b163434ff9f70dc29d715788b6e9da15864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c541b6c4_e1af9329",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T19:24:16Z",
+      "side": 1,
+      "message": "Good idea, this can be separate s.Run()",
+      "parentUuid": "bc849226_374cb3a1",
       "range": {
         "startLine": 291,
         "startChar": 2,
