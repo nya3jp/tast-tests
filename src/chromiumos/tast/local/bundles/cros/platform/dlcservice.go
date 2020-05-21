@@ -77,7 +77,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	// Restart update-engine to pick up the new prefs.
 	restartUpstartJob(ctx, s, updateEngineJob, updateEngineServiceName)
 
-	defer func() {
+	cleanup := func() {
 		// Removes the installed DLC module and unmounts all test DLC images mounted under /run/imageloader.
 		ids := []string{dlcID1}
 		for _, id := range ids {
@@ -91,30 +91,36 @@ func DLCService(ctx context.Context, s *testing.State) {
 				}
 			}
 		}
-	}()
+	}
+	// Initial cleanup.
+	cleanup()
+	// Deferred cleanup.
+	defer cleanup()
+
+	// Before performing any Install/Uninstall.
+	dlc.DumpAndVerifyInstalledDLCs(ctx, s, "initial_state")
 
 	s.Run(ctx, "Single DLC combination tests", func(ctx context.Context, s *testing.State) {
-		n, err := nebraska.Start(ctx)
-		if err != nil {
-			s.Fatal("Nebraska failed to start: ", err)
-		}
-		s.Log("Started Nebraska")
-		defer n.Stop(s, "single-dlc")
+		func() {
+			n, err := nebraska.Start(ctx)
+			if err != nil {
+				s.Fatal("Nebraska failed to start: ", err)
+			}
+			s.Log("Started Nebraska")
+			defer n.Stop(s, "single-dlc")
 
-		// Before performing any Install/Uninstall.
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "initial_state")
+			// Install DLC from Nebraska/Omaha.
+			dlc.Install(ctx, s, dlcID1, n.URL)
+			dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_from_url", dlcID1)
+		}()
 
-		// Install single DLC.
-		dlc.Install(ctx, s, dlcID1, n.URL)
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_single", dlcID1)
+		// Install already installed DLC when Nebraska/Omaha is down with empty url.
+		dlc.Install(ctx, s, dlcID1, "")
+		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_already_installed_no_url", dlcID1)
 
-		// Install already installed DLC.
-		dlc.Install(ctx, s, dlcID1, n.URL)
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "install_already_installed", dlcID1)
-
-		// Uninstall single DLC.
+		// Uninstall DLC after installing.
 		dlc.Uninstall(ctx, s, dlcID1)
-		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "uninstall_dlc")
+		dlc.DumpAndVerifyInstalledDLCs(ctx, s, "uninstall_after_installing")
 
 		// Uninstall already uninstalled DLC.
 		dlc.Uninstall(ctx, s, dlcID1)
