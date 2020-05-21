@@ -30,11 +30,6 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// ServiceInfo contains the current service information.
-type ServiceInfo struct {
-	Hidden bool
-}
-
 // TFOption is the function signature used to modify TextFixutre.
 type TFOption func(*TestFixture)
 
@@ -365,17 +360,17 @@ func (tf *TestFixture) DisconnectWifi(ctx context.Context) error {
 }
 
 // QueryService queries shill service information.
-func (tf *TestFixture) QueryService(ctx context.Context) (*ServiceInfo, error) {
+func (tf *TestFixture) QueryService(ctx context.Context) (*network.QueryServiceResponse, error) {
 	req := &network.QueryServiceRequest{
 		Path: tf.curServicePath,
 	}
 
-	serInfo, err := tf.wifiClient.QueryService(ctx, req)
+	resp, err := tf.wifiClient.QueryService(ctx, req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the service information")
 	}
 
-	return &ServiceInfo{Hidden: serInfo.Hidden}, nil
+	return resp, nil
 }
 
 // PingFromDUT tests the connectivity between DUT and router through currently connected WiFi service.
