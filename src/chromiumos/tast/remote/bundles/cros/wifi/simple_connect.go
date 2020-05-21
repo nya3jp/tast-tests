@@ -525,8 +525,8 @@ func SimpleConnect(fullCtx context.Context, s *testing.State) {
 			s.Fatal("Failed to get the WiFi service information from DUT, err: ", err)
 		}
 
-		if serInfo.Hidden != ap.Config().Hidden {
-			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Hidden, ap.Config().Hidden)
+		if serInfo.Wifi.HiddenSsid != ap.Config().Hidden {
+			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Wifi.HiddenSsid, ap.Config().Hidden)
 		}
 
 		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.

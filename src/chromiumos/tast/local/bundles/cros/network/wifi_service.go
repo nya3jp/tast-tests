@@ -264,13 +264,22 @@ func (s *WifiService) Disconnect(ctx context.Context, request *network.Disconnec
 	return &empty.Empty{}, nil
 }
 
+// uint16sToUint32s converts []uint16 to []uint32.
+func uint16sToUint32s(s []uint16) []uint32 {
+	ret := make([]uint32, len(s))
+	for i, v := range s {
+		ret[i] = uint32(v)
+	}
+	return ret
+}
+
 // QueryService queries shill service information.
 // This is the implementation of network.Wifi/QueryService gRPC.
-func (s *WifiService) QueryService(ctx context.Context, ser *network.QueryServiceRequest) (*network.QueryServiceResponse, error) {
+func (s *WifiService) QueryService(ctx context.Context, req *network.QueryServiceRequest) (*network.QueryServiceResponse, error) {
 	ctx, st := timing.Start(ctx, "wifi_service.QueryService")
 	defer st.End()
 
-	service, err := shill.NewService(ctx, dbus.ObjectPath(ser.Path))
+	service, err := shill.NewService(ctx, dbus.ObjectPath(req.Path))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create service object")
 	}
@@ -279,13 +288,82 @@ func (s *WifiService) QueryService(ctx context.Context, ser *network.QueryServic
 		return nil, errors.Wrap(err, "failed to get service properties")
 	}
 
-	hidden, err := props.GetBool(shill.ServicePropertyWiFiHiddenSSID)
+	name, err := props.GetString(shill.ServicePropertyName)
+	if err != nil {
+		return nil, err
+	}
+	device, err := props.GetObjectPath(shill.ServicePropertyDevice)
+	if err != nil {
+		return nil, err
+	}
+	serviceType, err := props.GetString(shill.ServicePropertyType)
+	if err != nil {
+		return nil, err
+	}
+	mode, err := props.GetString(shill.ServicePropertyMode)
+	if err != nil {
+		return nil, err
+	}
+	state, err := props.GetString(shill.ServicePropertyState)
+	if err != nil {
+		return nil, err
+	}
+	visible, err := props.GetBool(shill.ServicePropertyVisible)
+	if err != nil {
+		return nil, err
+	}
+	isConnected, err := props.GetBool(shill.ServicePropertyIsConnected)
+	if err != nil {
+		return nil, err
+	}
+
+	bssid, err := props.GetString(shill.ServicePropertyWiFiBSSID)
+	if err != nil {
+		return nil, err
+	}
+
+	ftEnabled, err := props.GetBool(shill.ServicePropertyFTEnabled)
+	if err != nil {
+		return nil, err
+	}
+	frequency, err := props.GetUint16(shill.ServicePropertyWiFiFrequency)
+	if err != nil {
+		return nil, err
+	}
+	frequencyList, err := props.GetUint16s(shill.ServicePropertyWiFiFrequencyList)
+	if err != nil {
+		return nil, err
+	}
+	hexSSID, err := props.GetString(shill.ServicePropertyWiFiHexSSID)
+	if err != nil {
+		return nil, err
+	}
+	hiddenSSID, err := props.GetBool(shill.ServicePropertyWiFiHiddenSSID)
+	if err != nil {
+		return nil, err
+	}
+	phyMode, err := props.GetUint16(shill.ServicePropertyWiFiPhyMode)
 	if err != nil {
 		return nil, err
 	}
 
 	return &network.QueryServiceResponse{
-		Hidden: hidden,
+		Name:        name,
+		Device:      string(device),
+		Type:        serviceType,
+		Mode:        mode,
+		State:       state,
+		Visible:     visible,
+		IsConnected: isConnected,
+		Wifi: &network.QueryServiceResponse_Wifi{
+			Bssid:         bssid,
+			FtEnabled:     ftEnabled,
+			Frequency:     uint32(frequency),
+			FrequencyList: uint16sToUint32s(frequencyList),
+			HexSsid:       hexSSID,
+			HiddenSsid:    hiddenSSID,
+			PhyMode:       uint32(phyMode),
+		},
 	}, nil
 }
 

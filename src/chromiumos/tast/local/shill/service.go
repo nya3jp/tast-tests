@@ -26,14 +26,19 @@ const (
 	ServicePropertyMode           = "Mode"
 	ServicePropertyState          = "State"
 	ServicePropertyStaticIPConfig = "StaticIPConfig"
+	ServicePropertyVisible        = "Visible"
 
 	// WiFi service property names.
-	ServicePropertyPassphrase     = "Passphrase"
-	ServicePropertySecurityClass  = "SecurityClass"
-	ServicePropertySSID           = "SSID"
-	ServicePropertyWiFiHexSSID    = "WiFi.HexSSID"
-	ServicePropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
-	ServicePropertyFTEnabled      = "WiFi.FTEnabled"
+	ServicePropertyPassphrase        = "Passphrase"
+	ServicePropertySecurityClass     = "SecurityClass"
+	ServicePropertySSID              = "SSID"
+	ServicePropertyWiFiBSSID         = "WiFi.BSSID"
+	ServicePropertyFTEnabled         = "WiFi.FTEnabled"
+	ServicePropertyWiFiFrequency     = "WiFi.Frequency"
+	ServicePropertyWiFiFrequencyList = "WiFi.FrequencyList"
+	ServicePropertyWiFiHexSSID       = "WiFi.HexSSID"
+	ServicePropertyWiFiHiddenSSID    = "WiFi.HiddenSSID"
+	ServicePropertyWiFiPhyMode       = "WiFi.PhyMode"
 
 	// EAP service property names.
 	ServicePropertyEAPCACertPEM = "EAP.CACertPEM"
