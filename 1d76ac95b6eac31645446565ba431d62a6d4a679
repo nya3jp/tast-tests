@@ -46,6 +46,30 @@
       "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5fa1a96_c4ec4f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2020-05-21T18:59:07Z",
+      "side": 1,
+      "message": "up to you, but uninstall (assuming you meant purge) removes all the prefs and everything so it would be like the same as we started, but removing only the file, keeps the prefs and we make sure to get that corner case too. I\u0027m suggesting this optional, we probably have unittests that cover this scenario (hopefully :))",
+      "parentUuid": "51ad8feb_773f857d",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
