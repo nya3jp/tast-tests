@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccb38c72_9695b9e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2020-05-21T15:52:21Z",
+      "side": 1,
+      "message": "just wondering if it makes sense to move these to below L67 so that if we fail setting up Samba we don\u0027t get a UI tree dump that\u0027s unrelated.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "d8c16a37937f3bbef89976bd797cc77178a068f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
