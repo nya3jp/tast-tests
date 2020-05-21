@@ -22,6 +22,29 @@
       "revId": "b08dc480b1ce5906c599f8dfc9288adf715aaf43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2467ca76_ad60b0e1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T05:32:14Z",
+      "side": 1,
+      "message": "Might be nice to update the comment a little bit as it is the only user of curAP? e.g. \"between DUT and DHCP of currently connected APIface\"\n\nOr maybe we should just drop curAP and let the caller to pass in ap.ServerIP(). WDYT?",
+      "range": {
+        "startLine": 391,
+        "startChar": 38,
+        "endLine": 391,
+        "endChar": 102
+      },
+      "revId": "b08dc480b1ce5906c599f8dfc9288adf715aaf43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

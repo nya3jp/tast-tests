@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "bb61bf37_25f6b4db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1371981
+      },
+      "writtenOn": "2020-05-21T05:32:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62c6893f_cf16bb5c",
+      "range": {
+        "startLine": 98,
+        "startChar": 11,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "3804266c5f96e6e81f4d277089b7e83d9e28333c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0c524e9_434b69b1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/prefer_5ghz.go",
         "patchSetId": 6
