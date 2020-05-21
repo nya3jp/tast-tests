@@ -85,6 +85,34 @@ func (p *Properties) GetBool(prop string) (bool, error) {
 
 }
 
+// GetUint16 returns property value as uint16.
+func (p *Properties) GetUint16(prop string) (uint16, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return 0, err
+	}
+	ret, ok := value.(uint16)
+	if !ok {
+		return 0, errors.Errorf("property %s is not an int array: %q", prop, value)
+	}
+	return ret, nil
+
+}
+
+// GetUint16s returns property value as uint16 array.
+func (p *Properties) GetUint16s(prop string) ([]uint16, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return nil, err
+	}
+	ret, ok := value.([]uint16)
+	if !ok {
+		return nil, errors.Errorf("property %s is not an int array: %q", prop, value)
+	}
+	return ret, nil
+
+}
+
 // GetObjectPath returns the DBus ObjectPath of the given property name.
 func (p *Properties) GetObjectPath(prop string) (dbus.ObjectPath, error) {
 	value, err := p.Get(prop)
