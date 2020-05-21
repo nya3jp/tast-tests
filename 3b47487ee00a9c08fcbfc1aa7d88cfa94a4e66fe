@@ -46,6 +46,30 @@
       "revId": "3b47487ee00a9c08fcbfc1aa7d88cfa94a4e66fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f56e53c2_97c96688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-05-21T00:52:52Z",
+      "side": 1,
+      "message": "Huh, sorry, didn\u0027t notice. There were some \u0027defer\u0027s that used unnamed, and at least one that used named. *shrug*",
+      "parentUuid": "99a804c9_ba48c520",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 23
+      },
+      "revId": "3b47487ee00a9c08fcbfc1aa7d88cfa94a4e66fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
