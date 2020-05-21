@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6371dc2_8c715004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-21T18:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f547aa3_4fa2f80a",
+      "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6da170e_6df0cb88",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35452de4_04b5fd84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-21T18:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6da170e_6df0cb88",
+      "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db015c9_7cb87467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/unclean_shutdown_collector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2020-05-21T18:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325bfd28_2f769425",
+      "range": {
+        "startLine": 133,
+        "startChar": 24,
+        "endLine": 133,
+        "endChar": 109
+      },
+      "revId": "a43f2d7f2d41c71813cff87c65b24c3608f8a88b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
