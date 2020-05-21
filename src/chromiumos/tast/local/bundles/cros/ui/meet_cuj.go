@@ -199,4 +199,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed to save the perf data: ", err)
 	}
+	if err = recorder.Save(s.OutDir()); err != nil {
+		s.Error("Failed to store additional data: ", err)
+	}
 }
