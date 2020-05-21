@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7605ecd7_337ffecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-21T10:12:08Z",
+      "side": 1,
+      "message": "I recommend tconn.Call instead. It can avoid formatting JS scripts with fmt.Sprintf.\n\n tconn.Call(ctx, nil, \"chrome.management.launchApp\", cca.ID)",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "daa95c00f6895afe2317f3668edb6dc1dbd00ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edbfe765_0f1b619b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-21T10:12:08Z",
+      "side": 1,
+      "message": "s.Fatal(\"Failed to open CCA: \", err)",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "daa95c00f6895afe2317f3668edb6dc1dbd00ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9481680_e8c32976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_power_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2020-05-21T10:12:08Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 123,
+        "startChar": 9,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "daa95c00f6895afe2317f3668edb6dc1dbd00ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
