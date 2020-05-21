@@ -22,6 +22,30 @@
       "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ad8feb_773f857d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2020-05-21T18:51:33Z",
+      "side": 1,
+      "message": "An uninstall before the first install should do the trick to cover the fetching from nebraska/omaha and following install with nebraska down.\nPlease Ack.",
+      "parentUuid": "50433811_c75f94aa",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "1d76ac95b6eac31645446565ba431d62a6d4a679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
