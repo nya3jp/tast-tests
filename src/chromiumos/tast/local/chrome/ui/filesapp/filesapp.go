@@ -79,7 +79,7 @@ func (f *FilesApp) Close(ctx context.Context) error {
 // OpenDownloads opens the Downloads folder in the Files App.
 // An error is returned if Downloads is not found or does not open.
 func (f *FilesApp) OpenDownloads(ctx context.Context) error {
-	// Click Downloads to open the folder.
+	// Select the Downloads subtree in the directory tree.
 	params := ui.FindParams{
 		Name: "Downloads",
 		Role: ui.RoleTypeTreeItem,
@@ -89,7 +89,19 @@ func (f *FilesApp) OpenDownloads(ctx context.Context) error {
 		return err
 	}
 	defer downloads.Release(ctx)
-	if err := downloads.LeftClick(ctx); err != nil {
+
+	// Within the subtree, click the Downloads row to navigate to the Downloads location.
+	params = ui.FindParams{
+		Name: "Downloads",
+		Role: ui.RoleTypeStaticText,
+	}
+
+	downloadsRow, err := downloads.DescendantWithTimeout(ctx, params, uiTimeout)
+	if err != nil {
+		return err
+	}
+
+	if err := downloadsRow.LeftClick(ctx); err != nil {
 		return err
 	}
 
