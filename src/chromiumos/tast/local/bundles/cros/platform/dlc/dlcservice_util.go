@@ -121,8 +121,8 @@ func Install(ctx context.Context, s *testing.State, dlc, omahaURL string) {
 	runCmd(ctx, s, "install", "dlcservice_util", "--install", "--id="+dlc, "--omaha_url="+omahaURL)
 }
 
-// Uninstall calls the DBus method to uninstall a DLC.
-func Uninstall(ctx context.Context, s *testing.State, dlc string) {
-	s.Log("Uninstalling DLC: ", dlc)
-	runCmd(ctx, s, "uninstall", "dlcservice_util", "--uninstall", "--id="+dlc)
+// Purge calls the DBus method to Purge a DLC.
+func Purge(ctx context.Context, s *testing.State, dlc string) {
+	s.Log("Purging DLC: ", dlc)
+	runCmd(ctx, s, "uninstall", "dlcservice_util", "--purge", "--id="+dlc)
 }
