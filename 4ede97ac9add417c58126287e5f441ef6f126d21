@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab55aee8_f00494a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-21T17:02:09Z",
+      "side": 1,
+      "message": "huge nit: could you add a white space just before the open paren?",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "4ede97ac9add417c58126287e5f441ef6f126d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb0a783_2ba253b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-21T17:02:09Z",
+      "side": 1,
+      "message": "In case of !ok, it still tries to write a file under the current dir (outDir is probably an empty string).\n\nSo,\n\nif outDir, ok :\u003d testing.ContextOutDir(ctx); !ok {\n  testing.ContextLog(...)\n} else {\n  if err :\u003d ioutil.WriteFile(...) ...\n    testing.ContextLogf\n  }\n}\nreturn nil, errors.Errorf(...)\n\nis needed.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "4ede97ac9add417c58126287e5f441ef6f126d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4022343a_58f9ecb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2020-05-21T17:02:09Z",
+      "side": 1,
+      "message": "ditto for white space insertion.",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 43
+      },
+      "revId": "4ede97ac9add417c58126287e5f441ef6f126d21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
